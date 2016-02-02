@@ -62,7 +62,7 @@ You will need to edit this file as an administrator to save it. Hosts should fol
 4. Install NVM and install and use Node.js version 0.12.7: 
 
     ```
-    cd docroot/themes/contrib/thunder
+    cd docroot/themes/custom/webny_theme
     ./install-node.sh
     ```
     
