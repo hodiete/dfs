@@ -39,8 +39,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.ssh.insert_key = false
   config.ssh.forward_agent = true
 
-  config.vm.network :forwarded_port, guest: 22, host: 1234, id: 'ssh'
-
   config.vm.box = vconfig['vagrant_box']
 
   # If hostsupdater plugin is installed, add all server names as aliases.
