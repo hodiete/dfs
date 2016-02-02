@@ -1,0 +1,27 @@
+project:
+  # The acquia_subname value is the machine name of your subscription on Acquia
+  # Cloud. E.g., if your dev env URL on Acquia Cloud is
+  # http://psprojectdev.prod.acquia-sites.com/ then your acquia_subname is
+  # "psproject". This value is used to correctly configure settings in
+  # settings.php includes. This will also determine the the directory name
+  # of the new repository.
+  acquia_subname: 'acsfdev'
+  # Used for enforcing correct git commit msg syntax.
+  prefix: 'BLT'
+  human_name: 'NDD'
+  profile:
+    name: 'webny'
+    # Please ensure contrib profiles are also in your composer.json file.
+    contrib: false
+  # This is used to build front end artifacts. E.g., SASS compilation.
+  theme_name: 'thunder'
+  # These are random strings used to configure the hash salt.
+  hash_salt: NZ4pGCYwwI0kPGr5KwDkK1IgC2XOl8jFURj7q8lgAUBw6xxRXlWJNZZ
+
+# Configuration settings for new git repository.
+git:
+  default_branch: develop
+  remotes:
+    # Defining git remotes allows builds deployed via CI.
+    - acsfdev@svn-15689.prod.hosting.acquia.com:acsfdev.git
+    
