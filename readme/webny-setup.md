@@ -19,7 +19,8 @@ local copy of the develop branch to begin work -
 ## Initial Setup: VM Setup
 
 This setup assumes:
-1. You have [VirtualBox 4.3](https://www.virtualbox.org/wiki/Download_Old_Builds_4_3) and [Vagrant] (https://www.vagrantup.com/downloads.html) installed.
+
+1. Install [VirtualBox 4.3](https://www.virtualbox.org/wiki/Download_Old_Builds_4_3) and [Vagrant] (https://www.vagrantup.com/downloads.html) installed.
 2. You have some sort of command line tool installed such as [Cygwin](https://cygwin.com/install.html)
 3. You have already installed git and cloned your fork locally
 
@@ -37,12 +38,12 @@ individual preferences.
     # Set drupal_domain to the same thing as the `vagrant_hostname` above.
     drupal_domain: webny.dev
     
-4a. If you are running Windows, you will need to make sure you are running both Virtualbox and your command prompt as
+4. If you are running Windows, you will need to make sure you are running both Virtualbox and your command prompt as
 an administrator. You may also need to run Virtualbox in Windows 7 compatibility mode if you run into issues. This setup
 assumes you have administrative access on your host machine. 
-4b. If you are behind a proxy, you will need to configure your proxy information in [box/provisioning/JJG-Ansible-Windows/windows.sh]
-4c. Run `vagrant up` in the /box directory.
-4d. After this completes, ensure your hosts were created. On Linux and OSX this is likely your /etc/hosts file. On 
+5. If you are behind a proxy, you will need to configure your proxy information in [box/provisioning/JJG-Ansible-Windows/windows.sh]
+6. Run `vagrant up` in the /box directory.
+7. After this completes, ensure your hosts were created. On Linux and OSX this is likely your /etc/hosts file. On 
 Windows this is usually located at C:\Windows\System32\drivers\etc\hosts. 
 You will need to edit this file as an administrator to save it. Hosts should follow this format of:
 192.168.88.90  webny.dev 
@@ -63,7 +64,6 @@ You will need to edit this file as an administrator to save it. Hosts should fol
     ```
     cd docroot/themes/contrib/thunder
     ./install-node.sh
-    
     ```
     
     Ensure you follow the command prompt instructions to run `source ~/.bashrc && nvm use --delete-prefix 0.12.7`
