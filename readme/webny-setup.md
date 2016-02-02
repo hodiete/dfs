@@ -20,7 +20,7 @@ local copy of the develop branch to begin work -
 
 This setup assumes:
 
-1. Install [VirtualBox 4.3](https://www.virtualbox.org/wiki/Download_Old_Builds_4_3) and [Vagrant] (https://www.vagrantup.com/downloads.html) installed.
+1. Install [VirtualBox 4.3](https://www.virtualbox.org/wiki/Download_Old_Builds_4_3) and [Vagrant] (https://www.vagrantup.com/downloads.html).
 2. You have some sort of command line tool installed such as [Cygwin](https://cygwin.com/install.html)
 3. You have already installed git and cloned your fork locally
 
@@ -71,7 +71,7 @@ You will need to edit this file as an administrator to save it. Hosts should fol
 5. Install frontend dependencies
 
     ```
-    npm run install-webny_theme"
+    npm run install-webny_theme
     ```
     
 6. Run `./task.sh setup`. This will build dependencies via composer, install githooks, and install drupal locally.
