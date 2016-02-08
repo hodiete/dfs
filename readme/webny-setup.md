@@ -80,7 +80,7 @@ You will need to edit this file as an administrator to save it. Hosts should fol
     npm run install-webny_theme
     ```
     
-6. Run `./task.sh setup`. This will build dependencies via composer, install githooks, and install drupal locally.
+6. Run `cd /var/www/webny; ./task.sh setup`. This will build dependencies via composer, install githooks, and install drupal locally.
 Run `task.sh -l` for a list of available phing tasks. 
 
 7. To run a build of the theme, run: `cd docroot/themes/custom/webny_theme; npm run build`
