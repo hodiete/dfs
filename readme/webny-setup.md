@@ -42,6 +42,9 @@ individual preferences.
 an administrator. You may also need to run Virtualbox in Windows 7 compatibility mode if you run into issues. This setup
 assumes you have administrative access on your host machine. 
 5. If you are behind a proxy, you will need to configure your proxy information in (box/provisioning/JJG-Ansible-Windows/windows.sh)
+6. Make sure you have the vagrant-hostsupdater plugin installed
+     vagrant plugin install vagrant-hostsupdater
+     vagrant plugin install vagrant-auto_network
 6. Run `vagrant up` in the /box directory.
 7. After this completes, ensure your hosts were created. On Linux and OSX this is likely your /etc/hosts file. On 
 Windows this is usually located at C:\Windows\System32\drivers\etc\hosts. 
