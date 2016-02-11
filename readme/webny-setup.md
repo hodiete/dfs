@@ -42,6 +42,9 @@ individual preferences.
 an administrator. You may also need to run Virtualbox in Windows 7 compatibility mode if you run into issues. This setup
 assumes you have administrative access on your host machine. 
 5. If you are behind a proxy, you will need to configure your proxy information in (box/provisioning/JJG-Ansible-Windows/windows.sh)
+6. Make sure you have the vagrant-hostsupdater plugin installed
+     vagrant plugin install vagrant-hostsupdater
+     vagrant plugin install vagrant-auto_network
 6. Run `vagrant up` in the /box directory.
 7. After this completes, ensure your hosts were created. On Linux and OSX this is likely your /etc/hosts file. On 
 Windows this is usually located at C:\Windows\System32\drivers\etc\hosts. 
@@ -77,7 +80,7 @@ You will need to edit this file as an administrator to save it. Hosts should fol
     npm run install-webny_theme
     ```
     
-6. Run `./task.sh setup`. This will build dependencies via composer, install githooks, and install drupal locally.
+6. Run `cd /var/www/webny; ./task.sh setup`. This will build dependencies via composer, install githooks, and install drupal locally.
 Run `task.sh -l` for a list of available phing tasks. 
 
 7. To run a build of the theme, run: `cd docroot/themes/custom/webny_theme; npm run build`
