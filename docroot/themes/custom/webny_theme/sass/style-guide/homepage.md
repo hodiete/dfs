@@ -6,10 +6,10 @@ This web site is built using Sass and component-based styles. This front-end sty
 
 We categorize our CSS styles to make them easy to find and apply to our HTML.
 
-- Defaults: These are the default base styles applied to HTML elements.
+- Base: These are the default base styles applied to HTML elements.
 - Layouts: The layout styling for major parts of the page that are included with the theme.
 - Forms: Form components are specialized design components that are applied to forms or form elements.
-- Components: Design components are reusable designs that can be applied using just the CSS class names specified in the component.
+- Components: Design components are reusable design elements which can be applied using just the CSS class names specified in the component.
 - Colors and Sass: Colors used throughout the site. And Sass documentation for mixins, etc.
 
 While our styles are organized as above in the style guide, our Sass files are organized in a file hierarchy like this:
