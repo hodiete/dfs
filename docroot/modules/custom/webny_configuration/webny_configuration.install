@@ -4,28 +4,15 @@
  * Install, update and uninstall functions for the webny platform.
  */
 
-
-/**
- * Implements hook_install().
- *
- * Performs actions to set up configuration.
- *
- * @see system_install()
- */
-function webny_configuration_install() {
-
-}
-
 /**
  * Implements hook_update_n().
  *
  * Sample for demo only.
- *
  */
 
 /*function webny_configuration_update_8000() {
-  \Drupal::service('module_installer')
-      ->install(['module1']);
+\Drupal::service('module_installer')
+->install(['module1']);
 }*/
 
 
@@ -33,13 +20,10 @@ function webny_configuration_install() {
  * Implements hook_update_n().
  *
  * Set admin theme to Adminimal.
- *
  */
-
 function webny_configuration_update_8001() {
   \Drupal::configFactory()
       ->getEditable('system.theme')
       ->set('admin', 'adminimal_theme')
       ->save(TRUE);
 }
-
