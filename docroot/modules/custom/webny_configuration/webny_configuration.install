@@ -27,3 +27,19 @@ function webny_configuration_install() {
   \Drupal::service('module_installer')
       ->install(['module1']);
 }*/
+
+
+/**
+ * Implements hook_update_n().
+ *
+ * Set admin theme to Adminimal.
+ *
+ */
+
+function webny_configuration_update_8001() {
+  \Drupal::configFactory()
+      ->getEditable('system.theme')
+      ->set('admin', 'adminimal_theme')
+      ->save(TRUE);
+}
+
