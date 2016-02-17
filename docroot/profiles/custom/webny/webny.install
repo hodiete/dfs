@@ -66,7 +66,7 @@ function webny_install() {
       ->set('use_admin_theme', TRUE)
       ->save(TRUE);
 
-  // TODO: Enable WebNY configuration module once created.
-
+  // Enable WebNY configuration module.
+  module_enable(array('webny_configuration'));
 
 }
