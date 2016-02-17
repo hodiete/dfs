@@ -24,8 +24,6 @@ function webny_configuration_install() {
  */
 
 /*function webny_configuration_update_8000() {
-  module_enable(array(
-      'module_1',
-      'feature_2',
-  ));
+  \Drupal::service('module_installer')
+      ->install(['module1']);
 }*/

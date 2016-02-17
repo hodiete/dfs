@@ -67,6 +67,8 @@ function webny_install() {
       ->save(TRUE);
 
   // Enable WebNY configuration module.
-  module_enable(array('webny_configuration'));
+  \Drupal::service('module_installer')
+      ->install(['webny_configuration']);
+
 
 }
