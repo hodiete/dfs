@@ -5,4 +5,17 @@ id: workflow_publisher
 label: 'Workflow publisher'
 weight: 5
 is_admin: null
-permissions: {  }
+permissions:
+  - 'view any unpublished content'
+  - 'use published_archived transition'
+  - 'use needs_review_archive transition'
+  - 'use draft_archived transition'
+  - 'use published_draft transition'
+  - 'use published_published transition'
+  - 'use needs_review_needs_review transition'
+  - 'use needs_review_published transition'
+  - 'use draft_published transition'
+  - 'use needs_review_draft transition'
+  - 'use draft_needs_review transition'
+  - 'use restore_to_draft transition'
+  - 'use draft_draft transition'
