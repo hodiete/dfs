@@ -9,10 +9,26 @@
 //   outline: 1px dotted color('grey');
 // }
 
+/**
+  Config file that contains centralized variables
+*/
+@import "../config";
+
+
 div.kss-modifier__wrapper {
   > * {
     // float: left;
     width: 100%;
     position: relative;
   }
+}
+
+// color scheme
+//
+// Markup: color.hbs
+//
+// Style guide: style-guide.
+
+blockquote {
+  color: $primaryblue;
 }
