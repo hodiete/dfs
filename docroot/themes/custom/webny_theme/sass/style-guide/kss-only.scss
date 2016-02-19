@@ -23,12 +23,47 @@ div.kss-modifier__wrapper {
   }
 }
 
-// color scheme
+// Color Scheme
 //
 // Markup: color.hbs
 //
-// Style guide: style-guide.
+// Style guide: style-guide.color
 
-blockquote {
-  color: $primaryblue;
+
+.swatch {
+  display: inline-block;
+  width: 6rem;
+  height: 6rem;
+  border-radius: .25rem;
+  
+  p {
+  	background: rgba(#000, 0.5);
+  	color: #fff;
+  }
+
+}
+
+.swatch-primaryblue {
+  background-color: $primaryblue;
+}
+.swatch-medblue {
+  background-color: $medblue;
+}
+.swatch-dkblueaccent {
+  background-color: $dkblueaccent;
+}
+.swatch-medblueaccent {
+  background-color: $medblueaccent;
+}
+.swatch-ltblueaccent {
+  background-color: $ltblueaccent;
+}
+.swatch-primarygold {
+  background-color: $primarygold;
+}
+.swatch-secondarygold {
+  background-color: $secondarygold;
+}
+.swatch-textblue {
+  background-color: $textblue;
 }
