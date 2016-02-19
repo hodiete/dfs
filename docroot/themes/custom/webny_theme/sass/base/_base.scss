@@ -5,12 +5,13 @@ body {
   height: 100%;
   padding: 0;
   margin: 0;
+  
 }
 
 body {
   font-family: $base-font;
-  line-height: 145%;
-  line-height: 19px;
+  line-height: $base-line-height;
+  font-size: $base-font-size;
   //background: #f5f5f5;
 }
 
@@ -83,6 +84,7 @@ a:visited {
 
 body p {
   margin: 3px 0 10px;
+  line-height: $base-line-height;
 }
 
 // Blockquote
@@ -90,14 +92,42 @@ body p {
 // Markup: blockquote.hbs
 //
 // Style guide: base.blockquote
+
+
+
+
+blockquote:before {
+  color: $primarygold;
+  position: relative;
+  top: 35px;
+  opacity: 0.3;
+  left: -10px;
+  content: "\201C";
+  font-size: 3em;
+  line-height: 0.1em;
+  margin-right: 0.2em; /* LTR */
+  vertical-align: -0.4em;
+}
+[dir="rtl"] blockquote:before {
+  content: "\201D";
+  margin-left: 0.2em;
+  margin-right: 0;
+}
+
 blockquote {
   padding: 0 15px;
-  color: #373131;
-  border-left: 4px solid #ddd;
+  font-size: 1.5em;
   &:last-child {
     margin-bottom: 0;
   }
+  p {
+    color:$base-font-color;
+    line-height: 1.5em;
+  }
 }
+
+
+
 
 // List Types
 //
