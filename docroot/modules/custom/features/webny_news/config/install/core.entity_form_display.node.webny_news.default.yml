@@ -5,15 +5,19 @@ dependencies:
     - field.field.node.webny_news.body
     - field.field.node.webny_news.field_webny_news_attachment
     - field.field.node.webny_news.field_webny_news_contact_info
+    - field.field.node.webny_news.field_webny_news_date
     - field.field.node.webny_news.field_webny_news_image
     - field.field.node.webny_news.field_webny_news_location
     - field.field.node.webny_news.field_webny_news_sub_title
     - field.field.node.webny_news.field_webny_news_subject_heading
     - field.field.node.webny_news.field_webny_news_teaser
+    - image.style.thumbnail
     - node.type.webny_news
   module:
+    - datetime
     - file
     - image
+    - path
     - text
 id: node.webny_news.default
 targetEntityType: node
@@ -47,6 +51,11 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: entity_reference_autocomplete
+  field_webny_news_date:
+    weight: 34
+    settings: {  }
+    third_party_settings: {  }
+    type: datetime_default
   field_webny_news_image:
     weight: 28
     settings:
@@ -83,6 +92,11 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: text_textfield
+  path:
+    type: path
+    weight: 30
+    settings: {  }
+    third_party_settings: {  }
   promote:
     type: boolean_checkbox
     settings:

@@ -1,7 +1,7 @@
 name: WebNY News
 type: module
 description: 'WebNY news module.'
-package: Custom
+package: Webny
 core: 8.x
 config_devel:
   - core.base_field_override.node.webny_news.promote
@@ -13,6 +13,7 @@ config_devel:
   - field.field.node.webny_news.body
   - field.field.node.webny_news.field_webny_news_attachment
   - field.field.node.webny_news.field_webny_news_contact_info
+  - field.field.node.webny_news.field_webny_news_date
   - field.field.node.webny_news.field_webny_news_image
   - field.field.node.webny_news.field_webny_news_location
   - field.field.node.webny_news.field_webny_news_subject_heading
@@ -20,6 +21,7 @@ config_devel:
   - field.field.node.webny_news.field_webny_news_teaser
   - field.storage.node.field_webny_news_attachment
   - field.storage.node.field_webny_news_contact_info
+  - field.storage.node.field_webny_news_date
   - field.storage.node.field_webny_news_image
   - field.storage.node.field_webny_news_location
   - field.storage.node.field_webny_news_subject_heading
