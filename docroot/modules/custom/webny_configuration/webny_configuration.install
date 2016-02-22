@@ -27,3 +27,38 @@ function webny_configuration_update_8001() {
       ->set('admin', 'adminimal_theme')
       ->save(TRUE);
 }
+
+/**
+ * Implements hook_update_n().
+ *
+ * Enable WebNY News feature.
+ */
+
+function webny_configuration_update_8002() {
+  \Drupal::service('module_installer')
+    ->install(['webny_news']);
+}
+
+/**
+ * Implements hook_update_n().
+ *
+ * Enable WebNY Subject Heading Taxonomy.
+ */
+
+function webny_configuration_update_8003() {
+  \Drupal::service('module_installer')
+      ->install(['webny_subject_heading_taxonomy']);
+}
+
+/**
+ * Implements hook_update_n().
+ *
+ * Enable WebNY Text Editors and Formats.
+ */
+
+function webny_configuration_update_8004() {
+  \Drupal::service('module_installer')
+      ->install(['webny_text_editors']);
+  \Drupal::service('module_installer')
+      ->install(['webny_text_formats']);
+}
