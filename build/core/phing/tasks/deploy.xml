@@ -48,7 +48,7 @@
   </target>
 
   <target name="deploy:artifact:build" description="Generates a deploy-ready build in deploy.dir."
-          depends="deploy:artifact:prepare-dir, deploy:artifact:copy, deploy:artifact:composer:install, deploy:artifact:profile:make, deploy:artifact:sanitize, frontend:build">
+          depends="deploy:artifact:copy, deploy:artifact:composer:install, deploy:artifact:profile:make, deploy:artifact:sanitize, frontend:build">
   </target>
 
   <target name="deploy:artifact:commit">
@@ -62,7 +62,7 @@
         <include name="composer.*"/>
       </fileset>
     </copy>
-    <exec dir="${deploy.dir}" command="composer install --no-dev --prefer-source" passthru="true" logoutput="true"/>
+    <exec dir="${deploy.dir}" command="composer install --no-dev --prefer-source" passthru="true" logoutput="true" checkreturn="true"/>
   </target>
 
   <target name="deploy:artifact:profile:make" description="Build a subsidiary makefile shipped with profile.">

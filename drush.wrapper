@@ -28,7 +28,7 @@
 # `../vendor/bin/drush.launcher --local $@` is a common variant for
 # composer-managed Drupal sites.
 #
-DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+DIR=$(dirname $(readlink -f $0))
 cd "`dirname $0`"
 
 vendor/bin/drush --local --root=${DIR}/docroot "$@"
