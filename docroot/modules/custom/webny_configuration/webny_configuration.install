@@ -59,3 +59,13 @@ function webny_configuration_update_8004() {
   \Drupal::service('module_installer')
       ->install(['webny_text_formats']);
 }
+
+/**
+ * Implements hook_update_n().
+ *
+ * Enable WebNY Inner Page feature.
+ */
+function webny_configuration_update_8006() {
+  \Drupal::service('module_installer')
+    ->install(['webny_inner_page_content_type']);
+}
