@@ -62,7 +62,7 @@
         <include name="composer.*"/>
       </fileset>
     </copy>
-    <exec dir="${deploy.dir}" command="composer install --no-dev --prefer-source" passthru="true" logoutput="true" checkreturn="true"/>
+    <exec dir="${deploy.dir}" command="composer install --no-dev" passthru="true" logoutput="true"/>
   </target>
 
   <target name="deploy:artifact:profile:make" description="Build a subsidiary makefile shipped with profile.">
@@ -112,6 +112,9 @@
 
     <!-- Use our own .gitignore -->
     <copy file="${repo.root}/build/core/files/.gitignore" tofile="${deploy.dir}/docroot/.gitignore" overwrite="true"/>
+
+    <!-- Ensure autoload is created -->
+    <copy file="${repo.root}/build/core/files/autoload.php" tofile="${deploy.dir}/vendor/autoload.php" overwrite="true"/>
 
     <!-- Set sites/default back to 755 permissions. -->
     <chmod file="${docroot}/sites/default" mode="0755" />
