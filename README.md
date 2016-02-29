@@ -131,4 +131,4 @@ Please see [Release Process](/release-process.md) for detailed information.
 
 ----------------
 
-[![Build Status](https://magnum.travis-ci.com/acquia-pso/acsfdev.svg?token=eFBAT6vQ9cqDh1Sed5Mw&branch=develop)](https://magnum.travis-ci.com/acquia-pso/acsfdev)
+[![Build Status](https://travis-ci.com/ny/WebNY-Distribution-D8.svg?token=eFBAT6vQ9cqDh1Sed5Mw&branch=master)](https://travis-ci.com/ny/WebNY-Distribution-D8)
