@@ -115,7 +115,7 @@
 
     <!-- Copy required files from vendor dir. -->
     <copy todir="${deploy.dir}/vendor" overwrite="true">
-      <fileset dir="vendor">
+      <fileset dir="${repo.root}/vendor">
         <!-- This should be similar to .gitigore. -->
         <include name="**"></include>
         <exclude name=".git" />
