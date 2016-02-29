@@ -62,7 +62,7 @@
         <include name="composer.*"/>
       </fileset>
     </copy>
-    <exec dir="${deploy.dir}" command="composer install --no-dev --prefer-source" passthru="true" logoutput="true" checkreturn="true"/>
+    <exec dir="${deploy.dir}" command="composer install --no-dev" passthru="true" logoutput="true"/>
   </target>
 
   <target name="deploy:artifact:profile:make" description="Build a subsidiary makefile shipped with profile.">
@@ -112,6 +112,15 @@
 
     <!-- Use our own .gitignore -->
     <copy file="${repo.root}/build/core/files/.gitignore" tofile="${deploy.dir}/docroot/.gitignore" overwrite="true"/>
+
+    <!-- Copy required files from vendor dir. -->
+    <copy todir="${deploy.dir}/vendor" overwrite="true">
+      <fileset dir="${repo.root}/vendor">
+        <!-- This should be similar to .gitigore. -->
+        <include name="**"></include>
+        <exclude name=".git" />
+      </fileset>
+    </copy>
 
     <!-- Set sites/default back to 755 permissions. -->
     <chmod file="${docroot}/sites/default" mode="0755" />
