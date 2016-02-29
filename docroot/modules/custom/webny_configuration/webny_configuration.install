@@ -79,3 +79,13 @@ function webny_configuration_update_8006() {
   \Drupal::service('module_installer')
     ->install(['webny_contact_content_type']);
 }
+
+/**
+ * Implements hook_update_n().
+ *
+ * Enable WebNY Inner Page.
+ */
+function webny_configuration_update_8007() {
+  \Drupal::service('module_installer')
+    ->install(['webny_inner_page_content_type']);
+}
