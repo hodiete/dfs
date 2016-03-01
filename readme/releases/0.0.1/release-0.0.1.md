@@ -14,7 +14,7 @@
 - Tweaks to Vagrant VM
 
 ## Important Notices
-- None
+- Drupal core was updated to 8.0.4
 
 ## Documentation updates
 - [Environment setup](../../webny-setup.md)
