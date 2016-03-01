@@ -101,3 +101,13 @@ function webny_configuration_update_8008() {
   \Drupal::service('module_installer')
     ->install(['webny_global_and_agency_taxonomies']);
 }
+
+/**
+ * Implements hook_update_n().
+ *
+ * Enable WebNY Inner Page Content Type.
+ */
+function webny_configuration_update_8009() {
+  \Drupal::service('module_installer')
+    ->install(['webny_inner_page_content_type']);
+}
