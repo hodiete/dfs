@@ -83,9 +83,33 @@ function webny_configuration_update_8006() {
 /**
  * Implements hook_update_n().
  *
- * Enable WebNY Inner Page.
+ * Enable WebNY News Content Type feature.
  */
 function webny_configuration_update_8007() {
   \Drupal::service('module_installer')
+    ->uninstall(['webny_news']);
+  \Drupal::service('module_installer')
+    ->install(['webny_news_content_type']);
+}
+
+/**
+ * Implements hook_update_n().
+ *
+ * Enable WebNY Global and Agency Taxonomy feature.
+ */
+function webny_configuration_update_8008() {
+  \Drupal::service('module_installer')
+    ->install(['webny_global_and_agency_taxonomies']);
+}
+
+/**
+ * Implements hook_update_n().
+ *
+ * Enable WebNY Inner Page Content Type
+ */
+function webny_configuration_update_8009() {
+  \Drupal::service('module_installer')
     ->install(['webny_inner_page_content_type']);
 }
+
+

@@ -11,7 +11,7 @@
 - [Conditional CSS](http://github.com/torq/Drupal-Theming-Best-Practices#conditional-css)
 - [Media Queries](http://github.com/torq/Drupal-Theming-Best-Practices#media-queries)
 - [Images](http://github.com/torq/Drupal-Theming-Best-Practices#images)
-- [Template Files](http://github.com/torq/Drupal-Theming-Best-Practices#template-files)
+- [Template Files](#template-files)
 - [Working with Javascript](http://github.com/torq/Drupal-Theming-Best-Practices#working-with-javascript)
 - [Links](http://github.com/torq/Drupal-Theming-Best-Practices#links)
 
