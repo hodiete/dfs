@@ -1,5 +1,10 @@
 # Deployment workflow
 
+"How do I deploy code from my local machine, or GitHub, to the Acquia Cloud?"
+
+For information on how to deploy to production, see [release-process.md]
+(release-process.md).
+
 This document outlines the workflow to build a complete Drupal docroot (plus 
 supporting features, such as Cloud Hooks) which can be deployed directly to 
 Acquia Cloud. Collectively, this bundle of code is referred to as the "build 
@@ -28,7 +33,7 @@ Ensure your ACE remote is listed in project.yml under git:remotes.
 
 In order to create the build artifact in `/deploy`, simply run
 ```
-./task.sh deploy:build:artifact
+./task.sh deploy:artifact:build
 ```
 
 This task is analogous to `setup:build:all` but with a few critical differences:
@@ -40,7 +45,7 @@ This task is analogous to `setup:build:all` but with a few critical differences:
 After the artifact is created, you can inspect it or even run it as a website
 locally. You may also manually commit and push it to ACE.
 
-## Create and deploy the build artifact
+## <a name="build-artifact"></a>Create and deploy the build artifact
 
 To both create and deploy the build artifact in a single command, run the
 following command
@@ -60,7 +65,7 @@ CI tool such as Travis or Jenkins.
 ### Travis CI
 
 Access to Travis is already provided by Acquia PS, which makes this option 
-appealing on a cost basis. It will automtically deploy new commits after they 
+appealing on a cost basis. It will automatically deploy new commits after they 
 are merged and tests pass. However, it's somewhat insecure (you have to create 
 an SSH key for deployments that can be accessed by any developer), and it's 
 impossible to schedule regular deployments or perform more advanced 
