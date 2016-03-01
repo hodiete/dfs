@@ -31,9 +31,29 @@ function webny_configuration_update_8001() {
 /**
  * Implements hook_update_n().
  *
- * Enable WebNY News feature.
+ * Enable Responsive image module.
  */
 function webny_configuration_update_8002() {
+  \Drupal::service('module_installer')
+    ->install(['responsive_image']);
+}
+
+/**
+ * Implements hook_update_n().
+ *
+ * Enable WebNY Image styles feature.
+ */
+function webny_configuration_update_8003() {
+  \Drupal::service('module_installer')
+    ->install(['webny_image_styles']);
+}
+
+/**
+ * Implements hook_update_n().
+ *
+ * Enable WebNY News feature.
+ */
+function webny_configuration_update_8004() {
   \Drupal::service('module_installer')
     ->install(['webny_news']);
 }
@@ -43,7 +63,7 @@ function webny_configuration_update_8002() {
  *
  * Enable WebNY Subject Heading Taxonomy.
  */
-function webny_configuration_update_8003() {
+function webny_configuration_update_8005() {
   \Drupal::service('module_installer')
       ->install(['webny_subject_heading_taxonomy']);
 }
@@ -53,7 +73,7 @@ function webny_configuration_update_8003() {
  *
  * Enable WebNY Text Editors and Formats.
  */
-function webny_configuration_update_8004() {
+function webny_configuration_update_8006() {
   \Drupal::service('module_installer')
       ->install(['webny_text_editors']);
   \Drupal::service('module_installer')
@@ -65,7 +85,7 @@ function webny_configuration_update_8004() {
  *
  * Enable Telephone Module.
  */
-function webny_configuration_update_8005() {
+function webny_configuration_update_8007() {
   \Drupal::service('module_installer')
     ->install(['telephone']);
 }
@@ -75,7 +95,7 @@ function webny_configuration_update_8005() {
  *
  * Enable WebNY Contact feature.
  */
-function webny_configuration_update_8006() {
+function webny_configuration_update_8008() {
   \Drupal::service('module_installer')
     ->install(['webny_contact_content_type']);
 }
