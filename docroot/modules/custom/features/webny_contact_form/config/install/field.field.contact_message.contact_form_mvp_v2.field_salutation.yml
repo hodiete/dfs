@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - contact.form.contact_form_mvp_v2
+    - field.storage.contact_message.field_salutation
+  module:
+    - options
+id: contact_message.contact_form_mvp_v2.field_salutation
+field_name: field_salutation
+entity_type: contact_message
+bundle: contact_form_mvp_v2
+label: Salutation
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string
