@@ -1,4 +1,4 @@
-NDD
+${project.human_name}
 
 Drupal Architecture
 ========================
@@ -186,8 +186,8 @@ TODO: Outline user roles and their permissions.
 
 | Role name | Permissions (summary) |
 |-----------|-----------------------|
-|Administrator | 100% control over all aspects of the Drupal site. |
-|Authenticated | - Can view published content.  - Can create forum posts. |
+| Administrator | 100% control over all aspects of the Drupal site. |
+| Authenticated | - Can view published content.  - Can create forum posts. |
 | Anonymous | Can view published content. |
 
 

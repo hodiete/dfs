@@ -2,9 +2,8 @@
 if ($argc < 3) {
   print 'You must pass in arguments for the following variables:' . PHP_EOL
   . 'service(git or stash), username:password, project:repository:branch, [month/day/year], [limit]' . PHP_EOL . PHP_EOL
-  . 'example: php generate-release-notes.php github dan:password acquia-pso:test-repo:master > example-release-notes.md' . PHP_EOL
-  . 'example: php generate-release-notes.php github dan:password acquia-pso:test-repo:master 4/10/2014 > example-release-notes.md' . PHP_EOL
-  . 'example: php generate-release-notes.php stash:stash.client.com dan:password client-project:test-repo:master 4/10/2014 100 > example-release-notes.md' . PHP_EOL . PHP_EOL
+  . 'example: php generate-release-notes.php github username:password ny:WebNY-Distribution-D8:master > example-release-notes.md' . PHP_EOL
+  . 'example: php generate-release-notes.php github username:password ny:WebNY-Distribution-D8:master 4/10/2014 > example-release-notes.md' . PHP_EOL
   . 'note: by default, PRs are gathered from 30 days previous and up to 100 PRs' . PHP_EOL;
   exit;
 }
