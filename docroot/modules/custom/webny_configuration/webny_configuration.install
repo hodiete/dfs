@@ -105,7 +105,7 @@ function webny_configuration_update_8008() {
  *
  * Enable WebNY News Content Type feature.
  */
-function webny_configuration_update_8007() {
+function webny_configuration_update_8009() {
   \Drupal::service('module_installer')
     ->uninstall(['webny_news']);
   \Drupal::service('module_installer')
@@ -117,7 +117,7 @@ function webny_configuration_update_8007() {
  *
  * Enable WebNY Global and Agency Taxonomy feature.
  */
-function webny_configuration_update_8008() {
+function webny_configuration_update_8010() {
   \Drupal::service('module_installer')
     ->install(['webny_global_and_agency_taxonomies']);
 }
@@ -127,7 +127,7 @@ function webny_configuration_update_8008() {
  *
  * Enable WebNY Inner Page Content Type.
  */
-function webny_configuration_update_8009() {
+function webny_configuration_update_8011() {
   \Drupal::service('module_installer')
     ->install(['webny_inner_page_content_type']);
 }
