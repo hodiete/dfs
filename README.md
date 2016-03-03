@@ -1,6 +1,6 @@
 # NDD
 
-Replace this with a brief description of the ${project.human_name} project.
+The State of New York distribution.
 
 Documentation by role:
 
@@ -21,10 +21,10 @@ Documentation by role:
 ## Resources
 
 * JIRA - link me!
-* [GitHub](http://www.github.com/acquia-pso/${project.acquia_subname})
+* [GitHub](https://github.com/ny/WebNY-Distribution-D8)
 * Acquia Cloud subscription - link me!
-* [TravisCI](https://travis-ci.com/acquia-pso/${project.acquia_subname}) 
+* [TravisCI](https://travis-ci.com/ny/WebNY-Distribution-D8) 
 
 ----------------
 
-[![Build Status](https://travis-ci.com/ny/WebNY-Distribution-D8.svg?token=eFBAT6vQ9cqDh1Sed5Mw&branch=master)](https://travis-ci.com/ny/WebNY-Distribution-D8)
+[![Build Status](https://travis-ci.com/ny/WebNY-Distribution-D8.svg?token=eFBAT6vQ9cqDh1Sed5Mw&branch=develop)](https://travis-ci.com/ny/WebNY-Distribution-D8)
