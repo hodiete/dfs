@@ -59,7 +59,6 @@
   </target>
 
   <target name="deploy:artifact:composer:install" description="Downloads core and contrib to deploy folder.">
-    <delete dir="${deploy.dir}/vendor"/>
     <copy todir="${deploy.dir}" overwrite="true">
       <fileset dir="${repo.root}">
         <include name="composer.json"/>
@@ -94,7 +93,6 @@
         <exclude name="core/**" />
         <exclude name="drush/contrib/**" />
         <exclude name="example.gitignore" />
-        <exclude name="vendor/**" />
         <exclude name="sites/**/files/**" />
         <exclude name="sites/**/private/**" />
         <exclude name="themes/contrib/**" />
