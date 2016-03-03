@@ -15,7 +15,7 @@ env_refresh() {
           echo "Making any necessary Drupal database updates..."
           drush @${drush_alias} updb -y
           echo "Clearing caches..."
-          drush @${drush_alias} cc all
+          drush @${drush_alias} cr
           #echo "Clearing Varnish..."
           #drush @${drush_alias} ac-domain-purge acsfdevdev.prod.acquia-sites.com --endpoint=${endpoint} --email=${email} --key=${key}
           echo "Deployment script run for ${env}";;
@@ -31,7 +31,7 @@ env_refresh() {
           echo "Making any necessary Drupal database updates..."
           drush @${drush_alias} updb -y
           echo "Clearing caches..."
-          drush @${drush_alias} cc all
+          drush @${drush_alias} cr
           echo "Clearing Varnish..."
           drush @${drush_alias} ac-domain-purge acsfdev.prod.acquia-sites.com --endpoint=${endpoint} --email=${email} --key=${key}
           echo "Deployment script run for ${env}";;
