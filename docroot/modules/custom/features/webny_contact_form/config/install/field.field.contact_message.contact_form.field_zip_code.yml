@@ -1,0 +1,24 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - contact.form.contact_form
+    - field.storage.contact_message.field_zip_code
+_core:
+  default_config_hash: L9Plt74_qlyZoNkpMSpCjZAbqkIachOFM0kr3HLoYXQ
+id: contact_message.contact_form.field_zip_code
+field_name: field_zip_code
+entity_type: contact_message
+bundle: contact_form
+label: 'Zip Code'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer
