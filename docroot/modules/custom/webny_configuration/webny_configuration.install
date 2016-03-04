@@ -111,3 +111,33 @@ function webny_configuration_update_8009() {
   \Drupal::service('module_installer')
     ->install(['webny_inner_page_content_type']);
 }
+
+/**
+ * Implements hook_update_n().
+ *
+ * Enable Honeypot Module.
+ */
+function webny_configuration_update_8010() {
+  \Drupal::service('module_installer')
+    ->install(['honeypot']);
+}
+
+/**
+ * Implements hook_update_n().
+ *
+ * Enable Contact Storage Module.
+ */
+function webny_configuration_update_8011() {
+  \Drupal::service('module_installer')
+    ->install(['contact_storage']);
+}
+
+/**
+ * Implements hook_update_n().
+ *
+ * Enable Contact Form Feature.
+ */
+function webny_configuration_update_8012() {
+  \Drupal::service('module_installer')
+    ->install(['webny_contact_form']);
+}

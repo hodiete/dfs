@@ -1,0 +1,84 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - contact.form.contact_form_mvp_v2
+    - field.field.contact_message.contact_form_mvp_v2.field_address
+    - field.field.contact_message.contact_form_mvp_v2.field_city
+    - field.field.contact_message.contact_form_mvp_v2.field_email
+    - field.field.contact_message.contact_form_mvp_v2.field_first_name
+    - field.field.contact_message.contact_form_mvp_v2.field_last_name
+    - field.field.contact_message.contact_form_mvp_v2.field_salutation
+    - field.field.contact_message.contact_form_mvp_v2.field_state
+    - field.field.contact_message.contact_form_mvp_v2.field_zip_code
+  module:
+    - options
+_core:
+  default_config_hash: hkrUpo8cIKjhb7CUf3ixPbrNKtXdNv1vGXn2K-nnsEY
+id: contact_message.contact_form_mvp_v2.default
+targetEntityType: contact_message
+bundle: contact_form_mvp_v2
+mode: default
+content:
+  field_address:
+    weight: 5
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+  field_city:
+    weight: 6
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+  field_email:
+    weight: 3
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+  field_first_name:
+    weight: 1
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+  field_last_name:
+    weight: 2
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+  field_salutation:
+    weight: 4
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+  field_state:
+    weight: 7
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+  field_zip_code:
+    weight: 8
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_integer
+  message:
+    type: string
+    weight: 0
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+hidden: {  }
