@@ -4,9 +4,11 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.webny_news.body
+    - field.field.node.webny_news.field_webny_news_agency_keywords
     - field.field.node.webny_news.field_webny_news_attachment
     - field.field.node.webny_news.field_webny_news_contact_info
     - field.field.node.webny_news.field_webny_news_date
+    - field.field.node.webny_news.field_webny_news_global_keywords
     - field.field.node.webny_news.field_webny_news_image
     - field.field.node.webny_news.field_webny_news_location
     - field.field.node.webny_news.field_webny_news_sub_title
@@ -17,7 +19,7 @@ dependencies:
     - text
     - user
 _core:
-  default_config_hash: ZfR3-8DoYCcJOmRJQXL5rjE1nRNOjVucARlaEMTUhAo
+  default_config_hash: ppjyKCO1g4wiE0seDncbb4iSsjGQaofQtQngLM57zZc
 id: node.webny_news.teaser
 targetEntityType: node
 bundle: webny_news
@@ -33,9 +35,11 @@ content:
   links:
     weight: 100
 hidden:
+  field_webny_news_agency_keywords: true
   field_webny_news_attachment: true
   field_webny_news_contact_info: true
   field_webny_news_date: true
+  field_webny_news_global_keywords: true
   field_webny_news_image: true
   field_webny_news_location: true
   field_webny_news_sub_title: true
