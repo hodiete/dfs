@@ -14,6 +14,8 @@ cache:
   - "$HOME/.npm"
   - "$HOME/.nvm"
   - "vendor"
+  - "docroot/themes/custom/webny_theme/node_modules"
+  - "docroot/themes/custom/webny_theme/bower_components"
 
 addons:
   ssh_known_hosts:
@@ -21,7 +23,7 @@ addons:
 
 notifications:
   # Replace this with project slack token.
-  # slack: acquia:KKfgpOkDhcO26Erv5uoZMfdP4
+  slack: webnydistro:iSJ8dsk7Ym139SMpL470llno
 
 before_install:
   - phpenv config-rm xdebug.ini

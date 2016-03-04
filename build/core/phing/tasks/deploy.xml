@@ -32,6 +32,8 @@
   </target>
 
   <target name="deploy:artifact:add-remote" description="Adds a git remote and checks out deploy branch from upstream.">
+    <echo message="Fetching from git remote ${deploy.remote}"/>
+
     <!-- Generate and md5 sum of the remote URL to use as remote name. -->
     <exec command="echo ${deploy.remote} | openssl md5 | cut -d' ' -f 2" outputProperty="remoteName"/>
     <exec command="git remote add ${remoteName} ${deploy.remote}" dir="${deploy.dir}" logoutput="true" passthru="true"/>
@@ -57,12 +59,14 @@
   </target>
 
   <target name="deploy:artifact:composer:install" description="Downloads core and contrib to deploy folder.">
+    <delete dir="${deploy.dir}/vendor"/>
     <copy todir="${deploy.dir}" overwrite="true">
       <fileset dir="${repo.root}">
-        <include name="composer.*"/>
+        <include name="composer.json"/>
+        <include name="composer.lock"/>
       </fileset>
     </copy>
-    <exec dir="${deploy.dir}" command="composer install --no-dev" passthru="true" logoutput="true"/>
+    <exec dir="${deploy.dir}" command="composer install --no-dev --no-interaction" passthru="true" logoutput="true" checkreturn="true"/>
   </target>
 
   <target name="deploy:artifact:profile:make" description="Build a subsidiary makefile shipped with profile.">
@@ -100,6 +104,7 @@
         <exclude name="**/bower_components/**"></exclude>
       </fileset>
     </copy>
+
     <!-- Copy Acquia Cloud hooks. -->
     <copy todir="${deploy.dir}/hooks" overwrite="true">
       <fileset dir="${repo.root}/hooks"/>
@@ -112,15 +117,6 @@
 
     <!-- Use our own .gitignore -->
     <copy file="${repo.root}/build/core/files/.gitignore" tofile="${deploy.dir}/docroot/.gitignore" overwrite="true"/>
-
-    <!-- Copy required files from vendor dir. -->
-    <copy todir="${deploy.dir}/vendor" overwrite="true">
-      <fileset dir="${repo.root}/vendor">
-        <!-- This should be similar to .gitigore. -->
-        <include name="**"></include>
-        <exclude name=".git" />
-      </fileset>
-    </copy>
 
     <!-- Set sites/default back to 755 permissions. -->
     <chmod file="${docroot}/sites/default" mode="0755" />

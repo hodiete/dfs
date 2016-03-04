@@ -1,0 +1,28 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_webny_news_subject_heading
+    - node.type.webny_news
+    - taxonomy.vocabulary.webny_news_subject_heading
+_core:
+  default_config_hash: uFi9Cdfh4LezJI3LTA4x71u6dEYipP9iOQVbKas_EG8
+id: node.webny_news.field_webny_news_subject_heading
+field_name: field_webny_news_subject_heading
+entity_type: node
+bundle: webny_news
+label: 'Subject Heading'
+description: 'Select existing subject of the news item from this list or type in a new category. This new category will be saved and available on other news items.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      webny_news_subject_heading: webny_news_subject_heading
+    sort:
+      field: _none
+    auto_create: true
+field_type: entity_reference

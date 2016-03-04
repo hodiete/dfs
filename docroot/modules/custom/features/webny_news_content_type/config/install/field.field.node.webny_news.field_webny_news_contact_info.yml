@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_webny_news_contact_info
+    - node.type.webny_news
+_core:
+  default_config_hash: ZFRf9l6b6oVr3jo0AVBa7KVtEO7WUFuyvcxE1aTux8I
+id: node.webny_news.field_webny_news_contact_info
+field_name: field_webny_news_contact_info
+entity_type: node
+bundle: webny_news
+label: 'Contact Information'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings: {  }
+field_type: entity_reference
