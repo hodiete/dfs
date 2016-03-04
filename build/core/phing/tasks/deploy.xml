@@ -59,13 +59,14 @@
   </target>
 
   <target name="deploy:artifact:composer:install" description="Downloads core and contrib to deploy folder.">
+    <delete dir="${deploy.dir}/vendor"/>
     <copy todir="${deploy.dir}" overwrite="true">
       <fileset dir="${repo.root}">
         <include name="composer.json"/>
         <include name="composer.lock"/>
       </fileset>
     </copy>
-    <exec dir="${deploy.dir}" command="composer install --no-dev --prefer-source --no-interaction" passthru="true" logoutput="true" checkreturn="true"/>
+    <exec dir="${deploy.dir}" command="composer install --no-dev --no-interaction" passthru="true" logoutput="true" checkreturn="true"/>
   </target>
 
   <target name="deploy:artifact:profile:make" description="Build a subsidiary makefile shipped with profile.">
@@ -93,6 +94,7 @@
         <exclude name="core/**" />
         <exclude name="drush/contrib/**" />
         <exclude name="example.gitignore" />
+        <exclude name="vendor/**" />
         <exclude name="sites/**/files/**" />
         <exclude name="sites/**/private/**" />
         <exclude name="themes/contrib/**" />
