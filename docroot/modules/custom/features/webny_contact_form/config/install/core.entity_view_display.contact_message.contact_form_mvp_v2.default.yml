@@ -2,22 +2,22 @@ langcode: en
 status: true
 dependencies:
   config:
-    - contact.form.contact_form
-    - field.field.contact_message.contact_form.field_address
-    - field.field.contact_message.contact_form.field_city
-    - field.field.contact_message.contact_form.field_email
-    - field.field.contact_message.contact_form.field_first_name
-    - field.field.contact_message.contact_form.field_last_name
-    - field.field.contact_message.contact_form.field_salutation
-    - field.field.contact_message.contact_form.field_state
-    - field.field.contact_message.contact_form.field_zip_code
+    - contact.form.contact_form_mvp_v2
+    - field.field.contact_message.contact_form_mvp_v2.field_address
+    - field.field.contact_message.contact_form_mvp_v2.field_city
+    - field.field.contact_message.contact_form_mvp_v2.field_email
+    - field.field.contact_message.contact_form_mvp_v2.field_first_name
+    - field.field.contact_message.contact_form_mvp_v2.field_last_name
+    - field.field.contact_message.contact_form_mvp_v2.field_salutation
+    - field.field.contact_message.contact_form_mvp_v2.field_state
+    - field.field.contact_message.contact_form_mvp_v2.field_zip_code
   module:
     - options
 _core:
   default_config_hash: hkrUpo8cIKjhb7CUf3ixPbrNKtXdNv1vGXn2K-nnsEY
-id: contact_message.contact_form.default
+id: contact_message.contact_form_mvp_v2.default
 targetEntityType: contact_message
-bundle: contact_form
+bundle: contact_form_mvp_v2
 mode: default
 content:
   field_address:

@@ -5,6 +5,7 @@ dependencies:
     - 'block_content:form_description_block_type:d6b1b679-562f-4844-bd1a-26c9e74bb666'
   module:
     - block_content
+    - system
   theme:
     - webny_theme
 id: contactformdescriptionblock
@@ -21,4 +22,9 @@ settings:
   status: true
   info: ''
   view_mode: full
-visibility: {  }
+visibility:
+  request_path:
+    id: request_path
+    pages: '/contact/*'
+    negate: false
+    context_mapping: {  }
