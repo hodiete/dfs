@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "429e79b0246a4615d298905f07a77b9f",
-    "content-hash": "77cb10fd172c88e61116a8251a066b95",
+    "hash": "871d2870af9dbc365e1f2b5117f1bfc4",
+    "content-hash": "af5649c3f2d7db01ab3dedb1d9276676",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -1264,12 +1264,55 @@
             "homepage": "https://www.drupal.org/project/ctools"
         },
         {
+            "name": "drupal/devel",
+            "version": "dev-8.x-1.x",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupal.org/project/devel",
+                "reference": "38818a6a9320d52b573ac1fa8d66ae6489de31a9"
+            },
+            "require": {
+                "drupal/core": "8.*"
+            },
+            "replace": {
+                "drupal/devel_generate": "self.version",
+                "drupal/devel_node_access": "self.version",
+                "drupal/kint": "self.version",
+                "drupal/webprofiler": "self.version"
+            },
+            "suggest": {
+                "drupal/core": "Required by drupal/devel_generate, drupal/devel_node_access, drupal/kint, drupal/webprofiler",
+                "drupal/menu_ui": "Required by drupal/devel_node_access"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-8.x-1.x": "8.1.x-dev"
+                }
+            },
+            "notification-url": "https://packagist.drupal-composer.org/downloads/",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Moshe Weitzman",
+                    "email": "weitzman@tejasa.com",
+                    "homepage": "https://github.com/weitzman",
+                    "role": "Maintainer"
+                }
+            ],
+            "description": "Various blocks, pages, and functions for developers.",
+            "homepage": "http://drupal.org/project/devel",
+            "time": "2016-02-20 12:26:05"
+        },
+        {
             "name": "drupal/diff",
             "version": "dev-8.x-1.x",
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/diff",
-                "reference": "b136327344058ae32b7676900958775ba1c6d0fd"
+                "reference": "bba33bf20e78e5baefb5fa0ee855eb2035831f46"
             },
             "require": {
                 "drupal/core": "8.*"
@@ -1283,7 +1326,7 @@
             "notification-url": "https://packagist.drupal-composer.org/downloads/",
             "description": "Shows differences between content revisions.",
             "homepage": "https://www.drupal.org/project/diff",
-            "time": "2016-03-03 08:36:09"
+            "time": "2016-03-07 15:25:55"
         },
         {
             "name": "drupal/entity_reference_revisions",
