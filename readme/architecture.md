@@ -448,7 +448,7 @@ The contact form is located at contact/contact_form.
 Updating, adding, or deleting form fields must be done on the platform level rather than by site builders.
 
 ###Risks
-This is a replacement for basic webforms and offers less flexibility by site builders than the D7 State of NY implementation.
+This is a replacement for basic webforms and offers less flexibility by site builders than the current D7 State of NY implementation.
 
 
 ##Workflow and Content Moderation
