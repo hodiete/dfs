@@ -127,3 +127,45 @@ achieves all these goals and is an actively-maintained Drupal community project.
 If you choose to use a different solution, please make sure it fits all the
 needs of your team and project, and will not be a hindrance to project
 development velocity!
+
+## PHPStorm Integration with DrupalVM and Xdebug
+
+### Create a new project
+
+Start the PhpStorm and click on "Create New Project from Existing Files" option.
+
+On the next step choose the last option: Source files are in local directory. No Web server is yet configured.
+On the next step specify your local project docroot hit Continue.
+After indexing is completed, PhpStorm will suggest to enable Drupal support and configure namespace roots. Enable it. 
+
+Now open Preferences menu and go to Build, Execution, Deployment >> Deployment screen. If you’ve used PhpStorm before, you should see a list of servers. Hit the «+» icon to add a new one.
+Give it any name and choose the «SFTP» type. Fill in the local and deployment paths for your machine's DrupalVM configuration. 
+
+### Install Vagrant plugin
+Go to Plugins page in Preferences and install the plugin called «Vagrant».
+
+Then visit the Tools >> Vagrant page of the Preferences menu and provide the path to the Drupal VM (or other) environment, where the config.yml and Vagrantfile are located.
+Test if it works by going to the Tools >> Vagrant section of the main menu.
+
+From this menu you should be able to vagrant halt, vagrant up and vagrant provision your machine without leaving the IDE. 
+
+### Connect to the machine via SSH
+You may have used the built-in Terminal in PhpStorm already you can use this for SSH’ing to the virtual machine.
+
+In the main menu visit Tools >> Start SSH session >> [Server name]
+
+This will only work if you’ve specified proper connection details to the VM in the Deployment section of the Configuration menu (see the very first part of the post). Otherwise you will have to enter connection details each time.
+Another caveat is that it will try to pick up the connection details from the Vagrant environment, but it doesn’t work in most cases.
+
+### xDebug configuration
+
+To enable xdebug, click «Edit configurations» item in the top right dropdown menu of the main editor window.
+ 
+In the right panel of the window choose «PHP Web Application».
+
+If you’re having trouble locating the dropdown menu, you can open the configuration window from the Configuration menu by going to Languages & Frameworks >> PHP >> Servers page.
+Most likely the list will be empty or our server will be missing.
+
+Import the xdebug configuration from the deployment server by clicking on the Import icon. In the path mappings, specify local path of the Drupal installation and the same path but on the remote machine.
+
+
