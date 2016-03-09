@@ -6,9 +6,9 @@
 - [ ] Make a new directory in readme/releases that corresponds to the tag for this release.
 - [ ] Copy this checklist into that directory.
 - [ ] Generate release notes.
-- [ ] Copy and paste release notes including intro section into release.example.md
+- [ ] Copy and paste release notes including intro section into release.example.md.
 - [ ] Clean up release notes - intro section is most important.
-- [ ] Ensure release notes are in the /readme/releases/[release] directory
+- [ ] Ensure release notes are saved in the /readme/releases/[release] directory
 - [ ] Update architecture documentation.
 - [ ] Merge release branch to master
 - [ ] Cut tag from master.
