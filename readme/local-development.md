@@ -130,6 +130,8 @@ development velocity!
 
 ## PHPStorm Integration with DrupalVM and Xdebug
 
+Based on [http://justdrupal.com/dev-environment-drupal-vagrant-phpstorm-part3/](http://justdrupal.com/dev-environment-drupal-vagrant-phpstorm-part3/), which has screenshots.
+
 ### Create a new project
 
 Start the PhpStorm and click on "Create New Project from Existing Files" option.
