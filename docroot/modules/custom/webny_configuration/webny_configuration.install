@@ -35,7 +35,7 @@ function webny_configuration_update_8001() {
  */
 function webny_configuration_update_8002() {
   \Drupal::service('module_installer')
-    ->install(['webny_news']);
+      ->install(['webny_news']);
 }
 
 /**
@@ -67,7 +67,7 @@ function webny_configuration_update_8004() {
  */
 function webny_configuration_update_8005() {
   \Drupal::service('module_installer')
-    ->install(['telephone']);
+      ->install(['telephone']);
 }
 
 /**
@@ -77,7 +77,7 @@ function webny_configuration_update_8005() {
  */
 function webny_configuration_update_8006() {
   \Drupal::service('module_installer')
-    ->install(['webny_contact_content_type']);
+      ->install(['webny_contact_content_type']);
 }
 
 /**
@@ -87,9 +87,9 @@ function webny_configuration_update_8006() {
  */
 function webny_configuration_update_8007() {
   \Drupal::service('module_installer')
-    ->uninstall(['webny_news']);
+      ->uninstall(['webny_news']);
   \Drupal::service('module_installer')
-    ->install(['webny_news_content_type']);
+      ->install(['webny_news_content_type']);
 }
 
 /**
@@ -99,7 +99,7 @@ function webny_configuration_update_8007() {
  */
 function webny_configuration_update_8008() {
   \Drupal::service('module_installer')
-    ->install(['webny_global_and_agency_taxonomies']);
+      ->install(['webny_global_and_agency_taxonomies']);
 }
 
 /**
@@ -109,5 +109,37 @@ function webny_configuration_update_8008() {
  */
 function webny_configuration_update_8009() {
   \Drupal::service('module_installer')
-    ->install(['webny_inner_page_content_type']);
+      ->install(['webny_inner_page_content_type']);
+}
+
+/**
+ * Implements hook_update_n().
+ *
+ * Enable Honeypot Module.
+ */
+function webny_configuration_update_8010() {
+  \Drupal::service('module_installer')
+      ->install(['honeypot']);
+}
+
+/**
+ * Implements hook_update_n().
+ *
+ * Enable Contact Storage Module.
+ */
+function webny_configuration_update_8011() {
+  \Drupal::service('module_installer')
+      ->install(['contact_storage']);
+}
+
+/**
+ * Implements hook_update_n().
+ *
+ * Enable Responsive image module and Image Styles feature.
+ */
+function webny_configuration_update_8012() {
+  \Drupal::service('module_installer')
+      ->install(['responsive_image']);
+  \Drupal::service('module_installer')
+      ->install(['webny_image_styles']);
 }

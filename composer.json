@@ -17,11 +17,14 @@
     "drupal/admin_toolbar": "8.1.14",
     "drupal/autologout": "8.1.0-rc1",
     "drupal/console": "~0.10",
-    "drupal/core": "8.0.4",
+    "drupal/contact_storage": "8.1.0-beta2",
+    "drupal/core": "8.0.5",
     "drupal/diff": "8.1.*@dev",
     "drush/drush": "~8.0",
+    "drupal/devel" : "8.*",
     "drupal/features": "8.3.0-alpha6",
     "drupal/google_analytics": "8.2.0-rc1",
+    "drupal/honeypot": "8.1.22",
     "drupal/lightning": "8.1-beta2",
     "drupal/login_security": "8.1.0",
     "drupal/memcache" : "8.*",
@@ -66,10 +69,14 @@
     },
     "patches": {
       "drupal/core": {
-        "Ignore front end vendor folders to improve directory search performance": "https://www.drupal.org/files/issues/ignore_front_end_vendor-2329453-116.patch"
+        "Ignore front end vendor folders to improve directory search performance": "https://www.drupal.org/files/issues/ignore_front_end_vendor-2329453-116.patch",
+        "Twig debug output does not display all suggestions when an array of suggestions is passed to theme": "https://www.drupal.org/files/issues/twig_debug_output_does-2118743-89.patch"
       },
       "drupal/adminimal_theme": {
         "Incompatible with admin toolbar": "https://www.drupal.org/files/issues/incompatible_with_admin-2635456-4_0.patch"
+      },
+      "drupal/features": {
+        "Do not export _core default_config_hash": "https://www.drupal.org/files/issues/features-do_not_export_hash-2668526-10.patch"
       }
     }
   },
