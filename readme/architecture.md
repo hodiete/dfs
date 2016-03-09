@@ -48,6 +48,11 @@ Note: This is a living document that will evolve throughout the lifecycle of the
   - [Feature A](#feature-a)
    - [Assumptions](#assumptions)
    - [Risks](#risks)
+  - [Contact Form](#contact-form)
+   - [Assumptions](#assumptions)
+   - [Risks](#risks)
+  - [Views](#views)
+   - [News Listing](#news-listing)   
 - [Theme Architecture](#theme-architecture)
 - [Integrations Summary](#integrations-summary)
 - [Migration](#migration)
@@ -432,14 +437,14 @@ The Contact Form Description Block is placed on the Contact Form page at /contac
 |-------------|------------------------|----------------------|
 | Salutation       | Select List        |                     |
 | First Name | Short text |                     |
-| Last Name | Short text |         -            |
-| Email | Email |         -            |
-| Address | Short text |         -            |
-| City | Short text |         -            |
-| State | Select list |         -            |
-| Zip Code | Number (int) |         -            |
-| Subject | Short text |         -            |
-| Message | Short text |         -            |
+| Last Name | Short text |                     |
+| Email | Email |                     |
+| Address | Short text |                     |
+| City | Short text |                     |
+| State | Select list |                     |
+| Zip Code | Number (int) |                     |
+| Subject | Short text |                     |
+| Message | Short text |                     |
 
 ##Examples
 The contact form is located at contact/contact_form. 
@@ -454,6 +459,16 @@ This is a replacement for basic webforms and offers less flexibility by site bui
 ##Workflow and Content Moderation
 The Workbench Moderation module is used for content workflow. The standard workbench moderation states are used. 
 
+##Views
+
+###News Listing
+- The news listing view shows a list of 10 news article with a pager to navigate to additional news articles. 
+- Content is not refreshed via AJAX, it is a full page refresh with anchor tagging so the user returns to the news listing 
+- News articles are displayed newest to oldest 
+- News items include Title, Date with time, teaser and time with a thumbnail image. 
+- This view has exposed filters by category, keyword and date range 
+
+*Note:* There is a known issue with the date picker not appearing in the exposed date filter.
 
 
 #Theme architecture
