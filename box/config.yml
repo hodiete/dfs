@@ -47,13 +47,13 @@ install_site: false
 drupal_major_version: 8
 drupal_core_path: "/var/www/webny/docroot"
 drupal_domain: "webny.dev"
-drupal_site_name: "WebNY"
+drupal_site_name: "webny"
 drupal_install_profile: standard
 drupal_enable_modules: [ 'devel' ]
 drupal_account_name: admin
 drupal_account_pass: admin
 drupal_mysql_user: root
-drupal_mysql_password: 
+drupal_mysql_password:
 drupal_mysql_database: drupal
 
 # Additional arguments or options to pass to `drush site-install`.
@@ -178,7 +178,7 @@ firewall_allowed_tcp_ports:
 firewall_log_dropped_packets: false
 
 # PHP Configuration. Currently-supported versions: 5.5, 5.6, 7.0 (experimental).
-php_version: "5.6"
+php_version: "5.5"
 php_memory_limit: "192M"
 php_display_errors: "On"
 php_display_startup_errors: "On"
