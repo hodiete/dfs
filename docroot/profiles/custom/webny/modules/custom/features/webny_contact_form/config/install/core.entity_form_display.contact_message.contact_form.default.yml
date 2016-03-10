@@ -1,0 +1,88 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - contact.form.contact_form
+    - field.field.contact_message.contact_form.field_address
+    - field.field.contact_message.contact_form.field_city
+    - field.field.contact_message.contact_form.field_email
+    - field.field.contact_message.contact_form.field_first_name
+    - field.field.contact_message.contact_form.field_last_name
+    - field.field.contact_message.contact_form.field_salutation
+    - field.field.contact_message.contact_form.field_state
+    - field.field.contact_message.contact_form.field_zip_code
+_core:
+  default_config_hash: 864O8H4qxyJGlr9cGgEKtJ1HM2QsiJSqvtTUc4K8m7E
+id: contact_message.contact_form.default
+targetEntityType: contact_message
+bundle: contact_form
+mode: default
+content:
+  field_address:
+    weight: 4
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+  field_city:
+    weight: 5
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+  field_email:
+    weight: 3
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: email_default
+  field_first_name:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+  field_last_name:
+    weight: 2
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+  field_salutation:
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+  field_state:
+    weight: 6
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+  field_zip_code:
+    weight: 7
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: number
+  message:
+    type: string_textarea
+    weight: 9
+    settings:
+      rows: 12
+      placeholder: ''
+    third_party_settings: {  }
+  subject:
+    type: string_textfield
+    weight: 8
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  copy: true
+  mail: true
+  name: true
