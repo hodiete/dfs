@@ -143,3 +143,53 @@ function webny_configuration_update_8012() {
   \Drupal::service('module_installer')
       ->install(['webny_image_styles']);
 }
+
+/**
+ * Implements hook_update_n().
+ *
+ * Enable Default Content Module.
+ */
+function webny_configuration_update_8013() {
+  \Drupal::service('module_installer')
+      ->install(['default_content']);
+}
+
+/**
+ * Implements hook_update_n().
+ *
+ * Enable Configuration Management Module.
+ */
+function webny_configuration_update_8014() {
+  \Drupal::service('module_installer')
+      ->install(['config']);
+}
+
+/**
+ * Implements hook_update_n().
+ *
+ * Enable HAL Module.
+ */
+function webny_configuration_update_8015() {
+  \Drupal::service('module_installer')
+      ->install(['hal']);
+}
+
+/**
+ * Implements hook_update_n().
+ *
+ * Enable RESTful Web Services Module.
+ */
+function webny_configuration_update_8016() {
+  \Drupal::service('module_installer')
+      ->install(['rest']);
+}
+
+/**
+ * Implements hook_update_n().
+ *
+ * Enable Serialization Module.
+ */
+function webny_configuration_update_8017() {
+  \Drupal::service('module_installer')
+      ->install(['serialization']);
+}
