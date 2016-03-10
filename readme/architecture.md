@@ -1,6 +1,4 @@
-${project.human_name}
-
-Drupal Architecture
+Drupal Architecture: WebNY Platform
 ========================
 v1.0
 
@@ -39,16 +37,22 @@ Note: This is a living document that will evolve throughout the lifecycle of the
   - [Custom Themes](#custom-themes)
   - [Libraries](#libraries)
 - [Content Architecture](#content-architecture)
-  - [Article (content type)](#article)
-   - [Features](#features)
-   - [Assumptions](#assumptions)
-   - [Risks](#risks)
+  - [News (content type)](#news)
    - [Examples](#examples)
+  - [Inner Page (content type)](#inner-page)
+    - [Examples](#examples)
+  - [Contact Information (content type)](#contact-information)
+    - [Examples](#examples)
   - [Tags (vocabulary)](#tags-vocabulary)
 - [Features](#features)
   - [Feature A](#feature-a)
    - [Assumptions](#assumptions)
    - [Risks](#risks)
+  - [Contact Form](#contact-form)
+   - [Assumptions](#assumptions)
+   - [Risks](#risks)
+  - [Views](#views)
+   - [News Listing](#news-listing)   
 - [Theme Architecture](#theme-architecture)
 - [Integrations Summary](#integrations-summary)
 - [Migration](#migration)
@@ -72,15 +76,13 @@ TODO: Who is doing design? List dependencies and known risks.
 #Technical overview
 TODO: High-level technical summary.
 
-What is the main Drupal version (D7, D8)?
-Is a distribution being used (Commons, Panelizer)?
-Where is it hosted?
+
 
 ##Infrastructure
 TODO: High-level overview of hosting infrastructure.
 
 ###Environments
-TODO: Outline usage, audience, and any restrictions (IP or Authorization) of each environment.
+TODO: Update this for site factory distro
 
 | Environment | Short name | Audience                | Purpose                                |
 |-------------|------------|-------------------------|----------------------------------------|
@@ -97,7 +99,6 @@ TODO: Browser requirements
 ###Security
 TODO
 - Security requirements
-- Edit domain required?
 - Which domain(s) run over SSL?
 - IP-controlled white / black listing
 
@@ -109,7 +110,8 @@ TODO: Outline use of page/component caching with explanation of TTLs or any proa
 TODO
 - Create component performance tracker.
 - Create JMeter testing script and add it to the project repository.
-- Write test scenarios with the client.
+- Write test scenarios.
+- Configure Varnish, Memcache, APC, etc
 
 ####Performance Configuration Review
 At a high-level, there are many Drupal configuration options that can affect overall site performance. These settings are likely environment-specific and should be verified only against the production configuration, not local developer environments. Built-in and custom Insight tests can be used to track this data. Automated tools like Cache Audit can also be used locally for reviewing.
@@ -193,60 +195,210 @@ TODO: Outline user roles and their permissions.
 
 #Custom and contributed projects
 ##Install profile
-TODO: Install profile being used, if relevant.
+The State of NY Site Factory platform uses the WebNY distribution for all sites.
+
+
+##Core modules
+ Core              Automated Cron (automated_cron)                                    8.0.5           
+ Core              Ban (ban)                                                          8.0.5           
+ Core              Block (block)                                                      8.0.5           
+ Core              Breakpoint (breakpoint)                                            8.0.5           
+ Core              CKEditor (ckeditor)                                                8.0.5           
+ Core              Color (color)                                                      8.0.5           
+ Core              Comment (comment)                                                  8.0.5           
+ Core              Configuration Manager (config)                                     8.0.5           
+ Core              Contact (contact)                                                  8.0.5           
+ Core              Contextual Links (contextual)                                      8.0.5           
+ Core              Custom Block (block_content)                                       8.0.5           
+ Core              Custom Menu Links (menu_link_content)                              8.0.5           
+ Core              Field (field)                                                      8.0.5           
+ Core              Field UI (field_ui)                                                8.0.5           
+ Core              Filter (filter)                                                    8.0.5           
+ Core              Help (help)                                                        8.0.5           
+ Core              History (history)                                                  8.0.5           
+ Core              Internal Dynamic Page Cache (dynamic_page_cache)                   8.0.5           
+ Core              Internal Page Cache (page_cache)                                   8.0.5           
+ Core              Menu UI (menu_ui)                                                  8.0.5           
+ Core              Node (node)                                                        8.0.5           
+ Core              Path (path)                                                        8.0.5           
+ Core              Quick Edit (quickedit)                                             8.0.5           
+ Core              RDF (rdf)                                                          8.0.5           
+ Core              Responsive Image (responsive_image)                                8.0.5           
+ Core              Search (search)                                                    8.0.5           
+ Core              Shortcut (shortcut)                                                8.0.5           
+ Core              Syslog (syslog)                                                    8.0.5           
+ Core              System (system)                                                    8.0.5           
+ Core              Taxonomy (taxonomy)                                                8.0.5           
+ Core              Text Editor (editor)                                               8.0.5           
+ Core              Toolbar (toolbar)                                                  8.0.5           
+ Core              Tour (tour)                                                        8.0.5           
+ Core              User (user)                                                        8.0.5           
+ Core              Views (views)                                                      8.0.5           
+ Core              Views UI (views_ui)                                                8.0.5 
 
 ##Contributed modules
-TODO: A list of proposed or currently-used contrib modules (only if in addition to the install profile.
+ Administration    Admin Toolbar (admin_toolbar)                                      8.x-1.14        
+ Chaos tool suite  Chaos tools (ctools)                                               8.x-3.0-alpha23 
+ Development       Features (features)                                                8.x-3.0-alpha6  
+ Development       Features UI (features_ui)                                          8.x-3.0-alpha6  
+ Field types       Entity Reference Revisions (entity_reference_revisions)            8.x-1.0-rc4     
+ Other             Automated Logout (autologout)                                      8.x-1.0-rc1     
+ Other             Configuration Update Base (config_update)                          8.x-1.0         
+ Other             Contact storage (contact_storage)                                  8.x-1.0-beta2   
+ Other             Login Security (login_security)                                    8.x-1.0-beta3   
+ Other             Pathauto (pathauto)                                                8.x-1.0-alpha1  
+ Other             Token (token)                                                      8.x-1.0-alpha2  
+ Other             WebNY Text Editors (webny_text_editors)                            8.x-1.0         
+ Other             WebNY Text Formats (webny_text_formats)                            8.x-1.0         
+ Other             Workbench moderation (workbench_moderation)                        8.x-1.0-beta1   
+ Paragraphs        Paragraphs (paragraphs)                                            8.x-1.0-rc4     
+ Paragraphs        Paragraphs Type Permissions (paragraphs_type_permissions)          8.x-1.0-rc4     
+ Security          Password Policy (password_policy)                                  8.x-3.0-alpha2  
+ Security          Security Review (security_review)                                                  
+ SEO               Metatag (metatag)                                                  8.x-1.0-beta4   
+ WebNY             Contact Content Type (webny_contact_content_type)                  8.x-1.0         
+ WebNY             Global and Agency Taxonomies (webny_global_and_agency_taxonomies)  8.x-1.0         
+ WebNY             Image styles (webny_image_styles)                                                  
+ WebNY             Inner Page Content Type (webny_inner_page_content_type)            8.x-1.0         
+ WebNY             News Content Type (webny_news_content_type)                        8.x-1.0         
+ Webny             Subject Heading Taxonomy (webny_subject_heading_taxonomy)          8.x-1.0                                            
+ WebNY             Workflow Basic Configuration (webny_workflow_basic_configuration)       
+
+
+
+
+
 ##Custom modules
-TODO: An overview of custom modules, if relevant.
+An overview of custom modules.
+
+This module is for hook_update functions and other schema changes for deploying configuration. 
+ Webny             webny_configuration (webny_configuration)   
+
+
 ##Base theme
-TODO: An overview of contrib base theme selection, if relevant.
+The WebNY distro uses Stable as the base theme. 
+
 ##Custom themes
 TODO: An overview of custom themes, if relevant.
+
 #Libraries
 TODO: Any libraries being used in the project.
 
 
 #Content Architecture
-TODO: This section should contain content types, taxonomy vocabularies, and other entity types / bundles, e.g. file types, custom entities, etc. It is assumed that not every entity type will need to list related features, assumptions, or risks.
+This section includes contain content types, taxonomy vocabularies, and other entity types / bundles, e.g. file types, custom entities, etc. It is assumed that not every entity type will need to list related features, assumptions, or risks.
 
-##Article (content type)
-TODO: A description of the entity type.
 
-|Field | Type                     |  Notes |
-|------|--------------------------|--------|
-| Title | Text                    |        |
-| Body  | Long text with summary  |        |  
-| Image | Image                   |        |
-| Tags  | To Tags vocabulary      |        |
-
-###Features
-TODO: Overview of functionality related to this content type.
+##Template (content type)
+| Field       | Type                   | Notes                |
+|-------------|------------------------|----------------------|
+| Title       | Text                   |          -           |
+| Description | Long text with summary |         -            |
 
 ###Assumptions
 TODO: Assumptions related to this content type.
 
+###Features/Extended technical notes. 
+
 ###Risks
 TODO: Risks related to this content type.
 
-Examples TODO: Examples of this content, if relevant.
+Examples: Examples of this content, if relevant.
+
+
+
+
+
+##News (content type)
+The News content type is for News/Press releases.
+
+|Field  | Type                                |  Notes                                                                 |
+|-------|-------------------------------------|------------------------------------------------------------------------|
+| Title | Text                                |                                                                        |
+| Body  | Long text with summary and WYSIWYG  |                                                                        |  
+| Image | Image                               | Allowed file types: png, jpg, jpeg. Optional. Alt text required.       |
+| Attachment  | File                          | Allowed file types: pdf 
+| Contact Information  | Entity reference     | Will need to be refactored to account for Contact Information content type created in sprint 2. Optional. |
+| Sub Title  | Short text        |  Multiple values allowed. Optional              |
+| Teaser text  | Short text             |                |
+| Date  | Date picker                          |                |
+| Location  | Short text               | Optional                |
+| Global Keywords | Entity reference to Global Keyword vocabulary                |                |
+| Agency Keywords | Entity reference to Agency Keyword vocabulary                 |                |
+| Subject Heading | Entity reference to Agency Keyword vocabulary                 |                |
+
+
+
+
+###Examples 
+TODO: This is dependent on Default content being deployed. 
+
+
+##Inner Page (content type)
+This content type is for basic/generic pages.
+
+|Field  | Type                                |  Notes                                                                 |
+|-------|-------------------------------------|------------------------------------------------------------------------|
+| Title | Text                                |                                                                        |
+| Body  | Long text with summary and WYSIWYG  |                                                                        |  
+| Image | Image                               | Allowed file types: png, jpg, jpeg. Optional. Alt text required.       |
+| Attachment  | File                          | Allowed file types: txt, doc, docx 
+| Sub Title  | Short text         |  Multiple values allowed. Optional              |
+| Description / Summary  | Long text            |                |
+| Global Keywords | Entity reference to Global Keyword vocabulary                |                |
+| Agency Keywords | Entity reference to Agency Keyword vocabulary                 |                |
+| Subject Heading | Entity reference to Agency Keyword vocabulary                 |                |
+
+
+
+
+###Examples 
+TODO: This is dependent on Default content being deployed. 
+
+
+
+##Contact (content type)
+This content type contains information needed to contact individuals or offices associated with the content that it is attached to. 
+It is used as an entity reference in other content types to "push out" contact information updates to those nodes.
+
+|Field  | Type                                |  Notes                                                                 |
+|-------|-------------------------------------|------------------------------------------------------------------------|
+| Contact Name | Text                         |   Title field                                                                     |
+| Email  | Email  |                                                                        |  
+| Fax | Telephone number                      |       |
+| Phone | Telephone number                         | 
+| Office Address  | Long text        |                |
+| Other details | Long text            |                |
+| Facebook Link | Link               |                |
+| Flickr Link | Link               |                |
+| Google+ Link | Link               |                |
+| Instagram Link | Link               |                |
+| Linkedin Link | Link               |                |
+| Pinterest Link | Link               |                |
+| RSS Link | Link               |                |
+| Snapchat Link | Link               |                |
+| Soundcloud Link | Link               |                |
+| Tumblr Link | Link               |                |
+| Twitter Link | Link               |                |
+| Vimeo Link | Link               |                |
+| Vine Link | Link               |                |
+| Youtube Link | Link               |                |
+
+
+
+###Examples 
+TODO: This is dependent on Default content being deployed. 
+
+
 
 ##Tags (vocabulary)
-TODO: A description of the entity type.
 
-| Field       | Type                   | Notes                |
-|-------------|------------------------|----------------------|
-| Name        | Text                   |          -           |
-| Description | Long text with summary |         -            |
-
-
-Description
-Long text with summary
+- Global Keywords
+- Agency Keywords
+- Subject Heading
 
 
 
-
-
 #Features
 TODO: A list of features that need to be built for this project. Should cover the relevant areas below.
 
@@ -257,7 +409,7 @@ If features are discussed but later removed from scope, do not simply delete the
 - Text formats and filters
 - WYSIWYG
 - Page building (Panels, Panelizer, Context, etc.)
-- Workflow and moderation (Workbench, Organic groups)
+- Workflow and moderation
 - Administrative features
 - Search strategy
 - Media handling (images, video, documents, etc.)
@@ -268,6 +420,7 @@ If features are discussed but later removed from scope, do not simply delete the
 - Meta data and social integration (Metatags, etc.)
 - URL structure
 
+Template
 ##Feature A
 TODO: Feature description and notes.
 
@@ -277,15 +430,83 @@ TODO: List of assumptions.
 ###Risks
 TODO: List of risks.
 
+##Contact Form
+The contact form is a set of pre-defined fields so that users can contact the site owner. It uses the core Contact module and reporting will be accomplished via the Contact Storage module.
+The Contact Form Description Block is placed on the Contact Form page at /contact/* The default recipient is noreply@its.ny.gov. The contact form includes the following fields:
+ Field       | Type                   | Notes                |
+|-------------|------------------------|----------------------|
+| Salutation       | Select List        |                     |
+| First Name | Short text |                     |
+| Last Name | Short text |                     |
+| Email | Email |                     |
+| Address | Short text |                     |
+| City | Short text |                     |
+| State | Select list |                     |
+| Zip Code | Number (int) |                     |
+| Subject | Short text |                     |
+| Message | Short text |                     |
+
+##Examples
+The contact form is located at contact/contact_form. 
+
+###Assumptions
+Updating, adding, or deleting form fields must be done on the platform level rather than by site builders.
+
+###Risks
+This is a replacement for basic webforms and offers less flexibility by site builders than the current D7 State of NY implementation.
+
+
+##Workflow and Content Moderation
+The Workbench Moderation module is used for content workflow. The standard workbench moderation states are used. 
+
+##Views
+
+###News Listing
+- The news listing view shows a list of 10 news article with a pager to navigate to additional news articles. 
+- Content is not refreshed via AJAX, it is a full page refresh with anchor tagging so the user returns to the news listing 
+- News articles are displayed newest to oldest 
+- News items include Title, Date with time, teaser and time with a thumbnail image. 
+- This view has exposed filters by category, keyword and date range 
+
+*Note:* There is a known issue with the date picker not appearing in the exposed date filter.
+
 
 #Theme architecture
-TODO: Outline the general theme architecture.
-- Base theme
-- Page regions
-- Template file naming
-- CSS management (e.g. Compass)
+
+##Base theme
+
+##Page regions
+##Template file naming
+##CSS management
+
 - JS management
+
 - Blocks and block management (if not mentioned earlier)
+
+#Image styles
+The responsive images module is used with the core breakpoint module
+
+##Hero image 
+ - Uses Breakpoint group: Webny_theme 
+ - Wide breakpoint uses: wide lead (1280x427) 
+ - Narrow breakpoint uses: narrow lead (768x307) 
+ - Mobile breakpoint uses: mobile lead (320x256) 
+ - Fallback image: mobile lead (320x256) 
+
+##Hero image tall 
+ - Uses Breakpoint group: Webny_theme 
+ - Wide breakpoint uses: wide lead tall (1280x512) 
+ - Narrow breakpoint uses: narrow lead (768x307) 
+ - Mobile breakpoint uses: mobile lead (320x256) 
+ - Fallback image: mobile lead (320x256) 
+
+##Cards 
+ - Uses Breakpoint group: Webny_theme 
+ - Wide breakpoint uses: card vertical (400x225) 
+ - Narrow breakpoint uses: card horizontal (225x225) 
+ - Mobile breakpoint uses: card vertical (400x225) 
+ - Fallback image is card horizontal (225x225) 
+
 
 
 #Integrations summary
