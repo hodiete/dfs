@@ -3,7 +3,6 @@ status: true
 dependencies:
   config:
     - field.storage.paragraph.field_webny_card_entity_ref
-    - node.type.webny_landing_page
     - node.type.webny_news
     - node.type.webny_page
     - paragraphs.paragraphs_type.webny_card_paragraph_type
@@ -21,7 +20,6 @@ settings:
   handler: 'default:node'
   handler_settings:
     target_bundles:
-      webny_landing_page: webny_landing_page
       webny_news: webny_news
       webny_page: webny_page
     sort:
