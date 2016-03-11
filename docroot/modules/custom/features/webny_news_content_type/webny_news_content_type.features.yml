@@ -1,4 +1,8 @@
 bundle: webny
+excluded:
+  - core.entity_form_display.paragraph.webny_card_paragraph_type.default
+  - core.entity_view_display.paragraph.webny_card_paragraph_type.default
+  - field.field.paragraph.webny_card_paragraph_type.field_webny_card_entity_ref
 required:
   - core.base_field_override.node.webny_news.promote
   - core.base_field_override.node.webny_news.status
@@ -28,3 +32,4 @@ required:
   - field.storage.node.field_webny_news_subject_heading
   - field.storage.node.field_webny_news_sub_title
   - field.storage.node.field_webny_news_teaser
+  - field.storage.node.field_webny_news_featured_card
