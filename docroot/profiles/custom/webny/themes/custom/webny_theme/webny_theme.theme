@@ -1,0 +1,22 @@
+<?php
+
+use Drupal\Core\Template\Attribute;
+
+/**
+ * Implements hook_preprocess_html().
+ */
+function webny_theme_preprocess_html(&$variables) {
+  // <body> classes for sidebars
+  if (isset($variables['page']['sidebar_first']) && isset($variables['page']['sidebar_second'])) {
+    $variables['attributes']['class'][] = 'body-sidebars-both';
+  }
+  elseif (isset($variables['page']['sidebar_first'])) {
+    $variables['attributes']['class'][] = 'body-sidebars-first';
+  }
+  elseif (isset($variables['page']['sidebar_second'])) {
+    $variables['attributes']['class'][] = 'body-sidebars-second';
+  }
+  else {
+    $variables['attributes']['class'][] = 'body-sidebars-none';
+  }
+}
