@@ -143,3 +143,13 @@ function webny_configuration_update_8012() {
   \Drupal::service('module_installer')
       ->install(['webny_image_styles']);
 }
+
+/**
+ * Implements hook_update_n().
+ *
+ * Installs the landing page content type.
+ */
+function webny_configuration_update_8014() {
+  \Drupal::service('module_installer')
+      ->install(['webny_landing_page_content_type']);
+}
