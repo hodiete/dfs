@@ -12,3 +12,9 @@ Two default hooks are provided:
 
 * _commit-msg_ - This validates the syntax of a git commit message before it is committed locally.
 * _pre-commit_ - This runs Drupal Code Sniffer on committed code before it is committed locally.
+
+## Provided Configuration
+
+* _.gitconfig_  - Sample aliases to streamline git command line tasks, especially if you are the Integration Manager on a project. Add the contents of this file to your local ~/.gitconfig file to use. 
+
+
