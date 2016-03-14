@@ -4,6 +4,12 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.webny_page.body
+    - field.field.node.webny_page.field_webny_page_agency_keywords
+    - field.field.node.webny_page.field_webny_page_attachment
+    - field.field.node.webny_page.field_webny_page_description
+    - field.field.node.webny_page.field_webny_page_global_keywords
+    - field.field.node.webny_page.field_webny_page_image
+    - field.field.node.webny_page.field_webny_page_sub_title
     - node.type.webny_page
   module:
     - text
@@ -22,4 +28,10 @@ content:
     third_party_settings: {  }
   links:
     weight: 100
-hidden: {  }
+hidden:
+  field_webny_page_agency_keywords: true
+  field_webny_page_attachment: true
+  field_webny_page_description: true
+  field_webny_page_global_keywords: true
+  field_webny_page_image: true
+  field_webny_page_sub_title: true
