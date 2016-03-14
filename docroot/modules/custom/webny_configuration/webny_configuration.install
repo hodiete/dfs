@@ -193,3 +193,13 @@ function webny_configuration_update_8017() {
   \Drupal::service('module_installer')
       ->install(['serialization']);
 }
+
+/**
+ * Implements hook_update_n().
+ *
+ * Enable DefaultContent Module.
+ */
+function webny_configuration_update_8018() {
+  \Drupal::service('module_installer')
+      ->install(['defaultcontent']);
+}
