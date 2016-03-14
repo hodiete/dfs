@@ -143,3 +143,13 @@ function webny_configuration_update_8012() {
   \Drupal::service('module_installer')
       ->install(['webny_image_styles']);
 }
+
+/**
+ * Implements hook_update_n().
+ *
+ * Enables card paragraph type.
+ */
+function webny_configuration_update_8013() {
+  \Drupal::service('module_installer')
+      ->install(['webny_card_paragraph_type']);
+}

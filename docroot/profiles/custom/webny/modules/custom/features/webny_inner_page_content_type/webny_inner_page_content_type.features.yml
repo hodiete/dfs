@@ -1,4 +1,9 @@
 bundle: webny
+excluded:
+  - core.entity_form_display.paragraph.webny_card_paragraph_type.default
+  - core.entity_view_display.paragraph.webny_card_paragraph_type.default
+  - field.field.node.webny_page.field_webny_page_featured_card
+  - field.field.paragraph.webny_card_paragraph_type.field_webny_card_entity_ref
 required:
   - core.base_field_override.node.webny_page.promote
   - core.base_field_override.node.webny_page.status
@@ -17,6 +22,9 @@ required:
   - field.storage.node.field_webny_page_agency_keywords
   - field.storage.node.field_webny_page_attachment
   - field.storage.node.field_webny_page_description
+  - field.storage.node.field_webny_news_featured_card
   - field.storage.node.field_webny_page_global_keywords
   - field.storage.node.field_webny_page_image
   - field.storage.node.field_webny_page_sub_title
+  - field.storage.paragraph.field_webny_card_entity_ref
+  - paragraphs.paragraphs_type.webny_card_paragraph_type

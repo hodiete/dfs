@@ -3,16 +3,16 @@ status: true
 dependencies:
   module:
     - node
-    - taxonomy
-id: node.field_webny_news_subject_heading
-field_name: field_webny_news_subject_heading
-entity_type: node
+    - paragraphs
+id: paragraph.field_webny_card_entity_ref
+field_name: field_webny_card_entity_ref
+entity_type: paragraph
 type: entity_reference
 settings:
-  target_type: taxonomy_term
+  target_type: node
 module: core
 locked: false
-cardinality: -1
+cardinality: 3
 translatable: true
 indexes: {  }
 persist_with_no_fields: false

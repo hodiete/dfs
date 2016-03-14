@@ -6,6 +6,7 @@ dependencies:
     - field.field.node.webny_page.field_webny_page_agency_keywords
     - field.field.node.webny_page.field_webny_page_attachment
     - field.field.node.webny_page.field_webny_page_description
+    - field.field.node.webny_page.field_webny_page_featured_card
     - field.field.node.webny_page.field_webny_page_global_keywords
     - field.field.node.webny_page.field_webny_page_image
     - field.field.node.webny_page.field_webny_page_sub_title
@@ -56,6 +57,14 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: text_textarea
+  field_webny_page_featured_card:
+    weight: 26
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
   field_webny_page_global_keywords:
     weight: 0
     settings:
