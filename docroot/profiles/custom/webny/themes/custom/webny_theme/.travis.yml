@@ -1,0 +1,81 @@
+sudo: false
+language: php
+
+php:
+  - 5.6
+
+env:
+  global:
+    - DOCROOT=$TRAVIS_BUILD_DIR/../drupal
+    - THUNDER_DIR=$DOCROOT/themes/contrib/thunder
+
+cache:
+  bundler: true
+  apt: true
+  directories:
+  - "$HOME/.composer/cache"
+  - "$HOME/.composer/vendor"
+  - "$HOME/.drush/cache"
+  - "$HOME/.npm"
+  - "$HOME/.nvm"
+  - "$THUNDER_DIR/node_modules"
+  - "$THUNDER_DIR/bower_components"
+
+mysql:
+  database: drupal
+  username: root
+  encoding: utf8
+
+# Set up environment.
+before_install:
+  # Disable xdebug.
+  - phpenv config-rm xdebug.ini
+
+  # Set up composer.
+  - composer self-update
+  - export PATH="$HOME/.composer/vendor/bin:$PATH"
+
+  # Install drush
+  - composer global require drush/drush:8.* --prefer-source
+  - composer global require drupal/coder:8.* --prefer-source
+  - phpenv rehash
+
+  # Clear drush release history cache, to pick up new releases.
+  - rm -f ~/.drush/cache/download/*---updates.drupal.org-release-history-*
+
+  # Create MySQL Database
+  - mysql -e 'create database drupal;'
+
+  # Set up front end dependencies.
+  - ./install-node.sh
+  - nvm use 0.12.7
+
+  # Copy cached dependencies back to travis build dir so that they are
+  # not wiped out by `drush dl drupal` command.
+  - mv $THUNDER_DIR/bower_components $TRAVIS_BUILD_DIR/
+  - mv $THUNDER_DIR/node_modules $TRAVIS_BUILD_DIR/
+
+# Install Drupal and Thunder itself.
+install:
+  # Install drupal default profile
+  - cd ..
+  - drush dl drupal --drupal-project-rename=drupal -y
+  - cd drupal
+
+  # Copy thunder into themes/contrib/thunder.
+  - mkdir -p themes/contrib/thunder
+  - cp -R ${TRAVIS_BUILD_DIR}/* themes/contrib/thunder/
+
+  # Install Drupal and enable thunder.
+  - drush --verbose site-install minimal --db-url=mysql://root:@127.0.0.1/drupal --yes
+  - drush en thunder -y
+
+  # Install thunder dependencies
+  - cd $THUNDER_DIR
+  - npm run install-thunder
+
+# Run thunder tasks.
+script:
+  # Codesniff all files, ignore third party libraries and compiled CSS.
+  - phpcs --standard=$HOME/.composer/vendor/drupal/coder/coder_sniffer/Drupal/ruleset.xml --ignore=*/node_modules/*,*/bower_components/*,*/styleguide/*,*/css/* $THUNDER_DIR
+  - gulp
