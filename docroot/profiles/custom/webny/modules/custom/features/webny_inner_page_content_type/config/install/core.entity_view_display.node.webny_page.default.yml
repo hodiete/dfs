@@ -1,0 +1,79 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.webny_page.body
+    - field.field.node.webny_page.field_webny_page_agency_keywords
+    - field.field.node.webny_page.field_webny_page_attachment
+    - field.field.node.webny_page.field_webny_page_description
+    - field.field.node.webny_page.field_webny_page_featured_card
+    - field.field.node.webny_page.field_webny_page_global_keywords
+    - field.field.node.webny_page.field_webny_page_image
+    - field.field.node.webny_page.field_webny_page_sub_title
+    - node.type.webny_page
+  module:
+    - file
+    - image
+    - text
+    - user
+id: node.webny_page.default
+targetEntityType: node
+bundle: webny_page
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 101
+    settings: {  }
+    third_party_settings: {  }
+  field_webny_page_agency_keywords:
+    weight: 107
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+  field_webny_page_attachment:
+    weight: 105
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: file_default
+  field_webny_page_description:
+    weight: 103
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+  field_webny_page_featured_card:
+    weight: 108
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+  field_webny_page_global_keywords:
+    weight: 106
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+  field_webny_page_image:
+    weight: 104
+    label: above
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+  field_webny_page_sub_title:
+    weight: 102
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+  links:
+    weight: 100
+hidden: {  }

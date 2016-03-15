@@ -1,0 +1,16 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - node.type.webny_landing_page
+  module:
+    - user
+id: node.webny_landing_page.teaser
+targetEntityType: node
+bundle: webny_landing_page
+mode: teaser
+content:
+  links:
+    weight: 100
+hidden: {  }
