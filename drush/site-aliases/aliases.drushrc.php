@@ -326,7 +326,6 @@ if (!isset($drush_major_version)) {
 $aliases['webny.loc'] = array(
   'root' => '/var/www/webny/docroot',
   'uri' => 'webny.dev',
-  )
 );
 
 if (!isset($drush_major_version)) {
