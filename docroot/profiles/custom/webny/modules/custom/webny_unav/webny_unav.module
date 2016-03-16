@@ -8,15 +8,15 @@
 /**
  * Implements hook_theme().
  */
-function webny_theme() {
-  return array(
-    'webny_unav' => array(
-      'template' => 'webny-unav',
-    ),
-    'webny_ufooter' => array(
-      'template' => 'webny-ufooter',
-    ),
+function webny_unav_theme($existing, $type, $theme, $path) {
+  $items['webny_uhead'] = array(
+    'render element' => 'element',
   );
+  $items['webny_ufooter'] = array(
+    'render element' => 'element',
+  );
+
+  return $items;
 }
 
 /**
@@ -26,7 +26,7 @@ function webny_theme() {
  */
 function webny_unav_page_top(array &$page_top) {
   $page_top['webny_unav'] = array(
-    '#theme' => 'webny-unav',
+    '#type' => 'webny-uhead',
   );
 }
 
@@ -36,7 +36,7 @@ function webny_unav_page_top(array &$page_top) {
  * Add universal navigation to the bottom of the page automatically.
  */
 function webny_unav_page_bottom(array &$page_bottom) {
-  $page_bottom['webny_ufooter'] = array(
-    '#theme' => 'webny-ufooter',
+  $page_bottom['webny_unav'] = array(
+    '#type' => 'webny-ufooter',
   );
 }
