@@ -31,7 +31,7 @@ individual preferences.
 
     # Update the hostname to the local development environment hostname.
     vagrant_hostname: webny.dev
-    vagrant_machine_name: Web NY
+    vagrant_machine_name: WebNY
     vagrant_ip: 192.168.88.90
 
 
@@ -68,7 +68,7 @@ You will need to edit this file as an administrator to save it. Hosts should fol
 4. Install NVM and install and use Node.js version 0.12.7: 
 
     ```
-    cd docroot/themes/custom/webny_theme
+    cd docroot/profiles/custom/webny/themes/custom/webny_theme
     ./install-node.sh
     ```
     
@@ -83,7 +83,7 @@ You will need to edit this file as an administrator to save it. Hosts should fol
 6. Run `cd /var/www/webny; ./task.sh setup`. This will build dependencies via composer, install githooks, and install drupal locally.
 Run `task.sh -l` for a list of available phing tasks. 
 
-7. To run a build of the theme, run: `cd docroot/themes/custom/webny_theme; npm run build`
+7. To run a build of the theme, run: `cd docroot/profiles/custom/webny/themes/custom/webny_theme; npm run build`
 
 
 8. If you go to  http://webny.dev you should see a Drupal install screen. 
