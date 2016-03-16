@@ -163,3 +163,13 @@ function webny_configuration_update_8014() {
   \Drupal::service('module_installer')
       ->install(['webny_landing_page_content_type']);
 }
+
+/**
+ * Implements hook_update_n().
+ *
+ * Enable NYS Universal navigation custom module.
+ */
+function webny_configuration_update_8015() {
+  \Drupal::service('module_installer')
+      ->install(['webny_unav']);
+}
