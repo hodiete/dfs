@@ -55,8 +55,8 @@
 
   <target name="deploy:artifact:commit">
     <exec command="git add -A" dir="${deploy.dir}" logoutput="true" passthru="true"/>
-    <exec command="git add --force ${deploy.dir}/docroot/themes/custom/webny_theme/css/styles.css" logoutput="true" passthru="true"/>
-    <exec command="git add --force ${deploy.dir}/docroot/themes/custom/webny_theme/styleguide" logoutput="true" passthru="true"/>
+    <exec command="git add --force ${deploy.dir}/docroot/profiles/custom/webny/themes/custom/webny_theme/css/styles.css" logoutput="true" passthru="true"/>
+    <exec command="git add --force ${deploy.dir}/docroot/profiles/custom/webny/themes/custom/webny_theme/styleguide" logoutput="true" passthru="true"/>
     <exec command="git commit -m '${deploy.commitMsg}' --quiet" dir="${deploy.dir}" logoutput="true" passthru="true"/>
   </target>
 
@@ -102,6 +102,7 @@
         <exclude name="themes/contrib/**" />
         <exclude name="profiles/contrib/**" />
         <exclude name="modules/contrib/**" />
+        <exclude name="profiles/custom/webny/modules/contrib/**" />
         <exclude name="**/node_modules/**"></exclude>
         <exclude name="**/bower_components/**"></exclude>
       </fileset>

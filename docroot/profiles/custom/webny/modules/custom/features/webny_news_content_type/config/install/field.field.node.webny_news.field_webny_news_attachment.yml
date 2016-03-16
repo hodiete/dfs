@@ -1,0 +1,26 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_webny_news_attachment
+    - node.type.webny_news
+  module:
+    - file
+id: node.webny_news.field_webny_news_attachment
+field_name: field_webny_news_attachment
+entity_type: node
+bundle: webny_news
+label: Attachment
+description: "Upload file to attach to news item.\r\n<strong>Only PDF files allowed</strong>\r\n<strong>Maximum upload size: 32 MB</strong>"
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  file_directory: '[date:custom:Y]-[date:custom:m]'
+  file_extensions: pdf
+  max_filesize: '32 MB'
+  description_field: true
+  handler: 'default:file'
+  handler_settings: {  }
+field_type: file

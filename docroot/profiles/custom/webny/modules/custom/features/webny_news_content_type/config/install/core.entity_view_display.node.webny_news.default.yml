@@ -1,0 +1,112 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.webny_news.body
+    - field.field.node.webny_news.field_webny_news_agency_keywords
+    - field.field.node.webny_news.field_webny_news_attachment
+    - field.field.node.webny_news.field_webny_news_contact_info
+    - field.field.node.webny_news.field_webny_news_date
+    - field.field.node.webny_news.field_webny_news_featured_card
+    - field.field.node.webny_news.field_webny_news_global_keywords
+    - field.field.node.webny_news.field_webny_news_image
+    - field.field.node.webny_news.field_webny_news_location
+    - field.field.node.webny_news.field_webny_news_sub_title
+    - field.field.node.webny_news.field_webny_news_subject_heading
+    - field.field.node.webny_news.field_webny_news_teaser
+    - node.type.webny_news
+  module:
+    - datetime
+    - file
+    - image
+    - text
+    - user
+id: node.webny_news.default
+targetEntityType: node
+bundle: webny_news
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 101
+    settings: {  }
+    third_party_settings: {  }
+  field_webny_news_agency_keywords:
+    weight: 111
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+  field_webny_news_attachment:
+    weight: 107
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: file_default
+  field_webny_news_contact_info:
+    weight: 108
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+  field_webny_news_date:
+    weight: 109
+    label: above
+    settings:
+      format_type: medium
+      timezone_override: ''
+    third_party_settings: {  }
+    type: datetime_default
+  field_webny_news_featured_card:
+    weight: 112
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+  field_webny_news_global_keywords:
+    weight: 110
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+  field_webny_news_image:
+    weight: 103
+    label: above
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+  field_webny_news_location:
+    weight: 106
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+  field_webny_news_sub_title:
+    weight: 105
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+  field_webny_news_subject_heading:
+    weight: 104
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+  field_webny_news_teaser:
+    weight: 102
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+  links:
+    weight: 100
+hidden: {  }
