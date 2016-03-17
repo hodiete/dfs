@@ -186,3 +186,13 @@ function _webny_configuration_add_role($id = "", $label = "", $weight = 0) {
   $role->setIsAdmin(FALSE);
   $role->save();
 }
+
+/**
+ * Implements hook_update_n().
+ *
+ * Enable NYS Universal navigation custom module.
+ */
+function webny_configuration_update_8016() {
+  \Drupal::service('module_installer')
+      ->install(['webny_unav']);
+}
