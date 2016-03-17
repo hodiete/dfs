@@ -10,11 +10,11 @@
   display:inline-block;
   font-family: $base-font-bold;
   text-align: center;
-  color:$border-lt;
+  color:$white;
   text-transform: uppercase;
   text-decoration: none;
   padding: 14px 20px;
-  border: 1px solid $border-lt;
+  border: 1px solid $white;
   &:hover {
 	text-decoration: none;
   }
@@ -33,28 +33,28 @@
 .buttonTransparentLt {
   @extend .buttonBase;
   background: rgba(255, 255, 255, 0.0);
-  border-color: $border-med;
+  border-color: $gray-lite;
   &:hover {
     background: rgba(0, 0, 0, 0.4);
-    border-color: $border-lt;
+    border-color: $white;
   }
 }
 
 .buttonTransparentDk {
   @extend .buttonBase;
   background: none;
-  color: $border-dk;
-  border:1px solid $border-med;
+  color: $black;
+  border:1px solid $gray-lite;
   &:hover {
-    background: $border-med;
-    border-color: $border-dk;
+    background: $gray-lite;
+    border-color: $black;
   }
 }
 
 .buttonDkLt {
   @extend .buttonBase;
   background: none;
-  color: $border-dk;
+  color: $black;
   border-color: $primarygold-50;
   
   &:hover {
