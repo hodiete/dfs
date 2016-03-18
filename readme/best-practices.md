@@ -154,20 +154,20 @@ Please see [views.md](views.md).
 
 ## <a name="naming-conventions"></a>Naming Conventions
 - Content Types
-  - Machine name: webny\__name_
-    - Example: webny\_news
+  - Machine name: webny_name
+    - Example: webny_news
   - Human readable doesn't necessarily need to be prefixed with WebNY
 - Fields
-  - webny_\_content-type\_field_
-  - Example: webny\_news\_date
-  - *Most fields should be unique the content type*
+  - webny_content-type_field
+  - Example: webny_news_date
+  - **Most fields should be unique the content type**
 - Features
-  - Machine name: webny_\_title\_type_
-  - Example: webny\_news\_content-type
-  - *Important: If feature is in the webny bundle, manually prefixing is unnecessary.* 
+  - Machine name: webny_title_type
+  - Example: webny_news_content-type
+  - **Important: If feature is in the webny bundle, manually prefixing is unnecessary.**
 - Views
-  - Machine name: webny\__title_
-    - Example: webny\_news\_listing
+  - Machine name: webny_title
+    - Example: webny_news_listing
   - Human readable doesn't necessarily need to be prefixed with WebNY
 
     
