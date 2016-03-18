@@ -49,7 +49,10 @@
 // class names specified in the component.
 //
 // Style guide: components
-@import "components/*";
+@import "components/tabs";
+@import "components/buttons";
+@import "components/blocks";
+@import "components/header";
 
 
 // States
@@ -57,4 +60,5 @@
 // Design components are reusable designs that can be applied using just the CSS
 // class names specified in the component.
 //
-@import "state/*";
+// the import below is commented out because the build fails with the wildcard
+//@import "state/*";
