@@ -23,22 +23,18 @@
     "drupal/diff": "8.1.*@dev",
     "drush/drush": "~8.0",
     "drupal/devel" : "8.*",
-    "drupal/embed": "8.1.*@dev",
-    "drupal/entity_embed": "8.1.*@dev",
+	"drupal/default_content" : "8.1.0-alpha2",
+	"drupal/defaultcontent" : "8.1.0-beta3",
     "drupal/features": "8.3.0-alpha6",
     "drupal/google_analytics": "8.2.0-rc1",
     "drupal/honeypot": "8.1.22",
+    "drupal/lightning": "8.1-beta4",
     "drupal/login_security": "8.1.0",
-    "drupal/media_entity" : "8.1.0-beta2",
-    "drupal/media_entity_embeddable_video" : "8.1.0-beta2",
-    "drupal/media_entity_image" : "8.1.0-beta2",
     "drupal/memcache" : "8.*",
-    "drupal/metatag" : "8.1.0-beta5",
     "drupal/pathauto" : "8.1.0-alpha2",
     "drupal/paragraphs" : "8.1.0-rc4",
     "drupal/password_policy" : "8.3.0-alpha2",
     "drupal/security_review" : "8.*",
-    "drupal/services" : "8.4.0-alpha3",
     "roave/security-advisories": "dev-master",
     "drupal/token" : "8.1.0-alpha2",
     "drupal/workbench_moderation": "8.1.0-beta1",
@@ -89,10 +85,16 @@
   },
   "scripts": {
     "post-install-cmd": [
-      "PhantomInstaller\\Installer::installPhantomJS"
+      "PhantomInstaller\\Installer::installPhantomJS",
+      "rm -rf docroot/profiles/custom/webny/modules/contrib/lightning_features",
+      "cp -rf docroot/profiles/contrib/lightning/modules/lightning_features/ docroot/profiles/custom/webny/modules/contrib",
+      "rm -rf docroot/profiles/contrib/lightning"
     ],
     "post-update-cmd": [
-      "PhantomInstaller\\Installer::installPhantomJS"
+      "PhantomInstaller\\Installer::installPhantomJS",
+      "rm -rf docroot/profiles/custom/webny/modules/contrib/lightning_features",
+      "cp -rf docroot/profiles/contrib/lightning/modules/lightning_features/ docroot/profiles/custom/webny/modules/contrib",
+      "rm -rf docroot/profiles/contrib/lightning"
     ]
   }
 }

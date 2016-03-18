@@ -1,0 +1,129 @@
+// View Results
+//
+// Styling for the News List View, including the exposed filters, results, and pager.
+//
+// Markup: view_results.hbs
+//
+// Style guide: components.views_results
+
+
+.results {
+  //color: white;
+  font-family: $base-font;
+  background-color: $exposedbkgrnd;
+  float: left;
+  position: relative;
+
+  .results-exposed-filters-title {
+    color: $secondarygold;
+    font-size: 16px;
+    text-transform: uppercase;
+  }
+
+  form {
+    color: rgb(255, 255, 255);
+
+    label {
+      color: rgb(255, 255, 255);
+      font-size: 16px;
+    }
+    input {
+      background-color: $exposedbkgrnd;
+      border-style: solid;
+      border-width: 1px;
+      border-color: $darkgray;
+    }
+
+    .form-item-field-webny-news-global-keywords-target-id input {
+      border-radius: 15px;
+    }
+    .form-item-field-webny-news-agency-keywords-target-id input {
+      border-radius: 15px;
+    }
+  }
+  .form-item {
+    //width:70%;
+  }
+
+  .results-list {
+    padding-bottom: 20px;
+    padding-top: 20px;
+    background-color: #ffffff;
+  }
+  .views-row {
+    border: 1px solid $imgborder;
+    padding-left: 0;
+    min-height: 240px;
+    //width:70%;
+    overflow: auto;
+    margin-left: 40px;
+    margin-right: 40px;
+    margin-bottom: 8px;
+    margin-top: 8px;
+
+    .results-title {
+      margin: 16px 0 12px 0;
+      font-size: 19px;
+      padding-right: 16px;
+      a {
+        color: $textblue;
+        text-decoration: none;
+      }
+    }
+
+    .results-date {
+      font-size: 12px;
+      color: $base-font-color;
+      .results-date-day {
+        font-weight: bold;
+      }
+    }
+
+    .results-image {
+      float: left;
+      margin-right: 16px;
+      img {
+        float: left;
+        border: 0;
+      }
+    }
+
+    .results-teaser {
+      color: $base-font-color;
+      font-size: 16px;
+      padding-right: 16px;
+    }
+  }
+
+  .pager__items {
+    float: left;
+    list-style-type: none;
+    margin-left: 10px;
+    .pager__item {
+      float: left;
+      padding: 5px;
+    }
+  }
+}
+
+
+.results {
+  @include breakpoint($min-tablet) {
+    form.views-exposed-form {
+      @include span(3 of 12);
+      > * {
+        padding-left: 15px;
+      }
+    }
+    div.results-list {
+      @include span(9 of 12 last);
+      > * {
+        padding-right: 25px;
+      }
+    }
+  }
+}
+// the following class was placed to fix the issue of the footer rendering into the view results area
+.views-element-container {
+  display: flex;
+}
