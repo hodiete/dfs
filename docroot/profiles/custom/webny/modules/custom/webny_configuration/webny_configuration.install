@@ -147,19 +147,25 @@ function webny_configuration_update_8012() {
 /**
  * Implements hook_update_n().
  *
- * Installs the card paragraph type.
- */
-function webny_configuration_update_8013() {
-  \Drupal::service('module_installer')
-      ->install(['webny_card_paragraph_type']);
-}
-
-/**
- * Implements hook_update_n().
- *
- * Installs the landing page content type.
+ * Installs the media library and dependencies.
  */
 function webny_configuration_update_8014() {
   \Drupal::service('module_installer')
-      ->install(['webny_landing_page_content_type']);
+      ->install(['media_entity']);
+  \Drupal::service('module_installer')
+      ->install(['entity_embed']);
+  \Drupal::service('module_installer')
+      ->install(['serialization']);
+  \Drupal::service('module_installer')
+      ->install(['rest']);
+  \Drupal::service('module_installer')
+      ->install(['media_entity_image']);
+  \Drupal::service('module_installer')
+      ->install(['media_entity_embeddable_video']);
+  \Drupal::service('module_installer')
+      ->install(['lightning_media_image']);
+  \Drupal::service('module_installer')
+      ->install(['lightning_media_video']);
+  \Drupal::service('module_installer')
+      ->install(['webny_media']);
 }
