@@ -34,6 +34,7 @@ options.styleGuide = {
   destination: options.rootPath.styleGuide,
   css: [
     path.relative(options.rootPath.styleGuide, options.theme.css + 'styles.css'),
+    path.relative(options.rootPath.styleGuide, options.theme.css + 'themes/administration.css'),
     path.relative(options.rootPath.styleGuide, options.theme.css + 'style-guide/kss-only.css')
   ],
   js: [],
@@ -72,6 +73,7 @@ var gulp = require('gulp'),
   sassLint = require('gulp-sass-lint'),
   sourcemaps = require('gulp-sourcemaps'),
   globbing = require('gulp-css-globbing'),
+  sassglob = require('gulp-sass-glob'),
   sass = require('gulp-sass'),
   debug = require('gulp-debug'),
   importOnce = require('node-sass-import-once'),
@@ -87,7 +89,8 @@ gulp.task('default', ['build']);
 // #################.
 gulp.task('build', [
   'styles:production',
-  'styleguide'
+  'styleguide',
+  'administration'
 ], function (cb) {
   // Run linting last, otherwise its output gets lost.
   runSequence(['lint:js'], cb);
@@ -105,6 +108,7 @@ gulp.task('build:dev', ['styles', 'styleguide'], function (cb) {
 gulp.task('styles', ['clean:css'], function () {
   return gulp.src(options.theme.sass + 'styles.scss')
     .pipe(sourcemaps.init())
+    .pipe(sassglob())
     .pipe(globbing({
       extensions: ['.scss']
     }))
@@ -126,6 +130,7 @@ gulp.task('styles:production', ['clean:css'], function () {
       // Configure it to use SCSS files.
       extensions: ['.scss']
     }))
+      .pipe(sassglob())
       .pipe(sass({
         errLogToConsole: true,
         outputStyle: 'compressed'
@@ -135,6 +140,26 @@ gulp.task('styles:production', ['clean:css'], function () {
           cascade: false
         }))
           .pipe(gulp.dest(options.theme.css));
+});
+
+// trying out agency specific stuff
+gulp.task('administration', ['clean:css'], function () {
+  return gulp.src(options.theme.sass + 'themes/administration-theme/administration.scss')
+    .pipe(sourcemaps.init())
+    .pipe(sassglob())
+    .pipe(globbing({
+      extensions: ['.scss']
+    }))
+      .pipe(sass({
+        errLogToConsole: true,
+        outputStyle: 'expanded'
+      }))
+        .pipe(autoprefix({
+          browsers: ['last 2 versions'],
+          cascade: false
+        }))
+          .pipe(sourcemaps.write())
+          .pipe(gulp.dest(options.theme.css + '/themes/'));
 });
 
 gulp.task('styles:styleguide', ['clean:css'], function () {
@@ -233,6 +258,12 @@ gulp.task('watch:css', ['styles'], function () {
   return gulp.watch([
     options.theme.sass + '**/*.scss'
   ], options.gulpWatchOptions, ['styles']);
+});
+
+gulp.task('watch:css', ['administration'], function () {
+  return gulp.watch([
+    options.theme.sass + '**/*.scss'
+  ], options.gulpWatchOptions, ['administration']);
 });
 
 gulp.task('watch:styleguide', ['styleguide'], function () {
