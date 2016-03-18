@@ -13,6 +13,7 @@ _This document is a work in progress._ Unlinked items are planned topics, feel
 * [Building Views](#views)
 * [Logging](#logging)
 * [Building content types](#content-types)
+* [Naming conventions](#naming-conventions)
 
 ## <a name="standards"></a>Standards
 
@@ -150,3 +151,23 @@ Please see [views.md](views.md).
 * Audit for overly complex content types
     * Reason: All fields loaded for each node load
     * Use case: Needs translations, user-facing form, revisions, etc.
+
+## <a name="naming-conventions"></a>Naming Conventions
+- Content Types
+  - Machine name: webny\__name_
+    - Example: webny\_news
+  - Human readable doesn't necessarily need to be prefixed with WebNY
+- Fields
+  - webny_\_content-type\_field_
+  - Example: webny\_news\_date
+  - *Most fields should be unique the content type*
+- Features
+  - Machine name: webny_\_title\_type_
+  - Example: webny\_news\_content-type
+  - *Important: If feature is in the webny bundle, manually prefixing is unnecessary.* 
+- Views
+  - Machine name: webny\__title_
+    - Example: webny\_news\_listing
+  - Human readable doesn't necessarily need to be prefixed with WebNY
+
+    
