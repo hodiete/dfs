@@ -7,7 +7,6 @@ dependencies:
     - field.field.node.webny_news.field_webny_news_attachment
     - field.field.node.webny_news.field_webny_news_contact_info
     - field.field.node.webny_news.field_webny_news_date
-    - field.field.node.webny_news.field_webny_news_featured_card
     - field.field.node.webny_news.field_webny_news_global_keywords
     - field.field.node.webny_news.field_webny_news_image
     - field.field.node.webny_news.field_webny_news_location
@@ -23,6 +22,8 @@ dependencies:
     - path
     - text
     - workbench_moderation
+_core:
+  default_config_hash: ivclXc7n5qokbDOtl7TXe32C3VUe-5Sm5NrAF0DBd9k
 id: node.webny_news.default
 targetEntityType: node
 bundle: webny_news
@@ -68,14 +69,6 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: datetime_default
-  field_webny_news_featured_card:
-    weight: 37
-    settings:
-      match_operator: CONTAINS
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-    type: entity_reference_autocomplete
   field_webny_news_global_keywords:
     weight: 35
     settings:
