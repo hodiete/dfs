@@ -12,6 +12,8 @@ $primarygold-50: #EAC086; // This is the hex translation of $primarygold at 50% 
 $primarygold-25: #F4E0CR; // This is the hex translation of $primarygold at 25% opacity
 $secondarygold: #DC9719; // secondary accent
 
+$color-primary: $primaryblue !default; //using the colors from the ny.gov colors as starting point
+$color-secondary: $primarygold !default;
 $text-blue: #0F739D !default; // blue text links color
 
 // additional colors
@@ -30,7 +32,7 @@ $midgray: #ccc;
 $darkgray: #999;
 
 // fonts ///////////////
-$base-font: "Proxima Nova", Arial, sans-serif;
+$base-font: "Proxima Nova", Arial, sans-serif !default;
 $base-font-bold: "Proxima Nova Bold", "Arial bold", sans-serif;
 $base-font-extra-bold: "Proxima Nova Extra Bold", "Arial bold", sans-serif;
 $agency-name-font: "D Sari Bold", Arial, sans-serif; // used in header and footer
