@@ -196,3 +196,13 @@ function webny_configuration_update_8016() {
   \Drupal::service('module_installer')
       ->install(['webny_unav']);
 }
+
+/**
+ * Implements hook_update_n().
+ *
+ * Enable Document Content Type custom module.
+ */
+function webny_configuration_update_8017() {
+  \Drupal::service('module_installer')
+      ->install(['webny_document_content_type']);
+}
