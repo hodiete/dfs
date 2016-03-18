@@ -10,7 +10,9 @@ namespace Drupal\default_content\LinkManager;
 use Drupal\Core\Cache\CacheBackendInterface;
 use Drupal\Core\Entity\EntityManager;
 use Drupal\rest\LinkManager\RelationLinkManager as RestRelationLinkManager;
-
+/**
+ * Constructs the relation link manager.
+ */
 class RelationLinkManager extends RestRelationLinkManager {
 
   /**
@@ -37,7 +39,7 @@ class RelationLinkManager extends RestRelationLinkManager {
    * {@inheritdoc}
    */
   public function getRelationUri($entity_type, $bundle, $field_name) {
-    // Make the base path refer to drupal.org.x`
+    // Make the base path refer to drupal.org.x`.
     return "http://drupal.org/rest/relation/$entity_type/$bundle/$field_name";
   }
 

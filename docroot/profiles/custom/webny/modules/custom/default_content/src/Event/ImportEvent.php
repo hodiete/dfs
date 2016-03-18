@@ -2,13 +2,15 @@
 
 /**
  * @file
- * \Drupal\default_content\Event\ImportEvent
+ * Drupal\default_content\Event\ImportEvent.
  */
 
 namespace Drupal\default_content\Event;
 
 use Symfony\Component\EventDispatcher\Event;
-
+/**
+ * Constructs a new import event.
+ */
 class ImportEvent extends Event {
 
   /**
@@ -42,6 +44,7 @@ class ImportEvent extends Event {
    * Get the imported entities.
    *
    * @return \Drupal\Core\Entity\ContentEntityInterface[]
+   *   Get entities.
    */
   public function getImportedEntities() {
     return $this->entities;
@@ -58,4 +61,3 @@ class ImportEvent extends Event {
   }
 
 }
-

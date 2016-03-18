@@ -2,14 +2,16 @@
 
 /**
  * @file
- * \Drupal\default_content\Event\ExportEvent
+ * Drupal\default_content\Event\ExportEvent.
  */
 
 namespace Drupal\default_content\Event;
 
 use Drupal\Core\Entity\ContentEntityInterface;
 use Symfony\Component\EventDispatcher\Event;
-
+/**
+ * Export Event.
+ */
 class ExportEvent extends Event {
 
   /**
@@ -33,6 +35,7 @@ class ExportEvent extends Event {
    * Get the entity we've exported.
    *
    * @return \Drupal\Core\Entity\ContentEntityInterface[]
+   *   Get Exported Entity
    */
   public function getExportedEntity() {
     return $this->entity;

@@ -2,7 +2,7 @@
 
 /**
  * @file
- * \Drupal\default_content\Event\DefaultContentEvents
+ * Drupal\default_content\Event\DefaultContentEvents.
  */
 
 namespace Drupal\default_content\Event;
@@ -44,4 +44,5 @@ final class DefaultContentEvents {
    * @var string
    */
   const EXPORT = 'default_content.export';
+
 }

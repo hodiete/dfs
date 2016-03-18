@@ -25,6 +25,7 @@ use Symfony\Component\Serializer\Serializer;
 
 /**
  * A service for handling import of default content.
+ *
  * @todo throw useful exceptions
  */
 class DefaultContentManager implements DefaultContentManagerInterface {
@@ -191,7 +192,7 @@ class DefaultContentManager implements DefaultContentManagerInterface {
             // No dependencies to resolve.
             continue;
           }
-          // Here we need to resolve our dependencies;
+          // Here we need to resolve our dependencies;.
           foreach ($decoded['_embedded'] as $embedded) {
             foreach ($embedded as $item) {
               $edge = $this->getVertex($item['_links']['self']['href']);
@@ -289,7 +290,7 @@ class DefaultContentManager implements DefaultContentManagerInterface {
   }
 
   /**
-   * {@inheritdoc{
+   * {@inheritdoc}
    */
   public function writeDefaultContent($serialized_by_type, $folder) {
     foreach ($serialized_by_type as $entity_type => $serialized_entities) {
@@ -314,6 +315,7 @@ class DefaultContentManager implements DefaultContentManagerInterface {
    *   Guard against infinite recursion.
    *
    * @return \Drupal\Core\Entity\EntityInterface[]
+   *   Return the entity interface.
    */
   protected function getEntityReferencesRecursive(ContentEntityInterface $entity, $depth = 0) {
     $entity_dependencies = $entity->referencedEntities();
@@ -338,7 +340,7 @@ class DefaultContentManager implements DefaultContentManagerInterface {
   }
 
   /**
-   * Utility to get a default content scanner
+   * Utility to get a default content scanner.
    *
    * @return \Drupal\default_content\DefaultContentScanner
    *   A system listing implementation.
@@ -358,17 +360,23 @@ class DefaultContentManager implements DefaultContentManagerInterface {
   }
 
   /**
-   * Parses content files
+   * Parses content files.
    */
   protected function parseFile($file) {
     return file_get_contents($file->uri);
   }
 
+  /**
+   * Resets Tree.
+   */
   protected function resetTree() {
     $this->graph = [];
     $this->vertexes = array();
   }
 
+  /**
+   * Sorts Tree.
+   */
   protected function sortTree(array $graph) {
     $graph_object = new Graph($graph);
     $sorted = $graph_object->searchAndSort();
