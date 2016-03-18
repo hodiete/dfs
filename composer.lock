@@ -4,6 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
+
     "hash": "4f7d30e1bd213636c77dd5ae4c15a7f5",
     "content-hash": "bbf2e3b2dc3500ab3ff77a59975b851c",
     "packages": [
@@ -1264,12 +1265,77 @@
             "homepage": "https://www.drupal.org/project/ctools"
         },
         {
+            "name": "drupal/default_content",
+            "version": "8.1.0-alpha2",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupal.org/project/default_content.git",
+                "reference": "3b23552540802b357d33e66e0b024b3764bf0a4b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/default_content-8.x-1.0-alpha2.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "drupal/core": "8.*",
+                "drupal/hal": "8.*"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-8.x-1.x": "8.1.x-dev"
+                }
+            },
+            "notification-url": "https://packagist.drupal-composer.org/downloads/",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "description": "Imports default content when a module is enabled",
+            "homepage": "https://www.drupal.org/project/default_content",
+            "time": "2015-10-02 04:07:57"
+        },
+        {
+            "name": "drupal/defaultcontent",
+            "version": "8.1.0-beta3",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupal.org/project/defaultcontent",
+                "reference": "0b9a4bcceedfa92df379a722af2eccc41795dd2e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/defaultcontent-8.x-1.0-beta3.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "drupal/core": "8.*",
+                "drupal/hal": "8.*",
+                "drupal/node": "8.*"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-8.x-1.x": "8.1.x-dev"
+                }
+            },
+            "notification-url": "https://packagist.drupal-composer.org/downloads/",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "description": "Export nodes to file and import them as default content as a module installs. N.B. in D8 beta 14 there is still a problem exporting paths https://www.drupal.org/node/1553358",
+            "homepage": "https://www.drupal.org/project/defaultcontent",
+            "time": "2016-03-04 08:16:30"
+        },
+        {
             "name": "drupal/devel",
             "version": "dev-8.x-1.x",
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/devel",
-                "reference": "38818a6a9320d52b573ac1fa8d66ae6489de31a9"
+                "reference": "a1b2dcf702297cbff75138aceb0880cf5c8d8fd9"
             },
             "require": {
                 "drupal/core": "8.*"
@@ -1304,7 +1370,7 @@
             ],
             "description": "Various blocks, pages, and functions for developers.",
             "homepage": "http://drupal.org/project/devel",
-            "time": "2016-02-20 12:26:05"
+            "time": "2016-03-14 18:01:34"
         },
         {
             "name": "drupal/diff",
@@ -1652,27 +1718,29 @@
         },
         {
             "name": "drupal/metatag",
-            "version": "8.1.0-beta4",
+            "version": "8.1.0-beta5",
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/metatag",
-                "reference": "2311377196e20a828fe8d1a59b179114698e0eee"
+                "reference": "9ffb4e2b24bed70a0352794e71371caf1e0e36b3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/metatag-8.x-1.0-beta4.zip",
+                "url": "https://ftp.drupal.org/files/projects/metatag-8.x-1.0-beta5.zip",
                 "reference": null,
                 "shasum": null
             },
             "require": {
                 "drupal/core": "8.*",
-                "drupal/field": "8.*"
+                "drupal/field": "8.*",
+                "drupal/token": "8.*"
             },
             "replace": {
-                "drupal/metatag_open_graph": "self.version"
+                "drupal/metatag_open_graph": "self.version",
+                "drupal/metatag_twitter_cards": "self.version"
             },
             "suggest": {
-                "drupal/core": "Required by drupal/metatag_open_graph"
+                "drupal/core": "Required by drupal/metatag_open_graph, drupal/metatag_twitter_cards"
             },
             "type": "drupal-module",
             "extra": {
@@ -1697,7 +1765,7 @@
                 "php",
                 "seo"
             ],
-            "time": "2016-02-06 17:42:11"
+            "time": "2016-03-11 18:56:05"
         },
         {
             "name": "drupal/paragraphs",
@@ -5709,16 +5777,16 @@
         },
         {
             "name": "phing/phing",
-            "version": "2.13.0",
+            "version": "2.14.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phingofficial/phing.git",
-                "reference": "a5b10a50160c8a4744545aacb33ef158349e655c"
+                "reference": "7dd73c83c377623def54b58121f46b4dcb35dd61"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phingofficial/phing/zipball/a5b10a50160c8a4744545aacb33ef158349e655c",
-                "reference": "a5b10a50160c8a4744545aacb33ef158349e655c",
+                "url": "https://api.github.com/repos/phingofficial/phing/zipball/7dd73c83c377623def54b58121f46b4dcb35dd61",
+                "reference": "7dd73c83c377623def54b58121f46b4dcb35dd61",
                 "shasum": ""
             },
             "require": {
@@ -5727,6 +5795,7 @@
             "require-dev": {
                 "ext-pdo_sqlite": "*",
                 "lastcraft/simpletest": "@dev",
+                "mikey179/vfsstream": "^1.6",
                 "pdepend/pdepend": "2.x",
                 "pear/archive_tar": "1.4.x",
                 "pear/http_request2": "dev-trunk",
@@ -5762,7 +5831,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.13.x-dev"
+                    "dev-master": "2.14.x-dev"
                 }
             },
             "autoload": {
@@ -5795,7 +5864,7 @@
                 "task",
                 "tool"
             ],
-            "time": "2015-12-04 09:45:44"
+            "time": "2016-03-10 21:39:23"
         },
         {
             "name": "phpdocumentor/reflection-docblock",

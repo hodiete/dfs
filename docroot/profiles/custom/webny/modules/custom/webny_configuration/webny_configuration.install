@@ -147,16 +147,6 @@ function webny_configuration_update_8012() {
 /**
  * Implements hook_update_n().
  *
- * Installs the card paragraph type.
- */
-function webny_configuration_update_8013() {
-  \Drupal::service('module_installer')
-      ->install(['webny_card_paragraph_type']);
-}
-
-/**
- * Implements hook_update_n().
- *
  * Installs the landing page content type.
  */
 function webny_configuration_update_8014() {
