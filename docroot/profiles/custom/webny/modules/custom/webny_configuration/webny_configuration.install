@@ -147,16 +147,6 @@ function webny_configuration_update_8012() {
 /**
  * Implements hook_update_n().
  *
- * Installs the landing page content type.
- */
-function webny_configuration_update_8014() {
-  \Drupal::service('module_installer')
-      ->install(['webny_landing_page_content_type']);
-}
-
-/**
- * Implements hook_update_n().
- *
  * Adds Site Builder, Site Administrator, User Administrator and
  * Content Editor roles to existing sites.
  */
@@ -206,4 +196,30 @@ function webny_configuration_update_8018() {
   \Drupal::service('module_installer')
       ->install(['webny_document_content_type']);
 
+}
+
+/**
+ * Implements hook_update_n().
+ *
+ * Installs the media library and dependencies.
+ */
+function webny_configuration_update_8019() {
+  \Drupal::service('module_installer')
+      ->install(['media_entity']);
+  \Drupal::service('module_installer')
+      ->install(['entity_embed']);
+  \Drupal::service('module_installer')
+      ->install(['serialization']);
+  \Drupal::service('module_installer')
+      ->install(['rest']);
+  \Drupal::service('module_installer')
+      ->install(['media_entity_image']);
+  \Drupal::service('module_installer')
+      ->install(['media_entity_embeddable_video']);
+  \Drupal::service('module_installer')
+      ->install(['lightning_media_image']);
+  \Drupal::service('module_installer')
+      ->install(['lightning_media_video']);
+  \Drupal::service('module_installer')
+      ->install(['webny_media']);
 }
