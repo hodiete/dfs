@@ -160,7 +160,7 @@ Please see [views.md](views.md).
 - Fields
   - webny_content-type_field
   - Example: webny_news_date
-  - **Most fields should be unique the content type**
+  - **Most fields should be unique to the content type (_title and body being common expections_)**
 - Features
   - Machine name: webny_title_type
   - Example: webny_news_content-type
