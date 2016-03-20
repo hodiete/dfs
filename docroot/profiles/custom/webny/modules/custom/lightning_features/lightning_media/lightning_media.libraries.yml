@@ -1,0 +1,52 @@
+backbone.collectionView:
+  version: 1.0.0
+  js:
+    'libraries/backbone.collectionView/dist/backbone.collectionView.min.js':
+      minified: true
+  dependencies:
+    - core/backbone
+
+dropzone.js:
+  version: 4.2.0
+  js:
+    'libraries/dropzone/dist/min/dropzone.min.js':
+      minified: true
+  css:
+    component:
+      'libraries/dropzone/dist/min/dropzone.min.css':
+        minified: true
+
+es6-promise:
+  version: 3.0.2
+  js:
+    'libraries/es6-promise/dist/es6-promise.min.js':
+      minified: true
+
+jquery.appear:
+  version: 0.3.6
+  js:
+    'libraries/jquery.appear/jquery.appear.js': {}
+  dependencies:
+    - core/jquery
+
+media_library:
+  version: VERSION
+  js:
+    'js/MediaLibrary.js': {}
+    'js/LibraryConnector.js': {}
+    'js/models/Embed.js': {}
+    'js/views/EmbedView.js': {}
+    'js/views/LibraryView.js': {}
+    'js/views/SaveView.js': {}
+    'js/views/TabsView.js': {}
+    'js/views/UploadView.js': {}
+    'js/MediaCreator.js': {}
+  css:
+    component:
+      'css/library.css': {}
+  dependencies:
+    - core/jquery.ui.tabs
+    - lightning_media/backbone.collectionView
+    - lightning_media/dropzone.js
+    - lightning_media/es6-promise
+    - lightning_media/jquery.appear
