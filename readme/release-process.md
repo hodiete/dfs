@@ -6,6 +6,7 @@ This document is a work in progress.
 * [Branching strategies](#branching)
 * [Tagging](#tagging)
 * [Release Notes](#release-notes)
+* [Version Numbers](#version-numbers)
 * [Deploying tag and executing updates](#deploy-tag)
 * [Notifications](#notifications) (slack, hipchat, etc)
 
@@ -31,6 +32,14 @@ easily generated using the
 This script will automatically aggregate all of the descriptions from Pull
 Requests since a specified date. The generated tet aggregate can then be
 copied and pasted into release notes on GitHub.
+
+## <a name="version-numbers"></a>Version Numbers
+- Distribution
+  - Semantic versioning ala Drupal 8 (e.g. 8.0.0)
+  - Until the first site releases will be 0.0.n
+  - 1st site will launch with the distribution being 1.0.0
+  - When to increment major and minor digits (1st and 2nd) TBD
+  - Release number increments every sprint release (or other push)
 
 ## <a name="deploy-tag"></a>Deploying tag and executing updates
 

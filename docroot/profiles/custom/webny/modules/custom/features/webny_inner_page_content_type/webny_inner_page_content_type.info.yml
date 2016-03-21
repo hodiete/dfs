@@ -1,9 +1,19 @@
-name: 'Inner Page Content Type'
-description: 'Provide Page content type and related configuration. This content type is for basic/generic pages. '
+name: Page
+description: 'Provide Inner Page content type and related configuration. This content type is for basic/generic pages. '
 type: module
 core: 8.x
 dependencies:
+  - entity_reference_revisions
+  - field
+  - file
   - image
+  - menu_ui
   - node
-version: 8.x-1.0
+  - paragraphs
+  - path
+  - taxonomy
+  - text
+  - user
+  - webny_global_and_agency_taxonomies
+  - workbench_moderation
 package: WebNY
