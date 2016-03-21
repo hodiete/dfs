@@ -1,0 +1,26 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_webny_page_attachment
+    - node.type.webny_page
+  module:
+    - file
+id: node.webny_page.field_webny_page_attachment
+field_name: field_webny_page_attachment
+entity_type: node
+bundle: webny_page
+label: Attachment
+description: "Upload file to attach to page.\r\n<strong>Only PDF and .doc/.docx files allowed</strong>\r\n<strong>Maximum upload size: 32 MB</strong>"
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  file_directory: '[date:custom:Y]-[date:custom:m]'
+  file_extensions: 'txt doc docx'
+  max_filesize: '32 MB'
+  description_field: true
+  handler: 'default:file'
+  handler_settings: {  }
+field_type: file
