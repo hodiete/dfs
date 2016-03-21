@@ -2,15 +2,15 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_webny_news_global_keywords
-    - node.type.webny_news
+    - field.storage.node.field_webny_landing_global_key
+    - node.type.webny_landing_page
     - taxonomy.vocabulary.webny_global_keywords
-id: node.webny_news.field_webny_news_global_keywords
-field_name: field_webny_news_global_keywords
+id: node.webny_landing_page.field_webny_landing_global_key
+field_name: field_webny_landing_global_key
 entity_type: node
-bundle: webny_news
+bundle: webny_landing_page
 label: 'Global Keywords'
-description: 'Choose the keywords that best describe the content.  These keywords are determined at a state wide level for consistency.'
+description: 'Select global keywords for the page. Multiple selections allowed.'
 required: false
 translatable: false
 default_value: {  }
