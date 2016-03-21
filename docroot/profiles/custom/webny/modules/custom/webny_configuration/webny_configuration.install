@@ -256,9 +256,9 @@ function webny_configuration_update_8022() {
   \Drupal::service('module_installer')
       ->uninstall(['webny_inner_page_content_type']);
   \Drupal::service('module_installer')
-      ->uninstall(['webny_inner_page_content_type']);
+      ->install(['webny_inner_page_content_type']);
   \Drupal::service('module_installer')
       ->uninstall(['webny_news_content_type']);
   \Drupal::service('module_installer')
-      ->uninstall(['webny_news_content_type']);
+      ->install(['webny_news_content_type']);
 }
