@@ -1,5 +1,5 @@
 // Karma configuration
-// Generated on Thu Feb 04 2016 21:33:25 GMT-0500 (EST)
+// Generated on Wed Dec 09 2015 11:43:20 GMT-0500 (EST)
 
 module.exports = function(config) {
   config.set({
@@ -15,20 +15,23 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      'bower_components/jquery/dist/jquery.js',
-      'bower_components/underscore/underscore.js',
-      'bower_components/backbone/backbone.js',
-      'bower_components/dropzone/dist/dropzone.js',
-      'bower_components/es6-promise/es6-promise.js',
-      'node_modules/jasmine-ajax/lib/mock-ajax.js',
+      'node_modules/jquery/dist/jquery.js',
+      // Newer versions of Node install dependencies into node_modules, but older versions
+      // install dependencies into node_modules/DEPENDENT_PACKAGE/node_modules. So we need
+      // to account for both possibilities here, since Travis CI uses older versions of
+      // Node.
+      'node_modules/underscore/underscore.js',
+      'node_modules/backbone/node_modules/underscore/underscore.js',
+      'node_modules/backbone/backbone.js',
+      'node_modules/dropzone/dist/dropzone.js',
+      'node_modules/es6-promise/dist/es6-promise.js',
       'node_modules/sinon/pkg/sinon.js',
-      'bower_components/jquery-ui/ui/core.js',
-      'bower_components/jquery-ui/ui/widget.js',
-      'bower_components/jquery-ui/ui/tabs.js',
-      'LibraryConnector.js',
-      'models/*.js',
-      'views/*.js',
-      'tests/*.js'
+      'Drupal.js',
+      '../../js/Backend.js',
+      '../../js/EntityGrid.js',
+      '../../js/MediaLibrary.js',
+      '../../js/Uploader.js',
+      '*Spec.js'
     ],
 
 
@@ -76,7 +79,7 @@ module.exports = function(config) {
     singleRun: false,
 
     // Concurrency level
-    // how many browser should be started simultaneous
-    concurrency: Infinity,
+    // how many browser should be started simultanous
+    concurrency: Infinity
   })
 }
