@@ -1,23 +1,22 @@
-name: 'News Content Type'
-description: 'Standard News content type.'
+name: News
+description: 'Provide News content type and related configuration. This will create a new News content page. It is for News/Press releases.'
 type: module
 core: 8.x
 dependencies:
   - datetime
+  - entity_reference_revisions
   - field
   - file
   - image
   - menu_ui
   - node
+  - paragraphs
   - path
   - taxonomy
   - text
   - user
   - views
-  - webny_card_paragraph_type
   - webny_global_and_agency_taxonomies
-  - webny_news_content_type
   - webny_subject_heading_taxonomy
   - workbench_moderation
-version: 8.0.1
 package: WebNY

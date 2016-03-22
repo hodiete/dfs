@@ -147,11 +147,92 @@ function webny_configuration_update_8012() {
 /**
  * Implements hook_update_n().
  *
- * Installs the card paragraph type.
+ * Adds Site Builder, Site Administrator, User Administrator and
+ * Content Editor roles to existing sites.
  */
-function webny_configuration_update_8013() {
+function webny_configuration_update_8015() {
+  _webny_configuration_add_role('site_builder', 'Site Builder', 6);
+  _webny_configuration_add_role('site_admin', 'Site Administrator', 7);
+  _webny_configuration_add_role('user_admin2', 'User Administrator', 8);
+  _webny_configuration_add_role('content_author', 'Content Author', 9);
+}
+
+/**
+ * Support function to add a role.
+ */
+function _webny_configuration_add_role($id = "", $label = "", $weight = 0) {
+  $role = \Drupal\user\Entity\Role::create(array('id' => $id, 'label' => $label));
+  $role->setWeight($weight);
+  $role->setIsAdmin(FALSE);
+  $role->save();
+}
+
+/**
+ * Implements hook_update_n().
+ *
+ * Enable NYS Universal navigation custom module.
+ */
+function webny_configuration_update_8016() {
   \Drupal::service('module_installer')
-      ->install(['webny_card_paragraph_type']);
+      ->install(['webny_unav']);
+}
+
+/**
+ * Implements hook_update_n().
+ *
+ * Enables demo content custom module.
+ */
+function webny_configuration_update_8017() {
+  \Drupal::service('module_installer')
+      ->install(['webny_demo_content']);
+}
+
+/**
+ * Implements hook_update_n().
+ *
+ * Enable Document Content Type custom module.
+ */
+function webny_configuration_update_8018() {
+  \Drupal::service('module_installer')
+      ->install(['webny_document_content_type']);
+
+}
+
+/**
+ * Implements hook_update_n().
+ *
+ * Installs the media library and dependencies.
+ */
+function webny_configuration_update_8019() {
+  \Drupal::service('module_installer')
+      ->install(['media_entity']);
+  \Drupal::service('module_installer')
+      ->install(['entity_embed']);
+  \Drupal::service('module_installer')
+      ->install(['serialization']);
+  \Drupal::service('module_installer')
+      ->install(['rest']);
+  \Drupal::service('module_installer')
+      ->install(['media_entity_image']);
+  \Drupal::service('module_installer')
+      ->install(['media_entity_embeddable_video']);
+  \Drupal::service('module_installer')
+      ->install(['lightning_media_image']);
+  \Drupal::service('module_installer')
+      ->install(['lightning_media_video']);
+  \Drupal::service('module_installer')
+      ->install(['webny_media']);
+}
+
+/**
+ * Implements hook_update_n().
+ *
+ * Installs the paragraphs types.
+ */
+function webny_configuration_update_8020() {
+
+  \Drupal::service('module_installer')
+      ->install(['webny_paragraphs_types']);
 }
 
 /**
@@ -159,7 +240,25 @@ function webny_configuration_update_8013() {
  *
  * Installs the landing page content type.
  */
-function webny_configuration_update_8014() {
+function webny_configuration_update_8021() {
+
   \Drupal::service('module_installer')
       ->install(['webny_landing_page_content_type']);
+}
+
+/**
+ * Implements hook_update_n().
+ *
+ * Adds frame fields to news and page.
+ */
+function webny_configuration_update_8022() {
+
+  \Drupal::service('module_installer')
+      ->uninstall(['webny_inner_page_content_type']);
+  \Drupal::service('module_installer')
+      ->install(['webny_inner_page_content_type']);
+  \Drupal::service('module_installer')
+      ->uninstall(['webny_news_content_type']);
+  \Drupal::service('module_installer')
+      ->install(['webny_news_content_type']);
 }
