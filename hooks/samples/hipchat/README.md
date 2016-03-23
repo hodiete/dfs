@@ -1,9 +1,5 @@
 # HipChat Notification
 
-Author: Grant Gaudet
-
-### Purpose
-
 This cloud hook posts a notification to a HipChat room after a code deployment
 has been performed on Acquia Cloud.
 
