@@ -14,12 +14,13 @@ cache:
   - "$HOME/.npm"
   - "$HOME/.nvm"
   - "vendor"
-  - "docroot/themes/custom/webny_theme/node_modules"
-  - "docroot/themes/custom/webny_theme/bower_components"
+  - "docroot/profiles/custom/webny/themes/custom/webny_theme/node_modules"
+  - "docroot/profiles/custom/webny/themes/custom/webny_theme/bower_components"
 
 addons:
   ssh_known_hosts:
   - svn-15689.prod.hosting.acquia.com
+  - svn-43.enterprise-g1.hosting.acquia.com
 
 notifications:
   # Replace this with project slack token.
@@ -53,3 +54,5 @@ after_success:
   - scripts/deploy/travis-deploy.sh master master-build
   # Watch for successful build job on `develop` branch; deploy to `develop-build`.
   - scripts/deploy/travis-deploy.sh develop develop-build
+  # Watch for successful build job on `develop` branch; deploy to `acsf-build`.
+  - scripts/deploy/travis-deploy-acsf.sh acsf acsf-build
