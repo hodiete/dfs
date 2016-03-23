@@ -18,6 +18,7 @@
 - This release includes an update VM. Upgrade instructions are below.
 
 If you have not installed Ansible on your host machine (Applies in most cases and always if you are running Windows). Do the following:
+
 1. `vagrant halt`
 2. `vagrant destroy`
 3. Copy example.config.yml to config.yml
@@ -29,6 +30,7 @@ If you are on Linux or OSX and have installed ansible on your host machine:
 Check if you have ansible installed: `ansible --version`. If this command returned an error follow the instructions above.
 
 If you are running a version of ansible <2.0, do the following:
+
 1.`vagrant halt`
 2. `vagrant destroy`
 3. Copy example.config.yml to config.yml
