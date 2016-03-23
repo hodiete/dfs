@@ -60,5 +60,5 @@
 // Design components are reusable designs that can be applied using just the CSS
 // class names specified in the component.
 //
-// the import below is commented out because the build fails with the wildcard
-//@import "state/*";
+// the import below was a wildcard @import "state/*"; but it's explicit because the build fails w/wildcard
+@import "state/blocks";
