@@ -28,6 +28,7 @@ if ! command -v ansible >/dev/null; then
   if [[ ! -z ${YUM} ]]; then
     yum install -y git python python-devel
   elif [[ ! -z ${APT_GET} ]]; then
+    apt-get update
     apt-get install -y git python python-dev
   else
     echo "Neither yum nor apt-get are available."
@@ -38,14 +39,22 @@ if ! command -v ansible >/dev/null; then
   wget https://raw.githubusercontent.com/ActiveState/ez_setup/v0.9/ez_setup.py
   python ez_setup.py && rm -f ez_setup.py
   easy_install pip
+
   # Make sure setuptools are installed crrectly.
   pip install setuptools --no-use-wheel --upgrade
+
+  # Install GCC / required build tools.
+  if [[ ! -z $YUM ]]; then
+    yum install -y gcc
+  elif [[ ! -z $APT_GET ]]; then
+    apt-get install -y build-essential
+  fi
 
   echo "Installing required python modules."
   pip install paramiko pyyaml jinja2 markupsafe
 
   echo "Installing Ansible."
-  pip install ansible==1.9.4
+  pip install ansible
 fi
 
 # Install requirements.
