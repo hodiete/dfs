@@ -11,14 +11,17 @@
     <exclude name="**/vendor/**/*"/>
     <exclude name="**/lightning_features/**/*"/>
     <exclude name="**/default_content/**/*"/>
+    <exclude name="**/build/core/**"/>
   </patternset>
 
   <patternset id="files.frontend">
-    <include name="**/*.css"/>
     <include name="**/*.js"/>
+    <!-- Ignore CSS. SASS usage is expected. CSS should be compiled. -->
+    <exclude name="**/*.css"/>
     <exclude name="**/vendor/**/*"/>
     <exclude name="**/node_modules/**/*"/>
     <exclude name="**/bower_components/**/*"/>
+    <exclude name="**/dist/**/*"/>
     <exclude name="**/styleguide/**"/>
     <exclude name="**/css/**"/>
   </patternset>
@@ -27,14 +30,15 @@
     <patternset refid="files.php"/>
   </fileset>
 
-  <fileset dir="${docroot}/profiles/custom/webny/modules/custom" id="files.php.custom.modules">
+  <fileset dir="${docroot}/modules/custom" id="files.php.custom.modules">
     <patternset refid="files.php"/>
   </fileset>
 
-  <fileset dir="${docroot}/profiles/custom/webny/themes/custom" id="files.php.custom.themes">
+  <fileset dir="${docroot}/themes/custom" id="files.php.custom.themes">
     <patternset refid="files.php"/>
   </fileset>
 
+  <!-- @todo Add multisite subdirs. -->
   <fileset dir="${docroot}/sites/default/settings" id="files.php.custom.settings" expandsymboliclinks="true">
     <patternset refid="files.php"/>
   </fileset>
@@ -43,7 +47,7 @@
     <patternset refid="files.php"/>
   </fileset>
 
-  <fileset dir="${docroot}/profiles/custom/webny/themes/custom" id="files.frontend.custom.themes" expandsymboliclinks="true">
+  <fileset dir="${docroot}/themes/custom" id="files.frontend.custom.themes" expandsymboliclinks="true">
     <patternset refid="files.frontend"/>
   </fileset>
 </project>
