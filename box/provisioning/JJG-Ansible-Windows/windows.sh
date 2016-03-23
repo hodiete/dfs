@@ -45,7 +45,8 @@ if ! command -v ansible >/dev/null; then
   pip install paramiko pyyaml jinja2 markupsafe
 
   echo "Installing Ansible."
-  pip install ansible==1.9.4
+  i
+  pip install ansible
 fi
 
 # Install requirements.
