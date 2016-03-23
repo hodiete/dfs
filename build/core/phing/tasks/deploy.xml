@@ -50,7 +50,13 @@
   </target>
 
   <target name="deploy:artifact:build" description="Generates a deploy-ready build in deploy.dir."
-          depends="deploy:artifact:copy, deploy:artifact:composer:install, deploy:artifact:profile:make, deploy:artifact:sanitize, frontend:build">
+          depends="deploy:artifact:clean, deploy:artifact:copy, deploy:artifact:composer:install, deploy:artifact:profile:make, frontend:build, deploy:artifact:sanitize">
+  </target>
+
+  <target name="deploy:artifact:clean" description="Deletes the contents of the deploy dir.">
+    <delete dir="${deploy.dir}/config" failonerror="false" quiet="true" />
+    <delete dir="${deploy.dir}/docroot" failonerror="false" quiet="true" />
+    <delete dir="${deploy.dir}/hooks" failonerror="false" quiet="true" />
   </target>
 
   <target name="deploy:artifact:commit">
@@ -68,7 +74,7 @@
         <include name="composer.lock"/>
       </fileset>
     </copy>
-    <exec dir="${deploy.dir}" command="composer install --no-dev --no-interaction" passthru="true" logoutput="true" checkreturn="true"/>
+    <exec dir="${deploy.dir}" command="composer install --no-dev --prefer-dist --no-interaction" passthru="true" logoutput="true" checkreturn="true"/>
   </target>
 
   <target name="deploy:artifact:profile:make" description="Build a subsidiary makefile shipped with profile.">
@@ -77,13 +83,18 @@
       <then>
         <echo message="Building make file for ${project.profile.name}"/>
         <property name="profile.dir" value="${deploy.dir}/docroot/profiles/contrib/${project.profile.name}"/>
-        <exec dir="${repo.root}" command="drush make ${profile.dir}/drupal-org.make ${profile.dir} --no-core -y" logoutput="true" passthru="true"/>
+        <drush command="make" assume="yes" verbose="TRUE">
+          <param>"${profile.dir}/drupal-org.make"</param>
+          <param>"${profile.dir}"</param>
+          <option name="no-core"></option>
+        </drush>
       </then>
     </if>
   </target>
 
-  <target name="deploy:artifact:copy" description="Copy required files from /sites to /docroot/sites.">
+  <target name="deploy:artifact:copy" description="Copy required files from /docroot/sites to /deploy/docroot/sites.">
     <!-- Make sites/default writable so that we can copy files. -->
+    <!-- @todo Support multisite. -->
     <chmod file="${docroot}/sites/default" mode="0777" />
 
     <!-- Copy required files from docroot. -->
@@ -102,7 +113,6 @@
         <exclude name="themes/contrib/**" />
         <exclude name="profiles/contrib/**" />
         <exclude name="modules/contrib/**" />
-        <exclude name="profiles/custom/webny/modules/contrib/**" />
         <exclude name="**/node_modules/**"></exclude>
         <exclude name="**/bower_components/**"></exclude>
       </fileset>
@@ -122,6 +132,7 @@
     <copy file="${repo.root}/build/core/files/.gitignore" tofile="${deploy.dir}/docroot/.gitignore" overwrite="true"/>
 
     <!-- Set sites/default back to 755 permissions. -->
+    <!-- @todo Support multisite. -->
     <chmod file="${docroot}/sites/default" mode="0755" />
   </target>
 
@@ -136,12 +147,13 @@
 
   <target name="deploy:artifact:push-remote" description="Pushes to a git remote.">
     <exec command="echo ${deploy.remote} | openssl md5 | cut -d' ' -f 2" outputProperty="remoteName"/>
-
     <exec command="git push ${remoteName} ${deploy.branch}" dir="${deploy.dir}" logoutput="true" outputProperty="deploy.push.output"/>
     <exec command="export DEPLOY_UPTODATE=$(echo '${deploy.push.output}' | grep --quiet 'Everything up-to-date')"/>
   </target>
 
   <target name="deploy:artifact:sanitize" description="Removes sensitive files from the deploy docroot.">
+    <exec command="find . -type d | grep .git | xargs rm -rf" dir="${deploy.dir}/docroot"/>
+    <exec command="find . -type d | grep .git | xargs rm -rf" dir="${deploy.dir}/vendor"/>
     <delete>
       <fileset dir="${deploy.dir}/docroot">
         <include name="core/*.txt"/>
