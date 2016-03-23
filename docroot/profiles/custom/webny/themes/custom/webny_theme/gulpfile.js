@@ -90,7 +90,8 @@ gulp.task('default', ['build']);
 gulp.task('build', [
   'styles:production',
   'styleguide',
-  'administration'
+  'administration',
+  'business'
 ], function (cb) {
   // Run linting last, otherwise its output gets lost.
   runSequence(['lint:js'], cb);
@@ -145,6 +146,26 @@ gulp.task('styles:production', ['clean:css'], function () {
 // trying out agency specific stuff
 gulp.task('administration', ['clean:css'], function () {
   return gulp.src(options.theme.sass + 'themes/administration-theme/administration.scss')
+    .pipe(sourcemaps.init())
+    .pipe(sassglob())
+    .pipe(globbing({
+      extensions: ['.scss']
+    }))
+      .pipe(sass({
+        errLogToConsole: true,
+        outputStyle: 'expanded'
+      }))
+        .pipe(autoprefix({
+          browsers: ['last 2 versions'],
+          cascade: false
+        }))
+          .pipe(sourcemaps.write())
+          .pipe(gulp.dest(options.theme.css + '/themes/'));
+});
+
+// trying out agency specific stuff
+gulp.task('business', ['clean:css'], function () {
+  return gulp.src(options.theme.sass + 'themes/business-theme/business.scss')
     .pipe(sourcemaps.init())
     .pipe(sassglob())
     .pipe(globbing({
@@ -264,6 +285,12 @@ gulp.task('watch:css', ['administration'], function () {
   return gulp.watch([
     options.theme.sass + '**/*.scss'
   ], options.gulpWatchOptions, ['administration']);
+});
+
+gulp.task('watch:css', ['business'], function () {
+  return gulp.watch([
+    options.theme.sass + '**/*.scss'
+  ], options.gulpWatchOptions, ['business']);
 });
 
 gulp.task('watch:styleguide', ['styleguide'], function () {
