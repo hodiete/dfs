@@ -18,7 +18,7 @@ Pre-requisites to installation:
 1. Verify that correct local database credentials are set in 
   `local.settings.php`.
 1. Ensure that project dependencies have already been built via 
-  `./task.sh setup:build:all`
+  `./task.sh setup`
    
 To re-install Drupal, execute: `./task.sh setup:drupal:install`. Note that this
 will drop the existing database tables and install Drupal from scratch!
@@ -91,11 +91,10 @@ built during the creation of a production-ready build artifact.
 Bolt only natively supports the [Acquia PS Thunder](https://github.com/acquia-pso/thunder)
 base theme.
 
-To install Thunder's dependencies:
+To install WebNY Theme dependencies:
 
-1. See [Acquia PS Thunder](https://github.com/acquia-pso/thunder) for system requirements. 
 1. Execute `/.task frontend:install`.
 
-To build Thunder's assets, execute:
+To build WebNY Theme's assets, execute:
 
 `/.task frontend:build`.
