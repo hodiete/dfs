@@ -97,7 +97,7 @@ The Travis build runs on every PR. The developer responsible for the PR should b
 
 If everything looks good on github and the Travis build do the following:
 - Check out a local branch from develop
-- Pull the PR: git pull upstream pull/[#]/head`
+- Pull the PR: `git pull upstream pull/[#]/head`
 - Run a build locally: `./task.sh setup`
 - Bring up the Jira ticket associated with the PR and validate that each acceptance criteria has been met. 
 - Comment on Github if you have any feedback or suggestions. 
