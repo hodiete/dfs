@@ -91,7 +91,14 @@ gulp.task('build', [
   'styles:production',
   'styleguide',
   'administration',
-  'business'
+  'business', 
+  'education',
+  'health-human-serv',
+  'local-regional-authorities',
+  'public-safety',
+  'recreation-environment',
+  'statewide-elected-officials',
+  'transportation-utilities'
 ], function (cb) {
   // Run linting last, otherwise its output gets lost.
   runSequence(['lint:js'], cb);
@@ -166,6 +173,146 @@ gulp.task('administration', ['clean:css'], function () {
 // trying out agency specific stuff
 gulp.task('business', ['clean:css'], function () {
   return gulp.src(options.theme.sass + 'themes/business-theme/business.scss')
+    .pipe(sourcemaps.init())
+    .pipe(sassglob())
+    .pipe(globbing({
+      extensions: ['.scss']
+    }))
+      .pipe(sass({
+        errLogToConsole: true,
+        outputStyle: 'expanded'
+      }))
+        .pipe(autoprefix({
+          browsers: ['last 2 versions'],
+          cascade: false
+        }))
+          .pipe(sourcemaps.write())
+          .pipe(gulp.dest(options.theme.css + '/themes/'));
+});
+
+// trying out agency specific stuff
+gulp.task('education', ['clean:css'], function () {
+  return gulp.src(options.theme.sass + 'themes/education-theme/education.scss')
+    .pipe(sourcemaps.init())
+    .pipe(sassglob())
+    .pipe(globbing({
+      extensions: ['.scss']
+    }))
+      .pipe(sass({
+        errLogToConsole: true,
+        outputStyle: 'expanded'
+      }))
+        .pipe(autoprefix({
+          browsers: ['last 2 versions'],
+          cascade: false
+        }))
+          .pipe(sourcemaps.write())
+          .pipe(gulp.dest(options.theme.css + '/themes/'));
+});
+
+// trying out agency specific stuff
+gulp.task('health-human-serv', ['clean:css'], function () {
+  return gulp.src(options.theme.sass + 'themes/health-human-services-theme/health-human-services.scss')
+    .pipe(sourcemaps.init())
+    .pipe(sassglob())
+    .pipe(globbing({
+      extensions: ['.scss']
+    }))
+      .pipe(sass({
+        errLogToConsole: true,
+        outputStyle: 'expanded'
+      }))
+        .pipe(autoprefix({
+          browsers: ['last 2 versions'],
+          cascade: false
+        }))
+          .pipe(sourcemaps.write())
+          .pipe(gulp.dest(options.theme.css + '/themes/'));
+});
+
+// trying out agency specific stuff
+gulp.task('local-regional-authorities', ['clean:css'], function () {
+  return gulp.src(options.theme.sass + 'themes/local-regional-authorities-theme/local-regional-authorities.scss')
+    .pipe(sourcemaps.init())
+    .pipe(sassglob())
+    .pipe(globbing({
+      extensions: ['.scss']
+    }))
+      .pipe(sass({
+        errLogToConsole: true,
+        outputStyle: 'expanded'
+      }))
+        .pipe(autoprefix({
+          browsers: ['last 2 versions'],
+          cascade: false
+        }))
+          .pipe(sourcemaps.write())
+          .pipe(gulp.dest(options.theme.css + '/themes/'));
+});
+
+// trying out agency specific stuff
+gulp.task('public-safety', ['clean:css'], function () {
+  return gulp.src(options.theme.sass + 'themes/public-safety-theme/public-safety.scss')
+    .pipe(sourcemaps.init())
+    .pipe(sassglob())
+    .pipe(globbing({
+      extensions: ['.scss']
+    }))
+      .pipe(sass({
+        errLogToConsole: true,
+        outputStyle: 'expanded'
+      }))
+        .pipe(autoprefix({
+          browsers: ['last 2 versions'],
+          cascade: false
+        }))
+          .pipe(sourcemaps.write())
+          .pipe(gulp.dest(options.theme.css + '/themes/'));
+});
+
+// trying out agency specific stuff
+gulp.task('recreation-environment', ['clean:css'], function () {
+  return gulp.src(options.theme.sass + 'themes/recreation-environment-theme/recreation-environment.scss')
+    .pipe(sourcemaps.init())
+    .pipe(sassglob())
+    .pipe(globbing({
+      extensions: ['.scss']
+    }))
+      .pipe(sass({
+        errLogToConsole: true,
+        outputStyle: 'expanded'
+      }))
+        .pipe(autoprefix({
+          browsers: ['last 2 versions'],
+          cascade: false
+        }))
+          .pipe(sourcemaps.write())
+          .pipe(gulp.dest(options.theme.css + '/themes/'));
+});
+
+// trying out agency specific stuff
+gulp.task('statewide-elected-officials', ['clean:css'], function () {
+  return gulp.src(options.theme.sass + 'themes/statewide-elected-officials-theme/statewide-elected-officials.scss')
+    .pipe(sourcemaps.init())
+    .pipe(sassglob())
+    .pipe(globbing({
+      extensions: ['.scss']
+    }))
+      .pipe(sass({
+        errLogToConsole: true,
+        outputStyle: 'expanded'
+      }))
+        .pipe(autoprefix({
+          browsers: ['last 2 versions'],
+          cascade: false
+        }))
+          .pipe(sourcemaps.write())
+          .pipe(gulp.dest(options.theme.css + '/themes/'));
+});
+
+// trying out agency specific stuff
+gulp.task('transportation-utilities', ['clean:css'], function () {
+  return gulp.src(options.theme.sass + 'themes/transportation-utilities-theme/transportation-utilities.scss')
     .pipe(sourcemaps.init())
     .pipe(sassglob())
     .pipe(globbing({
@@ -291,6 +438,48 @@ gulp.task('watch:css', ['business'], function () {
   return gulp.watch([
     options.theme.sass + '**/*.scss'
   ], options.gulpWatchOptions, ['business']);
+});
+
+gulp.task('watch:css', ['education'], function () {
+  return gulp.watch([
+    options.theme.sass + '**/*.scss'
+  ], options.gulpWatchOptions, ['education']);
+});
+
+gulp.task('watch:css', ['health-human-serv'], function () {
+  return gulp.watch([
+    options.theme.sass + '**/*.scss'
+  ], options.gulpWatchOptions, ['health-human-serv']);
+});
+
+gulp.task('watch:css', ['local-regional-authorities'], function () {
+  return gulp.watch([
+    options.theme.sass + '**/*.scss'
+  ], options.gulpWatchOptions, ['local-regional-authorities']);
+});
+
+gulp.task('watch:css', ['public-safety'], function () {
+  return gulp.watch([
+    options.theme.sass + '**/*.scss'
+  ], options.gulpWatchOptions, ['public-safety']);
+});
+
+gulp.task('watch:css', ['recreation-environment'], function () {
+  return gulp.watch([
+    options.theme.sass + '**/*.scss'
+  ], options.gulpWatchOptions, ['recreation-environment']);
+});
+
+gulp.task('watch:css', ['statewide-elected-officials'], function () {
+  return gulp.watch([
+    options.theme.sass + '**/*.scss'
+  ], options.gulpWatchOptions, ['statewide-elected-officials']);
+});
+
+gulp.task('watch:css', ['transportation-utilities'], function () {
+  return gulp.watch([
+    options.theme.sass + '**/*.scss'
+  ], options.gulpWatchOptions, ['transportation-utilities']);
 });
 
 gulp.task('watch:styleguide', ['styleguide'], function () {
