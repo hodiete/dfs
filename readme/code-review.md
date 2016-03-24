@@ -7,8 +7,6 @@ code. This should occur on GitHub via a Pull Request. See [dev-workflow.md]
 (dev-workflow.md) for information on how to submit Pull Requests, and how they 
 fit into the development workflow.
 
-> "You just review the code right?" - Tim Holt
-
 No. Code review is both an art and a science. All code merged into a project
 should be reviewed. 
 
@@ -58,7 +56,6 @@ that a code reviewer should make and include a few high level examples for each:
        * [XSS](https://docs.acquia.com/articles/introduction-cross-site-scripting-xss-and-drupal)
        * [CSRF](https://www.drupal.org/node/178896)
     * Ensure that Drupal security best practices are being used:
-       * [D7](https://drupal.org/writing-secure-code)
        * [D8](https://www.drupal.org/node/2489544)
     * Verify that any contrib modules being added have stable releases and do 
     not have outstanding [security advisories](https://www.drupal.org/security/contrib).
@@ -92,3 +89,16 @@ that a code reviewer should make and include a few high level examples for each:
 
 * [A Quick Guide for Code Reviews](https://www.lullabot.com/articles/a-quick-guide-for-code-reviews)
 * [How to review Drupal code](http://colans.net/blog/how-review-drupal-code)
+
+## WebNY Code Review Process
+When you are assigned a code review, the first step is to review if there are any glaring errors or merge conflicts that can be addressed without pulling the code down locally. You may have to assist developers with resolving merge conflicts, especially if you introduced the conflicts by merging other PRs. The most common files this occurs in are webny_configuration.install and webny.info.yml, as these are files that are touched in nearly every PR by all developers. 
+
+The Travis build runs on every PR. The developer responsible for the PR should be looking at the results of their Travis build and address issues in additional commits to their PR, but you may have to assist reading the Travis logs and fixing the PR
+
+If everything looks good on github and the Travis build do the following:
+- Check out a local branch from develop
+- Pull the PR: git pull upstream pull/[#]/head`
+- Run a build locally: `./task.sh setup`
+- Bring up the Jira ticket associated with the PR and validate that each acceptance criteria has been met. 
+- Comment on Github if you have any feedback or suggestions. 
+- If the PR passes code review, merge it on github and transition the story in Jira to "Ready for QA." Check the ticket if there need to be QA steps and reassign the story back to the developer if so. Assign the story to the TA for QA.
