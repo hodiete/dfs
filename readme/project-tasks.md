@@ -83,13 +83,11 @@ To execute PHP codesniffer and PHP lint against the project codebase, run:
 
 ## <a name="frontend"></a>Build front end assets
 
-Ideally, you will be using a theme that uses SASS/SCSS, a styleguide, and other
+WebNY uses uses SASS/SCSS, a styleguide, and other
 tools that require compilation. Like dependencies, the compiled assets should
-not be directly committed to the project repository. Instead, they should be 
+not be directly committed to the project repository. Instead, they are
 built during the creation of a production-ready build artifact.
 
-Bolt only natively supports the [Acquia PS Thunder](https://github.com/acquia-pso/thunder)
-base theme.
 
 To install WebNY Theme dependencies:
 
