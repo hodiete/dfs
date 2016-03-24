@@ -74,18 +74,14 @@ You will need to edit this file as an administrator to save it. Hosts should fol
     
     Ensure you follow the command prompt instructions to run `source ~/.bashrc && nvm use --delete-prefix 0.12.7`
     
-5. Install frontend dependencies
-
-    ```
-    npm run install-webny_theme
-    ```
     
-6. Run `cd /var/www/webny; ./task.sh setup`. This will build dependencies via composer, install githooks, and install drupal locally.
+5. Run `cd /var/www/webny; ./task.sh setup`. This will build dependencies via composer, install githooks, and install drupal locally. It will also install frontend tools and run a frontend build.
 Run `task.sh -l` for a list of available phing tasks. 
 
-7. To run a build of the theme, run: `cd docroot/profiles/custom/webny/themes/custom/webny_theme; npm run build`
+6. To run a build of the theme, run: `cd docroot/profiles/custom/webny/themes/custom/webny_theme; npm run build`
+
+7. If you go to  http://webny.dev you should see a Drupal install screen. 
 
 
-8. If you go to  http://webny.dev you should see a Drupal install screen. 
 
 *Note that these instructions will change once there is a database of record in ACSF.*
