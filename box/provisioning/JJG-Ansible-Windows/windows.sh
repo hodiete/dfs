@@ -54,10 +54,6 @@ if ! command -v ansible >/dev/null; then
   pip install paramiko pyyaml jinja2 markupsafe
 
   echo "Installing Ansible."
-<<<<<<< HEAD
-  i
-=======
->>>>>>> 5b2c43bdaf3c8bc5b950f9a45d720bdf4a436345
   pip install ansible
 fi
 
