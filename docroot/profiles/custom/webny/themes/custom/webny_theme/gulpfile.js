@@ -150,7 +150,7 @@ gulp.task('styles:production', ['clean:css'], function () {
           .pipe(gulp.dest(options.theme.css));
 });
 
-// trying out agency specific stuff
+// agency - grouping specific style
 gulp.task('administration', ['clean:css'], function () {
   return gulp.src(options.theme.sass + 'themes/administration-theme/administration.scss')
     .pipe(sourcemaps.init())
@@ -170,7 +170,7 @@ gulp.task('administration', ['clean:css'], function () {
           .pipe(gulp.dest(options.theme.css + '/themes/'));
 });
 
-// trying out agency specific stuff
+// agency - grouping specific style
 gulp.task('business', ['clean:css'], function () {
   return gulp.src(options.theme.sass + 'themes/business-theme/business.scss')
     .pipe(sourcemaps.init())
@@ -190,7 +190,7 @@ gulp.task('business', ['clean:css'], function () {
           .pipe(gulp.dest(options.theme.css + '/themes/'));
 });
 
-// trying out agency specific stuff
+// agency - grouping specific style
 gulp.task('education', ['clean:css'], function () {
   return gulp.src(options.theme.sass + 'themes/education-theme/education.scss')
     .pipe(sourcemaps.init())
@@ -210,7 +210,7 @@ gulp.task('education', ['clean:css'], function () {
           .pipe(gulp.dest(options.theme.css + '/themes/'));
 });
 
-// trying out agency specific stuff
+// agency - grouping specific style
 gulp.task('health-human-serv', ['clean:css'], function () {
   return gulp.src(options.theme.sass + 'themes/health-human-services-theme/health-human-services.scss')
     .pipe(sourcemaps.init())
@@ -230,7 +230,7 @@ gulp.task('health-human-serv', ['clean:css'], function () {
           .pipe(gulp.dest(options.theme.css + '/themes/'));
 });
 
-// trying out agency specific stuff
+// agency - grouping specific style
 gulp.task('local-regional-authorities', ['clean:css'], function () {
   return gulp.src(options.theme.sass + 'themes/local-regional-authorities-theme/local-regional-authorities.scss')
     .pipe(sourcemaps.init())
@@ -250,7 +250,7 @@ gulp.task('local-regional-authorities', ['clean:css'], function () {
           .pipe(gulp.dest(options.theme.css + '/themes/'));
 });
 
-// trying out agency specific stuff
+// agency - grouping specific style
 gulp.task('public-safety', ['clean:css'], function () {
   return gulp.src(options.theme.sass + 'themes/public-safety-theme/public-safety.scss')
     .pipe(sourcemaps.init())
@@ -270,7 +270,7 @@ gulp.task('public-safety', ['clean:css'], function () {
           .pipe(gulp.dest(options.theme.css + '/themes/'));
 });
 
-// trying out agency specific stuff
+// agency - grouping specific style
 gulp.task('recreation-environment', ['clean:css'], function () {
   return gulp.src(options.theme.sass + 'themes/recreation-environment-theme/recreation-environment.scss')
     .pipe(sourcemaps.init())
@@ -290,7 +290,7 @@ gulp.task('recreation-environment', ['clean:css'], function () {
           .pipe(gulp.dest(options.theme.css + '/themes/'));
 });
 
-// trying out agency specific stuff
+// agency - grouping specific style
 gulp.task('statewide-elected-officials', ['clean:css'], function () {
   return gulp.src(options.theme.sass + 'themes/statewide-elected-officials-theme/statewide-elected-officials.scss')
     .pipe(sourcemaps.init())
@@ -310,7 +310,7 @@ gulp.task('statewide-elected-officials', ['clean:css'], function () {
           .pipe(gulp.dest(options.theme.css + '/themes/'));
 });
 
-// trying out agency specific stuff
+// agency - grouping specific style
 gulp.task('transportation-utilities', ['clean:css'], function () {
   return gulp.src(options.theme.sass + 'themes/transportation-utilities-theme/transportation-utilities.scss')
     .pipe(sourcemaps.init())
