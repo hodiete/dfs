@@ -262,3 +262,14 @@ function webny_configuration_update_8022() {
   \Drupal::service('module_installer')
       ->install(['webny_news_content_type']);
 }
+
+/**
+ * Implements hook_update_n().
+ *
+ * Enables admin menu feature.
+ */
+function webny_configuration_update_8023() {
+
+  \Drupal::service('module_installer')
+      ->install(['webny_administration_menu']);
+}
