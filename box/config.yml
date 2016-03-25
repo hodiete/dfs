@@ -7,7 +7,7 @@ vagrant_user: vagrant
 # If you need to run multiple instances of Drupal VM, set a unique hostname,
 # machine name, and IP address for each instance.
 vagrant_hostname: webny.dev
-vagrant_machine_name: WebNY
+vagrant_machine_name: webny
 vagrant_ip: 192.168.88.90
 
 # Allow Drupal VM to be accessed via a public network interface on your host.
@@ -53,7 +53,7 @@ drupal_enable_modules: [ 'devel' ]
 drupal_account_name: admin
 drupal_account_pass: admin
 drupal_mysql_user: root
-drupal_mysql_password:
+drupal_mysql_password: 
 drupal_mysql_database: drupal
 
 # Additional arguments or options to pass to `drush site-install`.
@@ -178,7 +178,7 @@ firewall_allowed_tcp_ports:
 firewall_log_dropped_packets: false
 
 # PHP Configuration. Currently-supported versions: 5.5, 5.6, 7.0 (experimental).
-php_version: "5.5"
+php_version: "5.6"
 php_memory_limit: "192M"
 php_display_errors: "On"
 php_display_startup_errors: "On"
