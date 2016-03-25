@@ -55,4 +55,4 @@ after_success:
   # Watch for successful build job on `develop` branch; deploy to `develop-build`.
   - scripts/deploy/travis-deploy.sh develop develop-build
   # Watch for successful build job on `develop` branch; deploy to `acsf-build`.
-  - scripts/deploy/travis-deploy-acsf.sh acsf acsf-build-test
+  - scripts/deploy/travis-deploy-acsf.sh acsf acsf-build

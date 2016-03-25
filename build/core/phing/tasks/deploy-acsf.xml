@@ -21,7 +21,7 @@
     <!-- Add remotes and fetch upstream refs. Checkout local branch tracking
      tracking upstream branch, if it exists. Otherwise create new branch
      locally. -->
-    <phingcall target="deploy:artifact:add-remotes"/>
+    <phingcall target="deploy-acsf:artifact:add-remotes"/>
 
     <!-- Build artifact and commit locally. -->
     <phingcall target="deploy-acsf:artifact:build"/>
@@ -45,15 +45,15 @@
     <exec command="git merge ${remoteName}/${deploy.branch}" dir="${deploy.dir}" logoutput="true" passthru="true"/>
   </target>
 
-  <target name="deploy:artifact:add-remotes" description="Add remotes and fetch upstream refs.">
-    <foreach list="${git.remotes}" param="deploy.remote" target="deploy:artifact:add-remote"/>
+  <target name="deploy-acsf:artifact:add-remotes" description="Add remotes and fetch upstream refs.">
+    <foreach list="${git.remotes}" param="deploy.remote" target="deploy-acsf:artifact:add-remote"/>
   </target>
 
   <target name="deploy-acsf:artifact:build" description="Generates a deploy-ready build in deploy.dir."
-          depends="deploy:artifact:clean, deploy:artifact:copy, deploy:artifact:composer:install, deploy:artifact:profile:make, frontend:build, deploy:artifact:sanitize">
+          depends="deploy-acsf:artifact:clean, deploy-acsf:artifact:copy, deploy-acsf:artifact:composer:install, deploy-acsf:artifact:profile:make, frontend:build, deploy-acsf:artifact:sanitize, deploy-acsf:acsf">
   </target>
 
-  <target name="deploy:artifact:clean" description="Deletes the contents of the deploy dir.">
+  <target name="deploy-acsf:artifact:clean" description="Deletes the contents of the deploy dir.">
     <delete dir="${deploy.dir}/config" failonerror="false" quiet="true" />
     <delete dir="${deploy.dir}/docroot" failonerror="false" quiet="true" />
     <delete dir="${deploy.dir}/hooks" failonerror="false" quiet="true" />
@@ -122,13 +122,7 @@
       <fileset dir="${repo.root}/hooks"/>
     </copy>
 
-    <!-- Ensure correct permissions for successful acsf-init-->
-    <chmod file="${deploy.dir}/docroot/profiles/custom/webny/modules/contrib/acsf/scripts/acsf_ssh" mode="0775" />
-    <chmod file="${deploy.dir}/hooks/common/pre-web-activate/000-acquia-deployment.php" mode="0775" />
-    <chmod file="${deploy.dir}/hooks/common/post-db-copy/000-acquia_required_scrub.php" />
 
-    <!-- Run ACSF-Init -->
-    <exec dir="${deploy.dir}" command="../vendor/bin/drush --include=docroot/profiles/custom/webny/modules/contrib/acsf acsf-init" logoutput="true" passthru="true"/>
 
     <!-- Copy configuration. -->
     <copy todir="${deploy.dir}/config" overwrite="true">
@@ -155,6 +149,13 @@
     <exec command="echo ${deploy.remote} | openssl md5 | cut -d' ' -f 2" outputProperty="remoteName"/>
     <exec command="git push ${remoteName} ${deploy.branch}" dir="${deploy.dir}" logoutput="true" outputProperty="deploy.push.output"/>
     <exec command="export DEPLOY_UPTODATE=$(echo '${deploy.push.output}' | grep --quiet 'Everything up-to-date')"/>
+  </target>
+
+  <target name="deploy-acsf:acsf" description="Set up custom ACSF distro">
+    <chmod file="${deploy.dir}/docroot/profiles/custom/webny/modules/contrib/acsf/scripts/acsf_ssh" mode="0775" />
+    <chmod file="${deploy.dir}/hooks/common/pre-web-activate/000-acquia-deployment.php" mode="0775" />
+    <chmod file="${deploy.dir}/hooks/common/post-db-copy/000-acquia_required_scrub.php" mode="0775" />
+    <exec dir="${deploy.dir}/docroot" command="drush --include=profiles/custom/webny/modules/contrib/acsf acsf-init -y" logoutput="true" passthru="true"/>
   </target>
 
   <target name="deploy-acsf:artifact:sanitize" description="Removes sensitive files from the deploy docroot.">
