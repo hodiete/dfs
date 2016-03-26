@@ -152,10 +152,11 @@
   </target>
 
   <target name="deploy-acsf:acsf" description="Set up custom ACSF distro">
-    <chmod file="${deploy.dir}/docroot/profiles/custom/webny/modules/contrib/acsf/scripts/acsf_ssh" mode="0775" />
+    <move file="${deploy.dir}/docroot/profiles/custom/webny/modules/contrib/acsf" tofile="${deploy.dir}/docroot/modules/contrib" overwrite="true"/>
+    <chmod file="${deploy.dir}/docroot/modules/contrib/acsf/scripts/acsf_ssh" mode="0775" />
     <chmod file="${deploy.dir}/hooks/common/pre-web-activate/000-acquia-deployment.php" mode="0775" />
     <chmod file="${deploy.dir}/hooks/common/post-db-copy/000-acquia_required_scrub.php" mode="0775" />
-    <exec dir="${deploy.dir}/docroot" command="drush --include=profiles/custom/webny/modules/contrib/acsf acsf-init -y" logoutput="true" passthru="true"/>
+    <exec dir="${deploy.dir}/docroot" command="drush --include=docroot/modules/contrib/acsf acsf-init -y" logoutput="true" passthru="true"/>
   </target>
 
   <target name="deploy-acsf:artifact:sanitize" description="Removes sensitive files from the deploy docroot.">
