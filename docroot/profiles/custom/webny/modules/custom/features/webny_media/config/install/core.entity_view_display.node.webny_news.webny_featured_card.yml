@@ -2,7 +2,7 @@ langcode: en
 status: true
 dependencies:
   config:
-    - core.entity_view_mode.node.teaser
+    - core.entity_view_mode.node.webny_featured_card
     - field.field.node.webny_news.body
     - field.field.node.webny_news.field_webny_news_agency_keywords
     - field.field.node.webny_news.field_webny_news_attachment
@@ -19,23 +19,19 @@ dependencies:
   module:
     - text
     - user
-id: node.webny_news.teaser
+id: node.webny_news.webny_featured_card
 targetEntityType: node
 bundle: webny_news
-mode: teaser
+mode: webny_featured_card
 content:
-  body:
+  field_webny_news_teaser:
+    weight: 0
     label: hidden
-    type: text_summary_or_trimmed
-    weight: 101
-    settings:
-      trim_length: 600
+    settings: {  }
     third_party_settings: {  }
-  links:
-    weight: 100
-  workbench_moderation_control:
-    weight: -20
+    type: text_default
 hidden:
+  body: true
   field_webny_news_agency_keywords: true
   field_webny_news_attachment: true
   field_webny_news_contact_info: true
@@ -46,4 +42,5 @@ hidden:
   field_webny_news_paragraph: true
   field_webny_news_sub_title: true
   field_webny_news_subject_heading: true
-  field_webny_news_teaser: true
+  links: true
+  workbench_moderation_control: true
