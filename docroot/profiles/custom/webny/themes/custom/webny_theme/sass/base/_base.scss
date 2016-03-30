@@ -29,8 +29,18 @@ body .mq--t {
 
 .agency-name {
   font-family: $agency-name-font;
-  color:$white;
   font-size:200%;
+  background: $color-primary;
+  line-height: 150%;
+  a:link,
+  a:hover,
+  a:active,
+  a:focus,
+  a:visited, {
+     color:$white;
+     text-decoration: none;
+     padding: 0 0 0 30px;
+  }
 }
 
 h1,

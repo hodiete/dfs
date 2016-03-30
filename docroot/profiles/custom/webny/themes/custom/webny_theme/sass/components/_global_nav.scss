@@ -9,7 +9,7 @@
 
 .nys-global-header {
   background-color: $color-primary;
-  height:90px; /* yucky - don't know how to get around background color issue */
+  max-height:90px; /* yucky - don't know how to get around background color issue */
   margin:0;
   padding:0 0 0 30px;
   font-size: 16px;
@@ -46,7 +46,7 @@
 
 .nys-global-header a:link {
   display: table-cell;
-  padding:.5rem 1rem .5rem 0;
+  padding:.5rem 1rem 0 0;
   text-decoration:none;
   color:$white;
 }
