@@ -34,7 +34,7 @@ options.styleGuide = {
   destination: options.rootPath.styleGuide,
   css: [
     path.relative(options.rootPath.styleGuide, options.theme.css + 'styles.css'),
-    path.relative(options.rootPath.styleGuide, options.theme.css + 'themes/administration.css'),
+    //path.relative(options.rootPath.styleGuide, options.theme.css + 'themes/administration.css'),
     path.relative(options.rootPath.styleGuide, options.theme.css + 'style-guide/kss-only.css')
   ],
   js: [],
