@@ -1,44 +1,49 @@
 {
     "_links": {
         "self": {
-            "href": "http:\/\/127.0.0.1:8080\/node\/15?_format=hal_json"
+            "href": "http:\/\/127.0.0.1:8080\/node\/18?_format=hal_json"
         },
         "type": {
-            "href": "http:\/\/drupal.org\/rest\/type\/node\/webny_page"
+            "href": "http:\/\/drupal.org\/rest\/type\/node\/webny_document"
         },
-        "http:\/\/drupal.org\/rest\/relation\/node\/webny_page\/uid": [
+        "http:\/\/drupal.org\/rest\/relation\/node\/webny_document\/uid": [
             {
                 "href": "http:\/\/127.0.0.1:8080\/user\/0?_format=hal_json",
                 "lang": "en"
             }
         ],
-        "http:\/\/drupal.org\/rest\/relation\/node\/webny_page\/revision_uid": [
+        "http:\/\/drupal.org\/rest\/relation\/node\/webny_document\/revision_uid": [
             {
-                "href": "http:\/\/127.0.0.1:8080\/user\/1?_format=hal_json"
+                "href": "http:\/\/127.0.0.1:8080\/user\/0?_format=hal_json"
             }
         ],
-        "http:\/\/drupal.org\/rest\/relation\/node\/webny_page\/field_webny_page_agency_keywords": [
+        "http:\/\/drupal.org\/rest\/relation\/node\/webny_document\/field_webny_document_cateogry": [
             {
-                "href": "http:\/\/127.0.0.1:8080\/taxonomy\/term\/2?_format=hal_json"
+                "href": "http:\/\/127.0.0.1:8080\/taxonomy\/term\/1?_format=hal_json"
             }
         ],
-        "http:\/\/drupal.org\/rest\/relation\/node\/webny_page\/field_webny_page_global_keywords": [
+        "http:\/\/drupal.org\/rest\/relation\/node\/webny_document\/field_webny_document_file_upload": [
+            {
+                "href": "http:\/\/127.0.0.1:8080\/sites\/default\/files\/2016-03\/03.03.16.rel_.GOVERNORSCHEDULE_Korean_0.pdf"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/webny_document\/field_webny_doc_global_keyword": [
             {
                 "href": "http:\/\/127.0.0.1:8080\/taxonomy\/term\/10?_format=hal_json"
             },
             {
-                "href": "http:\/\/127.0.0.1:8080\/taxonomy\/term\/32?_format=hal_json"
+                "href": "http:\/\/127.0.0.1:8080\/taxonomy\/term\/34?_format=hal_json"
             }
         ]
     },
     "uuid": [
         {
-            "value": "1b42f5d2-2daa-4df8-af59-8919d029458f"
+            "value": "2d606cc6-26ea-42e9-9109-9a5c4e2497bb"
         }
     ],
     "type": [
         {
-            "target_id": "webny_page"
+            "target_id": "webny_document"
         }
     ],
     "langcode": [
@@ -49,12 +54,12 @@
     ],
     "title": [
         {
-            "value": "Corcraft Products",
+            "value": "Governor's Schedule 3.3.16 - Korean",
             "lang": "en"
         }
     ],
     "_embedded": {
-        "http:\/\/drupal.org\/rest\/relation\/node\/webny_page\/uid": [
+        "http:\/\/drupal.org\/rest\/relation\/node\/webny_document\/uid": [
             {
                 "_links": {
                     "self": {
@@ -72,11 +77,11 @@
                 "lang": "en"
             }
         ],
-        "http:\/\/drupal.org\/rest\/relation\/node\/webny_page\/revision_uid": [
+        "http:\/\/drupal.org\/rest\/relation\/node\/webny_document\/revision_uid": [
             {
                 "_links": {
                     "self": {
-                        "href": "http:\/\/127.0.0.1:8080\/user\/1?_format=hal_json"
+                        "href": "http:\/\/127.0.0.1:8080\/user\/0?_format=hal_json"
                     },
                     "type": {
                         "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
@@ -84,29 +89,51 @@
                 },
                 "uuid": [
                     {
-                        "value": "f569fafb-033a-4dac-ac20-3250c0b13f5a"
+                        "value": "447e8a87-3330-4ff6-8f18-249f61bf8cc3"
                     }
                 ]
             }
         ],
-        "http:\/\/drupal.org\/rest\/relation\/node\/webny_page\/field_webny_page_agency_keywords": [
+        "http:\/\/drupal.org\/rest\/relation\/node\/webny_document\/field_webny_document_cateogry": [
             {
                 "_links": {
                     "self": {
-                        "href": "http:\/\/127.0.0.1:8080\/taxonomy\/term\/2?_format=hal_json"
+                        "href": "http:\/\/127.0.0.1:8080\/taxonomy\/term\/1?_format=hal_json"
                     },
                     "type": {
-                        "href": "http:\/\/drupal.org\/rest\/type\/taxonomy_term\/webny_agency_keywords"
+                        "href": "http:\/\/drupal.org\/rest\/type\/taxonomy_term\/webny_document_category"
                     }
                 },
                 "uuid": [
                     {
-                        "value": "672e4cdc-6597-4d78-b407-7f9023001154"
+                        "value": "839108df-5a89-4094-a400-ba6eea5e4a42"
                     }
                 ]
             }
         ],
-        "http:\/\/drupal.org\/rest\/relation\/node\/webny_page\/field_webny_page_global_keywords": [
+        "http:\/\/drupal.org\/rest\/relation\/node\/webny_document\/field_webny_document_file_upload": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/127.0.0.1:8080\/sites\/default\/files\/2016-03\/03.03.16.rel_.GOVERNORSCHEDULE_Korean_0.pdf"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/file\/file"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "8d8be8ca-48ce-4823-be49-730d45c44366"
+                    }
+                ],
+                "uri": [
+                    {
+                        "value": "http:\/\/127.0.0.1:8080\/sites\/default\/files\/2016-03\/03.03.16.rel_.GOVERNORSCHEDULE_Korean_0.pdf"
+                    }
+                ]
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/webny_document\/field_webny_doc_global_keyword": [
             {
                 "_links": {
                     "self": {
@@ -125,7 +152,7 @@
             {
                 "_links": {
                     "self": {
-                        "href": "http:\/\/127.0.0.1:8080\/taxonomy\/term\/32?_format=hal_json"
+                        "href": "http:\/\/127.0.0.1:8080\/taxonomy\/term\/34?_format=hal_json"
                     },
                     "type": {
                         "href": "http:\/\/drupal.org\/rest\/type\/taxonomy_term\/webny_global_keywords"
@@ -133,7 +160,7 @@
                 },
                 "uuid": [
                     {
-                        "value": "e84ef848-ebea-4cff-a73d-612ef7c8719c"
+                        "value": "a41ca29c-9440-4da2-b400-c9142d6d609b"
                     }
                 ]
             }
@@ -147,13 +174,13 @@
     ],
     "created": [
         {
-            "value": "1458060318",
+            "value": "1459360111",
             "lang": "en"
         }
     ],
     "changed": [
         {
-            "value": "1459448728",
+            "value": "1459449590",
             "lang": "en"
         }
     ],
@@ -171,7 +198,7 @@
     ],
     "revision_timestamp": [
         {
-            "value": "1459448728"
+            "value": "1459360197"
         }
     ],
     "revision_translation_affected": [
@@ -186,30 +213,33 @@
             "lang": "en"
         }
     ],
-    "moderation_state": [
-        {
-            "target_id": "published",
-            "lang": "en"
-        }
-    ],
     "body": [
         {
-            "value": "<p>To employ inmates in substantive jobs that help teach a good work ethic and valuable work skills, to help offset the cost of incarceration, to help reduce disruption in the prison environment and to meet expectations of New York State\u2019s citizens.<\/p>\r\n",
+            "value": "<p>Governor Cuomo's Public Schedule for March 3, 2016<\/p>\r\n",
             "format": "basic_html",
             "summary": "",
             "lang": "en"
         }
     ],
-    "field_webny_page_description": [
+    "field_webny_document_date": [
         {
-            "value": "<p>Division of Correctional Industries uses manufacturing as a component of DOCCS overall reentry program, which is designed to teach inmates work ethic and skills.&nbsp;<\/p>\r\n",
+            "value": "2016-03-03"
+        }
+    ],
+    "field_webny_document_language": [
+        {
+            "value": "korean"
+        }
+    ],
+    "field_webny_document_subtitle": [
+        {
+            "value": "Korean",
             "format": "basic_html"
         }
     ],
-    "field_webny_page_sub_title": [
+    "field_webny_doc_last_updated": [
         {
-            "value": "Department of Correctional Services, Division of Industries",
-            "format": "basic_html"
+            "value": "2016-03-03"
         }
     ]
 }
