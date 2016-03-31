@@ -273,3 +273,14 @@ function webny_configuration_update_8023() {
   \Drupal::service('module_installer')
       ->install(['webny_demo_content_view']);
 }
+
+/**
+ * Implements hook_update_n().
+ *
+ * Installs global nav feature.
+ */
+function webny_configuration_update_8024() {
+
+  \Drupal::service('module_installer')
+      ->install(['webny_global_navigation']);
+}
