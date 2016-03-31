@@ -9,11 +9,12 @@
 
 .nys-global-header {
   background-color: $color-primary;
-  max-height:90px; /* yucky - don't know how to get around background color issue */
+  height:44px; /* yucky - don't know how to get around background color issue */
   margin:0;
   padding:0 0 0 30px;
   font-size: 16px;
   position: relative;
+  z-index: 5;
 }
 
 .nys-global-header ul {
@@ -22,6 +23,7 @@
   list-style-type: none;
   display: flex;
   flex-direction: row;
+  font-weight: bold;
 }
 
 .nys-global-header li {
@@ -46,9 +48,10 @@
 
 .nys-global-header a:link {
   display: table-cell;
-  padding:.5rem 1rem 0 0;
+  padding:.5rem 1rem 0 1rem;
   text-decoration:none;
   color:$white;
+
 }
 .nys-global-header a:hover,
 .nys-global-header a:active, 
