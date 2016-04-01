@@ -10,6 +10,17 @@
 footer .agency-name {
   color:$black;
   background: $color-secondary;
+  a:link,
+  a:link:hover,
+  a:hover,
+  a:active,
+  a:focus,
+  a:visited,
+  a:visited:hover {
+    text-decoration: none;
+    color:$black;
+    padding:0;
+  }
 }
 
 .nys-global-footer {
@@ -17,7 +28,7 @@ footer .agency-name {
   //height:44px; 
   margin:0;
   padding:0 0 0 30px;
-  font-size: 16px;
+  //font-size: 14px;
   position: relative;
   z-index: 5;
 }
@@ -29,11 +40,18 @@ footer .agency-name {
   display: flex;
   flex-direction: row;
   font-weight: bold;
+  font-size: 14px;
 }
 
-.nys-global-footer ul > li:first-child {
-      text-decoration: underline;
-    }
+.nys-global-footer nav>ul>li>a:first-child {
+      //text-decoration: underline;
+      border-bottom: 1px solid $black;
+}
+
+.social-media nav>ul>li>a:first-child {
+  border-bottom: none;
+}
+
 
 .nys-global-footer ul ul {
   display: flex;  
@@ -45,9 +63,40 @@ footer .agency-name {
   display: flex;
   flex-direction: column;
   /*flex:0 1 15%;*/
-  flex-basis: 15%;
+  flex-basis: 40%;
+  //flex-grow: 1;
+  flex-wrap:wrap;
 }
 
+
+
+.social-media h2 {
+  text-align: center;
+  font-size: $base-font-size;
+  color:$black;
+  text-transform: uppercase;
+}
+
+.social-media h2:before,
+.social-media h2:after {
+    background-color: #000;
+    content: '';
+    display: inline-block;
+    height: 1px;
+    position: relative;
+    vertical-align: middle;
+    width: 40%;
+    top: -1px;
+}
+
+.social-media h2:before {
+    right: 1.5em;
+    margin-left: -50%;
+}
+.social-media h2:after {
+    left: 1.5em;
+    margin-right: -50%;
+}
 
 /* .nys-global-header li:hover > ul {
   display:flex;
@@ -72,4 +121,23 @@ footer .agency-name {
   color:$black;
   text-decoration:underline;
 }
+
+.nys-global-footer {
+  @include breakpoint($min-tablet) {
+    li {
+      flex-basis: 15%;
+      flex-wrap: no-wrap;
+      flex-grow: 1;
+    }
+  }
+}
+
+.social-media {
+  @include breakpoint($min-tablet) {
+    ul li {
+      align-items: center;
+    }
+  }
+}
+
 
