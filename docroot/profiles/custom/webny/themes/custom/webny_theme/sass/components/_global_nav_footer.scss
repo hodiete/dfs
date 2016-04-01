@@ -10,6 +10,7 @@
 footer .agency-name {
   color:$black;
   background: $color-secondary;
+  padding:30px 10px 0 30px;
   a:link,
   a:link:hover,
   a:hover,
@@ -27,10 +28,14 @@ footer .agency-name {
   background-color: $color-secondary;
   //height:44px; 
   margin:0;
-  padding:0 0 0 30px;
+  //padding:0 0 0 30px;
   //font-size: 14px;
   position: relative;
   z-index: 5;
+}
+
+.nys-global-footer nav {
+  padding: 10px 0 15px 30px;
 }
 
 .nys-global-footer ul {
@@ -44,14 +49,14 @@ footer .agency-name {
   font-size: 14px;
 }
 
-.nys-global-footer nav>ul>li>a:first-child {
+.footer-menu>ul>li>a:first-child {
       //text-decoration: underline;
       border-bottom: 1px solid $black;
 }
 
-.social-media nav>ul>li>a:first-child {
+/*.social-media nav>ul>li>a:first-child {
   border-bottom: none;
-}
+}*/
 
 
 .nys-global-footer ul ul {
@@ -74,44 +79,40 @@ footer .agency-name {
 
 .social-media h2 {
   text-align: center;
-  font-size: $base-font-size;
+  font-size: $base-font-size - 2px;
   color:$black;
   text-transform: uppercase;
 }
 
 .social-media h2:before,
 .social-media h2:after {
-    background-color: #000;
-    content: '';
-    display: inline-block;
-    height: 1px;
-    position: relative;
-    vertical-align: middle;
-    width: 40%;
-    top: -1px;
+  background-color: #000;
+  content: '';
+  display: inline-block;
+  height: 1px;
+  position: relative;
+  vertical-align: middle;
+  width: 15%;
+  top: -1px;
+}
+
+.social-media ul li {
+  text-transform: uppercase;
+  padding: .25em 1em 1em 1em;
 }
 
 .social-media h2:before {
-    right: 1.5em;
-    margin-left: -50%;
+  right: 1.5em;
+  margin-left: -50%;
 }
 .social-media h2:after {
-    left: 1.5em;
-    margin-right: -50%;
+  left: 1.5em;
+  margin-right: -50%;
 }
-
-/* .nys-global-header li:hover > ul {
-  display:flex;
-  flex-direction:column;
-    background-color:$color-primary;
-  li {
-    
-  }
-} */
 
 .nys-global-footer a:link {
   display: table-cell;
-  padding:.5rem 1rem 0 1rem;
+  //padding:.5rem 1rem 0 1rem;
   text-decoration:none;
   color:$black;
 
@@ -122,6 +123,84 @@ footer .agency-name {
 .nys-global-footer a:visited {
   color:$black;
   text-decoration:underline;
+
+}
+
+.social-media a::before {
+  content: '';
+  position: absolute;
+  left:0;
+  bottom:8px;
+  height: 20px;
+  width: 20px;
+}
+
+
+.social-media a {
+  height: 20px;
+  padding: 10px 0 10px 25px;
+  position: relative;
+  }
+
+/* need to fix this to allow different agency color schemes, need to add svg option see NDD-92 notes */
+.social-media {
+  a[href*="blogger"]::before{
+  background-image: url(../icons/social/black/icon-social-blogger.png);
+  }
+  a[href*="delicious"]::before {
+  background-image: url(../icons/social/black/icon-social-delicious.png);
+    }
+  a[href*="facebook"]::before {
+  background-image: url(../icons/social/black/icon-social-facebook.png);
+    }
+  a[href*="feed"]::before {
+      background-image: url(../icons/social/black/icon-social-feed.png);
+    }
+  a[href*="flickr"]::before {
+  background-image: url(../icons/social/black/icon-social-flickr.png);
+    }
+  a[href*="foursqaure"]::before {
+  background-image: url(../icons/social/black/icon-social-foursqaure.png);
+    }
+  a[href*="github"]::before {
+  background-image: url(../icons/social/black/icon-social-github.png);
+    }
+  a[href*="google"]::before {
+  background-image: url(../icons/social/black/icon-social-google-plus.png);
+    }
+  a[href*="instagram"]::before {
+  background-image: url(../icons/social/black/icon-social-instagram.png);
+    }
+  a[href*="linkedin"]::before {
+  background-image: url(../icons/social/black/icon-social-linkedin.png);
+    }
+    a[href*="mail"]::before {
+  background-image: url(../icons/social/black/icon-social-mail.png);
+    }
+  a[href*="pinterest"]::before {
+  background-image: url(../icons/social/black/icon-social-pinterest.png);
+    }
+  a[href*="reddit"]::before {
+  background-image: url(../icons/social/black/icon-social-reddit.png);
+    }
+  a[href*="share"]::before {
+  background-image: url(../icons/social/black/icon-social-share.png);
+    }
+  a[href*="tumblr"]::before {
+  background-image: url(../icons/social/black/icon-social-tumblr.png);
+    }
+  a[href*="twitter"]::before {
+  background-image: url(../icons/social/black/icon-social-twitter.png);
+    }
+  a[href*="vimeo"]::before {
+  background-image: url(../icons/social/black/icon-social-vimeo.png);
+    }
+  a[href*="yelp"]::before {
+  background-image: url(../icons/social/black/icon-social-yelp.png);
+    }
+  a[href*="youtube"]::before {
+  background-image: url(../icons/social/black/icon-social-youtube.png);
+    }
 }
 
 footer {
@@ -135,7 +214,11 @@ footer {
       align-items: center;
     }
     .nys-global-footer ul {
-    flex-wrap: no-wrap;
+      flex-wrap: no-wrap;
+    }
+    .social-media h2:before,
+    .social-media h2:after {
+      width: 30%;
     }
   }
 }
