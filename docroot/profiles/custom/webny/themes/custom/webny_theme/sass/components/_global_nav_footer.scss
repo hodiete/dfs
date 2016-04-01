@@ -39,6 +39,7 @@ footer .agency-name {
   list-style-type: none;
   display: flex;
   flex-direction: row;
+  flex-wrap:wrap;
   font-weight: bold;
   font-size: 14px;
 }
@@ -65,7 +66,8 @@ footer .agency-name {
   /*flex:0 1 15%;*/
   flex-basis: 40%;
   //flex-grow: 1;
-  flex-wrap:wrap;
+  
+  padding: 0.25rem 2rem .25rem 0;
 }
 
 
@@ -122,20 +124,18 @@ footer .agency-name {
   text-decoration:underline;
 }
 
-.nys-global-footer {
+footer {
   @include breakpoint($min-tablet) {
-    li {
+    .nys-global-footer li {
       flex-basis: 15%;
-      flex-wrap: no-wrap;
+      
       flex-grow: 1;
     }
-  }
-}
-
-.social-media {
-  @include breakpoint($min-tablet) {
-    ul li {
+    .social-media ul li {
       align-items: center;
+    }
+    .nys-global-footer ul {
+    flex-wrap: no-wrap;
     }
   }
 }
