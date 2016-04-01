@@ -1,28 +1,38 @@
 {
     "_links": {
         "self": {
-            "href": "http:\/\/127.0.0.1:8080\/node\/15?_format=hal_json"
+            "href": "http:\/\/127.0.0.1:8080\/node\/29?_format=hal_json"
         },
         "type": {
-            "href": "http:\/\/drupal.org\/rest\/type\/node\/webny_page"
+            "href": "http:\/\/drupal.org\/rest\/type\/node\/webny_document"
         },
-        "http:\/\/drupal.org\/rest\/relation\/node\/webny_page\/uid": [
+        "http:\/\/drupal.org\/rest\/relation\/node\/webny_document\/uid": [
             {
                 "href": "http:\/\/127.0.0.1:8080\/user\/0?_format=hal_json",
                 "lang": "en"
             }
         ],
-        "http:\/\/drupal.org\/rest\/relation\/node\/webny_page\/revision_uid": [
+        "http:\/\/drupal.org\/rest\/relation\/node\/webny_document\/revision_uid": [
             {
-                "href": "http:\/\/127.0.0.1:8080\/user\/1?_format=hal_json"
+                "href": "http:\/\/127.0.0.1:8080\/user\/0?_format=hal_json"
             }
         ],
-        "http:\/\/drupal.org\/rest\/relation\/node\/webny_page\/field_webny_page_agency_keywords": [
+        "http:\/\/drupal.org\/rest\/relation\/node\/webny_document\/field_webny_document_cateogry": [
             {
-                "href": "http:\/\/127.0.0.1:8080\/taxonomy\/term\/2?_format=hal_json"
+                "href": "http:\/\/127.0.0.1:8080\/taxonomy\/term\/20?_format=hal_json"
             }
         ],
-        "http:\/\/drupal.org\/rest\/relation\/node\/webny_page\/field_webny_page_global_keywords": [
+        "http:\/\/drupal.org\/rest\/relation\/node\/webny_document\/field_webny_document_file_upload": [
+            {
+                "href": "http:\/\/127.0.0.1:8080\/sites\/default\/files\/2016-03\/03.03.16.rel_.LEAVE_HaitianCreole_0.pdf"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/webny_document\/field_webny_doc_agency_keyword": [
+            {
+                "href": "http:\/\/127.0.0.1:8080\/taxonomy\/term\/9?_format=hal_json"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/webny_document\/field_webny_doc_global_keyword": [
             {
                 "href": "http:\/\/127.0.0.1:8080\/taxonomy\/term\/10?_format=hal_json"
             },
@@ -33,12 +43,12 @@
     },
     "uuid": [
         {
-            "value": "1b42f5d2-2daa-4df8-af59-8919d029458f"
+            "value": "85577f4a-52a8-4cd9-a800-aadeb828cbf6"
         }
     ],
     "type": [
         {
-            "target_id": "webny_page"
+            "target_id": "webny_document"
         }
     ],
     "langcode": [
@@ -49,12 +59,12 @@
     ],
     "title": [
         {
-            "value": "Corcraft Products",
+            "value": "Paid Family Leave - Haitian Creole",
             "lang": "en"
         }
     ],
     "_embedded": {
-        "http:\/\/drupal.org\/rest\/relation\/node\/webny_page\/uid": [
+        "http:\/\/drupal.org\/rest\/relation\/node\/webny_document\/uid": [
             {
                 "_links": {
                     "self": {
@@ -72,11 +82,11 @@
                 "lang": "en"
             }
         ],
-        "http:\/\/drupal.org\/rest\/relation\/node\/webny_page\/revision_uid": [
+        "http:\/\/drupal.org\/rest\/relation\/node\/webny_document\/revision_uid": [
             {
                 "_links": {
                     "self": {
-                        "href": "http:\/\/127.0.0.1:8080\/user\/1?_format=hal_json"
+                        "href": "http:\/\/127.0.0.1:8080\/user\/0?_format=hal_json"
                     },
                     "type": {
                         "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
@@ -84,16 +94,55 @@
                 },
                 "uuid": [
                     {
-                        "value": "f569fafb-033a-4dac-ac20-3250c0b13f5a"
+                        "value": "447e8a87-3330-4ff6-8f18-249f61bf8cc3"
                     }
                 ]
             }
         ],
-        "http:\/\/drupal.org\/rest\/relation\/node\/webny_page\/field_webny_page_agency_keywords": [
+        "http:\/\/drupal.org\/rest\/relation\/node\/webny_document\/field_webny_document_cateogry": [
             {
                 "_links": {
                     "self": {
-                        "href": "http:\/\/127.0.0.1:8080\/taxonomy\/term\/2?_format=hal_json"
+                        "href": "http:\/\/127.0.0.1:8080\/taxonomy\/term\/20?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/taxonomy_term\/webny_document_category"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "62315117-503a-497a-8146-70b5745f5bfa"
+                    }
+                ]
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/webny_document\/field_webny_document_file_upload": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/127.0.0.1:8080\/sites\/default\/files\/2016-03\/03.03.16.rel_.LEAVE_HaitianCreole_0.pdf"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/file\/file"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "9e058933-f927-48b4-8200-f76f4574dbd2"
+                    }
+                ],
+                "uri": [
+                    {
+                        "value": "http:\/\/127.0.0.1:8080\/sites\/default\/files\/2016-03\/03.03.16.rel_.LEAVE_HaitianCreole_0.pdf"
+                    }
+                ]
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/webny_document\/field_webny_doc_agency_keyword": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/127.0.0.1:8080\/taxonomy\/term\/9?_format=hal_json"
                     },
                     "type": {
                         "href": "http:\/\/drupal.org\/rest\/type\/taxonomy_term\/webny_agency_keywords"
@@ -101,12 +150,12 @@
                 },
                 "uuid": [
                     {
-                        "value": "672e4cdc-6597-4d78-b407-7f9023001154"
+                        "value": "a0da9855-0230-45fd-9600-c12e598e676c"
                     }
                 ]
             }
         ],
-        "http:\/\/drupal.org\/rest\/relation\/node\/webny_page\/field_webny_page_global_keywords": [
+        "http:\/\/drupal.org\/rest\/relation\/node\/webny_document\/field_webny_doc_global_keyword": [
             {
                 "_links": {
                     "self": {
@@ -147,13 +196,13 @@
     ],
     "created": [
         {
-            "value": "1458060318",
+            "value": "1459362830",
             "lang": "en"
         }
     ],
     "changed": [
         {
-            "value": "1459448728",
+            "value": "1459449438",
             "lang": "en"
         }
     ],
@@ -171,7 +220,7 @@
     ],
     "revision_timestamp": [
         {
-            "value": "1459448728"
+            "value": "1459362867"
         }
     ],
     "revision_translation_affected": [
@@ -186,30 +235,33 @@
             "lang": "en"
         }
     ],
-    "moderation_state": [
-        {
-            "target_id": "published",
-            "lang": "en"
-        }
-    ],
     "body": [
         {
-            "value": "<p>To employ inmates in substantive jobs that help teach a good work ethic and valuable work skills, to help offset the cost of incarceration, to help reduce disruption in the prison environment and to meet expectations of New York State\u2019s citizens.<\/p>\r\n",
+            "value": "<p>Paid Family Leave&nbsp;Haitian Creole Translation<\/p>\r\n",
             "format": "basic_html",
             "summary": "",
             "lang": "en"
         }
     ],
-    "field_webny_page_description": [
+    "field_webny_document_date": [
         {
-            "value": "<p>Division of Correctional Industries uses manufacturing as a component of DOCCS overall reentry program, which is designed to teach inmates work ethic and skills.&nbsp;<\/p>\r\n",
+            "value": "2016-03-03"
+        }
+    ],
+    "field_webny_document_language": [
+        {
+            "value": "haitian_creole"
+        }
+    ],
+    "field_webny_document_subtitle": [
+        {
+            "value": "Haitian Creole",
             "format": "basic_html"
         }
     ],
-    "field_webny_page_sub_title": [
+    "field_webny_doc_last_updated": [
         {
-            "value": "Department of Correctional Services, Division of Industries",
-            "format": "basic_html"
+            "value": "2016-03-20"
         }
     ]
 }
