@@ -284,3 +284,14 @@ function webny_configuration_update_8024() {
   \Drupal::service('module_installer')
       ->install(['webny_global_navigation']);
 }
+
+/**
+ * Implements hook_update_n().
+ *
+ * Installs Contact Us Form.
+ */
+function webny_configuration_update_8025() {
+
+  \Drupal::service('module_installer')
+      ->install(['webny_contact_form']);
+}
