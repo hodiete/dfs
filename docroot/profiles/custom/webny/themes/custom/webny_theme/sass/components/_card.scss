@@ -1,0 +1,80 @@
+// Featured Card
+//
+// Featured Card styling.
+//
+// Markup: card.hbs
+//
+// Style guide: components.card
+ 
+ .paragraph--type--webny-card-paragraph-type {
+  font-size: 18px;
+  
+}
+
+/* maybe replace with class called webny-card-row? */
+.paragraph--type--webny-card-paragraph-type>div {
+  display:flex;
+  flex-wrap: nowrap;
+  justify-content:flex-start;
+  border: 4px solid red;
+  padding: 1rem;
+  justify-content:center;
+}
+
+.paragraph--type--webny-card-paragraph-type>div>div {
+  border:1px solid #e4e4e4;
+  font-size:90%;
+  
+  width:30%; /* rather than flex-basis */
+  display: flex;
+  margin: 1rem;
+}
+
+.webny-card {
+  display:flex;
+  flex-direction:column;
+  flex-grow:1;
+}
+
+/* using flexbox order to reorder the visual output of each card */
+.webny-card .webny-card-img {
+  order:1; 
+}
+.webny-card h2 {
+  order:2;
+  padding: .5rem 1rem;
+  font-size: 120%;   flex: 1 0 auto;
+
+}
+.webny-card .webny-card-date {
+  order:3;
+  padding: .5rem 1rem;  flex: 1 0 auto;
+}
+.webny-card .webny-card-teaser {
+  order:4;
+  padding: .5rem 1rem;
+  display:flex;
+
+  flex: 1 0 auto;
+
+}
+
+.webny-card .webny-card-cta {
+  order:5;
+
+    text-align: center;
+  padding: 1em;
+  background-color:#f6f8f8;
+  border-top: 1px solid #f4f4f4;
+  a {
+    padding: 1em;
+    text-transform:uppercase;
+  }
+}
+
+.webny-card img {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;  
+ 
+}
