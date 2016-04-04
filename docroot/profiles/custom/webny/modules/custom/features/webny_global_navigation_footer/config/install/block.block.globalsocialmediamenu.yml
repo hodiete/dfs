@@ -1,0 +1,19 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.webny-global-sm-menu
+id: globalsocialmediamenu
+theme: webny_theme
+region: footer
+weight: 1
+provider: null
+plugin: 'system_menu_block:webny-global-sm-menu'
+settings:
+  id: 'system_menu_block:webny-global-sm-menu'
+  label: 'Connect With Us'
+  provider: system
+  label_display: visible
+  level: 1
+  depth: 1
+visibility: {  }
