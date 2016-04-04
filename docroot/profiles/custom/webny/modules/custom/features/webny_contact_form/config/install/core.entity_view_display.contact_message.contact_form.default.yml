@@ -13,8 +13,6 @@ dependencies:
     - field.field.contact_message.contact_form.field_zip_code
   module:
     - options
-_core:
-  default_config_hash: GUzATQdWeeY4Wday9vDAmCyVfWffcVxc23a_hX3V_Dk
 id: contact_message.contact_form.default
 targetEntityType: contact_message
 bundle: contact_form
@@ -70,10 +68,9 @@ content:
     weight: 8
     label: above
     settings:
-      thousand_separator: ''
-      prefix_suffix: true
+      link_to_entity: false
     third_party_settings: {  }
-    type: number_integer
+    type: string
   message:
     type: string
     weight: 0

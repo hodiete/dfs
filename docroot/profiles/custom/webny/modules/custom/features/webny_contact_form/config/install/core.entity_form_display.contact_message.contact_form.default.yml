@@ -11,8 +11,6 @@ dependencies:
     - field.field.contact_message.contact_form.field_salutation
     - field.field.contact_message.contact_form.field_state
     - field.field.contact_message.contact_form.field_zip_code
-_core:
-  default_config_hash: 864O8H4qxyJGlr9cGgEKtJ1HM2QsiJSqvtTUc4K8m7E
 id: contact_message.contact_form.default
 targetEntityType: contact_message
 bundle: contact_form
@@ -36,6 +34,7 @@ content:
     weight: 3
     settings:
       placeholder: ''
+      size: 60
     third_party_settings: {  }
     type: email_default
   field_first_name:
@@ -65,9 +64,10 @@ content:
   field_zip_code:
     weight: 7
     settings:
+      size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: number
+    type: string_textfield
   message:
     type: string_textarea
     weight: 9
