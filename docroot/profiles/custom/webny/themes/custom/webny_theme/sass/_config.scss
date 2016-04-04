@@ -5,23 +5,29 @@ $medblue: #128EC3; // primary color
 $ltblueaccent: #92DBE4; // accent color
 $medblueaccent: #0386BE; // accent color
 $dkblueaccent: #1B2A5E; // accent color
-$textblue: #0F739D; // blue text links color
+
 $primarygold: #D5820D; // primary color
 $primarygold-75: #E0A14A; // This is the hex translation of $primarygold at 75% opacity
 $primarygold-50: #EAC086; // This is the hex translation of $primarygold at 50% opacity
-$primarygold-25: #F4E0CR; // This is the hex translation of $primarygold at 25% opacity
+$primarygold-25: hsla(35, 88%, 44%, 0.25); // using HSL b/c this hex doesn't exist #F4E0CR This is the hex translation of $primarygold at 25% opacity
 $secondarygold: #DC9719; // secondary accent
-$border-dk: #000; // used to add a black border
-$border-lt: #fff; // used to add a white border
-$border-med: rgb(228, 228, 228); // used to add a gray border
+
+
+$color-primary: $primaryblue !default; //using the colors from the ny.gov colors as starting point
+$color-secondary: $primarygold !default;
+$text-blue: #0F739D !default; // blue text links color
+
 $exposedbkgrnd: #242424; // bkground for exposed filters on resuts
 
+
 // additional colors
-$imgborder: #e4e4e4; // used on ny.gov
+$black: #000; //$border-dk: #000;  used to add a black border
+$white: #fff; //$border-lt: #fff;  used to add a white border
+$gray-lite: #e4e4e4; //$imgborder: #e4e4e4; used on ny.gov - same as rgb(228,228,228)
 
 //colors here - to be removed ///////////////
 $blueish: #dae8ef;
-$darkblueish: #226e8e; // used primaryblue, except for a, a:link color - used textblue
+$darkblueish: #226e8e; // used primaryblue, except for a, a:link color - used text-blue
 $lightblueish: #f3f9fc;
 $greyish: #efefef;
 $yellowish: yellow;
@@ -30,13 +36,13 @@ $midgray: #ccc;
 $darkgray: #999;
 
 // fonts ///////////////
-$base-font: "Proxima Nova", Arial, sans-serif;
-$base-font-bold: "Proxima Nova Bold", "Arial bold", sans-serif;
-$base-font-extra-bold: "Proxima Nova Extra Bold", "Arial bold", sans-serif;
+$base-font: "Proxima Nova", Arial, sans-serif !default;
+//$base-font-bold: "Proxima Nova Bold", "Arial bold", sans-serif;
+//$base-font-extra-bold: "Proxima Nova Extra Bold", "Arial bold", sans-serif;
 $agency-name-font: "D Sari Bold", Arial, sans-serif; // used in header and footer
-$oswald-reg: "Oswald Regular", Arial, sans-serif;
-$oswald-lt: "Oswald Light", Arial, sans-serif;
-$oswald-bold: "Oswald-bold", Arial, sans-serif;
+$oswald: "Oswald", Arial, sans-serif;
+//$oswald-lt: "Oswald Light", Arial, sans-serif;
+//$oswald-bold: "Oswald-bold", Arial, sans-serif;
 
 $base-font-size: 18px;
 $base-line-height: 27px;

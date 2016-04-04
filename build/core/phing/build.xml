@@ -26,6 +26,9 @@
   <!-- E.g., commit build artifacts, push to remote. -->
   <import file="${core.phing.dir}/tasks/deploy.xml"/>
 
+  <!-- E.g., commit ACSF build artifacts, push to remote. -->
+  <import file="${core.phing.dir}/tasks/deploy-acsf.xml"/>
+
   <!-- Contains frontend tasks. -->
   <import file="${core.phing.dir}/tasks/frontend.xml"/>
 

@@ -1,0 +1,39 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.webny_featured_card
+    - field.field.node.webny_page.body
+    - field.field.node.webny_page.field_webny_page_agency_keywords
+    - field.field.node.webny_page.field_webny_page_attachment
+    - field.field.node.webny_page.field_webny_page_description
+    - field.field.node.webny_page.field_webny_page_global_keywords
+    - field.field.node.webny_page.field_webny_page_image
+    - field.field.node.webny_page.field_webny_page_paragraph
+    - field.field.node.webny_page.field_webny_page_sub_title
+    - node.type.webny_page
+  module:
+    - text
+    - user
+id: node.webny_page.webny_featured_card
+targetEntityType: node
+bundle: webny_page
+mode: webny_featured_card
+content:
+  field_webny_page_description:
+    weight: 0
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+  workbench_moderation_control:
+    weight: -20
+hidden:
+  body: true
+  field_webny_page_agency_keywords: true
+  field_webny_page_attachment: true
+  field_webny_page_global_keywords: true
+  field_webny_page_image: true
+  field_webny_page_paragraph: true
+  field_webny_page_sub_title: true
+  links: true

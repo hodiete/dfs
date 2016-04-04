@@ -14,12 +14,10 @@ dependencies:
     - field.field.node.webny_news.field_webny_news_sub_title
     - field.field.node.webny_news.field_webny_news_subject_heading
     - field.field.node.webny_news.field_webny_news_teaser
-    - image.style.thumbnail
     - node.type.webny_news
   module:
     - datetime
     - file
-    - image
     - paragraphs
     - path
     - text
@@ -43,7 +41,7 @@ content:
     settings: {  }
     third_party_settings: {  }
   field_webny_news_agency_keywords:
-    weight: 17
+    weight: 15
     settings:
       match_operator: CONTAINS
       size: 60
@@ -51,13 +49,13 @@ content:
     third_party_settings: {  }
     type: entity_reference_autocomplete
   field_webny_news_attachment:
-    weight: 12
+    weight: 11
     settings:
       progress_indicator: throbber
     third_party_settings: {  }
     type: file_generic
   field_webny_news_contact_info:
-    weight: 13
+    weight: 12
     settings:
       match_operator: CONTAINS
       size: 60
@@ -65,7 +63,7 @@ content:
     third_party_settings: {  }
     type: entity_reference_autocomplete
   field_webny_news_date:
-    weight: 14
+    weight: 13
     settings: {  }
     third_party_settings: {  }
     type: datetime_default
@@ -78,14 +76,15 @@ content:
     third_party_settings: {  }
     type: entity_reference_autocomplete
   field_webny_news_image:
-    weight: 7
+    weight: 8
     settings:
-      progress_indicator: throbber
-      preview_image_style: thumbnail
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
-    type: image_image
+    type: entity_reference_autocomplete
   field_webny_news_location:
-    weight: 11
+    weight: 10
     settings:
       size: 60
       placeholder: ''
@@ -93,7 +92,7 @@ content:
     type: text_textfield
   field_webny_news_paragraph:
     type: entity_reference_paragraphs
-    weight: 26
+    weight: 14
     settings:
       title: Paragraph
       title_plural: Paragraphs
@@ -102,14 +101,14 @@ content:
       form_display_mode: default
     third_party_settings: {  }
   field_webny_news_sub_title:
-    weight: 9
+    weight: 7
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
     type: text_textfield
   field_webny_news_subject_heading:
-    weight: 8
+    weight: 17
     settings:
       match_operator: CONTAINS
       size: 60
@@ -125,7 +124,7 @@ content:
     type: text_textfield
   path:
     type: path
-    weight: 10
+    weight: 9
     settings: {  }
     third_party_settings: {  }
   promote:

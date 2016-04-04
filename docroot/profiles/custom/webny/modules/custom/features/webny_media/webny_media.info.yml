@@ -3,7 +3,10 @@ description: 'WebNY distro overrides to Lightning Media.'
 type: module
 core: 8.x
 dependencies:
+  - datetime
+  - entity_reference_revisions
   - field
+  - file
   - image
   - lightning_media
   - lightning_media_image
@@ -11,8 +14,16 @@ dependencies:
   - media_entity
   - media_entity_embeddable_video
   - media_entity_image
+  - node
+  - paragraphs
+  - path
+  - responsive_image
   - taxonomy
+  - text
   - user
+  - webny_inner_page_content_type
+  - webny_landing_page_content_type
   - webny_media
+  - webny_news_content_type
   - workbench_moderation
 package: WebNY
