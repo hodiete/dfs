@@ -80,8 +80,6 @@
   {% endif %}
   {{ title_suffix }}
 
-{#
-/**
  {% if display_submitted %}
     <footer>
       {{ author_picture }}
@@ -91,14 +89,17 @@
       </div>
     </footer>
   {% endif %}
- */
-#}
+ 
 
     {{ content }}
 
     <div class="webny-card-cta">
       <a href="{{ url }}">Learn More</a>
     </div>
-  </div>
+{#
+/**
+</div> 
+*/
+#}
 
 </article>
