@@ -3,15 +3,14 @@ status: true
 dependencies:
   module:
     - contact
-_core:
-  default_config_hash: twCM0RA_6aISaGjmMFLhG-ic_AmzFDAWUvFNZIUbfFk
 id: contact_message.field_zip_code
 field_name: field_zip_code
 entity_type: contact_message
-type: integer
+type: string
 settings:
-  unsigned: false
-  size: normal
+  max_length: 255
+  is_ascii: false
+  case_sensitive: false
 module: core
 locked: false
 cardinality: 1
