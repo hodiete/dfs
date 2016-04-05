@@ -321,3 +321,14 @@ function webny_configuration_update_8028() {
   \Drupal::service('module_installer')
       ->install(['webny_demo_content_view']);
 }
+
+/**
+ * Implements hook_update_n().
+ *
+ * Installs Contact Us Form.
+ */
+function webny_configuration_update_8026() {
+
+  \Drupal::service('module_installer')
+      ->install(['webny_contact_form']);
+}
