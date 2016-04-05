@@ -310,3 +310,14 @@ function webny_configuration_update_8027() {
   \Drupal::service('module_installer')
       ->install(['webny_demo_content']);
 }
+
+/**
+ * Implements hook_update_n().
+ *
+ * Installs demo content view.
+ */
+function webny_configuration_update_8028() {
+
+  \Drupal::service('module_installer')
+      ->install(['webny_demo_content_view']);
+}
