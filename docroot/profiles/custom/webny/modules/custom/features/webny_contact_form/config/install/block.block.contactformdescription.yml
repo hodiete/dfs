@@ -1,24 +1,22 @@
 langcode: en
 status: true
-dependencies:
-  content:
-    - 'block_content:form_description_block_type:fa8d81c3-6e5e-4e34-9401-1e192f573c82'
-  module:
-    - block_content
-  theme:
-    - webny_theme
 id: contactformdescription
 theme: webny_theme
 region: content
 weight: -2
 provider: null
-plugin: 'block_content:fa8d81c3-6e5e-4e34-9401-1e192f573c82'
+plugin: 'block_content:6e36979e-1ae3-40b2-9b00-bcc35833d975'
 settings:
-  id: 'block_content:fa8d81c3-6e5e-4e34-9401-1e192f573c82'
+  id: 'block_content:6e36979e-1ae3-40b2-9b00-bcc35833d975'
   label: 'Contact Form Description'
   provider: block_content
-  label_display: visible
+  label_display: '0'
   status: true
   info: ''
   view_mode: full
-visibility: {  }
+visibility:
+  request_path:
+    id: request_path
+    pages: /contact/contact_form
+    negate: false
+    context_mapping: {  }
