@@ -297,3 +297,16 @@ function webny_configuration_update_8026() {
   \Drupal::service('module_installer')
       ->install(['webny_contact_content_type']);
 }
+
+/**
+ * Implements hook_update_n().
+ *
+ * Reinstall demo content module.
+ */
+function webny_configuration_update_8027() {
+
+  \Drupal::service('module_installer')
+      ->uninstall(['webny_demo_content']);
+  \Drupal::service('module_installer')
+      ->install(['webny_demo_content']);
+}
