@@ -1,0 +1,107 @@
+// Featured Card
+//
+// Featured Card styling.
+//
+// Markup: card.hbs
+//
+// Style guide: components.card
+ 
+ .paragraph--type--webny-card-paragraph-type {
+  font-size: 18px;
+  
+}
+
+/* maybe replace with class called webny-card-row? */
+.paragraph--type--webny-card-paragraph-type>div {
+  display:flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  justify-content:flex-start;
+  padding: 1rem;
+  justify-content:center;
+}
+
+.paragraph--type--webny-card-paragraph-type>div>div {
+  border:1px solid $gray-lite;
+  font-size:90%;
+  
+  //width:30%;  /* moved to queries below */
+  display: flex;
+  margin: 1rem;
+}
+
+.webny-card {
+  display:flex;
+  flex-direction:column;
+  flex-grow:1;
+}
+
+/* using flexbox order to reorder the visual output of each card */
+.webny-card .webny-card-img {
+  order:1; 
+}
+.webny-card h2 {
+  order:2;
+  padding: .5rem 1rem;
+  font-size: 120%;   flex: 1 0 auto;
+
+}
+.webny-card .webny-card-date {
+  order:3;
+  padding: .5rem 1rem;  flex: 1 0 auto;
+}
+.webny-card .webny-card-teaser {
+  order:4;
+  padding: .5rem 1rem;
+  display:flex;
+
+  flex: 1 0 auto;
+
+}
+
+.webny-card .webny-card-cta {
+  order:5;
+
+    text-align: center;
+  padding: 1em;
+  background-color:$call-to-action;
+  border-top: 1px solid $gray-lite;
+  a {
+    padding: 1em;
+    text-transform:uppercase;
+  }
+}
+
+/* possibly move this to _base partial and apply to all images? */
+.webny-card img {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;  
+  height: auto;
+ 
+}
+
+
+ .paragraph--type--webny-card-paragraph-type {
+  @include breakpoint($min-mobile) {
+   &>div {
+  
+  flex-direction: row;
+  flex-wrap: wrap;
+    }
+
+    &>div>div {
+      width: 50%; /* rather than flex-basis */
+
+    }
+  }
+}
+
+
+.paragraph--type--webny-card-paragraph-type>div>div { 
+  @include breakpoint($min-tablet) {
+      width: 30%; /* rather than flex-basis */
+    }
+  }
+
+

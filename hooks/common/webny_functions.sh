@@ -11,7 +11,7 @@ env_refresh() {
   case ${env} in
     "dev" )
           echo "Making backup of Database..."
-          #drush @${drush_alias} ac-database-instance-backup brandrefreshdev --endpoint=${endpoint} --email=${email} --key=${key}
+          #drush @${drush_alias} ac-database-instance-backup acsfdevdev --endpoint=${endpoint} --email=${email} --key=${key}
           echo "Making any necessary Drupal database updates..."
           drush @${drush_alias} updb -y
           echo "Clearing caches..."
