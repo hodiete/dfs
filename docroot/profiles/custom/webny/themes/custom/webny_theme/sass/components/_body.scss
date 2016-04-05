@@ -1,0 +1,118 @@
+// ************************* //
+// WEBNY - BODY PARTIAL
+// CREATED BY WEBNY
+// ************************* //
+
+// ######################################################################### //
+// MOBILE FIRST STYLES
+
+// ========================================================================= //
+/* FONTS / SIZES */
+
+// ========================================================================= //
+// NEWS BODY WRAPPER
+.news-body{
+
+  .news-body-in{
+    margin: 0 auto;
+    margin-top: 60px;
+    max-width: 1200px;
+      
+    .press-teaser{
+      margin: 0 auto;
+      margin-top: 60px;
+      font-family: "ProximaNovaRegular";
+      font-size: 1.4em;
+      line-height: 1.2em;
+      font-style: normal;
+      margin-bottom: 40px;
+      width: 80%;
+    }
+      
+      
+      
+    .news-subhead{
+      margin: 0 auto;
+      text-align: left;
+      padding: 20px 0 0 0;
+      overflow: hidden;
+    }
+
+    .press-body{ 
+        margin: 0 auto;
+        max-width: 780px;
+    }
+      
+      
+    p{
+      line-height: 1.7em;
+      font-size: .875em;
+      display: block;
+      -webkit-margin-before: 1em;
+      -webkit-margin-after: 1em;
+      -webkit-margin-start: 0px;
+      -webkit-margin-end: 0px;
+      margin: 0 auto;
+      margin-top: 80px;
+
+      a {
+        color: $linkColor;
+        text-decoration: underline;
+      }
+    }
+
+    .press-contact-info{
+      width: 100%;
+      margin: 80px auto;
+      max-width: 780px;
+
+      h2 a{
+        color: $contactTitleColor;
+        font-size: 36px;
+      }
+
+    }
+
+  }
+}
+
+// SUMMARY
+.webny-summary{
+    width: 80%;
+    max-width: 1200px;
+}
+
+
+.webny-paragraphs{
+    width: 100%;
+    margin: 0 auto;
+    .webny-paragraphs-in{
+        max-width: 1200px;   
+    }
+}
+
+/* TABLET VIEW */
+@media (min-width: 30em) {
+    
+.news-body {
+
+    .news-body-in {
+        max-width: 1200px;        
+        
+      .press-teaser{
+          width: 90%;
+        }    
+        
+        
+      p{
+        line-height: 1.7em;
+        font-size: 1.1em;
+      }
+    }
+  }
+}
+
+/* DESKTOP VIEW */
+@media (min-width: 48em) {
+    
+}
