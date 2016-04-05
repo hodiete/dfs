@@ -11,10 +11,13 @@ dependencies:
     - field.storage.contact_message.field_salutation
     - field.storage.contact_message.field_state
     - field.storage.contact_message.field_zip_code
+    - user.role.administrator
+    - user.role.site_admin
   module:
     - contact
     - options
     - rest
+    - user
 id: contact_form_messages
 label: 'Contact Form Messages'
 module: views
@@ -31,8 +34,11 @@ display:
     position: 0
     display_options:
       access:
-        type: none
-        options: {  }
+        type: role
+        options:
+          role:
+            administrator: administrator
+            site_admin: site_admin
       cache:
         type: tag
         options: {  }
@@ -718,6 +724,7 @@ display:
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
+        - user.roles
       tags:
         - 'config:field.storage.contact_message.field_address'
         - 'config:field.storage.contact_message.field_city'
@@ -740,6 +747,7 @@ display:
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
+        - user.roles
       tags:
         - 'config:field.storage.contact_message.field_address'
         - 'config:field.storage.contact_message.field_city'
@@ -811,6 +819,7 @@ display:
         - 'languages:language_content'
         - 'languages:language_interface'
         - request_format
+        - user.roles
       tags:
         - 'config:field.storage.contact_message.field_address'
         - 'config:field.storage.contact_message.field_city'
