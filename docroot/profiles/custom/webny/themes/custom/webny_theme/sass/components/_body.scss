@@ -1,49 +1,23 @@
 // ************************* //
-// WEBNY - BODY PARTIAL
+// BODY PARTIAL
 // CREATED BY WEBNY
 // ************************* //
 
 // ######################################################################### //
-// MOBILE FIRST STYLES
+/* MOBILE FIRST STYLES */
 
 // ========================================================================= //
 /* FONTS / SIZES */
 
 // ========================================================================= //
-// NEWS BODY WRAPPER
+/* NEWS BODY WRAPPER */
 .news-body{
 
   .news-body-in{
     margin: 0 auto;
     margin-top: 60px;
     max-width: 1200px;
-      
-    .press-teaser{
-      margin: 0 auto;
-      margin-top: 60px;
-      font-family: "ProximaNovaRegular";
-      font-size: 1.4em;
-      line-height: 1.2em;
-      font-style: normal;
-      margin-bottom: 40px;
-      width: 80%;
-    }
-      
-      
-      
-    .news-subhead{
-      margin: 0 auto;
-      text-align: left;
-      padding: 20px 0 0 0;
-      overflow: hidden;
-    }
 
-    .press-body{ 
-        margin: 0 auto;
-        max-width: 780px;
-    }
-      
-      
     p{
       line-height: 1.7em;
       font-size: .875em;
@@ -61,6 +35,29 @@
       }
     }
 
+    .press-teaser{
+      margin: 0 auto;
+      margin-top: 60px;
+      font-family: "ProximaNovaRegular";
+      font-size: 1.4em;
+      line-height: 1.2em;
+      font-style: normal;
+      margin-bottom: 40px;
+      width: 80%;
+    }
+
+    .press-subhead{
+      margin: 0 auto;
+      text-align: left;
+      padding: 20px 0 0 0;
+      overflow: hidden;
+    }
+
+    .press-body{ 
+        margin: 0 auto;
+        max-width: 780px;
+    }
+
     .press-contact-info{
       width: 100%;
       margin: 80px auto;
@@ -73,27 +70,59 @@
 
     }
 
+  } // END .news-body-in
+} // END .news-body
+
+// ========================================================================= //
+/* LANDING TITLE SECTION */
+
+.landing-title-area{
+  width: 100%;
+  background: $landtitlebk none repeat scroll 0 0;
+
+  .landing-title h1{
+    font-size: 24px;
+    color: $white;
+    padding: 0 0 0 52px;
   }
+
+  .landing-subtitle{
+    color: $nyOrange;
+    font-size: 24px;
+    display: none;
+    padding: 0 0 16px 52px;
+
+  }
+
 }
 
-// SUMMARY
-.webny-summary{
-    width: 80%;
-    max-width: 1200px;
-}
+// ========================================================================= //
+/* LANDING PAGE SUMMARY */
 
-
-.webny-paragraphs{
+.page-summary{
     width: 100%;
+    max-width: 1200px;
+    margin: 80px auto;
+    text-align: center;
+}
+
+// ========================================================================= //
+/* LANDING PAGE PARAGRAPHS */
+
+.page-paragraphs{
+    width: 80%;
     margin: 0 auto;
-    .webny-paragraphs-in{
-        max-width: 1200px;   
+
+    .page-paragraphs-in{
+        max-width: 1200px;
+        margin: 80px auto;
     }
 }
 
+// ######################################################################### //
 /* TABLET VIEW */
 @media (min-width: 30em) {
-    
+
 .news-body {
 
     .news-body-in {
@@ -101,18 +130,45 @@
         
       .press-teaser{
           width: 90%;
-        }    
-        
-        
+        }
+
       p{
         line-height: 1.7em;
         font-size: 1.1em;
       }
     }
   }
-}
 
+} // END TABLET VIEW
+
+// ######################################################################### //
 /* DESKTOP VIEW */
 @media (min-width: 48em) {
-    
+
+// ========================================================================= //
+/* LANDING TITLE SECTION */
+
+.page-paragraphs {
+  width: 100%;
 }
+
+.landing-title-area > div{
+    display: inline-block;
+}
+
+.landing-title-area{
+    width: 100%;
+
+    .landing-title h1{
+      font-size: 52px;
+      padding: 0 26px 0 52px;
+    }
+
+    .landing-subtitle{
+      visibility: visible;
+      display: inline-block;
+    }
+
+}
+
+} // END DESKTOP MODE

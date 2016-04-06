@@ -1,10 +1,10 @@
 // ************************* //
-// WEBNY - HERO PARTIAL
+// HERO PARTIAL
 // CREATED BY WEBNY
 // ************************* //
 
 // ##################################################################
-// MOBILE FIRST STYLES
+/* MOBILE FIRST STYLES */
 
 // COLORS
 $newsTitleColor:    	     #ffffff;
@@ -12,6 +12,8 @@ $newsBkColor:		         #128ec3;
 $keywordBkColor:             #7690b6;
 $linkColor:                  rgb(0, 0, 238);
 $contactTitleColor:          #24387e;
+$nyOrange:                   #d5820d;
+$landtitlebk:                #24387e;
 
 // ========================================================================= //
 /* FONTS / SIZES */
@@ -24,7 +26,8 @@ header.hero-no-image{
   background-color: $newsBkColor;
 }
 
-// HERO LAYOUT
+// ========================================================================= //
+/* HERO LAYOUT */
 .hero-layout {
 
   header{
@@ -39,7 +42,6 @@ header.hero-no-image{
     min-height: 100px;
     overflow: hidden;
     position: relative;
-    min-height: 428px;
   }
 
   header.hero-header > .hero-bkg {
@@ -117,23 +119,25 @@ header.hero-no-image{
 
 } // END HERO-LAYOUT
 
-
-
+  // ######################################################################### //
 /* TABLET VIEW */
 @media (min-width: 30em) {
-  .hero-layout {
+
+.hero-layout {
     h1{
       font-size: 46px;
       line-height: 60px;
     }
 
+  header.hero-header {
+    min-height: 428px;
   }
 
-  
-
 }
+} // END TABLET VIEW
 
+  // ######################################################################### //
 /* DESKTOP VIEW */
 @media (min-width: 48em) {
 
-}
+} // END DESKTOP VIEW
