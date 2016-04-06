@@ -1,0 +1,82 @@
+{#
+/**
+ * @file
+ * Theme override to display a node for webny-news
+ *
+ *    -- WebNY News Content Type twig accessors --
+ *
+ *	  FIELD					TWIG
+ *    title:                {{ label }}
+ *    body:                 {{ content.body }}
+ *    agency_keywords:      {{ content.field_webny_news_agency_keywords }}
+ *    attachments:          {{ content.field_webny_news_attachment }}
+ *    teaser:               {{ content.field_webny_news_teaser }}
+ *    news_image:           {{ content.field_webny_news_image }}
+ *    contact_info:         {{ content.field_webny_news_contact_info }}
+ *    news_date:            {{ content.field_webny_news_date }}
+ *    global_keywords:      {{ content.field_webny_news_global_keywords }}
+ *    location:             {{ content.field_webny_news_location }}
+ *    subjet_heading:       {{ content.field_webny_news_subject_heading }}
+ *    subtitle:             {{ content.field_webny_news_sub_title }}
+ *
+ */
+#}
+
+{#
+/*
+ * Begin TWIG NODE-WEBNY-NEWS Template
+ */
+#}
+
+{% set hero_image = file_url(node.field_webny_news_image.entity.image.entity.uri.value) %}
+
+
+<article {{ attributes.addClass('hero-layout') }}>
+
+    {# CHECK IF THERE IS AN IMAGE #}
+    
+    {% if hero_image == "/" %}
+    <header class="hero-header hero-no-image ">
+    {% else %}
+    <header class="hero-header hero-has-image" style="background-image:url('{{ hero_image }}')">
+    {% endif %}
+
+        <!-- BACKGROUND GRAD -->
+        <div class="hero-bkg"></div>
+
+        <!-- DATE | LOCATION -->
+        <div class="hero-published-date">
+            {{ content.field_webny_news_date }} <div class="hero-location">{{ content.field_webny_news_location }}</div>
+        </div>
+
+        <!-- HEADLINE LABEL -->
+        <h1>{{ label }}</h1>
+
+        <!-- KEYWORDS -->
+        <div class="hero-keywords">
+            {{ content.field_webny_news_global_keywords }}
+        </div>
+
+    </header>
+
+</article>
+
+<div class="news-body">
+	
+    <div class="news-body-in">
+        
+        <div class="press-teaser">
+            {{ content.field_webny_news_teaser }}
+        </div>
+        
+        <div class="press-body">
+            {{ content.body }}
+        </div>
+        
+        <div class="press-contact-info">
+            {{ content.field_webny_news_contact_info }}
+        </div>
+			
+    </div>
+		
+</div>
