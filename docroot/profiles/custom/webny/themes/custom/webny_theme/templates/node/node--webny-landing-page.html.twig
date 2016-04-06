@@ -28,7 +28,7 @@
 
     <!-- SUBTITLE LABEL -->
     <div class="landing-subtitle">
-        <span>{{ content.field_webny_landing_subtitle }}</span>
+        <span>{{ node.field_webny_landing_subtitle[0].value }}</span>
     </div>
 
 </div>
@@ -38,13 +38,13 @@
 {% else %}
 <article {{ attributes.addClass('hero-layout') }}>
 
-    <header class="hero-header hero-has-image" style="background-image:url('{{ hero_image }}')">
+    <header class="hero-header hero-has-image landing-hero" style="background-image:url('{{ hero_image }}')">
 
         <!-- BACKGROUND GRAD -->
         <div class="hero-bkg"></div>
 
         <!-- HEADLINE LABEL -->
-        <h1>{{ label }}</h1>
+        <h1>{{ node.field_webny_landing_subtitle[1].value }}</h1>
         
         <div class="hero-summary">
             {{ content.field_webny_landing_summary }}
