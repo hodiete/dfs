@@ -325,10 +325,32 @@ function webny_configuration_update_8028() {
 /**
  * Implements hook_update_n().
  *
- * Installs Contact Us Form.
+ * Installs contact form.
  */
 function webny_configuration_update_8029() {
 
   \Drupal::service('module_installer')
       ->install(['webny_contact_form']);
+}
+
+/**
+ * Implements hook_update_n().
+ *
+ * Installs contact form.
+ */
+function webny_configuration_update_8030() {
+
+  \Drupal::service('module_installer')
+      ->install(['csv_serialization']);
+}
+
+/**
+ * Implements hook_update_n().
+ *
+ * Installs contact form messages view.
+ */
+function webny_configuration_update_8031() {
+
+  \Drupal::service('module_installer')
+      ->install(['webny_contact_form_message_export_view']);
 }

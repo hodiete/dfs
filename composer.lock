@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "11a0797a1847c8deea315a453b4158f0",
-    "content-hash": "ede2faf85fcb76317016824fcc1822fe",
+    "hash": "b9c99e48a1b4eb7f0da39b2c77c60dcf",
+    "content-hash": "32dbc31a690d6742c6320cb86ca33f89",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -946,6 +946,7 @@
         },
         {
             "name": "drupal/console",
+<<<<<<< HEAD
             "version": "0.11.1",
             "source": {
                 "type": "git",
@@ -956,6 +957,18 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/hechoendrupal/DrupalConsole/zipball/bc1bacc30dd2dee1757ab6853f9e789093c66f14",
                 "reference": "bc1bacc30dd2dee1757ab6853f9e789093c66f14",
+=======
+            "version": "0.11.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/hechoendrupal/DrupalConsole.git",
+                "reference": "2d71b8359908b5ebd9d29365c6029ae4e432d60a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/hechoendrupal/DrupalConsole/zipball/2d71b8359908b5ebd9d29365c6029ae4e432d60a",
+                "reference": "2d71b8359908b5ebd9d29365c6029ae4e432d60a",
+>>>>>>> 7bab1edc0bdac8ba3563f93f783857ccd6fe8b7d
                 "shasum": ""
             },
             "require": {
@@ -1027,7 +1040,11 @@
                 "drupal",
                 "symfony"
             ],
+<<<<<<< HEAD
             "time": "2016-04-05 06:57:29"
+=======
+            "time": "2016-04-03 02:14:49"
+>>>>>>> 7bab1edc0bdac8ba3563f93f783857ccd6fe8b7d
         },
         {
             "name": "drupal/contact_storage",
@@ -1229,6 +1246,39 @@
             ],
             "description": "Drupal is an open source content management platform powering millions of websites and applications.",
             "time": "2016-03-02 10:31:56"
+        },
+        {
+            "name": "drupal/csv_serialization",
+            "version": "8.1.0-alpha1",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupal.org/project/csv_serialization.git",
+                "reference": "7e1e459cfa19ed82fc50273b802f7d3be36d4c04"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/csv_serialization-8.x-1.0-alpha1.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "drupal/core": "8.*",
+                "drupal/serialization": "8.*",
+                "league/csv": "^7.1"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-8.x-1.x": "8.1.x-dev"
+                }
+            },
+            "notification-url": "https://packagist.drupal-composer.org/downloads/",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "description": "Provides CSV as a serialization format.",
+            "homepage": "https://www.drupal.org/project/csv_serialization",
+            "time": "2015-09-11 20:29:52"
         },
         {
             "name": "drupal/ctools",
@@ -2512,6 +2562,63 @@
                 }
             ],
             "time": "2015-04-20 18:58:01"
+        },
+        {
+            "name": "league/csv",
+            "version": "7.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thephpleague/csv.git",
+                "reference": "69bafa6ff924fbf9effe4275d6eb16be81a853ef"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thephpleague/csv/zipball/69bafa6ff924fbf9effe4275d6eb16be81a853ef",
+                "reference": "69bafa6ff924fbf9effe4275d6eb16be81a853ef",
+                "shasum": ""
+            },
+            "require": {
+                "ext-mbstring": "*",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "fabpot/php-cs-fixer": "^1.9",
+                "phpunit/phpunit": "^4.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "7.2-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "League\\Csv\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ignace Nyamagana Butera",
+                    "email": "nyamsprod@gmail.com",
+                    "homepage": "https://github.com/nyamsprod/",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Csv data manipulation made easy in PHP",
+            "homepage": "http://csv.thephpleague.com",
+            "keywords": [
+                "csv",
+                "export",
+                "filter",
+                "import",
+                "read",
+                "write"
+            ],
+            "time": "2015-11-02 07:36:25"
         },
         {
             "name": "masterminds/html5",
