@@ -20,6 +20,7 @@ $landtitlebk:                #24387e;
 
 header.hero-has-image{
   background-color: #ddd;
+    opacity: .9;
 }
 
 header.hero-no-image{
@@ -114,8 +115,21 @@ header.hero-no-image{
     padding: 10px;
     text-transform: uppercase;
     color: $white;
+    text-decoration: none;
 
   }
+    
+  .hero-summary{
+    font-size: 1em;
+    color: $white;
+    width: 100%;
+    position:  relative;
+    z-index: 5;
+    padding: 20px 0 0 20px;
+    text-align: left;
+      
+  }
+    
 
 } // END HERO-LAYOUT
 
@@ -132,6 +146,12 @@ header.hero-no-image{
   header.hero-header {
     min-height: 428px;
   }
+    
+    .hero-summary{
+        font-size: 1em;
+        color: $white;
+        width: 70%;
+      }    
 
 }
 } // END TABLET VIEW

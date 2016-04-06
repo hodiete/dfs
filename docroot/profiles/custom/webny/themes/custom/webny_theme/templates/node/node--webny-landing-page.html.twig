@@ -15,6 +15,9 @@
  */
 #}
 
+{# @PARAMS #}
+{% set hero_image = file_url(node.field_webny_landing_hero_image.entity.image.entity.uri.value) %}
+
 
 <div class="landing-title-area">
 
@@ -30,33 +33,32 @@
 
 </div>
 
-{# CAN'T IMPLEMENT A HERO UNTIL ALL FIELDS ARE AVAILABLE FOR A HERO #}
-
-{#
+{% if hero_image == '/' %}
+ {# do nothing #}
+{% else %}
 <article {{ attributes.addClass('hero-layout') }}>
 
-    <header class="hero-header hero-no-image">
+    <header class="hero-header hero-has-image" style="background-image:url('{{ hero_image }}')">
 
         <!-- BACKGROUND GRAD -->
         <div class="hero-bkg"></div>
 
         <!-- HEADLINE LABEL -->
         <h1>{{ label }}</h1>
-
+        
+        <div class="hero-summary">
+            {{ content.field_webny_landing_summary }}
+        </div>
+        
         <!-- KEYWORDS -->
         <div class="hero-keywords">
-            {{ content.field_webny_news_global_keywords }}
+            {{ content.field_webny_landing_global_key }}
         </div>
 
     </header>
 
 </article>
-#}
-
-<div class="page-summary">
-    {{ content.field_webny_landing_summary }}
-</div>
-
+{% endif %}
 
 <div class="page-paragraphs">
     <div class="page-paragraphs-in">

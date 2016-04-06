@@ -28,10 +28,18 @@
  */
 #}
 
+{% set hero_image = file_url(node.field_webny_news_image.entity.image.entity.uri.value) %}
+
+
 <article {{ attributes.addClass('hero-layout') }}>
 
     {# CHECK IF THERE IS AN IMAGE #}
-    <header class="hero-header hero-no-image">
+    
+    {% if hero_image == "/" %}
+    <header class="hero-header hero-no-image ">
+    {% else %}
+    <header class="hero-header hero-has-image" style="background-image:url('{{ hero_image }}')">
+    {% endif %}
 
         <!-- BACKGROUND GRAD -->
         <div class="hero-bkg"></div>
