@@ -325,43 +325,6 @@ function webny_configuration_update_8028() {
 /**
  * Implements hook_update_n().
  *
- * Reverts contact information module.
- */
-function webny_configuration_update_8026() {
-
-  \Drupal::service('module_installer')
-      ->uninstall(['webny_contact_content_type']);
-  \Drupal::service('module_installer')
-      ->install(['webny_contact_content_type']);
-}
-
-/**
- * Implements hook_update_n().
- *
- * Reinstall demo content module.
- */
-function webny_configuration_update_8027() {
-
-  \Drupal::service('module_installer')
-      ->uninstall(['webny_demo_content']);
-  \Drupal::service('module_installer')
-      ->install(['webny_demo_content']);
-}
-
-/**
- * Implements hook_update_n().
- *
- * Installs demo content view.
- */
-function webny_configuration_update_8028() {
-
-  \Drupal::service('module_installer')
-      ->install(['webny_demo_content_view']);
-}
-
-/**
- * Implements hook_update_n().
- *
  * Installs contact form.
  */
 function webny_configuration_update_8029() {
