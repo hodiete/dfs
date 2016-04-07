@@ -84,12 +84,15 @@
 <article {{ attributes.addClass('hero-layout') }}>
   {% if hero_image == '/' %}
     <header class="hero-header hero-no-image landing-hero" style="">
+            <!-- BACKGROUND GRAD -->
+        <div></div>
     {% else %}
     <header class="hero-header hero-has-image landing-hero" style="background-image:url('{{ hero_image }}')">
+            <!-- BACKGROUND GRAD -->
+        <div class="hero-bkg"></div>
         {% endif %}
 
-        <!-- BACKGROUND GRAD -->
-        <div class="hero-bkg"></div>
+    
 
         <!-- HEADLINE LABEL -->
         <h1>{{ node.field_webny_page_sub_title[1].value }}</h1>
