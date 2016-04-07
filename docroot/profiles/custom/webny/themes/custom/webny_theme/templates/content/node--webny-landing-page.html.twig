@@ -1,0 +1,69 @@
+{#
+/**
+ * @file
+ * Theme override to display a node for webny-landing-page.
+ *
+ *
+ *    -- WebNY Landing Page Content Type twig accessors --
+ *
+ */
+#}
+
+{#
+/*
+ * Begin TWIG NODE-WEBNY-LANDING-PAGE Template
+ */
+#}
+
+{# @PARAMS #}
+{% set hero_image = file_url(node.field_webny_landing_hero_image.entity.image.entity.uri.value) %}
+
+
+<div class="landing-title-area">
+
+    <!-- HEADLINE LABEL -->
+    <div class="landing-title">
+        <h1>{{ label }}</h1>
+    </div>
+
+    <!-- SUBTITLE LABEL -->
+    <div class="landing-subtitle">
+        <span>{{ node.field_webny_landing_subtitle[0].value }}</span>
+    </div>
+
+</div>
+
+
+<article {{ attributes.addClass('hero-layout') }}>
+    
+    {% if hero_image == '/' %}
+    <header class="hero-header hero-no-image landing-hero" style="">
+    {% else %}
+    <header class="hero-header hero-has-image landing-hero" style="background-image:url('{{ hero_image }}')">
+    {% endif %}
+        
+        <!-- BACKGROUND GRAD -->
+        <div class="hero-bkg"></div>
+
+        <!-- HEADLINE LABEL -->
+        <h1>{{ node.field_webny_landing_subtitle[1].value }}</h1>
+        
+        <div class="hero-summary">
+            {{ content.field_webny_landing_summary }}
+        </div>
+        
+        <!-- KEYWORDS -->
+        <div class="hero-keywords">
+            {{ content.field_webny_landing_global_key }}
+        </div>
+
+    </header>
+
+</article>
+
+
+<div class="page-paragraphs">
+    <div class="page-paragraphs-in">
+    {{ content.field_webny_landing_paragraph }}
+    </div>
+</div>

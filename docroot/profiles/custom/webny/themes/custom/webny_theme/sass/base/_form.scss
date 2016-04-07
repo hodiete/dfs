@@ -11,13 +11,20 @@ form {
 }
 
 label {
-  margin: 0;
+  margin: 2% 0 0 0;
   display: inline-block;
   color: #4d4d4d;
   cursor: pointer;
   display: block;
-  font-weight: 500;
-  margin-bottom: 0.1875em;
+  font-weight: 800;
+  font-size: 90%;
+  margin-bottom: 14px;
+}
+
+label[class~=form-required]:after {
+color: #128ec3;
+content: ' *';
+display: inline;
 }
 
 input[type="text"],
@@ -30,14 +37,14 @@ textarea {
   background-color: #fff;
   font-family: inherit;
   border: 1px solid $midgray;
-  -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
-  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+//  -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+//  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
   color: rgba(0, 0, 0, 0.75);
   display: block;
-  font-size: 0.875em;
-  margin: 0 0 1em;
-  padding: 0.5em;
-  height: 2.3125em;
+  font-size: 90%;
+  margin: 0 0 3%;
+  padding: 1rem;
+  height: 3.25rem;
   width: 100%;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -45,24 +52,26 @@ textarea {
   -webkit-transition: -webkit-box-shadow 0.45s, border-color 0.45s ease-in-out;
   -moz-transition: -moz-box-shadow 0.45s, border-color 0.45s ease-in-out;
   transition: box-shadow 0.45s, border-color 0.45s ease-in-out;
+  overflow:	hidden;
+}
+
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="date"]:focus,
+textarea:focus {
+//  -webkit-box-shadow: 0 0 5px $darkgray;
+//  -moz-box-shadow: 0 0 5px $darkgray;
+//  box-shadow: 0 0 5px $darkgray;
+  border-color: $medblue;
 }
 
 input[type="text"]:focus,
 input[type="password"]:focus,
 input[type="date"]:focus,
 textarea:focus {
-  -webkit-box-shadow: 0 0 5px $darkgray;
-  -moz-box-shadow: 0 0 5px $darkgray;
-  box-shadow: 0 0 5px $darkgray;
-  border-color: $darkgray;
-}
-
-input[type="text"]:focus,
-input[type="password"]:focus,
-input[type="date"]:focus,
-textarea:focus {
-  background: #fafafa;
-  border-color: $darkgray;
+  background: #fff;
+  border-color: $medblue;
   outline: none;
 }
 
@@ -77,7 +86,22 @@ input[type="file"],
 input[type="checkbox"],
 input[type="radio"],
 select {
-  margin: 0 0 1em;
+  margin: 0 0 1%;
+  
+}
+
+select {
+  border: 1px solid $midgray;
+  padding: 1rem;
+  height: 3.5rem;
+  width: 100%;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: url(//webny.dev/profiles/custom/webny/themes/custom/webny_theme/images/arrow-down-orange.png) no-repeat 97% center transparent;
+}
+
+select:focus {
+	border: 1px solid $medblue;
 }
 
 input[type="file"] {
@@ -186,14 +210,14 @@ input[type="url"] {
   background-color: #fff;
   font-family: inherit;
   border: 1px solid $midgray;
-  -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
-  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+//  -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+//  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
   color: rgba(0, 0, 0, 0.75);
   display: block;
-  font-size: 0.875em;
-  margin: 0 0 1em;
-  padding: 0.5em;
-  height: 2.3125em;
+  font-size: 90%;
+  margin: 0 0 3%;
+  padding: 1rem;
+  height: 3.25rem;
   width: 100%;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -213,10 +237,12 @@ input[type="search"]:focus,
 input[type="tel"]:focus,
 input[type="time"]:focus,
 input[type="url"]:focus {
-  -webkit-box-shadow: 0 0 5px $darkgray;
-  -moz-box-shadow: 0 0 5px $darkgray;
-  box-shadow: 0 0 5px $darkgray;
-  border-color: $darkgray;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+//  -webkit-box-shadow: 0 0 5px $darkgray;
+//  -moz-box-shadow: 0 0 5px $darkgray;
+//  box-shadow: 0 0 5px $darkgray;
+  border-color: $medblue;
 }
 
 input[type="datetime"]:focus,
@@ -229,8 +255,10 @@ input[type="search"]:focus,
 input[type="tel"]:focus,
 input[type="time"]:focus,
 input[type="url"]:focus {
-  background: #fafafa;
-  border-color: $darkgray;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: #fff;
+  border-color: $medblue;
   outline: none;
 }
 

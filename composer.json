@@ -23,9 +23,10 @@
     "drupal/diff": "8.1.*@dev",
     "drush/drush": "~8.0",
     "drupal/devel" : "8.*",
-    "drupal/embed": "8.1.*@dev",
-    "drupal/entity_embed": "8.1.*@dev",
-    "drupal/features": "8.3.0-alpha6",
+    "drupal/embed": "dev-8.x-1.x",
+    "drupal/entity_embed": "dev-8.x-1.x",
+    "drupal/inline_entity_form": "8.1.0-alpha5",
+    "drupal/features": "8.3.0-beta1",
     "drupal/google_analytics": "8.2.0-rc1",
     "drupal/honeypot": "8.1.22",
     "drupal/login_security": "8.1.0",
@@ -42,7 +43,10 @@
     "roave/security-advisories": "dev-master",
     "drupal/token" : "8.1.0-alpha2",
     "drupal/workbench_moderation": "8.1.0-beta1",
-    "drupal-composer/drupal-security-advisories": "8.0.x-dev"
+    "drupal-composer/drupal-security-advisories": "8.0.x-dev",
+    "league/csv": "*",
+    "drupal/csv_serialization": "8.1.0-alpha1"
+    
   },
   "require-dev": {
     "behat/behat":                  "3.0.*",
@@ -82,8 +86,8 @@
       "drupal/adminimal_theme": {
         "Incompatible with admin toolbar": "https://www.drupal.org/files/issues/incompatible_with_admin-2635456-4_0.patch"
       },
-      "drupal/features": {
-        "Do not export _core default_config_hash": "https://www.drupal.org/files/issues/features-do_not_export_hash-2668526-10.patch"
+      "drupal/media_entity": {
+        "Make compatible with IEF alpha4 - alpha2 to f544c91": "https://www.drupal.org/files/issues/media_entity--beta2-to-f544c91.patch"
       }
     }
   },
