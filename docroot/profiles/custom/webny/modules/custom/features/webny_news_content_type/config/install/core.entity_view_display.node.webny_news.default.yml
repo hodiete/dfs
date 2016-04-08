@@ -50,16 +50,17 @@ content:
     label: hidden
     settings:
       link: true
+      view_mode: default
     third_party_settings: {  }
-    type: entity_reference_label
+    type: entity_reference_entity_view
   field_webny_news_date:
     weight: 10
     label: hidden
     settings:
-      format_type: medium
       timezone_override: ''
+      date_format: 'F j, Y'
     third_party_settings: {  }
-    type: datetime_default
+    type: datetime_custom
   field_webny_news_global_keywords:
     weight: 11
     label: hidden
