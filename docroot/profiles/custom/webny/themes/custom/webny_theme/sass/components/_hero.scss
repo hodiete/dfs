@@ -45,7 +45,8 @@ header.hero-no-image{
     position: relative;
   }
 
-  header.hero-header > .hero-bkg {
+
+  .hero-has-image > .hero-bkg {
     background: url("../icons/bkg-gradient.png") repeat-y scroll left top !important;
     height: 100%;
     opacity: 0.9;
@@ -81,11 +82,11 @@ header.hero-no-image{
   }
 
   h1{
-    padding: 20px 20px 0;
+    padding: 20px 20px 0 20px;
     color: $newsTitleColor;
     line-height: 32px;
     font-size: 28px;
-    width: 70%;
+    width: auto;
     margin-bottom: 10px;
     position: relative;
     z-index: 3;
@@ -122,7 +123,7 @@ header.hero-no-image{
   .hero-summary{
     font-size: 1em;
     color: $white;
-    width: 100%;
+    width: auto;
     position:  relative;
     z-index: 5;
     padding: 20px 0 0 20px;
@@ -148,10 +149,12 @@ header.hero-no-image{
     h1{
       font-size: 46px;
       line-height: 60px;
+      width: 70%;
+      
     }
 
   header.hero-header {
-    min-height: 428px;
+    min-height: 368px;
   }
     
     .hero-summary{
@@ -160,11 +163,19 @@ header.hero-no-image{
         width: 70%;
       }    
 
-}
+} // END HERO-layout
+    
 } // END TABLET VIEW
 
   // ######################################################################### //
 /* DESKTOP VIEW */
 @media (min-width: 48em) {
 
+.hero-layout {
+    h1{
+      
+    }
+} // END HERO LAYOUT
+    
+    
 } // END DESKTOP VIEW

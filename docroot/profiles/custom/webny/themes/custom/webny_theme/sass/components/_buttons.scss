@@ -8,7 +8,7 @@
 
 .buttonBase {
   display:inline-block;
-  font-weight: bold;
+  //font-weight: bold;
   text-align: center;
   color:$white;
   text-transform: uppercase;
@@ -20,14 +20,23 @@
   }
 }
 
+
 .button {
   @extend .buttonBase;
   background: $primaryblue;
   border: none;
+  cursor: pointer;
   &:hover {
     background: $dkblueaccent;
-    
   }
+    &>a{
+        color: $white;
+        text-decoration: none;
+        &:hover {
+            text-decoration: none;
+        }
+    }
+    
 }
 
 .buttonTransparentLt {
