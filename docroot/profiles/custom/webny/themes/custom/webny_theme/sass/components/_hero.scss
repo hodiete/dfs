@@ -45,7 +45,8 @@ header.hero-no-image{
     position: relative;
   }
 
-  header.hero-header > .hero-bkg {
+
+  .hero-has-image > .hero-bkg {
     background: url("../icons/bkg-gradient.png") repeat-y scroll left top !important;
     height: 100%;
     opacity: 0.9;
@@ -81,11 +82,11 @@ header.hero-no-image{
   }
 
   h1{
-    padding: 20px 20px 0;
+    padding: 20px 20px 0 20px;
     color: $newsTitleColor;
     line-height: 32px;
     font-size: 28px;
-    width: 70%;
+    width: 100%;
     margin-bottom: 10px;
     position: relative;
     z-index: 3;
@@ -148,6 +149,8 @@ header.hero-no-image{
     h1{
       font-size: 46px;
       line-height: 60px;
+      width: 70%;
+      padding: 20px 20px 0;
     }
 
   header.hero-header {
