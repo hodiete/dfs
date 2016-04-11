@@ -83,41 +83,42 @@
 
 <article {{ attributes.addClass('hero-layout') }}>
   {% if hero_image == '/' %}
-    <header class="hero-header hero-no-image landing-hero" style="">
+    <header class="hero-header hero-no-image hero-ipage" style="">
             <!-- BACKGROUND GRAD -->
-        <div></div>
+        
     {% else %}
-    <header class="hero-header hero-has-image landing-hero" style="background-image:url('{{ hero_image }}')">
+    <header class="hero-header hero-has-image hero-ipage" style="background-image:url('{{ hero_image }}')">
             <!-- BACKGROUND GRAD -->
         <div class="hero-bkg"></div>
-        {% endif %}
-
-    
-
-        <!-- HEADLINE LABEL -->
-        <h1>{{ node.field_webny_page_sub_title[1].value }}</h1>
+    {% endif %}
         
-
+        <div class="hero-inner hero-ipage-inner">
         
-        <!-- KEYWORDS -->
-        <div class="hero-keywords">
-            {{ content.field_webny_page_global_keywords }}
+            <!-- HEADLINE LABEL -->
+            <h1>{{ node.field_webny_page_sub_title[1].value }}</h1>
+
+            <!-- KEYWORDS -->
+            <div class="hero-keywords">
+                {{ content.field_webny_page_global_keywords }}
+            </div>
+            
         </div>
 
     </header>
 
 </article>
 
-        <div >
-            {{ content.body }}
-        </div>
+<div class="page-summary">
+    {{ content.field_webny_page_description }}
+</div>    
+    
+<div class="ipage-body">
+    {{ content.body }}
+</div>
 
 <div class="page-paragraphs">
 
     <div class="page-paragraphs-in">
-        <div class="hero-summary">
-            {{ content.field_webny_page_description }}
-        </div>
-    {{ content.field_webny_page_paragraph }}
+        {{ content.field_webny_page_paragraph }}
     </div>
 </div>
