@@ -86,7 +86,7 @@ header.hero-no-image{
     color: $newsTitleColor;
     line-height: 32px;
     font-size: 28px;
-    width: 100%;
+    width: auto;
     margin-bottom: 10px;
     position: relative;
     z-index: 3;
@@ -123,7 +123,7 @@ header.hero-no-image{
   .hero-summary{
     font-size: 1em;
     color: $white;
-    width: 100%;
+    width: auto;
     position:  relative;
     z-index: 5;
     padding: 20px 0 0 20px;
@@ -150,11 +150,11 @@ header.hero-no-image{
       font-size: 46px;
       line-height: 60px;
       width: 70%;
-      padding: 20px 20px 0;
+      
     }
 
   header.hero-header {
-    min-height: 428px;
+    min-height: 368px;
   }
     
     .hero-summary{
@@ -163,11 +163,19 @@ header.hero-no-image{
         width: 70%;
       }    
 
-}
+} // END HERO-layout
+    
 } // END TABLET VIEW
 
   // ######################################################################### //
 /* DESKTOP VIEW */
 @media (min-width: 48em) {
 
+.hero-layout {
+    h1{
+      
+    }
+} // END HERO LAYOUT
+    
+    
 } // END DESKTOP VIEW
