@@ -9,10 +9,10 @@ dependencies:
     - field.field.node.webny_page.field_webny_page_description
     - field.field.node.webny_page.field_webny_page_global_keywords
     - field.field.node.webny_page.field_webny_page_image
+    - field.field.node.webny_page.field_webny_page_paragraph
     - field.field.node.webny_page.field_webny_page_sub_title
     - node.type.webny_page
   module:
-    - image
     - text
     - user
 id: node.webny_page.webny_featured_card
@@ -26,18 +26,14 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: text_default
-  field_webny_page_image:
-    weight: 1
-    label: hidden
-    settings:
-      image_style: ''
-      image_link: ''
-    third_party_settings: {  }
-    type: image
+  workbench_moderation_control:
+    weight: -20
 hidden:
   body: true
   field_webny_page_agency_keywords: true
   field_webny_page_attachment: true
   field_webny_page_global_keywords: true
+  field_webny_page_image: true
+  field_webny_page_paragraph: true
   field_webny_page_sub_title: true
   links: true
