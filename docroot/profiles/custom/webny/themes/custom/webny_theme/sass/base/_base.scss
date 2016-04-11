@@ -150,9 +150,23 @@ blockquote {
 //
 // Style guide: base.images
 
-img {
+.layout-container img {
   border:1px solid $gray-lite;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;  
+  height: auto;
 }
+
+.page-paragraphs img,
+.bar-top {
+   border-top:4px solid $color-secondary;
+ }
+ 
+ .bar-bottom {
+   border-bottom:4px solid $color-secondary;
+  }
+ /* can't currently get img classes to show in wysiwyg NDD-146 */
 
 // List Types
 //
