@@ -37,26 +37,30 @@
 <article {{ attributes.addClass('hero-layout') }}>
     
     {% if hero_image == '/' %}
-    <header class="hero-header hero-no-image landing-hero" style="">
+    <header class="hero-header hero-no-image hero-landing" style="">
     {% else %}
-    <header class="hero-header hero-has-image landing-hero" style="background-image:url('{{ hero_image }}')">
+    <header class="hero-header hero-has-image hero-landing" style="background-image:url('{{ hero_image }}')">
     {% endif %}
         
         <!-- BACKGROUND GRAD -->
         <div class="hero-bkg"></div>
-
-        <!-- HEADLINE LABEL -->
-        <h1>{{ node.field_webny_landing_subtitle[1].value }}</h1>
         
-        <div class="hero-summary">
-            {{ content.field_webny_landing_summary }}
-        </div>
+        <div class="hero-inner hero-landing-inner">
         
-        <!-- KEYWORDS -->
-        <div class="hero-keywords">
-            {{ content.field_webny_landing_global_key }}
-        </div>
+            <!-- HEADLINE LABEL -->
+            <h2>{{ node.field_webny_landing_subtitle[1].value }}</h2>
 
+            <div class="hero-summary">
+                {{ content.field_webny_landing_summary }}
+            </div>
+
+            <!-- KEYWORDS -->
+            <div class="hero-keywords">
+                {{ content.field_webny_landing_global_key }}
+            </div>
+            
+        </div>    
+            
     </header>
 
 </article>

@@ -6,15 +6,6 @@
 // ##################################################################
 /* MOBILE FIRST STYLES */
 
-// COLORS
-$newsTitleColor:    	     #ffffff;
-$newsBkColor:		         #128ec3;
-$keywordBkColor:             #7690b6;
-$linkColor:                  rgb(0, 0, 238);
-$contactTitleColor:          #24387e;
-$nyOrange:                   #d5820d;
-$landtitlebk:                #24387e;
-
 // ========================================================================= //
 /* FONTS / SIZES */
 
@@ -24,7 +15,7 @@ header.hero-has-image{
 }
 
 header.hero-no-image{
-  background-color: $newsBkColor;
+  background-color: $medblue;
 }
 
 // ========================================================================= //
@@ -32,26 +23,38 @@ header.hero-no-image{
 .hero-layout {
 
   header{
-    padding: 30px 0;
+    
+  }
+  
+  .hero-inner{
+      width: 100%;
+  }    
+    
+  .hero-news-inner{
+      margin: 60px 20px;
+  }
+  .hero-landing-inner{
+      margin: 60px 56px;
   }
 
   header.hero-header{
     background-position: 50% 0;
     background-repeat: no-repeat;
     background-size: cover;
-    color: #fff;
+    color: $white;
     min-height: 100px;
     overflow: hidden;
     position: relative;
   }
 
 
-  .hero-has-image > .hero-bkg {
+  .hero-has-image  .hero-bkg {
     background: url("../icons/bkg-gradient.png") repeat-y scroll left top !important;
     height: 100%;
     opacity: 0.9;
     position: absolute;
     top: 0;
+    left: 0;
     width: 100%;
     z-index: 2;
   }
@@ -59,8 +62,6 @@ header.hero-no-image{
   .hero-published-date {
     font-family: "ProximaNovaBold";
     font-size: 0.8em;
-    margin-top: 20px;
-    padding: 20px 20px 0;
     text-transform: uppercase;
     color: $white;
     position: relative;
@@ -81,9 +82,9 @@ header.hero-no-image{
     color: $white;
   }
 
-  h1{
-    padding: 20px 20px 0 20px;
-    color: $newsTitleColor;
+  h1,h2{
+    
+    color: $white;
     line-height: 32px;
     font-size: 28px;
     width: auto;
@@ -97,9 +98,9 @@ header.hero-no-image{
     height: 3em;
     margin-right: 5px;
     position: relative;
-    padding: 20px 20px 0;
     position: relative;
     z-index: 3;
+    margin-top: 40px;
   }
 
   .hero-keywords > div > div{
@@ -117,7 +118,6 @@ header.hero-no-image{
     text-transform: uppercase;
     color: $white;
     text-decoration: none;
-
   }
     
   .hero-summary{
@@ -126,18 +126,18 @@ header.hero-no-image{
     width: auto;
     position:  relative;
     z-index: 5;
-    padding: 20px 0 0 20px;
+   
     text-align: left;
       
   }
     
 } // END HERO-LAYOUT
 
-.landing-hero {
-    h1, 
+.hero-landing {
+    h2, 
     .hero-summary,
     .hero-keywords{
-        padding-left: 56px;
+        
     }
 }
 
@@ -146,22 +146,21 @@ header.hero-no-image{
 @media (min-width: 30em) {
 
 .hero-layout {
-    h1{
-      font-size: 46px;
-      line-height: 60px;
+    
+  .hero-inner{
       width: 70%;
-      
-    }
-
-  header.hero-header {
-    min-height: 368px;
   }
     
-    .hero-summary{
-        font-size: 1em;
-        color: $white;
-        width: 70%;
-      }    
+  h1,h2{
+    font-size: 46px;
+    line-height: 60px;
+    color: $white; 
+  }
+    
+  .hero-summary{
+    font-size: 1em;
+    color: $white;
+   }    
 
 } // END HERO-layout
     
@@ -175,6 +174,14 @@ header.hero-no-image{
     h1{
       
     }
+    
+  header.hero-landing {
+    min-height: 510px;
+  }
+    
+  header.hero-news {
+    min-height: 428px;
+  }
 } // END HERO LAYOUT
     
     
