@@ -20,14 +20,20 @@ targetEntityType: node
 bundle: webny_page
 mode: webny_featured_card
 content:
-  field_webny_page_description:
+  field_webny_page_image:
     weight: 0
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    type: entity_reference_entity_view
+  field_webny_page_description:
+    weight: 1
     label: hidden
     settings: {  }
     third_party_settings: {  }
     type: text_default
-  workbench_moderation_control:
-    weight: -20
 hidden:
   body: true
   field_webny_page_agency_keywords: true
