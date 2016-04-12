@@ -61,64 +61,45 @@
  * @todo Remove the id attribute (or make it a class), because if that gets
  *   rendered twice on a page this is invalid CSS for example: two lists
  *   in different view modes.
+ * 
+ * webny edits - moved the div around the content variable up above the 
+ * title_prefix area to get the title and content on the same level for css positioning.
  */
 #}
-{# @PARAMS #}
-{% set hero_image = file_url(node.field_webny_page_image.entity.image.entity.uri.value) %}
+<article{{ attributes.addClass('webny-card') }}>
+  {#
+/**
+<div{{ content_attributes }}>
+ */
+#}
+  {{ title_prefix }}
+  {% if not page %}
+    <h2{{ title_attributes }}>
+      <a href="{{ url }}" rel="bookmark">{{ label }}</a>
+    </h2>
+  {% endif %}
+  {{ title_suffix }}
 
-<div class="landing-title-area">
+ {% if display_submitted %}
+    <footer>
+      {{ author_picture }}
+      <div{{ author_attributes }}>
+        {% trans %}Submitted by {{ author_name }} on {{ date }}{% endtrans %}
+        {{ metadata }}
+      </div>
+    </footer>
+  {% endif %}
+ 
 
-    <!-- HEADLINE LABEL -->
-    <div class="landing-title">
-        <h1>{{ label }}</h1>
+    {{ content }}
+
+    <div class="webny-card-cta">
+      <a href="{{ url }}">Learn More</a>
     </div>
-
-    <!-- SUBTITLE LABEL -->
-    <div class="landing-subtitle">
-        <span>{{ node.field_webny_page_sub_title[0].value }}</span>
-    </div>
-
-</div>
-
-
-<article {{ attributes.addClass('hero-layout') }}>
-  {% if hero_image == '/' %}
-    <header class="hero-header hero-no-image hero-ipage" style="">
-            <!-- BACKGROUND GRAD -->
-        
-    {% else %}
-    <header class="hero-header hero-has-image hero-ipage" style="background-image:url('{{ hero_image }}')">
-            <!-- BACKGROUND GRAD -->
-        <div class="hero-bkg"></div>
-    {% endif %}
-        
-        <div class="hero-inner hero-ipage-inner">
-        
-            <!-- HEADLINE LABEL -->
-            <h1>{{ node.field_webny_page_sub_title[1].value }}</h1>
-
-            <!-- KEYWORDS -->
-            <div class="hero-keywords">
-                {{ content.field_webny_page_global_keywords }}
-            </div>
-            
-        </div>
-
-    </header>
+{#
+/**
+</div> 
+*/
+#}
 
 </article>
-
-<div class="page-summary">
-    {{ content.field_webny_page_description }}
-</div>    
-    
-<div class="ipage-body">
-    {{ content.body }}
-</div>
-
-<div class="page-paragraphs">
-
-    <div class="page-paragraphs-in">
-        {{ content.field_webny_page_paragraph }}
-    </div>
-</div>
