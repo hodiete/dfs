@@ -63,10 +63,18 @@
  *	  FIELD					TWIG
  *    title:                {{ label }}
  *    body:                 {{ content.body }}
- *
+ *    social_fields URI     {{ node.field_webny_contact_twitter.uri }}
  *
  */
 #}
+
+{#
+    CONTACT VARS
+#}
+
+{% set emailaddr = node.field_webny_contact_email.value %}
+{% set phone = node.field_webny_contact_phone.value %}
+
 
 {#
 /*
@@ -74,17 +82,33 @@
  */
 #}
 
+
 <article {{ attributes.addClass('press-layout') }}>
 
     <h2>{{ label }}</h2>
 
-    <div class="press-phone">
-        {{  content.field_webny_contact_phone }}
+    <div class="contact-inblk press-phone">
+        <div class="contact-heading">
+            <label class="contact-icon-phone">
+                Contact us by phone:
+            </label>    
+        </div>
+        <a href="tel:{{ phone }}">{{ phone }}</a>
     </div>
 
-    <div class="press-email">
-        {{  content.field_webny_contact_email }}
+    <div class="contact-inblk  press-email">
+        <div class="contact-heading">
+            <label class="contact-icon-mail">
+                Contact us by email:
+            </label>
+        </div>
+        <a href="mailto:{{ emailaddr }}">{{ emailaddr }}</a>
     </div>
-
+ 
 
 </article>
+
+<div class="thethethethe">
+    {{ kint(node) }}
+</div>
+
