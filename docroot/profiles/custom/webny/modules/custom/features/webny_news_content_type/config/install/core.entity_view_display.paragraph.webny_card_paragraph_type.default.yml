@@ -10,13 +10,14 @@ bundle: webny_card_paragraph_type
 mode: default
 content:
   field_webny_card_entity_ref:
-    weight: 6
+    weight: 0
+    label: hidden
     settings:
-      match_operator: CONTAINS
-      size: 60
-      placeholder: ''
+      view_mode: webny_featured_card
+      link: false
     third_party_settings: {  }
-    type: entity_reference_autocomplete
+    type: entity_reference_entity_view
 hidden:
   created: true
   uid: true
+  workbench_moderation_control: true
