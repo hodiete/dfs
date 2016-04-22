@@ -1,3 +1,4 @@
+uuid: 2e6f1492-4ca6-438d-8653-83cb33497402
 langcode: en
 status: true
 dependencies:
@@ -19,6 +20,8 @@ dependencies:
   module:
     - text
     - user
+_core:
+  default_config_hash: TOlA3gVNn_4AHB5BnkikK2nxENNWabMhuEk4mnBntck
 id: node.webny_news.teaser
 targetEntityType: node
 bundle: webny_news
@@ -33,8 +36,8 @@ content:
     third_party_settings: {  }
   links:
     weight: 100
-    settings: {  }
-    third_party_settings: {  }
+  workbench_moderation_control:
+    weight: -20
 hidden:
   field_webny_news_agency_keywords: true
   field_webny_news_attachment: true
@@ -47,4 +50,3 @@ hidden:
   field_webny_news_sub_title: true
   field_webny_news_subject_heading: true
   field_webny_news_teaser: true
-  workbench_moderation_control: true

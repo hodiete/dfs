@@ -1,9 +1,12 @@
+uuid: 1e5b5d35-b097-4883-a100-ecbe29148cd3
 langcode: en
 status: true
 dependencies:
   config:
     - field.field.paragraph.webny_card_paragraph_type.field_webny_card_entity_ref
     - paragraphs.paragraphs_type.webny_card_paragraph_type
+_core:
+  default_config_hash: SrxIJqpbQJGnRUYZXDbpRh6CBHmsmzBHPOk2dO-vRHg
 id: paragraph.webny_card_paragraph_type.default
 targetEntityType: paragraph
 bundle: webny_card_paragraph_type
@@ -17,7 +20,10 @@ content:
       link: false
     third_party_settings: {  }
     type: entity_reference_entity_view
+  workbench_moderation_control:
+    weight: 2
+    settings: {  }
+    third_party_settings: {  }
 hidden:
   created: true
   uid: true
-  workbench_moderation_control: true

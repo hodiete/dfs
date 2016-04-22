@@ -1,0 +1,25 @@
+uuid: 713879c2-74f5-47ec-be05-5d034b75aa63
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.webny_announcement_pgtype.field_webny_announcement_eref
+    - paragraphs.paragraphs_type.webny_announcement_pgtype
+  module:
+    - workbench_moderation
+id: paragraph.webny_announcement_pgtype.default
+targetEntityType: paragraph
+bundle: webny_announcement_pgtype
+mode: default
+content:
+  field_webny_announcement_eref:
+    weight: 6
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: 'Type the name of the content you wish to enter'
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+hidden:
+  created: true
+  uid: true
