@@ -38,10 +38,10 @@ local:
       #
       # use the following lines to disable SSL authentication for goutte.
       goutte:
-         guzzle_parameters:
-         redirect.disable: true
-         ssl.certificate_authority: system
-           curl.options:
+       guzzle_parameters:
+        redirect.disable: true
+        ssl.certificate_authority: system
+        curl.options:
              CURLOPT_SSL_VERIFYPEER: false
              CURLOPT_SSL_VERIFYHOST: false
              CURLOPT_CERTINFO: false
