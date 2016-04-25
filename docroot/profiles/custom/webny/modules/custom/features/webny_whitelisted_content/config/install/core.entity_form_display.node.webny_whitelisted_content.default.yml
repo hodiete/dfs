@@ -1,0 +1,105 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.webny_whitelisted_content.body
+    - field.field.node.webny_whitelisted_content.field_webny_whitelist_agency_key
+    - field.field.node.webny_whitelisted_content.field_webny_whitelist_date
+    - field.field.node.webny_whitelisted_content.field_webny_whitelist_descript
+    - field.field.node.webny_whitelisted_content.field_webny_whitelist_global_key
+    - field.field.node.webny_whitelisted_content.field_webny_whitelist_image
+    - field.field.node.webny_whitelisted_content.field_webny_whitelist_link_url
+    - node.type.webny_whitelisted_content
+  module:
+    - datetime
+    - link
+    - path
+    - text
+    - workbench_moderation
+id: node.webny_whitelisted_content.default
+targetEntityType: node
+bundle: webny_whitelisted_content
+mode: default
+content:
+  created:
+    type: datetime_timestamp
+    weight: 10
+    settings: {  }
+    third_party_settings: {  }
+  field_webny_whitelist_agency_key:
+    weight: 38
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+  field_webny_whitelist_date:
+    weight: 34
+    settings: {  }
+    third_party_settings: {  }
+    type: datetime_default
+  field_webny_whitelist_descript:
+    weight: 33
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+  field_webny_whitelist_global_key:
+    weight: 39
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+  field_webny_whitelist_image:
+    weight: 37
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+  field_webny_whitelist_link_url:
+    weight: 35
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+  path:
+    type: path
+    weight: 30
+    settings: {  }
+    third_party_settings: {  }
+  promote:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 15
+    third_party_settings: {  }
+  sticky:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 16
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: -5
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 5
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  body: true
