@@ -1,0 +1,42 @@
+uuid: a5839b0e-ce96-4428-9f03-3ce2fbece7d0
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.webny_announcement
+    - field.field.node.webny_page.body
+    - field.field.node.webny_page.field_webny_page_agency_keywords
+    - field.field.node.webny_page.field_webny_page_attachment
+    - field.field.node.webny_page.field_webny_page_description
+    - field.field.node.webny_page.field_webny_page_global_keywords
+    - field.field.node.webny_page.field_webny_page_image
+    - field.field.node.webny_page.field_webny_page_paragraph
+    - field.field.node.webny_page.field_webny_page_sub_title
+    - node.type.webny_page
+  module:
+    - text
+    - user
+_core:
+  default_config_hash: 3wOFxfNpQr4dv9EPrHQgScIJKonPuB-EZsmvl4i02vc
+id: node.webny_page.webny_announcement
+targetEntityType: node
+bundle: webny_page
+mode: webny_announcement
+content:
+  field_webny_page_description:
+    weight: 0
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    type: text_trimmed
+hidden:
+  body: true
+  field_webny_page_agency_keywords: true
+  field_webny_page_attachment: true
+  field_webny_page_global_keywords: true
+  field_webny_page_image: true
+  field_webny_page_paragraph: true
+  field_webny_page_sub_title: true
+  links: true
+  workbench_moderation_control: true

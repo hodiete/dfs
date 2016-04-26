@@ -1,3 +1,4 @@
+uuid: e81d7470-0c5c-4445-9100-0dc2ed8cbba3
 langcode: en
 status: true
 dependencies:
@@ -21,6 +22,8 @@ dependencies:
     - file
     - text
     - user
+_core:
+  default_config_hash: KT9bsnNWTh06PJEjPrw12n7FK7wPPM7j__40fxzTyQY
 id: node.webny_news.default
 targetEntityType: node
 bundle: webny_news
@@ -113,5 +116,8 @@ content:
     weight: 1
     settings: {  }
     third_party_settings: {  }
-hidden:
-  workbench_moderation_control: true
+  workbench_moderation_control:
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+hidden: {  }
