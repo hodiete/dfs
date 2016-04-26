@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Test git hooks.
- */
-
 namespace Drupal\Tests\PHPUnit;
 
 /**

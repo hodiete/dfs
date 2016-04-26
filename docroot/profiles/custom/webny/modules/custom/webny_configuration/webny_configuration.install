@@ -4,6 +4,8 @@
  * Install, update and uninstall functions for the webny platform.
  */
 
+use Drupal\user\Entity\Role;
+
 /**
  * Implements hook_update_n().
  *
@@ -14,7 +16,6 @@
 \Drupal::service('module_installer')
 ->install(['module1']);
 }*/
-
 
 /**
  * Implements hook_update_n().
@@ -161,7 +162,7 @@ function webny_configuration_update_8015() {
  * Support function to add a role.
  */
 function _webny_configuration_add_role($id = "", $label = "", $weight = 0) {
-  $role = \Drupal\user\Entity\Role::create(array('id' => $id, 'label' => $label));
+  $role = Role::create(array('id' => $id, 'label' => $label));
   $role->setWeight($weight);
   $role->setIsAdmin(FALSE);
   $role->save();

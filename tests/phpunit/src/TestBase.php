@@ -1,8 +1,4 @@
 <?php
-/**
- * @file
- * Test base for project PHPUnit tests.
- */
 
 namespace Drupal\Tests\PHPUnit;
 
@@ -18,6 +14,7 @@ abstract class TestBase extends \PHPUnit_Framework_TestCase {
   protected $projectDirectory;
   protected $drupalRoot;
   protected $config;
+
   /**
    * Class constructor.
    */

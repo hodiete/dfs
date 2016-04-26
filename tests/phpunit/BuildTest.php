@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Test build tasks. E.g. setup:build:all.
- */
-
 namespace Drupal\Tests\PHPUnit;
 
 /**
@@ -13,6 +8,7 @@ namespace Drupal\Tests\PHPUnit;
  * Verifies that build tasks work as expected.
  */
 class BuildTest extends TestBase {
+
   /**
    * Tests Phing setup:make target.
    *

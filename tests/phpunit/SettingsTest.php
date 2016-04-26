@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Test configuration in settings.php.
- */
-
 namespace Drupal\Tests\PHPUnit;
 /**
  * Class SettingsTest.
