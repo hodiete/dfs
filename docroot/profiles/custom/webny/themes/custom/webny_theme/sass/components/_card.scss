@@ -47,7 +47,9 @@
   order:2;
   padding: .5rem 1rem;
   font-size: 120%;   flex: 1 0 auto;
-
+  min-height: 78px; /*IOJP*/  
+  vertical-align: top;
+  display: block;
 }
 .webny-card .webny-card-date {
   order:3;
@@ -57,15 +59,16 @@
   order:4;
   padding: .5rem 1rem;
   display:flex;
-
+  vertical-align: top;
   flex: 1 0 auto;
+  min-height: 100px; /*IOJP*/   
 
 }
 
 .webny-card .webny-card-cta {
   order:5;
 
-    text-align: center;
+  text-align: center;
   padding: 1em;
   background-color:$call-to-action;
   border-top: 1px solid $gray-lite;
