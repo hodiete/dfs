@@ -11,7 +11,7 @@
       <then>
         <fail>You must pass deploy.branch and deploy.commitMsg as runtime parameters.</fail>
         <echo message="Command should match syntax:"/>
-        <echo message="./task.sh deploy:artifact -Ddeploy.branch=8.x-build -Ddeploy.commitMsg='BLT-123: The commit message.'"/>
+        <echo message="./bolt.sh deploy:artifact -Ddeploy.branch=8.x-build -Ddeploy.commitMsg='BLT-123: The commit message.'"/>
       </then>
     </if>
 
@@ -57,6 +57,7 @@
     <delete dir="${deploy.dir}/config" failonerror="false" quiet="true" />
     <delete dir="${deploy.dir}/docroot" failonerror="false" quiet="true" />
     <delete dir="${deploy.dir}/hooks" failonerror="false" quiet="true" />
+    <delete dir="${deploy.dir}/factory-hooks" failonerror="false" quiet="true" />
   </target>
 
   <target name="deploy:artifact:commit">
@@ -121,6 +122,10 @@
     <!-- Copy Acquia Cloud hooks. -->
     <copy todir="${deploy.dir}/hooks" overwrite="true">
       <fileset dir="${repo.root}/hooks"/>
+    </copy>
+
+    <copy todir="${deploy.dir}/factory-hooks" overwrite="true" haltonerror="false">
+      <fileset dir="${repo.root}/factory-hooks"/>
     </copy>
 
     <!-- Copy configuration. -->
