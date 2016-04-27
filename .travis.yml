@@ -45,7 +45,7 @@ install:
 before_script:
   - cd $TRAVIS_BUILD_DIR/docroot
   - drush runserver --default-server=127.0.0.1:8080 &>/dev/null &
-  - until netstat -an 2>/dev/null | grep '8080.*LISTEN'; do sleep 0.2; done
+  - php -S 127.0.0.1:8080 &
   - phantomjs --webdriver=4444 > /dev/null &
   # Clear drush release history cache, to pick up new releases.
   - rm -f ~/.drush/cache/download/*---updates.drupal.org-release-history-*
