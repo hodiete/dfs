@@ -29,11 +29,11 @@
     <patternset refid="files.php"/>
   </fileset>
 
-  <fileset dir="${docroot}/modules/custom" id="files.php.custom.modules">
+  <fileset dir="${docroot}/profiles/custom/webny/modules/custom" id="files.php.custom.modules">
     <patternset refid="files.php"/>
   </fileset>
 
-  <fileset dir="${docroot}/themes/custom" id="files.php.custom.themes">
+  <fileset dir="${docroot}/profiles/custom/webny/themes/custom" id="files.php.custom.themes">
     <patternset refid="files.php"/>
   </fileset>
 
@@ -46,7 +46,7 @@
     <patternset refid="files.php"/>
   </fileset>
 
-  <fileset dir="${docroot}/themes/custom" id="files.frontend.custom.themes" expandsymboliclinks="true">
+  <fileset dir="${docroot}/profiles/custom/webny/themes/custom" id="files.frontend.custom.themes" expandsymboliclinks="true">
     <patternset refid="files.frontend"/>
   </fileset>
 </project>
