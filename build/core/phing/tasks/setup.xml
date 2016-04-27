@@ -1,9 +1,9 @@
 <project name="setup" default="setup">
 
   <target name="setup" description="Install dependencies, builds docroot, installs Drupal."
-          depends="setup:build:all, setup:drupal:install, setup:bolt:alias">
+          depends="setup:build:all, setup:drupal:install">
     <echo>For a full list of available Phing targets, run:</echo>
-    <echo>./bolt.sh -l</echo>
+    <echo>./task.sh -l</echo>
     <echo></echo>
   </target>
 
