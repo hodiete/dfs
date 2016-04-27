@@ -26,16 +26,15 @@ local:
     Behat\MinkExtension:
       javascript_session: selenium2
       # configure the base url for your site
-      base_url: http://webny.dev
+      base_url: http://127.0.0.1:8080
       # set default command for "Show last response" step.
       show_cmd: "open %s"
       # ADDITIONAL OPTIONS FOR WEB DRIVERS
       # use the following 3 lines to user phantomjs
-      # browser_name: phantomjs
-      # selenium2:
-      #   wd_host: "http://localhost:8643/wd/hub"
-      #   browser: chrome
-      #
+      browser_name: phantomjs
+      selenium2:
+         wd_host: "http://127.0.0.1:4444/wd/hub"
+         browser: chrome
       # use the following lines to disable SSL authentication for goutte.
       goutte:
        guzzle_parameters:
@@ -46,12 +45,10 @@ local:
              CURLOPT_SSL_VERIFYHOST: false
              CURLOPT_CERTINFO: false
              CURLOPT_TIMEOUT: 120
-      selenium2:
-        wd_host: http://127.0.0.1:4444/wd/hub
-        browser: chrome
     Drupal\DrupalExtension:
       drupal:
         # This must be an absolute path.
         drupal_root: ${docroot}
       drush:
         alias: '@self'
+        global_options: '--strict=0'
