@@ -26,7 +26,7 @@
   font-size:90%;
   
   //width:30%;  /* moved to queries below */
-  display: flex;
+  display: flex; /* removed for IE 11 fix */
   margin: 1rem;
 }
 
@@ -58,9 +58,9 @@
 .webny-card .webny-card-teaser {
   order:4;
   padding: .5rem 1rem;
-  display:flex;
+  /* display:flex; */
   vertical-align: top;
-  flex: 1 0 auto;
+  /* flex: 1 0 auto; */
   min-height: 100px; /*IOJP*/   
 
 }
