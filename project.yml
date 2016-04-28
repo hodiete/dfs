@@ -14,7 +14,8 @@ project:
     # Please ensure contrib profiles are also in your composer.json file.
     contrib: false
   # This is used to build front end artifacts. E.g., SASS compilation.
-  theme_name: 'webny_theme'
+  themes:
+    - webny_theme
   # These are random strings used to configure the hash salt.
   hash_salt: NZ4pGCYwwI0kPGr5KwDkK1IgC2XOl8jFURj7q8lgAUBw6xxRXlWJNZZ
 
@@ -25,4 +26,10 @@ git:
     # Defining git remotes allows builds deployed via CI.
     - acsfdev@svn-15689.prod.hosting.acquia.com:acsfdev.git
     - nysits@svn-43.enterprise-g1.hosting.acquia.com:nysits.git
+drush:
+  aliases:
+    # The remote environment from which the database will be pulled.
+    remote: ${acquia_subname}.test
+    # The local environment against which all local drush commands are run.
+    local: self
     

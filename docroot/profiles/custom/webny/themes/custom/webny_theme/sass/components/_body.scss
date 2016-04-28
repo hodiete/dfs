@@ -40,12 +40,13 @@
     }
       
     
-    .press-body{ 
+    .press-body,
+    .ct-attach{ 
         margin: 0 auto;
         max-width: 780px;
         width: 80%;
     }
-
+            
     .press-contact-info{
       width: 80%;
       margin: 80px auto;
@@ -105,15 +106,30 @@
 // ========================================================================= //
 /* LANDING PAGE PARAGRAPHS */
 
+/*
 .page-paragraphs{
     width: 80%;
     margin: 0 auto;
 
-    .page-paragraphs-in{
-        max-width: 1200px;
-        margin: 80px auto;
+    .page-paragraphs-in {
+        
+            max-width: 1200px;
+            margin: 80px auto; 
+        
+        .paragraph--type--webny-card-paragraph-type{
+            max-width: 1200px;
+            margin: 80px auto;
+        }
+        
+        .paragraph--type--webny-announcement-pgtype{
+            max-width: 100%;
+            margin: 0 auto; 
+        }
+        
     }
-}
+
+}*/
+
 
 // ######################################################################### //
 /* TABLET VIEW */
@@ -128,8 +144,10 @@
               width: 90%;
           }
           
+         
           .ipage-body,
           .press-body,
+          .ct-attach,
           .press-contact-info{ 
             width: 80%;
           }    
@@ -183,6 +201,7 @@
           }
           
           .press-body,
+          .ct-attach,
           .press-contact-info{ 
             width: 100%;
           }    

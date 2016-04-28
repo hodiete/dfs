@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Test behat configuration.
- */
-
 namespace Drupal\Tests\PHPUnit;
 
 /**

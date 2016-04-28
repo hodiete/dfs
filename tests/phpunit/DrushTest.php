@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Test drush integration.
- */
-
 namespace Drupal\Tests\PHPUnit;
 
 /**

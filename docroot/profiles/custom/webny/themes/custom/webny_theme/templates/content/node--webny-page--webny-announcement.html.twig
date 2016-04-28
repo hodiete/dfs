@@ -1,0 +1,24 @@
+{#
+/**
+ * @file
+ * Theme override to display a node.
+ * OVERRIDE the inner page display for announcements reference. 
+ */
+#}
+<article{{ attributes.addClass('webny-announcements') }}> 
+  {% if not page %}
+    <div class="webny-announce-wrap">
+        <div class="webny-announce-wrap-in">
+            <div class="announcement-info">
+                <h3>{{ label }}</h3>
+                <div class="announcement-summary">
+                    {{ node.field_webny_page_description.value|striptags }} 
+                </div>
+            </div>
+            <div class="webny-announcement-button">
+              <a href="{{ url }}">LEARN MORE</a>
+            </div>
+        </div>        
+     </div>
+  {% endif %}
+</article>

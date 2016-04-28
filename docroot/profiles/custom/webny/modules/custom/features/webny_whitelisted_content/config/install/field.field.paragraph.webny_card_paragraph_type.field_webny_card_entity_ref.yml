@@ -6,6 +6,7 @@ dependencies:
     - node.type.webny_landing_page
     - node.type.webny_news
     - node.type.webny_page
+    - node.type.webny_whitelisted_content
     - paragraphs.paragraphs_type.webny_card_paragraph_type
 id: paragraph.webny_card_paragraph_type.field_webny_card_entity_ref
 field_name: field_webny_card_entity_ref
@@ -21,6 +22,7 @@ settings:
   handler: 'default:node'
   handler_settings:
     target_bundles:
+      webny_whitelisted_content: webny_whitelisted_content
       webny_landing_page: webny_landing_page
       webny_news: webny_news
       webny_page: webny_page

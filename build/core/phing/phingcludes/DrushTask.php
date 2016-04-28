@@ -60,6 +60,7 @@ class DrushTask extends Task {
    */
   private $command = array();
   private $bin = NULL;
+  private $alias = NULL;
   private $uri = NULL;
   private $root = NULL;
   private $assume = NULL;
@@ -84,6 +85,13 @@ class DrushTask extends Task {
    */
   public function setBin($str) {
     $this->bin = $str;
+  }
+
+  /**
+   * Drush alias to use.
+   */
+  public function setAlias($str) {
+    $this->alias = $str;
   }
 
   /**
@@ -207,6 +215,10 @@ class DrushTask extends Task {
     $command = array();
 
     $command[] = !empty($this->bin) ? $this->bin : 'drush';
+
+    if (!empty($this->alias)) {
+      $command[] = '@' . $this->alias;
+    }
 
     $option = new DrushOption();
     $option->setName('nocolor');

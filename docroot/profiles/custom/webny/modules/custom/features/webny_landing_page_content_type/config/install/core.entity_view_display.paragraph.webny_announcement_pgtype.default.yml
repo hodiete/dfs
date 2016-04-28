@@ -1,0 +1,23 @@
+uuid: 37e2cae7-efc7-4381-aa00-b9677c920428
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.webny_announcement_pgtype.field_webny_announcement_eref
+    - paragraphs.paragraphs_type.webny_announcement_pgtype
+id: paragraph.webny_announcement_pgtype.default
+targetEntityType: paragraph
+bundle: webny_announcement_pgtype
+mode: default
+content:
+  field_webny_announcement_eref:
+    type: entity_reference_entity_view
+    weight: 0
+    label: hidden
+    settings:
+      view_mode: webny_announcement
+      link: false
+    third_party_settings: {  }
+hidden:
+  created: true
+  uid: true

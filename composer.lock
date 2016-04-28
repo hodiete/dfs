@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "039a6b55be68b5c87dd3cb43d2164fb2",
-    "content-hash": "68d280eef2a114d2bf63858ecac64484",
+    "hash": "1d629a1163ca7538d1c05815592a9fa7",
+    "content-hash": "add79b4b481b073c1e20791cd3530ee7",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -71,16 +71,16 @@
         },
         {
             "name": "composer/installers",
-            "version": "v1.0.24",
+            "version": "v1.0.25",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/installers.git",
-                "reference": "1cf7cc4b89d5e8549bbb7d6ab1de75da13d27988"
+                "reference": "36e5b5843203d7f1cf6ffb0305a97e014387bd8e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/installers/zipball/1cf7cc4b89d5e8549bbb7d6ab1de75da13d27988",
-                "reference": "1cf7cc4b89d5e8549bbb7d6ab1de75da13d27988",
+                "url": "https://api.github.com/repos/composer/installers/zipball/36e5b5843203d7f1cf6ffb0305a97e014387bd8e",
+                "reference": "36e5b5843203d7f1cf6ffb0305a97e014387bd8e",
                 "shasum": ""
             },
             "require": {
@@ -167,7 +167,7 @@
                 "zend",
                 "zikula"
             ],
-            "time": "2016-04-05 11:42:46"
+            "time": "2016-04-13 19:46:30"
         },
         {
             "name": "composer/semver",
@@ -712,25 +712,27 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/drupal-composer/drupal-security-advisories.git",
-                "reference": "c9daca42ea0a9f1d4f5259d11653500b15b6630e"
+                "reference": "de033c255bce65602a59f57925a5721cda2600dd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/drupal-composer/drupal-security-advisories/zipball/c9daca42ea0a9f1d4f5259d11653500b15b6630e",
-                "reference": "c9daca42ea0a9f1d4f5259d11653500b15b6630e",
+                "url": "https://api.github.com/repos/drupal-composer/drupal-security-advisories/zipball/de033c255bce65602a59f57925a5721cda2600dd",
+                "reference": "de033c255bce65602a59f57925a5721cda2600dd",
                 "shasum": ""
             },
             "conflict": {
+                "drupal/drupal": "<8.0.0-beta2,<8.0.4",
                 "drupal/dynamic_entity_reference": "<8.1.0-beta2",
                 "drupal/echo": "<8.1.7",
-                "drupal/nodejs": "<8.1.0"
+                "drupal/nodejs": "<8.1.0",
+                "drupal/search_api": "<8.1.0-alpha14"
             },
             "type": "metapackage",
             "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "GPL-2.0+"
             ],
-            "time": "2016-02-17 22:04:05"
+            "time": "2016-04-20 18:04:46"
         },
         {
             "name": "drupal/acquia_connector",
@@ -764,20 +766,24 @@
                 }
             },
             "notification-url": "https://packagist.drupal-composer.org/downloads/",
+            "license": [
+                "GPL-2.0+"
+            ],
             "description": "Allows Drupal to securely communicate with the Acquia Subscription, and checks for updates to Acquia Drupal.",
-            "homepage": "https://www.drupal.org/project/acquia_connector"
+            "homepage": "https://www.drupal.org/project/acquia_connector",
+            "time": "2016-01-15 14:56:03"
         },
         {
             "name": "drupal/acsf",
-            "version": "8.1.20",
+            "version": "8.1.22",
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/acsf",
-                "reference": "cc9d79927380d26a4b9c345d31d9777ee7607836"
+                "reference": "a99e36cd01aa9e7081945cc10d6375ce3cb08d8f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/acsf-8.x-1.20.zip",
+                "url": "https://ftp.drupal.org/files/projects/acsf-8.x-1.22.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -805,7 +811,7 @@
             ],
             "description": "This is the module that connects a Drupal codebase to Acquia Cloud Site Factory.",
             "homepage": "https://www.drupal.org/project/acsf",
-            "time": "2016-01-27 12:45:51"
+            "time": "2016-04-07 14:54:18"
         },
         {
             "name": "drupal/admin_toolbar",
@@ -958,16 +964,16 @@
         },
         {
             "name": "drupal/console",
-            "version": "0.11.1",
+            "version": "0.11.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/hechoendrupal/DrupalConsole.git",
-                "reference": "bc1bacc30dd2dee1757ab6853f9e789093c66f14"
+                "reference": "e0912b0f52455542d18d39f12387f297ec0f6cac"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/hechoendrupal/DrupalConsole/zipball/bc1bacc30dd2dee1757ab6853f9e789093c66f14",
-                "reference": "bc1bacc30dd2dee1757ab6853f9e789093c66f14",
+                "url": "https://api.github.com/repos/hechoendrupal/DrupalConsole/zipball/e0912b0f52455542d18d39f12387f297ec0f6cac",
+                "reference": "e0912b0f52455542d18d39f12387f297ec0f6cac",
                 "shasum": ""
             },
             "require": {
@@ -1039,7 +1045,7 @@
                 "drupal",
                 "symfony"
             ],
-            "time": "2016-04-05 06:57:29"
+            "time": "2016-04-14 06:45:29"
         },
         {
             "name": "drupal/contact_storage",
@@ -1068,8 +1074,12 @@
                 }
             },
             "notification-url": "https://packagist.drupal-composer.org/downloads/",
+            "license": [
+                "GPL-2.0+"
+            ],
             "description": "Provides storage and edit capability for contact messages.",
-            "homepage": "https://www.drupal.org/project/contact_storage"
+            "homepage": "https://www.drupal.org/project/contact_storage",
+            "time": "2015-12-17 21:15:17"
         },
         {
             "name": "drupal/core",
@@ -1214,7 +1224,8 @@
             "extra": {
                 "patches_applied": {
                     "Ignore front end vendor folders to improve directory search performance": "https://www.drupal.org/files/issues/ignore_front_end_vendor-2329453-116.patch",
-                    "Twig debug output does not display all suggestions when an array of suggestions is passed to theme": "https://www.drupal.org/files/issues/twig_debug_output_does-2118743-89.patch"
+                    "Twig debug output does not display all suggestions when an array of suggestions is passed to theme": "https://www.drupal.org/files/issues/twig_debug_output_does-2118743-89.patch",
+                    "Turn Views exposed filters for dates into date fields": "https://www.drupal.org/files/issues/views_exposed_filter-2710793-8.patch"
                 }
             },
             "autoload": {
@@ -1321,7 +1332,7 @@
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/devel",
-                "reference": "449d8ed0c040ae265dc8d4146ee6d7043d619b41"
+                "reference": "5efd60daa5d8e47af94d5cf610903072b27cb5d7"
             },
             "require": {
                 "drupal/core": "8.*"
@@ -1356,7 +1367,7 @@
             ],
             "description": "Various blocks, pages, and functions for developers.",
             "homepage": "http://drupal.org/project/devel",
-            "time": "2016-04-07 06:41:07"
+            "time": "2016-04-24 14:29:34"
         },
         {
             "name": "drupal/diff",
@@ -1396,7 +1407,7 @@
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/embed.git",
-                "reference": "26265b5437bb0f1dcb916a6a1169d53382a23646"
+                "reference": "294666ad05ad930003308a5fcd1282cdeb63833a"
             },
             "require": {
                 "drupal/core": "8.*"
@@ -1413,7 +1424,7 @@
             ],
             "description": "Provides a framework for different types of embeds in text editors.",
             "homepage": "https://www.drupal.org/project/embed",
-            "time": "2015-12-08 07:49:47"
+            "time": "2016-04-14 01:03:52"
         },
         {
             "name": "drupal/entity",
@@ -1453,7 +1464,7 @@
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/entity_embed.git",
-                "reference": "509fc57267e80371581ba8a65b3a4b68fe9add3e"
+                "reference": "9836fb334b478c5cd19bfb599c06703e8010ba28"
             },
             "require": {
                 "drupal/core": "8.*",
@@ -1473,19 +1484,19 @@
             ],
             "description": "Allows entities to be embedded using a text editor.",
             "homepage": "https://www.drupal.org/project/entity_embed",
-            "time": "2016-03-29 16:49:13"
+            "time": "2016-04-24 10:51:27"
         },
         {
             "name": "drupal/entity_reference_revisions",
-            "version": "8.1.0-rc4",
+            "version": "8.1.0-rc6",
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/entity_reference_revisions.git",
-                "reference": "6a811cd957fa3cd0f22ac9a9f788fae1fd79d520"
+                "reference": "c9056323e728586436688d6aa1310a0b60c241d1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/entity_reference_revisions-8.x-1.0-rc4.zip",
+                "url": "https://ftp.drupal.org/files/projects/entity_reference_revisions-8.x-1.0-rc6.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -1504,19 +1515,19 @@
             ],
             "description": "Adds a Entity Reference field type with revision support.",
             "homepage": "https://www.drupal.org/project/entity_reference_revisions",
-            "time": "2015-11-16 14:05:31"
+            "time": "2016-04-12 23:57:54"
         },
         {
             "name": "drupal/features",
-            "version": "8.3.0-beta1",
+            "version": "8.3.0-beta3",
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/features",
-                "reference": "93c5fcc49526835a442956ac45d61029b3377693"
+                "reference": "14d66f68c13a0b93134ba15ac2ef641e6799eb1c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/features-8.x-3.0-beta1.zip",
+                "url": "https://ftp.drupal.org/files/projects/features-8.x-3.0-beta3.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -1543,7 +1554,7 @@
             ],
             "description": "Enables administrators to package configuration into modules.",
             "homepage": "https://www.drupal.org/project/features",
-            "time": "2016-04-01 22:54:02"
+            "time": "2016-04-07 19:57:25"
         },
         {
             "name": "drupal/google_analytics",
@@ -1781,8 +1792,12 @@
                 }
             },
             "notification-url": "https://packagist.drupal-composer.org/downloads/",
+            "license": [
+                "GPL-2.0+"
+            ],
             "description": "Media entity local images provider.",
-            "homepage": "https://www.drupal.org/project/media_entity_image"
+            "homepage": "https://www.drupal.org/project/media_entity_image",
+            "time": "2015-12-24 15:21:12"
         },
         {
             "name": "drupal/memcache",
@@ -2005,6 +2020,9 @@
                 }
             },
             "notification-url": "https://packagist.drupal-composer.org/downloads/",
+            "license": [
+                "GPL-2.0+"
+            ],
             "description": "Site security and configuration review module.",
             "homepage": "https://www.drupal.org/project/security_review",
             "time": "2016-01-26 14:13:03"
@@ -2035,8 +2053,12 @@
                 }
             },
             "notification-url": "https://packagist.drupal-composer.org/downloads/",
+            "license": [
+                "GPL-2.0+"
+            ],
             "description": "A standardized solution of integrating external applications with Drupal.",
-            "homepage": "https://www.drupal.org/project/services"
+            "homepage": "https://www.drupal.org/project/services",
+            "time": "2016-01-21 16:43:29"
         },
         {
             "name": "drupal/token",
@@ -2107,16 +2129,16 @@
         },
         {
             "name": "drush/drush",
-            "version": "8.0.5",
+            "version": "8.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/drush-ops/drush.git",
-                "reference": "1f53daa63505f18286791e899de614e27d4cfdc9"
+                "reference": "d06e80cc2b0427322b292aed9d440eb19b50ea92"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/drush-ops/drush/zipball/1f53daa63505f18286791e899de614e27d4cfdc9",
-                "reference": "1f53daa63505f18286791e899de614e27d4cfdc9",
+                "url": "https://api.github.com/repos/drush-ops/drush/zipball/d06e80cc2b0427322b292aed9d440eb19b50ea92",
+                "reference": "d06e80cc2b0427322b292aed9d440eb19b50ea92",
                 "shasum": ""
             },
             "require": {
@@ -2124,8 +2146,9 @@
                 "php": ">=5.4.5",
                 "psr/log": "~1.0",
                 "psy/psysh": "~0.6",
-                "symfony/var-dumper": "~2.7|~3.0",
-                "symfony/yaml": "~2.3|~3.0"
+                "symfony/console": "~2.7",
+                "symfony/var-dumper": "~2.7",
+                "symfony/yaml": "~2.3"
             },
             "require-dev": {
                 "phpunit/phpunit": "4.*",
@@ -2201,7 +2224,7 @@
             ],
             "description": "Drush is a command line shell and scripting interface for Drupal, a veritable Swiss Army knife designed to make life easier for those of us who spend some of our working hours hacking away at the command prompt.",
             "homepage": "http://www.drush.org",
-            "time": "2016-03-08 21:00:41"
+            "time": "2016-04-24 14:39:44"
         },
         {
             "name": "easyrdf/easyrdf",
@@ -2474,16 +2497,16 @@
         },
         {
             "name": "guzzlehttp/psr7",
-            "version": "1.2.3",
+            "version": "1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/psr7.git",
-                "reference": "2e89629ff057ebb49492ba08e6995d3a6a80021b"
+                "reference": "31382fef2889136415751badebbd1cb022a4ed72"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/psr7/zipball/2e89629ff057ebb49492ba08e6995d3a6a80021b",
-                "reference": "2e89629ff057ebb49492ba08e6995d3a6a80021b",
+                "url": "https://api.github.com/repos/guzzle/psr7/zipball/31382fef2889136415751badebbd1cb022a4ed72",
+                "reference": "31382fef2889136415751badebbd1cb022a4ed72",
                 "shasum": ""
             },
             "require": {
@@ -2528,7 +2551,7 @@
                 "stream",
                 "uri"
             ],
-            "time": "2016-02-18 21:54:00"
+            "time": "2016-04-13 19:56:01"
         },
         {
             "name": "jakub-onderka/php-console-color",
@@ -2676,16 +2699,16 @@
         },
         {
             "name": "masterminds/html5",
-            "version": "2.1.2",
+            "version": "2.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Masterminds/html5-php.git",
-                "reference": "8f782e0f01a6e33a319bdc8f6de9cfd6569979a4"
+                "reference": "cb1ce51f817af9bbf400c88e8dcebcbf9a097077"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Masterminds/html5-php/zipball/8f782e0f01a6e33a319bdc8f6de9cfd6569979a4",
-                "reference": "8f782e0f01a6e33a319bdc8f6de9cfd6569979a4",
+                "url": "https://api.github.com/repos/Masterminds/html5-php/zipball/cb1ce51f817af9bbf400c88e8dcebcbf9a097077",
+                "reference": "cb1ce51f817af9bbf400c88e8dcebcbf9a097077",
                 "shasum": ""
             },
             "require": {
@@ -2695,7 +2718,7 @@
             "require-dev": {
                 "phpunit/phpunit": "4.*",
                 "sami/sami": "~2.0",
-                "satooshi/php-coveralls": "0.6.*"
+                "satooshi/php-coveralls": "1.0.*"
             },
             "type": "library",
             "extra": {
@@ -2737,7 +2760,7 @@
                 "serializer",
                 "xml"
             ],
-            "time": "2015-06-07 08:43:18"
+            "time": "2016-04-11 13:54:57"
         },
         {
             "name": "nikic/php-parser",
@@ -2830,7 +2853,7 @@
             ],
             "authors": [
                 {
-                    "name": "Padraic Brady",
+                    "name": "Pádraic Brady",
                     "email": "padraic.brady@gmail.com",
                     "homepage": "http://blog.astrumfutura.com"
                 }
@@ -2885,7 +2908,7 @@
             ],
             "authors": [
                 {
-                    "name": "Padraic Brady",
+                    "name": "Pádraic Brady",
                     "email": "padraic.brady@gmail.com",
                     "homepage": "http://blog.astrumfutura.com"
                 }
@@ -3208,12 +3231,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "ce4c36bdc9310ba76fdd167f16978f14ab3b8e42"
+                "reference": "c671d3899901257a98ec4c4fd39685d14112efc7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/ce4c36bdc9310ba76fdd167f16978f14ab3b8e42",
-                "reference": "ce4c36bdc9310ba76fdd167f16978f14ab3b8e42",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/c671d3899901257a98ec4c4fd39685d14112efc7",
+                "reference": "c671d3899901257a98ec4c4fd39685d14112efc7",
                 "shasum": ""
             },
             "conflict": {
@@ -3247,6 +3270,7 @@
                 "phpmailer/phpmailer": ">=5,<5.2.14",
                 "pusher/pusher-php-server": "<2.2.1",
                 "sabre/dav": ">=1.6,<1.6.99|>=1.7,<1.7.11|>=1.8,<1.8.9",
+                "shopware/shopware": "<4.3.7|>=5,<5.1|>=5.1,<5.1.5",
                 "silverstripe/cms": ">=3.1,<3.1.11|>=3,<=3.0.11",
                 "silverstripe/forum": "<=0.6.1|>=0.7,<=0.7.3",
                 "silverstripe/framework": ">=3,<3.1|>=3.1,<3.2|>=3.2,<3.3",
@@ -3298,7 +3322,7 @@
                 "zendframework/zend-view": ">=2,<2.2.7|>=2.3,<2.3.1",
                 "zendframework/zend-xmlrpc": ">=2.1,<2.1.6|>=2.2,<2.2.6",
                 "zendframework/zendframework": ">=2,<2.4.9|>=2.5,<2.5.1",
-                "zendframework/zendframework1": ">=1,<1.11.15|>=1.12,<1.12.17",
+                "zendframework/zendframework1": ">=1,<1.11.15|>=1.12,<1.12.18",
                 "zendframework/zendopenid": ">=2,<2.0.2",
                 "zendframework/zendxml": ">=1,<1.0.1",
                 "zf-commons/zfc-user": "<1.2.2",
@@ -3318,7 +3342,7 @@
                 }
             ],
             "description": "Prevents installation of composer packages with known security vulnerabilities: no API, simply require it",
-            "time": "2016-03-15 19:40:54"
+            "time": "2016-04-21 06:36:58"
         },
         {
             "name": "stack/builder",
@@ -4650,20 +4674,20 @@
         },
         {
             "name": "symfony/var-dumper",
-            "version": "v3.0.4",
+            "version": "v2.8.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/var-dumper.git",
-                "reference": "3841ed86527d18ee2c35fe4afb1b2fc60f8fae79"
+                "reference": "1f840df081f59cbe25140742bbe94a0dfac0222a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/var-dumper/zipball/3841ed86527d18ee2c35fe4afb1b2fc60f8fae79",
-                "reference": "3841ed86527d18ee2c35fe4afb1b2fc60f8fae79",
+                "url": "https://api.github.com/repos/symfony/var-dumper/zipball/1f840df081f59cbe25140742bbe94a0dfac0222a",
+                "reference": "1f840df081f59cbe25140742bbe94a0dfac0222a",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.5.9",
+                "php": ">=5.3.9",
                 "symfony/polyfill-mbstring": "~1.0"
             },
             "require-dev": {
@@ -4675,7 +4699,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.0-dev"
+                    "dev-master": "2.8-dev"
                 }
             },
             "autoload": {
@@ -4709,7 +4733,7 @@
                 "debug",
                 "dump"
             ],
-            "time": "2016-03-10 10:34:12"
+            "time": "2016-03-07 14:04:32"
         },
         {
             "name": "symfony/yaml",
@@ -4978,16 +5002,16 @@
         },
         {
             "name": "zendframework/zend-stdlib",
-            "version": "3.0.0",
+            "version": "3.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zendframework/zend-stdlib.git",
-                "reference": "22eb098958980fbbe6b9a06f209f5a4b496cc0c1"
+                "reference": "8bafa58574204bdff03c275d1d618aaa601588ae"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/zend-stdlib/zipball/22eb098958980fbbe6b9a06f209f5a4b496cc0c1",
-                "reference": "22eb098958980fbbe6b9a06f209f5a4b496cc0c1",
+                "url": "https://api.github.com/repos/zendframework/zend-stdlib/zipball/8bafa58574204bdff03c275d1d618aaa601588ae",
+                "reference": "8bafa58574204bdff03c275d1d618aaa601588ae",
                 "shasum": ""
             },
             "require": {
@@ -5019,7 +5043,7 @@
                 "stdlib",
                 "zf2"
             ],
-            "time": "2016-02-03 16:53:37"
+            "time": "2016-04-12 21:19:36"
         }
     ],
     "packages-dev": [
@@ -5540,15 +5564,15 @@
         },
         {
             "name": "drupal/coder",
-            "version": "8.2.6",
+            "version": "8.2.7",
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/coder",
-                "reference": "717cb8b6cb64a0e2b701542f26ee59b4d1e4ab57"
+                "reference": "a5b5f6b5769393a016da0d106a3b33f932c73331"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/coder-8.x-2.6.zip",
+                "url": "https://ftp.drupal.org/files/projects/coder-8.x-2.7.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -5561,11 +5585,6 @@
                 "phpunit/phpunit": ">=3.7"
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-8.x-2.x": "8.2.x-dev"
-                }
-            },
             "notification-url": "https://packagist.drupal-composer.org/downloads/",
             "license": [
                 "GPL-2.0+"
@@ -5577,20 +5596,20 @@
                 "phpcs",
                 "standards"
             ],
-            "time": "2016-02-07 12:15:20"
+            "time": "2016-03-27 09:53:21"
         },
         {
             "name": "drupal/drupal-driver",
-            "version": "v1.1.5",
+            "version": "v1.1.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/jhedstrom/DrupalDriver.git",
-                "reference": "6c5e04c6a310316bcefc4588bb1c0765b6bad478"
+                "reference": "c4c1f4826fd7fdb24733834b8a4e1b52ee87ceaa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jhedstrom/DrupalDriver/zipball/6c5e04c6a310316bcefc4588bb1c0765b6bad478",
-                "reference": "6c5e04c6a310316bcefc4588bb1c0765b6bad478",
+                "url": "https://api.github.com/repos/jhedstrom/DrupalDriver/zipball/c4c1f4826fd7fdb24733834b8a4e1b52ee87ceaa",
+                "reference": "c4c1f4826fd7fdb24733834b8a4e1b52ee87ceaa",
                 "shasum": ""
             },
             "require": {
@@ -5628,7 +5647,7 @@
                 "test",
                 "web"
             ],
-            "time": "2015-12-14 18:30:01"
+            "time": "2016-04-08 22:11:45"
         },
         {
             "name": "drupal/drupal-extension",
@@ -6953,6 +6972,7 @@
     "stability-flags": {
         "drupal/embed": 20,
         "drupal/entity_embed": 20,
+        "guzzlehttp/guzzle": 20,
         "roave/security-advisories": 20,
         "drupal-composer/drupal-security-advisories": 20,
         "behat/mink": 0
