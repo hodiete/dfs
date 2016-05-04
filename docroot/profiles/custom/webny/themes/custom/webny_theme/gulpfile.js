@@ -98,7 +98,8 @@ gulp.task('build', [
   'public-safety',
   'recreation-environment',
   'statewide-elected-officials',
-  'transportation-utilities'
+  'transportation-utilities',
+  'custom-ig'
 ], function (cb) {
   // Run linting last, otherwise its output gets lost.
   runSequence(['lint:js'], cb);
@@ -330,6 +331,26 @@ gulp.task('transportation-utilities', ['clean:css'], function () {
           .pipe(gulp.dest(options.theme.css + '/themes/'));
 });
 
+// agency - grouping specific style
+gulp.task('custom-ig', ['clean:css'], function () {
+  return gulp.src(options.theme.sass + 'themes/custom-ig-theme/custom-ig.scss')
+    .pipe(sourcemaps.init())
+    .pipe(sassglob())
+    .pipe(globbing({
+      extensions: ['.scss']
+    }))
+      .pipe(sass({
+        errLogToConsole: true,
+        outputStyle: 'expanded'
+      }))
+        .pipe(autoprefix({
+          browsers: ['last 2 versions'],
+          cascade: false
+        }))
+          .pipe(sourcemaps.write())
+          .pipe(gulp.dest(options.theme.css + '/themes/'));
+});
+
 gulp.task('styles:styleguide', ['clean:css'], function () {
   return gulp.src([
     options.theme.sass + 'style-guide/kss-only.scss'
@@ -480,6 +501,12 @@ gulp.task('watch:css', ['transportation-utilities'], function () {
   return gulp.watch([
     options.theme.sass + '**/*.scss'
   ], options.gulpWatchOptions, ['transportation-utilities']);
+});
+
+gulp.task('watch:css', ['custom-ig'], function () {
+  return gulp.watch([
+    options.theme.sass + '**/*.scss'
+  ], options.gulpWatchOptions, ['custom-ig']);
 });
 
 gulp.task('watch:styleguide', ['styleguide'], function () {
