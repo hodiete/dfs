@@ -6,7 +6,7 @@ Feature: Announcement Highlight Paragraph Tests
 
 # Check if fields for Announcement Exist
   Scenario: See if Add Announcement button and fields exist
-    Given I am logged in as a user with the "Administrator" role
+    Given I am logged in as a user with the administrator role
     When I am on "/node/add/webny_landing_page"
     Then I should not see "Access denied"
     When I press the "Add Announcement" button
@@ -17,7 +17,7 @@ Feature: Announcement Highlight Paragraph Tests
 
 # Display modes checks
   Scenario: Check the display modes to see if Announcement display exists
-    Given I am logged in as a user with the "Administrator" role
+    Given I am logged in as a user with the administrator role
     When I am on "/admin/structure/types/manage/webny_landing_page/display/webny_announcement"
     Then I should not get a 404 HTTP response
     When I am on "/admin/structure/types/manage/webny_news/display/webny_announcement"
@@ -27,7 +27,7 @@ Feature: Announcement Highlight Paragraph Tests
 
 # Create a Landing Page with specific fields for Announcements
   Scenario: Check if there are 6 entity references
-    Given I am logged in as a user with the "Administrator" role
+    Given I am logged in as a user with the administrator role
     And "landing page" content:
       | title  | Summary/Teaser | Announcement Title | Announcement Headline | Announcement Entity Reference | Announcement Entity Reference | Announcement Entity Reference | Announcement Entity Reference | Announcement Entity Reference | Announcement Entity Reference |
       | Page One Test Content | This summary body | This Title One | This headline One                       | g                             | g                             | homepage                      | services                      | g                             | g                             |
