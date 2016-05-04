@@ -35,8 +35,9 @@
     }
     
     .announcement-info{
-        h3{
+        h4{
             color: $black;   
+            font-size: 2.5rem;
         }
     }
     
@@ -58,6 +59,34 @@
 } // END BASE ANNOUNCEMENT STYLES 
 
 
+// ANNOUNCEMENT FIELDS TITLE AND HEADLINES
+.webny-frametitle, .webny-headline{
+    margin: 0 auto;
+    width: 100%;
+    max-width: $max-pc;
+    h3{ 
+        margin-top: 0;
+        padding-bottom: 0;
+    }
+}
+
+.frame-title{
+    text-transform: uppercase;
+    color: $color-secondary;
+    margin-bottom: 0;
+    font: $frame_title $oswald-bold;
+    margin-top: 60px;
+    letter-spacing: 4px;
+    text-align: center;
+}
+
+.frame-headline{
+    color: $black;   
+    font: bold $frame_headline $base-font-extra-bold;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
 // ######################################################################### //
 /* TABLET VIEW */
 @media (min-width: $min-tab) {
@@ -77,8 +106,7 @@
     
     .announcement-info,
     .webny-announcement-button{
-        display: inline-block;
-        
+        display: inline-block;   
     }
     
     .announcement-info{
