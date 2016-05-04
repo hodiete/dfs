@@ -1,10 +1,11 @@
-<project name="bolt-core" default="build" phingVersion="2.8.2">
+<project name="bolt-core" default="list" phingVersion="2.8.2">
 
   <!-- Include custom task classes -->
   <includepath classpath="${core.phing.dir}" />
   <taskdef name="behat" classname="phingcludes.BehatTask"/>
   <taskdef name="drush" classname="phingcludes.DrushTask"/>
   <taskdef name="phpVariable" classname="phingcludes.PhpVariableTask"/>
+  <typedef name="fileInFileset" classname="phingcludes.FileInFilesetCondition"/>
 
   <!-- Include task partials -->
 
@@ -26,11 +27,11 @@
   <!-- E.g., commit build artifacts, push to remote. -->
   <import file="${core.phing.dir}/tasks/deploy.xml"/>
 
-  <!-- E.g., commit ACSF build artifacts, push to remote. -->
-  <import file="${core.phing.dir}/tasks/deploy-acsf.xml"/>
-
   <!-- Contains frontend tasks. -->
   <import file="${core.phing.dir}/tasks/frontend.xml"/>
+
+  <!-- Contains local syncing tasks. -->
+  <import file="${core.phing.dir}/tasks/local-sync.xml"/>
 
   <!--
     The follow targets are intended to be wrapper targets that bundle
@@ -44,6 +45,10 @@
   <target name="build:validate:test"
           description="Builds, validates, tests, and deploys an artifact."
           depends="validate:all, setup, tests:all">
+  </target>
+
+  <target name="list" hidden="true">
+    <exec dir="${repo.root}" command="./bolt.sh -q -l" passthru="true"/>
   </target>
 
 </project>

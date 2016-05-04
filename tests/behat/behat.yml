@@ -17,7 +17,10 @@ default:
       files_path: "%paths.base%/media"
     Drupal\DrupalExtension:
       blackbox: ~
-      api_driver: "drupal"
+      api_driver: "drush"
+      text:
+        username_field: "Username"
+        password_field: "Password"
     jarnaiz\JUnitFormatter\JUnitFormatterExtension:
         filename: report.xml
         outputDir: %paths.base%/build/tests
