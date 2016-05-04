@@ -26,10 +26,10 @@ Feature: Announcement Highlight Paragraph Tests
     Then I should not get a 404 HTTP response
 
 # Create a Landing Page with specific fields for Announcements
-  Scenario: Check if there are 6 entity references
-    Given I am logged in as a user with the administrator role
-    And "landing page" content:
-      | title  | Summary/Teaser | Announcement Title | Announcement Headline | Announcement Entity Reference | Announcement Entity Reference | Announcement Entity Reference | Announcement Entity Reference | Announcement Entity Reference | Announcement Entity Reference |
-      | Page One Test Content | This summary body | This Title One | This headline One                       | g                             | g                             | homepage                      | services                      | g                             | g                             |
-    When I go to "admin/content"
-    Then I should see "Page One"
+#  Scenario: Check if there are 6 entity references
+#    Given I am logged in as a user with the administrator role
+#    And "landing page" content:
+#      | title  | Summary/Teaser | Announcement Title | Announcement Headline | Announcement Entity Reference | Announcement Entity Reference | Announcement Entity Reference | Announcement Entity Reference | Announcement Entity Reference | Announcement Entity Reference |
+#      | Page One Test Content | This summary body | This Title One | This headline One                       | g                             | g                             | homepage                      | services                      | g                             | g                             |
+#    When I go to "admin/content"
+#    Then I should see "Page One"
