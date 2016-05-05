@@ -16,4 +16,5 @@ $agency_groupings = array(
   'themes/recreation-environment' => 'Recreation and Environment',
   'themes/statewide-elected-officials' => 'Statewide Elected Officials',
   'themes/transportation-utilities' => 'Transportation and Utilities',
+  'themes/custom-ig' => 'Custom - Inspector General',
 );
