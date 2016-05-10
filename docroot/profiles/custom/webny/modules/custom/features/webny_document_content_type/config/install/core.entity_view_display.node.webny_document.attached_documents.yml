@@ -1,4 +1,3 @@
-uuid: 97950666-4508-4ba3-b400-f624346252a9
 langcode: en
 status: true
 dependencies:
@@ -19,13 +18,17 @@ dependencies:
     - options
     - text
     - user
-_core:
-  default_config_hash: kowOYzvWsk0VJTpsF9hdbKgbpq1KozXBxHIQ9gkKxDA
 id: node.webny_document.attached_documents
 targetEntityType: node
 bundle: webny_document
 mode: attached_documents
 content:
+  body:
+    type: text_default
+    weight: 2
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
   field_webny_document_file_upload:
     weight: 1
     label: hidden
@@ -33,22 +36,16 @@ content:
     third_party_settings: {  }
     type: file_url_plain
   field_webny_document_language:
-    weight: 2
-    label: hidden
-    settings: {  }
-    third_party_settings: {  }
-    type: list_default
-  field_webny_document_subtitle:
     weight: 0
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    type: text_default
+    type: list_default
 hidden:
-  body: true
   field_webny_doc_agency_keyword: true
   field_webny_doc_global_keyword: true
   field_webny_doc_last_updated: true
   field_webny_document_cateogry: true
   field_webny_document_date: true
+  field_webny_document_subtitle: true
   links: true
