@@ -24,9 +24,9 @@ Feature: Attached Documents to Nodes
 	And I should not get a 404 HTTP response	
 	
 # Check if the display mode Attached Documents exists
-  Scenario: Does Attached Documents display mode exist
-    Given I am logged in as a user with the administrator role
-	When I am on "/admin/structure/display-modes/view/manage/node.attached_documents"
-    Then I should not get a 404 HTTP response
-	When I am on "/admin/structure/types/manage/webny_document/display/attached_documents"
-    Then I should not get a 404 HTTP response
+  #Scenario: Does Attached Documents display mode exist
+    #Given I am logged in as a user with the administrator role
+	#When I am on "/admin/structure/display-modes/view/manage/node.attached_documents"
+    #Then I should not get a 404 HTTP response
+	#When I am on "/admin/structure/types/manage/webny_document/display/attached_documents"
+    #Then I should not get a 404 HTTP response
