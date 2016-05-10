@@ -1,3 +1,4 @@
+uuid: c5e63f75-ca11-4f76-8c00-f376c064fcd4
 langcode: en
 status: true
 dependencies:
@@ -6,7 +7,10 @@ dependencies:
     - field.field.node.webny_page.body
     - field.field.node.webny_page.field_webny_page_agency_keywords
     - field.field.node.webny_page.field_webny_page_attachment
+    - field.field.node.webny_page.field_webny_page_attdocs_eref
     - field.field.node.webny_page.field_webny_page_description
+    - field.field.node.webny_page.field_webny_page_docsec_subtitle
+    - field.field.node.webny_page.field_webny_page_docsec_title
     - field.field.node.webny_page.field_webny_page_global_keywords
     - field.field.node.webny_page.field_webny_page_image
     - field.field.node.webny_page.field_webny_page_paragraph
@@ -15,6 +19,8 @@ dependencies:
   module:
     - text
     - user
+_core:
+  default_config_hash: sIbwa_-IXdVDNp4G7Saz0XGqmif0ezdA9x33LcW7qw0
 id: node.webny_page.teaser
 targetEntityType: node
 bundle: webny_page
@@ -34,7 +40,10 @@ content:
 hidden:
   field_webny_page_agency_keywords: true
   field_webny_page_attachment: true
+  field_webny_page_attdocs_eref: true
   field_webny_page_description: true
+  field_webny_page_docsec_subtitle: true
+  field_webny_page_docsec_title: true
   field_webny_page_global_keywords: true
   field_webny_page_image: true
   field_webny_page_paragraph: true

@@ -1,3 +1,4 @@
+uuid: e8bd1278-142a-4a6d-9e47-71dec2336444
 langcode: en
 status: true
 dependencies:
@@ -5,7 +6,10 @@ dependencies:
     - field.field.node.webny_page.body
     - field.field.node.webny_page.field_webny_page_agency_keywords
     - field.field.node.webny_page.field_webny_page_attachment
+    - field.field.node.webny_page.field_webny_page_attdocs_eref
     - field.field.node.webny_page.field_webny_page_description
+    - field.field.node.webny_page.field_webny_page_docsec_subtitle
+    - field.field.node.webny_page.field_webny_page_docsec_title
     - field.field.node.webny_page.field_webny_page_global_keywords
     - field.field.node.webny_page.field_webny_page_image
     - field.field.node.webny_page.field_webny_page_paragraph
@@ -16,6 +20,8 @@ dependencies:
     - file
     - text
     - user
+_core:
+  default_config_hash: 4n6a-RBr5eOa3_vsMhvvSyBEltnsLp_YpfLh9kSu80I
 id: node.webny_page.default
 targetEntityType: node
 bundle: webny_page
@@ -40,12 +46,34 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: file_default
+  field_webny_page_attdocs_eref:
+    type: entity_reference_entity_view
+    weight: 12
+    label: hidden
+    settings:
+      view_mode: attached_documents
+      link: false
+    third_party_settings: {  }
   field_webny_page_description:
     weight: 5
     label: hidden
     settings: {  }
     third_party_settings: {  }
     type: text_default
+  field_webny_page_docsec_subtitle:
+    type: string
+    weight: 11
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+  field_webny_page_docsec_title:
+    type: string
+    weight: 10
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
   field_webny_page_global_keywords:
     weight: 7
     label: hidden
