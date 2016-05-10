@@ -1,3 +1,4 @@
+uuid: e49165fd-3447-43f8-ac07-7f9836b05176
 langcode: en
 status: true
 dependencies:
@@ -6,7 +7,10 @@ dependencies:
     - field.field.node.webny_page.body
     - field.field.node.webny_page.field_webny_page_agency_keywords
     - field.field.node.webny_page.field_webny_page_attachment
+    - field.field.node.webny_page.field_webny_page_attdocs_eref
     - field.field.node.webny_page.field_webny_page_description
+    - field.field.node.webny_page.field_webny_page_docsec_subtitle
+    - field.field.node.webny_page.field_webny_page_docsec_title
     - field.field.node.webny_page.field_webny_page_global_keywords
     - field.field.node.webny_page.field_webny_page_image
     - field.field.node.webny_page.field_webny_page_paragraph
@@ -15,28 +19,30 @@ dependencies:
   module:
     - text
     - user
+_core:
+  default_config_hash: tPWbMuo4444aQTF6QeaMIJkj1R8jXL-zuVEI44X1WJ0
 id: node.webny_page.webny_featured_card
 targetEntityType: node
 bundle: webny_page
 mode: webny_featured_card
 content:
   field_webny_page_description:
-    weight: 1
+    weight: 0
     label: hidden
     settings: {  }
     third_party_settings: {  }
     type: text_default
-  field_webny_page_image:
-    type: entity_reference_entity_view
-    weight: 0
-    label: above
-    settings: {  }
-    third_party_settings: {  }
+  workbench_moderation_control:
+    weight: -20
 hidden:
   body: true
   field_webny_page_agency_keywords: true
   field_webny_page_attachment: true
+  field_webny_page_attdocs_eref: true
+  field_webny_page_docsec_subtitle: true
+  field_webny_page_docsec_title: true
   field_webny_page_global_keywords: true
+  field_webny_page_image: true
   field_webny_page_paragraph: true
   field_webny_page_sub_title: true
   links: true
