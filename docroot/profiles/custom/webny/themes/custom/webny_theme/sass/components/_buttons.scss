@@ -8,6 +8,7 @@
 
 .buttonBase {
   display:inline-block;
+  font-family: $base-font;
   //font-weight: bold;
   text-align: center;
   color:$white;
@@ -18,6 +19,13 @@
   &:hover {
 	text-decoration: none;
   }
+  &>a{
+        color: $white;
+        text-decoration: none;
+        &:hover {
+            text-decoration: none;
+        }
+    }
 }
 
 
@@ -27,35 +35,28 @@
   border: none;
   cursor: pointer;
   &:hover {
-    background: $dkblueaccent;
+    background: darken($primaryblue, 10%);
   }
-    &>a{
-        color: $white;
-        text-decoration: none;
-        &:hover {
-            text-decoration: none;
-        }
-    }
     
 }
 
 .buttonTransparentLt {
   @extend .buttonBase;
-  background: rgba(255, 255, 255, 0.0);
+  background: $buttonBackgroundColor;
   border-color: $gray-lite;
   &:hover {
-    background: rgba(0, 0, 0, 0.4);
+    background: $buttonBackgroundColorHover;
     border-color: $white;
   }
 }
 
 .buttonTransparentDk {
   @extend .buttonBase;
-  background: none;
+  background: $buttonBackgroundColor;
   color: $black;
-  border:1px solid $gray-lite;
+  border:1px solid $black;
   &:hover {
-    background: $gray-lite;
+    background: $buttonBackgroundColorHover;
     border-color: $black;
   }
 }

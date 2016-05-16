@@ -1,3 +1,4 @@
+uuid: af96d61f-688b-495d-9a09-9a9a28e6bef9
 langcode: en
 status: true
 dependencies:
@@ -5,8 +6,11 @@ dependencies:
     - field.field.node.webny_news.body
     - field.field.node.webny_news.field_webny_news_agency_keywords
     - field.field.node.webny_news.field_webny_news_attachment
+    - field.field.node.webny_news.field_webny_news_attdocs_eref
     - field.field.node.webny_news.field_webny_news_contact_info
     - field.field.node.webny_news.field_webny_news_date
+    - field.field.node.webny_news.field_webny_news_docsec_subtitle
+    - field.field.node.webny_news.field_webny_news_docsec_title
     - field.field.node.webny_news.field_webny_news_global_keywords
     - field.field.node.webny_news.field_webny_news_image
     - field.field.node.webny_news.field_webny_news_location
@@ -22,6 +26,8 @@ dependencies:
     - path
     - text
     - workbench_moderation
+_core:
+  default_config_hash: iLUfDsH7Ug5d2me00Ir5by4w63TvCbYTI7oRXj_Fg10
 id: node.webny_news.default
 targetEntityType: node
 bundle: webny_news
@@ -54,6 +60,14 @@ content:
       progress_indicator: throbber
     third_party_settings: {  }
     type: file_generic
+  field_webny_news_attdocs_eref:
+    type: entity_reference_autocomplete
+    weight: 20
+    settings:
+      match_operator: CONTAINS
+      size: 80
+      placeholder: ''
+    third_party_settings: {  }
   field_webny_news_contact_info:
     weight: 13
     settings:
@@ -67,6 +81,20 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: datetime_default
+  field_webny_news_docsec_subtitle:
+    type: string_textfield
+    weight: 19
+    settings:
+      size: 80
+      placeholder: ''
+    third_party_settings: {  }
+  field_webny_news_docsec_title:
+    type: string_textfield
+    weight: 18
+    settings:
+      size: 80
+      placeholder: ''
+    third_party_settings: {  }
   field_webny_news_global_keywords:
     weight: 15
     settings:
