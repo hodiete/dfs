@@ -33,3 +33,12 @@ function webny_theme_library_info_alter(&$libraries, $extension) {
   }
   $temp=0;
 }
+
+
+/**
+ * Implements hook_theme_suggestions_field_alter().
+ */
+ function webny_theme_suggestions_field_alter(&$suggestions, $variables){
+	 $suggestions[] = 'field__' . $variables['element']['#bundle'] . '_' . $variables['element']['#field_name'];	 
+	 return $suggestions;
+ }
