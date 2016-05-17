@@ -317,6 +317,8 @@
  * Some examples appear below.  Remove the leading hash signs to enable.
  */
 
+$drush_major_version = 9;
+
 if (!isset($drush_major_version)) {
   $drush_version_components = explode('.', DRUSH_VERSION);
   $drush_major_version = $drush_version_components[0];
