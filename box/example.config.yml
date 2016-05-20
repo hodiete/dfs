@@ -133,6 +133,7 @@ nginx_hosts:
     root: "{{ dashboard_install_dir }}"
 
 nginx_remove_default_vhost: true
+nginx_ppa_use: true
 
 # MySQL Databases and users. If build_makefile: is true, first database will
 # be used for the makefile-built site.
@@ -151,9 +152,11 @@ mysql_users:
 # to install *any* extras, make set this value to an empty set, e.g. `[]`.
 installed_extras:
   - adminer
+  # - blackfire
   - drupalconsole
   - mailhog
   - memcached
+  # - newrelic
   # - nodejs
   - pimpmylog
   # - redis
@@ -161,17 +164,17 @@ installed_extras:
   # - selenium
   # - solr
   - varnish
-  # - xdebug
-  - xhprof
+  - xdebug
+  # xhprof
 
 # Add any extra apt or yum packages you would like installed.
-extra_packages:
-  - unzip
+extra_packages: []
 
 # `nodejs` must be in installed_extras for this to work. Valid examples: "0.10",
 # "0.12", "4.x", "5.x".
 nodejs_version: "0.12"
 nodejs_npm_global_packages: []
+nodejs_install_npm_user: "{{ drupalvm_user }}"
 
 # `ruby` must be in installed_extras for this to work.
 ruby_install_gems_user: "{{ drupalvm_user }}"
@@ -198,6 +201,8 @@ firewall_allowed_tcp_ports:
 firewall_log_dropped_packets: false
 
 # PHP Configuration. Currently-supported versions: 5.5, 5.6, 7.0.
+# PHP 7.0 requires a few additional changes. See the documentation at
+# http://docs.drupalvm.com/en/latest/other/php-7/
 php_version: "5.6"
 php_memory_limit: "192M"
 php_display_errors: "On"
@@ -208,7 +213,6 @@ php_opcache_enabled_in_ini: true
 php_opcache_memory_consumption: "192"
 php_opcache_max_accelerated_files: 4096
 php_max_input_vars: "4000"
-php_always_populate_raw_post_data: "-1"
 
 # Drupal VM defaults to using PHP-FPM with either Apache or Nginx. If you wish
 # to instead use Apache + mod_php with an Ubuntu base box, make sure you add
@@ -223,8 +227,9 @@ composer_home_group: "{{ drupalvm_user }}"
 # composer_global_packages:
 #   - { name: phpunit/phpunit, release: '@stable' }
 
-# Run specified scripts after VM is provisioned. Path is relative to the
-# `provisioning/playbook.yml` file.
+# Run specified scripts before or after VM is provisioned. Path is relative to
+# the `provisioning/playbook.yml` file.
+pre_provision_scripts: []
 post_provision_scripts: []
   # - "../examples/scripts/configure-solr.sh"
 
