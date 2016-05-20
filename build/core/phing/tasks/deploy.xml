@@ -130,6 +130,13 @@
       </fileset>
     </copy>
 
+    <!-- Ensure ACSF module is in deployment artifact. -->
+    <copy todir="${deploy.dir}/docroot" overwrite="true">
+      <fileset dir="${docroot}" defaultexcludes="false">
+        <include name="modules/contrib/acsf/**" />
+      </fileset>
+    </copy>
+
     <!-- Copy Acquia Cloud hooks. -->
     <copy todir="${deploy.dir}/hooks" overwrite="true">
       <fileset dir="${repo.root}/hooks"/>
