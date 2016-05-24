@@ -1,8 +1,5 @@
 <?php
 /**
- * @file
- * Support fileset tasks.
- *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
  * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
  * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
@@ -26,34 +23,31 @@ include_once 'phing/tasks/system/condition/Condition.php';
  * Compares two files for equality based on size and
  * content. Timestamps are not at all looked at.
  *
- * @author Siad Ardroumli <siad.ardroumli@gmail.com>
- *
+ * @author  Siad Ardroumli <siad.ardroumli@gmail.com>
  * @package phing.tasks.system.condition
  */
-class FileInFilesetCondition extends ProjectComponent implements Condition {
+class FileInFilesetCondition extends ProjectComponent implements Condition
+{
   /**
-   * A php source code filename or directory.
+   * A php source code filename or directory
    *
    * @var PhingFile
    */
-  // The source file (from xml attribute)
-  protected $file;
+  protected $file; // the source file (from xml attribute)
 
   /**
-   * All fileset objects assigned to this task.
+   * All fileset objects assigned to this task
    *
    * @var FileSet[]
    */
-  // All fileset objects assigned to this task.
-  protected $filesets = array();
+  protected $filesets = array(); // all fileset objects assigned to this task
 
   /**
-   * File to be performed syntax check on.
-   *
+   * File to be performed syntax check on
    * @param PhingFile $file
    */
-  public function setFile(PhingFile $file) {
-
+  public function setFile(PhingFile $file)
+  {
     $this->file = $file;
   }
 
@@ -61,21 +55,22 @@ class FileInFilesetCondition extends ProjectComponent implements Condition {
    * Nested adder, adds a set of files (nested fileset attribute).
    *
    * @param FileSet $fs
+   * @return void
    */
-  public function addFileSet(FileSet $fs) {
-
+  public function addFileSet(FileSet $fs)
+  {
     $this->filesets[] = $fs;
   }
 
   /**
-   * Return the list of files to parse.
+   * Return the list of files to parse
    *
    * @see PhpCodeSnifferTask
    *
    * @return string[] list of absolute files to parse
    */
-  protected function getFilesetFiles() {
-
+  protected function getFilesetFiles()
+  {
     $files = array();
 
     foreach ($this->filesets as $fs) {
@@ -90,23 +85,20 @@ class FileInFilesetCondition extends ProjectComponent implements Condition {
   }
 
   /**
-   * Comparison method of the interface.
+   * comparison method of the interface
    *
    * @return bool if the files are equal
-   *
-   *
    * @throws BuildException if it all went pear-shaped
    */
-  public function evaluate() {
-
+  public function evaluate()
+  {
     if (!isset($this->file)) {
       throw new BuildException("You must set the file property.");
     }
 
     if ($this->file instanceof PhingFile) {
       $this->file->getPath();
-    }
-    else {
+    } else {
       throw new BuildException("Could not load specified file.");
     }
 
@@ -118,5 +110,4 @@ class FileInFilesetCondition extends ProjectComponent implements Condition {
 
     return array_search($this->file->getPath(), $files);
   }
-
 }

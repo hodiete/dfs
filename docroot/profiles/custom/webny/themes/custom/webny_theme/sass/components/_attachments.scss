@@ -1,0 +1,254 @@
+// Document Attachments
+//
+// Document Attachment styling.
+//
+// Markup: attachments.hbs
+//
+// Style guide: components.attachments
+
+
+// ######################################################################### //
+/* START STYLING MOBILE FIRST UNDER HERE */
+
+
+
+.press-docs{
+    width: 80%;
+    max-width: 780px;   
+    margin: 0 auto;
+}
+
+.doc-set {
+  width: 85%;
+  margin: 0 auto;
+}
+
+.doc-set-title {
+  font-family: $base-font-extra-bold;
+  font-size: 2em;
+  color: $primaryblue;
+  padding-bottom: 0;
+}
+
+.doc-set-subtitle {
+  font-family: $base-font;
+  font-size: 1.5rem;
+  color: $black;
+  padding-bottom: 1rem;
+}
+
+.doc-list {
+  margin: 0;
+  padding-left: 0;
+}
+
+.document-wrapper 
+{
+  position: relative;
+  display: block;
+  margin: 0 auto;
+  list-style-type: none;
+  border: 1px solid $gray-lite;
+}
+
+.doc-icon {
+  display: none;
+  width: 10%;     
+}
+
+.doc-dlicon{
+    background: transparent url('/profiles/custom/webny/themes/custom/webny_theme/icons/download-icon.png') no-repeat center;   
+    display: inline-block;
+    padding-left: 20%;	
+}
+
+.doc-info {
+  display: inline-block;
+  width: 90%;
+  padding: 15px 20px 15px;
+}
+
+.doc-title {
+  display: block;
+  padding: 10px 0;
+  font-size: 1.0em;
+  color: $medblue;
+}
+
+.doc-title a {
+  font-family: $base-font;
+  font-size: 1.0em;
+  font-weight: 600;
+  color: $medblue;
+  text-decoration: none;
+  &:link{
+	color: $medblue;
+	}
+  &:visited{
+	color: $medblue;
+	}
+  &:hover{
+	color: $medblue;
+	}
+}
+
+
+
+.doc-language {
+  display: block;
+  font-family: $base-font;
+  font-size: $base-font-size;
+  font-style: italic;
+  padding-bottom: 2px;
+}
+
+.doc-description {
+  display: block;
+  font-family: $base-font;
+  font-size: 0.875em;
+}
+
+.download {
+  display: block;
+  width: 100%;
+  background-color: lighten($gray-lite, 8);
+  margin-top: 10px;
+  padding: 3% 0;
+  
+}
+
+.download a {
+  font-family: $base-font;
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: $black;
+  text-transform: uppercase;
+  text-decoration: none;
+  margin: 0 auto;
+  display: inline-block; 
+  text-align: center;
+  &:link{
+	color: $black;
+	}
+  &:visited{
+	color: $black;
+	}
+  &:hover{
+	color: $black;
+	}	
+}
+// ######################################################################### //
+/* TABLET VIEW */
+@media (min-width: $min-tab) {
+  
+  .document-wrapper {
+  position: relative;
+  display: block;
+  margin: 0 auto;
+  list-style-type: none;
+  border: 1px solid $gray-lite;
+  padding: 0;
+}
+  
+  .doc-info {
+  display: inline-block;
+  width: 59%;
+  padding: 15px 20px 15px;      
+}
+  
+  .download {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  display: block;
+  padding-top: 10%;
+  width: 22%;
+  background-color: lighten($gray-lite, 8); 
+  vertical-align: middle;
+  margin: 0;
+  border-left: 1px solid $gray-lite;
+  text-align: center;
+    & > a{
+    margin: 0 auto;
+    text-align: center;
+    }
+}
+  
+.download a:visited{
+ color: $black;
+}
+  
+  .doc-dlicon{
+    background: transparent url('/profiles/custom/webny/themes/custom/webny_theme/icons/download-icon.png') no-repeat center;   
+    display: block;
+    padding-left: 20%;	
+}
+  
+ 
+ 
+}
+// END MIN TABLET VIEW
+// ######################################################################### //
+
+
+/* PC VIEW */
+@media (min-width: $min-pc) {
+
+
+.press-docs{
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+    
+    
+.doc-set {
+  width: 100%;
+  max-width: 780px;
+  margin: 0 auto;
+}
+  
+.doc-icon {
+  display: inline-block;
+  width: 15%;  
+  padding: 0;
+  text-align: center;
+  vertical-align: top;
+  background-image: url('/profiles/custom/webny/themes/custom/webny_theme/icons/doc-icon.png');
+  background-repeat: no-repeat;
+  background-position:  center;
+  position: absolute;
+  height: 80%;
+  left: -20%;
+  
+}
+  
+.doc-info {
+  display: inline-block;
+  width: 59%;
+  padding: 2% 1%;
+  position: relative;  
+  border-left: 1px solid $gray-lite;
+  left: 15%;
+  
+}
+  
+.download {
+  display: block;
+  vertical-align: middle;
+  width: 20%;
+  padding-top: 5%;
+  background-color: lighten($gray-lite, 8);
+  margin: 0;
+  border-left: 1px solid $gray-lite;
+  text-align: center;
+    & > a{
+      margin-left: 0px;
+    }
+  }
+  
+ .download a:visited{
+ color: $black;
+} 
+}
