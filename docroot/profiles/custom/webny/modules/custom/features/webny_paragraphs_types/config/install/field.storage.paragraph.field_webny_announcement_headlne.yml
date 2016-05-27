@@ -1,19 +1,17 @@
-uuid: 2e40f700-f2dc-424e-b040-64df6cd88a70
 langcode: en
 status: true
 dependencies:
   module:
-    - node
     - paragraphs
-id: paragraph.field_webny_announcement_eref
-field_name: field_webny_announcement_eref
+id: paragraph.field_webny_announcement_headlne
+field_name: field_webny_announcement_headlne
 entity_type: paragraph
-type: entity_reference
+type: string_long
 settings:
-  target_type: node
+  case_sensitive: false
 module: core
 locked: false
-cardinality: 6
+cardinality: 1
 translatable: true
 indexes: {  }
 persist_with_no_fields: false

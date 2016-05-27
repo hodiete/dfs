@@ -1,4 +1,3 @@
-uuid: 0565c95b-c6c9-40eb-b057-876857c031db
 langcode: en
 status: true
 dependencies:
@@ -7,8 +6,11 @@ dependencies:
     - field.field.node.webny_news.body
     - field.field.node.webny_news.field_webny_news_agency_keywords
     - field.field.node.webny_news.field_webny_news_attachment
+    - field.field.node.webny_news.field_webny_news_attdocs_eref
     - field.field.node.webny_news.field_webny_news_contact_info
     - field.field.node.webny_news.field_webny_news_date
+    - field.field.node.webny_news.field_webny_news_docsec_subtitle
+    - field.field.node.webny_news.field_webny_news_docsec_title
     - field.field.node.webny_news.field_webny_news_global_keywords
     - field.field.node.webny_news.field_webny_news_image
     - field.field.node.webny_news.field_webny_news_location
@@ -21,8 +23,6 @@ dependencies:
     - datetime
     - text
     - user
-_core:
-  default_config_hash: 1xJQlgdDc4ZY7mdJbqHr7DW_8P9vbhz50w3q1Ul_TO8
 id: node.webny_news.webny_featured_card
 targetEntityType: node
 bundle: webny_news
@@ -54,7 +54,10 @@ hidden:
   body: true
   field_webny_news_agency_keywords: true
   field_webny_news_attachment: true
+  field_webny_news_attdocs_eref: true
   field_webny_news_contact_info: true
+  field_webny_news_docsec_subtitle: true
+  field_webny_news_docsec_title: true
   field_webny_news_global_keywords: true
   field_webny_news_location: true
   field_webny_news_paragraph: true

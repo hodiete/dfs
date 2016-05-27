@@ -1,14 +1,15 @@
-uuid: 89261990-bb94-4962-a944-684e48c95172
 langcode: en
 status: true
 dependencies:
   module:
-    - paragraphs
-id: paragraph.field_webny_announcement_title
-field_name: field_webny_announcement_title
-entity_type: paragraph
-type: string_long
+    - node
+id: node.field_webny_contact_name
+field_name: field_webny_contact_name
+entity_type: node
+type: string
 settings:
+  max_length: 64
+  is_ascii: false
   case_sensitive: false
 module: core
 locked: false
