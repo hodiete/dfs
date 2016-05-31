@@ -21,7 +21,6 @@ addons:
   ssh_known_hosts:
   - svn-15689.prod.hosting.acquia.com
   - svn-43.enterprise-g1.hosting.acquia.com
-  - staging-13081.prod.hosting.acquia.com
 
 notifications:
   # Replace this with project slack token.
@@ -51,6 +50,7 @@ before_script:
   - phantomjs --webdriver=4444 > /dev/null &
   # Clear drush release history cache, to pick up new releases.
   - rm -f ~/.drush/cache/download/*---updates.drupal.org-release-history-*
+  - ssh-keyscan -H -t rsa,dsa staging-13081.prod.hosting.acquia.com >> ~/.ssh/known_hosts
 
 script:
   - ./task.sh build:validate:test
