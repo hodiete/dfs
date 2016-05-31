@@ -396,3 +396,14 @@ function webny_configuration_update_8034() {
   \Drupal::service('module_installer')
       ->install(['webny_landing_page_content_type']);
 }
+
+/**
+ * Implements hook_update_n().
+ *
+ * Uninstalls Autologout module to fix NDD-510 bug.
+ */
+function webny_configuration_update_8035() {
+
+  \Drupal::service('module_installer')
+      ->uninstall(['autologout']);
+}
