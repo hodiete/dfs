@@ -1,0 +1,177 @@
+// Bio Frame
+//
+// Bio Frame styling.
+//
+// Markup: bioframe.hbs
+//
+// Style guide: components.bioframe
+
+// ************************* //
+// BIOFRAME PARTIAL
+// CREATED BY WEBNY
+// ************************* //
+
+// ========================================================================= // 
+// PRELIM OVERRIDES
+.page-paragraphs img{
+    border: 0;   
+}
+
+
+// ========================================================================= //
+/* BIOFRAME WRAPPER */
+.bioframe{
+    width: 100%;
+    margin: 0 auto;
+    background-color: #f3dd6d;                          // ADD TO COLOR SCHEME VARS
+    
+    .webny_contact-bioframe{
+        display: block;
+        width: 100%;
+        margin: 0 auto;
+        padding: 0;
+        
+                
+        .bio-frame-image{
+            .media-image > div{
+                display: block;   
+                line-height: normal;
+            }
+        } // END BIO IMAGE
+        
+        .bio-frame-meta{
+            vertical-align: top;
+            padding: 2% 4%;
+            
+            .frame-title{
+                text-align: left;
+                color: $black; 
+            }   
+            
+            .frame-headline{
+                text-align: left;
+                color: $white;                          // ADD TO COLOR SCHEME VARS
+                margin-bottom: 12px;
+            }
+            
+            .caption{
+                line-height: 1.2rem;   
+            }
+            
+            .reslink{
+                
+                margin: 36px auto 0 auto;
+                text-align: center;
+                
+                a{  
+                    border-width: 2px;
+                    border-style: solid;
+                    border-color: #eee;             // ADD TO COLOR SCHEME VARS
+                    color: $white;
+                    
+                    &:link{
+                        text-align: center;
+                        display: block;
+                        margin: 16px 0;
+                        font-size: 1.15rem;
+                        text-decoration: none;
+                        padding: 12px 0;
+                        display: block;
+                        max-width: 100%;
+                        
+                    }
+                    &:visited{
+                        border-width: 2px;
+                        border-style: solid;
+                        border-color: #eee;             // ADD TO COLOR SCHEME VARS
+                        color: $white;
+                    
+                    }
+                    &:hover{
+                       border-color: $white;             // ADD TO COLOR SCHEME VARS
+                       color: $white;
+                    }
+                    
+                }   
+            }
+                        
+        } // END BIO META
+        
+        
+
+    } // END CONTACT BIOFRAME
+    
+    
+    
+    
+} // END BIOFRAME
+
+
+// ######################################################################### //
+/* MOBILE VIEW */
+@media (min-width: $min-mob) {
+    
+} // END MIN MOBILE VIEW
+
+// ######################################################################### //
+/* TABLET VIEW */
+@media (min-width: $min-tab) {
+
+} // END MIN TABLET VIEW
+
+
+// ######################################################################### //
+/* PC VIEW */
+@media (min-width: $min-pc) {
+
+.bioframe{    
+    
+     .webny_contact-bioframe{
+        display: block;
+        max-width: $max-pc;
+
+        .bio-frame-image,
+        .bio-frame-meta{
+            display: inline-block;
+        }
+
+        .bio-frame-image{
+            overflow: auto;
+            width: 33%;   
+            height: 100%;  
+            vertical-align: bottom;
+            
+            img {
+                vertical-align: bottom;
+                line-height: 0;
+            }
+            
+        }
+
+        .bio-frame-meta{
+            width: 60%;   
+            padding: 0 3%;
+            
+            .reslink{
+                
+                margin: 36px auto 0 auto;
+                text-align: center;
+                
+                a{  
+                    &:link{
+                        max-width: 240px;   
+                    }
+                    
+                }
+            
+            }
+        }
+    
+          
+            
+
+    } // END CONTACT BIOFRAME     
+
+} // END BIO FRAME    
+    
+} // END PC
