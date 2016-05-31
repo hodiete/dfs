@@ -14,6 +14,7 @@ dependencies:
   module:
     - datetime
     - link
+    - linked_field
     - text
     - user
 id: node.webny_whitelisted_content.webny_featured_card
@@ -39,9 +40,18 @@ content:
     weight: 0
     label: hidden
     settings:
-      link: true
       view_mode: default
-    third_party_settings: {  }
+      link: false
+    third_party_settings:
+      linked_field:
+        linked: '1'
+        destination: '[node:url]'
+        advanced:
+          title: ''
+          target: ''
+          class: ''
+          rel: ''
+          text: ''
     type: entity_reference_entity_view
   field_webny_whitelist_link_url:
     type: link
