@@ -2,15 +2,14 @@ langcode: en
 status: true
 dependencies:
   module:
+    - media_entity
     - node
-id: node.field_webny_news_docsec_subtitle
-field_name: field_webny_news_docsec_subtitle
+id: node.field_webny_contact_image
+field_name: field_webny_contact_image
 entity_type: node
-type: string
+type: entity_reference
 settings:
-  max_length: 255
-  is_ascii: false
-  case_sensitive: false
+  target_type: media
 module: core
 locked: false
 cardinality: 1
