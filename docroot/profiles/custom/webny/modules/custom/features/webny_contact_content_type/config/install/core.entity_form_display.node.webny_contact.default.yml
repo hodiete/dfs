@@ -3,6 +3,7 @@ status: true
 dependencies:
   config:
     - field.field.node.webny_contact.field_webny_contact_address
+    - field.field.node.webny_contact.field_webny_contact_caption
     - field.field.node.webny_contact.field_webny_contact_details
     - field.field.node.webny_contact.field_webny_contact_email
     - field.field.node.webny_contact.field_webny_contact_facebook
@@ -10,10 +11,14 @@ dependencies:
     - field.field.node.webny_contact.field_webny_contact_flickr_link
     - field.field.node.webny_contact.field_webny_contact_global_key
     - field.field.node.webny_contact.field_webny_contact_google
+    - field.field.node.webny_contact.field_webny_contact_image
     - field.field.node.webny_contact.field_webny_contact_instagram
     - field.field.node.webny_contact.field_webny_contact_linkedin
+    - field.field.node.webny_contact.field_webny_contact_name
     - field.field.node.webny_contact.field_webny_contact_phone
     - field.field.node.webny_contact.field_webny_contact_pintrest
+    - field.field.node.webny_contact.field_webny_contact_protitle
+    - field.field.node.webny_contact.field_webny_contact_reslink
     - field.field.node.webny_contact.field_webny_contact_rss_link
     - field.field.node.webny_contact.field_webny_contact_snapchat
     - field.field.node.webny_contact.field_webny_contact_soundcloud
@@ -24,9 +29,31 @@ dependencies:
     - field.field.node.webny_contact.field_webny_contact_youtube
     - node.type.webny_contact
   module:
+    - field_group
+    - link
     - path
+    - telephone
     - text
     - workbench_moderation
+third_party_settings:
+  field_group:
+    group_webny_contact_bio_frame:
+      children:
+        - field_webny_contact_protitle
+        - field_webny_contact_name
+        - field_webny_contact_caption
+        - field_webny_contact_reslink
+        - field_webny_contact_image
+      parent_name: ''
+      weight: 22
+      label: 'Bio Frame'
+      format_type: fieldset
+      format_settings:
+        label: 'Bio Frame'
+        id: ''
+        classes: bioframe
+        required_fields: true
+        description: ''
 id: node.webny_contact.default
 targetEntityType: node
 bundle: webny_contact
@@ -34,7 +61,7 @@ mode: default
 content:
   created:
     type: datetime_timestamp
-    weight: 21
+    weight: 23
     settings: {  }
     third_party_settings: {  }
   field_webny_contact_address:
@@ -44,6 +71,13 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: text_textarea
+  field_webny_contact_caption:
+    weight: 29
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textarea
   field_webny_contact_details:
     weight: 5
     settings:
@@ -55,31 +89,31 @@ content:
     weight: 3
     settings:
       placeholder: ''
+      size: 60
     third_party_settings: {  }
     type: email_default
   field_webny_contact_facebook:
     weight: 6
     settings:
-      size: 60
-      placeholder: ''
+      placeholder_url: ''
+      placeholder_title: ''
     third_party_settings: {  }
-    type: string_textfield
+    type: link_default
   field_webny_contact_fax:
     weight: 2
     settings:
-      size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: text_textfield
+    type: telephone_default
   field_webny_contact_flickr_link:
     weight: 9
     settings:
-      size: 60
-      placeholder: ''
+      placeholder_url: ''
+      placeholder_title: ''
     third_party_settings: {  }
-    type: string_textfield
+    type: link_default
   field_webny_contact_global_key:
-    weight: 26
+    weight: 21
     settings:
       match_operator: CONTAINS
       size: 60
@@ -89,19 +123,34 @@ content:
   field_webny_contact_google:
     weight: 17
     settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+  field_webny_contact_image:
+    weight: 31
+    settings:
+      match_operator: CONTAINS
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: string_textfield
+    type: entity_reference_autocomplete
   field_webny_contact_instagram:
     weight: 10
     settings:
-      size: 60
-      placeholder: ''
+      placeholder_url: ''
+      placeholder_title: ''
     third_party_settings: {  }
-    type: string_textfield
+    type: link_default
   field_webny_contact_linkedin:
     weight: 16
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+  field_webny_contact_name:
+    weight: 28
     settings:
       size: 60
       placeholder: ''
@@ -110,89 +159,102 @@ content:
   field_webny_contact_phone:
     weight: 1
     settings:
-      size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: text_textfield
+    type: telephone_default
   field_webny_contact_pintrest:
     weight: 14
     settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+  field_webny_contact_protitle:
+    weight: 27
+    settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
+  field_webny_contact_reslink:
+    weight: 30
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
   field_webny_contact_rss_link:
     weight: 12
     settings:
-      size: 60
-      placeholder: ''
+      placeholder_url: ''
+      placeholder_title: ''
     third_party_settings: {  }
-    type: string_textfield
+    type: link_default
   field_webny_contact_snapchat:
     weight: 19
     settings:
-      size: 60
-      placeholder: ''
+      placeholder_url: ''
+      placeholder_title: ''
     third_party_settings: {  }
-    type: string_textfield
+    type: link_default
   field_webny_contact_soundcloud:
     weight: 13
     settings:
-      size: 60
-      placeholder: ''
+      placeholder_url: ''
+      placeholder_title: ''
     third_party_settings: {  }
-    type: string_textfield
+    type: link_default
   field_webny_contact_tumblr_link:
     weight: 15
     settings:
-      size: 60
-      placeholder: ''
+      placeholder_url: ''
+      placeholder_title: ''
     third_party_settings: {  }
-    type: string_textfield
+    type: link_default
   field_webny_contact_twitter:
     weight: 7
     settings:
-      size: 60
-      placeholder: ''
+      placeholder_url: ''
+      placeholder_title: ''
     third_party_settings: {  }
-    type: string_textfield
+    type: link_default
   field_webny_contact_vimeo_link:
     weight: 18
     settings:
-      size: 60
-      placeholder: ''
+      placeholder_url: ''
+      placeholder_title: ''
     third_party_settings: {  }
-    type: string_textfield
+    type: link_default
   field_webny_contact_vine_link:
     weight: 11
     settings:
-      size: 60
-      placeholder: ''
+      placeholder_url: ''
+      placeholder_title: ''
     third_party_settings: {  }
-    type: string_textfield
+    type: link_default
   field_webny_contact_youtube:
     weight: 8
     settings:
-      size: 60
-      placeholder: ''
+      placeholder_url: ''
+      placeholder_title: ''
     third_party_settings: {  }
-    type: string_textfield
+    type: link_default
   path:
     type: path
-    weight: 24
+    weight: 26
     settings: {  }
     third_party_settings: {  }
   promote:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 22
+    weight: 24
     third_party_settings: {  }
   sticky:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 23
+    weight: 25
     third_party_settings: {  }
   title:
     type: string_textfield
