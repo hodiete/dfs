@@ -44,7 +44,7 @@
 
   <target name="build:validate:test"
           description="Builds, validates, tests, and deploys an artifact."
-          depends="validate:all, setup, ci-local:refresh, tests:all">
+          depends="validate:all, setup, tests:all">
   </target>
 
   <target name="list" hidden="true">
