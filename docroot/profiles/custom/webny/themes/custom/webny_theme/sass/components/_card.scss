@@ -26,8 +26,8 @@
   font-size:90%;
   
   //width:30%;  /* moved to queries below */
-  display: flex;
-  margin: 1rem;
+  display: flex; /* removed for IE 11 fix */
+  margin: .5rem; /* aiming for the 20px between cards that seems to be there in ny.gov web style guide */
 }
 
 .webny-card {
@@ -46,10 +46,15 @@
 .webny-card h2 {
   order:2;
   padding: .5rem 1rem;
-  font-size: 120%;   flex: 1 0 auto;
+  font-size: 120%; 
+  line-height: 1.2em;  
+  flex: 1 0 auto;
   min-height: 78px; /*IOJP*/  
   vertical-align: top;
   display: block;
+  a:link {
+    color:$medblue;
+  }
 }
 .webny-card .webny-card-date {
   order:3;
@@ -58,9 +63,9 @@
 .webny-card .webny-card-teaser {
   order:4;
   padding: .5rem 1rem;
-  display:flex;
+  /* display:flex; */
   vertical-align: top;
-  flex: 1 0 auto;
+  /* flex: 1 0 auto; */
   min-height: 100px; /*IOJP*/   
 
 }
@@ -109,4 +114,15 @@
     }
   }
 
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  .paragraph--type--webny-card-paragraph-type > div > div {
+    display: inline-block; /* fixes images on IE 11 image and title overflow - not sure why */
+  }
+}
+
+@media screen\0 {
+  .paragraph--type--webny-card-paragraph-type>div>div {
+    float:left; /* overcomes flexbox limitationson IE 8,9,10 */
+  }
+}
 
