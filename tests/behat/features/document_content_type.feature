@@ -15,7 +15,7 @@ I should be able to create a document from the Document content type
   Scenario: An anonymous user should not be able to create a document
     Given I am not logged in
     When I go to "/node/add/webny_document"
-    Then I should see a "Access denied"
+    Then I should see "Access denied"
     
 # Check that the Document Content type contains the appropriate fields
   Scenario: An administrative user should be able to see all the fields of the content type
