@@ -31,7 +31,7 @@
   <import file="${core.phing.dir}/tasks/frontend.xml"/>
 
   <!-- Contains local syncing tasks. -->
-  <import file="${core.phing.dir}/tasks/local-sync.xml"/>
+  <import file="tasks/ci-local-sync.xml"/>
 
   <!--
     The follow targets are intended to be wrapper targets that bundle
@@ -44,7 +44,7 @@
 
   <target name="build:validate:test"
           description="Builds, validates, tests, and deploys an artifact."
-          depends="validate:all, setup, tests:all">
+          depends="validate:all, setup, ci-local:refresh, tests:all">
   </target>
 
   <target name="list" hidden="true">
