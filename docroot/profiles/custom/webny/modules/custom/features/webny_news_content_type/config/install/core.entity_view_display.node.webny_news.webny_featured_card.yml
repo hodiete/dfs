@@ -21,6 +21,7 @@ dependencies:
     - node.type.webny_news
   module:
     - datetime
+    - linked_field
     - text
     - user
 id: node.webny_news.webny_featured_card
@@ -43,7 +44,16 @@ content:
     settings:
       view_mode: default
       link: false
-    third_party_settings: {  }
+    third_party_settings:
+      linked_field:
+        linked: '1'
+        destination: '[node:url]'
+        advanced:
+          title: ''
+          target: ''
+          class: ''
+          rel: ''
+          text: ''
   field_webny_news_teaser:
     weight: 2
     label: hidden
