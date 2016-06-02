@@ -10,6 +10,7 @@ dependencies:
     - field.field.node.webny_whitelisted_content.field_webny_whitelist_global_key
     - field.field.node.webny_whitelisted_content.field_webny_whitelist_image
     - field.field.node.webny_whitelisted_content.field_webny_whitelist_link_url
+    - field.field.node.webny_whitelisted_content.field_webny_whitelist_stitle
     - node.type.webny_whitelisted_content
   module:
     - datetime
@@ -23,7 +24,7 @@ bundle: webny_whitelisted_content
 mode: webny_featured_card
 content:
   field_webny_whitelist_date:
-    weight: 1
+    weight: 2
     label: hidden
     settings:
       timezone_override: ''
@@ -32,7 +33,7 @@ content:
     type: datetime_custom
   field_webny_whitelist_descript:
     type: text_default
-    weight: 2
+    weight: 3
     label: hidden
     settings: {  }
     third_party_settings: {  }
@@ -55,7 +56,7 @@ content:
     type: entity_reference_entity_view
   field_webny_whitelist_link_url:
     type: link
-    weight: 3
+    weight: 4
     label: hidden
     settings:
       trim_length: 80
@@ -63,6 +64,13 @@ content:
       url_plain: false
       rel: ''
       target: ''
+    third_party_settings: {  }
+  field_webny_whitelist_stitle:
+    type: string
+    weight: 1
+    label: hidden
+    settings:
+      link_to_entity: false
     third_party_settings: {  }
 hidden:
   body: true

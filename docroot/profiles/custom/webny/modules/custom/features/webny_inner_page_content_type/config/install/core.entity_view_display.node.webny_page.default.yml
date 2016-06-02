@@ -12,6 +12,7 @@ dependencies:
     - field.field.node.webny_page.field_webny_page_global_keywords
     - field.field.node.webny_page.field_webny_page_image
     - field.field.node.webny_page.field_webny_page_paragraph
+    - field.field.node.webny_page.field_webny_page_short_title
     - field.field.node.webny_page.field_webny_page_sub_title
     - node.type.webny_page
   module:
@@ -108,4 +109,5 @@ content:
     weight: 0
     settings: {  }
     third_party_settings: {  }
-hidden: {  }
+hidden:
+  field_webny_page_short_title: true

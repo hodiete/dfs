@@ -12,6 +12,7 @@ dependencies:
     - field.field.node.webny_page.field_webny_page_global_keywords
     - field.field.node.webny_page.field_webny_page_image
     - field.field.node.webny_page.field_webny_page_paragraph
+    - field.field.node.webny_page.field_webny_page_short_title
     - field.field.node.webny_page.field_webny_page_sub_title
     - node.type.webny_page
   module:
@@ -27,7 +28,7 @@ mode: default
 content:
   body:
     type: text_textarea_with_summary
-    weight: 3
+    weight: 4
     settings:
       rows: 9
       summary_rows: 3
@@ -35,11 +36,11 @@ content:
     third_party_settings: {  }
   created:
     type: datetime_timestamp
-    weight: 10
+    weight: 11
     settings: {  }
     third_party_settings: {  }
   field_webny_page_agency_keywords:
-    weight: 6
+    weight: 7
     settings:
       match_operator: CONTAINS
       size: 60
@@ -47,21 +48,21 @@ content:
     third_party_settings: {  }
     type: entity_reference_autocomplete
   field_webny_page_attachment:
-    weight: 8
+    weight: 9
     settings:
       progress_indicator: throbber
     third_party_settings: {  }
     type: file_generic
   field_webny_page_attdocs_eref:
     type: entity_reference_autocomplete
-    weight: 16
+    weight: 17
     settings:
       match_operator: CONTAINS
       size: 80
       placeholder: ''
     third_party_settings: {  }
   field_webny_page_description:
-    weight: 2
+    weight: 3
     settings:
       rows: 5
       placeholder: ''
@@ -69,20 +70,20 @@ content:
     type: text_textarea
   field_webny_page_docsec_subtitle:
     type: string_textfield
-    weight: 15
+    weight: 16
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
   field_webny_page_docsec_title:
     type: string_textfield
-    weight: 14
+    weight: 15
     settings:
       size: 80
       placeholder: ''
     third_party_settings: {  }
   field_webny_page_global_keywords:
-    weight: 5
+    weight: 6
     settings:
       match_operator: CONTAINS
       size: 80
@@ -90,7 +91,7 @@ content:
     third_party_settings: {  }
     type: entity_reference_autocomplete
   field_webny_page_image:
-    weight: 4
+    weight: 5
     settings:
       match_operator: CONTAINS
       size: 60
@@ -99,7 +100,7 @@ content:
     type: entity_reference_autocomplete
   field_webny_page_paragraph:
     type: entity_reference_paragraphs
-    weight: 7
+    weight: 8
     settings:
       title: Paragraph
       title_plural: Paragraphs
@@ -107,8 +108,15 @@ content:
       add_mode: dropdown
       form_display_mode: default
     third_party_settings: {  }
-  field_webny_page_sub_title:
+  field_webny_page_short_title:
     weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+  field_webny_page_sub_title:
+    weight: 2
     settings:
       size: 60
       placeholder: ''
@@ -116,20 +124,20 @@ content:
     type: text_textfield
   path:
     type: path
-    weight: 13
+    weight: 14
     settings: {  }
     third_party_settings: {  }
   promote:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 11
+    weight: 12
     third_party_settings: {  }
   sticky:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 12
+    weight: 13
     third_party_settings: {  }
   title:
     type: string_textfield
@@ -140,7 +148,7 @@ content:
     third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete
-    weight: 9
+    weight: 10
     settings:
       match_operator: CONTAINS
       size: 60

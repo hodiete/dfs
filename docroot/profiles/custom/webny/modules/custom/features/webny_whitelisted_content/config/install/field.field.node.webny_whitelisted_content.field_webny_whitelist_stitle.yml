@@ -2,12 +2,12 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_webny_page_short_title
-    - node.type.webny_page
-id: node.webny_page.field_webny_page_short_title
-field_name: field_webny_page_short_title
+    - field.storage.node.field_webny_whitelist_stitle
+    - node.type.webny_whitelisted_content
+id: node.webny_whitelisted_content.field_webny_whitelist_stitle
+field_name: field_webny_whitelist_stitle
 entity_type: node
-bundle: webny_page
+bundle: webny_whitelisted_content
 label: 'Short Title'
 description: 'Use this field to add a shortened title for use in featured cards.'
 required: false
