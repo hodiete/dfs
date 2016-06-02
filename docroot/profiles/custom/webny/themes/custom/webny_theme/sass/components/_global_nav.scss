@@ -6,9 +6,16 @@
 //
 // Style guide: components.global_nav
 
+// hint: only these color variables - the left most ones - should be used below
+$nav-top-bkgd-color: $color-primary !default;
+$nav-top-sub-items-bkgd: $color-primary !default;
+$nav-top-hover-bkgd-color: $buttonBackgroundColorHover !default;
+$nav-top-text-color: $white !default;
+$nav-top-text-hover-color: $color-secondary !default;
+$nav-top-text-active-color: $color-secondary !default;
 
 .nys-global-header {
-  background-color: $color-primary;
+  background-color: $nav-top-bkgd-color;
   height:44px; /* yucky - don't know how to get around background color issue */
   margin:0;
   padding:0 0 0 30px;
@@ -40,24 +47,29 @@
 .nys-global-header li:hover > ul {
   display:flex;
   flex-direction:column;
-    background-color:$color-primary;
+    background-color:$nav-top-bkgd-color;
   li {
     
   }
 }
 
-.nys-global-header a:link {
+.nys-global-header a, .nys-global-header a:link {
   display: table-cell;
   padding:.5rem 1rem 0 1rem;
   text-decoration:none;
-  color:$white;
+  color:$nav-top-text-color;
 
 }
 .nys-global-header a:hover,
 .nys-global-header a:active, 
-.nys-global-header a:focus, 
-.nys-global-header a:visited {
-  color:$white;
-  text-decoration:underline;
+.nys-global-header a:focus /*, 
+.nys-global-header a:visited */ {
+  
+  color:$nav-top-text-active-color;
+  /*text-decoration:underline;*/
+}
+
+.nys-global-header ul > li > ul li:hover {
+  background-color: $nav-top-hover-bkgd-color;
 }
 
