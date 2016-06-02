@@ -13,6 +13,7 @@ dependencies:
     - field.field.node.webny_page.field_webny_page_global_keywords
     - field.field.node.webny_page.field_webny_page_image
     - field.field.node.webny_page.field_webny_page_paragraph
+    - field.field.node.webny_page.field_webny_page_short_title
     - field.field.node.webny_page.field_webny_page_sub_title
     - node.type.webny_page
   module:
@@ -32,7 +33,7 @@ content:
     type: text_default
   field_webny_page_image:
     type: entity_reference_entity_view
-    weight: 1
+    weight: 0
     label: hidden
     settings:
       view_mode: default
@@ -47,6 +48,13 @@ content:
           class: ''
           rel: ''
           text: ''
+  field_webny_page_short_title:
+    type: string
+    weight: 1
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
 hidden:
   body: true
   field_webny_page_agency_keywords: true
