@@ -34,10 +34,10 @@
 
 $announce-frame-title-color: $color-secondary !default;
 $announce-frame-headline-color: $black !default;
-$announce-frame-item-bkgd-color: !default;
-$announce-frame-item-title-color: !default;
-$announce-frame-item-text-color: !default;
-$announce-frame-button: !default;
+$announce-frame-item-bkgd-color: $gray-lite !default;
+$announce-frame-item-title-color: $black !default;
+$announce-frame-item-text-color: $black !default;
+// $announce-frame-button: !default;
 
 // ************************* //
 // ANNOUNCEMENTS PARTIAL
@@ -48,7 +48,7 @@ $announce-frame-button: !default;
 /* ANNOUNCEMENTS WRAPPER */
 .webny-announcements{
     
-    background-color: #eee;
+    background-color: $announce-frame-item-bkgd-color;
     margin-bottom: 20px;
     overflow: auto;
     
@@ -77,9 +77,13 @@ $announce-frame-button: !default;
     
     .announcement-info{
         h4{
-            color: $black;   
+            color: $announce-frame-item-title-color;   
             font-size: 2.5rem;
         }
+    }
+
+    .announcement-summary {
+        color: $announce-frame-item-text-color;
     }
     
     .webny-announcement-button{
