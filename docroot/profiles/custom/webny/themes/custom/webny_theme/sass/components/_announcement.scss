@@ -30,6 +30,15 @@
 //
 // Style guide: components.announcement.inner
 
+// color variables
+
+$announce-frame-title-color: $color-secondary !default;
+$announce-frame-headline-color: $black !default;
+$announce-frame-item-bkgd-color: !default;
+$announce-frame-item-title-color: !default;
+$announce-frame-item-text-color: !default;
+$announce-frame-button: !default;
+
 // ************************* //
 // ANNOUNCEMENTS PARTIAL
 // CREATED BY WEBNY
@@ -104,7 +113,7 @@
 
 .frame-title{
     text-transform: uppercase;
-    color: $color-secondary;
+    color: $announce-frame-title-color;
     margin-bottom: 0;
     font: $frame_title $oswald;
     font-weight: bold;
@@ -114,7 +123,7 @@
 }
 
 .frame-headline{
-    color: $black;   
+    color: $announce-frame-headline-color;   
     font: bold $frame_headline $base-font;
     font-weight: 800;
     margin-bottom: 40px;
