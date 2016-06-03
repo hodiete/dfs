@@ -6,21 +6,27 @@
 //
 // Style guide: components.buttons
 
+// color variables
+$button-text-color: $white !default;
+$button-bkgd-color: $color-primary !default;
+$button-bkgd-transparent: hsla(0, 0%, 0%, 0.0); // Default color --transparent -- for buttons
+$button-bkgd-hover-color: hsla(0, 0%, 0%, 0.4); // Default color for buttons on hover, used on nav too
+
 .buttonBase {
   display:inline-block;
   font-family: $base-font;
   //font-weight: bold;
   text-align: center;
-  color:$white;
+  color:$button-text-color;
   text-transform: uppercase;
   text-decoration: none;
   padding: 14px 20px;
-  border: 1px solid $white;
+  border: 1px solid $button-text-color;
   &:hover {
 	text-decoration: none;
   }
   &>a{
-        color: $white;
+        color: $button-text-color;
         text-decoration: none;
         &:hover {
             text-decoration: none;
@@ -31,32 +37,32 @@
 
 .button {
   @extend .buttonBase;
-  background: $primaryblue;
+  background: $button-bkgd-color;
   border: none;
   cursor: pointer;
   &:hover {
-    background: darken($primaryblue, 10%);
+    background: darken($button-bkgd-color, 10%);
   }
     
 }
 
 .buttonTransparentLt {
   @extend .buttonBase;
-  background: $buttonBackgroundColor;
+  background: $button-bkgd-transparent;
   border-color: $gray-lite;
   &:hover {
-    background: $buttonBackgroundColorHover;
+    background: $button-bkgd-hover-color;
     border-color: $white;
   }
 }
 
 .buttonTransparentDk {
   @extend .buttonBase;
-  background: $buttonBackgroundColor;
+  background: $button-bkgd-transparent;
   color: $black;
   border:1px solid $black;
   &:hover {
-    background: $buttonBackgroundColorHover;
+    background: $button-bkgd-hover-color;
     border-color: $black;
   }
 }
