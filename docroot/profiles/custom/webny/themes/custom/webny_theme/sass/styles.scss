@@ -62,6 +62,7 @@
 @import "components/contact";
 @import "components/announcement";
 @import "components/attachments";
+@import "components/bioframe";
 @import "components/plan_summary";
 
 
@@ -72,3 +73,8 @@
 //
 // the import below was a wildcard @import "state/*"; but it's explicit because the build fails w/wildcard
 @import "state/blocks";
+
+// Fixes
+//
+// IE specific and other browser specific fixes
+@import "base/fix"

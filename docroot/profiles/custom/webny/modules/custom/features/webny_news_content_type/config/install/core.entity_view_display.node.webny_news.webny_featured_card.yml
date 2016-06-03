@@ -15,12 +15,14 @@ dependencies:
     - field.field.node.webny_news.field_webny_news_image
     - field.field.node.webny_news.field_webny_news_location
     - field.field.node.webny_news.field_webny_news_paragraph
+    - field.field.node.webny_news.field_webny_news_short_title
     - field.field.node.webny_news.field_webny_news_sub_title
     - field.field.node.webny_news.field_webny_news_subject_heading
     - field.field.node.webny_news.field_webny_news_teaser
     - node.type.webny_news
   module:
     - datetime
+    - linked_field
     - text
     - user
 id: node.webny_news.webny_featured_card
@@ -30,7 +32,7 @@ mode: webny_featured_card
 content:
   field_webny_news_date:
     type: datetime_custom
-    weight: 1
+    weight: 2
     label: hidden
     settings:
       timezone_override: ''
@@ -43,9 +45,25 @@ content:
     settings:
       view_mode: default
       link: false
+    third_party_settings:
+      linked_field:
+        linked: '1'
+        destination: '[node:url]'
+        advanced:
+          title: ''
+          target: ''
+          class: ''
+          rel: ''
+          text: ''
+  field_webny_news_short_title:
+    type: string
+    weight: 1
+    label: hidden
+    settings:
+      link_to_entity: false
     third_party_settings: {  }
   field_webny_news_teaser:
-    weight: 2
+    weight: 3
     label: hidden
     settings: {  }
     third_party_settings: {  }
