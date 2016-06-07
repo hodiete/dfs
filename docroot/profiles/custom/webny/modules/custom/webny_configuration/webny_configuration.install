@@ -421,3 +421,14 @@ function webny_configuration_update_8035() {
   \Drupal::service('module_installer')
       ->install(['webny_whitelisted_content']);
 }
+
+/**
+ * Implements hook_update_n().
+ *
+ * Installs field_group module and Summary frame paragraph type.
+ */
+function webny_configuration_update_8036() {
+
+  \Drupal::service('module_installer')
+      ->install(['field_group']);
+}
