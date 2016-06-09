@@ -45,7 +45,7 @@ assumes you have administrative access on your host machine.
 6. Make sure you have the vagrant-hostsupdater plugin installed
      vagrant plugin install vagrant-hostsupdater
      vagrant plugin install vagrant-auto_network
-6. Run `vagrant up` in the /box directory.
+6. Run `vagrant up` in the /box directory. (Note: If the vm has trouble mounting the host nfs, try changing nfs to rsync in the config.yml)
 7. After this completes, ensure your hosts were created. On Linux and OSX this is likely your /etc/hosts file. On 
 Windows this is usually located at C:\Windows\System32\drivers\etc\hosts. 
 You will need to edit this file as an administrator to save it. Hosts should follow this format of:
@@ -64,7 +64,7 @@ You will need to edit this file as an administrator to save it. Hosts should fol
 
 1. Run `vagrant ssh` from the /box directory
 2. Run `cd /var/www/webny`
-3. Run `composer install`
+3. Run `composer install` from /var/www/webny.
 4. Install NVM and install and use Node.js version 0.12.7: 
 
     ```
