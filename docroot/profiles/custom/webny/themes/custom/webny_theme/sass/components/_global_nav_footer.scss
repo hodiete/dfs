@@ -6,10 +6,15 @@
 //
 // Style guide: components.global_nav_footer
 
+// hint: only these color variables - the left most ones - should be used below
+$nav-bottom-bkgd-color: $color-secondary !default;
+$nav-bottom-text-color: $black !default;
+$nav-bottom-text-hover-color: $text-blue !default;
+$nav-bottom-text-active-color: $text-blue !default;
 
 footer .agency-name {
-  color:$black;
-  background: $color-secondary;
+  color:$nav-bottom-text-color;
+  background: $nav-bottom-bkgd-color;
   padding:30px 10px 0 30px;
   a:link,
   a:link:hover,
@@ -19,13 +24,13 @@ footer .agency-name {
   a:visited,
   a:visited:hover {
     text-decoration: none;
-    color:$black;
+    color:$nav-bottom-text-color;
     padding:0;
   }
 }
 
 .nys-global-footer {
-  background-color: $color-secondary;
+  background-color: $nav-bottom-bkgd-color;
   //height:44px; 
   margin:0;
   //padding:0 0 0 30px;
@@ -51,7 +56,7 @@ footer .agency-name {
 
 .footer-menu>ul>li>a:first-child {
       //text-decoration: underline;
-      border-bottom: 1px solid $black;
+      //border-bottom: 1px solid $nav-bottom-text-color;
 }
 
 /*.social-media nav>ul>li>a:first-child {
@@ -80,7 +85,7 @@ footer .agency-name {
 .social-media h2 {
   text-align: center;
   font-size: $base-font-size - 2px;
-  color:$black;
+  color:$nav-bottom-text-color;
   text-transform: uppercase;
 }
 
@@ -110,19 +115,19 @@ footer .agency-name {
   margin-right: -50%;
 }
 
-.nys-global-footer a:link {
+.nys-global-footer a, .nys-global-footer a:link, .nys-global-footer a:visited {
   display: table-cell;
   //padding:.5rem 1rem 0 1rem;
   text-decoration:none;
-  color:$black;
+  color:$nav-bottom-text-color;
 
 }
 .nys-global-footer a:hover,
 .nys-global-footer a:active, 
-.nys-global-footer a:focus, 
-.nys-global-footer a:visited {
-  color:$black;
-  text-decoration:underline;
+.nys-global-footer a:focus 
+ {
+  color:$nav-bottom-text-active-color;
+  //text-decoration:underline;
 
 }
 

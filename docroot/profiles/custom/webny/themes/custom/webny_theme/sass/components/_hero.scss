@@ -27,6 +27,12 @@
 //
 // Style guide: components.hero.news
 
+// color variables
+$hero-bkgd-color: $color-tertiary !default;
+$hero-text-color: $white !default;
+$hero-keyword-bkgd-color: $color-secondary !default;
+$hero-keyword-hover-bkgd-color: $button-bkgd-hover-color !default;
+$hero-keyword-text-color: $white !default;
 
 // ************************* //
 // HERO PARTIAL
@@ -45,7 +51,7 @@ header.hero-has-image{
 }
 
 header.hero-no-image{
-  background-color: $medblue;
+  background-color: $hero-bkgd-color;
 }
 
 // ========================================================================= //
@@ -73,7 +79,7 @@ header.hero-no-image{
     background-position: 50% 0;
     background-repeat: no-repeat;
     background-size: cover;
-    color: $white;
+    color: $hero-text-color;
     min-height: 100px;
     overflow: hidden;
     position: relative;
@@ -92,10 +98,10 @@ header.hero-no-image{
   }
 
   .hero-published-date {
-    font-family: "ProximaNovaBold";
+    font-family: $base-font;
     font-size: 0.8em;
     text-transform: uppercase;
-    color: $white;
+    color: $hero-text-color;
     position: relative;
     z-index: 3;
   }
@@ -107,16 +113,16 @@ header.hero-no-image{
   .hero-location {
     border-left: 1px solid #d9e2e2;
     display: inline-block;
-    font-family: "ProximaNovaRegular";
+    font-family: $base-font;
     margin-left: 5px;
     padding-left: 9px;
     text-transform: none;
-    color: $white;
+    color: $hero-text-color;
   }
 
   h1,h2{
     
-    color: $white;
+    color: $hero-text-color;
     line-height: 32px;
     font-size: 28px;
     width: auto;
@@ -140,21 +146,25 @@ header.hero-no-image{
   }
 
   .hero-keywords a {
-    background-color: $keywordBkColor;
-    font-family: "Oswald-bold";
+    background-color: $hero-keyword-bkgd-color;
+    font-family: "Oswald";
+    font-weight: bold;
     font-size: 0.8em;
     font-weight: 200;
     letter-spacing: 0.1em;
     line-height: 1.125em;
     padding: 10px;
     text-transform: uppercase;
-    color: $white;
+    color: $hero-keyword-text-color;
     text-decoration: none;
+    &:hover {
+      background-color: $hero-keyword-hover-bkgd-color;
+    }
   }
     
   .hero-summary{
     font-size: 1em;
-    color: $white;
+    color: $hero-text-color;
     width: auto;
     position:  relative;
     z-index: 5;
@@ -191,7 +201,7 @@ header.hero-no-image{
     
   .hero-summary{
     font-size: 1em;
-    color: $white;
+    color: $hero-text-color;
    }    
 
 } // END HERO-layout
