@@ -1,0 +1,56 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.webny_get_involved_pgtype.field_webny_get_inv_cta
+    - field.field.paragraph.webny_get_involved_pgtype.field_webny_get_inv_description
+    - field.field.paragraph.webny_get_involved_pgtype.field_webny_get_inv_headline
+    - field.field.paragraph.webny_get_involved_pgtype.field_webny_get_inv_share_title
+    - field.field.paragraph.webny_get_involved_pgtype.field_webny_get_involved_title
+    - paragraphs.paragraphs_type.webny_get_involved_pgtype
+  module:
+    - link
+    - workbench_moderation
+id: paragraph.webny_get_involved_pgtype.default
+targetEntityType: paragraph
+bundle: webny_get_involved_pgtype
+mode: default
+content:
+  field_webny_get_inv_cta:
+    weight: 10
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+  field_webny_get_inv_description:
+    weight: 9
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+  field_webny_get_inv_headline:
+    weight: 8
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+  field_webny_get_inv_share_title:
+    weight: 7
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+  field_webny_get_involved_title:
+    weight: 6
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+hidden:
+  created: true
+  uid: true
