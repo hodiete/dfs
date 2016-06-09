@@ -1,4 +1,3 @@
-uuid: a5839b0e-ce96-4428-9f03-3ce2fbece7d0
 langcode: en
 status: true
 dependencies:
@@ -14,13 +13,12 @@ dependencies:
     - field.field.node.webny_page.field_webny_page_global_keywords
     - field.field.node.webny_page.field_webny_page_image
     - field.field.node.webny_page.field_webny_page_paragraph
+    - field.field.node.webny_page.field_webny_page_short_title
     - field.field.node.webny_page.field_webny_page_sub_title
     - node.type.webny_page
   module:
     - text
     - user
-_core:
-  default_config_hash: V4nhh4XnfGUpiangozTwR_HqOhyvCVQrbIABscYzhlU
 id: node.webny_page.webny_announcement
 targetEntityType: node
 bundle: webny_page
@@ -43,6 +41,7 @@ hidden:
   field_webny_page_global_keywords: true
   field_webny_page_image: true
   field_webny_page_paragraph: true
+  field_webny_page_short_title: true
   field_webny_page_sub_title: true
   links: true
   workbench_moderation_control: true

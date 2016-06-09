@@ -20,11 +20,10 @@
 %}
 
 {%
-    set absfilepath = node.field_webny_document_file_upload.entity.uri.value
+    set absfilepath = file_url(node.field_webny_document_file_upload.entity.uri.value)
 %}
 
 {# DEBUG VIA KINT / DEVEL #}
-{# kint() #}
 
 <article{{ attributes.addClass(docclasses) }}>
     
@@ -48,7 +47,7 @@
           
           <div class="download">
             <div class="doc-dlicon">&nbsp;</div> 
-            <a href="{{ node.field_webny_document_file_upload.entity.uri.value }}">Download</a>
+            <a href="{{ absfilepath }}">Download</a>
           </div>
             
         </li><!--end document-wrapper-->

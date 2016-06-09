@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "efddee2c24152b9287e56746ad1dee79",
-    "content-hash": "926a56aa4272cac8dcb6cba22394a28e",
+    "hash": "5da843d203e33ba706912fd8fcb13366",
+    "content-hash": "23a53fa8838adeb2ecd048688233c45c",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -233,20 +233,20 @@
         },
         {
             "name": "cweagans/composer-patches",
-            "version": "1.4.0",
+            "version": "1.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cweagans/composer-patches.git",
-                "reference": "0d75c63b6de66144517a1da9084422b78c2ff251"
+                "reference": "8de7c73b2eae217f4e7028d7262ff2330aa4b4e8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cweagans/composer-patches/zipball/0d75c63b6de66144517a1da9084422b78c2ff251",
-                "reference": "0d75c63b6de66144517a1da9084422b78c2ff251",
+                "url": "https://api.github.com/repos/cweagans/composer-patches/zipball/8de7c73b2eae217f4e7028d7262ff2330aa4b4e8",
+                "reference": "8de7c73b2eae217f4e7028d7262ff2330aa4b4e8",
                 "shasum": ""
             },
             "require": {
-                "composer-plugin-api": "~1.0",
+                "composer-plugin-api": "^1.0",
                 "php": ">=5.3.0"
             },
             "require-dev": {
@@ -273,7 +273,7 @@
                 }
             ],
             "description": "Provides a way to patch Composer packages.",
-            "time": "2016-02-29 03:45:02"
+            "time": "2016-03-28 18:54:21"
         },
         {
             "name": "doctrine/annotations",
@@ -679,12 +679,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/drupal-composer/drupal-security-advisories.git",
-                "reference": "de033c255bce65602a59f57925a5721cda2600dd"
+                "reference": "ff81bfc3cf145319ec97fe6ce350c4b8deba958e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/drupal-composer/drupal-security-advisories/zipball/de033c255bce65602a59f57925a5721cda2600dd",
-                "reference": "de033c255bce65602a59f57925a5721cda2600dd",
+                "url": "https://api.github.com/repos/drupal-composer/drupal-security-advisories/zipball/ff81bfc3cf145319ec97fe6ce350c4b8deba958e",
+                "reference": "ff81bfc3cf145319ec97fe6ce350c4b8deba958e",
                 "shasum": ""
             },
             "conflict": {
@@ -692,14 +692,15 @@
                 "drupal/dynamic_entity_reference": "<8.1.0-beta2",
                 "drupal/echo": "<8.1.7",
                 "drupal/nodejs": "<8.1.0",
-                "drupal/search_api": "<8.1.0-alpha14"
+                "drupal/search_api": "<8.1.0-alpha14",
+                "drupal/xmlsitemap": "<8.1.0-alpha2"
             },
             "type": "metapackage",
             "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "GPL-2.0+"
             ],
-            "time": "2016-04-20 18:04:46"
+            "time": "2016-05-25 17:03:34"
         },
         {
             "name": "drupal/acquia_connector",
@@ -821,17 +822,11 @@
         },
         {
             "name": "drupal/autologout",
-            "version": "8.1.0-rc1",
+            "version": "dev-8.x-1.x",
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/autologout",
-                "reference": "d12f3f6deb5ee8da9d6296c85eedb3fdbd1d5723"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/autologout-8.x-1.0-rc1.zip",
-                "reference": null,
-                "shasum": null
+                "reference": "c55fbbeba28abba32df86b79c97e7c81dbd22a2f"
             },
             "require": {
                 "drupal/core": "8.*"
@@ -848,7 +843,7 @@
             ],
             "description": "Adds automated timed logout.",
             "homepage": "http://drupal.org/project/autologout",
-            "time": "2016-01-21 07:11:49"
+            "time": "2016-05-08 21:15:04"
         },
         {
             "name": "drupal/config_update",
@@ -1263,7 +1258,7 @@
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/devel",
-                "reference": "8dc277d763ec233fea889084922a9eb7202b518f"
+                "reference": "44d44182c3d8c92a4fa53ed5d3205e37b9203f5d"
             },
             "require": {
                 "drupal/core": "8.*"
@@ -1298,7 +1293,7 @@
             ],
             "description": "Various blocks, pages, and functions for developers.",
             "homepage": "http://drupal.org/project/devel",
-            "time": "2016-05-23 19:16:52"
+            "time": "2016-05-29 20:17:42"
         },
         {
             "name": "drupal/diff",
@@ -1338,7 +1333,7 @@
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/embed.git",
-                "reference": "294666ad05ad930003308a5fcd1282cdeb63833a"
+                "reference": "d7beee3fe2aa97017803624b7c502410f7b0f47a"
             },
             "require": {
                 "drupal/core": "8.*"
@@ -1355,7 +1350,7 @@
             ],
             "description": "Provides a framework for different types of embeds in text editors.",
             "homepage": "https://www.drupal.org/project/embed",
-            "time": "2016-04-14 01:03:52"
+            "time": "2016-05-27 07:14:01"
         },
         {
             "name": "drupal/entity",
@@ -1395,7 +1390,7 @@
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/entity_embed.git",
-                "reference": "08e5098909f5286238edfb716353efa651eb5a5d"
+                "reference": "63ce40ccdda6b10c7362a6b0e36452bf223c1b40"
             },
             "require": {
                 "drupal/core": "8.*",
@@ -1415,7 +1410,7 @@
             ],
             "description": "Allows entities to be embedded using a text editor.",
             "homepage": "https://www.drupal.org/project/entity_embed",
-            "time": "2016-05-24 12:09:11"
+            "time": "2016-05-26 21:38:16"
         },
         {
             "name": "drupal/entity_reference_revisions",
@@ -1625,6 +1620,31 @@
             "description": "Provides a widget for inline management (creation, modification, removal) of referenced entities. ",
             "homepage": "https://www.drupal.org/project/inline_entity_form",
             "time": "2016-02-29 21:27:04"
+        },
+        {
+            "name": "drupal/linked_field",
+            "version": "dev-8.x-1.x",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupal.org/project/linked_field",
+                "reference": "8147fe8ef7e2a995dcd8cbf1d5702d185e176cc7"
+            },
+            "require": {
+                "drupal/core": "8.*"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-8.x-1.x": "8.1.x-dev"
+                }
+            },
+            "notification-url": "https://packagist.drupal-composer.org/downloads/",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "description": "Adds the functionality to link fields to a specific destination.",
+            "homepage": "https://www.drupal.org/project/linked_field",
+            "time": "2015-11-04 21:04:45"
         },
         {
             "name": "drupal/login_security",
@@ -2206,16 +2226,16 @@
         },
         {
             "name": "gabordemooij/redbean",
-            "version": "v4.3.1",
+            "version": "v4.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/gabordemooij/redbean.git",
-                "reference": "f1f572ddac226d047d730444927794321ee9aca6"
+                "reference": "72368f15cedfa7990c7fb228e47d2f00c7f49d4f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/gabordemooij/redbean/zipball/f1f572ddac226d047d730444927794321ee9aca6",
-                "reference": "f1f572ddac226d047d730444927794321ee9aca6",
+                "url": "https://api.github.com/repos/gabordemooij/redbean/zipball/72368f15cedfa7990c7fb228e47d2f00c7f49d4f",
+                "reference": "72368f15cedfa7990c7fb228e47d2f00c7f49d4f",
                 "shasum": ""
             },
             "require": {
@@ -2243,7 +2263,7 @@
             "keywords": [
                 "orm"
             ],
-            "time": "2015-12-28 19:46:34"
+            "time": "2016-05-01 10:27:43"
         },
         {
             "name": "guzzlehttp/guzzle",
@@ -2970,12 +2990,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "c5bfcbdb02684851e3215545502d0be51d3e4e13"
+                "reference": "96f1ef760845211c8acbb15970e706db1e4b2c5e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/c5bfcbdb02684851e3215545502d0be51d3e4e13",
-                "reference": "c5bfcbdb02684851e3215545502d0be51d3e4e13",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/96f1ef760845211c8acbb15970e706db1e4b2c5e",
+                "reference": "96f1ef760845211c8acbb15970e706db1e4b2c5e",
                 "shasum": ""
             },
             "conflict": {
@@ -3035,7 +3055,7 @@
                 "thelia/backoffice-default-template": ">=2.1,<2.1.2",
                 "thelia/thelia": ">=2.1.0-beta1,<2.1.3|>=2.1,<2.1.2",
                 "twig/twig": "<1.20",
-                "typo3/cms": ">=6.2,<6.2.16|>=7,<7.1|>=7.1,<7.2|>=7.2,<7.3|>=7.3,<7.4|>=7.4,<7.5|>=7.5,<7.6|>=7.6,<7.6.1",
+                "typo3/cms": ">=6.2,<6.2.25|>=7,<7.1|>=7.1,<7.2|>=7.2,<7.3|>=7.3,<7.4|>=7.4,<7.5|>=7.5,<7.6|>=7.6,<7.6.8|>=8,<8.1.1",
                 "typo3/flow": ">=1,<1.0.4|>=1.1,<1.1.1|>=2,<2.0.1|>=2.3,<2.3.7|>=3,<3.0.1",
                 "typo3/neos": ">=1.1,<1.1.3|>=1.2,<1.2.13|>=2,<2.0.4",
                 "willdurand/js-translation-bundle": "<2.1.1",
@@ -3081,7 +3101,7 @@
                 }
             ],
             "description": "Prevents installation of composer packages with known security vulnerabilities: no API, simply require it",
-            "time": "2016-05-10 10:37:23"
+            "time": "2016-05-25 05:33:34"
         },
         {
             "name": "stack/builder",
@@ -4639,16 +4659,16 @@
         },
         {
             "name": "twig/twig",
-            "version": "v1.24.0",
+            "version": "v1.24.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "3e5aa30ebfbafd5951fb1b01e338e1800ce7e0e8"
+                "reference": "3566d311a92aae4deec6e48682dc5a4528c4a512"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/3e5aa30ebfbafd5951fb1b01e338e1800ce7e0e8",
-                "reference": "3e5aa30ebfbafd5951fb1b01e338e1800ce7e0e8",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/3566d311a92aae4deec6e48682dc5a4528c4a512",
+                "reference": "3566d311a92aae4deec6e48682dc5a4528c4a512",
                 "shasum": ""
             },
             "require": {
@@ -4696,7 +4716,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2016-01-25 21:22:18"
+            "time": "2016-05-30 09:11:59"
         },
         {
             "name": "zendframework/zend-diactoros",
@@ -7035,16 +7055,16 @@
         },
         {
             "name": "squizlabs/php_codesniffer",
-            "version": "2.6.0",
+            "version": "2.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/squizlabs/PHP_CodeSniffer.git",
-                "reference": "1bcdf03b068a530ac1962ce671dead356eeba43b"
+                "reference": "fb72ed32f8418db5e7770be1653e62e0d6f5dd3d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/1bcdf03b068a530ac1962ce671dead356eeba43b",
-                "reference": "1bcdf03b068a530ac1962ce671dead356eeba43b",
+                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/fb72ed32f8418db5e7770be1653e62e0d6f5dd3d",
+                "reference": "fb72ed32f8418db5e7770be1653e62e0d6f5dd3d",
                 "shasum": ""
             },
             "require": {
@@ -7109,7 +7129,7 @@
                 "phpcs",
                 "standards"
             ],
-            "time": "2016-04-03 22:58:34"
+            "time": "2016-05-30 22:24:32"
         },
         {
             "name": "symfony/browser-kit",
@@ -7235,9 +7255,11 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
+        "drupal/autologout": 20,
         "drupal/embed": 20,
         "drupal/entity_embed": 20,
         "drupal/field_group": 20,
+        "drupal/linked_field": 20,
         "guzzlehttp/guzzle": 20,
         "roave/security-advisories": 20,
         "drupal-composer/drupal-security-advisories": 20,
