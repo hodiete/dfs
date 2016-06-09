@@ -64,7 +64,7 @@ You will need to edit this file as an administrator to save it. Hosts should fol
 
 1. Run `vagrant ssh` from the /box directory
 2. Run `cd /var/www/webny`
-3. Run `composer install` from /var/www/webny.
+3. Run `composer install` 
 4. Install NVM and install and use Node.js version 0.12.7: 
 
     ```
