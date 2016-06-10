@@ -1,3 +1,5 @@
 <div class="reslink">
-  <a href="/node/48">READ MORE</a>
+  {% for item in items %}
+    {{ item.content }}
+  {% endfor %}
 </div>
