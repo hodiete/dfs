@@ -15,8 +15,12 @@
 // PRELIM OVERRIDES
 .page-paragraphs img{
     border: 0;   
+    vertical-align: bottom;
 }
 
+.layout-container img {
+    max-width: 400px;   
+}
 
 // ========================================================================= //
 /* BIOFRAME WRAPPER */
@@ -26,6 +30,7 @@
     background-color: #f3dd6d;                          // ADD TO COLOR SCHEME VARS
     
     .webny_contact-bioframe{
+        
         display: block;
         width: 100%;
         margin: 0 auto;
@@ -36,6 +41,14 @@
             .media-image > div{
                 display: block;   
                 line-height: normal;
+            }
+            
+            img {
+          
+                line-height: 0;
+                max-height: 400px;
+                max-width: 400px;
+                margin: 0 auto;
             }
         } // END BIO IMAGE
         
@@ -52,10 +65,12 @@
                 text-align: left;
                 color: $white;                          // ADD TO COLOR SCHEME VARS
                 margin-bottom: 12px;
+                line-height: 2.5rem;
             }
             
             .caption{
-                line-height: 1.2rem;   
+                line-height: 1.2rem;  
+                margin-top: 20px;
             }
             
             .reslink{
@@ -128,29 +143,44 @@
     
      .webny_contact-bioframe{
         display: block;
-        max-width: $max-pc;
+        max-width: 75em;
+        overflow: auto;
+         
 
         .bio-frame-image,
         .bio-frame-meta{
-            display: inline-block;
+            display: block;
+           
         }
 
         .bio-frame-image{
-            overflow: auto;
-            width: 33%;   
-            height: 100%;  
-            vertical-align: bottom;
-            
+                bottom: 0;
+                float: left;
+                left: 0;
+                top: 0;
+                width: 38%;
+
             img {
-                vertical-align: bottom;
+          
                 line-height: 0;
+                max-height: 400px;
+                max-width: 400px;
+                position: absolute;
+                right: 0;
+                vertical-align: bottom;
+                bottom: 0;
             }
-            
         }
 
         .bio-frame-meta{
             width: 60%;   
-            padding: 0 3%;
+            padding: 0 2% 0 3%;
+            float: right;
+            
+            
+            .frame-headline{
+                line-height: 2rem;   
+            }
             
             .reslink{
                 
@@ -161,9 +191,7 @@
                     &:link{
                         max-width: 240px;   
                     }
-                    
                 }
-            
             }
         }
     
