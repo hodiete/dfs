@@ -12,6 +12,9 @@ $bio-frame-title-color: $black !default;
 $bio-frame-headline-color: $white !default;
 // $bio-frame-text-color:
 
+// Margin Vars
+$bioframe-margin: 15px;
+
 // ************************* //
 // BIOFRAME PARTIAL
 // CREATED BY WEBNY
@@ -41,9 +44,12 @@ $bio-frame-headline-color: $white !default;
         width: 100%;
         margin: 0 auto;
         padding: 0;
-        
+        position: relative; 
+       
                 
         .bio-frame-image{
+             text-align: center;
+            
             .media-image > div{
                 display: block;   
                 line-height: normal;
@@ -65,23 +71,25 @@ $bio-frame-headline-color: $white !default;
             .frame-title{
                 text-align: left;
                 color: $bio-frame-title-color; 
+                margin-bottom: $bioframe-margin;
             }   
             
             .frame-headline{
                 text-align: left;
                 color: $bio-frame-headline-color;                          // ADD TO COLOR SCHEME VARS
-                margin-bottom: 12px;
-                line-height: 2.5rem;
+                margin-bottom: $bioframe-margin;
+                line-height: 3rem;
             }
             
             .caption{
                 line-height: 1.2rem;  
-                margin-top: 20px;
+                margin-top: 30px;
+                margin-bottom: $bioframe-margin;
             }
             
             .reslink{
                 
-                margin: 36px auto 0 auto;
+                margin: 36px auto;
                 text-align: center;
                 
                 a{  
@@ -151,8 +159,8 @@ $bio-frame-headline-color: $white !default;
         display: block;
         max-width: 75em;
         overflow: auto;
+        position: relative; 
          
-
         .bio-frame-image,
         .bio-frame-meta{
             display: block;
@@ -164,17 +172,17 @@ $bio-frame-headline-color: $white !default;
                 float: left;
                 left: 0;
                 top: 0;
-                width: 38%;
+                width: 33%;
+                position: absolute;
 
             img {
           
                 line-height: 0;
-                max-height: 400px;
-                max-width: 400px;
                 position: absolute;
                 right: 0;
-                vertical-align: bottom;
                 bottom: 0;
+                max-height: 400px;
+                vertical-align: bottom;
             }
         }
 
@@ -185,12 +193,11 @@ $bio-frame-headline-color: $white !default;
             
             
             .frame-headline{
-                line-height: 2rem;   
+                line-height: 2.5rem;
             }
             
             .reslink{
                 
-                margin: 36px auto 0 auto;
                 text-align: center;
                 
                 a{  
