@@ -432,3 +432,12 @@ function webny_configuration_update_8036() {
   \Drupal::service('module_installer')
       ->install(['field_group']);
 }
+
+function webny_configuration_update_8037() {
+  
+  \Drupal::service('module_installer')
+      ->uninstall(['webny_contact_content_type']);
+  \Drupal::service('module_installer')
+      ->install(['webny_contact_content_type']);
+}
+
