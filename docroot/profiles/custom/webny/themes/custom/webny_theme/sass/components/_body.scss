@@ -6,6 +6,11 @@
 //
 // Style guide: components.pagetitle
 
+// color variables - only the variables on the left should be used below
+$title-bar-bkgd-color: $color-primary !default;
+$title-bar-default-text-color: $white !default;
+$title-bar-sub-title-color: $color-secondary !default;
+
 // ************************* //
 // BODY PARTIAL
 // CREATED BY WEBNY
@@ -32,7 +37,7 @@
     .press-teaser{
       margin: 0 auto;
       margin-top: 60px;
-      font-family: "ProximaNovaRegular";
+      font-family: $base-font;
       font-size: 1.4em;
       line-height: 1.2em;
       font-style: normal;
@@ -83,16 +88,16 @@
 
 .landing-title-area{
   width: 100%;
-  background: $primaryblue none repeat scroll 0 0;
+  background: $title-bar-bkgd-color none repeat scroll 0 0;
 
   .landing-title h1{
     font-size: 24px;
-    color: $white;
+    color: $title-bar-default-text-color;
     padding: 0 0 0 52px;
   }
 
   .landing-subtitle{
-    color: $primarygold;
+    color: $title-bar-sub-title-color;
     font-size: 24px;
     display: none;
     padding: 0 0 16px 52px;

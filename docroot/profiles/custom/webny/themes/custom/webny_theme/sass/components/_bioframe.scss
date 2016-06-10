@@ -6,6 +6,12 @@
 //
 // Style guide: components.bioframe
 
+// color variables
+$bio-frame-bkgnd-color: $color-secondary !default; 
+$bio-frame-title-color: $black !default;
+$bio-frame-headline-color: $white !default;
+// $bio-frame-text-color:
+
 // ************************* //
 // BIOFRAME PARTIAL
 // CREATED BY WEBNY
@@ -27,7 +33,7 @@
 .bioframe{
     width: 100%;
     margin: 0 auto;
-    background-color: #f3dd6d;                          // ADD TO COLOR SCHEME VARS
+    background-color: $bio-frame-bkgnd-color;                          // ADD TO COLOR SCHEME VARS
     
     .webny_contact-bioframe{
         
@@ -58,12 +64,12 @@
             
             .frame-title{
                 text-align: left;
-                color: $black; 
+                color: $bio-frame-title-color; 
             }   
             
             .frame-headline{
                 text-align: left;
-                color: $white;                          // ADD TO COLOR SCHEME VARS
+                color: $bio-frame-headline-color;                          // ADD TO COLOR SCHEME VARS
                 margin-bottom: 12px;
                 line-height: 2.5rem;
             }

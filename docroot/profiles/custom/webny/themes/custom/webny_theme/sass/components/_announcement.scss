@@ -30,6 +30,15 @@
 //
 // Style guide: components.announcement.inner
 
+// color variables
+
+$announce-frame-title-color: $color-secondary !default;
+$announce-frame-headline-color: $black !default;
+$announce-frame-item-bkgd-color: $gray-lite !default;
+$announce-frame-item-title-color: $black !default;
+$announce-frame-item-text-color: $black !default;
+// $announce-frame-button: !default;
+
 // ************************* //
 // ANNOUNCEMENTS PARTIAL
 // CREATED BY WEBNY
@@ -39,7 +48,7 @@
 /* ANNOUNCEMENTS WRAPPER */
 .webny-announcements{
     
-    background-color: #eee;
+    background-color: $announce-frame-item-bkgd-color;
     margin-bottom: 20px;
     overflow: auto;
     
@@ -68,9 +77,13 @@
     
     .announcement-info{
         h4{
-            color: $black;   
+            color: $announce-frame-item-title-color;   
             font-size: 2.5rem;
         }
+    }
+
+    .announcement-summary {
+        color: $announce-frame-item-text-color;
     }
     
     .webny-announcement-button{
@@ -104,16 +117,17 @@
 
 .frame-title{
     text-transform: uppercase;
-    color: $color-secondary;
+    color: $announce-frame-title-color;
     margin-bottom: 0;
-    font: $frame_title $oswald-bold;
+    font: $frame_title $oswald;
+    font-weight: bold;
     margin-top: 60px;
     letter-spacing: 4px;
     text-align: center;
 }
 
 .frame-headline{
-    color: $black;   
+    color: $announce-frame-headline-color;   
     font: bold $frame_headline $base-font;
     font-weight: 800;
     margin-bottom: 40px;
