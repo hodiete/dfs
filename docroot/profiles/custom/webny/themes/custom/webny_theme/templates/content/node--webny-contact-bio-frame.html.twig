@@ -15,18 +15,10 @@
   ]
 %}
 
-{%
-    set bioimg = file_url(node.field_webny_contact_image.entity.image.entity.uri.value) 
-%}
-
 {# DEBUG VIA KINT / DEVEL #}
 
 <article{{ attributes.addClass(docclasses) }}>
-        {% for i in content %}  
-            {% if 'bio-frame-image' in i %}
-               {{ i }}
-            {% else %}
+        {% for i in content %} 
                {{ i }} 
-            {% endif %}
         {% endfor %}
 </article>

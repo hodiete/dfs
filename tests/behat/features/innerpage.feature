@@ -11,6 +11,7 @@ Feature: Innerpage Tests
     Given I am logged in as a user with the administrator role
     When I go to "/node/add/webny_page"
     Then I should see "Page Title"
+	Then I should see "Short Title"
     Then I should see "Sub Title"
     Then I should see "Description/Summary"
     Then I should see "Body"

@@ -35,23 +35,6 @@ dependencies:
     - user
 third_party_settings:
   field_group:
-    group_webny_bio_image_div:
-      children:
-        - field_webny_contact_image
-      parent_name: ''
-      weight: 0
-      label: 'Bio Image Container'
-      format_type: html_element
-      format_settings:
-        label: 'Bio Image Container'
-        id: ''
-        classes: bio-frame-image
-        element: div
-        show_label: false
-        label_element: h3
-        attributes: ''
-        effect: none
-        speed: fast
     group_webny_bio_meta_div:
       children:
         - field_webny_contact_protitle
@@ -59,7 +42,7 @@ third_party_settings:
         - field_webny_contact_caption
         - field_webny_contact_reslink
       parent_name: ''
-      weight: 1
+      weight: 0
       label: 'Bio Frame Meta'
       format_type: html_element
       format_settings:
@@ -72,6 +55,23 @@ third_party_settings:
         attributes: ''
         effect: none
         speed: fast
+    group_webny_bio_image_div:
+      children:
+        - field_webny_contact_image
+      parent_name: ''
+      weight: 1
+      label: 'Bio Image Container'
+      format_type: html_element
+      format_settings:
+        label: 'Bio Image Container'
+        id: ''
+        classes: bio-frame-image
+        element: div
+        show_label: false
+        label_element: h3
+        attributes: ''
+        effect: none
+        speed: fast        
 id: node.webny_contact.webny_contact_bio_frame
 targetEntityType: node
 bundle: webny_contact
