@@ -1,0 +1,120 @@
+// Get Involved
+//
+// Get Involved styling.
+//
+// Markup: get_involved.hbs
+//
+// Style guide: components.get_involved
+
+// color variables
+$get-inv-frame-bkgd-color: $color-secondary !default;
+$get-inv-frame-title-color: $black !default;
+$get-inv-frame-headline-color: $white !default;
+$get-inv-frame-description-color: $black !default;
+
+// ######################################################################### //
+/* START STYLING MOBILE FIRST UNDER HERE */
+
+.paragraph {
+  display: block;
+}
+
+.paragraph--type--webny-get-involved-pgtype {
+  background-color: $color-secondary;
+  margin: 0 auto;
+  text-algin: center;
+  padding: 3%;
+}
+
+.get-involved--field-webny-get-involved-title {
+  font-family: $oswald;
+  font-weight: 800;
+  font-size: $frame-title;
+  color: $get-inv-frame-title-color;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  padding-top: 1%;
+  padding-bottom: 0.5%;
+}
+
+.get-involved--field-webny-get-inv-headline {
+  font-family: $base-font;
+  font-size: $frame-headline;
+  font-weight: 800;
+  color: $get-inv-frame-headline-color;
+  text-align: center;
+  margin-bottom: 2rem;
+  line-height: 3rem;
+}
+
+.get-involved--field-webny-get-inv-description {
+  font-family: $base-font;
+  font-size: $base-font-size;
+  text-align: center;
+  width: 50%;
+  margin: 0 auto;
+}
+
+.get-involved--cta-wrapper > div {
+  width: 95%;
+  margin: 0 auto;
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.get-involved--field-webny-get-inv-cta {
+  @extend .buttonTransparentDk;
+//  display: block;
+  padding: 20px 20px;
+  color: $black;
+  margin-top: 1.5em;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  &:visited{
+    color: $black;
+  }
+}
+
+.get-involved--field-webny-get-inv-cta a {
+  color: $black;
+  &:visited{
+    color: $black;
+  }
+}
+
+
+// ######################################################################### //
+/* TABLET VIEW */
+@media (min-width: $min-tab) {
+
+.get-involved--field-webny-get-inv-cta {
+  padding: 14px 20px;
+}
+  
+ 
+} // END MIN TABLET VIEW
+
+// ######################################################################### //
+/* PC VIEW */
+@media (min-width: $min-pc) {
+
+  .get-involved--cta-wrapper > div {
+    display: flex;
+	flex-flow: row;
+	justify-content: center;
+    width: 85%;
+  }
+  
+  
+  
+  .get-involved--field-webny-get-inv-cta {
+    margin: 0 1%;
+    min-width: 30%;
+    max-width: 30%;
+  }
+  
+ 
+
+} // END MIN PC VIEW
