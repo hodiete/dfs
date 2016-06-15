@@ -451,9 +451,8 @@ function webny_configuration_update_8037() {
  *
  * Installs Get Involved frame paragraph type.
  */
- function webny_configuration_update_8038() {
- 
- \Drupal::service('module_installer')
-      ->install(['webny_get_involved_pgtype']);  
- }
- 
+function webny_configuration_update_8038() {
+
+  \Drupal::service('module_installer')
+      ->install(['webny_get_involved_pgtype']);
+}
