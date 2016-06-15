@@ -71,7 +71,7 @@
 
   <target name="deploy:artifact:commit">
     <exec command="git add -A" dir="${deploy.dir}" logoutput="true" passthru="true"/>
-    <exec command="git add --force ${deploy.dir}/docroot/profiles/custom/webny/themes/custom/webny_theme/css/styles.css" logoutput="true" passthru="true"/>
+    <exec command="git add --force ${deploy.dir}/docroot/profiles/custom/webny/themes/custom/webny_theme/css" logoutput="true" passthru="true"/>
     <exec command="git add --force ${deploy.dir}/docroot/profiles/custom/webny/themes/custom/webny_theme/styleguide" logoutput="true" passthru="true"/>
     <exec command="git commit -m '${deploy.commitMsg}' --quiet" dir="${deploy.dir}" logoutput="true" passthru="true"/>
   </target>
