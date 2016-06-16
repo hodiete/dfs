@@ -32,3 +32,4 @@ Feature: Get Involved Frame Paragraph Tests
     And I should see "URL"
     When I am on "/admin/structure/paragraphs_type/webny_get_involved_pgtype/display"
     Then I should not get a 404 HTTP response
+	
