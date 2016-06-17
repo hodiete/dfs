@@ -13,19 +13,25 @@
   background-color: $exposedbkgrnd;
   float: left;
   position: relative;
+  
 
   .results-exposed-filters-title {
     color: $color-secondary;
+	font-family: $oswald;
     font-size: 16px;
+	font-weight: 800;
     text-transform: uppercase;
+	padding-top: 2rem;
+	padding-left: 2rem;
   }
 
   form {
-    color: rgb(255, 255, 255);
+    color: $white;
 
     label {
-      color: rgb(255, 255, 255);
+      color: $white;
       font-size: 16px;
+	  font-weight: 300;
     }
     input {
       background-color: $exposedbkgrnd;
@@ -36,10 +42,18 @@
 
     .form-item-field-webny-news-global-keywords-target-id input {
       border-radius: 15px;
+	  height: 30px;
     }
     .form-item-field-webny-news-agency-keywords-target-id input {
       border-radius: 15px;
+	  height: 30px;
     }
+	
+	.form-date{
+	height: 35px;
+	width: 220px;
+	color: $darkgray;
+	}
   }
   .form-item {
     //width:70%;
