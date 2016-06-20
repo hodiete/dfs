@@ -59,7 +59,7 @@ drupal_composer_project_options: "--prefer-dist --stability dev --no-interaction
 install_site: false
 
 # Required Drupal settings.
-drupal_core_path: "{{ drupal_composer_install_dir }}/web"
+drupal_core_path: "/var/www/webny/docroot"
 drupal_mysql_user: drupal
 drupal_mysql_password: drupal
 drupal_mysql_database: drupal
