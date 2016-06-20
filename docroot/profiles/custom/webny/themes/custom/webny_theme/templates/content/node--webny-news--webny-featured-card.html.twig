@@ -72,7 +72,10 @@
 <div{{ content_attributes }}>
  */
 #}
+<div class="card-image">
 {{ content.field_webny_news_image }}
+</div>
+<div class="card-content">
   {{ title_prefix }}
   {% if not page %}
     <h2{{ title_attributes }}>
@@ -94,7 +97,7 @@
 
     {# {{ content }} #}
      {{ content|without('field_webny_news_image') }}
-
+</div>
     <div class="webny-card-cta">
       <a href="{{ url }}">Learn More</a>
     </div>
