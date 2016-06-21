@@ -34,11 +34,9 @@ display:
     display_title: Master
     position: 0
     display_options:
-      access:
-        type: role
-        options:
-          role:
-            authenticated: authenticated
+      access: 
+        type: none
+        options: { }
       cache:
         type: tag
         options: {  }
@@ -790,10 +788,8 @@ display:
       display_extenders: {  }
       path: news_listing
       access:
-        type: role
-        options:
-          role:
-            authenticated: authenticated
+        type: none
+        options: { }
       defaults:
         access: false
       display_description: ''
