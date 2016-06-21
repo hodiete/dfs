@@ -86,7 +86,7 @@ display:
       row:
         type: fields
       fields:
-        field_webny_news_image:
+         field_webny_news_image:
           id: field_webny_news_image
           table: node__field_webny_news_image
           field: field_webny_news_image
@@ -96,7 +96,7 @@ display:
           label: ''
           exclude: false
           alter:
-            alter_text: false
+            alter_text: true
             text: ''
             make_link: false
             path: ''
@@ -130,15 +130,14 @@ display:
           element_wrapper_type: div
           element_wrapper_class: results_image
           element_default_classes: true
-          empty: ''
+          empty: '<img  typeof="foaf:Image" alt="Press Release" src="/sites/default/files/DefaultPressReleaseImage.PNG">'
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
           click_sort_column: target_id
-          type: responsive_image
+          type: entity_reference_entity_view
           settings:
-            responsive_image_style: results
-            image_link: content
+            view_mode: default
           group_column: ''
           group_columns: {  }
           group_rows: true
@@ -150,7 +149,7 @@ display:
           separator: ', '
           field_api_classes: false
           plugin_id: field
-        title:
+         title:
           id: title
           table: node_field_data
           field: title
@@ -213,7 +212,7 @@ display:
           separator: ', '
           field_api_classes: false
           plugin_id: field
-        field_webny_news_date:
+         field_webny_news_date:
           id: field_webny_news_date
           table: node__field_webny_news_date
           field: field_webny_news_date
@@ -277,7 +276,7 @@ display:
           separator: ', '
           field_api_classes: false
           plugin_id: field
-        field_webny_news_date_1:
+         field_webny_news_date_1:
           id: field_webny_news_date_1
           table: node__field_webny_news_date
           field: field_webny_news_date
@@ -341,7 +340,7 @@ display:
           separator: ', '
           field_api_classes: false
           plugin_id: field
-        nothing:
+         nothing:
           id: nothing
           table: views
           field: nothing
@@ -390,7 +389,7 @@ display:
           empty_zero: false
           hide_alter_empty: false
           plugin_id: custom
-        field_webny_news_teaser:
+         field_webny_news_teaser:
           id: field_webny_news_teaser
           table: node__field_webny_news_teaser
           field: field_webny_news_teaser
@@ -785,11 +784,11 @@ display:
   page_1:
     display_plugin: page
     id: page_1
-    display_title: 'Testing Page'
+    display_title: 'News Listing'
     position: 2
     display_options:
       display_extenders: {  }
-      path: news_testing
+      path: news_listing
       access:
         type: role
         options:
