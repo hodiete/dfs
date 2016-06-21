@@ -6,9 +6,10 @@
 //
 // Style guide: components.card
  
- .paragraph--type--webny-card-paragraph-type {
-  font-size: 18px;
-  
+.paragraph--type--webny-card-paragraph-type {
+  font-size: 18px; 
+  max-width: $max-pc; // to constrain the spread of the cards
+  margin: 0 auto; //centers when constrained
 }
 
 /* maybe replace with class called webny-card-row? */
@@ -24,9 +25,7 @@
 .paragraph--type--webny-card-paragraph-type>div>div {
   border:1px solid $gray-lite;
   font-size:90%;
-  
-  //width:30%;  /* moved to queries below */
-  display: flex; /* removed for IE 11 fix */
+  display: flex;
   margin: .5rem; /* aiming for the 20px between cards that seems to be there in ny.gov web style guide */
 }
 
@@ -39,40 +38,48 @@
   }
 }
 
-/* using flexbox order to reorder the visual output of each card */
-.webny-card .webny-card-img {
-  order:1; 
+// adding classes to fix instances where some cards don't have dates, etc.
+.card-image {
+  flex: 1 1 auto;
 }
+.card-content {
+  flex:0 1 auto;
+  min-height: 375px; // separate from flex to help with IE issues, min-height helps keep button at bottom
+  display: flex;
+  flex-direction: column;
+}
+
+// includes title (label) and date (if it exists)
+.card-content-top {
+  flex: 0 1 8rem; // probably only needs to be 6rem, but large titles ruin it currently - when short title is imlemented should work better
+}
+
+.webny-card .webny-card-img {
+  flex: 0 1 auto;
+}
+
 .webny-card h2 {
-  order:2;
   padding: .5rem 1rem;
   font-size: 120%; 
   line-height: 1.2em;  
   flex: 1 0 auto;
-  min-height: 78px; /*IOJP*/  
-  vertical-align: top;
-  display: block;
   a:link {
     color:$medblue;
   }
 }
 .webny-card .webny-card-date {
-  order:3;
-  padding: .5rem 1rem;  flex: 1 0 auto;
+  padding: .5rem 1rem;  
+  flex: 1 0 auto;
 }
 .webny-card .webny-card-teaser {
-  order:4;
   padding: .5rem 1rem;
-  /* display:flex; */
   vertical-align: top;
-  /* flex: 1 0 auto; */
-  min-height: 100px; /*IOJP*/   
-
+  p {
+    margin: 0 .5em;
+  }
 }
 
 .webny-card .webny-card-cta {
-  order:5;
-
   text-align: center;
   padding: 1em;
   background-color:$call-to-action;
@@ -83,16 +90,7 @@
   }
 }
 
-/* possibly move this to _base partial and apply to all images? did move to _base */
-/* .webny-card img {
-  width: 100%;
-  max-width: 100%;
-  box-sizing: border-box;  
-  height: auto;
-}*/
-
-
- .paragraph--type--webny-card-paragraph-type {
+.paragraph--type--webny-card-paragraph-type {
   @include breakpoint($min-mobile) {
    &>div {
   
@@ -101,7 +99,7 @@
     }
 
     &>div>div {
-      width: 50%; /* rather than flex-basis */
+      width: 100%; /* rather than flex-basis */
 
     }
   }
@@ -109,12 +107,19 @@
 
 
 .paragraph--type--webny-card-paragraph-type>div>div { 
-  @include breakpoint($min-tablet) {
+  @include breakpoint($min-pc) {
       width: 30%; /* rather than flex-basis */
     }
   }
 
+// IE 10 and 11 target
 @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  .card-image {
+    min-height:230px; // with flex chrome stretches card content so titles still line up if there is only one card with an image, IE does not
+  }
+  .card-content-top {
+    flex: 0 1 10em; // IE 11 and such, needs more
+  }
   .paragraph--type--webny-card-paragraph-type > div > div {
     display: inline-block; /* fixes images on IE 11 image and title overflow - not sure why */
   }
