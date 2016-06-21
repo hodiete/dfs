@@ -8,6 +8,8 @@
  
 .paragraph--type--webny-card-paragraph-type {
   font-size: 18px; 
+  max-width: $max-pc; // to constrain the spread of the cards
+  margin: 0 auto; //centers when constrained
 }
 
 /* maybe replace with class called webny-card-row? */
@@ -39,7 +41,7 @@
 // adding classes to fix instances where some cards don't have dates, etc.
 .card-content {
   flex:0 1 auto;
-  min-height: 300px; // separate from flex to help with IE issues
+  min-height: 375px; // separate from flex to help with IE issues, min-height helps keep button at bottom
   display: flex;
   flex-direction: column;
 }
@@ -94,7 +96,7 @@
     }
 
     &>div>div {
-      width: 50%; /* rather than flex-basis */
+      width: 100%; /* rather than flex-basis */
 
     }
   }
@@ -102,12 +104,16 @@
 
 
 .paragraph--type--webny-card-paragraph-type>div>div { 
-  @include breakpoint($min-tablet) {
+  @include breakpoint($min-pc) {
       width: 30%; /* rather than flex-basis */
     }
   }
 
+// IE 10 and 11 target
 @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  .card-content-top {
+    flex: 0 1 10em; // IE 11 and such, needs more
+  }
   .paragraph--type--webny-card-paragraph-type > div > div {
     display: inline-block; /* fixes images on IE 11 image and title overflow - not sure why */
   }
