@@ -1,0 +1,162 @@
+@mixin agency-grouping($agencygroupingname, $primary-color, $secondary-color) {
+  .#{$webny-global-prefix}header {
+    background-color: $primary-color;
+
+    & > ul {
+      background-color: $primary-color;
+
+      a {
+        border-bottom-color: mix( $primary-color, #fff, 85% );
+      }
+
+      a:hover,
+      a:active {
+        background-color: mix( $primary-color, #000, 50% );
+      }
+
+      ul {
+        background-color: $primary-color;
+      }
+    }
+
+    &.vertical {
+      ul li:first-of-type {
+        a {
+          border-top-color: mix( $primary-color, #fff, 85% );
+          border-top-width: 1px;
+          border-top-style: solid;
+        }
+        ul a {
+          border-top: 0;
+        }
+
+      }
+
+      a:hover,
+      a:active {
+        background-color: transparent;
+      }
+    }
+
+    @media (min-width: $min-width-breakpoint) {
+      &.horizontal {
+        &.unstacked {
+          ul {
+            li {
+              a:hover,
+              a:active {
+                background-color: $primary-color;
+              }
+              ul > li {
+                a:hover,
+                a:active {
+                  background-color: mix( $primary-color, #000, 50% );
+                }
+
+              }
+            }
+          }
+        }
+      }
+    }
+    @media only screen and (min-width: $max-width-breakpoint) {
+      &.horizontal {
+        &.unstacked,
+        &.stacked {
+          ul {
+            li {
+              a:hover,
+              a:active {
+                background-color: $primary-color;
+              }
+              ul > li {
+                a:hover,
+                a:active {
+                  background-color: mix( $primary-color, #000, 50% );
+                }
+
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .#{$webny-global-prefix}footer {
+    background-color: $secondary-color;
+    ul {
+      li {
+        a {
+          &:hover,
+          &:active {
+            color: $primary-color;
+          }
+        }
+      }
+    }
+  }
+
+  $socials: ('blogger', 'delicious', 'facebook', 'feed', 'flickr', 'foursqaure', 'github', 'google-plus', 'instagram', 'linkedin', 'mail', 'pinterest', 'reddit', 'share', 'tumblr', 'twitter', 'vimeo', 'yelp', 'youtube');
+
+  @each $item in $socials {
+    .icon-social-#{$item} {
+      background-image: url(../../icons/social/#{$agencygroupingname}/icon-social-#{$item}.png);
+      background-image:
+        linear-gradient(transparent, transparent),
+        url(../../icons/social/#{$agencygroupingname}/icon-social-#{$item}.svg);
+    }
+  }
+
+}
+
+@mixin in-context-menu() {
+  > ul {
+    position: relative;
+    display: block;
+    border-top: 0;
+    width: auto;
+    vertical-align: bottom;
+
+    a {
+      border-bottom-width: 0;
+      padding: $horizontal-link-padding;
+    }
+
+    li,
+    li.hidden {
+      display: inline-block;
+      vertical-align: bottom;
+
+      ul {
+        position: absolute;
+        width: auto;
+        border-top: $common-wide-border;
+
+        li {
+          display: block;
+
+          a {
+            padding: $horizontal-sub-link-padding;
+          }
+        }
+      }
+
+      &:last-child ul {
+        right: 0;
+      }
+    }
+  }
+
+  .nav-toggle {
+    display: none;
+  }
+}
+
+// tool mixins
+
+// Calculate numbers such as a percent width then subtracting a number
+@mixin calc($property, $expression, $importance: null) {
+  #{$property}: -webkit-calc(#{$expression});
+  #{$property}: calc(#{$expression}) $importance;
+}
