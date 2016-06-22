@@ -10,4 +10,3 @@ Feature: Global Navigation Module
     #And I should see "Agency name"
 	#And I should see "Agency grouping color"
 	#And I should see "Global navigation header automatic insertion"
-    
