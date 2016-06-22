@@ -1,0 +1,453 @@
+.#{$webny-global-prefix}footer {
+  clear: both;
+
+  h3,
+  h4,
+  p,
+  span,
+  a,
+  a:link,
+  a:visited,
+  a:hover,
+  a:active {
+    color: $black;
+  }
+
+  h3,
+  h4 {
+     font-weight: $nav-weight;
+  }
+
+  h4,
+  span,
+  a,
+  a:link,
+  a:visited,
+  a:hover,
+  a:active {
+    font-family: 'Proxima Nova', Arial, sans-serif;
+  }
+
+  .footer-container {
+    padding: 0 0 36px;
+    display: block;
+    margin: 0 15px;
+
+    h3 {
+      font-family: 'D Sari Bold', Arial, sans-serif;
+      font-size: 16px;
+      line-height: 20px;
+      padding: 32px 30px;
+      margin: 0;
+    }
+
+    h4 {
+      font-size: 12px;
+      line-height: 16px;
+      letter-spacing: .05em;
+      clear: both;
+      margin-left: 30px;
+      margin: 0 16px 12px 30px;
+
+      &:after {
+        content: '';
+        display: block;
+        height: 1px;
+        background-color: $black;
+        width: 96%;
+        margin-top: 3px;
+      }
+    }
+
+    a,
+    a:link,
+    a:visited {
+      text-decoration: none;
+    }
+
+    a:hover,
+    a:active {
+      text-decoration: underline;
+      color: $black;
+    }
+
+    ul {
+      padding: 0 30px 0 30px;
+
+      li {
+        float: left;
+        width: 50%;
+        list-style-type: none;
+        margin: 0;
+        padding-bottom: 16px;
+
+        a,
+        a:link,
+        a:visited,
+        a:hover,
+        a:active {
+          font-size: 12px;
+          font-weight: $nav-weight;
+          line-height: 16px;
+          letter-spacing: .03em;
+          padding-right: 48px;
+          display: block;
+        }
+      }
+    }
+
+    .footer-col {
+      float: none;
+      position: relative;
+      width: 100%;
+      display: inline-block;
+      margin-bottom: 32px;
+      min-width: 100px;
+    }
+
+    .social-media {
+      display: block;
+      clear: both;
+
+      ul {
+        display: inline-block;
+        text-align: center;
+        width: 80%;
+
+        li {
+          display: inline-block;
+          float: left;
+          font-size: 12px;
+          line-height: 16px;
+          margin: 28px 40px 0;
+          width: 15%;
+          padding-bottom: 12px;
+
+          a {
+            padding-right: 0;
+            white-space: nowrap;
+            text-decoration: none;
+
+            &:hover span,
+            &:active span {
+              text-decoration: underline;
+            }
+
+            span:nth-child(even) {
+              display: inline-block;
+              margin-top: 3px;
+              margin-bottom: 1px;
+              padding-left: 6px;
+              position: absolute;
+            }
+          }
+        }
+      }
+
+      img {
+        margin: 0 10px 0 0;
+      }
+
+      .social-media-title {
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+        overflow: hidden;
+
+          h4 {
+          display: inline-block;
+          float: left;
+          font-weight: $nav-weight;
+          line-height: 16px;
+          margin: 0 0 16px 30px;
+          overflow: hidden;
+          text-align: center;
+          width: 85.5%;
+
+          &:before,
+          &:after {
+            background-color: $black;
+            content: '';
+            display: inline-block;
+            height: 1px;
+            position: relative;
+            vertical-align: middle;
+            width: 40%;
+            top: -1px;
+          }
+
+          &:before {
+            right: 1.5em;
+            margin-left: -50%;
+          }
+
+          &:after {
+            left: 1.5em;
+            margin-right: -50%;
+          }
+        }
+      }
+
+      .social-media-links {
+        ul {
+          display: inline-block;
+          width: 100%;
+          padding: 0;
+          text-align: center;
+
+          li {
+            display: inline-block;
+            margin: 16px 20px 0;
+            width: 38%;
+
+            a {
+              padding-right: 48px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  //tablet
+  @media (min-width: $min-width-breakpoint) {
+    .footer-container {
+      h3 {
+        font-size: 20px;
+        line-height: 24px;
+        margin: 0;
+      }
+
+      h4 {
+        font-size: 14px;
+        line-height: 18px;
+        margin-bottom: 14px;
+
+        &:after {
+          width: 27%;
+        }
+      }
+
+      ul {
+        li {
+          width: 32%;
+          float: left;
+          padding-bottom: 18px;
+
+          a,
+          a:link,
+          a:visited,
+          a:hover,
+          a:active {
+            font-size: 14px;
+            line-height: 18px;
+          }
+        }
+      }
+
+      .footer-col {
+        margin-bottom: 18px;
+      }
+
+      .social-media {
+        margin-top: 12px;
+
+        ul {
+          li {
+            a {
+              span:nth-child(even) {
+                margin-top: 6px;
+                padding-left: 12px;
+                position: relative;
+                top: -5px;
+              }
+            }
+          }
+
+          li:last-child a {
+            padding-left: 7.5px;
+          }
+        }
+
+        img {
+          margin-right: 5px;
+        }
+
+        .social-media-title {
+          h4 {
+            margin-top: 0;
+            margin-bottom: 36px;
+            width: 94%;
+            margin-left: 3%;
+            margin-right: 3%;
+          }
+
+          &:before {
+            right: 2.5em;
+            margin-left: -50%;
+          }
+
+          &:after {
+            left: 2.5em;
+            margin-right: -50%;
+            margin-top: 0;
+          }
+        }
+
+        .social-media-links {
+          display: table;
+          width: 95%;
+          margin: 0 auto;
+
+          ul {
+            display: table-row;
+
+            li {
+              float: none;
+              width: auto;
+              font-size: 14px;
+              line-height: 18px;
+              margin: 0;
+              padding: 0;
+              display: table-cell;
+
+              a {
+                padding-right: 20px;
+              }
+            }
+          }
+        }
+
+        ul {
+          li {
+            a {
+              span:nth-child(even) {
+                padding-left: 2px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // Desktop
+  @media (min-width: $max-width-breakpoint) {
+    .footer-container {
+      h3 {
+        font-size: 22px;
+        line-height: 26px;
+      }
+
+      h4 {
+        margin-right: 0;
+      }
+
+      h4:after {
+        width: 98%;
+      }
+
+      ul {
+        display: block;
+        padding: 0;
+
+        li {
+          width: auto;
+          float: none;
+          padding-left: 30px;
+
+          a,
+          a:link,
+          a:visited,
+          a:hover,
+          a:active {
+            padding-right: 0;
+          }
+        }
+      }
+
+      .footer-col {
+        display: inline-block;
+        vertical-align: top;
+        margin-right: 2%;
+        margin-bottom: 18px;
+      }
+
+      .social-media {
+        margin: 0 auto;
+
+        .social-media-title {
+          h4 {
+            width: 100%;
+            margin-left: 0%;
+            margin-right: 0%;
+          }
+        }
+
+        .social-media-links {
+          width: 85%;
+
+          ul {
+            li:last-child a {
+              padding-left: 15px;
+            }
+          }
+        }
+      }
+
+      &.webny-global-footer-cols-1 .footer-col {
+        width: 97%;
+      }
+
+      &.webny-global-footer-cols-2 .footer-col {
+        width: 47%;
+      }
+
+      &.webny-global-footer-cols-3 .footer-col {
+        width: 30%;
+      }
+
+      &.webny-global-footer-cols-4 .footer-col {
+        width: 22%;
+      }
+
+      &.webny-global-footer-cols-5 .footer-col {
+        width: 17%;
+      }
+
+      &.webny-global-footer-cols-6 .footer-col {
+        width: 13%;
+      }
+
+      &.webny-global-footer-cols-7 .footer-col {
+        width: 11%;
+      }
+    }
+  }
+}
+
+.icon-social-blogger,
+.icon-social-delicious,
+.icon-social-facebook,
+.icon-social-feed,
+.icon-social-flickr,
+.icon-social-foursqaure,
+.icon-social-github,
+.icon-social-google-plus,
+.icon-social-instagram,
+.icon-social-linkedin,
+.icon-social-mail,
+.icon-social-pinterest,
+.icon-social-reddit,
+.icon-social-share,
+.icon-social-tumblr,
+.icon-social-twitter,
+.icon-social-vimeo,
+.icon-social-yelp,
+.icon-social-youtube {
+  display: inline-block;
+  height: 20px;
+  width: 20px;
+  background-size: 20px 20px;
+}
