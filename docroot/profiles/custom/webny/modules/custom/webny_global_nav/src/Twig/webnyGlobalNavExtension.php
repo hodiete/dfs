@@ -25,7 +25,7 @@ class WebnyGlobalNavExtension extends \Twig_Extension {
   }
 
   /**
-   * Function render_menu.
+   * Function renderMenu.
    */
   public function renderMenu($menu_name) {
     $menu_tree = \Drupal::menuTree();
@@ -49,7 +49,6 @@ class WebnyGlobalNavExtension extends \Twig_Extension {
     $menu = $menu_tree->build($tree);
 
     foreach ($menu['#items'] as &$item) {
-
     }
 
     return array('#markup' => drupal_render($menu));

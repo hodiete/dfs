@@ -28,7 +28,6 @@ function webny_theme_library_info_alter(&$libraries, $extension) {
     return;
   }
   if (isset($libraries['global-styling']['css']['theme'])) {
-    //unset($libraries['global-styling']['css']['theme']);
     $libraries['global-styling']['css']['theme'] = array('css/' . theme_get_setting('site_color_pallet') . '.css' => array());
   }
   $temp=0;
