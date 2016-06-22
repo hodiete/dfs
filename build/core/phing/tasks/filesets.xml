@@ -8,9 +8,6 @@
     <include name="**/*.profile"/>
     <include name="**/*.test"/>
     <exclude name="**/vendor/**/*"/>
-    <exclude name="**/lightning_features/**/*"/>
-    <exclude name="**/default_content/**/*"/>
-    <exclude name="**/build/core/**"/>
   </patternset>
 
   <patternset id="files.frontend">
@@ -49,7 +46,7 @@
     <patternset refid="files.php"/>
   </fileset>
 
-  <fileset dir="${docroot}/profiles/custom/webny/themes/custom" id="files.frontend.custom.themes" expandsymboliclinks="true">
+  <fileset dir="${docroot}/themes/custom" id="files.frontend.custom.themes" expandsymboliclinks="true">
     <patternset refid="files.frontend"/>
   </fileset>
 </project>

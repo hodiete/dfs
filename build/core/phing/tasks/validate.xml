@@ -2,7 +2,12 @@
 
   <!-- Run all validation targets. -->
   <target name="validate:all" description="Runs all code validation targets."
-          depends="validate:lint, validate:phpcs"/>
+          depends="validate:composer, validate:lint, validate:phpcs"/>
+
+  <!-- Verify that composer json and lock files are in sync. -->
+  <target name="validate:composer" description="Validate composer files.">
+    <exec dir="${repo.root}" command="composer validate --no-check-all --ansi" logoutput="true" checkreturn="true"/>
+  </target>
 
   <!-- Run linter against all php files in repository. -->
   <target name="validate:lint" description="Runs a PHP Lint against all code.">
@@ -28,6 +33,7 @@
     <if>
       <istrue value="${filteredFileList}"/>
       <then>
+        <!--@todo Pass an entire fileset to PHPCS rather than looping over a list. -->
         <foreach list="${filteredFileList}" target="validate:phpcs:file" param="file"/>
       </then>
     </if>
