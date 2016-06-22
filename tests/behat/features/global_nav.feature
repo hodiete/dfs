@@ -7,7 +7,7 @@ Feature: Global Navigation Module
     Given I am logged in as a user with the "administrator" role
     When I am on "/admin/config/webny-global-nav-d8"
     Then I should not see "Access denied"
-    And I should see text matching "Agency name"
-	And I should see text matching "Agency grouping color"
-	And I should see text matching "Global navigation header automatic insertion"
+    And I should see "Agency name"
+	And I should see "Agency grouping color"
+	And I should see "Global navigation header automatic insertion"
     
