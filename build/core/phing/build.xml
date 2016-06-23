@@ -1,4 +1,4 @@
-<project name="bolt-core" default="list" phingVersion="2.8.2">
+<project name="blt-core" default="list" phingVersion="2.8.2">
 
   <!-- Include custom task classes -->
   <includepath classpath="${core.phing.dir}" />
@@ -7,10 +7,24 @@
   <taskdef name="filterFileListByFileSet" classname="phingcludes.FilterFileListByFileSetTask"/>
   <taskdef name="phpVariable" classname="phingcludes.PhpVariableTask"/>
 
+  <if>
+    <available property="xdebug.enabled" extension="xdebug"/>
+    <then>
+      <echo level="warning">You are running BLT with xdebug enabled. This has a major impact on
+        runtime performance.</echo>
+    </then>
+  </if>
+
   <!-- Include task partials -->
 
   <!-- Defines a list of default properties, available to all targets. -->
   <import file="${core.phing.dir}/tasks/properties.xml"/>
+
+  <!-- Contains BLT tasks. -->
+  <import file="${core.phing.dir}/tasks/blt.xml"/>
+
+  <!-- Contains Continuous Integration tasks. -->
+  <import file="${core.phing.dir}/tasks/ci.xml"/>
 
   <!-- Contains tasks relevant to validation. E.g., code metrics. -->
   <import file="${core.phing.dir}/tasks/validate.xml"/>
@@ -24,6 +38,9 @@
   <!-- Contains fileset definitions. E.g., patterns defining contrib locations, theming files, etc. -->
   <import file="${core.phing.dir}/tasks/filesets.xml"/>
 
+  <!-- Commit ACSF build artifacts, push to remote. -->
+  <import file="tasks/acsf-deploy.xml"/>
+
   <!-- E.g., commit build artifacts, push to remote. -->
   <import file="${core.phing.dir}/tasks/deploy.xml"/>
 
@@ -31,24 +48,19 @@
   <import file="${core.phing.dir}/tasks/frontend.xml"/>
 
   <!-- Contains local syncing tasks. -->
+  <import file="${core.phing.dir}/tasks/local-sync.xml"/>
+
+  <!-- Contains acsf tasks. -->
+  <import file="${core.phing.dir}/tasks/acsf.xml"/>
+
+  <!-- Contains Drupal VM tasks. -->
+  <import file="${core.phing.dir}/tasks/vm.xml"/>
+
+  <!-- Contains CI local syncing tasks. -->
   <import file="tasks/ci-local-sync.xml"/>
 
-  <!--
-    The follow targets are intended to be wrapper targets that bundle
-    multiple targets from other includes.
-  -->
-  <target name="build:test"
-          description="Builds, tests, and deploys an artifact."
-          depends="setup, tests:all">
-  </target>
-
-  <target name="build:validate:test"
-          description="Builds, validates, tests, and deploys an artifact."
-          depends="validate:all, setup, tests:all">
-  </target>
-
   <target name="list" hidden="true">
-    <exec dir="${repo.root}" command="./bolt.sh -q -l" passthru="true"/>
+    <exec dir="${repo.root}" command="./blt.sh -q -l" passthru="true"/>
   </target>
 
 </project>
