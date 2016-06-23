@@ -1,0 +1,194 @@
+<?php
+
+/**
+ * @file
+ * Contains webny_global_nav.module.
+ */
+
+use Drupal\Core\Link;
+use Drupal\Component\Utility\Xss;
+use Drupal\Core\Url;
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements webny_global_nav_help()
+ */
+function webny_global_nav_help($route_name, RouteMatchInterface $route_match) {
+
+  switch ($route_name) {
+    case 'help.page.webny_global_nav':
+      return t('Integrate webny Global Navigation onto your Drupal site.');
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function webny_global_nav_theme() {
+  $url = Url::fromUri('internal:/');
+  $config = \Drupal::config('webny_global_nav.settings');
+  $agency_name = Xss::filter($config->get('webny_global_nav.agencyname'));
+  $linked_agency_name = Link::fromTextAndUrl($agency_name, $url)->toString();
+  $header_format = $config->get('webny_global_nav.headerformat');
+  $header_menu = $config->get('webny_global_nav.headermenu');
+  $footer_menu = $config->get('webny_global_nav.footermenu');
+
+  return array(
+    'webny_global_nav_header' => array(
+      'template' => 'webny-global-nav-header',
+      'variables' => array(
+        'agencyname' => $agency_name,
+        'headerformat' => $header_format,
+        'headermenu' => $header_menu,
+      ),
+    ),
+    'webny_global_nav_footer' => array(
+      'template' => 'webny-global-nav-footer',
+      'variables' => array(
+        'agencyname' => $agency_name,
+        'footermenu' => $footer_menu,
+        'linkedagencyname' => $linked_agency_name,
+      ),
+    ),
+    'webny_global_nav_footer_social_media' => array(
+      'template' => 'webny-global-nav-footer-social-media',
+      'variables' => array(
+        'social_media_urls' => array(),
+      ),
+    ),
+    'webny_global_nav_footer_social_media_urls' => array(
+      'variables' => array(
+        'social_media_urls' => array(),
+      ),
+    ),
+    'webny_global_nav_footer_social_media_url' => array(
+      'variables' => array(
+        'social_media_url' => array(),
+      ),
+    ),
+    'webny_global_nav_header_menu' => array(
+      'variables' => array(
+        'menu_name' => NULL,
+        'id' => NULL,
+      ),
+    ),
+    'webny_global_nav_header_menu_item' => array(
+      'variables' => array(
+        'element' => NULL,
+        'properties' => NULL,
+      ),
+    ),
+    'webny_global_nav_header_menu_item_link' => array(
+      'variables' => array(
+        'menu_item' => NULL,
+        'link_options' => NULL,
+      ),
+    ),
+    'webny_global_nav_footer_menu' => array(
+      'variables' => array(
+        'menu_name' => NULL,
+        'id' => NULL,
+      ),
+    ),
+    'webny_global_nav_footer_menu_column' => array(
+      'variables' => array(
+        'element' => NULL,
+        'properties' => NULL,
+      ),
+    ),
+    'webny_global_nav_footer_menu_item_link' => array(
+      'variables' => array(
+        'menu_item' => NULL,
+        'link_options' => NULL,
+      ),
+    ),
+  );
+}
+
+/**
+ * Implement webny_global_nav_library_info_alter()
+ *
+ * Used to dynamically add a stylesheet to the module library
+ * based on configuration options chosen.
+ */
+function webny_global_nav_library_info_alter(array &$libraries, $extension) {
+  // Default settings.
+  $config = \Drupal::config('webny_global_nav.settings');
+  $agencycolor = $config->get('webny_global_nav.agencycolor');
+
+  if ($agencycolor !== NULL) {
+    $stylesheet = 'css/webny-brand/' . $agencycolor . '.css';
+  }
+  else {
+    // Set administration as default.
+    $stylesheet = 'css/webny-brand/administration.css';
+  }
+
+  $libraries['global-nav'] = [
+    'css' => [
+      'theme' => [
+        'css/webny-global-nav.css' => [],
+        'css/webny-global-nav-fonts.css' => [],
+        $stylesheet => [],
+      ],
+    ],
+    'js' => [
+      'js/webny-global-nav-header.js' => [],
+            // 'js/drupal-webny-global-nav-header.js' => [],.
+    ],
+        /*'dependencies' => [
+            'core/jquery'
+        ]*/
+  ];
+}
+
+/**
+ * Function webny_global_nav_preprocess.
+ */
+function webny_global_nav_preprocess(&$variables) {
+  $variables['#attached']['library'][] = 'webny_global_nav/global-nav';
+}
+
+/**
+ * Implements hook_page_top().
+ *
+ * Add uNav header to the page_top region
+ * automatically if Drupal variable webny_unav_auto is TRUE.
+ * But don't add uNav if on an administrative page.
+ */
+function webny_global_nav_page_top(&$page_top) {
+  // Skip menu if not Auto or on administrative page.
+  $config = \Drupal::config('webny_global_nav.settings');
+  $auto = $config->get('webny_global_nav.headerauto');
+  $is_admin = \Drupal::service('router.admin_context')->isAdminRoute();
+  if ($auto == '0' || $is_admin) {
+    return;
+  }
+
+  $page_top['page_top']['webny_global_nav'] = array(
+    '#weight' => -950,
+    '#theme' => 'webny_global_nav_header',
+  );
+}
+
+/**
+ * Implemtnet hook_page_bottom().
+ *
+ * Add uNav footer to the page_bottom region
+ * automatically if Drupal variable webny_unav_auto is TRUE.
+ * But don't add uNav if on an administrative page.
+ */
+function webny_global_nav_page_bottom(&$page_bottom) {
+  // Skip menu if not Auto or on administrative page.
+  $config = \Drupal::config('webny_global_nav.settings');
+  $auto = $config->get('webny_global_nav.footerauto');
+  $is_admin = \Drupal::service('router.admin_context')->isAdminRoute();
+  if ($auto == '0' || $is_admin) {
+    return;
+  }
+
+  $page_bottom['page_bottom']['webny_global_nav'] = array(
+    '#weight' => 950,
+    '#theme' => 'webny_global_nav_footer',
+  );
+}

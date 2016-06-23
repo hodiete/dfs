@@ -168,7 +168,7 @@ gulp.task('administration', ['clean:css'], function () {
           cascade: false
         }))
           .pipe(sourcemaps.write())
-          .pipe(gulp.dest(options.theme.css + '/themes/'));
+          .pipe(gulp.dest(options.theme.css));
 });
 
 // agency - grouping specific style
@@ -188,7 +188,7 @@ gulp.task('business', ['clean:css'], function () {
           cascade: false
         }))
           .pipe(sourcemaps.write())
-          .pipe(gulp.dest(options.theme.css + '/themes/'));
+          .pipe(gulp.dest(options.theme.css));
 });
 
 // agency - grouping specific style
@@ -208,7 +208,7 @@ gulp.task('education', ['clean:css'], function () {
           cascade: false
         }))
           .pipe(sourcemaps.write())
-          .pipe(gulp.dest(options.theme.css + '/themes/'));
+          .pipe(gulp.dest(options.theme.css));
 });
 
 // agency - grouping specific style
@@ -228,7 +228,7 @@ gulp.task('health-human-serv', ['clean:css'], function () {
           cascade: false
         }))
           .pipe(sourcemaps.write())
-          .pipe(gulp.dest(options.theme.css + '/themes/'));
+          .pipe(gulp.dest(options.theme.css));
 });
 
 // agency - grouping specific style
@@ -248,7 +248,7 @@ gulp.task('local-regional-authorities', ['clean:css'], function () {
           cascade: false
         }))
           .pipe(sourcemaps.write())
-          .pipe(gulp.dest(options.theme.css + '/themes/'));
+          .pipe(gulp.dest(options.theme.css));
 });
 
 // agency - grouping specific style
@@ -268,7 +268,7 @@ gulp.task('public-safety', ['clean:css'], function () {
           cascade: false
         }))
           .pipe(sourcemaps.write())
-          .pipe(gulp.dest(options.theme.css + '/themes/'));
+          .pipe(gulp.dest(options.theme.css));
 });
 
 // agency - grouping specific style
@@ -288,7 +288,7 @@ gulp.task('recreation-environment', ['clean:css'], function () {
           cascade: false
         }))
           .pipe(sourcemaps.write())
-          .pipe(gulp.dest(options.theme.css + '/themes/'));
+          .pipe(gulp.dest(options.theme.css));
 });
 
 // agency - grouping specific style
@@ -308,7 +308,7 @@ gulp.task('statewide-elected-officials', ['clean:css'], function () {
           cascade: false
         }))
           .pipe(sourcemaps.write())
-          .pipe(gulp.dest(options.theme.css + '/themes/'));
+          .pipe(gulp.dest(options.theme.css));
 });
 
 // agency - grouping specific style
@@ -328,7 +328,7 @@ gulp.task('transportation-utilities', ['clean:css'], function () {
           cascade: false
         }))
           .pipe(sourcemaps.write())
-          .pipe(gulp.dest(options.theme.css + '/themes/'));
+          .pipe(gulp.dest(options.theme.css));
 });
 
 // agency - grouping specific style
@@ -348,7 +348,7 @@ gulp.task('custom-ig', ['clean:css'], function () {
           cascade: false
         }))
           .pipe(sourcemaps.write())
-          .pipe(gulp.dest(options.theme.css + '/themes/'));
+          .pipe(gulp.dest(options.theme.css));
 });
 
 gulp.task('styles:styleguide', ['clean:css'], function () {

@@ -432,3 +432,39 @@ function webny_configuration_update_8036() {
   \Drupal::service('module_installer')
       ->install(['field_group']);
 }
+
+/**
+ * Implements hook_update_n().
+ *
+ * Reinstall contact content type.
+ */
+function webny_configuration_update_8037() {
+
+  \Drupal::service('module_installer')
+      ->uninstall(['webny_contact_content_type']);
+  \Drupal::service('module_installer')
+      ->install(['webny_contact_content_type']);
+}
+
+/**
+ * Implements hook_update_n().
+ *
+ * Installs Get Involved frame paragraph type.
+ */
+function webny_configuration_update_8038() {
+
+  \Drupal::service('module_installer')
+      ->install(['webny_get_involved_pgtype']);
+}
+
+/**
+ * Implements hook_update_n().
+ *
+ * Installs the WebNY Global Nav Drupal 8 Implmenetation.
+ * by Chris VanWormer. -iojonep.
+ */
+function webny_configuration_update_8039() {
+
+  \Drupal::service('module_installer')
+      ->install(['webny_global_nav']);
+}

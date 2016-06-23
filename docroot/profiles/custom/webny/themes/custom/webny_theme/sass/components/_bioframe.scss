@@ -6,6 +6,15 @@
 //
 // Style guide: components.bioframe
 
+// color variables
+$bio-frame-bkgnd-color: $color-secondary !default; 
+$bio-frame-title-color: $black !default;
+$bio-frame-headline-color: $white !default;
+// $bio-frame-text-color:
+
+// Margin Vars
+$bioframe-margin: 15px;
+
 // ************************* //
 // BIOFRAME PARTIAL
 // CREATED BY WEBNY
@@ -15,27 +24,43 @@
 // PRELIM OVERRIDES
 .page-paragraphs img{
     border: 0;   
+    vertical-align: bottom;
 }
 
+.layout-container img {
+    max-width: 400px;   
+}
 
 // ========================================================================= //
 /* BIOFRAME WRAPPER */
 .bioframe{
     width: 100%;
     margin: 0 auto;
-    background-color: #f3dd6d;                          // ADD TO COLOR SCHEME VARS
+    background-color: $bio-frame-bkgnd-color;                          // ADD TO COLOR SCHEME VARS
     
     .webny_contact-bioframe{
+        
         display: block;
         width: 100%;
         margin: 0 auto;
         padding: 0;
-        
+        position: relative; 
+       
                 
         .bio-frame-image{
+             text-align: center;
+            
             .media-image > div{
                 display: block;   
                 line-height: normal;
+            }
+            
+            img {
+          
+                line-height: 0;
+                max-height: 400px;
+                max-width: 400px;
+                margin: 0 auto;
             }
         } // END BIO IMAGE
         
@@ -45,22 +70,26 @@
             
             .frame-title{
                 text-align: left;
-                color: $black; 
+                color: $bio-frame-title-color; 
+                margin-bottom: $bioframe-margin;
             }   
             
             .frame-headline{
                 text-align: left;
-                color: $white;                          // ADD TO COLOR SCHEME VARS
-                margin-bottom: 12px;
+                color: $bio-frame-headline-color;                          // ADD TO COLOR SCHEME VARS
+                margin-bottom: $bioframe-margin;
+                line-height: 3rem;
             }
             
             .caption{
-                line-height: 1.2rem;   
+                line-height: 1.2rem;  
+                margin-top: 30px;
+                margin-bottom: $bioframe-margin;
             }
             
             .reslink{
                 
-                margin: 36px auto 0 auto;
+                margin: 36px auto;
                 text-align: center;
                 
                 a{  
@@ -129,41 +158,54 @@
      .webny_contact-bioframe{
         display: block;
         max-width: $max-pc;
-
+        overflow: auto;
+        position: relative; 
+         
         .bio-frame-image,
         .bio-frame-meta{
-            display: inline-block;
+            display: block;
+           
         }
 
         .bio-frame-image{
-            overflow: auto;
-            width: 33%;   
-            height: 100%;  
-            vertical-align: bottom;
-            
+                bottom: 0;
+                float: left;
+                left: 0;
+                top: 0;
+                width: 33%;
+                position: absolute;
+
             img {
-                vertical-align: bottom;
+          
                 line-height: 0;
+                position: absolute;
+                right: 0;
+                bottom: 0;
+                max-height: 400px;
+                vertical-align: bottom;
             }
-            
         }
 
         .bio-frame-meta{
             width: 60%;   
-            padding: 0 3%;
+            padding: 0 2% 0 3%;
+            float: right;
+            min-height: 350px;
+            
+            
+            .frame-headline{
+                line-height: 2.5rem;
+            }
             
             .reslink{
                 
-                margin: 36px auto 0 auto;
                 text-align: center;
                 
                 a{  
                     &:link{
                         max-width: 240px;   
                     }
-                    
                 }
-            
             }
         }
     

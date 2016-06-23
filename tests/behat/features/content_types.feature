@@ -23,6 +23,7 @@ Feature: Check for the existence and fields of content types
     And I should see text matching "Location"
     And I should see text matching "Paragraph Frame"
     And I should see text matching "Subject Heading"
+	And I should see text matching "Short Title"
     And I should see text matching "Sub Title"
     And I should see text matching "Teaser Text"
     
@@ -90,6 +91,7 @@ Feature: Check for the existence and fields of content types
     And I should see text matching "Global Keywords"
     And I should see text matching "Hero Image"
     And I should see text matching "Paragraph Frame"
+	And I should see text matching "Short Title"
     And I should see text matching "Sub Title"
     And I should see text matching "Summary/Teaser"
     

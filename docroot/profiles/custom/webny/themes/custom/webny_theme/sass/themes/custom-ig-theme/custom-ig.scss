@@ -2,8 +2,37 @@
 
 //overwrite stuff
 
-$color-primary: #f3dd6d;
-$color-secondary: #6787B7;
+$color-primary: #63666a; // gray
+$color-secondary: #ffd100; // gold
+$color-tertiary: #2a2a2a; // dk gray
+$color-accent-primary: #6787B7; // blue
+$color-accent-secondary: #F3DD6D; //yellow
+$color-accent-tertiary: #F1F1F1; // lite gray
+
+// color variables which need to be overridden from the base assignment per component
+$nav-top-hover-bkgd-color: $color-accent-primary;
+
+$nav-bottom-bkgd-color: $color-tertiary;
+$nav-bottom-text-color: white;
+
+$title-bar-bkgd-color: $color-secondary;
+$title-bar-default-text-color: $color-primary;
+$title-bar-sub-title-color: $color-primary;
+
+$summary-frame-bkgd-color: $color-accent-primary;
+$summary-frame-title-color: $color-secondary;
+$summary-frame-headline-color: black;
+$summary-frame-keypt-border: rgba(white, .2);
+
+$announce-frame-title-color: $color-accent-primary;
+$announce-frame-item-bkgd-color: $color-accent-tertiary;
+
+$bio-frame-bkgnd-color: $color-accent-secondary; 
+
+$button-bkgd-color: $color-accent-primary;
+
+$get-inv-frame-bkgd-color: $color-accent-primary;
+$get-inv-frame-title-color: $color-secondary;
 
 //import base style
 @import "../../styles";
