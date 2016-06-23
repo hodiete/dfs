@@ -2,7 +2,7 @@
 
   <!-- Run all validation targets. -->
   <target name="validate:all" description="Runs all code validation targets."
-          depends="validate:composer, validate:lint, validate:phpcs"/>
+          depends="validate:lint, validate:phpcs"/>
 
   <!-- Verify that composer json and lock files are in sync. -->
   <target name="validate:composer" description="Validate composer files.">
