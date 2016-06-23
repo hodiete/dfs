@@ -12,13 +12,14 @@ behat:
     # - ${docroot}/modules
     - ${docroot}/profiles
     - ${repo.root}/tests/behat
-  tags: ''
+  tags: '~ajax'
 
 composer:
   bin: ${repo.root}/vendor/bin
 
 deploy:
   dir: ${repo.root}/deploy
+  exclude_file: ${repo.root}/build/core/files/deploy-exclude.txt
 
 # File and Directory locations.
 docroot.relative: ${repo.root.relative}/docroot
@@ -32,7 +33,7 @@ drupal:
 
 drush:
   bin: ${composer.bin}/drush
-  cmd: ${drush.bin} @${drush.aliases.local} -r ${docroot} -l ${multisite.name}
+  cmd: ${drush.bin} @${drush.alias} -r ${docroot} -l ${multisite.name}
   root: ${docroot}
 
 multisite:
@@ -42,3 +43,7 @@ multisite:
 reports:
   localDir: ${repo.root}/reports
   remoteDir: reports
+
+project:
+  local:
+    uri: ${project.local.protocol}://${project.local.hostname}
