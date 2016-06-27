@@ -59,6 +59,11 @@
   <!-- Contains CI local syncing tasks. -->
   <import file="tasks/ci-local-sync.xml"/>
 
+  <target name="build:validate:test"
+          description="Builds, validates, tests, and deploys an artifact."
+          depends="validate:all, setup, tests:all">
+  </target>
+
   <target name="list" hidden="true">
     <exec dir="${repo.root}" command="./blt.sh -q -l" passthru="true"/>
   </target>

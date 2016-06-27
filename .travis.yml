@@ -52,7 +52,7 @@ before_script:
   - rm -f ~/.drush/cache/download/*---updates.drupal.org-release-history-*
 
 script:
-  - ./blt.sh -Dbehat.run-server=true -Dcreate_alias=false -Dbehat.launch-phantom=true ci:build:validate:test
+  - ./blt.sh -Dbehat.run-server=true -Dcreate_alias=false -Dbehat.launch-phantom=true build:validate:test
 
 after_success:
   # Watch for successful build job on `master` branch; deploy to `master-build`.
