@@ -18,7 +18,7 @@ class BuildTest extends TestBase {
 
     $this->assertFileExists($this->projectDirectory . '/docroot/index.php');
     $this->assertFileExists($this->projectDirectory . '/docroot/modules/contrib');
-    $this->assertFileExists($this->projectDirectory . '/docroot/themes/custom');
+    $this->assertFileExists($this->projectDirectory . '/docroot/profiles/custom/webny/themes/custom');
   }
 
 }
