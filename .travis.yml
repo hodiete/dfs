@@ -60,6 +60,6 @@ after_success:
   # Watch for successful build job on `develop` branch; deploy to `develop-build`.
   - scripts/deploy/travis-deploy.sh develop develop-build
   # Watch for successful build job on `acsf-master` branch; deploy to `acsf-master-build`.
-  - scripts/deploy/acsf-travis-deploy.sh acsf-master acsf-master-build
+  - scripts/deploy/travis-acsf-deploy.sh acsf-master acsf-master-build
   # Watch for successful build job on `acsf-develop` branch; deploy to `acsf-develop-build`.
-  - scripts/deploy/acsf-travis-deploy.sh acsf-develop acsf-develop-build
+  - scripts/deploy/travis-acsf--deploy.sh acsf-develop acsf-develop-build
