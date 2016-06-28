@@ -5,6 +5,10 @@
 // Markup: card.hbs
 //
 // Style guide: components.card
+
+// color variables
+$featured-card-frame-title-color: $primarygold !default;
+$featured-card-frame-headline-color: $black !default;
  
 .paragraph--type--webny-card-paragraph-type {
   font-size: 18px; 
@@ -19,6 +23,7 @@
   flex-direction: column;
   justify-content:flex-start;
   padding: 1rem;
+  padding-bottom: 0.5rem;
   justify-content:center;
 }
 
@@ -27,6 +32,28 @@
   font-size:90%;
   display: flex;
   margin: .5rem; /* aiming for the 20px between cards that seems to be there in ny.gov web style guide */
+}
+
+.featured-card--field-webny-card-pg-title {
+  font-family: $oswald;
+  font-weight: 900;
+  font-size: $frame-title;
+  color: $featured-card-frame-title-color;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  padding-top: 1%;
+  padding-bottom: 0.5%;
+}
+
+.featured-card--field-webny-card-pg-headline {
+  font-family: $base-font;
+  font-size: $frame-headline;
+  font-weight: 800;
+  color: $featured-card-frame-headline-color;
+  text-align: center;
+  margin-bottom: 2rem;
+  line-height: 2rem;  
 }
 
 .webny-card {
