@@ -11,6 +11,8 @@ Feature: Featured Card Paragraph Tests
     When I press the "Add Card" button
     Then I should see "Card Entity Reference"
     And I should see "Paragraph type: Card"
+    And I should see "Card Title"
+    And I should see "Card Headline"
 
 # Display modes checks
   Scenario: Check the display modes to see if Featured Card display exists
