@@ -44,18 +44,22 @@ install:
 
 before_script:
   - cd $TRAVIS_BUILD_DIR/docroot
-  - drush runserver --default-server=127.0.0.1:8080 &>/dev/null &
-  - php -S 127.0.0.1:8080 &
+  - drush runserver --default-server=127.0.0.1:8888 &>/dev/null &
+  - php -S 127.0.0.1:8888 &
   - cd ..
   - phantomjs --webdriver=4444 > /dev/null &
   # Clear drush release history cache, to pick up new releases.
   - rm -f ~/.drush/cache/download/*---updates.drupal.org-release-history-*
 
 script:
-  - ./task.sh build:validate:test
+  - ./blt.sh -Dbehat.run-server=true -Dcreate_alias=false -Dbehat.launch-phantom=true build:validate:test
 
 after_success:
   # Watch for successful build job on `master` branch; deploy to `master-build`.
   - scripts/deploy/travis-deploy.sh master master-build
   # Watch for successful build job on `develop` branch; deploy to `develop-build`.
   - scripts/deploy/travis-deploy.sh develop develop-build
+  # Watch for successful build job on `acsf-master` branch; deploy to `acsf-master-build`.
+  - scripts/deploy/travis-acsf-deploy.sh acsf-master acsf-master-build
+  # Watch for successful build job on `acsf-develop` branch; deploy to `acsf-develop-build`.
+  - scripts/deploy/travis-acsf--deploy.sh acsf-develop acsf-develop-build

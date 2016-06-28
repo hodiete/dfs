@@ -1,17 +1,17 @@
 <!-- This defines generic, reusable file sets that are used by other targets -->
-<project name="filesets" default="build">
-  <patternset id="files.php">
-    <include name="**/*.inc"/>
-    <include name="**/*.install"/>
-    <include name="**/*.module"/>
-    <include name="**/*.php"/>
-    <include name="**/*.profile"/>
-    <include name="**/*.test"/>
-    <exclude name="**/vendor/**/*"/>
-    <exclude name="**/lightning_features/**/*"/>
-    <exclude name="**/default_content/**/*"/>
-    <exclude name="**/build/core/**"/>
-  </patternset>
+  <project name="filesets" default="build">
+    <patternset id="files.php">
+      <include name="**/*.inc"/>
+      <include name="**/*.install"/>
+      <include name="**/*.module"/>
+      <include name="**/*.php"/>
+      <include name="**/*.profile"/>
+      <include name="**/*.test"/>
+      <exclude name="**/vendor/**/*"/>
+      <exclude name="**/lightning_features/**/*"/>
+      <exclude name="**/default_content/**/*"/>
+      <exclude name="**/build/core/**"/>
+    </patternset>
 
   <patternset id="files.frontend">
     <include name="**/*.js"/>
