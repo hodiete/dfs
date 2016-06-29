@@ -1,0 +1,31 @@
+// WYSIWYG Frame
+//
+// WYSIWYG Frame frontend styling.
+//
+// Markup: wysiwygframe.hbs
+//
+// Style guide: components.wysiwygframe
+ 
+// color variables
+$wysiwyg-frame-bkgd-color: $white !default;
+$wysiwyg-frame-title-color: $color-secondary !default;
+$wysiwyg-frame-headline-color: $black !default;
+$wysiwyg-frame-text-color: $black !default;
+
+.paragraph--type--webny-wysiwyg-pgtype {
+  padding: 40px 0;
+}
+
+.wysiwyg--field-webny-wysiwyg-title {
+  color: $wysiwyg-frame-title-color;
+  text-align: center;
+}
+
+.wysiwyg--field-webny-wysiwyg-headline {
+  color: $wysiwyg-frame-headline-color;
+  text-align:center;
+}
+
+.wysiwyg--field-webny-wysiwyg-body {
+  color: $wysiwyg-frame-text-color;
+}
