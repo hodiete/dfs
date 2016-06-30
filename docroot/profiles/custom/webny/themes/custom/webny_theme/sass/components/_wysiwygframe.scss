@@ -14,20 +14,29 @@ $wysiwyg-frame-text-color: $black !default;
 
 .paragraph--type--webny-wysiwyg-pgtype {
   padding: 40px 0;
-  max-width: $max-pc; 
-  margin: 0 auto;
+  background-color: $wysiwyg-frame-bkgd-color;
+  text-align: center;
 }
 
 .wysiwyg--field-webny-wysiwyg-title {
+  font: $frame-title $oswald;
   color: $wysiwyg-frame-title-color;
-  text-align: center;
+  
 }
 
 .wysiwyg--field-webny-wysiwyg-headline {
   color: $wysiwyg-frame-headline-color;
-  text-align:center;
+  font-size: $frame-headline;
 }
 
 .wysiwyg--field-webny-wysiwyg-body {
   color: $wysiwyg-frame-text-color;
+}
+
+// for desktop - to keep it from getting too wide to read
+.wysiwyg--field-webny-wysiwyg-title, 
+.wysiwyg--field-webny-wysiwyg-headline, 
+.wysiwyg--field-webny-wysiwyg-body {
+  max-width: $max-pc; 
+  margin: 0 auto;
 }
