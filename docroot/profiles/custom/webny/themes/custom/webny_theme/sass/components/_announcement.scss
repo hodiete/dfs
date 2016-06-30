@@ -44,6 +44,11 @@ $announce-frame-item-text-color: $black !default;
 // CREATED BY WEBNY
 // ************************* //
 
+// PARAGRAPH
+.announcement-wrap{
+    padding: 80px 0;
+}
+
 // ========================================================================= //
 /* ANNOUNCEMENTS WRAPPER */
 .webny-announcements{
@@ -121,7 +126,6 @@ $announce-frame-item-text-color: $black !default;
     margin-bottom: 0;
     font: $frame_title $oswald;
     font-weight: bold;
-    margin-top: 60px;
     letter-spacing: 4px;
     text-align: center;
 }
@@ -136,11 +140,13 @@ $announce-frame-item-text-color: $black !default;
 
 // HANDLES LANDING PAGE HOME VS. SECONDARY HEADLINES
 .webny-front .frame-headline{
-     font-size: 3rem;
+     //font-size: 3rem;
+     font-size: 40px;
  }
 
 .webny-sec .frame-headline{
-    font-size: 2rem;
+    //font-size: 2rem;
+    font-size: 32px;
 }
 
 // ######################################################################### //
