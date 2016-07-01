@@ -5,12 +5,31 @@
  * OVERRIDE the news display for announcements reference. 
  */
 #}
+
 <article{{ attributes.addClass('webny-announcements') }}> 
   {% if not page %}
     <div class="webny-announce-wrap">
         <div class="webny-announce-wrap-in">
             <div class="announcement-info">
-                <h4>{{ label }}</h4>
+
+                {# IMPLEMENTS SHORT TITLE OR 65 CHAR LIMIT TITLE #}
+
+                {%  if(node.field_webny_news_short_title.value is not empty and node.field_webny_news_short_title.value is not null) %}
+                    <h4>{{ node.field_webny_news_short_title.value }}</h4>
+                {% elseif(node.label|length <= 65) %}
+                    <h4>{{ node.label }} </h4>
+                {% else %}
+
+                    {% set ws = true %}
+                    {% for num in node.label|length..0 %}
+                        {% if (num < 65 and  node.label|slice(num)|first == ' ' and ws != false) %}
+                            {% set ws = false %}
+                            <h4>{{ node.label[:num] ~ ' ...' }}</h4>
+                        {% endif %}
+                    {% endfor %}
+
+                {% endif %}
+
                 <div class="announcement-date">
                     {{ node.field_webny_news_date.value|date("F j, Y") }} 
                 </div>

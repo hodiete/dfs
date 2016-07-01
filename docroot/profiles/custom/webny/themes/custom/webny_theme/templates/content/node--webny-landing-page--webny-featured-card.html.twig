@@ -77,13 +77,37 @@
 </div>
 <div class="card-content">
   <div class="card-content-top">
-  {{ title_prefix }}
-  {% if not page %}
-    <h2{{ title_attributes }}>
-      <a href="{{ url }}" rel="bookmark">{{ label }}</a>
-    </h2>
-  {% endif %}
-  {{ title_suffix }}
+
+      {%  if not page %}
+          {{ title_prefix }}
+
+          <h2{{ title_attributes }}>
+              <a href="{{ url }}" rel="bookmark">
+
+                  {# IMPLEMENTS SHORT TITLE OR 65 CHAR LIMIT TITLE #}
+
+                  {%  if(node.field_webny_landing_short_title.value is not empty and node.field_webny_landing_short_title.value is not null) %}
+                      {{ node.field_webny_landing_short_title.value }}
+                  {% elseif(node.label|length <= 65) %}
+                      {{ node.label }}
+                  {% else %}
+
+                      {% set ws = true %}
+                      {% for num in node.label|length..0 %}
+                          {% if (num < 65 and  node.label|slice(num)|first == ' ' and ws != false) %}
+                              {% set ws = false %}
+                              {{ node.label[:num] ~ ' ...' }}
+                          {% endif %}
+                      {% endfor %}
+
+                  {% endif %}
+
+              </a>
+          </h2>
+
+          {{ title_suffix }}
+      {% endif %}
+
 
  {% if display_submitted %}
     <footer>
@@ -97,7 +121,9 @@
   </div> {# end .card-content-top #}
 
 
-    {{ content|without('field_webny_landing_hero_image') }}
+    {{ content|without('field_webny_landing_hero_image', 'field_webny_landing_short_title','node.label') }}
+
+
  </div> {# end .card-content #}
 
     <div class="webny-card-cta">
