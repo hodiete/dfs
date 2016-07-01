@@ -132,21 +132,21 @@ $announce-frame-item-text-color: $black !default;
 
 .frame-headline{
     color: $announce-frame-headline-color;   
-    font: bold $frame_headline $base-font;
+    font: bold $frame_headline $frame-headline;
     font-weight: 800;
     margin-bottom: 40px;
     text-align: center;
 }
 
 // HANDLES LANDING PAGE HOME VS. SECONDARY HEADLINES
-.webny-front .frame-headline{
+.front .frame-headline{
      //font-size: 3rem;
-     font-size: 40px;
+     font-size: $frame-headline;
  }
 
-.webny-sec .frame-headline{
+.frame-headline{
     //font-size: 2rem;
-    font-size: 32px;
+    font-size: $frame-headline-smaller;
 }
 
 // ######################################################################### //
