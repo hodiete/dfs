@@ -27,30 +27,36 @@ $get-inv-frame-description-color: $black !default;
 }
 
 .get-involved--field-webny-get-involved-title {
-  font-family: $oswald;
-  font-weight: 800;
-  font-size: $frame-title;
+  //font-family: $oswald;
+  //font-weight: 800;
+  //font-size: $frame-title;
+  font: $frame-title;
   color: $get-inv-frame-title-color;
   text-align: center;
   text-transform: uppercase;
   letter-spacing: 2px;
   padding-top: 1%;
-  padding-bottom: 0.5%;
+  //padding-bottom: 0.5%; // need to evaluate this when changing these to headings
 }
 
 .get-involved--field-webny-get-inv-headline {
-  font-family: $base-font;
-  font-size: $frame-headline;
-  font-weight: 800;
+  //font-family: $base-font;
+  //font-size: $frame-headline;
+  //font-weight: 800;
+  font: $frame-headline;
   color: $get-inv-frame-headline-color;
   text-align: center;
   margin-bottom: 2rem;
-  line-height: 3rem;
+  line-height: 1.25em; //3rem;
+}
+
+.front .get-involved--field-webny-get-inv-headline {
+  font: $frame-headline-front;
 }
 
 .get-involved--field-webny-get-inv-description {
   font-family: $base-font;
-  font-size: $base-font-size;
+  font-size: .9rem; // base-font-size currently 18px
   text-align: center;
   width: 50%;
   margin: 0 auto;

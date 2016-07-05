@@ -28,25 +28,25 @@ $wysiwyg-frame-text-color: $black !default;
 }
 
 .wysiwyg--field-webny-wysiwyg-title {
-  font: $frame-title $oswald; //font-family goes last in font declaration
+  font: $frame-title; 
   color: $wysiwyg-frame-title-color;
   text-align: center;
   letter-spacing: 2px;
   text-transform: uppercase;
-  font-weight: bold;
+  //font-weight: bold;
 }
 
 .wysiwyg--field-webny-wysiwyg-headline {
   color: $wysiwyg-frame-headline-color;
-  font-size: $frame-headline;
-  font-weight: 800;
+  font: $frame-headline;
+  //font-weight: 800;
   text-align: center;
   line-height: 1.75em;
   margin-bottom: 15px;
 }
 
 .front .wysiwyg--field-webny-wysiwyg-headline {
-  font-size: $frame-headline-front;
+  font: $frame-headline-front;
   line-height: 1.25em;
 }
 

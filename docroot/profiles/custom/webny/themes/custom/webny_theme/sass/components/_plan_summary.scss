@@ -30,26 +30,32 @@ $summary-frame-button: $white !default;
 }
 
 .keypoint--field-webny-summary-title {
-  font-family: $oswald;
-  font-weight: bold;
-  font-size: $frame-title;
-  font-weight: 800;
+  //font-family: $oswald;
+  //font-weight: bold;
+  //font-size: $frame-title;
+  //font-weight: 800;
+  font: $frame-title;
   color: $summary-frame-title-color;
   text-align: center;
   text-transform: uppercase;
   letter-spacing: 2px;
   padding-top: 1%;
-  padding-bottom: 1%;
+  // padding-bottom: 1%; // need to evaluate this when changing these to headings
 }
 
 .keypoint--field-webny-summary-headline {
-  font-family: $base-font;
-  font-size: $frame-headline;
-  font-weight: 800;
+  //font-family: $base-font;
+  //font-size: $frame-headline;
+  //font-weight: 800;
+  font: $frame-headline;
   color: $summary-frame-headline-color;
   text-align: center;
   margin-bottom: 50px;
   line-height: 3rem;
+}
+
+.front .keypoint--field-webny-summary-headline {
+  font: $frame-headline-front;
 }
 
 .keypoint {
