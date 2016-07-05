@@ -26,7 +26,7 @@ $summary-frame-button: $white !default;
   background-color: $summary-frame-bkgd-color;
   margin: 0 auto;
   text-align: center;
-  padding: 3%;
+  padding: $frame-padding-lg 3%;
 }
 
 .keypoint--field-webny-summary-title {
@@ -39,7 +39,7 @@ $summary-frame-button: $white !default;
   text-align: center;
   text-transform: uppercase;
   letter-spacing: 2px;
-  padding-top: 1%;
+  // padding-top: 1%; // the padding set on the main frame should give the 80px
   // padding-bottom: 1%; // need to evaluate this when changing these to headings
 }
 
