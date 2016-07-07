@@ -454,7 +454,7 @@ function webny_configuration_update_8037() {
 function webny_configuration_update_8038() {
 
   \Drupal::service('module_installer')
-      ->install(['webny_get_involved_pgtype']);
+      ->install(['webny_get_involved_frame']);
 }
 
 /**
@@ -467,4 +467,23 @@ function webny_configuration_update_8039() {
 
   \Drupal::service('module_installer')
       ->install(['webny_global_nav']);
+}
+
+/**
+ * Implements hook_update_n().
+ *
+ * Installs WYSIWYG frame paragraph type.
+ */
+function webny_configuration_update_8040() {
+
+  \Drupal::service('module_installer')
+      ->uninstall(['webny_text_formats']);
+  \Drupal::service('module_installer')
+      ->install(['webny_text_formats']);
+  \Drupal::service('module_installer')
+      ->uninstall(['webny_text_editors']);
+  \Drupal::service('module_installer')
+      ->install(['webny_text_editors']);
+  \Drupal::service('module_installer')
+      ->install(['webny_wysiwyg_frame']);
 }

@@ -48,9 +48,6 @@ class WebnyGlobalNavExtension extends \Twig_Extension {
     // Finally, build a renderable array from the transformed tree.
     $menu = $menu_tree->build($tree);
 
-    foreach ($menu['#items'] as &$item) {
-    }
-
     return array('#markup' => drupal_render($menu));
   }
 

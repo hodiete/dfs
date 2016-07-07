@@ -1,6 +1,7 @@
 # Ignore configuration files that may contain sensitive information.
-build/phing/build.properties
 local.*
+*.local
+project.local.yml
 
 # Ignore drupal core.
 docroot/core
@@ -111,4 +112,6 @@ docroot/profiles/custom/webny/themes/custom/webny_theme/dist/*
 docroot/profiles/custom/webny/themes/custom/webny_theme/styleguide
 docroot/profiles/custom/webny/themes/custom/webny_theme/styleguide/*
 
+# DrupalVM
+.vagrant/
 

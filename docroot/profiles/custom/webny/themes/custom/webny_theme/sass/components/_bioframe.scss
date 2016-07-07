@@ -71,20 +71,25 @@ $bioframe-margin: 15px;
             .frame-title{
                 text-align: left;
                 color: $bio-frame-title-color; 
-                margin-bottom: $bioframe-margin;
+                //margin-bottom: $bioframe-margin; // need to evaluate this when changing these to headings
+                margin-top: 80px;
+                font: $frame-title;
             }   
             
             .frame-headline{
                 text-align: left;
                 color: $bio-frame-headline-color;                          // ADD TO COLOR SCHEME VARS
                 margin-bottom: $bioframe-margin;
-                line-height: 3rem;
-            }
+                line-height: 1.25em;//3rem;
+                //font-size: 3.3rem;
+                font: $frame-headline;
+            } //see below for font on a home page
             
             .caption{
                 line-height: 1.2rem;  
-                margin-top: 30px;
+                margin-top: 20px;
                 margin-bottom: $bioframe-margin;
+                font-size: .88rem !important;
             }
             
             .reslink{
@@ -93,7 +98,7 @@ $bioframe-margin: 15px;
                 text-align: center;
                 
                 a{  
-                    border-width: 2px;
+                    border-width: 1px;
                     border-style: solid;
                     border-color: #eee;             // ADD TO COLOR SCHEME VARS
                     color: $white;
@@ -110,7 +115,7 @@ $bioframe-margin: 15px;
                         
                     }
                     &:visited{
-                        border-width: 2px;
+                        border-width: 1px;
                         border-style: solid;
                         border-color: #eee;             // ADD TO COLOR SCHEME VARS
                         color: $white;
@@ -135,6 +140,9 @@ $bioframe-margin: 15px;
     
 } // END BIOFRAME
 
+.front .bioframe .webny_contact-bioframe .frame-headline {
+  font: $frame-headline-front;
+}
 
 // ######################################################################### //
 /* MOBILE VIEW */
@@ -194,7 +202,7 @@ $bioframe-margin: 15px;
             
             
             .frame-headline{
-                line-height: 2.5rem;
+                //line-height: 2.5rem;
             }
             
             .reslink{
