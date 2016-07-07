@@ -75,12 +75,10 @@
 
   <target name="deploy:commit">
     <!-- We make these commands quiet because they can cause the output to be so long that Travis CI stops logging. -->
-    <target name="deploy:artifact:commit">
       <exec command="git --git-dir=${deploy.dir}/.git --work-tree=${deploy.dir} add -A" dir="${deploy.dir}" logoutput="true" passthru="true"/>
       <exec command="git --git-dir=${deploy.dir}/.git --work-tree=${deploy.dir} add --force ${deploy.dir}/docroot/profiles/custom/webny/themes/custom/webny_theme/css" logoutput="true" passthru="true"/>
       <exec command="git --git-dir=${deploy.dir}/.git --work-tree=${deploy.dir} add --force ${deploy.dir}/docroot/profiles/custom/webny/themes/custom/webny_theme/styleguide" logoutput="true" passthru="true"/>
       <exec command="git --git-dir=${deploy.dir}/.git --work-tree=${deploy.dir} commit -m '${deploy.commitMsg}' --quiet" dir="${deploy.dir}" logoutput="true" passthru="true"/>
-    </target>
   </target>
 
   <target name="deploy:composer:install" description="Downloads core and contrib to deploy folder.">
@@ -118,6 +116,13 @@
 
     <!-- Use our own .gitignore -->
     <copy file="${repo.root}/build/core/files/.gitignore" tofile="${deploy.dir}/.gitignore" overwrite="true"/>
+
+    <!-- Ensure ACSF module is in deployment artifact. -->
+    <copy todir="${deploy.dir}/docroot" overwrite="true">
+      <fileset dir="${docroot}" defaultexcludes="false">
+        <include name="modules/contrib/acsf/**" />
+      </fileset>
+    </copy>
 
     <!-- Set sites/default back to 755 permissions. -->
     <!-- @todo Support multisite. -->
