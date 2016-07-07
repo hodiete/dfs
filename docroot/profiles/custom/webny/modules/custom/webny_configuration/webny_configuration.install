@@ -477,13 +477,13 @@ function webny_configuration_update_8039() {
 function webny_configuration_update_8040() {
 
   \Drupal::service('module_installer')
-      ->uninstall(['webny_text_editors']);
-  \Drupal::service('module_installer')
-      ->install(['webny_text_editors']);
-  \Drupal::service('module_installer')
       ->uninstall(['webny_text_formats']);
   \Drupal::service('module_installer')
       ->install(['webny_text_formats']);
+  \Drupal::service('module_installer')
+      ->uninstall(['webny_text_editors']);
+  \Drupal::service('module_installer')
+      ->install(['webny_text_editors']);
   \Drupal::service('module_installer')
       ->install(['webny_wysiwyg_frame']);
 }
