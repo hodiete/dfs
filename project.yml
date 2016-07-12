@@ -24,7 +24,7 @@ git:
   default_branch: develop
   remotes:
     # Defining git remotes allows builds deployed via CI.
-    - acsfdev@svn-15689.prod.hosting.acquia.com:acsfdev.git
+    - nysits@svn-43.enterprise-g1.hosting.acquia.com:nysits.git
 drush:
   aliases:
     # The remote environment from which the database will be pulled.
@@ -32,4 +32,4 @@ drush:
     # The local environment against which all local drush commands are run.
     local: self
 
-hosting: "ac"
+hosting: "acsf"

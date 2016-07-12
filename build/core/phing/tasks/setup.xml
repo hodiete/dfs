@@ -90,6 +90,13 @@
       </fileset>
     </chmod>
 
+    <!-- Grant execution permissions on files dir so that twig can create cache dirs. -->
+    <chmod mode="0777" failonerror="false">
+      <fileset dir="${docroot}/sites/default/files">
+        <include name="**" />
+      </fileset>
+    </chmod>
+
   </target>
 
   <target name="setup:git-hooks" description="Installs git hooks to local .git/hooks directory from version controlled scripts/git-hooks directory.">
