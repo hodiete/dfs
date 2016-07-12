@@ -1,6 +1,7 @@
 <?php
 
 namespace Drupal\webny_global_nav\Twig;
+
 /**
  * Class WebnyGlobalNavExtension extends \Twig_Extension.
  */
