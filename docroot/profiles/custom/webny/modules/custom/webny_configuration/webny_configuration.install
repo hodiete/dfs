@@ -488,3 +488,20 @@ function webny_configuration_update_8040() {
   \Drupal::service('module_installer')
       ->install(['webny_wysiwyg_frame']);
 }
+
+/**
+ * Implements hook_update_n().
+ *
+ * Re-installs featured card frame paragraph type & global nav module.
+ */
+function webny_configuration_update_8041() {
+
+  \Drupal::service('module_installer')
+      ->uninstall(['webny_paragraphs_types']);
+  \Drupal::service('module_installer')
+      ->install(['webny_paragraphs_types']);
+  \Drupal::service('module_installer')
+      ->uninstall(['webny_global_nav']);
+  \Drupal::service('module_installer')
+      ->install(['webny_global_nav']);
+}
