@@ -4,7 +4,6 @@ dependencies:
   config:
     - field.field.node.webny_news.body
     - field.field.node.webny_news.field_webny_news_agency_keywords
-    - field.field.node.webny_news.field_webny_news_attachment
     - field.field.node.webny_news.field_webny_news_attdocs_eref
     - field.field.node.webny_news.field_webny_news_contact_info
     - field.field.node.webny_news.field_webny_news_date
@@ -52,12 +51,6 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: entity_reference_autocomplete
-  field_webny_news_attachment:
-    weight: 13
-    settings:
-      progress_indicator: throbber
-    third_party_settings: {  }
-    type: file_generic
   field_webny_news_attdocs_eref:
     type: entity_reference_autocomplete
     weight: 21
