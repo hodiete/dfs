@@ -508,7 +508,7 @@ function webny_configuration_update_8041() {
 
 /**
  *
- * Deletes attachment field from innerpage content type
+ * Deletes attachment field from innerpage content type and news content type.
  */
 function webny_configuration_update_8042() {
   \Drupal::service('module_installer')
@@ -519,8 +519,4 @@ function webny_configuration_update_8042() {
     ->uninstall(['webny_news_content_type']);
   \Drupal::service('module_installer')
     ->install(['webny_news_content_type']);
-  /*$entity_type = 'webny_page';
-  $field_name = 'field_webny_page_attachment';
-  $field = FieldStorageConfig::loadByName($entity_type, $field_name);
-  $field->delete();*/
 }
