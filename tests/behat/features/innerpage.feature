@@ -19,7 +19,6 @@ Feature: Innerpage Tests
     Then I should see "Global Keywords"
     Then I should see "Agency Keywords"
     Then I should see "Paragraph Frame"
-    Then I should see "Attachment"
     Then I should see "Documents Section Title"
     Then I should see "Documents Section Sub Title"
     Then I should see "Attached Documents"
