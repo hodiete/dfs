@@ -12,7 +12,6 @@ Feature: Check for the existence and fields of content types
     And I should not get a 404 HTTP response
     Then I should see text matching "Agency Keywords"
     And I should see text matching "Attached Documents"
-    And I should see text matching "Attachment"
     And I should see text matching "Body"
     And I should see text matching "Contact Information"
     And I should see text matching "Date"

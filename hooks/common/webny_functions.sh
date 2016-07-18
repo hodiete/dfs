@@ -9,17 +9,17 @@
       endpoint="https://cloudapi.acquia.com/v1"
 
       case ${env} in
-        "dev" )
+        "01dev" )
               echo "Making backup of Database..."
               #drush @${drush_alias} ac-database-instance-backup acsfdevdev --endpoint=${endpoint} --email=${email} --key=${key}
               echo "Making any necessary Drupal database updates..."
-              drush @${drush_alias} --strict=0 updb -y
+              drush @${drush_alias} acsf-tools-ml --strict=0 updb -y
               echo "Importing CMI Config"
-              drush @${drush_alias} --strict=0 config-import --partial --source=/mnt/www/html/acsfdevdev/config/default -y
+              drush @${drush_alias} acsf-tools-ml --strict=0 config-import --partial --source=/mnt/www/html/nysits01dev/config/default -y
               echo "Reverting features"
-              drush @${drush_alias} --strict=0 fia -y
+              drush @${drush_alias}  acsf-tools-ml --strict=0 fia -y
               echo "Clearing caches..."
-              drush @${drush_alias} cr
+              drush @${drush_alias} acsf-tools-ml cr
               #echo "Clearing Varnish..."
               #drush @${drush_alias} ac-domain-purge acsfdevdev.prod.acquia-sites.com --endpoint=${endpoint} --email=${email} --key=${key}
               echo "Deployment script run for ${env}";;
@@ -27,17 +27,17 @@
       esac
 
       case ${env} in
-        "test" )
+        "01test" )
               echo "Making backup of Database..."
               #drush @${drush_alias} ac-database-instance-backup acsfdevstg --endpoint=${endpoint} --email=${email} --key=${key}
               echo "Making any necessary Drupal database updates..."
-              drush @${drush_alias} --strict=0 updb -y
+              drush @${drush_alias} acsf-tools-ml --strict=0 updb -y
               echo "Importing CMI Config"
-              drush @${drush_alias} --strict=0 config-import --partial --source=/mnt/www/html/acsfdevstg/config/default -y
+              drush @${drush_alias} acsf-tools-ml --strict=0 config-import --partial --source=/mnt/www/html/nysits01test/config/default -y
               echo "Reverting features"
-              drush @${drush_alias} --strict=0 fia -y
+              drush @${drush_alias} acsf-tools-ml --strict=0 fia -y
               echo "Clearing caches..."
-              drush @${drush_alias} cr
+              drush @${drush_alias} acsf-tools-ml cr
               #echo "Clearing Varnish..."
               #drush @${drush_alias} ac-domain-purge acsfdevstg.prod.acquia-sites.com --endpoint=${endpoint} --email=${email} --key=${key}
               echo "Deployment script run for ${env}";;
@@ -45,59 +45,19 @@
       esac
 
       case ${env} in
-        "prod" )
-              #echo "Setting site into maintenance_mode..."
-              #drush @${drush_alias} vset maintenance_mode 1
+        "01live" )
               echo "Making any necessary Drupal database updates..."
-              drush @${drush_alias} --strict=0 updb -y
+              drush @${drush_alias} acsf-tools-ml --strict=0 updb -y
               echo "Importing CMI Config"
-              drush @${drush_alias} --strict=0 config-import --partial --source=/mnt/www/html/acsfdev/config/default -y
+              drush @${drush_alias} acsf-tools-ml --strict=0 config-import --partial --source=/mnt/www/html/nysits01live/config/default -y
               echo "Reverting features"
-              drush @${drush_alias} --strict=0 fia -y
+              drush @${drush_alias} acsf-tools-ml --strict=0 fia -y
               echo "Clearing caches..."
-              drush @${drush_alias} cr
+              drush @${drush_alias} acsf-tools-ml cr
               echo "Clearing Varnish..."
-              drush @${drush_alias} ac-domain-purge acsfdev.prod.acquia-sites.com --endpoint=${endpoint} --email=${email} --key=${key}
+              #drush @${drush_alias}  ac-domain-purge acsf-tools-ml --endpoint=${endpoint} --email=${email} --key=${key}
               echo "Deployment script run for ${env}";;
           * )
       esac
-
-        case ${env} in
-          "demo" )
-                echo "Making backup of Database..."
-                #drush @${drush_alias} ac-database-instance-backup acsfdevdemo --endpoint=${endpoint} --email=${email} --key=${key}
-                echo "Making any necessary Drupal database updates..."
-                drush @${drush_alias} --strict=0 updb -y
-                echo "Importing CMI Config"
-                drush @${drush_alias} --strict=0 config-import --partial --source=/mnt/www/html/acsfdevdemo/config/default -y
-                echo "Reverting features"
-                drush @${drush_alias} --strict=0 fia -y
-                echo "Clearing caches..."
-                drush @${drush_alias} cr
-                #echo "Clearing Varnish..."
-                #drush @${drush_alias} ac-domain-purge acsfdevdemo.prod.acquia-sites.com --endpoint=${endpoint} --email=${email} --key=${key}
-                echo "Deployment script run for ${env}";;
-            * )
-        esac
-
-          case ${env} in
-            "uat" )
-                  echo "Making backup of Database..."
-                  #drush @${drush_alias} ac-database-instance-backup acsfdevuat --endpoint=${endpoint} --email=${email} --key=${key}
-                  echo "Making any necessary Drupal database updates..."
-                  drush @${drush_alias} --strict=0 updb -y
-                  echo "Importing CMI Config"
-                  drush @${drush_alias} --strict=0 config-import --partial --source=/mnt/www/html/acsfdevuat/config/default -y
-                  echo "Reverting features"
-                  drush @${drush_alias} --strict=0 fia -y
-                  echo "Clearing caches..."
-                  drush @${drush_alias} cr
-                  #echo "Clearing Varnish..."
-                  #drush @${drush_alias} ac-domain-purge acsfdevuat.prod.acquia-sites.com --endpoint=${endpoint} --email=${email} --key=${key}
-                  echo "Deployment script run for ${env}";;
-              * )
-          esac
-
-
 
     }
