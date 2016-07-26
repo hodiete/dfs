@@ -17,8 +17,8 @@ class GitTasksTest extends TestBase {
     $this->assertFileExists($this->projectDirectory . '/.git/hooks/commit-msg');
     $this->assertFileExists($this->projectDirectory . '/.git/hooks/pre-commit');
     $this->assertNotContains(
-      '${project.prefix}',
-      file_get_contents($this->projectDirectory . '/.git/hooks/commit-msg')
+        '${project.prefix}',
+        file_get_contents($this->projectDirectory . '/.git/hooks/commit-msg')
     );
   }
 
@@ -44,16 +44,16 @@ class GitTasksTest extends TestBase {
   public function providerTestGitHookCommitMsg() {
     $prefix = $this->config['project']['prefix'];
     return array(
-      array(FALSE, "This is a bad commit.", 'Missing prefix and ticket number.'),
-      array(FALSE, "123: This is a bad commit.", 'Missing project prefix.'),
-      array(FALSE, "{$prefix}: This is a bad commit.", 'Missing ticket number.'),
-      array(FALSE, "{$prefix}-123 This is a bad commit.", 'Missing colon.'),
-      array(FALSE, "{$prefix}-123: This is a bad commit", 'Missing period.'),
-      array(FALSE, "{$prefix}-123: Hello.", 'Too short.'),
-      array(FALSE, "NOT-123: This is a bad commit.", 'Wrong project prefix.'),
-      array(TRUE, "{$prefix}-123: This is a good commit.", 'Good commit.'),
-      array(TRUE, "{$prefix}-123: This is an exceptionally long--seriously, really, really, REALLY long, but still good commit.", 'Long good commit.',
-      ),
+        array(FALSE, "This is a bad commit.", 'Missing prefix and ticket number.'),
+        array(FALSE, "123: This is a bad commit.", 'Missing project prefix.'),
+        array(FALSE, "{$prefix}: This is a bad commit.", 'Missing ticket number.'),
+        array(FALSE, "{$prefix}-123 This is a bad commit.", 'Missing colon.'),
+        array(FALSE, "{$prefix}-123: This is a bad commit", 'Missing period.'),
+        array(FALSE, "{$prefix}-123: Hello.", 'Too short.'),
+        array(FALSE, "NOT-123: This is a bad commit.", 'Wrong project prefix.'),
+        array(TRUE, "{$prefix}-123: This is a good commit.", 'Good commit.'),
+        array(TRUE, "{$prefix}-123: This is an exceptionally long--seriously, really, really, REALLY long, but still good commit.", 'Long good commit.',
+        ),
     );
   }
 
@@ -87,13 +87,11 @@ class GitTasksTest extends TestBase {
     chdir($this->projectDirectory);
 
     // "2>&1" redirects standard error output to standard output.
-    $command = "git commit --amend -m '$commit_message' 2>&1";
+    $command = "mkdir -p {$this->projectDirectory}/tmp && echo '$commit_message' > {$this->projectDirectory}/tmp/blt_commit_msg && {$this->projectDirectory}/.git/hooks/commit-msg {$this->projectDirectory}/tmp/blt_commit_msg 2>&1";
     print "Executing \"$command\" \n";
 
-    $output = shell_exec($command);
-    $invalid_commit_text = 'Invalid commit message';
-    $output_contains_invalid_commit_text = (bool) strstr($output, $invalid_commit_text);
-    $this->assertNotSame($is_valid, $output_contains_invalid_commit_text, $message);
+    exec($command, $output, $return);
+    $this->assertNotSame($is_valid, (bool) $return, $message);
   }
 
 }
