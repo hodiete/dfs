@@ -534,7 +534,7 @@ function webny_configuration_update_8043() {
     \Drupal::service('module_installer')
       ->install(['webny_news_content_type']);
 
-    // REMOVE FIELDS
+    // REMOVE FIELDS AND DEPENDENCIES FROM ACSF DEV
         $properties[0] = array(
              'entity_type' => 'node',
              'bundle' => 'webny_news',
@@ -549,7 +549,7 @@ function webny_configuration_update_8043() {
               'include_deleted' => TRUE,
           );
 
-         echo "Size of properties: " . sizeof($properties);
+         echo "Number of properties: " . sizeof($properties);
 
          foreach ($properties as $prop){
 
