@@ -96,7 +96,7 @@
                       {% for num in node.label|length..0 %}
                           {% if (num < 65 and  node.label|slice(num)|first == ' ' and ws != false) %}
                               {% set ws = false %}
-                              {{ node.label[:num] ~ ' ...' }}
+                              {{ node.label[:num] ~ '...' }}
                           {% endif %}
                       {% endfor %}
 

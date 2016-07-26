@@ -23,7 +23,7 @@
                     {% for num in node.label|length..0 %}
                         {% if (num < 65 and  node.label|slice(num)|first == ' ' and ws != false) %}
                             {% set ws = false %}
-                            <h4>{{ node.label[:num] ~ ' ...' }}</h4>
+                            <h4>{{ node.label[:num] ~ '...' }}</h4>
                         {% endif %}
                     {% endfor %}
 
