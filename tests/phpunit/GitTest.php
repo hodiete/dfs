@@ -44,9 +44,15 @@ class GitTasksTest extends TestBase {
   public function providerTestGitHookCommitMsg() {
     $prefix = $this->config['project']['prefix'];
     return array(
-        array(FALSE, "This is a bad commit.", 'Missing prefix and ticket number.'),
-        array(FALSE, "123: This is a bad commit.", 'Missing project prefix.'),
-        array(FALSE, "{$prefix}: This is a bad commit.", 'Missing ticket number.'),
+        array(FALSE, "This is a bad commit.",
+          'Missing prefix and ticket number.',
+        ),
+        array(FALSE, "123: This is a bad commit.",
+          'Missing project prefix.',
+        ),
+        array(FALSE, "{$prefix}: This is a bad commit.",
+          'Missing ticket number.',
+        ),
         array(FALSE, "{$prefix}-123 This is a bad commit.", 'Missing colon.'),
         array(FALSE, "{$prefix}-123: This is a bad commit", 'Missing period.'),
         array(FALSE, "{$prefix}-123: Hello.", 'Too short.'),
