@@ -7,6 +7,7 @@ dependencies:
     - field.field.node.webny_news.field_webny_news_attdocs_eref
     - field.field.node.webny_news.field_webny_news_contact_info
     - field.field.node.webny_news.field_webny_news_date
+    - field.field.node.webny_news.field_webny_news_description
     - field.field.node.webny_news.field_webny_news_docsec_subtitle
     - field.field.node.webny_news.field_webny_news_docsec_title
     - field.field.node.webny_news.field_webny_news_global_keywords
@@ -14,14 +15,12 @@ dependencies:
     - field.field.node.webny_news.field_webny_news_location
     - field.field.node.webny_news.field_webny_news_paragraph
     - field.field.node.webny_news.field_webny_news_short_title
-    - field.field.node.webny_news.field_webny_news_sub_title
     - field.field.node.webny_news.field_webny_news_subject_heading
-    - field.field.node.webny_news.field_webny_news_teaser
+    - field.field.node.webny_news.field_webny_news_subtitles
     - node.type.webny_news
   module:
     - datetime
     - entity_reference_revisions
-    - file
     - text
     - user
 id: node.webny_news.default
@@ -32,11 +31,11 @@ content:
   body:
     label: hidden
     type: text_default
-    weight: 3
+    weight: 4
     settings: {  }
     third_party_settings: {  }
   field_webny_news_agency_keywords:
-    weight: 12
+    weight: 10
     label: hidden
     settings:
       link: true
@@ -44,14 +43,14 @@ content:
     type: entity_reference_label
   field_webny_news_attdocs_eref:
     type: entity_reference_entity_view
-    weight: 16
+    weight: 14
     label: hidden
     settings:
       view_mode: attached_documents
       link: false
     third_party_settings: {  }
   field_webny_news_contact_info:
-    weight: 9
+    weight: 7
     label: hidden
     settings:
       link: true
@@ -59,7 +58,7 @@ content:
     third_party_settings: {  }
     type: entity_reference_entity_view
   field_webny_news_date:
-    weight: 10
+    weight: 8
     label: hidden
     settings:
       timezone_override: ''
@@ -68,20 +67,20 @@ content:
     type: datetime_custom
   field_webny_news_docsec_subtitle:
     type: string
-    weight: 15
+    weight: 13
     label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
   field_webny_news_docsec_title:
     type: string
-    weight: 14
+    weight: 12
     label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
   field_webny_news_global_keywords:
-    weight: 11
+    weight: 9
     label: hidden
     settings:
       link: true
@@ -96,25 +95,19 @@ content:
     third_party_settings: {  }
     type: entity_reference_entity_view
   field_webny_news_location:
-    weight: 7
+    weight: 6
     label: hidden
     settings: {  }
     third_party_settings: {  }
     type: text_default
   field_webny_news_paragraph:
     type: entity_reference_revisions_entity_view
-    weight: 13
-    label: above
+    weight: 11
+    label: hidden
     settings:
       view_mode: default
       link: ''
     third_party_settings: {  }
-  field_webny_news_sub_title:
-    weight: 6
-    label: hidden
-    settings: {  }
-    third_party_settings: {  }
-    type: text_default
   field_webny_news_subject_heading:
     weight: 5
     label: hidden
@@ -122,8 +115,8 @@ content:
       link: true
     third_party_settings: {  }
     type: entity_reference_label
-  field_webny_news_teaser:
-    weight: 4
+  field_webny_news_subtitles:
+    weight: 3
     label: hidden
     settings: {  }
     third_party_settings: {  }
@@ -137,4 +130,5 @@ content:
     settings: {  }
     third_party_settings: {  }
 hidden:
+  field_webny_news_description: true
   field_webny_news_short_title: true

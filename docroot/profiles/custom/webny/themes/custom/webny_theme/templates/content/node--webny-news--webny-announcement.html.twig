@@ -24,7 +24,7 @@
                     {% for num in node.label|length..0 %}
                         {% if (num < 65 and  node.label|slice(num)|first == ' ' and ws != false) %}
                             {% set ws = false %}
-                            <h4>{{ node.label[:num] ~ ' ...' }}</h4>
+                            <h4>{{ node.label[:num] ~ '...' }}</h4>
                         {% endif %}
                     {% endfor %}
 
@@ -34,7 +34,11 @@
                     {{ node.field_webny_news_date.value|date("F j, Y") }} 
                 </div>
                 <div class="announcement-summary">
-                    {{ node.field_webny_news_teaser.value|striptags }} 
+                    {% if node.field_webny_news_description.value is not empty and node.field_webny_news_description.value is not null %}
+                        {{ content.field_webny_news_description }}
+                    {%  else %}
+                        {{ content.body }}
+                    {% endif %}
                 </div>
             </div>
             <div class="webny-announcement-button">

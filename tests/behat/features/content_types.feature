@@ -23,8 +23,8 @@ Feature: Check for the existence and fields of content types
     And I should see text matching "Paragraph Frame"
     And I should see text matching "Subject Heading"
 	And I should see text matching "Short Title"
-    And I should see text matching "Sub Title"
-    And I should see text matching "Teaser Text"
+    And I should see text matching "Sub Titles"
+    And I should see text matching "Summary / Description"
     
 # Check for the existence of a content type
 # CONTENT TYPE: News
