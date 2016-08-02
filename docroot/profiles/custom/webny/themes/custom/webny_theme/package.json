@@ -38,10 +38,16 @@
   "private": true,
   "//": "The postinstall script is needed to work-around this Drupal core bug: https://www.drupal.org/node/2329453",
   "scripts": {
-    "install-webny_theme" : "npm install && bower install;",
+    "install-webny_theme": "npm install && bower install;",
     "postinstall": "find node_modules/ -name '*.info' -type f -delete",
-    "uninstall-webny_theme" : "rm -r node_modules && rm -r bower_components;",
+    "uninstall-webny_theme": "rm -r node_modules && rm -r bower_components;",
     "build": "gulp",
     "watch": "gulp watch"
+  },
+  "dependencies": {
+    "breakpoint-sass": "^2.7.0",
+    "chroma": "0.0.1",
+    "susy": "^2.2.12",
+    "typey": "^1.0.3"
   }
 }
