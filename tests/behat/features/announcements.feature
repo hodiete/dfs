@@ -13,7 +13,7 @@ Feature: Announcement Highlight Paragraph Tests
     Then I should see "Announcement Title"
     And I should see "Announcement Headline"
     And I should see text matching "Announcement Entity Reference"
-    And I should see the heading "Paragraph Frame"
+    And I should see the heading "Frames of Content"
 
 # Display modes checks
   Scenario: Check the display modes to see if Announcement display exists
