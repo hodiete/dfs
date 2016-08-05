@@ -4,14 +4,20 @@ dependencies:
   config:
     - field.storage.node.field_webny_landing_paragraph
     - node.type.webny_landing_page
+    - paragraphs.paragraphs_type.webny_announcement_pgtype
+    - paragraphs.paragraphs_type.webny_bio_pgtype
+    - paragraphs.paragraphs_type.webny_card_paragraph_type
+    - paragraphs.paragraphs_type.webny_get_involved_pgtype
+    - paragraphs.paragraphs_type.webny_summary_pgtype
+    - paragraphs.paragraphs_type.webny_wysiwyg_pgtype
   module:
     - entity_reference_revisions
 id: node.webny_landing_page.field_webny_landing_paragraph
 field_name: field_webny_landing_paragraph
 entity_type: node
 bundle: webny_landing_page
-label: 'Paragraph Frame'
-description: 'Select the frame you would like to display.'
+label: 'Frames of Content'
+description: 'Select the frame(s) you would like to display. You can have multiple frames and arrange them in the order you desire.'
 required: false
 translatable: false
 default_value: {  }
@@ -23,17 +29,26 @@ settings:
       webny_card_paragraph_type: webny_card_paragraph_type
       webny_announcement_pgtype: webny_announcement_pgtype
       webny_bio_pgtype: webny_bio_pgtype
+      webny_summary_pgtype: webny_summary_pgtype
+      webny_get_involved_pgtype: webny_get_involved_pgtype
+      webny_wysiwyg_pgtype: webny_wysiwyg_pgtype
     target_bundles_drag_drop:
       webny_card_paragraph_type:
-        enabled: true
         weight: 2
+        enabled: false
       webny_announcement_pgtype:
-        enabled: true
         weight: 3
+        enabled: false
       webny_bio_pgtype:
-        enabled: true
         weight: 6
+        enabled: false
       webny_summary_pgtype:
         weight: 8
+        enabled: false
+      webny_get_involved_pgtype:
+        weight: 10
+        enabled: false
+      webny_wysiwyg_pgtype:
+        weight: 12
         enabled: false
 field_type: entity_reference_revisions

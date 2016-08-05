@@ -3,14 +3,15 @@ status: true
 dependencies:
   module:
     - node
-    - text
-id: node.field_webny_landing_subtitle
-field_name: field_webny_landing_subtitle
+id: node.field_webny_landing_hero_title
+field_name: field_webny_landing_hero_title
 entity_type: node
-type: text
+type: string
 settings:
-  max_length: 200
-module: text
+  max_length: 60
+  is_ascii: false
+  case_sensitive: false
+module: core
 locked: false
 cardinality: 1
 translatable: true

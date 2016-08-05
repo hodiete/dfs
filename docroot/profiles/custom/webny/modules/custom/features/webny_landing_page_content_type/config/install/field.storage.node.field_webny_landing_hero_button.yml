@@ -2,14 +2,14 @@ langcode: en
 status: true
 dependencies:
   module:
+    - link
     - node
-    - text
-id: node.field_webny_landing_summary
-field_name: field_webny_landing_summary
+id: node.field_webny_landing_hero_button
+field_name: field_webny_landing_hero_button
 entity_type: node
-type: text_long
+type: link
 settings: {  }
-module: text
+module: link
 locked: false
 cardinality: 1
 translatable: true
