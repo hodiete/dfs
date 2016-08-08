@@ -74,8 +74,10 @@ $hero-keyword-text-color: $white !default;
  .hero-landing-inner{
      // margin: 60px 56px;
     padding: 40px 8%;
+    position: relative;
+    z-index: 3;
      .hero-has-image {
-       position: relative;
+       //position: relative;
      }
   }
 
@@ -241,9 +243,10 @@ $hero-keyword-text-color: $white !default;
   }
     
   h1,h2{
-    font-size: 46px;
+    font-size: 48px;
     line-height: 60px;
     color: $white; 
+    font-weight: 800;
   }
     
   .hero-summary{
