@@ -60,16 +60,22 @@ $hero-keyword-text-color: $white !default;
 
   
   .hero-inner{
-      width: 100%;
+      // width: 100%;
   }    
-    
+  
+  // 8/8/16 we might want to bring this more in line with the landing page and ipage
+  // plus, why can't they all use the same class?  
   .hero-news-inner{
       margin: 60px 20px;
   }
   
  .hero-ipage-inner,   
  .hero-landing-inner{
-      margin: 60px 56px;
+     // margin: 60px 56px;
+    padding: 40px 8%;
+     .hero-has-image {
+       position: relative;
+     }
   }
 
   .hero-header{
@@ -129,18 +135,22 @@ $hero-keyword-text-color: $white !default;
   }
 
   .hero-keywords {
-
    /* height: 3em;
     margin-right: 5px;
     position: relative;
     position: relative;
-    z-index: 3;
-    margin-top: 40px;*/
+    z-index: 3; */
+    margin-top: 40px;
   }
 
+//used only on inner pages currently
   .hero-keywords > div > div{
     display: inline-block;
   }
+//used on landing pages
+.hero-keywords div {
+  display:inline-block
+}
 
 
  .hero-keywords a {
