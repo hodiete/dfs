@@ -98,8 +98,8 @@ $title-bar-sub-title-color: $color-secondary !default;
 /* LANDING TITLE SECTION */
 
 .landing-title-area{
-  width: 100%;
   background: $title-bar-bkgd-color none repeat scroll 0 0;
+  padding: 20px 8%;
 
   .landing-title h1{
     font-size: 24px;
@@ -152,12 +152,20 @@ $title-bar-sub-title-color: $color-secondary !default;
   }
  }   
 @media (min-width: 48em) {
+  .landing-title-area > div{
+    display: inline-block;
+}
   .landing-title-area{
     padding: 0 2%;
   
 
   .landing-title h1{
       font-size: 52px;
+    }
+
+  .landing-subtitle{
+      visibility: visible;
+      display: inline-block;
     }
   }
 }
@@ -195,11 +203,7 @@ $title-bar-sub-title-color: $color-secondary !default;
       //margin-right: -40px;
     }
 
-    .landing-subtitle{
-      visibility: visible;
-      display: inline-block;
-    }
-
+    
 }
 
 }
