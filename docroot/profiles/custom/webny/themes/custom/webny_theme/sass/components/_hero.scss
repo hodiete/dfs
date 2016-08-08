@@ -57,7 +57,7 @@ $hero-keyword-text-color: $white !default;
 // ========================================================================= //
 /* HERO LAYOUT */
 .hero-layout {
-
+  position: relative;
   
   .hero-inner{
       // width: 100%;
@@ -76,9 +76,7 @@ $hero-keyword-text-color: $white !default;
     padding: 40px 8%;
     position: relative;
     z-index: 3;
-     .hero-has-image {
-       //position: relative;
-     }
+    background-color: black;
   }
 
   .hero-header{
@@ -239,7 +237,10 @@ $hero-keyword-text-color: $white !default;
       width: 85%;
       margin: 60px 0 0 0;
       padding: 0 2%;
-
+      position: absolute;
+    top: 0;
+    left: 0;
+    background: none;
   }
     
   h1,h2{
@@ -273,10 +274,11 @@ $hero-keyword-text-color: $white !default;
     .hero-inner{
       width: 60%;
       padding: 0 4%;
+
   }
 
   .hero-has-image {
-    min-height: 510px
+    min-height: 510px;
   }
     
   .hero-news {
