@@ -37,9 +37,9 @@
 <article {{ attributes.addClass('hero-layout') }}>
     
     {% if hero_image == '/' %}
-    <header class="hero-header hero-no-image hero-landing" style="">
+    <div class="hero-header hero-no-image hero-landing" style="">
     {% else %}
-    <header class="hero-header hero-has-image hero-landing" style="background-image:url('{{ hero_image }}')">
+    <div class="hero-header hero-has-image hero-landing" style="background-image:url('{{ hero_image }}')">
     {% endif %}
         
         <!-- BACKGROUND GRAD -->
@@ -65,7 +65,7 @@
             
         </div>    
             
-    </header>
+    </div>
 
 </article>
 

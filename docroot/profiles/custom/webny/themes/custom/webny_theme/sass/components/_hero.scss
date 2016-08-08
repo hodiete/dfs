@@ -130,19 +130,39 @@ $hero-keyword-text-color: $white !default;
 
   .hero-keywords {
 
-    height: 3em;
+   /* height: 3em;
     margin-right: 5px;
     position: relative;
     position: relative;
     z-index: 3;
-    margin-top: 40px;
+    margin-top: 40px;*/
   }
 
   .hero-keywords > div > div{
     display: inline-block;
   }
 
-  .hero-keywords a {
+
+ .hero-keywords a {
+   font: 13px/4 "proxima nova";
+   color: #ffffff;
+   cursor: pointer;
+   text-decoration: none;
+   display:inline-block;
+   background: transparent;
+   border: 1px solid rgba(255,255,255,0.7);
+   text-align: center;
+   padding: 0 20px;
+   letter-spacing: 2px;
+   text-transform: uppercase;
+  // min-width: 200px;
+    &:hover {
+     border: 1px solid #fff;
+     background-color: rgba(0,0,0,0.8)
+   }
+ }
+
+  /*.hero-keywords a {
     background-color: $hero-keyword-bkgd-color;
     font-family: "Oswald";
     font-weight: bold;
@@ -157,7 +177,7 @@ $hero-keyword-text-color: $white !default;
     &:hover {
       background-color: $hero-keyword-hover-bkgd-color;
     }
-  }
+  } */
     
   .hero-summary{
     font-size: 1em;
