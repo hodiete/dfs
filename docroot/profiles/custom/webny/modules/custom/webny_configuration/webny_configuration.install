@@ -627,7 +627,8 @@ function webny_configuration_update_8044() {
  *
  * Adds moderation for document content type and content content type.
  */
-function webny_configuration_update_8045() {
+function webny_configuration_update_8045()
+{
   \Drupal::service('module_installer')
       ->uninstall(['webny_contact_content_type']);
   \Drupal::service('module_installer')
@@ -636,4 +637,16 @@ function webny_configuration_update_8045() {
       ->uninstall(['webny_document_content_type']);
   \Drupal::service('module_installer')
       ->install(['webny_document_content_type']);
+}
+  
+/**
+ * Implements hook_update_n().
+ *
+ * Enable WebNY Landing Page Content Type feature.
+ */
+function webny_configuration_update_8046() {
+  \Drupal::service('module_installer')
+    ->uninstall(['webny_landing_page_content_type']);
+  \Drupal::service('module_installer')
+    ->install(['webny_landing_page_content_type']);
 }
