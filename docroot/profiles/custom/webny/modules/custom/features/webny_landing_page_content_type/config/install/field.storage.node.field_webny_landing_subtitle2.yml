@@ -4,11 +4,12 @@ dependencies:
   module:
     - node
     - text
-id: node.field_webny_landing_summary
-field_name: field_webny_landing_summary
+id: node.field_webny_landing_subtitle2
+field_name: field_webny_landing_subtitle2
 entity_type: node
-type: text_long
-settings: {  }
+type: text
+settings:
+  max_length: 200
 module: text
 locked: false
 cardinality: 1
