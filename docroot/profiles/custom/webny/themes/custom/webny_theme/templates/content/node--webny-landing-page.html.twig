@@ -33,6 +33,8 @@
 
 </div>
 
+<!-- Logic to Display or Not to Display the Hero section -->
+{% if node.field_webny_landing_hero_toggle.value == 1 %}
 
 <article {{ attributes.addClass('hero-layout') }}>
     
@@ -73,6 +75,8 @@
 
 
 </article>
+
+{% endif %}
 
 <div class="page-paragraphs landing-paragraphs">
     <div class="page-paragraphs-in">
