@@ -33,11 +33,10 @@
 
 </div>
 
+<!-- Logic to Display or Not to Display the Hero section -->
+{% if node.field_webny_landing_hero_toggle.value == 1 %}
 
 <article {{ attributes.addClass('hero-layout') }}>
-
-    <!-- Logic to Display or Not to Display the Hero section -->
-    {% if node.field_webny_landing_hero_toggle.value == 1 %}
     
     {% if hero_image == '/' %}
     <div class="hero-header hero-no-image hero-landing" style="">
