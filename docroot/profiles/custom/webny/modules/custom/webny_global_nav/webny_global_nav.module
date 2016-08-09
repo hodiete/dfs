@@ -16,8 +16,8 @@ use Drupal\Core\Routing\RouteMatchInterface;
 function webny_global_nav_help($route_name, RouteMatchInterface $route_match) {
 
   switch ($route_name) {
-    case 'help.page.webny_global_nav':
-      return t('Integrate webny Global Navigation onto your Drupal site.');
+    case 'help.page.Webny_global_nav':
+      return t('Integrate Webny Global Navigation onto your Drupal site.');
   }
 }
 
@@ -133,8 +133,8 @@ function webny_global_nav_library_info_alter(array &$libraries, $extension) {
       ],
     ],
     'js' => [
-      'js/webny-global-nav-header.js' => [],
-            // 'js/drupal-webny-global-nav-header.js' => [],.
+      'js/webny-global-nav-header.min.js' => [],
+            // 'js/drupal-webny-global-nav-header.min.js' => [],.
     ],
         /*'dependencies' => [
             'core/jquery'
