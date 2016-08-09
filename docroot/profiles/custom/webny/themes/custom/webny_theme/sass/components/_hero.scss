@@ -52,6 +52,7 @@ $hero-keyword-text-color: $white !default;
 
 .hero-no-image{
   background-color: $hero-bkgd-color;
+  height: 385px;
 }
 
 // ========================================================================= //
@@ -74,9 +75,15 @@ $hero-keyword-text-color: $white !default;
  .hero-landing-inner{
      // margin: 60px 56px;
     padding: 40px 8%;
-    position: relative;
-    z-index: 3;
-    background-color: black;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: none;
+    &.hero-has-image-content {
+      position: relative;
+      z-index: 3;
+      background-color: black;
+     }
   }
 
   .hero-header{
@@ -228,6 +235,16 @@ $hero-keyword-text-color: $white !default;
     margin: 0 20px 0 0;
   }
 
+  .hero-ipage-inner,   
+  .hero-landing-inner{
+    &.hero-has-image-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: none;
+    }
+ }
+
   .hero-ipage,    
   .hero-landing {
     min-height: 385px;
@@ -237,10 +254,6 @@ $hero-keyword-text-color: $white !default;
       width: 85%;
       margin: 60px 0 0 0;
       padding: 0 2%;
-      position: absolute;
-    top: 0;
-    left: 0;
-    background: none;
   }
     
   h1,h2{
