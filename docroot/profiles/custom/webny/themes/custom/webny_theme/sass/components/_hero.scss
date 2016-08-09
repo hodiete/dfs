@@ -174,7 +174,7 @@ $hero-keyword-text-color: $white !default;
    padding: 0 20px;
    letter-spacing: 2px;
    text-transform: uppercase;
-   min-width: 200px;
+   min-width: 300px;
     &:hover {
      border: 1px solid #fff;
      background-color: rgba(0,0,0,0.8)
@@ -224,7 +224,9 @@ $hero-keyword-text-color: $white !default;
 @media (min-width: 48em) {
 
 .hero-layout {
-
+  .hero-keywords a {
+    min-width: 200px;
+  }
   //used only on inner pages currently
     .hero-keywords > div > div{
       display: inline-block;
