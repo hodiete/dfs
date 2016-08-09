@@ -621,3 +621,19 @@ function webny_configuration_update_8044() {
 
   }
 }
+
+/**
+ * Implements hook_update_n().
+ *
+ * Adds moderation for document content type and content content type.
+ */
+function webny_configuration_update_8045() {
+  \Drupal::service('module_installer')
+      ->uninstall(['webny_contact_content_type']);
+  \Drupal::service('module_installer')
+      ->install(['webny_contact_content_type']);
+  \Drupal::service('module_installer')
+      ->uninstall(['webny_document_content_type']);
+  \Drupal::service('module_installer')
+      ->install(['webny_document_content_type']);
+}
