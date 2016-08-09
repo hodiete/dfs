@@ -8,6 +8,7 @@ dependencies:
     - field.field.node.webny_landing_page.field_webny_landing_hero_button2
     - field.field.node.webny_landing_page.field_webny_landing_hero_image
     - field.field.node.webny_landing_page.field_webny_landing_hero_title
+    - field.field.node.webny_landing_page.field_webny_landing_hero_toggle
     - field.field.node.webny_landing_page.field_webny_landing_paragraph
     - field.field.node.webny_landing_page.field_webny_landing_short_title
     - field.field.node.webny_landing_page.field_webny_landing_subtitle2
@@ -29,7 +30,7 @@ third_party_settings:
         - field_webny_landing_hero_button
         - field_webny_landing_hero_button2
       parent_name: ''
-      weight: 4
+      weight: 5
       label: 'Hero fields'
       format_type: fieldset
       format_settings:
@@ -44,11 +45,11 @@ mode: default
 content:
   created:
     type: datetime_timestamp
-    weight: 9
+    weight: 10
     settings: {  }
     third_party_settings: {  }
   field_webny_landing_agency_key:
-    weight: 7
+    weight: 8
     settings:
       match_operator: CONTAINS
       size: 60
@@ -56,7 +57,7 @@ content:
     third_party_settings: {  }
     type: entity_reference_autocomplete
   field_webny_landing_global_key:
-    weight: 6
+    weight: 7
     settings:
       match_operator: CONTAINS
       size: 60
@@ -92,9 +93,14 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
+  field_webny_landing_hero_toggle:
+    weight: 4
+    settings: {  }
+    third_party_settings: {  }
+    type: options_buttons
   field_webny_landing_paragraph:
     type: entity_reference_paragraphs
-    weight: 5
+    weight: 6
     settings:
       title: Paragraph
       title_plural: Paragraphs
@@ -125,20 +131,20 @@ content:
     type: text_textfield
   path:
     type: path
-    weight: 12
+    weight: 13
     settings: {  }
     third_party_settings: {  }
   promote:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 10
+    weight: 11
     third_party_settings: {  }
   sticky:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 11
+    weight: 12
     third_party_settings: {  }
   title:
     type: string_textfield
@@ -149,7 +155,7 @@ content:
     third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete
-    weight: 8
+    weight: 9
     settings:
       match_operator: CONTAINS
       size: 60
