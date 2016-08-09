@@ -7,7 +7,7 @@ $ = jQuery;
 
 // NUMERIC VALUES
 var maxDesktop          = 1024; // WEBNY STANDARD
-var maxMob              = 768;
+// var maxMob              = 768; // IF STYLES NEEDED UNDER 768 for mobile
 var startBrowserWidth  = window.innerWidth;
 
 // MENU OBJECTS -- OBTAIN ALL DOM ELEMENTS / OBJECTS
@@ -86,7 +86,7 @@ function mobile_mode(){
     // ADD HASH TO THOSE ELEMENTS WITH CHILDREN
     $.each($('.'+_gnavitems), function (i,v) {
         if($(this).children().last().hasClass(_gnav_items_ul )){
-            $(this).children().first().attr('href','#')
+            $(this).children().first().attr('href','#');
         }
     });
 
@@ -125,8 +125,7 @@ function mobile_mode(){
         } else {
 
             // LI HAS UL/LI CHILDREN -- IF NOT DO NOTHING
-            if($(this).children().last().hasClass('gnav-items-ul')
-                && running != true) {
+            if($(this).children().last().hasClass('gnav-items-ul') && running !== true) {
                 e.preventDefault();
                 e.stopPropagation();
 
@@ -200,7 +199,7 @@ function responsiveNav(){
  *                         and classes to add
  */
 function addClasses(cl){
-    for (i=0;i<cl.length;++i){
+    for (var i=0;i<cl.length;++i){
         $(cl[i][0]).addClass(cl[i][1]);
     }
 }
