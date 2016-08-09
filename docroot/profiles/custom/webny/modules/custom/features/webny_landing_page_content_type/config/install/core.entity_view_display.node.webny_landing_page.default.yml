@@ -27,23 +27,47 @@ content:
     weight: 4
     label: hidden
     settings:
-      trim_length: 80
+      trim_length: 19
       url_only: false
       url_plain: false
-      rel: ''
-      target: ''
-    third_party_settings: {  }
+      rel: '0'
+      target: '0'
+    third_party_settings:
+      linked_field:
+        type: field
+        destination:
+          field: ''
+          custom: ''
+        advanced:
+          title: ''
+          target: ''
+          class: ''
+          rel: ''
+          text: ''
+        linked: 0
     type: link
   field_webny_landing_hero_button2:
     weight: 5
     label: hidden
     settings:
-      trim_length: 80
+      trim_length: 19
       url_only: false
       url_plain: false
-      rel: ''
-      target: ''
-    third_party_settings: {  }
+      rel: '0'
+      target: '0'
+    third_party_settings:
+      linked_field:
+        type: field
+        destination:
+          field: ''
+          custom: ''
+        advanced:
+          title: ''
+          target: ''
+          class: ''
+          rel: ''
+          text: ''
+        linked: 0
     type: link
   field_webny_landing_hero_image:
     type: entity_reference_entity_view
@@ -76,7 +100,7 @@ content:
     type: text_default
   field_webny_landing_summary2:
     weight: 7
-    label: above
+    label: hidden
     settings: {  }
     third_party_settings: {  }
     type: text_default
