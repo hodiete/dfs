@@ -10,13 +10,10 @@ dependencies:
     - field.field.node.webny_page.field_webny_page_docsec_title
     - field.field.node.webny_page.field_webny_page_global_keywords
     - field.field.node.webny_page.field_webny_page_image
-    - field.field.node.webny_page.field_webny_page_paragraph
     - field.field.node.webny_page.field_webny_page_short_title
     - field.field.node.webny_page.field_webny_page_sub_title
     - node.type.webny_page
   module:
-    - entity_reference_revisions
-    - file
     - text
     - user
 id: node.webny_page.default
@@ -80,14 +77,6 @@ content:
       view_mode: default
     third_party_settings: {  }
     type: entity_reference_entity_view
-  field_webny_page_paragraph:
-    type: entity_reference_revisions_entity_view
-    weight: 9
-    label: above
-    settings:
-      view_mode: default
-      link: ''
-    third_party_settings: {  }
   field_webny_page_sub_title:
     weight: 4
     label: hidden

@@ -649,3 +649,58 @@ function webny_configuration_update_8046() {
   \Drupal::service('module_installer')
       ->install(['webny_document_content_type']);
 }
+
+/**
+ * Implements hook_update_n().
+ *
+ * Refreshes landing page, Deletes fields paragraph for news and inner page.
+ */
+function webny_configuration_update_8047() {
+
+  // REMOVE FIELDS AND DEPENDENCIES FROM ACSF DEV.
+  $properties[0] = array(
+    'entity_type' => 'node',
+    'bundle' => 'webny_page',
+    'field_name' => 'field_webny_page_paragraph',
+    'include_deleted' => TRUE,
+  );
+
+  $properties[1] = array(
+    'entity_type' => 'node',
+    'bundle' => 'webny_news',
+    'field_name' => 'field_webny_news_paragraph',
+    'include_deleted' => TRUE,
+  );
+
+  echo "Number of properties: " . count($properties);
+
+  foreach ($properties as $prop) {
+
+    $fields = \Drupal::entityManager()->getStorage('field_config')->loadByProperties($prop);
+
+    $info = \Drupal::entityManager()->getDefinitions();
+    foreach ($fields as $field) {
+      $entity_type = $field->getTargetEntityTypeId();
+
+      // Proceed only if the module implementing the entity
+      // has not been uninstalled already.
+      if (isset($info[$entity_type])) {
+        Drupal::entityManager()->getStorage($entity_type)->purgeFieldData($field, 100);
+        $field->delete();
+        field_purge_field($field);
+        unset($fields, $info);
+      }
+    }
+
+  }
+
+  \Drupal::service('module_installer')
+          ->uninstall(['webny_inner_page_content_type']);
+  \Drupal::service('module_installer')
+          ->install(['webny_inner_page_content_type']);
+
+  \Drupal::service('module_installer')
+          ->uninstall(['webny_news_content_type']);
+  \Drupal::service('module_installer')
+          ->install(['webny_news_content_type']);
+}
