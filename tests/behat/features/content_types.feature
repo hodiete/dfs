@@ -91,6 +91,7 @@ Feature: Check for the existence and fields of content types
     And I should see text matching "Summary/Description"
     And I should see text matching "Hero fields"
     And I should see text matching "Hero Image"
+    And I should see text matching "Hero Visibility Option"
     # And I should see text matching "Hero Button (additional)"
     And I should see text matching "Hero Button"
     And I should see text matching "Frames of Content"
