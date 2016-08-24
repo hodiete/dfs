@@ -725,7 +725,7 @@ function webny_configuration_update_8048() {
       ->execute();
   foreach ($records as $record) {
     $node = $storage->load($record->nid);
-    // Only set default value of empty fields to avoid overriding existing changes.
+    // Only set value of empty fields to avoid overriding existing changes.
     if (empty($node->{$hero_toggle}->getValue())) {
       $node->{$hero_toggle}->setValue(['value' => 1]);
     }
