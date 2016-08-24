@@ -6,6 +6,7 @@
  */
 
 use Drupal\user\Entity\Role;
+use Drupal\Core\Database\Database;
 
 /**
  * Implements hook_update_n().
@@ -703,4 +704,32 @@ function webny_configuration_update_8047() {
           ->uninstall(['webny_news_content_type']);
   \Drupal::service('module_installer')
           ->install(['webny_news_content_type']);
+}
+
+/**
+ * Implements hook_update_n().
+ *
+ * Set default value of hero toggle for existing content.
+ */
+function webny_configuration_update_8050() {
+  // The bundles(s) to update.
+  $bundles = ['webny_landing_page'];
+  // The field to update.
+  $hero_toggle = 'field_webny_landing_hero_toggle';
+
+  $storage = Drupal::entityManager()->getStorage('node');
+  $records = Database::getConnection()->select('node', 'n')
+      ->fields('n', array('nid'))
+      ->condition('type', $bundles, 'IN')
+      ->orderBy('nid', 'ASC')
+      ->execute();
+  foreach ($records as $record) {
+    $node = $storage->load($record->nid);
+    // Only set default value of empty fields to avoid overriding existing changes.
+    if (empty($node->{$hero_toggle}->getValue())) {
+      $node->{$hero_toggle}->setValue(['value' => 1]);
+    }
+    // Force pre_save hook to be executed.
+    $node->save();
+  }
 }
