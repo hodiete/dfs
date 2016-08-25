@@ -312,8 +312,7 @@ $globalnav-secondary-color:   $color-secondary;
 
   // Tablet
   @media (min-width: $min-width-breakpoint) {
-    &.horizontal,
-    &.vertical {
+    &.horizontal{
       font-weight: $nav-weight;
 
       h1 {
@@ -424,8 +423,7 @@ $globalnav-secondary-color:   $color-secondary;
 
   // Desktop
   @media (min-width: $max-width-breakpoint) {
-    &.horizontal,
-    &.vertical {
+    &.horizontal{
       > ul,
       h1 {
         display: inline-block;
@@ -433,8 +431,7 @@ $globalnav-secondary-color:   $color-secondary;
     }
 
     &.unstacked.horizontal,
-    &.stacked.horizontal,
-    &.vertical {
+    &.stacked.horizontal{
       height: auto;
       font-size: 16px;
 
@@ -512,8 +509,7 @@ $globalnav-secondary-color:   $color-secondary;
       }
     }
 
-    &.stacked.horizontal,
-    &.vertical {
+    &.stacked.horizontal{
       @include in-context-menu();
       height: 114px;
 
@@ -577,97 +573,6 @@ $globalnav-secondary-color:   $color-secondary;
       }
     }
 
-    &.vertical {
-      width: 300px;
-      height: auto;
-      border-bottom: 0;
-      float: left;
-
-      h1 {
-        padding-left: 0;
-        height: auto;
-
-        a,
-        a:link,
-        a:visited,
-        a:hover,
-        a:active {
-          display: block;
-          height: auto;
-          padding: 30px 0 30px 15px;
-        }
-      }
-
-      ul {
-        width: 300px;
-        padding: 0;
-
-      }
-
-      ul li {
-        display: block;
-
-        &.#{$webny-global-prefix}active > a,
-        &.#{$webny-global-prefix}active > a:link,
-        &.#{$webny-global-prefix}active > a:visited,
-        &.#{$webny-global-prefix}active > a:hover,
-        &.#{$webny-global-prefix}active > a:active {
-          padding-left: 24px;
-        }
-
-        &.#{$webny-global-prefix}active > a:before {
-          background-image: url('../icons/icon-arrow-left.png');
-          background-image:
-                  linear-gradient(transparent, transparent),
-                  url('../icons/icon-arrow-left.svg');
-          background-size: $menu-arrow-size;
-          background-repeat: no-repeat;
-          width: 2em;
-          height: 1.2em;
-          display: inline-block;
-          content: '';
-          position: absolute;
-          left: $menu-arrow-left;
-          top: $menu-arrow-left-top;
-        }
-
-        a,
-        a:link,
-        a:visited,
-        a:hover,
-        a:active {
-          height: auto;
-          display: block;
-          line-height: 1.5;
-          margin: 0 15px;
-          padding: 30px 0;
-        }
-
-        &.#{$webny-global-prefix}inactive {
-          display: block;
-        }
-
-        ul {
-          border-top: 0;
-          padding: 0;
-          position: initial;
-
-          li:first-of-type a {
-            border-top: 0;
-          }
-
-          li {
-            a,
-            a:link,
-            a:visited,
-            a:hover,
-            a:active {
-              padding-left: 24px;
-            }
-          }
-        }
-      }
-    }
   }
 }
 
@@ -694,25 +599,6 @@ $globalnav-secondary-color:   $color-secondary;
 
     ul {
       background-color: $color-primary;
-    }
-  }
-
-  &.vertical {
-    ul li:first-of-type {
-      a {
-        border-top-color: mix( $color-primary, #fff, 85% );
-        border-top-width: 1px;
-        border-top-style: solid;
-      }
-      ul a {
-        border-top: 0;
-      }
-
-    }
-
-    a:hover,
-    a:active {
-      background-color: transparent;
     }
   }
 
