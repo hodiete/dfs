@@ -31,7 +31,6 @@ $base-font: "Proxima Nova", Arial, sans-serif;
 $agency-name-font: "D Sari Bold", Arial, sans-serif; // used in header and footer
 
 // padding
-
 $nav-title-padding: 15px 30px 8px 30px; // kept in case anyone still uses this variable
 $nav-title-padding-tablet: 15px 30px 1px 30px;
 $common-link-padding: 30px 48px 30px 30px;
@@ -41,7 +40,6 @@ $horizontal-sub-link-padding: 15px;
 $submenu-padding: 5px 0px;
 $extra-padding: 0px 0px;
 $nav-fore-color: #fff;
-
 $nav-weight: bold;
 
 //depracated
@@ -50,8 +48,8 @@ $default-constrained-font-size: .8em;
 $nav-title-size: 1.4em;
 $big-nav-title-size: 1.375em;
 
-// art
-$common-wide-border: 0 solid #fff;
+// border
+$common-wide-border: 1px solid #fff;
 
 // icons
 // menu arrows
@@ -63,7 +61,6 @@ $menu-arrow-right: 10px;
 $menu-arrow-left: 18px;
 $menu-arrow-left-top: 30px;
 $menu-arrow-left-top-tablet: 31px;
-
 $menu-arrow-active-link-padding: 48px;
 
 // GLOBAL NAVIGATION COLORS
@@ -692,7 +689,7 @@ $globalnav-secondary-color:   $color-secondary;
 
     a:hover,
     a:active {
-      background-color: mix( $color-primary, #000, 50% );
+      background-color: $color-primary;
     }
 
     ul {
@@ -731,7 +728,7 @@ $globalnav-secondary-color:   $color-secondary;
             ul > li {
               a:hover,
               a:active {
-                background-color: mix( $color-primary, #000, 50% );
+                background-color: $color-hover-nav;
               }
 
             }
@@ -753,7 +750,7 @@ $globalnav-secondary-color:   $color-secondary;
             ul > li {
               a:hover,
               a:active {
-                background-color: mix( $color-primary, #000, 50% );
+                background-color: $color-hover-nav;
               }
 
             }
