@@ -168,7 +168,6 @@ class WebnyGlobalNavForm extends ConfigFormBase {
     $format_options = array(
       'horizontal stacked' => 'Horizontal - stacked',
       'horizontal unstacked' => 'Horizontal - unstacked',
-      'vertical stacked' => 'Vertical',
     );
     return array(
       '#type' => 'select',
