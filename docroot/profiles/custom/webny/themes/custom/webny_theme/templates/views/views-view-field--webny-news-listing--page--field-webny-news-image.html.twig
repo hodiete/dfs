@@ -18,8 +18,9 @@
  * @see template_preprocess_views_view_field()
  */
 #}
+
 {# if image field exists display #}
-   {%  if(node.field_webny_news_image.value is not empty and node.field_webny_news_image.value is not null) %}
+   {% if(row.field_webny_news_image.value|length > 0) %}
         {# {{ node.field_webny_news_image.value }} #}
         {{ output -}}
     {% else %}
