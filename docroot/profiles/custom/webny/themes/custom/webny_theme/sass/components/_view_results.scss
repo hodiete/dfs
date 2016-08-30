@@ -6,6 +6,22 @@
 //
 // Style guide: components.views_results
 
+// color variables
+$views-results-stroke-color: $color-secondary !default;
+$views-results-fill-color: $color-primary !default;
+//.st1 {stroke: red;}
+//.st2 {stroke:gray-lite;}
+
+.st0{opacity:0;fill:$views-results-fill-color;}
+.st1{
+  fill:none;
+  stroke: $views-results-stroke-color;
+  stroke-width:2;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+  stroke-miterlimit:10;
+
+}
 
 .results {
   //color: white;
