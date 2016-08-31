@@ -750,3 +750,13 @@ function webny_configuration_update_8049() {
   $config->clear('webny_global_nav.agencycolor')->save();
 
 }
+
+/**
+ * Implements hook_update_n().
+ *
+ * Enable Memcache Module.
+ */
+function webny_configuration_update_8050() {
+  \Drupal::service('module_installer')
+      ->install(['memcache']);
+}
