@@ -10,13 +10,10 @@ dependencies:
     - field.field.node.webny_page.field_webny_page_docsec_title
     - field.field.node.webny_page.field_webny_page_global_keywords
     - field.field.node.webny_page.field_webny_page_image
-    - field.field.node.webny_page.field_webny_page_paragraph
     - field.field.node.webny_page.field_webny_page_short_title
     - field.field.node.webny_page.field_webny_page_sub_title
     - node.type.webny_page
   module:
-    - file
-    - paragraphs
     - path
     - text
     - workbench_moderation
@@ -91,16 +88,6 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: entity_reference_autocomplete
-  field_webny_page_paragraph:
-    type: entity_reference_paragraphs
-    weight: 8
-    settings:
-      title: Paragraph
-      title_plural: Paragraphs
-      edit_mode: open
-      add_mode: dropdown
-      form_display_mode: default
-    third_party_settings: {  }
   field_webny_page_short_title:
     weight: 1
     settings:

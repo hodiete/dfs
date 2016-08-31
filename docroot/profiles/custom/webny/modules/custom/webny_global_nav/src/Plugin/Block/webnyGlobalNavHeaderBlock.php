@@ -5,11 +5,11 @@ namespace Drupal\webny_global_nav\Plugin\Block;
 use Drupal\Core\Block\BlockBase;
 
 /**
- * Provides a webny Global Nav header block.
+ * Provides a Webny Global Nav header block.
  *
  * @Block(
  *     id = "webny_global_nav_header_block",
- *     admin_label = @Translation("webny Global Nav Header"),
+ *     admin_label = @Translation("Webny Global Nav Header"),
  *     category = @Translation("webny")
  * )
  */

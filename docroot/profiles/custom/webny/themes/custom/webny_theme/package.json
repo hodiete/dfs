@@ -4,8 +4,8 @@
   "description": "baseline implementation of theme dependencies",
   "repository": {},
   "devDependencies": {
-    "bower": "1.7.x",
     "browser-sync": "2.8.x",
+    "chroma-sass": "^1.2.4",
     "del": "1.2.x",
     "eslint": "0.24.x",
     "eyeglass": "0.7.x",
@@ -13,12 +13,12 @@
     "gulp-autoprefixer": "3.1.x",
     "gulp-concat": "2.6.x",
     "gulp-css-globbing": "0.1.x",
-    "gulp-sass-glob": "1.0.5",
     "gulp-debug": "2.1.x",
     "gulp-eslint": "1.0.x",
     "gulp-load-plugins": "0.10.x",
     "gulp-rename": "1.2.x",
     "gulp-sass": "2.0.x",
+    "gulp-sass-glob": "1.0.5",
     "gulp-sass-lint": "1.0.x",
     "gulp-shell": "0.4.x",
     "gulp-size": "1.2.x",
@@ -38,10 +38,15 @@
   "private": true,
   "//": "The postinstall script is needed to work-around this Drupal core bug: https://www.drupal.org/node/2329453",
   "scripts": {
-    "install-webny_theme" : "npm install && bower install;",
+    "install-webny_theme": "npm install;",
     "postinstall": "find node_modules/ -name '*.info' -type f -delete",
-    "uninstall-webny_theme" : "rm -r node_modules && rm -r bower_components;",
+    "uninstall-webny_theme": "rm -r node_modules;",
     "build": "gulp",
     "watch": "gulp watch"
+  },
+  "dependencies": {
+    "breakpoint-sass": "^2.7.0",
+    "susy": "^2.2.12",
+    "typey": "^1.0.3"
   }
 }

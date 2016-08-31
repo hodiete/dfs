@@ -46,6 +46,8 @@ local:
              CURLOPT_CERTINFO: false
              CURLOPT_TIMEOUT: 120
     Drupal\DrupalExtension:
+      blackbox: ~
+      api_driver: 'drupal'
       drupal:
         # This must be an absolute path.
         drupal_root: ${docroot}

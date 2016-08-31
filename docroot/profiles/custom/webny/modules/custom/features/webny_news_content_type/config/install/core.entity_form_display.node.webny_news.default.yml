@@ -13,14 +13,12 @@ dependencies:
     - field.field.node.webny_news.field_webny_news_global_keywords
     - field.field.node.webny_news.field_webny_news_image
     - field.field.node.webny_news.field_webny_news_location
-    - field.field.node.webny_news.field_webny_news_paragraph
     - field.field.node.webny_news.field_webny_news_short_title
     - field.field.node.webny_news.field_webny_news_subject_heading
     - field.field.node.webny_news.field_webny_news_subtitles
     - node.type.webny_news
   module:
     - datetime
-    - paragraphs
     - path
     - text
     - workbench_moderation
@@ -115,16 +113,6 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: text_textfield
-  field_webny_news_paragraph:
-    type: entity_reference_paragraphs
-    weight: 17
-    settings:
-      title: Paragraph
-      title_plural: Paragraphs
-      edit_mode: open
-      add_mode: dropdown
-      form_display_mode: default
-    third_party_settings: {  }
   field_webny_news_short_title:
     weight: 1
     settings:

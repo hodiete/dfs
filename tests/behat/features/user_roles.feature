@@ -1,4 +1,4 @@
-@api
+@api @javascript
 Feature: Administrator role exists
 When I log into the website
 As an administrator
@@ -18,3 +18,28 @@ I should be able to view user roles that exists
     And I should see "Site Administrator"
     And I should see "User Administrator"
     And I should see "Content Author"
+
+  # the following tests should be uncommented once the behat log in issue is resolved
+# Check that Site Admin role has appropriate access
+#  Scenario: A site admin user should be able to view blocks but not people
+ #   Given I am logged in as a user with the 'site_admin' role
+ #   When I go to "/admin/structure/block"
+#    Then I should not see "Access denied"
+ #   When I go to "/admin/people"
+#    Then I should see "Access denied"
+
+# Check that Content Author role has appropriate access
+#  Scenario: A content author user should be able to add a news node but not have access to moderation states
+ #   Given I am logged in as a user with the 'content_author' role
+#    When I go to "/node/add/webny_news"
+#    Then I should see "Save and Save as Draft"
+ #   When I go to "/admin/structure/workbench-moderation/states"
+#    Then I should see "Access denied"
+
+# Check that Workflow Approver role has appropriate access
+  # commenting this out until click are supported
+#  Scenario: A workflow approver should be able to publish nodes
+#    Given I am logged in as a user with the "workflow_approver" role
+#    When I go to "/node/add/webny_news"
+#    When I click the ".dropbutton-arrow" element
+ #   Then I should see "Save and Publish"
