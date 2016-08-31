@@ -75,13 +75,16 @@ $views-results-fill-color: $color-icon-primary !default;
   .views-row {
     border: 1px solid $gray-lite;
     padding-left: 0;
-    min-height: 240px;
+    //min-height: 240px;
     //width:70%;
-    overflow: auto;
-    margin-left: 40px;
-    margin-right: 40px;
-    margin-bottom: 8px;
-    margin-top: 8px;
+    //overflow: auto;
+    //margin-left: 40px;
+    //margin-right: 40px;
+    //margin-bottom: 8px;
+    //margin-top: 8px;
+    margin: 8px 40px;
+    float: left;
+    position: relative;
 
     .results-title {
       margin: 16px 0 12px 0;
@@ -104,7 +107,10 @@ $views-results-fill-color: $color-icon-primary !default;
     .results-image {
       float: left;
       margin-right: 16px;
-      //width:200px;
+      max-height:240px;
+      .field-content {
+        max-height: 240px; //something isn't right in here
+      }
       img {
         float: left;
         border: 0;
