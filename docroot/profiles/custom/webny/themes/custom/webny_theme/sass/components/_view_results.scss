@@ -15,11 +15,11 @@ $views-results-fill-color: $color-icon-primary !default;
 .results-image svg {
   background-color:$views-results-fill-color;
 }
-.st0{
+.results-image .st0{
   opacity:0;
   fill:$views-results-fill-color;
 }
-.st1{
+.results-image .st1{
   fill:none;
   stroke: $views-results-stroke-color;
   stroke-width:2;
@@ -27,6 +27,10 @@ $views-results-fill-color: $color-icon-primary !default;
   stroke-linejoin:round;
   stroke-miterlimit:10;
 
+}
+
+.results-image .fallback-img {
+  max-width: 240px;
 }
 
 .results {
@@ -137,7 +141,7 @@ $views-results-fill-color: $color-icon-primary !default;
 
 
 .results {
-  @include breakpoint($min-tablet) {
+  @include breakpoint($min-desktop) {
     form.views-exposed-form {
       @include span(3 of 12);
       > * {
@@ -149,6 +153,11 @@ $views-results-fill-color: $color-icon-primary !default;
       > * {
         padding-right: 25px;
       }
+    }
+  }
+  @media (max-width:$min-tablet){
+    .results-image svg {
+      display:none;
     }
   }
 }
