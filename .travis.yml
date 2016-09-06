@@ -5,10 +5,6 @@ language: php
 php:
   - 5.6
 
-env:
-  global:
-    - PHANTOMJS_CDNURL=http://cnpmjs.org/downloads
-
 cache:
   bundler: true
   apt: true
@@ -64,7 +60,7 @@ before_script:
   - drupal yaml:update:value project.yml project.local.hostname '127.0.0.1:8888'
 
 script:
-  - blt -Dbehat.run-server=true -Dcreate_alias=true -Dbehat.launch-phantom=true ci:build:validate:test
+  - blt -Dbehat.run-server=true -Dcreate_alias=false -Dbehat.launch-phantom=true ci:build:validate:test
 
 # Uncomment to enable automatic deployments following merges.
 deploy:
