@@ -266,7 +266,7 @@ $config_directories = array();
  *
  * @see install_select_profile()
  */
-$settings['install_profile'] = 'webny';
+$settings['install_profile'] = '${project.profile.name}';
 
 /**
  * Salt for one-time login links, cancel links, form tokens, etc.
@@ -285,7 +285,7 @@ $settings['install_profile'] = 'webny';
  *   $settings['hash_salt'] = file_get_contents('/home/example/salt.txt');
  * @endcode
  */
-$settings['hash_salt'] = 'NZ4pGCYwwI0kPGr5KwDkK1IgC2XOl8jFURj7q8lgAUBw6xxRXlWJNZZ';
+$settings['hash_salt'] = file_get_contents(__DIR__ . '/../../../salt.txt');
 
 /**
  * Deployment identifier.
@@ -699,29 +699,7 @@ $settings['container_yamls'][] = __DIR__ . '/services.yml';
  * example.org, with all subdomains included.
  */
 
-// Includes required Acquia configuration and set $base_url correctly.
-require DRUPAL_ROOT . '/sites/default/settings/base.settings.php';
-
-// Includes caching configuration.
-require DRUPAL_ROOT . '/sites/default/settings/cache.settings.php';
-
-/**
- * Acquia Cloud settings.
- */
-if ($is_ah_env && file_exists('/var/www/site-php')) {
-  require "/var/www/site-php/{$_ENV['AH_SITE_GROUP']}/{$_ENV['AH_SITE_GROUP']}-settings.inc";
-}
-
-/**
- * Load local development override configuration, if available.
- *
- * Use local.settings.php to override variables on secondary (staging,
- * development, etc) installations of this site. Typically used to disable
- * caching, JavaScript/CSS compression, re-routing of outgoing emails, and
- * other things that should not happen on development and testing sites.
- *
- * Keep this code block at the end of this file to take full effect.
- */
-if ($is_local_env && file_exists(DRUPAL_ROOT . '/sites/default/settings/local.settings.php')) {
-  require DRUPAL_ROOT . '/sites/default/settings/local.settings.php';
-}
+// Include BLT configuration.
+// Do not change to require_once().
+// @see https://github.com/acquia/blt/issues/345
+require DRUPAL_ROOT . '/sites/default/settings/blt.settings.php';
