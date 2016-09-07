@@ -39,9 +39,9 @@ function webny_theme_form_system_theme_settings_alter(&$form, &$form_state) {
   // Set up a drop-down for the flavor options
   $form['webny_theme_settings']['site_color_pallet'] = array(
     '#type' => 'select',
-    '#title' => t('Site color pallet:'),
+    '#title' => t('Site color palettes:'),
     '#default_value' => theme_get_setting('site_color_pallet'),
     '#options' => $agency_groupings,
-    '#description'  => t('Select a color pallet. None, the default, uses ny.gov colors.  Note that if you change this value you need to clear the theme cache'),
+    '#description'  => t('Select a color palettes. None, the default, uses ny.gov colors.  Note that if you change this value you need to clear the theme cache'),
   );
 }

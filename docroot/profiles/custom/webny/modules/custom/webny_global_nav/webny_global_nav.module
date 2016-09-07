@@ -114,31 +114,24 @@ function webny_global_nav_theme() {
 function webny_global_nav_library_info_alter(array &$libraries, $extension) {
   // Default settings.
   $config = \Drupal::config('webny_global_nav.settings');
-  $agencycolor = $config->get('webny_global_nav.agencycolor');
+  $globalnavmenu = $config->get('webny_global_nav.headermenu');
 
-  if ($agencycolor !== NULL) {
-    $stylesheet = 'css/webny-brand/' . $agencycolor . '.css';
+  if ($globalnavmenu !== '') {
+    $stylesheet = 'css/globalshow.css';
   }
   else {
-    // Set administration as default.
-    $stylesheet = 'css/webny-brand/administration.css';
+    $stylesheet = 'css/globalnoshow.css';
   }
 
   $libraries['global-nav'] = [
     'css' => [
       'theme' => [
-        'css/webny-global-nav.css' => [],
-        'css/webny-global-nav-fonts.css' => [],
         $stylesheet => [],
       ],
     ],
     'js' => [
       'js/webny-global-nav-header.min.js' => [],
-            // 'js/drupal-webny-global-nav-header.min.js' => [],.
     ],
-        /*'dependencies' => [
-            'core/jquery'
-        ]*/
   ];
 }
 

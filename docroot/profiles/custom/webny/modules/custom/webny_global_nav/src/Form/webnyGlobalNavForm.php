@@ -27,13 +27,11 @@ class WebnyGlobalNavForm extends ConfigFormBase {
     // Default settings.
     $config = $this->config('webny_global_nav.settings');
 
-    $form['webny_global_nav_agency_fieldset'] = $this->webnyGlobalNavAgencyFieldsetField();
-    $form['webny_global_nav_agency_fieldset']['webny_global_nav_agency_name'] = $this->webnyGlobalNavAgencyNameField();
-    $form['webny_global_nav_agency_fieldset']['webny_global_nav_agency_color'] = $this->webnyGlobalNavAgencyColorField();
     $form['webny_global_nav_header_fieldset'] = $this->webnyGlobalNavHeaderFieldsetField();
-    $form['webny_global_nav_header_fieldset']['webny_global_nav_header_auto'] = $this->webnyGlobalNavHeaderAutoField();
+    $form['webny_global_nav_header_fieldset']['webny_global_nav_header_name'] = $this->webnyGlobalNavAgencyNameField();
     $form['webny_global_nav_header_fieldset']['webny_global_nav_header_format'] = $this->webnyGlobalNavheaderFormatField();
     $form['webny_global_nav_header_fieldset']['webny_global_nav_header_menu'] = $this->webnyGlobalNavHeaderMenuField();
+    $form['webny_global_nav_header_fieldset']['webny_global_nav_header_auto'] = $this->webnyGlobalNavHeaderAutoField();
     $form['webny_global_nav_footer_fieldset'] = $this->webnyGlobalNavFooterFieldsetField();
     $form['webny_global_nav_footer_fieldset']['webny_global_nav_footer_auto'] = $this->webnyGlobalNavFooterAutoField();
     $form['webny_global_nav_footer_fieldset']['webny_global_nav_footer_menu'] = $this->webnyGlobalNavFooterMenuField();
@@ -56,8 +54,7 @@ class WebnyGlobalNavForm extends ConfigFormBase {
   public function submitForm(array &$form, FormStateInterface $form_state) {
 
     $config = \Drupal::configFactory()->getEditable('webny_global_nav.settings');
-    $config->set('webny_global_nav.agencyname', $form_state->getValue('webny_global_nav_agency_name'));
-    $config->set('webny_global_nav.agencycolor', $form_state->getValue('webny_global_nav_agency_color'));
+    $config->set('webny_global_nav.agencyname', $form_state->getValue('webny_global_nav_header_name'));
     $config->set('webny_global_nav.headerformat', $form_state->getValue('webny_global_nav_header_format'));
     $config->set('webny_global_nav.headermenu', $form_state->getValue('webny_global_nav_header_menu'));
     $config->set('webny_global_nav.headerauto', $form_state->getValue('webny_global_nav_header_auto'));
@@ -95,21 +92,6 @@ class WebnyGlobalNavForm extends ConfigFormBase {
     return [
       'webny_global_nav.settings',
     ];
-  }
-
-  /**
-   * Webny Global Navigation agency fieldset field.
-   *
-   * @return array
-   *   Form API element for field.
-   */
-  public function webnyGlobalNavAgencyFieldsetField() {
-    return array(
-      '#type' => 'fieldset',
-      '#title' => t('Agency navigation options'),
-      '#collapsible' => FALSE,
-      '#collapsed' => FALSE,
-    );
   }
 
   /**
@@ -181,44 +163,11 @@ class WebnyGlobalNavForm extends ConfigFormBase {
    * @return array
    *   Form API element for field.
    */
-  public function webnyGlobalNavAgencyColorField() {
-    $config = $this->config('webny_global_nav.settings');
-    $agency_groupings = array(
-      'administration' => 'Administration',
-      'business' => 'Business',
-      'custom-ig' => 'Custom - Inspector General',
-      'education' => 'Education',
-      'health-and-human-services' => 'Health and Human Services',
-      'local-and-regional-authorities' => 'Local and Regional authorities',
-      'public-safety' => 'Public Safety',
-      'recreation-and-environment' => 'Recreation and Environment',
-      'statewide-elected-officials' => 'Statewide Elected Officials',
-      'transportation-and-utilities' => 'Transportation and Utilities',
-    );
-    return array(
-      '#type' => 'select',
-      '#title' => t('Agency grouping color'),
-      '#options' => $agency_groupings,
-      '#default_value' => $config->get('webny_global_nav.agencycolor'),
-      '#multiple' => FALSE,
-      '#empty_option' => 'None',
-      '#empty_value' => '',
-      '#description' => t('Select which agency grouping color to use for the global navigation header/footer.'),
-    );
-  }
-
-  /**
-   * Webny Global Navigation agency grouping color field.
-   *
-   * @return array
-   *   Form API element for field.
-   */
   public function webnyGlobalNavHeaderFormatField() {
     $config = $this->config('webny_global_nav.settings');
     $format_options = array(
       'horizontal stacked' => 'Horizontal - stacked',
       'horizontal unstacked' => 'Horizontal - unstacked',
-      'vertical stacked' => 'Vertical',
     );
     return array(
       '#type' => 'select',
@@ -266,7 +215,7 @@ class WebnyGlobalNavForm extends ConfigFormBase {
       '#title' => t('Global navigation header automatic insertion'),
       '#default_value' => $config->get('webny_global_nav.headerauto'),
       '#multiple' => FALSE,
-      '#description' => t('Select if the global header is to be automatically inserted into the page.  If not selected, make sure to use the webny Global Navigation Header block'),
+      '#description' => t('Select if the global header is to be automatically inserted into the page.  If not selected, make sure to use the WebNY Global Navigation Header block'),
     );
   }
 
@@ -283,7 +232,7 @@ class WebnyGlobalNavForm extends ConfigFormBase {
       '#title' => t('Global navigation footer automatic insertion'),
       '#default_value' => $config->get('webny_global_nav.footerauto'),
       '#multiple' => FALSE,
-      '#description' => t('Select if the global footer is to be automatically inserted into the page.  If not selected, make sure to use the webny Global Navigation Footer block'),
+      '#description' => t('Select if the global footer is to be automatically inserted into the page.  If not selected, make sure to use the WebNY Global Navigation Footer block'),
     );
   }
 

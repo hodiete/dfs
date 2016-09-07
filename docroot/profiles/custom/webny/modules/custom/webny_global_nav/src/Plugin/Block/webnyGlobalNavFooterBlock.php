@@ -6,11 +6,11 @@ use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\Block\BlockBase;
 
 /**
- * Provides a webny Global Nav footer block.
+ * Provides a Webny Global Nav footer block.
  *
  * @Block(
  *     id = "webny_global_nav_footer_block",
- *     admin_label = @Translation("webny Global Nav Footer"),
+ *     admin_label = @Translation("Webny Global Nav Footer"),
  *     category = @Translation("webny")
  * )
  */
