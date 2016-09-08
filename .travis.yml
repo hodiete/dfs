@@ -3,7 +3,7 @@ sudo: false
 language: php
 
 php:
-  - 5.5
+  - 5.6
 
 cache:
   bundler: true
@@ -14,51 +14,58 @@ cache:
   - "$HOME/.npm"
   - "$HOME/.nvm"
   - "vendor"
+  # Cache front end dependecies to dramatically improve build time.
   - "docroot/profiles/custom/webny/themes/custom/webny_theme/node_modules"
   - "docroot/profiles/custom/webny/themes/custom/webny_theme/bower_components"
 
 addons:
   ssh_known_hosts:
-  - svn-15689.prod.hosting.acquia.com
   - svn-43.enterprise-g1.hosting.acquia.com
 
+# @see https://docs.travis-ci.com/user/notifications
 notifications:
-  # Replace this with project slack token.
-  slack: webnydistro:iSJ8dsk7Ym139SMpL470llno
+# - hipchat: [api token]@[room id or name]
+ - slack: 'webnydistro:iSJ8dsk7Ym139SMpL470llno'
 
 before_install:
-  - phpenv config-rm xdebug.ini
+  # Enable aliases for non-interactive shell.
+  - shopt -s expand_aliases
   - composer selfupdate
+  # Disable xdebug.
+  - phpenv config-rm xdebug.ini
+  # Enable $_ENV variables in PHP.
+  - echo 'variables_order = "EGPCS"' >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
+  # Ensure that always_populate_raw_post_data PHP setting: Not set to -1 does not happen.
+  - echo "always_populate_raw_post_data = -1" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
   - git config --global user.name "Travis-CI"
   - git config --global user.email "noreply@travis-ci.org"
   - mysql -e 'CREATE DATABASE drupal;'
 
 install:
   # Load composer dependencies.
-  - composer install --prefer-source
-  - export PATH=$PATH:$TRAVIS_BUILD_DIR/vendor/bin
+  - composer install
+  - export PATH=$TRAVIS_BUILD_DIR/vendor/bin:$PATH
+  # Initialize drupal console default configuration.
+  - drupal init
   # Install proper version of node for front end tasks.
-  - nvm install 0.12
-  - npm install -g gulp
+  - nvm install 4.4.1
+  - nvm use 4.4.1
 
 before_script:
-  - cd $TRAVIS_BUILD_DIR/docroot
-  - drush runserver --default-server=127.0.0.1:8888 &>/dev/null &
-  - php -S 127.0.0.1:8888 &
-  - cd ..
-  - phantomjs --webdriver=4444 > /dev/null &
   # Clear drush release history cache, to pick up new releases.
   - rm -f ~/.drush/cache/download/*---updates.drupal.org-release-history-*
+  # Verify that no git diffs (caused by line ending variation) exist.
+  - git diff --exit-code
+  # The local.hostname must be set to 127.0.0.1:8888 because we are using drush runserver to run the site on Travis CI.
+  - drupal yaml:update:value project.yml project.local.hostname '127.0.0.1:8888'
 
 script:
-  - ./blt.sh -Dbehat.run-server=true -Dcreate_alias=false -Dbehat.launch-phantom=true build:validate:test
+  - blt -Dbehat.run-server=true -Dcreate_alias=false -Dbehat.launch-phantom=true ci:build:validate:test
 
-after_success:
-  # Watch for successful build job on `master` branch; deploy to `master-build`.
-  - scripts/deploy/travis-deploy.sh master master-build
-  # Watch for successful build job on `develop` branch; deploy to `develop-build`.
-  - scripts/deploy/travis-deploy.sh develop develop-build
-  # Watch for successful build job on `acsf-master` branch; deploy to `acsf-master-build`.
-  - scripts/deploy/travis-deploy.sh acsf-master acsf-master-build
-  # Watch for successful build job on `acsf-develop` branch; deploy to `acsf-develop-build`.
-  - scripts/deploy/travis-deploy.sh acsf-develop acsf-develop-build
+# Uncomment to enable automatic deployments following merges.
+deploy:
+  provider: script
+  script: blt deploy -Ddeploy.commitMsg="Automated commit by Travis CI for Build ${TRAVIS_BUILD_ID}" -Ddeploy.branch="${TRAVIS_BRANCH}-build"
+  skip_cleanup: true
+  on:
+    branch: master

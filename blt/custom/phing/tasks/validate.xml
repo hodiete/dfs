@@ -1,4 +1,7 @@
-<project name="validate" default="validate:all">
+<project name="validate" default="validate">
+
+  <target name="validate" description="Runs all code validation targets."
+          depends="validate:all"/>
 
   <!-- Run all validation targets. -->
   <target name="validate:all" description="Runs all code validation targets."
@@ -6,7 +9,7 @@
 
   <!-- Verify that composer json and lock files are in sync. -->
   <target name="validate:composer" description="Validate composer files.">
-    <exec dir="${repo.root}" command="composer validate --no-check-all --ansi" logoutput="true" checkreturn="false"/>
+    <exec dir="${repo.root}" command="composer validate --no-check-all --ansi" logoutput="true" checkreturn="true"/>
   </target>
 
   <!-- Run linter against all php files in repository. -->
@@ -55,38 +58,19 @@
   <!-- Run code sniffer against all custom code. -->
   <target name="validate:phpcs" description="Runs PHP Code Sniffer against only custom modules.">
     <property name="phpcs.ruleset" value="${repo.root}/vendor/drupal/coder/coder_sniffer/Drupal/ruleset.xml"/>
+    <foreach list="${phpcs.filesets}" target="validate:phpcs:fileset" param="fileset_refid"/>
+  </target>
 
-    <!-- Sniff custom modules for drupal coding standards compliance. -->
-    <phpcodesniffer
-        standard="${phpcs.ruleset}"
-        showSniffs="false"
-        showWarnings="true"
-        haltonerror="true"
-        haltonwarning="true">
-      <fileset refid="files.php.custom.modules"/>
-      <formatter type="full" usefile="false"/>
-    </phpcodesniffer>
-
-    <!-- Sniff JS and CSS in custom themes. -->
-    <phpcodesniffer
-        standard="${phpcs.ruleset}"
-        showSniffs="false"
-        showWarnings="true"
-        haltonerror="true"
-        haltonwarning="true"
-        verbosity="1">
-      <fileset refid="files.frontend.custom.themes"/>
-      <formatter type="full" usefile="false"/>
-    </phpcodesniffer>
-
+  <target name="validate:phpcs:fileset" description="Runs PHP Code Sniffer against only custom modules.">
+    <echo>Code sniffing ${fileset_refid}</echo>
     <!-- Sniff tests. -->
     <phpcodesniffer
-        standard="${phpcs.ruleset}"
-        showSniffs="false"
-        showWarnings="true"
-        haltonerror="false"
-        haltonwarning="true">
-      <fileset refid="files.php.tests"/>
+      standard="${phpcs.ruleset}"
+      showSniffs="false"
+      showWarnings="true"
+      haltonerror="true"
+      haltonwarning="true">
+      <fileset refid="${fileset_refid}"/>
       <formatter type="full" usefile="false"/>
     </phpcodesniffer>
   </target>
