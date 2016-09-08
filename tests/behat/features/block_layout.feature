@@ -7,3 +7,4 @@ Feature: Block Layout Config
     Given I am logged in as a user with the administrator role
     When I am on "admin/structure/block"
     Then I should not see "Page Title"
+    
