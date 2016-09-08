@@ -11,28 +11,25 @@ docroot/sites/*/files
 docroot/sites/*/private
 
 # Ignore contrib modules. These should be created during build process.
-docroot/profiles/custom/webny/modules/contrib
-docroot/profiles/custom/webny/themes/contrib
+docroot/modules/contrib
+docroot/themes/contrib
 docroot/profiles/contrib
-docroot/profiles/custom/webny/libraries
+docroot/libraries
 drush/contrib
+
+# Ignore custom theme node_modules folders
+docroot/themes/custom/*/node_modules
 
 # Ignore build artifacts
 /deploy
 bin/*
 tmp
-install/bin
 reports
-deploy_key
-
-# Local testing config
-tests/behat/local.yml
 
 # OS X
 .DS_Store
 .AppleDouble
 .LSOverride
-Icon
 
 # Thumbnails
 ._*
@@ -88,7 +85,7 @@ auto-save-list
 tramp
 .\#*
 
-# PHPStorm
+# User-specific stuff:
 .idea/
 
 #XHProf
@@ -106,12 +103,11 @@ vendor/.git
 nbproject
 nbproject/*
 
-#Frontend
+# DrupalVM
+.vagrant/
+
+# Frontend
 docroot/profiles/custom/webny/themes/custom/webny_theme/dist
 docroot/profiles/custom/webny/themes/custom/webny_theme/dist/*
 docroot/profiles/custom/webny/themes/custom/webny_theme/styleguide
 docroot/profiles/custom/webny/themes/custom/webny_theme/styleguide/*
-
-# DrupalVM
-.vagrant/
-
