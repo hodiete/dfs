@@ -760,3 +760,15 @@ function webny_configuration_update_8050() {
   \Drupal::service('module_installer')
       ->install(['memcache']);
 }
+
+/**
+ * Implements hook_update_n().
+ *
+ * Refreshes landing page CT.
+ */
+function webny_configuration_update_8051() {
+  \Drupal::service('module_installer')
+      ->uninstall(['webny_contact_form']);
+  \Drupal::service('module_installer')
+      ->install(['webny_contact_form']);
+}
