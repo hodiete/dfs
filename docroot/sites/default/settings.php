@@ -699,16 +699,6 @@ $settings['container_yamls'][] = __DIR__ . '/services.yml';
  * example.org, with all subdomains included.
  */
 
-// Workaround for blt phpunit test
-
-if ($is_ah_env) {
-  switch ($ah_env) {
-    case 'prod':
-      $config['system.logging']['error_level'] = 'hide';
-      break;
-  }
-}
-
 // Include BLT configuration.
 // Do not change to require_once().
 // @see https://github.com/acquia/blt/issues/345
