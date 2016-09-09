@@ -139,7 +139,7 @@ $summary-frame-button: $white !default;
  flex-flow: row nowrap;
  justify-content:center;
 }
-  
+
 .keypoint--field-webny-summary-argument1,
 .keypoint--field-webny-summary-argument2,
 .keypoint--field-webny-summary-argument3{
@@ -147,7 +147,7 @@ $summary-frame-button: $white !default;
   font-size: 0.7778rem;
   font-weight: 800;
 }
-  
+
 
 .keypoint{
 //  display: inline-block;
@@ -199,13 +199,13 @@ $summary-frame-button: $white !default;
     padding: 1.5%;
     margin-bottom: 30px;
   }
-  
+
 .keypoint--field-webny-summary-argument1,
 .keypoint--field-webny-summary-argument2,
 .keypoint--field-webny-summary-argument3{
-  font-family: $base-font;
-  font-size: 1rem;
-  font-weight: 800;
+  font-size: $base-font-size;
+  font-weight: $frame-base-semi-bold;
+  line-height: 24px;
 }
   
 .keypoint:nth-of-type(2n+2) {
