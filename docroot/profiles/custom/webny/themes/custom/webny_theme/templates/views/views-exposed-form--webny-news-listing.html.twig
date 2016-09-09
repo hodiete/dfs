@@ -11,6 +11,7 @@
  * WebNY has added the div with .results-exposed-filters-title
  */
 #}
+{{ attach_library('webny_theme/filter-toggle') }}
 {% if q is not empty %}
   {#
     This ensures that, if clean URLs are off, the 'q' is added first,
@@ -20,5 +21,8 @@
 {% endif %}
 <div class="results-exposed-filters-title">
     Filters
+
+    <button>Toggle</button>
+    <p>Hello</p>
 </div>
 {{ form }}
