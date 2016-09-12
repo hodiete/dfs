@@ -57,7 +57,8 @@ $get-inv-frame-description-color: $black !default;
 
 .get-involved--field-webny-get-inv-description {
   font-family: $base-font;
-  font-size: .9rem; // base-font-size currently 18px
+  font-size: $frame-base-font-size;
+  line-height: $frame-base-line-height;
   text-align: center;
   width: 50%;
   margin: 0 auto;
@@ -72,7 +73,7 @@ $get-inv-frame-description-color: $black !default;
 
 .get-involved--field-webny-get-inv-cta {
   @extend .buttonTransparentDk;
-//  display: block;
+  //  display: block;
   padding: 20px 20px;
   color: $black;
   margin-top: 1.5em;
@@ -91,16 +92,15 @@ $get-inv-frame-description-color: $black !default;
   }
 }
 
-
 // ######################################################################### //
 /* TABLET VIEW */
 @media (min-width: $min-tab) {
 
-.get-involved--field-webny-get-inv-cta {
-  padding: 14px 20px;
-}
-  
- 
+  .get-involved--field-webny-get-inv-cta {
+    padding: 14px 20px;
+  }
+
+
 } // END MIN TABLET VIEW
 
 // ######################################################################### //
@@ -109,19 +109,15 @@ $get-inv-frame-description-color: $black !default;
 
   .get-involved--cta-wrapper > div {
     display: flex;
-	flex-flow: row;
-	justify-content: center;
+    flex-flow: row;
+    justify-content: center;
     width: 85%;
   }
-  
-  
-  
+
   .get-involved--field-webny-get-inv-cta {
     margin: 0 1%;
     min-width: 30%;
     max-width: 30%;
   }
-  
- 
 
 } // END MIN PC VIEW
