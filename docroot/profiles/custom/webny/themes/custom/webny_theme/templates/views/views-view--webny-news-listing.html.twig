@@ -55,12 +55,14 @@
   {{ attachment_before }}
 
   <div class="results-list">
-    <div class="results-total">
-      <span class="results-total-number">{{ view.total_rows }}</span> News Items
-    </div>
+    <div class="results-list-inner">
+      <div class="results-total">
+        <span class="results-total-number">{{ view.total_rows }}</span> News Items
+      </div>
     {{ rows }}
     {{ empty }}
     {{ pager }}
+    </div>
   </div>
 
   {{ attachment_after }}

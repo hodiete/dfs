@@ -35,6 +35,10 @@ $results-highlight-color: $color-secondary !default;
 }
 
 // if we have other results related displays, this can probably be placed in base 
+.results-total {
+  padding: 20px 0;
+}
+
 .results-total-number {
   font-size: 2.3em; 
   font-weight: 800;
@@ -47,6 +51,10 @@ $results-highlight-color: $color-secondary !default;
   background-color: $exposedbkgrnd;
   float: left;
   position: relative;
+
+  .results-exposed-filters-outer {
+    padding: 0 20px;
+  }
 
   .results-exposed-filters-title {
     color: $results-highlight-color;
@@ -92,9 +100,14 @@ $results-highlight-color: $color-secondary !default;
     background-color: #ffffff;
     float: left;
   }
+
+    .results-list-inner {
+    padding: 0 20px;
+  }
+
   .views-row {
     border: 1px solid $gray-lite;
-    padding-left: 0;
+    //padding-left: 0;
     //min-height: 240px;
     //width:70%;
     //overflow: auto;
@@ -102,14 +115,15 @@ $results-highlight-color: $color-secondary !default;
     //margin-right: 40px;
     //margin-bottom: 8px;
     //margin-top: 8px;
-    margin: 8px 40px;
+    margin: 8px 0px;
     float: left;
+    width:100%;
     position: relative;
 
     .results-title {
-      margin: 16px 0 12px 0;
+      margin: 16px 0;
       font-size: 19px;
-      padding-right: 16px;
+      padding: 0 10px;
       a {
         color: $text-blue;
         text-decoration: none;
@@ -118,6 +132,7 @@ $results-highlight-color: $color-secondary !default;
 
     .results-date {
       font-size: 12px;
+      padding: 0 10px;
       color: $base-font-color;
       .results-date-day {
         font-weight: bold;
@@ -135,6 +150,10 @@ $results-highlight-color: $color-secondary !default;
         float: left;
         border: 0;
       }
+    }
+
+    .views-field-body {
+      padding: 0 10px;
     }
 
     .results-teaser {
@@ -156,6 +175,7 @@ $results-highlight-color: $color-secondary !default;
 }
 
 
+
 .results {
   @include breakpoint($min-desktop) {
     form.views-exposed-form {
@@ -166,6 +186,12 @@ $results-highlight-color: $color-secondary !default;
     div.results-list {
       @include span(9 of 12 last) {
        // padding-right: 25px;
+         .results-list-inner {
+         padding: 0 40px;
+       }
+        .views-row {
+         padding-left: 0;
+        }
       }
     }
   }

@@ -20,13 +20,15 @@
   #}
 {{ q }}
 {% endif %}
-<div class="results-exposed-filters-title">
-    Filters
-    {#<a href="javascript:;" class="filterTog">Toggle</a>#}
-</div>
+<div class="results-exposed-filters-outer">
+	<div class="results-exposed-filters-title">
+	    Filters
+	    {#<a href="javascript:;" class="filterTog">Toggle</a>#}
+	</div>
 
-<div class="filterBody filterBodyDisplay">
-	{{ form }}
-	
+	<div class="filterBody filterBodyDisplay">
+		{{ form }}
+		
+	</div>
+	<p><input type="button" class="filterTog" value="Toggle" /></p>
 </div>
-<p><input type="button" class="filterTog" value="Toggle" /></p>
