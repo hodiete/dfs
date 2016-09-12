@@ -11,6 +11,7 @@
  * WebNY has added the div with .results-exposed-filters-title
  */
 #}
+{# bringing in jquery toggle function #}
 {{ attach_library('webny_theme/filter-toggle') }}
 {% if q is not empty %}
   {#
@@ -21,11 +22,11 @@
 {% endif %}
 <div class="results-exposed-filters-title">
     Filters
-
-    <a href="javascript:;" class="filterTog">Toggle</a>
-    <p class="filterText">Hello</p>
+    {#<a href="javascript:;" class="filterTog">Toggle</a>#}
 </div>
 
 <div class="filterBody filterBodyDisplay">
 	{{ form }}
+	
 </div>
+<p><input type="button" class="filterTog" value="Toggle" /></p>

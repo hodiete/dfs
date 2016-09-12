@@ -90,6 +90,7 @@ $results-highlight-color: $color-secondary !default;
     padding-bottom: 20px;
     padding-top: 20px;
     background-color: #ffffff;
+    float: left;
   }
   .views-row {
     border: 1px solid $gray-lite;
@@ -158,15 +159,13 @@ $results-highlight-color: $color-secondary !default;
 .results {
   @include breakpoint($min-desktop) {
     form.views-exposed-form {
-      @include span(3 of 12);
-      > * {
-        padding-left: 15px;
+      @include span(3 of 12){
+        //padding-left: 15px;
       }
     }
     div.results-list {
-      @include span(9 of 12 last);
-      > * {
-        padding-right: 25px;
+      @include span(9 of 12 last) {
+       // padding-right: 25px;
       }
     }
   }
@@ -175,8 +174,13 @@ $results-highlight-color: $color-secondary !default;
       display:none;
     }
   }
-}
+} 
 // the following class was placed to fix the issue of the footer rendering into the view results area
 .views-element-container {
   display: flex;
+}
+
+// override of core active throbber - avoids tiling
+.js input.form-autocomplete.ui-autocomplete-loading {
+  background-repeat: no-repeat;
 }

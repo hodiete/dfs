@@ -25,7 +25,7 @@
         });*/
 
 
-        var clickVals = 'click touchend';
+      var clickVals = 'click touchend';
 /*
         $('.filterTog').click(function(){
         	
@@ -40,25 +40,19 @@
     	});
    */ 	
 
-    	$('.filterTog').on(clickVals,function(){
+    	$('.filterTog').on(clickVals,function (){
 
-			console.log('We\'re in');
+		  /*console.log('We\'re in');*/
 
-        	if($('.filterBody').hasClass('filterBodyDisplay')){
-        		$('.filterBody').removeClass('filterBodyDisplay');
-        		$('.filterBody').addClass('filterBodyHidden');
-        	} else {
-        		$('.filterBody').removeClass('filterBodyHidden');
-        		$('.filterBody').addClass('filterBodyDisplay');
-        	}
+          if($('.filterBody').hasClass('filterBodyDisplay')){
+        	$('.filterBody').removeClass('filterBodyDisplay');
+        	$('.filterBody').addClass('filterBodyHidden');
+          } else {
+        	$('.filterBody').removeClass('filterBodyHidden');
+        	$('.filterBody').addClass('filterBodyDisplay');
+          }
 
     	});
-
-
-
-
-
-
 
     }
   };
