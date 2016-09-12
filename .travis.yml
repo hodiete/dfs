@@ -68,4 +68,4 @@ deploy:
   script: blt deploy -Ddeploy.commitMsg="Automated commit by Travis CI for Build ${TRAVIS_BUILD_ID}" -Ddeploy.branch="${TRAVIS_BRANCH}-build"
   skip_cleanup: true
   on:
-    branch: master
+    branch: develop
