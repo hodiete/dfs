@@ -26,6 +26,12 @@
 
 
       var clickVals = 'click touchend';
+      // NUMERIC VALUES
+var maxDesktop          = 1024; // WEBNY STANDARD
+// var maxMob              = 768; // IF STYLES NEEDED UNDER 768 for mobile
+var startBrowserWidth  = window.innerWidth;
+      var curViewMode         = getViewMode(maxDesktop,startBrowserWidth);
+
 /*
         $('.filterTog').click(function(){
         	
@@ -39,6 +45,18 @@
 
     	});
    */ 	
+      $(document).ready(function(){
+
+        // NORMAL NAV LOADER
+    if(curViewMode == 'Desktop'){
+        $('.filterTog').addClass('filterTogHidden');
+        $('.filterTog').removeClass('filterTogDisplay');
+    } else { // MOBILE NAV LOADER
+        $('.filterTog').removeClass('filterTogHidden');
+          $('.filterTog').addClass('filterTogDisplay');
+    } // END ELSE
+
+});
 
     	$('.filterTog').on(clickVals,function (){
 

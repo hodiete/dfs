@@ -49,8 +49,9 @@ $results-highlight-color: $color-secondary !default;
   //color: white;
   font-family: $base-font;
   background-color: $exposedbkgrnd;
-  float: left;
+  //float: left;
   position: relative;
+  overflow: hidden;
 
   .results-exposed-filters-outer {
     padding: 0 20px;
@@ -81,6 +82,11 @@ $results-highlight-color: $color-secondary !default;
       border-style: solid;
       border-width: 1px;
       border-color: $darkgray;
+      color: $white;
+    }
+
+    input[type="text"]:focus, input[type="date"]:focus {
+      color: $black;
     }
 
     .form-item-field-webny-news-global-keywords-target-id input {
@@ -98,7 +104,9 @@ $results-highlight-color: $color-secondary !default;
     padding-bottom: 20px;
     padding-top: 20px;
     background-color: #ffffff;
-    float: left;
+   // float: left;
+    width: 100%;
+    overflow: hidden;
   }
 
     .results-list-inner {
@@ -181,6 +189,9 @@ $results-highlight-color: $color-secondary !default;
     form.views-exposed-form {
       @include span(3 of 12){
         //padding-left: 15px;
+        .filterTog {
+          display:none;
+        }
       }
     }
     div.results-list {
@@ -202,8 +213,9 @@ $results-highlight-color: $color-secondary !default;
   }
 } 
 // the following class was placed to fix the issue of the footer rendering into the view results area
-.views-element-container {
-  display: flex;
+.nygov-universal-footer {
+  //display: flex;
+  clear:both;
 }
 
 // override of core active throbber - avoids tiling
