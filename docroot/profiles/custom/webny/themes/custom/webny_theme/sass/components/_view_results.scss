@@ -10,8 +10,27 @@
 $views-results-stroke-color: $white !default;
 $views-results-fill-color: $color-icon-primary !default;
 $results-highlight-color: $color-secondary !default;
+$results-head-bkgrnd: $color-secondary !default;
+$results-head-title: $black !default;
+$results-head-headline: $white !default;
 //.st1 {stroke: red;}
 //.st2 {stroke:gray-lite;}
+.results-head {
+background-color: $results-head-bkgrnd;
+text-transform: center;
+padding: 20px 0;
+}
+
+.results-title {
+font: $frame-title;
+color: $results-head-title;
+}
+
+.results-headline {
+font: $frame-headline;
+color: $results-head-headline
+}
+
 
 .results-image svg {
   background-color:$views-results-fill-color;
