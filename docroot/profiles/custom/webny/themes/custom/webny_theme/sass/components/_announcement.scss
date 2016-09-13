@@ -31,13 +31,15 @@
 // Style guide: components.announcement.inner
 
 // color variables
-
 $announce-frame-title-color: $color-secondary !default;
 $announce-frame-headline-color: $black !default;
 $announce-frame-item-bkgd-color: $gray-lite !default;
 $announce-frame-item-title-color: $black !default;
 $announce-frame-item-text-color: $black !default;
 // $announce-frame-button: !default;
+
+
+
 
 // ************************* //
 // ANNOUNCEMENTS PARTIAL
@@ -98,16 +100,21 @@ $announce-frame-item-text-color: $black !default;
     .webny-announcement-button{
         margin: 7% auto;
         text-align: center;
-        
+
         a {
-         background-color: transparent;
-         border: 1px solid $black;
-         padding: 12px 0;
-         display: block;
-         max-width: 240px;
-         color: $black; 
-         margin: 0 auto;
-       }    
+            // BUTTON DYNAMIC REQUIREMENTS
+            border: $frame-button-border-size solid $announcement-button-border-color;
+            color: $announcement-button-text-color;
+            background-color: $announcement-button-back-color;
+            &:hover {
+                background-color: $announcement-button-hover-back-color;
+            }
+        }
+
+        // BUTTON CALLS
+        @include frame-button-base();
+
+
     }
 
 } // END BASE ANNOUNCEMENT STYLES 
