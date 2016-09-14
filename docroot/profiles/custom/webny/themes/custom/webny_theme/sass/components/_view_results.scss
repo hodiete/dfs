@@ -16,20 +16,25 @@ $results-head-headline: $white !default;
 //.st1 {stroke: red;}
 //.st2 {stroke:gray-lite;}
 .results-head {
-background-color: $results-head-bkgrnd;
-text-align: center;
-padding: 20px 0;
+  background-color: $results-head-bkgrnd;
+  text-align: center;
+  padding: 30px 0;
 }
 
 .results-head-title {
-font: $frame-title;
-color: $results-head-title;
+  font-size: .9rem;
+  font-family: $oswald;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: $results-head-title;
+  font-weight: 900;
 }
 
 .results-head-headline {
-font: $frame-headline;
-color: $results-head-headline;
-display: block;
+  // larger than even the home pg headline, otherwise could use that variable
+  font: 900 2.67em $base-font;
+  color: $results-head-headline;
+  display: block;
 }
 
 
@@ -79,8 +84,9 @@ display: block;
 
   .results-exposed-filters-title {
     color: $results-highlight-color;
-    font-size: 16px;
+    font-size: .9rem;
     text-transform: uppercase;
+    padding: 1.75em 0 1em 0;
   }
 
   .filterBodyDisplay {
@@ -90,12 +96,27 @@ display: block;
     display: none;
   }
 
+  .filter-display {
+    position: absolute;
+    right:0; 
+    bottom: 0;
+    border:none;
+  }
+  .filterTogDisplay, .filterTogHidden {
+    position:relative;
+    display:inline-block;
+    //font-size: 38px;
+  }
+
   form {
     color: rgb(255, 255, 255);
+    position: relative;
 
     label {
-      color: rgb(255, 255, 255);
+      color: $white;
       font-size: 16px;
+      font-weight: normal;
+      margin: .25em 0;
     }
     input {
       background-color: $exposedbkgrnd;
@@ -103,6 +124,7 @@ display: block;
       border-width: 1px;
       border-color: $darkgray;
       color: $white;
+      margin-bottom: 20px;
     }
 
     input[type="text"]:focus, input[type="date"]:focus {
@@ -210,7 +232,7 @@ display: block;
       @include span(3 of 12){
         //padding-left: 15px;
         .filterTog {
-          display:none;
+          //display:none;
         }
       }
     }
@@ -232,6 +254,23 @@ display: block;
     }
   }
 } 
+//the display of the exposed filter area and the toggle desktop vs mobile
+@media screen and (max-width:1023px){
+  .results .filterBodyHidden{
+    display: none;  
+  } 
+}
+@media screen and (min-width:1024px){
+  .results .filterBodyHidden{
+    //we want it to always display on desktop
+    display:block 
+  } 
+  .results .filter-display {
+    //since desktop should always have the filters, no toggle needed
+    display:none;
+  }
+}
+
 // the following class was placed to fix the issue of the footer rendering into the view results area
 .nygov-universal-footer {
   //display: flex;
