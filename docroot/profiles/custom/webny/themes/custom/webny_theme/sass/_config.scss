@@ -94,10 +94,13 @@ $min-mob:   20em;
     }
     @if $styles {
       // Supportive icon styles required
+      font-family: $icon-font;
       speak: none;
       font-style: normal;
       font-weight: normal;
-      font-family: $icon-font;
+      font-variant: normal;
+      text-transform: none;
+      line-height: 1;
     }
     // Include any extra rules supplied for the pseudo-element
     @content;
