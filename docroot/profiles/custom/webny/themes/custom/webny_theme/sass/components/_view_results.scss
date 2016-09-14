@@ -13,6 +13,7 @@ $results-highlight-color: $color-secondary !default;
 $results-head-bkgrnd: $color-secondary !default;
 $results-head-title: $black !default;
 $results-head-headline: $white !default;
+$results-pager-color: $color-tertiary !default;
 //.st1 {stroke: red;}
 //.st2 {stroke:gray-lite;}
 .results-head {
@@ -85,8 +86,10 @@ $results-head-headline: $white !default;
   .results-exposed-filters-title {
     color: $results-highlight-color;
     font-size: .9rem;
+    font-family: $oswald;
     text-transform: uppercase;
     padding: 1.75em 0 1em 0;
+    font-weight: bold;
   }
 
   .filterBodyDisplay {
@@ -214,12 +217,23 @@ $results-head-headline: $white !default;
   }
 
   .pager__items {
-    float: left;
+    float: right;
     list-style-type: none;
     margin-left: 10px;
     .pager__item {
       float: left;
-      padding: 5px;
+      padding: 16px;
+      color: $results-pager-color;
+      font-weight: 900;
+      font-size: 13px;
+      }
+    .pager__item--next a,
+    .pager__item--previous a,
+    .pager__item--first a,
+    .pager__item--last a
+     {
+      @extend .button;
+      font-weight: normal;
     }
   }
 }
