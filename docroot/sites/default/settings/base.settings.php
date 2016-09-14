@@ -33,6 +33,20 @@ $is_acsf = (!empty($ah_group) && file_exists("/mnt/files/$ah_group.$ah_env/files
 $acsf_db_name = $is_acsf ? $GLOBALS['gardens_site_settings']['conf']['acsf_db_name'] : NULL;
 $is_local_env = !$is_ah_env;
 
+if ($is_ah_env) {
+  switch ($ah_env) {
+    case '01test':
+      $config['google_analytics.settings']['account'] = '';
+      break;
+    case '01dev':
+      $config['google_analytics.settings']['account'] = '';
+      break;
+  }
+}
+if ($is_local_env) {
+$config['google_analytics.settings']['account'] = '';
+}
+
 /**
  * Trusted host patterns.
  *

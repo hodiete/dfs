@@ -776,3 +776,15 @@ function webny_configuration_update_8051() {
   \Drupal::service('config.factory')->getEditable('block.block.pagetitle')->delete();
 
 }
+
+/**
+ * Implements hook_update_n().
+ *
+ * Enable Google Analytics Module.
+ */
+function webny_configuration_update_8052() {
+  \Drupal::service('module_installer')
+      ->uninstall(['google_analytics']);
+  \Drupal::service('module_installer')
+      ->install(['google_analytics']);
+}
