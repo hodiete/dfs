@@ -32,7 +32,7 @@ target-hooks:
 #    post-setup-build:
 #        dir: '${docroot}/profiles/contrib/lightning'
 #        command: 'npm run install-libraries'
-import: ${repo.root}/blt/custom/phing/tasks/validate.xml
+import: ${repo.root}/blt/custom/phing/tasks/deploy.xml
 import: ${repo.root}/blt/custom/phing/tasks/tests.xml
 hosting: acsf
 example.property: 'example value'
