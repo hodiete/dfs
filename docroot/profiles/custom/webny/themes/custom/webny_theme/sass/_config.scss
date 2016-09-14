@@ -38,6 +38,7 @@ $darkgray: #999;
 $base-font: "Proxima Nova", Arial, sans-serif !default;
 $agency-name-font: "D Sari Bold", Arial, sans-serif; // used in header and footer
 $oswald: "Oswald", Arial, sans-serif;
+$icon-font: "icomoon"; // Icon Font
 
 $base-font-size: 18px;
 $base-line-height: 27px;
@@ -76,6 +77,35 @@ $max-pc:    75em;
 $min-pc:    48em;   
 $min-tab:   30em;
 $min-mob:   20em;
+
+// Icon Font Mixin ///////////////
+// For adding font icons to elements using CSS pseudo-elements
+// http://jaydenseric.com/blog/fun-with-sass-and-font-icons
+// https://webdevstudios.com/2015/01/28/mapping-icon-fonts-with-sass
+@mixin icon($position: before, $icon: false, $styles: true) {
+  @if $position == both {
+    $position: 'before, &:after';
+  }
+  // Either a :before or :after pseudo-element, or both, defaulting to :before
+  &:#{$position} {
+    @if $icon {
+      // A particular icon has been specified
+      content: "#{map-get($icons, $icon)}";
+    }
+    @if $styles {
+      // Supportive icon styles required
+      font-family: $icon-font;
+      speak: none;
+      font-style: normal;
+      font-weight: normal;
+      font-variant: normal;
+      text-transform: none;
+      line-height: 1;
+    }
+    // Include any extra rules supplied for the pseudo-element
+    @content;
+  }
+}
 
 // example mixins /////////////// 
 @mixin opac-color($r, $g, $b, $pertc) {
