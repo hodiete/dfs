@@ -22,7 +22,7 @@ $get-inv-frame-description-color: $black !default;
 .paragraph--type--webny-get-involved-pgtype {
   background-color: $color-secondary;
   margin: 0 auto;
-  text-algin: center;
+  text-align: center;
   //padding: 3%;
   padding: $frame-padding-lg 3%;
 }
@@ -73,23 +73,35 @@ $get-inv-frame-description-color: $black !default;
 
 .get-involved--field-webny-get-inv-cta {
   @extend .buttonTransparentDk;
+
   //  display: block;
   padding: 20px 20px;
-  color: $black;
   margin-top: 1.5em;
   width: 90%;
   margin-left: auto;
   margin-right: auto;
-  &:visited{
-    color: $black;
-  }
-}
 
-.get-involved--field-webny-get-inv-cta a {
-  color: $black;
-  &:visited{
-    color: $black;
+  // BUTTON DYNAMIC REQUIREMENTS
+  border: $frame-button-border-size solid $getinv-button-border-color;
+  color: $getinv-button-text-color;
+  background-color: $getinv-button-back-color;
+
+  &:hover {
+    background-color: $getinv-button-hover-back-color;
+    border-color: $getinv-button-border-color;
   }
+
+  a{
+    color: $getinv-button-text-color;
+    font-size: $frame-button-font-size;
+    letter-spacing: $frame-button-letter-spacing;
+    text-decoration: $frame-button-link-decoration;
+
+    &:visited, &:link{
+      color: $getinv-button-text-color;
+    }
+  }
+
 }
 
 // ######################################################################### //
@@ -97,7 +109,7 @@ $get-inv-frame-description-color: $black !default;
 @media (min-width: $min-tab) {
 
   .get-involved--field-webny-get-inv-cta {
-    padding: 14px 20px;
+    padding: 13px 20px;
   }
 
 

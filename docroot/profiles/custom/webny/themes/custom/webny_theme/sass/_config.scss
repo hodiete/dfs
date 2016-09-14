@@ -60,6 +60,43 @@ $frame-base-font-size:    16px;  // .88rem
 $frame-base-line-height:  22px;
 $frame-base-semi-bold:    600;   // font weight value
 
+// ===============================================================
+// DEFAULT BUTTONS VARS
+$button-text-color:             $white !default;
+$button-border-color:           $button-text-color !default;
+$button-text-black:             $black !default;
+$button-bkgd-color:             $color-primary !default;
+$button-bkgd-transparent:       hsla(0, 0%, 0%, 0.0);     // Default color --transparent -- for buttons
+$button-white-20:               rgba(255,255,255,.2);     // Threshold of 20% White
+$button-black-20:               rgba(0,0,0,.2);           // Threshold of 20% Black
+$button-bkgd-hover-color:       hsla(0, 0%, 0%, 0.4);     // Default color for buttons on hover, used on nav too
+
+// NY.GOV BUTTON VARS -- DEFAULT APPEARANCE (THEME) SETTING
+
+// REASSIGNED VALS FOR GLOBAL SCOPE -- ANNOUNCEMENT
+$announcement-button-border-color:      $button-text-black !default;
+$announcement-button-text-color:        $button-text-black !default;
+$announcement-button-back-color:        $button-bkgd-transparent !default;
+$announcement-button-hover-back-color:  $button-black-20 !default;
+
+// REASSIGNED VALS FOR GLOBAL SCOPE -- BIO
+$bio-button-border-color:               $button-text-color !default;
+$bio-button-text-color:                 $button-text-color !default;
+$bio-button-back-color:                 $button-bkgd-transparent !default;
+$bio-button-hover-back-color:           $button-white-20 !default;
+
+// REASSIGNED VALS FOR GLOBAL SCOPE -- GET INVOLVED
+$getinv-button-border-color:            $button-border-color !default;
+$getinv-button-text-color:              $button-text-color !default;
+$getinv-button-back-color:              $button-bkgd-transparent !default;
+$getinv-button-hover-back-color:        $button-white-20 !default;
+
+// REASSIGNED VALS FOR GLOBAL SCOPE -- SUMMARY
+$summary-button-border-color:           $button-border-color !default;
+$summary-button-text-color:             $button-text-color !default;
+$summary-button-back-color:             $button-bkgd-transparent !default;
+$summary-button-hover-back-color:       $button-white-20 !default;
+
 // font with WebNY_theme original - remove? ///////////////
 $opensans: 'Open Sans', sans-serif;
 

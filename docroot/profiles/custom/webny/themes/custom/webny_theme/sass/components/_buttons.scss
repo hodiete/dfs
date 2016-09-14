@@ -6,22 +6,27 @@
 //
 // Style guide: components.buttons
 
-// color variables
-$button-text-color: $white !default;
-$button-bkgd-color: $color-primary !default;
-$button-bkgd-transparent: hsla(0, 0%, 0%, 0.0); // Default color --transparent -- for buttons
-$button-bkgd-hover-color: hsla(0, 0%, 0%, 0.4); // Default color for buttons on hover, used on nav too
+
+// BUTTON IN FRAMES -- STATICS
+$frame-button-hover-decoration: underline;
+$frame-button-link-decoration:  none;
+$frame-button-letter-spacing:   2px;
+$frame-button-font-size:        13px; // .72rem
+$frame-button-min-width:        175px;
+$frame-button-mobile-width:     100%;
+$frame-button-default-padding:  13px 20px;
+$frame-button-border-size:      1px;
 
 .buttonBase {
   display:inline-block;
   font-family: $base-font;
-  //font-weight: bold;
   text-align: center;
   color:$button-text-color;
   text-transform: uppercase;
   text-decoration: none;
   padding: 14px 20px;
   border: 1px solid $button-text-color;
+  cursor: pointer;
   &:hover {
 	text-decoration: none;
   }
@@ -33,7 +38,6 @@ $button-bkgd-hover-color: hsla(0, 0%, 0%, 0.4); // Default color for buttons on 
         }
     }
 }
-
 
 .button {
   @extend .buttonBase;
@@ -82,4 +86,44 @@ $button-bkgd-hover-color: hsla(0, 0%, 0%, 0.4); // Default color for buttons on 
 .buttonMobile {
   @extend .buttonBase;
   padding: 20px 20px;
+}
+
+// MIXINS #####################################################################
+
+
+// ============================================================================
+// CUSTOM FRAME BUTTON BASE MIXIN
+/**
+ * Usage: @include frame-button-base();
+ *
+ **/
+
+@mixin frame-button-base(){
+
+  a {
+
+    // BUTTON STATIC REQUIREMENTS
+    padding: $frame-button-default-padding;
+    min-width: $frame-button-min-width;
+    font-size: $frame-button-font-size;
+    letter-spacing: $frame-button-letter-spacing;
+    text-decoration: $frame-button-link-decoration;
+    cursor: pointer;
+    width: auto;
+    display: inline-block;
+    text-transform: uppercase;
+    text-align: center;
+    margin: 0 auto;
+
+    @include breakpoint($min-mob){
+      display: block;
+    }
+
+    @include breakpoint($min-tab) {
+      max-width: 250px;
+      display: inline-block;
+    }
+
+  }
+
 }
