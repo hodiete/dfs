@@ -112,22 +112,28 @@ $summary-frame-button: $white !default;
 }
 
 .keypoint--field-webny-summary-cta {
-  @extend .buttonDkLt;
-  display: block;
-  margin-top: 3em;
-  width: auto;
-  max-width: 250px;
-  margin-left: auto;
-  margin-right: auto;
-  &:visited{
-    color: $white;
-  }
-}
 
-.keypoint--field-webny-summary-cta {
-  &>a:visited{
-    color: $white;
+  a {
+    // BUTTON DYNAMIC REQUIREMENTS
+    border: $frame-button-border-size solid $summary-button-border-color;
+    color: $summary-button-text-color;
+    background-color: $summary-button-back-color;
+
+    &:visited, &:link{
+      color: $summary-button-text-color;
+    }
+
+    &:hover {
+      background-color: $summary-button-hover-back-color;
+      text-decoration: none;
+    }
   }
+
+  clear: both;
+
+  // BUTTON CALLS
+  @include frame-button-base();
+
 }
 
 // ######################################################################### //
@@ -139,7 +145,7 @@ $summary-frame-button: $white !default;
  flex-flow: row nowrap;
  justify-content:center;
 }
-  
+
 .keypoint--field-webny-summary-argument1,
 .keypoint--field-webny-summary-argument2,
 .keypoint--field-webny-summary-argument3{
@@ -147,7 +153,7 @@ $summary-frame-button: $white !default;
   font-size: 0.7778rem;
   font-weight: 800;
 }
-  
+
 
 .keypoint{
 //  display: inline-block;
@@ -178,10 +184,6 @@ $summary-frame-button: $white !default;
   float: left;
 }
   
-  .keypoint--field-webny-summary-cta {
-  clear: both;
-  }
-  
 } // END MIN TABLET VIEW
 
 
@@ -199,13 +201,13 @@ $summary-frame-button: $white !default;
     padding: 1.5%;
     margin-bottom: 30px;
   }
-  
+
 .keypoint--field-webny-summary-argument1,
 .keypoint--field-webny-summary-argument2,
 .keypoint--field-webny-summary-argument3{
-  font-family: $base-font;
-  font-size: 1rem;
-  font-weight: 800;
+  font-size: $base-font-size;
+  font-weight: $frame-base-semi-bold;
+  line-height: 24px;
 }
   
 .keypoint:nth-of-type(2n+2) {
@@ -215,9 +217,5 @@ $summary-frame-button: $white !default;
 .keypoint:nth-of-type(1n+2) {
   border-left:2px solid lighten($summary-frame-keypt-border, 20%);
 }
-  
- .keypoint--field-webny-summary-cta {
-  clear: both;
-  
-  }
+
 }

@@ -86,47 +86,30 @@ $bioframe-margin: 15px;
             } //see below for font on a home page
             
             .caption{
-                line-height: 1.2rem;  
                 margin-top: 20px;
                 margin-bottom: $bioframe-margin;
-                font-size: .88rem !important;
+                font-size: $frame-base-font-size;
+                line-height: $frame-base-line-height;
             }
             
             .reslink{
                 
-                margin: 36px auto;
+                margin: 36px 0;
                 text-align: center;
-                
-                a{  
-                    border-width: 1px;
-                    border-style: solid;
-                    border-color: #eee;             // ADD TO COLOR SCHEME VARS
-                    color: $white;
-                    
-                    &:link{
-                        text-align: center;
-                        display: block;
-                        margin: 16px 0;
-                        font-size: 1.15rem;
-                        text-decoration: none;
-                        padding: 12px 0;
-                        display: block;
-                        max-width: 100%;
-                        
+
+                a {
+                    // BUTTON DYNAMIC REQUIREMENTS
+                    border: $frame-button-border-size solid $bio-button-border-color;
+                    color: $bio-button-text-color;
+                    background-color: $bio-button-back-color;
+                    &:hover {
+                        background-color: $bio-button-hover-back-color;
                     }
-                    &:visited{
-                        border-width: 1px;
-                        border-style: solid;
-                        border-color: #eee;             // ADD TO COLOR SCHEME VARS
-                        color: $white;
-                    
-                    }
-                    &:hover{
-                       border-color: $white;             // ADD TO COLOR SCHEME VARS
-                       color: $white;
-                    }
-                    
-                }   
+                }
+
+                // BUTTON CALLS
+                @include frame-button-base();
+
             }
                         
         } // END BIO META
@@ -207,13 +190,8 @@ $bioframe-margin: 15px;
             
             .reslink{
                 
-                text-align: center;
-                
-                a{  
-                    &:link{
-                        max-width: 240px;   
-                    }
-                }
+                text-align: left;
+
             }
         }
     

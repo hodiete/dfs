@@ -760,3 +760,42 @@ function webny_configuration_update_8050() {
   \Drupal::service('module_installer')
       ->install(['memcache']);
 }
+
+/**
+ * Implements hook_update_n().
+ *
+ * Refreshes contact form.
+ */
+function webny_configuration_update_8051() {
+  \Drupal::service('module_installer')
+      ->uninstall(['webny_contact_form']);
+  \Drupal::service('module_installer')
+      ->install(['webny_contact_form']);
+
+  // DELETE PAGE TITLE BLOCK FROM THE CONFIG DB.
+  \Drupal::service('config.factory')->getEditable('block.block.pagetitle')->delete();
+
+}
+
+/**
+ * Implements hook_update_n().
+ *
+ * Enable Google Analytics Module.
+ */
+function webny_configuration_update_8052() {
+  \Drupal::service('module_installer')
+      ->uninstall(['google_analytics']);
+  \Drupal::service('module_installer')
+      ->install(['google_analytics']);
+}
+/**
+ * Implements hook_update_n().
+ *
+ * Refreshes News content type feature.
+ */
+function webny_configuration_update_8053() {
+  \Drupal::service('module_installer')
+      ->uninstall(['webny_news_content_type']);
+  \Drupal::service('module_installer')
+      ->install(['webny_news_content_type']);
+}
