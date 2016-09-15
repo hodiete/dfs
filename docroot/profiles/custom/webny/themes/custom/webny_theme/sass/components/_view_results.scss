@@ -6,32 +6,132 @@
 //
 // Style guide: components.views_results
 
+// color variables
+$views-results-stroke-color: $white !default;
+$views-results-fill-color: $color-icon-primary !default;
+$results-highlight-color: $color-secondary !default;
+$results-head-bkgrnd: $color-secondary !default;
+$results-head-title: $black !default;
+$results-head-headline: $white !default;
+$results-pager-color: $color-tertiary !default;
+//.st1 {stroke: red;}
+//.st2 {stroke:gray-lite;}
+.results-head {
+  background-color: $results-head-bkgrnd;
+  text-align: center;
+  padding: 30px 0;
+}
+
+.results-head-title {
+  font-size: .9rem;
+  font-family: $oswald;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: $results-head-title;
+  font-weight: 900;
+}
+
+.results-head-headline {
+  // larger than even the home pg headline, otherwise could use that variable
+  font: 900 2.67em $base-font;
+  color: $results-head-headline;
+  display: block;
+}
+
+
+.results-image svg {
+  background-color:$views-results-fill-color;
+}
+.results-image .st0{
+  opacity:0;
+  fill:$views-results-fill-color;
+}
+.results-image .st1{
+  fill:none;
+  stroke: $views-results-stroke-color;
+  stroke-width:2;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+  stroke-miterlimit:10;
+
+}
+
+.results-image .fallback-img {
+  max-width: 240px;
+}
+
+// if we have other results related displays, this can probably be placed in base 
+.results-total {
+  padding: 20px 0;
+}
+
+.results-total-number {
+  font-size: 2.3em; 
+  font-weight: 800;
+  color: $results-highlight-color;
+}
 
 .results {
   //color: white;
   font-family: $base-font;
   background-color: $exposedbkgrnd;
-  float: left;
+  //float: left;
   position: relative;
+  overflow: hidden;
+
+  .results-exposed-filters-outer {
+    padding: 0 20px;
+  }
 
   .results-exposed-filters-title {
-    color: $color-secondary;
-    font-size: 16px;
+    color: $results-highlight-color;
+    font-size: .9rem;
+    font-family: $oswald;
     text-transform: uppercase;
+    padding: 1.75em 0 1em 0;
+    font-weight: bold;
+  }
+
+  .filterBodyDisplay {
+    display: block;
+  }
+  .filterBodyHidden {
+    display: none;
+  }
+
+  .filter-display {
+    position: absolute;
+    right:0; 
+    bottom: 0;
+    border:none;
+  }
+  .filterTogDisplay, .filterTogHidden {
+    position:relative;
+    display:inline-block;
+    //font-size: 38px;
   }
 
   form {
     color: rgb(255, 255, 255);
+    position: relative;
 
     label {
-      color: rgb(255, 255, 255);
+      color: $white;
       font-size: 16px;
+      font-weight: normal;
+      margin: .25em 0;
     }
     input {
       background-color: $exposedbkgrnd;
       border-style: solid;
       border-width: 1px;
       border-color: $darkgray;
+      color: $white;
+      margin-bottom: 20px;
+    }
+
+    input[type="text"]:focus, input[type="date"]:focus {
+      color: $black;
     }
 
     .form-item-field-webny-news-global-keywords-target-id input {
@@ -49,22 +149,34 @@
     padding-bottom: 20px;
     padding-top: 20px;
     background-color: #ffffff;
+   // float: left;
+    width: 100%;
+    overflow: hidden;
   }
+
+    .results-list-inner {
+    padding: 0 20px;
+  }
+
   .views-row {
     border: 1px solid $gray-lite;
-    padding-left: 0;
-    min-height: 240px;
+    //padding-left: 0;
+    //min-height: 240px;
     //width:70%;
-    overflow: auto;
-    margin-left: 40px;
-    margin-right: 40px;
-    margin-bottom: 8px;
-    margin-top: 8px;
+    //overflow: auto;
+    //margin-left: 40px;
+    //margin-right: 40px;
+    //margin-bottom: 8px;
+    //margin-top: 8px;
+    margin: 8px 0px;
+    float: left;
+    width:100%;
+    position: relative;
 
     .results-title {
-      margin: 16px 0 12px 0;
+      margin: 16px 0;
       font-size: 19px;
-      padding-right: 16px;
+      padding: 0 10px;
       a {
         color: $text-blue;
         text-decoration: none;
@@ -73,6 +185,7 @@
 
     .results-date {
       font-size: 12px;
+      padding: 0 10px;
       color: $base-font-color;
       .results-date-day {
         font-weight: bold;
@@ -82,10 +195,18 @@
     .results-image {
       float: left;
       margin-right: 16px;
+      max-height:240px;
+      .field-content {
+        max-height: 240px; //something isn't right in here
+      }
       img {
         float: left;
         border: 0;
       }
+    }
+
+    .views-field-body {
+      padding: 0 10px;
     }
 
     .results-teaser {
@@ -96,34 +217,81 @@
   }
 
   .pager__items {
-    float: left;
+    float: right;
     list-style-type: none;
     margin-left: 10px;
     .pager__item {
       float: left;
-      padding: 5px;
+      padding: 16px;
+      color: $results-pager-color;
+      font-weight: 900;
+      font-size: 13px;
+      }
+    .pager__item--next a,
+    .pager__item--previous a,
+    .pager__item--first a,
+    .pager__item--last a
+     {
+      @extend .button;
+      font-weight: normal;
     }
   }
 }
+
 
 
 .results {
-  @include breakpoint($min-tablet) {
+  @include breakpoint($min-desktop) {
     form.views-exposed-form {
-      @include span(3 of 12);
-      > * {
-        padding-left: 15px;
+      @include span(3 of 12){
+        //padding-left: 15px;
+        .filterTog {
+          //display:none;
+        }
       }
     }
     div.results-list {
-      @include span(9 of 12 last);
-      > * {
-        padding-right: 25px;
+      @include span(9 of 12 last) {
+       // padding-right: 25px;
+         .results-list-inner {
+         padding: 0 40px;
+       }
+        .views-row {
+         padding-left: 0;
+        }
       }
     }
   }
+  @media (max-width:$min-tablet){
+    .results-image svg {
+      display:none;
+    }
+  }
+} 
+//the display of the exposed filter area and the toggle desktop vs mobile
+@media screen and (max-width:1023px){
+  .results .filterBodyHidden{
+    display: none;  
+  } 
 }
+@media screen and (min-width:1024px){
+  .results .filterBodyHidden{
+    //we want it to always display on desktop
+    display:block 
+  } 
+  .results .filter-display {
+    //since desktop should always have the filters, no toggle needed
+    display:none;
+  }
+}
+
 // the following class was placed to fix the issue of the footer rendering into the view results area
-.views-element-container {
-  display: flex;
+.nygov-universal-footer {
+  //display: flex;
+  clear:both;
+}
+
+// override of core active throbber - avoids tiling
+.js input.form-autocomplete.ui-autocomplete-loading {
+  background-repeat: no-repeat;
 }

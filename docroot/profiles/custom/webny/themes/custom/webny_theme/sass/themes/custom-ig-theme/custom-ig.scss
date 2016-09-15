@@ -8,6 +8,7 @@ $color-tertiary: #2a2a2a; // dk gray
 $color-accent-primary: #6787B7; // blue
 $color-accent-secondary: #F3DD6D; //yellow
 $color-accent-tertiary: #F1F1F1; // lite gray
+$color-icon-primary: #73A5CA; // dusky blue
 
 // color variables which need to be overridden from the base assignment per component
 $nav-top-hover-bkgd-color: $color-accent-primary;
@@ -35,7 +36,7 @@ $button-bkgd-color: $color-accent-primary;
 $get-inv-frame-bkgd-color: $color-accent-primary;
 $get-inv-frame-title-color: $color-secondary;
 
-$wysiwyg-frame-title-color: $color-accent-primary !default;
+$wysiwyg-frame-title-color: $color-accent-primary;
 
 $featured-card-frame-title-color: $color-accent-primary;
 
@@ -63,6 +64,7 @@ $summary-button-text-color:             #fff;
 $summary-button-hover-back-color:       rgba(255,255,255,0.2);
 
 // **
+//no overrides for view_results.scss currently
 
 //import base style
 @import "../../styles";
