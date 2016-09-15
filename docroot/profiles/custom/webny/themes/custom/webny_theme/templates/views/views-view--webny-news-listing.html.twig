@@ -28,6 +28,8 @@
  *   Javascript.
  *
  * @see template_preprocess_views_view()
+ * WebNY - this is a version of the views-view.html.twig template
+ * it adds results-list and results classes
  */
 #}
 {%
@@ -36,6 +38,8 @@
     'results',
   ]
 %}
+{# attach_library('webny_theme/filter-toggle') #}
+
 <div{{ attributes.addClass(classes) }}>
   {{ title_prefix }}
   {{ title }}
@@ -46,14 +50,22 @@
       {{ header }}
     </header>
   {% endif %}
-
+<div class="results-head">
+ <span class="results-head-title"> All </span>
+ <span class="results-head-headline"> News </span>
+</div>
   {{ exposed }}
   {{ attachment_before }}
 
   <div class="results-list">
+    <div class="results-list-inner">
+      <div class="results-total">
+        <span class="results-total-number">{{ view.total_rows }}</span> News Items
+      </div>
     {{ rows }}
     {{ empty }}
     {{ pager }}
+    </div>
   </div>
 
   {{ attachment_after }}

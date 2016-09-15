@@ -13,6 +13,7 @@ $primarygold-25: hsla(35, 88%, 44%, 0.25); // using HSL b/c this hex doesn't exi
 $secondarygold: #DC9719; // secondary accent
 
 //using the colors from the ny.gov colors as starting point - these will need to be reivsed
+// * use these colors when setting up the variables at the top of partials 
 $color-primary: $primaryblue !default; 
 $color-secondary: $primarygold !default;
 $color-tertiary: $medblue !default;
@@ -27,6 +28,7 @@ $call-to-action: #f6f8f8; // background for call to action buttons, areas
 $black: #000; //$border-dk: #000;  used to add a black border
 $white: #fff; //$border-lt: #fff;  used to add a white border
 $gray-lite: #e4e4e4; //$imgborder: #e4e4e4; used on ny.gov - same as rgb(228,228,228)
+$color-icon-primary: #009CDE !default; // color used on icons such as news, blue default
 //$keywordBkColor: #7690b6; // Keywords for global taxonomy terms -- News
 
 // keep - used on forms, view_results and ...
@@ -37,13 +39,13 @@ $darkgray: #999;
 // fonts ///////////////
 $base-font: "Proxima Nova", Arial, sans-serif !default;
 $agency-name-font: "D Sari Bold", Arial, sans-serif; // used in header and footer
-$oswald: "Oswald", Arial, sans-serif;
+$oswald: "Oswald", Arial, sans-serif !default;
 $icon-font: "icomoon"; // Icon Font
 
 $base-font-size: 18px;
 $base-line-height: 27px;
 $base-font-color: #000;
-$frame-title: bold .9rem $oswald; // currently bold 16px oswald
+$frame-title: bold .9rem $oswald !default; // currently bold 16px oswald
 $frame-headline: bold 1.8rem $base-font; // currently 32px internal landing pages
 $frame-headline-front: 800 2.22rem $base-font; //currently bold 40px proxima home page
 // to help create consistent margins between frames on landing pages - should be 80px between
@@ -107,6 +109,7 @@ $susy: (
 );
 
 // breakpoint ///////////////
+$min-desktop: 1024px;
 $min-tablet: 768px;
 $min-mobile: 461px;
 
