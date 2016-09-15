@@ -788,3 +788,14 @@ function webny_configuration_update_8052() {
   \Drupal::service('module_installer')
       ->install(['google_analytics']);
 }
+/**
+ * Implements hook_update_n().
+ *
+ * Refreshes News content type feature.
+ */
+function webny_configuration_update_8053() {
+  \Drupal::service('module_installer')
+      ->uninstall(['webny_news_content_type']);
+  \Drupal::service('module_installer')
+      ->install(['webny_news_content_type']);
+}
