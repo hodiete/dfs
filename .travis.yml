@@ -25,7 +25,7 @@ addons:
 # @see https://docs.travis-ci.com/user/notifications
 notifications:
 # - hipchat: [api token]@[room id or name]
-  - slack: 'webnydistro:iSJ8dsk7Ym139SMpL470llno'
+  slack: 'webnydistro:iSJ8dsk7Ym139SMpL470llno'
 
 before_install:
   # Enable aliases for non-interactive shell.
@@ -68,4 +68,5 @@ deploy:
   script: blt deploy -Ddeploy.commitMsg="Automated commit by Travis CI for Build ${TRAVIS_BUILD_ID}" -Ddeploy.branch="${TRAVIS_BRANCH}-build"
   skip_cleanup: true
   on:
-    branch: develop
+   all_branches: true
+
