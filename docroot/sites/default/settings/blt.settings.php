@@ -17,7 +17,7 @@ require_once DRUPAL_ROOT . '/sites/default/settings/filesystem.settings.php';
  * Acquia Cloud settings.
  */
 if ($is_ah_env && file_exists('/var/www/site-php')) {
-  require "/var/www/site-php/{$_ENV['AH_SITE_GROUP']}/{$_ENV['AH_SITE_GROUP']}-settings.inc";
+  // require "/var/www/site-php/{$_ENV['AH_SITE_GROUP']}/{$_ENV['AH_SITE_GROUP']}-settings.inc";
 
   // Store API Keys and things outside of version control.
   // @see settings/sample-secrets.settings.php for sample code.
