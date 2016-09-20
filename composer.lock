@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "10c65278a765d3a697af95e954726795",
-    "content-hash": "7ac9156e39e36e2e8de024753db620d8",
+    "hash": "f9c46972b1da14401ffe09e5162135f2",
+    "content-hash": "2d52bf4a9f528d0a3616da48c5a791ed",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -5077,34 +5077,42 @@
     "packages-dev": [
         {
             "name": "acquia/blt",
-            "version": "8.3.4",
+            "version": "8.4.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/acquia/blt.git",
-                "reference": "5c07e0ab148c4f57f030f73477a3ea3b7c5b60dd"
+                "reference": "8c0264fdc6397542d64a9c97d139f11f108eef39"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/acquia/blt/zipball/5c07e0ab148c4f57f030f73477a3ea3b7c5b60dd",
-                "reference": "5c07e0ab148c4f57f030f73477a3ea3b7c5b60dd",
+                "url": "https://api.github.com/repos/acquia/blt/zipball/8c0264fdc6397542d64a9c97d139f11f108eef39",
+                "reference": "8c0264fdc6397542d64a9c97d139f11f108eef39",
                 "shasum": ""
             },
             "require": {
+                "composer-plugin-api": "^1.0.0",
+                "dflydev/dot-access-data": "^1.0",
                 "drupal/coder": "~8.2",
                 "drupal/console": "~1",
-                "phing/phing": "2.*",
+                "phing/phing": "~2",
+                "php": ">=5.6",
                 "phpunit/phpunit": "~5.4",
-                "platinumpixs/phing-random-string": "dev-master",
                 "squizlabs/php_codesniffer": "^2.4",
                 "symfony/console": "~2",
                 "symfony/twig-bridge": "~2",
                 "symfony/yaml": "~2.7"
             },
+            "conflict": {
+                "drupal/core": "7.*"
+            },
             "bin": [
                 "bin/blt",
                 "bin/blt-console"
             ],
-            "type": "library",
+            "type": "composer-plugin",
+            "extra": {
+                "class": "Acquia\\Blt\\Composer\\Plugin"
+            },
             "autoload": {
                 "psr-4": {
                     "Acquia\\Blt\\": "src/",
@@ -5116,7 +5124,7 @@
                 "GPL-2.0"
             ],
             "description": "BLT",
-            "time": "2016-09-02 18:35:06"
+            "time": "2016-09-20 13:21:36"
         },
         {
             "name": "behat/behat",
@@ -5579,6 +5587,60 @@
                 "transliterator"
             ],
             "time": "2015-09-28 16:26:35"
+        },
+        {
+            "name": "dflydev/dot-access-data",
+            "version": "v1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/dflydev/dflydev-dot-access-data.git",
+                "reference": "7a0960d088119818ce7687d200c363b01d183cbe"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/dflydev/dflydev-dot-access-data/zipball/7a0960d088119818ce7687d200c363b01d183cbe",
+                "reference": "7a0960d088119818ce7687d200c363b01d183cbe",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.2"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Dflydev\\DotAccessData": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Dragonfly Development Inc.",
+                    "email": "info@dflydev.com",
+                    "homepage": "http://dflydev.com"
+                },
+                {
+                    "name": "Beau Simensen",
+                    "email": "beau@dflydev.com",
+                    "homepage": "http://beausimensen.com"
+                }
+            ],
+            "description": "Given a deep data structure, access data by dot notation.",
+            "homepage": "https://github.com/dflydev/dflydev-dot-access-data",
+            "keywords": [
+                "access",
+                "data",
+                "dot",
+                "notation"
+            ],
+            "time": "2015-08-13 03:51:18"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",
