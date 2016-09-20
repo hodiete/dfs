@@ -32,6 +32,10 @@ target-hooks:
 #    post-setup-build:
 #        dir: '${docroot}/profiles/contrib/lightning'
 #        command: 'npm run install-libraries'
+blt:
+  update:
+    ignore-existing-file: ${repo.root}/scripts/blt/ignore-existing.txt
+
 import: ${repo.root}/blt/custom/phing/tasks/build.xml
 hosting: acsf
 example.property: 'example value'
