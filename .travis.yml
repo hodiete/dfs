@@ -41,8 +41,8 @@ before_install:
   - git config --global user.email "noreply@travis-ci.org"
   - mysql -e 'CREATE DATABASE drupal;'
   # enable memcached extension.
-  - sudo apt-get install memcached
-  - sudo apt-get install php5-memcached
+  - apt-get install memcached
+  - apt-get install php5-memcached
 
 install:
   # Load composer dependencies.
