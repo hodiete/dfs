@@ -1,0 +1,43 @@
+// print styling ///////////////
+/**
+  Config file that contains centralized variables
+*/
+@import "config";
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	color:$black;
+}
+
+body {
+      color: $black;
+      background: #fff;
+      font-family: $base-font;
+      font-size: $base-font-size;
+}
+.hero-layout {
+	h1, h2 {
+		color:$black;
+	}
+	.hero-header {
+		background:none;
+		color: #000;
+	}
+
+	.hero-published-date, 
+	.hero-location {
+		color: $black;
+	}
+
+	.hero-inner {
+		width:100%;
+	}
+}
+
+a:link, a:visited {
+	text-decoration: underline;
+}
