@@ -37,6 +37,12 @@
  */
 #}
 
+{%
+set classes = [
+'contact--' ~ field_name|clean_class,
+]
+%}
+
 {% if label_hidden %}
   {% if multiple %}
     <div{{ attributes }}>
@@ -50,8 +56,8 @@
     {% endfor %}
   {% endif %}
 {% else %}
-  <div{{ attributes }}>
-    <div{{ title_attributes }}>Contact us by mail:</div>
+  <div{{ attributes.addClass(classes) }}>
+    <div{{ title_attributes.addClass(classes) }}>Contact us by mail:</div>
     {% if multiple %}
       <div>
     {% endif %}
