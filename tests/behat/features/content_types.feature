@@ -13,6 +13,7 @@ Feature: Check for the existence and fields of content types
     Then I should see text matching "Agency Keywords"
     And I should see text matching "Attached Documents"
     And I should see text matching "Body"
+    And I should see text matching "Category"
     And I should see text matching "Contact Information"
     And I should see text matching "Date"
     And I should see text matching "Documents Section Sub Title"
