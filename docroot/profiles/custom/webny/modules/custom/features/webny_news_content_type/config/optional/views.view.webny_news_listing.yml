@@ -8,8 +8,10 @@ dependencies:
     - field.storage.node.field_webny_news_image
     - node.type.webny_news
     - taxonomy.vocabulary.webny_agency_keywords
+    - taxonomy.vocabulary.webny_category_tax
     - taxonomy.vocabulary.webny_global_keywords
   module:
+    - better_exposed_filters
     - datetime
     - node
     - taxonomy
@@ -45,15 +47,52 @@ display:
           query_comment: ''
           query_tags: {  }
       exposed_form:
-        type: basic
+        type: bef
         options:
           submit_button: Apply
-          reset_button: false
+          reset_button: 0
           reset_button_label: Reset
           exposed_sorts_label: 'Sort by'
-          expose_sort_order: false
+          expose_sort_order: 0
           sort_asc_label: Asc
           sort_desc_label: Desc
+          bef:
+            general:
+              allow_secondary: 0
+              secondary_label: 'Advanced options'
+            field_webny_news_category_target_id:
+              bef_format: bef
+              more_options:
+                bef_select_all_none: 0
+                bef_select_all_none_nested: 0
+                bef_collapsible: 0
+                is_secondary: 0
+                rewrite:
+                  filter_rewrite_values: ''
+            field_webny_news_global_keywords_target_id:
+              bef_format: default
+              more_options:
+                is_secondary: 0
+                rewrite:
+                  filter_rewrite_values: ''
+            field_webny_news_agency_keywords_target_id:
+              bef_format: default
+              more_options:
+                is_secondary: 0
+                rewrite:
+                  filter_rewrite_values: ''
+            field_webny_news_date_value:
+              bef_format: default
+              more_options:
+                is_secondary: 0
+                rewrite:
+                  filter_rewrite_values: ''
+            field_webny_news_date_value_1:
+              bef_format: default
+              more_options:
+                is_secondary: 0
+                rewrite:
+                  filter_rewrite_values: ''
       pager:
         type: full
         options:
@@ -567,6 +606,63 @@ display:
           entity_type: node
           entity_field: status
           plugin_id: boolean
+        field_webny_news_category_target_id:
+          id: field_webny_news_category_target_id
+          table: node__field_webny_news_category
+          field: field_webny_news_category_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_webny_news_category_target_id_op
+            label: ''
+            description: ''
+            use_operator: false
+            operator: field_webny_news_category_target_id_op
+            identifier: target_news_category
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+              workflow_author: '0'
+              workflow_approver: '0'
+              media_creator: '0'
+              workflow_publisher: '0'
+              media_manager: '0'
+              site_builder: '0'
+              site_admin: '0'
+              user_admin: '0'
+              content_author: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: 'Category (field_webny_news_category)'
+            description: null
+            identifier: field_webny_news_category_target_id
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items:
+              1: {  }
+              2: {  }
+              3: {  }
+          reduce_duplicates: false
+          type: select
+          limit: true
+          vid: webny_category_tax
+          hierarchy: true
+          error_message: true
+          plugin_id: taxonomy_index_tid
         field_webny_news_global_keywords_target_id:
           id: field_webny_news_global_keywords_target_id
           table: node__field_webny_news_global_keywords
