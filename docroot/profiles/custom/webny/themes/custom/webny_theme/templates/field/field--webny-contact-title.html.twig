@@ -19,8 +19,13 @@
  * @see field.html.twig
  */
 #}
-<span{{ attributes }}>
-  {%- for item in items -%}
-    Contact the {{ item.content }}
-  {%- endfor -%}
+
+{%
+set classes = [
+'contact--' ~ field_name|clean_class,
+]
+%}
+
+<span{{ attributes.addClass(classes) }}>
+    Contact the {{ items.0.content }}
 </span>
