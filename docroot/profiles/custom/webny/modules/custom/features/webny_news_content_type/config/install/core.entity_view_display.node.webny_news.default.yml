@@ -52,9 +52,21 @@ content:
     weight: 7
     label: hidden
     settings:
-      link: true
-      view_mode: default
-    third_party_settings: {  }
+      view_mode: webny_contact_for_news
+      link: false
+    third_party_settings:
+      linked_field:
+        type: field
+        destination:
+          field: ''
+          custom: ''
+        advanced:
+          title: ''
+          target: ''
+          class: ''
+          rel: ''
+          text: ''
+        linked: 0
     type: entity_reference_entity_view
   field_webny_news_date:
     weight: 8
