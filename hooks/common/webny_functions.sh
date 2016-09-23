@@ -14,6 +14,8 @@
               #drush @${drush_alias} ac-database-instance-backup acsfdevdev --endpoint=${endpoint} --email=${email} --key=${key}
               echo "Making any necessary Drupal database updates..."
               drush @${drush_alias} acsf-tools-ml --strict=0 updb -y
+              echo "Import vcs"
+              drush config-import vcs -y && drush updatedb -y
               echo "Importing CMI Config"
               drush @${drush_alias} acsf-tools-ml --strict=0 config-import --partial --source=/mnt/www/html/nysits01dev/config/default -y
               echo "Reverting features"
