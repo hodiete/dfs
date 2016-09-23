@@ -8,7 +8,24 @@
     color: #000 !important;
     border: 0 !important;
 }
-body, .layout-container {
+
+// zeroing out elements 
+body, 
+.layout-container,
+.news-body-in,
+.press-teaser,
+.press-body,
+.hero-inner, 
+.webny-news, 
+.hero-no-image,
+.hero-news, 
+.pane-page-logo,
+.press-docs,
+.press-contact-info, //have contact info in news print as column
+.results,// results page
+.results-head,
+.results-list 
+ {
     background: 0 !important;
     height: auto !important;
     min-height: 0 !important;
@@ -26,50 +43,64 @@ body, .layout-container {
     overflow: hidden;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-	color:$black;
-}
 
+// make sure print has same fonts as web
 body, .layout-container {
-      color: $black;
       background: #fff;
       font-family: $base-font;
       font-size: $base-font-size;
-      margin:0;
-      padding:0;
-      width:100%;
 }
 
-@page {
-	margin: 2cm;
+// URLs - show as underlined with URL after
+a:link, a:visited {
+	text-decoration: underline;
 }
-.nygov-universal-navigation .l-header.nygov-header .pane-page-logo,
-.nygov-universal-navigation .l-header.nygov-header .pane-page-logo .pane-content img {
-	display: block !important;
+
+.layout-container {
+	a:link:after, 
+    a:visited:after { 
+	content: " (" attr(href) ") "; 
+	font-size: 90%; 
+	}
+ 	a[href^="/"]:after { 
+	content: " (http://www.alistapart.com" attr(href) ") "; 
+	}
 }
+
+//unav elements
+.nygov-universal-navigation .l-header.nygov-header .l-region--header .pane-ny-gov-global-menu,
+#expand-menu-mobile {
+	display:none;
+}
+.l-region--header .nygov-universal-navigation,
+.nygov-universal-navigation {
+    display: block !important;
+    }
 //navigation elements
 .webny-global-header {
 	background-color: $white;
 	height: 50px; 
 		h1 {
-		display: inline-block !important;
-		color: $black;
-	  }
-	.nav-toggle {
-	  	display: none;
-	  }
-	 ul {
-		display: none !important;
-	}
+			display: inline-block !important;
+			color: $black;
+			padding: 0 !important;
+			a {
+				padding: 0 !important;
+			}
+	    }
+		.nav-toggle {
+		  	display: none;
+		}
+		 ul {
+			display: none !important;
+		}
 }
-.nys-global-header {
+.nys-global-header,
+.results-image,
+.results form.views-exposed-form {
 	display:none;
 }
+// making sure hero text - created when working on news, but should work for others in part
 .hero-layout {
 	h1, h2 {
 		color:$black;
@@ -84,12 +115,10 @@ body, .layout-container {
 			background:none !important;
 		  }
 	}
-
 	.hero-published-date, 
 	.hero-location {
 		color: $black;
 	}
-
 	.hero-inner {
 		width:100%;
 		.hero-keywords {
@@ -98,6 +127,32 @@ body, .layout-container {
 	}
 }
 
-a:link, a:visited {
-	text-decoration: underline;
+// have documents attached to news (ano other pages?) only display text information
+.document-wrapper {
+	border: none !important;
+	.icon-document { // allows the document icon to still display in print	
+		display: inline-block;
+		padding: 0; 
+		margin: 0;
+	}
+	.download {
+		display: none;
+	}
+
+}
+
+// print margins for notes
+//@page, // doesn't seem to work, so using body as backup  
+body 
+ {
+	//margin: 100px !important;
+	margin: 1cm 2cm !important;
+}
+
+
+//pagination
+@page:right{
+  @bottom-right {
+    content: "Page " counter(page)  " of " counter(pages);
+  }
 }
