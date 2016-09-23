@@ -824,3 +824,19 @@ function webny_configuration_update_8054() {
       ->install(['webny_news_content_type']);
 
 }
+
+/**
+ * Implements hook_update_n().
+ *
+ * Refreshes News content type and Contact content type features.
+ */
+function webny_configuration_update_8055() {
+  \Drupal::service('module_installer')
+      ->uninstall(['webny_news_content_type']);
+  \Drupal::service('module_installer')
+      ->install(['webny_news_content_type']);
+  \Drupal::service('module_installer')
+      ->uninstall(['webny_contact_content_type']);
+  \Drupal::service('module_installer')
+      ->install(['webny_contact_content_type']);
+}
