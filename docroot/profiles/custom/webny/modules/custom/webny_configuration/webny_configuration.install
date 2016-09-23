@@ -804,9 +804,33 @@ function webny_configuration_update_8053() {
 /**
  * Implements hook_update_n().
  *
- * Enable Sitemap module, Simple Sitemap module, and WebNY Sitemap feature.
+ * Install Better Exposed Filters Module
+ * Refreshes News content type feature
+ * Installs webny_taxonomies feature
  */
 function webny_configuration_update_8054() {
+
+  // INSTALL BETTER EXPOSED FILTER
+  \Drupal::service('module_installer')
+      ->install(['better_exposed_filters']);
+
+  // INSTALL NEW WEBNY TAXONOMIES FEATURE -- CONTAINS CATEGORY FEATURE
+  \Drupal::service('module_installer')
+      ->install(['webny_taxonomies']);
+
+  // REINSTALL THE NEWS CONTENT TYPE
+  \Drupal::service('module_installer')
+      ->uninstall(['webny_news_content_type']);
+  \Drupal::service('module_installer')
+      ->install(['webny_news_content_type']);
+}
+
+/**
+ * Implements hook_update_n().
+ *
+ * Enable Sitemap module, Simple Sitemap module, and WebNY Sitemap feature.
+ */
+function webny_configuration_update_8055() {
   \Drupal::service('module_installer')
       ->uninstall(['sitemap']);
   \Drupal::service('module_installer')
@@ -820,3 +844,4 @@ function webny_configuration_update_8054() {
   \Drupal::service('module_installer')
       ->install(['webny_sitemap']);
 }
+
