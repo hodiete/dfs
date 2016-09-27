@@ -1,0 +1,29 @@
+custom:
+  -
+    path: /
+    priority: !!float 1
+entity_types:
+  node:
+    webny_contact:
+      index: 0
+      priority: 0.5
+    webny_document:
+      index: 0
+      priority: 0.5
+    webny_landing_page:
+      index: 1
+      priority: 0.5
+    webny_news:
+      index: 1
+      priority: 0.5
+    webny_page:
+      index: 1
+      priority: 0.5
+  taxonomy_term: {  }
+  menu_link_content: {  }
+settings:
+  max_links: 2000
+  cron_generate: true
+  remove_duplicates: true
+  skip_untranslated: false
+  batch_process_limit: 1500
