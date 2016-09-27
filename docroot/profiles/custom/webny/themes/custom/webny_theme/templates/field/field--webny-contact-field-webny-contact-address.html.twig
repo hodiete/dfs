@@ -42,6 +42,11 @@ set classes = [
 'contact--' ~ field_name|clean_class,
 ]
 %}
+{%
+set iconclass = [
+'icon-email',
+]
+%}
 
 {% if label_hidden %}
   {% if multiple %}
@@ -57,7 +62,7 @@ set classes = [
   {% endif %}
 {% else %}
   <div{{ attributes.addClass(classes) }}>
-    <div{{ title_attributes.addClass(classes) }}>Contact us by mail:</div>
+    <div{{ title_attributes.addClass(classes, iconclass) }}>Contact us by mail:</div>
     {% if multiple %}
       <div>
     {% endif %}
