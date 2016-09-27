@@ -27,11 +27,16 @@ function webny_global_nav_help($route_name, RouteMatchInterface $route_match) {
 function webny_global_nav_theme() {
   $url = Url::fromUri('internal:/');
   $config = \Drupal::config('webny_global_nav.settings');
-  $agency_name = Xss::filter($config->get('webny_global_nav.agencyname'));
-  $linked_agency_name = Link::fromTextAndUrl($agency_name, $url)->toString();
+
   $header_format = $config->get('webny_global_nav.headerformat');
   $header_menu = $config->get('webny_global_nav.headermenu');
   $footer_menu = $config->get('webny_global_nav.footermenu');
+
+  // ASSIGN BR TAG -- STRIP OUT OTHER TAGS
+  $tagList = array();           // $tagList = Xss::getHtmlTagList(); ORIGINAL TAGLIST
+  array_push($tagList, 'br');
+  $agency_name = Xss::filter($config->get('webny_global_nav.agencyname'),$tagList);
+  $linked_agency_name = Link::fromTextAndUrl($agency_name, $url)->toString();
 
   return array(
     'webny_global_nav_header' => array(
