@@ -845,3 +845,16 @@ function webny_configuration_update_8055() {
       ->install(['webny_sitemap']);
 }
 
+/**
+ * Implements hook_update_n().
+ *
+ * Uninstall old globalnav from schema.
+ */
+function webny_configuration_update_8056() {
+
+  // DELETE GLOBAL NAV FROM SCHEMA.
+  Database::getConnection()->query("DELETE FROM key_value WHERE collection='system.schema' AND name='webny_global_navigation';");
+  // DELETE OLD GLOBAL NAV BLOCK FROM THE CONFIG DB.
+  \Drupal::service('config.factory')->getEditable('block.block.globalnavigation')->delete();
+
+}
