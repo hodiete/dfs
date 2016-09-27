@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "cb16308a9b1453d5d9e645f2e1e05636",
-    "content-hash": "6849be29d58dad35dfa5c7344197f776",
+    "hash": "e0ad1a0b7e1318f2ded31f75853c74cc",
+    "content-hash": "274da52c8aa9065ae6d4014991615ef4",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -738,16 +738,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/drupal-composer/drupal-security-advisories.git",
-                "reference": "823b7d357c8cdcb95586671709ddd093ffb34cd9"
+                "reference": "42e5ab948c01af304d863b9281d2518e06555dbb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/drupal-composer/drupal-security-advisories/zipball/823b7d357c8cdcb95586671709ddd093ffb34cd9",
-                "reference": "823b7d357c8cdcb95586671709ddd093ffb34cd9",
+                "url": "https://api.github.com/repos/drupal-composer/drupal-security-advisories/zipball/42e5ab948c01af304d863b9281d2518e06555dbb",
+                "reference": "42e5ab948c01af304d863b9281d2518e06555dbb",
                 "shasum": ""
             },
             "conflict": {
-                "drupal/drupal": "<8.0.0-beta2,<8.0.4,<8.1.3,<8.1.7",
+                "drupal/drupal": "<8.0.0-beta2,<8.0.4,<8.1.3,<8.1.7,<8.1.10",
                 "drupal/dynamic_entity_reference": "<8.1.0-beta2",
                 "drupal/echo": "<8.1.7",
                 "drupal/google_analytics": "<8.2.1",
@@ -764,7 +764,7 @@
             "license": [
                 "GPL-2.0+"
             ],
-            "time": "2016-08-10 17:03:32"
+            "time": "2016-09-21 21:03:52"
         },
         {
             "name": "drupal/acquia_connector",
@@ -816,7 +816,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://ftp.drupal.org/files/projects/admin_toolbar-8.x-1.14.zip",
-                "reference": null,
+                "reference": "bb7533adfce88bf783dcb23aea137ee9dbd80cdb",
                 "shasum": null
             },
             "require": {
@@ -883,6 +883,38 @@
             "description": "Drupal administration theme with modern minimalist design.",
             "homepage": "https://www.drupal.org/project/adminimal_theme",
             "time": "2015-12-05 16:48:42"
+        },
+        {
+            "name": "drupal/better_exposed_filters",
+            "version": "8.3.0-alpha1",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupal.org/project/better_exposed_filters",
+                "reference": "b594b44f1d65a147e66ac56b285338a07efec964"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/better_exposed_filters-8.x-3.0-alpha1.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "drupal/core": "8.*",
+                "drupal/views": "8.*"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-8.x-3.x": "8.3.x-dev"
+                }
+            },
+            "notification-url": "https://packagist.drupal-composer.org/downloads/",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "description": "Provides advanced options (such as links, checkboxes, or jQueryUI widgets) for exposed Views elements.",
+            "homepage": "https://www.drupal.org/project/better_exposed_filters",
+            "time": "2016-05-31 18:36:06"
         },
         {
             "name": "drupal/config_update",
@@ -1021,7 +1053,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://ftp.drupal.org/files/projects/contact_storage-8.x-1.0-beta2.zip",
-                "reference": null,
+                "reference": "ca90e6724b1ae83670a86d361e8049e9ac0daca9",
                 "shasum": null
             },
             "require": {
@@ -1234,7 +1266,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://ftp.drupal.org/files/projects/csv_serialization-8.x-1.0-alpha1.zip",
-                "reference": null,
+                "reference": "7e1e459cfa19ed82fc50273b802f7d3be36d4c04",
                 "shasum": null
             },
             "require": {
@@ -1502,7 +1534,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://ftp.drupal.org/files/projects/features-8.x-3.0-beta7.zip",
-                "reference": null,
+                "reference": "fd22277b68a2aa06ff0d86af954e694db68677a9",
                 "shasum": null
             },
             "require": {
@@ -1614,7 +1646,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://ftp.drupal.org/files/projects/honeypot-8.x-1.22.zip",
-                "reference": null,
+                "reference": "fb5bb9c7b7a7877c78e12a60e1e94ebb0a0b2ee5",
                 "shasum": null
             },
             "require": {
@@ -1715,7 +1747,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://ftp.drupal.org/files/projects/login_security-8.x-1.0-beta3.zip",
-                "reference": null,
+                "reference": "b910b90a51b2f0badb5586000dfde385a56fba02",
                 "shasum": null
             },
             "require": {
@@ -1747,7 +1779,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://ftp.drupal.org/files/projects/media_entity-8.x-1.0-beta2.zip",
-                "reference": null,
+                "reference": "48e56165e6f68bad83098a2a77c3eb8bde2ecedf",
                 "shasum": null
             },
             "require": {
@@ -1819,7 +1851,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://ftp.drupal.org/files/projects/media_entity_image-8.x-1.0-beta2.zip",
-                "reference": null,
+                "reference": "f17384aeba3c8c00bbc57bfa8fa68529992873ce",
                 "shasum": null
             },
             "require": {
@@ -1882,7 +1914,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://ftp.drupal.org/files/projects/metatag-8.x-1.0-beta5.zip",
-                "reference": null,
+                "reference": "9ffb4e2b24bed70a0352794e71371caf1e0e36b3",
                 "shasum": null
             },
             "require": {
@@ -1933,7 +1965,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://ftp.drupal.org/files/projects/paragraphs-8.x-1.0-rc4.zip",
-                "reference": null,
+                "reference": "740874bacb56a6a90683e7818c06ba77a638125c",
                 "shasum": null
             },
             "require": {
@@ -2020,7 +2052,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://ftp.drupal.org/files/projects/pathauto-8.x-1.0-alpha2.zip",
-                "reference": null,
+                "reference": "c816d16cff1f05f7bd61283d0a66a2064f596357",
                 "shasum": null
             },
             "require": {
@@ -2079,7 +2111,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://ftp.drupal.org/files/projects/services-8.x-4.0-alpha3.zip",
-                "reference": null,
+                "reference": "3272958a223a1d0edb5875cc8378b31bb32b241e",
                 "shasum": null
             },
             "require": {
@@ -2100,6 +2132,103 @@
             "description": "A standardized solution of integrating external applications with Drupal.",
             "homepage": "https://www.drupal.org/project/services",
             "time": "2016-01-21 16:43:29"
+        },
+        {
+            "name": "drupal/simple_sitemap",
+            "version": "8.2.6",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupal.org/project/simple_sitemap.git",
+                "reference": "c8633a94226de25e72cd324338e19999b7d1688b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/simple_sitemap-8.x-2.6.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "drupal/core": "8.*"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-8.x-2.x": "8.2.x-dev"
+                }
+            },
+            "notification-url": "https://packagist.drupal-composer.org/downloads/",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Pawel Ginalski (gbyte.co)",
+                    "email": "contact@gbyte.co",
+                    "homepage": "https://www.drupal.org/u/gbyte.co",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "Sam Becker (Sam152)",
+                    "homepage": "https://www.drupal.org/u/sam152",
+                    "role": "Co-maintainer"
+                }
+            ],
+            "description": "Creates a standard conform XML sitemap of your content.",
+            "homepage": "https://drupal.org/project/simple_sitemap",
+            "time": "2016-08-23 08:40:03"
+        },
+        {
+            "name": "drupal/sitemap",
+            "version": "8.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupal.org/project/sitemap.git",
+                "reference": "5961ffa44079a18f2cf22cb3949589656db34118"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/sitemap-8.x-1.1.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "drupal/core": "8.*"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-8.x-1.x": "8.1.x-dev"
+                }
+            },
+            "notification-url": "https://packagist.drupal-composer.org/downloads/",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Nik Alexandrov",
+                    "homepage": "https://www.drupal.org/u/nafes",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "Anna Kalata",
+                    "homepage": "https://www.drupal.org/u/akalata",
+                    "role": "Co-maintainer"
+                },
+                {
+                    "name": "killes@www.drop.org",
+                    "homepage": "https://www.drupal.org/u/killeswww.drop.org",
+                    "role": "Co-maintainer"
+                },
+                {
+                    "name": "See other contributors",
+                    "homepage": "https://www.drupal.org/node/3295/committers",
+                    "role": "contributor"
+                }
+            ],
+            "description": "Display a sitemap.",
+            "homepage": "http://drupal.org/project/sitemap",
+            "time": "2016-08-11 19:53:35"
         },
         {
             "name": "drupal/smart_trim",
@@ -2146,7 +2275,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://ftp.drupal.org/files/projects/token-8.x-1.0-alpha2.zip",
-                "reference": null,
+                "reference": "918d0d5e8e8ee7f446d3e068cb6aa2d7c61ee625",
                 "shasum": null
             },
             "require": {
@@ -2177,7 +2306,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://ftp.drupal.org/files/projects/workbench_moderation-8.x-1.0-beta1.zip",
-                "reference": null,
+                "reference": "002974e0923828bcd647d9ea3935b77bccf94dd8",
                 "shasum": null
             },
             "require": {
@@ -2680,16 +2809,16 @@
         },
         {
             "name": "masterminds/html5",
-            "version": "2.2.1",
+            "version": "2.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Masterminds/html5-php.git",
-                "reference": "170aa5cb35b29fccafbf5ea63487c013f396fdc9"
+                "reference": "7866e93dcf0245de22378414e0c2c7350abc45af"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Masterminds/html5-php/zipball/170aa5cb35b29fccafbf5ea63487c013f396fdc9",
-                "reference": "170aa5cb35b29fccafbf5ea63487c013f396fdc9",
+                "url": "https://api.github.com/repos/Masterminds/html5-php/zipball/7866e93dcf0245de22378414e0c2c7350abc45af",
+                "reference": "7866e93dcf0245de22378414e0c2c7350abc45af",
                 "shasum": ""
             },
             "require": {
@@ -2704,7 +2833,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.1-dev"
+                    "dev-master": "2.2-dev"
                 }
             },
             "autoload": {
@@ -2741,7 +2870,7 @@
                 "serializer",
                 "xml"
             ],
-            "time": "2016-05-10 14:11:45"
+            "time": "2016-09-22 11:01:11"
         },
         {
             "name": "nikic/php-parser",
@@ -4823,16 +4952,16 @@
         },
         {
             "name": "twig/twig",
-            "version": "v1.24.2",
+            "version": "v1.25.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "33093f6e310e6976baeac7b14f3a6ec02f2d79b7"
+                "reference": "f16a634ab08d87e520da5671ec52153d627f10f6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/33093f6e310e6976baeac7b14f3a6ec02f2d79b7",
-                "reference": "33093f6e310e6976baeac7b14f3a6ec02f2d79b7",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/f16a634ab08d87e520da5671ec52153d627f10f6",
+                "reference": "f16a634ab08d87e520da5671ec52153d627f10f6",
                 "shasum": ""
             },
             "require": {
@@ -4845,7 +4974,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.24-dev"
+                    "dev-master": "1.25-dev"
                 }
             },
             "autoload": {
@@ -4880,7 +5009,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2016-09-01 17:50:53"
+            "time": "2016-09-21 23:05:12"
         },
         {
             "name": "zendframework/zend-diactoros",
