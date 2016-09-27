@@ -99,7 +99,8 @@ gulp.task('build', [
   'recreation-environment',
   'statewide-elected-officials',
   'transportation-utilities',
-  'custom-ig'
+  'custom-ig',
+  'print'
 ], function (cb) {
   // Run linting last, otherwise its output gets lost.
   runSequence(['lint:js'], cb);
@@ -370,6 +371,25 @@ gulp.task('styles:styleguide', ['clean:css'], function () {
           .pipe(gulp.dest(options.theme.css + '/style-guide/'));
 });
 
+gulp.task('print', ['clean:css'], function () {
+  return gulp.src([
+    options.theme.sass + 'print.scss'
+  ])
+    .pipe(globbing({
+      // Configure it to use SCSS files.
+      extensions: ['.scss']
+    }))
+      .pipe(sass({
+        errLogToConsole: true,
+        outputStyle: 'compressed'
+      }))
+        .pipe(autoprefix({
+          browsers: ['last 2 versions'],
+          cascade: false
+        }))
+          .pipe(gulp.dest(options.theme.css));
+});
+
 // ##################
 // Build style guide.
 // ##################.
@@ -507,6 +527,12 @@ gulp.task('watch:css', ['custom-ig'], function () {
   return gulp.watch([
     options.theme.sass + '**/*.scss'
   ], options.gulpWatchOptions, ['custom-ig']);
+});
+
+gulp.task('watch:css', ['print'], function () {
+  return gulp.watch([
+    options.theme.sass + '**/*.scss'
+  ], options.gulpWatchOptions, ['print']);
 });
 
 gulp.task('watch:styleguide', ['styleguide'], function () {
