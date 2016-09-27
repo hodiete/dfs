@@ -788,6 +788,7 @@ function webny_configuration_update_8052() {
   \Drupal::service('module_installer')
       ->install(['google_analytics']);
 }
+
 /**
  * Implements hook_update_n().
  *
@@ -822,7 +823,26 @@ function webny_configuration_update_8054() {
       ->uninstall(['webny_news_content_type']);
   \Drupal::service('module_installer')
       ->install(['webny_news_content_type']);
+}
 
+/**
+ * Implements hook_update_n().
+ *
+ * Enable Sitemap module, Simple Sitemap module, and WebNY Sitemap feature.
+ */
+function webny_configuration_update_8055() {
+  \Drupal::service('module_installer')
+      ->uninstall(['sitemap']);
+  \Drupal::service('module_installer')
+      ->install(['sitemap']);
+  \Drupal::service('module_installer')
+      ->uninstall(['simple_sitemap']);
+  \Drupal::service('module_installer')
+      ->install(['simple_sitemap']);
+  \Drupal::service('module_installer')
+      ->uninstall(['webny_sitemap']);
+  \Drupal::service('module_installer')
+      ->install(['webny_sitemap']);
 }
 
 /**
@@ -830,7 +850,7 @@ function webny_configuration_update_8054() {
  *
  * Refreshes News content type and Contact content type features.
  */
-function webny_configuration_update_8055() {
+function webny_configuration_update_8056() {
   \Drupal::service('module_installer')
       ->uninstall(['webny_news_content_type']);
   \Drupal::service('module_installer')
