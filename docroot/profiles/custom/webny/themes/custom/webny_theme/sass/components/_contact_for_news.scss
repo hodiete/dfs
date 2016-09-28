@@ -25,26 +25,46 @@ fieldset {
   padding: 0;
 }
 
+.contact-info-wrapper {
+  margin-top: 40px;
+}
+
+.contact-phone,
+.contact-address,
+.contact-email,
+.contact-fax {
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
+
 .icon-phone::before,
 .icon-email::before,
 .icon-square::before {
   color: $medblue;
   padding-right: 15px;
+  padding-top: 5px;
 }
 
 .contact--field-webny-contact-phone,
 .contact--field-webny-contact-address,
 .contact--field-webny-contact-email,
-.contact--field-webny-contact-fax{
+.contact--field-webny-contact-fax {
   font-family: $base-font !important;
   font-weight: 800;
   display: inline-block;
+  margin-bottom: 20px;
 }
 
-.contact--field-webny-contact-phone a,
-.contact--field-webny-contact-fax a {
-  color: $black;
+.contact-phone-value,
+.contact-fax-value,
+.contact-address-value,
+.contact-email-value{
   margin-left: 34px;
+}
+
+.contact-phone-value a,
+.contact-fax-value a {
+  color: $black;
 
   &:hover {
     text-decoration: none;
@@ -53,16 +73,42 @@ fieldset {
 
 .contact--field-webny-contact-address p {
   margin-left: 34px;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.contact-email-value {
+  text-decoration: underline;
 }
 
 
+.social-media-wrapper {
+  border-top: 1px solid $gray-lite;
+  border-bottom: 1px solid $gray-lite;
+  padding: 20px 0;
+}
 
+.icon-facebook::before,
+.icon-twitter::before,
+.icon-youtube::before,
+.icon-instagram::before,
+.icon-google_plus::before,
+.icon-soundcloud::before,
+.icon-vine::before,
+.icon-flickr::before,
+.icon-rss::before,
+.icon-pinterest::before,
+.icon-tumblr::before,
+.icon-linkedin::before,
+.icon-vimeo::before {
+  color: $medblue;
+  padding-right: 15px;
+}
 
-
-
-
-
-
+.icon-facebook {
+  color: $black;
+  text-transform: uppercase;
+}
 
 
 // ######################################################################### //
