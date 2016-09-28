@@ -1,5 +1,5 @@
 @api
-Feature: Sitemap Tests
+Feature: Contact Form Tests
 
   Scenario: An administrator user should be able to access the sitemap page
     Given I am logged in as a user with the "administrator" role
