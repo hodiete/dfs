@@ -61,13 +61,15 @@ set iconclass = [
     {% endfor %}
   {% endif %}
 {% else %}
-  <div{{ attributes.addClass(classes) }}>
-    <div{{ title_attributes.addClass(classes, iconclass)}}>Contact us by phone:</div>
+  <div class="contact-phone">
+    <div{{ attributes.addClass(iconclass)}}>
+      <div{{ title_attributes.addClass(classes)}}>Contact us by phone:</div>
+    </div>
     {% if multiple %}
       <div>
     {% endif %}
     {% for item in items %}
-      <div{{ item.attributes }}>{{ item.content }}</div>
+      <div class="phone">{{ item.content }}</div>
     {% endfor %}
     {% if multiple %}
       </div>
