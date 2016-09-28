@@ -88,6 +88,16 @@ fieldset {
   padding: 20px 0;
 }
 
+.social-media-wrapper .quickedit-field a:hover{
+  text-decoration: none;
+}
+
+.social-media-wrapper .quickedit-field a {
+  color: $black;
+  text-transform: uppercase;
+  font-weight: 800;
+}
+
 .icon-facebook::before,
 .icon-twitter::before,
 .icon-youtube::before,
@@ -116,11 +126,22 @@ fieldset {
 @media (min-width: $min-tab) {
 
 
+  .contact-info-wrapper {
+    display: flex;
+    flex-direction: row;
+  }
 
 
 
-
-
+  .social-media-wrapper .quickedit-field a {
+    color: $black;
+    text-transform: uppercase;
+    font-weight: 800;
+    float: left;
+    width: 20%;
+    margin-right: 5%;
+    margin-bottom: 5%;
+  }
 
 
 
