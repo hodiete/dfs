@@ -1,0 +1,179 @@
+// Contact for News
+//
+// Contact for News styling.
+//
+// Markup: contact_for_news.hbs
+//
+// Style guide: components.get_involved
+
+
+// ######################################################################### //
+/* START STYLING MOBILE FIRST UNDER HERE */
+
+.press-contact-info {
+  margin: 0 auto;
+  max-width: 780px;
+  width: 80%;
+}
+
+.contact--title {
+  font-weight: 900;
+}
+
+fieldset {
+  border: none;
+  padding: 0;
+}
+
+.contact-info-wrapper {
+  margin-top: 40px;
+}
+
+.contact-phone,
+.contact-address,
+.contact-email,
+.contact-fax {
+  margin-top: 10px;
+  margin-bottom: 30px;
+  min-height: 95px;
+}
+
+.contact-address p{
+  line-height: 22px;
+}
+
+.icon-phone::before,
+.icon-email::before,
+.icon-square::before {
+  color: $medblue;
+  padding-right: 15px;
+  padding-top: 5px;
+}
+
+.contact--field-webny-contact-phone,
+.contact--field-webny-contact-address,
+.contact--field-webny-contact-email,
+.contact--field-webny-contact-fax {
+  font-family: $base-font !important;
+  font-weight: 800;
+  display: inline-block;
+  margin-bottom: 20px;
+}
+
+.contact-phone-value,
+.contact-fax-value,
+.contact-address-value,
+.contact-email-value{
+  margin-left: 35px;
+}
+
+.contact-phone-value a,
+.contact-fax-value a {
+  color: $black;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.contact--field-webny-contact-address p {
+  margin-left: 34px;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.contact-email-value {
+  text-decoration: underline;
+}
+
+
+.social-media-wrapper {
+  border-top: 1px solid $gray-lite;
+  border-bottom: 1px solid $gray-lite;
+  padding: 20px 0;
+
+
+  .fieldset-wrapper a:hover{
+    text-decoration: none;
+  }
+
+  .fieldset-wrapper a {
+    color: $black;
+    text-transform: uppercase;
+    font-weight: 800;
+  }
+
+}
+
+.social-media-wrapper .fieldset-wrapper a:hover{
+  text-decoration: none;
+}
+
+.social-media-wrapper .fieldset-wrapper a {
+  color: $black;
+  text-transform: uppercase;
+  font-weight: 800;
+}
+
+.icon-facebook::before,
+.icon-twitter::before,
+.icon-youtube::before,
+.icon-instagram::before,
+.icon-google_plus::before,
+.icon-soundcloud::before,
+.icon-vine::before,
+.icon-flickr::before,
+.icon-rss::before,
+.icon-pinterest::before,
+.icon-tumblr::before,
+.icon-linkedin::before,
+.icon-vimeo::before {
+  color: $medblue;
+  padding-right: 15px;
+}
+
+// ######################################################################### //
+/* TABLET VIEW */
+@media (min-width: $min-tab) {
+
+
+  .contact-info-wrapper {
+    display: flex;
+    flex-direction: row;
+  }
+
+
+  .contact-col-1,
+  .contact-col-2 {
+    flex-direction: row;
+    width: 49%;
+    overflow: auto;
+    float: left;
+  }
+
+  .social-media-wrapper .fieldset-wrapper a {
+    color: $black;
+    text-transform: uppercase;
+    font-weight: 800;
+    float: left;
+    width: 45%;
+    margin-right: 5%;
+    margin-bottom: 5%;
+  }
+
+
+
+
+
+
+} // END MIN TABLET VIEW
+
+// ######################################################################### //
+/* PC VIEW */
+@media (min-width: $min-pc) {
+
+  .social-media-wrapper .fieldset-wrapper a {
+    width: 20%;
+  }
+
+} // END MIN PC VIEW

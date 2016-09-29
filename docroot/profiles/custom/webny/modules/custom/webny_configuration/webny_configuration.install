@@ -856,5 +856,32 @@ function webny_configuration_update_8056() {
   Database::getConnection()->query("DELETE FROM key_value WHERE collection='system.schema' AND name='webny_global_navigation';");
   // DELETE OLD GLOBAL NAV BLOCK FROM THE CONFIG DB.
   \Drupal::service('config.factory')->getEditable('block.block.globalnavigation')->delete();
+}
 
+/**
+ * Implements hook_update_n().
+ *
+ * Refreshes News content type and Contact content type features.
+ */
+function webny_configuration_update_8057() {
+  \Drupal::service('module_installer')
+      ->uninstall(['webny_news_content_type']);
+  \Drupal::service('module_installer')
+      ->install(['webny_news_content_type']);
+  \Drupal::service('module_installer')
+      ->uninstall(['webny_contact_content_type']);
+  \Drupal::service('module_installer')
+      ->install(['webny_contact_content_type']);
+}
+
+/**
+ * Implements hook_update_n().
+ *
+ * Adds moderation for the content content type.
+ */
+function webny_configuration_update_8058() {
+  \Drupal::service('module_installer')
+      ->uninstall(['webny_contact_content_type']);
+  \Drupal::service('module_installer')
+      ->install(['webny_contact_content_type']);
 }
