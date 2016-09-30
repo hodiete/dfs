@@ -38,7 +38,7 @@ fieldset {
   min-height: 95px;
 }
 
-.contact-address p{
+.contact-wrapper .contact-address .contact-address-value p{
   line-height: 22px;
 }
 
@@ -60,21 +60,32 @@ fieldset {
   margin-bottom: 20px;
 }
 
-.contact-phone-value,
-.contact-fax-value,
-.contact-address-value,
-.contact-email-value{
-  margin-left: 35px;
-}
 
-.contact-phone-value a,
-.contact-fax-value a {
-  color: $black;
 
-  &:hover {
-    text-decoration: none;
+.contact-wrapper {
+
+  .contact-phone-value,
+  .contact-fax-value,
+  .contact-address-value,
+  .contact-email-value{
+    margin-left: 35px;
+    line-height: $frame-base-line-height;
   }
+
+  .contact-address-value p {
+     margin: 0;
+  }
+
+  .contact-phone-value a,
+  .contact-fax-value a {
+    color: $black;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
 }
+
 
 .contact--field-webny-contact-address p {
   margin-left: 34px;
