@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "c6d425fc8e5ee8a2fbe38e5e8e5a8d37",
-    "content-hash": "a5ea2f51fcf9370a2ae79ffad216d67d",
+    "hash": "f3f7ff85cb15e4e5488f2056d2b44b23",
+    "content-hash": "3ca7beaaf8b27e4e966a43f7921b265a",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -804,6 +804,63 @@
             "description": "Allows Drupal to securely communicate with the Acquia Subscription, and checks for updates to Acquia Drupal.",
             "homepage": "https://www.drupal.org/project/acquia_connector",
             "time": "2016-09-28 18:36:50"
+        },
+        {
+            "name": "drupal/acsf",
+            "version": "8.1.31",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupal.org/project/acsf",
+                "reference": "2bc61d6fea1a475944fbe1d7b1c1141181284b53"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/acsf-8.x-1.31.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "drupal/core": "8.*"
+            },
+            "replace": {
+                "drupal/acsf_duplication": "self.version",
+                "drupal/acsf_sso": "self.version",
+                "drupal/acsf_theme": "self.version",
+                "drupal/acsf_variables": "self.version"
+            },
+            "require-dev": {
+                "mockery/mockery": "dev-master",
+                "phpunit/phpunit": "~5.3"
+            },
+            "suggest": {
+                "drupal/acsf_variables": "Required by drupal/acsf_theme",
+                "drupal/core": "Required by drupal/acsf_duplication, drupal/acsf_sso, drupal/acsf_theme, drupal/acsf_variables",
+                "drupal/samlauth": "Required by drupal/acsf_sso"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-8.x-1.x": "8.1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Drupal\\acsf\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.drupal-composer.org/downloads/",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Acquia",
+                    "email": "support@acquia.com"
+                }
+            ],
+            "description": "This is the module that connects a Drupal codebase to Acquia Cloud Site Factory.",
+            "homepage": "https://www.drupal.org/project/acsf",
+            "time": "2016-09-21 09:41:58"
         },
         {
             "name": "drupal/admin_toolbar",
