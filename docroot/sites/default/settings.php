@@ -703,3 +703,4 @@ $settings['container_yamls'][] = __DIR__ . '/services.yml';
 // Do not change to require_once().
 // @see https://github.com/acquia/blt/issues/345
 require DRUPAL_ROOT . "/../vendor/acquia/blt/settings/blt.settings.php";
+require DRUPAL_ROOT . "/sites/default/settings/webny.settings.php";
