@@ -69,6 +69,11 @@ $results-pager-color: $color-tertiary !default;
   color: $results-highlight-color;
 }
 
+// msg displayed when no results
+.results-empty {
+  text-align:center;
+}
+
 .results {
   //color: white;
   font-family: $base-font;
@@ -251,6 +256,7 @@ $results-pager-color: $color-tertiary !default;
     div.results-list {
       @include span(9 of 12 last) {
        // padding-right: 25px;
+         min-height: 900px;
          .results-list-inner {
          padding: 0 40px;
        }

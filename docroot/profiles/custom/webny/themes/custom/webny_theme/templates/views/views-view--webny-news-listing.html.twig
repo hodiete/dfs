@@ -71,7 +71,14 @@
 
 
     {{ rows }}
-    {{ empty }}
+    {% if empty is empty %}
+       {{ empty }}
+    {% else %}
+      <div class="results-empty">
+        {{ empty }}
+      </div>
+    {% endif %}
+
     {{ pager }}
     </div>
   </div>
