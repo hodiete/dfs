@@ -2,17 +2,14 @@
 
   <!-- Include task partials -->
 
-  <!-- Allow for using dev modules pinned to commit hashes. -->
-  <import file="${repo.root}/blt/custom/phing/tasks/validate.xml"/>
-
-  <!-- Allow for keeping ACSF module in docroot/modules/contrib dir on deploy. -->
-  <import file="${repo.root}/blt/custom/phing/tasks/deploy.xml"/>
-
   <!-- Overrides ci.xml that is in vendor/acquia/blt -->
   <import file="${repo.root}/blt/custom/phing/tasks/ci.xml"/>
 
   <!-- Overrides local-sync.xml that is in vendor/acquia/blt -->
   <import file="${repo.root}/blt/custom/phing/tasks/local-sync.xml"/>
+
+  <!-- Allow for keeping ACSF module in custom profile. -->
+  <import file="${repo.root}/blt/custom/phing/tasks/acsf.xml"/>
 
   
 
