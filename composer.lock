@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "e0ad1a0b7e1318f2ded31f75853c74cc",
-    "content-hash": "274da52c8aa9065ae6d4014991615ef4",
+    "hash": "b568d6b9156f020eb651dde7173f66b1",
+    "content-hash": "3b561cb3fe0a71feb27680cace0201e7",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -807,21 +807,20 @@
         },
         {
             "name": "drupal/admin_toolbar",
-            "version": "8.1.14",
+            "version": "8.1.17",
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/admin_toolbar.git",
-                "reference": "bb7533adfce88bf783dcb23aea137ee9dbd80cdb"
+                "reference": "195f503ee4350c8be74b9515c21e264384a2fcaf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/admin_toolbar-8.x-1.14.zip",
-                "reference": "bb7533adfce88bf783dcb23aea137ee9dbd80cdb",
+                "url": "https://ftp.drupal.org/files/projects/admin_toolbar-8.x-1.17.zip",
+                "reference": null,
                 "shasum": null
             },
             "require": {
                 "drupal/core": "8.*",
-                "drupal/node": "8.*",
                 "drupal/toolbar": "8.*"
             },
             "replace": {
@@ -846,9 +845,9 @@
                     "homepage": "https://www.drupal.org/u/matio89"
                 }
             ],
-            "description": "Admin Toolbar improve the default Drupal Toolbar,it lets the hover of sub menus.",
+            "description": "Provides a drop-down menu interface to the core Drupal Toolbar.",
             "homepage": "http://drupal.org/project/admin_toolbar",
-            "time": "2016-02-08 14:39:48"
+            "time": "2016-08-19 14:05:31"
         },
         {
             "name": "drupal/adminimal_theme",
@@ -1044,21 +1043,23 @@
         },
         {
             "name": "drupal/contact_storage",
-            "version": "8.1.0-beta2",
+            "version": "8.1.0-beta7",
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/contact_storage.git",
-                "reference": "ca90e6724b1ae83670a86d361e8049e9ac0daca9"
+                "reference": "dcb33a46ba2706e7a9208a26624c36d1a7f3469c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/contact_storage-8.x-1.0-beta2.zip",
-                "reference": "ca90e6724b1ae83670a86d361e8049e9ac0daca9",
+                "url": "https://ftp.drupal.org/files/projects/contact_storage-8.x-1.0-beta7.zip",
+                "reference": null,
                 "shasum": null
             },
             "require": {
                 "drupal/contact": "8.*",
                 "drupal/core": "8.*",
+                "drupal/options": "8.*",
+                "drupal/token": "8.*",
                 "drupal/user": "8.*",
                 "drupal/views": "8.*"
             },
@@ -1074,7 +1075,7 @@
             ],
             "description": "Provides storage and edit capability for contact messages.",
             "homepage": "https://www.drupal.org/project/contact_storage",
-            "time": "2015-12-17 21:15:17"
+            "time": "2016-08-18 22:29:14"
         },
         {
             "name": "drupal/core",
@@ -1257,21 +1258,20 @@
         },
         {
             "name": "drupal/csv_serialization",
-            "version": "8.1.0-alpha1",
+            "version": "8.1.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/csv_serialization.git",
-                "reference": "7e1e459cfa19ed82fc50273b802f7d3be36d4c04"
+                "reference": "81aec56b486a71d614b5c321145704c5dd6f43c8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/csv_serialization-8.x-1.0-alpha1.zip",
-                "reference": "7e1e459cfa19ed82fc50273b802f7d3be36d4c04",
+                "url": "https://ftp.drupal.org/files/projects/csv_serialization-8.x-1.0.zip",
+                "reference": null,
                 "shasum": null
             },
             "require": {
                 "drupal/core": "8.*",
-                "drupal/serialization": "8.*",
                 "league/csv": "^7.1"
             },
             "type": "drupal-module",
@@ -1286,7 +1286,7 @@
             ],
             "description": "Provides CSV as a serialization format.",
             "homepage": "https://www.drupal.org/project/csv_serialization",
-            "time": "2015-09-11 20:29:52"
+            "time": "2016-08-05 13:47:49"
         },
         {
             "name": "drupal/ctools",
@@ -1525,16 +1525,16 @@
         },
         {
             "name": "drupal/features",
-            "version": "8.3.0-beta7",
+            "version": "8.3.0-beta9",
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/features",
-                "reference": "fd22277b68a2aa06ff0d86af954e694db68677a9"
+                "reference": "86ec48573f564faf89e87c663786f45c438e5ec5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/features-8.x-3.0-beta7.zip",
-                "reference": "fd22277b68a2aa06ff0d86af954e694db68677a9",
+                "url": "https://ftp.drupal.org/files/projects/features-8.x-3.0-beta9.zip",
+                "reference": null,
                 "shasum": null
             },
             "require": {
@@ -1560,7 +1560,7 @@
             ],
             "description": "Enables administrators to package configuration into modules.",
             "homepage": "https://www.drupal.org/project/features",
-            "time": "2016-08-04 18:45:56"
+            "time": "2016-09-14 20:07:50"
         },
         {
             "name": "drupal/field_group",
@@ -1637,16 +1637,16 @@
         },
         {
             "name": "drupal/honeypot",
-            "version": "8.1.22",
+            "version": "8.1.23",
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/honeypot",
-                "reference": "fb5bb9c7b7a7877c78e12a60e1e94ebb0a0b2ee5"
+                "reference": "a5b77a400c6af3edc35a5c8307cb2b6ea7632341"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/honeypot-8.x-1.22.zip",
-                "reference": "fb5bb9c7b7a7877c78e12a60e1e94ebb0a0b2ee5",
+                "url": "https://ftp.drupal.org/files/projects/honeypot-8.x-1.23.zip",
+                "reference": null,
                 "shasum": null
             },
             "require": {
@@ -1678,7 +1678,7 @@
                 "php",
                 "spam"
             ],
-            "time": "2016-01-02 21:41:52"
+            "time": "2016-02-29 21:34:17"
         },
         {
             "name": "drupal/inline_entity_form",
@@ -1738,16 +1738,16 @@
         },
         {
             "name": "drupal/login_security",
-            "version": "8.1.0",
+            "version": "8.1.1",
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/login_security",
-                "reference": "b910b90a51b2f0badb5586000dfde385a56fba02"
+                "reference": "e5de6bdcae93c4f86b2ad3ee1ae4dda7bb7e3e65"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/login_security-8.x-1.0-beta3.zip",
-                "reference": "b910b90a51b2f0badb5586000dfde385a56fba02",
+                "url": "https://ftp.drupal.org/files/projects/login_security-8.x-1.1.zip",
+                "reference": null,
                 "shasum": null
             },
             "require": {
@@ -1766,7 +1766,7 @@
             ],
             "description": "Enable security options in the login flow of the site.",
             "homepage": "https://www.drupal.org/project/login_security",
-            "time": "2015-11-04 12:32:09"
+            "time": "2016-07-28 12:40:17"
         },
         {
             "name": "drupal/media_entity",
@@ -1779,7 +1779,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://ftp.drupal.org/files/projects/media_entity-8.x-1.0-beta2.zip",
-                "reference": "48e56165e6f68bad83098a2a77c3eb8bde2ecedf",
+                "reference": null,
                 "shasum": null
             },
             "require": {
@@ -1851,7 +1851,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://ftp.drupal.org/files/projects/media_entity_image-8.x-1.0-beta2.zip",
-                "reference": "f17384aeba3c8c00bbc57bfa8fa68529992873ce",
+                "reference": null,
                 "shasum": null
             },
             "require": {
@@ -1905,16 +1905,16 @@
         },
         {
             "name": "drupal/metatag",
-            "version": "8.1.0-beta5",
+            "version": "8.1.0-beta10",
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/metatag",
-                "reference": "9ffb4e2b24bed70a0352794e71371caf1e0e36b3"
+                "reference": "c0610ad2ad9318298823c24db66b8769095910a3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/metatag-8.x-1.0-beta5.zip",
-                "reference": "9ffb4e2b24bed70a0352794e71371caf1e0e36b3",
+                "url": "https://ftp.drupal.org/files/projects/metatag-8.x-1.0-beta10.zip",
+                "reference": null,
                 "shasum": null
             },
             "require": {
@@ -1923,11 +1923,13 @@
                 "drupal/token": "8.*"
             },
             "replace": {
+                "drupal/metatag_google_plus": "self.version",
                 "drupal/metatag_open_graph": "self.version",
-                "drupal/metatag_twitter_cards": "self.version"
+                "drupal/metatag_twitter_cards": "self.version",
+                "drupal/metatag_verification": "self.version"
             },
             "suggest": {
-                "drupal/core": "Required by drupal/metatag_open_graph, drupal/metatag_twitter_cards"
+                "drupal/core": "Required by drupal/metatag_google_plus, drupal/metatag_open_graph, drupal/metatag_twitter_cards, drupal/metatag_verification"
             },
             "type": "drupal-module",
             "extra": {
@@ -1952,20 +1954,20 @@
                 "php",
                 "seo"
             ],
-            "time": "2016-03-11 18:56:05"
+            "time": "2016-08-22 17:45:58"
         },
         {
             "name": "drupal/paragraphs",
-            "version": "8.1.0-rc4",
+            "version": "8.1.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/paragraphs",
-                "reference": "740874bacb56a6a90683e7818c06ba77a638125c"
+                "reference": "7d70adcb69416f35eb2d2596340461df8efda009"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/paragraphs-8.x-1.0-rc4.zip",
-                "reference": "740874bacb56a6a90683e7818c06ba77a638125c",
+                "url": "https://ftp.drupal.org/files/projects/paragraphs-8.x-1.0.zip",
+                "reference": null,
                 "shasum": null
             },
             "require": {
@@ -1984,7 +1986,10 @@
                 "drupal/field_ui": "Required by drupal/paragraphs_demo",
                 "drupal/image": "Required by drupal/paragraphs_demo",
                 "drupal/language": "Required by drupal/paragraphs_demo",
-                "drupal/node": "Required by drupal/paragraphs_demo"
+                "drupal/node": "Required by drupal/paragraphs_demo",
+                "drupal/search_api": "Required by drupal/paragraphs_demo",
+                "drupal/search_api_db": "Required by drupal/paragraphs_demo",
+                "drupal/views": "Required by drupal/paragraphs_demo"
             },
             "type": "drupal-module",
             "extra": {
@@ -1996,9 +2001,9 @@
             "license": [
                 "GPL-2.0+"
             ],
-            "description": "Implements the Paragraphs entity types, Entity Reference selection type and Entity Reference field widget.",
+            "description": "Enables the creation of paragraphs entities. To safely uninstall, go first to Structure > Paragraphs types > Settings.",
             "homepage": "https://www.drupal.org/project/paragraphs",
-            "time": "2015-11-17 13:21:21"
+            "time": "2016-07-23 11:51:27"
         },
         {
             "name": "drupal/password_policy",
@@ -2043,23 +2048,22 @@
         },
         {
             "name": "drupal/pathauto",
-            "version": "8.1.0-alpha2",
+            "version": "8.1.0-beta1",
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/pathauto",
-                "reference": "c816d16cff1f05f7bd61283d0a66a2064f596357"
+                "reference": "05a0bc51694b70efb697b3c8b175f2884bff7b34"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/pathauto-8.x-1.0-alpha2.zip",
-                "reference": "c816d16cff1f05f7bd61283d0a66a2064f596357",
+                "url": "https://ftp.drupal.org/files/projects/pathauto-8.x-1.0-beta1.zip",
+                "reference": null,
                 "shasum": null
             },
             "require": {
                 "drupal/core": "8.*",
-                "drupal/ctools": "~8.3.0-alpha21",
-                "drupal/path": "8.*",
-                "drupal/token": "~8.1.0-alpha2"
+                "drupal/ctools": "8.*",
+                "drupal/token": "8.*"
             },
             "type": "drupal-module",
             "extra": {
@@ -2073,7 +2077,7 @@
             ],
             "description": "Provides a mechanism for modules to automatically generate aliases for the content they manage.",
             "homepage": "https://www.drupal.org/project/pathauto",
-            "time": "2016-02-26 22:51:00"
+            "time": "2016-08-07 10:52:55"
         },
         {
             "name": "drupal/security_review",
@@ -2102,16 +2106,16 @@
         },
         {
             "name": "drupal/services",
-            "version": "8.4.0-alpha3",
+            "version": "8.4.0-beta2",
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/services",
-                "reference": "3272958a223a1d0edb5875cc8378b31bb32b241e"
+                "reference": "978675bc88c321f560980bf948c0d22fd9fbc480"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/services-8.x-4.0-alpha3.zip",
-                "reference": "3272958a223a1d0edb5875cc8378b31bb32b241e",
+                "url": "https://ftp.drupal.org/files/projects/services-8.x-4.0-beta2.zip",
+                "reference": null,
                 "shasum": null
             },
             "require": {
@@ -2129,9 +2133,16 @@
             "license": [
                 "GPL-2.0+"
             ],
+            "authors": [
+                {
+                    "name": "See contributors",
+                    "homepage": "https://www.drupal.org/node/109640/committers",
+                    "role": "Developer"
+                }
+            ],
             "description": "A standardized solution of integrating external applications with Drupal.",
             "homepage": "https://www.drupal.org/project/services",
-            "time": "2016-01-21 16:43:29"
+            "time": "2016-09-01 15:37:02"
         },
         {
             "name": "drupal/simple_sitemap",
@@ -2179,15 +2190,15 @@
         },
         {
             "name": "drupal/sitemap",
-            "version": "8.1.1",
+            "version": "8.1.2",
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/sitemap.git",
-                "reference": "5961ffa44079a18f2cf22cb3949589656db34118"
+                "reference": "f2f238b6e10fa88956535d287b0b27f1b3d604d3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/sitemap-8.x-1.1.zip",
+                "url": "https://ftp.drupal.org/files/projects/sitemap-8.x-1.2.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -2228,7 +2239,7 @@
             ],
             "description": "Display a sitemap.",
             "homepage": "http://drupal.org/project/sitemap",
-            "time": "2016-08-11 19:53:35"
+            "time": "2016-08-20 17:44:17"
         },
         {
             "name": "drupal/smart_trim",
@@ -2266,16 +2277,16 @@
         },
         {
             "name": "drupal/token",
-            "version": "8.1.0-alpha2",
+            "version": "8.1.0-beta2",
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/token",
-                "reference": "918d0d5e8e8ee7f446d3e068cb6aa2d7c61ee625"
+                "reference": "724ccaa7a60f1aa7e8883e82de737115b0f73a3f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/token-8.x-1.0-alpha2.zip",
-                "reference": "918d0d5e8e8ee7f446d3e068cb6aa2d7c61ee625",
+                "url": "https://ftp.drupal.org/files/projects/token-8.x-1.0-beta2.zip",
+                "reference": null,
                 "shasum": null
             },
             "require": {
@@ -2293,20 +2304,20 @@
             ],
             "description": "Provides a user interface for the Token API and some missing core tokens.",
             "homepage": "https://www.drupal.org/project/token",
-            "time": "2016-01-21 08:02:24"
+            "time": "2016-09-20 10:19:14"
         },
         {
             "name": "drupal/workbench_moderation",
-            "version": "8.1.0-beta1",
+            "version": "8.1.1",
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/workbench_moderation",
-                "reference": "002974e0923828bcd647d9ea3935b77bccf94dd8"
+                "reference": "661c2108c84e961a00ae7174c91053858447a7d2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/workbench_moderation-8.x-1.0-beta1.zip",
-                "reference": "002974e0923828bcd647d9ea3935b77bccf94dd8",
+                "url": "https://ftp.drupal.org/files/projects/workbench_moderation-8.x-1.1.zip",
+                "reference": null,
                 "shasum": null
             },
             "require": {
@@ -2329,7 +2340,7 @@
             "keywords": [
                 "Drupal"
             ],
-            "time": "2016-02-11 21:47:45"
+            "time": "2016-06-28 04:04:37"
         },
         {
             "name": "easyrdf/easyrdf",
@@ -6227,12 +6238,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/jakoch/phantomjs-installer.git",
-                "reference": "3040a722fca97f11089c1a459342aee39d4e2326"
+                "reference": "356d7825a9e846de66d52feafdd1589da08ff47c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jakoch/phantomjs-installer/zipball/3040a722fca97f11089c1a459342aee39d4e2326",
-                "reference": "3040a722fca97f11089c1a459342aee39d4e2326",
+                "url": "https://api.github.com/repos/jakoch/phantomjs-installer/zipball/356d7825a9e846de66d52feafdd1589da08ff47c",
+                "reference": "356d7825a9e846de66d52feafdd1589da08ff47c",
                 "shasum": ""
             },
             "require": {
@@ -6261,7 +6272,7 @@
                 "headless",
                 "phantomjs"
             ],
-            "time": "2016-08-12 13:18:15"
+            "time": "2016-09-27 21:22:33"
         },
         {
             "name": "jakub-onderka/php-console-color",

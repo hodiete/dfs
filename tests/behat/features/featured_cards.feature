@@ -10,7 +10,7 @@ Feature: Featured Card Paragraph Tests
     Then I should not see "Access denied"
     When I press the "Add Card" button
     Then I should see "Card Entity Reference"
-    And I should see "Paragraph type: Card"
+    And I should see "Type: Card"
     And I should see "Card Title"
     And I should see "Card Headline"
 
