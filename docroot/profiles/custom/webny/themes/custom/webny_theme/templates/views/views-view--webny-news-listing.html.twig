@@ -59,9 +59,17 @@
 
   <div class="results-list">
     <div class="results-list-inner">
+
       <div class="results-total">
-        <span class="results-total-number">{{ view.total_rows }}</span> News Items
+        {%  if(view.total_rows is not empty and view.total_rows is not null) %}
+        <span class="results-total-number">{{ view.total_rows }}</span> 
+        {% else %}
+        0
+      {% endif %}
+        Results Found
       </div>
+
+
     {{ rows }}
     {{ empty }}
     {{ pager }}
