@@ -8,6 +8,12 @@
   <!-- Allow for keeping ACSF module in docroot/modules/contrib dir on deploy. -->
   <import file="${repo.root}/blt/custom/phing/tasks/deploy.xml"/>
 
+  <!-- Overrides ci.xml that is in vendor/acquia/blt -->
+  <import file="${repo.root}/blt/custom/phing/tasks/ci.xml"/>
+
+  <!-- Overrides local-sync.xml that is in vendor/acquia/blt -->
+  <import file="${repo.root}/blt/custom/phing/tasks/local-sync.xml"/>
+
   
 
 </project>
