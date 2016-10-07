@@ -885,3 +885,15 @@ function webny_configuration_update_8058() {
   \Drupal::service('module_installer')
       ->install(['webny_contact_content_type']);
 }
+
+/**
+ * Implements hook_update_n().
+ *
+ * Refreshes News content type.
+ */
+function webny_configuration_update_8059() {
+  \Drupal::service('module_installer')
+      ->uninstall(['webny_news_content_type']);
+  \Drupal::service('module_installer')
+      ->install(['webny_news_content_type']);
+}
