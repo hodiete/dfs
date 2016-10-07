@@ -37,12 +37,15 @@ target-hooks:
 #        command: 'npm run install-libraries'
 blt:
   update:
-    ignore-existing-file: ${repo.root}/scripts/blt/ignore-existing.txt
+    ignore-existing-file: '${repo.root}/scripts/blt/ignore-existing.txt'
 
-import: ${repo.root}/blt/custom/phing/tasks/build.xml
+import: '${repo.root}/blt/custom/phing/tasks/build.xml'
 hosting: acsf
 example.property: 'example value'
 
 phpunit:
       failures: false
 
+disable-targets:
+  validate:
+    composer: true
