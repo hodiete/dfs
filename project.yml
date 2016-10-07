@@ -46,5 +46,6 @@ example.property: 'example value'
 phpunit:
       failures: false
 
-validate:
-      composer: false
+disable-targets:
+  validate:
+    composer: true
