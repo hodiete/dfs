@@ -5,15 +5,21 @@ dependencies:
     - field.field.node.webny_page.body
     - field.field.node.webny_page.field_webny_page_agency_keywords
     - field.field.node.webny_page.field_webny_page_attdocs_eref
+    - field.field.node.webny_page.field_webny_page_button_add
+    - field.field.node.webny_page.field_webny_page_button_one
     - field.field.node.webny_page.field_webny_page_description
     - field.field.node.webny_page.field_webny_page_docsec_subtitle
     - field.field.node.webny_page.field_webny_page_docsec_title
     - field.field.node.webny_page.field_webny_page_global_keywords
+    - field.field.node.webny_page.field_webny_page_hero_title
     - field.field.node.webny_page.field_webny_page_image
     - field.field.node.webny_page.field_webny_page_short_title
     - field.field.node.webny_page.field_webny_page_sub_title
+    - field.field.node.webny_page.field_webny_page_toggle_hero
     - node.type.webny_page
   module:
+    - link
+    - linked_field
     - text
     - user
 id: node.webny_page.default
@@ -24,11 +30,11 @@ content:
   body:
     label: hidden
     type: text_default
-    weight: 3
+    weight: 8
     settings: {  }
     third_party_settings: {  }
   field_webny_page_agency_keywords:
-    weight: 8
+    weight: 11
     label: hidden
     settings:
       link: true
@@ -36,41 +42,94 @@ content:
     type: entity_reference_label
   field_webny_page_attdocs_eref:
     type: entity_reference_entity_view
-    weight: 12
+    weight: 14
     label: hidden
     settings:
       view_mode: attached_documents
       link: false
     third_party_settings: {  }
-  field_webny_page_description:
+  field_webny_page_button_add:
+    weight: 6
+    label: hidden
+    settings:
+      trim_length: 19
+      url_only: false
+      url_plain: false
+      rel: '0'
+      target: '0'
+    third_party_settings:
+      linked_field:
+        type: field
+        destination:
+          field: ''
+          custom: ''
+        advanced:
+          title: ''
+          target: ''
+          class: ''
+          rel: ''
+          text: ''
+        linked: 0
+    type: link
+  field_webny_page_button_one:
     weight: 5
+    label: hidden
+    settings:
+      trim_length: 19
+      url_only: false
+      url_plain: false
+      rel: '0'
+      target: '0'
+    third_party_settings:
+      linked_field:
+        type: field
+        destination:
+          field: ''
+          custom: ''
+        advanced:
+          title: ''
+          target: ''
+          class: ''
+          rel: ''
+          text: ''
+        linked: 0
+    type: link
+  field_webny_page_description:
+    weight: 7
     label: hidden
     settings: {  }
     third_party_settings: {  }
     type: text_default
   field_webny_page_docsec_subtitle:
     type: string
-    weight: 11
+    weight: 13
     label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
   field_webny_page_docsec_title:
     type: string
-    weight: 10
+    weight: 12
     label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
   field_webny_page_global_keywords:
-    weight: 7
+    weight: 10
     label: hidden
     settings:
       link: true
     third_party_settings: {  }
     type: entity_reference_label
+  field_webny_page_hero_title:
+    weight: 4
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
   field_webny_page_image:
-    weight: 2
+    weight: 3
     label: hidden
     settings:
       link: true
@@ -78,11 +137,20 @@ content:
     third_party_settings: {  }
     type: entity_reference_entity_view
   field_webny_page_sub_title:
-    weight: 4
+    weight: 9
     label: hidden
     settings: {  }
     third_party_settings: {  }
     type: text_default
+  field_webny_page_toggle_hero:
+    type: boolean
+    weight: 2
+    label: hidden
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
   links:
     weight: 1
     settings: {  }

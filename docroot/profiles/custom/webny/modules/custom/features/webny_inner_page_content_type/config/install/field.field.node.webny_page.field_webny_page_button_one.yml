@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_webny_page_button_one
+    - node.type.webny_page
+  module:
+    - link
+id: node.webny_page.field_webny_page_button_one
+field_name: field_webny_page_button_one
+entity_type: node
+bundle: webny_page
+label: 'Hero Button'
+description: 'Add a link to relevant content. The link will display as a button on the hero. (required field if doing hero; only 19 characters allowed in link text)'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 17
+  title: 2
+field_type: link
