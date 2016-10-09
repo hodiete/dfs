@@ -27,37 +27,59 @@
 </div>
 
 
-<article {{ attributes.addClass('hero-layout') }}>
-  {% if hero_image == '/' %}
-    <header class="hero-header hero-no-image hero-ipage" style="">
+{% if node.field_webny_page_toggle_hero.value == 1 %}
+    <article {{ attributes.addClass('hero-layout') }}>
+
+        {% if hero_image == '/' %}
+        <header class="hero-header hero-no-image hero-ipage" style="">
             <!-- BACKGROUND GRAD -->
-        
-    {% else %}
-    <header class="hero-header hero-has-image hero-ipage" style="background-image:url('{{ hero_image }}')">
-            <!-- BACKGROUND GRAD -->
-        <div class="hero-bkg"></div>
-    {% endif %}
-        
-        <div class="hero-inner hero-ipage-inner">
-        
-            <!-- HEADLINE LABEL -->
-            <h1>{{ node.field_webny_page_sub_title[1].value }}</h1>
 
-            <!-- KEYWORDS -->
-            <div class="hero-keywords">
-                {{ content.field_webny_page_global_keywords }}
-            </div>
-            
-        </div>
+            {% else %}
+            <header class="hero-header hero-has-image hero-ipage" style="background-image:url('{{ hero_image }}')">
 
-    </header>
+                {# BACKGROUND GRAD #}
+                <div class="hero-bkg"></div>
 
-</article>
+                {% endif %}
+
+                <div class="hero-inner hero-ipage-inner">
+
+                    {# HEADLINE LABEL #}
+                    <h1>
+                        {% if node.field_webny_page_hero_title.value is empty %}
+                            {{ label }}
+                        {% else %}
+                            {{ node.field_webny_page_hero_title.value }}
+                        {% endif %}
+                    </h1>
+
+                    {# HERO SUMMARY #}
+                    <div class="hero-summary">
+                        {{ content.field_webny_page_description }}
+                    </div>
+
+                    {# BUTTONS #}
+                    <div class="hero-keywords hero-buttons">
+                        {{ content.field_webny_page_button_one }}
+                        {{ content.field_webny_page_button_add }}
+                    </div>
+
+                </div>
+
+            </header>
+
+    </article>
+{% endif %}
 
 <div class="page-summary">
-    {{ content.field_webny_page_description }}
-</div>    
-    
+    {% for x,subtitle in node.field_webny_page_sub_title if x > 0 %}
+       <div>
+           {{ node.field_webny_page_sub_title[x].value }}
+       </div>
+    {% endfor %}
+
+</div>
+
 <div class="ipage-body">
     {{ content.body }}
 </div>
@@ -67,8 +89,9 @@
     <div class="page-paragraphs-in">
         {{ content.field_webny_page_paragraph }}
     </div>
+
 </div>
-    
+
 <div class="press-docs">
     <h2 class="doc-set-title">{{ content.field_webny_page_docsec_title }}</h2>
     <h3 class="doc-set-subtitle">{{ content.field_webny_page_docsec_subtitle }}</h3>
