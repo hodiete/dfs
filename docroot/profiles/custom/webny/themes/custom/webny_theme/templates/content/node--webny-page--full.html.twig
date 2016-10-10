@@ -31,18 +31,20 @@
     <article {{ attributes.addClass('hero-layout') }}>
 
         {% if hero_image == '/' %}
-        <header class="hero-header hero-no-image hero-ipage" style="">
-            <!-- BACKGROUND GRAD -->
+            <div class="hero-header hero-no-image hero-ipage" style="">
+        {% else %}
+            <div class="hero-header hero-has-image hero-ipage" style="background-image:url('{{ hero_image }}')">
+        {% endif %}
 
-            {% else %}
-            <header class="hero-header hero-has-image hero-ipage" style="background-image:url('{{ hero_image }}')">
-
-                {# BACKGROUND GRAD #}
+                <!-- BACKGROUND GRAD -->
                 <div class="hero-bkg"></div>
+            </div>
 
-                {% endif %}
-
+            {% if hero_image == '/' %}
                 <div class="hero-inner hero-ipage-inner">
+            {% else %}
+                <div class="hero-inner hero-ipage-inner hero-has-image-content">
+            {% endif %}
 
                     {# HEADLINE LABEL #}
                     <h1>
@@ -66,7 +68,7 @@
 
                 </div>
 
-            </header>
+            </div>
 
     </article>
 {% endif %}
