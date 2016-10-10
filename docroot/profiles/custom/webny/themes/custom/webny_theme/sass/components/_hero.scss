@@ -47,7 +47,7 @@ $hero-keyword-text-color: $white !default;
 
 .hero-has-image{
   background-color: #ddd;
-    opacity: .9;
+  opacity: .9;
 }
 
 .hero-no-image{
@@ -59,21 +59,17 @@ $hero-keyword-text-color: $white !default;
 /* HERO LAYOUT */
 .hero-layout {
   position: relative;
-  
-  .hero-inner{
-      // width: 100%;
-      
-  }    
-  
+
   // 8/8/16 we might want to bring this more in line with the landing page and ipage
   // plus, why can't they all use the same class?  
   .hero-news-inner{
-      margin: 60px 20px;
+    margin: 60px 20px;
   }
-  
- .hero-ipage-inner,   
- .hero-landing-inner{
-     // margin: 60px 56px;
+
+  .hero-news-inner,
+  .hero-ipage-inner,
+  .hero-landing-inner{
+    // margin: 60px 56px;
     padding: 40px 8%;
     position: absolute;
     top: 0;
@@ -83,7 +79,7 @@ $hero-keyword-text-color: $white !default;
       position: relative;
       z-index: 3;
       background-color: black;
-     }
+    }
   }
 
   .hero-header{
@@ -132,7 +128,7 @@ $hero-keyword-text-color: $white !default;
   }
 
   h1,h2{
-    
+
     color: $hero-text-color;
     line-height: 32px;
     font-size: 28px;
@@ -143,43 +139,43 @@ $hero-keyword-text-color: $white !default;
   }
 
   .hero-keywords {
-   /* height: 3em;
-    margin-right: 5px;
-    position: relative;
-    position: relative;
-    z-index: 3; */
+    /* height: 3em;
+     margin-right: 5px;
+     position: relative;
+     position: relative;
+     z-index: 3; */
     margin-top: 40px;
   }
 
-//used only on inner pages currently
+  //used only on inner pages currently
   .hero-keywords > div > div{
     //display: inline-block;
   }
-//used on landing pages
-.hero-keywords div {
-  //display:inline-block;
-  margin: 17px 0;
-}
+  //used on landing pages
+  .hero-keywords div {
+    //display:inline-block;
+    margin: 17px 0;
+  }
 
 
- .hero-keywords a {
-   font: 13px/4 "proxima nova";
-   color: #ffffff;
-   cursor: pointer;
-   text-decoration: none;
-   display:inline-block;
-   background: transparent;
-   border: 1px solid rgba(255,255,255,0.7);
-   text-align: center;
-   padding: 0 20px;
-   letter-spacing: 2px;
-   text-transform: uppercase;
-   min-width: 300px;
+  .hero-keywords a {
+    font: 13px/4 "proxima nova";
+    color: #ffffff;
+    cursor: pointer;
+    text-decoration: none;
+    display:inline-block;
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.7);
+    text-align: center;
+    padding: 0 20px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    min-width: 300px;
     &:hover {
-     border: 1px solid #fff;
-     background-color: rgba(0,0,0,0.8)
-   }
- }
+      border: 1px solid #fff;
+      background-color: rgba(0,0,0,0.8)
+    }
+  }
 
   /*.hero-keywords a {
     background-color: $hero-keyword-bkgd-color;
@@ -197,111 +193,119 @@ $hero-keyword-text-color: $white !default;
       background-color: $hero-keyword-hover-bkgd-color;
     }
   } */
-    
+
   .hero-summary{
     font-size: 1em;
     color: $hero-text-color;
-    width: auto;
     position:  relative;
     z-index: 5;
-   
     text-align: left;
-      
   }
-    
+
+
 } // END HERO-LAYOUT
 
-.hero-landing {
-    h2, 
-    .hero-summary,
-    .hero-keywords{
-        
-    }
-}
-
-  // ######################################################################### //
+// ######################################################################### //
 /* TABLET VIEW */
 @media (min-width: 48em) {
 
-.hero-layout {
-  .hero-keywords a {
-    min-width: 200px;
-  }
-  //used only on inner pages currently
+  .hero-layout {
+    .hero-keywords a {
+      min-width: 200px;
+    }
+    //used only on inner pages currently
     .hero-keywords > div > div{
       display: inline-block;
     }
-  //used on landing pages
-  .hero-keywords div {
-    display:inline-block;
-    margin: 0 20px 0 0;
-  }
-
-  .hero-ipage-inner,   
-  .hero-landing-inner{
-    &.hero-has-image-content {
-    position: absolute;
-    top: 0;
-    left: 0;
-    background: none;
+    //used on landing pages
+    .hero-keywords div {
+      display:inline-block;
+      margin: 0 20px 0 0;
     }
- }
 
-  .hero-ipage,    
-  .hero-landing {
-    min-height: 385px;
-  }
-    
-  .hero-inner{
-      width: 85%;
+    .hero-news-inner,
+    .hero-ipage-inner,
+    .hero-landing-inner{
+      &.hero-has-image-content {
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: none;
+      }
+    }
+
+    .hero-inner{
       margin: 60px 0 0 0;
       padding: 0 2%;
-      max-width: 600px;
-  }
-    
-  h1,h2{
-    font-size: 48px;
-    line-height: 60px;
-    color: $white; 
-    font-weight: 800;
-  }
-    
-  .hero-summary{
-    font-size: 1em;
-    color: $hero-text-color;
-   }    
+      width: $hero-inner-width;
+      h1{
+        width: $hero-header-width;
+      }
+    }
 
-} // END HERO-layout
-    
+    .hero-ipage,
+    .hero-landing {
+      min-height: 385px;
+    }
+
+    .hero-no-image.hero-ipage,
+    .hero-no-image.hero-landing,
+    .hero-no-image.hero-news-inner{
+      min-height: 385px;
+      height: 385px;
+
+      .hero-inner{
+        width: $hero-inner-width;
+      }
+    }
+
+    h1,h2{
+      font-size: 48px;
+      line-height: 60px;
+      color: $white;
+      font-weight: 800;
+    }
+
+    .hero-summary{
+      font-size: 1em;
+      color: $hero-text-color;
+    }
+
+    .hero-news-inner,
+    .hero-ipage-inner{
+      .hero-summary{
+        width: $hero-header-width;
+      }
+    }
+
+  } // END HERO-layout
+
 } // END TABLET VIEW
 
-  // ######################################################################### //
+// ######################################################################### //
 /* DESKTOP VIEW */
 @media (min-width: 60em) {
 
-.hero-layout {
-    h1{
-      
+  .hero-layout {
+
+    .hero-ipage,
+    .hero-landing {
+      //min-height: 385px;
     }
-  .hero-ipage,    
-  .hero-landing {
-    //min-height: 385px;
-  }
+
     .hero-inner{
-      width: 60%;
       padding: 0 4%;
+    }
 
-  }
+    .hero-has-image {
+      min-height: 510px;
+    }
 
-  .hero-has-image {
-    min-height: 510px;
-  }
-    
-  .hero-news {
-    min-height: 428px;
-  }
+    .hero-news {
+      min-height: 428px;
+    }
 
-} // END HERO LAYOUT
-    
-    
+  } // END HERO LAYOUT
+
+
 } // END DESKTOP VIEW
