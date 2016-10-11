@@ -299,3 +299,74 @@ $results-pager-color: $color-tertiary !default;
 .js input.form-autocomplete.ui-autocomplete-loading {
   background-repeat: no-repeat;
 }
+
+
+// News listing - Filter icons
+.form-radios {
+
+    .form-item-target-news-category {
+    padding: 0 1em;
+    margin-bottom: 20px;
+    input[type=radio] {
+      display: none;
+    }
+    input[type="radio"] + label {
+      color: $white;
+      display:inline-block;
+      margin:-1px 4px 0 0;
+      vertical-align:middle;
+      cursor:pointer;
+      &:hover {
+        color: $primarygold;
+        &:before {
+          color: $white;
+        }
+      }
+      &:before {
+        color: #7d7d7d;
+        font-family: $icon-font;
+        content: "\e618";
+        font-size: 28px;
+        vertical-align: middle;
+        margin-right: 15px;
+      }
+    }
+
+    input:checked + label {
+      &:before {
+        color: $primarygold;
+        font-family: $icon-font;
+        content: "\e61f";
+      }
+    }
+    // For IE8 fallback.
+    // Mysteriously doesn't work with a "," and the above selector.
+    input[type="radio"] + label.checked {
+      &:before {
+        color: #f8a81f;
+        font-family: $icon-font;
+        content: "\e61f";
+      }
+      &:hover:before {
+        color: $white;
+        content: "\e623";
+      }
+    }
+  }
+
+  &:after {
+    display: block;
+    content: '';
+    border-bottom: 1px solid #404040;
+  }
+
+  &.action-all {
+    &:before {
+      display: block;
+      content: '';
+      border-bottom: 1px solid #404040;
+      padding: 0; margin: 0 0 2em;
+    }
+    &:after { display: none; }
+  }
+}
