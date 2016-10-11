@@ -28,7 +28,7 @@ drush:
 target-hooks:
     frontend-setup:
         dir: '${docroot}/profiles/custom/webny/themes/custom/webny_theme'
-        command: 'npm run install-webny_theme'
+        command: ' "source ~/.bashrc && nvm use --delete-prefix 0.12.7 | ./install-node.sh" && npm run install-webny_theme'
     frontend-build:
         dir: '${docroot}/profiles/custom/webny/themes/custom/webny_theme'
         command: 'npm run build'
