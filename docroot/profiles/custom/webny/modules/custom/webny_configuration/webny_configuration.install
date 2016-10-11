@@ -899,11 +899,23 @@ function webny_configuration_update_8059() {
 }
 
 /**
- * Enable AdvAgg and dependencies.
+ * Implements hook_update_n().
+ *
+ * Modify Name column in key_value table to fix "Data too long for column 'name' at row 1" issue.
+ *
  */
 function webny_configuration_update_8060() {
+
+  Database::getConnection()->query("ALTER TABLE key_value MODIFY name VARCHAR(175);");
+}
+
+/**
+ * Enable AdvAgg and dependencies.
+ */
+function webny_configuration_update_8061() {
   echo webny_configuration_enable_module('webny_advagg');
 }
+
 
 /**
  * Helper function to enable a Drupal module and print the result.
@@ -944,3 +956,5 @@ function webny_configuration_uninstall_module($module_name) {
     throw new UpdateException("An error occurred uninstalling " . $module_name . ": " . $error . "\n");
   }
 }
+
+
