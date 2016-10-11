@@ -19,6 +19,10 @@ Feature: Check for the existence and fields of content types
     And I should see text matching "Documents Section Sub Title"
     And I should see text matching "Documents Section Title"
     And I should see text matching "Global Keywords"
+    And I should see text matching "Hero Button"
+    #And I should see text matching "Hero Button (additional)"
+    And I should see text matching "Hero Title"
+    And I should see text matching "Hero Visibility Option"
     And I should see text matching "Image"
     And I should see text matching "Location"
     And I should see text matching "Subject Heading"
@@ -85,7 +89,7 @@ Feature: Check for the existence and fields of content types
     When I am on "/node/add/webny_landing_page"
     Then I should not see "Access denied"
     And I should not get a 404 HTTP response
-    Then I should see text matching "Agency Keywords"
+    And I should see text matching "Agency Keywords"
     And I should see text matching "Global Keywords"
     And I should see text matching "Short Title"
     And I should see text matching "Subtitle"
@@ -93,7 +97,7 @@ Feature: Check for the existence and fields of content types
     And I should see text matching "Hero fields"
     And I should see text matching "Hero Image"
     And I should see text matching "Hero Visibility Option"
-    # And I should see text matching "Hero Button (additional)"
+    And I should see text matching "Hero Button \(additional\)"
     And I should see text matching "Hero Button"
     And I should see text matching "Frames of Content"
     And I should see text matching "Add Card"
@@ -217,4 +221,57 @@ Feature: Check for the existence and fields of content types
   Scenario: The feature card display mode should not display
     Given I am an anonymous user
     When I am on "/admin/structure/types/manage/webny_landing_page/display/webny_featured_card"
+    Then I should see "Access denied"
+
+# NEW CT ###########################################################################################################
+### INNER PAGE CONTENT TYPE ###
+# Check for the existence of a content type
+# CONTENT TYPE: Inner Page
+# ROLE: administrator
+  Scenario: Determine if a content type exists for news with the administrator role and the given fields
+    Given I am logged in as a user with the administrator role
+    When I am on "/node/add/webny_page"
+    Then I should not see "Access denied"
+    And I should not get a 404 HTTP response
+    Then I should see text matching "Agency Keywords"
+    And I should see text matching "Attached Documents"
+    And I should see text matching "Body"
+    And I should see text matching "Description/Summary"
+    And I should see text matching "Documents Section Title"
+    And I should see text matching "Documents Section Sub Title"
+    And I should see text matching "Global Keywords"
+    And I should see text matching "Hero Button"
+    And I should see text matching "Hero Button \(Additional\)"
+    And I should see text matching "Hero Title"
+    And I should see text matching "Hero Visibility Option"
+    And I should see text matching "Image"
+    And I should see text matching "Short Title"
+    And I should see text matching "Sub Title"
+
+# =======================================================================================
+# Check for the existence of a content type
+# CONTENT TYPE: Inner Page
+# ROLE: anonymous user
+  Scenario: Determine if a content type exists for news with the anonymous user role and the given fields
+    Given I am an anonymous user
+    When I am on "/node/add/webny_page"
+    Then I should see "Access denied"
+
+# =======================================================================================
+### Default Display Mode ###
+# Check if the display mode for the content type exists
+# CONTENT TYPE: Inner Page
+# ROLE: administrator
+  Scenario: Does the default display mode exist
+    Given I am logged in as a user with the administrator role
+    When I am on "/admin/structure/types/manage/webny_page/display"
+    Then I should not get a 404 HTTP response
+    And I should not see "Access denied"
+
+# Check if the display mode for the content type exists
+# CONTENT TYPE: Inner Page
+# ROLE: anonymous user
+  Scenario: Does the default display mode exist
+    Given I am an anonymous user
+    When I am on "/admin/structure/types/manage/webny_page/display"
     Then I should see "Access denied"
