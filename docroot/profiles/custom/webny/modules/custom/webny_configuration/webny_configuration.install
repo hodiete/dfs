@@ -897,3 +897,64 @@ function webny_configuration_update_8059() {
   \Drupal::service('module_installer')
       ->install(['webny_news_content_type']);
 }
+
+/**
+ * Implements hook_update_n().
+ *
+ * Updates hero toggle value for news/inner page. Refreshes News/Inner Page content types.
+ * -iojonep
+ */
+function webny_configuration_update_8060() {
+
+  // Refresh Content Types for news and inner page
+      \Drupal::service('module_installer')
+          ->uninstall(['webny_inner_page_content_type']);
+      \Drupal::service('module_installer')
+          ->install(['webny_inner_page_content_type']);
+
+      \Drupal::service('module_installer')
+          ->uninstall(['webny_news_content_type']);
+      \Drupal::service('module_installer')
+          ->install(['webny_news_content_type']);
+
+   // The bundles(s) to update.
+        $news_bundle = ['webny_news'];
+        $page_bundle = ['webny_page'];
+
+   // The field to update.
+        $hero_toggle = array('field_webny_news_hero_toggle', 'field_webny_page_hero_toggle');
+
+    // UPDATE -- LOOP THROUGH BOTH CTs
+    foreach($hero_toggle as $k=>$v){
+        $storage = Drupal::entityManager()->getStorage('node');
+
+        if($k == 0){
+            $bundle = $news_bundle;
+            $herodisplay = 1;
+        } else {
+            $bundle = $page_bundle;
+            $herodisplay = 0;
+        }
+
+        $records = Database::getConnection()->select('node', 'n')
+            ->fields('n', array('nid'))
+            ->condition('type', $bundle, 'IN')
+            ->orderBy('nid', 'ASC')
+            ->execute();
+
+        foreach ($records as $record) {
+
+          $node = $storage->load($record->nid);
+
+          // Only set value of empty fields to avoid overriding existing changes.
+              if (empty($node->{$v}->getValue())) {
+                $node->{$v}->setValue(['value' => $herodisplay]);
+              }
+
+          // Force pre_save hook to be executed.
+          $node->save();
+        }
+
+       unset($records,$record,$node,$storage);
+     }
+}
