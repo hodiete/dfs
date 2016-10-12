@@ -5,8 +5,6 @@ dependencies:
     - field.field.node.webny_news.body
     - field.field.node.webny_news.field_webny_news_agency_keywords
     - field.field.node.webny_news.field_webny_news_attdocs_eref
-    - field.field.node.webny_news.field_webny_news_button_add
-    - field.field.node.webny_news.field_webny_news_button_one
     - field.field.node.webny_news.field_webny_news_category
     - field.field.node.webny_news.field_webny_news_contact_info
     - field.field.node.webny_news.field_webny_news_date
@@ -25,7 +23,6 @@ dependencies:
   module:
     - datetime
     - field_group
-    - link
     - path
     - text
     - workbench_moderation
@@ -36,8 +33,7 @@ third_party_settings:
         - field_webny_news_hero_title
         - field_webny_news_image
         - field_webny_news_description
-        - field_webny_news_button_one
-        - field_webny_news_button_add
+        - field_webny_news_global_keywords
       parent_name: ''
       weight: 7
       label: 'Hero fields'
@@ -55,7 +51,7 @@ mode: default
 content:
   body:
     type: text_textarea_with_summary
-    weight: 10
+    weight: 9
     settings:
       rows: 9
       summary_rows: 3
@@ -67,7 +63,7 @@ content:
     settings: {  }
     third_party_settings: {  }
   field_webny_news_agency_keywords:
-    weight: 17
+    weight: 16
     settings:
       match_operator: CONTAINS
       size: 60
@@ -76,28 +72,14 @@ content:
     type: entity_reference_autocomplete
   field_webny_news_attdocs_eref:
     type: entity_reference_autocomplete
-    weight: 21
+    weight: 20
     settings:
       match_operator: CONTAINS
       size: 80
       placeholder: ''
     third_party_settings: {  }
-  field_webny_news_button_add:
-    weight: 14
-    settings:
-      placeholder_url: ''
-      placeholder_title: ''
-    third_party_settings: {  }
-    type: link_default
-  field_webny_news_button_one:
-    weight: 13
-    settings:
-      placeholder_url: ''
-      placeholder_title: ''
-    third_party_settings: {  }
-    type: link_default
   field_webny_news_category:
-    weight: 18
+    weight: 17
     settings:
       match_operator: CONTAINS
       size: 60
@@ -126,20 +108,20 @@ content:
     type: text_textfield
   field_webny_news_docsec_subtitle:
     type: string_textfield
-    weight: 20
+    weight: 19
     settings:
       size: 80
       placeholder: ''
     third_party_settings: {  }
   field_webny_news_docsec_title:
     type: string_textfield
-    weight: 19
+    weight: 18
     settings:
       size: 80
       placeholder: ''
     third_party_settings: {  }
   field_webny_news_global_keywords:
-    weight: 16
+    weight: 13
     settings:
       match_operator: CONTAINS
       size: 60
@@ -181,7 +163,7 @@ content:
     third_party_settings: {  }
     type: string_textfield
   field_webny_news_subject_heading:
-    weight: 11
+    weight: 10
     settings:
       match_operator: CONTAINS
       size: 60
@@ -197,7 +179,7 @@ content:
     type: text_textfield
   path:
     type: path
-    weight: 12
+    weight: 11
     settings: {  }
     third_party_settings: {  }
   promote:
