@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_webny_page_hero_toggle
+    - node.type.webny_page
+id: node.webny_page.field_webny_page_hero_toggle
+field_name: field_webny_page_hero_toggle
+entity_type: node
+bundle: webny_page
+label: 'Hero Visibility Option'
+description: 'To show the hero, select Display Hero. To hide the hero, select Do Not Display Hero.'
+required: true
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'Display Hero'
+  off_label: 'Do Not Display Hero'
+field_type: boolean

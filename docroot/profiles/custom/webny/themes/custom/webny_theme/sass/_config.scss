@@ -14,7 +14,7 @@ $secondarygold: #DC9719; // secondary accent
 
 //using the colors from the ny.gov colors as starting point - these will need to be reivsed
 // * use these colors when setting up the variables at the top of partials 
-$color-primary: $primaryblue !default; 
+$color-primary: $primaryblue !default;
 $color-secondary: $primarygold !default;
 $color-tertiary: $medblue !default;
 $color-accent-primary: $medblueaccent !default;
@@ -102,10 +102,14 @@ $summary-button-hover-back-color:       $button-white-20 !default;
 // font with WebNY_theme original - remove? ///////////////
 $opensans: 'Open Sans', sans-serif;
 
+// HERO VARS
+$hero-inner-width:    90%;
+$hero-header-width:   66%;
+
 // susy configs ///////////////
 $susy: (
-  columns: 12, // The number of columns in your grid
-  gutters: 1/4, // The size of a gutter in relation to a single column
+        columns: 12, // The number of columns in your grid
+        gutters: 1/4, // The size of a gutter in relation to a single column
 );
 
 // breakpoint ///////////////
@@ -114,7 +118,7 @@ $min-tablet: 768px;
 $min-mobile: 461px;
 
 $max-pc:    75em;
-$min-pc:    48em;   
+$min-pc:    48em;
 $min-tab:   30em;
 $min-mob:   20em;
 
