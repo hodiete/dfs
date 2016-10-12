@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "f0d8fb3348e6695f294fa842b15deb17",
-    "content-hash": "95511d84083f5397e63c98660436a67f",
+    "hash": "759f6fb9c01515087ff86ad697c322a2",
+    "content-hash": "0d6a56354a4dfba8695e46e3a781a247",
     "packages": [
         {
             "name": "acquia/blt",
@@ -952,7 +952,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://ftp.drupal.org/files/projects/acquia_connector-8.x-1.5.zip",
-                "reference": "0f3c8d8a2b3b2e9e990ea7998249650977ae5404",
+                "reference": null,
                 "shasum": null
             },
             "require": {
@@ -991,7 +991,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://ftp.drupal.org/files/projects/acsf-8.x-1.31.zip",
-                "reference": "2bc61d6fea1a475944fbe1d7b1c1141181284b53",
+                "reference": null,
                 "shasum": null
             },
             "require": {
@@ -1048,7 +1048,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://ftp.drupal.org/files/projects/admin_toolbar-8.x-1.17.zip",
-                "reference": "195f503ee4350c8be74b9515c21e264384a2fcaf",
+                "reference": null,
                 "shasum": null
             },
             "require": {
@@ -1092,7 +1092,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://ftp.drupal.org/files/projects/adminimal_theme-8.x-1.1.zip",
-                "reference": "572d3869c7a349f75f1dbc32bf2853f1fdb334b3",
+                "reference": null,
                 "shasum": null
             },
             "require": {
@@ -1116,6 +1116,62 @@
             "time": "2015-12-05 16:48:42"
         },
         {
+            "name": "drupal/advagg",
+            "version": "8.2.0-rc2",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupal.org/project/advagg",
+                "reference": "1bcbaf5901287b0d4158adca2fa6255649d83dde"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/advagg-8.x-2.0-rc2.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "drupal/core": "8.*"
+            },
+            "replace": {
+                "drupal/advagg_bundler": "self.version",
+                "drupal/advagg_cdn": "self.version",
+                "drupal/advagg_css_minify": "self.version",
+                "drupal/advagg_ext_minify": "self.version",
+                "drupal/advagg_js_minify": "self.version",
+                "drupal/advagg_mod": "self.version",
+                "drupal/advagg_validator": "self.version"
+            },
+            "suggest": {
+                "drupal/core": "Required by drupal/advagg_bundler, drupal/advagg_cdn, drupal/advagg_css_minify, drupal/advagg_ext_minify, drupal/advagg_js_minify, drupal/advagg_mod, drupal/advagg_validator"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-8.x-2.x": "8.2.x-dev"
+                }
+            },
+            "notification-url": "https://packagist.drupal-composer.org/downloads/",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Mike Carper (mikeytown2)",
+                    "homepage": "https://www.drupal.org/u/mikeytown2",
+                    "role": "Creator, Maintainer"
+                },
+                {
+                    "name": "Nick Wilde (nickwilde)",
+                    "email": "design@briarmoon.ca",
+                    "homepage": "https://www.drupal.org/u/nickwilde",
+                    "role": "Drupal 8 Port/maintainer"
+                }
+            ],
+            "description": "Aggregates multiple CSS/JS files in a way that prevents 404 from happening when accessing a CSS or JS file.",
+            "homepage": "https://drupal.org/project/advagg",
+            "time": "2016-09-27 18:46:56"
+        },
+        {
             "name": "drupal/better_exposed_filters",
             "version": "8.3.0-alpha1",
             "source": {
@@ -1126,7 +1182,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://ftp.drupal.org/files/projects/better_exposed_filters-8.x-3.0-alpha1.zip",
-                "reference": "b594b44f1d65a147e66ac56b285338a07efec964",
+                "reference": null,
                 "shasum": null
             },
             "require": {
@@ -1158,7 +1214,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://ftp.drupal.org/files/projects/coder-8.x-2.9.zip",
-                "reference": "b08682bd939cf7d3ac7034bee792aa17f80e19d7",
+                "reference": null,
                 "shasum": null
             },
             "require": {
@@ -1195,7 +1251,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://ftp.drupal.org/files/projects/config_update-8.x-1.1.zip",
-                "reference": "ac1526df5836a611f04bb421945beddb6306b7f2",
+                "reference": null,
                 "shasum": null
             },
             "require": {
@@ -1321,7 +1377,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://ftp.drupal.org/files/projects/contact_storage-8.x-1.0-beta7.zip",
-                "reference": "dcb33a46ba2706e7a9208a26624c36d1a7f3469c",
+                "reference": null,
                 "shasum": null
             },
             "require": {
@@ -1536,7 +1592,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://ftp.drupal.org/files/projects/csv_serialization-8.x-1.0.zip",
-                "reference": "81aec56b486a71d614b5c321145704c5dd6f43c8",
+                "reference": null,
                 "shasum": null
             },
             "require": {
@@ -1568,7 +1624,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://ftp.drupal.org/files/projects/ctools-8.x-3.0-alpha27.zip",
-                "reference": "231e2649678d58901368a9e5681f36865ce84e73",
+                "reference": null,
                 "shasum": null
             },
             "require": {
@@ -1608,7 +1664,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://ftp.drupal.org/files/projects/devel-8.x-1.0-alpha1.zip",
-                "reference": "930b7b89c2fa2047ebbb0fb3ba53f45a67409242",
+                "reference": null,
                 "shasum": null
             },
             "require": {
@@ -1657,7 +1713,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://ftp.drupal.org/files/projects/diff-8.x-1.x-alpha2.zip",
-                "reference": "2216ce763fecb03d441231e1b2b3fdddeb761b53",
+                "reference": null,
                 "shasum": null
             },
             "require": {
@@ -1714,7 +1770,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://ftp.drupal.org/files/projects/entity-8.x-1.0-alpha3.zip",
-                "reference": "70a105ae063c54bf59e67f9e41cb9121374acb7c",
+                "reference": null,
                 "shasum": null
             },
             "require": {
@@ -1772,7 +1828,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://ftp.drupal.org/files/projects/entity_reference_revisions-8.x-1.0.zip",
-                "reference": "500d30fe98e8cafd05ff770c9748169acd257aeb",
+                "reference": null,
                 "shasum": null
             },
             "require": {
@@ -1803,7 +1859,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://ftp.drupal.org/files/projects/features-8.x-3.0-beta9.zip",
-                "reference": "86ec48573f564faf89e87c663786f45c438e5ec5",
+                "reference": null,
                 "shasum": null
             },
             "require": {
@@ -1873,7 +1929,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://ftp.drupal.org/files/projects/google_analytics-8.x-2.1.zip",
-                "reference": "5a44ad5643af5510ec15c07727ce0d124ee1c1c1",
+                "reference": null,
                 "shasum": null
             },
             "require": {
@@ -1914,7 +1970,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://ftp.drupal.org/files/projects/honeypot-8.x-1.23.zip",
-                "reference": "a5b77a400c6af3edc35a5c8307cb2b6ea7632341",
+                "reference": null,
                 "shasum": null
             },
             "require": {
@@ -1959,7 +2015,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://ftp.drupal.org/files/projects/inline_entity_form-8.x-1.0-alpha5.zip",
-                "reference": "ae44ef3d00a070ba137f6929772863ff7218926f",
+                "reference": null,
                 "shasum": null
             },
             "require": {
@@ -2015,7 +2071,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://ftp.drupal.org/files/projects/login_security-8.x-1.1.zip",
-                "reference": "e5de6bdcae93c4f86b2ad3ee1ae4dda7bb7e3e65",
+                "reference": null,
                 "shasum": null
             },
             "require": {
@@ -2037,6 +2093,38 @@
             "time": "2016-07-28 12:40:17"
         },
         {
+            "name": "drupal/masquerade",
+            "version": "8.1.0-beta1",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupal.org/project/masquerade",
+                "reference": "4a208ad231cb8efb71eaa9ab7bafb66fac39e7cb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/masquerade-8.x-1.0-beta1.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "drupal/core": "8.*",
+                "drupal/user": "8.*"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-8.x-1.x": "8.1.x-dev"
+                }
+            },
+            "notification-url": "https://packagist.drupal-composer.org/downloads/",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "description": "Allows privileged users to masquerade as another user.",
+            "homepage": "https://www.drupal.org/project/masquerade",
+            "time": "2015-11-14 19:35:25"
+        },
+        {
             "name": "drupal/media_entity",
             "version": "8.1.0-beta2",
             "source": {
@@ -2047,7 +2135,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://ftp.drupal.org/files/projects/media_entity-8.x-1.0-beta2.zip",
-                "reference": "48e56165e6f68bad83098a2a77c3eb8bde2ecedf",
+                "reference": null,
                 "shasum": null
             },
             "require": {
@@ -2084,7 +2172,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://ftp.drupal.org/files/projects/media_entity_embeddable_video-8.x-1.0-beta2.zip",
-                "reference": "f7e51c2cccd875e1fd09d018c11fd50c93a71507",
+                "reference": null,
                 "shasum": null
             },
             "require": {
@@ -2119,7 +2207,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://ftp.drupal.org/files/projects/media_entity_image-8.x-1.0-beta2.zip",
-                "reference": "f17384aeba3c8c00bbc57bfa8fa68529992873ce",
+                "reference": null,
                 "shasum": null
             },
             "require": {
@@ -2151,7 +2239,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://ftp.drupal.org/files/projects/memcache-8.x-2.0-alpha2.zip",
-                "reference": "20bcb68e72f17ec7f156eff69e9fab925ca30d54",
+                "reference": null,
                 "shasum": null
             },
             "require": {
@@ -2182,7 +2270,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://ftp.drupal.org/files/projects/metatag-8.x-1.0-beta10.zip",
-                "reference": "c0610ad2ad9318298823c24db66b8769095910a3",
+                "reference": null,
                 "shasum": null
             },
             "require": {
@@ -2203,6 +2291,9 @@
             "extra": {
                 "branch-alias": {
                     "dev-8.x-1.x": "8.1.x-dev"
+                },
+                "patches_applied": {
+                    "Fatal error after updating to 8.1.0-beta10": "https://www.drupal.org/files/issues/metatag-deactivate_drupalconsole_services.patch"
                 }
             },
             "notification-url": "https://packagist.drupal-composer.org/downloads/",
@@ -2235,7 +2326,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://ftp.drupal.org/files/projects/paragraphs-8.x-1.0.zip",
-                "reference": "7d70adcb69416f35eb2d2596340461df8efda009",
+                "reference": null,
                 "shasum": null
             },
             "require": {
@@ -2284,7 +2375,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://ftp.drupal.org/files/projects/password_policy-8.x-3.0-alpha2.zip",
-                "reference": "948c352eb45417913d01a64f8daa60f4efb5d08f",
+                "reference": null,
                 "shasum": null
             },
             "require": {
@@ -2325,7 +2416,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://ftp.drupal.org/files/projects/pathauto-8.x-1.0-beta1.zip",
-                "reference": "05a0bc51694b70efb697b3c8b175f2884bff7b34",
+                "reference": null,
                 "shasum": null
             },
             "require": {
@@ -2383,7 +2474,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://ftp.drupal.org/files/projects/services-8.x-4.0-beta2.zip",
-                "reference": "978675bc88c321f560980bf948c0d22fd9fbc480",
+                "reference": null,
                 "shasum": null
             },
             "require": {
@@ -2423,7 +2514,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://ftp.drupal.org/files/projects/simple_sitemap-8.x-2.6.zip",
-                "reference": "c8633a94226de25e72cd324338e19999b7d1688b",
+                "reference": null,
                 "shasum": null
             },
             "require": {
@@ -2467,7 +2558,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://ftp.drupal.org/files/projects/sitemap-8.x-1.2.zip",
-                "reference": "f2f238b6e10fa88956535d287b0b27f1b3d604d3",
+                "reference": null,
                 "shasum": null
             },
             "require": {
@@ -2520,7 +2611,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://ftp.drupal.org/files/projects/smart_trim-8.x-1.0.zip",
-                "reference": "1cdd9a3873d902ada8ebace2bdf9376b4a88c338",
+                "reference": null,
                 "shasum": null
             },
             "require": {
@@ -2554,7 +2645,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://ftp.drupal.org/files/projects/token-8.x-1.0-beta2.zip",
-                "reference": "724ccaa7a60f1aa7e8883e82de737115b0f73a3f",
+                "reference": null,
                 "shasum": null
             },
             "require": {
@@ -2585,7 +2676,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://ftp.drupal.org/files/projects/workbench_moderation-8.x-1.1.zip",
-                "reference": "661c2108c84e961a00ae7174c91053858447a7d2",
+                "reference": null,
                 "shasum": null
             },
             "require": {
@@ -2767,16 +2858,16 @@
         },
         {
             "name": "guzzlehttp/guzzle",
-            "version": "6.2.1",
+            "version": "6.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/guzzle.git",
-                "reference": "3f808fba627f2c5b69e2501217bf31af349c1427"
+                "reference": "ebf29dee597f02f09f4d5bbecc68230ea9b08f60"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/3f808fba627f2c5b69e2501217bf31af349c1427",
-                "reference": "3f808fba627f2c5b69e2501217bf31af349c1427",
+                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/ebf29dee597f02f09f4d5bbecc68230ea9b08f60",
+                "reference": "ebf29dee597f02f09f4d5bbecc68230ea9b08f60",
                 "shasum": ""
             },
             "require": {
@@ -2825,7 +2916,7 @@
                 "rest",
                 "web service"
             ],
-            "time": "2016-07-15 17:22:37"
+            "time": "2016-10-08 15:01:37"
         },
         {
             "name": "guzzlehttp/promises",
@@ -3403,16 +3494,16 @@
         },
         {
             "name": "phing/phing",
-            "version": "2.15.0",
+            "version": "2.15.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phingofficial/phing.git",
-                "reference": "bbfcaee391123220fc54e9c6feffeeea3c8775b7"
+                "reference": "16f6372d9bf71783abea98fdd8cd9cb4ecb3bf41"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phingofficial/phing/zipball/bbfcaee391123220fc54e9c6feffeeea3c8775b7",
-                "reference": "bbfcaee391123220fc54e9c6feffeeea3c8775b7",
+                "url": "https://api.github.com/repos/phingofficial/phing/zipball/16f6372d9bf71783abea98fdd8cd9cb4ecb3bf41",
+                "reference": "16f6372d9bf71783abea98fdd8cd9cb4ecb3bf41",
                 "shasum": ""
             },
             "require": {
@@ -3492,7 +3583,7 @@
                 "task",
                 "tool"
             ],
-            "time": "2016-09-14 19:38:14"
+            "time": "2016-10-11 09:24:10"
         },
         {
             "name": "phpdocumentor/reflection-common",
@@ -4040,16 +4131,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "5.6.0",
+            "version": "5.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "a7f2db56518e50ab92f28f739810dfad2f223b6b"
+                "reference": "60c32c5b5e79c2248001efa2560f831da11cc2d7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/a7f2db56518e50ab92f28f739810dfad2f223b6b",
-                "reference": "a7f2db56518e50ab92f28f739810dfad2f223b6b",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/60c32c5b5e79c2248001efa2560f831da11cc2d7",
+                "reference": "60c32c5b5e79c2248001efa2560f831da11cc2d7",
                 "shasum": ""
             },
             "require": {
@@ -4118,20 +4209,20 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2016-10-06 15:20:39"
+            "time": "2016-10-07 13:03:26"
         },
         {
             "name": "phpunit/phpunit-mock-objects",
-            "version": "3.3.1",
+            "version": "3.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit-mock-objects.git",
-                "reference": "03500345483e1e17b52e2e4d34a89c9408ab2902"
+                "reference": "238d7a2723bce689c79eeac9c7d5e1d623bb9dc2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit-mock-objects/zipball/03500345483e1e17b52e2e4d34a89c9408ab2902",
-                "reference": "03500345483e1e17b52e2e4d34a89c9408ab2902",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit-mock-objects/zipball/238d7a2723bce689c79eeac9c7d5e1d623bb9dc2",
+                "reference": "238d7a2723bce689c79eeac9c7d5e1d623bb9dc2",
                 "shasum": ""
             },
             "require": {
@@ -4177,7 +4268,7 @@
                 "mock",
                 "xunit"
             ],
-            "time": "2016-10-04 11:03:26"
+            "time": "2016-10-09 07:01:45"
         },
         {
             "name": "psr/http-message",
@@ -4231,16 +4322,16 @@
         },
         {
             "name": "psr/log",
-            "version": "1.0.1",
+            "version": "1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-fig/log.git",
-                "reference": "5277094ed527a1c4477177d102fe4c53551953e0"
+                "reference": "4ebe3a8bf773a19edfe0a84b6585ba3d401b724d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/log/zipball/5277094ed527a1c4477177d102fe4c53551953e0",
-                "reference": "5277094ed527a1c4477177d102fe4c53551953e0",
+                "url": "https://api.github.com/repos/php-fig/log/zipball/4ebe3a8bf773a19edfe0a84b6585ba3d401b724d",
+                "reference": "4ebe3a8bf773a19edfe0a84b6585ba3d401b724d",
                 "shasum": ""
             },
             "require": {
@@ -4274,7 +4365,7 @@
                 "psr",
                 "psr-3"
             ],
-            "time": "2016-09-19 16:02:08"
+            "time": "2016-10-10 12:19:37"
         },
         {
             "name": "roave/security-advisories",
@@ -4282,15 +4373,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "47cd1dcac8df83b6f8a5fe85e3b743d079160643"
+                "reference": "9b2c146291b6a5a1d22a837e86ca77ade3941f47"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/47cd1dcac8df83b6f8a5fe85e3b743d079160643",
-                "reference": "47cd1dcac8df83b6f8a5fe85e3b743d079160643",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/9b2c146291b6a5a1d22a837e86ca77ade3941f47",
+                "reference": "9b2c146291b6a5a1d22a837e86ca77ade3941f47",
                 "shasum": ""
             },
             "conflict": {
+                "adodb/adodb-php": "<5.20.6",
                 "amphp/artax": ">=2,<2.0.4|>0.7.1,<1.0.4",
                 "aws/aws-sdk-php": ">=3,<3.2.1",
                 "bugsnag/bugsnag-laravel": ">=2,<2.0.2",
@@ -4401,7 +4493,7 @@
                 }
             ],
             "description": "Prevents installation of composer packages with known security vulnerabilities: no API, simply require it",
-            "time": "2016-09-30 13:56:41"
+            "time": "2016-10-07 16:42:29"
         },
         {
             "name": "sebastian/code-unit-reverse-lookup",
@@ -6743,16 +6835,16 @@
         },
         {
             "name": "zendframework/zend-diactoros",
-            "version": "1.3.6",
+            "version": "1.3.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zendframework/zend-diactoros.git",
-                "reference": "a60da179c37f2c4e44ef734d0b92824a58943f7f"
+                "reference": "969ff423d3f201da3ff718a5831bb999bb0669b0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/zend-diactoros/zipball/a60da179c37f2c4e44ef734d0b92824a58943f7f",
-                "reference": "a60da179c37f2c4e44ef734d0b92824a58943f7f",
+                "url": "https://api.github.com/repos/zendframework/zend-diactoros/zipball/969ff423d3f201da3ff718a5831bb999bb0669b0",
+                "reference": "969ff423d3f201da3ff718a5831bb999bb0669b0",
                 "shasum": ""
             },
             "require": {
@@ -6789,7 +6881,7 @@
                 "psr",
                 "psr-7"
             ],
-            "time": "2016-09-07 17:57:29"
+            "time": "2016-10-11 13:25:21"
         },
         {
             "name": "zendframework/zend-escaper",
