@@ -7,9 +7,10 @@
 // Style guide: components.card
 
 // color variables
-$featured-card-frame-title-color: $primarygold !default;
+$featured-card-frame-title-color: $color-secondary !default;
 $featured-card-frame-headline-color: $black !default;
-
+$featured-card-arrow-color: $color-secondary !default;
+$featured-card-arrow-color-hover: scale-color($featured-card-arrow-color, $lightness: 20%) !default;
 
 // CARDS WRAPPER FOR PADDING
 .cards-wrap{
@@ -127,13 +128,24 @@ $featured-card-frame-headline-color: $black !default;
 }
 
 .webny-card .webny-card-cta {
-  text-align: center;
-  padding: 1em;
+  padding: .75em 1em;
   background-color:$call-to-action;
   border-top: 1px solid $gray-lite;
+  
+  letter-spacing: 1px;
+  .icon-right_carat {
+    font-weight: bold;
+    color: $featured-card-arrow-color;
+    &:hover {
+      color: $featured-card-arrow-color-hover;
+    }
+  }
   a {
-    padding: 1em;
+    padding-left: 5px;
+    font-size: 13px;
     text-transform:uppercase;
+    text-decoration: none;
+    color: $black;
   }
 }
 
