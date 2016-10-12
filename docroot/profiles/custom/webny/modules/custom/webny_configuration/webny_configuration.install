@@ -897,3 +897,57 @@ function webny_configuration_update_8059() {
   \Drupal::service('module_installer')
       ->install(['webny_news_content_type']);
 }
+
+/**
+ * Implements hook_update_n().
+ *
+ * Modify Name column in key_value table to fix "Data too long for column 'name' at row 1" advagg issue.
+ *
+ */
+function webny_configuration_update_8060() {
+
+  Database::getConnection()->query("ALTER TABLE key_value MODIFY name VARCHAR(175);");
+}
+
+
+/**
+ * Helper function to enable a Drupal module and print the result.
+ *
+ * @param string $module_name
+ *   The name of the module.
+ *
+ * @return string
+ *   Output for Drush to display on console.
+ */
+function webny_configuration_enable_module($module_name) {
+
+  try {
+    \Drupal::service('module_installer')->install([$module_name]);
+    return $module_name . " installed.\n";
+  }
+  catch (Exception $error) {
+    throw new UpdateException("An error occurred installing " . $module_name . ": " . $error . "\n");
+  }
+}
+
+/**
+ * Helper function to uninstall a Drupal module and print the result.
+ *
+ * @param string $module_name
+ *   The name of the module.
+ *
+ * @return string
+ *   Output for Drush to display on console.
+ */
+function webny_configuration_uninstall_module($module_name) {
+
+  try {
+    \Drupal::service('module_installer')->uninstall([$module_name]);
+    return $module_name . " uninstalled.\n";
+  }
+  catch (Exception $error) {
+    throw new UpdateException("An error occurred uninstalling " . $module_name . ": " . $error . "\n");
+  }
+}
+
+
