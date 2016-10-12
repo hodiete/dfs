@@ -932,6 +932,9 @@ function webny_configuration_update_8061() {
         $news_bundle = ['webny_news'];
         $page_bundle = ['webny_page'];
 
+   // Variable to display or not display the hero
+        $herodisplay = 1;
+
    // The field to update.
         $hero_toggle = array('field_webny_news_hero_toggle', 'field_webny_page_hero_toggle');
 
@@ -941,10 +944,8 @@ function webny_configuration_update_8061() {
 
         if($k == 0){
             $bundle = $news_bundle;
-            $herodisplay = 1;
         } else {
             $bundle = $page_bundle;
-            $herodisplay = 0;
         }
 
         $records = Database::getConnection()->select('node', 'n')
