@@ -1011,3 +1011,15 @@ function webny_configuration_uninstall_module($module_name) {
   }
 }
 
+/**
+ * Implements hook_update_n().
+ *
+* Refreshes News content type to remove Keyword filters.
+ */
+function webny_configuration_update_8062() {
+  \Drupal::service('module_installer')
+      ->uninstall(['webny_news_content_type']);
+  \Drupal::service('module_installer')
+      ->install(['webny_news_content_type']);
+}
+
