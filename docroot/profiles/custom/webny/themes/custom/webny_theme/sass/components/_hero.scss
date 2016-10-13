@@ -57,10 +57,22 @@ $hero-keyword-text-color: $white !default;
 
 // ========================================================================= //
 /* HERO HOMEPAGE LAYOUT  ONLY */
-.front{
-  .hero-layout{
-    .hero-landing-inner{
-      width: 50%;
+
+.front {
+  .hero-layout {
+    .hero-landing-inner {
+      width: 90%;
+    }
+  }
+}
+
+@media (min-width: 48em) {
+  .front {
+    .hero-layout {
+      .hero-landing-inner {
+        width: 50%;
+        max-width: 600px;
+      }
     }
   }
 }
@@ -280,6 +292,7 @@ $hero-keyword-text-color: $white !default;
     .hero-ipage-inner{
       .hero-summary{
         width: $hero-header-width;
+
       }
     }
 
