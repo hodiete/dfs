@@ -13,7 +13,7 @@
               echo "Making backup of Database..."
               #drush @${drush_alias} ac-database-instance-backup acsfdevdev --endpoint=${endpoint} --email=${email} --key=${key}
               echo "Making any necessary Drupal database updates..."
-              drush @${drush_alias} acsf-tools-ml --strict=0 updb -y
+              drush @${drush_alias} acsf-tools-ml --strict=0 updb --entity-updates -y
               echo "Importing CMI Config"
               drush @${drush_alias} acsf-tools-ml --strict=0 config-import --partial --source=/mnt/www/html/nysits01dev/config/default -y
               echo "Reverting features"
@@ -31,7 +31,7 @@
               echo "Making backup of Database..."
               #drush @${drush_alias} ac-database-instance-backup acsfdevstg --endpoint=${endpoint} --email=${email} --key=${key}
               echo "Making any necessary Drupal database updates..."
-              drush @${drush_alias} acsf-tools-ml --strict=0 updb -y
+              drush @${drush_alias} acsf-tools-ml --strict=0 updb --entity-updates -y
               echo "Importing CMI Config"
               drush @${drush_alias} acsf-tools-ml --strict=0 config-import --partial --source=/mnt/www/html/nysits01test/config/default -y
               echo "Reverting features"
@@ -47,7 +47,7 @@
       case ${env} in
         "01live" )
               echo "Making any necessary Drupal database updates..."
-              drush @${drush_alias} acsf-tools-ml --strict=0 updb -y
+              drush @${drush_alias} acsf-tools-ml --strict=0 updb --entity-updates -y
               echo "Importing CMI Config"
               drush @${drush_alias} acsf-tools-ml --strict=0 config-import --partial --source=/mnt/www/html/nysits01live/config/default -y
               echo "Reverting features"

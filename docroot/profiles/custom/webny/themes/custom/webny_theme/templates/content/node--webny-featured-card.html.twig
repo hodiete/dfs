@@ -66,6 +66,12 @@
  * title_prefix area to get the title and content on the same level for css positioning.
  */
 #}
+{# setting title variable so it can be used 2x #}
+{%  if(node.field_webny_page_short_title.value is not empty and node.field_webny_page_short_title.value is not null) %}
+  {% set vtitle = node.field_webny_page_short_title.value %}
+{% else %}
+  {% set vtitle = node.label %}
+{% endif %}
 <article{{ attributes.addClass('webny-card') }}>
   {#
 /**
@@ -86,10 +92,8 @@
 
               {# IMPLEMENTS SHORT TITLE OR 65 CHAR LIMIT TITLE #}
 
-              {%  if(node.field_webny_page_short_title.value is not empty and node.field_webny_page_short_title.value is not null) %}
-                  {{ node.field_webny_page_short_title.value }}
-              {% elseif(node.label|length <= 65) %}
-                  {{ node.label }}
+             {% if(vtitle|length <= 65) %}
+                {{ vtitle }}
               {% else %}
 
                   {% set ws = true %}
@@ -123,7 +127,9 @@
      {{ content|without('field_webny_page_image','field_webny_page_short_title','node.label') }}
 </div>{# end .card-content #}
     <div class="webny-card-cta">
-      <a href="{{ url }}">Learn More</a>
+      <span class="icon-right_carat">
+        <a href="{{ url }}" title="{{ vtitle }}">Learn More</a>
+      </span>
     </div>
 {#
 /**

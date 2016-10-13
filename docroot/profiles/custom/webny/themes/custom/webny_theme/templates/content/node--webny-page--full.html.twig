@@ -27,37 +27,60 @@
 </div>
 
 
-<article {{ attributes.addClass('hero-layout') }}>
-  {% if hero_image == '/' %}
-    <header class="hero-header hero-no-image hero-ipage" style="">
-            <!-- BACKGROUND GRAD -->
-        
-    {% else %}
-    <header class="hero-header hero-has-image hero-ipage" style="background-image:url('{{ hero_image }}')">
-            <!-- BACKGROUND GRAD -->
-        <div class="hero-bkg"></div>
-    {% endif %}
-        
-        <div class="hero-inner hero-ipage-inner">
-        
-            <!-- HEADLINE LABEL -->
-            <h1>{{ node.field_webny_page_sub_title[1].value }}</h1>
+{% if node.field_webny_page_hero_toggle.value == 1 %}
+    <article {{ attributes.addClass('hero-layout') }}>
 
-            <!-- KEYWORDS -->
-            <div class="hero-keywords">
-                {{ content.field_webny_page_global_keywords }}
+        {% if hero_image == '/' %}
+            <div class="hero-header hero-no-image hero-ipage" style="">
+        {% else %}
+            <div class="hero-header hero-has-image hero-ipage" style="background-image:url('{{ hero_image }}')">
+        {% endif %}
+
+                <!-- BACKGROUND GRAD -->
+                <div class="hero-bkg"></div>
             </div>
-            
-        </div>
 
-    </header>
+            {% if hero_image == '/' %}
+                <div class="hero-inner hero-ipage-inner">
+            {% else %}
+                <div class="hero-inner hero-ipage-inner hero-has-image-content">
+            {% endif %}
 
-</article>
+                    {# HEADLINE LABEL #}
+                    <h1>
+                        {% if node.field_webny_page_hero_title.value is empty %}
+                            {{ label }}
+                        {% else %}
+                            {{ node.field_webny_page_hero_title.value }}
+                        {% endif %}
+                    </h1>
+
+                    {# HERO SUMMARY #}
+                    <div class="hero-summary">
+                        {{ content.field_webny_page_description }}
+                    </div>
+
+                    {# KEYWORDS FOR INNER PAGE HERO #}
+                    <div class="hero-global-keywords">
+                        {{ content.field_webny_page_global_keywords }}
+                    </div>
+
+                </div>
+
+            </div>
+
+    </article>
+{% endif %}
 
 <div class="page-summary">
-    {{ content.field_webny_page_description }}
-</div>    
-    
+    {% for x,subtitle in node.field_webny_page_sub_title if x > 0 %}
+       <div>
+           {{ node.field_webny_page_sub_title[x].value }}
+       </div>
+    {% endfor %}
+
+</div>
+
 <div class="ipage-body">
     {{ content.body }}
 </div>
@@ -67,8 +90,9 @@
     <div class="page-paragraphs-in">
         {{ content.field_webny_page_paragraph }}
     </div>
+
 </div>
-    
+
 <div class="press-docs">
     <h2 class="doc-set-title">{{ content.field_webny_page_docsec_title }}</h2>
     <h3 class="doc-set-subtitle">{{ content.field_webny_page_docsec_subtitle }}</h3>

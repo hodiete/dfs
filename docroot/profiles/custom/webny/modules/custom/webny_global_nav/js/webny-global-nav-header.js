@@ -137,7 +137,10 @@ function mobile_mode(){
     });
 
     // MAIN BUTTON TOGGLE FOR MOBILE
-    $(document).on(clickVals, menu_control, function(){
+    $(document).on(clickVals, menu_control, function(e){
+
+        e.stopPropagation();
+        e.preventDefault();
 
         if($(this).hasClass(_nav_active)){
             $(this).removeClass(_nav_active);

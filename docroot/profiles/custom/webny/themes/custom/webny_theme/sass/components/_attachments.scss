@@ -39,7 +39,7 @@
 }
 
 .doc-list {
-  margin: 0;
+  margin: -1px 0px 0px 0px;
   padding-left: 0;
 }
 
@@ -60,12 +60,13 @@
 .icon-download{
     color: $primarygold;
     display: inline-block;
-    padding: 20px 20px 15px 20px;
+   padding: 20px 20px 15px 20px;
 }
 
 .doc-info {
   display: inline-block;
   width: 90%;
+  min-height: 70px;
   padding: 15px 20px 15px;
 }
 
@@ -97,7 +98,6 @@
   font-family: $base-font;
   font-size: $base-font-size;
   font-style: italic;
-  padding-bottom: 2px;
 }
 
 .doc-description {
@@ -111,8 +111,6 @@
   width: 100%;
   background-color: lighten($gray-lite, 8);
   margin-top: 10px;
-  padding: 3% 0;
-  
 }
 
 .download a {

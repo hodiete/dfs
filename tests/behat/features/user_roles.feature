@@ -1,4 +1,4 @@
-@api @javascript
+@api
 Feature: Administrator role exists
 When I log into the website
 As an administrator
