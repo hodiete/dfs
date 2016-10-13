@@ -5,6 +5,11 @@
  *
  */
 #}
+{%  if(node.field_webny_whitelist_stitle.value is not empty and node.field_webny_whitelist_stitle.value is not null) %}
+  {% set vtitle = node.field_webny_whitelist_stitle.value %}
+{% else %}
+  {% set vtitle = node.label %}
+{% endif %}
 <article{{ attributes.addClass('webny-card') }}>
 
     <div class="card-image">
@@ -20,11 +25,9 @@
                     <a href="{{ url }}" rel="bookmark">
 
                         {# IMPLEMENTS SHORT TITLE OR 65 CHAR LIMIT TITLE #}
-
-                        {%  if(node.field_webny_whitelist_stitle.value is not empty and node.field_webny_whitelist_stitle.value is not null) %}
-                            {{ node.field_webny_whitelist_stitle.value }}
-                        {% elseif(node.label|length <= 65) %}
-                            {{ node.label }}
+                        
+                        {% if(vtitle|length <= 65) %}
+                            {{ vtitle }}
                         {% else %}
 
                             {% set ws = true %}
@@ -61,7 +64,9 @@
     </div> {# end .card-content #}
 
     <div class="webny-card-cta">
-        <a href="{{ url }}">Learn More</a>
+      <span class="icon-right_carat">
+        <a href="{{ url }}" title="{{ vtitle }}">Learn More</a>
+      </span>
     </div>
 
 </article>
