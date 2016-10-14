@@ -5,31 +5,33 @@
 
 (function ($, Drupal, window, document) {
 
-  'use strict';
+    'use strict';
 
-  Drupal.behaviors.filterToggle = {
-    attach: function (context, settings) {
+    Drupal.behaviors.filterToggle = {
+        attach: function (context, settings) {
 
-      var clickVals = 'click touchend';
-      
+            var clickVals = 'click touchend';
 
-    	$('.filterTog').on(clickVals,function (){
 
-		  /*console.log('We\'re in');*/
+            $('.filterTog').on(clickVals,function (){
 
-          if($('.filterBody').hasClass('filterBodyDisplay')){
-        	$('.filterBody').removeClass('filterBodyDisplay');
-        	$('.filterBody').addClass('filterBodyHidden');
-          $('.filterTogDisplay').attr('value','Expand');
-          } else {
-        	$('.filterBody').removeClass('filterBodyHidden');
-        	$('.filterBody').addClass('filterBodyDisplay');
-          $('.filterTogDisplay').attr('value','Collapse');
-          }
+                // PREVENT MULTI EVENT FUN
+                e.stopPropagation();
 
-    	});
+                // ADD CLASSES TO SHOW AND HIDE FILTER
+                if($('.filterBody').hasClass('filterBodyDisplay')){
+                    $('.filterBody').removeClass('filterBodyDisplay');
+                    $('.filterBody').addClass('filterBodyHidden');
+                    $('.filterTogDisplay').attr('value','Expand');
+                } else {
+                    $('.filterBody').removeClass('filterBodyHidden');
+                    $('.filterBody').addClass('filterBodyDisplay');
+                    $('.filterTogDisplay').attr('value','Collapse');
+                }
 
-    }
-  };
+            });
+
+        }
+    };
 
 })(jQuery, Drupal, this);
