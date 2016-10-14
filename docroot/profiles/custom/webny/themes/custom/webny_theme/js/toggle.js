@@ -12,22 +12,29 @@
 
             var clickVals = 'click touchend';
 
-
-            $('.filterTog').on(clickVals,function (){
+            // HANDLES EVENTS FOR TOGGLE BUTTON AND HEADER REGION
+            $('.results-exposed-filters-title, .filterTogDisplay').on(clickVals,function (e){
 
                 // PREVENT MULTI EVENT FUN
-                e.stopPropagation();
+                    e.stopPropagation();
+                    e.preventDefault();
+
+                    console.log(e.type);
 
                 // ADD CLASSES TO SHOW AND HIDE FILTER
-                if($('.filterBody').hasClass('filterBodyDisplay')){
-                    $('.filterBody').removeClass('filterBodyDisplay');
-                    $('.filterBody').addClass('filterBodyHidden');
-                    $('.filterTogDisplay').attr('value','Expand');
-                } else {
-                    $('.filterBody').removeClass('filterBodyHidden');
-                    $('.filterBody').addClass('filterBodyDisplay');
-                    $('.filterTogDisplay').attr('value','Collapse');
-                }
+                    if($('.filterBody').hasClass('filterBodyDisplay')){
+
+                            $('.filterBody').removeClass('filterBodyDisplay');
+                            $('.filterBody').addClass('filterBodyHidden');
+                            $('.filterTogDisplay').attr('value','Expand');
+
+                    } else {
+
+                        $('.filterBody').removeClass('filterBodyHidden');
+                        $('.filterBody').addClass('filterBodyDisplay');
+                        $('.filterTogDisplay').attr('value','Collapse');
+
+                    }
 
             });
 
