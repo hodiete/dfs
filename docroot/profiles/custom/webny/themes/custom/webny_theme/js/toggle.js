@@ -10,37 +10,38 @@
     Drupal.behaviors.filterToggle = {
         attach: function (context, settings) {
 
-            var clickVals           = 'click touchend';
-            var changeNavEventMode  = false;
-            var curViewMode         = getDisplay(window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth);
 
-            console.log('This was fired');
+            var clickVals = 'click touchend';
+            var changeNavEventMode = false;
+            var curViewMode = getDisplay(window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth);
+
+            var maxMobile = 1024;
+
             function resizeListener() {
                 $(window).resize(function (e) {
-                    var maxMobile   = 1024;
-                    var curWidth    = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+
+                    var curWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
 
                     // DETERMINE IF MOBILE AND SHOULD BE DESKTOP
                     if (curWidth >= maxMobile && curViewMode == 'mobile' && changeNavEventMode === false) {
                         curViewMode = 'desktop';
                         changeNavEventMode = true;
-                        console.log(curWidth + ' ' + curViewMode + ' ' + changeNavEventMode + ' ' + maxMobile);
                     }
 
                     // DETERMINE IF DESKTOP AND SHOULD BE MOBILE
-                    if (curWidth < maxMobile && curViewMode == 'desktop' && changeNavEventMode === false ) {
+                    if (curWidth < maxMobile && curViewMode == 'desktop' && changeNavEventMode === false) {
                         curViewMode = 'mobile';
                         changeNavEventMode = true;
-                        console.log(curWidth + ' ' + curViewMode + ' ' + changeNavEventMode + ' ' + maxMobile);
                     }
 
                     // ENABLE OR DISABLE THE EVENT TO TOGGLE
-                    if (changeNavEventMode === true ) {
+                    if (changeNavEventMode === true) {
 
-                        if(curViewMode == 'mobile') {
-                            toggleNewsOpts();
+                        // UNBIND / BIND EVENTS
+                        if (curViewMode == 'desktop') {
+                            $('.results-exposed-filters-title, .filterTogDisplay').off('click touchend');
                         } else {
-                            $(document).off('click touchend','.results-exposed-filters-title, .filterTogDisplay' );
+                            toggleNewsOpts();
                         }
                     }
 
@@ -50,7 +51,7 @@
 
             function toggleNewsOpts() {
                 // HANDLES EVENTS FOR TOGGLE BUTTON AND HEADER REGION
-                $('.results-exposed-filters-title, .filterTogDisplay').on(clickVals, function (e) {
+                $('.results-exposed-filters-title, .filterTogDisplay', context).on(clickVals, function (e) {
 
                     // PREVENT MULTI EVENT FUN
                     e.stopPropagation();
@@ -74,8 +75,8 @@
 
             }
 
-            function getDisplay(browserWidth){
-                if(browserWidth < 1024){
+            function getDisplay(browserWidth) {
+                if (browserWidth < 1024) {
                     var display = 'mobile';
                 } else {
                     var display = 'desktop';
@@ -85,14 +86,13 @@
 
             // ######################################################################################
             /// INIT
-                if (curViewMode == 'mobile') {
-                    toggleNewsOpts();
-                }
 
             // LISTEN TO RESIZE
-                resizeListener();
+            resizeListener();
 
-
+            if(curViewMode == 'mobile'){
+                toggleNewsOpts();
+            }
 
         }
     };
