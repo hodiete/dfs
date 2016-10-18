@@ -76,15 +76,11 @@ running a VM in Windows.
     
         
 1. Run `blt setup:settings` . This will generate docroot/sites/default/settings/local.settings.php 
-and docroot/sites/default/local.drushrc.php. Update these with your local database credentials and 
-your local site URL.`
+and docroot/sites/default/local.drushrc.php. Update `local.drushrc.php`with your local site URL (likely http://webny.dev).
 1. Run `blt local:setup.` This will build all project dependencies and install drupal.
-1. Create and edit your local drush alias file. Copy drush/site-aliases/example.local.aliases.drushrc.php to 
-drush/site-aliases/local.aliases.drushrc.php. Edit the new alias file with your local path.
-1.Run `blt` for a list of available phing tasks.
-
+1. Edit your local drush alias file. Modify drush/site-aliases/local.aliases.drushrc.php with your local path.
+1. Run `blt` for a list of available phing tasks.
 1. To run a build of the theme, run: `cd docroot/profiles/custom/webny/themes/custom/webny_theme && npm run build`
-
 1. If you go to  http://webny.dev you should see a site using the WebNY distro. 
 
 
