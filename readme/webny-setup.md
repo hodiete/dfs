@@ -7,11 +7,13 @@ for getting set up with Drupal VM and the WebNY distro.
 
 1. Ensure that Xcode is installed. On OSX 10.9+ you can install Xcode with:
 
+
     xcodebuild -license
     xcode-select --install
 
 1. Install the minimum dependencies for BLT. The preferred method is via Homebrew, though you could install these
  yourself without a package manager.
+ 
  
     /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)”
     brew install php56 git composer drush
@@ -19,11 +21,13 @@ for getting set up with Drupal VM and the WebNY distro.
 
 1. Install the VM dependencies
 
+
     brew tap caskroom/cask
     brew install ansible
     brew cask install virtualbox vagrant
     
 1. Install host machine test dependencies
+
 
      brew cask install java
      brew install chromedriver
@@ -65,6 +69,7 @@ running a VM in Windows.
 1. Run `vagrant ssh` from the /box directory
 1. Run `cd /var/www/webny && composer install`
 1. Install NVM and install and use Node.js version 0.12.7: 
+
 
     ./docroot/profiles/custom/webny/themes/custom/webny_theme/install-node.sh
     source ~/.bashrc && nvm use --delete-prefix 0.12.7
