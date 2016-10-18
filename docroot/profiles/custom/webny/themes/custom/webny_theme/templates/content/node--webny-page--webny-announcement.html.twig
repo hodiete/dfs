@@ -14,23 +14,27 @@
                 {# IMPLEMENTS SHORT TITLE OR 65 CHAR LIMIT TITLE #}
 
                 {%  if(node.field_webny_page_short_title.value is not empty and node.field_webny_page_short_title.value is not null) %}
-                    <h4>{{ node.field_webny_page_short_title.value }}</h4>
+                    <h4><a href="{{ url }}">{{ node.field_webny_page_short_title.value }}</a></h4>
                 {% elseif(node.label|length <= 65) %}
-                    <h4>{{ node.label }} </h4>
+                    <h4><a href="{{ url }}">{{ node.label }}</a></h4>
                 {% else %}
 
                     {% set ws = true %}
                     {% for num in node.label|length..0 %}
                         {% if (num < 65 and  node.label|slice(num)|first == ' ' and ws != false) %}
                             {% set ws = false %}
-                            <h4>{{ node.label[:num] ~ '...' }}</h4>
+                            <h4><a href="{{ url }}">{{ node.label[:num] ~ '...' }}</a></h4>
                         {% endif %}
                     {% endfor %}
 
                 {% endif %}
 
                 <div class="announcement-summary">
-                    {{ node.field_webny_page_description.value|striptags }} 
+                    {% if node.field_webny_page_description.value is not empty and node.field_webny_page_description.value is not null %}
+                        {{ content.field_webny_page_description }}
+                    {%  else %}
+                        {{ content.body }}
+                    {% endif %}
                 </div>
             </div>
             <div class="webny-announcement-button">
