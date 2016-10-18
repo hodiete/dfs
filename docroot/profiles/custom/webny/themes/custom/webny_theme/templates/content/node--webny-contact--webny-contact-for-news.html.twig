@@ -1,0 +1,152 @@
+{#
+ // CONTACT NODE TEMPLATE FOR NEWS PAGES
+ // CREATED BY WEBNY - LMURDOCK, MCASE, IOJONEP, CCATALINA
+ // Start Here: https://www.drupal.org/docs/8/theming
+ /**
+  *  VAR LIST -- This is only for the "Contact for News" display mode
+  *  Name:                  field_webny_contact_name
+  *  Professional Title:    field_webny_contact_protitle
+  *  Caption:               field_webny_contact_caption
+  *  Email (array):         field_webny_contact_email[x]
+  *  Fax (array):           field_webny_contact_fax
+  *  Office Address:        field_webny_contact_address
+  *  Other Details:         field_webny_contact_details
+  *  Phone (array):         field_webny_contact_phone
+  *
+  */
+ /**
+  *
+  *  CALLING VARS: https://www.drupal.org/docs/8/theming/twig/functions-in-twig-templates
+  *  =============
+  *  Single Values:         node.field_name.value
+  *  Arrays:                node_field_name[x].value             // x is the position in the array
+  *  URLs:                  file_url(node.field_example_image.entity.uri.value)
+  */
+#}
+{%
+set default_classes = [
+'node',
+'node--type-' ~ node.bundle|clean_class,
+node.isPromoted() ? 'node--promoted',
+node.isSticky() ? 'node--sticky',
+not node.isPublished() ? 'node--unpublished',
+view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
+]
+%}
+{%
+set classes = [
+'contact--' ~ field_name|clean_class,
+]
+%}
+{%
+set iconclass = [
+'icon-phone',
+]
+%}
+<article{{ attributes.addClass(default_classes) }}>
+    {# THIS IS NECESSARY FOR QUICK EDITING THE CONTACT NODE ASSOCIATED WITH THIS CONTENT #}
+    {{ title_prefix }}
+    {% if not page %}
+        <h2{{ title_attributes }}>
+            Contact {{ label }}
+        </h2>
+        {# THIS IS WHERE WE BUILD THE NODE STRUCTURE #}
+        <div{{ content_attributes.addClass('news-contact-area') }}>
+            {#  DO WE NEED THIS SINCE THE TITLE IS IN THE H2 ABOVE?
+               <div>
+                   {{ node.field_webny_contact_name.value }}
+               </div>
+            #}
+            <fieldset class="contact-info-wrapper">
+            <div class="fieldset-wrapper">
+                <div class="contact-col-1">
+                    <div class="contact-phone">
+                        <div class="icon-phone">
+                            <div class="contact--field-webny-contact-phone">Contact us by phone:</div>
+                        </div>
+                        {# LOOP PHONE AND VALUES #}
+                        {% for k,v in node.field_webny_contact_phone %}
+                            <div class="contact-phone-value">
+                                <a href="tel:{{ node.field_webny_contact_phone[k].value }}">{{ node.field_webny_contact_phone[k].value }}</a>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="contact-col-2">
+                    <div class="contact-email">
+                        <div class="icon-email">
+                            <div class="contact--field-webny-contact-email">Contact us by email:</div>
+                        </div>
+                        {% for k,v  in node.field_webny_contact_email %}
+                            <div class="contact-email-value">
+                                <div><a href="mailto:{{ node.field_webny_contact_email[k].value }}">{{ node.field_webny_contact_email[k].value }}</div></a>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="contact-col-1">
+                    <div class="contact-address">
+                        <div class="icon-email">
+                            <div class="contact--field-webny-contact-address">Contact us by mail:</div>
+                        </div>
+                        {% for k,v  in node.field_webny_contact_address %}
+                            <div class="contact-address-value">
+                                <div>{{ node.field_webny_contact_address[k].value|raw }}</div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="contact-col-2">
+                    <div class="contact-fax">
+                        <div class="icon-square">
+                            <div class="contact--field-webny-contact-email">Contact us by fax:</div>
+                        </div>
+                        {% for k,v in node.field_webny_contact_fax %}
+                            <div class="contact-fax-value">
+                                <div>{{ node.field_webny_contact_fax[k].value }}</div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+           </fieldset>
+
+           <fieldset class="social-media-wrapper">
+                <div class="fieldset-wrapper">
+                    <div><a href="{{ node.field_webny_contact_facebook.uri }}" class="icon-facebook">Facebook</a></div>
+
+                    <div><a href="{{ node.field_webny_contact_twitter.uri }}" class="icon-twitter">Twitter</a></div>
+
+                    <div><a href="{{ node.field_webny_contact_youtube.uri }}" class="icon-youtube">YouTube</a></div>
+
+                    <div><a href="{{ node.field_webny_contact_instagram.uri }}" class="icon-instagram">Instagram</a></div>
+
+                    <div><a href="{{ node.field_webny_contact_google.uri }}" class="icon-google_plus">Google+</a></div>
+
+                    <div><a href="{{ node.field_webny_contact_soundcloud.uri }}" class="icon-soundcloud">Soundcloud</a></div>
+
+                    <div><a href="{{ node.field_webny_contact_snapchat.uri }}" class="icon-square">Snapchat</a></div>
+
+                    <div><a href="{{ node.field_webny_contact_vine_link.uri }}" class="icon-vine">Vine</a></div>
+
+                    <div><a href="{{ node.field_webny_contact_flickr_link.uri }}" class="icon-flickr">Flickr</a></div>
+
+                    <div><a href="{{ node.field_webny_contact_rss_link.uri }}" class="icon-rss">RSS</a></div>
+
+                    <div><a href="{{ node.field_webny_contact_pintrest.uri }}" class="icon-pinterest">Pinterest</a></div>
+
+                    <div><a href="{{ node.field_webny_contact_tumblr_link.uri }}" class="icon-tumblr">Tumblr</a></div>
+
+                    <div><a href="{{ node.field_webny_contact_linkedin.uri }}" class="icon-linkedin">LinkedIn</a></div>
+
+                    <div><a href="{{ node.field_webny_contact_vimeo_link.uri }}" class="icon-vimeo">Vimeo</a></div>
+               </div>
+            </fieldset>
+
+
+</div>
+
+        {# CLOSE OUT THE QUICK EDIT FUNCTION #}
+    {% endif %}
+    {{ title_suffix }}
+</article>
