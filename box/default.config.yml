@@ -29,16 +29,27 @@ vagrant_synced_folders:
     create: true
 
 # Memory and CPU to use for this VM.
-vagrant_memory: 1024
+vagrant_memory: 2048
 vagrant_cpus: 2
+
+# Minimum required versions.
+drupalvm_vagrant_version_min: '1.8.5'
+drupalvm_ansible_version_min: '2.1'
+
+# Force use of ansible_local provisioner, even if Ansible is installed on host.
+force_ansible_local: false
 
 # The web server software to use. Can be either 'apache' or 'nginx'.
 drupalvm_webserver: apache
+
+# The database system to use. Can be either 'mysql' or 'pgsql'.
+drupalvm_database: mysql
 
 # Set this to 'false' if you are using a different site deployment strategy and
 # would like to configure 'vagrant_synced_folders' and 'apache_vhosts' manually.
 build_makefile: false
 drush_makefile_path: "{{ config_dir }}/drupal.make.yml"
+drush_make_options: "--no-gitinfofile"
 
 # Set 'build_makefile' to 'false' and this to 'true' if you are using a
 # composer based site deployment strategy.
@@ -46,7 +57,7 @@ build_composer: false
 drupal_composer_path: "{{ config_dir }}/drupal.composer.json"
 drupal_composer_install_dir: "/var/www/webny/docroot"
 drupal_composer_dependencies:
-  - "drupal/devel:8.*"
+  - "drupal/devel:1.x-dev"
 
 # Set this to 'true' and 'build_makefile', 'build_composer' to 'false' if you
 # are using Composer's create-project as a site deployment strategy.
@@ -55,14 +66,14 @@ drupal_composer_project_package: "drupal-composer/drupal-project:8.x-dev"
 drupal_composer_project_options: "--prefer-dist --stability dev --no-interaction"
 
 # Set this to 'false' if you don't need to install drupal (using the drupal_*
-# settings below), but instead copy down a database (e.g. using drush sql-sync).
+# settings below), but 4nstead copy down a database (e.g. using drush sql-sync).
 install_site: false
 
 # Required Drupal settings.
-drupal_core_path: "/var/www/webny/docroot"
-drupal_mysql_user: drupal
-drupal_mysql_password: drupal
-drupal_mysql_database: drupal
+drupal_core_path: "{{ drupal_composer_install_dir }}/web"
+drupal_db_user: drupal
+drupal_db_password: drupal
+drupal_db_name: drupal
 
 # Settings for installing a Drupal site if 'install_site:' is 'true'.
 drupal_major_version: 8
@@ -79,11 +90,9 @@ drupal_site_install_extra_args: []
 # Cron jobs are added to the vagrant user's crontab. Keys include name
 # (required), minute, hour, day, weekday, month, job (required), and state.
 drupalvm_cron_jobs: []
-  # - {
-  #   name: "Drupal Cron",
+  # - name: "Drupal Cron",
   #   minute: "*/30",
   #   job: "drush -r {{ drupal_core_path }} core-cron"
-  # }
 
 # Drupal VM automatically creates a drush alias file in your ~/.drush folder if
 # this variable is 'true'.
@@ -155,33 +164,44 @@ nginx_hosts:
 nginx_remove_default_vhost: true
 nginx_ppa_use: true
 
-# MySQL Databases and users. If 'install_site' is 'true', first database will
-# be used for the site.
+# MySQL databases and users.
 mysql_databases:
-  - name: "{{ drupal_mysql_database }}"
-    encoding: utf8
-    collation: utf8_general_ci
+  - name: "{{ drupal_db_name }}"
+    encoding: utf8mb4
+    collation: utf8mb4_general_ci
 
 mysql_users:
-  - name: "{{ drupal_mysql_user }}"
+  - name: "{{ drupal_db_user }}"
     host: "%"
-    password: "{{ drupal_mysql_password }}"
-    priv: "{{ drupal_mysql_database }}.*:ALL"
+    password: "{{ drupal_db_password }}"
+    priv: "{{ drupal_db_name }}.*:ALL"
+
+# PostgreSQL databases and users.
+postgresql_databases:
+  - name: "{{ drupal_db_name }}"
+
+postgresql_users:
+  - name: "{{ drupal_db_user }}"
+    password: "{{ drupal_db_password }}"
+    db: "{{ drupal_db_name }}"
+    priv: "ALL"
 
 # Comment out any extra utilities you don't want to install. If you don't want
-# to install *any* extras, make set this value to an empty set, e.g. `[]`.
+# to install *any* extras, set this value to an empty set, e.g. `[]`.
 installed_extras:
   - adminer
   # - blackfire
   - drupalconsole
+  # - elasticsearch
+  # - java
   - mailhog
   - memcached
   # - newrelic
-  # - nodejs
+  - nodejs
   - pimpmylog
   # - redis
   # - ruby
-  # - selenium
+  - selenium
   # - solr
   - varnish
   # - xdebug
@@ -209,48 +229,59 @@ firewall_allowed_tcp_ports:
   - "8080"
   - "8443"
   - "8983"
+  - "9200"
 firewall_log_dropped_packets: false
 
 # PHP Configuration. Currently-supported versions: 5.6, 7.0.
 # To use 5.6, see: http://docs.drupalvm.com/en/latest/other/php-56/
 php_version: "5.6"
-php_packages:
-  - php5
-  - php5-apcu
-  - php5-mcrypt
-  - php5-cli
-  - php5-common
-  - php5-curl
-  - php5-dev
-  - php5-fpm
-  - php5-gd
-  - php5-sqlite
-  - php-pear
-  - libpcre3-dev
-php_conf_paths:
-  - /etc/php5/fpm
-  - /etc/php5/apache2
-  - /etc/php5/cli
-php_extension_conf_paths:
-  - /etc/php5/fpm/conf.d
-  - /etc/php5/apache2/conf.d
-  - /etc/php5/cli/conf.d
-php_fpm_daemon: php5-fpm
-php_fpm_conf_path: "/etc/php5/fpm"
-php_fpm_pool_conf_path: "/etc/php5/fpm/pool.d/www.conf"
-php_mysql_package: php5-mysql
-php_memory_limit: "192M"
+php_memory_limit: "1024M"
 php_display_errors: "On"
 php_display_startup_errors: "On"
 php_realpath_cache_size: "1024K"
-php_sendmail_path: "/usr/sbin/ssmtp -t"
+php_sendmail_path: "/opt/mailhog/mhsendmail"
 php_opcache_enabled_in_ini: true
 php_opcache_memory_consumption: "192"
 php_opcache_max_accelerated_files: 4096
 php_max_input_vars: "4000"
 
-# If you install `memcached`:
-php_memcached_package: php5-memcached
+# Change PHP package names to work with 5.6.
+
+php_version: "5.6"
+php_install_recommends: no
+php_packages:
+  - php5.6
+  - php5.6-apcu
+  - php5.6-mcrypt
+  - php5.6-cli
+  - php5.6-common
+  - php5.6-curl
+  - php5.6-dev
+  - php5.6-fpm
+  - php5.6-gd
+  - php5.6-sqlite3
+  - php5.6-xml
+  - php5.6-mbstring
+  - php-pear
+  - libpcre3-dev
+php_conf_paths:
+  - /etc/php/5.6/fpm
+  - /etc/php/5.6/apache2
+  - /etc/php/5.6/cli
+php_extension_conf_paths:
+  - /etc/php/5.6/fpm/conf.d
+  - /etc/php/5.6/apache2/conf.d
+  - /etc/php/5.6/cli/conf.d
+php_fpm_daemon: php5.6-fpm
+php_fpm_conf_path: "/etc/php/5.6/fpm"
+php_fpm_pool_conf_path: "/etc/php/5.6/fpm/pool.d/www.conf"
+php_mysql_package: php5.6-mysql
+php_redis_package: php5.6-redis
+php_memcached_package: php5.6-memcached
+
+# Use PHP 5.6-compatible version of XHProf.
+xhprof_download_url: https://github.com/phacility/xhprof/archive/master.tar.gz
+xhprof_download_folder_name: xhprof-master
 
 # Drupal VM defaults to using PHP-FPM with either Apache or Nginx. If you wish
 # to instead use Apache + mod_php with an Ubuntu base box, make sure you add
@@ -270,6 +301,7 @@ composer_global_packages:
 pre_provision_scripts: []
 post_provision_scripts: []
   # - "../examples/scripts/configure-solr.sh"
+  # TODO: add post provision to set up front end tools
 
 # MySQL Configuration.
 mysql_root_password: root
@@ -283,7 +315,7 @@ adminer_install_filename: index.php
 nodejs_version: "0.12"
 nodejs_npm_global_packages: []
 nodejs_install_npm_user: "{{ drupalvm_user }}"
-npm_config_prefix: "~/.npm-global"
+npm_config_prefix: "/home/{{ drupalvm_user }}/.npm-global"
 
 # Ruby Configuration (if enabled above).
 ruby_install_gems_user: "{{ drupalvm_user }}"
@@ -310,14 +342,16 @@ php_xdebug_idekey: PHPSTORM
 php_xdebug_max_nesting_level: 256
 
 # Solr Configuration (if enabled above).
-solr_version: "5.5.1"
+solr_version: "5.5.2"
 solr_xms: "64M"
 solr_xmx: "128M"
 
 # Selenium configuration.
-selenium_version: 2.46.0
+selenium_version: 2.53.0
 
 # Other configuration.
 dashboard_install_dir: /var/www/dashboard
 known_hosts_path: ~/.ssh/known_hosts
 #ssh_home: "{{ drupal_core_path }}"
+
+drupal_console_keep_updated: true
