@@ -36,6 +36,8 @@ $announce-frame-headline-color: $black !default;
 $announce-frame-item-bkgd-color: $gray-lite !default;
 $announce-frame-item-title-color: $black !default;
 $announce-frame-item-text-color: $black !default;
+$announce-frame-headline-font-size: 24px;
+$announce-frame-headline-line-height: 30px;
 // $announce-frame-button: !default;
 
 
@@ -70,7 +72,7 @@ $announce-frame-item-text-color: $black !default;
     
     .announcement-date{
         margin-bottom: 20px; 
-        font-weight: bold;
+        font-weight: 600;
     }
     
     .announcement-info,
@@ -85,11 +87,15 @@ $announce-frame-item-text-color: $black !default;
     .announcement-info{
 
         font-size: $frame-base-font-size;
-        line-height: $frame-base-line-height;
+        line-height: $announce-frame-headline-line-height;
 
         h4{
             color: $announce-frame-item-title-color;   
-            font-size: 2.5rem;
+            font-size: $announce-frame-headline-font-size;
+
+            a{
+                color: $black;
+            }
         }
     }
 
@@ -180,7 +186,8 @@ $announce-frame-item-text-color: $black !default;
     
     .announcement-info,
     .webny-announcement-button{
-        display: inline-block;   
+        display: inline-block;
+
     }
     
     .announcement-info{
@@ -188,7 +195,8 @@ $announce-frame-item-text-color: $black !default;
     }
     
     .webny-announcement-button{
-        width: 39%;  
+        width: 39%;
+        text-align: right;
     }
      
 }
