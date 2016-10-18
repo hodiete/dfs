@@ -15,7 +15,7 @@ for getting set up with Drupal VM and the WebNY distro.
 1. Install the minimum dependencies for BLT. The preferred method is via Homebrew, though you could install these
  yourself without a package manager.
  
- ```
+```
     /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)”
     brew install php56 git composer drush
     composer global require "hirak/prestissimo:^0.3”
@@ -88,7 +88,8 @@ and docroot/sites/default/local.drushrc.php. Update `local.drushrc.php`with your
 ```
 cd docroot/profiles/custom/webny/themes/custom/webny_theme && npm run build
 ```
-1. If you go to  http://webny.dev you should see a site using the WebNY distro. 
+
+Visit http://webny.dev to see a site using the WebNY distro. 
 
 
 ##Notes for Windows Installation
