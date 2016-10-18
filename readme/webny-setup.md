@@ -7,19 +7,26 @@ for getting set up with Drupal VM and the WebNY distro.
 
 1. Ensure that Xcode is installed. On OSX 10.9+ you can install Xcode with:
 
-- `xcodebuild -license`
-- `xcode-select --install`
+    xcodebuild -license
+    xcode-select --install
 
 1. Install the minimum dependencies for BLT. The preferred method is via Homebrew, though you could install these
  yourself without a package manager.
-- `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)”`
-- `brew install php56 git composer drush`
-- `composer global require "hirak/prestissimo:^0.3”`
+ 
+    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)”
+    brew install php56 git composer drush
+    composer global require "hirak/prestissimo:^0.3”
 
 1. Install the VM dependencies
-- `brew tap caskroom/cask`
-- `brew install ansible`
-- `brew cask install virtualbox vagrant`
+
+    brew tap caskroom/cask
+    brew install ansible
+    brew cask install virtualbox vagrant
+    
+1. Install host machine test dependencies
+
+     brew cask install java
+     brew install chromedriver
 
 
 ## Initial Setup: Git Repo
@@ -45,10 +52,10 @@ This setup assumes:
 
 To spin up a VM with default configuration run the following from your repo "box" directory: 
 
-- `vagrant plugin install vagrant-hostsupdater`
-- `vagrant plugin install vagrant-auto_network`
-- `cp default.config.yml config.yml`
-- `vagrant up`
+    vagrant plugin install vagrant-hostsupdater
+    vagrant plugin install vagrant-auto_network
+    cp default.config.yml config.yml
+    vagrant up
 
 You may modify values in config.yml to install any additional tools or configuration you need. See below for notes on 
 running a VM in Windows.
@@ -56,16 +63,13 @@ running a VM in Windows.
 ##Initial Setup: Drupal Core and Frontend Tools
 
 1. Run `vagrant ssh` from the /box directory
-1. Run `cd /var/www/webny`
-1. Run `composer install`
+1. Run `cd /var/www/webny && composer install`
 1. Install NVM and install and use Node.js version 0.12.7: 
 
-    ```
     ./docroot/profiles/custom/webny/themes/custom/webny_theme/install-node.sh
-    ```
+    source ~/.bashrc && nvm use --delete-prefix 0.12.7
     
-    Ensure you follow the command prompt instructions to run `source ~/.bashrc && nvm use --delete-prefix 0.12.7`
-    
+        
 1. Run `blt setup:settings` . This will generate docroot/sites/default/settings/local.settings.php 
 and docroot/sites/default/local.drushrc.php. Update these with your local database credentials and 
 your local site URL.`
@@ -74,7 +78,7 @@ your local site URL.`
 drush/site-aliases/local.aliases.drushrc.php. Edit the new alias file with your local path.
 1.Run `blt` for a list of available phing tasks.
 
-1. To run a build of the theme, run: `cd docroot/profiles/custom/webny/themes/custom/webny_theme; npm run build`
+1. To run a build of the theme, run: `cd docroot/profiles/custom/webny/themes/custom/webny_theme && npm run build`
 
 1. If you go to  http://webny.dev you should see a site using the WebNY distro. 
 
