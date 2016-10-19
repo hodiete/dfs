@@ -32,6 +32,9 @@
   .contact-address,
   .contact-email,
   .contact-fax {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: flex-start;
     margin-top: 10px;
     margin-bottom: 30px;
     min-height: 95px;
@@ -64,7 +67,8 @@
     .contact-address-value,
     .contact-email-value {
       line-height: $frame-base-line-height;
-      margin-left: 35px;
+
+    //  margin-left: 35px;
     }
 
     .contact-address-value p {
