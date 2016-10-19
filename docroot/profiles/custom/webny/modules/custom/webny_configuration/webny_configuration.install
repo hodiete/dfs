@@ -1023,3 +1023,47 @@ function webny_configuration_update_8062() {
       ->install(['webny_news_content_type']);
 }
 
+/**
+ * Implements hook_update_n().
+ *
+* Refreshes numerous content types to fix issues.
+ */
+function webny_configuration_update_8063() {
+  \Drupal::service('module_installer')
+      ->uninstall(['webny_bio_frame']);
+  \Drupal::service('module_installer')
+      ->install(['webny_bio_frame']);
+  \Drupal::service('module_installer')
+      ->uninstall(['webny_contact_form']);
+  \Drupal::service('module_installer')
+      ->install(['webny_contact_form']);
+  \Drupal::service('module_installer')
+      ->uninstall(['webny_document_content_type']);
+  \Drupal::service('module_installer')
+      ->install(['webny_document_content_type']);
+  \Drupal::service('module_installer')
+      ->uninstall(['webny_get_involved_frame']);
+  \Drupal::service('module_installer')
+      ->install(['webny_get_involved_frame']);
+  \Drupal::service('module_installer')
+      ->uninstall(['webny_global_navigation_footer']);
+  \Drupal::service('module_installer')
+      ->install(['webny_global_navigation_footer']);
+  \Drupal::service('module_installer')
+      ->uninstall(['webny_paragraphs_types']);
+  \Drupal::service('module_installer')
+      ->install(['webny_paragraphs_types']);
+  \Drupal::service('module_installer')
+      ->uninstall(['webny_summary_frame']);
+  \Drupal::service('module_installer')
+      ->install(['webny_summary_frame']);
+  \Drupal::service('module_installer')
+      ->uninstall(['webny_workflow_basic_configuration']);
+  \Drupal::service('module_installer')
+      ->install(['webny_workflow_basic_configuration']);
+  \Drupal::service('module_installer')
+      ->uninstall(['webny_wysiwyg_frame']);
+  \Drupal::service('module_installer')
+      ->install(['webny_wysiwyg_frame']);
+}
+
