@@ -21,33 +21,6 @@ targetEntityType: node
 bundle: webny_whitelisted_content
 mode: webny_announcement
 content:
-  body:
-    type: smart_trim
-    weight: 1
-    label: hidden
-    settings:
-      trim_length: '25'
-      trim_type: words
-      trim_suffix: ...
-      more_link: '0'
-      more_text: More
-      summary_handler: full
-      trim_options:
-        text: 0
-      more_class: more-link
-    third_party_settings:
-      linked_field:
-        type: field
-        destination:
-          field: ''
-          custom: ''
-        advanced:
-          title: ''
-          target: ''
-          class: ''
-          rel: ''
-          text: ''
-        linked: 0
   field_webny_whitelist_descript:
     weight: 0
     label: hidden
@@ -76,6 +49,7 @@ content:
         linked: 0
     type: smart_trim
 hidden:
+  body: true
   field_webny_whitelist_agency_key: true
   field_webny_whitelist_date: true
   field_webny_whitelist_global_key: true
