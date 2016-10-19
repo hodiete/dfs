@@ -24,6 +24,8 @@ Feature: Announcement Highlight Paragraph Tests
     Then I should not get a 404 HTTP response
     When I am on "/admin/structure/types/manage/webny_page/display/webny_announcement"
     Then I should not get a 404 HTTP response
+    When I am on "/admin/structure/types/manage/webny_whitelisted_content/display/webny_announcement"
+    Then I should not get a 404 HTTP response
 
 # Create a Landing Page with specific fields for Announcements
 #  Scenario: Check if there are 6 entity references
