@@ -45,11 +45,15 @@
     line-height: 22px;
   }
 
-  .icon-phone::before,
-  .icon-email::before,
-  .icon-square::before {
-    position: absolute;
-    color: $medblue;
+  .contact-info-wrapper {
+
+    .icon-phone::before,
+    .icon-email::before,
+    .icon-square::before {
+      position: absolute;
+      width: 20px;
+      color: $medblue;
+    }
   }
 
   .contact--field-webny-contact-phone,
@@ -123,24 +127,30 @@
     text-transform: uppercase;
     font-weight: 800;
     font-size: 0.888em;
+    display: inline;
   }
 
-  .icon-facebook::before,
-  .icon-twitter::before,
-  .icon-youtube::before,
-  .icon-instagram::before,
-  .icon-google_plus::before,
-  .icon-soundcloud::before,
-  .icon-vine::before,
-  .icon-flickr::before,
-  .icon-rss::before,
-  .icon-pinterest::before,
-  .icon-tumblr::before,
-  .icon-linkedin::before,
-  .icon-vimeo::before {
-    color: $medblue;
-    padding-right: 15px;
+  .social-media-wrapper {
+    .icon-facebook::before,
+    .icon-twitter::before,
+    .icon-youtube::before,
+    .icon-instagram::before,
+    .icon-google_plus::before,
+    .icon-soundcloud::before,
+    .icon-square::before,
+    .icon-vine::before,
+    .icon-flickr::before,
+    .icon-rss::before,
+    .icon-pinterest::before,
+    .icon-tumblr::before,
+    .icon-linkedin::before,
+    .icon-vimeo::before {
+      color: $medblue;
+      padding-right: 15px;
+      display: inline-block;
+    }
   }
+
 }
 // ######################################################################### //
 /* TABLET VIEW */
