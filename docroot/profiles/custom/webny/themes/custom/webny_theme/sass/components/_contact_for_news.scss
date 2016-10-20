@@ -128,6 +128,7 @@
     font-weight: 800;
     font-size: 0.888em;
     display: inline;
+    min-height: 32px;
   }
 
   .social-media-wrapper {
@@ -168,6 +169,7 @@
   .contact-col-2 {
     flex-direction: row;
     width: 49%;
+    min-width: 236px;
     overflow: auto;
     float: left;
   }
@@ -185,10 +187,11 @@
 }
 
 
-
 } // END MIN TABLET VIEW
 
 // ######################################################################### //
+
+
 /* PC VIEW */
 @media (min-width: $min-pc) {
 
@@ -200,3 +203,19 @@
 }
 
 } // END MIN PC VIEW
+// ######################################################################## //
+
+/* SMALL PC VIEW */
+@media screen and (max-width: 910px) and (min-width: 768px) {
+
+  .press-contact-info {
+
+  .social-media-wrapper .fieldset-wrapper a {
+    width: 45%;
+    margin-right: 5%;
+    margin-bottom: 5%;
+  }
+}
+
+}// END SMALL PC VIEW
+// ######################################################################### //
