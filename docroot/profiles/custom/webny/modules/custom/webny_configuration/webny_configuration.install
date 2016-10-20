@@ -1069,6 +1069,10 @@ function webny_configuration_update_8065() {
       ->uninstall(['webny_wysiwyg_frame']);
   \Drupal::service('module_installer')
       ->install(['webny_wysiwyg_frame']);
+  \Drupal::service('module_installer')
+      ->uninstall(['webny_news_content_type']);
+  \Drupal::service('module_installer')
+      ->install(['webny_news_content_type']);
 }
 
 /**
