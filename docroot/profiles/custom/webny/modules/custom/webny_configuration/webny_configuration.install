@@ -972,6 +972,50 @@ function webny_configuration_update_8061() {
 }
 
 /**
+ * Implements hook_update_n().
+ *
+* Refreshes News content type to remove Keyword filters.
+ */
+function webny_configuration_update_8062() {
+  \Drupal::service('module_installer')
+      ->uninstall(['webny_news_content_type']);
+  \Drupal::service('module_installer')
+      ->install(['webny_news_content_type']);
+}
+
+/**
+ * Implements hook_update_n().
+ *
+ * Refreshes Landing/Inner Page content types.
+ * -iojonep
+ */
+function webny_configuration_update_8063() {
+
+  // Refresh Content Types for news and inner page
+
+        \Drupal::service('module_installer')
+          ->uninstall(['webny_paragraphs_types']);
+        \Drupal::service('module_installer')
+          ->install(['webny_paragraphs_types']);
+
+        \Drupal::service('module_installer')
+           ->uninstall(['webny_landing_page_content_type']);
+        \Drupal::service('module_installer')
+           ->install(['webny_landing_page_content_type']);
+
+        \Drupal::service('module_installer')
+           ->uninstall(['webny_inner_page_content_type']);
+        \Drupal::service('module_installer')
+           ->install(['webny_inner_page_content_type']);
+
+        \Drupal::service('module_installer')
+           ->uninstall(['webny_whitelisted_content']);
+        \Drupal::service('module_installer')
+           ->install(['webny_whitelisted_content']);
+
+}
+
+/**
  * Helper function to enable a Drupal module and print the result.
  *
  * @param string $module_name
@@ -1010,16 +1054,3 @@ function webny_configuration_uninstall_module($module_name) {
     throw new UpdateException("An error occurred uninstalling " . $module_name . ": " . $error . "\n");
   }
 }
-
-/**
- * Implements hook_update_n().
- *
-* Refreshes News content type to remove Keyword filters.
- */
-function webny_configuration_update_8062() {
-  \Drupal::service('module_installer')
-      ->uninstall(['webny_news_content_type']);
-  \Drupal::service('module_installer')
-      ->install(['webny_news_content_type']);
-}
-
