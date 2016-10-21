@@ -62,6 +62,7 @@ set iconclass = [
 
             <fieldset class="contact-info-wrapper">
             <div class="fieldset-wrapper">
+                {% if(node.field_webny_contact_phone.value is not empty and node.field_webny_contact_phone.value is not null) %}
                 <div class="contact-col-1">
                     <div class="contact-phone">
                         <div class="icon-phone"></div>
@@ -74,6 +75,9 @@ set iconclass = [
                         {% endfor %}
                     </div>
                 </div>
+                {% else %}
+                {% endif %}
+                {% if(node.field_webny_contact_email.value is not empty and node.field_webny_contact_email.value is not null) %}
                 <div class="contact-col-2">
                     <div class="contact-email">
                         <div class="icon-email">
@@ -86,6 +90,9 @@ set iconclass = [
                         {% endfor %}
                     </div>
                 </div>
+                {% else %}
+                {% endif %}
+                {% if(node.field_webny_contact_address.value is not empty and node.field_webny_contact_address.value is not null) %}
                 <div class="contact-col-1">
                     <div class="contact-address">
                         <div class="icon-email">
@@ -98,10 +105,13 @@ set iconclass = [
                         {% endfor %}
                     </div>
                 </div>
+                {% else %}
+                {% endif %}
+                {% if(node.field_webny_contact_fax.value is not empty and node.field_webny_contact_fax.value is not null) %}
                 <div class="contact-col-2">
                     <div class="contact-fax">
                         <div class="icon-square">
-                            <div class="contact--field-webny-contact-email">Contact us by fax:</div>
+                            <div class="contact--field-webny-contact-fax">Contact us by fax:</div>
                         </div>
                         {% for k,v in node.field_webny_contact_fax %}
                             <div class="contact-fax-value">
@@ -110,38 +120,83 @@ set iconclass = [
                         {% endfor %}
                     </div>
                 </div>
+                {% else %}
+                {% endif %}
             </div>
            </fieldset>
 
            <fieldset class="social-media-wrapper">
                 <div class="fieldset-wrapper">
+
+                    {% if(node.field_webny_contact_facebook.value is not empty and node.field_webny_contact_facebook.value is not null) %}
                     <div><a href="{{ node.field_webny_contact_facebook.uri }}" class="icon-facebook">Facebook</a></div>
+                    {% else %}
+                    {% endif %}
 
+                    {% if(node.field_webny_contact_twitter.value is not empty and node.field_webny_contact_twitter.value is not null) %}
                     <div><a href="{{ node.field_webny_contact_twitter.uri }}" class="icon-twitter">Twitter</a></div>
+                    {% else %}
+                    {% endif %}
 
+                    {% if(node.field_webny_contact_youtube.value is not empty and node.field_webny_contact_youtube.value is not null) %}
                     <div><a href="{{ node.field_webny_contact_youtube.uri }}" class="icon-youtube">YouTube</a></div>
+                    {% else %}
+                    {% endif %}
 
+                    {% if(node.field_webny_contact_instagram.value is not empty and node.field_webny_contact_instagram.value is not null) %}
                     <div><a href="{{ node.field_webny_contact_instagram.uri }}" class="icon-instagram">Instagram</a></div>
+                    {% else %}
+                    {% endif %}
 
+                    {% if(node.field_webny_contact_google.value is not empty and node.field_webny_contact_google.value is not null) %}
                     <div><a href="{{ node.field_webny_contact_google.uri }}" class="icon-google_plus">Google+</a></div>
+                    {% else %}
+                    {% endif %}
 
+                    {% if(node.field_webny_contact_soundcloud.value is not empty and node.field_webny_contact_soundcloud.value is not null) %}
                     <div><a href="{{ node.field_webny_contact_soundcloud.uri }}" class="icon-soundcloud">Soundcloud</a></div>
+                    {% else %}
+                    {% endif %}
 
+                    {% if(node.field_webny_contact_snapchat.value is not empty and node.field_webny_contact_snapchat.value is not null) %}
                     <div><a href="{{ node.field_webny_contact_snapchat.uri }}" class="icon-square">Snapchat</a></div>
+                    {% else %}
+                    {% endif %}
 
+                    {% if(node.field_webny_contact_vine_link.value is not empty and node.field_webny_contact_vine_link.value is not null) %}
                     <div><a href="{{ node.field_webny_contact_vine_link.uri }}" class="icon-vine">Vine</a></div>
+                    {% else %}
+                    {% endif %}
 
+                    {% if(node.field_webny_contact_flickr_link.value is not empty and node.field_webny_contact_flickr_link.value is not null) %}
                     <div><a href="{{ node.field_webny_contact_flickr_link.uri }}" class="icon-flickr">Flickr</a></div>
+                    {% else %}
+                    {% endif %}
 
+                    {% if(node.field_webny_contact_rss_link.value is not empty and node.field_webny_contact_rss_link.value is not null) %}
                     <div><a href="{{ node.field_webny_contact_rss_link.uri }}" class="icon-rss">RSS</a></div>
+                    {% else %}
+                    {% endif %}
 
+                    {% if(node.field_webny_contact_pintrest.value is not empty and node.field_webny_contact_pintrest.value is not null) %}
                     <div><a href="{{ node.field_webny_contact_pintrest.uri }}" class="icon-pinterest">Pinterest</a></div>
+                    {% else %}
+                    {% endif %}
 
+                    {% if(node.field_webny_contact_tumblr_link.value is not empty and node.field_webny_contact_tumblr_link.value is not null) %}
                     <div><a href="{{ node.field_webny_contact_tumblr_link.uri }}" class="icon-tumblr">Tumblr</a></div>
+                    {% else %}
+                    {% endif %}
 
+                    {% if(node.field_webny_contact_linkedin.value is not empty and node.field_webny_contact_linkedin.value is not null) %}
                     <div><a href="{{ node.field_webny_contact_linkedin.uri }}" class="icon-linkedin">LinkedIn</a></div>
+                    {% else %}
+                    {% endif %}
 
+                    {% if(node.field_webny_contact_vimeo_link.value is not empty and node.field_webny_contact_vimeo_link.value is not null) %}
                     <div><a href="{{ node.field_webny_contact_vimeo_link.uri }}" class="icon-vimeo">Vimeo</a></div>
+                    {% else %}
+                    {% endif %}
                </div>
             </fieldset>
 
