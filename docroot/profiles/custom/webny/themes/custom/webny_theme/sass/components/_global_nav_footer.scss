@@ -7,268 +7,254 @@
 // Style guide: components.global_nav_footer
 
 // hint: only these color variables - the left most ones - should be used below
-$nav-bottom-bkgd-color: $color-secondary !default;
-$nav-bottom-text-color: $black !default;
-$nav-bottom-text-hover-color: $text-blue !default;
-$nav-bottom-text-active-color: $text-blue !default;
+$nav-bottom-bkgd-color:         $nav-background-color !default;
+$nav-bottom-text-color:         $black !default;
+$nav-bottom-text-hover-color:   $text-blue !default;
+$nav-bottom-text-active-color:  $text-blue !default;
+$nav-bottom-text-decoration:    $global-footer-top-text-decoration;
+$nav-bottom-text-transform:     $global-footer-top-text-transform;
 
-footer .agency-name {
-  color:$nav-bottom-text-color;
-  background: $nav-bottom-bkgd-color;
-  padding:30px 30px 10px 30px;
-  font-size: 22px;
-  line-height: 26px;
-  font-family: $agency-name-font;
-  a:link,
-  a:link:hover,
-  a:hover,
-  a:active,
-  a:focus,
-  a:visited,
-  a:visited:hover {
-    text-decoration: none;
-    color:$nav-bottom-text-color;
-    padding:0;
-    font-family: $agency-name-font;
+footer {
+  .agency-name, .footer-menu h2 {
+    color: $nav-bottom-text-color;
+    background: $nav-bottom-bkgd-color;
+    margin: 21px 0;
+    padding: 0;
+    font-size: 22px;
+    line-height: 26px;
+    font-family: $agency-name-font-non-bold; // via config -- working with D Sari
+    a:link, a:link:hover, a:hover, a:active, a:focus, a:visited, a:visited:hover {
+      text-decoration: none;
+      color: $nav-bottom-text-color;
+      padding: 0;
+      font-family: $agency-name-font;
+    }
   }
 }
 
 .nys-global-footer {
+
   background-color: $nav-bottom-bkgd-color;
-  //height:44px; 
   margin:0;
-  //padding:0 0 0 30px;
-  //font-size: 14px;
   position: relative;
   z-index: 5;
-}
 
-.nys-global-footer nav {
-  padding: 10px 0 15px 30px;
-}
-
-.nys-global-footer ul {
-  margin: 0;
-  padding: 0;
-  list-style-type: none;
-  display: flex;
-  flex-direction: row;
-  flex-wrap:wrap;
-  font-weight: bold;
-  font-size: 14px;
-}
-
-.footer-menu>ul>li>a:first-child {
-      //text-decoration: underline;
-      //border-bottom: 1px solid $nav-bottom-text-color;
-}
-
-/*.social-media nav>ul>li>a:first-child {
-  border-bottom: none;
-}*/
-
-
-.nys-global-footer ul ul {
-  display: flex;  
-  flex-direction: column;
-
-}
-
-.nys-global-footer li {
-  display: flex;
-  flex-direction: column;
-  /*flex:0 1 15%;*/
-  flex-basis: 40%;
-  //flex-grow: 1;
-  
-  padding: 0.25rem 2rem .25rem 0;
-}
-
-
-
-.social-media h2 {
-  text-align: center;
-  font-size: $base-font-size - 2px;
-  color:$nav-bottom-text-color;
-  text-transform: uppercase;
-}
-
-.social-media h2:before,
-.social-media h2:after {
-  background-color: #000;
-  content: '';
-  display: inline-block;
-  height: 1px;
-  position: relative;
-  vertical-align: middle;
-  width: 15%;
-  top: -1px;
-}
-
-.social-media ul li {
-  text-transform: uppercase;
-  padding: .25em 1em 1em 1em;
-}
-
-.social-media h2:before {
-  right: 1.5em;
-  margin-left: -50%;
-}
-.social-media h2:after {
-  left: 1.5em;
-  margin-right: -50%;
-}
-
-.nys-global-footer a, .nys-global-footer a:link, .nys-global-footer a:visited {
-  display: table-cell;
-  //padding:.5rem 1rem 0 1rem;
-  text-decoration:none;
-  color:$nav-bottom-text-color;
-
-}
-.nys-global-footer a:hover,
-.nys-global-footer a:active, 
-.nys-global-footer a:focus 
- {
-  color:$nav-bottom-text-active-color;
-  //text-decoration:underline;
-}
-
-// REALLY UGLY
-footer .nys-global-footer > nav#block-globalfootermenu > ul > li > a{
-  text-decoration: underline;
-  //border-bottom: 2px solid $nav-bottom-text-active-color;
-  font-size: 1rem;
-  text-transform: uppercase ;
-}
-
-
-.social-media a::before {
-  content: '';
-  position: absolute;
-  left:0;
-  bottom:8px;
-  height: 20px;
-  width: 20px;
-}
-
-
-.social-media a {
-  height: 20px;
-  padding: 10px 0 10px 25px;
-  position: relative;
+  nav {
+    padding: 15px 60px;
   }
 
-/* need to fix this to allow different agency color schemes, need to add svg option see NDD-92 notes */
-.social-media {
-  a[href*="blogger"]::before{
-  background-image: url(../icons/social/black/icon-social-blogger.png);
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    flex-wrap:wrap;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 18px;
   }
-  a[href*="delicious"]::before {
-  background-image: url(../icons/social/black/icon-social-delicious.png);
+
+  ul.global-footer-top-links > li > a:first-child {
+    text-decoration:  $nav-bottom-text-decoration;
+    text-transform:   $nav-bottom-text-transform;
+  }
+
+  ul li  a {
+    font-family: $agency-name-font-non-bold;
+  }
+
+  ul ul {
+    display: flex;
+    flex-direction: column;
+  }
+
+  li {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 40%;
+    padding: 0.6rem 2rem .6rem 0;
+  }
+
+  ul.global-footer-inner-links{
+    margin-top: 13px;
+  }
+
+} // END GLOBAL FORWARD
+
+  .social-media h2 {
+    text-align: center;
+    font-size: $base-font-size - 2px;
+    color:$nav-bottom-text-color;
+    text-transform: uppercase;
+  }
+
+  .social-media h2:before,
+  .social-media h2:after {
+    background-color: #000;
+    content: '';
+    display: inline-block;
+    height: 1px;
+    position: relative;
+    vertical-align: middle;
+    width: 15%;
+    top: -1px;
+  }
+
+  .social-media ul li {
+    text-transform: uppercase;
+    padding: .25em 1em 1em 1em;
+  }
+
+  .social-media h2:before {
+    right: 1.5em;
+    margin-left: -50%;
+  }
+  .social-media h2:after {
+    left: 1.5em;
+    margin-right: -50%;
+  }
+
+  .nys-global-footer a, .nys-global-footer a:link, .nys-global-footer a:visited {
+    display: table-cell;
+    text-decoration:none;
+    color:$nav-bottom-text-color;
+
+  }
+  .nys-global-footer a:hover,
+  .nys-global-footer a:active,
+  .nys-global-footer a:focus  {
+    color:$nav-bottom-text-active-color;
+    //text-decoration:underline;
+  }
+
+  // REALLY UGLY
+  footer .nys-global-footer > nav#block-globalfootermenu > ul > li > a{
+    //text-decoration: underline;
+    //border-bottom: 2px solid $nav-bottom-text-active-color;
+    font-size: 14px;
+  }
+
+
+  .social-media a::before {
+    content: '';
+    position: absolute;
+    left:0;
+    bottom:8px;
+    height: 20px;
+    width: 20px;
+  }
+
+
+  .social-media a {
+    height: 20px;
+    padding: 10px 0 10px 25px;
+    position: relative;
+  }
+
+  /* need to fix this to allow different agency color schemes, need to add svg option see NDD-92 notes */
+  .social-media {
+    a[href*="blogger"]::before{
+      background-image: url(../icons/social/black/icon-social-blogger.png);
     }
-  a[href*="facebook"]::before {
-  background-image: url(../icons/social/black/icon-social-facebook.png);
+    a[href*="delicious"]::before {
+      background-image: url(../icons/social/black/icon-social-delicious.png);
     }
-  a[href*="feed"]::before {
+    a[href*="facebook"]::before {
+      background-image: url(../icons/social/black/icon-social-facebook.png);
+    }
+    a[href*="feed"]::before {
       background-image: url(../icons/social/black/icon-social-feed.png);
     }
-  a[href*="flickr"]::before {
-  background-image: url(../icons/social/black/icon-social-flickr.png);
+    a[href*="flickr"]::before {
+      background-image: url(../icons/social/black/icon-social-flickr.png);
     }
-  a[href*="foursqaure"]::before {
-  background-image: url(../icons/social/black/icon-social-foursqaure.png);
+    a[href*="foursqaure"]::before {
+      background-image: url(../icons/social/black/icon-social-foursqaure.png);
     }
-  a[href*="github"]::before {
-  background-image: url(../icons/social/black/icon-social-github.png);
+    a[href*="github"]::before {
+      background-image: url(../icons/social/black/icon-social-github.png);
     }
-  a[href*="google"]::before {
-  background-image: url(../icons/social/black/icon-social-google-plus.png);
+    a[href*="google"]::before {
+      background-image: url(../icons/social/black/icon-social-google-plus.png);
     }
-  a[href*="instagram"]::before {
-  background-image: url(../icons/social/black/icon-social-instagram.png);
+    a[href*="instagram"]::before {
+      background-image: url(../icons/social/black/icon-social-instagram.png);
     }
-  a[href*="linkedin"]::before {
-  background-image: url(../icons/social/black/icon-social-linkedin.png);
+    a[href*="linkedin"]::before {
+      background-image: url(../icons/social/black/icon-social-linkedin.png);
     }
     a[href*="mail"]::before {
-  background-image: url(../icons/social/black/icon-social-mail.png);
+      background-image: url(../icons/social/black/icon-social-mail.png);
     }
-  a[href*="pinterest"]::before {
-  background-image: url(../icons/social/black/icon-social-pinterest.png);
+    a[href*="pinterest"]::before {
+      background-image: url(../icons/social/black/icon-social-pinterest.png);
     }
-  a[href*="reddit"]::before {
-  background-image: url(../icons/social/black/icon-social-reddit.png);
+    a[href*="reddit"]::before {
+      background-image: url(../icons/social/black/icon-social-reddit.png);
     }
-  a[href*="share"]::before {
-  background-image: url(../icons/social/black/icon-social-share.png);
+    a[href*="share"]::before {
+      background-image: url(../icons/social/black/icon-social-share.png);
     }
-  a[href*="tumblr"]::before {
-  background-image: url(../icons/social/black/icon-social-tumblr.png);
+    a[href*="tumblr"]::before {
+      background-image: url(../icons/social/black/icon-social-tumblr.png);
     }
-  a[href*="twitter"]::before {
-  background-image: url(../icons/social/black/icon-social-twitter.png);
+    a[href*="twitter"]::before {
+      background-image: url(../icons/social/black/icon-social-twitter.png);
     }
-  a[href*="vimeo"]::before {
-  background-image: url(../icons/social/black/icon-social-vimeo.png);
+    a[href*="vimeo"]::before {
+      background-image: url(../icons/social/black/icon-social-vimeo.png);
     }
-  a[href*="yelp"]::before {
-  background-image: url(../icons/social/black/icon-social-yelp.png);
+    a[href*="yelp"]::before {
+      background-image: url(../icons/social/black/icon-social-yelp.png);
     }
-  a[href*="youtube"]::before {
-  background-image: url(../icons/social/black/icon-social-youtube.png);
-    }
-}
-
-footer {
-  @include breakpoint($min-tablet) {
-    .nys-global-footer li {
-      flex-basis: 15%;
-      
-      flex-grow: 1;
-    }
-    .social-media ul li {
-      align-items: center;
-    }
-    .nys-global-footer ul {
-      flex-wrap: no-wrap;
-    }
-    .social-media h2:before,
-    .social-media h2:after {
-      width: 30%;
+    a[href*="youtube"]::before {
+      background-image: url(../icons/social/black/icon-social-youtube.png);
     }
   }
-}
 
-/* fixing Unav bleed issues */
+  footer {
+    @include breakpoint($min-tablet) {
+      .nys-global-footer li {
+        flex-basis: 15%;
+        flex-grow: 1;
+      }
+      .social-media ul li {
+        align-items: center;
+      }
+      .nys-global-footer ul {
+        flex-wrap: no-wrap;
+      }
+      .social-media h2:before,
+      .social-media h2:after {
+        width: 30%;
+      }
+    }
+  }
 
-.nygov-universal-footer .l-footer .pane-dsc {
-  margin-top: 1em;
-  margin-bottom: 1em !important; 
-}
+  /* fixing Unav bleed issues */
 
-
-
-// ######################################################################### //
-/* MOBILE VIEW */
-@media (min-width: $min-mob) {
-
-} // END MIN MOBILE VIEW
-
-// ######################################################################### //
-/* TABLET VIEW */
-@media (min-width: $min-tab) {
-
-} // END MIN TABLET VIEW
-
-// ######################################################################### //
-/* PC VIEW */
-@media (min-width: $min-pc) {
-
-} // END MIN PC
+  .nygov-universal-footer .l-footer .pane-dsc {
+    margin-top: 1em;
+    margin-bottom: 1em !important;
+  }
 
 
 
+  // ######################################################################### //
+  /* MOBILE VIEW */
+  @media (min-width: $min-mob) {
 
+  } // END MIN MOBILE VIEW
 
+  // ######################################################################### //
+  /* TABLET VIEW */
+  @media (min-width: $min-tab) {
 
+  } // END MIN TABLET VIEW
+
+  // ######################################################################### //
+  /* PC VIEW */
+  @media (min-width: $min-pc) {
+
+  } // END MIN PC
