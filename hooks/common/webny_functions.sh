@@ -4,9 +4,6 @@
     env_refresh() {
       env=$1
       drush_alias=$2
-      email="lindsey.catlett@acquia.com"
-      key="JI9ohfMX3mggb6LVtx9038q/qaRYCQzUOA07/TEaZTQHV4h6pchD4a4CFou5HeeYbYs7EJgIFDoC"
-      endpoint="https://cloudapi.acquia.com/v1"
 
       case ${env} in
         "01dev" )
