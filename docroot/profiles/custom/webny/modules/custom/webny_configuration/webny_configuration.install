@@ -1016,6 +1016,19 @@ function webny_configuration_update_8063() {
 }
 
 /**
+ * Implements hook_update_n().
+ *
+ * Installs redirect module.
+ *
+ */
+function webny_configuration_update_8064() {
+
+        \Drupal::service('module_installer')
+          ->install(['redirect']);
+
+}
+
+/**
  * Helper function to enable a Drupal module and print the result.
  *
  * @param string $module_name
