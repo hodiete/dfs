@@ -53,15 +53,22 @@ footer {
     font-weight: bold;
     font-size: 14px;
     line-height: 18px;
+    letter-spacing: 0px; // nonsense
   }
 
   ul.global-footer-top-links > li > a:first-child {
     text-decoration:  $nav-bottom-text-decoration;
     text-transform:   $nav-bottom-text-transform;
+    font-size: 16px;
+    font-weight: normal;
   }
 
   ul li  a {
-    font-family: $agency-name-font-non-bold;
+    font-family: $agency-name-font;
+  }
+
+  nav#block-globalfootermenu > ul > li > a{
+    //font-size: 16px;
   }
 
   ul ul {
@@ -128,12 +135,7 @@ footer {
     //text-decoration:underline;
   }
 
-  // REALLY UGLY
-  footer .nys-global-footer > nav#block-globalfootermenu > ul > li > a{
-    //text-decoration: underline;
-    //border-bottom: 2px solid $nav-bottom-text-active-color;
-    font-size: 14px;
-  }
+
 
 
   .social-media a::before {
