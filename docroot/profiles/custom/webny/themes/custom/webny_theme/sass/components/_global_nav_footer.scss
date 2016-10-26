@@ -79,13 +79,30 @@ footer {
     flex-direction: column;
     flex-basis: 40%;
     padding: 0.6rem 2rem .6rem 0;
+
   }
 
-  nav > ul > li > a:first-child {
-    text-decoration:  $nav-bottom-text-decoration;
-    text-transform:   $nav-bottom-text-transform;
-    font-size: 16px;
-    font-weight: bold;
+
+  nav > ul li{
+    a:hover,
+    a:active{
+      text-decoration: underline;
+    }
+
+  }
+
+
+  nav > ul > li > a {
+    &:first-child {
+      text-decoration: $nav-bottom-text-decoration;
+      text-transform: $nav-bottom-text-transform;
+      font-size: 16px;
+      font-weight: normal;
+      &:hover,
+      &:active{
+        text-decoration: underline;
+      }
+    }
   }
 
 
