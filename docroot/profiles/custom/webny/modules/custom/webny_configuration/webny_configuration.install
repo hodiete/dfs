@@ -1018,6 +1018,7 @@ function webny_configuration_update_8063() {
 /**
  * Implements hook_update_n().
  *
+<<<<<<< HEAD
  * Refreshes News content type to remove Keyword filters.
  */
 function webny_configuration_update_8064() {
@@ -1032,7 +1033,8 @@ function webny_configuration_update_8064() {
  *
  * Refreshes numerous content types to fix issues.
  */
-function webny_configuration_update_8065() {
+function webny_configuration_update_8065()
+{
   \Drupal::service('module_installer')
       ->uninstall(['webny_bio_frame']);
   \Drupal::service('module_installer')
@@ -1073,6 +1075,17 @@ function webny_configuration_update_8065() {
       ->uninstall(['webny_news_content_type']);
   \Drupal::service('module_installer')
       ->install(['webny_news_content_type']);
+}
+
+/**
+ * Installs redirect module.
+ *
+ */
+function webny_configuration_update_8066() {
+
+        \Drupal::service('module_installer')
+          ->install(['redirect']);
+
 }
 
 /**
