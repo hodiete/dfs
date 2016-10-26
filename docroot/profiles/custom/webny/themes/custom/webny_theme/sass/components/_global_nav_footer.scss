@@ -7,22 +7,29 @@
 // Style guide: components.global_nav_footer
 
 // hint: only these color variables - the left most ones - should be used below
-$nav-bottom-bkgd-color:         $nav-background-color !default;
+
+$nav-bottom-bkgd-color:         $color-secondary !default;
 $nav-bottom-text-color:         $black !default;
 $nav-bottom-text-hover-color:   $text-blue !default;
 $nav-bottom-text-active-color:  $text-blue !default;
-$nav-bottom-text-decoration:    $global-footer-top-text-decoration;
-$nav-bottom-text-transform:     $global-footer-top-text-transform;
+
+// GLOBAL FOOTER CUSTOM STYLES
+$global-footer-top-text-decoration:     underline !default;
+$global-footer-top-text-transform:      uppercase !default;
+$nav-bottom-text-decoration:            $global-footer-top-text-decoration ;
+$nav-bottom-text-transform:             $global-footer-top-text-transform ;
 
 footer {
-  .agency-name, .footer-menu h2 {
+  .agency-name,
+  .footer-menu h2{
     color: $nav-bottom-text-color;
     background: $nav-bottom-bkgd-color;
-    margin: 21px 0;
+    margin: 36px 60px 0 60px;
     padding: 0;
     font-size: 22px;
     line-height: 26px;
-    font-family: $agency-name-font-non-bold; // via config -- working with D Sari
+    font-family: $agency-name-font; // via config -- working with D Sari
+    display: inline-block;
     a:link, a:link:hover, a:hover, a:active, a:focus, a:visited, a:visited:hover {
       text-decoration: none;
       color: $nav-bottom-text-color;
@@ -32,6 +39,7 @@ footer {
   }
 }
 
+
 .nys-global-footer {
 
   background-color: $nav-bottom-bkgd-color;
@@ -40,41 +48,38 @@ footer {
   z-index: 5;
 
   nav {
-    padding: 15px 60px;
+    padding: 0 60px 15px 60px;
   }
-
+  
   ul {
     margin: 0;
     padding: 0;
     list-style-type: none;
     display: flex;
     flex-direction: row;
-    flex-wrap:wrap;
+    flex-wrap: wrap;
+    font-family: $base-font;
     font-weight: bold;
     font-size: 14px;
     line-height: 18px;
     letter-spacing: 0px;
     margin-top: 13px;
+    text-decoration:  none;
+    text-transform:   none;
   }
 
-  ul > li > a:first-child {
+  nav > ul > li > a:first-child {
     text-decoration:  $nav-bottom-text-decoration;
     text-transform:   $nav-bottom-text-transform;
     font-size: 16px;
-    font-weight: normal;
-  }
-
-  ul li  a {
-    font-family: $agency-name-font;
-  }
-
-  nav#block-globalfootermenu > ul > li > a{
-    //font-size: 16px;
+    font-weight: bold;
   }
 
   ul ul {
     display: flex;
     flex-direction: column;
+    text-decoration:  none;
+    text-transform:   none;
   }
 
   li {
