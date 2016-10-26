@@ -49,3 +49,12 @@ Feature: Base Admin page tests
     Then I should not get a 404 HTTP response
     And I should not see "Access denied"
     And I should see "Add Moderation state"
+
+# Check redirect page access
+  Scenario: See if proper access to redirect page exists
+    Given I am logged in as a user with the "administrator" role
+    When I am on "/admin/config/search/redirect"
+    Then I should not get a 404 HTTP response
+    And I should not see "Access denied"
+    And I should see "Add redirect"
+
