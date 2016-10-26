@@ -11,8 +11,6 @@ dependencies:
     - field.storage.contact_message.field_salutation
     - field.storage.contact_message.field_state
     - field.storage.contact_message.field_zip_code
-    - user.role.administrator
-    - user.role.site_admin
   module:
     - contact
     - options
@@ -33,12 +31,6 @@ display:
     display_title: Master
     position: 0
     display_options:
-      access:
-        type: role
-        options:
-          role:
-            administrator: administrator
-            site_admin: site_admin
       cache:
         type: tag
         options: {  }
@@ -719,12 +711,16 @@ display:
       relationships: {  }
       arguments: {  }
       display_extenders: {  }
+      access:
+        type: perm
+        options:
+          perm: 'administer contact forms'
     cache_metadata:
       max-age: -1
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
-        - user.roles
+        - user.permissions
       tags:
         - 'config:field.storage.contact_message.field_address'
         - 'config:field.storage.contact_message.field_city'
@@ -747,7 +743,7 @@ display:
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
-        - user.roles
+        - user.permissions
       tags:
         - 'config:field.storage.contact_message.field_address'
         - 'config:field.storage.contact_message.field_city'
@@ -819,7 +815,7 @@ display:
         - 'languages:language_content'
         - 'languages:language_interface'
         - request_format
-        - user.roles
+        - user.permissions
       tags:
         - 'config:field.storage.contact_message.field_address'
         - 'config:field.storage.contact_message.field_city'
