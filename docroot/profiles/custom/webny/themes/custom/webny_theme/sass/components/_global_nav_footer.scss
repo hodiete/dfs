@@ -24,7 +24,7 @@ footer {
   .footer-menu h2{
     color: $nav-bottom-text-color;
     background: $nav-bottom-bkgd-color;
-    margin: 36px 60px 0 60px;
+    margin: 36px 60px 5px 60px;
     padding: 0;
     font-size: 22px;
     line-height: 26px;
@@ -39,7 +39,6 @@ footer {
   }
 }
 
-
 .nys-global-footer {
 
   background-color: $nav-bottom-bkgd-color;
@@ -50,7 +49,7 @@ footer {
   nav {
     padding: 0 60px 15px 60px;
   }
-  
+
   ul {
     margin: 0;
     padding: 0;
@@ -63,16 +62,8 @@ footer {
     font-size: 14px;
     line-height: 18px;
     letter-spacing: 0px;
-    margin-top: 13px;
     text-decoration:  none;
     text-transform:   none;
-  }
-
-  nav > ul > li > a:first-child {
-    text-decoration:  $nav-bottom-text-decoration;
-    text-transform:   $nav-bottom-text-transform;
-    font-size: 16px;
-    font-weight: bold;
   }
 
   ul ul {
@@ -80,6 +71,7 @@ footer {
     flex-direction: column;
     text-decoration:  none;
     text-transform:   none;
+    margin-top: 13px;
   }
 
   li {
@@ -87,6 +79,13 @@ footer {
     flex-direction: column;
     flex-basis: 40%;
     padding: 0.6rem 2rem .6rem 0;
+  }
+
+  nav > ul > li > a:first-child {
+    text-decoration:  $nav-bottom-text-decoration;
+    text-transform:   $nav-bottom-text-transform;
+    font-size: 16px;
+    font-weight: bold;
   }
 
 
@@ -139,18 +138,14 @@ footer {
     //text-decoration:underline;
   }
 
-
-
-
   .social-media a::before {
     content: '';
     position: absolute;
     left:0;
-    bottom:8px;
+    bottom:14px;
     height: 20px;
     width: 20px;
   }
-
 
   .social-media a {
     height: 20px;
