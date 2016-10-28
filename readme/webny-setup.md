@@ -78,7 +78,12 @@ running a VM in Windows.
     ./docroot/profiles/custom/webny/themes/custom/webny_theme/install-node.sh
     source ~/.bashrc && nvm use --delete-prefix 0.12.7
     ```
-        
+1. Install the blt alias
+
+  ```
+  /var/www/webny/vendor/acquia/blt/bin/blt install-alias -Dcreate_alias=true
+  source /home/vagrant/.bashrc
+  ```        
 1. Run `blt setup:settings` . This will generate docroot/sites/default/settings/local.settings.php 
 and docroot/sites/default/local.drushrc.php. Update `local.drushrc.php`with your local site URL (likely http://webny.dev).
 1. Run `blt local:setup.` This will build all project dependencies and install drupal.
