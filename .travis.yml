@@ -62,6 +62,9 @@ before_script:
   - git diff --exit-code
   # The local.hostname must be set to 127.0.0.1:8888 because we are using drush runserver to run the site on Travis CI.
   - drupal yaml:update:value project.yml project.local.hostname '127.0.0.1:8888'
+  # Increasing SQL packet size to avoid time out errors.
+  - echo -e "[server]\nmax_allowed_packet=64M" | sudo tee -a /etc/mysql/conf.d/drupal.cnf
+  - sudo service mysql restart
 
 script:
   - blt -Dbehat.run-server=true -Dcreate_alias=false -Dbehat.launch-phantom=true ci:build:validate:test
