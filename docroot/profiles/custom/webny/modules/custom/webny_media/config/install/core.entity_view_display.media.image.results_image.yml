@@ -1,0 +1,33 @@
+uuid: b5caf52f-693f-4236-a39e-719470298cf0
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.media.results_image
+    - field.field.media.image.field_description
+    - field.field.media.image.field_expires
+    - field.field.media.image.field_image
+    - field.field.media.image.field_media_in_library
+    - field.field.media.image.field_media_keywords
+    - media_entity.bundle.image
+_core:
+  default_config_hash: L9iqLou1ZCoKCfy_MDykHjSySIxIbHlhwBwMx6Z2Uc4
+id: media.image.results_image
+targetEntityType: media
+bundle: image
+mode: results_image
+content: {  }
+hidden:
+  created: true
+  field_brands: true
+  field_channel: true
+  field_description: true
+  field_events: true
+  field_expires: true
+  field_image: true
+  field_media_in_library: true
+  field_media_keywords: true
+  field_people: true
+  name: true
+  thumbnail: true
+  uid: true

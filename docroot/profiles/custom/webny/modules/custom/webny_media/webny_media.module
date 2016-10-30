@@ -1,0 +1,51 @@
+<?php
+
+/**
+ * @file
+ * Contains media related functions.
+ */
+
+use Drupal\file\Entity\File;
+
+/**
+ * Implements hook_ENTITY_TYPE_create().
+ */
+function webny_media_file_create(File $entity) {
+
+  $config = \Drupal::config('webny_media.settings');
+
+  if ($config->get('enable_filename_transliteration')) {
+
+    $pathinfo = pathinfo($entity->getFilename());
+
+    /** @var \Drupal\pathauto\AliasCleaner $aliasCleaner */
+    $aliasCleaner = \Drupal::service('pathauto.alias_cleaner');
+
+    $cleanFilename = $aliasCleaner->cleanString($pathinfo['filename']) . '.' . $pathinfo['extension'];
+
+    $entity->setFilename($cleanFilename);
+  }
+}
+
+/**
+ * Implements hook_preprocess_views_view().
+ */
+function webny_media_preprocess_views_view(&$variables) {
+
+  $webny_media_browser = [
+    'image_browser',
+    'media_browser',
+  ];
+
+  if (in_array($variables['view']->id(), $webny_media_browser)) {
+    $variables['view_array']['#attached']['library'][] = 'webny_media/entity_browser_view';
+  }
+}
+
+/**
+ * Implements hook_menu_local_actions_alter().
+ */
+function webny_media_menu_local_actions_alter(&$local_actions) {
+  $local_actions['media.add']['appears_on'][] = 'view.webny_media.media_page_list';
+}
+

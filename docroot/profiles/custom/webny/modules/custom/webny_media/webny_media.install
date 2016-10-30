@@ -1,0 +1,19 @@
+<?php
+
+/**
+ * @file
+ * Contains.
+ */
+
+/**
+ * Rename config object.
+ */
+function webny_media_update_8001() {
+
+  \Drupal::configFactory()
+    ->getEditable('webny_media.settings')
+    ->setData(\Drupal::configFactory()
+      ->get('webny_media.configuration')
+      ->getRawData())
+    ->save();
+}
