@@ -1,0 +1,57 @@
+uuid: d055c24e-15a0-48b5-aed2-1fa5e9d6deb2
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.media.wysiwyg
+    - field.field.media.image.field_description
+    - field.field.media.image.field_expires
+    - field.field.media.image.field_image
+    - field.field.media.image.field_media_in_library
+    - field.field.media.image.field_media_keywords
+    - media_entity.bundle.image
+    - responsive_image.styles.cards
+  module:
+    - linked_field
+    - responsive_image
+_core:
+  default_config_hash: N6PdTiRKIWFrMGF_poDweQU3E-q9UPLFwkf08WNip_g
+id: media.image.wysiwyg
+targetEntityType: media
+bundle: image
+mode: wysiwyg
+content:
+  field_image:
+    weight: 0
+    label: hidden
+    settings:
+      responsive_image_style: cards
+      image_link: ''
+    third_party_settings:
+      linked_field:
+        type: field
+        destination:
+          field: ''
+          custom: ''
+        advanced:
+          title: ''
+          target: ''
+          class: ''
+          rel: ''
+          text: ''
+        linked: 0
+    type: responsive_image
+hidden:
+  created: true
+  field_brands: true
+  field_channel: true
+  field_description: true
+  field_events: true
+  field_expires: true
+  field_media_in_library: true
+  field_media_keywords: true
+  field_people: true
+  field_tags: true
+  name: true
+  thumbnail: true
+  uid: true
