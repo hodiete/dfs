@@ -1,3 +1,4 @@
+uuid: 5e7ba746-da5e-42e9-a6f8-2beabf31d78a
 langcode: en
 status: true
 dependencies:
@@ -8,13 +9,16 @@ dependencies:
     - entity_browser_entity_form
     - media_entity
     - views
+_core:
+  default_config_hash: i0CRr2bb1jRZ4p23ZxBxSD3jNVDgPqdlpq1KCNjSfrc
 name: media_browser
 label: 'Media Browser'
-display: modal
+display: iframe
 display_configuration:
   width: '1070'
-  height: ''
-  link_text: 'Select entities'
+  height: '500'
+  link_text: 'Select media'
+  auto_open: true
 selection_display: no_display
 selection_display_configuration: {  }
 widget_selector: tabs
@@ -25,9 +29,9 @@ widgets:
       media_entity_bundle: image
       upload_location: 'public://[date:custom:Y]-[date:custom:m]'
       dropzone_description: 'Drop files here to upload them'
-      max_filesize: 128M
-      extensions: 'jpg jpeg gif png txt doc xls pdf ppt pps odt ods odp'
-      submit_text: 'Select entities'
+      max_filesize: 20M
+      extensions: 'jpg jpeg gif png'
+      submit_text: 'Select image'
     uuid: ec1759ab-e969-4448-a9db-d3a70e123326
     weight: -9
     label: 'Import image'
@@ -36,7 +40,7 @@ widgets:
     settings:
       view: media_browser
       view_display: entity_browser_1
-      submit_text: 'Select entities'
+      submit_text: 'Select media'
     uuid: 05782e5e-1928-4606-8b3f-f7c333701c25
     weight: -10
     label: 'Select existing'
@@ -46,7 +50,7 @@ widgets:
       entity_type: media
       bundle: video
       form_mode: default
-      submit_text: 'Save entity'
+      submit_text: 'Save video'
     uuid: 5d665b33-fbc8-435b-b560-e0e76e22f237
     weight: -8
     label: 'Embed video'
