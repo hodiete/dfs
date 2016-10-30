@@ -1,13 +1,9 @@
-uuid: 5e7ba746-da5e-42e9-a6f8-2beabf31d78a
+uuid: 14bbae09-f19e-4ae8-a4e3-7c457bc3743c
 langcode: en
 status: true
 dependencies:
-  config:
-    - media_entity.bundle.image
   module:
-    - dropzonejs_eb_widget
     - entity_browser_entity_form
-    - media_entity
     - views
 _core:
   default_config_hash: i0CRr2bb1jRZ4p23ZxBxSD3jNVDgPqdlpq1KCNjSfrc
@@ -24,18 +20,6 @@ selection_display_configuration: {  }
 widget_selector: tabs
 widget_selector_configuration: {  }
 widgets:
-  ec1759ab-e969-4448-a9db-d3a70e123326:
-    settings:
-      media_entity_bundle: image
-      upload_location: 'public://[date:custom:Y]-[date:custom:m]'
-      dropzone_description: 'Drop files here to upload them'
-      max_filesize: 20M
-      extensions: 'jpg jpeg gif png'
-      submit_text: 'Select image'
-    uuid: ec1759ab-e969-4448-a9db-d3a70e123326
-    weight: -9
-    label: 'Import image'
-    id: dropzonejs_media_entity
   05782e5e-1928-4606-8b3f-f7c333701c25:
     settings:
       view: media_browser
@@ -54,4 +38,14 @@ widgets:
     uuid: 5d665b33-fbc8-435b-b560-e0e76e22f237
     weight: -8
     label: 'Embed video'
+    id: entity_form
+  1d9341c8-7c54-4934-82a4-f7d37d53b452:
+    settings:
+      entity_type: media
+      bundle: image
+      form_mode: default
+      submit_text: 'Save image'
+    uuid: 1d9341c8-7c54-4934-82a4-f7d37d53b452
+    weight: -9
+    label: 'Import image'
     id: entity_form
