@@ -1,14 +1,19 @@
+uuid: cb57aadd-1aac-4c99-857f-15fbb2526648
 langcode: und
 status: true
 dependencies:
   config:
     - image.style.media_thumbnail
     - media_entity.bundle.image
+    - taxonomy.vocabulary.media_keywords
   module:
     - entity_browser
     - image
     - media_entity
+    - taxonomy
     - user
+_core:
+  default_config_hash: A7W4hfbxaa8P-ILoNll0U9Y9mGWf78Kt2WXRzMYUQfI
 id: image_browser
 label: 'Image Browser'
 module: views
@@ -497,6 +502,60 @@ display:
           entity_type: media
           entity_field: langcode
           plugin_id: language
+        field_media_keywords_target_id:
+          id: field_media_keywords_target_id
+          table: media__field_media_keywords
+          field: field_media_keywords_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_media_keywords_target_id_op
+            label: 'Media Keywords'
+            description: ''
+            use_operator: false
+            operator: field_media_keywords_target_id_op
+            identifier: field_media_keywords_target_id
+            required: false
+            remember: false
+            multiple: true
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+              workflow_author: '0'
+              workflow_approver: '0'
+              media_creator: '0'
+              workflow_publisher: '0'
+              media_manager: '0'
+              site_builder: '0'
+              site_admin: '0'
+              user_admin: '0'
+              content_author: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          type: textfield
+          limit: true
+          vid: media_keywords
+          hierarchy: false
+          error_message: true
+          plugin_id: taxonomy_index_tid
       sorts: {  }
       header: {  }
       footer: {  }
@@ -516,6 +575,7 @@ display:
         - 'languages:language_interface'
         - url
         - url.query_args
+        - user
         - user.permissions
       tags: {  }
   entity_browser_1:
@@ -532,5 +592,6 @@ display:
         - 'languages:language_interface'
         - url
         - url.query_args
+        - user
         - user.permissions
       tags: {  }
