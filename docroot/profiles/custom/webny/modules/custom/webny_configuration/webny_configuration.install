@@ -1018,7 +1018,6 @@ function webny_configuration_update_8063() {
 /**
  * Implements hook_update_n().
  *
-<<<<<<< HEAD
  * Refreshes News content type to remove Keyword filters.
  */
 function webny_configuration_update_8064() {
@@ -1086,6 +1085,39 @@ function webny_configuration_update_8066() {
         \Drupal::service('module_installer')
           ->install(['redirect']);
 
+}
+
+/**
+ * Implements hook_update_n().
+ *
+ * Uninstall legacy media modules and dependencies.
+ * Enable entity to allow for updating media_entity module.
+ */
+function webny_configuration_update_8064() {
+  \Drupal::service('module_installer')
+      ->uninstall(['lightning_media_video']);
+  \Drupal::service('module_installer')
+      ->uninstall(['webny_news_content_type']);
+  \Drupal::service('module_installer')
+      ->uninstall(['webny_document_content_type']);
+  \Drupal::service('module_installer')
+      ->uninstall(['webny_whitelisted_content']);
+  \Drupal::service('module_installer')
+      ->uninstall(['webny_landing_page_content_type']);
+  \Drupal::service('module_installer')
+      ->uninstall(['webny_inner_page_content_type']);
+  \Drupal::service('module_installer')
+      ->uninstall(['webny_contact_content_type']);
+  \Drupal::service('module_installer')
+      ->uninstall(['webny_bio_frame']);
+  \Drupal::service('module_installer')
+      ->uninstall(['lightning_media_image']);
+  \Drupal::service('module_installer')
+      ->uninstall(['lightning_media']);
+  \Drupal::service('module_installer')
+      ->uninstall(['webny_media']);
+  \Drupal::service('module_installer')
+      ->install(['entity']);
 }
 
 /**
