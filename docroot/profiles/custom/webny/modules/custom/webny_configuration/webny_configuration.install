@@ -1111,6 +1111,8 @@ function webny_configuration_update_8067() {
   \Drupal::service('module_installer')
       ->uninstall(['webny_bio_frame']);
   \Drupal::service('module_installer')
+      ->uninstall(['webny_paragraphs_types']);
+  \Drupal::service('module_installer')
       ->uninstall(['lightning_media_image']);
   \Drupal::service('module_installer')
       ->uninstall(['lightning_media']);
