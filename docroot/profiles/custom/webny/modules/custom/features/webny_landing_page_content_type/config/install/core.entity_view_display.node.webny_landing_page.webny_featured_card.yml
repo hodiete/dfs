@@ -1,3 +1,4 @@
+uuid: bc10e48a-ea52-4137-ba00-1549ee2faa66
 langcode: en
 status: true
 dependencies:
@@ -19,6 +20,8 @@ dependencies:
     - linked_field
     - smart_trim
     - user
+_core:
+  default_config_hash: 0PnoDRVnzrXoJ6g_e3W55ckJasrKs8OeEj2OmK2WEZg
 id: node.webny_landing_page.webny_featured_card
 targetEntityType: node
 bundle: webny_landing_page
@@ -28,11 +31,12 @@ content:
     weight: 0
     label: hidden
     settings:
-      view_mode: default
+      view_mode: cards
       link: false
     third_party_settings:
       linked_field:
         linked: '1'
+        type: custom
         destination: '[node:url]'
         advanced:
           title: ''
