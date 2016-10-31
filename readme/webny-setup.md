@@ -76,7 +76,7 @@ running a VM in Windows.
 
     ```
     ./docroot/profiles/custom/webny/themes/custom/webny_theme/install-node.sh
-    unset NPM_CONFIG_PREFIX t
+    unset NPM_CONFIG_PREFIX
     source ~/.bashrc && nvm use --delete-prefix 0.12.7
     ```
 1. Install the blt alias
