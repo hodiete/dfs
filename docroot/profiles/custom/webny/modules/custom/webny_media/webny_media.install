@@ -2,8 +2,25 @@
 
 /**
  * @file
- * Contains.
+ * Defines config requirements and install functions for WebNY Media.
  */
+
+use \Drupal\Core\Config\ExtensionInstallStorage;
+
+/**
+ * Implements hook_install().
+ */
+function webny_media_install() {
+  // Add an icon for media wysiwyg browser
+  if (!\Drupal::isConfigSyncing()) {
+    $data = file_get_contents(dirname(__FILE__) . '/images/media_browser_icon.png');
+    $file = file_save_data($data, 'public://media_browser_icon.png', FILE_EXISTS_REPLACE);
+    // Set file uuid same as default config.
+    $uuid = (new ExtensionInstallStorage(\Drupal::service('config.storage')))->read('embed.button.media')['icon_uuid'];
+    $file->set('uuid', $uuid);
+    $file->save();
+  }
+}
 
 /**
  * Rename config object.
@@ -17,3 +34,12 @@ function webny_media_update_8001() {
       ->getRawData())
     ->save();
 }
+
+
+/**
+ * Implements hook_uninstall().
+ */
+function webny_media_uninstall() {
+  Drupal::configFactory()->getEditable('embed.button.media')->delete();
+}
+
