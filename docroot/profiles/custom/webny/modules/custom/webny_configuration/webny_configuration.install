@@ -1123,20 +1123,66 @@ function webny_configuration_update_8067() {
 /**
  * Implements hook_update_n().
  *
+ * Remove legacy image field from media image bundle.
+ */
+
+function webny_configuration_update_8069()
+{
+
+  // REMOVE FIELDS AND DEPENDENCIES FROM ACSF DEV.
+  $properties[0] = array(
+      'entity_type' => 'media',
+      'bundle' => 'image',
+      'field_name' => 'image',
+      'include_deleted' => TRUE,
+  );
+
+
+  echo "Number of properties: " . count($properties);
+
+  foreach ($properties as $prop) {
+
+    $fields = \Drupal::entityManager()->getStorage('field_config')->loadByProperties($prop);
+
+    $info = \Drupal::entityManager()->getDefinitions();
+    foreach ($fields as $field) {
+      $entity_type = $field->getTargetEntityTypeId();
+
+      // Proceed only if the module implementing the entity
+      // has not been uninstalled already.
+      if (isset($info[$entity_type])) {
+        Drupal::entityManager()->getStorage($entity_type)->purgeFieldData($field, 100);
+        $field->delete();
+        field_purge_field($field);
+        unset($fields, $info);
+      }
+    }
+
+  }
+}
+
+/**
+ * Implements hook_update_n().
+ *
  * Enable webny_media module and dependencies.
  */
-function webny_configuration_update_8068() {
+function webny_configuration_update_8070() {
 
   \Drupal::service('module_installer')
       ->install(['libraries']);
-  \Drupal::service('module_installer')
-      ->install(['webny_media']);
-  // Add media buttons to needed editors
+  // Add media buttons and dependent view modes to needed editors.
   \Drupal::service('module_installer')
       ->uninstall(['webny_text_editors']);
   \Drupal::service('module_installer')
       ->install(['webny_text_editors']);
+  \Drupal::service('module_installer')
+      ->install(['webny_media']);
+  // Install webny_media module again to import config circular dependencies.
+  \Drupal::service('module_installer')
+      ->install(['webny_media']);
   // Reinstall features in the needed order
+  \Drupal::service('module_installer')
+      ->install(['webny_paragraphs_types']);
   \Drupal::service('module_installer')
       ->install(['webny_bio_frame']);
   \Drupal::service('module_installer')
@@ -1145,8 +1191,6 @@ function webny_configuration_update_8068() {
       ->install(['webny_inner_page_content_type']);
   \Drupal::service('module_installer')
       ->install(['webny_landing_page_content_type']);
-  \Drupal::service('module_installer')
-      ->install(['webny_text_editors']);
   \Drupal::service('module_installer')
       ->install(['webny_whitelisted_content']);
   \Drupal::service('module_installer')
