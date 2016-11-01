@@ -6,15 +6,16 @@ dependencies:
     - entity_browser_entity_form
     - views
 _core:
-  default_config_hash: i0CRr2bb1jRZ4p23ZxBxSD3jNVDgPqdlpq1KCNjSfrc
+  default_config_hash: Vu1ZwcBAA3NMnD6N7vd6VaX-VF0q6fbTx2U6Diu7HIc
 name: image_browser
 label: 'Image Browser'
-display: iframe
+display: modal
 display_configuration:
-  width: '1070'
+  width: ''
   height: '500'
   link_text: 'Select image'
-  auto_open: true
+  auto_open: false
+  path: image/test
 selection_display: no_display
 selection_display_configuration: {  }
 widget_selector: tabs

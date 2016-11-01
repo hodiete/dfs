@@ -1,3 +1,4 @@
+uuid: 2b865b0c-289a-408e-aaca-20e84f68b303
 langcode: en
 status: true
 dependencies:
@@ -5,29 +6,20 @@ dependencies:
     - field.field.media.image.field_description
     - field.field.media.image.field_expires
     - field.field.media.image.field_image
+    - field.field.media.image.field_media_in_library
+    - field.field.media.image.field_media_keywords
     - image.style.thumbnail
     - media_entity.bundle.image
   module:
-    - datetime
     - image
-    - text
+    - workbench_moderation
+_core:
+  default_config_hash: N8cv8nHfGP_Dl-QbZ0qqYBPHwTxTuWW3dFfomdOVcxI
 id: media.image.default
 targetEntityType: media
 bundle: image
 mode: default
 content:
-  field_description:
-    type: text_textarea
-    weight: 5
-    settings:
-      rows: 5
-      placeholder: ''
-    third_party_settings: {  }
-  field_expires:
-    weight: 2
-    settings: {  }
-    third_party_settings: {  }
-    type: datetime_default
   field_image:
     weight: 1
     settings:
@@ -35,6 +27,14 @@ content:
       preview_image_style: thumbnail
     third_party_settings: {  }
     type: image_image
+  field_media_keywords:
+    type: entity_reference_autocomplete_tags
+    weight: 2
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
   name:
     type: string_textfield
     weight: 0
@@ -44,6 +44,8 @@ content:
     third_party_settings: {  }
 hidden:
   created: true
+  field_description: true
+  field_expires: true
+  field_media_in_library: true
   field_tags: true
-  langcode: true
   uid: true
