@@ -50,7 +50,7 @@ before_install:
   - echo "always_populate_raw_post_data = -1" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
   - git config --global user.name "Travis-CI"
   - git config --global user.email "noreply@travis-ci.org"
-  - mysql -u root -e 'CREATE DATABASE drupal;'
+  - mysql -u root -e "CREATE DATABASE drupal;"
   - echo "extension = memcached.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
 
 install:
@@ -76,6 +76,10 @@ before_script:
   # - git diff --exit-code
   # The local.hostname must be set to 127.0.0.1:8888 because we are using drush runserver to run the site on Travis CI.
   - drupal yaml:update:value project.yml project.local.hostname '127.0.0.1:8888'
+  # Increasing SQL packet size to avoid time out errors.
+  - mysql -u root -e 'SET GLOBAL wait_timeout = 36000;'
+  - mysql -u root -e 'SET GLOBAL max_allowed_packet = 33554432;'
+  - sudo service mysql restart
 
 script:
   - blt -Dbehat.run-server=true -Dcreate_alias=false -Dbehat.launch-phantom=true ci:build:validate:test

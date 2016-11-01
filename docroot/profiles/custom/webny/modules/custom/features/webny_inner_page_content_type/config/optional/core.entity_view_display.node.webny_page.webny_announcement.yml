@@ -17,7 +17,8 @@ dependencies:
     - field.field.node.webny_page.field_webny_page_sub_title
     - node.type.webny_page
   module:
-    - text
+    - linked_field
+    - smart_trim
     - user
 id: node.webny_page.webny_announcement
 targetEntityType: node
@@ -28,9 +29,29 @@ content:
     weight: 0
     label: hidden
     settings:
-      trim_length: 600
-    third_party_settings: {  }
-    type: text_trimmed
+      trim_length: '25'
+      trim_type: words
+      trim_suffix: ...
+      more_link: '0'
+      more_text: More
+      trim_options:
+        text: 0
+      more_class: more-link
+      summary_handler: full
+    third_party_settings:
+      linked_field:
+        type: field
+        destination:
+          field: ''
+          custom: ''
+        advanced:
+          title: ''
+          target: ''
+          class: ''
+          rel: ''
+          text: ''
+        linked: 0
+    type: smart_trim
 hidden:
   body: true
   field_webny_page_agency_keywords: true
