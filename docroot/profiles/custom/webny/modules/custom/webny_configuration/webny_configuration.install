@@ -1126,7 +1126,7 @@ function webny_configuration_update_8067() {
  * Remove legacy image field from media image bundle.
  */
 
-function webny_configuration_update_8069()
+function webny_configuration_update_8068()
 {
 
   // REMOVE FIELDS AND DEPENDENCIES FROM ACSF DEV.
@@ -1166,7 +1166,7 @@ function webny_configuration_update_8069()
  *
  * Enable webny_media module and dependencies.
  */
-function webny_configuration_update_8070() {
+function webny_configuration_update_8069() {
 
   \Drupal::service('module_installer')
       ->install(['libraries']);
