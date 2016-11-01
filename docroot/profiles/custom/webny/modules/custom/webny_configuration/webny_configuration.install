@@ -1129,7 +1129,7 @@ function webny_configuration_update_8067() {
 function webny_configuration_update_8068()
 {
 
-  // REMOVE FIELDS AND DEPENDENCIES FROM ACSF DEV.
+  // Remove legacy media image bundle field.
   $properties[0] = array(
       'entity_type' => 'media',
       'bundle' => 'image',
