@@ -1169,6 +1169,8 @@ function webny_configuration_update_8068()
 function webny_configuration_update_8069() {
 
   \Drupal::service('module_installer')
+      ->install(['webny_base']);
+  \Drupal::service('module_installer')
       ->install(['libraries']);
   // Add media buttons and dependent view modes to needed editors.
   \Drupal::service('module_installer')

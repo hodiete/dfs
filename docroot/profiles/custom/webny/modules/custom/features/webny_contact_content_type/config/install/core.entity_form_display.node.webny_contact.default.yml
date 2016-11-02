@@ -29,7 +29,6 @@ dependencies:
     - field.field.node.webny_contact.field_webny_contact_youtube
     - node.type.webny_contact
   module:
-    - entity_browser
     - field_group
     - link
     - path
@@ -55,8 +54,6 @@ third_party_settings:
         classes: bioframe
         required_fields: true
         description: ''
-_core:
-  default_config_hash: a-DafiCUqfPVCNvgwBaJ_K-dvOq2hKvYAwMQBPFFX3U
 id: node.webny_contact.default
 targetEntityType: node
 bundle: webny_contact
@@ -133,16 +130,11 @@ content:
   field_webny_contact_image:
     weight: 31
     settings:
-      entity_browser: image_browser
-      field_widget_display: rendered_entity
-      field_widget_edit: true
-      field_widget_remove: true
-      open: true
-      selection_mode: selection_append
-      field_widget_display_settings:
-        view_mode: media_library
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
-    type: entity_browser_entity_reference
+    type: entity_reference_autocomplete
   field_webny_contact_instagram:
     weight: 10
     settings:
