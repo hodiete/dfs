@@ -128,16 +128,10 @@ function webny_global_nav_library_info_alter(array &$libraries, $extension) {
     $stylesheet = 'css/globalnoshow.css';
   }
 
-  $libraries['global-nav'] = [
-    'css' => [
-      'theme' => [
-        $stylesheet => [],
-      ],
-    ],
-    'js' => [
-      'js/webny-global-nav-header.min.js' => [],
-    ],
+  $libraries['global-nav']['css']['theme'] = [
+      $stylesheet => [],
   ];
+
 }
 
 /**
