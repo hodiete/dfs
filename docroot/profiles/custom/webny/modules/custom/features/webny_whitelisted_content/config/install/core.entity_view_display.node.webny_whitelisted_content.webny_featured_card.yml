@@ -18,6 +18,8 @@ dependencies:
     - linked_field
     - text
     - user
+_core:
+  default_config_hash: OvD1QM_XdSx6n_p9dH_8yP0AmcM1n52YD1p2pK4Xykk
 id: node.webny_whitelisted_content.webny_featured_card
 targetEntityType: node
 bundle: webny_whitelisted_content
@@ -41,11 +43,12 @@ content:
     weight: 0
     label: hidden
     settings:
-      view_mode: default
+      view_mode: cards
       link: false
     third_party_settings:
       linked_field:
         linked: '1'
+        type: custom
         destination: '[node:url]'
         advanced:
           title: ''

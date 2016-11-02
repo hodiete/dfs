@@ -13,10 +13,13 @@ dependencies:
     - node.type.webny_whitelisted_content
   module:
     - datetime
+    - entity_browser
     - link
     - path
     - text
     - workbench_moderation
+_core:
+  default_config_hash: VzJs0ddZO7ZhrGa19xG3Ke1yG9ue_Vgtqc1TsCTyBds
 id: node.webny_whitelisted_content.default
 targetEntityType: node
 bundle: webny_whitelisted_content
@@ -58,11 +61,16 @@ content:
   field_webny_whitelist_image:
     weight: 10
     settings:
-      match_operator: CONTAINS
-      size: 60
-      placeholder: ''
+      entity_browser: image_browser
+      field_widget_display: rendered_entity
+      field_widget_edit: true
+      field_widget_remove: true
+      open: true
+      selection_mode: selection_append
+      field_widget_display_settings:
+        view_mode: media_library
     third_party_settings: {  }
-    type: entity_reference_autocomplete
+    type: entity_browser_entity_reference
   field_webny_whitelist_link_url:
     weight: 9
     settings:
