@@ -3,20 +3,22 @@ description: 'Provides media functionality for Webny.'
 type: module
 core: 8.x
 dependencies:
-  - webny_text_editors
-  - webny_text_formats
   - blazy
+  - crop
   - datetime
   - dropzonejs_eb_widget
+  - embed
+  - entity
   - entity_browser
   - entity_browser_entity_form
+  - entity_embed
   - field
   - file
   - focal_point
   - image
   - libraries
   - link
-  - entity
+  - linked_field
   - media_entity
   - media_entity_image
   - media_expire
@@ -28,4 +30,7 @@ dependencies:
   - video_embed_media
   - views
   - webny_image_styles
-
+  - webny_text_editors
+  - webny_text_formats
+  - workbench_moderation
+package: WebNY
