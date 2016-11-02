@@ -1202,6 +1202,18 @@ function webny_configuration_update_8069() {
 }
 
 /**
+ * Implements hook_update_n().
+ *
+ * Enable webny_base module. 
+ */
+function webny_configuration_update_8070()
+{
+
+  \Drupal::service('module_installer')
+      ->install(['webny_base']);
+}
+
+/**
  * Helper function to enable a Drupal module and print the result.
  *
  * @param string $module_name
