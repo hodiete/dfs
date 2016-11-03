@@ -16,7 +16,6 @@ dependencies:
     - field.field.node.webny_contact.field_webny_contact_instagram
     - field.field.node.webny_contact.field_webny_contact_linkedin
     - field.field.node.webny_contact.field_webny_contact_name
-    - field.field.node.webny_contact.field_webny_contact_phone
     - field.field.node.webny_contact.field_webny_contact_pintrest
     - field.field.node.webny_contact.field_webny_contact_protitle
     - field.field.node.webny_contact.field_webny_contact_reslink
@@ -28,8 +27,10 @@ dependencies:
     - field.field.node.webny_contact.field_webny_contact_vimeo_link
     - field.field.node.webny_contact.field_webny_contact_vine_link
     - field.field.node.webny_contact.field_webny_contact_youtube
+    - field.field.node.webny_contact.field_webny_phone_contact
     - node.type.webny_contact
   module:
+    - entity_reference_revisions
     - field_group
     - link
     - linked_field
@@ -53,7 +54,6 @@ third_party_settings:
         classes: contact-wrapper
     group_contact_info_wrapper:
       children:
-        - field_webny_contact_phone
         - field_webny_contact_email
         - field_webny_contact_address
         - field_webny_contact_fax
@@ -224,13 +224,6 @@ content:
           rel: ''
           text: LinkedIn
     type: link_separate
-  field_webny_contact_phone:
-    weight: 3
-    label: above
-    settings:
-      title: ''
-    third_party_settings: {  }
-    type: telephone_link
   field_webny_contact_pintrest:
     weight: 17
     label: hidden
@@ -420,6 +413,26 @@ content:
           rel: ''
           text: YouTube
     type: link_separate
+  field_webny_phone_contact:
+    type: entity_reference_revisions_entity_view
+    weight: 1
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings:
+      linked_field:
+        type: field
+        destination:
+          field: ''
+          custom: ''
+        advanced:
+          title: ''
+          target: ''
+          class: ''
+          rel: ''
+          text: ''
+        linked: 0
 hidden:
   field_webny_contact_caption: true
   field_webny_contact_global_key: true

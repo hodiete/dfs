@@ -3,6 +3,7 @@ description: 'Provide Contact content type and related configuration. This conte
 type: module
 core: 8.x
 dependencies:
+  - entity_reference_revisions
   - field
   - field_group
   - link
@@ -10,12 +11,15 @@ dependencies:
   - media_entity
   - menu_ui
   - node
+  - paragraphs
   - path
   - taxonomy
   - telephone
   - text
   - user
+  - webny_bio_frame
   - webny_global_and_agency_taxonomies
+  - webny_phone_contact_paragraph
   - workbench_moderation
-version: 8.x-1.3
+version: 8.x-1.4
 package: WebNY

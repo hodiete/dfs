@@ -61,22 +61,18 @@ set iconclass = [
             </div>
 
             <fieldset class="contact-info-wrapper">
-            <div class="fieldset-wrapper">
-                {% if(node.field_webny_contact_phone.value is not empty and node.field_webny_contact_phone.value is not null) %}
-                <div class="contact-col-1">
-                    <div class="contact-phone">
-                        <div class="icon-phone"></div>
-                        <div class="contact--field-webny-contact-phone">Contact us by phone:</div>
-                        {# LOOP PHONE AND VALUES #}
-                        {% for k,v in node.field_webny_contact_phone %}
+                <div class="fieldset-wrapper">
+                    <div class="contact-col-1">
+                        <div class="contact-phone">
+                            <div class="icon-phone"></div>
+                            <div class="contact--field-webny-contact-phone">Contact us by phone:</div>
+                            {# LOOP PHONE AND VALUES #}
                             <div class="contact-phone-value">
-                                <a href="tel:{{ node.field_webny_contact_phone[k].value }}">{{ node.field_webny_contact_phone[k].value }}</a>
+                                {{ content.field_webny_phone_contact }}
                             </div>
-                        {% endfor %}
+                        </div>
                     </div>
                 </div>
-                {% else %}
-                {% endif %}
                 {% if(node.field_webny_contact_email.value is not empty and node.field_webny_contact_email.value is not null) %}
                 <div class="contact-col-2">
                     <div class="contact-email">
