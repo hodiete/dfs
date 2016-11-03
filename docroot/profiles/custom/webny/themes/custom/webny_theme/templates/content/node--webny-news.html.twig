@@ -34,7 +34,7 @@
  */
 #}
 
-{% set hero_image = file_url(node.field_webny_news_image.entity.image.entity.uri.value) %}
+{% set hero_image = file_url(node.field_webny_news_image.entity.field_image.entity.uri.value) %}
 
 {%
   set newsclasses = [

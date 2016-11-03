@@ -1,0 +1,11 @@
+
+webny_media.configuration_form:
+  path: '/admin/config/webny_media/configuration'
+  defaults:
+    _form: '\Drupal\webny_media\Form\ConfigurationForm'
+    _title: 'ConfigurationForm'
+  requirements:
+    _permission: 'administer site configuration'
+  options:
+    _admin_route: TRUE
+
