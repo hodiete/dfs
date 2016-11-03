@@ -21,4 +21,18 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
 
   }
 
+  /**
+   * @Then /^I should see in the header "([^"]*)":"([^"]*)"$/
+   */
+  public function iShouldSeeInTheHeader($header, $value)
+  {
+    $headers = $this->getSession()->getResponseHeaders();
+    if (array_key_exists($header, $headers)){
+      if ($headers[$header][0] != $value) {
+        throw new \Exception(sprintf("Did not see %s with value %s.", $header, $value));
+      }
+    }else{
+      throw new \Exception(sprintf("Did not see %s with value %s.", $header, $value));
+    }
+  }
 }
