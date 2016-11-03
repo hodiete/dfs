@@ -1,3 +1,4 @@
+uuid: 9e6e321d-52c0-4cb2-ba68-0887abc6aa93
 langcode: en
 status: true
 dependencies:
@@ -5,6 +6,8 @@ dependencies:
     - filter.format.full_html
   module:
     - ckeditor
+_core:
+  default_config_hash: nT5aeU3xx43g8_9TV5oLWQluWx1Nzhu1KtQyj22zTUw
 format: full_html
 editor: ckeditor
 settings:
@@ -30,7 +33,7 @@ settings:
           name: Media
           items:
             - Blockquote
-            - media_library
+            - media
         -
           name: Tools
           items:
@@ -40,6 +43,8 @@ settings:
           items:
             - Styles
   plugins:
+    language:
+      language_list: un
     stylescombo:
       styles: p.button|Button
 image_upload:

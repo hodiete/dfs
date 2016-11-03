@@ -1,8 +1,12 @@
+uuid: ffbf326b-8273-4d92-9554-9b7de5c10c64
 langcode: en
 status: true
 dependencies:
   module:
     - editor
+    - entity_embed
+_core:
+  default_config_hash: 4wfVLEEJ-oYbpsD3HBWL_eFibadXAwIUC62rozuSE3I
 name: 'Full HTML'
 format: full_html
 weight: 0
@@ -37,6 +41,12 @@ filters:
     status: false
     weight: -10
     settings:
-      allowed_html: '<a href hreflang> <em> <strong> <cite> <blockquote cite> <code> <ul type> <ol start type> <li> <dl> <dt> <dd> <h2 id> <h3 id> <h4 id> <h5 id> <h6 id> <p class="button">'
+      allowed_html: '<a href hreflang> <em> <strong> <cite> <blockquote cite> <code> <ul type> <ol start type> <li> <dl> <dt> <dd> <h2 id> <h3 id> <h4 id> <h5 id> <h6 id> <p class="button"> <drupal-entity data-entity-type data-entity-uuid data-entity-embed-display data-entity-embed-display-settings data-align data-caption data-embed-button>'
       filter_html_help: true
       filter_html_nofollow: false
+  entity_embed:
+    id: entity_embed
+    provider: entity_embed
+    status: true
+    weight: 0
+    settings: {  }
