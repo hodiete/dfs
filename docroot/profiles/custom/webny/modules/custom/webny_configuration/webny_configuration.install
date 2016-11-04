@@ -1228,6 +1228,20 @@ function webny_configuration_update_8071()
 }
 
 /**
+ * Implements hook_update_n().
+ *
+ * refresh media module.
+ */
+function webny_configuration_update_8072()
+{
+
+  \Drupal::service('module_installer')
+      ->uninstall(['webny_contact_form']);
+  \Drupal::service('module_installer')
+      ->install(['webny_contact_form']);
+}
+
+/**
  * Helper function to enable a Drupal module and print the result.
  *
  * @param string $module_name
