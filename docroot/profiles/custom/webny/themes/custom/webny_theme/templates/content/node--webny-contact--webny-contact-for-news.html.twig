@@ -61,6 +61,8 @@ set iconclass = [
             </div>
 
             <fieldset class="contact-info-wrapper">
+
+                {% if(content.field_webny_phone_contact[0] is not null) %}
                 <div class="fieldset-wrapper">
                     <div class="contact-col-1">
                         <div class="contact-phone">
@@ -73,6 +75,8 @@ set iconclass = [
                         </div>
                     </div>
                 </div>
+                {% endif %}
+
                 {% if(node.field_webny_contact_email.value is not empty and node.field_webny_contact_email.value is not null) %}
                 <div class="contact-col-2">
                     <div class="contact-email">
