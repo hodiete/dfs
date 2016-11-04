@@ -1,3 +1,4 @@
+uuid: 03fd20ee-a4e0-4926-81a9-09e8b79298de
 langcode: en
 status: true
 dependencies:
@@ -22,8 +23,11 @@ dependencies:
     - node.type.webny_news
   module:
     - datetime
+    - linked_field
     - text
     - user
+_core:
+  default_config_hash: EiLVOW89UquBniMVq8PLtD191oNT7jMMtJLAu6qywpg
 id: node.webny_news.default
 targetEntityType: node
 bundle: webny_news
@@ -126,9 +130,21 @@ content:
     weight: 3
     label: hidden
     settings:
-      link: true
-      view_mode: default
-    third_party_settings: {  }
+      view_mode: hero_image
+      link: false
+    third_party_settings:
+      linked_field:
+        type: field
+        destination:
+          field: ''
+          custom: ''
+        advanced:
+          title: ''
+          target: ''
+          class: ''
+          rel: ''
+          text: ''
+        linked: 0
     type: entity_reference_entity_view
   field_webny_news_location:
     weight: 10
