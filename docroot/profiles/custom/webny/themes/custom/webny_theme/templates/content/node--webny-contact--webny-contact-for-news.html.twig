@@ -61,17 +61,17 @@ set iconclass = [
             </div>
 
             <fieldset class="contact-info-wrapper">
-
-                {% if(content.field_webny_phone_contact[0] is not null) %}
                 <div class="fieldset-wrapper">
-                    <div class="contact-col-1">
-                        <div class="contact-phone">
-                            <div class="icon-phone"></div>
+
+                {% if(content.field_webny_phone_contact[0] is not null and content.field_webny_phone_contact[0] is not empty) %}
+                <div class="contact-col-1">
+                    <div class="contact-phone">
+                        <div class="icon-phone">
                             <div class="contact--field-webny-contact-phone">Contact us by phone:</div>
-                            {# LOOP PHONE AND VALUES #}
-                            <div class="contact-phone-value">
-                                {{ content.field_webny_phone_contact }}
-                            </div>
+                        </div>
+                        {# LOOP PHONE AND VALUES #}
+                        <div class="contact-phone-value">
+                            {{ content.field_webny_phone_contact }}
                         </div>
                     </div>
                 </div>
@@ -90,7 +90,6 @@ set iconclass = [
                         {% endfor %}
                     </div>
                 </div>
-                {% else %}
                 {% endif %}
                 {% if(node.field_webny_contact_address.value is not empty and node.field_webny_contact_address.value is not null) %}
                 <div class="contact-col-1">
@@ -105,7 +104,6 @@ set iconclass = [
                         {% endfor %}
                     </div>
                 </div>
-                {% else %}
                 {% endif %}
                 {% if(node.field_webny_contact_fax.value is not empty and node.field_webny_contact_fax.value is not null) %}
                 <div class="contact-col-2">
@@ -120,7 +118,6 @@ set iconclass = [
                         {% endfor %}
                     </div>
                 </div>
-                {% else %}
                 {% endif %}
             </div>
            </fieldset>

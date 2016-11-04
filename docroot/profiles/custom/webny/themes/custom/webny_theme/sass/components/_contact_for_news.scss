@@ -164,18 +164,16 @@ $contact-for-news-icons: $color-secondary !default;
 
 .press-contact-info {
 
-  .contact-info-wrapper {
+  .fieldset-wrapper{
     display: flex;
-    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: stretch;
   }
 
   .contact-col-1,
   .contact-col-2 {
     flex-direction: row;
     width: 49%;
-    min-width: 236px;
-    overflow: auto;
-    float: left;
   }
 
   .social-media-wrapper .fieldset-wrapper a {
