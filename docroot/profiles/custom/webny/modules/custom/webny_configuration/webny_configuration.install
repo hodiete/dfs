@@ -1202,6 +1202,8 @@ function webny_configuration_update_8069() {
  * Implements hook_update_n().
  *
  * Removes the phone field from the contact content type
+ * Installs the paragraph type for phone contact
+ * Refresh the contact content type
  */
 function webny_configuration_update_8070() {
 
@@ -1232,25 +1234,14 @@ function webny_configuration_update_8070() {
     }
   }
 
-// INSTALL NEW PARAGRAPH TYPE FEATURE FOR PHONE
-  \Drupal::service('module_installer')
-      ->uninstall(['webny_phone_contact_paragraph']);
-  \Drupal::service('module_installer')
-      ->install(['webny_phone_contact_paragraph']);
+// INSTALL THE PARAGRAPH TYPE
+print webny_configuration_uninstall_module('webny_phone_contact_paragraph');
+print webny_configuration_enable_module('webny_phone_contact_paragraph');
 
-}
+// REFRESH THE CONTACT CONTENT TYPE
+print webny_configuration_uninstall_module('webny_contact_content_type');
+print webny_configuration_enable_module('webny_contact_content_type');
 
-/**
- * Implements hook_update_n().
- *
- * Removes the phone field from the contact content type
- */
-function webny_configuration_update_8071() {
-// REFRESH CONTACT CONTENT TYPE
-  \Drupal::service('module_installer')
-      ->uninstall(['webny_contact_content_type']);
-  \Drupal::service('module_installer')
-      ->install(['webny_contact_content_type']);
 }
 
 /**

@@ -94,6 +94,26 @@ targetEntityType: node
 bundle: webny_contact
 mode: webny_contact_for_news
 content:
+  field_webny_phone_contact:
+    weight: 1
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings:
+      linked_field:
+        type: field
+        destination:
+          field: ''
+          custom: ''
+        advanced:
+          title: ''
+          target: ''
+          class: ''
+          rel: ''
+          text: ''
+        linked: 0
+    type: entity_reference_revisions_entity_view
   field_webny_contact_address:
     weight: 5
     label: above
@@ -413,26 +433,6 @@ content:
           rel: ''
           text: YouTube
     type: link_separate
-  field_webny_phone_contact:
-    type: entity_reference_revisions_entity_view
-    weight: 1
-    label: hidden
-    settings:
-      view_mode: default
-      link: ''
-    third_party_settings:
-      linked_field:
-        type: field
-        destination:
-          field: ''
-          custom: ''
-        advanced:
-          title: ''
-          target: ''
-          class: ''
-          rel: ''
-          text: ''
-        linked: 0
 hidden:
   field_webny_contact_caption: true
   field_webny_contact_global_key: true
