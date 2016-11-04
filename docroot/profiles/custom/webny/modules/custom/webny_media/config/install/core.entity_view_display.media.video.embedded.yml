@@ -2,7 +2,7 @@ langcode: en
 status: true
 dependencies:
   config:
-    - core.entity_view_mode.media.thumbnail
+    - core.entity_view_mode.media.embedded
     - field.field.media.video.embed_code
     - field.field.media.video.field_caption
     - field.field.media.video.field_description
@@ -11,29 +11,25 @@ dependencies:
     - field.field.media.video.field_media_video_embed_field
     - media_entity.bundle.video
   module:
-    - video_embed_field
-id: media.video.thumbnail
+    - media_entity_embeddable_video
+id: media.video.embedded
 targetEntityType: media
 bundle: video
-mode: thumbnail
+mode: embedded
 content:
-  field_media_video_embed_field:
-    type: video_embed_field_video
+  embed_code:
+    type: video
     weight: 0
     label: hidden
-    settings:
-      width: 241
-      height: 138
-      autoplay: false
-      responsive: false
+    settings: {  }
     third_party_settings: {  }
 hidden:
   created: true
-  embed_code: true
   field_caption: true
   field_description: true
   field_media_in_library: true
   field_media_keywords: true
+  field_media_video_embed_field: true
   name: true
   thumbnail: true
   uid: true
