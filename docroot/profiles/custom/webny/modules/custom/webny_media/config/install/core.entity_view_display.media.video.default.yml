@@ -2,8 +2,11 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.media.video.embed_code
     - field.field.media.video.field_caption
     - field.field.media.video.field_description
+    - field.field.media.video.field_media_in_library
+    - field.field.media.video.field_media_keywords
     - field.field.media.video.field_media_video_embed_field
     - media_entity.bundle.video
   module:
@@ -32,8 +35,10 @@ content:
     type: video_embed_field_video
 hidden:
   created: true
+  embed_code: true
   field_caption: true
-  langcode: true
+  field_media_in_library: true
+  field_media_keywords: true
   name: true
   thumbnail: true
   uid: true
