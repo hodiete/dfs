@@ -19,13 +19,7 @@
         <h1>{{ label }}</h1>
     </div>
 
-    <!-- SUBTITLE LABEL -->
-    <div class="landing-subtitle">
-        <span>{{ node.field_webny_page_sub_title[0].value }}</span>
-    </div>
-
 </div>
-
 
 {% if node.field_webny_page_hero_toggle.value == 1 %}
     <article {{ attributes.addClass('hero-layout') }}>
@@ -72,17 +66,24 @@
     </article>
 {% endif %}
 
-<div class="page-summary">
-    {% for x,subtitle in node.field_webny_page_sub_title if x > 0 %}
-       <div>
-           {{ node.field_webny_page_sub_title[x].value }}
-       </div>
-    {% endfor %}
+<div class="page">
 
-</div>
+    <div class="page-in">
 
-<div class="ipage-body">
-    {{ content.body }}
+        <div class="page-subtitle">
+            {% for x,subtitle in node.field_webny_page_sub_title if x >= 0 %}
+                <div class="page-subtitle-item">
+                    {{ node.field_webny_page_sub_title[x].value }}
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class="page-body">
+            {{ content.body }}
+        </div>
+
+    </div>
+
 </div>
 
 <div class="page-paragraphs">
