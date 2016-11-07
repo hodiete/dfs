@@ -161,35 +161,36 @@ $contact-for-news-icons: $color-secondary !default;
 /* TABLET VIEW */
 @media (min-width: $min-tab) {
 
+  .contact-info-wrapper {
 
-.press-contact-info {
+    .fieldset-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: stretch;
+    }
 
-  .fieldset-wrapper{
-    display: flex;
-    flex-wrap: wrap;
-    align-items: stretch;
+    .contact-col-1,
+    .contact-col-2 {
+      flex-direction: row;
+      width: 49%;
+    }
+
   }
 
-  .contact-col-1,
-  .contact-col-2 {
-    flex-direction: row;
-    width: 49%;
+  .social-media-wrapper {
+
+    .fieldset-wrapper a {
+      color: $black;
+      text-transform: uppercase;
+      font-weight: 700;
+      float: left;
+      width: 45%;
+      margin-right: 5%;
+      margin-bottom: 5%;
+    }
   }
 
-  .social-media-wrapper .fieldset-wrapper a {
-    color: $black;
-    text-transform: uppercase;
-    font-weight: 700;
-    float: left;
-    width: 45%;
-    margin-right: 5%;
-    margin-bottom: 5%;
-  }
-
-}
-
-
-} // END MIN TABLET VIEW
+}// END MIN TABLET VIEW
 
 // ######################################################################### //
 
