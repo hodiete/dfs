@@ -88,7 +88,7 @@ $contact-for-news-icons: $color-secondary !default;
       margin: 0;
     }
 
-    .contact-phone-value a,
+    .phone-number a,
     .contact-fax-value a {
       color: $color-mono-black;
       &:hover {
@@ -107,7 +107,7 @@ $contact-for-news-icons: $color-secondary !default;
 
   .social-media-wrapper {
     border-top: 1px solid $gray-lite;
-    border-bottom: 1px solid $gray-lite;
+    //border-bottom: 1px solid $gray-lite;
     padding-top: 20px;
 
     .fieldset-wrapper a:hover {
@@ -161,37 +161,36 @@ $contact-for-news-icons: $color-secondary !default;
 /* TABLET VIEW */
 @media (min-width: $min-tab) {
 
-
-.press-contact-info {
-
   .contact-info-wrapper {
-    display: flex;
-    flex-direction: row;
+
+    .fieldset-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: stretch;
+    }
+
+    .contact-col-1,
+    .contact-col-2 {
+      flex-direction: row;
+      width: 49%;
+    }
+
   }
 
-  .contact-col-1,
-  .contact-col-2 {
-    flex-direction: row;
-    width: 49%;
-    min-width: 236px;
-    overflow: auto;
-    float: left;
+  .social-media-wrapper {
+
+    .fieldset-wrapper a {
+      color: $black;
+      text-transform: uppercase;
+      font-weight: 700;
+      float: left;
+      width: 45%;
+      margin-right: 5%;
+      margin-bottom: 5%;
+    }
   }
 
-  .social-media-wrapper .fieldset-wrapper a {
-    color: $color-mono-black;
-    text-transform: uppercase;
-    font-weight: 700;
-    float: left;
-    width: 45%;
-    margin-right: 5%;
-    margin-bottom: 5%;
-  }
-
-}
-
-
-} // END MIN TABLET VIEW
+}// END MIN TABLET VIEW
 
 // ######################################################################### //
 
