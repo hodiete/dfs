@@ -15,7 +15,6 @@ dependencies:
     - field.field.node.webny_contact.field_webny_contact_instagram
     - field.field.node.webny_contact.field_webny_contact_linkedin
     - field.field.node.webny_contact.field_webny_contact_name
-    - field.field.node.webny_contact.field_webny_contact_phone
     - field.field.node.webny_contact.field_webny_contact_pintrest
     - field.field.node.webny_contact.field_webny_contact_protitle
     - field.field.node.webny_contact.field_webny_contact_reslink
@@ -27,8 +26,10 @@ dependencies:
     - field.field.node.webny_contact.field_webny_contact_vimeo_link
     - field.field.node.webny_contact.field_webny_contact_vine_link
     - field.field.node.webny_contact.field_webny_contact_youtube
+    - field.field.node.webny_contact.field_webny_phone_contact
     - node.type.webny_contact
   module:
+    - entity_reference_revisions
     - link
     - telephone
     - text
@@ -39,7 +40,7 @@ bundle: webny_contact
 mode: default
 content:
   field_webny_contact_address:
-    weight: 4
+    weight: 3
     label: above
     settings: {  }
     third_party_settings: {  }
@@ -57,7 +58,7 @@ content:
     third_party_settings: {  }
     type: text_default
   field_webny_contact_email:
-    weight: 3
+    weight: 2
     label: above
     settings: {  }
     third_party_settings: {  }
@@ -145,13 +146,6 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
-  field_webny_contact_phone:
-    weight: 2
-    label: above
-    settings:
-      title: ''
-    third_party_settings: {  }
-    type: telephone_link
   field_webny_contact_pintrest:
     weight: 17
     label: above
@@ -269,6 +263,14 @@ content:
       url_plain: false
     third_party_settings: {  }
     type: link_separate
+  field_webny_phone_contact:
+    type: entity_reference_revisions_entity_view
+    weight: 4
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
   links:
     weight: 1
     settings: {  }
