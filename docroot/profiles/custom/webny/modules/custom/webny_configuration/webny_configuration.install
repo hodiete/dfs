@@ -1243,11 +1243,25 @@ function webny_configuration_update_8072()
 /**
  * Implements hook_update_n().
  *
+ * refresh media module.
+ */
+function webny_configuration_update_8073()
+{
+
+  \Drupal::service('module_installer')
+      ->uninstall(['webny_media']);
+  \Drupal::service('module_installer')
+      ->install(['webny_media']);
+}
+
+/**
+ * Implements hook_update_n().
+ *
  * Removes the phone field from the contact content type
  * Installs the paragraph type for phone contact
  * Refresh the contact content type
  */
-function webny_configuration_update_8073() {
+function webny_configuration_update_8074() {
 
 // REMOVE FIELDS AND DEPENDENCIES FROM ACSF DEV.
   $properties[0] = array(
