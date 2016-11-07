@@ -15,7 +15,6 @@ dependencies:
     - field.field.node.webny_contact.field_webny_contact_instagram
     - field.field.node.webny_contact.field_webny_contact_linkedin
     - field.field.node.webny_contact.field_webny_contact_name
-    - field.field.node.webny_contact.field_webny_contact_phone
     - field.field.node.webny_contact.field_webny_contact_pintrest
     - field.field.node.webny_contact.field_webny_contact_protitle
     - field.field.node.webny_contact.field_webny_contact_reslink
@@ -27,11 +26,13 @@ dependencies:
     - field.field.node.webny_contact.field_webny_contact_vimeo_link
     - field.field.node.webny_contact.field_webny_contact_vine_link
     - field.field.node.webny_contact.field_webny_contact_youtube
+    - field.field.node.webny_contact.field_webny_phone_contact
     - node.type.webny_contact
   module:
     - entity_browser
     - field_group
     - link
+    - paragraphs
     - path
     - telephone
     - text
@@ -129,7 +130,7 @@ content:
     third_party_settings: {  }
     type: link_default
   field_webny_contact_image:
-    weight: 31
+    weight: 32
     settings:
       entity_browser: image_browser
       field_widget_display: rendered_entity
@@ -162,12 +163,6 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
-  field_webny_contact_phone:
-    weight: 1
-    settings:
-      placeholder: ''
-    third_party_settings: {  }
-    type: telephone_default
   field_webny_contact_pintrest:
     weight: 14
     settings:
@@ -183,7 +178,7 @@ content:
     third_party_settings: {  }
     type: string_textfield
   field_webny_contact_reslink:
-    weight: 30
+    weight: 31
     settings:
       placeholder_url: ''
       placeholder_title: ''
@@ -245,6 +240,16 @@ content:
       placeholder_title: ''
     third_party_settings: {  }
     type: link_default
+  field_webny_phone_contact:
+    type: entity_reference_paragraphs
+    weight: 1
+    settings:
+      title: 'Phone Number'
+      title_plural: 'Phone Numbers'
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+    third_party_settings: {  }
   path:
     type: path
     weight: 26
