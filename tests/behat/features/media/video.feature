@@ -8,6 +8,7 @@ Feature: Video media creation by media manager role.
     When I visit "/media/add/video"
     And I enter "https://www.youtube.com/watch?v=ktCgVopf7D0" for "Video URL"
     And I enter "Drupal 8 video" for "Media name"
+    And I wait 5 seconds
     And I press "Save and publish"
     And I visit "/admin/content/media"
     Then I should see "Drupal 8 video"
@@ -18,6 +19,7 @@ Feature: Video media creation by media manager role.
     When I visit "/media/add/video"
     And I enter "https://vimeo.com/146188114" for "Video URL"
     And I enter "Drupal 8 launch" for "Media name"
+    And I wait 5 seconds
     And I press "Save and publish"
     And I visit "/admin/content/media"
     Then I should see "Drupal 8 launch"
