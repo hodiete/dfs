@@ -3,7 +3,9 @@ description: 'Provide News content type and related configuration. This will cre
 type: module
 core: 8.x
 dependencies:
+  - better_exposed_filters
   - datetime
+  - entity_browser
   - field
   - field_group
   - linked_field
@@ -20,8 +22,9 @@ dependencies:
   - webny_document_content_type
   - webny_global_and_agency_taxonomies
   - webny_inner_page_content_type
+  - webny_media
   - webny_subject_heading_taxonomy
   - webny_taxonomies
   - workbench_moderation
-version: 8.x-1.11
+version: 8.x-1.12
 package: WebNY

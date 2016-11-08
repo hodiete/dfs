@@ -1169,6 +1169,8 @@ function webny_configuration_update_8068()
 function webny_configuration_update_8069() {
 
   \Drupal::service('module_installer')
+      ->install(['webny_base']);
+  \Drupal::service('module_installer')
       ->install(['libraries']);
   // Add media buttons and dependent view modes to needed editors.
   \Drupal::service('module_installer')
@@ -1195,6 +1197,117 @@ function webny_configuration_update_8069() {
       ->install(['webny_whitelisted_content']);
   \Drupal::service('module_installer')
       ->install(['webny_document_content_type']);
+  \Drupal::service('module_installer')
+      ->install(['webny_news_content_type']);
+}
+
+/**
+ * Implements hook_update_n().
+ * Enable webny_base module.
+ */
+function webny_configuration_update_8070()
+{
+
+  \Drupal::service('module_installer')
+      ->install(['webny_base']);
+}
+
+/**
+ * Implements hook_update_n().
+ *
+ * refresh media module.
+ */
+function webny_configuration_update_8071()
+{
+
+  \Drupal::service('module_installer')
+      ->uninstall(['webny_media']);
+  \Drupal::service('module_installer')
+      ->install(['webny_media']);
+}
+
+/**
+ * Implements hook_update_n().
+ *
+ * refresh contact form module.
+ */
+function webny_configuration_update_8072()
+{
+
+  \Drupal::service('module_installer')
+      ->uninstall(['webny_contact_form']);
+  \Drupal::service('module_installer')
+      ->install(['webny_contact_form']);
+}
+
+/**
+ * Implements hook_update_n().
+ *
+ * refresh media module.
+ */
+function webny_configuration_update_8073()
+{
+
+  \Drupal::service('module_installer')
+      ->uninstall(['webny_media']);
+  \Drupal::service('module_installer')
+      ->install(['webny_media']);
+}
+
+/**
+ * Implements hook_update_n().
+ *
+ * Removes the phone field from the contact content type
+ * Installs the paragraph type for phone contact
+ * Refresh the contact content type
+ */
+function webny_configuration_update_8074() {
+
+// REMOVE FIELDS AND DEPENDENCIES FROM ACSF DEV.
+  $properties[0] = array(
+      'entity_type' => 'node',
+      'bundle' => 'webny_contact',
+      'field_name' => 'field_webny_contact_phone',
+      'include_deleted' => TRUE,
+  );
+
+  foreach ($properties as $prop) {
+
+    $fields = \Drupal::entityManager()->getStorage('field_config')->loadByProperties($prop);
+
+    $info = \Drupal::entityManager()->getDefinitions();
+    foreach ($fields as $field) {
+      $entity_type = $field->getTargetEntityTypeId();
+
+// Proceed only if the module implementing the entity
+// has not been uninstalled already.
+      if (isset($info[$entity_type])) {
+        Drupal::entityManager()->getStorage($entity_type)->purgeFieldData($field, 100);
+        $field->delete();
+        field_purge_field($field);
+        unset($fields, $info);
+      }
+    }
+  }
+
+// INSTALL THE PARAGRAPH TYPE
+print webny_configuration_uninstall_module('webny_phone_contact_paragraph');
+print webny_configuration_enable_module('webny_phone_contact_paragraph');
+
+// REFRESH THE CONTACT CONTENT TYPE
+print webny_configuration_uninstall_module('webny_contact_content_type');
+print webny_configuration_enable_module('webny_contact_content_type');
+
+}
+
+/**
+ * Implements hook_update_n().
+ *
+ * Update News Content type to remove summary from Hero display.
+ */
+function webny_configuration_update_8075(){
+  \Drupal::service('module_installer')
+      ->uninstall(['webny_news_content_type']);
   \Drupal::service('module_installer')
       ->install(['webny_news_content_type']);
 }
