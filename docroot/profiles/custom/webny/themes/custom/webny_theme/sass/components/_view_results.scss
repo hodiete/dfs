@@ -309,11 +309,13 @@ $results-pager-color: $color-tertiary !default;
 // News listing - Filter icons
 .form-radios {
     .form-item-target-news-category {
-    padding: 0 1em 0 0;
-    margin-bottom: 20px;
-    input[type="radio"] {
-      display: none;
-    }
+      position: relative;
+      padding: 0 1em 0 20px;
+      margin-bottom: 20px;
+
+      input[type="radio"] {
+        display: none;
+      }
 
     label.option.active-filter-opt{
       color: $primarygold;
@@ -328,11 +330,15 @@ $results-pager-color: $color-tertiary !default;
       &:hover {
         color: $primarygold;
         &:before {
+          position: absolute;
+          left: -15px;
           color: $white;
         }
       }
 
       &:before {
+        position: absolute;
+        left: -15px;
         color: #7d7d7d;
         font-family: $icon-font;
         content: "\e618";
@@ -346,6 +352,8 @@ $results-pager-color: $color-tertiary !default;
       color: $primarygold;
 
       &:before {
+        position: absolute;
+        left: -15px;
         color: $primarygold;
         font-family: $icon-font;
         content: "\e61f";
@@ -364,10 +372,13 @@ $results-pager-color: $color-tertiary !default;
         color: #f8a81f;
         font-family: $icon-font;
         content: "\e61f";
+        position: absolute;
+        left: -15px;
       }
       &:hover:before {
         color: $white;
         content: "\e623";
+        position: absolute;
       }
     }
   }
@@ -383,6 +394,8 @@ $results-pager-color: $color-tertiary !default;
       display: block;
       content: '';
       border-bottom: 1px solid #404040;
+      position: absolute;
+      left: -15px;
       padding: 0; margin: 0 0 2em;
     }
     &:after { display: none; }
