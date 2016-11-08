@@ -1313,6 +1313,16 @@ function webny_configuration_update_8075(){
 }
 
 /**
+ * Implements hook_update_n().
+ *
+ * Refresh the inner page content type
+ */
+function webny_configuration_update_8076() {
+   print webny_configuration_uninstall_module('webny_inner_page_content_type');
+   print webny_configuration_enable_module('webny_inner_page_content_type');
+}
+
+/**
  * Helper function to enable a Drupal module and print the result.
  *
  * @param string $module_name
