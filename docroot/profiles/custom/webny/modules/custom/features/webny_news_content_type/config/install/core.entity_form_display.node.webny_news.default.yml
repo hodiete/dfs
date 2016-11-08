@@ -1,4 +1,3 @@
-uuid: 9d4d3f27-294c-4c0d-a183-bd8f34438b0f
 langcode: en
 status: true
 dependencies:
@@ -34,7 +33,6 @@ third_party_settings:
       children:
         - field_webny_news_hero_title
         - field_webny_news_image
-        - field_webny_news_description
         - field_webny_news_global_keywords
       parent_name: ''
       weight: 7
@@ -46,8 +44,6 @@ third_party_settings:
         classes: nyhero_fields
         required_fields: false
         description: ''
-_core:
-  default_config_hash: mpjNAHBZ0y3Y2Ow7y3FHVot8kdmLyxHLXU6rtVBZUvA
 id: node.webny_news.default
 targetEntityType: node
 bundle: webny_news
@@ -55,7 +51,7 @@ mode: default
 content:
   body:
     type: text_textarea_with_summary
-    weight: 9
+    weight: 10
     settings:
       rows: 9
       summary_rows: 3
@@ -104,7 +100,7 @@ content:
     third_party_settings: {  }
     type: datetime_default
   field_webny_news_description:
-    weight: 12
+    weight: 8
     settings:
       size: 80
       placeholder: ''
@@ -172,7 +168,7 @@ content:
     third_party_settings: {  }
     type: string_textfield
   field_webny_news_subject_heading:
-    weight: 10
+    weight: 11
     settings:
       match_operator: CONTAINS
       size: 60
@@ -180,7 +176,7 @@ content:
     third_party_settings: {  }
     type: entity_reference_autocomplete
   field_webny_news_subtitles:
-    weight: 8
+    weight: 9
     settings:
       size: 100
       placeholder: ''
@@ -188,7 +184,7 @@ content:
     type: text_textfield
   path:
     type: path
-    weight: 11
+    weight: 12
     settings: {  }
     third_party_settings: {  }
   promote:
