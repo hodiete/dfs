@@ -75,7 +75,7 @@ before_script:
   # Verify that no git diffs (caused by line ending variation) exist.
   # - git diff --exit-code
   # The local.hostname must be set to 127.0.0.1:8888 because we are using drush runserver to run the site on Travis CI.
-  - drupal yaml:update:value project.yml project.local.hostname '127.0.0.1:8888'
+  - drupal yaml:update:value project.yml project.local.hostname '0.0.0.0:6081'
   # Increasing SQL packet size to avoid time out errors.
   - mysql -u root -e 'SET GLOBAL wait_timeout = 36000;'
   - mysql -u root -e 'SET GLOBAL max_allowed_packet = 33554432;'
@@ -87,6 +87,9 @@ before_script:
   - sudo cp ./acquia.vcl.j2 /etc/varnish/default.vcl
   - sudo echo "14bac2e6-1e34-4770-8078-974373b76c90" >> sudo /etc/varnish/secret
   - sudo service varnish restart
+  - sudo netstat -tulnp
+  - sudo netstat -tulnp | grep varnish
+  - sudo ifconfig
 
 script:
   - blt -Dbehat.run-server=true -Dcreate_alias=false -Dbehat.launch-phantom=true ci:build:validate:test
