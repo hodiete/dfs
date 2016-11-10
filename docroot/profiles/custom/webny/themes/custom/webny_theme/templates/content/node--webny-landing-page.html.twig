@@ -83,4 +83,10 @@
     {{ content.field_webny_landing_paragraph|without('label') }}
     </div>
 </div>
+
+<!-- VIEWFIELD -->
+{% if node.field_webny_displayed_views.value is empty %}
+{% else %}
+    {{  content.field_webny_displayed_views }}
+{% endif %}
       
