@@ -96,7 +96,7 @@ $hero-keyword-text-color: $white !default;
     background-repeat: no-repeat;
     background-size: cover;
     color: $hero-text-color;
-    min-height: 300px;
+    min-height: 256px;
     overflow: hidden;
     position: relative;
   }
@@ -288,6 +288,8 @@ $hero-keyword-text-color: $white !default;
       }
     }
 
+    // ALLOW HEIGHT TO BE LARGE IN THIS
+    // REGION TO NOT HAVE OVERFLOW FROM HERO
     .hero-has-image {
       min-height: 610px;
     }
@@ -357,7 +359,7 @@ $hero-keyword-text-color: $white !default;
 } // END DESKTOP MIN VIEW
 
 // ######################################################################### //
-/* DESKTOP VIEW */
+/* FULL DESKTOP VIEW */
 @media (min-width: 60em) {
 
   .hero-layout {
@@ -367,7 +369,11 @@ $hero-keyword-text-color: $white !default;
     }
 
     .hero-has-image {
-      min-height: 510px;
+      min-height: 427px;
+    }
+
+    .hero-has-image.hero-news {
+      min-height: 512px;
     }
 
     .hero-inner.hero-news-inner{
@@ -396,8 +402,15 @@ $hero-keyword-text-color: $white !default;
 
     }
 
-
   } // END HERO LAYOUT
 
+  // FRONT MIN HEIGHT ADJUSTMENT
+  .front {
+    .hero-layout {
+      .hero-landing.hero-has-image {
+        min-height: 512px;
+      }
+    }
+  }
 
 } // END DESKTOP VIEW
