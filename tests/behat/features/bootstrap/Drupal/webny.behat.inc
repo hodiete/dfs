@@ -423,4 +423,47 @@ class WebnySubContext extends DrupalSubContextBase {
 
   }
 
+  /**
+   * @Then /^I should see in the header "([^"]*)":"([^"]*)"$/
+   */
+  public function iShouldSeeInTheHeader($header, $value)
+  {
+    $headers = $this->getSession()->getResponseHeaders();
+    if (array_key_exists($header, $headers)){
+      if ($headers[$header][0] != $value) {
+        throw new \Exception(sprintf("Did not see %s with value %s.", $header, $value));
+      }
+    }else{
+      throw new \Exception(sprintf("Did not see %s with value %s.", $header, $value));
+    }
+  }
+
+
+  /**
+   * Clear out the Varnish Cache
+   *
+   * @Then I want the varnish cache to go the way of the dinosaurs
+   */
+  public function iWantTheVarnishCacheToGoTheWayOfTheDinosaurs() {
+
+    $current_url = $this->getSession()->getCurrentUrl();
+
+
+
+    // Create a stream
+    $opts = array(
+      'http'=>array(
+        'method'=>"PURGE",
+        'header'=>"X-Acquia-Purge: $current_url\r\n"
+      )
+    );
+
+    $context = stream_context_create($opts);
+
+    // Open the file using the HTTP headers set above
+    $file = file_get_contents($current_url, false, $context);
+  }
+
+
+
 }

@@ -26,3 +26,4 @@ Feature: Varnish Cache Clearing
     Then I should see in the header "X-Cache":"MISS"
     When I reload the page
     Then I should see in the header "X-Cache":"HIT"
+    Then I want the varnish cache to go the way of the dinosaurs
