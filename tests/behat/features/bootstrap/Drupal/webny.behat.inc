@@ -448,8 +448,6 @@ class WebnySubContext extends DrupalSubContextBase {
 
     $current_url = $this->getSession()->getCurrentUrl();
 
-
-
     // Create a stream
     $opts = array(
       'http'=>array(
@@ -463,7 +461,5 @@ class WebnySubContext extends DrupalSubContextBase {
     // Open the file using the HTTP headers set above
     $file = file_get_contents($current_url, false, $context);
   }
-
-
 
 }
