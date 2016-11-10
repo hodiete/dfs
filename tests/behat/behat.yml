@@ -14,10 +14,12 @@ default:
       default_session: goutte
       javascript_session: selenium2
       goutte: ~
-      files_path: "%paths.base%/media"
     Drupal\DrupalExtension:
       blackbox: ~
       api_driver: "drupal"
+      subcontexts:
+        paths:
+          - %paths.base%/features/bootstrap/Drupal
       text:
         username_field: "Username"
         password_field: "Password"
