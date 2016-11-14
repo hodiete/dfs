@@ -64,11 +64,13 @@ $menu-arrow-left-top-tablet: 31px;
 $menu-arrow-active-link-padding: 48px;
 
 // GLOBAL NAVIGATION COLORS
-$globalnav-primary-color:     $color-primary;
-$globalnav-secondary-color:   $color-secondary;
+$globalnav-primary-color:     $color-primary !default;
+$globalnav-secondary-color:   lighten($color-primary, 5%) !default;
 
 // ########################################################################################
 // MIXINS
+
+
 
 @mixin in-context-menu() {
   > ul {
@@ -594,7 +596,7 @@ $globalnav-secondary-color:   $color-secondary;
 
     a:hover,
     a:active {
-      background-color: $color-hover-nav;
+      background-color: $globalnav-secondary-color;
     }
 
     ul {
@@ -614,7 +616,7 @@ $globalnav-secondary-color:   $color-secondary;
             ul > li {
               a:hover,
               a:active {
-                background-color: $color-hover-nav;
+                background-color: $globalnav-secondary-color;
               }
 
             }
@@ -636,7 +638,7 @@ $globalnav-secondary-color:   $color-secondary;
             ul > li {
               a:hover,
               a:active {
-                background-color: $color-hover-nav;
+                background-color: $globalnav-secondary-color;
               }
 
             }

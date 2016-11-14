@@ -7,10 +7,17 @@
 // Style guide: components.get_involved
 
 // color variables
-$get-inv-frame-bkgd-color: $color-secondary !default;
-$get-inv-frame-title-color: $black !default;
-$get-inv-frame-headline-color: $white !default;
-$get-inv-frame-description-color: $black !default;
+$get-inv-frame-bkgd-color: $color-accent-primary !default;
+$get-inv-frame-title-color: $color-mono-black !default;
+$get-inv-frame-headline-color: $color-primary !default;
+$get-inv-frame-description-color: $color-mono-black !default;
+
+// REASSIGNED VALS FOR GLOBAL SCOPE -- GET INVOLVED 
+// this overrides general button variables in config.scss
+$getinv-button-border-color:            $color-mono-black !default;
+$getinv-button-text-color:              $color-mono-black !default;
+$getinv-button-back-color:              $button-bkgd-transparent !default;
+$getinv-button-hover-back-color:        $button-white-50 !default;
 
 // ######################################################################### //
 /* START STYLING MOBILE FIRST UNDER HERE */
@@ -20,7 +27,7 @@ $get-inv-frame-description-color: $black !default;
 }
 
 .paragraph--type--webny-get-involved-pgtype {
-  background-color: $color-secondary;
+  background-color: $get-inv-frame-bkgd-color;
   margin: 0 auto;
   text-align: center;
   //padding: 3%;
@@ -72,35 +79,25 @@ $get-inv-frame-description-color: $black !default;
 }
 
 .get-involved--field-webny-get-inv-cta {
-  @extend .buttonTransparentDk;
 
-  //  display: block;
-  padding: 20px 20px;
-  margin-top: 1.5em;
-  width: 90%;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 7% auto;
+  text-align: center;
 
+  a {
   // BUTTON DYNAMIC REQUIREMENTS
   border: $frame-button-border-size solid $getinv-button-border-color;
   color: $getinv-button-text-color;
   background-color: $getinv-button-back-color;
 
-  &:hover {
-    background-color: $getinv-button-hover-back-color;
-    border-color: $getinv-button-border-color;
-  }
-
-  a{
-    color: $getinv-button-text-color;
-    font-size: $frame-button-font-size;
-    letter-spacing: $frame-button-letter-spacing;
-    text-decoration: $frame-button-link-decoration;
-
-    &:visited, &:link{
-      color: $getinv-button-text-color;
+    &:hover {
+      background-color: $getinv-button-hover-back-color;
+      border-color: $getinv-button-border-color;
+      text-decoration: none;
     }
   }
+
+    // BUTTON CALLS
+    @include frame-button-base();
 
 }
 

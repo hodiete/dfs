@@ -28,11 +28,11 @@
 // Style guide: components.hero.news
 
 // color variables
-$hero-bkgd-color: $color-tertiary !default;
-$hero-text-color: $white !default;
-$hero-keyword-bkgd-color: $color-secondary !default;
-$hero-keyword-hover-bkgd-color: $button-bkgd-hover-color !default;
-$hero-keyword-text-color: $white !default;
+$hero-bkgd-color: $color-secondary !default;
+$hero-text-color: $color-mono-white !default;
+$hero-keyword-bkgd-color: $color-accent-primary !default;
+$hero-keyword-hover-bkgd-color: $color-accent-secondary !default;
+$hero-keyword-text-color: $color-mono-white !default;
 
 // ************************* //
 // HERO PARTIAL
@@ -280,7 +280,7 @@ $hero-keyword-text-color: $white !default;
 
 
     .hero-no-image.hero-ipage,
-    .hero-no-image.hero-landing{
+    .hero-no-image.hero-landing {
       min-height: 385px;
 
       .hero-inner{
@@ -317,7 +317,7 @@ $hero-keyword-text-color: $white !default;
     h1,h2{
       font-size: 48px;
       line-height: 60px;
-      color: $white;
+      color: $color-mono-white;
       font-weight: 800;
     }
 
