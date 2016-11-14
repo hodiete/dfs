@@ -219,6 +219,24 @@ $hero-keyword-text-color: $white !default;
     text-align: left;
   }
 
+  // =====================================================================
+  // HERO HAS NO IMAGE -- MAKE RELATIVE
+  .hero-news + .hero-no-image-wrap{
+    display: block;
+    padding: 40px 4%;
+    background-color: $hero-bkgd-color;
+
+    .hero-news-inner {
+      position: relative;
+      padding: 0;
+      margin: 0;
+      width: 100%;
+    }
+  }
+
+  .hero-no-image.hero-news {
+    display: none;
+  }
 
 } // END HERO-LAYOUT
 
@@ -226,28 +244,7 @@ $hero-keyword-text-color: $white !default;
 /* MIN TABLET VIEW */
 @media (min-width: $min-tab) {
 
-  .hero-layout {
-
-    // =====================================================================
-    // HERO HAS NO IMAGE -- MAKE RELATIVE
-    .hero-no-image-wrap {
-      display: block;
-      padding: 40px 4%;
-      background-color: $hero-bkgd-color;
-
-      .hero-news-inner {
-        position: relative;
-        padding: 0;
-        margin: 0;
-        width: 100%;
-      }
-    }
-
-    .hero-no-image.hero-news {
-      display: none;
-    }
-
-  } // END HERO LAYOUT
+  .hero-layout {} // END HERO LAYOUT
 
 } // END TABLET
 
