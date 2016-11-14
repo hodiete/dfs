@@ -1203,7 +1203,6 @@ function webny_configuration_update_8069() {
 
 /**
  * Implements hook_update_n().
- *
  * Enable webny_base module.
  */
 function webny_configuration_update_8070()
@@ -1299,6 +1298,28 @@ print webny_configuration_enable_module('webny_phone_contact_paragraph');
 print webny_configuration_uninstall_module('webny_contact_content_type');
 print webny_configuration_enable_module('webny_contact_content_type');
 
+}
+
+/**
+ * Implements hook_update_n().
+ *
+ * Update News Content type to remove summary from Hero display.
+ */
+function webny_configuration_update_8075(){
+  \Drupal::service('module_installer')
+      ->uninstall(['webny_news_content_type']);
+  \Drupal::service('module_installer')
+      ->install(['webny_news_content_type']);
+}
+
+/**
+ * Implements hook_update_n().
+ *
+ * Refresh the inner page content type
+ */
+function webny_configuration_update_8076() {
+   print webny_configuration_uninstall_module('webny_inner_page_content_type');
+   print webny_configuration_enable_module('webny_inner_page_content_type');
 }
 
 /**
