@@ -1,0 +1,39 @@
+// Use "icon-" class to render icons
+[class^="icon-"], [class*=" icon-"] {
+  font-family: 'icomoon';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  &:before {
+    font-family: 'icomoon';
+  }
+}
+
+// Map icon names to font unicode characters
+$icons: (
+        document:"\e615",
+        download:"\e622",
+        email:"\e617",
+        facebook:"\e621",
+        twitter:"\e604",
+        youtube:"\e637",
+        instagram:"\e60f",
+        google_plus:"\e627",
+        soundcloud:"\e63d",
+        square:"\e63b",
+        vine:"\e602",
+        flickr:"\e620",
+        rss:"\e61a",
+        pinterest:"\e60a",
+        tumblr:"\e634",
+        linkedin:"\e62a",
+        vimeo:"\e636",
+        phone:"\e62d",
+);
