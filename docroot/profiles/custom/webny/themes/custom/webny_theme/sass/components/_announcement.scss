@@ -33,13 +33,17 @@
 // color variables
 $announce-frame-title-color: $color-primary !default;
 $announce-frame-headline-color: $color-mono-black !default;
-$announce-frame-item-bkgd-color: $gray-lite !default;
+$announce-frame-item-bkgd-color: $color-mono-lt !default;
 $announce-frame-item-title-color: $color-mono-black !default;
 $announce-frame-item-text-color: $color-mono-black !default;
 $announce-frame-headline-font-size: 24px;
 $announce-frame-headline-line-height: 30px;
 // $announce-frame-button: !default;
-
+// REASSIGNED VALS FOR GLOBAL SCOPE -- ANNOUNCEMENT
+$announcement-button-border-color:      $color-primary !default;
+$announcement-button-text-color:        $color-mono-white !default;
+$announcement-button-back-color:        $color-primary !default;
+$announcement-button-hover-back-color:  $color-mono-black !default;
 
 
 
@@ -79,7 +83,7 @@ $announce-frame-headline-line-height: 30px;
     .webny-announcement-button{
         display: block;
         vertical-align: middle;
-        color: $color-mono-black;   
+        color: $announce-frame-item-text-color;   
         width: 99%;
         
     }
@@ -96,7 +100,7 @@ $announce-frame-headline-line-height: 30px;
             padding-bottom: 0;
 
             a{
-                color: $color-mono-black;
+                color: $announce-frame-item-title-color;
             }
         }
 
