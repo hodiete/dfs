@@ -40,9 +40,10 @@ $announce-frame-headline-font-size: 24px;
 $announce-frame-headline-line-height: 30px;
 // $announce-frame-button: !default;
 // REASSIGNED VALS FOR GLOBAL SCOPE -- ANNOUNCEMENT
+// this overrides general button variables in config.scss
 $announcement-button-border-color:      $color-primary !default;
-$announcement-button-text-color:        $color-mono-white !default;
-$announcement-button-back-color:        $color-primary !default;
+$announcement-button-text-color:        $button-text-color !default;
+$announcement-button-back-color:        $button-bkgd-color!default;
 $announcement-button-hover-back-color:  $color-mono-black !default;
 
 
