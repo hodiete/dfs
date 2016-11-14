@@ -91,6 +91,23 @@ $hero-keyword-text-color: $white !default;
     position: relative;
   }
 
+  .hero-news-inner,
+  .hero-ipage-inner,
+  .hero-landing-inner{
+    position: absolute;
+    &.hero-has-image-content {
+      top: 0;
+      left: 0;
+      background: none;
+    }
+  }
+
+  .hero-no-image + .hero-ipage-inner,
+  .hero-no-image + .hero-landing-inner{
+    position: absolute;
+  }
+
+
   .hero-header{
     background-position: 50% 0;
     background-repeat: no-repeat;
