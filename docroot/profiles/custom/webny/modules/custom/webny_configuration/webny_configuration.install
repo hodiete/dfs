@@ -1347,7 +1347,7 @@ function webny_configuration_update_8077() {
  * Refresh the landing and inner page content type
  * Remove the toggle for hero
  */
-function webny_configuration_update_8078() {
+function webny_configuration_update_8079() {
 
     // ====================================================================================
     // REMOVE THE LEGACY HERO TOGGLE FROM INNER AND LANDING.
@@ -1393,10 +1393,6 @@ function webny_configuration_update_8078() {
     // REFRESH THE LANDING PAGE
         print webny_configuration_uninstall_module('webny_landing_page_content_type');
         print webny_configuration_enable_module('webny_landing_page_content_type');
-
-    // REFRESH DEMO CONTENT
-        print webny_configuration_uninstall_module('webny_demo_content');
-        print webny_configuration_enable_module('webny_demo_content');
 
 }
 
