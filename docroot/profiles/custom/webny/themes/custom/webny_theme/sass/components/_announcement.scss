@@ -31,15 +31,20 @@
 // Style guide: components.announcement.inner
 
 // color variables
-$announce-frame-title-color: $color-secondary !default;
-$announce-frame-headline-color: $black !default;
-$announce-frame-item-bkgd-color: $gray-lite !default;
-$announce-frame-item-title-color: $black !default;
-$announce-frame-item-text-color: $black !default;
+$announce-frame-title-color: $color-primary !default;
+$announce-frame-headline-color: $color-mono-black !default;
+$announce-frame-item-bkgd-color: $color-mono-lt !default;
+$announce-frame-item-title-color: $color-mono-black !default;
+$announce-frame-item-text-color: $color-mono-black !default;
 $announce-frame-headline-font-size: 24px;
 $announce-frame-headline-line-height: 30px;
 // $announce-frame-button: !default;
-
+// REASSIGNED VALS FOR GLOBAL SCOPE -- ANNOUNCEMENT
+// this overrides general button variables in config.scss
+$announcement-button-border-color:      $color-primary !default;
+$announcement-button-text-color:        $button-text-color !default;
+$announcement-button-back-color:        $button-bkgd-color!default;
+$announcement-button-hover-back-color:  $color-mono-black !default;
 
 
 
@@ -79,7 +84,7 @@ $announce-frame-headline-line-height: 30px;
     .webny-announcement-button{
         display: block;
         vertical-align: middle;
-        color: $black;   
+        color: $announce-frame-item-text-color;   
         width: 99%;
         
     }
@@ -96,7 +101,7 @@ $announce-frame-headline-line-height: 30px;
             padding-bottom: 0;
 
             a{
-                color: $black;
+                color: $announce-frame-item-title-color;
             }
         }
 
