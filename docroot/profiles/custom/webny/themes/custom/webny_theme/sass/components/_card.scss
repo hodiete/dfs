@@ -134,7 +134,8 @@ $featured-card-arrow-color-hover: scale-color($featured-card-arrow-color, $light
   border-top: 1px solid $gray-lite;
   
   letter-spacing: 1px;
-  .icon-right_carat {
+
+  .icon-right-caret {
     font-weight: bold;
     color: $featured-card-arrow-color;
     &:hover {
@@ -149,6 +150,8 @@ $featured-card-arrow-color-hover: scale-color($featured-card-arrow-color, $light
     color: $color-mono-black;
   }
 }
+
+.icon-right-caret{ @include icon(before, fa-caret-right);}
 
 .paragraph--type--webny-card-paragraph-type {
   @include breakpoint($min-mobile) {
