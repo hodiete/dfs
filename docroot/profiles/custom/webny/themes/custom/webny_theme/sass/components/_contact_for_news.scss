@@ -156,6 +156,10 @@ $contact-for-news-icons: $color-secondary !default;
       color: $color-primary;
       padding-right: 15px;
       display: inline-block;
+
+      &:hover {
+        color: $color-secondary;
+      }
     }
     .icon-facebook {@include icon(before, fa-facebook);}
     .icon-twitter {@include icon(before, fa-twitter);}

@@ -162,6 +162,11 @@ footer {
     bottom:14px;
     height: 20px;
     width: 20px;
+    color: $color-primary;
+
+    &:hover {
+      color: $color-secondary;
+    }
   }
 
   .social-media a {
@@ -179,54 +184,38 @@ footer {
       background-image: url(../icons/social/black/icon-social-delicious.png);
     }
     a[href*="facebook"]{@include icon(before,fa-facebook);}
-    a[href*="feed"]::before {
-      background-image: url(../icons/social/black/icon-social-feed.png);
-    }
-    a[href*="flickr"]::before {
-      background-image: url(../icons/social/black/icon-social-flickr.png);
-    }
-    a[href*="foursqaure"]::before {
-      background-image: url(../icons/social/black/icon-social-foursqaure.png);
-    }
-    a[href*="github"]::before {
-      background-image: url(../icons/social/black/icon-social-github.png);
-    }
-    a[href*="google"]::before {
-      background-image: url(../icons/social/black/icon-social-google-plus.png);
-    }
-    a[href*="instagram"]::before {
-      background-image: url(../icons/social/black/icon-social-instagram.png);
-    }
-    a[href*="linkedin"]::before {
-      background-image: url(../icons/social/black/icon-social-linkedin.png);
-    }
-    a[href*="mail"]::before {
-      background-image: url(../icons/social/black/icon-social-mail.png);
-    }
-    a[href*="pinterest"]::before {
-      background-image: url(../icons/social/black/icon-social-pinterest.png);
-    }
-    a[href*="reddit"]::before {
-      background-image: url(../icons/social/black/icon-social-reddit.png);
-    }
-    a[href*="share"]::before {
-      background-image: url(../icons/social/black/icon-social-share.png);
-    }
-    a[href*="tumblr"]::before {
-      background-image: url(../icons/social/black/icon-social-tumblr.png);
-    }
-    a[href*="twitter"]::before {
-      background-image: url(../icons/social/black/icon-social-twitter.png);
-    }
-    a[href*="vimeo"]::before {
-      background-image: url(../icons/social/black/icon-social-vimeo.png);
-    }
-    a[href*="yelp"]::before {
-      background-image: url(../icons/social/black/icon-social-yelp.png);
-    }
-    a[href*="youtube"]::before {
-      background-image: url(../icons/social/black/icon-social-youtube.png);
-    }
+
+    a[href*="feed"]{@include icon(before, fa-rss);}
+
+    a[href*="flickr"]{@include icon(before, fa-flickr);}
+
+    a[href*="foursquare"]{@include icon(before, fa-foursquare);}
+
+    a[href*="github"]{@include icon(before, fa-github-square);}
+
+    a[href*="google"]{@include icon(before, fa-google_plus);}
+
+    a[href*="instagram"]{@include icon(before, fa-instagram);}
+
+    a[href*="linkedin"]{@include icon(before, fa-linkedin-square);}
+
+    a[href*="mail"]{@include icon(before, fa-envelope);}
+
+    a[href*="pinterest"]{@include icon(before, fa-pinterest-p);}
+
+    a[href*="reddit"]{@include icon(before, fa-reddit-alien);}
+
+    a[href*="share"]{@include icon(before, fa-share);}
+
+    a[href*="tumblr"]{@include icon(before, fa-tumblr);}
+
+    a[href*="twitter"]{@include icon(before, fa-twitter);}
+
+    a[href*="vimeo"]{@include icon(before, fa-vimeo-square);}
+
+    a[href*="yelp"]{@include icon(before, fa-yelp);}
+
+    a[href*="youtube"]{@include icon(before, fa-youtube);}
 
   }
 
