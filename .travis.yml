@@ -74,12 +74,20 @@ before_script:
   - rm -f ~/.drush/cache/download/*---updates.drupal.org-release-history-*
   # Verify that no git diffs (caused by line ending variation) exist.
   # - git diff --exit-code
-  # The local.hostname must be set to 127.0.0.1:8888 because we are using drush runserver to run the site on Travis CI.
-  - drupal yaml:update:value project.yml project.local.hostname '127.0.0.1:8888'
+  # The local.hostname must be set to 0.0.0.0:6081, and NOT 127.0.0.1:8888, because we are using varnish
+  # in front of the drush runserver to run the site on Travis CI.
+  - drupal yaml:update:value project.yml project.local.hostname '0.0.0.0:6081'
   # Increasing SQL packet size to avoid time out errors.
   - mysql -u root -e 'SET GLOBAL wait_timeout = 36000;'
   - mysql -u root -e 'SET GLOBAL max_allowed_packet = 33554432;'
   - sudo service mysql restart
+  - curl https://repo.varnish-cache.org/debian/GPG-key.txt | sudo apt-key add -
+  - echo "deb https://repo.varnish-cache.org/ubuntu/ trusty varnish-3.0" | sudo tee -a /etc/apt/sources.list.d/varnish.list
+  - sudo apt-get update -qq
+  - sudo apt-get install varnish=3.0.7-1~trusty -y
+  - sudo cp ./acquia.vcl.j2 /etc/varnish/default.vcl
+  - sudo echo "14bac2e6-1e34-4770-8078-974373b76c90" >> sudo /etc/varnish/secret
+  - sudo service varnish restart
 
 script:
   - blt -Dbehat.run-server=true -Dcreate_alias=false -Dbehat.launch-phantom=true ci:build:validate:test

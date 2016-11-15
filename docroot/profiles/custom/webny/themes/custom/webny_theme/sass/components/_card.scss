@@ -7,9 +7,9 @@
 // Style guide: components.card
 
 // color variables
-$featured-card-frame-title-color: $color-secondary !default;
-$featured-card-frame-headline-color: $black !default;
-$featured-card-arrow-color: $color-secondary !default;
+$featured-card-frame-title-color: $color-primary !default;
+$featured-card-frame-headline-color: $color-mono-black !default;
+$featured-card-arrow-color: $color-primary !default;
 $featured-card-arrow-color-hover: scale-color($featured-card-arrow-color, $lightness: 20%) !default;
 
 // CARDS WRAPPER FOR PADDING
@@ -81,6 +81,7 @@ $featured-card-arrow-color-hover: scale-color($featured-card-arrow-color, $light
   flex-grow:1;
   img {
     border:none;
+    max-height: 220px;
   }
 }
 
@@ -111,7 +112,7 @@ $featured-card-arrow-color-hover: scale-color($featured-card-arrow-color, $light
   flex: 1 0 auto;
   font-weight: 400;
   a:link {
-    color:$medblue;
+    color:$text-blue;
   }
 }
 .webny-card .webny-card-date {
@@ -145,7 +146,7 @@ $featured-card-arrow-color-hover: scale-color($featured-card-arrow-color, $light
     font-size: 13px;
     text-transform:uppercase;
     text-decoration: none;
-    color: $black;
+    color: $color-mono-black;
   }
 }
 
@@ -163,7 +164,6 @@ $featured-card-arrow-color-hover: scale-color($featured-card-arrow-color, $light
     }
   }
 }
-
 
 .paragraph--type--webny-card-paragraph-type>div>div {
   @include breakpoint($min-pc) {

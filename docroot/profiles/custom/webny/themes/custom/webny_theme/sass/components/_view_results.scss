@@ -7,12 +7,12 @@
 // Style guide: components.views_results
 
 // color variables
-$views-results-stroke-color: $white !default;
+$views-results-stroke-color: $color-mono-white !default;
 $views-results-fill-color: $color-icon-primary !default;
 $results-highlight-color: $color-secondary !default;
 $results-head-bkgrnd: $color-secondary !default;
-$results-head-title: $black !default;
-$results-head-headline: $white !default;
+$results-head-title: $color-mono-black !default;
+$results-head-headline: $color-mono-white !default;
 $results-pager-color: $color-tertiary !default;
 //.st1 {stroke: red;}
 //.st2 {stroke:gray-lite;}
@@ -75,7 +75,7 @@ $results-pager-color: $color-tertiary !default;
 }
 
 .results {
-  //color: white;
+  //color: $color-mono-white;
   font-family: $base-font;
   background-color: $exposedbkgrnd;
   //float: left;
@@ -121,7 +121,7 @@ $results-pager-color: $color-tertiary !default;
     padding: 0;
 
     label {
-      color: $white;
+      color: $color-mono-white;
       font-size: 16px;
       font-weight: normal;
       margin: .25em 0;
@@ -131,12 +131,12 @@ $results-pager-color: $color-tertiary !default;
       border-style: solid;
       border-width: 1px;
       border-color: $darkgray;
-      color: $white;
+      color: $color-mono-white;
       margin-bottom: 20px;
     }
 
     input[type="text"]:focus, input[type="date"]:focus {
-      color: $black;
+      color: $color-mono-black;
     }
 
     .form-item-field-webny-news-global-keywords-target-id input {
@@ -309,18 +309,20 @@ $results-pager-color: $color-tertiary !default;
 // News listing - Filter icons
 .form-radios {
     .form-item-target-news-category {
-    padding: 0 1em 0 0;
-    margin-bottom: 20px;
-    input[type="radio"] {
-      display: none;
-    }
+      position: relative;
+      padding: 0 1em 0 2.5em;
+      margin-bottom: 20px;
+
+      input[type="radio"] {
+        display: none;
+      }
 
     label.option.active-filter-opt{
       color: $primarygold;
     }
 
     input[type="radio"] + label {
-      color: $white;
+      color: $color-mono-white;
       display:inline-block;
       margin:-1px 4px 0 0;
       vertical-align:middle;
@@ -328,11 +330,15 @@ $results-pager-color: $color-tertiary !default;
       &:hover {
         color: $primarygold;
         &:before {
-          color: $white;
+          color: $color-mono-white;
+          position: absolute;
+          left: 9px;
         }
       }
 
       &:before {
+        position: absolute;
+        left: 9px;
         color: #7d7d7d;
         font-family: $icon-font;
         content: "\e618";
@@ -346,6 +352,8 @@ $results-pager-color: $color-tertiary !default;
       color: $primarygold;
 
       &:before {
+        position: absolute;
+        left: 9px;
         color: $primarygold;
         font-family: $icon-font;
         content: "\e61f";
@@ -364,10 +372,13 @@ $results-pager-color: $color-tertiary !default;
         color: #f8a81f;
         font-family: $icon-font;
         content: "\e61f";
+        position: absolute;
+        left: 9px;
       }
       &:hover:before {
-        color: $white;
+        color: $color-mono-white;
         content: "\e623";
+        position: absolute;
       }
     }
   }
@@ -383,6 +394,8 @@ $results-pager-color: $color-tertiary !default;
       display: block;
       content: '';
       border-bottom: 1px solid #404040;
+      position: absolute;
+      left: 9px;
       padding: 0; margin: 0 0 2em;
     }
     &:after { display: none; }

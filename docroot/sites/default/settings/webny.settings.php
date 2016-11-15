@@ -1,6 +1,6 @@
 <?php
 /**
- * GA Configuration. 
+ * GA Configuration.
  */
 
 if ($is_ah_env) {
@@ -31,7 +31,7 @@ if ($is_ah_env) {
   switch ($ah_env) {
     case '01dev':
       # Disable page cache on dev. Note that this is set locally in development.services.yml.
-      $config['system.performance']['cache']['page']['max_age'] = 0;
+      $config['system.performance']['cache']['page']['max_age'] = 5;
       break;
     case '01live':
       $config['system.logging']['error_level'] = 'hide';
