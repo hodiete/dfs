@@ -106,6 +106,7 @@ Feature: Check for the existence and fields of content types
     And I should see text matching "Add Summary"
     And I should see text matching "Add Get Involved"
     And I should see text matching "Add WYSIWYG"
+    And I should see text matching "Views Field"
 
 # Check for the existence of a content type
 # CONTENT TYPE: Landing Page
