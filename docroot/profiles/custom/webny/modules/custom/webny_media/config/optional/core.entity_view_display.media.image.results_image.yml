@@ -9,11 +9,22 @@ dependencies:
     - field.field.media.image.field_media_in_library
     - field.field.media.image.field_media_keywords
     - media_entity.bundle.image
+    - responsive_image.styles.results_image
+  module:
+    - responsive_image
 id: media.image.results_image
 targetEntityType: media
 bundle: image
 mode: results_image
-content: {  }
+content:
+  field_image:
+    type: responsive_image
+    weight: 0
+    label: hidden
+    settings:
+      responsive_image_style: results_image
+      image_link: ''
+    third_party_settings: {  }
 hidden:
   created: true
   field_brands: true
@@ -21,7 +32,6 @@ hidden:
   field_description: true
   field_events: true
   field_expires: true
-  field_image: true
   field_media_in_library: true
   field_media_keywords: true
   field_people: true
