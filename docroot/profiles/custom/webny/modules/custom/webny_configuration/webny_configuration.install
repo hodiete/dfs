@@ -1325,9 +1325,29 @@ function webny_configuration_update_8076() {
 /**
  * Implements hook_update_n().
  *
- * Refresh the inner page content type
+ * Imports updated news listing view.
  */
 function webny_configuration_update_8077() {
+  $config_factory = \Drupal::configFactory();
+  $profile_config = \Drupal::service('webny.profile_config');
+
+  // Import new/changed configuration.
+  $config_to_update = [
+    // Updated news listing view.
+      'views.view.webny_news_listing',
+  ];
+  $profile_config->bulkImport($config_to_update);
+  // Clear the config cache.
+  $config_factory->reset();
+}
+
+/**
+ * Implements hook_update_n().
+ *
+ * Refresh the landing and inner page content type
+ * Remove the toggle for hero
+ */
+function webny_configuration_update_8078() {
 
     // ====================================================================================
     // REMOVE THE LEGACY HERO TOGGLE FROM INNER AND LANDING.
@@ -1375,8 +1395,8 @@ function webny_configuration_update_8077() {
         print webny_configuration_enable_module('webny_landing_page_content_type');
 
     // REFRESH DEMO CONTENT
-    //    print webny_configuration_uninstall_module('webny_demo_content');
-    //    print webny_configuration_enable_module('webny_demo_content');
+        print webny_configuration_uninstall_module('webny_demo_content');
+        print webny_configuration_enable_module('webny_demo_content');
 
 }
 
