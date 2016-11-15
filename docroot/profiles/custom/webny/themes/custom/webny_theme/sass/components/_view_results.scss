@@ -7,12 +7,12 @@
 // Style guide: components.views_results
 
 // color variables
-$views-results-stroke-color: $white !default;
+$views-results-stroke-color: $color-mono-white !default;
 $views-results-fill-color: $color-icon-primary !default;
 $results-highlight-color: $color-secondary !default;
 $results-head-bkgrnd: $color-secondary !default;
-$results-head-title: $black !default;
-$results-head-headline: $white !default;
+$results-head-title: $color-mono-black !default;
+$results-head-headline: $color-mono-white !default;
 $results-pager-color: $color-tertiary !default;
 //.st1 {stroke: red;}
 //.st2 {stroke:gray-lite;}
@@ -75,7 +75,7 @@ $results-pager-color: $color-tertiary !default;
 }
 
 .results {
-  //color: white;
+  //color: $color-mono-white;
   font-family: $base-font;
   background-color: $exposedbkgrnd;
   //float: left;
@@ -121,7 +121,7 @@ $results-pager-color: $color-tertiary !default;
     padding: 0;
 
     label {
-      color: $white;
+      color: $color-mono-white;
       font-size: 16px;
       font-weight: normal;
       margin: .25em 0;
@@ -131,12 +131,12 @@ $results-pager-color: $color-tertiary !default;
       border-style: solid;
       border-width: 1px;
       border-color: $darkgray;
-      color: $white;
+      color: $color-mono-white;
       margin-bottom: 20px;
     }
 
     input[type="text"]:focus, input[type="date"]:focus {
-      color: $black;
+      color: $color-mono-black;
     }
 
     .form-item-field-webny-news-global-keywords-target-id input {
@@ -322,7 +322,7 @@ $results-pager-color: $color-tertiary !default;
     }
 
     input[type="radio"] + label {
-      color: $white;
+      color: $color-mono-white;
       display:inline-block;
       margin:-1px 4px 0 0;
       vertical-align:middle;
@@ -330,9 +330,9 @@ $results-pager-color: $color-tertiary !default;
       &:hover {
         color: $primarygold;
         &:before {
+          color: $color-mono-white;
           position: absolute;
           left: 9px;
-          color: $white;
         }
       }
 
@@ -376,7 +376,7 @@ $results-pager-color: $color-tertiary !default;
         left: 9px;
       }
       &:hover:before {
-        color: $white;
+        color: $color-mono-white;
         content: "\e623";
         position: absolute;
       }
