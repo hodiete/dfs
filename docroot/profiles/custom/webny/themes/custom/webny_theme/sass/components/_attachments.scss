@@ -27,7 +27,7 @@
   font-family: $base-font;
   font-weight: 800;
   font-size: 2em;
-  color: $primaryblue;
+  color: $color-primary;
   padding-bottom: 0;
 }
 
@@ -57,10 +57,12 @@
   width: 10%;
 }
 
+.icon-download{ @include icon(before, fa-download);}
+
 .icon-download{
-    color: $primarygold;
+    color: $color-accent-primary;
     display: inline-block;
-   padding: 20px 20px 15px 20px;
+   padding: 25px 20px 0px 20px;
 }
 
 .doc-info {
@@ -180,7 +182,7 @@
 }
   
   .icon-download{
-    color: $primarygold;
+    color: $color-accent-primary;
     display: block;
 }
   
@@ -208,14 +210,17 @@
   margin: 0 auto;
 }
 
+.icon-document{ @include icon(before, fa-document);}
+
 .icon-document {
   display: inline-block;
-  color: $text-blue;
+  color: $color-primary;
   padding: 5px 20px 20px 20px;
   text-align: center;
-  vertical-align: top;
+ // vertical-align: top;
   position: absolute;
   left: -20%;
+  top: 37%;
 }
   
 .doc-info {
