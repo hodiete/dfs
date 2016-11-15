@@ -58,6 +58,9 @@ $contact-for-news-icons: $color-secondary !default;
       width: 20px;
       color: $medblue;
     }
+    .icon-phone{ @include icon(before, phone);}
+    .icon-email{ @include icon(before, email);}
+    .icon-square{ @include icon(before, square);}
   }
 
   .contact--field-webny-contact-phone,
@@ -154,6 +157,14 @@ $contact-for-news-icons: $color-secondary !default;
       padding-right: 15px;
       display: inline-block;
     }
+    .icon-facebook {@include icon(before, fa-facebook);}
+    .icon-twitter {@include icon(before, fa-twitter);}
+    .icon-youtube {@include icon(before, fa-youtube);}
+    .icon-instagram {@include icon(before, fa-instagram);}
+    .icon-google_plus {@include icon(before, fa-google_plus);}
+    .icon-soundcloud {@include icon(before, fa-soundcloud);}
+    .icon-square {@include icon(before, square);}
+    .icon-vine {@include icon(before, fa-vine);}
   }
 
 }
