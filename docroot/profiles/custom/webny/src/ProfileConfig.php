@@ -140,6 +140,8 @@ class ProfileConfig {
     $locations = new FileLocator([
       $this->getProfilePath() . '/' . self::CONFIG_DIR . '/install',
       $this->getProfilePath() . '/' . self::CONFIG_DIR . '/optional',
+      $this->getProfilePath() . '/modules/custom/webny_media' . '/install',
+      $this->getProfilePath() . '/modules/custom/webny_media' . '/optional',
       $this->getProfileFeatureConfigPath('base') . '/install',
       $this->getProfileFeatureConfigPath('news_content_type') . '/install',
       $this->getProfileFeatureConfigPath('news_content_type') . '/optional',
