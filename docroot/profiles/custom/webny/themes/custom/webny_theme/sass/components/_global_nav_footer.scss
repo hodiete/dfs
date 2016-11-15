@@ -178,9 +178,7 @@ footer {
     a[href*="delicious"]::before {
       background-image: url(../icons/social/black/icon-social-delicious.png);
     }
-    a[href*="facebook"]::before {
-      background-image: url(../icons/social/black/icon-social-facebook.png);
-    }
+    a[href*="facebook"]{@include icon(before,fa-facebook);}
     a[href*="feed"]::before {
       background-image: url(../icons/social/black/icon-social-feed.png);
     }
@@ -229,6 +227,7 @@ footer {
     a[href*="youtube"]::before {
       background-image: url(../icons/social/black/icon-social-youtube.png);
     }
+
   }
 
   footer {
