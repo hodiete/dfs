@@ -1,4 +1,4 @@
-@varnish @api
+@api @varnish
 Feature: Varnish Cache Clearing
   -Check to make sure the Varnish is behaving as expected
 
