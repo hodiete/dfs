@@ -348,6 +348,9 @@ $globalnav-secondary-color:   lighten($color-primary, 5%) !default;
         > ul {
           padding-left: 15px;
           display:inline-block;
+          & > li:hover {
+        text-decoration: underline;
+      }
 
           li {
             a,
@@ -436,6 +439,9 @@ $globalnav-secondary-color:   lighten($color-primary, 5%) !default;
     &.stacked.horizontal{
       height: auto;
       font-size: 16px;
+       & > ul > li:hover {
+        text-decoration: underline;
+      }
 
       h1 {
         width: $drop-down-width-desktop;
