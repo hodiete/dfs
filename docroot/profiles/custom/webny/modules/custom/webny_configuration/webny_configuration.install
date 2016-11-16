@@ -1486,8 +1486,8 @@ function webny_configuration_update_8080()
         'core.entity_view_display.media.image.results_image',
         'core.entity_view_display.media.image.thumbnail',
         'core.entity_view_display.media.image.wysiwyg',
-        'image.style.bio_frame.yml',
-        'responsive_image.styles.bio_frame.yml',
+        'image.style.bio_frame',
+        'responsive_image.styles.bio_frame',
     ];
 
     $profile_config->bulkImport($config_to_update);
