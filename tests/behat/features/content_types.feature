@@ -96,7 +96,7 @@ Feature: Check for the existence and fields of content types
     And I should see text matching "Summary/Description"
     And I should see text matching "Hero fields"
     And I should see text matching "Hero Image"
-    And I should see text matching "Hero Visibility Option"
+    And I should see text matching "Hero/Title Visibility Options"
     And I should see text matching "Hero Button \(additional\)"
     And I should see text matching "Hero Button"
     And I should see text matching "Frames of Content"
@@ -106,6 +106,7 @@ Feature: Check for the existence and fields of content types
     And I should see text matching "Add Summary"
     And I should see text matching "Add Get Involved"
     And I should see text matching "Add WYSIWYG"
+    And I should see text matching "Views Field"
 
 # Check for the existence of a content type
 # CONTENT TYPE: Landing Page
@@ -243,7 +244,7 @@ Feature: Check for the existence and fields of content types
   #And I should see text matching "Hero Button"
   #And I should see text matching "Hero Button \(Additional\)"
     And I should see text matching "Hero Title"
-    And I should see text matching "Hero Visibility Option"
+    And I should see text matching "Hero/Title Visibility Options"
     And I should see text matching "Image"
     And I should see text matching "Short Title"
     And I should see text matching "Sub Title"

@@ -3,12 +3,13 @@ status: true
 dependencies:
   module:
     - node
-id: node.field_webny_page_hero_toggle
-field_name: field_webny_page_hero_toggle
+    - viewfield
+id: node.field_webny_results_view_to_disp
+field_name: field_webny_results_view_to_disp
 entity_type: node
-type: boolean
+type: viewfield
 settings: {  }
-module: core
+module: viewfield
 locked: false
 cardinality: 1
 translatable: true
