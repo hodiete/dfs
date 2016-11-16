@@ -1436,7 +1436,8 @@ function webny_configuration_update_8079() {
  *
  * enable ViewField module, refresh landing page with optional config.
  */
-function webny_configuration_update_8080() {
+function webny_configuration_update_8080()
+{
 
   \Drupal::service('module_installer')
       ->install(['viewfield']);
@@ -1461,6 +1462,39 @@ function webny_configuration_update_8080() {
   // Clear the config cache.
   $config_factory->reset();
 }
+
+  /**
+   * Implements hook_update_n().
+   *
+   * Refreshes the media module with updates to bioframe
+   * Refreshes the contact content type
+   */
+  function webny_configuration_update_8082() {
+
+
+    // REFRESH MEDIA
+    $config_factory = \Drupal::configFactory();
+    $profile_config = \Drupal::service('webny.profile_config');
+
+    // Import new/changed configuration.
+    $config_to_update = [
+      // Updated media custom files to add Bio Frame image style.
+        'core.entity_view_display.media.image.default',
+        'core.entity_view_display.media.image.bio_frame',
+        'core.entity_view_display.media.image.results_image',
+        'core.entity_view_display.media.image.thumbnail',
+        'core.entity_view_display.media.image.wysiwyg',
+    ];
+
+    $profile_config->bulkImport($config_to_update);
+
+    // Clear the config cache.
+    $config_factory->reset();
+
+    // REFRESH THE CONTACT CONTENT TYPE
+    print webny_configuration_uninstall_module('webny_contact_content_type');
+    print webny_configuration_enable_module('webny_contact_content_type');
+  }
 
 /**
  * Helper function to enable a Drupal module and print the result.
