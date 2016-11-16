@@ -11,17 +11,33 @@
 
 {# @PARAMS #}
 {% set hero_image = file_url(node.field_webny_page_image.entity.field_image.entity.uri.value) %}
+{% set title = '' %}
+{% set hero = '' %}
 
-<div class="landing-title-area">
+{# GET VARS FOR DISPLAYING HERO AND TITLES #}
+{%  for k,v in node.field_webny_page_vis_options %}
 
-    <!-- HEADLINE LABEL -->
-    <div class="landing-title">
-        <h1>{{ label }}</h1>
+    {% if node.field_webny_page_vis_options[k].value == 'hero' %}
+        {% set hero = 'show' %}
+    {% endif %}
+    {% if node.field_webny_page_vis_options[k].value == 'title' %}
+        {% set title = 'show' %}
+    {% endif %}
+
+{% endfor %}
+
+{% if title == 'show' %}
+    <div class="landing-title-area">
+
+        <!-- HEADLINE LABEL -->
+        <div class="landing-title">
+            <h1>{{ label }}</h1>
+        </div>
+
     </div>
+{% endif %}
 
-</div>
-
-{% if node.field_webny_page_hero_toggle.value == 1 %}
+{% if hero == 'show' %}
     <article {{ attributes.addClass('hero-layout') }}>
 
         {% if hero_image == '/' %}

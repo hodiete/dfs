@@ -3,6 +3,7 @@ description: 'Provide Landing Page content type and related configuration. This 
 type: module
 core: 8.x
 dependencies:
+  - entity_browser
   - entity_reference_revisions
   - features
   - field
@@ -12,18 +13,22 @@ dependencies:
   - media_entity
   - menu_ui
   - node
+  - options
   - paragraphs
   - path
   - smart_trim
   - taxonomy
   - text
   - user
+  - webny_base
   - webny_bio_frame
   - webny_get_involved_frame
   - webny_global_and_agency_taxonomies
   - webny_inner_page_content_type
+  - webny_media
+  - webny_paragraphs_types
   - webny_summary_frame
   - webny_wysiwyg_frame
   - workbench_moderation
-version: 8.x-1.7
+version: 8.x-1.8
 package: WebNY
