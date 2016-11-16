@@ -1,0 +1,28 @@
+uuid: 12bb93a6-03de-4700-ac4f-13529e9db07b
+langcode: en
+status: true
+dependencies:
+  config:
+    - image.style.bio_frame
+  theme:
+    - webny_theme
+id: bio_frame
+label: 'Bio Frame'
+image_style_mappings:
+  -
+    breakpoint_id: webny_theme.wide
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: bio_frame
+  -
+    breakpoint_id: webny_theme.narrow
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: bio_frame
+  -
+    breakpoint_id: webny_theme.mobile
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: bio_frame
+breakpoint_group: webny_theme
+fallback_image_style: bio_frame
