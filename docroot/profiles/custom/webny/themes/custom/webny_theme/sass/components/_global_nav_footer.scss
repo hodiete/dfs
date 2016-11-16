@@ -152,27 +152,33 @@ footer {
   .nys-global-footer a:active,
   .nys-global-footer a:focus  {
     color:$nav-bottom-text-active-color;
-    //text-decoration:underline;
+    text-decoration:underline;
   }
 
   .social-media a::before {
     content: '';
-    position: absolute;
-    left:0;
-    bottom:14px;
+    position: relative;
     height: 20px;
     width: 20px;
+    padding-right: 15px;
     color: $color-primary;
+    text-decoration: none;
   }
 
-  .social-media a:hover:before {
+  .social-media a:hover::before {
     color: $color-secondary;
+    text-decoration: none;
   }
 
   .social-media a {
     height: 20px;
     padding: 10px 0 10px 25px;
     position: relative;
+    text-decoration: none;
+  }
+
+  .icon-instagram a:hover:before {
+    text-decoration: none;
   }
 
   /* need to fix this to allow different agency color schemes, need to add svg option see NDD-92 notes */
