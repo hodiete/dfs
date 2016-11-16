@@ -156,11 +156,25 @@ $contact-for-news-icons: $color-secondary !default;
       color: $color-primary;
       padding-right: 15px;
       display: inline-block;
-
-      &:hover {
-        color: $color-secondary;
-      }
     }
+
+    .icon-facebook:hover:before,
+    .icon-twitter:hover:before,
+    .icon-youtube:hover:before,
+    .icon-instagram:hover:before,
+    .icon-google_plus:hover:before,
+    .icon-soundcloud:hover:before,
+    .icon-snapchat:hover:before,
+    .icon-vine:hover:before,
+    .icon-flickr:hover:before,
+    .icon-rss:hover:before,
+    .icon-pinterest:hover:before,
+    .icon-tumblr:hover:before,
+    .icon-linkedin:hover:before,
+    .icon-vimeo:hover:before {
+      color: $color-secondary;
+    }
+
     .icon-facebook {@include icon(before, fa-facebook);}
     .icon-twitter {@include icon(before, fa-twitter);}
     .icon-youtube {@include icon(before, fa-youtube);}
