@@ -32,6 +32,11 @@
 
 {% endfor %}
 
+{% if (hero == '' and title == '') %}
+   {% set both = 'show' %}
+{% else %}
+    {% set both = '' %}
+{% endif %}
 
 {% if title == 'show' %}
 <div class="landing-title-area">
@@ -50,7 +55,7 @@
 {% endif %}
 
 <!-- Logic to Display or Not to Display the Hero section -->
-{% if hero == 'show' %}
+{% if hero == 'show' or both == 'show' %}
 
 <article {{ attributes.addClass('hero-layout') }}>
     
