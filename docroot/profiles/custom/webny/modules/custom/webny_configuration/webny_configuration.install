@@ -1432,6 +1432,37 @@ function webny_configuration_update_8079() {
 }
 
 /**
+ * Implements hook_update_n().
+ *
+ * enable ViewField module, refresh landing page with optional config.
+ */
+function webny_configuration_update_8080() {
+
+  \Drupal::service('module_installer')
+      ->install(['viewfield']);
+  \Drupal::service('module_installer')
+      ->uninstall(['webny_landing_page_content_type']);
+  \Drupal::service('module_installer')
+      ->install(['webny_landing_page_content_type']);
+
+  $config_factory = \Drupal::configFactory();
+  $profile_config = \Drupal::service('webny.profile_config');
+
+  // Import new/changed configuration.
+  $config_to_update = [
+    // Updated landing page content type.
+      'core.entity_form_display.node.webny_landing_page.default',
+      'core.entity_view_display.node.webny_landing_page.default',
+      'core.entity_view_display.node.webny_landing_page.teaser',
+      'core.entity_view_display.node.webny_landing_page.webny_announcement',
+      'core.entity_view_display.node.webny_landing_page.webny_featured_card',
+  ];
+  $profile_config->bulkImport($config_to_update);
+  // Clear the config cache.
+  $config_factory->reset();
+}
+
+/**
  * Helper function to enable a Drupal module and print the result.
  *
  * @param string $module_name
