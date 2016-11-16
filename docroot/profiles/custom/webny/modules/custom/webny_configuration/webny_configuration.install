@@ -1463,6 +1463,18 @@ function webny_configuration_update_8080() {
 }
 
 /**
+ * Implements hook_update_n().
+ *
+ * Refresh the Landing Page Content Type
+ */
+function webny_configuration_update_8081() {
+
+    // REFRESH THE LANDING PAGE
+         print webny_configuration_uninstall_module('webny_landing_page_content_type');
+         print webny_configuration_enable_module('webny_landing_page_content_type');
+}
+
+/**
  * Helper function to enable a Drupal module and print the result.
  *
  * @param string $module_name
