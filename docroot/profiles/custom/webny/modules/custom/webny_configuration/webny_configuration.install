@@ -514,13 +514,13 @@ function webny_configuration_update_8041() {
  */
 function webny_configuration_update_8042() {
   \Drupal::service('module_installer')
-    ->uninstall(['webny_inner_page_content_type']);
+      ->uninstall(['webny_inner_page_content_type']);
   \Drupal::service('module_installer')
-    ->install(['webny_inner_page_content_type']);
+      ->install(['webny_inner_page_content_type']);
   \Drupal::service('module_installer')
-    ->uninstall(['webny_news_content_type']);
+      ->uninstall(['webny_news_content_type']);
   \Drupal::service('module_installer')
-    ->install(['webny_news_content_type']);
+      ->install(['webny_news_content_type']);
 }
 
 /**
@@ -537,17 +537,17 @@ function webny_configuration_update_8043() {
 
   // REMOVE FIELDS AND DEPENDENCIES FROM ACSF DEV.
   $properties[0] = array(
-    'entity_type' => 'node',
-    'bundle' => 'webny_news',
-    'field_name' => 'field_webny_news_sub_title',
-    'include_deleted' => TRUE,
+      'entity_type' => 'node',
+      'bundle' => 'webny_news',
+      'field_name' => 'field_webny_news_sub_title',
+      'include_deleted' => TRUE,
   );
 
   $properties[1] = array(
-    'entity_type' => 'node',
-    'bundle' => 'webny_news',
-    'field_name' => 'field_webny_news_teaser',
-    'include_deleted' => TRUE,
+      'entity_type' => 'node',
+      'bundle' => 'webny_news',
+      'field_name' => 'field_webny_news_teaser',
+      'include_deleted' => TRUE,
   );
 
   echo "Number of properties: " . count($properties);
@@ -587,17 +587,17 @@ function webny_configuration_update_8044() {
 
   // REMOVE FIELDS AND DEPENDENCIES FROM ACSF DEV.
   $properties[0] = array(
-    'entity_type' => 'node',
-    'bundle' => 'webny_landing_page',
-    'field_name' => 'field_webny_landing_subtitle',
-    'include_deleted' => TRUE,
+      'entity_type' => 'node',
+      'bundle' => 'webny_landing_page',
+      'field_name' => 'field_webny_landing_subtitle',
+      'include_deleted' => TRUE,
   );
 
   $properties[1] = array(
-    'entity_type' => 'node',
-    'bundle' => 'webny_landing_page',
-    'field_name' => 'field_webny_landing_summary',
-    'include_deleted' => TRUE,
+      'entity_type' => 'node',
+      'bundle' => 'webny_landing_page',
+      'field_name' => 'field_webny_landing_summary',
+      'include_deleted' => TRUE,
   );
 
   echo "Number of properties: " . count($properties);
@@ -660,17 +660,17 @@ function webny_configuration_update_8047() {
 
   // REMOVE FIELDS AND DEPENDENCIES FROM ACSF DEV.
   $properties[0] = array(
-    'entity_type' => 'node',
-    'bundle' => 'webny_page',
-    'field_name' => 'field_webny_page_paragraph',
-    'include_deleted' => TRUE,
+      'entity_type' => 'node',
+      'bundle' => 'webny_page',
+      'field_name' => 'field_webny_page_paragraph',
+      'include_deleted' => TRUE,
   );
 
   $properties[1] = array(
-    'entity_type' => 'node',
-    'bundle' => 'webny_news',
-    'field_name' => 'field_webny_news_paragraph',
-    'include_deleted' => TRUE,
+      'entity_type' => 'node',
+      'bundle' => 'webny_news',
+      'field_name' => 'field_webny_news_paragraph',
+      'include_deleted' => TRUE,
   );
 
   echo "Number of properties: " . count($properties);
@@ -696,14 +696,14 @@ function webny_configuration_update_8047() {
   }
 
   \Drupal::service('module_installer')
-          ->uninstall(['webny_inner_page_content_type']);
+      ->uninstall(['webny_inner_page_content_type']);
   \Drupal::service('module_installer')
-          ->install(['webny_inner_page_content_type']);
+      ->install(['webny_inner_page_content_type']);
 
   \Drupal::service('module_installer')
-          ->uninstall(['webny_news_content_type']);
+      ->uninstall(['webny_news_content_type']);
   \Drupal::service('module_installer')
-          ->install(['webny_news_content_type']);
+      ->install(['webny_news_content_type']);
 }
 
 /**
@@ -743,7 +743,7 @@ function webny_configuration_update_8049() {
 
   // UNINSTALL OLD GLOBAL NAV MODULE.
   \Drupal::service('module_installer')
-         ->uninstall(['webny_global_navigation']);
+      ->uninstall(['webny_global_navigation']);
 
   // DELETE AGENCY COLOR FROM THE CONFIG DB.
   $config = \Drupal::service('config.factory')->getEditable('webny_global_nav.settings');
@@ -918,63 +918,63 @@ function webny_configuration_update_8060() {
 function webny_configuration_update_8061() {
 
   // Refresh Content Types for news and inner page
-      \Drupal::service('module_installer')
-          ->uninstall(['webny_inner_page_content_type']);
-      \Drupal::service('module_installer')
-          ->install(['webny_inner_page_content_type']);
+  \Drupal::service('module_installer')
+      ->uninstall(['webny_inner_page_content_type']);
+  \Drupal::service('module_installer')
+      ->install(['webny_inner_page_content_type']);
 
-      \Drupal::service('module_installer')
-          ->uninstall(['webny_news_content_type']);
-      \Drupal::service('module_installer')
-          ->install(['webny_news_content_type']);
+  \Drupal::service('module_installer')
+      ->uninstall(['webny_news_content_type']);
+  \Drupal::service('module_installer')
+      ->install(['webny_news_content_type']);
 
-   // The bundles(s) to update.
-        $news_bundle = ['webny_news'];
-        $page_bundle = ['webny_page'];
+  // The bundles(s) to update.
+  $news_bundle = ['webny_news'];
+  $page_bundle = ['webny_page'];
 
-   // Variable to display or not display the hero
-        $herodisplay = 1;
+  // Variable to display or not display the hero
+  $herodisplay = 1;
 
-   // The field to update.
-        $hero_toggle = array('field_webny_news_hero_toggle', 'field_webny_page_hero_toggle');
+  // The field to update.
+  $hero_toggle = array('field_webny_news_hero_toggle', 'field_webny_page_hero_toggle');
 
-    // UPDATE -- LOOP THROUGH BOTH CTs
-    foreach($hero_toggle as $k=>$v){
-        $storage = Drupal::entityManager()->getStorage('node');
+  // UPDATE -- LOOP THROUGH BOTH CTs
+  foreach($hero_toggle as $k=>$v){
+    $storage = Drupal::entityManager()->getStorage('node');
 
-        if($k == 0){
-            $bundle = $news_bundle;
-        } else {
-            $bundle = $page_bundle;
-        }
+    if($k == 0){
+      $bundle = $news_bundle;
+    } else {
+      $bundle = $page_bundle;
+    }
 
-        $records = Database::getConnection()->select('node', 'n')
-            ->fields('n', array('nid'))
-            ->condition('type', $bundle, 'IN')
-            ->orderBy('nid', 'ASC')
-            ->execute();
+    $records = Database::getConnection()->select('node', 'n')
+        ->fields('n', array('nid'))
+        ->condition('type', $bundle, 'IN')
+        ->orderBy('nid', 'ASC')
+        ->execute();
 
-        foreach ($records as $record) {
+    foreach ($records as $record) {
 
-          $node = $storage->load($record->nid);
+      $node = $storage->load($record->nid);
 
-          // Only set value of empty fields to avoid overriding existing changes.
-              if (empty($node->{$v}->getValue())) {
-                $node->{$v}->setValue(['value' => $herodisplay]);
-              }
+      // Only set value of empty fields to avoid overriding existing changes.
+      if (empty($node->{$v}->getValue())) {
+        $node->{$v}->setValue(['value' => $herodisplay]);
+      }
 
-          // Force pre_save hook to be executed.
-          $node->save();
-        }
+      // Force pre_save hook to be executed.
+      $node->save();
+    }
 
-       unset($records,$record,$node,$storage);
-     }
+    unset($records,$record,$node,$storage);
+  }
 }
 
 /**
  * Implements hook_update_n().
  *
-* Refreshes News content type to remove Keyword filters.
+ * Refreshes News content type to remove Keyword filters.
  */
 function webny_configuration_update_8062() {
   \Drupal::service('module_installer')
@@ -993,25 +993,25 @@ function webny_configuration_update_8063() {
 
   // Refresh Content Types for news and inner page
 
-        \Drupal::service('module_installer')
-          ->uninstall(['webny_paragraphs_types']);
-        \Drupal::service('module_installer')
-          ->install(['webny_paragraphs_types']);
+  \Drupal::service('module_installer')
+      ->uninstall(['webny_paragraphs_types']);
+  \Drupal::service('module_installer')
+      ->install(['webny_paragraphs_types']);
 
-        \Drupal::service('module_installer')
-           ->uninstall(['webny_landing_page_content_type']);
-        \Drupal::service('module_installer')
-           ->install(['webny_landing_page_content_type']);
+  \Drupal::service('module_installer')
+      ->uninstall(['webny_landing_page_content_type']);
+  \Drupal::service('module_installer')
+      ->install(['webny_landing_page_content_type']);
 
-        \Drupal::service('module_installer')
-           ->uninstall(['webny_inner_page_content_type']);
-        \Drupal::service('module_installer')
-           ->install(['webny_inner_page_content_type']);
+  \Drupal::service('module_installer')
+      ->uninstall(['webny_inner_page_content_type']);
+  \Drupal::service('module_installer')
+      ->install(['webny_inner_page_content_type']);
 
-        \Drupal::service('module_installer')
-           ->uninstall(['webny_whitelisted_content']);
-        \Drupal::service('module_installer')
-           ->install(['webny_whitelisted_content']);
+  \Drupal::service('module_installer')
+      ->uninstall(['webny_whitelisted_content']);
+  \Drupal::service('module_installer')
+      ->install(['webny_whitelisted_content']);
 
 }
 
@@ -1082,8 +1082,8 @@ function webny_configuration_update_8065()
  */
 function webny_configuration_update_8066() {
 
-        \Drupal::service('module_installer')
-          ->install(['redirect']);
+  \Drupal::service('module_installer')
+      ->install(['redirect']);
 
 }
 
@@ -1291,12 +1291,12 @@ function webny_configuration_update_8074() {
   }
 
 // INSTALL THE PARAGRAPH TYPE
-print webny_configuration_uninstall_module('webny_phone_contact_paragraph');
-print webny_configuration_enable_module('webny_phone_contact_paragraph');
+  print webny_configuration_uninstall_module('webny_phone_contact_paragraph');
+  print webny_configuration_enable_module('webny_phone_contact_paragraph');
 
 // REFRESH THE CONTACT CONTENT TYPE
-print webny_configuration_uninstall_module('webny_contact_content_type');
-print webny_configuration_enable_module('webny_contact_content_type');
+  print webny_configuration_uninstall_module('webny_contact_content_type');
+  print webny_configuration_enable_module('webny_contact_content_type');
 
 }
 
@@ -1318,8 +1318,8 @@ function webny_configuration_update_8075(){
  * Refresh the inner page content type
  */
 function webny_configuration_update_8076() {
-   print webny_configuration_uninstall_module('webny_inner_page_content_type');
-   print webny_configuration_enable_module('webny_inner_page_content_type');
+  print webny_configuration_uninstall_module('webny_inner_page_content_type');
+  print webny_configuration_enable_module('webny_inner_page_content_type');
 }
 
 /**
@@ -1328,25 +1328,13 @@ function webny_configuration_update_8076() {
  * Imports updated news listing view.
  */
 function webny_configuration_update_8077() {
-
-  \Drupal::service('module_installer')
-      ->install(['viewfield']);
-  \Drupal::service('module_installer')
-      ->uninstall(['webny_landing_page_content_type']);
-  \Drupal::service('module_installer')
-      ->install(['webny_landing_page_content_type']);
-
   $config_factory = \Drupal::configFactory();
   $profile_config = \Drupal::service('webny.profile_config');
 
   // Import new/changed configuration.
   $config_to_update = [
-    // Updated landing page content type.
-      'core.entity_form_display.node.webny_landing_page.default',
-      'core.entity_view_display.node.webny_landing_page.default',
-      'core.entity_view_display.node.webny_landing_page.teaser',
-      'core.entity_view_display.node.webny_landing_page.webny_announcement',
-      'core.entity_view_display.node.webny_landing_page.webny_featured_card',
+    // Updated news listing view.
+      'views.view.webny_news_listing',
   ];
   $profile_config->bulkImport($config_to_update);
   // Clear the config cache.
@@ -1367,6 +1355,37 @@ function webny_configuration_update_8078() {
     // Updated news listing view.
       'views.view.webny_news_listing',
       'core.entity_view_display.media.image.results_image',
+  ];
+  $profile_config->bulkImport($config_to_update);
+  // Clear the config cache.
+  $config_factory->reset();
+}
+
+/**
+ * Implements hook_update_n().
+ *
+ * enable ViewField module, refresh landing page with optional config.
+ */
+function webny_configuration_update_8079() {
+
+  \Drupal::service('module_installer')
+      ->install(['viewfield']);
+  \Drupal::service('module_installer')
+      ->uninstall(['webny_landing_page_content_type']);
+  \Drupal::service('module_installer')
+      ->install(['webny_landing_page_content_type']);
+
+  $config_factory = \Drupal::configFactory();
+  $profile_config = \Drupal::service('webny.profile_config');
+
+  // Import new/changed configuration.
+  $config_to_update = [
+    // Updated landing page content type.
+      'core.entity_form_display.node.webny_landing_page.default',
+      'core.entity_view_display.node.webny_landing_page.default',
+      'core.entity_view_display.node.webny_landing_page.teaser',
+      'core.entity_view_display.node.webny_landing_page.webny_announcement',
+      'core.entity_view_display.node.webny_landing_page.webny_featured_card',
   ];
   $profile_config->bulkImport($config_to_update);
   // Clear the config cache.
