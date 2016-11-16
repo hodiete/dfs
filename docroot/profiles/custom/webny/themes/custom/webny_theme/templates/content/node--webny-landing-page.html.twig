@@ -17,8 +17,23 @@
 
 {# @PARAMS #}
 {% set hero_image = file_url(node.field_webny_landing_hero_image.entity.field_image.entity.uri.value) %}
+{% set title = '' %}
+{% set hero = '' %}
+
+{# GET VARS FOR DISPLAYING HERO AND TITLES #}
+{%  for k,v in node.field_webny_landing_vis_options %}
+
+    {% if node.field_webny_landing_vis_options[k].value == 'hero' %}
+        {% set hero = 'show' %}
+    {% endif %}
+    {% if node.field_webny_landing_vis_options[k].value == 'title' %}
+        {% set title = 'show' %}
+    {% endif %}
+
+{% endfor %}
 
 
+{% if title == 'show' %}
 <div class="landing-title-area">
 
     <!-- HEADLINE LABEL -->
@@ -32,9 +47,10 @@
     </div>
 
 </div>
+{% endif %}
 
 <!-- Logic to Display or Not to Display the Hero section -->
-{% if node.field_webny_landing_hero_toggle.value == 1 %}
+{% if hero == 'show' %}
 
 <article {{ attributes.addClass('hero-layout') }}>
     
