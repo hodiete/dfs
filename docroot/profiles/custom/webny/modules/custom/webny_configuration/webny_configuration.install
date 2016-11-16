@@ -1470,7 +1470,9 @@ function webny_configuration_update_8080()
    * Refreshes the contact content type
    */
   function webny_configuration_update_8082() {
-
+    // REINSTALL THE MEDIA CUSTOM MODULE
+    print webny_configuration_uninstall_module('webny_media');
+    print webny_configuration_enable_module('webny_media');
 
     // REFRESH MEDIA
     $config_factory = \Drupal::configFactory();
@@ -1484,6 +1486,8 @@ function webny_configuration_update_8080()
         'core.entity_view_display.media.image.results_image',
         'core.entity_view_display.media.image.thumbnail',
         'core.entity_view_display.media.image.wysiwyg',
+        'image.style.bio_frame.yml',
+        'responsive_image.styles.bio_frame.yml',
     ];
 
     $profile_config->bulkImport($config_to_update);
