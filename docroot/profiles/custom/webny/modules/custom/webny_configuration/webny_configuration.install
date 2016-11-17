@@ -1494,11 +1494,40 @@ function webny_configuration_update_8081() {
 /**
  * Implements hook_update_n().
  *
- * Refresh the News Content Type
+ * REFRESH THE NEWS CONTENT TYPE - REMOVE THE HERO TOGGLE FIELD FROM NEWS
  */
 function webny_configuration_update_8083() {
 
+
+    // REMOVE THE FIELDS FROM NEWS HERO TOGGLE
+
+       $properties[0] = array(
+          'entity_type' => 'node',
+          'bundle' => 'webny_news',
+          'field_name' => 'field_webny_news_hero_toggle',
+          'include_deleted' => TRUE,
+       );
+
+       foreach ($properties as $prop) {
+
+         $fields = \Drupal::entityManager()->getStorage('field_config')->loadByProperties($prop);
+
+         $info = \Drupal::entityManager()->getDefinitions();
+         foreach ($fields as $field) {
+           $entity_type = $field->getTargetEntityTypeId();
+
+         // Proceed only if the module implementing the entity has not been uninstalled already.
+           if (isset($info[$entity_type])) {
+             Drupal::entityManager()->getStorage($entity_type)->purgeFieldData($field, 100);
+             $field->delete();
+             field_purge_field($field);
+             unset($fields, $info);
+           }
+         }
+       }
+
     // REFRESH THE NEWS PAGE
+
          print webny_configuration_uninstall_module('webny_news_content_type');
          print webny_configuration_enable_module('webny_news_content_type');
 
