@@ -2,6 +2,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_view_mode.media.bio_frame
     - field.field.media.image.field_description
     - field.field.media.image.field_expires
     - field.field.media.image.field_image
@@ -10,56 +11,76 @@ dependencies:
     - media_entity.bundle.image
   module:
     - blazy
-id: media.image.default
+id: media.image.bio_frame
 targetEntityType: media
 bundle: image
-mode: default
+mode: bio_frame
 content:
   field_image:
     weight: 0
     label: hidden
     settings:
-      image_style: media_image
+      image_style: bio_frame
       thumbnail_style: ''
+      responsive_image_style: bio_frame
       media_switch: ''
       ratio: ''
       sizes: ''
-      breakpoints:
-        xs:
-          image_style: ''
-          width: ''
-          breakpoint: ''
-        sm:
-          image_style: ''
-          width: ''
-          breakpoint: ''
-        md:
-          image_style: ''
-          width: ''
-          breakpoint: ''
-        lg:
-          image_style: ''
-          width: ''
-          breakpoint: ''
-        xl:
-          image_style: ''
-          width: ''
-          breakpoint: ''
-      current_view_mode: default
-      skin: ''
+      current_view_mode: bio_frame
       background: false
-      layout: ''
       caption:
         title: '0'
         alt: '0'
-      responsive_image_style: ''
-      icon: false
-      box_style: ''
-      cache: -1
-      item_id: ''
-      optionset: default
+      breakpoints:
+        0:
+          image_style: ''
+          width: ''
+          breakpoint: ''
+        1:
+          image_style: ''
+          width: ''
+          breakpoint: ''
+        2:
+          image_style: ''
+          width: ''
+          breakpoint: ''
+        3:
+          image_style: ''
+          width: ''
+          breakpoint: ''
+        4:
+          image_style: ''
+          width: ''
+          breakpoint: ''
+        xs:
+          breakpoint: ''
+          image_style: ''
+          width: ''
+        sm:
+          breakpoint: ''
+          image_style: ''
+          width: ''
+        md:
+          breakpoint: ''
+          image_style: ''
+          width: ''
+        lg:
+          breakpoint: ''
+          image_style: ''
+          width: ''
+        xl:
+          breakpoint: ''
+          image_style: ''
+          width: ''
       box_caption: ''
       box_caption_custom: ''
+      box_style: ''
+      icon: false
+      layout: ''
+      cache: 0
+      item_id: ''
+      optionset: default
+      skin: ''
     third_party_settings: {  }
     type: blazy
 hidden:
