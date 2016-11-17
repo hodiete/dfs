@@ -27,14 +27,14 @@
   font-family: $base-font;
   font-weight: 800;
   font-size: 2em;
-  color: $primaryblue;
+  color: $color-primary;
   padding-bottom: 0;
 }
 
 .doc-set-subtitle {
   font-family: $base-font;
   font-size: 1.5rem;
-  color: $black;
+  color: $color-mono-black;
   padding-bottom: 1rem;
 }
 
@@ -52,15 +52,17 @@
   border: 1px solid $gray-lite;
 }
 
-.icon-document {
+.fa-document {
   display: none;
   width: 10%;
 }
 
-.icon-download{
-    color: $primarygold;
+.fa-download{ @include icon(before, fa-download);}
+
+.fa-download{
+    color: $color-accent-primary;
     display: inline-block;
-   padding: 20px 20px 15px 20px;
+   padding: 25px 20px 0px 20px;
 }
 
 .doc-info {
@@ -73,23 +75,23 @@
 .doc-title {
   display: block;
   font-size: 1.0em;
-  color: $medblue;
+  color: $text-blue;
 }
 
 .doc-title a {
   font-family: $base-font;
   font-size: 1.0em;
   font-weight: 600;
-  color: $medblue;
+  color: $text-blue;
   text-decoration: none;
   &:link{
-	color: $medblue;
+	color: $text-blue;
 	}
   &:visited{
-	color: $medblue;
+	color: $text-blue;
 	}
   &:hover{
-	color: $medblue;
+	color: $text-blue;
 	}
 }
 
@@ -117,7 +119,7 @@
   font-family: $base-font;
   font-size: 0.75rem;
   font-weight: 800;
-  color: $black;
+  color: $color-mono-black;
   text-transform: uppercase;
   text-decoration: none;
   margin: 0 auto;
@@ -125,13 +127,13 @@
   height: 60px;
   text-align: center;
   &:link{
-	color: $black;
+	color: $color-mono-black;
 	}
   &:visited{
-	color: $black;
+	color: $color-mono-black;
 	}
   &:hover{
-	color: $black;
+	color: $color-mono-black;
 	}	
 }
 // ######################################################################### //
@@ -176,11 +178,11 @@
 }
   
 .download a:visited{
- color: $black;
+ color: $color-mono-black;
 }
   
-  .icon-download{
-    color: $primarygold;
+  .fa-download{
+    color: $color-accent-primary;
     display: block;
 }
   
@@ -208,14 +210,17 @@
   margin: 0 auto;
 }
 
-.icon-document {
+.fa-document { @include icon(before, fa-document);}
+
+.fa-document {
   display: inline-block;
-  color: $medblue;
+  color: $color-primary;
   padding: 5px 20px 20px 20px;
   text-align: center;
-  vertical-align: top;
+ // vertical-align: top;
   position: absolute;
   left: -20%;
+  top: 37%;
 }
   
 .doc-info {
@@ -246,6 +251,6 @@
   }
   
  .download a:visited{
- color: $black;
+ color: $color-mono-black;
 } 
 }

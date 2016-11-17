@@ -11,23 +11,33 @@
 
 {# @PARAMS #}
 {% set hero_image = file_url(node.field_webny_page_image.entity.field_image.entity.uri.value) %}
+{% set title = '' %}
+{% set hero = '' %}
 
-<div class="landing-title-area">
+{# GET VARS FOR DISPLAYING HERO AND TITLES #}
+{%  for k,v in node.field_webny_page_vis_options %}
 
-    <!-- HEADLINE LABEL -->
-    <div class="landing-title">
-        <h1>{{ label }}</h1>
+    {% if node.field_webny_page_vis_options[k].value == 'hero' %}
+        {% set hero = 'show' %}
+    {% endif %}
+    {% if node.field_webny_page_vis_options[k].value == 'title' %}
+        {% set title = 'show' %}
+    {% endif %}
+
+{% endfor %}
+
+{% if title == 'show' %}
+    <div class="landing-title-area">
+
+        <!-- HEADLINE LABEL -->
+        <div class="landing-title">
+            <h1>{{ label }}</h1>
+        </div>
+
     </div>
+{% endif %}
 
-    <!-- SUBTITLE LABEL -->
-    <div class="landing-subtitle">
-        <span>{{ node.field_webny_page_sub_title[0].value }}</span>
-    </div>
-
-</div>
-
-
-{% if node.field_webny_page_hero_toggle.value == 1 %}
+{% if hero == 'show' %}
     <article {{ attributes.addClass('hero-layout') }}>
 
         {% if hero_image == '/' %}
@@ -72,17 +82,24 @@
     </article>
 {% endif %}
 
-<div class="page-summary">
-    {% for x,subtitle in node.field_webny_page_sub_title if x > 0 %}
-       <div>
-           {{ node.field_webny_page_sub_title[x].value }}
-       </div>
-    {% endfor %}
+<div class="body-area">
 
-</div>
+    <div class="body-area-in">
 
-<div class="ipage-body">
-    {{ content.body }}
+        <div class="body-area-subtitle">
+            {% for x,subtitle in node.field_webny_page_sub_title if x >= 0 %}
+                <div class="body-area-subtitle-item">
+                    {{ node.field_webny_page_sub_title[x].value }}
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class="page-body">
+            {{ content.body }}
+        </div>
+
+    </div>
+
 </div>
 
 <div class="page-paragraphs">

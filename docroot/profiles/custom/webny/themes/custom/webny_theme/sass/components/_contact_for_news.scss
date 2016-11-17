@@ -53,11 +53,14 @@ $contact-for-news-icons: $color-secondary !default;
 
     .icon-phone::before,
     .icon-email::before,
-    .icon-square::before {
+    .icon-other::before {
       position: absolute;
       width: 20px;
-      color: $medblue;
+      color: $color-primary;
     }
+    .icon-phone{ @include icon(before, fa-mobile);}
+    .icon-email{ @include icon(before, fa-envelope);}
+    .icon-other{ @include icon(before, fa-elipses-h);}
   }
 
   .contact--field-webny-contact-phone,
@@ -70,6 +73,10 @@ $contact-for-news-icons: $color-secondary !default;
     margin-bottom: 20px;
    // margin-left: 10px;
     padding-left: 33px;
+  }
+
+  .icon-phone::before {
+    font-size: 1.25em;
   }
 
     .contact-phone-value,
@@ -88,9 +95,9 @@ $contact-for-news-icons: $color-secondary !default;
       margin: 0;
     }
 
-    .contact-phone-value a,
+    .phone-number a,
     .contact-fax-value a {
-      color: $black;
+      color: $color-mono-black;
       &:hover {
         text-decoration: none;
       }
@@ -107,7 +114,7 @@ $contact-for-news-icons: $color-secondary !default;
 
   .social-media-wrapper {
     border-top: 1px solid $gray-lite;
-    border-bottom: 1px solid $gray-lite;
+    //border-bottom: 1px solid $gray-lite;
     padding-top: 20px;
 
     .fieldset-wrapper a:hover {
@@ -115,7 +122,7 @@ $contact-for-news-icons: $color-secondary !default;
     }
 
     .fieldset-wrapper a {
-      color: $black;
+      color: $color-mono-black;
       text-transform: uppercase;
       font-weight: 800;
     }
@@ -127,7 +134,7 @@ $contact-for-news-icons: $color-secondary !default;
   }
 
   .social-media-wrapper .fieldset-wrapper a {
-    color: $black;
+    color: $color-mono-black;
     text-transform: uppercase;
     font-weight: 800;
     font-size: 0.888em;
@@ -142,7 +149,7 @@ $contact-for-news-icons: $color-secondary !default;
     .icon-instagram::before,
     .icon-google_plus::before,
     .icon-soundcloud::before,
-    .icon-square::before,
+    .icon-snapchat::before,
     .icon-vine::before,
     .icon-flickr::before,
     .icon-rss::before,
@@ -150,10 +157,43 @@ $contact-for-news-icons: $color-secondary !default;
     .icon-tumblr::before,
     .icon-linkedin::before,
     .icon-vimeo::before {
-      color: $medblue;
+      color: $color-primary;
       padding-right: 15px;
       display: inline-block;
     }
+
+    .icon-facebook:hover:before,
+    .icon-twitter:hover:before,
+    .icon-youtube:hover:before,
+    .icon-instagram:hover:before,
+    .icon-google_plus:hover:before,
+    .icon-soundcloud:hover:before,
+    .icon-snapchat:hover:before,
+    .icon-vine:hover:before,
+    .icon-flickr:hover:before,
+    .icon-rss:hover:before,
+    .icon-pinterest:hover:before,
+    .icon-tumblr:hover:before,
+    .icon-linkedin:hover:before,
+    .icon-vimeo:hover:before {
+      color: $color-secondary;
+    }
+
+    .icon-facebook {@include icon(before, fa-facebook);}
+    .icon-twitter {@include icon(before, fa-twitter);}
+    .icon-youtube {@include icon(before, fa-youtube);}
+    .icon-instagram {@include icon(before, fa-instagram);}
+    .icon-google_plus {@include icon(before, fa-google_plus);}
+    .icon-soundcloud {@include icon(before, fa-soundcloud);}
+    .icon-square {@include icon(before, square);}
+    .icon-snapchat {@include icon(before, fa-snapchat-ghost);}
+    .icon-vine {@include icon(before, fa-vine);}
+    .icon-flickr {@include icon(before, fa-flickr);}
+    .icon-rss {@include icon(before, fa-rss);}
+    .icon-pinterest {@include icon(before, fa-pinterest-p);}
+    .icon-tumblr {@include icon(before, fa-tumblr);}
+    .icon-linkedin {@include icon(before, fa-linkedin-square);}
+    .icon-vimeo {@include icon(before, fa-vimeo-square);}
   }
 
 }
@@ -161,37 +201,36 @@ $contact-for-news-icons: $color-secondary !default;
 /* TABLET VIEW */
 @media (min-width: $min-tab) {
 
-
-.press-contact-info {
-
   .contact-info-wrapper {
-    display: flex;
-    flex-direction: row;
+
+    .fieldset-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: stretch;
+    }
+
+    .contact-col-1,
+    .contact-col-2 {
+      flex-direction: row;
+      width: 49%;
+    }
+
   }
 
-  .contact-col-1,
-  .contact-col-2 {
-    flex-direction: row;
-    width: 49%;
-    min-width: 236px;
-    overflow: auto;
-    float: left;
+  .social-media-wrapper {
+
+    .fieldset-wrapper a {
+      color: $color-mono-black;
+      text-transform: uppercase;
+      font-weight: 700;
+      float: left;
+      width: 45%;
+      margin-right: 5%;
+      margin-bottom: 5%;
+    }
   }
 
-  .social-media-wrapper .fieldset-wrapper a {
-    color: $black;
-    text-transform: uppercase;
-    font-weight: 700;
-    float: left;
-    width: 45%;
-    margin-right: 5%;
-    margin-bottom: 5%;
-  }
-
-}
-
-
-} // END MIN TABLET VIEW
+}// END MIN TABLET VIEW
 
 // ######################################################################### //
 

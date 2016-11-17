@@ -1,4 +1,3 @@
-uuid: 03fd20ee-a4e0-4926-81a9-09e8b79298de
 langcode: en
 status: true
 dependencies:
@@ -14,7 +13,6 @@ dependencies:
     - field.field.node.webny_news.field_webny_news_docsec_title
     - field.field.node.webny_news.field_webny_news_global_keywords
     - field.field.node.webny_news.field_webny_news_hero_title
-    - field.field.node.webny_news.field_webny_news_hero_toggle
     - field.field.node.webny_news.field_webny_news_image
     - field.field.node.webny_news.field_webny_news_location
     - field.field.node.webny_news.field_webny_news_short_title
@@ -26,8 +24,6 @@ dependencies:
     - linked_field
     - text
     - user
-_core:
-  default_config_hash: EiLVOW89UquBniMVq8PLtD191oNT7jMMtJLAu6qywpg
 id: node.webny_news.default
 targetEntityType: node
 bundle: webny_news
@@ -117,15 +113,6 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
-  field_webny_news_hero_toggle:
-    type: boolean
-    weight: 2
-    label: hidden
-    settings:
-      format: default
-      format_custom_false: ''
-      format_custom_true: ''
-    third_party_settings: {  }
   field_webny_news_image:
     weight: 3
     label: hidden

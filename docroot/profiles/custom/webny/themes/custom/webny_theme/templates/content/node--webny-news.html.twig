@@ -47,57 +47,57 @@
   ]
 %}
 
-{% if node.field_webny_news_hero_toggle.value == 1 %}
+{# NEW HERO SECTION #}
+
 <article {{ attributes.addClass(newsclasses,'hero-layout') }}>
 
     {# CHECK IF THERE IS AN IMAGE #}
 
     {% if hero_image == '/' %}
-        <div class="hero-header hero-no-image hero-news" style="">
-    {% else %}
-        <div class="hero-header hero-has-image hero-news" style="background-image:url('{{ hero_image }}')">
-    {% endif %}
-
-            <!-- BACKGROUND GRAD -->
+        <div class="hero-header hero-news hero-no-image" style="">
             <div class="hero-bkg"></div>
         </div>
+        <div class="hero-no-image-wrap">
+    {% else %}
+        <div class="hero-header hero-news hero-has-image" style="background-image:url('{{ hero_image }}')">
+            <div class="hero-bkg"></div>
+        </div>
+        <div class="hero-image-wrap">
+    {% endif %}
 
-            {% if hero_image == '/' %}
-                <div class="hero-inner hero-news-inner">
-            {% else %}
-                <div class="hero-inner hero-news-inner hero-has-image-content">
-            {% endif %}
-            
-            {# DATE / LOCATION #}
-            <div class="hero-published-date">
-                {{ content.field_webny_news_date }} <div class="hero-location">{{ content.field_webny_news_location }}</div>
-            </div>
+         {% if hero_image == '/' %}
+         <div class="hero-inner hero-news-inner">
+         {% else %}
+         <div class="hero-inner hero-news-inner hero-has-image-content">
+         {% endif %}
 
-            {# HERO TITLE #}
-            <h1>
-                {% if node.field_webny_news_hero_title.value is empty %}
-                    {{ label }}
-                {% else %}
-                    {{ node.field_webny_news_hero_title.value }}
-                {% endif %}
-            </h1>
+                {# DATE / LOCATION #}
+                <div class="hero-published-date">
+                    {{ content.field_webny_news_date }} <div class="hero-location">{{ content.field_webny_news_location }}</div>
+                </div>
 
-            {# HERO SUMMARY #}
-            <div class="hero-summary">
-                {{ content.field_webny_news_description }}
-            </div>
+                {# HERO TITLE #}
+                <h1>
+                    {% if node.field_webny_news_hero_title.value is empty %}
+                        {{ label }}
+                    {% else %}
+                        {{ node.field_webny_news_hero_title.value }}
+                    {% endif %}
+                </h1>
 
-            {# KEYWORDS FOR NEWS HERO #}
-            <div class="hero-global-keywords">
-                {{ content.field_webny_news_global_keywords }}
-            </div>
-            
-        </div> 
-        
-    </header>
+                {# KEYWORDS FOR NEWS HERO #}
+                <div class="hero-global-keywords">
+                    {{ content.field_webny_news_global_keywords }}
+                </div>
+
+         </div>
+        {# END WRAPPER -- FRESH #}
+      </div>
+
+
 
 </article>
-{% endif %}
+
 
 <div class="news-body">
 	

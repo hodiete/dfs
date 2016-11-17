@@ -10,12 +10,13 @@ dependencies:
     - field.field.node.webny_page.field_webny_page_docsec_title
     - field.field.node.webny_page.field_webny_page_global_keywords
     - field.field.node.webny_page.field_webny_page_hero_title
-    - field.field.node.webny_page.field_webny_page_hero_toggle
     - field.field.node.webny_page.field_webny_page_image
     - field.field.node.webny_page.field_webny_page_short_title
     - field.field.node.webny_page.field_webny_page_sub_title
+    - field.field.node.webny_page.field_webny_page_vis_options
     - node.type.webny_page
   module:
+    - options
     - text
     - user
 id: node.webny_page.default
@@ -78,15 +79,6 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
-  field_webny_page_hero_toggle:
-    type: boolean
-    weight: 2
-    label: hidden
-    settings:
-      format: default
-      format_custom_false: ''
-      format_custom_true: ''
-    third_party_settings: {  }
   field_webny_page_image:
     weight: 3
     label: hidden
@@ -101,6 +93,12 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: text_default
+  field_webny_page_vis_options:
+    weight: 13
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
   links:
     weight: 1
     settings: {  }

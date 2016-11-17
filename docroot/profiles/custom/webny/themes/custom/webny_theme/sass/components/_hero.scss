@@ -28,11 +28,11 @@
 // Style guide: components.hero.news
 
 // color variables
-$hero-bkgd-color: $color-tertiary !default;
-$hero-text-color: $white !default;
-$hero-keyword-bkgd-color: $color-secondary !default;
-$hero-keyword-hover-bkgd-color: $button-bkgd-hover-color !default;
-$hero-keyword-text-color: $white !default;
+$hero-bkgd-color: $color-secondary !default;
+$hero-text-color: $color-mono-white !default;
+$hero-keyword-bkgd-color: $color-accent-primary !default;
+$hero-keyword-hover-bkgd-color: $color-accent-secondary !default;
+$hero-keyword-text-color: $color-mono-white !default;
 
 // ************************* //
 // HERO PARTIAL
@@ -66,31 +66,16 @@ $hero-keyword-text-color: $white !default;
   }
 }
 
-@media (min-width: 48em) {
-  .front {
-    .hero-layout {
-      .hero-landing-inner {
-        width: 50%;
-        max-width: 600px;
-      }
-    }
-  }
-}
-
 // ========================================================================= //
 /* HERO LAYOUT */
 .hero-layout {
   position: relative;
 
-  // 8/8/16 we might want to bring this more in line with the landing page and ipage
-  // plus, why can't they all use the same class?
-
   .hero-news-inner,
   .hero-ipage-inner,
   .hero-landing-inner{
-    // margin: 60px 56px;
     padding: 40px 8%;
-    position: absolute;
+    position: relative;
     top: 0;
     left: 0;
     background: none;
@@ -101,16 +86,37 @@ $hero-keyword-text-color: $white !default;
     }
   }
 
+  .hero-no-image.hero-news{
+    display: block;
+    position: relative;
+  }
+
+  .hero-news-inner,
+  .hero-ipage-inner,
+  .hero-landing-inner{
+    position: absolute;
+    &.hero-has-image-content {
+      top: 0;
+      left: 0;
+      //background: none;
+    }
+  }
+
+  .hero-no-image + .hero-ipage-inner,
+  .hero-no-image + .hero-landing-inner{
+    position: absolute;
+  }
+
+
   .hero-header{
     background-position: 50% 0;
     background-repeat: no-repeat;
     background-size: cover;
     color: $hero-text-color;
-    min-height: 100px;
+    min-height: 256px;
     overflow: hidden;
     position: relative;
   }
-
 
   .hero-has-image  .hero-bkg {
     background: url("../icons/bkg-gradient.png") repeat-y scroll left top !important;
@@ -121,6 +127,20 @@ $hero-keyword-text-color: $white !default;
     left: 0;
     width: 100%;
     z-index: 2;
+  }
+
+  .hero-image-wrap{
+    position: relative;
+
+    .hero-news-inner {
+      padding: 0;
+      margin: 0;
+    }
+
+    .hero-news-inner.hero-has-image-content{
+      padding: 40px 4%;
+    }
+
   }
 
   .hero-published-date {
@@ -158,11 +178,6 @@ $hero-keyword-text-color: $white !default;
   }
 
   .hero-keywords {
-    /* height: 3em;
-     margin-right: 5px;
-     position: relative;
-     position: relative;
-     z-index: 3; */
     margin-top: 40px;
   }
 
@@ -196,23 +211,6 @@ $hero-keyword-text-color: $white !default;
     }
   }
 
-  /*.hero-keywords a {
-    background-color: $hero-keyword-bkgd-color;
-    font-family: "Oswald";
-    font-weight: bold;
-    font-size: 0.8em;
-    font-weight: 200;
-    letter-spacing: 0.1em;
-    line-height: 1.125em;
-    padding: 10px;
-    text-transform: uppercase;
-    color: $hero-keyword-text-color;
-    text-decoration: none;
-    &:hover {
-      background-color: $hero-keyword-hover-bkgd-color;
-    }
-  } */
-
   .hero-summary{
     font-size: 1em;
     color: $hero-text-color;
@@ -221,12 +219,38 @@ $hero-keyword-text-color: $white !default;
     text-align: left;
   }
 
+  // =====================================================================
+  // HERO HAS NO IMAGE -- MAKE RELATIVE
+  .hero-news + .hero-no-image-wrap{
+    display: block;
+    padding: 40px 4%;
+    background-color: $hero-bkgd-color;
+
+    .hero-news-inner {
+      position: relative;
+      padding: 0;
+      margin: 0;
+      width: 100%;
+    }
+  }
+
+  .hero-no-image.hero-news {
+    display: none;
+  }
 
 } // END HERO-LAYOUT
 
 // ######################################################################### //
-/* TABLET VIEW */
-@media (min-width: 48em) {
+/* MIN TABLET VIEW */
+@media (min-width: $min-tab) {
+
+  .hero-layout {} // END HERO LAYOUT
+
+} // END TABLET
+
+// ######################################################################### //
+/* MIN DESKTOP VIEW */
+@media (min-width: $min-pc) {
 
   .hero-layout {
     .hero-keywords a {
@@ -245,11 +269,18 @@ $hero-keyword-text-color: $white !default;
     .hero-news-inner,
     .hero-ipage-inner,
     .hero-landing-inner{
+      position: absolute;
       &.hero-has-image-content {
-        position: absolute;
         top: 0;
         left: 0;
         background: none;
+        position: absolute;
+      }
+    }
+
+    .hero-news-inner{
+      &.hero-has-image-content {
+        position: relative;
       }
     }
 
@@ -264,8 +295,7 @@ $hero-keyword-text-color: $white !default;
 
 
     .hero-no-image.hero-ipage,
-    .hero-no-image.hero-landing,
-    .hero-no-image.hero-news-inner{
+    .hero-no-image.hero-landing {
       min-height: 385px;
 
       .hero-inner{
@@ -273,11 +303,16 @@ $hero-keyword-text-color: $white !default;
       }
     }
 
-    h1,h2{
-      font-size: 48px;
-      line-height: 60px;
-      color: $white;
-      font-weight: 800;
+    // ALLOW HEIGHT TO BE LARGE IN THIS
+    // REGION TO NOT HAVE OVERFLOW FROM HERO
+    .hero-has-image {
+      min-height: 610px;
+    }
+
+    .hero-inner.hero-news-inner{
+      h1{
+        width: 90%;
+      }
     }
 
     .hero-summary{
@@ -285,11 +320,10 @@ $hero-keyword-text-color: $white !default;
       color: $hero-text-color;
     }
 
-    .hero-news-inner,
+
     .hero-ipage-inner{
       .hero-summary{
         width: $hero-header-width;
-
       }
     }
 
@@ -297,16 +331,50 @@ $hero-keyword-text-color: $white !default;
       width: 66%;
     }
 
+    h1,h2{
+      font-size: 48px;
+      line-height: 60px;
+      color: $color-mono-white;
+      font-weight: 800;
+    }
 
 
+    // =====================================================================
+    // HERO HAS AN IMAGE
+    .hero-image-wrap{
+
+      width: 100%;
+      position: absolute;
+      top: 0;
+
+      .hero-news-inner {
+        padding: 0;
+        margin: 0;
+        width: 100%;
+      }
+
+      .hero-news-inner.hero-has-image-content{
+        padding: 40px 4%;
+      }
+
+    }
 
 
   } // END HERO-layout
 
-} // END TABLET VIEW
+  .front {
+    .hero-layout {
+      .hero-landing-inner {
+        width: 50%;
+        max-width: 600px;
+      }
+    }
+  }
+
+} // END DESKTOP MIN VIEW
 
 // ######################################################################### //
-/* DESKTOP VIEW */
+/* FULL DESKTOP VIEW */
 @media (min-width: 60em) {
 
   .hero-layout {
@@ -316,10 +384,48 @@ $hero-keyword-text-color: $white !default;
     }
 
     .hero-has-image {
-      min-height: 510px;
+      min-height: 427px;
+    }
+
+    .hero-has-image.hero-news {
+      min-height: 512px;
+    }
+
+    .hero-inner.hero-news-inner{
+      h1{
+        width: 70%;
+      }
+    }
+
+    // =====================================================================
+    // HERO HAS AN IMAGE
+    .hero-image-wrap{
+
+      width: 100%;
+      position: absolute;
+      top: 0;
+
+      .hero-news-inner {
+        padding: 0;
+        margin: 0;
+        width: 100%;
+      }
+
+      .hero-news-inner.hero-has-image-content{
+        padding: 40px 4%;
+      }
+
     }
 
   } // END HERO LAYOUT
 
+  // FRONT MIN HEIGHT ADJUSTMENT
+  .front {
+    .hero-layout {
+      .hero-landing.hero-has-image {
+        min-height: 512px;
+      }
+    }
+  }
 
 } // END DESKTOP VIEW

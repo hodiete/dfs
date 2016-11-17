@@ -1,4 +1,3 @@
-uuid: e84a2704-9514-4042-b802-53c0b22f7d1a
 langcode: en
 status: true
 dependencies:
@@ -9,20 +8,21 @@ dependencies:
     - field.field.node.webny_landing_page.field_webny_landing_hero_button2
     - field.field.node.webny_landing_page.field_webny_landing_hero_image
     - field.field.node.webny_landing_page.field_webny_landing_hero_title
-    - field.field.node.webny_landing_page.field_webny_landing_hero_toggle
     - field.field.node.webny_landing_page.field_webny_landing_paragraph
     - field.field.node.webny_landing_page.field_webny_landing_short_title
     - field.field.node.webny_landing_page.field_webny_landing_subtitle2
     - field.field.node.webny_landing_page.field_webny_landing_summary2
+    - field.field.node.webny_landing_page.field_webny_landing_vis_options
+    - field.field.node.webny_landing_page.field_webny_results_view_to_disp
     - node.type.webny_landing_page
   module:
     - entity_reference_revisions
     - link
     - linked_field
+    - options
     - text
     - user
-_core:
-  default_config_hash: 0Qx4d0uNYlx19Sc1rbEiLa8z5PL4QzGUXPgKJ3l7GBo
+    - viewfield
 id: node.webny_landing_page.default
 targetEntityType: node
 bundle: webny_landing_page
@@ -101,15 +101,6 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
-  field_webny_landing_hero_toggle:
-    weight: 1
-    label: hidden
-    settings:
-      format: default
-      format_custom_false: ''
-      format_custom_true: ''
-    third_party_settings: {  }
-    type: boolean
   field_webny_landing_paragraph:
     type: entity_reference_revisions_entity_view
     weight: 6
@@ -130,6 +121,18 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: text_default
+  field_webny_landing_vis_options:
+    weight: 8
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+  field_webny_results_view_to_disp:
+    weight: 9
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: viewfield_default
 hidden:
   field_webny_landing_agency_key: true
   field_webny_landing_global_key: true
