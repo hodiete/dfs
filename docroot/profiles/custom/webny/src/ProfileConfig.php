@@ -147,6 +147,8 @@ class ProfileConfig {
       $this->getProfileFeatureConfigPath('news_content_type') . '/optional',
       $this->getProfileFeatureConfigPath('landing_page_content_type') . '/install',
       $this->getProfileFeatureConfigPath('landing_page_content_type') . '/optional',
+      $this->getProfileFeatureConfigPath('contact_content_type') . '/install',
+      $this->getProfileFeatureConfigPath('contact_page_content_type') . '/optional',
     ]);
 
     return $locations->locate($resource . '.yml');
