@@ -1436,7 +1436,8 @@ function webny_configuration_update_8079() {
  *
  * enable ViewField module, refresh landing page with optional config.
  */
-function webny_configuration_update_8080() {
+function webny_configuration_update_8080()
+{
 
   \Drupal::service('module_installer')
       ->install(['viewfield']);
@@ -1484,6 +1485,96 @@ function webny_configuration_update_8081() {
               'core.entity_view_display.node.webny_landing_page.teaser',
               'core.entity_view_display.node.webny_landing_page.webny_announcement',
               'core.entity_view_display.node.webny_landing_page.webny_featured_card',
+          ];
+          $profile_config->bulkImport($config_to_update);
+          // Clear the config cache.
+          $config_factory->reset();
+}
+
+/**
+  * Implements hook_update_n().
+  *
+  * Refreshes the media module with updates to bioframe
+  * Refreshes the contact content type
+  */
+  function webny_configuration_update_8082() {
+    // REINSTALL THE MEDIA CUSTOM MODULE
+    print webny_configuration_uninstall_module('webny_media');
+    print webny_configuration_enable_module('webny_media');
+
+    // REFRESH MEDIA
+    $config_factory = \Drupal::configFactory();
+    $profile_config = \Drupal::service('webny.profile_config');
+
+    // Import new/changed configuration.
+    $config_to_update = [
+      // Updated media custom files to add Bio Frame image style.
+        'core.entity_view_display.media.image.default',
+        'core.entity_view_display.media.image.bio_frame',
+        'core.entity_view_display.media.image.results_image',
+        'core.entity_view_display.media.image.thumbnail',
+        'core.entity_view_display.media.image.wysiwyg',
+        'image.style.bio_frame',
+        'responsive_image.styles.bio_frame',
+    ];
+
+    $profile_config->bulkImport($config_to_update);
+
+    // Clear the config cache.
+    $config_factory->reset();
+
+    // REFRESH THE CONTACT CONTENT TYPE
+    print webny_configuration_uninstall_module('webny_contact_content_type');
+    print webny_configuration_enable_module('webny_contact_content_type');
+}
+
+/**
+ * Implements hook_update_n().
+ *
+ * REFRESH THE NEWS CONTENT TYPE - REMOVE THE HERO TOGGLE FIELD FROM NEWS
+ */
+function webny_configuration_update_8083() {
+
+
+    // REMOVE THE FIELDS FROM NEWS HERO TOGGLE
+
+       $properties[0] = array(
+          'entity_type' => 'node',
+          'bundle' => 'webny_news',
+          'field_name' => 'field_webny_news_hero_toggle',
+          'include_deleted' => TRUE,
+       );
+
+       foreach ($properties as $prop) {
+
+         $fields = \Drupal::entityManager()->getStorage('field_config')->loadByProperties($prop);
+
+         $info = \Drupal::entityManager()->getDefinitions();
+         foreach ($fields as $field) {
+           $entity_type = $field->getTargetEntityTypeId();
+
+         // Proceed only if the module implementing the entity has not been uninstalled already.
+           if (isset($info[$entity_type])) {
+             Drupal::entityManager()->getStorage($entity_type)->purgeFieldData($field, 100);
+             $field->delete();
+             field_purge_field($field);
+             unset($fields, $info);
+           }
+         }
+       }
+
+    // REFRESH THE NEWS PAGE
+
+         print webny_configuration_uninstall_module('webny_news_content_type');
+         print webny_configuration_enable_module('webny_news_content_type');
+
+        $config_factory = \Drupal::configFactory();
+        $profile_config = \Drupal::service('webny.profile_config');
+
+          // Import new/changed configuration.
+          $config_to_update = [
+            // Updated landing page content type.
+            'views.view.webny_news_listing',
           ];
           $profile_config->bulkImport($config_to_update);
           // Clear the config cache.

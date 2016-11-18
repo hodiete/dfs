@@ -22,7 +22,6 @@ Feature: Check for the existence and fields of content types
   #And I should see text matching "Hero Button"
   #And I should see text matching "Hero Button (additional)"
     And I should see text matching "Hero Title"
-    And I should see text matching "Hero Visibility Option"
     And I should see text matching "Image"
     And I should see text matching "Location"
     And I should see text matching "Subject Heading"

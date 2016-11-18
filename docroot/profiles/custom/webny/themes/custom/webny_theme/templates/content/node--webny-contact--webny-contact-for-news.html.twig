@@ -108,7 +108,7 @@ set iconclass = [
                 {% if(node.field_webny_contact_fax.value is not empty and node.field_webny_contact_fax.value is not null) %}
                 <div class="contact-col-2">
                     <div class="contact-fax">
-                        <div class="icon-square">
+                        <div class="icon-other">
                             <div class="contact--field-webny-contact-fax">Contact us by fax:</div>
                         </div>
                         {% for k,v in node.field_webny_contact_fax %}
@@ -156,7 +156,7 @@ set iconclass = [
                     {% endif %}
 
                     {% if(node.field_webny_contact_snapchat.value is not empty and node.field_webny_contact_snapchat.value is not null) %}
-                    <div><a href="{{ node.field_webny_contact_snapchat.uri }}" class="icon-square">Snapchat</a></div>
+                    <div><a href="{{ node.field_webny_contact_snapchat.uri }}" class="icon-snapchat">Snapchat</a></div>
                     {% else %}
                     {% endif %}
 
