@@ -26,6 +26,9 @@
 
 {% endfor %}
 
+{# START QUICK EDITS #}
+{{ title_prefix }}
+
 {% if title == 'show' %}
     <div class="landing-title-area">
 
@@ -117,4 +120,7 @@
     <div class="press-docs-eref">
         {{ content.field_webny_page_attdocs_eref }}
     </div>
-</div>      
+</div>
+
+{# END QUICK EDITS #}
+{{ title_suffix }}
