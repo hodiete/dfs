@@ -1,4 +1,3 @@
-
 @development @api
 Feature: Features
   -Check the existence of features.
