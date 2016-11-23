@@ -93,6 +93,15 @@
     </article>
 {% endif %}
 
+
+
+
+{% if hero == '' and title == '' %}
+<article {{ attributes.addClass('quickedit-layout') }}>
+    {# START QUICK EDITS #}
+    {{ title_prefix }}
+    {% endif %}
+
 <div class="body-area">
 
     <div class="body-area-in">
@@ -112,6 +121,13 @@
     </div>
 
 </div>
+
+{% if hero == '' and title == '' %}
+    {# END QUICK EDITS #}
+    {{ title_suffix }}
+</article>
+{% endif %}
+
 
 <div class="page-paragraphs">
 
