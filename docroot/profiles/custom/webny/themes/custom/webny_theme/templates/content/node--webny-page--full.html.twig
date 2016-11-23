@@ -31,6 +31,12 @@
 
 <article {{ attributes.addClass('title-layout') }}>
 
+    {% if hero == '' %}
+        {# START QUICK EDITS #}
+        {{ title_prefix }}
+    {% endif %}
+
+
     <div class="landing-title-area">
 
         <!-- HEADLINE LABEL -->
@@ -39,6 +45,12 @@
         </div>
 
     </div>
+
+    {% if hero == '' %}
+        {# START QUICK EDITS #}
+        {{ title_suffix }}
+    {% endif %}
+
 
 </article>
 
@@ -145,5 +157,3 @@
         {{ content.field_webny_page_attdocs_eref }}
     </div>
 </div>
-
-
