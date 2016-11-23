@@ -38,7 +38,7 @@
     {% set both = '' %}
 {% endif %}
 
-{{ title_prefix }}
+
 
 {% if title == 'show' %}
 <div class="landing-title-area">
@@ -60,6 +60,9 @@
 {% if hero == 'show' or both == 'show' %}
 
 <article {{ attributes.addClass('hero-layout') }}>
+
+    {# START QUICK EDITS #}
+    {{ title_prefix }}
     
     {% if hero_image == '/' %}
     <div class="hero-header hero-no-image hero-landing" style="">
@@ -95,6 +98,8 @@
             
         </div>
 
+    {{ title_suffix }}
+
 </article>
 
 {% endif %}
@@ -110,5 +115,3 @@
 {% else %}
     {{  content.field_webny_results_view_to_disp }}
 {% endif %}
-
-{{ title_suffix }}
