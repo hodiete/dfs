@@ -47,9 +47,14 @@
   ]
 %}
 
+
+
 {# NEW HERO SECTION #}
 
 <article {{ attributes.addClass(newsclasses,'hero-layout') }}>
+
+    {# START QUICK EDITS #}
+    {{ title_prefix }}
 
     {# CHECK IF THERE IS AN IMAGE #}
 
@@ -94,10 +99,9 @@
         {# END WRAPPER -- FRESH #}
       </div>
 
-
+    {{ title_suffix }}
 
 </article>
-
 
 <div class="news-body">
 	
@@ -132,3 +136,4 @@
 <div class="press-contact-info">
     {{ content.field_webny_news_contact_info }}
 </div>
+
