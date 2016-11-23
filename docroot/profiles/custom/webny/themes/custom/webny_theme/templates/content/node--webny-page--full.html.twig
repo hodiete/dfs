@@ -26,10 +26,11 @@
 
 {% endfor %}
 
-{# START QUICK EDITS #}
-{{ title_prefix }}
 
 {% if title == 'show' %}
+
+<article {{ attributes.addClass('title-layout') }}>
+
     <div class="landing-title-area">
 
         <!-- HEADLINE LABEL -->
@@ -38,10 +39,16 @@
         </div>
 
     </div>
+
+</article>
+
 {% endif %}
 
 {% if hero == 'show' %}
     <article {{ attributes.addClass('hero-layout') }}>
+
+        {# START QUICK EDITS #}
+        {{ title_prefix }}
 
         {% if hero_image == '/' %}
             <div class="hero-header hero-no-image hero-ipage" style="">
@@ -78,9 +85,10 @@
                         {{ content.field_webny_page_global_keywords }}
                     </div>
 
-                </div>
-
             </div>
+
+         {# END QUICK EDITS #}
+         {{ title_suffix }}
 
     </article>
 {% endif %}
@@ -122,5 +130,4 @@
     </div>
 </div>
 
-{# END QUICK EDITS #}
-{{ title_suffix }}
+
