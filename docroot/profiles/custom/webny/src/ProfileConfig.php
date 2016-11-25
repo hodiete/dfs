@@ -151,6 +151,8 @@ class ProfileConfig {
       $this->getProfileFeatureConfigPath('contact_page_content_type') . '/optional',
       $this->getProfileFeatureConfigPath('global_navigation_footer') . '/install',
       $this->getProfileFeatureConfigPath('global_navigation_footer') . '/optional',
+      $this->getProfileFeatureConfigPath('image_styles') . '/install',
+      $this->getProfileFeatureConfigPath('image_styles') . '/optional',
     ]);
 
     return $locations->locate($resource . '.yml');
