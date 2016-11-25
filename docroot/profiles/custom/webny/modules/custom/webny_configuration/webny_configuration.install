@@ -1606,6 +1606,19 @@ function webny_configuration_update_8084() {
 }
 
 /**
+ * Implements hook_update_n().
+ *
+ * Installs the beta23 yamlforms module
+*/
+/*function webny_configuration_update_8085() {
+
+    // INSTALL THE YAMLFORMS MODULE
+        $module_name = 'yamlform';
+        print webny_configuration_uninstall_module($module_name);
+        print webny_configuration_enable_module($module_name);
+}*/
+
+/**
  * Helper function to enable a Drupal module and print the result.
  *
  * @param string $module_name
