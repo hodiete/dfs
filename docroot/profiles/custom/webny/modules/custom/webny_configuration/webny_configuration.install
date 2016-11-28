@@ -1606,6 +1606,39 @@ function webny_configuration_update_8084() {
 }
 
 /**
+  * Implements hook_update_n().
+  *
+  * Refreshes the media module with updates to image styles.
+  *
+  */
+  function webny_configuration_update_8085() {
+
+    $config_factory = \Drupal::configFactory();
+    $profile_config = \Drupal::service('webny.profile_config');
+
+    // Import new/changed configuration.
+    $config_to_update = [
+      // Updated media file and image styles.
+        'core.entity_view_display.media.image.cards',
+        'image.style.results',
+        'image.style.card_vertical',
+        'image.style.card_horizontal',
+    ];
+
+    $profile_config->bulkImport($config_to_update);
+
+    // Clear the config cache.
+    $config_factory->reset();
+
+    // REFRESH THE Image Style feature
+    print webny_configuration_uninstall_module('webny_image_styles');
+    print webny_configuration_enable_module('webny_image_styles');
+    // REFRESH THE MEDIA CUSTOM MODULE
+    print webny_configuration_uninstall_module('webny_media');
+    print webny_configuration_enable_module('webny_media');
+}
+
+/**
  * Helper function to enable a Drupal module and print the result.
  *
  * @param string $module_name
