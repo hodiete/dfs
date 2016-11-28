@@ -1608,18 +1608,17 @@ function webny_configuration_update_8084() {
 /**
   * Implements hook_update_n().
   *
-  * Refreshes the media module with updates to image styles
+  * Refreshes the media module with updates to image styles.
   *
   */
   function webny_configuration_update_8085() {
 
-    // REFRESH MEDIA
     $config_factory = \Drupal::configFactory();
     $profile_config = \Drupal::service('webny.profile_config');
 
     // Import new/changed configuration.
     $config_to_update = [
-      // Updated media file.
+      // Updated media file and image styles.
         'core.entity_view_display.media.image.cards',
         'image.style.results',
         'image.style.card_vertical',
@@ -1634,7 +1633,7 @@ function webny_configuration_update_8084() {
     // REFRESH THE Image Style feature
     print webny_configuration_uninstall_module('webny_image_styles');
     print webny_configuration_enable_module('webny_image_styles');
-    // REINSTALL THE MEDIA CUSTOM MODULE
+    // REFRESH THE MEDIA CUSTOM MODULE
     print webny_configuration_uninstall_module('webny_media');
     print webny_configuration_enable_module('webny_media');
 }
