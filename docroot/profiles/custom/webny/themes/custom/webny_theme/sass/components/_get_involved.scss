@@ -109,24 +109,12 @@ $getinv-button-hover-back-color:        $button-white-50 !default;
 
 @media screen\0 { 
  @media (min-width: $min-pc) {
-  // float cta buttons in IE 9 - remove once IE9 not supported
-    .get-involved--cta-wrapper,
-    .get-involved--cta-wrapper > div {
-      float:left;
-      width: 100%;
+  // keep cta buttons in IE 9 from going too wide - remove once IE9 not supported
+
+    .get-involved--cta-wrapper {
+      max-width: 70%;
+      margin: 0 auto;
       position: relative;
     }
-    .get-involved--field-webny-get-inv-cta {
-      float: left;
-    }
-    // clear - keeps frame below from floating up into get involved frame
-    .paragraph--type--webny-get-involved-pgtype:after { 
-       content: "."; 
-       visibility: hidden; 
-       display: block; 
-       height: 0; 
-       clear: both;
-      }
-
    }
  }
