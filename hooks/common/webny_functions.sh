@@ -49,8 +49,6 @@
               drush @${drush_alias} acsf-tools-ml --strict=0 config-import --partial --source=/mnt/www/html/nysits01live/config/default -y
               echo "Reverting features"
               drush @${drush_alias} acsf-tools-ml --strict=0 fia -y
-              echo "setting page caching max time to 6 hours..."
-              drush @${drush_alias} acsf-tools-ml cset system.performance cache.page.max_age 21600 -y
               echo "enabling css optimization..."
               drush @${drush_alias} acsf-tools-ml cset system.performance css.preprocess 1 -y
               echo "enabling js optimization..."
