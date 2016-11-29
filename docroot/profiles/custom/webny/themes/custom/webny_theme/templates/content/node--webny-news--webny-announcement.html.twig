@@ -6,7 +6,8 @@
  */
 #}
 
-<article{{ attributes.addClass('webny-announcements') }}> 
+<article{{ attributes.addClass('webny-announcements') }}>
+  {{ title_prefix }}
   {% if not page %}
     <div class="webny-announce-wrap">
         <div class="webny-announce-wrap-in">
@@ -47,4 +48,5 @@
         </div>    
     </div>
   {% endif %}
+  {{ title_suffix }}
 </article>
