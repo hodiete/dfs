@@ -1646,9 +1646,9 @@ function webny_configuration_update_8085() {
 function webny_configuration_update_8086() {
 
     // INSTALL THE YAMLFORMS MODULE
-        $module_name = 'yamlform';
-        print webny_configuration_uninstall_module($module_name);
-        print webny_configuration_enable_module($module_name);
+        //$module_name = 'yamlform';
+        \Drupal::service('module_installer')
+          ->install(['yamlform']);
 }
 
 /**
