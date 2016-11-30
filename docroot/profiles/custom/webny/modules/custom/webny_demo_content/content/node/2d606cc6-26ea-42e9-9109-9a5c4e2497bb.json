@@ -1,33 +1,33 @@
 {
     "_links": {
         "self": {
-            "href": "http:\/\/127.0.0.1:8080\/node\/13?_format=hal_json"
+            "href": "http:\/\/webny.dev\/node\/13?_format=hal_json"
         },
         "type": {
             "href": "http:\/\/drupal.org\/rest\/type\/node\/webny_document"
         },
         "http:\/\/drupal.org\/rest\/relation\/node\/webny_document\/uid": [
             {
-                "href": "http:\/\/127.0.0.1:8080\/user\/0?_format=hal_json",
+                "href": "http:\/\/webny.dev\/user\/0?_format=hal_json",
                 "lang": "en"
             }
         ],
         "http:\/\/drupal.org\/rest\/relation\/node\/webny_document\/revision_uid": [
             {
-                "href": "http:\/\/127.0.0.1:8080\/user\/0?_format=hal_json"
-            }
-        ],
-        "http:\/\/drupal.org\/rest\/relation\/node\/webny_document\/field_webny_document_cateogry": [
-            {
-                "href": "http:\/\/127.0.0.1:8080\/taxonomy\/term\/5?_format=hal_json"
+                "href": "http:\/\/webny.dev\/user\/0?_format=hal_json"
             }
         ],
         "http:\/\/drupal.org\/rest\/relation\/node\/webny_document\/field_webny_doc_global_keyword": [
             {
-                "href": "http:\/\/127.0.0.1:8080\/taxonomy\/term\/8?_format=hal_json"
+                "href": "http:\/\/webny.dev\/taxonomy\/term\/8?_format=hal_json"
             },
             {
-                "href": "http:\/\/127.0.0.1:8080\/taxonomy\/term\/12?_format=hal_json"
+                "href": "http:\/\/webny.dev\/taxonomy\/term\/12?_format=hal_json"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/webny_document\/field_webny_document_cateogry": [
+            {
+                "href": "http:\/\/webny.dev\/taxonomy\/term\/5?_format=hal_json"
             }
         ]
     },
@@ -68,7 +68,7 @@
             {
                 "_links": {
                     "self": {
-                        "href": "http:\/\/127.0.0.1:8080\/user\/0?_format=hal_json"
+                        "href": "http:\/\/webny.dev\/user\/0?_format=hal_json"
                     },
                     "type": {
                         "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
@@ -76,7 +76,7 @@
                 },
                 "uuid": [
                     {
-                        "value": "21510674-d0eb-48fe-a946-c6ca3cc6ca24"
+                        "value": "6832be8e-95ea-4445-9539-179327b22add"
                     }
                 ],
                 "lang": "en"
@@ -86,7 +86,7 @@
             {
                 "_links": {
                     "self": {
-                        "href": "http:\/\/127.0.0.1:8080\/user\/0?_format=hal_json"
+                        "href": "http:\/\/webny.dev\/user\/0?_format=hal_json"
                     },
                     "type": {
                         "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
@@ -94,24 +94,7 @@
                 },
                 "uuid": [
                     {
-                        "value": "21510674-d0eb-48fe-a946-c6ca3cc6ca24"
-                    }
-                ]
-            }
-        ],
-        "http:\/\/drupal.org\/rest\/relation\/node\/webny_document\/field_webny_document_cateogry": [
-            {
-                "_links": {
-                    "self": {
-                        "href": "http:\/\/127.0.0.1:8080\/taxonomy\/term\/5?_format=hal_json"
-                    },
-                    "type": {
-                        "href": "http:\/\/drupal.org\/rest\/type\/taxonomy_term\/webny_document_category"
-                    }
-                },
-                "uuid": [
-                    {
-                        "value": "839108df-5a89-4094-a400-ba6eea5e4a42"
+                        "value": "6832be8e-95ea-4445-9539-179327b22add"
                     }
                 ]
             }
@@ -120,7 +103,7 @@
             {
                 "_links": {
                     "self": {
-                        "href": "http:\/\/127.0.0.1:8080\/taxonomy\/term\/8?_format=hal_json"
+                        "href": "http:\/\/webny.dev\/taxonomy\/term\/8?_format=hal_json"
                     },
                     "type": {
                         "href": "http:\/\/drupal.org\/rest\/type\/taxonomy_term\/webny_global_keywords"
@@ -135,7 +118,7 @@
             {
                 "_links": {
                     "self": {
-                        "href": "http:\/\/127.0.0.1:8080\/taxonomy\/term\/12?_format=hal_json"
+                        "href": "http:\/\/webny.dev\/taxonomy\/term\/12?_format=hal_json"
                     },
                     "type": {
                         "href": "http:\/\/drupal.org\/rest\/type\/taxonomy_term\/webny_global_keywords"
@@ -144,6 +127,23 @@
                 "uuid": [
                     {
                         "value": "a41ca29c-9440-4da2-b400-c9142d6d609b"
+                    }
+                ]
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/webny_document\/field_webny_document_cateogry": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/webny.dev\/taxonomy\/term\/5?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/taxonomy_term\/webny_document_category"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "839108df-5a89-4094-a400-ba6eea5e4a42"
                     }
                 ]
             }
@@ -210,6 +210,11 @@
             "lang": "en"
         }
     ],
+    "field_webny_doc_last_updated": [
+        {
+            "value": "2016-03-03"
+        }
+    ],
     "field_webny_document_date": [
         {
             "value": "2016-03-03"
@@ -224,11 +229,6 @@
         {
             "value": "Korean",
             "format": "basic_html"
-        }
-    ],
-    "field_webny_doc_last_updated": [
-        {
-            "value": "2016-03-03"
         }
     ]
 }
