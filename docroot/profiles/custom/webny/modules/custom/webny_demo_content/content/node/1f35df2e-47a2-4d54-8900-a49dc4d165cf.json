@@ -1,56 +1,31 @@
 {
     "_links": {
         "self": {
-            "href": "http:\/\/webny.dev\/node\/26?_format=hal_json"
+            "href": "http:\/\/127.0.0.1:8080\/homepage?_format=hal_json"
         },
         "type": {
             "href": "http:\/\/drupal.org\/rest\/type\/node\/webny_landing_page"
         },
         "http:\/\/drupal.org\/rest\/relation\/node\/webny_landing_page\/uid": [
             {
-                "href": "http:\/\/webny.dev\/user\/0?_format=hal_json",
+                "href": "http:\/\/127.0.0.1:8080\/user\/0?_format=hal_json",
                 "lang": "en"
             }
         ],
         "http:\/\/drupal.org\/rest\/relation\/node\/webny_landing_page\/revision_uid": [
             {
-                "href": "http:\/\/webny.dev\/user\/101?_format=hal_json"
+                "href": "http:\/\/127.0.0.1:8080\/user\/1?_format=hal_json"
             }
         ],
         "http:\/\/drupal.org\/rest\/relation\/node\/webny_landing_page\/field_webny_landing_global_key": [
             {
-                "href": "http:\/\/webny.dev\/taxonomy\/term\/1?_format=hal_json"
-            }
-        ],
-        "http:\/\/drupal.org\/rest\/relation\/node\/webny_landing_page\/field_webny_landing_hero_image": [
-            {
-                "href": "http:\/\/webny.dev\/media\/31?_format=hal_json"
-            }
-        ],
-        "http:\/\/drupal.org\/rest\/relation\/node\/webny_landing_page\/field_webny_landing_paragraph": [
-            {
-                "href": ""
-            },
-            {
-                "href": ""
-            },
-            {
-                "href": ""
-            },
-            {
-                "href": ""
-            },
-            {
-                "href": ""
-            },
-            {
-                "href": ""
+                "href": "http:\/\/127.0.0.1:8080\/taxonomy\/term\/8?_format=hal_json"
             }
         ]
     },
     "nid": [
         {
-            "value": "26"
+            "value": "10"
         }
     ],
     "uuid": [
@@ -60,7 +35,7 @@
     ],
     "vid": [
         {
-            "value": "436"
+            "value": "56"
         }
     ],
     "langcode": [
@@ -85,7 +60,7 @@
             {
                 "_links": {
                     "self": {
-                        "href": "http:\/\/webny.dev\/user\/0?_format=hal_json"
+                        "href": "http:\/\/127.0.0.1:8080\/user\/0?_format=hal_json"
                     },
                     "type": {
                         "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
@@ -93,7 +68,7 @@
                 },
                 "uuid": [
                     {
-                        "value": "34262be0-831c-42da-b39e-85d662c49816"
+                        "value": "21510674-d0eb-48fe-a946-c6ca3cc6ca24"
                     }
                 ],
                 "lang": "en"
@@ -103,7 +78,7 @@
             {
                 "_links": {
                     "self": {
-                        "href": "http:\/\/webny.dev\/user\/101?_format=hal_json"
+                        "href": "http:\/\/127.0.0.1:8080\/user\/1?_format=hal_json"
                     },
                     "type": {
                         "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
@@ -111,7 +86,7 @@
                 },
                 "uuid": [
                     {
-                        "value": "97dce3cb-c87f-4ff3-94f1-7e3234906794"
+                        "value": "426c6b1f-8c61-45d6-8ecb-a1a056424817"
                     }
                 ]
             }
@@ -120,7 +95,7 @@
             {
                 "_links": {
                     "self": {
-                        "href": "http:\/\/webny.dev\/taxonomy\/term\/1?_format=hal_json"
+                        "href": "http:\/\/127.0.0.1:8080\/taxonomy\/term\/8?_format=hal_json"
                     },
                     "type": {
                         "href": "http:\/\/drupal.org\/rest\/type\/taxonomy_term\/webny_global_keywords"
@@ -131,121 +106,6 @@
                         "value": "89ba77e8-b472-476e-9e00-c723f17b488b"
                     }
                 ]
-            }
-        ],
-        "http:\/\/drupal.org\/rest\/relation\/node\/webny_landing_page\/field_webny_landing_hero_image": [
-            {
-                "_links": {
-                    "self": {
-                        "href": "http:\/\/webny.dev\/media\/31?_format=hal_json"
-                    },
-                    "type": {
-                        "href": "http:\/\/drupal.org\/rest\/type\/media\/image"
-                    }
-                },
-                "uuid": [
-                    {
-                        "value": "4f405333-3ec3-482f-a59f-6782361a9430"
-                    }
-                ]
-            }
-        ],
-        "http:\/\/drupal.org\/rest\/relation\/node\/webny_landing_page\/field_webny_landing_paragraph": [
-            {
-                "_links": {
-                    "self": {
-                        "href": ""
-                    },
-                    "type": {
-                        "href": "http:\/\/drupal.org\/rest\/type\/paragraph\/webny_card_paragraph_type"
-                    }
-                },
-                "uuid": [
-                    {
-                        "value": "68f28fc3-4c49-4a4e-a2e5-d5a8a8c8e6dc"
-                    }
-                ],
-                "target_revision_id": "431"
-            },
-            {
-                "_links": {
-                    "self": {
-                        "href": ""
-                    },
-                    "type": {
-                        "href": "http:\/\/drupal.org\/rest\/type\/paragraph\/webny_announcement_pgtype"
-                    }
-                },
-                "uuid": [
-                    {
-                        "value": "a72e3585-0679-4d77-801e-03e0fb125d4c"
-                    }
-                ],
-                "target_revision_id": "436"
-            },
-            {
-                "_links": {
-                    "self": {
-                        "href": ""
-                    },
-                    "type": {
-                        "href": "http:\/\/drupal.org\/rest\/type\/paragraph\/webny_bio_pgtype"
-                    }
-                },
-                "uuid": [
-                    {
-                        "value": "a91c716b-f01f-4474-93c0-5c8cc8c2caec"
-                    }
-                ],
-                "target_revision_id": "441"
-            },
-            {
-                "_links": {
-                    "self": {
-                        "href": ""
-                    },
-                    "type": {
-                        "href": "http:\/\/drupal.org\/rest\/type\/paragraph\/webny_summary_pgtype"
-                    }
-                },
-                "uuid": [
-                    {
-                        "value": "86b4d8ac-d4d1-4108-955a-7dad69341965"
-                    }
-                ],
-                "target_revision_id": "446"
-            },
-            {
-                "_links": {
-                    "self": {
-                        "href": ""
-                    },
-                    "type": {
-                        "href": "http:\/\/drupal.org\/rest\/type\/paragraph\/webny_get_involved_pgtype"
-                    }
-                },
-                "uuid": [
-                    {
-                        "value": "2976a0f9-2427-403f-96fc-ac1567b967e5"
-                    }
-                ],
-                "target_revision_id": "451"
-            },
-            {
-                "_links": {
-                    "self": {
-                        "href": ""
-                    },
-                    "type": {
-                        "href": "http:\/\/drupal.org\/rest\/type\/paragraph\/webny_wysiwyg_pgtype"
-                    }
-                },
-                "uuid": [
-                    {
-                        "value": "e6d01b9b-21ad-4286-a1fb-937028c4b588"
-                    }
-                ],
-                "target_revision_id": "456"
             }
         ]
     },
@@ -263,7 +123,7 @@
     ],
     "changed": [
         {
-            "value": "1475587774",
+            "value": "1479220004",
             "lang": "en"
         }
     ],
@@ -281,7 +141,7 @@
     ],
     "revision_timestamp": [
         {
-            "value": "1475587774"
+            "value": "1479220004"
         }
     ],
     "revision_translation_affected": [
@@ -302,40 +162,18 @@
             "lang": "en"
         }
     ],
-    "field_webny_landing_hero_button": [
-        {
-            "uri": "http:\/\/google.com\/",
-            "title": "Google",
-            "options": []
-        }
-    ],
-    "field_webny_landing_hero_button2": [
-        {
-            "uri": "http:\/\/google.com",
-            "title": "This is a button to go to Google...",
-            "options": []
-        }
-    ],
-    "field_webny_landing_hero_title": [
-        {
-            "value": "This is the new Title of the Story. More to come... "
-        }
-    ],
-    "field_webny_landing_short_title": [
-        {
-            "value": "Homepage Short Title"
-        }
-    ],
-    "field_webny_landing_subtitle2": [
-        {
-            "value": "This is a subtitle",
-            "format": "basic_html"
-        }
-    ],
     "field_webny_landing_summary2": [
         {
-            "value": "This is the summary description field test",
+            "value": "Welcome",
             "format": "basic_html"
+        }
+    ],
+    "field_webny_landing_vis_options": [
+        {
+            "value": "title"
+        },
+        {
+            "value": "hero"
         }
     ]
 }
