@@ -1641,6 +1641,17 @@ function webny_configuration_update_8085() {
 /**
  * Implements hook_update_n().
  *
+ * Refresh the Document Content Type custom module - Fix Category spelling.
+ */
+function webny_configuration_update_8086() {
+  // REFRESH THE Document content type feature
+  print webny_configuration_uninstall_module('webny_document_content_type');
+  print webny_configuration_enable_module('webny_document_content_type');
+}
+
+/**
+ * Implements hook_update_n().
+ *
  * Installs the beta23 yamlforms module
  */
 function webny_configuration_update_8087() {
