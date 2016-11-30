@@ -1639,6 +1639,29 @@ function webny_configuration_update_8084() {
 }
 
 /**
+ * Implements hook_update_n().
+ *
+ * Refresh the Document Content Type custom module - Fix Category mispelling.
+ */
+function webny_configuration_update_8086() {
+  // REFRESH THE Document content type feature
+  print webny_configuration_uninstall_module('webny_document_content_type');
+  print webny_configuration_enable_module('webny_document_content_type');
+
+  $config_factory = \Drupal::configFactory();
+  $profile_config = \Drupal::service('webny.profile_config');
+
+  // Import new/changed configuration.
+  $config_to_update = [
+      'field.field.node.webny_document.field_webny_document_cateogry',
+  ];
+  $profile_config->bulkImport($config_to_update);
+  // Clear the config cache.
+  $config_factory->reset();
+
+}
+
+/**
  * Helper function to enable a Drupal module and print the result.
  *
  * @param string $module_name
