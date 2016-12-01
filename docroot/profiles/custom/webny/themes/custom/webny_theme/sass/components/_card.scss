@@ -91,14 +91,14 @@ $featured-card-arrow-color-hover: $color-secondary !default;
 }
 .card-content {
   flex:0 1 auto;
-  min-height: 375px; // separate from flex to help with IE issues, min-height helps keep button at bottom
+  min-height: 350px; // separate from flex to help with IE issues, min-height helps keep button at bottom
   display: flex;
   flex-direction: column;
 }
 
 // includes title (label) and date (if it exists)
 .card-content-top {
-  flex: 0 1 8rem; // probably only needs to be 6rem, but large titles ruin it currently - when short title is imlemented should work better
+  flex: 0 1 7em; // probably only needs to be 6rem, but large titles ruin it currently - when short title is imlemented should work better
 }
 
 .webny-card .webny-card-img {
@@ -111,6 +111,7 @@ $featured-card-arrow-color-hover: $color-secondary !default;
   line-height: 1.2em;  
   flex: 1 0 auto;
   font-weight: 400;
+  min-height: 2.25em;
   a:link {
     color:$text-blue;
   }
@@ -188,8 +189,17 @@ $featured-card-arrow-color-hover: $color-secondary !default;
 }
 
 @media screen\0 {
-  .paragraph--type--webny-card-paragraph-type>div>div {
-    float:left; /* overcomes flexbox limitationson IE 8,9,10 */
+  .paragraph--type--webny-card-paragraph-type>div{
+    &:after { 
+     content: "."; 
+     visibility: hidden; 
+     display: block; 
+     height: 0; 
+     clear: both;
+    }
+    &>div {
+    float:left; /* overcomes flexbox limitationson IE 8,9,10 */  
+    }
   }
 }
 
