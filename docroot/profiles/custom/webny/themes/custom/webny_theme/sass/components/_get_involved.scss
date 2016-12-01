@@ -18,6 +18,8 @@ $getinv-button-border-color:            $color-mono-black !default;
 $getinv-button-text-color:              $color-mono-black !default;
 $getinv-button-back-color:              $button-bkgd-transparent !default;
 $getinv-button-hover-back-color:        $button-white-50 !default;
+// this overrides the a value set in buttons.scss and the div value below
+$frame-button-max-width:                450px; 
 
 // ######################################################################### //
 /* START STYLING MOBILE FIRST UNDER HERE */
@@ -70,20 +72,25 @@ $getinv-button-hover-back-color:        $button-white-50 !default;
 
 .get-involved--field-webny-get-inv-cta {
 
-  margin: 3% 1%; // for vertical spacing of buttons on mobile and old IE browsers on desktop
+  margin: 3% 1% 0 1%; // for vertical spacing of buttons on mobile and old IE browsers on desktop
   flex-grow: 1; // so buttons stretch to available space
+  max-width: $frame-button-max-width; // but buttons shouldn't stretch too much
   text-align: center;
   border: $frame-button-border-size solid $getinv-button-border-color; //applying to div class for stretchy buttons
+
+  &:hover {
+      background-color: $getinv-button-hover-back-color;
+      border-color: $getinv-button-border-color;
+    }
 
   a {
   // BUTTON DYNAMIC REQUIREMENTS
   //border: $frame-button-border-size solid $getinv-button-border-color;
   color: $getinv-button-text-color;
   background-color: $getinv-button-back-color;
+  //this max-width overrides the one set in buttons.scss
 
     &:hover {
-      background-color: $getinv-button-hover-back-color;
-      border-color: $getinv-button-border-color;
       text-decoration: none;
     }
   }
@@ -115,6 +122,10 @@ $getinv-button-hover-back-color:        $button-white-50 !default;
       max-width: 70%;
       margin: 0 auto;
       position: relative;
+      & > div {
+        max-width: $frame-button-max-width;
+        margin: 0 auto;
+      }
     }
    }
  }
