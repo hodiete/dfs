@@ -1651,6 +1651,31 @@ function webny_configuration_update_8086() {
 }
 
 /**
+ * Implements hook_update_n().
+ *
+ *
+ * Refreshes Theme settings
+ */
+function webny_configuration_update_8087() {
+
+  // REFRESH THEME SETTINGS
+  $config_factory = \Drupal::configFactory();
+  $profile_config = \Drupal::service('webny.profile_config');
+
+  // Import new/changed configuration.
+  $config_to_update = [
+    // Updated theme to implement favicon.
+      'webny_theme.settings',
+  ];
+
+  $profile_config->bulkImport($config_to_update);
+
+  // Clear the config cache.
+  $config_factory->reset();
+
+}
+
+/**
  * Helper function to enable a Drupal module and print the result.
  *
  * @param string $module_name
