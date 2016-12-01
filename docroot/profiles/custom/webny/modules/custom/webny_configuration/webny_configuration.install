@@ -1639,6 +1639,18 @@ function webny_configuration_update_8084() {
 }
 
 /**
+ * Implements hook_update_n().
+ *
+ * Refresh the Document Content Type custom module - Fix Category spelling.
+ */
+function webny_configuration_update_8086() {
+  // REFRESH THE Document content type feature
+  print webny_configuration_uninstall_module('webny_document_content_type');
+  print webny_configuration_enable_module('webny_document_content_type');
+
+}
+
+/**
  * Helper function to enable a Drupal module and print the result.
  *
  * @param string $module_name
