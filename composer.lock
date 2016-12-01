@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "545a05a5981b955d5746b0cd62fe6d76",
-    "content-hash": "aa0f5b3a4d3e7d2f028f661d60899e95",
+    "hash": "dc45438dd2b4d3441fee62583231aa25",
+    "content-hash": "a7c0b3fd8f5268893605eed91522aff1",
     "packages": [
         {
             "name": "acquia/blt",
@@ -349,16 +349,16 @@
         },
         {
             "name": "cweagans/composer-patches",
-            "version": "1.5.0",
+            "version": "1.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cweagans/composer-patches.git",
-                "reference": "8de7c73b2eae217f4e7028d7262ff2330aa4b4e8"
+                "reference": "7cd5c6eb7e68b8f7436ce1a7b9fffa4418bf59c6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cweagans/composer-patches/zipball/8de7c73b2eae217f4e7028d7262ff2330aa4b4e8",
-                "reference": "8de7c73b2eae217f4e7028d7262ff2330aa4b4e8",
+                "url": "https://api.github.com/repos/cweagans/composer-patches/zipball/7cd5c6eb7e68b8f7436ce1a7b9fffa4418bf59c6",
+                "reference": "7cd5c6eb7e68b8f7436ce1a7b9fffa4418bf59c6",
                 "shasum": ""
             },
             "require": {
@@ -380,7 +380,7 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "BSD"
+                "BSD-2-Clause"
             ],
             "authors": [
                 {
@@ -389,7 +389,7 @@
                 }
             ],
             "description": "Provides a way to patch Composer packages.",
-            "time": "2016-03-28 18:54:21"
+            "time": "2016-12-01 01:19:32"
         },
         {
             "name": "dflydev/dot-access-data",
@@ -3131,36 +3131,32 @@
         },
         {
             "name": "drupal/yamlform",
-            "version": "8.1.0-beta23",
+            "version": "8.1.0-beta25",
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/yamlform.git",
-                "reference": "16b3f365c3fe3ad2443a04625e56011aff324989"
+                "reference": "2657e74ac16fd07f65aef4461485da95add7fc3c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/yamlform-8.x-1.0-beta23.zip",
+                "url": "https://ftp.drupal.org/files/projects/yamlform-8.x-1.0-beta25.zip",
                 "reference": null,
                 "shasum": null
             },
             "require": {
-                "drupal/core": "8.*",
-                "drupal/field": "8.*",
-                "drupal/user": "8.*"
+                "drupal/core": "8.*"
             },
             "replace": {
                 "drupal/yamlform_devel": "self.version",
                 "drupal/yamlform_examples": "self.version",
                 "drupal/yamlform_node": "self.version",
                 "drupal/yamlform_templates": "self.version",
+                "drupal/yamlform_to_webform": "self.version",
                 "drupal/yamlform_ui": "self.version"
             },
             "suggest": {
-                "drupal/core": "Required by drupal/yamlform_devel, drupal/yamlform_examples, drupal/yamlform_node, drupal/yamlform_templates, drupal/yamlform_ui",
-                "drupal/devel": "Required by drupal/yamlform_devel",
-                "drupal/node": "Required by drupal/yamlform_node",
-                "drupal/path": "Required by drupal/yamlform_node",
-                "drupal/text": "Required by drupal/yamlform_node"
+                "drupal/core": "Required by drupal/yamlform_devel, drupal/yamlform_examples, drupal/yamlform_node, drupal/yamlform_templates, drupal/yamlform_to_webform, drupal/yamlform_ui",
+                "drupal/devel": "Required by drupal/yamlform_devel"
             },
             "type": "drupal-module",
             "extra": {
@@ -3181,7 +3177,7 @@
             ],
             "description": "Enables the creation of forms and questionnaires.",
             "homepage": "https://drupal.org/project/yamlform",
-            "time": "2016-11-11 01:59:00"
+            "time": "2016-11-28 20:13:50"
         },
         {
             "name": "easyrdf/easyrdf",
