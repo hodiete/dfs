@@ -112,20 +112,32 @@ $frame-button-max-width:                450px;
 } // END MIN PC VIEW
 
 // ####################################################################### //
-/* IE 9 Styilng */
+/* IE 9 Styilng 10 getting it too */
 
 @media screen\0 { 
  @media (min-width: $min-pc) {
   // keep cta buttons in IE 9 from going too wide - remove once IE9 not supported
 
     .get-involved--cta-wrapper {
-      max-width: 70%;
-      margin: 0 auto;
+      //max-width: 70%;
+      //margin: 0 auto;
       position: relative;
+      margin-bottom: 3em;
+
       & > div {
-        max-width: $frame-button-max-width;
-        margin: 0 auto;
+        position: relative;
+         margin: 0 auto;
+        float: left;
+        width:100%;
+        text-align: center;
+        & > div {
+          display: inline-block;
+          float: left;
+          width: 31%;
+        }
       }
     }
-   }
- }
+  }
+}
+
+
