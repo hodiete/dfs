@@ -318,7 +318,7 @@ $results-pager-color: $color-tertiary !default;
       }
 
     label.option.active-filter-opt{
-      color: $primarygold;
+      color: $color-accent-primary;
     }
 
     input[type="radio"] + label {
@@ -349,18 +349,18 @@ $results-pager-color: $color-tertiary !default;
     }
 
     input:checked + label {
-      color: $primarygold;
+      color: $color-accent-primary;
 
       &:before {
         position: absolute;
         left: 9px;
-        color: $primarygold;
+        color: $color-accent-primary;
         font-family: $icon-font;
         content: "\e61f";
       }
 
       &.option:active{
-        color: $primarygold;
+        color: $color-accent-primary;
       }
     }
 
