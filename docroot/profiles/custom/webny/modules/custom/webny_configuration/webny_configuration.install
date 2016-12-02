@@ -1693,48 +1693,6 @@ function webny_configuration_update_8087() {
 }
 
 /**
- * Implements hook_update_n().
- *
- * Refreshes news content type, Deletes subject heading field.
- */
-function webny_configuration_update_8088() {
-
-  // refresh news content type feature
-  print webny_configuration_uninstall_module('webny_news_content_type');
-  print webny_configuration_enable_module('webny_news_content_type');
-
-  // REMOVE FIELDS AND DEPENDENCIES FROM ACSF DEV.
-  $properties[0] = array(
-      'entity_type' => 'node',
-      'bundle' => 'webny_news',
-      'field_name' => 'field_webny_news_subject_heading',
-      'include_deleted' => TRUE,
-  );
-
-  echo "Number of properties: " . count($properties);
-
-  foreach ($properties as $prop) {
-
-    $fields = \Drupal::entityManager()->getStorage('field_config')->loadByProperties($prop);
-
-    $info = \Drupal::entityManager()->getDefinitions();
-    foreach ($fields as $field) {
-      $entity_type = $field->getTargetEntityTypeId();
-
-      // Proceed only if the module implementing the entity
-      // has not been uninstalled already.
-      if (isset($info[$entity_type])) {
-        Drupal::entityManager()->getStorage($entity_type)->purgeFieldData($field, 100);
-        $field->delete();
-        field_purge_field($field);
-        unset($fields, $info);
-      }
-    }
-
-  }
-}
-
-/**
  * Helper function to enable a Drupal module and print the result.
  *
  * @param string $module_name
