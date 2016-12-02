@@ -16,7 +16,6 @@ dependencies:
     - field.field.node.webny_news.field_webny_news_image
     - field.field.node.webny_news.field_webny_news_location
     - field.field.node.webny_news.field_webny_news_short_title
-    - field.field.node.webny_news.field_webny_news_subject_heading
     - field.field.node.webny_news.field_webny_news_subtitles
     - node.type.webny_news
   module:
@@ -139,13 +138,6 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: text_default
-  field_webny_news_subject_heading:
-    weight: 9
-    label: hidden
-    settings:
-      link: true
-    third_party_settings: {  }
-    type: entity_reference_label
   field_webny_news_subtitles:
     weight: 7
     label: hidden
