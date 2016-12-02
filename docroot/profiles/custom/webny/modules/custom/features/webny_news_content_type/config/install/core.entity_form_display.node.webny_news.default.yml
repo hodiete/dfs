@@ -16,7 +16,6 @@ dependencies:
     - field.field.node.webny_news.field_webny_news_image
     - field.field.node.webny_news.field_webny_news_location
     - field.field.node.webny_news.field_webny_news_short_title
-    - field.field.node.webny_news.field_webny_news_subject_heading
     - field.field.node.webny_news.field_webny_news_subtitles
     - node.type.webny_news
   module:
@@ -161,14 +160,6 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
-  field_webny_news_subject_heading:
-    weight: 11
-    settings:
-      match_operator: CONTAINS
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-    type: entity_reference_autocomplete
   field_webny_news_subtitles:
     weight: 9
     settings:
