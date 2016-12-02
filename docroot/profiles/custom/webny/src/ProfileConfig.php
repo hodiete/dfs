@@ -153,6 +153,7 @@ class ProfileConfig {
       $this->getProfileFeatureConfigPath('global_navigation_footer') . '/optional',
       $this->getProfileFeatureConfigPath('image_styles') . '/install',
       $this->getProfileFeatureConfigPath('image_styles') . '/optional',
+      $this->getProfilePath() . '/modules/contrib/yamlform/' . self::CONFIG_DIR . '/install',
     ]);
 
     return $locations->locate($resource . '.yml');
