@@ -24,6 +24,11 @@ class ProfileConfig {
   const FEATURES_DIR = 'modules/custom/features';
 
   /**
+   * Contrib directory.
+   */
+  const CONTRIB_DIR = 'modules/contrib';
+
+  /**
    * Config factory.
    *
    * @var \Drupal\Core\Config\ConfigFactoryInterface
@@ -153,7 +158,7 @@ class ProfileConfig {
       $this->getProfileFeatureConfigPath('global_navigation_footer') . '/optional',
       $this->getProfileFeatureConfigPath('image_styles') . '/install',
       $this->getProfileFeatureConfigPath('image_styles') . '/optional',
-      $this->getProfilePath() . '/modules/contrib/yamlform/' . self::CONFIG_DIR . '/install',
+      $this->getProfileContribModulePath('yamlform') . '/' . self::CONFIG_DIR . '/install',
     ]);
 
     return $locations->locate($resource . '.yml');
@@ -198,6 +203,20 @@ class ProfileConfig {
    */
   protected function getProfileFeatureConfigPath($feature_name) {
     return $this->getProfileFeaturePath($feature_name) . '/' . self::CONFIG_DIR;
+  }
+
+  /**
+   * Get a contrib modules path.
+   *
+   * @param string $module_machine_name
+   *   This is the modules name as used on it's d.o oveview page
+   *    ie, module_name, better_views, other_module
+   *
+   * @return string
+   *   Path to the webny contrib modules specific directory as declared via $module_machine_name
+   */
+  protected function getProfileContribModulePath($module_machine_name) {
+    return $this->getProfilePath() . '/' . self::CONTRIB_DIR . '/' . $module_machine_name;
   }
 
 }
