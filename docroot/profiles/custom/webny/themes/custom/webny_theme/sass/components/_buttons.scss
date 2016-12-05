@@ -45,7 +45,9 @@ $frame-button-border-size:      1px;
   border: none;
   cursor: pointer;
   &:hover {
-    background: darken($button-bkgd-color, 10%);
+    background: $button-bkgd-color;
+    color:$color-accent-secondary;
+    border: 1px solid $color-accent-secondary;
   }
     
 }
