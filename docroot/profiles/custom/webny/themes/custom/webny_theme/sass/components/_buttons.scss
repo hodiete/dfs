@@ -16,6 +16,7 @@ $frame-button-min-width:        175px;
 $frame-button-mobile-width:     100%;
 $frame-button-default-padding:  13px 20px;
 $frame-button-border-size:      1px;
+$frame-button-max-width:        250px !default;
 
 .buttonBase {
   display:inline-block;
@@ -45,9 +46,7 @@ $frame-button-border-size:      1px;
   border: none;
   cursor: pointer;
   &:hover {
-    background: $button-bkgd-color;
-    color:$color-accent-primary;
-    border: 1px solid $color-accent-primary;
+    background: darken($button-bkgd-color, 10%);
   }
     
 }
@@ -122,7 +121,7 @@ $frame-button-border-size:      1px;
     }
 
     @include breakpoint($min-tab) {
-      max-width: 250px;
+      max-width: $frame-button-max-width;
       display: inline-block;
     }
 
