@@ -78,16 +78,15 @@ $results-pager-color: $color-tertiary !default;
   //color: $color-mono-white;
   font-family: $base-font;
   background-color: $exposedbkgrnd;
-  //float: left;
   position: relative;
   overflow: hidden;
 
   .results-exposed-filters-outer {
-    padding: 0 20px;
+    padding: 0 0 0 20px;
   }
 
   .results-exposed-filters-title {
-    color: $results-highlight-color;
+    color: $color-accent-primary;
     font-size: .9rem;
     font-family: $oswald;
     text-transform: uppercase;
@@ -107,6 +106,7 @@ $results-pager-color: $color-tertiary !default;
     right:0; 
     bottom: 0;
     border:none;
+    padding: 0 20px 0 0;
   }
   .filterTogDisplay, .filterTogHidden {
     position:relative;
@@ -127,10 +127,11 @@ $results-pager-color: $color-tertiary !default;
       margin: .25em 0;
     }
     input {
+      float: right;
       background-color: $exposedbkgrnd;
       border-style: solid;
       border-width: 1px;
-      border-color: $darkgray;
+      border-color: $color-mono-white;
       color: $color-mono-white;
       margin-bottom: 20px;
     }
@@ -272,18 +273,30 @@ $results-pager-color: $color-tertiary !default;
     .results-image svg {
       display:none;
     }
+    .results-exposed-filters-outer{
+      padding: 0 20px 0 20px;
+    }
+  }
+  @media (min-width:$min-tablet) and (max-width:$min-desktop) {
+    form {
+      max-width: 100%;
+    }
+    .results-exposed-filters-outer {
+      padding: 0 20px 0 20px;
+    }
   }
 } 
 //the display of the exposed filter area and the toggle desktop vs mobile
 @media screen and (max-width:1023px){
-  .results .filterBodyHidden{
+  .results
+  .filterBodyHidden{
     display: none;  
-  } 
+  }
 }
 @media screen and (min-width:1024px){
   .results .filterBodyHidden{
     //we want it to always display on desktop
-    display:block 
+    display:block
   } 
   .results .filter-display {
     //since desktop should always have the filters, no toggle needed
