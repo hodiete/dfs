@@ -19,14 +19,20 @@ class ProfileConfig {
   const CONFIG_DIR = 'config';
 
   /**
-   * Config directory.
+   * Features directory.
    */
   const FEATURES_DIR = 'modules/custom/features';
 
   /**
+<<<<<<< HEAD
    * Contrib directory.
    */
   const CONTRIB_DIR = 'modules/contrib';
+=======
+   * Themes directory.
+   */
+  const THEME_DIR = 'themes/custom/';
+>>>>>>> 19b0278389be7c38e0474f08ab74b9d0afcda7df
 
   /**
    * Config factory.
@@ -159,6 +165,8 @@ class ProfileConfig {
       $this->getProfileFeatureConfigPath('image_styles') . '/install',
       $this->getProfileFeatureConfigPath('image_styles') . '/optional',
       $this->getProfileContribModulePath('yamlform') . '/' . self::CONFIG_DIR . '/install',
+      $this->getProfileThemeConfigPath('webny_theme') . '/install',
+
     ]);
 
     return $locations->locate($resource . '.yml');
@@ -219,4 +227,30 @@ class ProfileConfig {
     return $this->getProfilePath() . '/' . self::CONTRIB_DIR . '/' . $module_machine_name;
   }
 
+  /**
+   * Get a profile theme path.
+   *
+   * @param string $theme_name
+   *   Theme machine name WITH the theme bundle name, e.g. webny_theme, not
+   *   theme.
+   *
+   * @return string
+   *   Path to the theme.
+   */
+  protected function getProfileThemePath($theme_name) {
+    return $this->getProfilePath() . '/' . self::THEME_DIR . $theme_name;
+  }
+  /**
+   * Get a profile theme configuration path.
+   *
+   * @param string $theme_name
+   *   Theme machine name WITH the theme bundle name, e.g. webny_theme, not
+   *   theme.
+   *
+   * @return string
+   *   Path to the theme configuration base directory.
+   */
+  protected function getProfileThemeConfigPath($theme_name) {
+    return $this->getProfileThemePath($theme_name) . '/' . self::CONFIG_DIR;
+  }
 }
