@@ -135,6 +135,13 @@ $results-pager-color: $color-tertiary !default;
       color: $color-mono-white;
       margin-bottom: 20px;
     }
+    .button {
+      &:hover {
+        background-color: $exposedbkgrnd;
+        border-color: $color-accent-primary;
+        color: $color-accent-primary;
+      }
+    }
 
     input[type="text"]:focus, input[type="date"]:focus {
       color: $color-mono-black;
