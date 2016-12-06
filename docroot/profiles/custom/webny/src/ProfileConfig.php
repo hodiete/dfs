@@ -24,15 +24,14 @@ class ProfileConfig {
   const FEATURES_DIR = 'modules/custom/features';
 
   /**
-<<<<<<< HEAD
    * Contrib directory.
    */
   const CONTRIB_DIR = 'modules/contrib';
-=======
+
+  /*
    * Themes directory.
    */
   const THEME_DIR = 'themes/custom/';
->>>>>>> 19b0278389be7c38e0474f08ab74b9d0afcda7df
 
   /**
    * Config factory.
