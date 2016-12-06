@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "9a988fd67bb3c100b405a708a8a9b828",
-    "content-hash": "935e4e3166909f820fa373f2a5ac784b",
+    "hash": "57d76da0b3fe1f2b8695c2bdb06bfbc1",
+    "content-hash": "a7da91d14ec6bb8fd44afe35bcd43975",
     "packages": [
         {
             "name": "acquia/blt",
@@ -3138,6 +3138,50 @@
                 "Drupal"
             ],
             "time": "2016-06-28 04:04:37"
+        },
+        {
+            "name": "drupal/yamlform",
+            "version": "dev-8.x-1.x",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupal.org/project/yamlform.git",
+                "reference": "a4617394babf778445fb701563d94caa850f0f9f"
+            },
+            "require": {
+                "drupal/core": "8.*"
+            },
+            "replace": {
+                "drupal/yamlform_devel": "self.version",
+                "drupal/yamlform_examples": "self.version",
+                "drupal/yamlform_node": "self.version",
+                "drupal/yamlform_templates": "self.version",
+                "drupal/yamlform_to_webform": "self.version",
+                "drupal/yamlform_ui": "self.version"
+            },
+            "suggest": {
+                "drupal/core": "Required by drupal/yamlform_devel, drupal/yamlform_examples, drupal/yamlform_node, drupal/yamlform_templates, drupal/yamlform_to_webform, drupal/yamlform_ui",
+                "drupal/devel": "Required by drupal/yamlform_devel"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-8.x-1.x": "8.1.x-dev"
+                }
+            },
+            "notification-url": "https://packagist.drupal-composer.org/downloads/",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Jacob Rockowitz (jrockowitz)",
+                    "homepage": "https://www.drupal.org/u/jrockowitz",
+                    "role": "Maintainer"
+                }
+            ],
+            "description": "Enables the creation of forms and questionnaires.",
+            "homepage": "https://drupal.org/project/yamlform",
+            "time": "2016-12-06 00:52:56"
         },
         {
             "name": "easyrdf/easyrdf",
@@ -8873,6 +8917,7 @@
         "drupal/entity_embed": 20,
         "drupal/libraries": 20,
         "drupal/linked_field": 20,
+        "drupal/yamlform": 20,
         "guzzlehttp/guzzle": 20,
         "roave/security-advisories": 20,
         "drupal-composer/drupal-security-advisories": 20
