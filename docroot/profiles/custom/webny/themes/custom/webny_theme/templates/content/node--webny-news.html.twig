@@ -124,9 +124,14 @@
 </div>
     
 <div class="press-docs">
-    <h2 class="doc-set-title">{{ content.field_webny_news_docsec_title }}</h2>
-    <h3 class="doc-set-subtitle">{{ content.field_webny_news_docsec_subtitle }}</h3>
-
+    {# DOCUMENT TITLE - CHECK IF TITLE EXISTS #}
+    {% if node.field_webny_news_docsec_title.value is not null and node.field_webny_news_docsec_title.value is not empty  %}
+        <h2 class="doc-set-title">{{ content.field_webny_news_docsec_title }}</h2>
+    {% endif %}
+    {# DOCUMENT SUBTITLE - CHECK IF SUBTITLE EXISTS #}
+    {% if node.field_webny_news_docsec_subtitle.value is not null and node.field_webny_news_docsec_subtitle.value is not empty  %}
+        <h3 class="doc-set-subtitle">{{ content.field_webny_news_docsec_subtitle }}</h3>
+    {% endif %}
     <div class="press-docs-eref">
         {{ content.field_webny_news_attdocs_eref }}
     </div>
