@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "0224358f1e6c83f743229d1f4a49c77b",
-    "content-hash": "0b8597fadaccffb4f6beec18c7234100",
+    "hash": "57d76da0b3fe1f2b8695c2bdb06bfbc1",
+    "content-hash": "a7da91d14ec6bb8fd44afe35bcd43975",
     "packages": [
         {
             "name": "acquia/blt",
@@ -988,15 +988,15 @@
         },
         {
             "name": "drupal/acquia_connector",
-            "version": "8.1.6",
+            "version": "8.1.7",
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/acquia_connector",
-                "reference": "07d3fc1894071949e8d934ce6cfb3b5c0d3f1bd6"
+                "reference": "535f27b1ee669e277e52390a198a1605192bbe88"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/acquia_connector-8.x-1.6.zip",
+                "url": "https://ftp.drupal.org/files/projects/acquia_connector-8.x-1.7.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -1023,7 +1023,7 @@
             ],
             "description": "Allows Drupal to securely communicate with the Acquia Subscription, and checks for updates to Acquia Drupal.",
             "homepage": "https://www.drupal.org/project/acquia_connector",
-            "time": "2016-10-26 13:52:51"
+            "time": "2016-11-30 14:34:37"
         },
         {
             "name": "drupal/acsf",
@@ -1250,21 +1250,20 @@
         },
         {
             "name": "drupal/blazy",
-            "version": "8.1.0-beta4",
+            "version": "8.1.0-beta5",
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/blazy.git",
-                "reference": "b094d5d13aa6b0d11ee0d6f2a4f25781cbed3167"
+                "reference": "56807780918bd45c9f4b90c0362774f5e2bedc1f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/blazy-8.x-1.0-beta4.zip",
+                "url": "https://ftp.drupal.org/files/projects/blazy-8.x-1.0-beta5.zip",
                 "reference": null,
                 "shasum": null
             },
             "require": {
-                "drupal/core": "8.*",
-                "drupal/image": "8.*"
+                "drupal/core": "8.*"
             },
             "replace": {
                 "drupal/blazy_ui": "self.version"
@@ -1282,6 +1281,18 @@
             "license": [
                 "GPL-2.0+"
             ],
+            "authors": [
+                {
+                    "name": "Gaus Surahman",
+                    "homepage": "https://www.drupal.org/u/gausarts",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "Contributors",
+                    "homepage": "https://www.drupal.org/node/2663268/committers",
+                    "role": "Contributor"
+                }
+            ],
             "description": "Provides basic Blazy integration for lazy loading and multi-serving images.",
             "homepage": "https://drupal.org/project/blazy",
             "keywords": [
@@ -1289,7 +1300,7 @@
                 "bLazy",
                 "lazyload"
             ],
-            "time": "2016-09-29 11:36:13"
+            "time": "2016-11-29 15:08:59"
         },
         {
             "name": "drupal/coder",
@@ -3134,7 +3145,7 @@
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/yamlform.git",
-                "reference": "357d6fbb07f6d264355c1b22d7fdbd24d4f48231"
+                "reference": "00c9a6d113a9637d901b24ad2e5331c8071478f7"
             },
             "require": {
                 "drupal/core": "8.*"
@@ -3170,7 +3181,7 @@
             ],
             "description": "Enables the creation of forms and questionnaires.",
             "homepage": "https://drupal.org/project/yamlform",
-            "time": "2016-12-05 00:45:13"
+            "time": "2016-12-07 09:06:08"
         },
         {
             "name": "easyrdf/easyrdf",
@@ -4845,12 +4856,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "3c25700b65ba5e34a5ec8fd05b5cdc7a68d9385a"
+                "reference": "5560bd95c22a4ccf9404d8f176fceb4812a7398e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/3c25700b65ba5e34a5ec8fd05b5cdc7a68d9385a",
-                "reference": "3c25700b65ba5e34a5ec8fd05b5cdc7a68d9385a",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/5560bd95c22a4ccf9404d8f176fceb4812a7398e",
+                "reference": "5560bd95c22a4ccf9404d8f176fceb4812a7398e",
                 "shasum": ""
             },
             "conflict": {
@@ -4900,7 +4911,7 @@
                 "silverstripe/framework": ">=3,<3.3",
                 "silverstripe/userforms": "<3",
                 "simplesamlphp/saml2": ">=1.9,<1.9.1|>=1.10,<1.10.3|>=2.3,<2.3.3",
-                "simplesamlphp/simplesamlphp": "<1.14.4",
+                "simplesamlphp/simplesamlphp": "<1.14.10",
                 "socalnick/scn-social-auth": "<1.15.2",
                 "swiftmailer/swiftmailer": ">=4,<4.99.99|>=5,<5.2.1",
                 "symfony/dependency-injection": ">=2,<2.0.17",
@@ -4967,7 +4978,7 @@
                 }
             ],
             "description": "Prevents installation of composer packages with known security vulnerabilities: no API, simply require it",
-            "time": "2016-12-04 13:54:33"
+            "time": "2016-12-06 13:29:26"
         },
         {
             "name": "sebastian/code-unit-reverse-lookup",
