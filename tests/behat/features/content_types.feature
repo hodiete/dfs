@@ -24,7 +24,6 @@ Feature: Check for the existence and fields of content types
     And I should see text matching "Hero Title"
     And I should see text matching "Image"
     And I should see text matching "Location"
-    And I should see text matching "Subject Heading"
     And I should see text matching "Short Title"
     And I should see text matching "Sub Titles"
     And I should see text matching "Summary / Description"

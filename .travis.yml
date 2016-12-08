@@ -1,5 +1,6 @@
 # Note that the example .travis.yml file for child projects lives in /install.
 sudo: required
+group: deprecated
 language: php
 dist: trusty
 
@@ -90,6 +91,7 @@ before_script:
   - sudo service varnish restart
 
 script:
+  - touch project.local.yml
   - blt -Dbehat.run-server=true -Dcreate_alias=false -Dbehat.launch-phantom=true ci:build:validate:test
 
 deploy:

@@ -19,9 +19,19 @@ class ProfileConfig {
   const CONFIG_DIR = 'config';
 
   /**
-   * Config directory.
+   * Features directory.
    */
   const FEATURES_DIR = 'modules/custom/features';
+
+  /**
+   * Contrib directory.
+   */
+  const CONTRIB_DIR = 'modules/contrib';
+
+  /*
+   * Themes directory.
+   */
+  const THEME_DIR = 'themes/custom/';
 
   /**
    * Config factory.
@@ -149,6 +159,13 @@ class ProfileConfig {
       $this->getProfileFeatureConfigPath('landing_page_content_type') . '/optional',
       $this->getProfileFeatureConfigPath('contact_content_type') . '/install',
       $this->getProfileFeatureConfigPath('contact_page_content_type') . '/optional',
+      $this->getProfileFeatureConfigPath('global_navigation_footer') . '/install',
+      $this->getProfileFeatureConfigPath('global_navigation_footer') . '/optional',
+      $this->getProfileFeatureConfigPath('image_styles') . '/install',
+      $this->getProfileFeatureConfigPath('image_styles') . '/optional',
+      $this->getProfileContribModulePath('yamlform') . '/' . self::CONFIG_DIR . '/install',
+      $this->getProfileThemeConfigPath('webny_theme') . '/install',
+
     ]);
 
     return $locations->locate($resource . '.yml');
@@ -195,4 +212,44 @@ class ProfileConfig {
     return $this->getProfileFeaturePath($feature_name) . '/' . self::CONFIG_DIR;
   }
 
+  /**
+   * Get a contrib modules path.
+   *
+   * @param string $module_machine_name
+   *   This is the modules name as used on it's d.o oveview page
+   *    ie, module_name, better_views, other_module
+   *
+   * @return string
+   *   Path to the webny contrib modules specific directory as declared via $module_machine_name
+   */
+  protected function getProfileContribModulePath($module_machine_name) {
+    return $this->getProfilePath() . '/' . self::CONTRIB_DIR . '/' . $module_machine_name;
+  }
+
+  /**
+   * Get a profile theme path.
+   *
+   * @param string $theme_name
+   *   Theme machine name WITH the theme bundle name, e.g. webny_theme, not
+   *   theme.
+   *
+   * @return string
+   *   Path to the theme.
+   */
+  protected function getProfileThemePath($theme_name) {
+    return $this->getProfilePath() . '/' . self::THEME_DIR . $theme_name;
+  }
+  /**
+   * Get a profile theme configuration path.
+   *
+   * @param string $theme_name
+   *   Theme machine name WITH the theme bundle name, e.g. webny_theme, not
+   *   theme.
+   *
+   * @return string
+   *   Path to the theme configuration base directory.
+   */
+  protected function getProfileThemeConfigPath($theme_name) {
+    return $this->getProfileThemePath($theme_name) . '/' . self::CONFIG_DIR;
+  }
 }

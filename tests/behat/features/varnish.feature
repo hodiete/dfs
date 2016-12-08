@@ -1,4 +1,4 @@
-@api
+@varnish @api
 Feature: Varnish Cache Clearing
   -Check to make sure the Varnish is behaving as expected
 
@@ -20,7 +20,7 @@ Feature: Varnish Cache Clearing
     Given I am viewing an "webny_news" content:
     | title | My article with fields! |
     | body  | A placeholder           |
-    | field_webny_news_subject_heading | Behat |
+    | field_webny_news_short_title | Behat |
     Then I should see the heading "My article with fields!"
     And I should see the text "A placeholder"
     Then I should see in the header "X-Cache":"MISS"

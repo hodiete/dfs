@@ -26,7 +26,17 @@
 
 {% endfor %}
 
+
 {% if title == 'show' %}
+
+<article {{ attributes.addClass('title-layout') }}>
+
+    {% if hero == '' %}
+        {# START QUICK EDITS #}
+        {{ title_prefix }}
+    {% endif %}
+
+
     <div class="landing-title-area">
 
         <!-- HEADLINE LABEL -->
@@ -35,10 +45,22 @@
         </div>
 
     </div>
+
+    {% if hero == '' %}
+        {# START QUICK EDITS #}
+        {{ title_suffix }}
+    {% endif %}
+
+
+</article>
+
 {% endif %}
 
 {% if hero == 'show' %}
     <article {{ attributes.addClass('hero-layout') }}>
+
+        {# START QUICK EDITS #}
+        {{ title_prefix }}
 
         {% if hero_image == '/' %}
             <div class="hero-header hero-no-image hero-ipage" style="">
@@ -75,12 +97,22 @@
                         {{ content.field_webny_page_global_keywords }}
                     </div>
 
-                </div>
-
             </div>
+
+         {# END QUICK EDITS #}
+         {{ title_suffix }}
 
     </article>
 {% endif %}
+
+
+
+
+{% if hero == '' and title == '' %}
+<article {{ attributes.addClass('quickedit-layout') }}>
+    {# START QUICK EDITS #}
+    {{ title_prefix }}
+    {% endif %}
 
 <div class="body-area">
 
@@ -102,6 +134,13 @@
 
 </div>
 
+{% if hero == '' and title == '' %}
+    {# END QUICK EDITS #}
+    {{ title_suffix }}
+</article>
+{% endif %}
+
+
 <div class="page-paragraphs">
 
     <div class="page-paragraphs-in">
@@ -117,4 +156,4 @@
     <div class="press-docs-eref">
         {{ content.field_webny_page_attdocs_eref }}
     </div>
-</div>      
+</div>

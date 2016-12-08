@@ -26,6 +26,7 @@
 {# DEBUG VIA KINT / DEVEL #}
 
 <article{{ attributes.addClass(docclasses) }}>
+    {{ title_prefix }}
     
   <div{{ content_attributes.addClass(docclasses,'attdoc-node') }}>
 
@@ -52,5 +53,5 @@
             
         </li><!--end document-wrapper-->
     </ul>
-
+      {{ title_suffix }}
 </article>

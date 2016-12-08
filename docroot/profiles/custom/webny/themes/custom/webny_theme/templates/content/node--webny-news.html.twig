@@ -16,7 +16,6 @@
  *    news_date:            {{ content.field_webny_news_date }}
  *    global_keywords:      {{ content.field_webny_news_global_keywords }}
  *    location:             {{ content.field_webny_news_location }}
- *    subjet_heading:       {{ content.field_webny_news_subject_heading }}
  *    subtitle:             {{ content.field_webny_news_sub_title }}
  *
  */
@@ -47,9 +46,14 @@
   ]
 %}
 
+
+
 {# NEW HERO SECTION #}
 
 <article {{ attributes.addClass(newsclasses,'hero-layout') }}>
+
+    {# START QUICK EDITS #}
+    {{ title_prefix }}
 
     {# CHECK IF THERE IS AN IMAGE #}
 
@@ -94,10 +98,9 @@
         {# END WRAPPER -- FRESH #}
       </div>
 
-
+    {{ title_suffix }}
 
 </article>
-
 
 <div class="news-body">
 	
@@ -121,9 +124,14 @@
 </div>
     
 <div class="press-docs">
-    <h2 class="doc-set-title">{{ content.field_webny_news_docsec_title }}</h2>
-    <h3 class="doc-set-subtitle">{{ content.field_webny_news_docsec_subtitle }}</h3>
-
+    {# DOCUMENT TITLE - CHECK IF TITLE EXISTS #}
+    {% if node.field_webny_news_docsec_title.value is not null and node.field_webny_news_docsec_title.value is not empty  %}
+        <h2 class="doc-set-title">{{ content.field_webny_news_docsec_title }}</h2>
+    {% endif %}
+    {# DOCUMENT SUBTITLE - CHECK IF SUBTITLE EXISTS #}
+    {% if node.field_webny_news_docsec_subtitle.value is not null and node.field_webny_news_docsec_subtitle.value is not empty  %}
+        <h3 class="doc-set-subtitle">{{ content.field_webny_news_docsec_subtitle }}</h3>
+    {% endif %}
     <div class="press-docs-eref">
         {{ content.field_webny_news_attdocs_eref }}
     </div>
@@ -132,3 +140,4 @@
 <div class="press-contact-info">
     {{ content.field_webny_news_contact_info }}
 </div>
+

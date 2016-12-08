@@ -49,6 +49,14 @@
               drush @${drush_alias} acsf-tools-ml --strict=0 config-import --partial --source=/mnt/www/html/nysits01live/config/default -y
               echo "Reverting features"
               drush @${drush_alias} acsf-tools-ml --strict=0 fia -y
+              echo "enabling css optimization..."
+              drush @${drush_alias} acsf-tools-ml cset system.performance css.preprocess 1 -y
+              echo "enabling js optimization..."
+              drush @${drush_alias} acsf-tools-ml cset system.performance js.preprocess 1 -y
+              echo "disable field UI..."
+              drush @${drush_alias} acsf-tools-ml pmu field_ui -y
+              echo "disable views UI..."
+              drush @${drush_alias} acsf-tools-ml pmu views_ui -y
               echo "Clearing caches..."
               drush @${drush_alias} acsf-tools-ml cr
               echo "Clearing Varnish..."

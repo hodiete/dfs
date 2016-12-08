@@ -17,8 +17,11 @@
 
 {# DEBUG VIA KINT / DEVEL #}
 
+
 <article{{ attributes.addClass(docclasses) }}>
+    {{ title_prefix }}
         {% for i in content %} 
                {{ i }} 
         {% endfor %}
+    {{ title_suffix }}
 </article>

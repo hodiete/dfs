@@ -18,6 +18,8 @@ $getinv-button-border-color:            $color-mono-black !default;
 $getinv-button-text-color:              $color-mono-black !default;
 $getinv-button-back-color:              $button-bkgd-transparent !default;
 $getinv-button-hover-back-color:        $button-white-50 !default;
+// this overrides the a value set in buttons.scss and the div value below
+$frame-button-max-width:                450px; 
 
 // ######################################################################### //
 /* START STYLING MOBILE FIRST UNDER HERE */
@@ -30,27 +32,19 @@ $getinv-button-hover-back-color:        $button-white-50 !default;
   background-color: $get-inv-frame-bkgd-color;
   margin: 0 auto;
   text-align: center;
-  //padding: 3%;
   padding: $frame-padding-lg 3%;
+  position:relative;
 }
 
 .get-involved--field-webny-get-involved-title {
-  //font-family: $oswald;
-  //font-weight: 800;
-  //font-size: $frame-title;
   font: $frame-title;
   color: $get-inv-frame-title-color;
   text-align: center;
   text-transform: uppercase;
   letter-spacing: 2px;
-  //padding-top: 1%; // the padding set on the main frame should give the 80px 
-  //padding-bottom: 0.5%; // need to evaluate this when changing these to headings
 }
 
 .get-involved--field-webny-get-inv-headline {
-  //font-family: $base-font;
-  //font-size: $frame-headline;
-  //font-weight: 800;
   font: $frame-headline;
   color: $get-inv-frame-headline-color;
   text-align: center;
@@ -72,26 +66,31 @@ $getinv-button-hover-back-color:        $button-white-50 !default;
 }
 
 .get-involved--cta-wrapper > div {
-  width: 95%;
-  margin: 0 auto;
-  text-align: center;
-  margin-top: 2rem;
+  display: flex;
+  flex-flow: column;
 }
 
 .get-involved--field-webny-get-inv-cta {
 
-  margin: 7% auto;
+  margin: 3% 1% 0 1%; // for vertical spacing of buttons on mobile and old IE browsers on desktop
+  flex-grow: 1; // so buttons stretch to available space
+  max-width: $frame-button-max-width; // but buttons shouldn't stretch too much
   text-align: center;
+  border: $frame-button-border-size solid $getinv-button-border-color; //applying to div class for stretchy buttons
+
+  &:hover {
+      background-color: $getinv-button-hover-back-color;
+      border-color: $getinv-button-border-color;
+    }
 
   a {
   // BUTTON DYNAMIC REQUIREMENTS
-  border: $frame-button-border-size solid $getinv-button-border-color;
+  //border: $frame-button-border-size solid $getinv-button-border-color;
   color: $getinv-button-text-color;
   background-color: $getinv-button-back-color;
+  //this max-width overrides the one set in buttons.scss
 
     &:hover {
-      background-color: $getinv-button-hover-back-color;
-      border-color: $getinv-button-border-color;
       text-decoration: none;
     }
   }
@@ -102,31 +101,43 @@ $getinv-button-hover-back-color:        $button-white-50 !default;
 }
 
 // ######################################################################### //
-/* TABLET VIEW */
-@media (min-width: $min-tab) {
-
-  .get-involved--field-webny-get-inv-cta {
-    padding: 13px 20px;
-  }
-
-
-} // END MIN TABLET VIEW
-
-// ######################################################################### //
 /* PC VIEW */
 @media (min-width: $min-pc) {
 
   .get-involved--cta-wrapper > div {
-    display: flex;
-    flex-flow: row;
+   flex-flow: row;
     justify-content: center;
-    width: 85%;
-  }
-
-  .get-involved--field-webny-get-inv-cta {
-    margin: 0 1%;
-    min-width: 30%;
-    max-width: 30%;
   }
 
 } // END MIN PC VIEW
+
+// ####################################################################### //
+/* IE 9 Styilng 10 getting it too */
+
+@media screen\0 { 
+ @media (min-width: $min-pc) {
+  // keep cta buttons in IE 9 from going too wide - remove once IE9 not supported
+
+    .get-involved--cta-wrapper {
+      //max-width: 70%;
+      //margin: 0 auto;
+      position: relative;
+      margin-bottom: 3em;
+
+      & > div {
+        position: relative;
+         margin: 0 auto;
+        float: left;
+        width:100%;
+        text-align: center;
+        & > div {
+          display: inline-block;
+          float: left;
+          width: 50%;
+        }
+      }
+    }
+  }
+}
+
+
