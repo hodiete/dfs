@@ -1696,7 +1696,7 @@ function webny_configuration_update_8087() {
  *
  * Refreshes Theme settings
  */
-function webny_configuration_update_8089() {
+function webny_configuration_update_8088() {
 
   // REFRESH THEME SETTINGS
   $config_factory = \Drupal::configFactory();
@@ -1720,7 +1720,7 @@ function webny_configuration_update_8089() {
  *
  * Installs the beta23 yamlforms module
  */
-function webny_configuration_update_8088() {
+function webny_configuration_update_8089() {
 
     // INSTALL THE YAMLFORMS MODULE
         //$module_name = 'yamlform';
@@ -1775,6 +1775,27 @@ function webny_configuration_update_8088() {
     $config_factory->reset();
 
 
+}
+
+function webny_configuration_update_8090() {
+
+  $config_factory = \Drupal::configFactory();
+  $profile_config = \Drupal::service('webny.profile_config');
+
+  // Import new/changed configuration.
+  $config_to_update = [
+    // Updated media file and image styles.
+      'responsive_image.styles.cards',
+  ];
+
+  $profile_config->bulkImport($config_to_update);
+
+  // Clear the config cache.
+  $config_factory->reset();
+
+  // REFRESH THE Image Style feature
+  print webny_configuration_uninstall_module('webny_image_styles');
+  print webny_configuration_enable_module('webny_image_styles');
 }
 
 /**
