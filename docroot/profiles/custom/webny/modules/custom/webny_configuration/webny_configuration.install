@@ -1796,6 +1796,9 @@ function webny_configuration_update_8090() {
   // REFRESH THE Image Style feature
   print webny_configuration_uninstall_module('webny_image_styles');
   print webny_configuration_enable_module('webny_image_styles');
+  // REFRESH THE MEDIA CUSTOM MODULE
+  print webny_configuration_uninstall_module('webny_media');
+  print webny_configuration_enable_module('webny_media');
 }
 
 /**
