@@ -41,7 +41,16 @@
 
 
 {% if title == 'show' %}
-<div class="landing-title-area">
+
+<article {{ attributes.addClass('title-layout') }}>
+
+    {% if hero == '' %}
+        {# START QUICK EDITS #}
+        {{ title_prefix }}
+    {% endif %}
+
+
+    <div class="landing-title-area">
 
     <!-- HEADLINE LABEL -->
     <div class="landing-title">
@@ -54,6 +63,15 @@
     </div>
 
 </div>
+
+    {% if hero == '' %}
+        {# END QUICK EDITS #}
+        {{ title_suffix }}
+    {% endif %}
+
+
+</article>
+
 {% endif %}
 
 <!-- Logic to Display or Not to Display the Hero section -->
