@@ -2,7 +2,7 @@
 
 namespace Drupal\webny_global_nav\Plugin\Block;
 
-use Drupal\Core\Session\AccountInterface;
+#use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\Block\BlockBase;
 
 /**
@@ -15,14 +15,7 @@ use Drupal\Core\Block\BlockBase;
  * )
  */
 class WebnyGlobalNavFooterBlock extends BlockBase {
-
-  /**
-   * {@inheritdoc}
-   */
-  protected function blockAccess(AccountInterface $account) {
-    return $account->hasPermission('administer webny global nav');
-  }
-
+  
   /**
    * {@inheritdoc}
    */
@@ -30,6 +23,11 @@ class WebnyGlobalNavFooterBlock extends BlockBase {
     // Return equivalent to theme function.
     $block = array(
       '#theme' => 'webny_global_nav_footer',
+      '#attached' => array(
+          'library' => array(
+              'webny_global_nav/global-nav',
+          ),
+      ),
     );
     return $block;
   }
