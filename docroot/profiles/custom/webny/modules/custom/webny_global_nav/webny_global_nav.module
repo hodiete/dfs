@@ -28,12 +28,12 @@ function webny_global_nav_theme() {
   $url = Url::fromUri('internal:/');
   $config = \Drupal::config('webny_global_nav.settings');
 
-  $header_format = $config->get('webny_global_nav.headerformat');
-  $header_menu = $config->get('webny_global_nav.headermenu');
-  $footer_menu = $config->get('webny_global_nav.footermenu');
+  $header_format  = $config->get('webny_global_nav.headerformat');
+  $header_menu    = $config->get('webny_global_nav.headermenu');
+  $footer_menu    = $config->get('webny_global_nav.footermenu');
 
-  // ASSIGN BR TAG -- STRIP OUT OTHER TAGS
-  $tagList = array();           // $tagList = Xss::getHtmlTagList(); ORIGINAL TAGLIST
+  // CREATE AGENCY NAME VAR FOR TWIG
+  $tagList = array(); 
   array_push($tagList, 'br');
   $agency_name = Xss::filter($config->get('webny_global_nav.agencyname'),$tagList);
   $linked_agency_name = Link::fromTextAndUrl($agency_name, $url)->toString();
