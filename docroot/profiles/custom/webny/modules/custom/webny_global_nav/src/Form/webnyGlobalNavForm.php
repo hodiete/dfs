@@ -28,12 +28,14 @@ class WebnyGlobalNavForm extends ConfigFormBase {
     $config = $this->config('webny_global_nav.settings');
 
     $form['webny_global_nav_header_fieldset'] = $this->webnyGlobalNavHeaderFieldsetField();
+    $form['webny_global_nav_header_fieldset']['webny_global_nav_header_auto'] = $this->webnyGlobalNavHeaderAutoField();
     $form['webny_global_nav_header_fieldset']['webny_global_nav_header_name'] = $this->webnyGlobalNavAgencyNameField();
     $form['webny_global_nav_header_fieldset']['webny_global_nav_header_format'] = $this->webnyGlobalNavheaderFormatField();
     $form['webny_global_nav_header_fieldset']['webny_global_nav_header_menu'] = $this->webnyGlobalNavHeaderMenuField();
-    $form['webny_global_nav_header_fieldset']['webny_global_nav_header_auto'] = $this->webnyGlobalNavHeaderAutoField();
+
     $form['webny_global_nav_footer_fieldset'] = $this->webnyGlobalNavFooterFieldsetField();
     $form['webny_global_nav_footer_fieldset']['webny_global_nav_footer_auto'] = $this->webnyGlobalNavFooterAutoField();
+    $form['webny_global_nav_footer_fieldset']['webny_global_nav_footer_format'] = $this->webnyGlobalNavFooterFormatField();
     $form['webny_global_nav_footer_fieldset']['webny_global_nav_footer_menu'] = $this->webnyGlobalNavFooterMenuField();
     $form['webny_global_nav_footer_fieldset']['webny_global_nav_social_media_fieldset'] = $this->webnyGlobalNavsocialMediaFieldsetField();
     $form['webny_global_nav_footer_fieldset']['webny_global_nav_social_media_fieldset']['webny_global_nav_social_media'] = $this->webnyGlobalNavSocialMediaField();
@@ -58,7 +60,9 @@ class WebnyGlobalNavForm extends ConfigFormBase {
     $config->set('webny_global_nav.headerformat', $form_state->getValue('webny_global_nav_header_format'));
     $config->set('webny_global_nav.headermenu', $form_state->getValue('webny_global_nav_header_menu'));
     $config->set('webny_global_nav.headerauto', $form_state->getValue('webny_global_nav_header_auto'));
+
     $config->set('webny_global_nav.footerauto', $form_state->getValue('webny_global_nav_footer_auto'));
+    $config->set('webny_global_nav.footerformat', $form_state->getValue('webny_global_nav_footer_format'));
     $config->set('webny_global_nav.footermenu', $form_state->getValue('webny_global_nav_footer_menu'));
     $config->set('webny_global_nav.socialmediablogger', $form_state->getValue('socialmediablogger'));
     $config->set('webny_global_nav.socialmediadelicious', $form_state->getValue('socialmediadelicious'));
@@ -233,6 +237,30 @@ class WebnyGlobalNavForm extends ConfigFormBase {
       '#default_value' => $config->get('webny_global_nav.footerauto'),
       '#multiple' => FALSE,
       '#description' => t('Select if the global footer is to be automatically inserted into the page.  If not selected, make sure to use the WebNY Global Navigation Footer block'),
+    );
+  }
+
+  /**
+   * Webny Global Navigation agency footer style.
+   *
+   * @return array
+   *   Form API element for field.
+   */
+  public function webnyGlobalNavFooterFormatField() {
+    $config = $this->config('webny_global_nav.settings');
+    $format_footer_options = array(
+        'footer subheading' => 'Subheading Columned - Vertical List (Default)',
+        'footer horizontalline' => 'Line of Links - Horizontal List',
+    );
+    return array(
+        '#type' => 'select',
+        '#title' => t('Agency navigation footer format'),
+        '#options' => $format_footer_options,
+        '#default_value' => $config->get('webny_global_nav.footerformat'),
+        '#multiple' => FALSE,
+        '#empty_option' => 'None',
+        '#empty_value' => '',
+        '#description' => t('Select which footer format to use. Sub'),
     );
   }
 
