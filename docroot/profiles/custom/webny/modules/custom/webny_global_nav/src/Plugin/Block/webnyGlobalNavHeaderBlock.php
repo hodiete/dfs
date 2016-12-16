@@ -14,12 +14,6 @@ use Drupal\Core\Block\BlockBase;
  * )
  */
 class WebnyGlobalNavHeaderBlock extends BlockBase {
-  /**
-   * {@inheritdoc}
-   */
-  /*protected function blockAccess(AccountInterface $account) {
-  return $account->hasPermission('administer webny global nav');
-  }*/
 
   /**
    * {@inheritdoc}
