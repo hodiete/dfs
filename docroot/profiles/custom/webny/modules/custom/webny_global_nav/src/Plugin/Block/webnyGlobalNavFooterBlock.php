@@ -2,16 +2,15 @@
 
 namespace Drupal\webny_global_nav\Plugin\Block;
 
-#use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\Block\BlockBase;
 
 /**
- * Provides a Webny Global Nav footer block.
+ * Provides a WebNY Global Navigation Footer block.
  *
  * @Block(
  *     id = "webny_global_nav_footer_block",
- *     admin_label = @Translation("Webny Global Nav Footer"),
- *     category = @Translation("webny")
+ *     admin_label = @Translation("WebNY Global Navigation Footer"),
+ *     category = @Translation("WebNY")
  * )
  */
 class WebnyGlobalNavFooterBlock extends BlockBase {
