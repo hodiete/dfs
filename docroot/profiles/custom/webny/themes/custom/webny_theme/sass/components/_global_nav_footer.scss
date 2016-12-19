@@ -19,7 +19,7 @@ $global-footer-top-text-transform:      uppercase !default;
 $nav-bottom-text-decoration:            $global-footer-top-text-decoration ;
 $nav-bottom-text-transform:             $global-footer-top-text-transform ;
 
-footer {
+.webny-global-footer {
   .agency-name,
   .footer-menu h2{
     color: $nav-bottom-text-color;
@@ -39,7 +39,7 @@ footer {
   }
 }
 
-.nys-global-footer {
+.webny-global-footer {
 
   background-color: $nav-bottom-bkgd-color;
   margin:0;
@@ -142,15 +142,15 @@ footer {
     margin-right: -50%;
   }
 
-  .nys-global-footer a, .nys-global-footer a:link, .nys-global-footer a:visited {
+  .webny-global-footer a, .webny-global-footer a:link, .webny-global-footer a:visited {
     display: table-cell;
     text-decoration:none;
     color:$nav-bottom-text-color;
 
   }
-  .nys-global-footer a:hover,
-  .nys-global-footer a:active,
-  .nys-global-footer a:focus  {
+  .webny-global-footer a:hover,
+  .webny-global-footer a:active,
+  .webny-global-footer a:focus  {
     color:$nav-bottom-text-active-color;
     text-decoration:underline;
   }
@@ -187,8 +187,9 @@ footer {
     a[href*="blogger"]::before{
       background-image: url(../icons/social/black/icon-social-blogger.png);
     }
-    a[href*="delicious"]::before {
+    a[href*="del.icio.us"]::before {
       background-image: url(../icons/social/black/icon-social-delicious.png);
+      background-clip: content-box;
     }
     a[href*="facebook"]{@include icon(before,fa-facebook);}
 
@@ -232,24 +233,24 @@ footer {
 
   }
 
-  footer {
-    @include breakpoint($min-tablet) {
-      .nys-global-footer li {
-        flex-basis: 15%;
-        flex-grow: 1;
-      }
-      .social-media ul li {
-        align-items: center;
-      }
-      .nys-global-footer ul {
-        flex-wrap: no-wrap;
-      }
-      .social-media h2:before,
-      .social-media h2:after {
-        width: 30%;
-      }
+
+  @include breakpoint($min-tablet) {
+    .webny-global-footer li {
+      flex-basis: 15%;
+      flex-grow: 1;
+    }
+    .social-media ul li {
+      align-items: center;
+    }
+    .webny-global-footer ul {
+      flex-wrap: no-wrap;
+    }
+    .social-media h2:before,
+    .social-media h2:after {
+      width: 30%;
     }
   }
+
 
   /* fixing Unav bleed issues */
 
