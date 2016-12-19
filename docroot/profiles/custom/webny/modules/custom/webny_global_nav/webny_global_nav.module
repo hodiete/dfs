@@ -117,30 +117,6 @@ function webny_global_nav_theme() {
 }
 
 /**
- * Implement webny_global_nav_library_info_alter()
- *
- * Used to dynamically add a stylesheet to the module library
- * based on configuration options chosen.
- */
-function webny_global_nav_library_info_alter(array &$libraries, $extension) {
-  // Default settings.
-  $config = \Drupal::config('webny_global_nav.settings');
-  $globalnavmenu = $config->get('webny_global_nav.headermenu');
-
-  if ($globalnavmenu !== '') {
-    $stylesheet = 'css/globalshow.css';
-  }
-  else {
-    $stylesheet = 'css/globalnoshow.css';
-  }
-
-  $libraries['global-nav']['css']['theme'] = [
-      $stylesheet => [],
-  ];
-
-}
-
-/**
  * Function webny_global_nav_preprocess.
  */
 function webny_global_nav_preprocess(&$variables) {
