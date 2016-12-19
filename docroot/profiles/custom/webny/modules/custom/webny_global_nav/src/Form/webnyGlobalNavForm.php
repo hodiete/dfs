@@ -56,35 +56,36 @@ class WebnyGlobalNavForm extends ConfigFormBase {
   public function submitForm(array &$form, FormStateInterface $form_state) {
 
     $config = \Drupal::configFactory()->getEditable('webny_global_nav.settings');
-    $config->set('webny_global_nav.agencyname', $form_state->getValue('webny_global_nav_header_name'));
+    $config->set('webny_global_nav.agencyname',   $form_state->getValue('webny_global_nav_header_name'));
     $config->set('webny_global_nav.headerformat', $form_state->getValue('webny_global_nav_header_format'));
-    $config->set('webny_global_nav.headermenu', $form_state->getValue('webny_global_nav_header_menu'));
-    $config->set('webny_global_nav.headerauto', $form_state->getValue('webny_global_nav_header_auto'));
+    $config->set('webny_global_nav.headermenu',   $form_state->getValue('webny_global_nav_header_menu'));
+    $config->set('webny_global_nav.headerauto',   $form_state->getValue('webny_global_nav_header_auto'));
 
-    $config->set('webny_global_nav.footerauto', $form_state->getValue('webny_global_nav_footer_auto'));
-    $config->set('webny_global_nav.footerformat', $form_state->getValue('webny_global_nav_footer_format'));
-    $config->set('webny_global_nav.footermenu', $form_state->getValue('webny_global_nav_footer_menu'));
-    $config->set('webny_global_nav.socialmediablogger', $form_state->getValue('socialmediablogger'));
-    $config->set('webny_global_nav.socialmediadelicious', $form_state->getValue('socialmediadelicious'));
-    $config->set('webny_global_nav.socialmediafacebook', $form_state->getValue('socialmediafacebook'));
-    $config->set('webny_global_nav.socialmediafeed', $form_state->getValue('socialmediafeed'));
-    $config->set('webny_global_nav.socialmediaflickr', $form_state->getValue('socialmediaflickr'));
-    $config->set('webny_global_nav.socialmediafoursquare', $form_state->getValue('socialmediafoursquare'));
-    $config->set('webny_global_nav.socialmediagithub', $form_state->getValue('socialmediagithub'));
-    $config->set('webny_global_nav.socialmediagoogle-plus', $form_state->getValue('socialmediagoogle-plus'));
-    $config->set('webny_global_nav.socialmediainstagram', $form_state->getValue('socialmediainstagram'));
-    $config->set('webny_global_nav.socialmedialinkedin', $form_state->getValue('socialmedialinkedin'));
-    $config->set('webny_global_nav.socialmediamail', $form_state->getValue('socialmediamail'));
-    $config->set('webny_global_nav.socialmediapinterest', $form_state->getValue('socialmediapinterest'));
-    $config->set('webny_global_nav.socialmediareddit', $form_state->getValue('socialmediareddit'));
-    $config->set('webny_global_nav.socialmediashare', $form_state->getValue('socialmediashare'));
-    $config->set('webny_global_nav.socialmediatumblr', $form_state->getValue('socialmediatumblr'));
-    $config->set('webny_global_nav.socialmediatwitter', $form_state->getValue('socialmediatwitter'));
-    $config->set('webny_global_nav.socialmediavimeo', $form_state->getValue('socialmediavimeo'));
-    $config->set('webny_global_nav.socialmediayelp', $form_state->getValue('socialmediayelp'));
-    $config->set('webny_global_nav.socialmediayoutube', $form_state->getValue('socialmediayoutube'));
+    $config->set('webny_global_nav.footerauto',              $form_state->getValue('webny_global_nav_footer_auto'));
+    $config->set('webny_global_nav.footerformat',            $form_state->getValue('webny_global_nav_footer_format'));
+    $config->set('webny_global_nav.footermenu',              $form_state->getValue('webny_global_nav_footer_menu'));
+    $config->set('webny_global_nav.socialmedia.blogger',     $form_state->getValue('socialmedia_blogger'));
+    $config->set('webny_global_nav.socialmedia.delicious',   $form_state->getValue('socialmedia_delicious'));
+    $config->set('webny_global_nav.socialmedia.facebook',    $form_state->getValue('socialmedia_facebook'));
+    $config->set('webny_global_nav.socialmedia.feed',        $form_state->getValue('socialmedia_feed'));
+    $config->set('webny_global_nav.socialmedia.flickr',      $form_state->getValue('socialmedia_flickr'));
+    $config->set('webny_global_nav.socialmedia.foursquare',  $form_state->getValue('socialmedia_foursquare'));
+    $config->set('webny_global_nav.socialmedia.github',      $form_state->getValue('socialmedia_github'));
+    $config->set('webny_global_nav.socialmedia.google-plus', $form_state->getValue('socialmedia_google-plus'));
+    $config->set('webny_global_nav.socialmedia.instagram',   $form_state->getValue('socialmedia_instagram'));
+    $config->set('webny_global_nav.socialmedia.linkedin',    $form_state->getValue('socialmedia_linkedin'));
+    $config->set('webny_global_nav.socialmedia.mail',        $form_state->getValue('socialmedia_mail'));
+    $config->set('webny_global_nav.socialmedia.pinterest',   $form_state->getValue('socialmedia_pinterest'));
+    $config->set('webny_global_nav.socialmedia.reddit',      $form_state->getValue('socialmedia_reddit'));
+    $config->set('webny_global_nav.socialmedia.share',       $form_state->getValue('socialmedia_share'));
+    $config->set('webny_global_nav.socialmedia.tumblr',      $form_state->getValue('socialmedia_tumblr'));
+    $config->set('webny_global_nav.socialmedia.twitter',     $form_state->getValue('socialmedia_twitter'));
+    $config->set('webny_global_nav.socialmedia.vimeo',       $form_state->getValue('socialmedia_vimeo'));
+    $config->set('webny_global_nav.socialmedia.yelp',        $form_state->getValue('socialmedia_yelp'));
+    $config->set('webny_global_nav.socialmedia.youtube',     $form_state->getValue('socialmedia_youtube'));
 
     $config->save();
+
     return parent::submitForm($form, $form_state);
   }
 
@@ -107,7 +108,7 @@ class WebnyGlobalNavForm extends ConfigFormBase {
   public function webnyGlobalNavHeaderFieldsetField() {
     return array(
       '#type' => 'fieldset',
-      '#title' => t('Agency header options'),
+      '#title' => t('Global header navigation options'),
       '#collapsible' => FALSE,
       '#collapsed' => FALSE,
     );
@@ -122,7 +123,7 @@ class WebnyGlobalNavForm extends ConfigFormBase {
   public function webnyGlobalNavFooterFieldsetField() {
     return array(
       '#type' => 'fieldset',
-      '#title' => t('Agency footer options'),
+      '#title' => t('Global footer navigation options'),
       '#collapsible' => FALSE,
       '#collapsed' => FALSE,
     );
@@ -138,8 +139,8 @@ class WebnyGlobalNavForm extends ConfigFormBase {
     return array(
       '#type' => 'fieldset',
       '#title' => t('Social media options'),
-      '#collapsible' => TRUE,
-      '#collapsed' => TRUE,
+      '#collapsible' => FALSE,
+      '#collapsed' => FALSE,
     );
   }
 
@@ -175,7 +176,7 @@ class WebnyGlobalNavForm extends ConfigFormBase {
     );
     return array(
       '#type' => 'select',
-      '#title' => t('Agency navigation header format'),
+      '#title' => t('Header format options'),
       '#options' => $format_options,
       '#default_value' => $config->get('webny_global_nav.headerformat'),
       '#multiple' => FALSE,
@@ -196,7 +197,7 @@ class WebnyGlobalNavForm extends ConfigFormBase {
     // $menu_list = menu_get_menus(TRUE);
     return array(
       '#type' => 'select',
-      '#title' => t('Global navigation header menu'),
+      '#title' => t('Header menu'),
       '#options' => $this->webnyGlobalNavGetMenus(),
       '#default_value' => $config->get('webny_global_nav.headermenu'),
       '#multiple' => FALSE,
@@ -216,10 +217,10 @@ class WebnyGlobalNavForm extends ConfigFormBase {
     $config = $this->config('webny_global_nav.settings');
     return array(
       '#type' => 'checkbox',
-      '#title' => t('Global navigation header automatic insertion'),
+      '#title' => t('Enable the Global Navigation Header'),
       '#default_value' => $config->get('webny_global_nav.headerauto'),
       '#multiple' => FALSE,
-      '#description' => t('Select if the global header is to be automatically inserted into the page.  If not selected, make sure to use the WebNY Global Navigation Header block'),
+      '#description' => t('Check this box to enable the Global Navigation Header into this website.'),
     );
   }
 
@@ -233,10 +234,10 @@ class WebnyGlobalNavForm extends ConfigFormBase {
     $config = $this->config('webny_global_nav.settings');
     return array(
       '#type' => 'checkbox',
-      '#title' => t('Global navigation footer automatic insertion'),
+      '#title' => t('Enable the Global Navigation Footer'),
       '#default_value' => $config->get('webny_global_nav.footerauto'),
       '#multiple' => FALSE,
-      '#description' => t('Select if the global footer is to be automatically inserted into the page.  If not selected, make sure to use the WebNY Global Navigation Footer block'),
+        '#description' => t('Check this box to enable the Global Navigation Footer into this website.'),
     );
   }
 
@@ -249,12 +250,12 @@ class WebnyGlobalNavForm extends ConfigFormBase {
   public function webnyGlobalNavFooterFormatField() {
     $config = $this->config('webny_global_nav.settings');
     $format_footer_options = array(
-        'footer subheading' => 'Subheading Columned - Vertical List (Default)',
-        'footer horizontalline' => 'Line of Links - Horizontal List',
+        'footer-vertical' => 'Subheading Columned - Vertical List (Default)',
+        'footer-horizontal' => 'Line of Links - Horizontal List',
     );
     return array(
         '#type' => 'select',
-        '#title' => t('Agency navigation footer format'),
+        '#title' => t('Footer format options'),
         '#options' => $format_footer_options,
         '#default_value' => $config->get('webny_global_nav.footerformat'),
         '#multiple' => FALSE,
@@ -275,7 +276,7 @@ class WebnyGlobalNavForm extends ConfigFormBase {
     // $menu_list = menu_get_menus(TRUE);
     return array(
       '#type' => 'select',
-      '#title' => t('Global navigation footer menu'),
+      '#title' => t('Footer menu'),
       '#options' => $this->webnyGlobalNavGetMenus(),
       '#default_value' => $config->get('webny_global_nav.footermenu'),
       '#multiple' => FALSE,
@@ -295,18 +296,24 @@ class WebnyGlobalNavForm extends ConfigFormBase {
     $config = $this->config('webny_global_nav.settings');
     $social_media_list = $this->webnyGlobalNavSetupSocialNames();
     $social_media_names = array();
+
     foreach ($social_media_list as $key => $social_media_name) {
-      $social_media_index_name = 'webny_global_nav.socialmedia' . htmlspecialchars($key);
-      $social_media_names[$social_media_index_name] = array(
+      $social_media_index_name = 'webny_global_nav.socialmedia.' . htmlspecialchars($key);
+      $inputname = 'socialmedia_'.$key;
+      $social_media_names[$inputname] = array(
         '#type' => 'textfield',
         '#title' => t('@social URL', array('@social' => $social_media_name)),
         '#default_value' => $config->get($social_media_index_name),
         '#maxlength' => 128,
         '#size' => 60,
         '#description' => t('Enter the URL for @social.  If left blank, the social media icon will not display.  If no social media icons display, the section will not display.', array('@social' => $social_media_name)),
+        '#required' => FALSE,
+        '#tree' => TRUE,
       );
     }
-    $social_media_names['webny_global_nav.socialmediamail']['#description'] .= ' Sample email format is "mailto:someone@example.com?Subject=Hello%20world".';
+
+    $social_media_names['socialmedia_mail']['#description'] .= ' Sample email format is "mailto:someone@example.com?Subject=Hello%20world".';
+
     return $social_media_names;
   }
 
@@ -321,7 +328,7 @@ class WebnyGlobalNavForm extends ConfigFormBase {
       'blogger' => 'Blogger',
       'delicious' => 'Delicious',
       'facebook' => 'Facebook',
-      'feed' => 'RSS Feed',
+      'rss' => 'RSS Feed',
       'flickr' => 'Flickr',
       'foursquare' => 'Foursquare',
       'github' => 'GitHub',
