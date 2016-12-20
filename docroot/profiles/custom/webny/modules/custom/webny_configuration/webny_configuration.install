@@ -1801,6 +1801,13 @@ function webny_configuration_update_8090() {
   print webny_configuration_enable_module('webny_media');
 }
 
+function webny_configuration_update_8091() {
+
+  // REFRESH THE sitemap module
+  print webny_configuration_uninstall_module('webny_sitemap');
+  print webny_configuration_enable_module('webny_sitemap');
+}
+
 /**
  * Helper function to enable a Drupal module and print the result.
  *
