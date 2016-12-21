@@ -301,6 +301,7 @@ Feature: Check for the existence and fields of content types
     And I should see text matching "Phone"
     And I should see text matching "Pintrest Link"
     And I should see text matching "Professional Title"
+    And I should see text matching "Professional Subtitle"
     And I should see text matching "RSS Link"
     And I should see text matching "SnapChat Link"
     And I should see text matching "SoundCloud Link"
