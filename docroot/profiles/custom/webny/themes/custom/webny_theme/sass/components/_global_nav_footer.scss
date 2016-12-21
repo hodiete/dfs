@@ -108,19 +108,6 @@ $nav-bottom-text-transform:             $global-footer-top-text-transform ;
     }
   }
 
-  nav > ul.footer-menu > li > a {
-    &:first-child {
-      text-decoration: $nav-bottom-text-decoration;
-      text-transform: $nav-bottom-text-transform;
-      font-size: 16px;
-      font-weight: normal;
-      &:hover,
-      &:active{
-        text-decoration: underline;
-      }
-    }
-  }
-
   // FOR THE FOOTER FORMAT OPTIONS --
   // VERTICAL SETTINGS
   nav.footer-vertical{
@@ -136,13 +123,22 @@ $nav-bottom-text-transform:             $global-footer-top-text-transform ;
         text-transform: $nav-bottom-text-transform;
         font-size: 16px;
         font-weight: bold;
-
       }
     }
 
   } // END FOOTER VERTICAL LAYOUT -- ALA COLUMNS
 
-} // END GLOBAL FORWARD
+  // HORIZONTAL SETTINGS
+  nav.footer-horizontal{
+
+    ul.global-footer-top-links > li > a {
+      font-size: 16px;
+      font-weight: normal;
+    }
+
+  } // END FOOTER HORIZONTAL LAYOUT -- ALA LISTED INLINE LINKS
+
+} // END GLOBAL FOOTER
 
   .social-media h2 {
     text-align: center;
@@ -283,13 +279,13 @@ $nav-bottom-text-transform:             $global-footer-top-text-transform ;
 
   // ######################################################################### //
   /* MOBILE VIEW */
-  @media (min-width: $min-mob) {
+  @media (min-width: $min-mobile) {
 
   } // END MIN MOBILE VIEW
 
   // ######################################################################### //
   /* TABLET VIEW */
-  @media (min-width: $min-tab) {
+  @media (min-width: $min-tablet) {
 
   } // END MIN TABLET VIEW
 
