@@ -1801,6 +1801,32 @@ function webny_configuration_update_8090() {
   print webny_configuration_enable_module('webny_media');
 }
 
+function webny_configuration_update_8091() {
+
+     // MANUALLY ADD ACTIVE CONFIG
+
+        $config_factory = \Drupal::configFactory();
+        $profile_config = \Drupal::service('webny.profile_config');
+
+        // Import new/changed configuration.
+        $config_to_update = [
+
+          // Updated globalfooter files.
+            'block.block.globalfootermenu',
+            'block.block.globalsocialmediamenu',
+        ];
+
+        $profile_config->bulkImport($config_to_update);
+
+        // Clear the config cache.
+        $config_factory->reset();
+
+        $module_name = 'webny_global_navigation_footer';
+        print webny_configuration_uninstall_module($module_name);
+        print webny_configuration_enable_module($module_name);
+
+}
+
 /**
  * Helper function to enable a Drupal module and print the result.
  *
