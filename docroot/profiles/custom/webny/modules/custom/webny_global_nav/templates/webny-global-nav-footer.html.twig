@@ -4,15 +4,16 @@
   #
   #}
 {% if footerauto == 1 %}
+
 <div class="webny-global-footer">
 
-    <div id="block-sitebranding" class="contextual-region">
+    <div id="block-sitebranding">
         <div class="agency-name">
             <a href="/" title="Home" rel="home">{{ agencyname|raw }}</a>
         </div>
     </div>
     <nav id="block-global-footer-menu" class="footer-menu {{ footerformat }}">
-        {{ renderMenu(footermenu) }}
+            {{ renderMenu(footermenu) }}
     </nav>
 
     {% if getSocialLinks() is not null %}
@@ -23,4 +24,4 @@
     {% endif %}
 
 </div>
- {% endif %}
+{% endif %}

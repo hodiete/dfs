@@ -20,11 +20,32 @@ $nav-bottom-text-decoration:            $global-footer-top-text-decoration ;
 $nav-bottom-text-transform:             $global-footer-top-text-transform ;
 
 .webny-global-footer {
+
+  background-color: $nav-bottom-bkgd-color;
+  margin:0;
+  position: relative;
+  z-index: 5;
+
+  a {
+    &:link,
+    &:visited {
+      display: table-cell;
+      text-decoration: none;
+      color: $nav-bottom-text-color;
+    }
+    &:hover,
+    &:active,
+    &:focus {
+      color: $nav-bottom-text-active-color;
+      text-decoration: underline;
+    }
+  }
+
   .agency-name,
   .footer-menu h2{
     color: $nav-bottom-text-color;
     background: $nav-bottom-bkgd-color;
-    margin: 36px 60px 5px 60px;
+    margin: 36px 60px 24px 60px;
     padding: 0;
     font-size: 22px;
     line-height: 26px;
@@ -37,26 +58,24 @@ $nav-bottom-text-transform:             $global-footer-top-text-transform ;
       font-family: $agency-name-font;
     }
   }
-}
-
-.webny-global-footer {
-
-  background-color: $nav-bottom-bkgd-color;
-  margin:0;
-  position: relative;
-  z-index: 5;
 
   nav {
     padding: 0 60px 15px 60px;
   }
 
   ul {
+    display: flex;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-content: flex-start;
     margin: 0;
     padding: 0;
     list-style-type: none;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
     font-family: $base-font;
     font-weight: bold;
     font-size: 14px;
@@ -77,22 +96,19 @@ $nav-bottom-text-transform:             $global-footer-top-text-transform ;
   li {
     display: flex;
     flex-direction: column;
-    flex-basis: 40%;
-    padding: 0.6rem 2rem .6rem 0;
-
+    flex-wrap: wrap;
+    padding: 0.1rem 2rem 0.5rem 0;
+    width: 250px;
   }
-
 
   nav > ul li{
     a:hover,
     a:active{
       text-decoration: underline;
     }
-
   }
 
-
-  nav > ul > li > a {
+  nav > ul.footer-menu > li > a {
     &:first-child {
       text-decoration: $nav-bottom-text-decoration;
       text-transform: $nav-bottom-text-transform;
@@ -105,7 +121,26 @@ $nav-bottom-text-transform:             $global-footer-top-text-transform ;
     }
   }
 
+  // FOR THE FOOTER FORMAT OPTIONS --
+  // VERTICAL SETTINGS
+  nav.footer-vertical{
 
+    ul.global-footer-top-links > li > a {
+
+      font-size: 14px;
+      font-weight: bold;
+
+      &:first-child {
+        border-bottom: 1px solid #333;
+        text-decoration: none;
+        text-transform: $nav-bottom-text-transform;
+        font-size: 16px;
+        font-weight: bold;
+
+      }
+    }
+
+  } // END FOOTER VERTICAL LAYOUT -- ALA COLUMNS
 
 } // END GLOBAL FORWARD
 
@@ -128,9 +163,16 @@ $nav-bottom-text-transform:             $global-footer-top-text-transform ;
     top: -1px;
   }
 
+  .social-media ul{
+    //padding-left: 75px;
+  }
+
+
   .social-media ul li {
     text-transform: uppercase;
-    padding: .25em 1em 1em 1em;
+    padding: .25em 1em 1em 0;
+    text-align: left;
+    width: 175px;
   }
 
   .social-media h2:before {
@@ -140,19 +182,6 @@ $nav-bottom-text-transform:             $global-footer-top-text-transform ;
   .social-media h2:after {
     left: 1.5em;
     margin-right: -50%;
-  }
-
-  .webny-global-footer a, .webny-global-footer a:link, .webny-global-footer a:visited {
-    display: table-cell;
-    text-decoration:none;
-    color:$nav-bottom-text-color;
-
-  }
-  .webny-global-footer a:hover,
-  .webny-global-footer a:active,
-  .webny-global-footer a:focus  {
-    color:$nav-bottom-text-active-color;
-    text-decoration:underline;
   }
 
   .social-media a::before {
@@ -173,7 +202,7 @@ $nav-bottom-text-transform:             $global-footer-top-text-transform ;
 
   .social-media a {
     height: 20px;
-    padding: 10px 0 10px 25px;
+    padding: 10px 0 10px 0;
     position: relative;
     text-decoration: none;
   }
@@ -235,15 +264,9 @@ $nav-bottom-text-transform:             $global-footer-top-text-transform ;
 
 
   @include breakpoint($min-tablet) {
-    .webny-global-footer li {
-      flex-basis: 15%;
-      flex-grow: 1;
-    }
-    .social-media ul li {
-      align-items: center;
-    }
+
     .webny-global-footer ul {
-      flex-wrap: no-wrap;
+
     }
     .social-media h2:before,
     .social-media h2:after {
@@ -251,15 +274,12 @@ $nav-bottom-text-transform:             $global-footer-top-text-transform ;
     }
   }
 
-
   /* fixing Unav bleed issues */
 
   .nygov-universal-footer .l-footer .pane-dsc {
     margin-top: 1em;
     margin-bottom: 1em !important;
   }
-
-
 
   // ######################################################################### //
   /* MOBILE VIEW */
