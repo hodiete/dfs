@@ -28,11 +28,20 @@ class WebnyGlobalNavExtension extends \Twig_Extension {
   /**
    * Function renderMenu.
    */
-  public function renderMenu($menu_name) {
+  public function renderMenu($menu_name, $type, $format) {
     $menu_tree = \Drupal::menuTree();
 
     // Build the typical default set of menu tree parameters.
-    $parameters = $menu_tree->getCurrentRouteMenuTreeParameters($menu_name);
+
+    if($type == 'footer') {
+      if ($format == 'footer-horizontal') {
+        $parameters = $menu_tree->getCurrentRouteMenuTreeParameters($menu_name)->setTopLevelOnly()->onlyEnabledLinks();
+      } else {
+        $parameters = $menu_tree->getCurrentRouteMenuTreeParameters($menu_name)->setMaxDepth(2);
+      }
+    } else {
+      $parameters = $menu_tree->getCurrentRouteMenuTreeParameters($menu_name)->onlyEnabledLinks();
+    }
 
     // Load the tree based on this set of parameters.
     $tree = $menu_tree->load($menu_name, $parameters);
