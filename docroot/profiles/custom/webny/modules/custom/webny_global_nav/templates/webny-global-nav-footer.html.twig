@@ -5,6 +5,11 @@
   #}
 {% if footerauto == 1 %}
 
+{% set footmenucls = [
+        'footer-menu',
+        ]
+%}
+
 <div class="webny-global-footer">
 
     <div id="block-sitebranding">
@@ -12,8 +17,8 @@
             <a href="/" title="Home" rel="home">{{ agencyname|raw }}</a>
         </div>
     </div>
-    <nav id="block-global-footer-menu" class="footer-menu {{ footerformat }}">
-            {{ renderMenu(footermenu) }}
+    <nav id="block-global-footer-menu" {{ attributes.addClass(footmenucls, footerformat) }} ">
+            {{ renderMenu(footermenu, 'footer', footerformat) }}
     </nav>
 
     {% if getSocialLinks() is not null %}

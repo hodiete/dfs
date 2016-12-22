@@ -8,6 +8,6 @@ Need to pass webny_global_nav_header_format, webny_global_nav_agency_name, $head
         <a href="#" role="button" id="webny-menu-control">Navigation menu</a>
     </div>
     <h1><a href="/">{{ agencyname|raw }}</a></h1>
-    {{ renderMenu(headermenu) }}
+    {{ renderMenu(headermenu, 'header', 'none') }}
 </div>
 {% endif %}
