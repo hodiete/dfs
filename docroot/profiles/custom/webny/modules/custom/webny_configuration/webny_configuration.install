@@ -1828,6 +1828,20 @@ function webny_configuration_update_8091() {
 }
 
 /**
+ * Implements hook_update_n().
+ *
+ * REMOVE THE GLOBAL FOOTER FEATURE
+ *
+ */
+function webny_configuration_update_8092() {
+
+    // REMOVE THE GLOBAL FOOTER FEATURE
+        $module_name = 'webny_global_navigation_footer';
+        webny_configuration_uninstall_module($module_name);
+
+}
+
+/**
  * Helper function to enable a Drupal module and print the result.
  *
  * @param string $module_name
