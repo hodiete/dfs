@@ -180,8 +180,6 @@ class WebnyGlobalNavForm extends ConfigFormBase {
       '#options' => $format_options,
       '#default_value' => $config->get('webny_global_nav.headerformat'),
       '#multiple' => FALSE,
-      '#empty_option' => 'None',
-      '#empty_value' => '',
       '#description' => t('Select which header format to use.'),
     );
   }
@@ -250,8 +248,8 @@ class WebnyGlobalNavForm extends ConfigFormBase {
   public function webnyGlobalNavFooterFormatField() {
     $config = $this->config('webny_global_nav.settings');
     $format_footer_options = array(
-        'footer-vertical' => 'Subheading Columned - Vertical List (Default)',
-        'footer-horizontal' => 'Line of Links - Horizontal List',
+        'footer-vertical' => 'Columned Menu - Vertical List (Default)',
+        'footer-horizontal' => 'Inline list of links - Horizontal List',
     );
     return array(
         '#type' => 'select',
@@ -259,9 +257,11 @@ class WebnyGlobalNavForm extends ConfigFormBase {
         '#options' => $format_footer_options,
         '#default_value' => $config->get('webny_global_nav.footerformat'),
         '#multiple' => FALSE,
-        '#empty_option' => 'None',
-        '#empty_value' => '',
-        '#description' => t('Select which footer format to use. Sub'),
+
+        '#description' => t('Select which footer format to use. The Columned Menu option will align links vertically 
+        with the top level menu item as the column name and the menu\'s sublinks as general links below. The Inline 
+        list of links takes the top level menu links and lists them horizontally. No sub menu links will display for 
+        the Inline list of links option.'),
     );
   }
 
