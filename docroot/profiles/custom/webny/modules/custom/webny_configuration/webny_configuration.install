@@ -1835,9 +1835,16 @@ function webny_configuration_update_8091() {
  */
 function webny_configuration_update_8092() {
 
+    // DELETE GLOBAL NAV MENU FROM SCHEMA.
+        Database::getConnection()->query("DELETE FROM key_value WHERE
+        collection='config.entity.key_store.menu' AND name='uuid:efeb4ff4-0e33-4df3-b8f5-39a9dac4edf0';");
+    // DELETE OLD GLOBAL NAV MENU FROM THE CONFIG DB.
+        \Drupal::service('config.factory')->getEditable('system.menu.webny-global-footer-menu')->delete();
+
     // REMOVE THE GLOBAL FOOTER FEATURE
         $module_name = 'webny_global_navigation_footer';
-        webny_configuration_uninstall_module($module_name);
+        print webny_configuration_uninstall_module($module_name);
+        unset($module_name);
 
     // REINSTALL THE GLOBAL NAV FEATURE
         $module_name = 'webny_global_nav';
