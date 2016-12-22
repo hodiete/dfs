@@ -1828,6 +1828,19 @@ function webny_configuration_update_8091() {
 }
 
 /**
+ * Implements hook_update_n().
+ *
+ * Reinstall contact content type.
+ */
+function webny_configuration_update_8092() {
+
+  \Drupal::service('module_installer')
+      ->uninstall(['webny_contact_content_type']);
+  \Drupal::service('module_installer')
+      ->install(['webny_contact_content_type']);
+}
+
+/**
  * Helper function to enable a Drupal module and print the result.
  *
  * @param string $module_name
