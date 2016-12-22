@@ -1839,6 +1839,11 @@ function webny_configuration_update_8092() {
         $module_name = 'webny_global_navigation_footer';
         webny_configuration_uninstall_module($module_name);
 
+    // REINSTALL THE GLOBAL NAV FEATURE
+        $module_name = 'webny_global_nav';
+        print webny_configuration_uninstall_module($module_name);
+        print webny_configuration_enable_module($module_name);
+
 }
 
 /**
