@@ -169,11 +169,19 @@ $nav-bottom-text-transform:             $global-footer-top-text-transform ;
     top: -1px;
   }
 
+  .social-media ul{
+    align-content: flex-start;
+    margin: 0 auto;
+    padding-left: 0;
+    width: 100%;
+  }
+
   .social-media ul li {
     text-transform: uppercase;
     padding: .25em 1em 1em 0;
     text-align: left;
-    width: 175px;
+    width: 100%;
+    padding-left: 0;
   }
 
   .social-media h2:before {
@@ -275,8 +283,10 @@ $nav-bottom-text-transform:             $global-footer-top-text-transform ;
   @media (min-width: $min-mobile) {
 
     .webny-global-footer {
-      li {
-        width: 39%;
+      nav.footer-vertical {
+        li {
+          width: 39%;
+        }
       }
 
       nav.footer-horizontal {
@@ -286,8 +296,9 @@ $nav-bottom-text-transform:             $global-footer-top-text-transform ;
       }
     } // END
 
+    .social-media ul li{
+    }
     .social-media ul{
-      padding-left: 0;
     }
 
   } // END MIN MOBILE VIEW
@@ -296,8 +307,10 @@ $nav-bottom-text-transform:             $global-footer-top-text-transform ;
   /* TABLET VIEW */
   @media (min-width: $min-tablet) {
     .webny-global-footer {
-      li {
-        width: 27%;
+      nav.footer-vertical {
+        li {
+          width: 27%;
+        }
       }
 
       nav.footer-horizontal {
@@ -312,9 +325,15 @@ $nav-bottom-text-transform:             $global-footer-top-text-transform ;
       width: 30%;
     }
 
-    .social-media ul{
-      padding-left: 4rem;
+    .social-media ul li{
+       width: 27%;
     }
+
+    .social-media ul{
+      padding-left: 16%;
+      width: 90%;
+    }
+
 
   } // END MIN TABLET VIEW
 
@@ -322,23 +341,27 @@ $nav-bottom-text-transform:             $global-footer-top-text-transform ;
   /* DESKTOP VIEW */
   @media (min-width: $min-desktop) {
     .webny-global-footer {
-      li {
-        width: 16%;
-      }
-
-      nav.footer-horizontal {
+      nav.footer-vertical,
+      nav.footer-horizontal{
         li {
           width: 16%;
         }
       }
+
     }
 
-    .social-media ul{
-      padding-left: 8rem;
-    }
     .social-media h2:before,
     .social-media h2:after {
       width: 40%;
+    }
+
+    .social-media ul li{
+        width: 18%;
+    }
+
+    .social-media ul{
+      padding-left: 8%;
+      width: 80%;
     }
 
   } // END MIN PC
@@ -347,8 +370,10 @@ $nav-bottom-text-transform:             $global-footer-top-text-transform ;
   /* WIDE VIEW  > 1280 */
   @media (min-width: $min-wide) {
     .webny-global-footer {
-      li {
-        width: 17%;
+      nav.footer-vertical {
+        li {
+          width: 17%;
+        }
       }
 
       nav.footer-horizontal {
