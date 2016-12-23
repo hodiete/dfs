@@ -1,0 +1,28 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.webny-global-footer-menu
+  module:
+    - system
+  theme:
+    - webny_theme
+id: globalfootermenu
+theme: webny_theme
+region: footer
+weight: 0
+provider: null
+plugin: 'system_menu_block:webny-global-footer-menu'
+settings:
+  id: 'system_menu_block:webny-global-footer-menu'
+  label: 'Global Footer Menu'
+  provider: system
+  label_display: '0'
+  level: 1
+  depth: 0
+visibility:
+  request_path:
+    id: request_path
+    pages: "/media/add/*\r\n/media/*"
+    negate: true
+    context_mapping: {  }
