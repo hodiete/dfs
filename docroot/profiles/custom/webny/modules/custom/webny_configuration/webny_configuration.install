@@ -1854,7 +1854,7 @@ function webny_configuration_update_8093() {
      $module_name = 'webny_global_navigation_footer';
      print webny_configuration_uninstall_module($module_name);
 
-     // REMOVE THE SYSTEMS MENUS
+     // REMOVE THE GLOBAL NAV MENU
          Drupal::configFactory()
             ->getEditable('system.menu.global-navigation')
             ->delete();
