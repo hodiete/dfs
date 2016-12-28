@@ -37,9 +37,10 @@ class WebnyGlobalNavForm extends ConfigFormBase {
     $form['webny_global_nav_footer_fieldset']['webny_global_nav_footer_auto'] = $this->webnyGlobalNavFooterAutoField();
     $form['webny_global_nav_footer_fieldset']['webny_global_nav_footer_format'] = $this->webnyGlobalNavFooterFormatField();
     $form['webny_global_nav_footer_fieldset']['webny_global_nav_footer_menu'] = $this->webnyGlobalNavFooterMenuField();
-    $form['webny_global_nav_footer_fieldset']['webny_global_nav_social_media_fieldset'] = $this->webnyGlobalNavsocialMediaFieldsetField();
-    $form['webny_global_nav_footer_fieldset']['webny_global_nav_social_media_fieldset']['webny_global_nav_social_description'] = $this->webnyGlobalNavSocialMediaDescriptionField();
-    $form['webny_global_nav_footer_fieldset']['webny_global_nav_social_media_fieldset']['webny_global_nav_social_media'] = $this->webnyGlobalNavSocialMediaField();
+
+    $form['webny_global_nav_social_media_fieldset'] = $this->webnyGlobalNavsocialMediaFieldsetField();
+    $form['webny_global_nav_social_media_fieldset']['webny_global_nav_social_description'] = $this->webnyGlobalNavSocialMediaDescriptionField();
+    $form['webny_global_nav_social_media_fieldset']['webny_global_nav_social_media'] = $this->webnyGlobalNavSocialMediaField();
 
     return $form;
   }
@@ -154,7 +155,7 @@ class WebnyGlobalNavForm extends ConfigFormBase {
   public function webnyGlobalNavSocialMediaDescriptionField() {
     return array(
         '#type' => 'label',
-        '#title' => t('When entering a URL for the social fields, please use a fully qualified domain name with the protocol prefix, for example: http://thesocialnetwork.com/suffix.<br/> If left blank, the social media icon and link will not display.'),
+        '#title' => t('When entering a URL for the social fields, please use a fully qualified domain name with the protocol prefix, for example: http://thesocialnetwork.com/suffix.<br/> If left blank, the social media icon and link will not display.<br />NOTE: The Global Footer MUST be enabled above for social media links to display.'),
     );
   }
 
