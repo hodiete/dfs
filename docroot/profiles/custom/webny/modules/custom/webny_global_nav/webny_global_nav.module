@@ -39,6 +39,9 @@ function webny_global_nav_theme() {
   $tagList = array(); 
   array_push($tagList, 'br');
   $agency_name = Xss::filter($config->get('webny_global_nav.agencyname'),$tagList);
+  $agency_name_footer = Xss::filter($config->get('webny_global_nav.agencyname'));
+
+  // CREATE AN INDEPENDENT FOOTER WITHOUT A BR TAG FILTERED -- ADDED TO FOOTER TEMPLATE VARS
   $linked_agency_name = Link::fromTextAndUrl($agency_name, $url)->toString();
 
   return array(
@@ -54,7 +57,7 @@ function webny_global_nav_theme() {
     'webny_global_nav_footer' => array(
       'template' => 'webny-global-nav-footer',
       'variables' => array(
-        'agencyname' => $agency_name,
+        'agencyname' => $agency_name_footer,
         'footermenu' => $footer_menu,
         'linkedagencyname' => $linked_agency_name,
         'footerformat' => $footer_format,
