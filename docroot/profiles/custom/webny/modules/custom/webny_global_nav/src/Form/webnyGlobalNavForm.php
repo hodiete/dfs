@@ -38,6 +38,7 @@ class WebnyGlobalNavForm extends ConfigFormBase {
     $form['webny_global_nav_footer_fieldset']['webny_global_nav_footer_format'] = $this->webnyGlobalNavFooterFormatField();
     $form['webny_global_nav_footer_fieldset']['webny_global_nav_footer_menu'] = $this->webnyGlobalNavFooterMenuField();
     $form['webny_global_nav_footer_fieldset']['webny_global_nav_social_media_fieldset'] = $this->webnyGlobalNavsocialMediaFieldsetField();
+    $form['webny_global_nav_footer_fieldset']['webny_global_nav_social_media_fieldset']['webny_global_nav_social_description'] = $this->webnyGlobalNavSocialMediaDescriptionField();
     $form['webny_global_nav_footer_fieldset']['webny_global_nav_social_media_fieldset']['webny_global_nav_social_media'] = $this->webnyGlobalNavSocialMediaField();
 
     return $form;
@@ -143,6 +144,20 @@ class WebnyGlobalNavForm extends ConfigFormBase {
       '#collapsed' => FALSE,
     );
   }
+
+  /**
+   * Webny Global Navigation social media label field.
+   *
+   * @return array
+   *   Form API element for field.
+   */
+  public function webnyGlobalNavSocialMediaDescriptionField() {
+    return array(
+        '#type' => 'label',
+        '#title' => t('When entering a URL for the social fields, please use a fully qualified domain name with the protocol prefix, for example: http://thesocialnetwork.com/suffix.<br/> If left blank, the social media icon and link will not display.'),
+    );
+  }
+
 
   /**
    * Webny Global Navigation agency name field.
@@ -306,7 +321,7 @@ class WebnyGlobalNavForm extends ConfigFormBase {
         '#default_value' => $config->get($social_media_index_name),
         '#maxlength' => 128,
         '#size' => 60,
-        '#description' => t('Enter the URL for @social.  If left blank, the social media icon will not display.  If no social media icons display, the section will not display.', array('@social' => $social_media_name)),
+        '#description' => t('Enter the URL for @social.', array('@social' => $social_media_name)),
         '#required' => FALSE,
         '#tree' => TRUE,
       );
