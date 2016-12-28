@@ -192,15 +192,15 @@ class WebnyGlobalNavForm extends ConfigFormBase {
    */
   public function webnyGlobalNavHeaderMenuField() {
     $config = $this->config('webny_global_nav.settings');
-    // $menu_list = menu_get_menus(TRUE);
+    $menu_list = $this->webnyGlobalNavGetMenus();
+    $default_menu = $config->get('webny_global_nav.headermenu');
+
     return array(
       '#type' => 'select',
       '#title' => t('Header menu'),
-      '#options' => $this->webnyGlobalNavGetMenus(),
-      '#default_value' => $config->get('webny_global_nav.headermenu'),
+      '#options' => $menu_list,
+      '#default_value' => $default_menu,
       '#multiple' => FALSE,
-      '#empty_option' => 'None',
-      '#empty_value' => '',
       '#description' => t('Select which menu to use in the global header.  If the menu has more than 7 first level item, all are output which might cause formatting issues.'),
     );
   }
@@ -273,15 +273,15 @@ class WebnyGlobalNavForm extends ConfigFormBase {
    */
   public function webnyGlobalNavFooterMenuField() {
     $config = $this->config('webny_global_nav.settings');
-    // $menu_list = menu_get_menus(TRUE);
+    $menu_list = $this->webnyGlobalNavGetMenus();
+    $default_menu = $config->get('webny_global_nav.footermenu');
+
     return array(
       '#type' => 'select',
       '#title' => t('Footer menu'),
-      '#options' => $this->webnyGlobalNavGetMenus(),
-      '#default_value' => $config->get('webny_global_nav.footermenu'),
+      '#options' => $menu_list,
+      '#default_value' => $default_menu,
       '#multiple' => FALSE,
-      '#empty_option' => 'None',
-      '#empty_value' => '',
       '#description' => t('Select which menu to use in the global footer.  The first level menu items will be the column headers.  If the menu has more than 5 first level item, all are output which might cause formatting issues.'),
     );
   }
