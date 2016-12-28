@@ -1843,16 +1843,22 @@ function webny_configuration_update_8092() {
 /**
  * Implements hook_update_n().
  *
- * REMOVE THE GLOBAL FOOTER FEATURE -
- * REMOVE ACTIVE CONFIG FOR FOOTER AND MENU -
- * REFRESH THE GLOBAL NAV CONTRIB MODULE -
- *
+ * Refreshes the sitemap module.
  */
 function webny_configuration_update_8093() {
 
-     // UNINSTALL GLOBAL NAV FOOTER FEATURE
-   //  $module_name = 'webny_global_navigation_footer';
-   //  print webny_configuration_uninstall_module($module_name);
+// REFRESH THE sitemap module
+  print webny_configuration_uninstall_module('webny_sitemap');
+  print webny_configuration_enable_module('webny_sitemap');
+}
+
+/**
+ * Implements hook_update_n().
+ *
+ * REMOVE ACTIVE CONFIG FOR FOOTER AND MENU -
+ * REFRESH THE GLOBAL NAV CONTRIB MODULE -
+ */
+function webny_configuration_update_8094() {
 
     // REMOVE THE GLOBAL NAV MENU
           Drupal::configFactory()
@@ -1895,7 +1901,6 @@ function webny_configuration_update_8093() {
              ->uninstall(['webny_global_nav']);
          \Drupal::service('module_installer')
              ->install(['webny_global_nav']);
-
 }
 
 /**
