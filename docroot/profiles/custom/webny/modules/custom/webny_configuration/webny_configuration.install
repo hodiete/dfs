@@ -1843,6 +1843,18 @@ function webny_configuration_update_8092() {
 /**
  * Implements hook_update_n().
  *
+ * Refreshes the sitemap module.
+ */
+function webny_configuration_update_8093() {
+
+// REFRESH THE sitemap module
+  print webny_configuration_uninstall_module('webny_sitemap');
+  print webny_configuration_enable_module('webny_sitemap');
+}
+
+/**
+ * Implements hook_update_n().
+ *
  * Make inner page hero description optional.
  */
 function webny_configuration_update_8095() {
