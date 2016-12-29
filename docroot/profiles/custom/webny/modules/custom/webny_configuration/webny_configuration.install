@@ -1852,8 +1852,6 @@ function webny_configuration_update_8093() {
   print webny_configuration_enable_module('webny_sitemap');
 }
 
-
-
 /**
  * Implements hook_update_n().
  *
@@ -1926,7 +1924,6 @@ function webny_configuration_update_8097() {
          \Drupal::service('module_installer')
              ->install(['webny_global_nav']);
 }
-
 
 /**
  * Helper function to enable a Drupal module and print the result.
