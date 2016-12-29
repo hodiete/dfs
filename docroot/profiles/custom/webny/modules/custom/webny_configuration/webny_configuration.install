@@ -1861,19 +1861,15 @@ function webny_configuration_update_8093() {
 function webny_configuration_update_8094() {
 
     // REMOVE THE GLOBAL NAV MENU
-          Drupal::configFactory()
-             ->getEditable('block.block.globalfootermenu')
-             ->delete();
+          //Drupal::configFactory()
+          //   ->getEditable('block.block.globalfootermenu')
+          //   ->delete();
 
     // REMOVE THE GLOBAL NAV MENU
-          Drupal::configFactory()
-             ->getEditable('block.block.globalsocialmediamenu')
-             ->delete();
+          //Drupal::configFactory()
+          //   ->getEditable('block.block.globalsocialmediamenu')
+          //   ->delete();
 
-     // REMOVE THE GLOBAL NAV MENU
-          Drupal::configFactory()
-             ->getEditable('block.block.globalfootermenu')
-             ->delete();
 
       // REMOVE THE SITE BRANDING BLOCK
            Drupal::configFactory()
@@ -1887,9 +1883,9 @@ function webny_configuration_update_8094() {
             ->delete();
 
      // REMOVE THE SOCIAL MEDIA MENU
-         Drupal::configFactory()
-            ->getEditable('system.menu.webny-global-sm-menu')
-            ->delete();
+         //Drupal::configFactory()
+         //   ->getEditable('system.menu.webny-global-sm-menu')
+          //  ->delete();
 
      // REMOVE THE GLOBAL FOOTER MENU
          Drupal::configFactory()
