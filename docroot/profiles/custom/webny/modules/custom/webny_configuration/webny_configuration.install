@@ -1886,43 +1886,48 @@ function webny_configuration_update_8096() {
  */
 function webny_configuration_update_8097() {
 
-    // REMOVE THE GLOBAL NAV MENU
-          //Drupal::configFactory()
-          //   ->getEditable('block.block.globalfootermenu')
-          //   ->delete();
+    // REMOVE THE SITE BRANDING BLOCK
+        \Drupal::configFactory()
+           ->getEditable('block.block.sitebranding')
+           ->delete();
 
     // REMOVE THE GLOBAL NAV MENU
-          //Drupal::configFactory()
-          //   ->getEditable('block.block.globalsocialmediamenu')
-          //   ->delete();
+        \Drupal::configFactory()
+          ->getEditable('system.menu.global-navigation')
+          ->delete();
 
+    // REMOVE THE GLOBAL FOOTER MENU
+        \Drupal::configFactory()
+           ->getEditable('system.menu.webny-global-footer-menu')
+           ->delete();
 
-      // REMOVE THE SITE BRANDING BLOCK
-           Drupal::configFactory()
-              ->getEditable('block.block.sitebranding')
-              ->delete();
+    // GET VARS FOR POST REFRESH UPDATES
+        $config = \Drupal::config('webny_global_nav.settings');
 
+        $agencyname     = $config->get('webny_global_nav.agencyname');
+        $headerauto     = $config->get('webny_global_nav.headerauto');
+        $headermenu     = $config->get('webny_global_nav.headermenu');
+        $headerformat   = $config->get('webny_global_nav.headerformat');
 
-     // REMOVE THE GLOBAL NAV MENU
-         Drupal::configFactory()
-            ->getEditable('system.menu.global-navigation')
-            ->delete();
+        echo " ==> GETTING: Agencyname: $agencyname.\n";
+        echo " ==> GETTING: Header Auto: $headerauto.\n";
+        echo " ==> GETTING: Header Menu: $headermenu.\n";
+        echo " ==> GETTING: Header Format: $headerformat.\n";
 
-     // REMOVE THE SOCIAL MEDIA MENU
-         //Drupal::configFactory()
-         //   ->getEditable('system.menu.webny-global-sm-menu')
-          //  ->delete();
+    // REFRESH GLOBAL NAV
+       \Drupal::service('module_installer')
+           ->uninstall(['webny_global_nav']);
+       \Drupal::service('module_installer')
+          ->install(['webny_global_nav']);
 
-     // REMOVE THE GLOBAL FOOTER MENU
-         Drupal::configFactory()
-            ->getEditable('system.menu.webny-global-footer-menu')
-            ->delete();
+    // SET AFTER REFRESH
+      $setConfig = \Drupal::configFactory()->getEditable('webny_global_nav.settings');
 
-     // REFRESH GLOBAL NAV
-         \Drupal::service('module_installer')
-             ->uninstall(['webny_global_nav']);
-         \Drupal::service('module_installer')
-             ->install(['webny_global_nav']);
+      $setConfig->set('webny_global_nav.agencyname', $agencyname)->save();
+      $setConfig->set('webny_global_nav.headerauto', $headerauto)->save();
+      $setConfig->set('webny_global_nav.headermenu', $headermenu)->save();
+      $setConfig->set('webny_global_nav.headerformat', $headerformat)->save();
+
 }
 
 /**
