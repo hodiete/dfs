@@ -1908,11 +1908,17 @@ function webny_configuration_update_8097() {
         $headerauto     = $config->get('webny_global_nav.headerauto');
         $headermenu     = $config->get('webny_global_nav.headermenu');
         $headerformat   = $config->get('webny_global_nav.headerformat');
+        $footerauto     = '1';
+        $footerformat   = 'footer-horizontal';
+        $footermenu     = 'webny-global-footer-menu';
 
-        echo " ==> GETTING: Agencyname: $agencyname.\n";
-        echo " ==> GETTING: Header Auto: $headerauto.\n";
-        echo " ==> GETTING: Header Menu: $headermenu.\n";
-        echo " ==> GETTING: Header Format: $headerformat.\n";
+        echo "\t ==> GETTING: Agencyname:\t $agencyname.\n";
+        echo "\t ==> GETTING: Header Auto:\t $headerauto.\n";
+        echo "\t ==> GETTING: Header Menu:\t $headermenu.\n";
+        echo "\t ==> GETTING: Header Format:\t $headerformat.\n";
+        echo "\t ==> GETTING: Footer Autp:\t $footerauto.\n";
+        echo "\t ==> GETTING: Footer Menu:\t $footermenu.\n";
+        echo "\t ==> GETTING: Footer Format:\t $footerformat.\n";
 
     // REFRESH GLOBAL NAV
        \Drupal::service('module_installer')
@@ -1921,12 +1927,15 @@ function webny_configuration_update_8097() {
           ->install(['webny_global_nav']);
 
     // SET AFTER REFRESH
-      $setConfig = \Drupal::configFactory()->getEditable('webny_global_nav.settings');
+       $setConfig = \Drupal::configFactory()->getEditable('webny_global_nav.settings');
 
-      $setConfig->set('webny_global_nav.agencyname', $agencyname)->save();
-      $setConfig->set('webny_global_nav.headerauto', $headerauto)->save();
-      $setConfig->set('webny_global_nav.headermenu', $headermenu)->save();
-      $setConfig->set('webny_global_nav.headerformat', $headerformat)->save();
+       $setConfig->set('webny_global_nav.agencyname', $agencyname)->save();
+       $setConfig->set('webny_global_nav.headerauto', $headerauto)->save();
+       $setConfig->set('webny_global_nav.headermenu', $headermenu)->save();
+       $setConfig->set('webny_global_nav.headerformat', $headerformat)->save();
+       $setConfig->set('webny_global_nav.footerauto', $footerauto)->save();
+       $setConfig->set('webny_global_nav.footermenu', $footermenu)->save();
+       $setConfig->set('webny_global_nav.footerformat', $footerformat)->save();
 
 }
 
