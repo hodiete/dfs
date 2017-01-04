@@ -16,6 +16,7 @@ dependencies:
     - field.field.node.webny_contact.field_webny_contact_linkedin
     - field.field.node.webny_contact.field_webny_contact_name
     - field.field.node.webny_contact.field_webny_contact_pintrest
+    - field.field.node.webny_contact.field_webny_contact_pro_subtitle
     - field.field.node.webny_contact.field_webny_contact_protitle
     - field.field.node.webny_contact.field_webny_contact_reslink
     - field.field.node.webny_contact.field_webny_contact_rss_link
@@ -157,6 +158,13 @@ content:
       url_plain: false
     third_party_settings: {  }
     type: link_separate
+  field_webny_contact_pro_subtitle:
+    weight: 27
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
   field_webny_contact_protitle:
     weight: 22
     label: above

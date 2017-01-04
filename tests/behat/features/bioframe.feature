@@ -11,6 +11,7 @@ Feature: Bioframe / Contact Content Type
     Then I should not see "Access denied"
     And I should see text matching "Professional Title"
     And I should see text matching "Name"
+    And I should see text matching "Professional Subtitle"
     And I should see text matching "Caption / Quote"
 	And I should see text matching "Link to Resource"
 	And I should see text matching "Image"

@@ -17,6 +17,7 @@ dependencies:
     - field.field.node.webny_contact.field_webny_contact_linkedin
     - field.field.node.webny_contact.field_webny_contact_name
     - field.field.node.webny_contact.field_webny_contact_pintrest
+    - field.field.node.webny_contact.field_webny_contact_pro_subtitle
     - field.field.node.webny_contact.field_webny_contact_protitle
     - field.field.node.webny_contact.field_webny_contact_reslink
     - field.field.node.webny_contact.field_webny_contact_rss_link
@@ -39,6 +40,7 @@ third_party_settings:
       children:
         - field_webny_contact_protitle
         - field_webny_contact_name
+        - field_webny_contact_pro_subtitle
         - field_webny_contact_caption
         - field_webny_contact_reslink
       parent_name: ''
@@ -78,7 +80,7 @@ bundle: webny_contact
 mode: webny_contact_bio_frame
 content:
   field_webny_contact_caption:
-    weight: 4
+    weight: 7
     label: hidden
     settings: {  }
     third_party_settings: {  }
@@ -92,21 +94,28 @@ content:
     third_party_settings: {  }
     type: entity_reference_entity_view
   field_webny_contact_name:
-    weight: 3
+    weight: 5
     label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+  field_webny_contact_pro_subtitle:
+    type: string
+    weight: 6
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
   field_webny_contact_protitle:
-    weight: 2
+    weight: 4
     label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
     type: string
   field_webny_contact_reslink:
-    weight: 5
+    weight: 8
     label: hidden
     settings:
       trim_length: 80
