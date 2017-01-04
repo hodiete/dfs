@@ -1931,6 +1931,18 @@ function webny_configuration_update_8097() {
 }
 
 /**
+ * Implements hook_update_n().
+ *
+ * Update workbench_moderation
+ */
+function webny_configuration_update_8098() {
+    // REFRESH THE WORKBENCH_MODERATION MODULE
+    print webny_configuration_uninstall_module('workbench_moderation');
+    print webny_configuration_enable_module('workbench_moderation');
+}
+
+
+/**
  * Helper function to enable a Drupal module and print the result.
  *
  * @param string $module_name
