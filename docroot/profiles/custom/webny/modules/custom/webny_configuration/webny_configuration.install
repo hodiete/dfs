@@ -1878,57 +1878,6 @@ function webny_configuration_update_8096() {
       ->install(['webny_contact_content_type']);
 }
 
-/**
- * Implements hook_update_n().
- *
- * REMOVE ACTIVE CONFIG FOR FOOTER AND MENU -
- * REFRESH THE GLOBAL NAV CONTRIB MODULE -
- */
-function webny_configuration_update_8097() {
-
-    // REMOVE THE SITE BRANDING BLOCK
-        Drupal::configFactory()
-           ->getEditable('block.block.sitebranding')
-           ->delete();
-
-    // REMOVE THE GLOBAL NAV MENU
-        \Drupal::configFactory()
-          ->getEditable('system.menu.global-navigation')
-          ->delete();
-
-    // REMOVE THE GLOBAL FOOTER MENU
-        \Drupal::configFactory()
-           ->getEditable('system.menu.webny-global-footer-menu')
-           ->delete();
-
-    // GET VARS FOR POST REFRESH UPDATES
-        $config = \Drupal::config('webny_global_nav.settings');
-
-        $agencyname     = $config->get('webny_global_nav.agencyname');
-        $headerauto     = $config->get('webny_global_nav.headerauto');
-        $headermenu     = $config->get('webny_global_nav.headermenu');
-        $headerformat   = $config->get('webny_global_nav.headerformat');
-
-        echo " ==> GETTING: Agencyname: $agencyname.\n";
-        echo " ==> GETTING: Header Auto: $headerauto.\n";
-        echo " ==> GETTING: Header Menu: $headermenu.\n";
-        echo " ==> GETTING: Header Format: $headerformat.\n";
-
-    // REFRESH GLOBAL NAV
-       \Drupal::service('module_installer')
-           ->uninstall(['webny_global_nav']);
-       \Drupal::service('module_installer')
-          ->install(['webny_global_nav']);
-
-    // SET AFTER REFRESH
-      $setConfig = \Drupal::configFactory()->getEditable('webny_global_nav.settings');
-
-      $setConfig->set('webny_global_nav.agencyname', $agencyname)->save();
-      $setConfig->set('webny_global_nav.headerauto', $headerauto)->save();
-      $setConfig->set('webny_global_nav.headermenu', $headermenu)->save();
-      $setConfig->set('webny_global_nav.headerformat', $headerformat)->save();
-
-}
 
 /**
  * Helper function to enable a Drupal module and print the result.
