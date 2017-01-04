@@ -1801,6 +1801,18 @@ function webny_configuration_update_8090() {
   print webny_configuration_enable_module('webny_media');
 }
 
+
+/**
+ * Implements hook_update_n().
+ *
+ * Update workbench_moderation
+ */
+function webny_configuration_update_8091() {
+    // REFRESH THE CONTACT CONTENT TYPE
+    print webny_configuration_uninstall_module('workbench_moderation');
+    print webny_configuration_enable_module('workbench_moderation');
+}
+
 /**
  * Helper function to enable a Drupal module and print the result.
  *
