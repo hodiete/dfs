@@ -266,7 +266,7 @@ $config_directories = array();
  *
  * @see install_select_profile()
  */
-# $settings['install_profile'] = '';
+$settings['install_profile'] = 'webny';
 
 /**
  * Salt for one-time login links, cancel links, form tokens, etc.
@@ -667,7 +667,7 @@ if ($settings['hash_salt']) {
 /**
  * Load services definition file.
  */
-$settings['container_yamls'][] = $app_root . '/' . $site_path . '/services.yml';
+$settings['container_yamls'][] = __DIR__ . '/services.yml';
 
 /**
  * Override the default service container class.
@@ -756,4 +756,3 @@ $settings['file_scan_ignore_directories'] = [
 require DRUPAL_ROOT . "/../vendor/acquia/blt/settings/blt.settings.php";
 require DRUPAL_ROOT . "/sites/default/settings/webny.settings.php";
 // require DRUPAL_ROOT . "/sites/default/settings/trusted_host.settings.php";
-$settings['install_profile'] = 'webny';
