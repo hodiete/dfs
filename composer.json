@@ -15,12 +15,11 @@
         "drupal/advagg": "2.0-rc2",
         "drupal/better_exposed_filters": "3.0-alpha1",
         "drupal/blazy": "1.0-beta5",
-        "drupal/core": "8.2.4",
+        "drupal/core": "^8.0",
         "drupal/contact_storage": "1.0-beta8",
         "drupal/crop": "1.0",
         "drupal/features": "^3.0.0",
         "drupal/diff": "1.0-alpha2",
-        "drupal/devel": "*",
         "drupal/dropzonejs": "1.0-alpha3",
         "drupal/embed": "dev-1.x",
         "drupal/entity": "1.0-alpha4",
@@ -42,7 +41,7 @@
         "drupal/media_entity_embeddable_video": "1.0-beta2",
         "drupal/media_entity_image": "1.2",
         "drupal/media_expire": "1.0-alpha2",
-        "drupal/metatag": "1.0-beta10",
+        "drupal/metatag": "1.0.0-beta11",
         "drupal/pathauto": "1.0-beta1",
         "drupal/paragraphs": "1.0",
         "drupal/password_policy": "3.0-alpha2",
@@ -63,7 +62,8 @@
         "league/csv": "*",
         "drupal/csv_serialization": "1.0",
         "hirak/prestissimo": "^0.3.4",
-        "drupal/console": "^1.0.0-rc13"
+        "drupal/console": "^1.0.0-rc13",
+        "acquia/lightning": "2.0.1"
     },
     "require-dev": {
         "behat/behat": "^3.1",
@@ -79,7 +79,9 @@
         "se/selenium-server-standalone": "^2.53",
         "jakoch/phantomjs-installer": "^2.1.1-p07",
         "squizlabs/php_codesniffer": "2.*",
-        "geerlingguy/drupal-vm": "~4.0"
+        "geerlingguy/drupal-vm": "~4.0",
+        "symfony/console": "^2.8.11",
+        "grasmash/yaml-cli": "^0.3"
     },
     "scripts": {
         "blt-alias": "blt install-alias -Dcreate_alias=true",
@@ -139,6 +141,12 @@
             ],
             "drush/contrib/{$name}": [
                 "type:drupal-drush"
+            ],
+            "docroot/modules/contrib/{$name}": [
+                "type:drupal-module"
+            ],
+            "docroot/themes/contrib/{$name}": [
+                "type:drupal-theme"
             ]
         }
     }

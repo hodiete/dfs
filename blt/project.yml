@@ -1,91 +1,71 @@
 project:
-    machine_name: webny
-    prefix: NDD
-    human_name: 'Web NY'
-    profile:
-        name: webny
-        contrib: false
-    local:
-        protocol: http
-        hostname: '${project.machine_name}.dev'
-    acquia_subname: acsfdev
-    themes:
-        - webny_theme
-    hash_salt: NZ4pGCYwwI0kPGr5KwDkK1IgC2XOl8jFURj7q8lgAUBw6xxRXlWJNZZ
+  machine_name: webny
+  prefix: NDD
+  human_name: 'Web NY'
+  profile:
+    name: webny
+    contrib: false
+  local:
+    protocol: http
+    hostname: '${project.machine_name}.dev'
+  acquia_subname: acsfdev
+  themes:
+    - webny_theme
+  hash_salt: NZ4pGCYwwI0kPGr5KwDkK1IgC2XOl8jFURj7q8lgAUBw6xxRXlWJNZZ
 git:
-    default_branch: develop
-    remotes:
-        - 'nysits@svn-43.enterprise-g1.hosting.acquia.com:nysits.git'
+  default_branch: develop
+  remotes:
+    - 'nysits@svn-43.enterprise-g1.hosting.acquia.com:nysits.git'
 drush:
-    aliases:
-        remote: 01dev.dev
-        remote-dev-dev: 01dev.dev
-        remote-uat-prod: 01live.uat
-        remote-ig-prod: 01live.ig
-        local: self
-        ci: self
-    default_alias: '${drush.aliases.local}'
+  aliases:
+    remote: 01dev.dev
+    local: self
+    ci: self
+    remote-dev-dev: 01dev.dev
+    remote-uat-prod: 01live.uat
+    remote-ig-prod: 01live.ig
+  default_alias: '${drush.aliases.local}'
 target-hooks:
-    frontend-setup:
-        dir: '${docroot}/profiles/custom/webny/themes/custom/webny_theme'
-        command: 'npm run install-webny_theme'
-    frontend-build:
-        dir: '${docroot}/profiles/custom/webny/themes/custom/webny_theme'
-        command: 'npm run build'
-#    post-setup-build:
-#        dir: '${docroot}/profiles/contrib/lightning'
-#        command: 'npm run install-libraries'
-blt:
-    update:
-        ignore-existing-file: '${repo.root}/scripts/blt/ignore-existing.txt'
-
+  frontend-setup:
+    dir: '${docroot}/profiles/custom/webny/themes/custom/webny_theme'
+    command: 'npm run install-webny_theme'
+  frontend-build:
+    dir: '${docroot}/profiles/custom/webny/themes/custom/webny_theme'
+    command: 'npm run build'
+  post-deploy-build:
+    dir: '${docroot}'
+    command: 'echo ''No post-deploy build configured.'''
+  post-setup-build:
+    dir: '${docroot}'
+    command: 'echo ''No post-setup build configured.'''
 import: '${repo.root}/blt/custom/phing/tasks/build.xml'
-hosting: acsf
-
-phpunit:
-    failures: false
-
-disable-targets:
-    validate:
-        composer: true
-
-behat:
-    paths:
-        - ${repo.root}/tests/behat
-    tags: '~@development'
-
 modules:
-    local:
-        enable:
-            - dblog
-            - devel
-            - seckit
-            - views_ui
-        uninstall:
-            - acsf
-            - acquia_connector
-            - shield
-    ci:
-        enable: {  }
-        uninstall:
-            - acquia_connector
-            - shield
-    dev:
-        enable:
-            - acquia_connector
-            - shield
-        uninstall: {  }
-    test:
-        enable:
-            - acquia_connector
-            - shield
-        uninstall:
-            - devel
-            - views_ui
-    prod:
-        enable:
-            - acquia_connector
-            - shield
-        uninstall:
-            - devel
-            - views_ui
+  local:
+    enable: [dblog, devel, seckit, views_ui]
+    uninstall: [acsf, acquia_connector, shield]
+  ci:
+    enable: {  }
+    uninstall: [acquia_connector, shield]
+  dev:
+    enable: [acquia_connector, shield]
+    uninstall: {  }
+  test:
+    enable: [acquia_connector, shield]
+    uninstall: [devel, views_ui]
+  prod:
+    enable: [acquia_connector, shield]
+    uninstall: [devel, views_ui]
+blt:
+  update:
+    ignore-existing-file: '${repo.root}/scripts/blt/ignore-existing.txt'
+hosting: acsf
+phpunit:
+  failures: false
+disable-targets:
+  validate:
+    composer: true
+behat:
+  paths:
+    - '${repo.root}/tests/behat'
+  tags: ~@development
+
