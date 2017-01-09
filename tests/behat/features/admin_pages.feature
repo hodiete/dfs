@@ -5,10 +5,10 @@ Feature: Base Admin page tests
 # Check Global Nav page access
   Scenario: See if proper access to the Global Nav page exists
     Given I am logged in as a user with the "administrator" role
-    When I am on "/admin/config/webny-global-nav-d8"
+    When I am on "/admin/config/webny-globalnav"
     Then I should not get a 404 HTTP response
     And I should not see "Access denied"
-    And I should see "Global navigation header menu"
+    And I should see "GLOBAL HEADER NAVIGATION OPTIONS"
 
 # Check contact page access
   Scenario: See if proper access to the contact page exists
