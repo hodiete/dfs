@@ -1880,6 +1880,67 @@ function webny_configuration_update_8096() {
 
 
 /**
+ * Implements hook_update_n().
+ *
+ * REMOVE ACTIVE CONFIG FOR FOOTER AND MENU -
+ * REFRESH THE GLOBAL NAV CONTRIB MODULE -
+ */
+function webny_configuration_update_8097() {
+
+    // REMOVE THE SITE BRANDING BLOCK
+        \Drupal::configFactory()
+           ->getEditable('block.block.sitebranding')
+           ->delete();
+
+    // REMOVE THE GLOBAL NAV MENU
+        \Drupal::configFactory()
+          ->getEditable('system.menu.global-navigation')
+          ->delete();
+
+    // REMOVE THE GLOBAL FOOTER MENU
+        \Drupal::configFactory()
+           ->getEditable('system.menu.webny-global-footer-menu')
+           ->delete();
+
+    // GET VARS FOR POST REFRESH UPDATES
+        $config = \Drupal::config('webny_global_nav.settings');
+
+        $agencyname     = $config->get('webny_global_nav.agencyname');
+        $headerauto     = $config->get('webny_global_nav.headerauto');
+        $headermenu     = $config->get('webny_global_nav.headermenu');
+        $headerformat   = $config->get('webny_global_nav.headerformat');
+        $footerauto     = '1';
+        $footerformat   = 'footer-horizontal';
+        $footermenu     = 'webny-global-footer-menu';
+
+        echo "\t ==> GETTING: Agencyname:\t $agencyname.\n";
+        echo "\t ==> GETTING: Header Auto:\t $headerauto.\n";
+        echo "\t ==> GETTING: Header Menu:\t $headermenu.\n";
+        echo "\t ==> GETTING: Header Format:\t $headerformat.\n";
+        echo "\t ==> GETTING: Footer Autp:\t $footerauto.\n";
+        echo "\t ==> GETTING: Footer Menu:\t $footermenu.\n";
+        echo "\t ==> GETTING: Footer Format:\t $footerformat.\n";
+
+    // REFRESH GLOBAL NAV
+       \Drupal::service('module_installer')
+           ->uninstall(['webny_global_nav']);
+       \Drupal::service('module_installer')
+          ->install(['webny_global_nav']);
+
+    // SET AFTER REFRESH
+       $setConfig = \Drupal::configFactory()->getEditable('webny_global_nav.settings');
+
+       $setConfig->set('webny_global_nav.agencyname', $agencyname)->save();
+       $setConfig->set('webny_global_nav.headerauto', $headerauto)->save();
+       $setConfig->set('webny_global_nav.headermenu', $headermenu)->save();
+       $setConfig->set('webny_global_nav.headerformat', $headerformat)->save();
+       $setConfig->set('webny_global_nav.footerauto', $footerauto)->save();
+       $setConfig->set('webny_global_nav.footermenu', $footermenu)->save();
+       $setConfig->set('webny_global_nav.footerformat', $footerformat)->save();
+
+}
+
+/**
  * Helper function to enable a Drupal module and print the result.
  *
  * @param string $module_name
