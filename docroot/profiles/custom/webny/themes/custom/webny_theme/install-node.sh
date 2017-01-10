@@ -16,4 +16,4 @@ fi
 unset NPM_CONFIG_PREFIX
 
 echo "Please run the following command":
-echo "source ~/.bashrc && nvm use --delete-prefix $NVM_VERISON"
+echo "source ~/.bash_profile && nvm use --delete-prefix $NVM_VERISON"
