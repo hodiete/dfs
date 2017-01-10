@@ -1941,6 +1941,21 @@ function webny_configuration_update_8097() {
 }
 
 /**
+ * Implements hook_update_n().
+ *
+ * MIGRATE YAMLFORM TO WEBFORM - PART 1
+ */
+function webny_configuration_update_8098() {
+
+    // UNINSTALL YAMLFORM_UI
+    \Drupal::service('module_installer')->uninstall(['yamlform_ui']);
+
+    // INSTALL WEBFORM
+    \Drupal::service('module_installer')->install(['webform']);
+
+}
+
+/**
  * Helper function to enable a Drupal module and print the result.
  *
  * @param string $module_name
