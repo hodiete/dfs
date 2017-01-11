@@ -1878,7 +1878,6 @@ function webny_configuration_update_8096() {
       ->install(['webny_contact_content_type']);
 }
 
-
 /**
  * Implements hook_update_n().
  *
@@ -1941,6 +1940,32 @@ function webny_configuration_update_8097() {
 }
 
 /**
+ * Implements hook_update_n().
+ *
+ * Refreshes the news content type to include news listing keywords in blocks
+ */
+function webny_configuration_update_8098() {
+    // REINSTALL THE NEWS CONTENT TYPE FEATURE MODULE
+    print webny_configuration_uninstall_module('webny_news_content_type');
+    print webny_configuration_enable_module('webny_news_content_type');
+
+    // REFRESH NEWS CONTENT VIEW LISTING
+    $config_factory = \Drupal::configFactory();
+    $profile_config = \Drupal::service('webny.profile_config');
+
+    // Import new/changed configuration.
+    $config_to_update = [
+        // Updated News Views listing to include Category keywords.
+        'views.view.webny_news_listing',
+    ];
+
+    $profile_config->bulkImport($config_to_update);
+
+    // Clear the config cache.
+    $config_factory->reset();
+}
+
+/**
  * Helper function to enable a Drupal module and print the result.
  *
  * @param string $module_name
@@ -1962,6 +1987,7 @@ function webny_configuration_enable_module($module_name) {
 
 /**
  * Helper function to uninstall a Drupal module and print the result.
+ *
  *
  * @param string $module_name
  *   The name of the module.
