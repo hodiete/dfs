@@ -164,6 +164,7 @@ class ProfileConfig {
       $this->getProfileFeatureConfigPath('image_styles') . '/install',
       $this->getProfileFeatureConfigPath('image_styles') . '/optional',
       $this->getProfileContribModulePath('yamlform') . '/' . self::CONFIG_DIR . '/install',
+      $this->getProfileContribModulePath('webform') . '/' . self::CONFIG_DIR . '/install',
       $this->getProfileThemeConfigPath('webny_theme') . '/install',
 
     ]);

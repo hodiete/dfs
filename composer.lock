@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "a9fefe4b15b1dbac5e9de1c5e55e3cdc",
-    "content-hash": "1d8d08a34ca00851f29bfce9c4fdb307",
+    "hash": "e570ba416d108c6bc38890b44501798c",
+    "content-hash": "93d94e578147e768775328d8e4ed0048",
     "packages": [
         {
             "name": "acquia/blt",
@@ -5855,6 +5855,86 @@
             }
         },
         {
+            "name": "drupal/webform",
+            "version": "5.0.0-beta4",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupal.org/project/webform",
+                "reference": "8.x-5.0-beta4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/webform-8.x-5.0-beta4.zip",
+                "reference": null,
+                "shasum": "cd448b95df1f5b8b8f1d5ae1ee2a901ebadc995d"
+            },
+            "require": {
+                "drupal/core": "*"
+            },
+            "require-dev": {
+                "drupal/devel": "*"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-5.x": "5.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-5.0-beta4",
+                    "datestamp": "1482752282"
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Jacob Rockowitz (jrockowitz)",
+                    "homepage": "https://www.drupal.org/u/jrockowitz",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "Liam Morland",
+                    "homepage": "https://www.drupal.org/user/493050"
+                },
+                {
+                    "name": "fenstrat",
+                    "homepage": "https://www.drupal.org/user/362649"
+                },
+                {
+                    "name": "jrockowitz",
+                    "homepage": "https://www.drupal.org/user/371407"
+                },
+                {
+                    "name": "podarok",
+                    "homepage": "https://www.drupal.org/user/116002"
+                },
+                {
+                    "name": "quicksketch",
+                    "homepage": "https://www.drupal.org/user/35821"
+                },
+                {
+                    "name": "sanchiz",
+                    "homepage": "https://www.drupal.org/user/1671246"
+                },
+                {
+                    "name": "tedbow",
+                    "homepage": "https://www.drupal.org/user/240860"
+                },
+                {
+                    "name": "torotil",
+                    "homepage": "https://www.drupal.org/user/865256"
+                }
+            ],
+            "description": "Enables the creation of webforms and questionnaires.",
+            "homepage": "https://drupal.org/project/webform",
+            "support": {
+                "source": "http://cgit.drupalcode.org/webform",
+                "issues": "https://drupal.org/project/issues/webform"
+            }
+        },
+        {
             "name": "drupal/workbench_moderation",
             "version": "1.1.0",
             "source": {
@@ -6427,16 +6507,16 @@
         },
         {
             "name": "grasmash/yaml-cli",
-            "version": "0.3.3",
+            "version": "0.3.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/grasmash/yaml-cli.git",
-                "reference": "39e757742108cad0626aff64ae6ff25a87482eb0"
+                "reference": "7fb1e74b538ab00c6c70caa3c48bc68a910c4c3a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/grasmash/yaml-cli/zipball/39e757742108cad0626aff64ae6ff25a87482eb0",
-                "reference": "39e757742108cad0626aff64ae6ff25a87482eb0",
+                "url": "https://api.github.com/repos/grasmash/yaml-cli/zipball/7fb1e74b538ab00c6c70caa3c48bc68a910c4c3a",
+                "reference": "7fb1e74b538ab00c6c70caa3c48bc68a910c4c3a",
                 "shasum": ""
             },
             "require": {
@@ -6456,8 +6536,7 @@
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "Grasmash\\YamlCli\\": "src/",
-                    "Grasmash\\YamlCli\\Tests\\": "tests/src/"
+                    "Grasmash\\YamlCli\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -6470,7 +6549,7 @@
                 }
             ],
             "description": "A command line tool for reading and manipulating yaml files.",
-            "time": "2017-01-06 18:14:17"
+            "time": "2017-01-10 15:51:29"
         },
         {
             "name": "guzzlehttp/guzzle",
