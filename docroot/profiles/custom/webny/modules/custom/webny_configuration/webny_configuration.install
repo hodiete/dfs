@@ -1940,55 +1940,6 @@ function webny_configuration_update_8097() {
 
 }
 
-
-/**
- * Implements hook_update_n().
- *
- * Reinstall webny media, contact, inner page, news, whitelisted, and landing page.
- */
-function webny_configuration_update_8098() {
-
-  \Drupal::service('module_installer')
-      ->uninstall(['webny_media']);
-  \Drupal::service('module_installer')
-      ->install(['webny_media']);
-  \Drupal::service('module_installer')
-      ->uninstall(['webny_contact_content_type']);
-  \Drupal::service('module_installer')
-      ->install(['webny_contact_content_type']);
-  \Drupal::service('module_installer')
-      ->uninstall(['webny_inner_page_content_type']);
-  \Drupal::service('module_installer')
-      ->install(['webny_inner_page_content_type']);
-  \Drupal::service('module_installer')
-      ->uninstall(['webny_news_content_type']);
-  \Drupal::service('module_installer')
-      ->install(['webny_news_content_type']);
-  \Drupal::service('module_installer')
-      ->uninstall(['webny_whitelisted_content']);
-  \Drupal::service('module_installer')
-      ->install(['webny_whitelisted_content']);
-  \Drupal::service('module_installer')
-      ->uninstall(['webny_landing_page_content_type']);
-  \Drupal::service('module_installer')
-      ->install(['webny_landing_page_content_type']);
-
-    // REFRESH LANDING PAGE OPTIONAL, FORM DISPLAY
-    $config_factory = \Drupal::configFactory();
-    $profile_config = \Drupal::service('webny.profile_config');
-
-    // Import new/changed configuration.
-    $config_to_update = [
-      // Updated media custom files to add Bio Frame image style.
-        'core.entity_form_display.node.webny_landing_page.default',
-      ];
-
-    $profile_config->bulkImport($config_to_update);
-
-    // Clear the config cache.
-    $config_factory->reset();
-}
-
 /**
  * Implements hook_update_n().
  *
@@ -2048,6 +1999,54 @@ function webny_configuration_update_8098() {
         // Clear the config cache.
         $config_factory->reset();
 
+}
+
+/**
+ * Implements hook_update_n().
+ *
+ * Reinstall webny media, contact, inner page, news, whitelisted, and landing page.
+ */
+function webny_configuration_update_8099() {
+
+  \Drupal::service('module_installer')
+      ->uninstall(['webny_media']);
+  \Drupal::service('module_installer')
+      ->install(['webny_media']);
+  \Drupal::service('module_installer')
+      ->uninstall(['webny_contact_content_type']);
+  \Drupal::service('module_installer')
+      ->install(['webny_contact_content_type']);
+  \Drupal::service('module_installer')
+      ->uninstall(['webny_inner_page_content_type']);
+  \Drupal::service('module_installer')
+      ->install(['webny_inner_page_content_type']);
+  \Drupal::service('module_installer')
+      ->uninstall(['webny_news_content_type']);
+  \Drupal::service('module_installer')
+      ->install(['webny_news_content_type']);
+  \Drupal::service('module_installer')
+      ->uninstall(['webny_whitelisted_content']);
+  \Drupal::service('module_installer')
+      ->install(['webny_whitelisted_content']);
+  \Drupal::service('module_installer')
+      ->uninstall(['webny_landing_page_content_type']);
+  \Drupal::service('module_installer')
+      ->install(['webny_landing_page_content_type']);
+
+  // REFRESH LANDING PAGE OPTIONAL, FORM DISPLAY
+  $config_factory = \Drupal::configFactory();
+  $profile_config = \Drupal::service('webny.profile_config');
+
+  // Import new/changed configuration.
+  $config_to_update = [
+    // Updated media custom files to add Bio Frame image style.
+      'core.entity_form_display.node.webny_landing_page.default',
+  ];
+
+  $profile_config->bulkImport($config_to_update);
+
+  // Clear the config cache.
+  $config_factory->reset();
 }
 
 /**
