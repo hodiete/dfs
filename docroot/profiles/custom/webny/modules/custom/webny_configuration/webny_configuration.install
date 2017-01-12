@@ -1990,6 +1990,67 @@ function webny_configuration_update_8098() {
 }
 
 /**
+ * Implements hook_update_n().
+ *
+ * MIGRATE YAMLFORM TO WEBFORM - PART 1
+ */
+function webny_configuration_update_8098() {
+
+    // UNINSTALL YAMLFORM_UI
+        \Drupal::service('module_installer')->uninstall(['yamlform_ui']);
+
+    // INSTALL WEBFORM
+        \Drupal::service('module_installer')->install(['webform']);
+
+     // MANUALLY ADD ACTIVE CONFIG
+
+        $config_factory = \Drupal::configFactory();
+        $profile_config = \Drupal::service('webny.profile_config');
+
+        // Import new/changed configuration.
+        $config_to_update = [
+
+          // Updated globalfooter files.
+          'webform.settings',
+          'webform.webform.contact',
+          'webform.webform_options.country_codes',
+          'webform.webform_options.country_names',
+          'webform.webform_options.creditcard_codes',
+          'webform.webform_options.days',
+          'webform.webform_options.education',
+          'webform.webform_options.employment_status',
+          'webform.webform_options.ethnicity',
+          'webform.webform_options.gender',
+          'webform.webform_options.industry',
+          'webform.webform_options.languages',
+          'webform.webform_options.likert_agreement',
+          'webform.webform_options.likert_comparison',
+          'webform.webform_options.likert_importance',
+          'webform.webform_options.likert_quality',
+          'webform.webform_options.likert_satisfaction',
+          'webform.webform_options.likert_ten_scale',
+          'webform.webform_options.likert_would_you',
+          'webform.webform_options.marital_status',
+          'webform.webform_options.months',
+          'webform.webform_options.relationship',
+          'webform.webform_options.size',
+          'webform.webform_options.state_codes',
+          'webform.webform_options.state_names',
+          'webform.webform_options.state_province_codes',
+          'webform.webform_options.state_province_names',
+          'webform.webform_options.time_zones',
+          'webform.webform_options.titles',
+          'webform.webform_options.yes_no',
+        ];
+
+        $profile_config->bulkImport($config_to_update);
+
+        // Clear the config cache.
+        $config_factory->reset();
+
+}
+
+/**
  * Helper function to enable a Drupal module and print the result.
  *
  * @param string $module_name
