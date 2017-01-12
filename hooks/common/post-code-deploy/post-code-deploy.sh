@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 #
 # Cloud Hook: post-code-deploy
 #
@@ -16,10 +16,8 @@ source_branch="$3"
 deployed_tag="$4"
 repo_url="$5"
 repo_type="$6"
+drush_alias=${site}'.'${target_env}
 
-acsf_file="/mnt/files/$AH_SITE_GROUP.$AH_SITE_ENVIRONMENT/files-private/sites.json"
-if [ ! -f $acsf_file ]; then
-  . /var/www/html/$site.$target_env/vendor/acquia/blt/scripts/cloud-hooks/functions.sh
-  deploy_updates
-  exit $status
-fi
+. `dirname $0`/../webny_functions.sh
+
+env_refresh ${target_env} ${drush_alias}
