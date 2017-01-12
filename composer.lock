@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "6f42c244f111aac6107f9f99fe4922db",
-    "content-hash": "240d8274bb4fdf713203d9365b788ffc",
+    "hash": "58956e3d0d16d6f618b957991bf3aa5b",
+    "content-hash": "29cdc79c04ecfadc2123ea10915297a7",
     "packages": [
         {
             "name": "acquia/blt",
@@ -1988,6 +1988,50 @@
                 "issues": "https://drupal.org/project/issues/advagg",
                 "irc": "irc://irc.freenode.org/drupal-contribute"
             }
+        },
+        {
+            "name": "drupal/amber_alert_module",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ny/amber_alert_module.git",
+                "reference": "master"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ny/amber_alert_module/zipball/master",
+                "reference": "master",
+                "shasum": ""
+            },
+            "require-dev": {
+                "behat/behat": "^3.0",
+                "behat/mink": "~1.7",
+                "behat/mink-browserkit-driver": "*",
+                "behat/mink-selenium2-driver": "^1.3.1",
+                "drupal/drupal-extension": "^3.2",
+                "jarnaiz/behat-junit-formatter": "^1.2",
+                "lakion/mink-debug-extension": "^1.0.3",
+                "se/selenium-server-standalone": "^2.53"
+            },
+            "type": "drupal-module",
+            "autoload-dev": {
+                "psr-4": {
+                    "Drupal\\Tests\\PHPUnit\\": "tests/phpunit/src/"
+                }
+            },
+            "license": [
+                "None"
+            ],
+            "description": "Amber Alert Soap Web Service Consumption.",
+            "homepage": "https://github.com/ny/amber_alert_module",
+            "keywords": [
+                "Drupal"
+            ],
+            "support": {
+                "source": "https://github.com/ny/amber_alert_module/tree/master",
+                "issues": "https://github.com/ny/amber_alert_module/issues"
+            },
+            "time": "2017-01-11 21:59:27"
         },
         {
             "name": "drupal/better_exposed_filters",
@@ -12086,7 +12130,8 @@
         "drupal/linked_field": 20,
         "drupal/yamlform": 20,
         "guzzlehttp/guzzle": 20,
-        "roave/security-advisories": 20
+        "roave/security-advisories": 20,
+        "drupal/amber_alert_module": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
