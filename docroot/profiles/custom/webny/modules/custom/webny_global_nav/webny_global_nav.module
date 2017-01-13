@@ -169,3 +169,12 @@ function webny_global_nav_page_bottom(&$page_bottom) {
     '#theme' => 'webny_global_nav_footer',
   );
 }
+
+/**
+ * Implement hook_form_FORMID_alter().
+ *
+ * Add description/help text change for Link field in menu items
+ */
+function webny_global_nav_form_menu_link_content_menu_link_content_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+  $form['link']['widget'][0]['uri']['#description'] = t('Start typing the title of a piece of content to select it. You can also enter an internal path such as %add-node or an external URL such as %url. Enter %front to link to the front page. Enter %nolink to leave this menu item unlinked.', array('%front' => '<front>', '%add-node' => '/node/add', '%url' => 'http://example.com', '%nolink' => 'route:<nolink>'));;
+}
