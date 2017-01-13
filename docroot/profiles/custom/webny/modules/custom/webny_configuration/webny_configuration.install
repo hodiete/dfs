@@ -2003,7 +2003,8 @@ function webny_configuration_update_8098()
  *
  * Refreshes the news content type to include news listing keywords in blocks
  */
-function webny_configuration_update_8099() {
+function webny_configuration_update_8099()
+{
     // REINSTALL THE NEWS CONTENT TYPE FEATURE MODULE
     print webny_configuration_uninstall_module('webny_news_content_type');
     print webny_configuration_enable_module('webny_news_content_type');

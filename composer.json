@@ -53,6 +53,7 @@
         "drupal/sitemap": "1.2",
         "drupal/simple_sitemap": "2.7",
         "drupal/smart_trim": "1.0",
+        "drupal/webform": "5.0.0-beta4",
         "drupal/yamlform": "1.x-dev",
         "guzzlehttp/guzzle": "^6.0@dev",
         "drush/drush": "^8.1.8",
@@ -64,7 +65,8 @@
         "drupal/csv_serialization": "1.0",
         "hirak/prestissimo": "^0.3.4",
         "drupal/console": "^1.0.0-rc13",
-        "acquia/lightning": "2.0.1"
+        "acquia/lightning": "2.0.1",
+        "drupal/amber_alert_module": "dev-master"
     },
     "require-dev": {
         "behat/behat": "^3.1",
@@ -97,9 +99,13 @@
         ]
     },
     "repositories": {
-        "drupal": {
-            "type": "composer",
-            "url": "https://packages.drupal.org/8"
+    "drupal": {
+        "type": "composer",
+        "url": "https://packages.drupal.org/8"
+    },
+        "custom": {
+            "type": "vcs",
+            "url": "git@github.com:ny/amber_alert_module.git"
         }
     },
     "autoload-dev": {
@@ -141,12 +147,6 @@
             ],
             "drush/contrib/{$name}": [
                 "type:drupal-drush"
-            ],
-            "docroot/modules/contrib/{$name}": [
-                "type:drupal-module"
-            ],
-            "docroot/themes/contrib/{$name}": [
-                "type:drupal-theme"
             ]
         }
     }
