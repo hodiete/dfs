@@ -2074,6 +2074,56 @@ function webny_configuration_update_8100() {
 }
 
 /**
+ * Implements hook_update_n().
+ *
+ * Remove YAMLFORM Feature Settings
+ */
+function webny_configuration_update_8101() {
+
+  $config_to_remove = [
+
+    // Updated yamlform files.
+      'yamlform.settings',
+      'yamlform.yamlform_options.country_codes',
+      'yamlform.yamlform_options.country_names',
+      'yamlform.yamlform_options.creditcard_codes',
+      'yamlform.yamlform_options.days',
+      'yamlform.yamlform_options.education',
+      'yamlform.yamlform_options.employment_status',
+      'yamlform.yamlform_options.ethnicity',
+      'yamlform.yamlform_options.gender',
+      'yamlform.yamlform_options.industry',
+      'yamlform.yamlform_options.languages',
+      'yamlform.yamlform_options.likert_agreement',
+      'yamlform.yamlform_options.likert_comparison',
+      'yamlform.yamlform_options.likert_importance',
+      'yamlform.yamlform_options.likert_quality',
+      'yamlform.yamlform_options.likert_satisfaction',
+      'yamlform.yamlform_options.likert_ten_scale',
+      'yamlform.yamlform_options.likert_would_you',
+      'yamlform.yamlform_options.marital_status',
+      'yamlform.yamlform_options.months',
+      'yamlform.yamlform_options.relationship',
+      'yamlform.yamlform_options.size',
+      'yamlform.yamlform_options.state_codes',
+      'yamlform.yamlform_options.state_names',
+      'yamlform.yamlform_options.state_province_codes',
+      'yamlform.yamlform_options.state_province_names',
+      'yamlform.yamlform_options.time_zones',
+      'yamlform.yamlform_options.titles',
+      'yamlform.yamlform_options.yes_no',
+      'yamlform.yamlform.contact',
+  ];
+
+  foreach($config_to_remove as $k => $v){
+
+    // DELETE YAMLFORM FEATURE SETTINGS FROM ACTIVE CONFIG UPSTREAM
+    \Drupal::service('config.factory')->getEditable($v)->delete();
+  }
+
+}
+
+/**
  * Helper function to enable a Drupal module and print the result.
  *
  * @param string $module_name
