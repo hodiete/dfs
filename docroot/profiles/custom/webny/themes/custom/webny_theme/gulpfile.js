@@ -74,6 +74,8 @@ var gulp = require('gulp'),
   sourcemaps = require('gulp-sourcemaps'),
   globbing = require('gulp-css-globbing'),
   sassglob = require('gulp-sass-glob'),
+  browserSync = require('browser-sync'),
+  shell = require('gulp-shell'),
   sass = require('gulp-sass'),
   debug = require('gulp-debug'),
   importOnce = require('node-sass-import-once'),
@@ -91,7 +93,7 @@ gulp.task('build', [
   'styles:production',
   'styleguide',
   'administration',
-  'business', 
+  'business',
   'education',
   'health-human-serv',
   'local-regional-authorities',
@@ -113,6 +115,33 @@ gulp.task('build:dev', ['styles', 'styleguide'], function (cb) {
 });
 
 // ##########
+// Launch the Server
+// ##########.
+gulp.task('browser-sync', ['styles'], function() {
+  browserSync.init({proxy: "webny.dev"});
+
+  gulp.watch(options.theme.sass + '**/*.scss', ['styles']);
+  gulp.watch(options.theme.css + '**/*.css').on('change', browserSync.reload);
+});
+
+
+/**
+ * @task clearcache
+ * Clear all caches
+ */
+gulp.task('clearcache', shell.task([
+  'drush @webny.local cr'
+]));
+
+/**
+ * @task reload
+ * Refresh the page after clearing cache
+ */
+gulp.task('reload', ['clearcache'], function () {
+  browserSync.reload();
+});
+
+// ##########
 // Build CSS.
 // ##########.
 gulp.task('styles', ['clean:css'], function () {
@@ -131,7 +160,8 @@ gulp.task('styles', ['clean:css'], function () {
           cascade: false
         }))
           .pipe(sourcemaps.write())
-          .pipe(gulp.dest(options.theme.css));
+          .pipe(gulp.dest(options.theme.css))
+          .pipe(browserSync.stream());
 });
 
 gulp.task('styles:production', ['clean:css'], function () {
