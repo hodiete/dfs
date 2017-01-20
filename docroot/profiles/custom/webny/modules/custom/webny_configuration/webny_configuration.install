@@ -2124,6 +2124,18 @@ function webny_configuration_update_8101() {
 }
 
 /**
+ * Implements hook_update_n().
+ *
+ * Remove YAMLFORM Module -- Must uninstall yamlform on each SF site first to work.
+ */
+function webny_configuration_update_8102() {
+
+  // UNINSTALL YAMLFORM
+  print webny_configuration_uninstall_module('yamlform');
+
+}
+
+/**
  * Helper function to enable a Drupal module and print the result.
  *
  * @param string $module_name
