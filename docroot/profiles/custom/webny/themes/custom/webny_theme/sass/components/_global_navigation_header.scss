@@ -80,7 +80,8 @@ $globalnav-secondary-color:   $button-black-50 !default;
     width: auto;
     vertical-align: bottom;
 
-    a {
+    a,
+    span {
       border-bottom-width: 0;
       padding: $horizontal-link-padding;
     }
@@ -98,7 +99,8 @@ $globalnav-secondary-color:   $button-black-50 !default;
         li {
           display: block;
 
-          a {
+          a,
+          span {
             padding: $horizontal-sub-link-padding;
           }
         }
@@ -198,7 +200,8 @@ $globalnav-secondary-color:   $button-black-50 !default;
     }
   }
 
-  ul > li > a[href='#']:after {
+  ul > li > a[href='#']:after,
+  ul > li > span:after {
     background-image: url('../icons/icon-arrow-right.png');
     background-image:
             linear-gradient(transparent, transparent),
@@ -225,14 +228,16 @@ $globalnav-secondary-color:   $button-black-50 !default;
       position: relative;
 
       &.#{$webny-global-prefix}active > a:link,
-      &.#{$webny-global-prefix}active > a:visited {
+      &.#{$webny-global-prefix}active > a:visited,
+      &.#{$webny-global-prefix}active > span {
         padding-left: $menu-arrow-active-link-padding;
         font-weight: $nav-weight;
         letter-spacing: .03em;
         color: $nav-fore-color;
       }
 
-      &.#{$webny-global-prefix}active > a:before {
+      &.#{$webny-global-prefix}active > a:before,
+      &.#{$webny-global-prefix}active > span:before {
         background-image: url('../icons/icon-arrow-left.png');
         background-image:
                 linear-gradient(transparent, transparent),
@@ -248,12 +253,14 @@ $globalnav-secondary-color:   $button-black-50 !default;
         top: $menu-arrow-left-top;
       }
 
-      &.#{$webny-global-prefix}active > a:after {
+      &.#{$webny-global-prefix}active > a:after,
+      &.#{$webny-global-prefix}active > span:after {
         background-image: none;
       }
 
       a:link,
-      a:visited {
+      a:visited,
+      span {
         display: block;
         padding: $common-link-padding;
         font-family: $base-font;
@@ -264,7 +271,8 @@ $globalnav-secondary-color:   $button-black-50 !default;
         cursor: pointer;
       }
 
-      a:hover {
+      a:hover,
+      span:hover {
         text-decoration: none;
         color: $nav-fore-color;
       }
@@ -276,7 +284,8 @@ $globalnav-secondary-color:   $button-black-50 !default;
         z-index: 5;
         width: 100%;
 
-        > li > a {
+        > li > a,
+        > li > span {
           letter-spacing: .02em;
           font-weight: $nav-weight;
         }
@@ -357,7 +366,8 @@ $globalnav-secondary-color:   $button-black-50 !default;
             a:link,
             a:visited,
             a:hover,
-            a:active {
+            a:active,
+            span {
               font-weight: $nav-weight;
               font-size: 14px;
               letter-spacing: .03em;
@@ -371,7 +381,8 @@ $globalnav-secondary-color:   $button-black-50 !default;
                 a:link,
                 a:visited,
                 a:hover,
-                a:active {
+                a:active,
+                span {
                   font-size: 12px;
                   line-height: 17px;
                   font-weight: $nav-weight;
@@ -381,14 +392,16 @@ $globalnav-secondary-color:   $button-black-50 !default;
           }
         }
 
-        ul > li > a[href='#']:after {
+        ul > li > a[href='#']:after,
+        ul > li > span:after {
           background-image: none;
           width: 0;
           margin: 0;
           display: none;
         }
 
-        > ul li.#{$webny-global-prefix}active > a:before {
+        > ul li.#{$webny-global-prefix}active > a:before,
+        > ul li.#{$webny-global-prefix}active > span:before {
           background-image: none;
           width: 0;
           margin: 0;
@@ -408,17 +421,20 @@ $globalnav-secondary-color:   $button-black-50 !default;
           a:link,
           a:visited,
           a:hover,
-          a:active {
+          a:active,
+          span {
             font-weight: $nav-weight;
           }
 
-          li.#{$webny-global-prefix}active > a:before {
+          li.#{$webny-global-prefix}active > a:before,
+          li.#{$webny-global-prefix}active > span:before {
             background-size: $menu-arrow-size-tablet;
             top: $menu-arrow-left-top-tablet;
           }
         }
 
-        > ul > li > a[href='#']:after {
+        > ul > li > a[href='#']:after,
+        > ul > li > span:after {
           background-size: $menu-arrow-size-tablet;
           top: $menu-arrow-top-tablet;
         }
@@ -474,7 +490,8 @@ $globalnav-secondary-color:   $button-black-50 !default;
           a:link,
           a:visited,
           a:hover,
-          a:active {
+          a:active,
+          span {
             font-size: 16px;
             letter-spacing: .03em;
             display: table-cell;
@@ -500,7 +517,8 @@ $globalnav-secondary-color:   $button-black-50 !default;
               a:link,
               a:visited,
               a:hover,
-              a:active {
+              a:active,
+              span {
                 font-size: 16px;
                 line-height: 20px;
                 height: auto;
@@ -543,7 +561,8 @@ $globalnav-secondary-color:   $button-black-50 !default;
           a:link,
           a:visited,
           a:hover,
-          a:active {
+          a:active,
+          span {
             height: $horizontal-menu-stacked-size;
           }
 
@@ -557,7 +576,8 @@ $globalnav-secondary-color:   $button-black-50 !default;
               a:link,
               a:visited,
               a:hover,
-              a:active {
+              a:active,
+              span {
                 height: auto;
                 padding: $horizontal-sub-link-padding;
               }
@@ -566,14 +586,16 @@ $globalnav-secondary-color:   $button-black-50 !default;
         }
       }
 
-      ul > li > a[href='#']:after {
+      ul > li > a[href='#']:after,
+      ul > li > span:after {
         background-image: none;
         width: 0;
         margin: 0;
         display: none;
       }
 
-      > ul li.#{$webny-global-prefix}active > a:before {
+      > ul li.#{$webny-global-prefix}active > a:before,
+      > ul li.#{$webny-global-prefix}active > span:before  {
         background-image: none;
         width: 0;
         margin: 0;
@@ -596,12 +618,14 @@ $globalnav-secondary-color:   $button-black-50 !default;
   & > ul {
     background-color: $color-primary;
 
-    a {
+    a,
+    span {
       border-bottom-color: mix( $color-primary, #fff, 85% );
     }
 
     a:hover,
-    a:active {
+    a:active,
+    span:hover {
       background-color: $globalnav-secondary-color;
     }
 
@@ -616,12 +640,14 @@ $globalnav-secondary-color:   $button-black-50 !default;
         ul {
           li {
             a:hover,
-            a:active {
+            a:active,
+            span:hover {
               background-color: $color-primary;
             }
             ul > li {
               a:hover,
-              a:active {
+              a:active,
+              span:hover {
                 background-color: $globalnav-secondary-color;
               }
 
@@ -638,12 +664,14 @@ $globalnav-secondary-color:   $button-black-50 !default;
         ul {
           li {
             a:hover,
-            a:active {
+            a:active,
+            span:hover {
               background-color: $color-primary;
             }
             ul > li {
               a:hover,
-              a:active {
+              a:active,
+              span:hover {
                 background-color: $globalnav-secondary-color;
               }
 

@@ -187,7 +187,7 @@ $results-pager-color: $color-tertiary !default;
     position: relative;
 
     .results-title {
-      margin: 16px 0;
+      margin: 10px 0 7px 0;
       font-size: 19px;
       padding: 0 10px;
       a {
@@ -249,6 +249,18 @@ $results-pager-color: $color-tertiary !default;
       font-weight: normal;
     }
   }
+  .category{
+    padding: .7em 0 0 0;
+    font-size: 14px;
+    .category-separator{
+      display: block;
+      position: relative;
+      left: 256px;
+      width: 30px;
+      padding: .3em 0 0 0;
+      border-bottom: 1px solid #e4e4e4;
+    }
+  }
 }
 
 
@@ -282,6 +294,13 @@ $results-pager-color: $color-tertiary !default;
     }
     .results-exposed-filters-outer{
       padding: 0 20px 0 20px;
+    }
+    .category{
+      padding: .7em 0 0 .7em;
+      .category-separator{
+        position: relative;
+        left: 0px;
+      }
     }
   }
   @media (min-width:$min-tablet) and (max-width:$min-desktop) {
