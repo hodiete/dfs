@@ -2143,6 +2143,17 @@ function webny_configuration_update_8102() {
   \Drupal::configFactory()
       ->getEditable('block.block.globalfootermenu')
       ->delete();
+}
+
+/**
+ * Implements hook_update_n().
+ *
+ * Remove YAMLFORM Module -- Must uninstall yamlform on each SF site first to work.
+ */
+function webny_configuration_update_8103() {
+
+  // UNINSTALL YAMLFORM
+  print webny_configuration_uninstall_module('yamlform');
 
 }
 
