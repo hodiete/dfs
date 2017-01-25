@@ -2124,6 +2124,29 @@ function webny_configuration_update_8101() {
 }
 
 /**
+ * Implements hook_update_n().
+ *
+ * Remove Global Navigation Footer Feature
+ */
+function webny_configuration_update_8102() {
+
+  // REMOVE THE GLOBAL NAVIGATION FOOTER FEATURE
+  \Drupal::service('module_installer')
+      ->uninstall(['webny_global_navigation_footer']);
+
+  // REMOVE THE CONNECT WITH US BLOCK
+  \Drupal::configFactory()
+      ->getEditable('block.block.globalsocialmediamenu')
+      ->delete();
+
+  // REMOVE THE GLOBAL FOOTER BLOCK
+  \Drupal::configFactory()
+      ->getEditable('block.block.globalfootermenu')
+      ->delete();
+
+}
+
+/**
  * Helper function to enable a Drupal module and print the result.
  *
  * @param string $module_name
