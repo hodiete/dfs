@@ -88,6 +88,22 @@
 /* TABLET VIEW */
 @media (min-width: $min-tab) {
 
+
+.sitemap-menu > li {
+	float: left;
+}
+
+.sitemap-menu > li > ul > li{
+	clear: both;
+}	
+
+.sitemap-box-menu-global-navigation,
+.sitemap-box-menu-webny-global-footer-menu {
+	width: 100%;
+	clear: both;
+
+}
+
 /* Makes the Global Header Navigation lists display in two columns */
 .sitemap-box-menu-global-navigation > ul > li {
 	width: 50%;
@@ -100,12 +116,12 @@
 
 /* Top Level Nolink Styles */
 .content > ul.sitemap-menu > li > span {
-	float: left;
+/*	float: left; */
 }
 
 /* Top Level Link Styles */
 .content > ul.sitemap-menu > li > a {
-	float: left;
+/*	float: left; */
 }
 
 } // END TABLET VIEW
@@ -125,6 +141,7 @@
   max-width: 1000px; 
   width: 90%;
 }
+
 
 /* Makes the Global Header Navigation lists display in four columns */
 .sitemap-box-menu-global-navigation > ul > li {
