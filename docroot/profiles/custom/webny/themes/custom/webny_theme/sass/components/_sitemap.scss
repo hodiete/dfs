@@ -8,38 +8,52 @@
 // ######################################################################### //
 /* START STYLING MOBILE FIRST UNDER HERE */
 
+.layout-content {
+	display: inline-block;
+}
 
 .sitemap {
-  margin: 50px auto 125px auto;
+  display: inline-block;
+  margin: 50px;
   max-width: 780px;
   width: 80%;
 }
 
 .sitemap-menu {
 	list-style-type: none;
+
+}
+
+.sitemap .sitemap-box ul {
+	float: left;
+	position: relative;
+	padding-left: 1.5em;
+}
+
+.sitemap-box-menu {
+	display: inline-block;
+}
+
+.sitemap-box .content {
+	display: inline-block;
+	width: 100%;
 }
 
 .sitemap-box-menu-global-navigation {
 	border-bottom: 1px solid #ededed;
 	margin-top: 30px;
 	margin-bottom: 20px;
-	width: 100%;
 }
 
-/* Makes the Global Header Navigation lists display in one column */
-.sitemap-box-menu-global-navigation > ul > li {
-	width: 100%;
-}
 
-/* Makes the Global Footer Navigation lists display in one column */
-.sitemap-box-menu-webny-global-footer-menu ul > li {
+ul.sitemap-menu {
+	display: inline-block;
 	width: 100%;
 }
 
 /* Top Level Nav Item Styles */
 .content > ul.sitemap-menu > li {
-	
-   
+	width: 90%;
 }
 
 /* Top Level Nolink Styles */
@@ -47,6 +61,7 @@
 	font-size: 16px;
 	font-weight: 900;
 	padding-right: 20px;
+	float: left;
 
 	&:after {
 	font-family: 'icomoon';
@@ -72,6 +87,7 @@
 	font-size: 12px;
 	color: #1283c3;
 	padding-left: 10px;
+	display: inline-block;
 	}
 }
 
@@ -104,24 +120,19 @@
 
 }
 
-/* Makes the Global Header Navigation lists display in two columns */
-.sitemap-box-menu-global-navigation > ul > li {
-	width: 50%;
-}
-
-/* Makes the Global Footer Navigation lists display in two columns */
-.sitemap-box-menu-webny-global-footer-menu ul > li {
+/* Top Level Nav Item Styles */
+.content > ul.sitemap-menu > li {
 	width: 50%;
 }
 
 /* Top Level Nolink Styles */
 .content > ul.sitemap-menu > li > span {
-/*	float: left; */
+	
 }
 
 /* Top Level Link Styles */
 .content > ul.sitemap-menu > li > a {
-/*	float: left; */
+
 }
 
 } // END TABLET VIEW
@@ -137,19 +148,13 @@
 @media (min-width: $min-pc) {
 
 .sitemap {
-  margin: 50px auto 125px auto;
+  margin: 50px 100px;
   max-width: 1000px; 
   width: 90%;
 }
 
-
-/* Makes the Global Header Navigation lists display in four columns */
-.sitemap-box-menu-global-navigation > ul > li {
-	width: 25%;
-}
-
-/* Makes the Global Footer Navigation lists display in four columns */
-.sitemap-box-menu-webny-global-footer-menu ul > li {
+/* Top Level Nav Item Styles */
+.content > ul.sitemap-menu > li {
 	width: 25%;
 }
 	
