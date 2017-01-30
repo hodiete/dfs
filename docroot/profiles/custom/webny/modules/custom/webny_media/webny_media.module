@@ -56,6 +56,16 @@ function webny_media_menu_local_actions_alter(&$local_actions) {
 }
 
 /**
+ * Implements hook_menu_links_discovered_alter().
+ */
+function webny_media_menu_links_discovered_alter(&$links) {
+    // Media entity module provides a default view which we disable. Since it also
+    // provides a link entry for it we need to update the route there to point to
+    // the media library we provide.
+    $links['entity.media.collection']['route_name'] = 'view.webny_media.media_page_list';
+}
+
+/**
  * Implements hook_field_widget_form_alter().
  * Modify default core image alt text.
  * Use field_widget_form_alter to access $context.
