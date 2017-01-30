@@ -2160,9 +2160,23 @@ function webny_configuration_update_8103() {
 /**
  * Implements hook_update_n().
  *
- * Reinstall webny media.
+ * Reinstall webny text formats.
  */
 function webny_configuration_update_8104()
+{
+
+  \Drupal::service('module_installer')
+      ->uninstall(['webny_text_formats']);
+  \Drupal::service('module_installer')
+      ->install(['webny_text_formats']);
+}
+
+/**
+ * Implements hook_update_n().
+ *
+ * Reinstall webny media.
+ */
+function webny_configuration_update_8105()
 {
 
   \Drupal::service('module_installer')
