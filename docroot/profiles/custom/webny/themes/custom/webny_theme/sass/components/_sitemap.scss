@@ -9,7 +9,7 @@
 /* START STYLING MOBILE FIRST UNDER HERE */
 
 .layout-content {
-	display: inline-block;
+	display: block;
 }
 
 .sitemap {
@@ -54,7 +54,10 @@ ul.sitemap-menu {
 /* Top Level Nav Item Styles */
 .content > ul.sitemap-menu > li {
 	width: 90%;
-	/* min-height: 150px; */
+}
+
+.content > ul.sitemap-menu > li:nth-child(5n) {
+	clear: left;
 }
 
 /* Top Level Nolink Styles */
@@ -160,6 +163,7 @@ ul.sitemap-menu {
 /* Top Level Nav Item Styles */
 .content > ul.sitemap-menu > li {
 	width: 25%;
+	/* min-height: 150px; */
 }
 	
 
