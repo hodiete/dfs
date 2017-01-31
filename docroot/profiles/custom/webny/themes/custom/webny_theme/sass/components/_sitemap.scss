@@ -54,11 +54,12 @@ ul.sitemap-menu {
 /* Top Level Nav Item Styles */
 .content > ul.sitemap-menu > li {
 	width: 90%;
+	/* min-height: 150px; */
 }
 
 /* Top Level Nolink Styles */
 .content > ul.sitemap-menu > li > span {
-	font-size: 16px;
+	font-size: 0.889em;
 	font-weight: 900;
 	padding-right: 20px;
 	float: left;
@@ -66,7 +67,7 @@ ul.sitemap-menu {
 	&:after {
 	font-family: 'icomoon';
 	content: "\F054";
-	font-size: 12px;
+	font-size: 0.667em;
 	color: #1283c3;
 	padding-left: 10px;
 	}
@@ -75,7 +76,7 @@ ul.sitemap-menu {
 
 /* Top Level Link Styles */
 .content > ul.sitemap-menu > li > a {
-	font-size: 16px;
+	font-size: 0.889em;
 	font-weight: 900;
 	color: #000;
 	float: left;
@@ -84,7 +85,7 @@ ul.sitemap-menu {
 	&:after {
 	font-family: 'icomoon';
 	content: "\F054";
-	font-size: 12px;
+	font-size: 0.667em;
 	color: #1283c3;
 	padding-left: 10px;
 	display: inline-block;
@@ -94,8 +95,11 @@ ul.sitemap-menu {
 /* Second Level Nav Item Styles */
 .content > ul.sitemap-menu ul {
 	clear: both;
-	font-size: 12px;
+	font-size: 0.667em;
 	font-weight: 500;
+	padding-left: 0;
+	width: 80%;
+	line-height: 22px;
 }
 
 
