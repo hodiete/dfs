@@ -2159,7 +2159,6 @@ function webny_configuration_update_8103() {
 
 /**
  * Implements hook_update_n().
- *
  * Remove CONTACT FORM feature webny_contact_form_message_export_view and
  * Remove CONTACT FORM feature webny_contact_form
  */
@@ -2169,6 +2168,34 @@ function webny_configuration_update_8104() {
   print webny_configuration_uninstall_module('webny_contact_form_message_export_view');
   print webny_configuration_uninstall_module('webny_contact_form');
 
+}
+
+/**
+ * Implements hook_update_n().
+ *
+ * Reinstall webny text formats.
+ */
+function webny_configuration_update_8105()
+{
+
+  \Drupal::service('module_installer')
+      ->uninstall(['webny_text_formats']);
+  \Drupal::service('module_installer')
+      ->install(['webny_text_formats']);
+}
+
+/**
+ * Implements hook_update_n().
+ *
+ * Reinstall webny media.
+ */
+function webny_configuration_update_8106()
+{
+
+  \Drupal::service('module_installer')
+      ->uninstall(['webny_media']);
+  \Drupal::service('module_installer')
+      ->install(['webny_media']);
 }
 
 /**
