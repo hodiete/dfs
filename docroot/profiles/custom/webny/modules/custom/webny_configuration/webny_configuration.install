@@ -2199,19 +2199,6 @@ function webny_configuration_update_8106()
 }
 
 /**
- * Implements hook_update_n().
- * Remove CONTACT FORM feature webny_contact_form_message_export_view and
- * Remove CONTACT FORM feature webny_contact_form
- */
-function webny_configuration_update_8104() {
-
-  // UNINSTALL CONTACT FORM Features. Step 1 of 2 to remove contact form from our platform.
-  print webny_configuration_uninstall_module('webny_contact_form_message_export_view');
-  print webny_configuration_uninstall_module('webny_contact_form');
-  
-}
-
-/**
  * Helper function to enable a Drupal module and print the result.
  *
  * @param string $module_name
