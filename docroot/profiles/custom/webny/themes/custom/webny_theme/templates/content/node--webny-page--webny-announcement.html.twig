@@ -5,6 +5,12 @@
  * OVERRIDE the inner page display for announcements reference. 
  */
 #}
+{# setting title variable so it can be used 2x #}
+{%  if(node.field_webny_landing_short_title.value is not empty and node.field_webny_landing_short_title.value is not null) %}
+    {% set vtitle = node.field_webny_landing_short_title.value %}
+{% else %}
+    {% set vtitle = node.label %}
+{% endif %}
 <article{{ attributes.addClass('webny-announcements') }}>
   {{ title_prefix }}
   {% if not page %}
@@ -14,10 +20,8 @@
 
                 {# IMPLEMENTS SHORT TITLE OR 65 CHAR LIMIT TITLE #}
 
-                {%  if(node.field_webny_page_short_title.value is not empty and node.field_webny_page_short_title.value is not null) %}
-                    <h4><a href="{{ url }}">{{ node.field_webny_page_short_title.value }}</a></h4>
-                {% elseif(node.label|length <= 65) %}
-                    <h4><a href="{{ url }}">{{ node.label }}</a></h4>
+                {% if(vtitle|length <= 65) %}
+                    {{ vtitle }}
                 {% else %}
 
                     {% set ws = true %}
@@ -39,7 +43,7 @@
                 </div>
             </div>
             <div class="webny-announcement-button">
-              <a href="{{ url }}">LEARN MORE</a>
+              <a href="{{ url }}" title="{{ vtitle }}">LEARN MORE</a>
             </div>
         </div>        
      </div>
