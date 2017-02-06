@@ -13,7 +13,7 @@
 }
 
 .sitemap {
-  display: inline-block;
+  display: block;
   margin: 50px;
   max-width: 780px;
   width: 80%;
@@ -27,7 +27,7 @@
 .sitemap .sitemap-box ul {
 	float: left;
 	position: relative;
-	padding-left: 1.5em;
+	padding-left: 0 !important;
 }
 
 .sitemap-box-menu {
@@ -49,6 +49,7 @@
 ul.sitemap-menu {
 	display: inline-block;
 	width: 100%;
+	padding-left: 0;
 }
 
 /* Top Level Nav Item Styles */
@@ -106,6 +107,36 @@ ul.sitemap-menu {
 }
 
 
+/////// No Column Footer Styles ///////
+/*
+.agency-name {
+	font-size: 0.889em;
+	font-weight: 900;
+	color: $color-mono-black;
+	float: left;
+	padding-right: 20px;
+
+	&:after {
+	font-family: 'icomoon';
+	content: "\F054";
+	font-size: 0.667em;
+	color: $text-blue;
+	padding-left: 10px;
+	display: inline-block;
+	}
+}
+
+.content > ul.sitemap-menu > li > a {
+    clear: both;
+	font-size: 0.667em;
+	font-weight: 500;
+	padding-left: 0;
+	width: 80%;
+	line-height: 22px;
+}
+*/
+
+
 
 // ######################################################################### //
 /* TABLET VIEW */
@@ -155,7 +186,7 @@ ul.sitemap-menu {
 @media (min-width: $min-pc) {
 
 .sitemap {
-  margin: 50px 100px;
+  margin: 50px auto;
   max-width: 1000px; 
   width: 90%;
 }
