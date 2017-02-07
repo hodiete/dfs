@@ -15,8 +15,6 @@
 .sitemap {
   display: block;
   margin: 50px;
-  max-width: 780px;
- /* width: 100%; */
 }
 
 .sitemap-menu {
@@ -36,7 +34,6 @@
 
 .sitemap-box .content {
 	display: inline-block;
-	width: 100%;
 }
 
 .sitemap-box-menu-global-navigation {
@@ -47,13 +44,11 @@
 
 ul.sitemap-menu {
 	display: inline-block;
-	width: 100%;
 	padding-left: 0;
 }
 
 /* Top Level Nav Item Styles */
 .content > ul.sitemap-menu > li {
-	width: 100%;
 }
 
 .content > ul.sitemap-menu > li:nth-child(5n) {
@@ -151,7 +146,6 @@ ul.sitemap-menu {
 
 .sitemap-box-menu-global-navigation,
 .sitemap-box-menu-webny-global-footer-menu {
-	width: 100%;
 	clear: both;
 
 }
@@ -185,8 +179,16 @@ ul.sitemap-menu {
 
 .sitemap {
   margin: 50px auto;
-  max-width: 1000px; 
-  width: 90%;
+  width: 80%;
+}
+
+.sitemap-box,
+.sitemap-menu {
+	width: 100%;
+}
+
+.content {
+	width: 100%;
 }
 
 /* Top Level Nav Item Styles */
