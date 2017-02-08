@@ -2199,6 +2199,18 @@ function webny_configuration_update_8106()
 }
 
 /**
+ * Implements hook_update_n().
+ *
+ * Uninstall webny_sitemap.
+ */
+function webny_configuration_update_8108()
+{
+  \Drupal::service('module_installer')
+      ->uninstall(['webny_sitemap']);
+}
+
+
+/**
  * Helper function to enable a Drupal module and print the result.
  *
  * @param string $module_name
