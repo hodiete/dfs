@@ -2198,6 +2198,22 @@ function webny_configuration_update_8106()
       ->install(['webny_media']);
 }
 
+
+/**
+ * Implements hook_update_n().
+ *
+ * REMOVE CONTACT Module entites -- Results
+ */
+function webny_configuration_update_8107() {
+
+  $entity = 'contact_message';
+  $ids = NULL;
+  $controller = \Drupal::entityManager()->getStorage($entity);
+  $entities = $controller->loadMultiple($ids);
+  $controller->delete($entities);
+
+}
+
 /**
  * Helper function to enable a Drupal module and print the result.
  *
