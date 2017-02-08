@@ -7,12 +7,8 @@
 // ######################################################################### //
 /* START STYLING MOBILE FIRST UNDER HERE */
 
-.layout-content {
-	display: block;
-}
 
 .sitemap {
-  display: block;
   margin: 50px;
 }
 
@@ -27,11 +23,7 @@
 	padding-left: 0 !important;
 }
 
-.sitemap-box-menu {
-	display: inline-block;
-}
-
-.sitemap-box .content {
+.sitemap-box {
 	display: inline-block;
 }
 
@@ -47,8 +39,6 @@ ul.sitemap-menu {
 }
 
 /* Top Level Nav Item Styles */
-.content > ul.sitemap-menu > li {
-}
 
 .content > ul.sitemap-menu > li:nth-child(5n) {
 	clear: left;
@@ -100,36 +90,6 @@ ul.sitemap-menu {
 }
 
 
-/////// No Column Footer Styles ///////
-/*
-.agency-name {
-	font-size: 0.889em;
-	font-weight: 900;
-	color: $color-mono-black;
-	float: left;
-	padding-right: 20px;
-
-	&:after {
-	font-family: 'icomoon';
-	content: "\F054";
-	font-size: 0.667em;
-	color: $text-blue;
-	padding-left: 10px;
-	display: inline-block;
-	}
-}
-
-.content > ul.sitemap-menu > li > a {
-    clear: both;
-	font-size: 0.667em;
-	font-weight: 500;
-	padding-left: 0;
-	width: 80%;
-	line-height: 22px;
-}
-*/
-
-
 // ######################################################################### //
 /* TABLET VIEW */
 @media (min-width: $min-tab) {
@@ -152,16 +112,6 @@ ul.sitemap-menu {
 /* Top Level Nav Item Styles */
 .content > ul.sitemap-menu > li {
 	width: 50%;
-}
-
-/* Top Level Nolink Styles */
-.content > ul.sitemap-menu > li > span {
-	
-}
-
-/* Top Level Link Styles */
-.content > ul.sitemap-menu > li > a {
-
 }
 
 } // END TABLET VIEW
