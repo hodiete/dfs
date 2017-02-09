@@ -1,10 +1,150 @@
-// Sitemap styling
-// WebNY Sitemap feature.
+// Sitemap
 //
 // Markup: sitemap.hbs
 //
+// Style guide: components.sitemap
+
+// ######################################################################### //
+/* START STYLING MOBILE FIRST UNDER HERE */
+
+
 .sitemap {
-  margin: 0 auto;
-  max-width: 780px;
+  margin: 50px;
+}
+
+.sitemap-menu {
+	list-style-type: none;
+
+}
+
+.sitemap .sitemap-box ul {
+	float: left;
+	position: relative;
+	padding-left: 0 !important;
+}
+
+.sitemap-box {
+	display: inline-block;
+}
+
+.sitemap-box-menu-global-navigation {
+	border-bottom: 1px solid $color-mono-mid;
+	padding-bottom: 10px;
+}
+
+
+ul.sitemap-menu {
+	display: inline-block;
+	padding-left: 0;
+}
+
+/* Top Level Nav Item Styles */
+
+.content > ul.sitemap-menu > li:nth-child(5n) {
+	clear: left;
+}
+
+/* Top Level Nolink Styles */
+.content > ul.sitemap-menu > li > span {
+	font-size: 0.889em;
+	font-weight: 900;
+	padding-right: 20px;
+	float: left;
+
+	&:after {
+	font-family: 'icomoon';
+	content: "\F054";
+	font-size: 0.667em;
+	color: $text-blue;
+	padding-left: 10px;
+	}
+
+}
+
+/* Top Level Link Styles */
+.content > ul.sitemap-menu > li > a {
+	font-size: 0.889em;
+	font-weight: 900;
+	color: $color-mono-black;
+	float: left;
+	padding-right: 20px;
+
+	&:after {
+	font-family: 'icomoon';
+	content: "\F054";
+	font-size: 0.667em;
+	color: $text-blue;
+	padding-left: 10px;
+	display: inline-block;
+	}
+}
+
+/* Second Level Nav Item Styles */
+.content > ul.sitemap-menu ul {
+	clear: both;
+	font-size: 0.667em;
+	font-weight: 500;
+	padding-left: 0;
+	width: 80%;
+	line-height: 22px;
+}
+
+
+// ######################################################################### //
+/* TABLET VIEW */
+@media (min-width: $min-tab) {
+
+
+.sitemap-menu > li {
+	float: left;
+}
+
+.sitemap-menu > li > ul > li{
+	clear: both;
+}	
+
+.sitemap-box-menu-global-navigation,
+.sitemap-box-menu-webny-global-footer-menu {
+	clear: both;
+
+}
+
+/* Top Level Nav Item Styles */
+.content > ul.sitemap-menu > li {
+	width: 50%;
+}
+
+} // END TABLET VIEW
+
+
+
+
+
+
+
+// ######################################################################### //
+/* PC VIEW */
+@media (min-width: $min-pc) {
+
+.sitemap {
+  margin: 50px auto;
   width: 80%;
 }
+
+.sitemap-box,
+.sitemap-menu {
+	width: 100%;
+}
+
+.content {
+	width: 100%;
+}
+
+/* Top Level Nav Item Styles */
+.content > ul.sitemap-menu > li {
+	width: 25%;
+	/* min-height: 150px; */
+}
+	
+
+} // END MIN PC VIEW

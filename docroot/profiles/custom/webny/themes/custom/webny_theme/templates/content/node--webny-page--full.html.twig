@@ -13,6 +13,9 @@
 {% set hero_image = file_url(node.field_webny_page_image.entity.field_image.entity.uri.value) %}
 {% set title = '' %}
 {% set hero = '' %}
+{% set doc_title = content.field_webny_page_docsec_title %}
+{% set doc_subtitle = content.field_webny_page_docsec_subtitle %}
+{% set doc_eref = content.field_webny_page_attdocs_eref %}
 
 {# GET VARS FOR DISPLAYING HERO AND TITLES #}
 {%  for k,v in node.field_webny_page_vis_options %}
@@ -140,20 +143,26 @@
 </article>
 {% endif %}
 
+{# verify at least one field has a value before rendering press-docs div #}
+{% if doc_title[0] is defined or doc_subtitle[0] is defined or doc_eref[0] is defined %}
 
-<div class="page-paragraphs">
+    <div class="press-docs">
+        {# doc_title will not have a count array if a value was not set in the field #}
+        {% if doc_title[0] is defined %}
+            <h2 class="doc-set-title">{{ doc_title }}</h2>
+        {% endif %}
 
-    <div class="page-paragraphs-in">
-        {{ content.field_webny_page_paragraph }}
+        {# doc_subtitle will not have a count array if a value was not set in the field #}
+        {% if doc_subtitle[0] is defined %}
+            <h3 class="doc-set-subtitle">{{ doc_subtitle }}</h3>
+        {% endif %}
+
+        {# doc_eref will not have a count array if a value was not set in the field #}
+        {% if doc_eref[0] is defined %}
+            <div class="press-docs-eref">
+                {{ doc_eref }}
+            </div>
+        {% endif %}
     </div>
 
-</div>
-
-<div class="press-docs">
-    <h2 class="doc-set-title">{{ content.field_webny_page_docsec_title }}</h2>
-    <h3 class="doc-set-subtitle">{{ content.field_webny_page_docsec_subtitle }}</h3>
-
-    <div class="press-docs-eref">
-        {{ content.field_webny_page_attdocs_eref }}
-    </div>
-</div>
+{% endif %}

@@ -357,9 +357,9 @@ $globalnav-secondary-color:   $button-black-50 !default;
         > ul {
           padding-left: 15px;
           display:inline-block;
-            & > li:hover {
-              text-decoration: underline;
-            }
+          & > li:hover {
+            text-decoration: underline;
+          }
 
           li {
             a,
@@ -455,7 +455,7 @@ $globalnav-secondary-color:   $button-black-50 !default;
     &.stacked.horizontal{
       height: auto;
       font-size: 16px;
-       & > ul > li:hover {
+      & > ul > li:hover {
         text-decoration: underline;
       }
 
@@ -535,9 +535,28 @@ $globalnav-secondary-color:   $button-black-50 !default;
       }
     }
 
+    &.unstacked.horizontal {
+      > h1 {
+        margin: 10px;
+      }
+
+      > ul {
+        li {
+          a,
+          a:link,
+          a:visited,
+          a:hover,
+          a:active,
+          span {
+            height: 95px;
+          }
+        }
+      }
+    }
+
     &.stacked.horizontal{
       @include in-context-menu();
-      height: 114px;
+      height: 148px;
 
       h1 {
         display: block;
@@ -549,7 +568,7 @@ $globalnav-secondary-color:   $button-black-50 !default;
         a:visited,
         a:hover,
         a:active {
-          height: 65px;
+          height: 85px;
         }
       }
 
@@ -563,7 +582,7 @@ $globalnav-secondary-color:   $button-black-50 !default;
           a:hover,
           a:active,
           span {
-            height: $horizontal-menu-stacked-size;
+            height: 63px;
           }
 
           ul {
