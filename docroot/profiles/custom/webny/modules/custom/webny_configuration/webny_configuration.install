@@ -2227,6 +2227,20 @@ function webny_configuration_update_8108()
 
 
 /**
+ * Implements hook_update_n().
+ *
+ * Uninstall Global Social Media Menu
+ */
+function webny_configuration_update_8112() {
+
+// REMOVE SOCIAL MEDIA MENU
+  \Drupal::configFactory()
+      ->getEditable('system.menu.webny-global-sm-menu')
+      ->delete();
+
+}
+
+/**
  * Helper function to enable a Drupal module and print the result.
  *
  * @param string $module_name
