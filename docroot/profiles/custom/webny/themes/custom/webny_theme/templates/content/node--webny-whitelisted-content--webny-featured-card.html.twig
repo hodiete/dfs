@@ -17,12 +17,11 @@
     </div>
     <div class="card-content">
         <div class="card-content-top">
-
             {%  if not page %}
                 {{ title_prefix }}
 
                 <h2{{ title_attributes }}>
-                    <a href="{{ url }}" rel="bookmark">
+                    <a href="{{ content.field_webny_whitelist_link_url[0]['#url'].uri }}" rel="bookmark">
 
                         {# IMPLEMENTS SHORT TITLE OR 65 CHAR LIMIT TITLE #}
                         
@@ -64,8 +63,8 @@
     </div> {# end .card-content #}
 
     <div class="webny-card-cta">
-      <span class="icon-right_carat">
-        <a href="{{ url }}" title="{{ vtitle }}">Learn More</a>
+      <span class="icon-right-caret">
+        {{ content.field_webny_whitelist_link_url }}
       </span>
     </div>
 
