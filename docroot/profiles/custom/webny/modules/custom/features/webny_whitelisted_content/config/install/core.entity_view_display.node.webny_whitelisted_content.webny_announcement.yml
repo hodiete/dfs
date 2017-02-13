@@ -69,12 +69,29 @@ content:
           text: ''
         linked: 0
     type: smart_trim
+  field_webny_whitelist_link_url:
+    type: link
+    weight: 4
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+  field_webny_whitelist_stitle:
+    type: string
+    weight: 1
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
 hidden:
   body: true
   field_webny_whitelist_agency_key: true
   field_webny_whitelist_global_key: true
   field_webny_whitelist_image: true
-  field_webny_whitelist_link_url: true
   field_webny_whitelist_stitle: true
   links: true
   workbench_moderation_control: true
