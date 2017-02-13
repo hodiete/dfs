@@ -5,6 +5,7 @@
  * OVERRIDE the whitelisted content display for announcements reference.
  */
 #}
+{% set whitelistlink = content.field_webny_whitelist_link_url[0]['#url'].uri %}
 
 <article{{ attributes.addClass('webny-announcements') }}>
     {{ title_prefix }}
@@ -12,28 +13,28 @@
         <div class="webny-announce-wrap">
             <div class="webny-announce-wrap-in">
                 <div class="announcement-info">
-
                     {# IMPLEMENTS SHORT TITLE OR 65 CHAR LIMIT TITLE #}
 
                     {%  if(node.field_webny_whitelist_stitle.value is not empty and node.field_webny_whitelist_stitle.value is not null) %}
-                        <h4><a href="{{ url }}">{{ node.field_webny_whitelist_stitle.value }}</a></h4>
+                        <h4><a href="{{ whitelistlink }}">{{ node.field_webny_whitelist_stitle.value }}</a></h4>
                     {% elseif(node.label|length <= 65) %}
-                        <h4><a href="{{ url }}">{{ node.label }}</a></h4>
+                        <h4><a href="{{ whitelistlink }}">{{ node.label }}</a></h4>
                     {% else %}
 
                         {% set ws = true %}
                         {% for num in node.label|length..0 %}
                             {% if (num < 65 and  node.label|slice(num)|first == ' ' and ws != false) %}
                                 {% set ws = false %}
-                                <h4><a href="{{ url }}">{{ node.label[:num] ~ '...' }}</a></h4>
+                                <h4><a href="{{ whitelistlink }}">{{ node.label[:num] ~ '...' }}</a></h4>
                             {% endif %}
                         {% endfor %}
 
                     {% endif %}
-
+                    {#
                     <div class="announcement-date">
                         {{ node.field_webny_whitelist_date.value|date("F j, Y") }}
                     </div>
+                    #}
                     <div class="announcement-summary">
                         {% if node.field_webny_whitelist_descript.value is not empty and node.field_webny_whitelist_descript.value is not null %}
                             {{ content.field_webny_whitelist_descript }}
@@ -43,8 +44,10 @@
                     </div>
                 </div>
                 <div class="webny-announcement-button">
-                    <a href="{{ url }}">LEARN MORE</a>
+                    {{ content.field_webny_whitelist_link_url }}
                 </div>
+                
+
             </div>
         </div>
     {% endif %}
