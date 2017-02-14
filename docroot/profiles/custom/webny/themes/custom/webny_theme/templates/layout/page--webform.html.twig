@@ -61,11 +61,9 @@
   <main role="main">
     <a id="main-content" tabindex="-1"></a>{# link is in html.html.twig #}
 
-    <div class="layout-content">
-    <div class="form-layout-content">
+    <div class="layout-content form-layout-content">
       <h2>{{ page['#title'] }}</h2>
       {{ page.content }}
-    </div>  
     </div>{# /.layout-content #}
 
     {% if page.sidebar_first %}
