@@ -2198,7 +2198,6 @@ function webny_configuration_update_8106()
       ->install(['webny_media']);
 }
 
-
 /**
  * Implements hook_update_n().
  *
@@ -2225,6 +2224,46 @@ function webny_configuration_update_8108()
       ->uninstall(['webny_sitemap']);
 }
 
+/**
+ * Implements hook_update_n().
+ *
+ * Reinstall webny image styles - add 2 new wysiwyg image styles
+ * Reinstall webny media and webny base - embed button and view modes
+ *
+ */
+function webny_configuration_update_8109()
+{
+    // REFRESH THE WEBNY BASE FEATURE MODULE - to refresh image view modes
+    print webny_configuration_uninstall_module('webny_base');
+    print webny_configuration_enable_module('webny_base');
+
+    // REFRESH THE WEBNY IMAGE STYLES FEATURE MODULE - to include new image styles
+    print webny_configuration_uninstall_module('webny_image_styles');
+    print webny_configuration_enable_module('webny_image_styles');
+
+    // REFRESH THE WEBNY MEDIA CUSTOM MODULE - to bring everything above together
+    print webny_configuration_uninstall_module('webny_media');
+    print webny_configuration_enable_module('webny_media');
+
+    // REFRESH MEDIA EMBED BUTTON CONFIG TO INCLUDE WYSIWYG IMAGE DISPLAY OPTIONS
+    $config_factory = \Drupal::configFactory();
+    $profile_config = \Drupal::service('webny.profile_config');
+
+    // Import new/changed configuration.
+    $config_to_update = [
+        // Updated wysiwyg media embed configuration to include image style option selection.
+        'embed.button.media',
+        'core.entity_view_mode.media.wysiwyg',
+        'core.entity_view_mode.media.wysiwyg_portrait',
+        'core.entity_view_display.media.image.wysiwyg',
+        'core.entity_view_display.media.image.wysiwyg_portrait',
+    ];
+
+    $profile_config->bulkImport($config_to_update);
+
+    // Clear the config cache.
+    $config_factory->reset();
+}
 
 /**
  * Helper function to enable a Drupal module and print the result.
