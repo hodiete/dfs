@@ -2225,6 +2225,18 @@ function webny_configuration_update_8108()
       ->uninstall(['webny_sitemap']);
 }
 
+/**
+ * Implements hook_update_n().
+ * Refreshes whitelisted content ct updates config.
+ *
+ */
+function webny_configuration_update_8110() {
+
+    // REINSTALL THE NEWS CONTENT TYPE FEATURE MODULE
+    print webny_configuration_uninstall_module('webny_whitelisted_content');
+    print webny_configuration_enable_module('webny_whitelisted_content');
+
+}
 
 /**
  * Helper function to enable a Drupal module and print the result.
