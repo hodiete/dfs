@@ -2268,6 +2268,47 @@ function webny_configuration_update_8112() {
 }
 
 /**
+ * Implements hook_update_n().
+ *
+ * Remove yamlform instances from redirect
+ */
+function webny_configuration_update_8113() {
+
+  // REMOVE ALL FORM CONTACT PATHS FROM DRUPAL UPSTREAM DBS
+  $path = 'internal:/yamlform/contact';
+  $path2 = 'internal:/webform/contact';
+  $path = ltrim($path, '/');
+  $path2 = ltrim($path2, '/');
+  $query = db_select('redirect');
+  $query->addField('redirect', 'rid');
+  $query_or = db_or();
+  $query_or->condition('redirect_redirect__uri', db_like($path2), 'LIKE');
+  $query_or->condition('redirect_redirect__uri', db_like($path2 . '/') . '%', 'LIKE');
+  $query_or->condition('redirect_redirect__uri', db_like($path), 'LIKE');
+  $query_or->condition('redirect_redirect__uri', db_like($path . '/') . '%', 'LIKE');
+  $query->condition($query_or);
+
+  $rids = $query->execute()->fetchCol();
+  $redirect_repo = \Drupal::service('redirect.repository');
+
+  // THERE WILL BE RIDS UPSTREAM -- THIS WILL GATHER AND DELETE
+  if ($rids) {
+    foreach ($redirect_repo->loadMultiple($rids) as $redirect) {
+      $redirect->delete();
+    }
+  }
+
+  // ADD REDIRECTS TO REPLACE form contact -- example
+  //$redirect = Drupal\redirect\Entity\Redirect::create();
+  //$redirect->setSource('node/11');
+  //$redirect->setRedirect('node/36');
+  //$redirect->setLanguage('und');
+  //$redirect->setStatusCode(\Drupal::config('redirect.settings')->get('default_status_code'));
+  //$redirect->save();
+
+}
+
+/**
  * Helper function to enable a Drupal module and print the result.
  *
  * @param string $module_name
