@@ -2225,6 +2225,19 @@ function webny_configuration_update_8108()
       ->uninstall(['webny_sitemap']);
 }
 
+/**
+ * Implements hook_update_n().
+ *
+ * Remove Contact and Contact Storage
+ */
+function webny_configuration_update_8110() {
+
+  \Drupal::service('module_installer')
+      ->uninstall(['contact_storage']);
+  \Drupal::service('module_installer')
+      ->uninstall(['contact']);
+
+}
 
 /**
  * Implements hook_update_n().
