@@ -2225,6 +2225,103 @@ function webny_configuration_update_8108()
       ->uninstall(['webny_sitemap']);
 }
 
+/**
+ * Implements hook_update_n().
+ *
+ * Remove Contact and Contact Storage
+ */
+function webny_configuration_update_8110() {
+
+  \Drupal::service('module_installer')
+      ->uninstall(['contact_storage']);
+  \Drupal::service('module_installer')
+      ->uninstall(['contact']);
+
+}
+
+/**
+ * Implements hook_update_n().
+ *
+ * Refreshes whitelisted content ct updates config.
+ *
+ */
+function webny_configuration_update_8111() {
+
+    // REINSTALL THE NEWS CONTENT TYPE FEATURE MODULE
+    print webny_configuration_uninstall_module('webny_whitelisted_content');
+    print webny_configuration_enable_module('webny_whitelisted_content');
+
+}
+
+/**
+ * Implements hook_update_n().
+ *
+ * Uninstall keyval dependencies leftovers -- warnings on build
+ */
+function webny_configuration_update_8112() {
+
+  $schema_store = \Drupal::keyValue('system.schema');
+  $schema_store->delete('webny_contact_form');
+  $schema_store->delete('webny_contact_form_message_export_view');
+  $schema_store->delete('webny_global_navigation_footer');
+  $schema_store->delete('webny_sitemap');
+
+}
+
+/**
+ * Implements hook_update_n().
+ *
+ * Remove yamlform instances from redirect
+ */
+function webny_configuration_update_8113() {
+
+  // REMOVE ALL FORM CONTACT PATHS FROM DRUPAL UPSTREAM DBS
+  $path = 'internal:/yamlform/contact';
+  $path2 = 'internal:/webform/contact';
+  $path = ltrim($path, '/');
+  $path2 = ltrim($path2, '/');
+  $query = db_select('redirect');
+  $query->addField('redirect', 'rid');
+  $query_or = db_or();
+  $query_or->condition('redirect_redirect__uri', db_like($path2), 'LIKE');
+  $query_or->condition('redirect_redirect__uri', db_like($path2 . '/') . '%', 'LIKE');
+  $query_or->condition('redirect_redirect__uri', db_like($path), 'LIKE');
+  $query_or->condition('redirect_redirect__uri', db_like($path . '/') . '%', 'LIKE');
+  $query->condition($query_or);
+
+  $rids = $query->execute()->fetchCol();
+  $redirect_repo = \Drupal::service('redirect.repository');
+
+  // THERE WILL BE RIDS UPSTREAM -- THIS WILL GATHER AND DELETE
+  if ($rids) {
+    foreach ($redirect_repo->loadMultiple($rids) as $redirect) {
+      $redirect->delete();
+    }
+  }
+
+  // ADD REDIRECTS TO REPLACE form contact -- example
+  //$redirect = Drupal\redirect\Entity\Redirect::create();
+  //$redirect->setSource('node/11');
+  //$redirect->setRedirect('node/36');
+  //$redirect->setLanguage('und');
+  //$redirect->setStatusCode(\Drupal::config('redirect.settings')->get('default_status_code'));
+  //$redirect->save();
+
+}
+
+/**
+ * Implements hook_update_n().
+ *
+* Remove Global Social Media Menu
+*/
+function webny_configuration_update_8114() {
+
+// REMOVE SOCIAL MEDIA MENU
+  \Drupal::configFactory()
+      ->getEditable('system.menu.webny-global-sm-menu')
+      ->delete();
+
+}
 
 /**
  * Helper function to enable a Drupal module and print the result.
