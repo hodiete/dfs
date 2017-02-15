@@ -165,6 +165,8 @@ class ProfileConfig {
       $this->getProfileFeatureConfigPath('image_styles') . '/optional',
       $this->getProfileContribModulePath('yamlform') . '/' . self::CONFIG_DIR . '/install',
       $this->getProfileContribModulePath('webform') . '/' . self::CONFIG_DIR . '/install',
+      $this->getProfileFeatureConfigPath('webny_whitelisted_content') . '/install',
+      $this->getProfileFeatureConfigPath('webny_whitelisted_content') . '/optional',
       $this->getProfileThemeConfigPath('webny_theme') . '/install',
 
     ]);
