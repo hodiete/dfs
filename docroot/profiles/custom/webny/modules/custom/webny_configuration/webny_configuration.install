@@ -2227,10 +2227,24 @@ function webny_configuration_update_8108()
 
 /**
  * Implements hook_update_n().
+ *
+ * Remove Contact and Contact Storage
+ */
+function webny_configuration_update_8110() {
+
+  \Drupal::service('module_installer')
+      ->uninstall(['contact_storage']);
+  \Drupal::service('module_installer')
+      ->uninstall(['contact']);
+
+}
+
+/**
+ * Implements hook_update_n().
  * Refreshes whitelisted content ct updates config.
  *
  */
-function webny_configuration_update_8110() {
+function webny_configuration_update_8111() {
 
     // REINSTALL THE NEWS CONTENT TYPE FEATURE MODULE
     print webny_configuration_uninstall_module('webny_whitelisted_content');
