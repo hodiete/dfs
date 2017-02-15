@@ -108,7 +108,6 @@ select {
   -moz-appearance: none;
   background-clip: padding-box;
   background: url('/profiles/custom/webny/themes/custom/webny_theme/images/arrow-down-orange.png') no-repeat 97% center transparent;
-
 }
 
 select::-ms-expand {
@@ -289,3 +288,22 @@ input[type="time"][disabled],
 input[type="url"][disabled] {
   background-color: $lightgray;
 }
+
+
+
+
+////////////////////////////////////////////////////////////
+
+// IE 8 and 9 Fix //
+
+
+@media \0screen\ {
+  
+  select {
+    background-image: none;
+  }
+}
+
+
+
+
