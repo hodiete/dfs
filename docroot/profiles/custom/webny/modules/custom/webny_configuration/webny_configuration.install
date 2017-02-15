@@ -2241,6 +2241,7 @@ function webny_configuration_update_8110() {
 
 /**
  * Implements hook_update_n().
+ *
  * Refreshes whitelisted content ct updates config.
  *
  */
@@ -2305,6 +2306,20 @@ function webny_configuration_update_8113() {
   //$redirect->setLanguage('und');
   //$redirect->setStatusCode(\Drupal::config('redirect.settings')->get('default_status_code'));
   //$redirect->save();
+
+}
+
+/**
+ * Implements hook_update_n().
+ *
+* Remove Global Social Media Menu
+*/
+function webny_configuration_update_8114() {
+
+// REMOVE SOCIAL MEDIA MENU
+  \Drupal::configFactory()
+      ->getEditable('system.menu.webny-global-sm-menu')
+      ->delete();
 
 }
 
