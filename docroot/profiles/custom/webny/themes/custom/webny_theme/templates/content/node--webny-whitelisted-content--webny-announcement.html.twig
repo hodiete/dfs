@@ -30,11 +30,11 @@
                         {% endfor %}
 
                     {% endif %}
-                    {#
+    
                     <div class="announcement-date">
                         {{ node.field_webny_whitelist_date.value|date("F j, Y") }}
                     </div>
-                    #}
+                    
                     <div class="announcement-summary">
                         {% if node.field_webny_whitelist_descript.value is not empty and node.field_webny_whitelist_descript.value is not null %}
                             {{ content.field_webny_whitelist_descript }}
