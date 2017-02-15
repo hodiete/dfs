@@ -2228,9 +2228,23 @@ function webny_configuration_update_8108()
 /**
  * Implements hook_update_n().
  *
+ * Remove Contact and Contact Storage
+ */
+function webny_configuration_update_8110() {
+
+  \Drupal::service('module_installer')
+      ->uninstall(['contact_storage']);
+  \Drupal::service('module_installer')
+      ->uninstall(['contact']);
+
+}
+
+/**
+ * Implements hook_update_n().
+ *
  * Uninstall keyval dependencies leftovers -- warnings on build
  */
-function webny_configuration_update_8109() {
+function webny_configuration_update_8112() {
 
   $schema_store = \Drupal::keyValue('system.schema');
   $schema_store->delete('webny_contact_form');
@@ -2239,7 +2253,6 @@ function webny_configuration_update_8109() {
   $schema_store->delete('webny_sitemap');
 
 }
-
 
 /**
  * Helper function to enable a Drupal module and print the result.
