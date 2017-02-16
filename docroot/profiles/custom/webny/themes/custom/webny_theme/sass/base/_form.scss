@@ -116,9 +116,11 @@ select {
   background: url('/profiles/custom/webny/themes/custom/webny_theme/images/arrow-down-orange.png') no-repeat 97% center transparent;
 }
 
+/*
 select::-ms-expand {
     display: none;
   }
+  */
 
 select:focus {
 	border: 1px solid $text-blue;
@@ -300,16 +302,13 @@ input[type="url"][disabled] {
 
 ////////////////////////////////////////////////////////////
 
-// IE 8 and 9 Fix //
+/* IE Fix - This displays the default select box arrrow in IE */
 
 
-@media \0screen\ {
+@media screen\0 {
   
   select {
-    background-image: none;
+    background: none;
   }
 }
-
-
-
 
