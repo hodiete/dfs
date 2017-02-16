@@ -357,8 +357,11 @@ $globalnav-secondary-color:   $button-black-50 !default;
         > ul {
           padding-left: 15px;
           display:inline-block;
-          & > li:hover {
+          & > li > a:hover {
             text-decoration: underline;
+          }
+          & > li > span:hover {
+            text-decoration: none;
           }
 
           li {
@@ -455,8 +458,12 @@ $globalnav-secondary-color:   $button-black-50 !default;
     &.stacked.horizontal{
       height: auto;
       font-size: 16px;
-      & > ul > li:hover {
+      & > ul > li > a:hover {
         text-decoration: underline;
+      }
+
+      & > ul > li > span:hover {
+        text-decoration: none;
       }
 
       h1 {
@@ -648,6 +655,10 @@ $globalnav-secondary-color:   $button-black-50 !default;
       background-color: $globalnav-secondary-color;
     }
 
+    & > span:hover {
+      text-decoration: none;
+    }
+
     ul {
       background-color: $color-primary;
     }
@@ -663,11 +674,17 @@ $globalnav-secondary-color:   $button-black-50 !default;
             span:hover {
               background-color: $color-primary;
             }
+            & > span:hover {
+              text-decoration: none;
+            }
             ul > li {
               a:hover,
               a:active,
               span:hover {
                 background-color: $globalnav-secondary-color;
+              }
+              & > span:hover {
+                text-decoration: none;
               }
 
             }
