@@ -630,6 +630,191 @@ $globalnav-secondary-color:   $button-black-50 !default;
     }
 
   }
+  // Desktop - for IE8, and its fate, that we code for old browsers at this rate.
+  @media \0screen {
+    &.horizontal{
+      > ul,
+      h1 {
+        display: inline-block;
+      }
+    }
+
+    &.unstacked.horizontal,
+    &.stacked.horizontal{
+      height: auto;
+      font-size: 16px;
+      & > ul > li > a:hover {
+        text-decoration: underline;
+      }
+
+      & > ul > li > span:hover {
+        text-decoration: none;
+      }
+
+      h1 {
+        width: $drop-down-width-desktop;
+        padding-left: 30px;
+
+        a,
+        a:link,
+        a:visited,
+        a:hover,
+        a:active {
+          padding: 0;
+          font-size: 22px;
+          line-height: 26px;
+          display: table-cell;
+          height: $medium-screen-link-height;
+          vertical-align: middle;
+          padding-left: 15px;
+
+          span {
+            display: inline-block;
+          }
+        }
+      }
+
+      > ul {
+        padding: 0 0 0 30px;
+
+        li {
+          a,
+          a:link,
+          a:visited,
+          a:hover,
+          a:active,
+          span {
+            font-size: 16px;
+            letter-spacing: .03em;
+            display: table-cell;
+            height: $medium-screen-link-height;
+            vertical-align: middle;
+            padding: 0 15px;
+
+            &:before,
+            &:after {
+              background-image:none;
+            }
+          }
+
+          ul {
+            padding: $submenu-padding;
+            top: auto;
+            width: $drop-down-width-desktop;
+
+            li {
+              height: auto;
+
+              a,
+              a:link,
+              a:visited,
+              a:hover,
+              a:active,
+              span {
+                font-size: 16px;
+                line-height: 20px;
+                height: auto;
+                display: block;
+                padding: 15px;
+              }
+            }
+          }
+
+          &:last-child ul {
+            left: auto;
+          }
+        }
+      }
+    }
+
+    &.unstacked.horizontal {
+      > h1 {
+        margin: 10px;
+      }
+
+      > ul {
+        li {
+          a,
+          a:link,
+          a:visited,
+          a:hover,
+          a:active,
+          span {
+            height: 95px;
+          }
+        }
+      }
+    }
+
+    &.stacked.horizontal{
+      @include in-context-menu();
+      height: 148px;
+
+      h1 {
+        display: block;
+        width: auto;
+        height: auto;
+
+        a,
+        a:link,
+        a:visited,
+        a:hover,
+        a:active {
+          height: 85px;
+        }
+      }
+
+      > ul {
+        display: block;
+
+        li {
+          a,
+          a:link,
+          a:visited,
+          a:hover,
+          a:active,
+          span {
+            height: 63px;
+          }
+
+          ul {
+            top: auto;
+            height: auto;
+            width: $drop-down-width-desktop;
+
+            li {
+              a,
+              a:link,
+              a:visited,
+              a:hover,
+              a:active,
+              span {
+                height: auto;
+                padding: $horizontal-sub-link-padding;
+              }
+            }
+          }
+        }
+      }
+
+      ul > li > a[href='#']:after,
+      ul > li > span:after {
+        background-image: none;
+        width: 0;
+        margin: 0;
+        display: none;
+      }
+
+      > ul li.#{$webny-global-prefix}active > a:before,
+      > ul li.#{$webny-global-prefix}active > span:before  {
+        background-image: none;
+        width: 0;
+        margin: 0;
+        display: none;
+      }
+    }
+
+  }
 }
 
 .webny-global-nav-content-container {
