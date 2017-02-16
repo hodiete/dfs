@@ -139,7 +139,7 @@ Feature: Image style Tests
     When I am on "/admin/structure/media/manage/image/display/wysiwyg_portrait"
     Then I should see "wysiwyg portrait"
     And I should see "Image style: wysiwyg portrait (300x300)"
-    And I should see "Responsive image: wysiwyg"
+    And I should see "Thumbnail style: - None -"
 
 # Check that Media Embed button has wysiwyg image styles applied
   Scenario: Check the Media Embed button to see that the wysiwyg image styles are applied
