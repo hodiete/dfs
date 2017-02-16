@@ -33,10 +33,8 @@ Feature: Image style Tests
     When I am on "/admin/config/media/responsive-image-style"
     Then I should see "Bio Frame"
     And I should see "Cards"
-    And I should see "Large (480×480)"
     And I should see "Hero image"
     And I should see "Hero image tall"
-    And I should see "Medium (220×220)"
     And I should see "Results Image"
     And I should see "wysiwyg"
 
