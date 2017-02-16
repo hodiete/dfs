@@ -107,13 +107,20 @@ select {
 
 select {
   border: 1px solid $midgray;
-  padding: 1rem;
-  height: 3.5rem;
+  padding: 1em;
+  height: 3.5em;
   width: 100%;
   -webkit-appearance: none;
   -moz-appearance: none;
+  background-clip: padding-box;
   background: url('/profiles/custom/webny/themes/custom/webny_theme/images/arrow-down-orange.png') no-repeat 97% center transparent;
 }
+
+/*
+select::-ms-expand {
+    display: none;
+  }
+  */
 
 select:focus {
 	border: 1px solid $text-blue;
@@ -289,3 +296,19 @@ input[type="time"][disabled],
 input[type="url"][disabled] {
   background-color: $lightgray;
 }
+
+
+
+
+////////////////////////////////////////////////////////////
+
+/* IE Fix - This displays the default select box arrrow in IE */
+
+
+@media screen\0 {
+  
+  select {
+    background: none;
+  }
+}
+
