@@ -2323,6 +2323,13 @@ function webny_configuration_update_8114() {
 
 }
 
+/**
+ * Implements hook_update_n().
+ *
+ * Reinstall webny image styles - add 2 new wysiwyg image styles
+ * Reinstall webny media and webny base - embed button and view modes
+ *
+ */
 function webny_configuration_update_8115()
 {
     // REFRESH THE WEBNY BASE FEATURE MODULE - to refresh image view modes
