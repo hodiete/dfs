@@ -6,11 +6,12 @@
  */
 #}
 {# setting title variable so it can be used 2x #}
-{%  if(node.field_webny_landing_short_title.value is not empty and node.field_webny_landing_short_title.value is not null) %}
-    {% set vtitle = node.field_webny_landing_short_title.value %}
+{%  if(node.field_webny_news_short_title.value is not empty and node.field_webny_news_short_title.value is not null) %}
+    {% set vtitle = node.field_webny_news_short_title.value %}
 {% else %}
     {% set vtitle = node.label %}
 {% endif %}
+
 <article{{ attributes.addClass('webny-announcements') }}>
   {{ title_prefix }}
   {% if not page %}
@@ -21,7 +22,7 @@
                 {# IMPLEMENTS SHORT TITLE OR 65 CHAR LIMIT TITLE #}
 
                 {% if(vtitle|length <= 65) %}
-                    {{ vtitle }}
+                    <h4><a href="{{ url }}">{{ vtitle }}</a></h4>
                 {% else %}
 
                     {% set ws = true %}
