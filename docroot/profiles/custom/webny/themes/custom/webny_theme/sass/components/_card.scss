@@ -172,6 +172,7 @@ $featured-card-arrow-color-hover: $color-secondary !default;
 .paragraph--type--webny-card-paragraph-type>div>div {
   @include breakpoint($min-pc) {
       width: 30%; /* rather than flex-basis */
+      max-width: 400px; // width of card image style
     }
   }
 
