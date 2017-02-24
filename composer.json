@@ -95,6 +95,8 @@
         "install-phantomjs": [
             "rm -rf vendor/bin/phantomjs",
             "PhantomInstaller\\Installer::installPhantomJS"
+        ],
+        "post-update-cmd": [
         ]
     },
     "repositories": {
@@ -122,7 +124,8 @@
                 "sites/default/default.settings.php": "sites/default/settings.php"
             },
             "excludes": [
-                "sites/development.services.yml"
+                "sites/development.services.yml",
+                ".htaccess"
             ]
         },
         "enable-patching": true,
@@ -131,6 +134,7 @@
                 "New LightningExtension subcontexts do not autoload": "https://www.drupal.org/files/issues/2836258-3-lightning-extension-autoload.patch"
             },
             "drupal/core": {
+                "Image check for the presence of the array before using it in a function call": "https://www.drupal.org/files/issues/2745491-15.patch",
                 "Ignore front end vendor folders to improve directory search performance": "https://www.drupal.org/files/issues/ignore_front_end_vendor-2329453-116.patch",
                 "Twig debug output does not display all suggestions when an array of suggestions is passed to theme": "https://www.drupal.org/files/issues/twig_debug_output_does-2118743-89.patch",
                 "Turn Views exposed filters for dates into date fields": "https://www.drupal.org/files/issues/views_exposed_filter-2710793-8.patch",
