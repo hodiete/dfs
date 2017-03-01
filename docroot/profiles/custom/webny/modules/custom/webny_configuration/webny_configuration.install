@@ -2364,6 +2364,12 @@ function webny_configuration_update_8115()
     $config_factory->reset();
 }
 
+/**
+ * Implements hook_update_n().
+ *
+ * Reinstall webny media and update configuration for webny_media.settings.yml
+ *
+ */
 function webny_configuration_update_8116()
 {
     // REFRESH THE WEBNY MEDIA CUSTOM MODULE - to bring everything together
