@@ -11,6 +11,7 @@
 {% else %}
     {% set vtitle = node.label %}
 {% endif %}
+
 <article{{ attributes.addClass('webny-announcements') }}>
   {{ title_prefix }}
   {% if not page %}
@@ -21,7 +22,7 @@
                 {# IMPLEMENTS SHORT TITLE OR 65 CHAR LIMIT TITLE #}
 
                 {% if(vtitle|length <= 65) %}
-                    {{ vtitle }}
+                    <h4><a href="{{ url }}">{{ vtitle }}</a></h4>
                 {% else %}
 
                     {% set ws = true %}
