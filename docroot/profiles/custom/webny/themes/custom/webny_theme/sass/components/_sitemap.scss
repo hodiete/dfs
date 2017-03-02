@@ -26,6 +26,8 @@
 	padding-left: 0 !important;
 }
 
+
+
 .sitemap div:nth-last-child(n+2) {
 	border-bottom: 1px solid $color-mono-mid;
     padding-bottom: 35px;
@@ -41,6 +43,11 @@ ul.sitemap-menu {
 }
 
 /* Top Level Nav Item Styles */
+
+.content > ul.sitemap-menu > li > a,
+.content > ul.sitemap-menu > li > span {
+	margin-top: 20px;
+}
 
 /* Top Level Nolink Styles */
 .content > ul.sitemap-menu > li > span {
@@ -98,28 +105,24 @@ ul.sitemap-menu {
 	float: left;
 }
 
-.sitemap-menu > li > ul > li{
+.sitemap-menu > li > ul > li {
 	clear: both;
 }	
-
-/*.sitemap-box-menu-global-navigation,
-.sitemap-box-menu-webny-global-footer-menu {
-	clear: both;
-}*/
 
 /* Top Level Nav Item Styles */
 .content > ul.sitemap-menu > li {
 	width: 50%;
+	min-height: 100px;
 }
 
-.content > ul.sitemap-menu > li:nth-child(3) {
+/*.content > ul.sitemap-menu > li:nth-child(3) {
 	clear: left;
-}
+}*/
 
 .content > ul.sitemap-menu > li > a,
 .content > ul.sitemap-menu > li > span {
 	margin-top: 30px;
-}  
+}
 
 
 } // END TABLET VIEW
@@ -154,6 +157,11 @@ ul.sitemap-menu {
 	width: 25%;
 	float: left;
 }
+
+.content > ul.sitemap-menu > li > a,
+.content > ul.sitemap-menu > li > span {
+	margin-top: 40px;
+} 
 
 .content > ul.sitemap-menu > li:nth-child(n+5) {
 	margin-top: 50px;
