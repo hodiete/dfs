@@ -17,7 +17,7 @@
 }
 
 .sitemap .sitemap-box {
-	margin-bottom: 35px;
+	margin-bottom: 0;
 }
 
 .sitemap .sitemap-box ul {
@@ -28,7 +28,7 @@
 
 .sitemap div:nth-last-child(n+2) {
 	border-bottom: 1px solid $color-mono-mid;
-	padding-bottom: 35px;
+    padding-bottom: 35px;
 }
 
 .sitemap-box {
@@ -66,7 +66,7 @@ ul.sitemap-menu {
 	color: $color-mono-black;
 	float: left;
 	padding-right: 20px;
-	width: 150px;
+	width: 160px;
 
 	&:after {
 	font-family: 'icomoon';
@@ -91,7 +91,7 @@ ul.sitemap-menu {
 
 // ######################################################################### //
 /* TABLET VIEW */
-@media (min-width: $min-tab) {
+@media (min-width: $min-tab) and (max-width: $min-desktop) {
 
 
 .sitemap-menu > li {
@@ -102,19 +102,24 @@ ul.sitemap-menu {
 	clear: both;
 }	
 
-.sitemap-box-menu-global-navigation,
+/*.sitemap-box-menu-global-navigation,
 .sitemap-box-menu-webny-global-footer-menu {
 	clear: both;
-}
+}*/
 
 /* Top Level Nav Item Styles */
 .content > ul.sitemap-menu > li {
 	width: 50%;
 }
 
-.content > ul.sitemap-menu > li:nth-child(2n+3) {
+.content > ul.sitemap-menu > li:nth-child(3) {
 	clear: left;
 }
+
+.content > ul.sitemap-menu > li > a,
+.content > ul.sitemap-menu > li > span {
+	margin-top: 30px;
+}  
 
 
 } // END TABLET VIEW
@@ -127,7 +132,7 @@ ul.sitemap-menu {
 
 // ######################################################################### //
 /* PC VIEW */
-@media (min-width: $min-pc) {
+@media (min-width: $min-desktop) {
 
 .sitemap {
   margin: 50px auto;
@@ -147,6 +152,7 @@ ul.sitemap-menu {
 
 .content > ul.sitemap-menu > li {
 	width: 25%;
+	float: left;
 }
 
 .content > ul.sitemap-menu > li:nth-child(n+5) {
