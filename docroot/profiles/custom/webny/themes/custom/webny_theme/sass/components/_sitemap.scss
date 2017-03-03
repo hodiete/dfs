@@ -24,6 +24,7 @@
 	float: left;
 	position: relative;
 	padding-left: 0 !important;
+	margin-top: 20px;
 }
 
 
@@ -46,7 +47,7 @@ ul.sitemap-menu {
 
 .content > ul.sitemap-menu > li > a,
 .content > ul.sitemap-menu > li > span {
-	margin-top: 20px;
+	/*margin-top: 20px;*/
 }
 
 /* Top Level Nolink Styles */
@@ -109,19 +110,23 @@ ul.sitemap-menu {
 	clear: both;
 }	
 
+.sitemap div:nth-last-child(n+2) {
+	padding-bottom: 0;
+}
+
 /* Top Level Nav Item Styles */
 .content > ul.sitemap-menu > li {
 	width: 50%;
-	min-height: 100px;
+	min-height: 85px;
 }
 
-/*.content > ul.sitemap-menu > li:nth-child(3) {
+/*.content > ul.sitemap-menu li:nth-child(odd) {
 	clear: left;
 }*/
 
 .content > ul.sitemap-menu > li > a,
 .content > ul.sitemap-menu > li > span {
-	margin-top: 30px;
+	/*margin-top: 30px;*/
 }
 
 
@@ -160,7 +165,7 @@ ul.sitemap-menu {
 
 .content > ul.sitemap-menu > li > a,
 .content > ul.sitemap-menu > li > span {
-	margin-top: 40px;
+	/*margin-top: 40px;*/
 } 
 
 .content > ul.sitemap-menu > li:nth-child(n+5) {
