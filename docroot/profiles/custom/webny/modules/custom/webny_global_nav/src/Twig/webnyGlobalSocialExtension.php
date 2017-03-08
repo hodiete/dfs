@@ -35,7 +35,7 @@ class WebnyGlobalSocialExtension extends \Twig_Extension {
         $final_build = NULL;
         foreach($social_build as $k => $v) {
             if($v != '' && $v != NULL) {
-                $final_build .= "<li><a href=" . $v . ">" . strtoupper($k) . "</a></li>";
+                $final_build .= "<li><a class=\"imgico_".$k."\" href=\"" . $v . "\">" . strtoupper($k) . "</a></li>";
             }
         }
         return $final_build;
