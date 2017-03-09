@@ -225,53 +225,58 @@ $nav-bottom-text-transform:             $global-footer-top-text-transform ;
 
   /* need to fix this to allow different agency color schemes, need to add svg option see NDD-92 notes */
   .social-media {
-    a[href*="blogger"]::before{
+    a[class="imgico_blogger"]::before {     // @include icon(before,fa-blogger);
       background-image: url(../icons/social/black/icon-social-blogger.png);
+      width: 20px;
+      height: 20px;
       background-clip: content-box;
     }
-    a[href*="del.icio.us"]::before {
+
+    a[class="imgico_delicious"]::before {  // @include icon(before, fa-delicious);
       background-image: url(../icons/social/black/icon-social-delicious.png);
+      width: 20px;
+      height: 20px;
       background-clip: content-box;
     }
-    a[href*="facebook"]{@include icon(before,fa-facebook);}
+    a[class="imgico_facebook"]{@include icon(before,fa-facebook);}
 
-    a[href*="feed"]{@include icon(before, fa-rss);}
+    a[class="imgico_feed"]{@include icon(before, fa-rss);}
 
-    a[href*="flickr"]{@include icon(before, fa-flickr);}
+    a[class="imgico_flickr"]{@include icon(before, fa-flickr);}
 
-    a[href*="foursquare"]{@include icon(before, fa-foursquare);}
+    a[class="imgico_foursquare"]{@include icon(before, fa-foursquare);}
 
-    a[href*="github"]{@include icon(before, fa-github-square);}
+    a[class="imgico_github"]{@include icon(before, fa-github-square);}
 
-    a[href*="google"]{@include icon(before, fa-google_plus);}
+    a[class="imgico_google-plus"]{@include icon(before, fa-google-plus);}
 
-    a[href*="instagram"]{@include icon(before, fa-instagram);}
+    a[class="imgico_instagram"]{@include icon(before, fa-instagram);}
 
-    a[href*="linkedin"]{@include icon(before, fa-linkedin-square);}
+    a[class="imgico_linkedin"]{@include icon(before, fa-linkedin-square);}
 
-    a[href*="mail"]{@include icon(before, fa-envelope);}
+    a[class="imgico_mail"]{@include icon(before, fa-envelope);}
 
-    a[href*="pinterest"]{@include icon(before, fa-pinterest-p);}
+    a[class="imgico_pinterest"]{@include icon(before, fa-pinterest-p);}
 
-    a[href*="reddit"]{@include icon(before, fa-reddit-alien);}
+    a[class="imgico_reddit"]{@include icon(before, fa-reddit-alien);}
 
-    a[href*="share"]{@include icon(before, fa-share);}
+    a[class="imgico_share"]{@include icon(before, fa-share);}
 
-    a[href*="snapchat"]{@include icon(before, fa-snapchat-ghost);}
+    a[class="imgico_snapchat"]{@include icon(before, fa-snapchat-ghost);}
 
-    a[href*="soundcloud"]{@include icon(before, fa-soundcloud);}
+    a[class="imgico_soundcloud"]{@include icon(before, fa-soundcloud);}
 
-    a[href*="tumblr"]{@include icon(before, fa-tumblr);}
+    a[class="imgico_tumblr"]{@include icon(before, fa-tumblr);}
 
-    a[href*="twitter"]{@include icon(before, fa-twitter);}
+    a[class="imgico_twitter"]{@include icon(before, fa-twitter);}
 
-    a[href*="vimeo"]{@include icon(before, fa-vimeo-square);}
+    a[class="imgico_vimeo"]{@include icon(before, fa-vimeo-square);}
 
-    a[href*="vine"]{@include icon(before, fa-vine);}
+    a[class="imgico_vine"]{@include icon(before, fa-vine);}
 
-    a[href*="yelp"]{@include icon(before, fa-yelp);}
+    a[class="imgico_yelp"]{@include icon(before, fa-yelp);}
 
-    a[href*="youtube"]{@include icon(before, fa-youtube);}
+    a[class="imgico_youtube"]{@include icon(before, fa-youtube);}
 
   }
 

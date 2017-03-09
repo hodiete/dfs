@@ -2364,12 +2364,41 @@ function webny_configuration_update_8115()
     $config_factory->reset();
 }
 
+
+/**
+ * Implements hook_update_n().
+ *
+ * Reinstall webny media and update configuration for webny_media.settings.yml
+ *
+ */
+function webny_configuration_update_8116()
+{
+    // REFRESH THE WEBNY MEDIA CUSTOM MODULE - to bring everything together
+    print webny_configuration_uninstall_module('webny_media');
+    print webny_configuration_enable_module('webny_media');
+
+    // REFRESH MEDIA SETTINGS CONFIG YML TO ENABLE TRANSLITERAION
+    $config_factory = \Drupal::configFactory();
+    $profile_config = \Drupal::service('webny.profile_config');
+
+    // Import new/changed configuration.
+    $config_to_update = [
+        // Updated media settings file to enable current transliteration in webny_media.
+        'webny_media.settings',
+    ];
+
+    $profile_config->bulkImport($config_to_update);
+
+    // Clear the config cache.
+    $config_factory->reset();
+}
+
 /**
  * Implements hook_update_n().
  *
  * Reinstall webny landing page content type.
  */
-function webny_configuration_update_8116()
+function webny_configuration_update_8117()
 {
 
     \Drupal::service('module_installer')
@@ -2378,7 +2407,7 @@ function webny_configuration_update_8116()
         ->install(['webny_landing_page_content_type']);
 }
 
-/**
+    /**
  * Helper function to enable a Drupal module and print the result.
  *
  * @param string $module_name
