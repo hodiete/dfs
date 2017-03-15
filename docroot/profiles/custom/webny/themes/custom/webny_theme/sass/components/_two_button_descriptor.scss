@@ -108,24 +108,25 @@ $tbd-button-hover-back-color:       $button-black-50 !default;
     display: flex;
     flex-flow: row nowrap;
     justify-content: center;
-  }
 
-  .descriptor {
-    flex: 1;
-  }
+    .descriptor {
+      flex: 1;
 
-  .descriptor--field-webny-tbd-descriptor1,
-  .descriptor--field-webny-tbd-descriptor2{
-    font-family: $base-font;
-    font-size: 0.7778rem;
-    font-weight: 800;
-  }
+      &:nth-of-type(2n+2) {
+        border-left:2px solid lighten($tbd-frame-descriptor-border, 20%);
+        border-top: 0;
+      }
 
-  .descriptor:nth-of-type(2n+2) {
-    flex: 1;
-    border-left:2px solid lighten($tbd-frame-descriptor-border, 20%);
-    border-top: 0;
-  }
+      .descriptor--field-webny-tbd-descriptor1,
+      .descriptor--field-webny-tbd-descriptor2{
+        font-family: $base-font;
+        font-size: 0.7778rem;
+        font-weight: 800;
+      }
+
+    } // END descriptor
+
+  } // END descriptors
 
 } // END MIN TABLET VIEW
 
@@ -137,24 +138,25 @@ $tbd-button-hover-back-color:       $button-black-50 !default;
     display: flex;
     flex-flow: row nowrap;
     justify-content: center;
-  }
 
-  .descriptor{
-    flex: 1;
-    padding: 1.5%;
-    margin-bottom: 30px;
-  }
+    .descriptor{
+      flex: 1;
+      padding: 1.5%;
+      margin-bottom: 30px;
 
-  .descriptor--field-webny-tbd-descriptor1,
-  .descriptor--field-webny-tbd-descriptor2{
-    font-size: $base-font-size;
-    font-weight: $frame-base-semi-bold;
-    line-height: 24px;
-  }
+      .descriptor--field-webny-tbd-descriptor1,
+      .descriptor--field-webny-tbd-descriptor2{
+        font-size: $base-font-size;
+        font-weight: $frame-base-semi-bold;
+        line-height: 24px;
+      }
 
-  .descriptor:nth-of-type(2n+2) {
-    flex: 1;
-    border-left:2px solid lighten($tbd-frame-descriptor-border, 20%);
-  }
+      &:nth-of-type(2n+2) {
+        border-left:2px solid lighten($tbd-frame-descriptor-border, 20%);
+      }
+
+    } // END descriptor
+
+  } // END descriptors
 
 } // END PC VIEW
