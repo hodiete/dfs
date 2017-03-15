@@ -110,18 +110,31 @@ $tbd-button-hover-back-color:       $button-black-50 !default;
     justify-content: center;
 
     .descriptor {
+      display: flex;
       flex: 1;
+      flex-flow: column nowrap;
 
       &:nth-of-type(2n+2) {
         border-left:2px solid lighten($tbd-frame-descriptor-border, 20%);
         border-top: 0;
       }
 
+      .descriptor--field-webny-tbd-descriptortitle1,
+      .descriptor--field-webny-tbd-descriptortitle2 {
+        flex: 1;
+      }
+
       .descriptor--field-webny-tbd-descriptor1,
       .descriptor--field-webny-tbd-descriptor2{
+        flex: 3; // used 3 to handle very large descriptors
         font-family: $base-font;
         font-size: 0.7778rem;
         font-weight: 800;
+      }
+
+      .descriptor--field-webny-tbd-cta1,
+      .descriptor--field-webny-tbd-cta2 {
+        flex: 1;
       }
 
     } // END descriptor
@@ -140,15 +153,28 @@ $tbd-button-hover-back-color:       $button-black-50 !default;
     justify-content: center;
 
     .descriptor{
+      display: flex;
       flex: 1;
+      flex-flow: column nowrap;
       padding: 1.5%;
       margin-bottom: 30px;
 
+      .descriptor--field-webny-tbd-descriptortitle1,
+      .descriptor--field-webny-tbd-descriptortitle2 {
+        flex: 1;
+      }
+
       .descriptor--field-webny-tbd-descriptor1,
       .descriptor--field-webny-tbd-descriptor2{
+        flex: 3; // used 3 to handle very large descriptors
         font-size: $base-font-size;
         font-weight: $frame-base-semi-bold;
         line-height: 24px;
+      }
+
+      .descriptor--field-webny-tbd-cta1,
+      .descriptor--field-webny-tbd-cta2 {
+        flex: 1;
       }
 
       &:nth-of-type(2n+2) {
