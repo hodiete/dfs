@@ -2406,7 +2406,21 @@ function webny_configuration_update_8117()
         ->install(['webny_landing_page_content_type']);
 }
 
-    /**
+/**
+ * Implements hook_update_n().
+ *
+ * Reinstall webny summary frame type.
+ */
+function webny_configuration_update_8118()
+{
+
+    \Drupal::service('module_installer')
+        ->uninstall(['webny_summary_frame']);
+    \Drupal::service('module_installer')
+        ->install(['webny_summary_frame']);
+}
+
+/**
  * Helper function to enable a Drupal module and print the result.
  *
  * @param string $module_name
