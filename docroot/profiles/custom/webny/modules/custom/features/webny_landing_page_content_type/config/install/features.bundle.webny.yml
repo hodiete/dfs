@@ -5,6 +5,11 @@ name: WebNY
 machine_name: webny
 description: 'Auto-generated bundle from package WebNY'
 assignments:
+  alter:
+    core: 1
+    enabled: 1
+    user_permissions: 1
+    weight: 0
   base:
     types:
       config:
@@ -39,7 +44,7 @@ assignments:
       installed: 1
       profile: 1
       namespace: 1
-      namespace_any: 0
+      namespace_any:
     enabled: true
     weight: -5
   existing:
