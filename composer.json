@@ -96,7 +96,9 @@
             "rm -rf vendor/bin/phantomjs",
             "PhantomInstaller\\Installer::installPhantomJS"
         ],
-        "post-update-cmd": [
+        "post-drupal-scaffold-cmd": [
+          "cd docroot && ../scripts/wny/update-htaccess.sh ../patches/htaccess-redirects.patch && cd -",
+          "cd docroot && ../scripts/wny/update-htaccess.sh ../patches/htaccess-ssl.patch && cd -"
         ]
     },
     "repositories": {
