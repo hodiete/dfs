@@ -14,7 +14,14 @@
 
 .sitemap-menu {
 	list-style-type: none;
+}
 
+.sitemap .sitemap-box {
+	margin-bottom: 0;
+}
+
+.sitemap .sitemap-box-menu {
+	margin-top: 25px;
 }
 
 .sitemap .sitemap-box ul {
@@ -23,33 +30,39 @@
 	padding-left: 0 !important;
 }
 
+
+
+.sitemap div:nth-last-child(n+2) {
+	border-bottom: 1px solid $color-mono-mid;
+    padding-bottom: 35px;
+}
+
 .sitemap-box {
 	display: inline-block;
+	width: 100%;
 }
-
-.sitemap-box-menu-global-navigation {
-	border-bottom: 1px solid $color-mono-mid;
-	padding-bottom: 10px;
-}
-
 
 ul.sitemap-menu {
 	display: inline-block;
 	padding-left: 0;
+	width: 100%;
 }
 
 /* Top Level Nav Item Styles */
 
-.content > ul.sitemap-menu > li:nth-child(5n) {
-	clear: left;
+.content > ul.sitemap-menu > li > a,
+.content > ul.sitemap-menu > li > span {
+	width: 100%;
+	display: inline;
 }
 
 /* Top Level Nolink Styles */
 .content > ul.sitemap-menu > li > span {
-	font-size: 0.889em;
+	font-size: 1.111em;
 	font-weight: 900;
 	padding-right: 20px;
 	float: left;
+	min-width: 160px;
 
 	&:after {
 	font-family: 'icomoon';
@@ -58,16 +71,16 @@ ul.sitemap-menu {
 	color: $text-blue;
 	padding-left: 10px;
 	}
-
 }
 
 /* Top Level Link Styles */
 .content > ul.sitemap-menu > li > a {
-	font-size: 0.889em;
+	font-size: 1.111em;
 	font-weight: 900;
 	color: $color-mono-black;
 	float: left;
 	padding-right: 20px;
+	min-width: 160px;
 
 	&:after {
 	font-family: 'icomoon';
@@ -75,14 +88,13 @@ ul.sitemap-menu {
 	font-size: 0.667em;
 	color: $text-blue;
 	padding-left: 10px;
-	display: inline-block;
 	}
 }
 
 /* Second Level Nav Item Styles */
 .content > ul.sitemap-menu ul {
 	clear: both;
-	font-size: 0.667em;
+	font-size: 1em;
 	font-weight: 500;
 	padding-left: 0;
 	width: 80%;
@@ -92,27 +104,37 @@ ul.sitemap-menu {
 
 // ######################################################################### //
 /* TABLET VIEW */
-@media (min-width: $min-tab) {
+@media (min-width: $min-tab) and (max-width: $min-desktop) {
 
 
 .sitemap-menu > li {
 	float: left;
 }
 
-.sitemap-menu > li > ul > li{
+.sitemap-menu > li > ul > li {
 	clear: both;
 }	
 
-.sitemap-box-menu-global-navigation,
-.sitemap-box-menu-webny-global-footer-menu {
-	clear: both;
-
+.sitemap div:nth-last-child(n+2) {
+	padding-bottom: 0;
 }
 
 /* Top Level Nav Item Styles */
 .content > ul.sitemap-menu > li {
 	width: 50%;
+	min-height: 85px;
 }
+
+/*.content > ul.sitemap-menu li:nth-child(odd) {
+	clear: left;
+}*/
+
+.content > ul.sitemap-menu > li > a,
+.content > ul.sitemap-menu > li > span {
+	/*min-width: 170px;*/
+	
+}
+
 
 } // END TABLET VIEW
 
@@ -124,7 +146,7 @@ ul.sitemap-menu {
 
 // ######################################################################### //
 /* PC VIEW */
-@media (min-width: $min-pc) {
+@media (min-width: $min-desktop) {
 
 .sitemap {
   margin: 50px auto;
@@ -141,10 +163,27 @@ ul.sitemap-menu {
 }
 
 /* Top Level Nav Item Styles */
+
 .content > ul.sitemap-menu > li {
 	width: 25%;
-	/* min-height: 150px; */
+	float: left;
 }
-	
+
+.content > ul.sitemap-menu > li > a,
+.content > ul.sitemap-menu > li > span {
+	/*margin-top: 40px;*/
+} 
+
+.content > ul.sitemap-menu > li:nth-child(n+5) {
+	margin-top: 50px;
+}
+
+.content > ul.sitemap-menu > li:nth-child(5n) {
+	clear: left;
+}
+
+.content > ul.sitemap-menu > li:nth-child(9n) {
+	clear: left;
+}
 
 } // END MIN PC VIEW
