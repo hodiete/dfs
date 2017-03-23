@@ -33,6 +33,17 @@ $tbd-button-hover-back-color:       $button-black-50 !default;
   margin: 0 auto;
   text-align: center;
   padding: $frame-padding-lg 3%;
+  // width: 100%;
+  min-height: 450px\9;
+}
+
+.descriptor {
+  display: inline-block;
+  width: 95%;
+  padding: 0 1%;
+  overflow: auto;
+  vertical-align: top;
+  text-align: center;
 }
 
 .descriptor--field-webny-tbd-title {
@@ -113,6 +124,10 @@ $tbd-button-hover-back-color:       $button-black-50 !default;
       display: flex;
       flex: 1;
       flex-flow: column nowrap;
+      margin-bottom: 30px;
+      float: left\9;
+      width: 40%\9;
+      overflow: hidden\9;
 
       &:nth-of-type(2n+2) {
         border-left:2px solid lighten($tbd-frame-descriptor-border, 20%);
@@ -126,7 +141,7 @@ $tbd-button-hover-back-color:       $button-black-50 !default;
 
       .descriptor--field-webny-tbd-descriptor1,
       .descriptor--field-webny-tbd-descriptor2{
-        flex: 3; // used 3 to handle very large descriptors
+        flex: 5; // used 5 to handle very large descriptors
         font-family: $base-font;
         font-size: 0.7778rem;
         font-weight: 800;
@@ -158,6 +173,10 @@ $tbd-button-hover-back-color:       $button-black-50 !default;
       flex-flow: column nowrap;
       padding: 1.5%;
       margin-bottom: 30px;
+      display: inline-block\9;
+      float: left\9;
+      width: 40%\9;
+      overflow: hidden\9;
 
       .descriptor--field-webny-tbd-descriptortitle1,
       .descriptor--field-webny-tbd-descriptortitle2 {
@@ -166,7 +185,7 @@ $tbd-button-hover-back-color:       $button-black-50 !default;
 
       .descriptor--field-webny-tbd-descriptor1,
       .descriptor--field-webny-tbd-descriptor2{
-        flex: 3; // used 3 to handle very large descriptors
+        flex: 5; // used 5 to handle very large descriptors
         font-size: $base-font-size;
         font-weight: $frame-base-semi-bold;
         line-height: 24px;
@@ -186,3 +205,33 @@ $tbd-button-hover-back-color:       $button-black-50 !default;
   } // END descriptors
 
 } // END PC VIEW
+
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+  /* IE10-specific styles go here */
+
+  @media (min-width: $min-tab) {
+    .descriptors {
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: center;
+
+      .descriptor {
+        display: inline-block;
+        margin: 0 auto;
+      }
+    }
+  } // END TABLET VIEW
+
+  @media (min-width: $min-pc) {
+    .descriptors {
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: center;
+
+      .descriptor {
+        display: inline-block;
+        margin: 0 auto;
+      }
+    }
+  } // END PC VIEW
+} // END IE10
