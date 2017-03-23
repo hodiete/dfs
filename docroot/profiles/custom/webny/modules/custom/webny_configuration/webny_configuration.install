@@ -2421,6 +2421,24 @@ function webny_configuration_update_8118()
 }
 
 /**
+ * Implements hook_update_n().
+ *
+ * Reinstall webny two button descriptor frame type.
+ */
+function webny_configuration_update_8119()
+{
+    \Drupal::service('module_installer')
+        ->uninstall(['webny_tbd_frame']);
+    \Drupal::service('module_installer')
+        ->install(['webny_tbd_frame']);
+
+    \Drupal::service('module_installer')
+        ->uninstall(['landing_page_content_type']);
+    \Drupal::service('module_installer')
+        ->install(['landing_page_content_type']);
+}
+
+/**
  * Helper function to enable a Drupal module and print the result.
  *
  * @param string $module_name
