@@ -1,0 +1,113 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.webny_tbd_pgtype.field_webny_tbd_cta1
+    - field.field.paragraph.webny_tbd_pgtype.field_webny_tbd_cta2
+    - field.field.paragraph.webny_tbd_pgtype.field_webny_tbd_descriptor1
+    - field.field.paragraph.webny_tbd_pgtype.field_webny_tbd_descriptor2
+    - field.field.paragraph.webny_tbd_pgtype.field_webny_tbd_descriptortitle1
+    - field.field.paragraph.webny_tbd_pgtype.field_webny_tbd_descriptortitle2
+    - field.field.paragraph.webny_tbd_pgtype.field_webny_tbd_subtitle
+    - field.field.paragraph.webny_tbd_pgtype.field_webny_tbd_title
+    - paragraphs.paragraphs_type.webny_tbd_pgtype
+  module:
+    - field_group
+    - link
+    - text
+    - workbench_moderation
+third_party_settings:
+  field_group:
+    group_descriptor_grouping_1:
+      children:
+        - field_webny_tbd_descriptor1
+        - field_webny_tbd_cta1
+        - field_webny_tbd_descriptortitle1
+      parent_name: ''
+      weight: 2
+      format_type: fieldset
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+        required_fields: true
+      label: 'Descriptor Grouping 1'
+    group_descriptor_grouping_2:
+      children:
+        - field_webny_tbd_descriptor2
+        - field_webny_tbd_cta2
+        - field_webny_tbd_descriptortitle2
+      parent_name: ''
+      weight: 6
+      format_type: fieldset
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+        required_fields: true
+      label: 'Descriptor Grouping 2'
+id: paragraph.webny_tbd_pgtype.default
+targetEntityType: paragraph
+bundle: webny_tbd_pgtype
+mode: default
+content:
+  field_webny_tbd_cta1:
+    weight: 5
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+  field_webny_tbd_cta2:
+    weight: 9
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+  field_webny_tbd_descriptor1:
+    weight: 4
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+  field_webny_tbd_descriptor2:
+    weight: 8
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+  field_webny_tbd_descriptortitle1:
+    weight: 3
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+  field_webny_tbd_descriptortitle2:
+    weight: 7
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+  field_webny_tbd_subtitle:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+  field_webny_tbd_title:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+hidden:
+  created: true
+  status: true
+  uid: true
