@@ -2421,6 +2421,19 @@ function webny_configuration_update_8118()
 }
 
 /**
+ * Implements hook_update_n().
+ *
+ * Refresh the landing page content type (required / install folder)
+ */
+function webny_configuration_update_8119(){
+
+    $feature = 'webny_landing_page_content_type';
+    webny_configuration_uninstall_module($feature);
+    webny_configuration_enable_module($feature);
+
+}
+
+/**
  * Helper function to enable a Drupal module and print the result.
  *
  * @param string $module_name
