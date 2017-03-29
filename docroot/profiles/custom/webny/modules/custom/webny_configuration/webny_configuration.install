@@ -2423,35 +2423,53 @@ function webny_configuration_update_8118()
 /**
  * Implements hook_update_n().
  *
+ * Reinstall webny two button descriptor frame type.
+ */
+function webny_configuration_update_8119()
+{
+    \Drupal::service('module_installer')
+        ->uninstall(['webny_tbd_frame']);
+    \Drupal::service('module_installer')
+        ->install(['webny_tbd_frame']);
+
+    \Drupal::service('module_installer')
+        ->uninstall(['webny_landing_page_content_type']);
+    \Drupal::service('module_installer')
+        ->install(['webny_landing_page_content_type']);
+}
+
+
+/**
+ * Implements hook_update_n().
+ *
  * Refresh the landing page content type (required / install / optional folders)
  */
-function webny_configuration_update_8119(){
+function webny_configuration_update_8120(){
 
     // REFRESH INSTALL FILES
-        $feature = 'webny_landing_page_content_type';
-        webny_configuration_uninstall_module($feature);
-        webny_configuration_enable_module($feature);
+    $feature = 'webny_landing_page_content_type';
+    webny_configuration_uninstall_module($feature);
+    webny_configuration_enable_module($feature);
 
     // REFRESH NEWS CONTENT VIEW LISTING
-        $config_factory = \Drupal::configFactory();
-        $profile_config = \Drupal::service('webny.profile_config');
+    $config_factory = \Drupal::configFactory();
+    $profile_config = \Drupal::service('webny.profile_config');
 
-        // Import new/changed configuration.
-        $config_to_update = [
-            // UPDATE LANDING PAGE OPTIONAL FEATURES
-            'core.entity_form_display.node.webny_landing_page.default',
-            'core.entity_view_display.node.webny_landing_page.default',
-            'core.entity_view_display.node.webny_landing_page.teaser',
-            'core.entity_view_display.node.webny_landing_page.webny_announcement',
-            'core.entity_view_display.node.webny_landing_page.webny_featured_card',
-            'field.field.node.webny_landing_page.field_webny_landing_paragraph'
-        ];
+    // Import new/changed configuration.
+    $config_to_update = [
+        // UPDATE LANDING PAGE OPTIONAL FEATURES
+        'core.entity_form_display.node.webny_landing_page.default',
+        'core.entity_view_display.node.webny_landing_page.default',
+        'core.entity_view_display.node.webny_landing_page.teaser',
+        'core.entity_view_display.node.webny_landing_page.webny_announcement',
+        'core.entity_view_display.node.webny_landing_page.webny_featured_card',
+        'field.field.node.webny_landing_page.field_webny_landing_paragraph'
+    ];
 
-        $profile_config->bulkImport($config_to_update);
+    $profile_config->bulkImport($config_to_update);
 
-        // Clear the config cache.
-        $config_factory->reset();
-
+    // Clear the config cache.
+    $config_factory->reset();
 
 }
 
