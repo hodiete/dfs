@@ -1,0 +1,108 @@
+# Note that the example .travis.yml file for child projects lives in /install.
+sudo: required
+group: deprecated
+language: php
+dist: trusty
+
+php:
+  - 5.6
+
+matrix:
+  fast_finish: true
+
+cache:
+  bundler: true
+  apt: true
+  directories:
+  - "$HOME/.composer/cache"
+  - "$HOME/.drush/cache"
+  - "$HOME/.npm"
+  - "$HOME/.nvm"
+  - "vendor"
+ # Cache front end dependecies to dramatically improve build time.
+  - "docroot/profiles/custom/webny/themes/custom/webny_theme/node_modules"
+  - "docroot/profiles/custom/webny/themes/custom/webny_theme/bower_components"
+
+addons:
+  ssh_known_hosts:
+  - svn-43.enterprise-g1.hosting.acquia.com
+  - staging-538.enterprise-g1.hosting.acquia.com
+  - web-536.enterprise-g1.hosting.acquia.com
+  apt:
+    packages:
+    - mysql-server-5.6
+    - mysql-client-core-5.6
+    - mysql-client-5.6
+
+# @see https://docs.travis-ci.com/user/notifications
+notifications:
+# - hipchat: [api token]@[room id or name]
+  slack: 'webnydistro:iSJ8dsk7Ym139SMpL470llno'
+
+before_install:
+  # Enable aliases for non-interactive shell.
+  - shopt -s expand_aliases
+  - composer selfupdate
+  # Disable xdebug.
+  - phpenv config-rm xdebug.ini
+  # Enable $_ENV variables in PHP.
+  - echo 'variables_order = "EGPCS"' >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
+  # Ensure that always_populate_raw_post_data PHP setting: Not set to -1 does not happen.
+  - echo "always_populate_raw_post_data = -1" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
+  # Increase PHP memory limit.
+  - echo "memory_limit=-1" >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
+  - git config --global user.name "Travis-CI"
+  - git config --global user.email "noreply@travis-ci.org"
+  - mysql -u root -e "CREATE DATABASE drupal; CREATE USER 'drupal'@'localhost' IDENTIFIED BY 'drupal'; GRANT ALL ON drupal.* TO 'drupal'@'localhost';"
+  - echo "extension = memcached.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
+
+install:
+  # Load composer dependencies.
+  - composer validate --no-check-all --ansi
+  # Remove acquia packages from cache before running `composer install`.
+  - rm -rf vendor/acquia
+  - composer install -v
+  - export PATH=$TRAVIS_BUILD_DIR/vendor/bin:$PATH
+  # Install proper version of node for front end tasks.
+  - nvm install 4.4.1
+  - nvm use 4.4.1
+  # Initialize xvfb (see https://docs.travis-ci.com/user/gui-and-headless-browsers)
+  - sudo apt-get install xvfb
+  - export DISPLAY=:99.0
+  - sh -e /etc/init.d/xvfb start
+  # Installs chromedriver to vendor/bin.
+  - ./vendor/acquia/blt/scripts/linux/install-chrome.sh $TRAVIS_BUILD_DIR/vendor/bin
+  # Use JDK 8.
+  - jdk_switcher use oraclejdk8
+
+before_script:
+  # Clear drush release history cache, to pick up new releases.
+  - rm -f ~/.drush/cache/download/*---updates.drupal.org-release-history-*
+  # Verify that no git diffs (caused by line ending variation) exist.
+  # - git diff --exit-code
+  # The local.hostname must be set to 0.0.0.0:6081, and NOT 127.0.0.1:8888, because we are using varnish
+  # in front of the drush runserver to run the site on Travis CI.
+  - yaml-cli update:value blt/project.yml project.local.hostname '0.0.0.0:6081'
+  # Increasing SQL packet size to avoid time out errors.
+  - mysql -u root -e 'SET GLOBAL wait_timeout = 36000;'
+  - mysql -u root -e 'SET GLOBAL max_allowed_packet = 33554432;'
+  - sudo service mysql restart
+  - curl https://repo.varnish-cache.org/debian/GPG-key.txt | sudo apt-key add -
+  - echo "deb https://repo.varnish-cache.org/ubuntu/ trusty varnish-3.0" | sudo tee -a /etc/apt/sources.list.d/varnish.list
+  - sudo apt-get update -qq
+  - sudo apt-get install varnish=3.0.7-1~trusty -y
+  - sudo cp ./acquia.vcl.j2 /etc/varnish/default.vcl
+  - sudo echo "14bac2e6-1e34-4770-8078-974373b76c90" >> sudo /etc/varnish/secret
+  - sudo service varnish restart
+
+script:
+  - touch project.local.yml
+  - blt -Dbehat.run-server=true -Dcreate_alias=false -Dbehat.launch-phantom=true ci:build:validate:test
+
+deploy:
+   - provider: script
+     script: blt deploy -Ddeploy.commitMsg="Automated commit by Travis CI for Build ${TRAVIS_BUILD_ID}" -Ddeploy.branch="${TRAVIS_BRANCH}-build"
+     skip_cleanup: true
+     on:
+       all_branches: true
+       php: 5.6

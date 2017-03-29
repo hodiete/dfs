@@ -1,0 +1,23 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_webny_news_date
+    - node.type.webny_news
+  module:
+    - datetime
+id: node.webny_news.field_webny_news_date
+field_name: field_webny_news_date
+entity_type: node
+bundle: webny_news
+label: Date
+description: 'Select the date and time of the news item. The default date will be today''s date, and the current time.'
+required: true
+translatable: false
+default_value:
+  -
+    default_date_type: now
+    default_date: now
+default_value_callback: ''
+settings: {  }
+field_type: datetime

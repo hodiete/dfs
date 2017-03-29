@@ -1,0 +1,143 @@
+{#
+/**
+ * @file
+ * Theme override to display a node for webny-news
+ *
+ *    -- WebNY News Content Type twig accessors --
+ *
+ *	  FIELD					TWIG
+ *    title:                {{ label }}
+ *    body:                 {{ content.body }}
+ *    agency_keywords:      {{ content.field_webny_news_agency_keywords }}
+ *    attachments:          {{ content.field_webny_news_attachment }}
+ *    teaser:               {{ content.field_webny_news_teaser }}
+ *    news_image:           {{ content.field_webny_news_image }}
+ *    contact_info:         {{ content.field_webny_news_contact_info }}
+ *    news_date:            {{ content.field_webny_news_date }}
+ *    global_keywords:      {{ content.field_webny_news_global_keywords }}
+ *    location:             {{ content.field_webny_news_location }}
+ *    subtitle:             {{ content.field_webny_news_sub_title }}
+ *
+ */
+
+/**
+ *  attachment URI [0]:             {{ file_url(node.field_webny_news_attachment.0.entity.uri.value) }}         
+ *  attachment Description [0]:     {{ node.field_webny_news_attachment[0].description }}     
+ */
+
+#}
+
+{#
+/*
+ * Begin TWIG NODE-WEBNY-NEWS Template
+ */
+#}
+
+{% set hero_image = file_url(node.field_webny_news_image.entity.field_image.entity.uri.value) %}
+
+{%
+  set newsclasses = [
+    'node',
+    node.bundle|clean_class,
+    node.isPromoted() ? 'node--promoted',
+    node.isSticky() ? 'node--sticky',
+    not node.isPublished() ? 'node--unpublished',
+    view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
+  ]
+%}
+
+
+
+{# NEW HERO SECTION #}
+
+<article {{ attributes.addClass(newsclasses,'hero-layout') }}>
+
+    {# START QUICK EDITS #}
+    {{ title_prefix }}
+
+    {# CHECK IF THERE IS AN IMAGE #}
+
+    {% if hero_image == '/' %}
+        <div class="hero-header hero-news hero-no-image" style="">
+            <div class="hero-bkg"></div>
+        </div>
+        <div class="hero-no-image-wrap">
+    {% else %}
+        <div class="hero-header hero-news hero-has-image" style="background-image:url('{{ hero_image }}')">
+            <div class="hero-bkg"></div>
+        </div>
+        <div class="hero-image-wrap">
+    {% endif %}
+
+         {% if hero_image == '/' %}
+         <div class="hero-inner hero-news-inner">
+         {% else %}
+         <div class="hero-inner hero-news-inner hero-has-image-content">
+         {% endif %}
+
+                {# DATE / LOCATION #}
+                <div class="hero-published-date">
+                    {{ content.field_webny_news_date }} <div class="hero-location">{{ content.field_webny_news_location }}</div>
+                </div>
+
+                {# HERO TITLE #}
+                <h1>
+                    {% if node.field_webny_news_hero_title.value is empty %}
+                        {{ label }}
+                    {% else %}
+                        {{ node.field_webny_news_hero_title.value }}
+                    {% endif %}
+                </h1>
+
+                {# KEYWORDS FOR NEWS HERO #}
+                <div class="hero-global-keywords">
+                    {{ content.field_webny_news_global_keywords }}
+                </div>
+
+         </div>
+        {# END WRAPPER -- FRESH #}
+      </div>
+
+    {{ title_suffix }}
+
+</article>
+
+<div class="news-body">
+	
+    <div class="news-body-in">
+
+        <div class="press-teaser">
+            {% for x,subtitle in node.field_webny_news_subtitles %}
+                <div class="press-subtitle-item">
+                    {{ node.field_webny_news_subtitles[x].value }}
+                </div>
+
+            {% endfor %}
+        </div>
+        
+        <div class="press-body">
+            {{ content.body }}
+        </div>
+			
+    </div>
+		
+</div>
+    
+<div class="press-docs">
+    {# DOCUMENT TITLE - CHECK IF TITLE EXISTS #}
+    {% if node.field_webny_news_docsec_title.value is not null and node.field_webny_news_docsec_title.value is not empty  %}
+        <h2 class="doc-set-title">{{ content.field_webny_news_docsec_title }}</h2>
+    {% endif %}
+    {# DOCUMENT SUBTITLE - CHECK IF SUBTITLE EXISTS #}
+    {% if node.field_webny_news_docsec_subtitle.value is not null and node.field_webny_news_docsec_subtitle.value is not empty  %}
+        <h3 class="doc-set-subtitle">{{ content.field_webny_news_docsec_subtitle }}</h3>
+    {% endif %}
+    <div class="press-docs-eref">
+        {{ content.field_webny_news_attdocs_eref }}
+    </div>
+</div>
+
+<div class="press-contact-info">
+    {{ content.field_webny_news_contact_info }}
+</div>
+

@@ -1,0 +1,41 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.webny_wysiwyg_pgtype.field_webny_wysiwyg_body
+    - field.field.paragraph.webny_wysiwyg_pgtype.field_webny_wysiwyg_headline
+    - field.field.paragraph.webny_wysiwyg_pgtype.field_webny_wysiwyg_title
+    - paragraphs.paragraphs_type.webny_wysiwyg_pgtype
+  module:
+    - text
+    - workbench_moderation
+id: paragraph.webny_wysiwyg_pgtype.default
+targetEntityType: paragraph
+bundle: webny_wysiwyg_pgtype
+mode: default
+content:
+  field_webny_wysiwyg_body:
+    weight: 8
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+  field_webny_wysiwyg_headline:
+    weight: 7
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+  field_webny_wysiwyg_title:
+    weight: 6
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+hidden:
+  created: true
+  status: true
+  uid: true

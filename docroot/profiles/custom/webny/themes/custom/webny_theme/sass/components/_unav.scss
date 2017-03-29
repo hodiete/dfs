@@ -1,0 +1,35 @@
+// Universal Navigiation
+//
+// New York State Universal Navigation Menu
+//
+// Markup: unav.hbs
+//
+// Style guide: components.unav
+
+
+@media (min-width: 0em) {
+  .nygov-universal-navigation header.l-header.nygov-header {
+    top: -64px;
+  }
+
+  .nygov-universal-navigation header.l-header.nygov-header.nav-open {
+    top: 0;
+  }
+}
+
+
+
+@media (min-width: $min-tablet) {
+  .nygov-universal-navigation header.l-header.nygov-header {
+    top: 0;
+  }
+
+  .nygov-universal-navigation header.l-header.nygov-header.nav-open {
+    top: 0;
+  }
+
+  .nygov-universal_searcher > form {
+    margin-top: 0;
+  }
+
+} // END MIN WIDTH TABLET

@@ -1,0 +1,25 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_webny_landing_bio_eref
+    - node.type.webny_contact
+    - paragraphs.paragraphs_type.webny_bio_pgtype
+id: paragraph.webny_bio_pgtype.field_webny_landing_bio_eref
+field_name: field_webny_landing_bio_eref
+entity_type: paragraph
+bundle: webny_bio_pgtype
+label: 'Bio Frame Reference'
+description: 'Add a contact content type to be used for this page''s bio frame.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      webny_contact: webny_contact
+    sort:
+      field: _none
+field_type: entity_reference

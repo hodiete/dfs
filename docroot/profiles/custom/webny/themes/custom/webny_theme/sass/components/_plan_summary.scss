@@ -1,0 +1,227 @@
+// Plan Summary
+//
+// Plan Summary styling.
+//
+// Markup: plan-summary.hbs
+//
+// Style guide: components.plan_summary
+
+// color variables
+$summary-frame-bkgd-color: $color-secondary !default;
+$summary-frame-title-color: $color-mono-black !default;
+$summary-frame-headline-color: $color-mono-white !default;
+$summary-frame-keypt-title-color: $color-mono-white !default;
+$summary-frame-keypt-text-color: $color-mono-black !default;
+$summary-frame-keypt-border: $color-secondary !default;
+$summary-frame-button: $color-mono-white !default;
+// REASSIGNED VALS FOR GLOBAL SCOPE -- SUMMARY
+// this overrides general button variables in config.scss
+$summary-button-border-color:           $button-border-color !default;
+$summary-button-text-color:             $button-text-color !default;
+$summary-button-back-color:             $button-bkgd-transparent !default;
+$summary-button-hover-back-color:       $button-black-50 !default;
+
+// ######################################################################### //
+/* START STYLING MOBILE FIRST UNDER HERE */
+
+.paragraph {
+  display: block;
+}  
+
+.paragraph--type--webny-summary-pgtype {
+  background-color: $summary-frame-bkgd-color;
+  margin: 0 auto;
+  text-align: center;
+  padding: $frame-padding-lg 3%;
+}
+
+.keypoint--field-webny-summary-title {
+  //font-family: $oswald;
+  //font-weight: bold;
+  //font-size: $frame-title;
+  //font-weight: 800;
+  font: $frame-title;
+  color: $summary-frame-title-color;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  // padding-top: 1%; // the padding set on the main frame should give the 80px
+  // padding-bottom: 1%; // need to evaluate this when changing these to headings
+}
+
+.keypoint--field-webny-summary-headline {
+  //font-family: $base-font;
+  //font-size: $frame-headline;
+  //font-weight: 800;
+  font: $frame-headline;
+  color: $summary-frame-headline-color;
+  text-align: center;
+  margin-bottom: 50px;
+  line-height: 3rem;
+}
+
+.front .keypoint--field-webny-summary-headline {
+  font: $frame-headline-front;
+}
+
+.keypoint {
+ display: inline-block;
+ width: 95%;
+ padding: 0 1%;
+ overflow: auto;
+ vertical-align: top;
+ text-align: center;
+}
+  
+.keypoint--field-webny-summary-keypoint1,
+.keypoint--field-webny-summary-keypoint2,
+.keypoint--field-webny-summary-keypoint3{
+  font-family: $base-font;
+  font-size: $base-font-size;
+  font-weight: 800;
+  color: $summary-frame-keypt-title-color;
+  margin: 20px 0;
+}
+
+.keypoint--field-webny-summary-argument1,
+.keypoint--field-webny-summary-argument2,
+.keypoint--field-webny-summary-argument3{
+  font-family: $base-font;
+  font-size: 0.7778rem;
+  color: $summary-frame-keypt-text-color;
+  padding: 0 16px;
+  margin-bottom: 30px;
+}
+
+.keypoint--field-webny-summary-argument1 p,
+.keypoint--field-webny-summary-argument2 p,
+.keypoint--field-webny-summary-argument3 p {
+  text-align: center;
+}
+
+.keypoint:nth-of-type(2n+2) {
+  border-top:1px solid rgba($summary-frame-keypt-border, .2);
+}
+
+.keypoint:nth-of-type(1n+2) {
+  border-top: 1px solid rgba($summary-frame-keypt-border, .2);
+  border-bottom: 1px solid rgba($summary-frame-keypt-border, .2);
+}
+
+.sectionBorder {
+  display: inline-block;
+  border-top: 1px solid;
+  border-top-color: rgba($summary-frame-keypt-border, .2);
+  border-left: 0px;
+  width: 100%;
+  margin: 1% 0;
+}
+
+.keypoint--field-webny-summary-cta {
+
+  a {
+    // BUTTON DYNAMIC REQUIREMENTS
+    border: $frame-button-border-size solid $summary-button-border-color;
+    color: $summary-button-text-color;
+    background-color: $summary-button-back-color;
+
+    &:visited, &:link{
+      color: $summary-button-text-color;
+    }
+
+    &:hover {
+      background-color: $summary-button-hover-back-color;
+      text-decoration: none;
+    }
+  }
+
+  clear: both;
+
+  // BUTTON CALLS
+  @include frame-button-base();
+
+}
+
+// ######################################################################### //
+/* TABLET VIEW */
+@media (min-width: $min-tab) {
+  
+.keypoints {
+ display:flex;
+ flex-flow: row nowrap;
+ justify-content:center;
+}
+
+.keypoint--field-webny-summary-argument1,
+.keypoint--field-webny-summary-argument2,
+.keypoint--field-webny-summary-argument3{
+  font-family: $base-font;
+  font-size: 0.7778rem;
+  font-weight: 800;
+}
+
+
+.keypoint{
+//  display: inline-block;
+  float: left;
+  width: 30%;
+  margin-bottom: 30px;
+  
+}
+
+.keypoint:nth-of-type(2n+2) {
+  border-left:2px solid lighten($summary-frame-keypt-border, 20%);
+  border-top: 0;
+}
+
+.keypoint:nth-of-type(1n+2) {
+  border-left:2px solid lighten($summary-frame-keypt-border, 20%);
+  border-top: 0;
+  border-bottom: 0;
+}
+  
+.sectionBorder {
+  width: auto;
+  height: 225px;
+  border-top: none;
+  border-left: 2px solid;
+  border-left-color: lighten($summary-frame-keypt-border, 20%);
+  margin: 0 0.5%;
+  float: left;
+}
+  
+} // END MIN TABLET VIEW
+
+
+// ######################################################################### //
+/* PC VIEW */
+@media (min-width: $min-pc) {
+
+.keypoints {
+ display:flex;
+ flex-flow: row nowrap;
+ justify-content:center;
+}
+ 
+.keypoint{
+    padding: 1.5%;
+    margin-bottom: 30px;
+  }
+
+.keypoint--field-webny-summary-argument1,
+.keypoint--field-webny-summary-argument2,
+.keypoint--field-webny-summary-argument3{
+  font-size: $base-font-size;
+  font-weight: $frame-base-semi-bold;
+  line-height: 24px;
+}
+  
+.keypoint:nth-of-type(2n+2) {
+  border-left:2px solid lighten($summary-frame-keypt-border, 20%);
+}
+  
+.keypoint:nth-of-type(1n+2) {
+  border-left:2px solid lighten($summary-frame-keypt-border, 20%);
+}
+
+}

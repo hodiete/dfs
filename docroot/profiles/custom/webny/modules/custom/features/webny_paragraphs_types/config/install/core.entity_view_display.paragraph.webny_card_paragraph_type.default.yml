@@ -1,0 +1,39 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.webny_card_paragraph_type.field_webny_card_entity_ref
+    - field.field.paragraph.webny_card_paragraph_type.field_webny_card_pg_headline
+    - field.field.paragraph.webny_card_paragraph_type.field_webny_card_pg_title
+    - paragraphs.paragraphs_type.webny_card_paragraph_type
+id: paragraph.webny_card_paragraph_type.default
+targetEntityType: paragraph
+bundle: webny_card_paragraph_type
+mode: default
+content:
+  field_webny_card_entity_ref:
+    weight: 2
+    label: hidden
+    settings:
+      view_mode: webny_featured_card
+      link: false
+    third_party_settings: {  }
+    type: entity_reference_entity_view
+  field_webny_card_pg_headline:
+    weight: 1
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+  field_webny_card_pg_title:
+    weight: 0
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+hidden:
+  created: true
+  uid: true
+  workbench_moderation_control: true

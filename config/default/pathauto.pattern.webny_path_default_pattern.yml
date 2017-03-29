@@ -1,0 +1,25 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: webny_path_default_pattern
+label: 'Default Pattern'
+type: 'canonical_entities:node'
+pattern: '/[node:title]'
+selection_criteria:
+  3f80c0c6-4329-424e-95e5-da9fe2f8fc67:
+    id: node_type
+    bundles:
+      webny_contact: webny_contact
+      webny_document: webny_document
+      webny_landing_page: webny_landing_page
+      webny_page: webny_page
+      webny_whitelisted_content: webny_whitelisted_content
+    negate: false
+    context_mapping:
+      node: node
+    uuid: 3f80c0c6-4329-424e-95e5-da9fe2f8fc67
+selection_logic: and
+weight: -9
+relationships: {  }

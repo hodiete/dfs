@@ -1,0 +1,24 @@
+uuid: 306ab357-b0e5-478b-b406-6ceeabece29c
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: CWcM8kn0BViiONa-eKwaQLbJUS0kIwUyjkVhQROcR9M
+id: workflow_publisher
+label: 'Workflow publisher'
+weight: 5
+is_admin: null
+permissions:
+  - 'view any unpublished content'
+  - 'use published_archived transition'
+  - 'use needs_review_archive transition'
+  - 'use draft_archived transition'
+  - 'use published_draft transition'
+  - 'use published_published transition'
+  - 'use needs_review_needs_review transition'
+  - 'use needs_review_published transition'
+  - 'use draft_published transition'
+  - 'use needs_review_draft transition'
+  - 'use draft_needs_review transition'
+  - 'use restore_to_draft transition'
+  - 'use draft_draft transition'

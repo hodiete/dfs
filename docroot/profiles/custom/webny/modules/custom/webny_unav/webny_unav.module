@@ -1,0 +1,44 @@
+<?php
+
+/**
+ * @file
+ * Accessing the hidden regions: page_top and page_bottom to insert unav.
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function webny_unav_theme($existing, $type, $theme, $path) {
+  $items['webny_uhead'] = array(
+    'render element' => 'element',
+  );
+  $items['webny_ufooter'] = array(
+    'render element' => 'element',
+  );
+
+  return $items;
+}
+
+/**
+ * Implements hook_page_top().
+ *
+ * Add universal navigation to the top of the page automatically.
+ */
+function webny_unav_page_top(array &$page_top) {
+  $page_top['webny_unav'] = array(
+    '#theme' => 'webny_uhead',
+    '#weight' => -1000,
+  );
+}
+
+/**
+ * Implements hook_page_bottom().
+ *
+ * Add universal navigation to the bottom of the page automatically.
+ */
+function webny_unav_page_bottom(array &$page_bottom) {
+  $page_bottom['webny_unav'] = array(
+    '#theme' => 'webny_ufooter',
+    '#weight' => 1000,
+  );
+}

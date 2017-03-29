@@ -1,0 +1,9 @@
+services:
+  webny_global_nav.twig.webny_global_nav_extension:
+    class: Drupal\webny_global_nav\Twig\webnyGlobalNavExtension
+    tags:
+      - { name: twig.extension }
+  webny_global_nav.twig.webny_global_social_extension:
+    class: Drupal\webny_global_nav\Twig\webnyGlobalSocialExtension
+    tags:
+      - { name: twig.extension }

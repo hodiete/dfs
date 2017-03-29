@@ -1,0 +1,14 @@
+langcode: en
+status: true
+dependencies: {  }
+id: workflow_author
+label: 'Workflow author'
+weight: 3
+is_admin: null
+permissions:
+  - 'view any unpublished content'
+  - 'use published_draft transition'
+  - 'use needs_review_needs_review transition'
+  - 'use needs_review_draft transition'
+  - 'use draft_needs_review transition'
+  - 'use draft_draft transition'

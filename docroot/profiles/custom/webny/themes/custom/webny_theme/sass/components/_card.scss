@@ -1,0 +1,206 @@
+// Featured Card
+//
+// Featured Card styling.
+//
+// Markup: card.hbs
+//
+// Style guide: components.card
+
+// color variables
+$featured-card-frame-title-color: $color-primary !default;
+$featured-card-frame-headline-color: $color-mono-black !default;
+$featured-card-arrow-color: $color-primary !default;
+$featured-card-arrow-color-hover: $color-secondary !default;
+
+// CARDS WRAPPER FOR PADDING
+.cards-wrap{
+  //padding: 80px 0;
+}
+
+.paragraph--type--webny-card-paragraph-type {
+  font-size: 18px; 
+  max-width: $max-pc; // to constrain the spread of the cards
+  margin: 0 auto; //centers when constrained
+  //padding: $frame-padding-sm 0; 
+}
+
+/* maybe replace with class called webny-card-row? */
+.paragraph--type--webny-card-paragraph-type>div {
+  display:flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  justify-content:flex-start;
+  //padding: 1rem; // not sure why this is here - removing to keep frame padding/margin on main frame class
+  //padding-bottom: 80px; // margins and padding are on main frame class
+  justify-content:center;
+}
+
+.paragraph--type--webny-card-paragraph-type>div>div {
+  border:1px solid $gray-lite;
+  font-size:90%;
+  display: flex;
+  margin: .5rem; /* aiming for the 20px between cards that seems to be there in ny.gov web style guide */
+}
+
+.paragraph--type--webny-card-paragraph-type
+.featured-card--field-webny-card-pg-title {
+  //font-family: $oswald;
+  //font-weight: 900;
+  //font-size: $frame-title;
+  font: $frame-title;
+  color: $featured-card-frame-title-color;
+  text-align: center;
+  text-transform: uppercase;
+  padding: 0;
+  //padding-bottom: 10px; // need to evaluate this when changing these to headings
+  letter-spacing: 2px;
+  //padding-top: 80px; // spacing taken care of further up
+}
+
+.paragraph--type--webny-card-paragraph-type
+.featured-card--field-webny-card-pg-headline {
+  //font-family: $base-font;
+  font:  $frame-headline;
+  //font-weight: 800;
+  color: $featured-card-frame-headline-color;
+  text-align: center;
+  line-height: 1.25em; //2rem;
+  padding: 0;
+  padding-bottom: .3em;
+}
+
+.front .paragraph--type--webny-card-paragraph-type .featured-card--field-webny-card-pg-headline {
+  //font-size: 40px;
+  font: $frame-headline-front;
+  line-height: 1.25em;//3rem;
+}
+
+.webny-card {
+  display:flex;
+  flex-direction:column;
+  flex-grow:1;
+  img {
+    border:none;
+ //   max-height: 220px;
+  }
+}
+
+// adding classes to fix instances where some cards don't have dates, etc.
+.card-image {
+  flex: 1 1 auto;
+}
+.card-content {
+  flex:0 1 auto;
+  min-height: 335px; // separate from flex to help with IE issues, min-height helps keep button at bottom
+  display: flex;
+  flex-direction: column;
+}
+
+// includes title (label) and date (if it exists)
+.card-content-top {
+  flex: 0 1 7em; // probably only needs to be 6rem, but large titles ruin it currently - when short title is imlemented should work better
+}
+
+.webny-card .webny-card-img {
+  flex: 0 1 auto;
+}
+
+.webny-card h2 {
+  padding: 1.25rem 1rem .5rem 1rem;
+  font-size: 20px;
+  line-height: 1.2em;  
+  flex: 1 0 auto;
+  font-weight: 400;
+  min-height: 2.25em;
+  a:link {
+    color:$text-blue;
+  }
+}
+.webny-card .webny-card-date {
+  padding: .5rem 1rem;  
+  flex: 1 0 auto;
+}
+
+.webny-card .webny-card-description p,
+.webny-card .webny-card-teaser {
+  padding: .5rem 1rem;
+  vertical-align: top;
+  font-size:   $frame-base-font-size;
+  line-height: $frame-base-line-height;
+}
+
+.webny-card .webny-card-cta {
+  padding: .75em 1em;
+  background-color:$call-to-action;
+  border-top: 1px solid $gray-lite;
+  
+  letter-spacing: 1px;
+
+  .icon-right-caret {
+    font-weight: bold;
+    color: $featured-card-arrow-color;
+    &:hover {
+      color: $featured-card-arrow-color-hover;
+    }
+  }
+  a {
+    padding-left: 5px;
+    font-size: 13px;
+    text-transform:uppercase;
+    text-decoration: none;
+    color: $color-mono-black;
+  }
+}
+
+.icon-right-caret{ @include icon(before, fa-caret-right);}
+
+.paragraph--type--webny-card-paragraph-type {
+  @include breakpoint($min-mobile) {
+   &>div {
+  
+  flex-direction: row;
+  flex-wrap: wrap;
+    }
+
+    &>div>div {
+      width: 100%; /* rather than flex-basis */
+
+    }
+  }
+}
+
+.paragraph--type--webny-card-paragraph-type>div>div {
+  @include breakpoint($min-pc) {
+      width: 30%; /* rather than flex-basis */
+      max-width: 400px; // width of card image style
+    }
+  }
+
+// IE 10 and 11 target
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  .card-image {
+    //min-height:230px; // with flex chrome stretches card content so titles still line up if there is only one card with an image, IE does not
+  }
+  .card-content-top {
+    flex: 0 1 10em; // IE 11 and such, needs more
+  }
+  .paragraph--type--webny-card-paragraph-type > div > div {
+    display: inline-block; /* fixes images on IE 11 image and title overflow - not sure why */
+  }
+}
+
+@media screen\0 {
+  .paragraph--type--webny-card-paragraph-type>div{
+    &:after { 
+     content: "."; 
+     visibility: hidden; 
+     display: block; 
+     height: 0; 
+     clear: both;
+    }
+    &>div {
+    float:left; /* overcomes flexbox limitationson IE 8,9,10 */  
+    }
+  }
+}
+

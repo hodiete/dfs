@@ -1,0 +1,434 @@
+// Hero
+//
+// Styling for various Hero types.
+//
+// For more information please see the story sources: https://itswebny.atlassian.net/browse/NDD-139 and https://itswebny.atlassian.net/browse/NDD-188
+//
+// Style guide: components.hero
+
+
+// Landing Page
+//
+// Styling for the Landing Page Content Type Hero. This example does not contain a photo.
+//
+// For more information please see the story source: https://itswebny.atlassian.net/browse/NDD-188
+//
+// Markup: hero-landing.hbs
+//
+// Style guide: components.hero.landing
+
+// News Page
+//
+// Styling for the News Content Type Hero.
+//
+// For more information please see the story source: https://itswebny.atlassian.net/browse/NDD-139 
+//
+// Markup: hero-news.hbs
+//
+// Style guide: components.hero.news
+
+// color variables
+$hero-bkgd-color: $color-secondary !default;
+$hero-text-color: $color-mono-white !default;
+$hero-keyword-bkgd-color: $color-accent-primary !default;
+$hero-keyword-hover-bkgd-color: $color-accent-secondary !default;
+$hero-keyword-text-color: $color-mono-white !default;
+
+// ************************* //
+// HERO PARTIAL
+// CREATED BY WEBNY
+// ************************* //
+
+// ##################################################################
+/* MOBILE FIRST STYLES */
+
+// ========================================================================= //
+/* FONTS / SIZES */
+
+.hero-has-image{
+  background-color: #ddd;
+  opacity: .9;
+}
+
+.hero-no-image{
+  background-color: $hero-bkgd-color;
+  height: 385px;
+}
+
+// ========================================================================= //
+/* HERO HOMEPAGE LAYOUT  ONLY */
+
+.front {
+  .hero-layout {
+    .hero-landing-inner {
+      width: 90%;
+    }
+  }
+}
+
+// ========================================================================= //
+/* HERO LAYOUT */
+.hero-layout {
+  position: relative;
+
+  .hero-news-inner,
+  .hero-ipage-inner,
+  .hero-landing-inner{
+    padding: 40px 8%;
+    position: relative;
+    top: 0;
+    left: 0;
+    background: none;
+    &.hero-has-image-content {
+      position: relative;
+      z-index: 3;
+      background-color: black;
+    }
+  }
+
+  .hero-no-image.hero-news{
+    display: block;
+    position: relative;
+  }
+
+  .hero-news-inner,
+  .hero-ipage-inner,
+  .hero-landing-inner{
+    position: absolute;
+    &.hero-has-image-content {
+      top: 0;
+      left: 0;
+      //background: none;
+    }
+  }
+
+  .hero-no-image + .hero-ipage-inner,
+  .hero-no-image + .hero-landing-inner{
+    position: absolute;
+  }
+
+
+  .hero-header{
+    background-position: 50% 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: $hero-text-color;
+    min-height: 256px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .hero-has-image  .hero-bkg {
+    background: url("../icons/bkg-gradient.png") repeat-y scroll left top !important;
+    height: 100%;
+    opacity: 0.9;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 2;
+  }
+
+  .hero-image-wrap{
+    position: relative;
+
+    .hero-news-inner {
+      padding: 0;
+      margin: 0;
+    }
+
+    .hero-news-inner.hero-has-image-content{
+      padding: 40px 4%;
+    }
+
+  }
+
+  .hero-published-date {
+    font-family: $base-font;
+    font-size: 0.8em;
+    text-transform: uppercase;
+    color: $hero-text-color;
+    position: relative;
+    z-index: 3;
+  }
+
+  .hero-published-date > div{
+    display: inline-block;
+  }
+
+  .hero-location {
+    border-left: 1px solid #d9e2e2;
+    display: inline-block;
+    font-family: $base-font;
+    margin-left: 5px;
+    padding-left: 9px;
+    text-transform: none;
+    color: $hero-text-color;
+  }
+
+  h1,h2{
+
+    color: $hero-text-color;
+    line-height: 32px;
+    font-size: 28px;
+    width: auto;
+    margin-bottom: 10px;
+    position: relative;
+    z-index: 3;
+  }
+
+  .hero-keywords {
+    margin-top: 40px;
+  }
+
+  //used only on inner pages currently
+  .hero-keywords > div > div{
+    //display: inline-block;
+  }
+  //used on landing pages
+  .hero-keywords div {
+    //display:inline-block;
+    margin: 17px 0;
+  }
+
+
+  .hero-keywords a {
+    font: 13px/4 "proxima nova";
+    color: #ffffff;
+    cursor: pointer;
+    text-decoration: none;
+    display:inline-block;
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.7);
+    text-align: center;
+    padding: 0 20px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    min-width: 300px;
+    &:hover {
+      border: 1px solid #fff;
+      background-color: rgba(0,0,0,0.8)
+    }
+  }
+
+  .hero-summary{
+    font-size: 1em;
+    color: $hero-text-color;
+    position:  relative;
+    z-index: 5;
+    text-align: left;
+  }
+
+  // =====================================================================
+  // HERO HAS NO IMAGE -- MAKE RELATIVE
+
+
+  .hero-news + .hero-no-image-wrap {
+    min-height: 305px;
+    display: block;
+    padding: 40px 4%;
+    background-color: $hero-bkgd-color;
+
+    .hero-news-inner {
+      position: relative;
+      padding: 0;
+      margin: 0;
+      width: 100%;
+    }
+  }
+
+  .hero-no-image.hero-news {
+    display: none;
+  }
+
+} // END HERO-LAYOUT
+
+// ######################################################################### //
+/* MIN TABLET VIEW */
+@media (min-width: $min-tab) {
+
+  .hero-layout {} // END HERO LAYOUT
+
+} // END TABLET
+
+// ######################################################################### //
+/* MIN DESKTOP VIEW */
+@media (min-width: $min-pc) {
+
+  .hero-layout {
+    .hero-keywords a {
+      min-width: 200px;
+    }
+    //used only on inner pages currently
+    .hero-keywords > div > div{
+      display: inline-block;
+    }
+    //used on landing pages
+    .hero-keywords div {
+      display:inline-block;
+      margin: 0 20px 0 0;
+    }
+
+    .hero-news-inner,
+    .hero-ipage-inner,
+    .hero-landing-inner{
+      position: absolute;
+      &.hero-has-image-content {
+        top: 0;
+        left: 0;
+        background: none;
+        position: absolute;
+      }
+    }
+
+    .hero-news-inner{
+      &.hero-has-image-content {
+        position: relative;
+      }
+    }
+
+    .hero-inner{
+      margin: 60px 0 0 0;
+      padding: 0 2%;
+      width: $hero-inner-width;
+      h1{
+        width: $hero-header-width;
+      }
+    }
+
+
+    .hero-no-image.hero-ipage,
+    .hero-no-image.hero-landing {
+      min-height: 385px;
+
+      .hero-inner{
+        width: $hero-inner-width;
+      }
+    }
+
+    // ALLOW HEIGHT TO BE LARGE IN THIS
+    // REGION TO NOT HAVE OVERFLOW FROM HERO
+    .hero-has-image {
+      min-height: 610px;
+    }
+
+    .hero-inner.hero-news-inner{
+      h1{
+        width: 90%;
+      }
+    }
+
+    .hero-summary{
+      font-size: 1em;
+      color: $hero-text-color;
+    }
+
+
+    .hero-ipage-inner{
+      .hero-summary{
+        width: $hero-header-width;
+      }
+    }
+
+    .hero-landing-inner{
+      width: 66%;
+    }
+
+    h1,h2{
+      font-size: 48px;
+      line-height: 60px;
+      color: $color-mono-white;
+      font-weight: 800;
+    }
+
+
+    // =====================================================================
+    // HERO HAS AN IMAGE
+    .hero-image-wrap{
+
+      width: 100%;
+      position: absolute;
+      top: 0;
+
+      .hero-news-inner {
+        padding: 0;
+        margin: 0;
+        width: 100%;
+      }
+
+      .hero-news-inner.hero-has-image-content{
+        padding: 40px 4%;
+      }
+
+    }
+
+
+  } // END HERO-layout
+
+  .front {
+    .hero-layout {
+      .hero-landing-inner {
+        width: 50%;
+        max-width: 600px;
+      }
+    }
+  }
+
+} // END DESKTOP MIN VIEW
+
+// ######################################################################### //
+/* FULL DESKTOP VIEW */
+@media (min-width: 60em) {
+
+  .hero-layout {
+
+    .hero-inner{
+      padding: 0 4%;
+    }
+
+    .hero-has-image {
+      min-height: 427px;
+    }
+
+    .hero-has-image.hero-news {
+      min-height: 512px;
+    }
+
+    .hero-inner.hero-news-inner{
+      h1{
+        width: 70%;
+      }
+    }
+
+    // =====================================================================
+    // HERO HAS AN IMAGE
+    .hero-image-wrap{
+
+      width: 100%;
+      position: absolute;
+      top: 0;
+
+      .hero-news-inner {
+        padding: 0;
+        margin: 0;
+        width: 100%;
+      }
+
+      .hero-news-inner.hero-has-image-content{
+        padding: 40px 4%;
+      }
+
+    }
+
+  } // END HERO LAYOUT
+
+  // FRONT MIN HEIGHT ADJUSTMENT
+  .front {
+    .hero-layout {
+      .hero-landing.hero-has-image {
+        min-height: 512px;
+      }
+    }
+  }
+
+} // END DESKTOP VIEW

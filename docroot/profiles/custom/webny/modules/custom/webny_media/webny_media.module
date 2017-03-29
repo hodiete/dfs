@@ -1,0 +1,88 @@
+<?php
+
+use Drupal\file\Plugin\Field\FieldType\FileItem;
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Entity\FieldableEntityInterface;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\file\Entity\File;
+
+/**
+ * @file
+ * Contains media related functions.
+ */
+
+
+
+/**
+ * Implements hook_ENTITY_TYPE_create().
+ */
+function webny_media_file_create(File $entity) {
+
+  $config = \Drupal::config('webny_media.settings');
+
+  if ($config->get('enable_filename_transliteration')) {
+
+    $pathinfo = pathinfo($entity->getFilename());
+
+    /** @var \Drupal\pathauto\AliasCleaner $aliasCleaner */
+    $aliasCleaner = \Drupal::service('pathauto.alias_cleaner');
+
+    $cleanFilename = $aliasCleaner->cleanString($pathinfo['filename']) . '.' . $pathinfo['extension'];
+
+    $entity->setFilename($cleanFilename);
+  }
+}
+
+/**
+ * Implements hook_preprocess_views_view().
+ */
+function webny_media_preprocess_views_view(&$variables) {
+
+  $webny_media_browser = [
+    'image_browser',
+    'media_browser',
+  ];
+
+  if (in_array($variables['view']->id(), $webny_media_browser)) {
+    $variables['view_array']['#attached']['library'][] = 'webny_media/entity_browser_view';
+  }
+}
+
+/**
+ * Implements hook_menu_local_actions_alter().
+ */
+function webny_media_menu_local_actions_alter(&$local_actions) {
+  $local_actions['media.add']['appears_on'][] = 'view.webny_media.media_page_list';
+}
+
+/**
+ * Implements hook_menu_links_discovered_alter().
+ */
+function webny_media_menu_links_discovered_alter(&$links) {
+    // Media entity module provides a default view which we disable. Since it also
+    // provides a link entry for it we need to update the route there to point to
+    // the media library we provide.
+    $links['entity.media.collection']['route_name'] = 'view.webny_media.media_page_list';
+}
+
+/**
+ * Implements hook_field_widget_form_alter().
+ * Modify default core image alt text.
+ * Use field_widget_form_alter to access $context.
+ */
+function webny_media_field_widget_form_alter(&$element, FormStateInterface $form_state, $context) {
+  if (get_class($context['widget']) === 'Drupal\image\Plugin\Field\FieldWidget\ImageWidget') {
+    $element['#process'][] = 'webny_media_field_widget_process';
+  }
+}
+
+function webny_media_field_widget_process($element, FormStateInterface $form_state, $form) {
+  // Ensure element is accessible to the current user.
+  if ($element['alt']['#access']) {
+    // Override core alt text description.
+    $element['alt']['#description'] = 'This text is required for accessibility compliance.';
+  }
+
+  return $element;
+}
+
