@@ -1,0 +1,79 @@
+
+.paragraph--type--webny-video-pgtype {
+  margin: 0 auto;
+  text-align: center;
+  position:relative;
+  max-width: 660px;
+
+  .video-js {
+    position: relative;
+    margin: 0 auto;
+  }
+
+  h2 {
+    font: 800 2.22em $base-font;
+    line-height: 1.25em;
+    padding-bottom: 0;
+  }
+
+  h3 {
+    font: bold 0.88rem $oswald;
+    color: #000000;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+
+  p {
+    margin: 1.5rem 0 2.25rem;
+  }
+}
+
+.vimeoFrame { position: absolute !important; top: 0; right: 0; bottom: 0; left: 0; }
+
+.videocontent {
+  position: relative; // Needed position caption correctly
+
+  /* overriding vjs defaults */
+  .video-js.vjs-default-skin.vjs-16-9 {
+
+    .vjs-big-play-button {
+      background-color: rgba(0,0,0,.5);
+      width: 1.5em;
+      -webkit-border-radius: 1em;
+      -moz-border-radius: 1em;
+      border-radius: 1em;
+      z-index: 99; // Position above caption
+
+      &:before {
+        font-size: 0.8em;
+      }
+    }
+
+    &:not(.vjs-big-play-centered){
+      .vjs-big-play-button {
+        left: 1em;
+        top: inherit;
+        bottom: 1em;
+      }
+    }
+  }
+
+  .caption {
+    font: bold 1.225rem $base-font; //~22px
+    position: absolute;
+    display: block;
+    bottom: 0px;
+    color: #FFF;
+    padding: 0 4em 1.7em 4em;
+    right: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 1; // Position below play button
+
+    &.playing {
+      opacity: 0;
+      display:none;
+    }
+  }
+}
