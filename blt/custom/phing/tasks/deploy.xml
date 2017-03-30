@@ -88,8 +88,10 @@
 
   <target name="deploy:commit" hidden="true">
     <!-- We make these commands quiet because they can cause the output to be so long that Travis CI stops logging. -->
-    <exec command="git add -A" dir="${deploy.dir}" logoutput="true" checkreturn="true" level="info" passthru="true"/>
-    <exec command="git commit -m '${deploy.commitMsg}' --quiet" dir="${deploy.dir}" logoutput="true" checkreturn="true" level="info" passthru="true"/>
+    <exec command="git --git-dir=${deploy.dir}/.git --work-tree=${deploy.dir} add -A" dir="${deploy.dir}" logoutput="true" passthru="true"/>
+    <exec command="git --git-dir=${deploy.dir}/.git --work-tree=${deploy.dir} add --force ${deploy.dir}/docroot/profiles/custom/webny/themes/custom/webny_theme/css" logoutput="true" passthru="true"/>
+    <exec command="git --git-dir=${deploy.dir}/.git --work-tree=${deploy.dir} add --force ${deploy.dir}/docroot/profiles/custom/webny/themes/custom/webny_theme/styleguide" logoutput="true" passthru="true"/>
+    <exec command="git --git-dir=${deploy.dir}/.git --work-tree=${deploy.dir} commit -m '${deploy.commitMsg}' --quiet" dir="${deploy.dir}" logoutput="true" passthru="true"/>
   </target>
 
   <target name="deploy:composer:install" description="Downloads core and contrib to deploy folder." hidden="true">
