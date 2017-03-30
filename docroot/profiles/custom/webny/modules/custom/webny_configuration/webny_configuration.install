@@ -2420,6 +2420,19 @@ function webny_configuration_update_8118()
         ->install(['webny_summary_frame']);
 }
 
+
+/**
+ * Implements hook_update_n().
+ *
+ * enable update manager
+ */
+function webny_configuration_update_8119()
+{
+
+    \Drupal::service('module_installer')
+        ->install(['update']);
+}
+
 /**
  * Helper function to enable a Drupal module and print the result.
  *
