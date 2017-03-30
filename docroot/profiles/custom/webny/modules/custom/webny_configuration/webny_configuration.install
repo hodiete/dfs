@@ -2481,14 +2481,18 @@ function webny_configuration_update_8120(){
  */
 function webny_configuration_update_8121() {
 
-  // REINSTALL webny_video_frame_paragraph FEATURE MODULE
-  print webny_configuration_uninstall_module('webny_video_frame_paragraph');
-  print webny_configuration_enable_module('webny_video_frame_paragraph');
+  $paragraph_feature = 'webny_video_frame_paragraph';
 
+  // REINSTALL webny_video_frame_paragraph FEATURE MODULE
+  print webny_configuration_uninstall_module($paragraph_feature);
+  print webny_configuration_enable_module($paragraph_feature);
+
+
+  $landing_page_feature = 'webny_landing_page_content_type';
 
   // REINSTALL webny_landing_page_content_type FEATURE MODULE
-  print webny_configuration_uninstall_module('webny_landing_page_content_type');
-  print webny_configuration_enable_module('webny_landing_page_content_type');
+  print webny_configuration_uninstall_module($landing_page_feature);
+  print webny_configuration_enable_module($landing_page_feature);
 }
 
 
