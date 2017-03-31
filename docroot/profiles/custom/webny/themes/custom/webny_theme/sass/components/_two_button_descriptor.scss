@@ -1,0 +1,237 @@
+// Two Button Descriptor
+//
+// Two Button Descriptor styling
+//
+// Markup: two_button_descriptor.hbs
+//
+// Style guide: components.two_button_descriptor
+
+// color variables
+$tbd-frame-bkgd-color: $color-secondary !default;
+$tbd-frame-title-color: $color-mono-black !default;
+$tbd-frame-headline-color: $color-mono-white !default;
+$tbd-frame-descriptor-title-color: $color-mono-white !default;
+$tbd-frame-descriptor-text-color: $color-mono-black !default;
+$tbd-frame-descriptor-border: $color-secondary !default;
+$tbd-frame-button: $color-mono-white !default;
+// REASSIGNED VALS FOR GLOBAL SCOPE -- SUMMARY
+// this overrides general button variables in config.scss
+$tbd-button-border-color:           $button-border-color !default;
+$tbd-button-text-color:             $button-text-color !default;
+$tbd-button-back-color:             $button-bkgd-transparent !default;
+$tbd-button-hover-back-color:       $button-black-50 !default;
+
+// ######################################################################### //
+/* START STYLING MOBILE FIRST UNDER HERE */
+
+.paragraph {
+  display: block;
+}
+
+.paragraph--type--webny-tbd-pgtype {
+  background-color: $tbd-frame-bkgd-color;
+  margin: 0 auto;
+  text-align: center;
+  padding: $frame-padding-lg 3%;
+  // width: 100%;
+  min-height: 450px\9;
+}
+
+.descriptor {
+  display: inline-block;
+  width: 95%;
+  padding: 0 1%;
+  overflow: auto;
+  vertical-align: top;
+  text-align: center;
+}
+
+.descriptor--field-webny-tbd-title {
+  font: $frame-title;
+  color: $tbd-frame-title-color;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.descriptor--field-webny-tbd-headline {
+  font: $frame-headline;
+  color: $tbd-frame-headline-color;
+  text-align: center;
+  margin-bottom: 50px;
+  line-height: 3rem;
+}
+
+.descriptor--field-webny-tbd-descriptortitle1,
+.descriptor--field-webny-tbd-descriptortitle2 {
+  font-family: $base-font;
+  font-size: $base-font-size;
+  font-weight: 800;
+  color: $tbd-frame-descriptor-title-color;
+  margin: 20px 0;
+}
+
+.descriptor--field-webny-tbd-descriptor1,
+.descriptor--field-webny-tbd-descriptor2 {
+  font-family: $base-font;
+  font-size: 0.7778rem;
+  color: $tbd-frame-descriptor-text-color;
+  padding: 0 16px;
+  margin-bottom: 30px;
+}
+
+.descriptor--field-webny-tbd-descriptor1 p,
+.descriptor--field-webny-tbd-descriptor2 p {
+  text-align: center;
+}
+
+.descriptor--field-webny-tbd-cta1,
+.descriptor--field-webny-tbd-cta2 {
+
+  a {
+    // BUTTON DYNAMIC REQUIREMENTS
+    border: $frame-button-border-size solid $tbd-button-border-color;
+    color: $tbd-button-text-color;
+    background-color: $tbd-button-back-color;
+
+    &:visited, &:link{
+      color: $tbd-button-text-color;
+    }
+
+    &:hover {
+      background-color: $tbd-button-hover-back-color;
+      text-decoration: none;
+    }
+  }
+
+  clear: both;
+
+  // BUTTON CALLS
+  @include frame-button-base();
+
+}
+
+// ######################################################################### //
+/* TABLET VIEW */
+@media (min-width: $min-tab) {
+
+  .descriptors {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+
+    .descriptor {
+      display: flex;
+      flex: 1;
+      flex-flow: column nowrap;
+      margin-bottom: 30px;
+      float: left\9;
+      width: 40%\9;
+      overflow: hidden\9;
+
+      &:nth-of-type(2n+2) {
+        border-left:2px solid lighten($tbd-frame-descriptor-border, 20%);
+        border-top: 0;
+      }
+
+      .descriptor--field-webny-tbd-descriptortitle1,
+      .descriptor--field-webny-tbd-descriptortitle2 {
+        flex: 1;
+      }
+
+      .descriptor--field-webny-tbd-descriptor1,
+      .descriptor--field-webny-tbd-descriptor2{
+        flex: 5; // used 5 to handle very large descriptors
+        font-family: $base-font;
+        font-size: 0.7778rem;
+        font-weight: 800;
+      }
+
+      .descriptor--field-webny-tbd-cta1,
+      .descriptor--field-webny-tbd-cta2 {
+        flex: 1;
+      }
+
+    } // END descriptor
+
+  } // END descriptors
+
+} // END MIN TABLET VIEW
+
+// ######################################################################### //
+/* PC VIEW */
+@media (min-width: $min-pc) {
+
+  .descriptors {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+
+    .descriptor{
+      display: flex;
+      flex: 1;
+      flex-flow: column nowrap;
+      padding: 1.5%;
+      margin-bottom: 30px;
+      display: inline-block\9;
+      float: left\9;
+      width: 40%\9;
+      overflow: hidden\9;
+
+      .descriptor--field-webny-tbd-descriptortitle1,
+      .descriptor--field-webny-tbd-descriptortitle2 {
+        flex: 1;
+      }
+
+      .descriptor--field-webny-tbd-descriptor1,
+      .descriptor--field-webny-tbd-descriptor2{
+        flex: 5; // used 5 to handle very large descriptors
+        font-size: $base-font-size;
+        font-weight: $frame-base-semi-bold;
+        line-height: 24px;
+      }
+
+      .descriptor--field-webny-tbd-cta1,
+      .descriptor--field-webny-tbd-cta2 {
+        flex: 1;
+      }
+
+      &:nth-of-type(2n+2) {
+        border-left:2px solid lighten($tbd-frame-descriptor-border, 20%);
+      }
+
+    } // END descriptor
+
+  } // END descriptors
+
+} // END PC VIEW
+
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+  /* IE10-specific styles go here */
+
+  @media (min-width: $min-tab) {
+    .descriptors {
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: center;
+
+      .descriptor {
+        display: inline-block;
+        margin: 0 auto;
+      }
+    }
+  } // END TABLET VIEW
+
+  @media (min-width: $min-pc) {
+    .descriptors {
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: center;
+
+      .descriptor {
+        display: inline-block;
+        margin: 0 auto;
+      }
+    }
+  } // END PC VIEW
+} // END IE10
