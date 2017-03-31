@@ -3,9 +3,7 @@
  * @file
  * Theme override to display a node for webny-landing-page.
  *
- *
  *    -- WebNY Landing Page Content Type twig accessors --
- *
  */
 #}
 
@@ -15,10 +13,35 @@
  */
 #}
 
+{{ attach_library('webny_theme/videohero') }}
+
 {# @PARAMS #}
 {% set hero_image = file_url(node.field_webny_landing_hero_image.entity.field_image.entity.uri.value) %}
 {% set title = '' %}
 {% set hero = '' %}
+
+{# @PARAMS VIDEO #}
+{% set video_player = node.id %}
+{% set video_tech = '' %}
+{% set video_url = node.field_webny_landing_hero_vidurl.uri %}
+{% set video_type = '' %}
+{% set video_poster_image = '' %}
+{% set hero_video_field = '' %}
+{% set video_class = '' %}
+{% set video_text = 'Watch Video' %}
+
+{% if ( ('youtube' in video_url) or ('youtu.be' in video_url) ) %}
+    {% set video_type = 'video/youtube' %}
+    {% set video_tech = 'youtube' %}
+{% elseif ('vimeo' in video_url) %}
+    {% set video_type = 'video/vimeo' %}
+    {% set video_tech = 'Vimeo' %}
+{% elseif ('brightcove' in video_url) %}
+    {% set video_type = 'brightcove' %}
+    {% set video_tech = 'brightcove' %}
+    {% set video_text = "Watch Live" %}
+{% endif %}
+
 
 {# GET VARS FOR DISPLAYING HERO AND TITLES #}
 {%  for k,v in node.field_webny_landing_vis_options %}
@@ -49,7 +72,6 @@
         {{ title_prefix }}
     {% endif %}
 
-
     <div class="landing-title-area">
 
     <!-- HEADLINE LABEL -->
@@ -68,7 +90,6 @@
         {# END QUICK EDITS #}
         {{ title_suffix }}
     {% endif %}
-
 
 </article>
 
@@ -90,13 +111,16 @@
         
         <!-- BACKGROUND GRAD -->
         <div class="hero-bkg"></div>
-    </div> 
+    </div>
 
     {% if hero_image == '/' %}
         <div class="hero-inner hero-landing-inner">
     {% else %}
         <div class="hero-inner hero-landing-inner hero-has-image-content">
-    {% endif %}  
+    {% endif %}
+
+
+
             <!-- HEADLINE LABEL -->
             {% if node.field_webny_landing_hero_title.value is empty %}
             {% else %}
@@ -107,14 +131,46 @@
                 {{ content.field_webny_landing_summary2 }}
             </div>
 
-            <!-- KEYWORDS -->
+            <!-- HERO BUTTONS [USING KEYWORD CLASS] -->
             <div class="hero-keywords">
-                {# {{ content.field_webny_landing_global_key }} #}
+
+                {% if video_tech is not null %}
+                    <div class="video_hero_button">
+                        <a href="javascript:">{{ video_text }}</a>
+                    </div>
+                {% endif %}
+
                 {{ content.field_webny_landing_hero_button }}
-                {{ content.field_webny_landing_hero_button2 }}
+
+                {% if video_tech is null %}
+                    {{ content.field_webny_landing_hero_button2 }}
+                {% endif %}
             </div>
             
         </div>
+
+        <!-- VIDEO PLACEMENT -->
+        {% if video_tech is not null %}
+            <div class="hero-video-frame hero-video-hide">
+                <div class="hero-hide-video">
+                    <a href="javascript:">X</a>
+                </div>
+
+                <video id="videojs-player-{{ video_player }}"
+                       class="video-js hero-video-player"
+                       controls
+                        {# preload="auto" #}
+                        {# autoplay #}
+                       width="640"
+                       height="264"
+                        {# poster="{{ video_poster_image }}" #}
+                       data-setup='{"techOrder": ["{{ video_tech }}"],
+                             "sources": [{ "type": "{{ video_type }}", "src": "{{ video_url }}"}] }'>
+
+                </video>
+            </div>
+        {% endif %}
+
 
     {{ title_suffix }}
 
