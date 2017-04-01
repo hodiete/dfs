@@ -219,6 +219,24 @@ $hero-keyword-text-color: $color-mono-white !default;
     text-align: left;
   }
 
+  .hero-live-now{
+    background-color: #E90000;
+    color: #fff;
+    width: 80px;
+    padding: 7px 4px;
+
+    p{
+      font-family: $oswald;
+      letter-spacing: 2px;
+      font-weight: bold;
+      font-size: 14px;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+
+    }
+  }
+
   // =====================================================================
   // HERO HAS NO IMAGE -- MAKE RELATIVE
 
@@ -243,20 +261,61 @@ $hero-keyword-text-color: $color-mono-white !default;
 
   // =====================================================================
   // HERO HAS A VIDEO OPTION
+
   .hero-video-frame{
     position: absolute;
-    top: 0;
+    top: 14px;
     width: 100%;
+
+    .hero-video-inner{
+      .video-js {
+        margin: 0 auto;
+      }
+    }
+
+    .hero-video-close{
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      z-index: 12;
+      border-radius: 24px;
+      width: 48px;
+      height: 48px;
+      background-color: #666;
+      opacity: .4;
+      &:hover{
+        opacity: 1;
+      }
+
+      a{
+        color: #fff;
+        font-size: 28px;
+        text-decoration: none;
+        padding: 5px 15px;
+        margin-top: 7px;
+        display: block;
+
+      }
+    }
+
   }
-  .hero-video-player{
-    text-align: center;
-  }
+
   .hero-video-hide{
     display: none;
   }
   .hero-video-show{
     display: block;
   }
+  .hero-bkg-removed{
+    background-size: 0;
+    background-color: #000;
+  }
+  .hero-meta-change{
+    background-color: #000;
+    height: 425px;
+  }
+
+  /// NEED TO IMPLEMENT CODE content: "\e631"; for WATCH
 
 } // END HERO-LAYOUT
 
