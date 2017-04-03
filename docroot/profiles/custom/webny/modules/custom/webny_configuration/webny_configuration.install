@@ -2473,29 +2473,6 @@ function webny_configuration_update_8120()
   $config_factory->reset();
 }
 
-/**
- * Implements hook_update_n().
- *
- * Enable webny_video_frame_paragraph custom feature
- *
- * Trying to force configuration ato load
- */
-function webny_configuration_update_8121() {
-
-  $paragraph_feature = 'webny_video_frame_paragraph';
-
-  // REINSTALL webny_video_frame_paragraph FEATURE MODULE
-  print webny_configuration_uninstall_module($paragraph_feature);
-  print webny_configuration_enable_module($paragraph_feature);
-
-
-  $landing_page_feature = 'webny_landing_page_content_type';
-
-  // REINSTALL webny_landing_page_content_type FEATURE MODULE
-  print webny_configuration_uninstall_module($landing_page_feature);
-  print webny_configuration_enable_module($landing_page_feature);
-}
-
 
 /**
  * Implements hook_update_n().
@@ -2570,6 +2547,30 @@ function webny_configuration_update_8121()
         ->uninstall(['webny_wysiwyg_frame']);
     \Drupal::service('module_installer')
         ->install(['webny_wysiwyg_frame']);
+}
+
+
+/**
+ * Implements hook_update_n().
+ *
+ * Enable webny_video_frame_paragraph custom feature
+ *
+ * Trying to force configuration ato load
+ */
+function webny_configuration_update_8122() {
+
+  $paragraph_feature = 'webny_video_frame_paragraph';
+
+  // REINSTALL webny_video_frame_paragraph FEATURE MODULE
+  print webny_configuration_uninstall_module($paragraph_feature);
+  print webny_configuration_enable_module($paragraph_feature);
+
+
+  $landing_page_feature = 'webny_landing_page_content_type';
+
+  // REINSTALL webny_landing_page_content_type FEATURE MODULE
+  print webny_configuration_uninstall_module($landing_page_feature);
+  print webny_configuration_enable_module($landing_page_feature);
 }
 
 /**
