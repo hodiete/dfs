@@ -19,8 +19,6 @@ dependencies:
     - path
     - text
     - workbench_moderation
-_core:
-  default_config_hash: VzJs0ddZO7ZhrGa19xG3Ke1yG9ue_Vgtqc1TsCTyBds
 id: node.webny_whitelisted_content.default
 targetEntityType: node
 bundle: webny_whitelisted_content
@@ -86,6 +84,11 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
+  langcode:
+    type: language_select
+    weight: 2
+    settings: {  }
+    third_party_settings: {  }
   path:
     type: path
     weight: 6
