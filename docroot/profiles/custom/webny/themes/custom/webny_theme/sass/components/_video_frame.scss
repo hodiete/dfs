@@ -17,12 +17,21 @@
     margin: 0 auto;
   }
 
+  // HEADLINE
   h2 {
-    font: 800 2.22em $base-font;
+
+    // 32px on internal inner page
+    font: $frame-headline;
+    .front & {
+      // 40px on home page;
+      font: $frame-headline-front;
+    }
+
     line-height: 1.25em;
     padding-bottom: 0;
   }
 
+  // TITLE
   h3 {
     font: bold 0.88rem $oswald;
     color: #000000;
@@ -31,6 +40,7 @@
     letter-spacing: 2px;
   }
 
+  // DESCRIPTION
   p {
     margin: 1.5rem 0 2.25rem;
   }
