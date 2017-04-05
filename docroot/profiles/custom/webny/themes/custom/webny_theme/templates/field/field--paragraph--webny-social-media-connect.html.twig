@@ -54,7 +54,6 @@ set classes = [
     </div>
   {% else %}
     {% for item in items %}
-  
       {% set smtitle = item.content['#title']|render|lower %}
         <div{{ attributes.addClass(classes) }}>
         {% if 'facebook.com' in smtitle %}
@@ -119,7 +118,7 @@ set classes = [
 
         {% else %}
           <a href="{{ item.content['#url']|render|lower }}">{{smtitle}}</a>
-          
+
         {% endif %}
         </div>
      
