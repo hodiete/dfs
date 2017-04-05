@@ -36,7 +36,7 @@
  * @see template_preprocess_field()
  */
 #}
-
+{# item.content['#url']|render|lower #}
 {% if label_hidden %}
   {% if multiple %}
     <div{{ attributes }}>
@@ -53,66 +53,67 @@
 
         {% if 'facebook.com' in smtitle %}
           {% set smtitle = 'Facebook' %}
-          <a href="{{item.content['#url']}}">{{smtitle}}</a>
+          <a href="{{item.content['#url']|render|lower}}">{{smtitle}}</a>
 
         {% elseif 'twitter.com' in smtitle %}
           {% set smtitle = 'Twitter' %}
-          <a href="{{item.content['#url']}}">{{smtitle}}</a>
+          <a href="{{item.content['#url']|render|lower}}">{{smtitle}}</a>
 
         {% elseif 'instagram.com' in smtitle %}
           {% set smtitle = 'Instagram' %}
-          <a href="{{item.content['#url']}}">{{smtitle}}</a>
+          <a href="{{item.content['#url']|render|lower}}">{{smtitle}}</a>
 
         {% elseif 'flickr.com' in smtitle %}
           {% set smtitle = 'Flickr' %}
-          <a href="{{item.content['#url']}}">{{smtitle}}</a>
+          <a href="{{item.content['#url']|render|lower}}">{{smtitle}}</a>
 
         {% elseif 'pinterest.com' in smtitle %}
           {% set smtitle = 'Pinterest' %}
-          <a href="{{item.content['#url']}}">{{smtitle}}</a>
+          <a href="{{item.content['#url']|render|lower}}">{{smtitle}}</a>
 
         {% elseif 'soundcloud.com' in smtitle %}
           {% set smtitle = 'Soundcloud' %}
-          <a href="{{item.content['#url']}}">{{smtitle}}</a>
+          <a href="{{item.content['#url']|render|lower}}">{{smtitle}}</a>
 
         {% elseif 'tumblr.com' in smtitle %}
           {% set smtitle = 'Tumblr' %}
-          <a href="{{item.content['#url']}}">{{smtitle}}</a>
+          <a href="{{item.content['#url']|render|lower}}">{{smtitle}}</a>
 
         {% elseif 'linkedin.com' in smtitle %}
           {% set smtitle = 'LinkedIn' %}
-          <a href="{{item.content['#url']}}">{{smtitle}}</a>
+          <a href="{{item.content['#url']|render|lower}}">{{smtitle}}</a>
 
         {% elseif 'plus.google' in smtitle %}
           {% set smtitle = 'Google+' %}
-          <a href="{{item.content['#url']}}">{{smtitle}}</a>
+          <a href="{{item.content['#url']|render|lower}}">{{smtitle}}</a>
 
         {% elseif 'vimeo.com' in smtitle %}
           {% set smtitle = 'Vimeo' %}
-          <a href="{{item.content['#url']}}">{{smtitle}}</a>
+          <a href="{{item.content['#url']|render|lower}}">{{smtitle}}</a>
 
         {% elseif 'snapchat.com' in smtitle %}
           {% set smtitle = 'Snapchat' %}
-          <a href="{{item.content['#url']}}">{{smtitle}}</a>
+          <a href="{{item.content['#url']|render|lower}}">{{smtitle}}</a>
 
-        {% elseif 'plus.google' in smtitle %}
+        {% elseif 'play.google' in smtitle %}
           {% set smtitle = 'Google Play Download' %}
-          <a href="{{item.content['#url']}}">{{smtitle}}</a>
+          <a href="{{item.content['#url']|render|lower}}">{{smtitle}}</a>
 
         {% elseif 'itunes' in smtitle %}
           {% set smtitle = 'Apple Download' %}
-          <a href="{{item.content['#url']}}">{{smtitle}}</a>
+          <a href="{{item.content['#url']|render|lower}}">{{smtitle}}</a>
 
         {% elseif 'youtu' in smtitle %}
           {% set smtitle = 'YouTube' %}
-          <a href="{{item.content['#url']}}">{{smtitle}}</a>
+          <a href="{{item.content['#url']|render|lower}}">{{smtitle}}</a>
 
         {% elseif ('.xml' in smtitle) or ('.rss' in smtitle) %}
           {% set smtitle = 'RSS Feed' %}
-          <a href="{{item.content['#url']}}">{{smtitle}}</a>
+          <a href="{{item.content['#url']|render|lower}}">{{smtitle}}</a>
 
         {% else %}
-          {{item}}
+          {#item#}
+          <a href="{{ item.content['#url']|render|lower }}">{{smtitle}}</a>
         {% endif %}
 
       {#<div{{ attributes.addClass(classes) }}>{{ item.content }}</div>#}
