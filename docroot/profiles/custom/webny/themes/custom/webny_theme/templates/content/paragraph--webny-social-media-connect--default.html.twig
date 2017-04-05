@@ -50,12 +50,15 @@
   <div{{ attributes.addClass(classes) }}>
     {% block content %}
       <div class="smframe-inner">
+        {%  if((paragraph.field_webny_smframe_title.value is not empty and paragraph.field_webny_smframe_title.value is not null) or (paragraph.field_webny_smframe_headline.value is not empty and paragraph.field_webny_smframe_headline.value is not null)) %}
         <h3>
           {{ paragraph.field_webny_smframe_title.value }}
           <span class="frame-headline">
          {{ paragraph.field_webny_smframe_headline.value }}
           </span>
         </h3>
+        {% else %}
+        {% endif %}
       
         {{ content|without('field_webny_smframe_title','field_webny_smframe_headline') }}
       </div>
