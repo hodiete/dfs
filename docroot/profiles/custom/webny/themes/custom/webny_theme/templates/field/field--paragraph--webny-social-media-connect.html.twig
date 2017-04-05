@@ -36,7 +36,13 @@
  * @see template_preprocess_field()
  */
 #}
-{# item.content['#url']|render|lower #}
+{%
+set classes = [
+'smframe-link',
+'smframe--' ~ field_name|clean_class,
+]
+%}
+
 {% if label_hidden %}
   {% if multiple %}
     <div{{ attributes }}>
@@ -49,8 +55,8 @@
   {% else %}
     {% for item in items %}
   
-      {% set smtitle = item.content['#title'] %}
-
+      {% set smtitle = item.content['#title']|render|lower %}
+        <div{{ attributes.addClass(classes) }}>
         {% if 'facebook.com' in smtitle %}
           {% set smtitle = 'Facebook' %}
           <a href="{{item.content['#url']|render|lower}}">{{smtitle}}</a>
@@ -112,11 +118,11 @@
           <a href="{{item.content['#url']|render|lower}}">{{smtitle}}</a>
 
         {% else %}
-          {#item#}
           <a href="{{ item.content['#url']|render|lower }}">{{smtitle}}</a>
+          
         {% endif %}
-
-      {#<div{{ attributes.addClass(classes) }}>{{ item.content }}</div>#}
+        </div>
+     
     {% endfor %}
   {% endif %}
 {% else %}
