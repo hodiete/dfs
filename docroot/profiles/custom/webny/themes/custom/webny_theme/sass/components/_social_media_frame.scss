@@ -1,0 +1,68 @@
+// Social Media Frame
+//
+// Social Media Frame styling.
+//
+// Markup: smframe.hbs
+//
+// Style guide: components.social_media_frame
+
+// color variables
+$social-media-frame-title-color: $color-primary !default;
+$social-media-frame-headline-color: $color-mono-black !default;
+$social-media-bkgrnd-color: $color-mono-lt !default;
+
+.social-media-frame {
+  background-color: $social-media-bkgrnd-color;
+  font-size: $frame-base-font-size; 
+  line-height: $frame-base-line-height;
+  .smframe-inner {
+    max-width: $max-pc;
+    margin: 0 auto;
+  }
+  h3 {
+    font: $frame-title;
+    letter-spacing: 2px;
+    color: $social-media-frame-title-color;
+    text-align:center;
+    .frame-headline {
+      font: $frame-headline;
+      color: $social-media-frame-headline-color;
+      display: block;
+   }
+  }
+}
+
+.paragraph--type--webny-card-paragraph-type
+.featured-card--field-webny-card-pg-title {
+  //font-family: $oswald;
+  //font-weight: 900;
+  //font-size: $frame-title;
+  font: $frame-title;
+  color: $featured-card-frame-title-color;
+  text-align: center;
+  text-transform: uppercase;
+  padding: 0;
+  //padding-bottom: 10px; // need to evaluate this when changing these to headings
+  letter-spacing: 2px;
+  //padding-top: 80px; // spacing taken care of further up
+}
+
+.paragraph--type--webny-card-paragraph-type
+.featured-card--field-webny-card-pg-headline {
+  //font-family: $base-font;
+  font:  $frame-headline;
+  //font-weight: 800;
+  color: $social-media-frame-headline-color;
+  text-align: center;
+  line-height: 1.25em; //2rem;
+  padding: 0;
+  padding-bottom: .3em;
+}
+
+.front {
+  //font-size: 40px;
+  font: $frame-headline-front;
+  line-height: 1.25em;//3rem;
+} 
+
+
