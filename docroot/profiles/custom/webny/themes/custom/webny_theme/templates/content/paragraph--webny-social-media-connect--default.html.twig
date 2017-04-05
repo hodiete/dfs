@@ -40,6 +40,7 @@
 #}
 {%
   set classes = [
+    'social-media-frame',
     'paragraph',
     'paragraph--type--' ~ paragraph.bundle|clean_class,
     view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
@@ -48,15 +49,16 @@
 {% block paragraph %}
   <div{{ attributes.addClass(classes) }}>
     {% block content %}
-      <h3>
-      {{ paragraph.field_webny_smframe_title.value }}
-      <span{{ attributes.addClass(classes) }}>
-        {{ paragraph.field_webny_smframe_headline.value }}
-      </span>
-      </h3>
+      <div class="smframe-inner">
+        <h3>
+          {{ paragraph.field_webny_smframe_title.value }}
+          <span class="frame-headline">
+         {{ paragraph.field_webny_smframe_headline.value }}
+          </span>
+        </h3>
       
-      {{ content|without('field_webny_smframe_title','field_webny_smframe_headline') }}
-    
+        {{ content|without('field_webny_smframe_title','field_webny_smframe_headline') }}
+      </div>
     {% endblock %}
   </div>
 {% endblock paragraph %}
