@@ -74,9 +74,17 @@ view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
 
 {% if type is not null %}
 <div{{ attributes.addClass(classes) }}>
-    <h3>{{ paragraph.field_webny_landing_pg_vid_title.value }}</h3>
-    <h2>{{ paragraph.field_webny_landing_pg_vid_hdlin.value }}</h2>
+
+    {% if paragraph.field_webny_landing_pg_vid_title.value is not empty and paragraph.field_webny_landing_pg_vid_title.value is not null %}
+        <h3>{{ paragraph.field_webny_landing_pg_vid_title.value }}</h3>
+    {% endif %}
+
+    {% if paragraph.field_webny_landing_pg_vid_hdlin.value is not empty and paragraph.field_webny_landing_pg_vid_hdlin.value is not null %}
+        <h2>{{ paragraph.field_webny_landing_pg_vid_hdlin.value }}</h2>
+    {% endif %}
+
     {{ content.field_webny_lndng_pg_vid_descrip }}
+    
     <div class="wrapper">
         <div class="videocontent">
             {% if tech is not null and tech != 'brightcove' %}
