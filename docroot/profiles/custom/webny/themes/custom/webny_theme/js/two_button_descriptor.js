@@ -20,7 +20,7 @@
         if ((ua.indexOf('MSIE ') > 0) || (ua.indexOf('Trident/') > 0)) {
 
           // loop through each iteration of descriptors class (each two button descriptor)
-          $('.descriptors').each(function() {
+          $('.descriptors').each(function () {
             // find descriptor1 and descriptor2 class within currently iterated descriptors
             var descriptor1 = $(this).find('.descriptor--field-webny-tbd-descriptor1');
             var descriptor2 = $(this).find('.descriptor--field-webny-tbd-descriptor2');
@@ -32,9 +32,9 @@
               descriptor2.css('height', descriptor1Height + 'px');
             }
             if (descriptor2Height > descriptor1Height) {
-                descriptor1.css('height', descriptor2Height + 'px');
+              descriptor1.css('height', descriptor2Height + 'px');
             }
-          })
+          });
         }
       }).resize();
 
