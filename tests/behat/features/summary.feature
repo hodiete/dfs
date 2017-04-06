@@ -4,20 +4,6 @@ Feature: Summary Frame Paragraph Tests
   -Check if Summary paragraph type is option on Landing Page nodes
   -Create a Landing Page with a Summary Frame -- Check
 
-# Check if option for Summary Frame exists
-  Scenario: See if Summary checkbox on Landing Page Content Type exists
-    Given I am logged in as a user with the "administrator" role
-    When I am on "/admin/structure/types/manage/webny_landing_page/fields/node.webny_landing_page.field_webny_landing_paragraph"
-    Then I should not see "Access denied"
-    Given I check the box "Summary"
-    And I check the box "Card"
-    And I check the box "Announcement"
-    Then I press the "Save settings" button
-    When I am on "/node/add"
-    Then I should see "Landing Page"
-    When I click "Landing Page"
-    Then I should see "Add Summary"
-
 # Paragraph type checks
   Scenario: Check the paragraphy type to see if the Summary Frame exists
     Given I am logged in as a user with the "administrator" role
