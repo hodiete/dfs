@@ -26,6 +26,7 @@ $social-media-frame-icon-hover-color: $color-secondary !default;
   }
   h3 {
     text-align:center;
+    line-height: 1;
     .frame-title {
       font: $frame-title;
       letter-spacing: 2px;
@@ -37,13 +38,12 @@ $social-media-frame-icon-hover-color: $color-secondary !default;
       font: $frame-headline;
       color: $social-media-frame-headline-color;
       display: block;
+      .front & {
+        //using explicit css for headline instead of variable bc of em conflict
+          font: 800 40px/1 "Proxima Nova", Arial, sans-serif; 
+        }
      }
    }
-}
-
-.front .social-media-frame .frame-headline  {
-  font: $frame-headline-front;
-  line-height: 1.25em;//3rem;
 } 
 
 //css from 
@@ -154,6 +154,20 @@ $social-media-frame-icon-hover-color: $color-secondary !default;
     flex-direction:row;
     .smframe-link {
     width:20%;
+    }
+  }
+}
+
+// IE 9 hack
+
+@media screen\0 {
+  .sm-frame-links {
+    position: relative;
+    float:left;
+    width:100%;
+    .smframe-link {
+      display:inline-block;
+      float:left;
     }
   }
 }
