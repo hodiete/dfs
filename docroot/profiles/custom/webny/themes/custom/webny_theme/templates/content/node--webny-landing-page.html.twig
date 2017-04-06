@@ -35,6 +35,9 @@
     {% set video_text = "Watch Live" %}
 {% endif %}
 
+
+
+
 {# GET VARS FOR DISPLAYING HERO AND TITLES #}
 {%  for k,v in node.field_webny_landing_vis_options %}
 
@@ -65,17 +68,17 @@
 
     <div class="landing-title-area">
 
-    <!-- HEADLINE LABEL -->
-    <div class="landing-title">
-        <h1>{{ label }}</h1>
-    </div>
+        <!-- HEADLINE LABEL -->
+        <div class="landing-title">
+            <h1>{{ label }}</h1>
+        </div>
 
-    <!-- SUBTITLE LABEL -->
-    <div class="landing-subtitle">
-        <span>{{ node.field_webny_landing_subtitle2[0].value }}</span>
-    </div>
+        <!-- SUBTITLE LABEL -->
+        <div class="landing-subtitle">
+            <span>{{ node.field_webny_landing_subtitle2[0].value }}</span>
+        </div>
 
-</div>
+    </div>
 
     {% if hero == '' %}
         {# END QUICK EDITS #}
@@ -131,7 +134,7 @@
 
                 {% if video_tech is not null %}
                     <div class="video_hero_button">
-                        <a href="javascript:" alt="{{ video_text }}" title="{{ video_text }}">{{ video_text }}</a>
+                        <a href="javascript:" alt="{{ video_text }}" title="{{ video_text }}">  {{ video_text }}</a>
                     </div>
                 {% endif %}
 
@@ -147,22 +150,24 @@
         {% if video_tech is not null %}
             <div id="hero-video-frame" class="hero-video-frame hero-video-hide">
                 <div class="hero-video-inner">
-                <div class="hero-video-close">
-                    <a href="javascript:" alt="Close Video" title="Close Video">X</a>
-                </div>
+                    <div class="hero-video-close">
+                        <a href="javascript:" alt="Close Video" title="Close Video"></a>
+                    </div>
 
-                <video id="videojs-player-{{ video_player }}"
-                       class="video-js hero-video-player"
-                       controls
-                       preload="auto"
-                       autoplay
-                       width="660"
-                       height="380"
-                       poster="{{ video_poster_image }}"
-                       data-setup='{"techOrder": ["{{ video_tech }}"],
-                             "sources": [{ "type": "{{ video_type }}", "src": "{{ video_url }}"}] }'>
+                    <video id="videojs-player-{{ video_player }}"
+                           class="video-js hero-video-player"
+                           controls
+                           preload="auto"
+                           {#
+                           width="720"
+                           height="400"
+                           #}
+                           {# poster="{{ video_poster_image }}" #}
+                           data-setup='{
+                                 "techOrder": ["{{ video_tech }}"],
+                                 "sources": [{ "type": "{{ video_type }}", "src": "{{ video_url }}"}] }'>
 
-                </video>
+                    </video>
                 </div>
             </div>
         {% endif %}
