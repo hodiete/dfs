@@ -52,7 +52,9 @@
       <div class="smframe-inner">
         {%  if((paragraph.field_webny_smframe_title.value is not empty and paragraph.field_webny_smframe_title.value is not null) or (paragraph.field_webny_smframe_headline.value is not empty and paragraph.field_webny_smframe_headline.value is not null)) %}
         <h3>
-          {{ paragraph.field_webny_smframe_title.value }}
+          <span class="frame-title">
+            {{ paragraph.field_webny_smframe_title.value }}
+          </span>
           <span class="frame-headline">
          {{ paragraph.field_webny_smframe_headline.value }}
           </span>

@@ -25,17 +25,20 @@ $social-media-frame-icon-hover-color: $color-secondary !default;
     padding: 80px 60px;
   }
   h3 {
-    font: $frame-title;
-    letter-spacing: 2px;
-    color: $social-media-frame-title-color;
-    text-align:center;
-    padding: 0;
+    .frame-title {
+      font: $frame-title;
+      letter-spacing: 2px;
+      color: $social-media-frame-title-color;
+      text-align:center;
+      padding: 0;
+      text-transform: uppercase;
+    }
     .frame-headline {
       font: $frame-headline;
       color: $social-media-frame-headline-color;
       display: block;
+     }
    }
-  }
 }
 
 .front .social-media-frame .frame-headline  {
