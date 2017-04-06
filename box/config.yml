@@ -23,6 +23,7 @@ build_composer_project: false
 build_composer: false
 drupal_composer_path: false
 drupal_composer_install_dir: "/var/www/webny"
+drupal_composer_dependencies: []
 drupal_core_path: "{{ drupal_composer_install_dir }}/docroot"
 
 drupal_db_user: drupal
@@ -38,10 +39,12 @@ install_site: false
 configure_drush_aliases: false
 
 # This is required for front-end building tools.
-nodejs_version: "4.x"
+nodejs_version: "6.x"
 nodejs_npm_global_packages:
   - name: bower
   - name: gulp-cli
+  - name: eslint
+
 nodejs_install_npm_user: "{{ drupalvm_user }}"
 npm_config_prefix: "/home/{{ drupalvm_user }}/.npm-global"
 installed_extras:
