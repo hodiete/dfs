@@ -8,7 +8,7 @@ open: null
 close: null
 uid: null
 template: false
-id: contactold
+id: contact
 title: 'Sample Webform'
 description: 'DO NOT USE THIS Webform. IT WILL BE WRITTEN OVER WITH EACH CODE PUSH. Create a new webform for all new webforms.'
 elements: "name:\n  '#title': 'Your Name'\n  '#type': textfield\n  '#required': true\n  '#default_value': '[webform-authenticated-user:display-name]'\nemail:\n  '#title': 'Your Email'\n  '#type': email\n  '#required': true\n  '#default_value': '[webform-authenticated-user:mail]'\nsubject:\n  '#title': Subject\n  '#type': textfield\n  '#required': true\n  '#test': 'Testing contact webform from [site:name]'\nmessage:\n  '#title': Message\n  '#type': textarea\n  '#required': true\n  '#test': 'Please ignore this email.'\n"
