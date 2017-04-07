@@ -260,7 +260,7 @@ $hero-keyword-text-color: $color-mono-white !default;
   }
 
   // =====================================================================
-  // HERO HAS A VIDEO OPTION
+  // HERO HAS A VIDEO OPTION - OVERRIDE VIDEOJS STYLES
 
   .hero-video-frame{
     position: absolute;
@@ -270,7 +270,7 @@ $hero-keyword-text-color: $color-mono-white !default;
     .hero-video-inner{
       .video-js {
         margin: 0 auto;
-        height: 427px;
+        height: 425px;
         width: 100%;
       }
       .vjs-control-bar{
@@ -287,7 +287,7 @@ $hero-keyword-text-color: $color-mono-white !default;
       top: 10px;
 
       // CONSULT DT ON LEFT OR RIGHT PLACEMENT OF CLOSE
-      left: 10px;
+      right: 10px;
       z-index: 12;
 
       a{
@@ -505,16 +505,20 @@ $hero-keyword-text-color: $color-mono-white !default;
     .hero-video-frame {
       .hero-video-inner {
         .video-js {
-
+          width: 760px;
         }
         .vjs-control-bar {
           margin: 0 auto;
           width: 760px;
         }
+        .vimeoplayer{
+          max-width: 756px;
+        }
+        .vimeoFrame{
+          padding-bottom: 56%;
+        }
       }
     }
-
-
 
   } // END HERO LAYOUT
 

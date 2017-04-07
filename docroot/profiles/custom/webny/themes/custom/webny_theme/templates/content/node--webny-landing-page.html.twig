@@ -30,8 +30,8 @@
     {% set video_type = 'video/vimeo' %}
     {% set video_tech = 'Vimeo' %}
 {% elseif ('brightcove' in video_url) %}
-    {% set video_type = 'brightcove' %}
-    {% set video_tech = 'brightcove' %}
+    {% set video_type = 'Brightcove' %}
+    {% set video_tech = 'Brightcove' %}
     {% set video_text = "Watch Live" %}
 {% endif %}
 
@@ -114,7 +114,7 @@
     {% endif %}
 
             <!-- LIVE NOW FOR BRIGHTCOVE -->
-            {% if video_tech == 'brightcove' %}
+            {% if video_tech == 'Brightcove' %}
                 <div class="hero-live-now">
                     <p>LIVE NOW</p>
                 </div>
@@ -155,18 +155,11 @@
                     </div>
 
                     <video id="videojs-player-{{ video_player }}"
-                           class="video-js hero-video-player"
+                           class="video-js  hero-video-player"
                            controls
-                           preload="auto"
-                           {#
-                           width="720"
-                           height="400"
-                           #}
-                           {# poster="{{ video_poster_image }}" #}
                            data-setup='{
                                  "techOrder": ["{{ video_tech }}"],
                                  "sources": [{ "type": "{{ video_type }}", "src": "{{ video_url }}"}] }'>
-
                     </video>
                 </div>
             </div>

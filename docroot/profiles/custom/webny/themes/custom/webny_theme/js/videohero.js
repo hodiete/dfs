@@ -18,64 +18,77 @@ var videojs = typeof videojs == 'undefined' ? {} : videojs;
       // HERO BUTTON  .video_hero_button
 
       var clickVals = 'click touchend';
-      //var id = $('.hero-video-player').attr('id');
-      var id = window.document.querySelector('.hero-video-player').id;
-      var heroPlayer = videojs(id);
-      var brightcovePlayerHTML = null;
+      var id = $('.hero-video-player').attr('id');
+      var heroPlayer = videojs($('.hero-video-player').attr('id'));
 
-      // VIDEO BUTTON EVENT
-      $('.video_hero_button > a, .hero-video-close > a', context).on(clickVals, function (e) {
+      function initHeroVideo(src, tech, id){
 
-        // PREVENT MULTI EVENT FUN
-        e.stopPropagation();
-        e.preventDefault();
+        // VIDEO BUTTON EVENT
+        $('.video_hero_button > a, .hero-video-close > a', context).on(clickVals, function (e) {
 
-        // DETERMINE IF BRIGHTCOVE AND INJECT INTO VIDEO TAG
+          // PREVENT MULTI EVENT FUN
+          e.stopPropagation();
+          e.preventDefault();
 
-        // GET THE SOURCE TO CHECK IF BRIGHTCOVE/VIMEO/YOUTUBE
-        var elem = window.document.getElementById(id);
-        var ds = jQuery.parseJSON(elem.getAttribute('data-source'));
-        var vidsrc = ds.sources['0'];
+          // GET THE SOURCE TO CHECK IF BRIGHTCOVE/VIMEO/YOUTUBE
 
-        alert(vidsrc);
+          // SHOW VIDEO
+          if ($('.hero-video-frame').hasClass('hero-video-hide')) {
 
-        if (vidsrc.indexOf('brightcove') !== -1) {
-          brightcovePlayerHTML = '<iframe src=\"//players.brightcove.net/' + vidsrc.replace(/^.*\/\/[^\/]+/, '') + '\"'
-            + ' allowfullscreen webkitallowfullscreen mozallowfullscreen class="video-js hero-video-player vjs-16-9">' +
-            '</iframe>';
-          window.document.getElementById(id).outerHTML = brightcovePlayerHTML;
-        }
 
-        
-        // SHOW VIDEO
-        if ($('.hero-video-frame').hasClass('hero-video-hide')) {
+            // DETERMINE IF BRIGHTCOVE AND INJECT INTO VIDEO TAG
+            if (src.indexOf('brightcove') !== -1) {
+              heroPlayer = '<iframe src=\"//players.brightcove.net/' +
+                src.replace(/^.*\/\/[^\/]+/, '') + '\"' + ' allowfullscreen webkitallowfullscreen mozallowfullscreen ' +
+                'class="video-js hero-video-player"></iframe>';
+              window.document.getElementById(id).outerHTML = heroPlayer;
+            }
 
-          // CONTROL ENVIRONMENT
-          $('.video-js').removeClass('vjs-vimeo');
-          $('.hero-video-frame').removeClass('hero-video-hide').addClass('hero-video-show');
-          $('.hero-inner').hide();
-          $('.hero-has-image').addClass('hero-bkg-removed');
-          $('.hero-bkg').css('height', '0');
-          $('.hero-no-image').addClass('hero-meta-change');
+            // CONTROL ENVIRONMENT
+            $('.video-js').removeClass('vjs-vimeo');
+            $('.hero-video-frame').removeClass('hero-video-hide').addClass('hero-video-show');
+            $('.hero-inner').hide();
+            $('.hero-has-image').addClass('hero-bkg-removed');
+            $('.hero-bkg').css('height', '0');
+            $('.hero-no-image').addClass('hero-meta-change');
 
-          // START VIDEO
-          heroPlayer.play();
+            // VIMEO OVERRIDES
+            if(tech === 'Vimeo') {
+              $('.vimeoFrame').css('padding-bottom', '56%')
+                .css('width','758px');
+            }
 
-        } // HIDE VIDEO
 
-        else {
-          // CONTROL ENVIRONMENT
-          $('.hero-video-frame').removeClass('hero-video-show').addClass('hero-video-hide');
-          $('.hero-inner').show();
-          $('.hero-has-image').removeClass('hero-bkg-removed');
-          $('.hero-bkg').css('height', '100%');
-          $('.hero-no-image').removeClass('hero-meta-change');
+            // START VIDEO
+            heroPlayer.play();
 
-          // PAUSE VIDEO
-          heroPlayer.pause();
-        }
+          } // HIDE VIDEO
 
+          else {
+
+            // CONTROL ENVIRONMENT
+            $('.hero-video-frame').removeClass('hero-video-show').addClass('hero-video-hide');
+            $('.hero-inner').show();
+            $('.hero-has-image').removeClass('hero-bkg-removed');
+            $('.hero-bkg').css('height', '100%');
+            $('.hero-no-image').removeClass('hero-meta-change');
+
+            // PAUSE VIDEO
+            heroPlayer.pause();
+          }
+
+        });
+
+      }
+
+      // START INIT OF THE HERO VIDEO
+      $('.hero-video-player').each(function (index, el) {
+        var $ds = jQuery.parseJSON(el.getAttribute('data-setup'));
+        var src = $ds.sources['0'].src;
+        var tech = $ds.techOrder['0'];
+        initHeroVideo(src, tech, el.id);
       });
+
     }
   };
 
