@@ -18,20 +18,23 @@ $social-media-frame-icon-hover-color: $color-secondary !default;
   background-color: $social-media-bkgrnd-color;
   font-size: $frame-base-font-size; 
   line-height: $frame-base-line-height;
+  position: relative;
   //text-align: center;
   .smframe-inner {
     max-width: $max-pc;
     margin: 0 auto;
     padding: 80px 60px;
+    position: relative;
   }
   h3 {
     text-align:center;
     line-height: 1;
+    padding: 0;
     .frame-title {
       font: $frame-title;
       letter-spacing: 2px;
       color: $social-media-frame-title-color;
-      padding: 0;
+      
       text-transform: uppercase;
     }
     .frame-headline {
@@ -66,7 +69,7 @@ $social-media-frame-icon-hover-color: $color-secondary !default;
 
   a {
     height: 20px;
-    padding: 10px 0;
+    padding: 10px;
     position: relative;
     text-decoration: none;
     text-transform: uppercase;
@@ -108,16 +111,19 @@ $social-media-frame-icon-hover-color: $color-secondary !default;
 
     div[class*="smframe-other"] a {@include icon(before, fa-elipses-h);}
   .sm-frame-links {
+    //display: table-row; //IE 9 evil
     display: flex;
     justify-content: flex-start;
     flex-wrap: wrap;
-
+    //position: relative;
   }
   .smframe-link {
-    //display: inline-flex;
+    //display: table-cell; //IE 9 evil
+    display: flex;
     width: 100%;
     padding: 10px 0;
-    text-align: center;
+    //text-align: center;
+    justify-content: center;
   }
 
 }
@@ -126,12 +132,12 @@ $social-media-frame-icon-hover-color: $color-secondary !default;
 
 // ######################################################################### //
 /* TABLET VIEW */
-@media (min-width: $min-tablet) {
+@media (min-width: $min-tablet) and (max-width: $min-desktop)   {
   .sm-frame-links {
     flex-direction:row;
     .smframe-link {
     width:45%;
-    text-align: left;
+    justify-content: flex-start;
     }
   }
 }
@@ -157,17 +163,23 @@ $social-media-frame-icon-hover-color: $color-secondary !default;
     }
   }
 }
-
-// IE 9 hack
-
-@media screen\0 {
+// IE 9 crap bc it doesn't like flexbox
+@media screen and (min-width:0\0) and (min-resolution: .001dpcm) {
   .sm-frame-links {
     position: relative;
-    float:left;
-    width:100%;
+    float: left;
+    width: 100%;
     .smframe-link {
-      display:inline-block;
+      position:relative;
       float:left;
     }
   }
+  // clearing
+  .smframe-inner::after { 
+    content: "."; 
+    visibility: hidden; 
+    display: block; 
+    height: 0; 
+    clear: both;
+    }
 }
