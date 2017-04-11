@@ -111,14 +111,14 @@ $social-media-frame-icon-hover-color: $color-secondary !default;
 
     div[class*="smframe-other"] a {@include icon(before, fa-elipses-h);}
   .sm-frame-links {
-    display: table-row; //IE 9 evil
+    //display: table-row; //IE 9 evil
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     flex-wrap: wrap;
     //position: relative;
   }
   .smframe-link {
-    display: table-cell; //IE 9 evil
+    //display: table-cell; //IE 9 evil
     display: flex;
     width: 100%;
     padding: 10px 0;
