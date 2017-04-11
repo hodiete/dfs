@@ -163,4 +163,23 @@ $social-media-frame-icon-hover-color: $color-secondary !default;
     }
   }
 }
-
+// IE 9 crap bc it doesn't like flexbox
+@media screen and (min-width:0\0) and (min-resolution: .001dpcm) {
+  .sm-frame-links {
+    position: relative;
+    float: left;
+    width: 100%;
+    .smframe-link {
+      position:relative;
+      float:left;
+    }
+  }
+  // clearing
+  .smframe-inner::after { 
+    content: "."; 
+    visibility: hidden; 
+    display: block; 
+    height: 0; 
+    clear: both;
+    }
+}
