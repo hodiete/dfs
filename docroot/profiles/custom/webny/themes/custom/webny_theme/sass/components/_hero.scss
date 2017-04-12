@@ -224,6 +224,7 @@ $hero-keyword-text-color: $color-mono-white !default;
     color: #fff;
     width: 80px;
     padding: 7px 4px;
+    margin-bottom: 6px;
 
     p{
       font-family: $oswald;
@@ -263,46 +264,71 @@ $hero-keyword-text-color: $color-mono-white !default;
   // HERO HAS A VIDEO OPTION - OVERRIDE VIDEOJS STYLES
 
   .hero-video-frame{
-    position: absolute;
-    top: 0;
+    position: relative;
     width: 100%;
+    min-height: 320px;
 
-    .hero-video-inner{
+    .hero-video-inner {
       .video-js {
-        margin: 0 auto;
-        height: 425px;
-        width: 100%;
-      }
-      .vjs-control-bar{
-        margin: 0 auto;
-        width: 760px;
-      }
-    }
-
-    .hero-video-close{
-
-      // WE MAY WANT TO USE THIS
-
-      position: absolute;
-      top: 10px;
-
-      // CONSULT DT ON LEFT OR RIGHT PLACEMENT OF CLOSE
-      right: 10px;
-      z-index: 12;
-
-      a{
-        @include icon(before,close-button);
-        color: #fff;
-        font-size: 50px;
-        opacity: .4;
-        text-decoration: none;
-
-        &:hover{
-          opacity: 1;
+        .vjs-tech{
+          border: 0;
         }
+        width: 100%;
+        margin: 0 auto;
+        min-height: 320px;
+        border: 0;
+      }
+
+      // YOUTUBE OVERRIDE
+      .hero-type-youtube {  }
+
+      .vjs-control-bar {
+        margin: 0 auto;
+        width: auto;
+      }
+      .vimeoplayer {  }
+      .vimeoFrame {
+        position: relative !important;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+
+      .hero-type-youtube .vjs-control-bar{
+        display: none !important;
+      }
+
+    }
+  }
+
+  .hero-video-frame{
+
+  }
+
+  #hero-video-frame{
+    background-color: #000;
+  }
+
+  .hero-video-close{
+    position: absolute;
+    top: 10px;
+
+    // CONSULT DT ON LEFT OR RIGHT PLACEMENT OF CLOSE
+    right: 10px;
+    z-index: 12;
+
+    a{
+      @include icon(before,close-button);
+      color: #fff;
+      font-size: 30px;
+      opacity: .4;
+      text-decoration: none;
+
+      &:hover{
+        opacity: 1;
       }
     }
-
   }
 
   .hero-video-hide{
@@ -320,8 +346,13 @@ $hero-keyword-text-color: $color-mono-white !default;
     height: 425px;
   }
   .video_hero_button > a{
-    @include icon(before,play-button);
+    @include icon(before, play-button);
   }
+  .video-js.vjs-default-skin.vjs-paused .vjs-big-play-button {
+    display: block !important;
+  }
+
+
 
 } // END HERO-LAYOUT
 
@@ -423,7 +454,6 @@ $hero-keyword-text-color: $color-mono-white !default;
       font-weight: 800;
     }
 
-
     // =====================================================================
     // HERO HAS AN IMAGE
     .hero-image-wrap{
@@ -441,18 +471,72 @@ $hero-keyword-text-color: $color-mono-white !default;
       .hero-news-inner.hero-has-image-content{
         padding: 40px 4%;
       }
-
     }
 
+    // =====================================================================
+    // VIDEO FRAME
+    .hero-video-frame {
+      .hero-video-inner {
+        .video-js {
+          margin: 0 auto;
+          height: 426px;
+          width: 760px;
+        }
+
+        // YOUTUBE OVERRIDE
+        .hero-type-youtube{
+          height: 427px;
+        }
+
+        .vjs-control-bar {
+          width: 760px;
+        }
+
+        .hero-type-vimeo{
+          height: 428px;
+        }
+
+        .vimeoplayer{ }
+        .vimeoFrame{ }
+      }
+    } // END VIDEO FRAME SECTION
+
+    .hero-video-close{
+      a{
+        font-size: 50px;
+      }
+    }
 
   } // END HERO-layout
 
+
   .front {
     .hero-layout {
+
       .hero-landing-inner {
         width: 50%;
         max-width: 600px;
       }
+
+      .hero-video-frame {
+        .hero-video-inner {
+          .video-js {
+            width: 910px;
+            height: 512px;
+          }
+
+          .vjs-control-bar {
+            width: 910px;
+          }
+
+          // YOUTUBE OVERRIDE
+          .hero-type-youtube{
+            height: 512px;
+            padding: 0;
+          }
+        }
+      }
+
     }
   }
 
@@ -500,24 +584,6 @@ $hero-keyword-text-color: $color-mono-white !default;
         padding: 40px 4%;
       }
 
-    }
-
-    .hero-video-frame {
-      .hero-video-inner {
-        .video-js {
-          width: 760px;
-        }
-        .vjs-control-bar {
-          margin: 0 auto;
-          width: 760px;
-        }
-        .vimeoplayer{
-          max-width: 756px;
-        }
-        .vimeoFrame{
-          padding-bottom: 56%;
-        }
-      }
     }
 
   } // END HERO LAYOUT
