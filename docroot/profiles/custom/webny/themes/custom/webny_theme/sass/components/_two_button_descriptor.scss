@@ -126,7 +126,7 @@ $tbd-button-hover-back-color:       $button-black-50 !default;
       flex-flow: column nowrap;
       margin-bottom: 30px;
       float: left\9;
-      width: 40%\9;
+      width: 46%\9;
       overflow: hidden\9;
 
       &:nth-of-type(2n+2) {
@@ -150,6 +150,11 @@ $tbd-button-hover-back-color:       $button-black-50 !default;
       .descriptor--field-webny-tbd-cta1,
       .descriptor--field-webny-tbd-cta2 {
         flex: 1;
+
+        a {
+          min-width: 100px;
+        }
+
       }
 
     } // END descriptor
@@ -175,7 +180,7 @@ $tbd-button-hover-back-color:       $button-black-50 !default;
       margin-bottom: 30px;
       display: inline-block\9;
       float: left\9;
-      width: 40%\9;
+      width: 46%\9;
       overflow: hidden\9;
 
       .descriptor--field-webny-tbd-descriptortitle1,
@@ -194,6 +199,10 @@ $tbd-button-hover-back-color:       $button-black-50 !default;
       .descriptor--field-webny-tbd-cta1,
       .descriptor--field-webny-tbd-cta2 {
         flex: 1;
+
+        a {
+          min-width: 175px;
+        }
       }
 
       &:nth-of-type(2n+2) {
