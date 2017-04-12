@@ -9,9 +9,57 @@ print-styles:
     theme:
       css/print.css: { media: print}
 
+video-js-css:
+  css:
+    theme:
+      ../../../libraries/video-js/video-js.min.css: {}
+
 filter-toggle:
   version: 1.1
   js:
     js/toggle.js: {}
   dependencies:
     - core/jquery
+
+two_button_descriptor:
+  version: 1.2
+  js:
+    js/two_button_descriptor.js: {}
+  dependencies:
+    - core/drupal
+    - core/jquery
+
+videoframe:
+  js:
+    js/videoframe.js: {}
+  dependencies:
+    - core/drupal
+    - webny_theme/videojs
+    - webny_theme/videojs-ie8
+    - webny_theme/videojs-youtube
+    - webny_theme/videojs-vimeo
+    - core/jquery
+
+
+video-js:
+  js:
+    ../../../libraries/video-js/video.js: {}
+
+video-js-ie8:
+  header: true
+  js:
+    ../../../libraries/video-js/ie8/videojs-ie8.min.js: {}
+
+videojs-youtube:
+  header: true
+  js:
+    ../../../libraries/videojs-youtube/src/Youtube.js: {}
+  dependencies:
+    - webny_theme/video-js
+
+videojs-vimeo:
+  header: true
+  js:
+    ../../../libraries/videojs-vimeo/src/Vimeo.js: {}
+  dependencies:
+    - webny_theme/video-js
