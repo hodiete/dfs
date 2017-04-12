@@ -16,25 +16,6 @@
       // bind on resize to trigger when window is loaded or resized
       $(window).on('resize', function () {
 
-        $('.descriptors').each(function () {
-          if ($(this).find('.descriptor--field-webny-tbd-descriptortitle1').height() > 54) {
-            $(this).find('.descriptor--field-webny-tbd-descriptortitle1').css('min-height', '81px');
-            $(this).find('.descriptor--field-webny-tbd-descriptortitle2').css('min-height', '81px');
-          }
-          if ($(this).find('.descriptor--field-webny-tbd-descriptortitle2').height() > 54) {
-            $(this).find('.descriptor--field-webny-tbd-descriptortitle1').css('min-height', '81px');
-            $(this).find('.descriptor--field-webny-tbd-descriptortitle2').css('min-height', '81px');
-          }
-          if ($(this).find('.descriptor--field-webny-tbd-descriptortitle1').height() <= 54) {
-            $(this).find('.descriptor--field-webny-tbd-descriptortitle1').css('min-height', '54px');
-            $(this).find('.descriptor--field-webny-tbd-descriptortitle2').css('min-height', '54px');
-          }
-          if ($(this).find('.descriptor--field-webny-tbd-descriptortitle2').height() <= 54) {
-            $(this).find('.descriptor--field-webny-tbd-descriptortitle1').css('min-height', '54px');
-            $(this).find('.descriptor--field-webny-tbd-descriptortitle2').css('min-height', '54px');
-          }
-        });
-
         // check if browser is IE 11 or older
         if ((ua.indexOf('MSIE ') > 0) || (ua.indexOf('Trident/') > 0)) {
 
