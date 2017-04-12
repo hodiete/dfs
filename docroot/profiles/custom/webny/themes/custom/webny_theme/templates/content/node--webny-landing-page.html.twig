@@ -23,6 +23,7 @@
 {% set video_class = '' %}
 {% set video_text = 'Watch Video' %}
 
+{# SET VIDEO TECH #}
 {% if ( ('youtube' in video_url) or ('youtu.be' in video_url) ) %}
     {% set video_type = 'video/youtube' %}
     {% set video_tech = 'youtube' %}
@@ -30,12 +31,17 @@
     {% set video_type = 'video/vimeo' %}
     {% set video_tech = 'Vimeo' %}
 {% elseif ('brightcove' in video_url) %}
-    {% set video_type = 'Brightcove' %}
-    {% set video_tech = 'Brightcove' %}
+    {% set video_type = 'brightcove' %}
+    {% set video_tech = 'brightcove' %}
     {% set video_text = "Watch Live" %}
 {% endif %}
 
-
+{# SET WHETHER OR NO THERE IS AN IMAGE #}
+{% if hero_image == '/' %}
+  {% set has_image = 'hero-vid-image' %}
+{% else %}
+    {% set has_image = 'hero-vid-noimage' %}
+{% endif %}
 
 
 {# GET VARS FOR DISPLAYING HERO AND TITLES #}
@@ -98,14 +104,14 @@
     {{ title_prefix }}
     
     {% if hero_image == '/' %}
-    <div class="hero-header hero-no-image hero-landing" style="">
+        <div class="hero-header hero-no-image hero-landing" style="">
     {% else %}
-    <div class="hero-header hero-has-image hero-landing" style="background-image:url('{{ hero_image }}')">
+        <div class="hero-header hero-has-image hero-landing" style="background-image:url('{{ hero_image }}')">
     {% endif %}
         
         <!-- BACKGROUND GRAD -->
-        <div class="hero-bkg"></div>
-    </div>
+            <div class="hero-bkg"></div>
+        </div>
 
     {% if hero_image == '/' %}
         <div class="hero-inner hero-landing-inner">
@@ -114,7 +120,7 @@
     {% endif %}
 
             <!-- LIVE NOW FOR BRIGHTCOVE -->
-            {% if video_tech == 'Brightcove' %}
+            {% if video_tech == 'brightcove' %}
                 <div class="hero-live-now">
                     <p>LIVE NOW</p>
                 </div>
@@ -146,24 +152,40 @@
             </div>
         </div>
 
-        <!-- VIDEO PLACEMENT -->
-        {% if video_tech is not null %}
-            <div id="hero-video-frame" class="hero-video-frame hero-video-hide">
-                <div class="hero-video-inner">
-                    <div class="hero-video-close">
-                        <a href="javascript:" alt="Close Video" title="Close Video"></a>
-                    </div>
+    <!-- VIDEO PLACEMENT -->
 
-                    <video id="videojs-player-{{ video_player }}"
-                           class="video-js  hero-video-player"
-                           controls
+         <div id="hero-video-frame" class="hero-video-frame  hero-video-hide {{ has_image }}">
+            <div class="hero-video-inner">
+                <div class="hero-video-close">
+                    <a href="javascript:" alt="Close Video" title="Close Video"></a>
+                </div>
+
+                {% if video_tech is not null and video_tech != 'brightcove' %}
+                    <video id="videojs-heroplayer-{{ video_tech|lower }}"
+                           class="video-js hero-video-player hero-type-{{ video_tech|lower }}"
+                            {% if video_tech == 'Vimeo' or video_tech == 'brightcove' %}
+                                controls
+                            {% endif %}
                            data-setup='{
                                  "techOrder": ["{{ video_tech }}"],
-                                 "sources": [{ "type": "{{ video_type }}", "src": "{{ video_url }}"}] }'>
+                                 "sources": [{ "type": "{{ video_type }}", "src": "{{ video_url }}"}],
+                                  {% if video_tech == 'youtube' %}
+                                    "youtube": { "ytControls": 2 },
+                                  {% endif %}
+
+                                    "nativeControlsForTouch": true
+                                  }'>
                     </video>
-                </div>
+
+                {% else  %}
+                    <div id="videojs-heroplayer-{{ video_tech|lower }}" class="hero-video-player hero-type-{{ video_tech|lower }}"
+                         data-setup='{ "techOrder": ["{{ video_tech }}"], "sources": [{ "type": "{{ video_type }}", "src": "{{ video_url }}"}] }'>
+                    </div>
+                {% endif %}
+
             </div>
-        {% endif %}
+        </div>
+
 
 
     {{ title_suffix }}
