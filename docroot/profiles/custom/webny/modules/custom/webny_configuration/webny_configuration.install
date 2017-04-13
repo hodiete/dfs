@@ -2420,19 +2420,6 @@ function webny_configuration_update_8118()
         ->install(['webny_summary_frame']);
 }
 
-
-/**
- * Implements hook_update_n().
- *
- * enable update manager
- */
-function webny_configuration_update_8119()
-{
-
-    \Drupal::service('module_installer')
-        ->install(['update']);
-}
-
 /**
  * Implements hook_update_n().
  *
@@ -2562,7 +2549,6 @@ function webny_configuration_update_8121()
         ->install(['webny_wysiwyg_frame']);
 }
 
-
 /**
  * Implements hook_update_n().
  *
@@ -2604,6 +2590,87 @@ function webny_configuration_update_8123()
         ->install(['webny_landing_page_content_type']);
 }
 
+/**
+ * Implements hook_update_n().
+ *
+ * enable update manager
+ */
+function webny_configuration_update_8124()
+{
+
+    \Drupal::service('module_installer')
+        ->install(['update']);
+}
+
+/**
+ * Implements hook_update_n().
+ *
+ * Reinstall features for language module.
+ */
+function webny_configuration_update_8125()
+{
+
+    \Drupal::service('module_installer')
+        ->uninstall(['webny_contact_content_type']);
+    \Drupal::service('module_installer')
+        ->install(['webny_contact_content_type']);
+    \Drupal::service('module_installer')
+        ->uninstall(['webny_document_content_type']);
+    \Drupal::service('module_installer')
+        ->install(['webny_document_content_type']);
+    \Drupal::service('module_installer')
+        ->uninstall(['webny_get_involved_frame']);
+    \Drupal::service('module_installer')
+        ->install(['webny_get_involved_frame']);
+    \Drupal::service('module_installer')
+        ->uninstall(['webny_inner_page_content_type']);
+    \Drupal::service('module_installer')
+        ->install(['webny_inner_page_content_type']);
+    \Drupal::service('module_installer')
+        ->uninstall(['webny_landing_page_content_type']);
+    \Drupal::service('module_installer')
+        ->install(['webny_landing_page_content_type']);
+    \Drupal::service('module_installer')
+        ->uninstall(['webny_news_content_type']);
+    \Drupal::service('module_installer')
+        ->install(['webny_news_content_type']);
+    \Drupal::service('module_installer')
+        ->uninstall(['webny_paragraphs_types']);
+    \Drupal::service('module_installer')
+        ->install(['webny_paragraphs_types']);
+    \Drupal::service('module_installer')
+        ->uninstall(['webny_phone_contact_paragraph']);
+    \Drupal::service('module_installer')
+        ->install(['webny_phone_contact_paragraph']);
+    \Drupal::service('module_installer')
+        ->uninstall(['webny_social_media_connect_frame']);
+    \Drupal::service('module_installer')
+        ->install(['webny_social_media_connect_frame']);
+    \Drupal::service('module_installer')
+        ->uninstall(['webny_summary_frame']);
+    \Drupal::service('module_installer')
+        ->install(['webny_summary_frame']);
+    \Drupal::service('module_installer')
+        ->uninstall(['webny_tbd_frame']);
+    \Drupal::service('module_installer')
+        ->install(['webny_tbd_frame']);
+    \Drupal::service('module_installer')
+        ->uninstall(['webny_video_frame_paragraph']);
+    \Drupal::service('module_installer')
+        ->install(['webny_video_frame_paragraph']);
+    \Drupal::service('module_installer')
+        ->uninstall(['webny_whitelisted_content']);
+    \Drupal::service('module_installer')
+        ->install(['webny_whitelisted_content']);
+    \Drupal::service('module_installer')
+        ->uninstall(['webny_wysiwyg_frame']);
+    \Drupal::service('module_installer')
+        ->install(['webny_wysiwyg_frame']);
+    \Drupal::service('module_installer')
+        ->uninstall(['webny_media']);
+    \Drupal::service('module_installer')
+        ->install(['webny_media']);
+}
 
 /**
  * Helper function to enable a Drupal module and print the result.
