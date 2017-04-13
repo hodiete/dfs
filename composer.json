@@ -80,12 +80,7 @@
         "se/selenium-server-standalone": "^2.53",
         "squizlabs/php_codesniffer": "2.*",
         "symfony/console": "^2.8.11",
-        "drupal/video_embed_brightcove": "1.x-dev",
-        "dinbror/blazy": "1.6.2",
-        "enyo/dropzone": "4.2.0",
-        "videojs/video.js": "5.18.4",
-        "videojs/videojs-vimeo": "2.0.0",
-        "videojs/videojs-youtube": "2.0.8"
+        "drupal/video_embed_brightcove": "1.x-dev"
     },
     "scripts": {
         "blt-alias": "blt install-alias -Dcreate_alias=true",
@@ -103,6 +98,12 @@
             "cd docroot && ../scripts/wny/update-htaccess.sh ../patches/htaccess-redirects.patch && cd -",
             "cd docroot && ../scripts/wny/update-htaccess.sh ../patches/htaccess-ssl.patch && cd -",
             "rm -f docroot/.htaccess.orig"
+        ],
+        "post-install-cmd": [
+            "cd docroot/profiles/custom/webny/libraries && npm install && rsync -a node_modules/ ./ && rm -rf node_modules/*"
+        ],
+        "post-update-cmd": [
+            "cd docroot/profiles/custom/webny/libraries && npm install && rsync -a node_modules/ ./ && rm -rf node_modules/*"
         ]
     },
     "repositories": {
@@ -113,71 +114,6 @@
         "custom": {
             "type": "git",
             "url": "git@github.com:ny/amber_alert_module.git"
-        },
-        "js-blazy": {
-            "type": "package",
-            "package": {
-                "name": "dinbror/blazy",
-                "version": "1.6.2",
-                "type": "drupal-library",
-                "source": {
-                    "url": "https://github.com/dinbror/blazy",
-                    "type": "git",
-                    "reference": "origin/master"
-                }
-            }
-        },
-        "js-dropzone": {
-            "type": "package",
-            "package": {
-                "name": "enyo/dropzone",
-                "version": "4.2.0",
-                "type": "drupal-library",
-                "source": {
-                    "url": "https://github.com/enyo/dropzone",
-                    "type": "git",
-                    "reference": "origin/master"
-                }
-            }
-        },
-        "js-videojs": {
-            "type": "package",
-            "package": {
-                "name": "videojs/video.js",
-                "version": "5.18.4",
-                "type": "drupal-library",
-                "source": {
-                    "url": "https://github.com/videojs/video.js",
-                    "type": "git",
-                    "reference": "origin/master"
-                }
-            }
-        },
-        "js-videojs-vimeo": {
-            "type": "package",
-            "package": {
-                "name": "videojs/videojs-vimeo",
-                "version": "2.0.0",
-                "type": "drupal-library",
-                "source": {
-                    "url": "https://github.com/videojs/videojs-vimeo",
-                    "type": "git",
-                    "reference": "origin/master"
-                }
-            }
-        },
-        "js-videojs-youtube": {
-            "type": "package",
-            "package": {
-                "name": "videojs/videojs-youtube",
-                "version": "2.0.8",
-                "type": "drupal-library",
-                "source": {
-                    "url": "https://github.com/videojs/videojs-youtube",
-                    "type": "git",
-                    "reference": "origin/master"
-                }
-            }
         }
     },
     "autoload-dev": {
@@ -245,7 +181,7 @@
             "docroot/themes/custom/{$name}": [
                 "type:drupal-custom-theme"
             ],
-            "docroot/libraries/{$name}": [
+            "docroot/profiles/custom/webny/libraries/{$name}": [
                 "type:drupal-library"
             ],
             "drush/contrib/{$name}": [

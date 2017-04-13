@@ -32,8 +32,7 @@ var videojs = typeof videojs == 'undefined' ? {} : videojs;
             fluid: false
           };
 
-          if (tech == 'Youtube') {
-            //options.controls = false;
+          if (tech === 'Youtube') {
             options.ytControls = 2;
           }
 
