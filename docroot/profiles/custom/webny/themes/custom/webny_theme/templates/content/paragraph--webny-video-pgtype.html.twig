@@ -91,12 +91,12 @@ view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
                 <video
                     id="videojs-player-{{ paragraph.id.value }}"
                     class="video-js vjs-default-skin {% if not posterExists %}vjs-big-play-centered{% endif %} vjs-16-9"
-                    controls
+                    {% if tech != 'Youtube' %}controls{% endif %}
                     width="660" height="400"
                     {% if posterExists %}
                     poster="{{ poster_image| image_style('wysiwyg') }}"
                     {% endif %}
-                    data-setup='{ "techOrder": ["{{ tech }}"], "sources": [{ "type": "{{ type }}", "src": "{{ url }}"}] }'
+                    data-setup='{ "techOrder": ["{{ tech }}"], "sources": [{ "type": "{{ type }}", "src": "{{ url }}"}]{% if tech == 'Youtube' %}, "youtube": { "ytControls": 2 }{% endif %} }'
                 >
                 </video>
 

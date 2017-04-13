@@ -32,6 +32,11 @@ var videojs = typeof videojs == 'undefined' ? {} : videojs;
             fluid: false
           };
 
+          if (tech == 'Youtube') {
+            //options.controls = false;
+            options.ytControls = 2;
+          }
+
           videojs(id, options, function onPlayerReady() {
             this.on('play', function () {
               $(this.el_).siblings('.caption').addClass('playing');
@@ -39,15 +44,6 @@ var videojs = typeof videojs == 'undefined' ? {} : videojs;
           });
         }
       }
-
-      // function getURLparam(name) {
-      //   var regex,
-      //     results;
-      //   name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
-      //   regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
-      //     results = regex.exec(location.search);
-      //   return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
-      // }
 
       $('.video-js').each(function (index, el) {
         var data = jQuery.parseJSON(el.getAttribute('data-setup'));
