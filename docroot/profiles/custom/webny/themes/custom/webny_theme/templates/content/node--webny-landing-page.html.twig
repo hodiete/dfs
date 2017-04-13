@@ -138,7 +138,7 @@
             <!-- HERO BUTTONS [USING KEYWORD CLASS] -->
             <div class="hero-keywords">
 
-                {% if video_tech is not null %}
+                {% if video_tech != "" %}
                     <div class="video_hero_button">
                         <a href="javascript:" alt="{{ video_text }}" title="{{ video_text }}">  {{ video_text }}</a>
                     </div>
@@ -146,9 +146,10 @@
 
                 {{ content.field_webny_landing_hero_button }}
 
-                {% if video_tech is null %}
+                {% if video_tech == "" %}
                     {{ content.field_webny_landing_hero_button2 }}
                 {% endif %}
+
             </div>
         </div>
 
