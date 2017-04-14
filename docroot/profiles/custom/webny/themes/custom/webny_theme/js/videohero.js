@@ -54,6 +54,11 @@ var videojs = typeof videojs == 'undefined' ? {} : videojs;
 
               heroPlayer = videojs(id, options);
               heroPlayer.play();
+
+              $('.hero-video-frame .videojs')
+                .removeClass('videojs-heroplayer-youtube-dimensions')
+                .removeClass('videojs-heroplayer-vimeo-dimensions');
+
             }
           }
 
