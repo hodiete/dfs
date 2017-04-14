@@ -43,7 +43,16 @@ var videojs = typeof videojs == 'undefined' ? {} : videojs;
 
             // START VIDEO
             if(tech === 'youtube' || tech === 'Vimeo') {
-              heroPlayer = videojs(id);
+
+              var options = {
+                techOrder: [tech],
+                src: {type: tech, src: src},
+                controls: true,
+                aspectRatio: '16:9',
+                fluid: false
+              };
+
+              heroPlayer = videojs(id, options);
               heroPlayer.play();
             }
           }
