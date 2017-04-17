@@ -167,16 +167,14 @@
                             {% if video_tech == 'Vimeo' or video_tech == 'brightcove' %}
                                 controls
                             {% endif %}
-                           width="100%"
-                           height="100%"
+
                            data-setup='{
                                  "techOrder": ["{{ video_tech }}"],
-                                 "sources": [{ "type": "{{ video_type }}", "src": "{{ video_url }}"}],
+                                 "sources": [{ "type": "{{ video_type }}", "src": "{{ video_url }}"}]
                                   {% if video_tech == 'youtube' %}
-                                    "youtube": { "ytControls": 2 },
+                                    , "youtube": { "ytControls": 2 }
                                   {% endif %}
 
-                                    "nativeControlsForTouch": true
                                   }'>
                     </video>
 
