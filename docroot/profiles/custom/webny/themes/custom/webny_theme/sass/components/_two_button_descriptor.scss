@@ -113,7 +113,7 @@ $tbd-button-hover-back-color:       $button-black-50 !default;
 
 // ######################################################################### //
 /* TABLET VIEW */
-@media (min-width: $min-tab) {
+@media (min-width: $min-tablet) {
 
   .descriptors {
     display: flex;
@@ -125,6 +125,7 @@ $tbd-button-hover-back-color:       $button-black-50 !default;
       flex: 1;
       flex-flow: column nowrap;
       margin-bottom: 30px;
+      align-content: flex-end;
       float: left\9;
       width: 46%\9;
       overflow: hidden\9;
@@ -136,7 +137,8 @@ $tbd-button-hover-back-color:       $button-black-50 !default;
 
       .descriptor--field-webny-tbd-descriptortitle1,
       .descriptor--field-webny-tbd-descriptortitle2 {
-        flex: 1;
+        // flex: 1;
+        min-height: 54px; // this is 2x line height
       }
 
       .descriptor--field-webny-tbd-descriptor1,
@@ -178,6 +180,7 @@ $tbd-button-hover-back-color:       $button-black-50 !default;
       flex-flow: column nowrap;
       padding: 1.5%;
       margin-bottom: 30px;
+      align-content: flex-end;
       display: inline-block\9;
       float: left\9;
       width: 46%\9;
@@ -185,7 +188,8 @@ $tbd-button-hover-back-color:       $button-black-50 !default;
 
       .descriptor--field-webny-tbd-descriptortitle1,
       .descriptor--field-webny-tbd-descriptortitle2 {
-        flex: 1;
+        // flex: 1;
+        min-height: 54px; // this is 2x line height
       }
 
       .descriptor--field-webny-tbd-descriptor1,
