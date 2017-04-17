@@ -12,7 +12,7 @@ print-styles:
 video-js-css:
   css:
     theme:
-      ../../../libraries/video-js/video-js.min.css: {}
+      ../../../libraries/video.js/dist/video-js.min.css: {}
 
 filter-toggle:
   version: 1.1
@@ -41,21 +41,21 @@ videoframe:
     - core/jquery
 
 
-video-js:
+videojs:
   js:
-    ../../../libraries/video-js/video.js: {}
+    ../../../libraries/video.js/dist/video.min.js: {}
 
 video-js-ie8:
   header: true
   js:
-    ../../../libraries/video-js/ie8/videojs-ie8.min.js: {}
+    ../../../libraries/video.js/dist/ie8/videojs-ie8.min.js: {}
 
 videojs-youtube:
   header: true
   js:
-    ../../../libraries/videojs-youtube/src/Youtube.js: {}
+    ../../../libraries/videojs-youtube/dist/Youtube.min.js: {}
   dependencies:
-    - webny_theme/video-js
+    - webny_theme/videojs
 
 videojs-vimeo:
   header: true
