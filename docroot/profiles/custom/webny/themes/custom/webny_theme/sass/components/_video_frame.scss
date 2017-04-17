@@ -12,6 +12,18 @@
   position:relative;
   max-width: 660px;
 
+  // Necessary override because the big play button is hidden by default for some reason.
+  .video-js.vjs-default-skin.vjs-paused .vjs-big-play-button { display:block }
+
+  // YOUTUBE: Override Youtube.js injectCSS to show big play button on image overlay for mobile
+  .video-js.vjs-default-skin.vjs-youtube-mobile.vjs-paused .vjs-big-play-button { display: block }
+
+  // YOUTUBE: Hide control bar
+  .video-js.vjs-default-skin.vjs-youtube.vjs-has-started .vjs-control-bar { display: none }
+
+  // Hide big play button if paused beyond the initial overlay screen
+  .video-js.vjs-default-skin.vjs-has-started.vjs-paused .vjs-big-play-button { display: none }
+
   .video-js {
     position: relative;
     margin: 0 auto;
@@ -77,6 +89,13 @@
         bottom: 1em;
       }
     }
+  }
+
+  .vjs-big-play-centered .vjs-big-play-button {
+    top: 50%;
+    left: 50%;
+    margin-top: -0.75em;
+    margin-left: -0.75em;
   }
 
   .caption {

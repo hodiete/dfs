@@ -98,6 +98,12 @@
             "cd docroot && ../scripts/wny/update-htaccess.sh ../patches/htaccess-redirects.patch && cd -",
             "cd docroot && ../scripts/wny/update-htaccess.sh ../patches/htaccess-ssl.patch && cd -",
             "rm -f docroot/.htaccess.orig"
+        ],
+        "post-install-cmd": [
+            "cd docroot/profiles/custom/webny/libraries && npm install && rsync -a node_modules/ ./ && rm -rf node_modules/*"
+        ],
+        "post-update-cmd": [
+            "cd docroot/profiles/custom/webny/libraries && npm install && rsync -a node_modules/ ./ && rm -rf node_modules/*"
         ]
     },
     "repositories": {
@@ -160,11 +166,23 @@
             "docroot/profiles/custom/webny/modules/contrib/{$name}": [
                 "type:drupal-module"
             ],
+            "docroot/modules/custom/{$name}": [
+                "type:drupal-custom-module"
+            ],
             "docroot/profiles/contrib/{$name}": [
                 "type:drupal-profile"
             ],
+            "docroot/profiles/custom/{$name}": [
+                "type:drupal-custom-profile"
+            ],
             "docroot/profiles/custom/webny/themes/contrib/{$name}": [
                 "type:drupal-theme"
+            ],
+            "docroot/themes/custom/{$name}": [
+                "type:drupal-custom-theme"
+            ],
+            "docroot/profiles/custom/webny/libraries/{$name}": [
+                "type:drupal-library"
             ],
             "drush/contrib/{$name}": [
                 "type:drupal-drush"
