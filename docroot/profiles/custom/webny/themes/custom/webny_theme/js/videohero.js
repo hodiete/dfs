@@ -48,7 +48,6 @@ var videojs = typeof videojs == 'undefined' ? {} : videojs;
                 techOrder: [tech],
                 src: {type: tech, src: src},
                 controls: true,
-                aspectRatio: '16:9',
                 fluid: false
               };
 
