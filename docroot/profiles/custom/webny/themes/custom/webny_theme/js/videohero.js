@@ -44,19 +44,20 @@ var videojs = typeof videojs == 'undefined' ? {} : videojs;
             // START VIDEO
             if(tech === 'youtube' || tech === 'Vimeo') {
 
-              $('.hero-video-frame .videojs')
-                .removeClass('videojs-heroplayer-youtube-dimensions')
-                .removeClass('videojs-heroplayer-vimeo-dimensions');
-
               var options = {
                 techOrder: [tech],
                 src: {type: tech, src: src},
-                controls: true,
-                fluid: false
+                controls: true
               };
 
               heroPlayer = videojs(id, options);
               heroPlayer.play();
+
+              // REMOVE THE FLUID STATEMENT FOR VIMEO
+              $('.hero-video-inner .videojs')
+                .removeClass('vjs-fluid')
+                .removeClass('videojs-heroplayer-youtube-dimensions')
+                .removeClass('videojs-heroplayer-vimeo-dimensions');
 
             }
           }
