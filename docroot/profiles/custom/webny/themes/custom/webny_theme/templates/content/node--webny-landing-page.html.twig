@@ -163,14 +163,15 @@
 
                 {% if video_tech is not null and video_tech != 'brightcove' %}
                     <video id="videojs-heroplayer-{{ video_tech|lower }}"
-                           class="video-js hero-video-player hero-type-{{ video_tech|lower }}"
+                           class="video-js {% if video_tech == 'Vimeo' %} vjs-16-9 {% endif %} hero-video-player hero-type-{{ video_tech|lower }}"
                             {% if video_tech == 'Vimeo' or video_tech == 'brightcove' %}
                                 controls
                             {% endif %}
 
                            data-setup='{
                                  "techOrder": ["{{ video_tech }}"],
-                                 "sources": [{ "type": "{{ video_type }}", "src": "{{ video_url }}"}]
+                                 "sources": [{ "type": "{{ video_type }}", "src": "{{ video_url }}"}],
+                                 "fluid": false
                                   {% if video_tech == 'youtube' %}
                                     , "youtube": { "ytControls": 2 }
                                   {% endif %}
