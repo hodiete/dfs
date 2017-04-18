@@ -361,8 +361,6 @@ $hero-keyword-text-color: $color-mono-white !default;
     overflow: hidden;
   }
 
-
-
 } // END HERO-LAYOUT
 
 // ######################################################################### //
@@ -609,3 +607,28 @@ $hero-keyword-text-color: $color-mono-white !default;
   }
 
 } // END DESKTOP VIEW
+
+// OVERRIDES
+// ######################################################################### //
+/* HERO VIDEO FIX FOR VIMEO -- 575-767 */
+@media (min-width: 575px) and (max-width: 767px) {
+  .hero-layout {
+    .hero-video-frame {
+      min-height: 420px;
+      .hero-video-inner {
+        .video-js.vjs-vimeo {
+          max-width: 767px;
+          min-height: 420px;
+        }
+      }
+    }
+  }
+}
+
+// ######################################################################### //
+/* HERO VIDEO FIX FOR VIMEO -- 768-910 */
+@media (min-width: 48em) and (max-width: 910px) {
+  .hero-layout .hero-video-frame .hero-video-inner .video-js.vjs-vimeo > .vjs-control-bar {
+    width: auto;
+  }
+}
