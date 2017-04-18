@@ -299,9 +299,10 @@ $hero-keyword-text-color: $color-mono-white !default;
         width: auto;
       }
       .vimeoplayer {  }
-      .vimeoFrame {
-        position: relative;
+      #videojs-heroplayer-vimeo.video-js.vjs-16-9{
+        padding-top: 0;
       }
+      .vimeoFrame {  }
 
       .hero-type-youtube .vjs-control-bar{
         display: none !important;
@@ -354,6 +355,10 @@ $hero-keyword-text-color: $color-mono-white !default;
   }
   .video-js.vjs-default-skin.vjs-paused .vjs-big-play-button {
     display: block !important;
+  }
+
+  #videojs-heroplayer-vimeo_Vimeo_api.vimeoplayer{
+    overflow: hidden;
   }
 
 
