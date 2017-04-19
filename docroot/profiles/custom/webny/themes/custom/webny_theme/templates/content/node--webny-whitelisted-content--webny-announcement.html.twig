@@ -5,7 +5,7 @@
  * OVERRIDE the whitelisted content display for announcements reference.
  */
 #}
-{% set whitelistlink = content.field_webny_whitelist_link_url[0]['#url'].uri %}
+{% set whitelistlink = content.field_webny_whitelist_link_url[0]['#url'] %}
 
 {# setting title variable so it can be used 2x #}
 {%  if(node.field_webny_whitelist_stitle.value is not empty and node.field_webny_whitelist_stitle.value is not null) %}
