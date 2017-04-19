@@ -62,4 +62,15 @@ videojs-vimeo:
   js:
     ../../../libraries/videojs-vimeo/src/Vimeo.js: {}
   dependencies:
+    - webny_theme/video-js
+
+videohero:
+  js:
+    js/videohero.js: {}
+  dependencies:
+    - core/drupal
     - webny_theme/videojs
+    - webny_theme/videojs-ie8
+    - webny_theme/videojs-youtube
+    - webny_theme/videojs-vimeo
+    - core/jquery
