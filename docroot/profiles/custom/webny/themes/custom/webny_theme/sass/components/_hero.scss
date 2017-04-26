@@ -27,6 +27,18 @@
 //
 // Style guide: components.hero.news
 
+// Hero Video Frame
+//
+// Styling for the Hero with a Video Frame. This is an example of the video after the 'watch now' button has been clicked.
+//
+// For more information please see the story source: https://itswebny.atlassian.net/browse/NDD-923
+//
+// Markup: hero-video-shown.hbs
+//
+// Style guide: components.hero.video-one
+
+
+
 // color variables
 $hero-bkgd-color: $color-secondary !default;
 $hero-text-color: $color-mono-white !default;
@@ -219,6 +231,25 @@ $hero-keyword-text-color: $color-mono-white !default;
     text-align: left;
   }
 
+  .hero-live-now{
+    background-color: #E90000;
+    color: #fff;
+    width: 80px;
+    padding: 7px 4px;
+    margin-bottom: 6px;
+
+    p{
+      font-family: $oswald;
+      letter-spacing: 2px;
+      font-weight: bold;
+      font-size: 14px;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+
+    }
+  }
+
   // =====================================================================
   // HERO HAS NO IMAGE -- MAKE RELATIVE
 
@@ -239,6 +270,100 @@ $hero-keyword-text-color: $color-mono-white !default;
 
   .hero-no-image.hero-news {
     display: none;
+  }
+
+  // =====================================================================
+  // HERO HAS A VIDEO OPTION - OVERRIDE VIDEOJS STYLES
+
+  .hero-video-frame{
+    position: relative;
+    width: 100%;
+    min-height: 320px;
+
+    .hero-video-inner {
+      .video-js {
+        .vjs-tech{
+          border: 0;
+        }
+        width: 100%;
+        margin: 0 auto;
+        min-height: 320px;
+        border: 0;
+      }
+
+      // YOUTUBE OVERRIDE
+      .hero-type-youtube {  }
+
+      .vjs-control-bar {
+        margin: 0 auto;
+        width: auto;
+      }
+      .vimeoplayer {  }
+      .videojs-heroplayer-youtube-dimensions.vjs-fluid,
+      #videojs-heroplayer-vimeo.video-js.vjs-16-9{
+        padding-top: 0;
+      }
+      .vimeoFrame {  }
+
+      .hero-type-youtube .vjs-control-bar{
+        display: none !important;
+      }
+
+    }
+  }
+
+  #hero-video-frame{
+    background-color: #000;
+  }
+
+  .hero-video-close{
+    position: absolute;
+    top: 10px;
+
+    // CONSULT DT ON LEFT OR RIGHT PLACEMENT OF CLOSE
+    right: 10px;
+    z-index: 12;
+
+    a{
+      @include icon(before,close-button);
+      color: #fff;
+      font-size: 30px;
+      opacity: .4;
+      text-decoration: none;
+
+      &:hover{
+        opacity: 1;
+      }
+    }
+  }
+
+  .hero-video-hide{
+    display: none;
+  }
+  .hero-video-show{
+    display: block;
+  }
+  .hero-bkg-removed{
+    background-size: 0;
+    background-color: #000;
+  }
+  .hero-meta-change{
+    background-color: #000;
+    height: 425px;
+  }
+  .video_hero_button > a{
+    @include icon(before, play-button);
+  }
+  .video-js.vjs-default-skin.vjs-paused .vjs-big-play-button {
+    display: block !important;
+  }
+
+  #videojs-heroplayer-vimeo_Vimeo_api.vimeoplayer{
+    overflow: hidden;
+  }
+
+  .ytp-chrome-controls{
+    width: auto;
   }
 
 } // END HERO-LAYOUT
@@ -341,7 +466,6 @@ $hero-keyword-text-color: $color-mono-white !default;
       font-weight: 800;
     }
 
-
     // =====================================================================
     // HERO HAS AN IMAGE
     .hero-image-wrap{
@@ -359,18 +483,74 @@ $hero-keyword-text-color: $color-mono-white !default;
       .hero-news-inner.hero-has-image-content{
         padding: 40px 4%;
       }
-
     }
 
+    // =====================================================================
+    // VIDEO FRAME
+    .hero-video-frame {
+      .hero-video-inner {
+        .video-js {
+          margin: 0 auto;
+          height: 426px;
+          width: 760px;
+        }
+
+        // YOUTUBE OVERRIDE
+        .hero-type-youtube{
+          height: 427px;
+        }
+
+        .vjs-control-bar {
+          width: 760px;
+        }
+
+        .hero-type-vimeo{
+          height: 428px;
+        }
+
+        .vimeoplayer{ }
+        .vimeoFrame {
+          position: relative;
+        }
+      }
+    } // END VIDEO FRAME SECTION
+
+    .hero-video-close{
+      a{
+        font-size: 50px;
+      }
+    }
 
   } // END HERO-layout
 
+
   .front {
     .hero-layout {
+
       .hero-landing-inner {
         width: 50%;
         max-width: 600px;
       }
+
+      .hero-video-frame {
+        .hero-video-inner {
+          .video-js {
+            width: 910px;
+            height: 512px;
+          }
+
+          .vjs-control-bar {
+            width: 910px;
+          }
+
+          // YOUTUBE OVERRIDE
+          .hero-type-youtube{
+            height: 512px;
+            padding: 0;
+          }
+        }
+      }
+
     }
   }
 
@@ -432,3 +612,28 @@ $hero-keyword-text-color: $color-mono-white !default;
   }
 
 } // END DESKTOP VIEW
+
+// OVERRIDES
+// ######################################################################### //
+/* HERO VIDEO FIX FOR VIMEO -- 575-767 */
+@media (min-width: 575px) and (max-width: 767px) {
+  .hero-layout {
+    .hero-video-frame.heroplayer-vimeo {
+      min-height: 420px;
+      .hero-video-inner {
+        .video-js.vjs-vimeo {
+          max-width: 767px;
+          min-height: 420px;
+        }
+      }
+    }
+  }
+}
+
+// ######################################################################### //
+/* HERO VIDEO FIX FOR VIMEO -- 768-910 */
+@media (min-width: 48em) and (max-width: 910px) {
+  .hero-layout .hero-video-frame .hero-video-inner .video-js.vjs-vimeo > .vjs-control-bar {
+    width: auto;
+  }
+}

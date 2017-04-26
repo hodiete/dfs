@@ -97,6 +97,7 @@ Feature: Check for the existence and fields of content types
     And I should see text matching "Hero/Title Visibility Options"
     And I should see text matching "Hero Button \(additional\)"
     And I should see text matching "Hero Button"
+    And I should see text matching "Hero Video URL"
     And I should see text matching "Frames of Content"
     And I should see text matching "Add Card"
     And I should see text matching "Add Announcement"
@@ -105,6 +106,8 @@ Feature: Check for the existence and fields of content types
     And I should see text matching "Add Get Involved"
     And I should see text matching "Add WYSIWYG"
     And I should see text matching "Views Field"
+    And I should see text matching "Add Social Media" 
+    And I should not see text matching "Add Phone Contact"
 
 # Check for the existence of a content type
 # CONTENT TYPE: Landing Page

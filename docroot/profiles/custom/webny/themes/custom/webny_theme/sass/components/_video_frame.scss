@@ -1,0 +1,118 @@
+// Video Frame
+//
+// Video Frame styling
+//
+// Markup: video_frame.hbs
+//
+// Style guide: components.video_frame
+
+.paragraph--type--webny-video-pgtype {
+  margin: 0 auto;
+  text-align: center;
+  position:relative;
+  max-width: 660px;
+
+  // Necessary override because the big play button is hidden by default for some reason.
+  .video-js.vjs-default-skin.vjs-paused .vjs-big-play-button { display:block }
+
+  // YOUTUBE: Override Youtube.js injectCSS to show big play button on image overlay for mobile
+  .video-js.vjs-default-skin.vjs-youtube-mobile.vjs-paused .vjs-big-play-button { display: block }
+
+  // YOUTUBE: Hide control bar
+  .video-js.vjs-default-skin.vjs-youtube.vjs-has-started .vjs-control-bar { display: none }
+
+  // Hide big play button if paused beyond the initial overlay screen
+  .video-js.vjs-default-skin.vjs-has-started.vjs-paused .vjs-big-play-button { display: none }
+
+  .video-js {
+    position: relative;
+    margin: 0 auto;
+  }
+
+
+  // HEADLINE
+  h2 {
+
+    // 32px on internal inner page
+    font: $frame-headline;
+    .front & {
+      // 40px on home page;
+      font: $frame-headline-front;
+    }
+
+    line-height: 1.25em;
+    padding-bottom: 0;
+  }
+
+  // TITLE
+  h3 {
+    font: bold 0.88rem $oswald;
+    color: #000000;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+
+  // DESCRIPTION
+  p {
+    margin: 1.5rem 0 2.25rem;
+    font-size: $frame-base-font-size;
+    line-height: $frame-base-line-height;
+  }
+}
+
+.vimeoFrame { position: absolute !important; top: 0; right: 0; bottom: 0; left: 0; }
+
+.videocontent {
+  position: relative; // Needed position caption correctly
+
+  /* overriding vjs defaults */
+  .video-js.vjs-default-skin.vjs-16-9 {
+
+    .vjs-big-play-button {
+      background-color: rgba(0,0,0,.5);
+      width: 1.5em;
+      -webkit-border-radius: 1em;
+      -moz-border-radius: 1em;
+      border-radius: 1em;
+      z-index: 99; // Position above caption
+
+      &:before {
+        font-size: 0.8em;
+      }
+    }
+
+    &:not(.vjs-big-play-centered){
+      .vjs-big-play-button {
+        left: 1em;
+        top: inherit;
+        bottom: 1em;
+      }
+    }
+  }
+
+  .vjs-big-play-centered .vjs-big-play-button {
+    top: 50%;
+    left: 50%;
+    margin-top: -0.75em;
+    margin-left: -0.75em;
+  }
+
+  .caption {
+    font: bold 1.225rem $base-font; //~22px
+    position: absolute;
+    display: block;
+    bottom: 0px;
+    color: #FFF;
+    padding: 0 4em 1.7em 4em;
+    right: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 1; // Position below play button
+
+    &.playing {
+      opacity: 0;
+      display:none;
+    }
+  }
+}
