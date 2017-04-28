@@ -8,7 +8,10 @@ dependencies:
     - paragraphs.paragraphs_type.webny_bio_pgtype
     - paragraphs.paragraphs_type.webny_card_paragraph_type
     - paragraphs.paragraphs_type.webny_get_involved_pgtype
+    - paragraphs.paragraphs_type.webny_social_media_connect
     - paragraphs.paragraphs_type.webny_summary_pgtype
+    - paragraphs.paragraphs_type.webny_tbd_pgtype
+    - paragraphs.paragraphs_type.webny_video_pgtype
     - paragraphs.paragraphs_type.webny_wysiwyg_pgtype
   module:
     - entity_reference_revisions
@@ -32,23 +35,38 @@ settings:
       webny_summary_pgtype: webny_summary_pgtype
       webny_get_involved_pgtype: webny_get_involved_pgtype
       webny_wysiwyg_pgtype: webny_wysiwyg_pgtype
+      webny_video_pgtype: webny_video_pgtype
+      webny_social_media_connect: webny_social_media_connect
+      webny_tbd_pgtype: webny_tbd_pgtype
     target_bundles_drag_drop:
       webny_card_paragraph_type:
+        enabled: true
         weight: 2
-        enabled: false
       webny_announcement_pgtype:
+        enabled: true
         weight: 3
-        enabled: false
       webny_bio_pgtype:
+        enabled: true
         weight: 6
-        enabled: false
       webny_summary_pgtype:
+        enabled: true
         weight: 8
-        enabled: false
       webny_get_involved_pgtype:
+        enabled: true
         weight: 10
-        enabled: false
       webny_wysiwyg_pgtype:
+        enabled: true
         weight: 12
+      webny_phone_contact:
+        weight: 13
         enabled: false
+      webny_video_pgtype:
+        enabled: true
+        weight: 15
+      webny_social_media_connect:
+        enabled: true
+        weight: 16
+      webny_tbd_pgtype:
+        enabled: true
+        weight: 18
 field_type: entity_reference_revisions

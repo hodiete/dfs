@@ -7,21 +7,11 @@
 
   <!-- Override the core ci:build:validate:test target to include a local refresh against multiple remote targets-->
   <target name="ci:build:validate:test" description="Builds, validates, tests, and deploys an artifact."
-          depends="validate:all, ci:setup, tests:security-updates, tests:phpunit, tests:behat, ci:build:validate:test:dev, ci:build:validate:test:uat, ci:build:validate:test:prod" />
+          depends="validate:all, ci:setup, tests:security-updates, tests:phpunit, tests:behat, ci:build:validate:test:prod" />
 
   <target name="ci:update:test" description="Runs local:update and then behat tests, run after local syncs"
           depends="local:update, tests:behat" />
 
-  <!-- Tests designated dev site from project.yml-->
-  <target name="ci:build:validate:test:dev" description="Pulls dev.dev and runs behat tests"
-          depends="local:sync:dev-dev">
-    <phingcall target="ci:update:test" />
-  </target>
-  <!-- Tests designated uat site from project.yml-->
-  <target name="ci:build:validate:test:uat" description="Pulls prod -> uat and runs behat tests"
-          depends="local:sync:uat-prod">
-    <phingcall target="ci:update:test" />
-  </target>
   <!-- Tests designated prod site from project.yml-->
   <target name="ci:build:validate:test:prod" description="Pulls prod -> ig and runs behat tests"
           depends="local:sync:ig-prod">
