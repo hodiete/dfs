@@ -11,6 +11,8 @@ $featured-card-frame-title-color: $color-primary !default;
 $featured-card-frame-headline-color: $color-mono-black !default;
 $featured-card-arrow-color: $color-primary !default;
 $featured-card-arrow-color-hover: $color-secondary !default;
+$featured-card-icon-color: $color-primary !default;
+$featured-card-icon-color-hover: $color-secondary !default;
 
 // CARDS WRAPPER FOR PADDING
 .cards-wrap{
@@ -151,6 +153,64 @@ $featured-card-arrow-color-hover: $color-secondary !default;
     color: $color-mono-black;
   }
 }
+
+.webny-card .webny-card-share-bar {
+  position:relative;
+  padding: .75em 1em;
+  background-color:$call-to-action;
+  border-top: 1px solid $gray-lite;
+
+  letter-spacing: 1px;
+
+  .webny-card-share-button {
+    display: inline-block;
+    width: 20%;
+
+    .icon-email {
+      font-size: 1.25em;
+      color: $featured-card-icon-color;
+      &:hover {
+        color: $featured-card-icon-color-hover;
+      }
+    }
+
+    .icon-facebook {
+      font-size: 1.25em;
+      color: $featured-card-icon-color;
+      &:hover {
+        color: $featured-card-icon-color-hover;
+      }
+    }
+
+    .icon-twitter {
+      font-size: 1.25em;
+      color: $featured-card-icon-color;
+      &:hover {
+        color: $featured-card-icon-color-hover;
+      }
+    }
+  }
+
+  .webny-card-share-right {
+    float: right;
+    .icon-share {
+      font-weight: bold;
+      color: $featured-card-arrow-color;
+      &:hover {
+        color: $featured-card-arrow-color-hover;
+      }
+    }
+  }
+
+  a {
+    padding-left: 5px;
+    font-size: 13px;
+    text-transform:uppercase;
+    text-decoration: none;
+    color: $color-mono-black;
+  }
+}
+
 
 .icon-right-caret{ @include icon(before, fa-caret-right);}
 
