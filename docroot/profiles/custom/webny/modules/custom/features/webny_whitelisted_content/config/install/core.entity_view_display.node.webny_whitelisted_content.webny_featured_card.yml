@@ -31,12 +31,14 @@ content:
       date_format: 'F j, Y | g A T'
     third_party_settings: {  }
     type: datetime_custom
+    region: content
   field_webny_whitelist_descript:
     type: text_default
     weight: 3
     label: hidden
     settings: {  }
     third_party_settings: {  }
+    region: content
   field_webny_whitelist_image:
     weight: 0
     label: hidden
@@ -55,6 +57,7 @@ content:
           rel: ''
           text: ''
     type: entity_reference_entity_view
+    region: content
   field_webny_whitelist_link_url:
     type: link
     weight: 4
@@ -66,6 +69,7 @@ content:
       rel: ''
       target: ''
     third_party_settings: {  }
+    region: content
   field_webny_whitelist_stitle:
     type: string
     weight: 1
@@ -73,6 +77,7 @@ content:
     settings:
       link_to_entity: false
     third_party_settings: {  }
+    region: content
 hidden:
   body: true
   field_webny_whitelist_agency_key: true

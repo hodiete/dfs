@@ -34,6 +34,7 @@ content:
     weight: 8
     settings: {  }
     third_party_settings: {  }
+    region: content
   field_webny_news_agency_keywords:
     weight: 13
     label: hidden
@@ -41,6 +42,7 @@ content:
       link: true
     third_party_settings: {  }
     type: entity_reference_label
+    region: content
   field_webny_news_attdocs_eref:
     type: entity_reference_entity_view
     weight: 16
@@ -49,6 +51,7 @@ content:
       view_mode: attached_documents
       link: false
     third_party_settings: {  }
+    region: content
   field_webny_news_contact_info:
     weight: 11
     label: hidden
@@ -69,6 +72,7 @@ content:
           text: ''
         linked: 0
     type: entity_reference_entity_view
+    region: content
   field_webny_news_date:
     weight: 12
     label: hidden
@@ -77,6 +81,7 @@ content:
       date_format: 'F j, Y'
     third_party_settings: {  }
     type: datetime_custom
+    region: content
   field_webny_news_description:
     type: text_trimmed
     weight: 5
@@ -84,6 +89,7 @@ content:
     settings:
       trim_length: 600
     third_party_settings: {  }
+    region: content
   field_webny_news_docsec_subtitle:
     type: string
     weight: 15
@@ -91,6 +97,7 @@ content:
     settings:
       link_to_entity: false
     third_party_settings: {  }
+    region: content
   field_webny_news_docsec_title:
     type: string
     weight: 14
@@ -98,6 +105,7 @@ content:
     settings:
       link_to_entity: false
     third_party_settings: {  }
+    region: content
   field_webny_news_global_keywords:
     weight: 6
     label: hidden
@@ -105,6 +113,7 @@ content:
       link: true
     third_party_settings: {  }
     type: entity_reference_label
+    region: content
   field_webny_news_hero_title:
     weight: 4
     label: hidden
@@ -112,6 +121,7 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+    region: content
   field_webny_news_image:
     weight: 3
     label: hidden
@@ -132,26 +142,31 @@ content:
           text: ''
         linked: 0
     type: entity_reference_entity_view
+    region: content
   field_webny_news_location:
     weight: 10
     label: hidden
     settings: {  }
     third_party_settings: {  }
     type: text_default
+    region: content
   field_webny_news_subtitles:
     weight: 7
     label: hidden
     settings: {  }
     third_party_settings: {  }
     type: text_default
+    region: content
   links:
     weight: 1
     settings: {  }
     third_party_settings: {  }
+    region: content
   workbench_moderation_control:
     weight: 0
     settings: {  }
     third_party_settings: {  }
+    region: content
 hidden:
   field_webny_news_category: true
   field_webny_news_short_title: true
