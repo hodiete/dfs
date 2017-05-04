@@ -28,6 +28,7 @@ content:
       link: true
     third_party_settings: {  }
     type: entity_reference_label
+    region: content
   field_webny_whitelist_date:
     weight: 3
     label: above
@@ -36,12 +37,14 @@ content:
       timezone_override: ''
     third_party_settings: {  }
     type: datetime_default
+    region: content
   field_webny_whitelist_descript:
     weight: 2
     label: above
     settings: {  }
     third_party_settings: {  }
     type: text_default
+    region: content
   field_webny_whitelist_global_key:
     weight: 7
     label: above
@@ -49,6 +52,7 @@ content:
       link: true
     third_party_settings: {  }
     type: entity_reference_label
+    region: content
   field_webny_whitelist_image:
     weight: 5
     label: above
@@ -56,6 +60,7 @@ content:
       link: true
     third_party_settings: {  }
     type: entity_reference_label
+    region: content
   field_webny_whitelist_link_url:
     weight: 4
     label: above
@@ -67,14 +72,17 @@ content:
       target: ''
     third_party_settings: {  }
     type: link
+    region: content
   links:
     weight: 1
     settings: {  }
     third_party_settings: {  }
+    region: content
   workbench_moderation_control:
     weight: 0
     settings: {  }
     third_party_settings: {  }
+    region: content
 hidden:
   body: true
   field_webny_whitelist_stitle: true

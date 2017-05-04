@@ -24,6 +24,7 @@ content:
       preview_image_style: thumbnail
     third_party_settings: {  }
     type: image_image
+    region: content
   field_media_keywords:
     type: entity_reference_autocomplete_tags
     weight: 2
@@ -32,11 +33,13 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+    region: content
   langcode:
     type: language_select
     weight: 2
     settings: {  }
     third_party_settings: {  }
+    region: content
   name:
     type: string_textfield
     weight: 0
@@ -44,6 +47,7 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+    region: content
 hidden:
   created: true
   field_description: true

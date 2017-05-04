@@ -55,6 +55,13 @@ before_install:
   - git config --global user.email "noreply@travis-ci.org"
   - mysql -u root -e "CREATE DATABASE drupal; CREATE USER 'drupal'@'localhost' IDENTIFIED BY 'drupal'; GRANT ALL ON drupal.* TO 'drupal'@'localhost';"
   - echo "extension = memcached.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
+  # Tweak PHP configuration.
+  # Copied from Lightning.
+  # We were getting an error where drush si is trying to send mail even though the flag to prevent that was set.
+  - echo 'max_execution_time = 120' >> drupal.php.ini;
+  - echo 'sendmail_path = /bin/true' >> drupal.php.ini;
+  - phpenv config-add drupal.php.ini
+  - phpenv rehash
 
 install:
   # Load composer dependencies.
