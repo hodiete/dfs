@@ -2701,6 +2701,18 @@ function webny_configuration_update_8126()
 }
 
 /**
+ * Implements hook_update_n().
+ *
+ * enable update manager
+ */
+function webny_configuration_update_8127()
+{
+
+    \Drupal::service('module_installer')
+        ->install(['editor_advanced_link']);
+}
+
+/**
  * Helper function to enable a Drupal module and print the result.
  *
  * @param string $module_name
