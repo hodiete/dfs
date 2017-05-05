@@ -187,42 +187,47 @@ blockquote {
 //
 // Style guide: base.lists
 
-// OL items
+// need to make this more specific to the distro, conflicting with unav with straight li
+.layout-container {
+  // OL items
 
-ol {
-  padding: 0 0 0 30px;
-  margin: 0 0 1px;
-  li {
-    margin: 4px 0;
-    padding: 0;
+  ol {
+    padding: 0 0 0 30px;
+    margin: 0 0 1px;
+    li {
+      margin: 4px 0;
+      padding: 0;
+    }
   }
-}
 
-ol ol {
-  padding: 0 0 0 22.5px;
-}
-
-ol ol ol {
-  padding: 0 0 0 22.5px;
-}
-
-// UL items
-
-ul {
-  padding: 0 0 0 30px;
-  margin: 0 0 1px;
-  li {
-    margin: 4px 0;
-    padding: 0;
+  ol ol {
+    padding: 0 0 0 22.5px;
   }
-}
 
-ul ul {
-  padding: 0 0 0 22.5px;
-}
+  ol ol ol {
+    padding: 0 0 0 22.5px;
+  }
 
-ul ul ul {
-  padding: 0 0 0 22.5px;
+  // UL items
+
+  ul {
+    padding: 0 0 0 30px;
+    margin: 0 0 1px;
+    li {
+      margin: 4px 0;
+      padding: 0;
+    }
+  }
+
+  ul ul {
+    padding: 0 0 0 22.5px;
+  }
+
+  ul ul ul {
+    padding: 0 0 0 22.5px;
+  }
+
+//close wrapping layout-container
 }
 
 // Tables
