@@ -162,9 +162,24 @@ $featured-card-icon-color-hover: $color-secondary !default;
 
   letter-spacing: 1px;
 
+  .webny-card-share-elements {
+    display: inline;
+    width: 0;
+    height: 19px;
+    float: left;
+    overflow: hidden;
+
+    -webkit-transition: width 1s ease-in-out;
+    -moz-transition: width 1s ease-in-out;
+    -o-transition: width 1s ease-in-out;
+    transition: width 1s ease-in-out;
+
+  }
+
   .webny-card-share-button {
     display: inline-block;
     width: 20%;
+    cursor: pointer;
 
     .icon-email {
       font-size: 1.25em;
@@ -192,11 +207,11 @@ $featured-card-icon-color-hover: $color-secondary !default;
   }
 
   .webny-card-share-right {
-    float: right;
     .icon-share {
       font-weight: bold;
       color: $featured-card-arrow-color;
       &:hover {
+        cursor: pointer;
         color: $featured-card-arrow-color-hover;
       }
     }
