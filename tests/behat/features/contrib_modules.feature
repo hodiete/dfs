@@ -10,7 +10,7 @@ Feature: Contibuted Modules Test
 # MODULE NAME: Webforms - MACHINE_NAME: webform
 # ROLE: administrator
   Scenario: Check if the YAML Form module is installed
-    Given I am logged in as a user with the administrator role
+    Given I am logged into the distro with the "administrator" role 
     When I am on "/admin/modules"
     And I should see text matching "Webform"
     And I should see text matching "Webform Node"
@@ -18,7 +18,7 @@ Feature: Contibuted Modules Test
 
 # CHECK TO ENSURE THE YAML FORM MODULE IS ENABLED
   Scenario: Check if the Webform module is enabled
-    Given I am logged in as a user with the administrator role
+    Given I am logged into the distro with the "administrator" role
     When I am on "/admin/structure/webform"
     Then I should not get a 404 HTTP response
     And I should not see "Access denied"

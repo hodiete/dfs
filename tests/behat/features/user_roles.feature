@@ -6,7 +6,7 @@ I should be able to view user roles that exists
 
 # Check that administrator role exists
   Scenario: An administrative user should be able to view user roles
-    Given I am logged in as a user with the "administrator" role
+    Given I am logged into the distro with the "administrator" role 
     When I go to "/admin/people/roles"
     Then I should not see "Access denied"
     And I should see "Administrator"

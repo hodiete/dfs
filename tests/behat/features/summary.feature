@@ -6,7 +6,7 @@ Feature: Summary Frame Paragraph Tests
 
 # Paragraph type checks
   Scenario: Check the paragraphy type to see if the Summary Frame exists
-    Given I am logged in as a user with the "administrator" role
+    Given I am logged into the distro with the "administrator" role 
     When I am on "/admin/structure/paragraphs_type/webny_summary_pgtype"
     Then I should not get a 404 HTTP response
     When I am on "/admin/structure/paragraphs_type/webny_summary_pgtype/fields"
