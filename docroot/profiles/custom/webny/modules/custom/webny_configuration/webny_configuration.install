@@ -2713,6 +2713,18 @@ function webny_configuration_update_8127()
 }
 
 /**
+ * Implements hook_update_n().
+ *
+ * refresh webny_wysiwyg_frame
+ */
+function webny_configuration_update_8128() {
+    \Drupal::service('module_installer')
+        ->uninstall(['webny_wysiwyg_frame']);
+    \Drupal::service('module_installer')
+        ->install(['webny_wysiwyg_frame']);
+}
+
+/**
  * Helper function to enable a Drupal module and print the result.
  *
  * @param string $module_name
