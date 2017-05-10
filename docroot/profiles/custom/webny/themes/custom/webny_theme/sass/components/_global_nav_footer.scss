@@ -225,19 +225,10 @@ $nav-bottom-text-transform:             $global-footer-top-text-transform ;
 
   /* need to fix this to allow different agency color schemes, need to add svg option see NDD-92 notes */
   .social-media {
-    a[class="imgico_blogger"]::before {     // @include icon(before,fa-blogger);
-      background-image: url(../icons/social/black/icon-social-blogger.png);
-      width: 20px;
-      height: 20px;
-      background-clip: content-box;
-    }
+    a[class="imgico_blogger"]{@include icon(before, fa-icon-blogger2);}
 
-    a[class="imgico_delicious"]::before {  // @include icon(before, fa-delicious);
-      background-image: url(../icons/social/black/icon-social-delicious.png);
-      width: 20px;
-      height: 20px;
-      background-clip: content-box;
-    }
+    a[class="imgico_delicious"]{@include icon(before, fa-delicious);}
+
     a[class="imgico_facebook"]{@include icon(before,fa-facebook);}
 
     a[class="imgico_feed"]{@include icon(before, fa-rss);}
