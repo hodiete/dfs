@@ -4,7 +4,7 @@ Feature: Base Admin page tests
 
 # Check Global Nav page access
   Scenario: See if proper access to the Global Nav page exists
-    Given I am logged in as a user with the "administrator" role
+    Given I am logged into the distro with the "administrator" role
     When I am on "/admin/config/webny-globalnav"
     Then I should not get a 404 HTTP response
     And I should not see "Access denied"
@@ -12,7 +12,7 @@ Feature: Base Admin page tests
 
 # Check contact page access
   Scenario: See if proper access to the contact page exists
-    Given I am logged in as a user with the "administrator" role
+    Given I am logged into the distro with the "administrator" role
     When I am on "/admin/content"
     Then I should not get a 404 HTTP response
     And I should not see "Access denied"
@@ -20,7 +20,7 @@ Feature: Base Admin page tests
 
 # Check feature page access
   Scenario: See if proper access to features page exists
-    Given I am logged in as a user with the "administrator" role
+    Given I am logged into the distro with the "administrator" role
     When I am on "/admin/config/development/features"
     Then I should not get a 404 HTTP response
     And I should not see "Access denied"
@@ -28,7 +28,7 @@ Feature: Base Admin page tests
 
 # Check menu page access
   Scenario: See if proper access to menu overview page exists
-    Given I am logged in as a user with the "administrator" role
+    Given I am logged into the distro with the "administrator" role
     When I am on "/admin/structure/menu"
     Then I should not get a 404 HTTP response
     And I should not see "Access denied"
@@ -36,7 +36,7 @@ Feature: Base Admin page tests
 
 # Check user page access
   Scenario: See if proper access to user page exists
-    Given I am logged in as a user with the "administrator" role
+    Given I am logged into the distro with the "administrator" role
     When I am on "/admin/people"
     Then I should not get a 404 HTTP response
     And I should not see "Access denied"
@@ -44,7 +44,7 @@ Feature: Base Admin page tests
 
 # Check moderation states page access
   Scenario: See if proper access to moderation state page exists
-    Given I am logged in as a user with the "administrator" role
+    Given I am logged into the distro with the "administrator" role
     When I am on "/admin/structure/workbench-moderation/states"
     Then I should not get a 404 HTTP response
     And I should not see "Access denied"
@@ -52,7 +52,7 @@ Feature: Base Admin page tests
 
 # Check redirect page access
   Scenario: See if proper access to redirect page exists
-    Given I am logged in as a user with the "administrator" role
+    Given I am logged into the distro with the "administrator" role
     When I am on "/admin/config/search/redirect"
     Then I should not get a 404 HTTP response
     And I should not see "Access denied"

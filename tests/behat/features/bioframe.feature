@@ -6,7 +6,7 @@ Feature: Bioframe / Contact Content Type
 
 # Check to see if Three fields have been added to the contact content type
   Scenario: If I go to the contact content type, I should see Five (5) new fields and a title of BIO FRAME
-    Given I am logged in as a user with the administrator role
+    Given I am logged into the distro with the "administrator" role
     When I am on "/node/add/webny_contact"
     Then I should not see "Access denied"
     And I should see text matching "Professional Title"
@@ -18,7 +18,7 @@ Feature: Bioframe / Contact Content Type
 
 # Display modes checks for Bio Frame
   Scenario: Check the display modes to see if Announcement display exists
-    Given I am logged in as a user with the administrator role
+    Given I am logged into the distro with the "administrator" role
     When I am on "/admin/structure/display-modes/view"
     And I should see "Bio Frame"
     When I am on "/admin/structure/types/manage/webny_contact/display/webny_contact_bio_frame"
