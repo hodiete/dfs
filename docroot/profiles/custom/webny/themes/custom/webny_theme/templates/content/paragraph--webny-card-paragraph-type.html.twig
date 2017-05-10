@@ -50,91 +50,103 @@ view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
         {% block content %}
             {{ content.field_webny_card_pg_title }}
             {{ content.field_webny_card_pg_headline }}
-            {# try in morning to minimalize code #}
-            {{ set card_list[0] = paragraph.field_webny_card_list_1.0.value }}
-            {{ set card_list[1] = paragraph.field_webny_card_list_2.0.value }}
-            {{ set card_list[2] = paragraph.field_webny_card_list_3.0.value }}
-            {#{{ content.field_webny_card_entity_ref }}#}
             <div>
+            {# maximum amount of cards is 3, so look from 0 - 2 to capture each potential card #}
             {% for i in 0..2 %}
+                {# there is a chance of less than 3 cards, so verify the currently looped card exists #}
                 {% if content.field_webny_card_entity_ref[i] %}
+                    {# wrapper div #}
                     <div>
+                            {# render entity reference based on associated template file (opening article tag in this template #}
                             {{ content.field_webny_card_entity_ref[i] }}
+                            {# if first card includes a call to action #}
                             {% if (i == 0 and paragraph.field_webny_card_list_1.0.value == 'call_to_action') %}
                             <div class="webny-card-cta">
                               <span class="icon-right-caret">
-                                <a href="{{ url }}" title="{{ vtitle }}">Learn More</a>
+                                {# url portion from link field, title from referenced node, title portion from link field #}
+                                <a target="_blank" href="{{ paragraph.field_webny_card_cta_1.0.url }}" title="{{ content.field_webny_card_entity_ref[i]['#node'].getTitle() }}">{{ paragraph.field_webny_card_cta_1.0.title }}</a>
                               </span>
                             </div>
+                            {# if second card includes a call to action #}
                             {% elseif (i == 1 and paragraph.field_webny_card_list_2.0.value == 'call_to_action') %}
                             <div class="webny-card-cta">
                               <span class="icon-right-caret">
-                                <a href="{{ url }}" title="{{ vtitle }}">Learn More</a>
+                                {# url portion from link field, title from referenced node, title portion from link field #}
+                                <a target="_blank" href="{{ paragraph.field_webny_card_cta_2.0.url }}" title="{{ content.field_webny_card_entity_ref[i]['#node'].getTitle() }}">{{ paragraph.field_webny_card_cta_2.0.title }}</a>
                               </span>
                             </div>
+                            {# if third card includes a call to action #}
                             {% elseif (i == 2 and paragraph.field_webny_card_list_3.0.value == 'call_to_action') %}
                             <div class="webny-card-cta">
                               <span class="icon-right-caret">
-                                <a href="{{ url }}" title="{{ vtitle }}">Learn More</a>
+                                {# url portion from link field, title from referenced node, title portion from link field #}
+                                <a target="_blank" href="{{ paragraph.field_webny_card_cta_3.0.url }}" title="{{ content.field_webny_card_entity_ref[i]['#node'].getTitle() }}">{{ paragraph.field_webny_card_cta_3.0.title }}</a>
                               </span>
                             </div>
                             {% endif %}
-
+                            {# if first card includes a share bar #}
                             {% if (i == 0 and paragraph.field_webny_card_list_1.0.value == 'share_bar') %}
                                 <div class="webny-card-share-bar">
-                                    <div class="webny-card-share-button">
-                                        <a href="mailto:?Subject={{ site_name }}: {{ vtitle }}&Body={{ host }}{{ url }}" target="_blank"><span class="icon-email"></span></a>
-                                    </div>
-                                    <div class="webny-card-share-button">
-                                        <a href="http://www.facebook.com/share.php?u={{ host }}{{ url }}" target="_blank"><span class="icon-facebook"></span></a>
-                                    </div>
-                                    <div class="webny-card-share-button">
-                                        <a href="https://twitter.com/intent/tweet?text={{ vtitle }}&url={{ host }}{{ url }}" target="_blank"><span class="icon-twitter"></span></a>
+                                    <div class="webny-card-share-elements">
+                                        <div class="webny-card-share-button">
+                                            <a href="mailto:?Subject={{ site_name }}: {{ content.field_webny_card_entity_ref[i]['#node'].getTitle() }}&Body={{ host }}{{ card_url[i] }}" target="_blank"><span class="icon-email"></span></a>
+                                        </div>
+                                        <div class="webny-card-share-button">
+                                            <a href="http://www.facebook.com/share.php?u={{ host }}{{ card_url[i] }}" target="_blank"><span class="icon-facebook"></span></a>
+                                        </div>
+                                        <div class="webny-card-share-button">
+                                            <a href="https://twitter.com/intent/tweet?text={{ content.field_webny_card_entity_ref[i]['#node'].getTitle() }}&url={{ host }}{{ card_url[i] }}" target="_blank"><span class="icon-twitter"></span></a>
+                                        </div>
                                     </div>
                                     <div class="webny-card-share-right">
                                         <span class="icon-share">
-                                          <a href="">Share</a>
+                                          <a>Share</a>
                                         </span>
                                     </div>
                                 </div>
-
+                            {# if second card includes a share bar #}
                             {% elseif (i == 1 and paragraph.field_webny_card_list_2.0.value == 'share_bar') %}
                                 <div class="webny-card-share-bar">
-                                    <div class="webny-card-share-button">
-                                        <a href="mailto:?Subject={{ site_name }}: {{ vtitle }}&Body={{ host }}{{ url }}" target="_blank"><span class="icon-email"></span></a>
-                                    </div>
-                                    <div class="webny-card-share-button">
-                                        <a href="http://www.facebook.com/share.php?u={{ host }}{{ url }}" target="_blank"><span class="icon-facebook"></span></a>
-                                    </div>
-                                    <div class="webny-card-share-button">
-                                        <a href="https://twitter.com/intent/tweet?text={{ vtitle }}&url={{ host }}{{ url }}" target="_blank"><span class="icon-twitter"></span></a>
+                                    <div class="webny-card-share-elements">
+                                        <div class="webny-card-share-button">
+                                            <a href="mailto:?Subject={{ site_name }}: {{ content.field_webny_card_entity_ref[i]['#node'].getTitle() }}&Body={{ host }}{{ card_url[i] }}" target="_blank"><span class="icon-email"></span></a>
+                                        </div>
+                                        <div class="webny-card-share-button">
+                                            <a href="http://www.facebook.com/share.php?u={{ host }}{{ card_url[i] }}" target="_blank"><span class="icon-facebook"></span></a>
+                                        </div>
+                                        <div class="webny-card-share-button">
+                                            <a href="https://twitter.com/intent/tweet?text={{ content.field_webny_card_entity_ref[i]['#node'].getTitle() }}&url={{ host }}{{ card_url[i] }}" target="_blank"><span class="icon-twitter"></span></a>
+                                        </div>
                                     </div>
                                     <div class="webny-card-share-right">
                                         <span class="icon-share">
-                                          <a href="">Share</a>
+                                          <a>Share</a>
                                         </span>
                                     </div>
                                 </div>
-
+                            {# if third card includes a share bar #}
                             {% elseif (i == 2 and paragraph.field_webny_card_list_3.0.value == 'share_bar') %}
                                 <div class="webny-card-share-bar">
-                                    <div class="webny-card-share-button">
-                                        <a href="mailto:?Subject={{ site_name }}: {{ vtitle }}&Body={{ host }}{{ url }}" target="_blank"><span class="icon-email"></span></a>
-                                    </div>
-                                    <div class="webny-card-share-button">
-                                        <a href="http://www.facebook.com/share.php?u={{ host }}{{ url }}" target="_blank"><span class="icon-facebook"></span></a>
-                                    </div>
-                                    <div class="webny-card-share-button">
-                                        <a href="https://twitter.com/intent/tweet?text={{ vtitle }}&url={{ host }}{{ url }}" target="_blank"><span class="icon-twitter"></span></a>
+                                    <div class="webny-card-share-elements">
+                                        <div class="webny-card-share-button">
+                                            <a href="mailto:?Subject={{ site_name }}: {{ content.field_webny_card_entity_ref[i]['#node'].getTitle() }}&Body={{ host }}{{ card_url[i] }}" target="_blank"><span class="icon-email"></span></a>
+                                        </div>
+                                        <div class="webny-card-share-button">
+                                            <a href="http://www.facebook.com/share.php?u={{ host }}{{ card_url[i] }}" target="_blank"><span class="icon-facebook"></span></a>
+                                        </div>
+                                        <div class="webny-card-share-button">
+                                            <a href="https://twitter.com/intent/tweet?text={{ content.field_webny_card_entity_ref[i]['#node'].getTitle() }}&url={{ host }}{{ card_url[i] }}" target="_blank"><span class="icon-twitter"></span></a>
+                                        </div>
                                     </div>
                                     <div class="webny-card-share-right">
                                         <span class="icon-share">
-                                          <a href="">Share</a>
+                                          <a>Share</a>
                                         </span>
                                     </div>
                                 </div>
 
                             {% endif %}
+                        {# closing article tag from node template. feels wrong. #}
                         </article>
                     </div>
                 {% endif %}
