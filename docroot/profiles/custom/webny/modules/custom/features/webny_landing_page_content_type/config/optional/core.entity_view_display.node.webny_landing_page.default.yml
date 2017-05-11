@@ -8,6 +8,7 @@ dependencies:
     - field.field.node.webny_landing_page.field_webny_landing_hero_button2
     - field.field.node.webny_landing_page.field_webny_landing_hero_image
     - field.field.node.webny_landing_page.field_webny_landing_hero_title
+    - field.field.node.webny_landing_page.field_webny_landing_hero_vidurl
     - field.field.node.webny_landing_page.field_webny_landing_paragraph
     - field.field.node.webny_landing_page.field_webny_landing_short_title
     - field.field.node.webny_landing_page.field_webny_landing_subtitle2
@@ -29,7 +30,7 @@ bundle: webny_landing_page
 mode: default
 content:
   field_webny_landing_hero_button:
-    weight: 4
+    weight: 3
     label: hidden
     settings:
       trim_length: 19
@@ -52,7 +53,7 @@ content:
         linked: 0
     type: link
   field_webny_landing_hero_button2:
-    weight: 5
+    weight: 4
     label: hidden
     settings:
       trim_length: 19
@@ -76,7 +77,7 @@ content:
     type: link
   field_webny_landing_hero_image:
     type: entity_reference_entity_view
-    weight: 2
+    weight: 1
     label: hidden
     settings:
       view_mode: hero_image
@@ -95,15 +96,26 @@ content:
           text: ''
         linked: 0
   field_webny_landing_hero_title:
-    weight: 3
+    weight: 2
     label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+  field_webny_landing_hero_vidurl:
+    type: link
+    weight: 9
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
   field_webny_landing_paragraph:
     type: entity_reference_revisions_entity_view
-    weight: 6
+    weight: 5
     label: hidden
     settings:
       view_mode: default
@@ -116,19 +128,19 @@ content:
     third_party_settings: {  }
     type: text_default
   field_webny_landing_summary2:
-    weight: 7
+    weight: 6
     label: hidden
     settings: {  }
     third_party_settings: {  }
     type: text_default
   field_webny_landing_vis_options:
-    weight: 8
+    weight: 7
     label: hidden
     settings: {  }
     third_party_settings: {  }
     type: list_default
   field_webny_results_view_to_disp:
-    weight: 9
+    weight: 8
     label: hidden
     settings: {  }
     third_party_settings: {  }
@@ -137,5 +149,6 @@ hidden:
   field_webny_landing_agency_key: true
   field_webny_landing_global_key: true
   field_webny_landing_short_title: true
+  langcode: true
   links: true
   workbench_moderation_control: true

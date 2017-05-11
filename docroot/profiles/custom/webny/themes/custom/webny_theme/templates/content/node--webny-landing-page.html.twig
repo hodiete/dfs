@@ -2,23 +2,47 @@
 /**
  * @file
  * Theme override to display a node for webny-landing-page.
- *
- *
- *    -- WebNY Landing Page Content Type twig accessors --
- *
- */
-#}
-
-{#
-/*
  * Begin TWIG NODE-WEBNY-LANDING-PAGE Template
  */
 #}
+
+{{ attach_library('webny_theme/videohero') }}
 
 {# @PARAMS #}
 {% set hero_image = file_url(node.field_webny_landing_hero_image.entity.field_image.entity.uri.value) %}
 {% set title = '' %}
 {% set hero = '' %}
+
+{# @PARAMS VIDEO #}
+{% set video_player = node.id %}
+{% set video_tech = '' %}
+{% set video_url = node.field_webny_landing_hero_vidurl.uri %}
+{% set video_type = '' %}
+{% set video_poster_image = '' %}
+{% set hero_video_field = '' %}
+{% set video_class = '' %}
+{% set video_text = 'Watch Video' %}
+
+{# SET VIDEO TECH #}
+{% if ( ('youtube' in video_url) or ('youtu.be' in video_url) ) %}
+    {% set video_type = 'video/youtube' %}
+    {% set video_tech = 'youtube' %}
+{% elseif ('vimeo' in video_url) %}
+    {% set video_type = 'video/vimeo' %}
+    {% set video_tech = 'Vimeo' %}
+{% elseif ('brightcove' in video_url) %}
+    {% set video_type = 'brightcove' %}
+    {% set video_tech = 'brightcove' %}
+    {% set video_text = "Watch Live" %}
+{% endif %}
+
+{# SET WHETHER OR NO THERE IS AN IMAGE #}
+{% if hero_image == '/' %}
+  {% set has_image = 'hero-vid-image' %}
+{% else %}
+    {% set has_image = 'hero-vid-noimage' %}
+{% endif %}
+
 
 {# GET VARS FOR DISPLAYING HERO AND TITLES #}
 {%  for k,v in node.field_webny_landing_vis_options %}
@@ -39,7 +63,6 @@
 {% endif %}
 
 
-
 {% if title == 'show' %}
 
 <article {{ attributes.addClass('title-layout') }}>
@@ -49,26 +72,24 @@
         {{ title_prefix }}
     {% endif %}
 
-
     <div class="landing-title-area">
 
-    <!-- HEADLINE LABEL -->
-    <div class="landing-title">
-        <h1>{{ label }}</h1>
-    </div>
+        <!-- HEADLINE LABEL -->
+        <div class="landing-title">
+            <h1>{{ label }}</h1>
+        </div>
 
-    <!-- SUBTITLE LABEL -->
-    <div class="landing-subtitle">
-        <span>{{ node.field_webny_landing_subtitle2[0].value }}</span>
-    </div>
+        <!-- SUBTITLE LABEL -->
+        <div class="landing-subtitle">
+            <span>{{ node.field_webny_landing_subtitle2[0].value }}</span>
+        </div>
 
-</div>
+    </div>
 
     {% if hero == '' %}
         {# END QUICK EDITS #}
         {{ title_suffix }}
     {% endif %}
-
 
 </article>
 
@@ -83,23 +104,30 @@
     {{ title_prefix }}
     
     {% if hero_image == '/' %}
-    <div class="hero-header hero-no-image hero-landing" style="">
+        <div class="hero-header hero-no-image hero-landing" style="">
     {% else %}
-    <div class="hero-header hero-has-image hero-landing" style="background-image:url('{{ hero_image }}')">
+        <div class="hero-header hero-has-image hero-landing" style="background-image:url('{{ hero_image }}')">
     {% endif %}
         
         <!-- BACKGROUND GRAD -->
-        <div class="hero-bkg"></div>
-    </div> 
+            <div class="hero-bkg"></div>
+        </div>
 
     {% if hero_image == '/' %}
         <div class="hero-inner hero-landing-inner">
     {% else %}
         <div class="hero-inner hero-landing-inner hero-has-image-content">
-    {% endif %}  
+    {% endif %}
+
+            <!-- LIVE NOW FOR BRIGHTCOVE -->
+            {% if video_tech == 'brightcove' %}
+                <div class="hero-live-now">
+                    <p>LIVE NOW</p>
+                </div>
+            {% endif %}
+
             <!-- HEADLINE LABEL -->
-            {% if node.field_webny_landing_hero_title.value is empty %}
-            {% else %}
+            {% if node.field_webny_landing_hero_title.value is not empty %}
                 <h2>{{ node.field_webny_landing_hero_title.value }}</h2>
             {% endif %}
 
@@ -107,14 +135,60 @@
                 {{ content.field_webny_landing_summary2 }}
             </div>
 
-            <!-- KEYWORDS -->
+            <!-- HERO BUTTONS [USING KEYWORD CLASS] -->
             <div class="hero-keywords">
-                {# {{ content.field_webny_landing_global_key }} #}
+
+                {% if video_tech != "" %}
+                    <div class="video_hero_button">
+                        <a href="javascript:" alt="{{ video_text }}" title="{{ video_text }}">  {{ video_text }}</a>
+                    </div>
+                {% endif %}
+
                 {{ content.field_webny_landing_hero_button }}
-                {{ content.field_webny_landing_hero_button2 }}
+
+                {% if video_tech == "" %}
+                    {{ content.field_webny_landing_hero_button2 }}
+                {% endif %}
+
             </div>
-            
         </div>
+
+    <!-- VIDEO PLACEMENT -->
+
+         <div id="hero-video-frame" class="hero-video-frame  hero-video-hide {{ has_image }} heroplayer-{{ video_tech|lower }}">
+            <div class="hero-video-inner">
+                <div class="hero-video-close">
+                    <a href="javascript:" alt="Close Video" title="Close Video"></a>
+                </div>
+
+                {% if video_tech is not null and video_tech != 'brightcove' %}
+                    <video id="videojs-heroplayer-{{ video_tech|lower }}"
+                           class="video-js {% if video_tech == 'Vimeo' %} vjs-16-9 {% endif %} hero-video-player hero-type-{{ video_tech|lower }}"
+                            {% if video_tech == 'Vimeo' or video_tech == 'brightcove' %}
+                                controls
+                            {% endif %}
+
+                           data-setup='{
+                                 "techOrder": ["{{ video_tech }}"],
+                                 "sources": [{ "type": "{{ video_type }}", "src": "{{ video_url }}"}],
+                                 "fluid": false
+                                  {% if video_tech == 'youtube' %}
+                                    , "youtube": { "ytControls": 2 }
+                                  {% endif %}
+
+                                  }'>
+                    </video>
+
+                {% else  %}
+                    <div id="videojs-heroplayer-{{ video_tech|lower }}" class="hero-video-player hero-type-{{ video_tech|lower }}"
+                         data-setup='{ "techOrder": ["{{ video_tech }}"], "sources": [{ "type": "{{ video_type }}", "src": "{{ video_url }}"}] }'>
+                    </div>
+                {% endif %}
+
+            </div>
+        </div>
+
+
 
     {{ title_suffix }}
 

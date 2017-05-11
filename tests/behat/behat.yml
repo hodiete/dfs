@@ -9,6 +9,13 @@ default:
         - Drupal\DrupalExtension\Context\MinkContext
         - Drupal\DrupalExtension\Context\MessageContext
         - Drupal\DrupalExtension\Context\DrushContext
+        - behatch:context:browser
+        - behatch:context:debug
+        - behatch:context:system
+        - behatch:context:json
+        - behatch:context:table
+        - behatch:context:rest
+        - behatch:context:xml
   extensions:
     Behat\MinkExtension:
       default_session: goutte
