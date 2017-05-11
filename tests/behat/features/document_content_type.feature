@@ -5,7 +5,7 @@ As an administrator
 I should be able to create a document from the Document content type
 # Check that administrator role can create document content
   Scenario: An administrative user should be able create document content
-    Given I am logged in as a user with the administrator role
+    Given I am logged into the distro with the "administrator" role 
     When I go to "/node/add/webny_document"
     Then I should not see "Access denied"
     And I should see the text "Create Document"
@@ -19,7 +19,7 @@ I should be able to create a document from the Document content type
     
 # Check that the Document Content type contains the appropriate fields
   Scenario: An administrative user should be able to see all the fields of the content type
-    Given I am logged in as a user with the administrator role
+    Given I am logged into the distro with the "administrator" role 
     When I go to "/node/add/webny_document"
     Then I should see "Document Title"
     And I should see "Body"

@@ -2703,9 +2703,20 @@ function webny_configuration_update_8126()
 /**
  * Implements hook_update_n().
  *
- * enable update manager
+ * Enable Rename Admin Paths Module
  */
-function webny_configuration_update_8127()
+function webny_configuration_update_8127(){
+    \Drupal::service('module_installer')
+        ->install(['rename_admin_paths']);
+}
+
+
+/**
+ * Implements hook_update_n().
+ *
+ * enable editor advanced link module
+ */
+function webny_configuration_update_8128()
 {
 
     \Drupal::service('module_installer')
@@ -2717,7 +2728,7 @@ function webny_configuration_update_8127()
  *
  * refresh webny_wysiwyg_frame
  */
-function webny_configuration_update_8128() {
+function webny_configuration_update_8129() {
     \Drupal::service('module_installer')
         ->uninstall(['webny_wysiwyg_frame']);
     \Drupal::service('module_installer')

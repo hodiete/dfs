@@ -2,12 +2,12 @@
 Feature: Sitemap Tests
 
   Scenario: An administrator user should be able to access the sitemap page
-    Given I am logged in as a user with the "administrator" role
+    Given I am logged into the distro with the "administrator" role 
     When I go to "/sitemap"
     Then I should not see "Access denied"
 
   Scenario: An administrator user should be able to access the sitemap.xml page
-    Given I am logged in as a user with the "administrator" role
+    Given I am logged into the distro with the "administrator" role 
     When I go to "/sitemap.xml"
     Then I should not get a 404 HTTP response
 
