@@ -11,7 +11,7 @@
     attach: function (context, settings) {
 
       // when user clicks the webny-card-share-right div
-      $('.webny-card-share-bar > .webny-card-share-right').click(function (event) {
+      $('.webny-card-share-bar > .webny-card-share-right').on('click touchend', function (event) {
         // prevent click firing twice
         event.stopImmediatePropagation();
 
