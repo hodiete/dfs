@@ -2,13 +2,13 @@
 Feature: Innerpage Tests
 
   Scenario: An administrative user should be able create innerpage content
-    Given I am logged in as a user with the administrator role
+    Given I am logged into the distro with the "administrator" role 
     When I go to "/node/add/webny_page"
     Then I should not see "Access denied"
     And I should see the text "Create Page"
     
   Scenario: An administrative user should be able to add to all fields
-    Given I am logged in as a user with the administrator role
+    Given I am logged into the distro with the "administrator" role 
     When I go to "/node/add/webny_page"
     Then I should see "Page Title"
 	Then I should see "Short Title"
@@ -23,12 +23,12 @@ Feature: Innerpage Tests
     Then I should see "Attached Documents"
     
   Scenario: An administrative user should be able to access the announcements display type
-    Given I am logged in as a user with the administrator role
+    Given I am logged into the distro with the "administrator" role 
     When I go to "/admin/structure/types/manage/webny_page/display/webny_announcement"
     Then I should not get a 404 HTTP response
     
   Scenario: An administrative user should be able to access the featured card display type
-    Given I am logged in as a user with the administrator role
+    Given I am logged into the distro with the "administrator" role 
     When I go to "/admin/structure/types/manage/webny_page/display/webny_featured_card"
     Then I should not get a 404 HTTP response
 

@@ -2,7 +2,7 @@
 Feature: Video Frame Tests
 
   Scenario: Check that all required Video fields are available
-    Given I am logged in as a user with the administrator role
+    Given I am logged into the distro with the "administrator" role 
     When I am on "/node/add/webny_landing_page"
     Then I should not see "Access denied"
     When I press the "Add Video" button
@@ -17,7 +17,7 @@ Feature: Video Frame Tests
     And I should see "Poster Caption"
 
   Scenario: Adding a Youtube Video
-    Given I am logged in as a user with the administrator role
+    Given I am logged into the distro with the "administrator" role 
     When I am on "/node/add/webny_landing_page"
     When I press the "Add Video" button
     And I fill in "Youtube: FANCY PANTS MCGEE" for "Landing Page Title"
@@ -27,7 +27,7 @@ Feature: Video Frame Tests
     Then I should see "Landing Page Youtube: FANCY PANTS MCGEE has been created."
 
   Scenario: Adding a Vimeo Video
-    Given I am logged in as a user with the administrator role
+    Given I am logged into the distro with the "administrator" role 
     When I am on "/node/add/webny_landing_page"
     When I press the "Add Video" button
     And I fill in "Vimeo: FANCY PANTS MCGEE" for "Landing Page Title"
@@ -37,7 +37,7 @@ Feature: Video Frame Tests
     Then I should see "Landing Page Vimeo: FANCY PANTS MCGEE has been created."
 
   Scenario: Adding a Brightcove Video
-    Given I am logged in as a user with the administrator role
+    Given I am logged into the distro with the "administrator" role 
     When I am on "/node/add/webny_landing_page"
     When I press the "Add Video" button
     And I fill in "Brightcove: FANCY PANTS MCGEE" for "Landing Page Title"
@@ -47,7 +47,7 @@ Feature: Video Frame Tests
     Then I should see the text "Landing Page Brightcove: FANCY PANTS MCGEE has been created."
 
   Scenario: Optional Fields Video Title, Video Headline, Video Description, Poster Image
-    Given I am logged in as a user with the administrator role
+    Given I am logged into the distro with the "administrator" role 
     When I am on "/node/add/webny_landing_page"
     When I press the "Add Video" button
     And I fill in "test-page-12" for "Landing Page Title"

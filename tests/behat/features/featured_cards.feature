@@ -5,7 +5,7 @@ Feature: Featured Card Paragraph Tests
 
 # Check if fields for Featured Card Exist
   Scenario: See if Add Featured Card button and fields exist
-    Given I am logged in as a user with the administrator role
+    Given I am logged into the distro with the "administrator" role 
     When I am on "/node/add/webny_landing_page"
     Then I should not see "Access denied"
     When I press the "Add Card" button
@@ -16,7 +16,7 @@ Feature: Featured Card Paragraph Tests
 
 # Display modes checks
   Scenario: Check the display modes to see if Featured Card display exists
-    Given I am logged in as a user with the administrator role
+    Given I am logged into the distro with the "administrator" role 
     When I am on "/admin/structure/types/manage/webny_landing_page/display/webny_featured_card"
     Then I should not see "Access denied"
     When I am on "/admin/structure/types/manage/webny_news/display/webny_featured_card"

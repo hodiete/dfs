@@ -119,11 +119,11 @@ $social-media-frame-icon-hover-color: $color-secondary !default;
   }
   .smframe-link {
     //display: table-cell; //IE 9 evil
-    display: flex;
+    //display: flex; - can't use flex, IE 10 doesn't break correctlly
     width: 100%;
     padding: 10px 0;
-    //text-align: center;
-    justify-content: center;
+    text-align: center;
+    //justify-content: center;
   }
 
 }
@@ -137,7 +137,6 @@ $social-media-frame-icon-hover-color: $color-secondary !default;
     flex-direction:row;
     .smframe-link {
     width:45%;
-    justify-content: flex-start;
     }
   }
 }
