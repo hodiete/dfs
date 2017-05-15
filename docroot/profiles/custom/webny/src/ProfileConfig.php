@@ -168,6 +168,8 @@ class ProfileConfig {
       $this->getProfileFeatureConfigPath('webny_whitelisted_content') . '/install',
       $this->getProfileFeatureConfigPath('webny_whitelisted_content') . '/optional',
       $this->getProfileThemeConfigPath('webny_theme') . '/install',
+      $this->getProfileFeatureConfigPath('paragraphs_types') . '/install',
+      $this->getProfileFeatureConfigPath('paragraphs_types') . '/optional',
 
     ]);
 
