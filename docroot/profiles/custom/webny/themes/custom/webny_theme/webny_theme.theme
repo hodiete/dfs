@@ -37,6 +37,7 @@ function webny_theme_preprocess_paragraph__webny_card_paragraph_type(&$variables
     // loop through each referenced entity passing the url as an array to twig
     foreach($referencedEntities->referencedEntities() as $entity) {
         $variables['card_url'][] = $entity->url();
+        $variables['entity_type'] = $entity->bundle();
     }
 
 }

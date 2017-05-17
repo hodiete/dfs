@@ -83,9 +83,8 @@ view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
                                 <a target="_blank" href="{{ paragraph.field_webny_card_cta_3.0.url }}" title="{{ content.field_webny_card_entity_ref[i]['#node'].getTitle() }}">{{ paragraph.field_webny_card_cta_3.0.title }}</a>
                               </span>
                             </div>
-                            {% endif %}
                             {# if first card includes a share bar #}
-                            {% if (i == 0 and paragraph.field_webny_card_list_1.0.value == 'share_bar') %}
+                            {% elseif (i == 0 and paragraph.field_webny_card_list_1.0.value == 'share_bar') %}
                                 <div class="webny-card-share-bar">
                                     <div class="webny-card-share-elements">
                                         <div class="webny-card-share-button">
@@ -145,7 +144,47 @@ view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
                                     </div>
                                 </div>
 
+                            {% elseif (i == 0 and paragraph.field_webny_card_list_1.0.value == '') %}
+                                <div class="webny-card-cta">
+                                    <span class="icon-right-caret">
+                                        {# url portion from link field, title from referenced node, title portion from link field #}
+                                        {# if node type is whitelisted content make sure to use url field FROM the node and not url OF the node #}
+                                        {% if (entity_type == 'webny_whitelisted_content') %}
+                                            <a target="_blank" href="{{ content.field_webny_card_entity_ref[i]['#node'].field_webny_whitelist_link_url[0].value['uri'] }}" title="{{ content.field_webny_card_entity_ref[i]['#node'].getTitle() }}">LEARN MORE</a>
+                                        {% else %}
+                                            <a target="_blank" href="{{ host }}{{ card_url[i] }}" title="{{ content.field_webny_card_entity_ref[i]['#node'].getTitle() }}">LEARN MORE</a>
+                                        {% endif %}
+                                    </span>
+                                </div>
+
+                            {% elseif (i == 1 and paragraph.field_webny_card_list_2.0.value == '') %}
+                                <div class="webny-card-cta">
+                                    <span class="icon-right-caret">
+                                        {# url portion from link field, title from referenced node, title portion from link field #}
+                                        {# if node type is whitelisted content make sure to use url field FROM the node and not url OF the node #}
+                                        {% if (entity_type == 'webny_whitelisted_content') %}
+                                            <a target="_blank" href="{{ content.field_webny_card_entity_ref[i]['#node'].field_webny_whitelist_link_url[0].value['uri'] }}" title="{{ content.field_webny_card_entity_ref[i]['#node'].getTitle() }}">LEARN MORE</a>
+                                        {% else %}
+                                            <a target="_blank" href="{{ host }}{{ card_url[i] }}" title="{{ content.field_webny_card_entity_ref[i]['#node'].getTitle() }}">LEARN MORE</a>
+                                        {% endif %}
+                                    </span>
+                                </div>
+
+                            {% elseif (i == 2 and paragraph.field_webny_card_list_3.0.value == '') %}
+                                <div class="webny-card-cta">
+                                    <span class="icon-right-caret">
+                                        {# url portion from link field, title from referenced node, title portion from link field #}
+                                        {# if node type is whitelisted content make sure to use url field FROM the node and not url OF the node #}
+                                        {% if (entity_type == 'webny_whitelisted_content') %}
+                                            <a target="_blank" href="{{ content.field_webny_card_entity_ref[i]['#node'].field_webny_whitelist_link_url[0].value['uri'] }}" title="{{ content.field_webny_card_entity_ref[i]['#node'].getTitle() }}">LEARN MORE</a>
+                                        {% else %}
+                                            <a target="_blank" href="{{ host }}{{ card_url[i] }}" title="{{ content.field_webny_card_entity_ref[i]['#node'].getTitle() }}">LEARN MORE</a>
+                                        {% endif %}
+                                    </span>
+                                </div>
+
                             {% endif %}
+
                         {# closing article tag from node template. feels wrong. #}
                         </article>
                     </div>
