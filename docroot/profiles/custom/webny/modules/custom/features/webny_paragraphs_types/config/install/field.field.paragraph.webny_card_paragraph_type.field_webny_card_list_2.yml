@@ -6,17 +6,17 @@ dependencies:
     - paragraphs.paragraphs_type.webny_card_paragraph_type
   module:
     - options
+_core:
+  default_config_hash: RcrKyi3X37MD2w6c8sH8wAKWA8jqVcFlTdz7s--MlPE
 id: paragraph.webny_card_paragraph_type.field_webny_card_list_2
 field_name: field_webny_card_list_2
 entity_type: paragraph
 bundle: webny_card_paragraph_type
 label: 'Card #2 Call to Action'
-description: 'Choose the style bar for the bottom of card #2. Choosing Call to Action allows for a linked button to appear.  Choosing Share Bar provides a bar with sharing options.'
+description: 'Choose the style bar for the bottom of card #2. Choosing None adds a link to the piece of content within the card with the text "Learn More" as the link. Choosing Call to Action allows for a linked button to appear with chosen custom link and text.  Choosing Share Bar provides a bar with sharing options.'
 required: false
 translatable: false
-default_value:
-  -
-    value: call_to_action
+default_value: {  }
 default_value_callback: ''
 settings: {  }
 field_type: list_string
