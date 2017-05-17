@@ -2748,6 +2748,49 @@ function webny_configuration_update_8129() {
 }
 
 /**
+ * Implements hook_update_n().
+ *
+ * Refresh webny document feature and media module
+ * - NDD-972
+ * - iojonep
+ */
+function webny_configuration_update_8130()
+{
+    \Drupal::service('module_installer')
+        ->uninstall(['webny_document_content_type']);
+    \Drupal::service('module_installer')
+        ->install(['webny_document_content_type']);
+
+    \Drupal::service('module_installer')
+        ->uninstall(['webny_media']);
+    \Drupal::service('module_installer')
+        ->install(['webny_media']);
+
+
+    // REFRESH MEDIA SETTINGS CONFIG YML TO ENABLE TRANSLITERAION
+    $config_factory = \Drupal::configFactory();
+    $profile_config = \Drupal::service('webny.profile_config');
+
+    // Import new/changed configuration.
+    $config_to_update = [
+
+        // Updated media file settings.
+        'field.field.media.image.field_image',
+
+        // Updated the document content type file settings.
+        'field.field.node.webny_document.field_webny_document_file_upload'
+
+    ];
+
+    $profile_config->bulkImport($config_to_update);
+
+    // Clear the config cache.
+    $config_factory->reset();
+
+}
+
+
+/**
  * Helper function to enable a Drupal module and print the result.
  *
  * @param string $module_name
