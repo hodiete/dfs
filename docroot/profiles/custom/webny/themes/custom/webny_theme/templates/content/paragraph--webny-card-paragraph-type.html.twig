@@ -144,39 +144,55 @@ view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
                                     </div>
                                 </div>
 
+                            {# if first card is using default functionality #}
                             {% elseif (i == 0 and paragraph.field_webny_card_list_1.0.value == '') %}
                                 <div class="webny-card-cta">
                                     <span class="icon-right-caret">
                                         {# url portion from link field, title from referenced node, title portion from link field #}
                                         {# if node type is whitelisted content make sure to use url field FROM the node and not url OF the node #}
                                         {% if (entity_type[i] == 'webny_whitelisted_content') %}
-                                            <a target="_blank" href="{{ paragraph.field_webny_card_entity_ref[i].entity.field_webny_whitelist_link_url.0.url }}" title="{{ paragraph.field_webny_card_entity_ref[i].entity.field_webny_whitelist_link_url.0.title }}">{{ paragraph.field_webny_card_entity_ref[i].entity.field_webny_whitelist_link_url.0.title }}</a>
+                                            {# if title is not empty print title, else print url in title and link text #}
+                                            {% if (paragraph.field_webny_card_entity_ref[i].entity.field_webny_whitelist_link_url.0.title is not empty) %}
+                                                <a target="_blank" href="{{ paragraph.field_webny_card_entity_ref[i].entity.field_webny_whitelist_link_url.0.url }}" title="{{ paragraph.field_webny_card_entity_ref[i].entity.field_webny_whitelist_link_url.0.title }}">{{ paragraph.field_webny_card_entity_ref[i].entity.field_webny_whitelist_link_url.0.title }}</a>
+                                            {% else %}
+                                                <a target="_blank" href="{{ paragraph.field_webny_card_entity_ref[i].entity.field_webny_whitelist_link_url.0.url }}" title="{{ paragraph.field_webny_card_entity_ref[i].entity.field_webny_whitelist_link_url.0.url }}">{{ paragraph.field_webny_card_entity_ref[i].entity.field_webny_whitelist_link_url.0.url }}</a>
+                                            {% endif %}
                                         {% else %}
                                             <a target="_blank" href="{{ host }}{{ card_url[i] }}" title="{{ content.field_webny_card_entity_ref[i]['#node'].getTitle() }}">LEARN MORE</a>
                                         {% endif %}
                                     </span>
                                 </div>
-
+                            {# if second card is using default functionality #}
                             {% elseif (i == 1 and paragraph.field_webny_card_list_2.0.value == '') %}
                                 <div class="webny-card-cta">
                                     <span class="icon-right-caret">
                                         {# url portion from link field, title from referenced node, title portion from link field #}
                                         {# if node type is whitelisted content make sure to use url field FROM the node and not url OF the node #}
                                         {% if (entity_type[i] == 'webny_whitelisted_content') %}
-                                            <a target="_blank" href="{{ paragraph.field_webny_card_entity_ref[i].entity.field_webny_whitelist_link_url.0.url }}" title="{{ paragraph.field_webny_card_entity_ref[i].entity.field_webny_whitelist_link_url.0.title }}">{{ paragraph.field_webny_card_entity_ref[i].entity.field_webny_whitelist_link_url.0.title }}</a>
+                                            {# if title is not empty print title, else print url in title and link text #}
+                                            {% if (paragraph.field_webny_card_entity_ref[i].entity.field_webny_whitelist_link_url.0.title is not empty) %}
+                                                <a target="_blank" href="{{ paragraph.field_webny_card_entity_ref[i].entity.field_webny_whitelist_link_url.0.url }}" title="{{ paragraph.field_webny_card_entity_ref[i].entity.field_webny_whitelist_link_url.0.title }}">{{ paragraph.field_webny_card_entity_ref[i].entity.field_webny_whitelist_link_url.0.title }}</a>
+                                            {% else %}
+                                                <a target="_blank" href="{{ paragraph.field_webny_card_entity_ref[i].entity.field_webny_whitelist_link_url.0.url }}" title="{{ paragraph.field_webny_card_entity_ref[i].entity.field_webny_whitelist_link_url.0.url }}">{{ paragraph.field_webny_card_entity_ref[i].entity.field_webny_whitelist_link_url.0.url }}</a>
+                                            {% endif %}
                                         {% else %}
                                             <a target="_blank" href="{{ host }}{{ card_url[i] }}" title="{{ content.field_webny_card_entity_ref[i]['#node'].getTitle() }}">LEARN MORE</a>
                                         {% endif %}
                                     </span>
                                 </div>
-
+                            {# if third card is using default functionality #}
                             {% elseif (i == 2 and paragraph.field_webny_card_list_3.0.value == '') %}
                                 <div class="webny-card-cta">
                                     <span class="icon-right-caret">
                                         {# url portion from link field, title from referenced node, title portion from link field #}
                                         {# if node type is whitelisted content make sure to use url field FROM the node and not url OF the node #}
                                         {% if (entity_type[i] == 'webny_whitelisted_content') %}
-                                            <a target="_blank" href="{{ paragraph.field_webny_card_entity_ref[i].entity.field_webny_whitelist_link_url.0.url }}" title="{{ paragraph.field_webny_card_entity_ref[i].entity.field_webny_whitelist_link_url.0.title }}">{{ paragraph.field_webny_card_entity_ref[i].entity.field_webny_whitelist_link_url.0.title }}</a>
+                                            {# if title is not empty print title, else print url in title and link text #}
+                                            {% if (paragraph.field_webny_card_entity_ref[i].entity.field_webny_whitelist_link_url.0.title is not empty) %}
+                                                <a target="_blank" href="{{ paragraph.field_webny_card_entity_ref[i].entity.field_webny_whitelist_link_url.0.url }}" title="{{ paragraph.field_webny_card_entity_ref[i].entity.field_webny_whitelist_link_url.0.title }}">{{ paragraph.field_webny_card_entity_ref[i].entity.field_webny_whitelist_link_url.0.title }}</a>
+                                            {% else %}
+                                                <a target="_blank" href="{{ paragraph.field_webny_card_entity_ref[i].entity.field_webny_whitelist_link_url.0.url }}" title="{{ paragraph.field_webny_card_entity_ref[i].entity.field_webny_whitelist_link_url.0.url }}">{{ paragraph.field_webny_card_entity_ref[i].entity.field_webny_whitelist_link_url.0.url }}</a>
+                                            {% endif %}
                                         {% else %}
                                             <a target="_blank" href="{{ host }}{{ card_url[i] }}" title="{{ content.field_webny_card_entity_ref[i]['#node'].getTitle() }}">LEARN MORE</a>
                                         {% endif %}
