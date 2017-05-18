@@ -13,6 +13,9 @@ Feature: Image style Tests
     Then I should see "Bio Frame (286×264)"
     And I should see "Card horizontal (225x225)"
     And I should see "Card vertical (400x225)"
+    And I should see "Category Tiles Desktop (1600x 730)"
+    And I should see "Category Tiles Mobile (461x 730)"
+    And I should see "Category Tiles Tablet (768x 730)"
     And I should see "Large (480×480)"
     And I should see "Media Image"
     And I should see "Media thumbnail (241x138)"
@@ -33,6 +36,7 @@ Feature: Image style Tests
     When I am on "/admin/config/media/responsive-image-style"
     Then I should see "Bio Frame"
     And I should see "Cards"
+    And I should see "Category Tiles"
     And I should see "Hero image"
     And I should see "Hero image tall"
     And I should see "Results Image"
@@ -44,6 +48,7 @@ Feature: Image style Tests
     When I am on "/admin/structure/display-modes/view"
     Then I should see "Bio Frame"
     And I should see "Cards"
+    And I should see "Category Tiles"
     And I should see "Embedded"
     And I should see "Hero image"
     And I should see "Hero image tall"
@@ -60,6 +65,7 @@ Feature: Image style Tests
     When I am on "/admin/structure/media/manage/image/display"
     Then I should see "Bio Frame"
     And I should see "Cards"
+    And I should see "Category Tiles"
     And I should see "Embedded"
     And I should see "Hero image"
     And I should see "Hero image tall"
@@ -147,3 +153,11 @@ Feature: Image style Tests
     When I am on "/admin/config/content/embed/button/manage/media"
     Then I should see "wysiwyg"
     And I should see "wysiwyg portrait"
+
+# Check that WebNY Category Tiles Image display is present
+  Scenario: Check the Media Embed button to see that the wysiwyg image styles are applied
+    Given I am logged into the distro with the "administrator" role
+    When I am on "/admin/structure/media/manage/image/display/category_tiles"
+    Then I should see "Image style: Category Tiles Desktop (1600x 730)"
+    And I should see "Thumbnail style: Thumbnail (100×100)"
+    And I should see "Responsive image: Category Tiles"
