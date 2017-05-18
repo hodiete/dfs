@@ -8,7 +8,7 @@ Feature: Image style Tests
 
 # Check WebNY Image Styles are present
   Scenario: See if WebNY custom image styles exist
-    Given I am logged in as a user with the "administrator" role
+    Given I am logged into the distro with the "administrator" role
     When I am on "/admin/config/media/image-styles"
     Then I should see "Bio Frame (286×264)"
     And I should see "Card horizontal (225x225)"
@@ -29,7 +29,7 @@ Feature: Image style Tests
 
 # Check WebNY Responsive Image Styles are present
   Scenario: See if WebNY custom responsive image styles exist
-    Given I am logged in as a user with the "administrator" role
+    Given I am logged into the distro with the "administrator" role
     When I am on "/admin/config/media/responsive-image-style"
     Then I should see "Bio Frame"
     And I should see "Cards"
@@ -40,7 +40,7 @@ Feature: Image style Tests
 
 # Check WebNY Media Display Mode Views are present
   Scenario: See if WebNY custom media display mode views exist
-    Given I am logged in as a user with the "administrator" role
+    Given I am logged into the distro with the "administrator" role
     When I am on "/admin/structure/display-modes/view"
     Then I should see "Bio Frame"
     And I should see "Cards"
@@ -56,7 +56,7 @@ Feature: Image style Tests
 
 # Check WebNY Media Bundles for Image displays are present
   Scenario: See if WebNY custom media bundles for image displays exist
-    Given I am logged in as a user with the "administrator" role
+    Given I am logged into the distro with the "administrator" role
     When I am on "/admin/structure/media/manage/image/display"
     Then I should see "Bio Frame"
     And I should see "Cards"
@@ -71,63 +71,63 @@ Feature: Image style Tests
 
 # Check WebNY Bio Frame Image display is present
   Scenario: See if WebNY Bio Frame Image display exist
-    Given I am logged in as a user with the "administrator" role
+    Given I am logged into the distro with the "administrator" role
     When I am on "/admin/structure/media/manage/image/display/bio_frame"
     Then I should see "Bio Frame"
     And I should see "Image style: Bio Frame (286×264)"
 
 # Check WebNY Cards Image display is present
   Scenario: See if WebNY Cards Image display exist
-    Given I am logged in as a user with the "administrator" role
+    Given I am logged into the distro with the "administrator" role
     When I am on "/admin/structure/media/manage/image/display/cards"
     Then I should see "Cards"
     And I should see "Responsive image: Cards"
 
 # Check WebNY Embedded Image display is present
   Scenario: See if WebNY Embedded Image display exist
-    Given I am logged in as a user with the "administrator" role
+    Given I am logged into the distro with the "administrator" role 
     When I am on "/admin/structure/media/manage/image/display/embedded"
     Then I should see "Embedded"
     And I should see "Original image"
 
 # Check WebNY Hero Image display is present
   Scenario: See if WebNY Hero Image display exist
-    Given I am logged in as a user with the "administrator" role
+    Given I am logged into the distro with the "administrator" role 
     When I am on "/admin/structure/media/manage/image/display/hero_image"
     Then I should see "Hero image"
     And I should see "Thumbnail style: - None -"
 
 # Check WebNY Hero Image Tall display is present
   Scenario: See if WebNY Hero Image Tall display exist
-    Given I am logged in as a user with the "administrator" role
+    Given I am logged into the distro with the "administrator" role 
     When I am on "/admin/structure/media/manage/image/display/hero_image_tall"
     Then I should see "Hero image tall"
     And I should see "Thumbnail style: - None -"
 
 # Check WebNY Media Library Image display is present
   Scenario: See if WebNY Media Library Image display exist
-    Given I am logged in as a user with the "administrator" role
+    Given I am logged into the distro with the "administrator" role 
     When I am on "/admin/structure/media/manage/image/display/media_library"
     Then I should see "Media Library"
     And I should see "Image style: Medium (220×220)"
 
 # Check WebNY Results Image display is present
   Scenario: See if WebNY Results Image display exist
-    Given I am logged in as a user with the "administrator" role
+    Given I am logged into the distro with the "administrator" role 
     When I am on "/admin/structure/media/manage/image/display/results_image"
     Then I should see "Results image"
     And I should see "Responsive image style: Results Image"
 
 # Check WebNY Thumbnail Image display is present
   Scenario: See if WebNY Thumbnail Image display exist
-    Given I am logged in as a user with the "administrator" role
+    Given I am logged into the distro with the "administrator" role 
     When I am on "/admin/structure/media/manage/image/display/thumbnail"
     Then I should see "Thumbnail"
     And I should see "Image style: Media thumbnail (241x138)"
 
 # Check WebNY wysiwyg Image display is present
   Scenario: See if WebNY wysiwyg Image display exist
-    Given I am logged in as a user with the "administrator" role
+    Given I am logged into the distro with the "administrator" role 
     When I am on "/admin/structure/media/manage/image/display/wysiwyg"
     Then I should see "wysiwyg"
     And I should see "Image style: wysiwyg (660x400)"
@@ -135,7 +135,7 @@ Feature: Image style Tests
 
 # Check WebNY wysiwyg portrait Image display is present
   Scenario: See if WebNY wysiwyg portrait Image display exist
-    Given I am logged in as a user with the "administrator" role
+    Given I am logged into the distro with the "administrator" role 
     When I am on "/admin/structure/media/manage/image/display/wysiwyg_portrait"
     Then I should see "wysiwyg portrait"
     And I should see "Image style: wysiwyg portrait (300x300)"
@@ -143,7 +143,7 @@ Feature: Image style Tests
 
 # Check that Media Embed button has wysiwyg image styles applied
   Scenario: Check the Media Embed button to see that the wysiwyg image styles are applied
-    Given I am logged in as a user with the "administrator" role
+    Given I am logged into the distro with the "administrator" role 
     When I am on "/admin/config/content/embed/button/manage/media"
     Then I should see "wysiwyg"
     And I should see "wysiwyg portrait"

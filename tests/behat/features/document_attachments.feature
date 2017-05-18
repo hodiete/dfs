@@ -5,7 +5,7 @@ Feature: Attached Documents to Nodes
 
 # Check if fields for Document Attachments, Sub Title, and Title of Inner Page Content Type Exist
   Scenario: See if document attachment fields exist on adding a Page
-    Given I am logged in as a user with the administrator role
+    Given I am logged into the distro with the "administrator" role 
     When I am on "/node/add/webny_page"
     Then I should not see "Access denied"
     And I should see "Documents Section Title"
@@ -15,7 +15,7 @@ Feature: Attached Documents to Nodes
 	
 # Check if fields for Document Attachments, Sub Title, and Title of the News Content Type Exist
   Scenario: See if document attachment fields exist on adding a News Page
-    Given I am logged in as a user with the administrator role
+    Given I am logged into the distro with the "administrator" role 
     When I am on "/node/add/webny_news"
     Then I should not see "Access denied"
     And I should see "Documents Section Title"
@@ -25,7 +25,7 @@ Feature: Attached Documents to Nodes
 	
 # Check if the display mode Attached Documents exists
   #Scenario: Does Attached Documents display mode exist
-    #Given I am logged in as a user with the administrator role
+    #Given I am logged into the distro with the "administrator" role 
 	#When I am on "/admin/structure/display-modes/view/manage/node.attached_documents"
     #Then I should not get a 404 HTTP response
 	#When I am on "/admin/structure/types/manage/webny_document/display/attached_documents"
