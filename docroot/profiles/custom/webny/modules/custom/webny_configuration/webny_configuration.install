@@ -2748,6 +2748,51 @@ function webny_configuration_update_8129() {
 }
 
 /**
+ * Implements hook_update_n().
+ *
+ * Enable Metatag Open Graph
+ */
+function webny_configuration_update_8130(){
+    \Drupal::service('module_installer')
+        ->install(['metatag_open_graph']);
+
+    \Drupal::service('module_installer')
+        ->uninstall(['webny_metatag']);
+    \Drupal::service('module_installer')
+        ->install(['webny_metatag']);
+
+    \Drupal::service('module_installer')
+        ->uninstall(['webny_paragraphs_types']);
+    \Drupal::service('module_installer')
+        ->install(['webny_paragraphs_types']);
+}
+
+/**
+ * Implements hook_update_n().
+ *
+ * Reinstall webny paragraph types
+ *
+ */
+function webny_configuration_update_8131()
+{
+
+    //
+    $config_factory = \Drupal::configFactory();
+    $profile_config = \Drupal::service('webny.profile_config');
+
+    // Import new/changed configuration.
+    $config_to_update = [
+        // Updated paragraph types entity view display.
+        'core.entity_view_display.paragraph.webny_card_paragraph_type.default',
+    ];
+
+    $profile_config->bulkImport($config_to_update);
+
+    // Clear the config cache.
+    $config_factory->reset();
+}
+
+/**
  * Helper function to enable a Drupal module and print the result.
  *
  * @param string $module_name

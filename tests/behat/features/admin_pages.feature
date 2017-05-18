@@ -23,7 +23,7 @@ Feature: Base Admin page tests
     Given I am logged into the distro with the "administrator" role
     When I am on "/admin/config/development/features"
     Then I should not get a 404 HTTP response
-    And I should not see "Access denied"
+    Then I should not get a 403 HTTP response
     And I should see "Create new feature"
 
 # Check menu page access
