@@ -170,6 +170,8 @@ class ProfileConfig {
       $this->getProfileThemeConfigPath('webny_theme') . '/install',
       $this->getProfileFeatureConfigPath('document_content_type') . '/install',
       $this->getProfileFeatureConfigPath('document_content_type') . '/optional',
+      $this->getProfileFeatureConfigPath('paragraphs_types') . '/install',
+      $this->getProfileFeatureConfigPath('paragraphs_types') . '/optional',
 
     ]);
 
