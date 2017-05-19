@@ -47,6 +47,10 @@ $(document).ready(function(){
     // ADD INIT CLASSES TO ELEMENTS PREPROC
     addClasses(addClassList);
 
+    // ADD ARIA EXPAND ATTRIBuTE
+    addAriaExpand(menuItems, false);
+    addAriaHidden(menuDrops, true);
+
     // RESPONSIVE LISTENER
     responsiveNav();
 
@@ -69,12 +73,36 @@ function desktop_mode(){
     // SET HANDLER
     $(menuItems).hover(
         function(){ // OVER
+            addAriaExpand(this, true);
+            addAriaHidden(menuDrops, false);
             changeClass(this,_nav_active,_nav_inactive);
         },
         function(){ // OUT
+            addAriaExpand(menuItems, false);
+            addAriaHidden(menuDrops, true);
             changeClass(this,'',_nav_active);
         }
     );
+
+    // SET TAB HANDLER
+    $(menuItems).keyup( function(e){
+
+        if(e.which === 9 || e.value ===9){
+
+            // GET LAST ELEMENT WHICH
+            if( $(this).children().last().hasClass('gnav-items-ul') ){
+                addAriaExpand(this, true);
+                addAriaHidden(menuDrops, false);
+                $(this).addClass('webny-global-active');
+            } else {
+                addAriaExpand(this, false);
+                addAriaHidden(menuDrops, true);
+                $(menuItems).removeClass('webny-global-active');
+
+            }
+        }
+
+    });
 
 } // END DESKTOP VIEW
 
@@ -107,6 +135,9 @@ function mobile_mode(){
                 // DISPLAY ALL INACTIVE
                 $(menuItems).addClass(_nav_inactive);
 
+                addAriaExpand(this, true);
+                addAriaHidden(menuDrops, false);
+
                 // MAKE THIS ACTIVE
                 changeClass(this, _nav_active, _nav_inactive);
 
@@ -130,6 +161,8 @@ function mobile_mode(){
                 e.stopPropagation();
 
                 // MAKE ALL INACTIVE
+                addAriaExpand(menuItems, false);
+                addAriaHidden(menuDrops, true);
                 changeClass(menuItems, '', _nav_active);
                 changeClass(menuItems, '', _nav_inactive);
             }
@@ -233,4 +266,24 @@ function getViewMode(maxDesktop,bw){
         mode = 'Mobile';
     }
     return mode;
+}
+
+// ============================================================================
+// DEFINE ARIA EXPANDED
+/**
+ * @param obj el        -> Target Element
+ * @param bool vbool    -> boolean setter
+ */
+function addAriaExpand(el, vbool){
+    $(el).attr('aria-expanded', vbool);
+}
+
+// ============================================================================
+// DEFINE ARIA HIDDEN
+/**
+ * @param obj el        -> Target Element
+ * @param bool vbool    -> boolean setter
+ */
+function addAriaHidden(el, vbool){
+    $(el).attr('aria-hidden', vbool);
 }
