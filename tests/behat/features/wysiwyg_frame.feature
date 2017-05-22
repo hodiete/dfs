@@ -6,7 +6,7 @@ Feature: WYSIWYG Frame Paragraph Tests
 
 # Check if option for WYSIWYG Frame exists
   Scenario: See if WYSIWYG checkbox on Landing Page Content Type exists
-    Given I am logged in as a user with the "administrator" role
+    Given I am logged into the distro with the "administrator" role 
     When I am on "/admin/structure/types/manage/webny_landing_page/fields/node.webny_landing_page.field_webny_landing_paragraph"
     Then I should not see "Access denied"
     # Given I check the box "WYSIWYG"
@@ -18,7 +18,7 @@ Feature: WYSIWYG Frame Paragraph Tests
 
 # Paragraph type checks
   Scenario: Check the paragraphy type to see if the WYSIWYG Frame exists
-    Given I am logged in as a user with the "administrator" role
+    Given I am logged into the distro with the "administrator" role 
     When I am on "/admin/structure/paragraphs_type/webny_wysiwyg_pgtype"
     Then I should not get a 404 HTTP response
     When I am on "/admin/structure/paragraphs_type/webny_wysiwyg_pgtype/fields"

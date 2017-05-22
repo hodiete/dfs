@@ -5,7 +5,7 @@ As an administrator
 I should be able to create whitelisted content
 # Check that administrator role can create whitelisted content
   Scenario: An administrative user should be able create whitelisted content
-    Given I am logged in as a user with the administrator role
+    Given I am logged into the distro with the "administrator" role 
     When I go to "/node/add/webny_whitelisted_content"
     Then I should not see "Access denied"
     And I should see the text "Create Whitelisted Content"
@@ -18,7 +18,7 @@ I should be able to create whitelisted content
     
 # Check that the Whitelisted Content type contains the appropriate fields
   Scenario: An administrative user should be able to see all the fields of the content type
-    Given I am logged in as a user with the administrator role
+    Given I am logged into the distro with the "administrator" role 
     When I go to "/node/add/webny_whitelisted_content"
     Then I should see "Title"
     And I should see "Description"
@@ -31,6 +31,6 @@ I should be able to create whitelisted content
   
 # Check that the Whitelisted Content Display Mode exists
   Scenario: An administrative user should be able to see the Display Mode for Whitelisted Content
-  Given I am logged in as a user with the administrator role
+  Given I am logged into the distro with the "administrator" role 
   When I go to "/admin/structure/types/manage/webny_whitelisted_content/display"
   Then I should not see "Access denied"
