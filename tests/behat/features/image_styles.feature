@@ -158,6 +158,6 @@ Feature: Image style Tests
   Scenario: Check the Media Embed button to see that the wysiwyg image styles are applied
     Given I am logged into the distro with the "administrator" role
     When I am on "/admin/structure/media/manage/image/display/category_tiles"
-    Then I should see "Image style: Category Tiles Desktop (1600x 730)"
+    Then I should see "Image style: Media Image"
     And I should see "Thumbnail style: Thumbnail (100×100)"
     And I should see "Responsive image: Category Tiles"
