@@ -2795,26 +2795,16 @@ function webny_configuration_update_8131()
 /**
  * Implements hook_update_n().
  *
- * Install Category Tiles paragraph type
- * Refresh the landing page content type (include Category Tiles into Frames of Content area)
+ * Refresh Image Styles to include Category Tiles image styles
  * Refresh the media module's entity view mode and entity view display for Category Tiles
  */
 function webny_configuration_update_8132()
 {
-// INSTALL CATEGORY TILES PARAGRAPH TYPE
-  \Drupal::service('module_installer')
-    ->uninstall(['webny_category_tiles']);
-
-// REFRESH LANDING PAGE INSTALL FILES
-  $feature = 'webny_landing_page_content_type';
-  webny_configuration_uninstall_module($feature);
-  webny_configuration_enable_module($feature);
-
 // REFRESH THE WEBNY IMAGE STYLES FEATURE MODULE - to include new Category Tiles image styles
   print webny_configuration_uninstall_module('webny_image_styles');
   print webny_configuration_enable_module('webny_image_styles');
 
-// REFRESH THE WEBNY MEDIA CUSTOM MODULE - to include Category Tiles display mode and view mode
+  // REFRESH THE WEBNY MEDIA CUSTOM MODULE - to bring everything above together
   print webny_configuration_uninstall_module('webny_media');
   print webny_configuration_enable_module('webny_media');
 
@@ -2824,18 +2814,9 @@ function webny_configuration_update_8132()
 
 // Import new/changed configuration.
   $config_to_update = [
-    // UPDATE IMAGE STYLES WITH CATEGORY TILES IMAGE STYLES
-    'image.style.category_tiles_desktop.yml',
-    'image.style.category_tiles_mobile.yml',
-    'image.style.category_tiles_tablet.yml',
-    'responsive_image.styles.category_tiles.yml',
-    // UPDATE LANDING PAGE OPTIONAL FEATURES
-    'field.field.node.webny_landing_page.field_webny_landing_paragraph',
     // UPDATE MEDIA ENTITY VIEW MODE AND ENTITY DISPLAY MODE FOR CATEGORY TILES
-    'core.entity_view_display.media.image.category_tiles.yml',
-    'core.entity_view_mode.media.category_tiles.yml',
-    // MAKE SURE CATEGORY TILES FORM DISPLAY IS LOADED
-    'core.entity_form_display.paragraph.webny_category_tiles.default.yml'
+    'core.entity_view_display.media.image.category_tiles',
+    'core.entity_view_mode.media.category_tiles'
   ];
 
   $profile_config->bulkImport($config_to_update);
@@ -2844,6 +2825,43 @@ function webny_configuration_update_8132()
   $config_factory->reset();
 }
 
+/**
+ * Implements hook_update_n().
+ *
+ * Install Category Tiles paragraph type
+ * Refresh the landing page content type (include Category Tiles into Frames of Content area)
+ */
+function webny_configuration_update_8133()
+{
+// INSTALL CATEGORY TILES PARAGRAPH TYPE
+  \Drupal::service('module_installer')
+    ->install(['webny_category_tiles']);
+// REFRESH LANDING PAGE CONTENT TYPE
+  \Drupal::service('module_installer')
+    ->uninstall(['webny_landing_page_content_type']);
+  \Drupal::service('module_installer')
+    ->install(['webny_landing_page_content_type']);
+
+
+// REFRESH
+  $config_factory = \Drupal::configFactory();
+  $profile_config = \Drupal::service('webny.profile_config');
+
+// Import new/changed configuration.
+  $config_to_update = [
+    // UPDATE LANDING PAGE OPTIONAL FEATURES
+    'field.field.node.webny_landing_page.field_webny_landing_paragraph',
+    // UPDATE DEFAULT USER ROLES TO INCLUDE CATEGORY TILES PERMISSIONS
+    'user.role.anonymous',
+    'user.role.authenticated',
+    'user.role.content_author'
+  ];
+
+  $profile_config->bulkImport($config_to_update);
+
+  // Clear the config cache.
+  $config_factory->reset();
+}
 
 /**
  * Helper function to enable a Drupal module and print the result.
