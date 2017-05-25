@@ -3,6 +3,7 @@ status: true
 dependencies:
   config:
     - field.field.node.webny_document.body
+    - field.field.node.webny_document.field_keyword
     - field.field.node.webny_document.field_webny_doc_agency_keyword
     - field.field.node.webny_document.field_webny_doc_global_keyword
     - field.field.node.webny_document.field_webny_doc_last_updated
@@ -29,6 +30,14 @@ content:
     label: above
     settings: {  }
     third_party_settings: {  }
+    region: content
+  field_keyword:
+    weight: 9
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
     region: content
   field_webny_doc_agency_keyword:
     weight: 4
