@@ -4,7 +4,7 @@ Feature: Phone Paragraph Type
 
 # Check to see if Three fields have been added to the contact content type
   Scenario: If I go to the phone paragraph type, I should see Two (2) new fields
-    Given I am logged in as a user with the administrator role
+    Given I am logged into the distro with the "administrator" role 
     When I am on "/admin/structure/paragraphs_type/webny_phone_contact/fields"
     Then I should not see "Access denied"
     And I should see text matching "Phone Label"

@@ -1,0 +1,62 @@
+// Headings
+//
+// Styling for agency name in header, see global nav footer styling for styling of agency name there
+//
+// Markup: headings.hbs
+//
+// Style guide: headlines.headings
+
+.agency-name {
+  font-family: $agency-name-font;
+  font-size:125%;
+  background: $color-primary;
+  line-height: 150%;
+  padding: .25rem 0 0 0;
+  a:link,
+  a:link:hover,
+  a:hover,
+  a:active,
+  a:focus,
+  a:visited,
+  a:visited:hover {
+     color:$color-mono-white;
+     text-decoration: none;
+     padding: 0 0 0 45px;
+  }
+}
+
+h1,
+h2,
+h3,
+h4 {
+  color: $color-primary;
+  font-weight: bold; /* changed from 800 */
+  padding: 0 0 .3em;
+  margin: 0;
+}
+
+h1 {
+  font-size: 280%;
+  line-height: 165%;
+}
+
+h2 {
+  font-size: 230%;
+  line-height: 145%;
+}
+
+h3 {
+  font-size: 210%;
+  line-height: 145%;
+}
+
+h4 {
+  font-size: 190%;
+  line-height: 145%;
+}
+
+body .menu-item {
+  padding-top: 0;
+  margin: 0;
+}
+

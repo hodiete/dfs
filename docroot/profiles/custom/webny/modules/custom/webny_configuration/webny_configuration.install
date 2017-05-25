@@ -2549,7 +2549,6 @@ function webny_configuration_update_8121()
         ->install(['webny_wysiwyg_frame']);
 }
 
-
 /**
  * Implements hook_update_n().
  *
@@ -2619,6 +2618,179 @@ function webny_configuration_update_8124()
   $config_factory->reset();
 }
 
+/**
+ * Implements hook_update_n().
+ *
+ * enable update manager
+ */
+function webny_configuration_update_8125()
+{
+
+    \Drupal::service('module_installer')
+        ->install(['update']);
+}
+
+/**
+ * Implements hook_update_n().
+ *
+ * Reinstall features for 8.3 update.
+ */
+function webny_configuration_update_8126()
+{
+
+    \Drupal::service('module_installer')
+        ->uninstall(['webny_contact_content_type']);
+    \Drupal::service('module_installer')
+        ->install(['webny_contact_content_type']);
+    \Drupal::service('module_installer')
+        ->uninstall(['webny_document_content_type']);
+    \Drupal::service('module_installer')
+        ->install(['webny_document_content_type']);
+    \Drupal::service('module_installer')
+        ->uninstall(['webny_get_involved_frame']);
+    \Drupal::service('module_installer')
+        ->install(['webny_get_involved_frame']);
+    \Drupal::service('module_installer')
+        ->uninstall(['webny_inner_page_content_type']);
+    \Drupal::service('module_installer')
+        ->install(['webny_inner_page_content_type']);
+    \Drupal::service('module_installer')
+        ->uninstall(['webny_landing_page_content_type']);
+    \Drupal::service('module_installer')
+        ->install(['webny_landing_page_content_type']);
+    \Drupal::service('module_installer')
+        ->uninstall(['webny_news_content_type']);
+    \Drupal::service('module_installer')
+        ->install(['webny_news_content_type']);
+    \Drupal::service('module_installer')
+        ->uninstall(['webny_paragraphs_types']);
+    \Drupal::service('module_installer')
+        ->install(['webny_paragraphs_types']);
+    \Drupal::service('module_installer')
+        ->uninstall(['webny_phone_contact_paragraph']);
+    \Drupal::service('module_installer')
+        ->install(['webny_phone_contact_paragraph']);
+    \Drupal::service('module_installer')
+        ->uninstall(['webny_social_media_connect_frame']);
+    \Drupal::service('module_installer')
+        ->install(['webny_social_media_connect_frame']);
+    \Drupal::service('module_installer')
+        ->uninstall(['webny_summary_frame']);
+    \Drupal::service('module_installer')
+        ->install(['webny_summary_frame']);
+    \Drupal::service('module_installer')
+        ->uninstall(['webny_tbd_frame']);
+    \Drupal::service('module_installer')
+        ->install(['webny_tbd_frame']);
+    \Drupal::service('module_installer')
+        ->uninstall(['webny_video_frame_paragraph']);
+    \Drupal::service('module_installer')
+        ->install(['webny_video_frame_paragraph']);
+    \Drupal::service('module_installer')
+        ->uninstall(['webny_whitelisted_content']);
+    \Drupal::service('module_installer')
+        ->install(['webny_whitelisted_content']);
+    \Drupal::service('module_installer')
+        ->uninstall(['webny_wysiwyg_frame']);
+    \Drupal::service('module_installer')
+        ->install(['webny_wysiwyg_frame']);
+    \Drupal::service('module_installer')
+        ->uninstall(['webny_media']);
+    \Drupal::service('module_installer')
+        ->install(['webny_media']);
+}
+
+/**
+ * Implements hook_update_n().
+ *
+ * Enable Rename Admin Paths Module
+ */
+function webny_configuration_update_8127(){
+    \Drupal::service('module_installer')
+        ->install(['rename_admin_paths']);
+}
+
+
+/**
+ * Implements hook_update_n().
+ *
+ * enable editor advanced link module
+ */
+function webny_configuration_update_8128()
+{
+
+    \Drupal::service('module_installer')
+        ->install(['editor_advanced_link']);
+}
+
+/**
+ * Implements hook_update_n().
+ *
+ * refresh webny_wysiwyg_frame
+ */
+function webny_configuration_update_8129() {
+    \Drupal::service('module_installer')
+        ->uninstall(['webny_wysiwyg_frame']);
+    \Drupal::service('module_installer')
+        ->install(['webny_wysiwyg_frame']);
+    \Drupal::service('module_installer')
+        ->uninstall(['webny_inner_page_content_type']);
+    \Drupal::service('module_installer')
+        ->install(['webny_inner_page_content_type']);
+    \Drupal::service('module_installer')
+        ->uninstall(['webny_news_content_type']);
+    \Drupal::service('module_installer')
+        ->install(['webny_news_content_type']);
+    \Drupal::service('module_installer')
+        ->uninstall(['webny_whitelisted_content']);
+    \Drupal::service('module_installer')
+        ->install(['webny_whitelisted_content']);
+}
+
+/**
+ * Implements hook_update_n().
+ *
+ * Enable Metatag Open Graph
+ */
+function webny_configuration_update_8130(){
+    \Drupal::service('module_installer')
+        ->install(['metatag_open_graph']);
+
+    \Drupal::service('module_installer')
+        ->uninstall(['webny_metatag']);
+    \Drupal::service('module_installer')
+        ->install(['webny_metatag']);
+
+    \Drupal::service('module_installer')
+        ->uninstall(['webny_paragraphs_types']);
+    \Drupal::service('module_installer')
+        ->install(['webny_paragraphs_types']);
+}
+
+/**
+ * Implements hook_update_n().
+ *
+ * Reinstall webny paragraph types
+ *
+ */
+function webny_configuration_update_8131()
+{
+
+    //
+    $config_factory = \Drupal::configFactory();
+    $profile_config = \Drupal::service('webny.profile_config');
+
+    // Import new/changed configuration.
+    $config_to_update = [
+        // Updated paragraph types entity view display.
+        'core.entity_view_display.paragraph.webny_card_paragraph_type.default',
+    ];
+
+    $profile_config->bulkImport($config_to_update);
+
+    // Clear the config cache.
+    $config_factory->reset();
+}
 
 /**
  * Helper function to enable a Drupal module and print the result.

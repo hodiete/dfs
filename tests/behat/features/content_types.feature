@@ -6,7 +6,7 @@ Feature: Check for the existence and fields of content types
 # CONTENT TYPE: News
 # ROLE: administrator
   Scenario: Determine if a content type exists for news with the administrator role and the given fields
-    Given I am logged in as a user with the administrator role
+    Given I am logged into the distro with the "administrator" role
     When I am on "/node/add/webny_news"
     Then I should not see "Access denied"
     And I should not get a 404 HTTP response
@@ -64,7 +64,7 @@ Feature: Check for the existence and fields of content types
 # CONTENT TYPE: News
 # ROLE: administrator
   Scenario: Does the default display mode exist
-    Given I am logged in as a user with the administrator role
+    Given I am logged into the distro with the "administrator" role
     When I am on "/admin/structure/types/manage/webny_news/display"
     Then I should not get a 404 HTTP response
     And I should not see "Access denied"
@@ -83,7 +83,7 @@ Feature: Check for the existence and fields of content types
 # CONTENT TYPE: Landing Page
 # ROLE: administrator
   Scenario: Determine if a content type exists for news with the administrator role and the given fields
-    Given I am logged in as a user with the administrator role
+    Given I am logged into the distro with the "administrator" role
     When I am on "/node/add/webny_landing_page"
     Then I should not see "Access denied"
     And I should not get a 404 HTTP response
@@ -123,7 +123,7 @@ Feature: Check for the existence and fields of content types
 # ROLE: administrator
 # FEATURE: Check if announcement button displays correct fields
   Scenario: Does a user see the fields after the announcement button is pressed
-    Given I am logged in as a user with the administrator role
+    Given I am logged into the distro with the "administrator" role
     When I am on "/node/add/webny_landing_page"
     And I press "Add Announcement"
     Then I should see text matching "Frames of Content"
@@ -148,7 +148,7 @@ Feature: Check for the existence and fields of content types
 # ROLE: administrator
 # FEATURE: Check if Card button displays correct fields
   Scenario: Does a user see the fields after the announcement button is pressed
-    Given I am logged in as a user with the administrator role
+    Given I am logged into the distro with the "administrator" role
     When I am on "/node/add/webny_landing_page"
     When I press "Add Card"
     Then I should see text matching "Card Entity Reference"
@@ -171,7 +171,7 @@ Feature: Check for the existence and fields of content types
 # ROLE: administrator
 # FEATURE: Default Display Mode
   Scenario: Does the default display mode exist
-    Given I am logged in as a user with the administrator role
+    Given I am logged into the distro with the "administrator" role 
     When I am on "/admin/structure/types/manage/webny_landing_page/display"
     Then I should not get a 404 HTTP response
     And I should not see "Access denied"
@@ -192,7 +192,7 @@ Feature: Check for the existence and fields of content types
 # ROLE: administrator
 # FEATURE: Announcement Display Mode
   Scenario: Does the announcement display mode exist
-    Given I am logged in as a user with the administrator role
+    Given I am logged into the distro with the "administrator" role 
     When I am on "/admin/structure/types/manage/webny_landing_page/display/webny_announcement"
     Then I should not get a 404 HTTP response
     And I should not see "Access denied"
@@ -212,7 +212,7 @@ Feature: Check for the existence and fields of content types
 # ROLE: administrator
 # FEATURE: Feature Card Display Mode
   Scenario: Does the feature card display mode exist
-    Given I am logged in as a user with the administrator role
+    Given I am logged into the distro with the "administrator" role 
     When I am on "/admin/structure/types/manage/webny_landing_page/display/webny_featured_card"
     Then I should not get a 404 HTTP response
     And I should not see "Access denied"
@@ -231,7 +231,7 @@ Feature: Check for the existence and fields of content types
 # CONTENT TYPE: Inner Page
 # ROLE: administrator
   Scenario: Determine if a content type exists for news with the administrator role and the given fields
-    Given I am logged in as a user with the administrator role
+    Given I am logged into the distro with the "administrator" role 
     When I am on "/node/add/webny_page"
     Then I should not see "Access denied"
     And I should not get a 404 HTTP response
@@ -265,7 +265,7 @@ Feature: Check for the existence and fields of content types
 # CONTENT TYPE: Inner Page
 # ROLE: administrator
   Scenario: Does the default display mode exist
-    Given I am logged in as a user with the administrator role
+    Given I am logged into the distro with the "administrator" role 
     When I am on "/admin/structure/types/manage/webny_page/display"
     Then I should not get a 404 HTTP response
     And I should not see "Access denied"
@@ -284,7 +284,7 @@ Feature: Check for the existence and fields of content types
 # CONTENT TYPE: Contact Content Type
 # ROLE: administrator
   Scenario: Determine if a content type exists for news with the administrator role and the given fields
-    Given I am logged in as a user with the administrator role
+    Given I am logged into the distro with the "administrator" role 
     When I am on "/node/add/webny_contact"
     Then I should not see "Access denied"
     And I should not get a 404 HTTP response
@@ -329,7 +329,7 @@ Feature: Check for the existence and fields of content types
 # CONTENT TYPE: Cotnact Content Page
 # ROLE: administrator
   Scenario: Does the default display mode exist
-    Given I am logged in as a user with the administrator role
+    Given I am logged into the distro with the "administrator" role 
     When I am on "/admin/structure/types/manage/webny_contact/display"
     Then I should not get a 404 HTTP response
     And I should not see "Access denied"
