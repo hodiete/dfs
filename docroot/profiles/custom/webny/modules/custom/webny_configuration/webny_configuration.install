@@ -2797,10 +2797,23 @@ function webny_configuration_update_8131()
 /**
  * Implements hook_update_n().
  *
+ * Install webny social media connect frame type.
+ */
+function webny_configuration_update_8132()
+{
+    \Drupal::service('module_installer')
+        ->uninstall(['redirect_404']);
+    \Drupal::service('module_installer')
+        ->install(['redirect_404']);
+}
+
+/**
+ * Implements hook_update_n().
+ *
  * Refresh webny document feature and media module - NDD-972
  * - iojonep
  */
-function webny_configuration_update_8132() {
+function webny_configuration_update_8133() {
 
     \Drupal::service('module_installer')
         ->uninstall(['webny_document_content_type']);
@@ -2833,20 +2846,6 @@ function webny_configuration_update_8132() {
     // Clear the config cache.
     $config_factory->reset();
 
-}
-
-
-/**
- * Implements hook_update_n().
- *
- * Install webny social media connect frame type.
- */
-function webny_configuration_update_8132()
-{
-    \Drupal::service('module_installer')
-        ->uninstall(['redirect_404']);
-    \Drupal::service('module_installer')
-        ->install(['redirect_404']);
 }
 
 /**
