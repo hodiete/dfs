@@ -2806,6 +2806,19 @@ function webny_configuration_update_8132()
 }
 
 /**
+ * Implements hook_update_n().
+ *
+ * Reinstall Document content type.
+ */
+function webny_configuration_update_8133()
+{
+    \Drupal::service('module_installer')
+        ->uninstall(['webny_document_content_type']);
+    \Drupal::service('module_installer')
+        ->install(['webny_document_content_type']);
+}
+
+/**
  * Helper function to enable a Drupal module and print the result.
  *
  * @param string $module_name
