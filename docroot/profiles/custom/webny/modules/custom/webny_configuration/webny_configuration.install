@@ -2837,6 +2837,19 @@ function webny_configuration_update_8132() {
 
 
 /**
+ * Implements hook_update_n().
+ *
+ * Install webny social media connect frame type.
+ */
+function webny_configuration_update_8132()
+{
+    \Drupal::service('module_installer')
+        ->uninstall(['redirect_404']);
+    \Drupal::service('module_installer')
+        ->install(['redirect_404']);
+}
+
+/**
  * Helper function to enable a Drupal module and print the result.
  *
  * @param string $module_name
