@@ -5,8 +5,6 @@ $medblue: #128EC3; // primary color
 $ltblueaccent: #92DBE4; // accent color
 $medblueaccent: #0386BE; // accent color
 $dkblueaccent: #1B2A5E; // accent color
-$dkyellowaccent: #F4A71C; // accent color
-$ltyellowaccent: #F3DD6D; // accent color
 
 $primarygold: #D5820D; // primary color
 $primarygold-75: #E0A14A; // This is the hex translation of $primarygold at 75% opacity
@@ -20,8 +18,8 @@ $secondarygold: #DC9719; // secondary accent
 $color-primary: $primaryblue !default;
 $color-secondary: $primarygold !default;
 $color-tertiary: $medblue !default;
-$color-accent-primary: $dkyellowaccent !default;
-$color-accent-secondary: $ltyellowaccent !default;
+$color-accent-primary: $medblueaccent !default;
+$color-accent-secondary: $secondarygold !default;
 $text-blue: #007AC2 !default; // blue text links color
 $color-mono-black: #000000;
 $color-mono-dark: #63666A !default;
@@ -61,6 +59,7 @@ $frame-headline: bold 1.8rem $base-font; // currently 32px internal landing page
 $frame-headline-front: 800 2.22em $base-font; //currently bold 40px proxima home page  // using ems for IE compatibility
 // to help create consistent margins between frames on landing pages - should be 80px between
 //$frame-padding-sm: 40px; // to be used on white background frames
+// Used for the Category Tiles subtitle
 $frame-padding-lg: 80px; //to be used on color background frames
 //$frame-margin: 40px; //to be used on color background frames
 

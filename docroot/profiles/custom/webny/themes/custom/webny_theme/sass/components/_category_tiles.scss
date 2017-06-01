@@ -1,0 +1,193 @@
+// Category Tiles
+//
+// Styling for the Category Tiles on the Landing Page content type.
+//
+// For more information please see the story sources: https://itswebny.atlassian.net/browse/NDD-139 and https://itswebny.atlassian.net/browse/NDD-935
+//
+// Markup: card.hbs
+//
+// Style guide: TBD
+//
+// color variables
+$category-tiles-title-color: $color-primary !default;
+$category-tiles-subtitle-color: $color-mono-black !default;
+$category-tiles-background-color: $color-tertiary !default;
+// font variables
+$category-tiles-title-mobile: bold 14px $oswald !default;
+$category-tiles-title-desktop: $frame-title !default;
+$category-tiles-subtitle-mobile: $frame-headline-front !default;
+$category-tiles-subtitle-desktop: 800 2.28em $base-font !default;
+
+// ######################################################################### //
+/* START STYLING MOBILE FIRST UNDER HERE */
+.paragraph {
+  display: block;
+}
+.paragraph--type--webny-category-tiles {
+  margin: 0 auto;
+  .category-tiles-has-image {
+    background-color: $category-tiles-background-color;
+    -webkit-background-size: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 0 0 40px 15px;
+  }
+  .category-tiles-no-image {
+    background-color: $category-tiles-background-color;
+    padding: 1px 0 40px 15px;
+  }
+  .category-tiles-title-empty{
+    display: none;
+  }
+  .category-tiles-title {
+    font: $category-tiles-title-mobile;
+    color: $category-tiles-title-color;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: .25em;
+    padding: 0;
+
+  }
+  .category-tiles-subtitle {
+    font: $category-tiles-subtitle-mobile;
+    color: $category-tiles-subtitle-color;
+    text-align: center;
+    line-height: 1.25em; //2rem;
+    padding: 0;
+  }
+  // the category-tiles-body class is controlled by the .body-area in _body.scss line 90, 196, 24)
+  .category-tiles-body-empty{
+    display: none;
+  }
+  .category-tiles-body{
+    padding-bottom: 40px;
+  }
+  .category-tiles-link-content {
+    margin: 0 auto;
+    max-width: 28em;
+    width: 100%;
+    float: none;
+    .category-tiles-link--field-webny-cat-button-link {
+      display: inline-flex;
+      background-color: $button-bkgd-color;
+      margin: 5px;
+      max-width: 330px;
+      width: 44.72881%;
+      height: 80px;
+      line-height: 17px;
+      justify-content: center;
+      transition: all 0.5s ease;
+      opacity: 0.9;
+      a {
+        color: #ffffff;
+        display: block;
+        padding: 30px 2px 0;
+        text-align: center;
+        text-decoration: none;
+        transition: all 0.5s ease;
+        opacity: 0.9;
+        font-family: $base-font;
+        font-size: 16px;
+        letter-spacing: 0;
+      }
+    }
+
+    .category-tiles-link--field-webny-cat-button-link:hover {
+      background: #ffffff;
+      a {
+        color: $button-bkgd-color;
+      }
+    }
+  }
+}
+
+// ######################################################################### //
+/* TABLET VIEW */
+@media (min-width: $min-tab) {
+  .paragraph--type--webny-category-tiles {
+    .category-tiles-link-content {
+      max-width: 44em;
+      .category-tiles-link--field-webny-cat-button-link {
+        width: 21.75%;
+        height: 120px;
+        line-height: 23px;
+        a {
+          padding: 50px 2px;
+          font-size: 18px;
+        }
+      }
+    }
+  }
+}// END MIN TABLET VIEW
+
+// ######################################################################### //
+/* LARGER TABLET VIEW */
+@media (min-width: $min-desktop) {
+  .paragraph--type--webny-category-tiles {
+    .category-tiles-link-content {
+      max-width: 54em;
+      .category-tiles-link--field-webny-cat-button-link {
+        width: 23.3%;
+        height: 140px;
+        a{
+          padding: 60px 0 0;
+          letter-spacing: 2px;
+        }
+      }
+    }
+  }
+}// END MIN TABLET VIEW
+
+// ######################################################################### //
+/* PC VIEW */
+@media (min-width: $max-pc) {
+  .paragraph--type--webny-category-tiles {
+    .category-tiles-title {
+      font: $category-tiles-title-desktop;
+    }
+    .category-tiles-subtitle {
+      font: $category-tiles-subtitle-desktop;
+    }
+    .category-tiles-link-content {
+      max-width: 88em;
+      .category-tiles-link--field-webny-cat-button-link {
+        height: 140px;
+        width: 23.72881%;
+        a {
+          font-size: 18px;
+          letter-spacing: .15em;
+
+        }
+      }
+    }
+  }
+}// END MIN PC VIEW
+
+// ######################################################################### //
+/* MAX PC VIEW */
+
+@media (min-width: 1400px) {
+  .paragraph--type--webny-category-tiles {
+    .category-tiles-link-content {
+      max-width: 77em;
+    }
+  }
+}// END MAX PC VIEW
+
+// ######################################################################### //
+/* IE10+ PC VIEW */
+
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+/* IE10+ CSS styles go here */
+  .paragraph--type--webny-category-tiles {
+    .category-tiles-link-content {
+      margin-right: 20px;
+    }
+  }
+}
+
+
+
+
+
+
