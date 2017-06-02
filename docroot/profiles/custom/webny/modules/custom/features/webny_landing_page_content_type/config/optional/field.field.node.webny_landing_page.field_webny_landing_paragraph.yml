@@ -7,7 +7,7 @@ dependencies:
     - paragraphs.paragraphs_type.webny_announcement_pgtype
     - paragraphs.paragraphs_type.webny_bio_pgtype
     - paragraphs.paragraphs_type.webny_card_paragraph_type
-    - paragraphs.paragraphs_type.webny_category_tiles
+    - paragraphs.paragraphs_type.webny_category_tiles_frame
     - paragraphs.paragraphs_type.webny_get_involved_pgtype
     - paragraphs.paragraphs_type.webny_social_media_connect
     - paragraphs.paragraphs_type.webny_summary_pgtype
@@ -31,7 +31,7 @@ settings:
   handler_settings:
     target_bundles:
       webny_card_paragraph_type: webny_card_paragraph_type
-      webny_category_tiles: webny_category_tiles
+      webny_category_tiles_frame: webny_category_tiles_frame
       webny_announcement_pgtype: webny_announcement_pgtype
       webny_bio_pgtype: webny_bio_pgtype
       webny_summary_pgtype: webny_summary_pgtype
@@ -44,7 +44,7 @@ settings:
       webny_card_paragraph_type:
         enabled: true
         weight: -23
-      webny_category_tiles:
+      webny_category_tiles_frame:
         enabled: true
         weight: -22
       webny_announcement_pgtype:
