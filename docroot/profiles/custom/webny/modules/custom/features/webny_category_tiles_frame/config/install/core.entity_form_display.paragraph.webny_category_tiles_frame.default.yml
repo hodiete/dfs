@@ -3,20 +3,20 @@ status: true
 dependencies:
   config:
     - entity_browser.browser.image_browser
-    - field.field.paragraph.webny_category_tiles.field_webny_cat_button_link
-    - field.field.paragraph.webny_category_tiles.field_webny_cat_tiles_body
-    - field.field.paragraph.webny_category_tiles.field_webny_cat_tiles_image
-    - field.field.paragraph.webny_category_tiles.field_webny_cat_tiles_subtitle
-    - field.field.paragraph.webny_category_tiles.field_webny_cat_tiles_title
-    - paragraphs.paragraphs_type.webny_category_tiles
+    - field.field.paragraph.webny_category_tiles_frame.field_webny_cat_button_link
+    - field.field.paragraph.webny_category_tiles_frame.field_webny_cat_tiles_body
+    - field.field.paragraph.webny_category_tiles_frame.field_webny_cat_tiles_image
+    - field.field.paragraph.webny_category_tiles_frame.field_webny_cat_tiles_headline
+    - field.field.paragraph.webny_category_tiles_frame.field_webny_cat_tiles_title
+    - paragraphs.paragraphs_type.webny_category_tiles_frame
   module:
     - entity_browser
     - link
     - text
     - workbench_moderation
-id: paragraph.webny_category_tiles.default
+id: paragraph.webny_category_tiles_frame.default
 targetEntityType: paragraph
-bundle: webny_category_tiles
+bundle: webny_category_tiles_frame
 mode: default
 content:
   field_webny_cat_button_link:
