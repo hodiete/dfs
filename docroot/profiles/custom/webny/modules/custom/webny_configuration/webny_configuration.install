@@ -2854,7 +2854,7 @@ function webny_configuration_update_8133() {
  * Refresh Image Styles to include Category Tiles image styles
  * Refresh the media module's entity view mode and entity view display for Category Tiles
  */
-function webny_configuration_update_8132()
+function webny_configuration_update_8134()
 {
 // REFRESH THE WEBNY IMAGE STYLES FEATURE MODULE - to include new Category Tiles image styles
   print webny_configuration_uninstall_module('webny_image_styles');
@@ -2887,11 +2887,11 @@ function webny_configuration_update_8132()
  * Install Category Tiles paragraph type
  * Refresh the landing page content type (include Category Tiles into Frames of Content area)
  */
-function webny_configuration_update_8133()
+function webny_configuration_update_8135()
 {
 // INSTALL CATEGORY TILES PARAGRAPH TYPE
   \Drupal::service('module_installer')
-    ->install(['webny_category_tiles']);
+    ->install(['webny_category_tiles_frame']);
 // REFRESH LANDING PAGE CONTENT TYPE
   \Drupal::service('module_installer')
     ->uninstall(['webny_landing_page_content_type']);
