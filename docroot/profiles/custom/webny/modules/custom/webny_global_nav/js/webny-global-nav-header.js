@@ -13,7 +13,10 @@ var startBrowserWidth  = window.innerWidth;
 // MENU OBJECTS -- OBTAIN ALL DOM ELEMENTS / OBJECTS
 var menuList            = $('#webny-global-header > ul');
 var menuItems           = $('#webny-global-header > ul > li');
+var menuNoLink          = $('#webny-global-header > ul > li > span');
+var agencyNameLink      = $('#webny-global-header h1 a');
 var menuDrops           = $('#webny-global-header > ul > li > ul');
+var drupalLayout        = $('.layout-container');
 
 // EVENT VARS
 var running             = null;     // USED AS A PRECAUTION TO STOP PROPAGATION
@@ -55,7 +58,7 @@ $(document).ready(function(){
     responsiveNav();
 
     // NORMAL NAV LOADER
-    if(curViewMode == 'Desktop'){
+    if(curViewMode === 'Desktop'){
         desktop_mode();
     } else { // MOBILE NAV LOADER
         mobile_mode();
@@ -69,6 +72,11 @@ $(document).ready(function(){
 // ============================================================================
 // MAIN DESKTOP MODE
 function desktop_mode(){
+
+    // ADD TAB INDEX TO MENU ITEMS WITH NO LINKS
+    if($(menuItems).children().length > 1 && $(menuNoLink).length === 1) {
+        $(menuNoLink).attr('tabindex', 0);
+    }
 
     // SET HANDLER
     $(menuItems).hover(
@@ -84,25 +92,30 @@ function desktop_mode(){
         }
     );
 
-    // SET TAB HANDLER
-    $(menuItems).keyup( function(e){
+    // SET TAB HANDLER FOR THE GLOBAL NAV SETION OF THE PAGE
+    $(menuItems).keyup(function(e){
 
-        if(e.which === 9 || e.value ===9){
+        if(e.which === 9 || e.value === 9){
 
-            // GET LAST ELEMENT WHICH
+            // GET LAST ELEMENT TO DETERMINE IF LI HAS SUBMENUS
             if( $(this).children().last().hasClass('gnav-items-ul') ){
+                addAriaExpand(menuItems, false);
                 addAriaExpand(this, true);
                 addAriaHidden(menuDrops, false);
+                $(menuItems).removeClass('webny-global-active');
                 $(this).addClass('webny-global-active');
             } else {
-                addAriaExpand(this, false);
-                addAriaHidden(menuDrops, true);
-                $(menuItems).removeClass('webny-global-active');
-
+                // CASE FOR SINGLE ITEMS
+                resetToDeafultNavState();
             }
         }
-
     });
+
+    // RESET NAV HEADER TO DEFAULT STATE -- FROM HEADER TITLE
+    keyupCall(agencyNameLink);
+
+    // RESET NAV HEADER TO DEFAULT STATE -- FROM DRUPAL'S LAYOUT CONTAINER
+    keyupCall(drupalLayout);
 
 } // END DESKTOP VIEW
 
@@ -231,7 +244,7 @@ function responsiveNav(){
 // ============================================================================
 // ADD CLASSES TO VARIOUS HTML ELEMENTS
 /**
- * @param  array cl     -> Array of class,id selectors / elements
+ * @param cl array     -> Array of class,id selectors / elements
  *                         and classes to add
  */
 function addClasses(cl){
@@ -243,9 +256,9 @@ function addClasses(cl){
 // ============================================================================
 // CHANGE CLASSES
 /**
- * @param string sel     -> Given class,id selector or element
- * @param string cladd   -> Class to add to sel
- * @param string clrm    ->  Class to remove from sel
+ * @param sel   str    -> Given class,id selector or element
+ * @param cladd str    -> Class to add to sel
+ * @param clrm  str    ->  Class to remove from sel
  */
 function changeClass(sel,cladd,clrm){
     $(sel).removeClass(clrm).addClass(cladd);
@@ -271,8 +284,8 @@ function getViewMode(maxDesktop,bw){
 // ============================================================================
 // DEFINE ARIA EXPANDED
 /**
- * @param obj el        -> Target Element
- * @param bool vbool    -> boolean setter
+ * @param el obj        -> Target Element
+ * @param vbool bool    -> boolean setter
  */
 function addAriaExpand(el, vbool){
     $(el).attr('aria-expanded', vbool);
@@ -281,9 +294,34 @@ function addAriaExpand(el, vbool){
 // ============================================================================
 // DEFINE ARIA HIDDEN
 /**
- * @param obj el        -> Target Element
- * @param bool vbool    -> boolean setter
+ * @param el obj        -> Target Element
+ * @param vbool bool    -> boolean setter
  */
 function addAriaHidden(el, vbool){
     $(el).attr('aria-hidden', vbool);
+}
+
+// ============================================================================
+/**
+ * RESET THE GLOBAL NAV TO DEFAULTS
+ * Return Void
+ */
+function resetToDeafultNavState(){
+    addAriaExpand(menuItems, false);
+    addAriaHidden(menuDrops, true);
+    $(menuItems).removeClass('webny-global-active');
+}
+
+// ============================================================================
+/**
+ * CALL TO KEYUP ON VARIOUS POTENTIAL ELEMENTS
+ * @param el obj        -> Element to call action on keyup
+ */
+function keyupCall(el){
+
+    $(el).keyup(function(e){
+        if(e.which === 9 || e.value === 9){
+            resetToDeafultNavState();
+        }
+    });
 }
