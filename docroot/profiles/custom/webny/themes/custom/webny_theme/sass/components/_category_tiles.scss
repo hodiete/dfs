@@ -23,7 +23,7 @@ $category-tiles-subtitle-desktop: 800 2.28em $base-font !default;
 .paragraph {
   display: block;
 }
-.paragraph--type--webny-category-tiles {
+.paragraph--type--webny-category-tiles-frame {
   margin: 0 auto;
   .category-tiles-has-image {
     background-color: $category-tiles-background-color;
@@ -48,7 +48,7 @@ $category-tiles-subtitle-desktop: 800 2.28em $base-font !default;
     padding: 0;
 
   }
-  .category-tiles-subtitle {
+  .category-tiles-headline {
     font: $category-tiles-subtitle-mobile;
     color: $category-tiles-subtitle-color;
     text-align: center;
@@ -104,7 +104,7 @@ $category-tiles-subtitle-desktop: 800 2.28em $base-font !default;
 // ######################################################################### //
 /* TABLET VIEW */
 @media (min-width: $min-tab) {
-  .paragraph--type--webny-category-tiles {
+  .paragraph--type--webny-category-tiles-frame {
     .category-tiles-link-content {
       max-width: 44em;
       .category-tiles-link--field-webny-cat-button-link {
@@ -123,7 +123,7 @@ $category-tiles-subtitle-desktop: 800 2.28em $base-font !default;
 // ######################################################################### //
 /* LARGER TABLET VIEW */
 @media (min-width: $min-desktop) {
-  .paragraph--type--webny-category-tiles {
+  .paragraph--type--webny-category-tiles-frame {
     .category-tiles-link-content {
       max-width: 54em;
       .category-tiles-link--field-webny-cat-button-link {
@@ -141,11 +141,11 @@ $category-tiles-subtitle-desktop: 800 2.28em $base-font !default;
 // ######################################################################### //
 /* PC VIEW */
 @media (min-width: $max-pc) {
-  .paragraph--type--webny-category-tiles {
+  .paragraph--type--webny-category-tiles-frame {
     .category-tiles-title {
       font: $category-tiles-title-desktop;
     }
-    .category-tiles-subtitle {
+    .category-tiles-headline {
       font: $category-tiles-subtitle-desktop;
     }
     .category-tiles-link-content {
@@ -167,7 +167,7 @@ $category-tiles-subtitle-desktop: 800 2.28em $base-font !default;
 /* MAX PC VIEW */
 
 @media (min-width: 1400px) {
-  .paragraph--type--webny-category-tiles {
+  .paragraph--type--webny-category-tiles-frame {
     .category-tiles-link-content {
       max-width: 77em;
     }
@@ -179,7 +179,7 @@ $category-tiles-subtitle-desktop: 800 2.28em $base-font !default;
 
 @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
 /* IE10+ CSS styles go here */
-  .paragraph--type--webny-category-tiles {
+  .paragraph--type--webny-category-tiles-frame {
     .category-tiles-link-content {
       margin-right: 20px;
     }
