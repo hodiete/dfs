@@ -3,7 +3,7 @@
  * Add video frame using videojs https://github.com/videojs.
  */
 
-var videojs = typeof videojs == 'undefined' ? {} : videojs;
+var videojs = typeof videojs === "undefined" ? {} : videojs;
 
 (function ($, Drupal, window, document) {
 
