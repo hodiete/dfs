@@ -45,6 +45,15 @@ function webny_global_nav_theme() {
   $linked_agency_name = Link::fromTextAndUrl($agency_name, $url)->toString();
 
   return array(
+      'webny_global_nav_header_block' => array(
+          'template' => 'webny-global-nav-header-block',
+          'variables' => array(
+              'agencyname'      => $agency_name,
+              'headerformat'    => $header_format,
+              'headermenu'      => $header_menu,
+              'headerauto'      => $header_auto,
+          ),
+      ),
     'webny_global_nav_header' => array(
       'template' => 'webny-global-nav-header',
       'variables' => array(
