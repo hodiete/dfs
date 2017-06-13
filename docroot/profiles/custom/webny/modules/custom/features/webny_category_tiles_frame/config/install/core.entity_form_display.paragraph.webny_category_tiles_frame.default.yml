@@ -11,14 +11,66 @@ dependencies:
     - paragraphs.paragraphs_type.webny_category_tiles_frame
   module:
     - entity_browser
+    - field_group
     - link
     - text
     - workbench_moderation
+third_party_settings:
+  field_group:
+    group_use_category_tiles:
+      children:
+        - group_category_tiles
+      parent_name: ''
+      weight: 4
+      format_type: fieldset
+      format_settings:
+        label: 'Use Category Tiles'
+        description: 'To use a Category Tile button, add a URL and the Text to display on your Category Tile in the fields below. Display up to 20 Category Tiles on your Landing Page. '
+        required_fields: true
+        id: ctfdescription
+        classes: ''
+      label: 'Use Category Tiles'
+    group_category_tiles:
+      children:
+        - field_webny_cat_button_link
+      parent_name: group_use_category_tiles
+      weight: 20
+      format_type: details
+      format_settings:
+        id: ''
+        classes: ct-frame-links
+        open: false
+        required_fields: true
+      label: 'Category Tiles'
 id: paragraph.webny_category_tiles_frame.default
 targetEntityType: paragraph
 bundle: webny_category_tiles_frame
 mode: default
 content:
+  field_webny_cat_button_link:
+    weight: 5
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
+  field_webny_cat_tiles_body:
+    weight: 3
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  field_webny_cat_tiles_headline:
+    weight: 2
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
   field_webny_cat_tiles_image:
     weight: 0
     settings:
@@ -40,30 +92,6 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
-    region: content
-  field_webny_cat_tiles_headline:
-    weight: 2
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-    type: string_textfield
-    region: content
-  field_webny_cat_tiles_body:
-    weight: 3
-    settings:
-      rows: 5
-      placeholder: ''
-    third_party_settings: {  }
-    type: text_textarea
-    region: content
-  field_webny_cat_button_link:
-    weight: 4
-    settings:
-      placeholder_url: ''
-      placeholder_title: ''
-    third_party_settings: {  }
-    type: link_default
     region: content
 hidden:
   created: true
