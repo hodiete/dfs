@@ -13,7 +13,7 @@ $category-tiles-title-color: $color-primary !default;
 $category-tiles-headline-color: $color-mono-black !default;
 $category-tiles-background-color: $color-tertiary !default;
 // font variables
-$category-tiles-title-mobile: bold 14px $oswald !default;
+$category-tiles-title-mobile: bold 16px $oswald !default;
 $category-tiles-title-desktop: $frame-title !default;
 $category-tiles-headline-mobile: 800 0.9em $base-font !default;
 $category-tiles-headline-desktop: 800 1.1em $base-font !default;
@@ -33,15 +33,16 @@ $category-tiles-headline-desktop: 800 1.1em $base-font !default;
     background-color: $category-tiles-background-color;
     padding: 80px 0 80px 15px;
   }
-  .category-tiles-title {
+  // Using .frame-title and .frame-headline similar to _social_media_frame, and _bioframe
+  .frame-title {
     font: $category-tiles-title-mobile;
     color: $category-tiles-title-color;
     text-align: center;
     text-transform: uppercase;
-    letter-spacing: .25em;
+    letter-spacing: 2px;
     padding: 0;
   }
-  .category-tiles-headline {
+  .frame-headline {
     font: $category-tiles-headline-mobile;
     color: $category-tiles-headline-color;
     text-align: center;
@@ -54,6 +55,7 @@ $category-tiles-headline-desktop: 800 1.1em $base-font !default;
   }
   .category-tiles-body{
     padding-bottom: 40px;
+    overflow-wrap: normal;
   }
   .category-tiles-link-content {
     margin: 0 auto;
@@ -74,6 +76,7 @@ $category-tiles-headline-desktop: 800 1.1em $base-font !default;
       justify-content: space-around;
 
       .category-tiles-link--field-webny-cat-button-link {
+        display: flex;
         background-color: $button-bkgd-color;
         padding: 5px;
         max-width: 330px;
@@ -87,11 +90,11 @@ $category-tiles-headline-desktop: 800 1.1em $base-font !default;
         justify-content: center;
         transition: all 0.5s ease;
         opacity: 0.9;
+        align-items: center;
         a {
           color: #ffffff;
-          display: block;
-          padding: 30px 2px 0;
-          text-align: center;
+          display: flex;
+          flex-wrap: wrap;
           text-decoration: none;
           transition: all 0.5s ease;
           opacity: 0.9;
@@ -122,7 +125,6 @@ $category-tiles-headline-desktop: 800 1.1em $base-font !default;
           width: 21.75%;
           height: 120px;
           a {
-            padding: 47px 2px;
             font-size: 16px;
           }
         }
@@ -143,7 +145,6 @@ $category-tiles-headline-desktop: 800 1.1em $base-font !default;
           height: 140px;
           line-height: 20px;
           a {
-            padding: 60px 0 0;
             letter-spacing: 2px;
           }
         }
