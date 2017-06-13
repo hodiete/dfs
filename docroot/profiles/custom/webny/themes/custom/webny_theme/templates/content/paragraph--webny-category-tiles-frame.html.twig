@@ -66,8 +66,8 @@ view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
                     {# CATEGORY TILES HEADLINE - CHECK IF HEADLINE EXISTS #}
                     {%  if((paragraph.field_webny_cat_tiles_title.value is not empty and paragraph.field_webny_cat_tiles_title.value is not null) or (paragraph.field_webny_cat_tiles_headline.value is not empty and paragraph.field_webny_cat_tiles_headline.value is not null)) %}
                     <h2>
-                        <span class="category-tiles-title">{{ content.field_webny_cat_tiles_title}}</span>
-                        <span class="category-tiles-headline">{{ content.field_webny_cat_tiles_headline}}</span>
+                        <span class="frame-title">{{ content.field_webny_cat_tiles_title}}</span>
+                        <span class="frame-headline">{{ content.field_webny_cat_tiles_headline}}</span>
                     </h2>
                     {% else %}
                     {% endif %}
