@@ -13,7 +13,10 @@ var startBrowserWidth  = window.innerWidth;
 // MENU OBJECTS -- OBTAIN ALL DOM ELEMENTS / OBJECTS
 var menuList            = $('#webny-global-header > ul');
 var menuItems           = $('#webny-global-header > ul > li');
+var menuNoLink          = $('#webny-global-header > ul > li > span');
+var agencyNameLink      = $('#webny-global-header h1 a');
 var menuDrops           = $('#webny-global-header > ul > li > ul');
+var drupalLayout        = $('.layout-container');
 
 // EVENT VARS
 var running             = null;     // USED AS A PRECAUTION TO STOP PROPAGATION
@@ -47,11 +50,15 @@ $(document).ready(function(){
     // ADD INIT CLASSES TO ELEMENTS PREPROC
     addClasses(addClassList);
 
+    // ADD ARIA EXPAND ATTRIBuTE
+    addAriaExpand(menuItems, false);
+    addAriaHidden(menuDrops, true);
+
     // RESPONSIVE LISTENER
     responsiveNav();
 
     // NORMAL NAV LOADER
-    if(curViewMode == 'Desktop'){
+    if(curViewMode === 'Desktop'){
         desktop_mode();
     } else { // MOBILE NAV LOADER
         mobile_mode();
@@ -66,15 +73,49 @@ $(document).ready(function(){
 // MAIN DESKTOP MODE
 function desktop_mode(){
 
+    // ADD TAB INDEX TO MENU ITEMS WITH NO LINKS
+    if($(menuItems).children().length > 1 && $(menuNoLink).length === 1) {
+        $(menuNoLink).attr('tabindex', 0);
+    }
+
     // SET HANDLER
     $(menuItems).hover(
         function(){ // OVER
+            addAriaExpand(this, true);
+            addAriaHidden(menuDrops, false);
             changeClass(this,_nav_active,_nav_inactive);
         },
         function(){ // OUT
+            addAriaExpand(menuItems, false);
+            addAriaHidden(menuDrops, true);
             changeClass(this,'',_nav_active);
         }
     );
+
+    // SET TAB HANDLER FOR THE GLOBAL NAV SETION OF THE PAGE
+    $(menuItems).keyup(function(e){
+
+        if(e.which === 9 || e.value === 9){
+
+            // GET LAST ELEMENT TO DETERMINE IF LI HAS SUBMENUS
+            if( $(this).children().last().hasClass('gnav-items-ul') ){
+                addAriaExpand(menuItems, false);
+                addAriaExpand(this, true);
+                addAriaHidden(menuDrops, false);
+                $(menuItems).removeClass('webny-global-active');
+                $(this).addClass('webny-global-active');
+            } else {
+                // CASE FOR SINGLE ITEMS
+                resetToDeafultNavState();
+            }
+        }
+    });
+
+    // RESET NAV HEADER TO DEFAULT STATE -- FROM HEADER TITLE
+    keyupCall(agencyNameLink);
+
+    // RESET NAV HEADER TO DEFAULT STATE -- FROM DRUPAL'S LAYOUT CONTAINER
+    keyupCall(drupalLayout);
 
 } // END DESKTOP VIEW
 
@@ -107,6 +148,9 @@ function mobile_mode(){
                 // DISPLAY ALL INACTIVE
                 $(menuItems).addClass(_nav_inactive);
 
+                addAriaExpand(this, true);
+                addAriaHidden(menuDrops, false);
+
                 // MAKE THIS ACTIVE
                 changeClass(this, _nav_active, _nav_inactive);
 
@@ -130,6 +174,8 @@ function mobile_mode(){
                 e.stopPropagation();
 
                 // MAKE ALL INACTIVE
+                addAriaExpand(menuItems, false);
+                addAriaHidden(menuDrops, true);
                 changeClass(menuItems, '', _nav_active);
                 changeClass(menuItems, '', _nav_inactive);
             }
@@ -198,7 +244,7 @@ function responsiveNav(){
 // ============================================================================
 // ADD CLASSES TO VARIOUS HTML ELEMENTS
 /**
- * @param  array cl     -> Array of class,id selectors / elements
+ * @param cl array     -> Array of class,id selectors / elements
  *                         and classes to add
  */
 function addClasses(cl){
@@ -210,9 +256,9 @@ function addClasses(cl){
 // ============================================================================
 // CHANGE CLASSES
 /**
- * @param string sel     -> Given class,id selector or element
- * @param string cladd   -> Class to add to sel
- * @param string clrm    ->  Class to remove from sel
+ * @param sel   str    -> Given class,id selector or element
+ * @param cladd str    -> Class to add to sel
+ * @param clrm  str    ->  Class to remove from sel
  */
 function changeClass(sel,cladd,clrm){
     $(sel).removeClass(clrm).addClass(cladd);
@@ -233,4 +279,49 @@ function getViewMode(maxDesktop,bw){
         mode = 'Mobile';
     }
     return mode;
+}
+
+// ============================================================================
+// DEFINE ARIA EXPANDED
+/**
+ * @param el obj        -> Target Element
+ * @param vbool bool    -> boolean setter
+ */
+function addAriaExpand(el, vbool){
+    $(el).attr('aria-expanded', vbool);
+}
+
+// ============================================================================
+// DEFINE ARIA HIDDEN
+/**
+ * @param el obj        -> Target Element
+ * @param vbool bool    -> boolean setter
+ */
+function addAriaHidden(el, vbool){
+    $(el).attr('aria-hidden', vbool);
+}
+
+// ============================================================================
+/**
+ * RESET THE GLOBAL NAV TO DEFAULTS
+ * Return Void
+ */
+function resetToDeafultNavState(){
+    addAriaExpand(menuItems, false);
+    addAriaHidden(menuDrops, true);
+    $(menuItems).removeClass('webny-global-active');
+}
+
+// ============================================================================
+/**
+ * CALL TO KEYUP ON VARIOUS POTENTIAL ELEMENTS
+ * @param el obj        -> Element to call action on keyup
+ */
+function keyupCall(el){
+
+    $(el).keyup(function(e){
+        if(e.which === 9 || e.value === 9){
+            resetToDeafultNavState();
+        }
+    });
 }
