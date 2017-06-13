@@ -56,32 +56,31 @@ view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
 
         <div{{ attributes.addClass(classes) }}>
             {% block content %}
+            {# BACKGROUND IMAGE - CHECK IF BACKGROUND IMAGE EXISTS #}
             {% if paragraph.field_webny_cat_tiles_image.value is empty %}
             <div class="category-tiles-no-image category-tiles-landing" style="">
                 {% else %}
-                <div class="category-tiles-has-image category-tiles-landing" style="background-image:linear-gradient(to bottom, rgba(255,255,255,1) 0%,rgba(255,255,255,0) 40%), url('{{ category_tiles_image }}');">
+                <div class="category-tiles-has-image category-tiles-landing" style="background-image:url('{{ category_tiles_image }}');">
                     {% endif %}
-                    {% if paragraph.field_webny_cat_tiles_title.value is empty %}
-                        <div class="category-tiles-title-empty"></div>
+                    {# CATEGORY TILES TITLE - CHECK IF TITLE EXISTS #}
+                    {# CATEGORY TILES HEADLINE - CHECK IF HEADLINE EXISTS #}
+                    {%  if((paragraph.field_webny_cat_tiles_title.value is not empty and paragraph.field_webny_cat_tiles_title.value is not null) or (paragraph.field_webny_cat_tiles_headline.value is not empty and paragraph.field_webny_cat_tiles_headline.value is not null)) %}
+                    <h2>
+                        <span class="category-tiles-title">{{ content.field_webny_cat_tiles_title}}</span>
+                        <span class="category-tiles-headline">{{ content.field_webny_cat_tiles_headline}}</span>
+                    </h2>
                     {% else %}
-                        <div class="category-tiles-title">
-                            <span>{{ content.field_webny_cat_tiles_title}}</span>
-                        </div>
                     {% endif %}
-                    <div class="category-tiles-subtitle">
-                        <span>{{ content.field_webny_cat_tiles_subtitle}}</span>
-                    </div>
+                    {# CATEGORY TILES BODY - CHECK IF BODY EXISTS #}
+                    {% if paragraph.field_webny_cat_tiles_body.value is not null and paragraph.field_webny_cat_tiles_body.value is not empty %}
                     <div class="body-area">
                         <div class="body-area-in">
-                            {% if paragraph.field_webny_cat_tiles_body.value is empty %}
-                            <div class="category-tiles-body-empty"></div>
-                            {% else %}
                             <div class="category-tiles-body">
                                 <span>{{ content.field_webny_cat_tiles_body }}</span>
                             </div>
-                            {% endif %}
                         </div>
                     </div>
+                    {% endif %}
                     <div class="category-tiles-link-content">
                         {{ content.field_webny_cat_button_link }}
                     </div>
@@ -93,3 +92,13 @@ view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
     </article>
 
 {% endblock paragraph %}
+
+
+{# DOCUMENT TITLE - CHECK IF TITLE EXISTS #}
+    {% if node.field_webny_news_docsec_title.value is not null and node.field_webny_news_docsec_title.value is not empty  %}
+        <h2 class="doc-set-title">{{ content.field_webny_news_docsec_title }}</h2>
+    {% endif %}
+    {# DOCUMENT SUBTITLE - CHECK IF SUBTITLE EXISTS #}
+    {% if node.field_webny_news_docsec_subtitle.value is not null and node.field_webny_news_docsec_subtitle.value is not empty  %}
+        <h3 class="doc-set-subtitle">{{ content.field_webny_news_docsec_subtitle }}</h3>
+    {% endif %}
