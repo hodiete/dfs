@@ -60,28 +60,45 @@ $category-tiles-headline-desktop: 800 1.1em $base-font !default;
     max-width: 28em;
     width: 100%;
     float: none;
-    .category-tiles-link--field-webny-cat-button-link {
-      display: inline-flex;
-      background-color: $button-bkgd-color;
-      margin: 5px;
-      max-width: 330px;
-      width: 44.72881%;
-      height: 80px;
-      line-height: 17px;
-      justify-content: center;
-      transition: all 0.5s ease;
-      opacity: 0.9;
-      a {
-        color: #ffffff;
-        display: block;
-        padding: 30px 2px 0;
+    .category-tile-link-flex{
+      padding: 0;
+      margin: 0;
+      list-style: none;
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-flex-flow: row wrap;
+      flex-flow: row wrap;
+      justify-content: space-around;
+
+      .category-tiles-link--field-webny-cat-button-link {
+        background-color: $button-bkgd-color;
+        padding: 5px;
+        max-width: 330px;
+        width: 44.72881%;
+        height: 80px;
+        line-height: 17px;
+        margin-top: 10px;
+        color: white;
+        font-size: 3em;
         text-align: center;
-        text-decoration: none;
+        justify-content: center;
         transition: all 0.5s ease;
         opacity: 0.9;
-        font-family: $base-font;
-        font-size: 16px;
-        letter-spacing: 0;
+        a {
+          color: #ffffff;
+          display: block;
+          padding: 30px 2px 0;
+          text-align: center;
+          text-decoration: none;
+          transition: all 0.5s ease;
+          opacity: 0.9;
+          font-family: $base-font;
+          font-size: 16px;
+          letter-spacing: 0;
+        }
       }
     }
 
@@ -100,13 +117,14 @@ $category-tiles-headline-desktop: 800 1.1em $base-font !default;
   .paragraph--type--webny-category-tiles-frame {
     .category-tiles-link-content {
       max-width: 44em;
-      .category-tiles-link--field-webny-cat-button-link {
-        width: 21.75%;
-        height: 120px;
-        line-height: 23px;
-        a {
-          padding: 50px 2px;
-          font-size: 18px;
+      .category-tile-link-flex {
+        .category-tiles-link--field-webny-cat-button-link {
+          width: 21.75%;
+          height: 120px;
+          a {
+            padding: 47px 2px;
+            font-size: 16px;
+          }
         }
       }
     }
@@ -119,12 +137,15 @@ $category-tiles-headline-desktop: 800 1.1em $base-font !default;
   .paragraph--type--webny-category-tiles-frame {
     .category-tiles-link-content {
       max-width: 54em;
-      .category-tiles-link--field-webny-cat-button-link {
-        width: 23.3%;
-        height: 140px;
-        a{
-          padding: 60px 0 0;
-          letter-spacing: 2px;
+      .category-tile-link-flex {
+        .category-tiles-link--field-webny-cat-button-link {
+          width: 23.3%;
+          height: 140px;
+          line-height: 20px;
+          a {
+            padding: 60px 0 0;
+            letter-spacing: 2px;
+          }
         }
       }
     }
@@ -143,13 +164,14 @@ $category-tiles-headline-desktop: 800 1.1em $base-font !default;
     }
     .category-tiles-link-content {
       max-width: 88em;
-      .category-tiles-link--field-webny-cat-button-link {
-        height: 140px;
-        width: 23.72881%;
-        a {
-          font-size: 18px;
-          letter-spacing: .15em;
-
+      .category-tile-link-flex {
+        .category-tiles-link--field-webny-cat-button-link {
+          height: 140px;
+          width: 23.72881%;
+          a {
+            font-size: 18px;
+            letter-spacing: .15em;
+          }
         }
       }
     }
@@ -163,6 +185,8 @@ $category-tiles-headline-desktop: 800 1.1em $base-font !default;
   .paragraph--type--webny-category-tiles-frame {
     .category-tiles-link-content {
       max-width: 77em;
+      .category-tile-link-flex {
+      }
     }
   }
 }// END MAX PC VIEW
@@ -175,6 +199,8 @@ $category-tiles-headline-desktop: 800 1.1em $base-font !default;
   .paragraph--type--webny-category-tiles-frame {
     .category-tiles-link-content {
       margin-right: 20px;
+      .category-tile-link-flex {
+      }
     }
   }
 }
