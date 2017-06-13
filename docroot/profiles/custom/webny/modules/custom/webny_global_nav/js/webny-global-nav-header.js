@@ -6,17 +6,17 @@
 $ = jQuery;
 
 // NUMERIC VALUES
-var maxDesktop          = 1024; // WEBNY STANDARD
-// var maxMob              = 768; // IF STYLES NEEDED UNDER 768 for mobile
-var startBrowserWidth  = window.innerWidth;
+var maxDesktop              = 1024; // WEBNY STANDARD
+// var maxMob               = 768; // IF STYLES NEEDED UNDER 768 for mobile
+var startBrowserWidth       = window.innerWidth;
 
 // MENU OBJECTS -- OBTAIN ALL DOM ELEMENTS / OBJECTS
 var menuList            = $('#webny-global-header > ul');
 var menuItems           = $('#webny-global-header > ul > li');
 var menuNoLink          = $('#webny-global-header > ul > li > span');
-var agencyNameLink      = $('#webny-global-header h1 a');
+var agencyNameLink      = $('#webny-global-header > h1 a');
 var menuDrops           = $('#webny-global-header > ul > li > ul');
-var drupalLayout        = $('.layout-container');
+var drupalLayout        = $('main, .webny-global-footer');
 
 // EVENT VARS
 var running             = null;     // USED AS A PRECAUTION TO STOP PROPAGATION
@@ -74,7 +74,7 @@ $(document).ready(function(){
 function desktop_mode(){
 
     // ADD TAB INDEX TO MENU ITEMS WITH NO LINKS
-    if($(menuItems).children().length > 1 && $(menuNoLink).length === 1) {
+    if($(menuItems).children().length > 1 ) {
         $(menuNoLink).attr('tabindex', 0);
     }
 
@@ -320,6 +320,7 @@ function resetToDeafultNavState(){
 function keyupCall(el){
 
     $(el).keyup(function(e){
+        e.stopImmediatePropagation();
         if(e.which === 9 || e.value === 9){
             resetToDeafultNavState();
         }
