@@ -1,9 +1,13 @@
+{#
+    USED SPECIFICALLY FOR THE GLOBAL NAVIGATION BLOCK IN THE HEADER REGION
+    -- See region--header.twig.html for parent definition template
+#}
 {% if headerauto == 1 %}
     <nav id="webny-global-header" class="webny-global-header {{ headerformat }}" aria-label="primary-site" >
         <div class="nav-toggle">
             <a href="#" role="button" id="webny-menu-control">Navigation menu</a>
         </div>
         <h1><a href="/">{{ agencyname|raw }}</a></h1>
-        {{ renderMenu(headermenu, 'header', 'none') }}
+        {{ globalNavBlock(headermenu, 'header', 'none') }}
     </nav>
 {% endif %}
