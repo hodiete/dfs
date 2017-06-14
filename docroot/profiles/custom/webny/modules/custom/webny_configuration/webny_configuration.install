@@ -2775,10 +2775,6 @@ function webny_configuration_update_8130(){
  */
 function webny_configuration_update_8131() {
 
-    \Drupal::service('module_installer')
-        ->uninstall(['webny_global_nav']);
-    \Drupal::service('module_installer')
-        ->install(['webny_global_nav']);
 
     $config_factory = \Drupal::configFactory();
     $profile_config = \Drupal::service('webny.profile_config');
@@ -2860,10 +2856,8 @@ function webny_configuration_update_8134() {
  * Forces Update of the block config for global nav - NDD-918
  * - iojonep
  */
-function webny_configuration_update_8136(){
-
-
-
+function webny_configuration_update_8135(){
+    
     $config_factory = \Drupal::configFactory();
     $profile_config = \Drupal::service('webny.profile_config');
 
