@@ -95,14 +95,14 @@ Feature: Image style Tests
     Given I am logged into the distro with the "administrator" role 
     When I am on "/admin/structure/media/manage/image/display/hero_image"
     Then I should see "Hero image"
-    And I should see "Thumbnail style: - None -"
+    And I should see "Breakpoints: 460, 768, 1824"
 
 # Check WebNY Hero Image Tall display is present
   Scenario: See if WebNY Hero Image Tall display exist
     Given I am logged into the distro with the "administrator" role 
     When I am on "/admin/structure/media/manage/image/display/hero_image_tall"
     Then I should see "Hero image tall"
-    And I should see "Thumbnail style: - None -"
+    And I should see "Breakpoints: 460, 768, 1824"
 
 # Check WebNY Media Library Image display is present
   Scenario: See if WebNY Media Library Image display exist
@@ -139,7 +139,7 @@ Feature: Image style Tests
     When I am on "/admin/structure/media/manage/image/display/wysiwyg_portrait"
     Then I should see "wysiwyg portrait"
     And I should see "Image style: wysiwyg portrait (300x300)"
-    And I should see "Thumbnail style: - None -"
+    And I should see "Breakpoints: none"
 
 # Check that Media Embed button has wysiwyg image styles applied
   Scenario: Check the Media Embed button to see that the wysiwyg image styles are applied
