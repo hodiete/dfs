@@ -131,7 +131,7 @@ Feature: Image style Tests
     When I am on "/admin/structure/media/manage/image/display/wysiwyg"
     Then I should see "wysiwyg"
     And I should see "Image style: wysiwyg (660x400)"
-    And I should see "Responsive image: wysiwyg"
+    And I should see "Responsive image style: wysiwyg"
 
 # Check WebNY wysiwyg portrait Image display is present
   Scenario: See if WebNY wysiwyg portrait Image display exist
