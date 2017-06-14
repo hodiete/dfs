@@ -5,7 +5,7 @@ namespace Drupal\webny_global_nav\Twig;
 /**
  * Class WebnyGlobalNavExtension extends \Twig_Extension.
  */
-class WebnyGlobalNavExtension extends \Twig_Extension {
+class WebnyGlobalNavFooterExtension extends \Twig_Extension {
 
   /**
    * Function getName()
