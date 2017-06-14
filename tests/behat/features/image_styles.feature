@@ -81,7 +81,7 @@ Feature: Image style Tests
     Given I am logged into the distro with the "administrator" role
     When I am on "/admin/structure/media/manage/image/display/cards"
     Then I should see "Cards"
-    And I should see "Responsive image: cards"
+    And I should see "Responsive image style: cards"
 
 # Check WebNY Embedded Image display is present
   Scenario: See if WebNY Embedded Image display exist
