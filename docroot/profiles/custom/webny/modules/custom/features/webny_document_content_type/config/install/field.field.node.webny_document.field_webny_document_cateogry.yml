@@ -10,7 +10,7 @@ field_name: field_webny_document_cateogry
 entity_type: node
 bundle: webny_document
 label: 'Document Category'
-description: 'Select the document category(ies) that are applicable to the file.'
+description: 'Select one or more category terms to categorize this document.'
 required: false
 translatable: false
 default_value: {  }
@@ -23,4 +23,5 @@ settings:
     sort:
       field: _none
     auto_create: false
+    auto_create_bundle: ''
 field_type: entity_reference

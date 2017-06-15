@@ -1,0 +1,19 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - webny_global_nav
+  theme:
+    - webny_theme
+id: webnyglobalnavigationblock
+theme: webny_theme
+region: header
+weight: 0
+provider: null
+plugin: webny_global_nav_block
+settings:
+  id: webny_global_nav_block
+  label: 'Global Navigation Block'
+  provider: webny_global_nav
+  label_display: '0'
+visibility: {  }
