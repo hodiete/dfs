@@ -2,17 +2,17 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.node.webny_standard_page.field_webny_stand_avgtranstime
-    - field.field.node.webny_standard_page.field_webny_stand_contentcat
-    - field.field.node.webny_standard_page.field_webny_stand_contentsect
-    - field.field.node.webny_standard_page.field_webny_stand_date
-    - field.field.node.webny_standard_page.field_webny_stand_herodesc
-    - field.field.node.webny_standard_page.field_webny_stand_heroimage
-    - field.field.node.webny_standard_page.field_webny_stand_howtoapply
-    - field.field.node.webny_standard_page.field_webny_stand_keywords
-    - field.field.node.webny_standard_page.field_webny_stand_navtoggle
-    - field.field.node.webny_standard_page.field_webny_stand_sumdes
-    - node.type.webny_standard_page
+    - field.field.node.webny_generic_page.field_webny_gencp_avgtranstime
+    - field.field.node.webny_generic_page.field_webny_gencp_contentcat
+    - field.field.node.webny_generic_page.field_webny_gencp_contentsect
+    - field.field.node.webny_generic_page.field_webny_gencp_date
+    - field.field.node.webny_generic_page.field_webny_gencp_herodesc
+    - field.field.node.webny_generic_page.field_webny_gencp_heroimage
+    - field.field.node.webny_generic_page.field_webny_gencp_howtoapply
+    - field.field.node.webny_generic_page.field_webny_gencp_keywords
+    - field.field.node.webny_generic_page.field_webny_gencp_navtoggle
+    - field.field.node.webny_generic_page.field_webny_gencp_sumdes
+    - node.type.webny_generic_page
   module:
     - datetime
     - field_group
@@ -23,10 +23,10 @@ dependencies:
     - workbench_moderation
 third_party_settings:
   field_group:
-    group_webny_stand_herofields:
+    group_webny_gencp_herofields:
       children:
-        - field_webny_stand_heroimage
-        - field_webny_stand_herodesc
+        - field_webny_gencp_heroimage
+        - field_webny_gencp_herodesc
       parent_name: ''
       weight: 5
       format_type: details
@@ -36,10 +36,10 @@ third_party_settings:
         open: false
         required_fields: true
       label: 'Hero Fields'
-    group_webny_stand_transsec:
+    group_webny_gencp_transsec:
       children:
-        - field_webny_stand_avgtranstime
-        - field_webny_stand_howtoapply
+        - field_webny_gencp_avgtranstime
+        - field_webny_gencp_howtoapply
       parent_name: ''
       weight: 6
       format_type: details
@@ -49,10 +49,10 @@ third_party_settings:
         open: false
         required_fields: true
       label: 'Transaction Section'
-    group_webny_stand_sectoc:
+    group_webny_gencp_sectoc:
       children:
-        - field_webny_stand_navtoggle
-        - field_webny_stand_contentsect
+        - field_webny_gencp_navtoggle
+        - field_webny_gencp_contentsect
       parent_name: ''
       weight: 7
       format_type: details
@@ -62,9 +62,9 @@ third_party_settings:
         open: false
         required_fields: true
       label: 'Sections and Table of Contents'
-id: node.webny_standard_page.default
+id: node.webny_generic_page.default
 targetEntityType: node
-bundle: webny_standard_page
+bundle: webny_generic_page
 mode: default
 content:
   created:
@@ -73,7 +73,7 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
-  field_webny_stand_avgtranstime:
+  field_webny_gencp_avgtranstime:
     weight: 6
     settings:
       size: 60
@@ -81,7 +81,7 @@ content:
     third_party_settings: {  }
     type: string_textfield
     region: content
-  field_webny_stand_contentcat:
+  field_webny_gencp_contentcat:
     weight: 4
     settings:
       match_operator: CONTAINS
@@ -90,7 +90,7 @@ content:
     third_party_settings: {  }
     type: entity_reference_autocomplete
     region: content
-  field_webny_stand_contentsect:
+  field_webny_gencp_contentsect:
     type: entity_reference_paragraphs
     weight: 9
     settings:
@@ -102,13 +102,13 @@ content:
       default_paragraph_type: _none
     third_party_settings: {  }
     region: content
-  field_webny_stand_date:
+  field_webny_gencp_date:
     weight: 2
     settings: {  }
     third_party_settings: {  }
     type: datetime_default
     region: content
-  field_webny_stand_herodesc:
+  field_webny_gencp_herodesc:
     weight: 6
     settings:
       size: 60
@@ -116,7 +116,7 @@ content:
     third_party_settings: {  }
     type: text_textfield
     region: content
-  field_webny_stand_heroimage:
+  field_webny_gencp_heroimage:
     weight: 5
     settings:
       match_operator: CONTAINS
@@ -125,7 +125,7 @@ content:
     third_party_settings: {  }
     type: entity_reference_autocomplete
     region: content
-  field_webny_stand_howtoapply:
+  field_webny_gencp_howtoapply:
     weight: 7
     settings:
       placeholder_url: ''
@@ -133,7 +133,7 @@ content:
     third_party_settings: {  }
     type: link_default
     region: content
-  field_webny_stand_keywords:
+  field_webny_gencp_keywords:
     weight: 3
     settings:
       match_operator: CONTAINS
@@ -142,13 +142,13 @@ content:
     third_party_settings: {  }
     type: entity_reference_autocomplete
     region: content
-  field_webny_stand_navtoggle:
+  field_webny_gencp_navtoggle:
     weight: 8
     settings: {  }
     third_party_settings: {  }
     type: options_buttons
     region: content
-  field_webny_stand_sumdes:
+  field_webny_gencp_sumdes:
     weight: 1
     settings:
       size: 60
