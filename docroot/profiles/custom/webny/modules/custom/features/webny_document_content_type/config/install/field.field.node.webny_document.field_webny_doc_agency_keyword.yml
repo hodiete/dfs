@@ -10,7 +10,7 @@ field_name: field_webny_doc_agency_keyword
 entity_type: node
 bundle: webny_document
 label: 'Agency Keyword'
-description: 'Select the agency keyword(s) that apply to this document.'
+description: 'Select one or more agency keywords to categorize this document.'
 required: false
 translatable: false
 default_value: {  }
@@ -23,4 +23,5 @@ settings:
     sort:
       field: _none
     auto_create: false
+    auto_create_bundle: ''
 field_type: entity_reference
