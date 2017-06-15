@@ -2,13 +2,13 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_webny_stand_contentcat
-    - node.type.webny_standard_page
+    - field.storage.node.field_webny_gencp_contentcat
+    - node.type.webny_generic_page
     - taxonomy.vocabulary.webny_tax_contentcat
-id: node.webny_standard_page.field_webny_stand_contentcat
-field_name: field_webny_stand_contentcat
+id: node.webny_generic_page.field_webny_gencp_contentcat
+field_name: field_webny_gencp_contentcat
 entity_type: node
-bundle: webny_standard_page
+bundle: webny_generic_page
 label: 'Content Categorization'
 description: 'This term added in this field will provide a way to organize multiple versions of this content type. '
 required: false
