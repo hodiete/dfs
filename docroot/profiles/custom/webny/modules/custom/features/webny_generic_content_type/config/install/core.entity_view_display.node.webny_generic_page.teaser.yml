@@ -3,7 +3,15 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.teaser
+    - field.field.node.webny_generic_page.field_webny_gencp_avgtranstime
+    - field.field.node.webny_generic_page.field_webny_gencp_contentcat
+    - field.field.node.webny_generic_page.field_webny_gencp_contentsect
     - field.field.node.webny_generic_page.field_webny_gencp_date
+    - field.field.node.webny_generic_page.field_webny_gencp_herodesc
+    - field.field.node.webny_generic_page.field_webny_gencp_heroimage
+    - field.field.node.webny_generic_page.field_webny_gencp_howtoapply
+    - field.field.node.webny_generic_page.field_webny_gencp_keywords
+    - field.field.node.webny_generic_page.field_webny_gencp_navtoggle
     - field.field.node.webny_generic_page.field_webny_gencp_sumdes
     - node.type.webny_generic_page
   module:
@@ -17,6 +25,14 @@ content:
     weight: 100
     region: content
 hidden:
+  field_webny_gencp_avgtranstime: true
+  field_webny_gencp_contentcat: true
+  field_webny_gencp_contentsect: true
   field_webny_gencp_date: true
+  field_webny_gencp_herodesc: true
+  field_webny_gencp_heroimage: true
+  field_webny_gencp_howtoapply: true
+  field_webny_gencp_keywords: true
+  field_webny_gencp_navtoggle: true
   field_webny_gencp_sumdes: true
   langcode: true
