@@ -1,11 +1,12 @@
+uuid: 0142a183-5d45-4979-bc8b-ab5259ce3d1a
 langcode: en
 status: true
 dependencies:
   config:
-    - filter.format.webny_wysiwyg_frame_editor
+    - filter.format.webny_enhanced_wysiwyg
   module:
     - ckeditor
-format: webny_wysiwyg_frame_editor
+format: webny_enhanced_wysiwyg
 editor: ckeditor
 settings:
   toolbar:
@@ -45,6 +46,10 @@ settings:
         -
           name: Align
           items:
+            - JustifyLeft
+            - JustifyCenter
+            - JustifyRight
+            - JustifyBlock
             - Indent
             - Outdent
         -
@@ -54,6 +59,7 @@ settings:
             - SpecialChar
             - Superscript
             - Subscript
+            - Styles
         -
           name: Tables
           items:
@@ -62,7 +68,7 @@ settings:
     language:
       language_list: un
     stylescombo:
-      styles: ''
+      styles: p.button|Button
 image_upload:
   status: false
   scheme: public
