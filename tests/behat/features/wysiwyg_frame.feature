@@ -28,3 +28,10 @@ Feature: WYSIWYG Frame Paragraph Tests
     And I should see "WYSIWYG Body"
     When I am on "/admin/structure/paragraphs_type/webny_wysiwyg_pgtype/display"
     Then I should not get a 404 HTTP response
+
+# Check for the display Mode GENERIC for WYSIWYG
+  Scenario: Does the generic display mode exist
+    Given I am logged into the distro with the "administrator" role
+    When I am on "/admin/structure/paragraphs_type/webny_wysiwyg_pgtype/display/generic"
+    Then I should not get a 404 HTTP response
+    And I should not see "Access denied"
