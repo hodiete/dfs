@@ -1,8 +1,9 @@
-uuid: 75c1ce2b-0d59-4c07-ac2b-887385ba71c0
+uuid: ae4832a2-7881-4d89-a2f8-39926a80fb18
 langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_view_mode.paragraph.generic
     - field.field.paragraph.webny_wysiwyg_pgtype.field_webny_wysiwyg_body
     - field.field.paragraph.webny_wysiwyg_pgtype.field_webny_wysiwyg_headline
     - field.field.paragraph.webny_wysiwyg_pgtype.field_webny_wysiwyg_title
@@ -10,10 +11,10 @@ dependencies:
     - paragraphs.paragraphs_type.webny_wysiwyg_pgtype
   module:
     - text
-id: paragraph.webny_wysiwyg_pgtype.default
+id: paragraph.webny_wysiwyg_pgtype.generic
 targetEntityType: paragraph
 bundle: webny_wysiwyg_pgtype
-mode: default
+mode: generic
 content:
   field_webny_wysiwyg_body:
     weight: 2
