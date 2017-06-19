@@ -8,15 +8,33 @@ dependencies:
     - field.field.paragraph.webny_wysiwyg_pgtype.field_webny_wysiwyg_toc
     - paragraphs.paragraphs_type.webny_wysiwyg_pgtype
   module:
+    - field_group
     - text
     - workbench_moderation
+third_party_settings:
+  field_group:
+    group_webny_wysiwyg_frame:
+      children:
+        - field_webny_wysiwyg_toc
+        - field_webny_wysiwyg_title
+        - field_webny_wysiwyg_headline
+        - field_webny_wysiwyg_body
+      parent_name: ''
+      weight: 0
+      format_type: details
+      format_settings:
+        id: wysiwyg-wrapper
+        classes: paraframe-wrapper
+        open: false
+        required_fields: true
+      label: 'WYSIWYG Frame'
 id: paragraph.webny_wysiwyg_pgtype.default
 targetEntityType: paragraph
 bundle: webny_wysiwyg_pgtype
 mode: default
 content:
   field_webny_wysiwyg_body:
-    weight: 3
+    weight: 4
     settings:
       rows: 5
       placeholder: ''
@@ -24,7 +42,7 @@ content:
     type: text_textarea
     region: content
   field_webny_wysiwyg_headline:
-    weight: 2
+    weight: 3
     settings:
       size: 60
       placeholder: ''
@@ -32,7 +50,7 @@ content:
     type: string_textfield
     region: content
   field_webny_wysiwyg_title:
-    weight: 1
+    weight: 2
     settings:
       size: 60
       placeholder: ''
@@ -40,7 +58,7 @@ content:
     type: string_textfield
     region: content
   field_webny_wysiwyg_toc:
-    weight: 0
+    weight: 1
     settings: {  }
     third_party_settings: {  }
     type: options_buttons
