@@ -23,6 +23,7 @@ Feature: WYSIWYG Frame Paragraph Tests
     Then I should not get a 404 HTTP response
     When I am on "/admin/structure/paragraphs_type/webny_wysiwyg_pgtype/fields"
     Then I should see "Title"
+    And I should see "Add Frame to Table of Contents"
     And I should see "Headline"
     And I should see "WYSIWYG Body"
     When I am on "/admin/structure/paragraphs_type/webny_wysiwyg_pgtype/display"
