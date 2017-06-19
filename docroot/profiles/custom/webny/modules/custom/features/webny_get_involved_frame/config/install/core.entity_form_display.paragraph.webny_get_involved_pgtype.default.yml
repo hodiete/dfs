@@ -10,27 +10,8 @@ dependencies:
     - field.field.paragraph.webny_get_involved_pgtype.field_webny_get_involved_title
     - paragraphs.paragraphs_type.webny_get_involved_pgtype
   module:
-    - field_group
     - link
     - workbench_moderation
-third_party_settings:
-  field_group:
-    group_webny_get_inv_wrapper:
-      children:
-        - field_webny_get_inv_toc
-        - field_webny_get_involved_title
-        - field_webny_get_inv_share_title
-        - field_webny_get_inv_headline
-        - field_webny_get_inv_description
-      parent_name: ''
-      weight: 1
-      format_type: details
-      format_settings:
-        id: getinv-wrapper
-        classes: paraframe-wrapper
-        open: false
-        required_fields: true
-      label: 'Get Involved Frame'
 id: paragraph.webny_get_involved_pgtype.default
 targetEntityType: paragraph
 bundle: webny_get_involved_pgtype
