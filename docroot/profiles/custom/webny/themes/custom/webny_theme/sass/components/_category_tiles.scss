@@ -72,10 +72,15 @@ $category-tiles-headline-desktop: 800 1.1em $base-font !default;
       display: -webkit-flex;
       display: flex;
       -webkit-flex-flow: row wrap;
+      -ms-flex-flow: row wrap;
       flex-flow: row wrap;
       justify-content: space-around;
 
       .category-tiles-link--field-webny-cat-button-link {
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
         display: flex;
         background-color: $button-bkgd-color;
         padding: 5px;
@@ -93,6 +98,10 @@ $category-tiles-headline-desktop: 800 1.1em $base-font !default;
         align-items: center;
         a {
           color: #ffffff;
+          display: -webkit-box;
+          display: -moz-box;
+          display: -ms-flexbox;
+          display: -webkit-flex;
           display: flex;
           flex-wrap: wrap;
           text-decoration: none;
@@ -192,19 +201,6 @@ $category-tiles-headline-desktop: 800 1.1em $base-font !default;
   }
 }// END MAX PC VIEW
 
-// ######################################################################### //
-/* IE10+ PC VIEW */
-
-@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
-/* IE10+ CSS styles go here */
-  .paragraph--type--webny-category-tiles-frame {
-    .category-tiles-link-content {
-      margin-right: 20px;
-      .category-tile-link-flex {
-      }
-    }
-  }
-}
 
 
 
