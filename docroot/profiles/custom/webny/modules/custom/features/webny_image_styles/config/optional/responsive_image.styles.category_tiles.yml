@@ -1,0 +1,29 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - image.style.category_tiles_desktop
+    - image.style.category_tiles_mobile
+    - image.style.category_tiles_tablet
+  theme:
+    - webny_theme
+id: category_tiles
+label: 'Category Tiles'
+image_style_mappings:
+  -
+    breakpoint_id: webny_theme.wide
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: category_tiles_desktop
+  -
+    breakpoint_id: webny_theme.narrow
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: category_tiles_tablet
+  -
+    breakpoint_id: webny_theme.mobile
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: category_tiles_mobile
+breakpoint_group: webny_theme
+fallback_image_style: category_tiles_desktop
