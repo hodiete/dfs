@@ -2944,6 +2944,20 @@ function webny_configuration_update_8137() {
 }
 
 /**
+ * Implements hook_update_n().
+ *
+ * refresh media module.
+ */
+function webny_configuration_update_8138()
+{
+
+    \Drupal::service('module_installer')
+        ->uninstall(['webny_media']);
+    \Drupal::service('module_installer')
+        ->install(['webny_media']);
+}
+
+/**
  * Helper function to enable a Drupal module and print the result.
  *
  * @param string $module_name
