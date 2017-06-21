@@ -160,4 +160,4 @@ Feature: Image style Tests
     When I am on "/admin/structure/media/manage/image/display/category_tiles"
     Then I should see "Image style: Media Image"
     And I should see "Thumbnail style: Thumbnail (100×100)"
-    And I should see "Responsive image: Category Tiles"
+    And I should see "Responsive image style: category_tiles"
