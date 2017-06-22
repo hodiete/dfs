@@ -9,6 +9,7 @@ dependencies:
     - field.field.paragraph.webny_wysiwyg_pgtype.field_webny_wysiwyg_toc
     - paragraphs.paragraphs_type.webny_wysiwyg_pgtype
   module:
+    - options
     - text
 id: paragraph.webny_wysiwyg_pgtype.generic
 targetEntityType: paragraph
@@ -22,7 +23,7 @@ content:
     third_party_settings: {  }
     type: text_default
     region: content
-  field_webny_wysiwyg_headline:
+  field_webny_wysiwyg_title:
     weight: 1
     label: hidden
     settings:
@@ -30,15 +31,14 @@ content:
     third_party_settings: {  }
     type: string
     region: content
-  field_webny_wysiwyg_title:
+  field_webny_wysiwyg_toc:
+    type: list_default
     weight: 0
-    label: hidden
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    type: string
     region: content
+    label: above
+    settings: {  }
+    third_party_settings: {  }
 hidden:
   created: true
-  field_webny_wysiwyg_toc: true
+  field_webny_wysiwyg_headline: true
   uid: true
