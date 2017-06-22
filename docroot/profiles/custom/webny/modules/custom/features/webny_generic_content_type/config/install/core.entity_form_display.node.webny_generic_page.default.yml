@@ -9,6 +9,7 @@ dependencies:
     - field.field.node.webny_generic_page.field_webny_gencp_heroimage
     - field.field.node.webny_generic_page.field_webny_gencp_howtoapply
     - field.field.node.webny_generic_page.field_webny_gencp_keywords
+    - field.field.node.webny_generic_page.field_webny_gencp_metatags
     - field.field.node.webny_generic_page.field_webny_gencp_navtoggle
     - field.field.node.webny_generic_page.field_webny_gencp_sumdes
     - node.type.webny_generic_page
@@ -16,6 +17,7 @@ dependencies:
     - datetime
     - field_group
     - link
+    - metatag
     - path
     - text
     - workbench_moderation
@@ -27,7 +29,7 @@ third_party_settings:
         - field_webny_gencp_date
         - field_webny_gencp_herodesc
       parent_name: ''
-      weight: 5
+      weight: 4
       format_type: details
       format_settings:
         id: webny-hero-fields
@@ -40,7 +42,7 @@ third_party_settings:
         - field_webny_gencp_avgtranstime
         - field_webny_gencp_howtoapply
       parent_name: ''
-      weight: 6
+      weight: 5
       format_type: details
       format_settings:
         id: transaction-section
@@ -53,7 +55,7 @@ third_party_settings:
         - field_webny_gencp_navtoggle
         - field_webny_gencp_contentsect
       parent_name: ''
-      weight: 7
+      weight: 6
       format_type: details
       format_settings:
         id: sections-toc
@@ -81,7 +83,7 @@ content:
     type: string_textfield
     region: content
   field_webny_gencp_contentcat:
-    weight: 4
+    weight: 3
     settings:
       match_operator: CONTAINS
       size: 60
@@ -133,13 +135,19 @@ content:
     type: link_default
     region: content
   field_webny_gencp_keywords:
-    weight: 3
+    weight: 2
     settings:
       match_operator: CONTAINS
       size: 60
       placeholder: ''
     third_party_settings: {  }
     type: entity_reference_autocomplete
+    region: content
+  field_webny_gencp_metatags:
+    weight: 7
+    settings: {  }
+    third_party_settings: {  }
+    type: metatag_firehose
     region: content
   field_webny_gencp_navtoggle:
     weight: 8
