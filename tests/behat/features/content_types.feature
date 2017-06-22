@@ -363,6 +363,7 @@ Feature: Check for the existence and fields of content types
     And I should see text matching "Hero Image"
     And I should see text matching "How to Apply \(link field\)"
     And I should see text matching "Keywords"
+    And I should see text matching "Metatags"
     And I should see text matching "Navigator / Table of Content Toggle"
     And I should not see text matching "Add Phone Contact"
 
