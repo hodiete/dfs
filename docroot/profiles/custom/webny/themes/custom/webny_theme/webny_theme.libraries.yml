@@ -83,9 +83,16 @@ videohero:
     - webny_theme/videojs-vimeo
     - core/jquery
 
+waypoints:
+  js:
+    ../../../libraries/waypoints/lib/jquery.waypoints.js: {}
+  dependencies:
+    -  core/jquery
+
 navigator:
   js:
     js/navigator.js: {}
   dependencies:
     - core/drupal
     - core/jquery
+    - webny_theme/waypoints
