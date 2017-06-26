@@ -87,7 +87,7 @@ Feature: Image style Tests
     Given I am logged into the distro with the "administrator" role
     When I am on "/admin/structure/media/manage/image/display/cards"
     Then I should see "Cards"
-    And I should see "Responsive image: Cards"
+    And I should see "Responsive image style: cards"
 
 # Check WebNY Embedded Image display is present
   Scenario: See if WebNY Embedded Image display exist
@@ -101,14 +101,14 @@ Feature: Image style Tests
     Given I am logged into the distro with the "administrator" role 
     When I am on "/admin/structure/media/manage/image/display/hero_image"
     Then I should see "Hero image"
-    And I should see "Thumbnail style: - None -"
+    And I should see "Breakpoints: 460, 768, 1824"
 
 # Check WebNY Hero Image Tall display is present
   Scenario: See if WebNY Hero Image Tall display exist
     Given I am logged into the distro with the "administrator" role 
     When I am on "/admin/structure/media/manage/image/display/hero_image_tall"
     Then I should see "Hero image tall"
-    And I should see "Thumbnail style: - None -"
+    And I should see "Breakpoints: 460, 768, 1824"
 
 # Check WebNY Media Library Image display is present
   Scenario: See if WebNY Media Library Image display exist
@@ -137,7 +137,7 @@ Feature: Image style Tests
     When I am on "/admin/structure/media/manage/image/display/wysiwyg"
     Then I should see "wysiwyg"
     And I should see "Image style: wysiwyg (660x400)"
-    And I should see "Responsive image: wysiwyg"
+    And I should see "Responsive image style: wysiwyg"
 
 # Check WebNY wysiwyg portrait Image display is present
   Scenario: See if WebNY wysiwyg portrait Image display exist
@@ -145,7 +145,7 @@ Feature: Image style Tests
     When I am on "/admin/structure/media/manage/image/display/wysiwyg_portrait"
     Then I should see "wysiwyg portrait"
     And I should see "Image style: wysiwyg portrait (300x300)"
-    And I should see "Thumbnail style: - None -"
+    And I should see "Breakpoints: none"
 
 # Check that Media Embed button has wysiwyg image styles applied
   Scenario: Check the Media Embed button to see that the wysiwyg image styles are applied
@@ -160,4 +160,4 @@ Feature: Image style Tests
     When I am on "/admin/structure/media/manage/image/display/category_tiles"
     Then I should see "Image style: Media Image"
     And I should see "Thumbnail style: Thumbnail (100×100)"
-    And I should see "Responsive image: Category Tiles"
+    And I should see "Responsive image style: category_tiles"
