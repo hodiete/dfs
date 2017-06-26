@@ -82,7 +82,7 @@ Feature: Check for the existence and fields of content types
 # Check for the existence of a content type
 # CONTENT TYPE: Landing Page
 # ROLE: administrator
-  Scenario: Determine if a content type exists for news with the administrator role and the given fields
+  Scenario: Determine if a content type exists for landing page with the administrator role and the given fields
     Given I am logged into the distro with the "administrator" role
     When I am on "/node/add/webny_landing_page"
     Then I should not see "Access denied"
@@ -92,7 +92,7 @@ Feature: Check for the existence and fields of content types
     And I should see text matching "Short Title"
     And I should see text matching "Subtitle"
     And I should see text matching "Summary/Description"
-    And I should see text matching "Hero fields"
+    And I should see text matching "Hero Fields"
     And I should see text matching "Hero Image"
     And I should see text matching "Hero/Title Visibility Options"
     And I should see text matching "Hero Button \(additional\)"
@@ -107,6 +107,7 @@ Feature: Check for the existence and fields of content types
     And I should see text matching "Add WYSIWYG"
     And I should see text matching "Views Field"
     And I should see text matching "Add Social Media" 
+    And I should see text matching "Metadata"
     And I should not see text matching "Add Phone Contact"
 
 # Check for the existence of a content type
