@@ -13,6 +13,9 @@ Feature: Image style Tests
     Then I should see "Bio Frame (286×264)"
     And I should see "Card horizontal (225x225)"
     And I should see "Card vertical (400x225)"
+    And I should see "Category Tiles Desktop (1600x 730)"
+    And I should see "Category Tiles Mobile (461x 730)"
+    And I should see "Category Tiles Tablet (768x 730)"
     And I should see "Large (480×480)"
     And I should see "Media Image"
     And I should see "Media thumbnail (241x138)"
@@ -33,6 +36,7 @@ Feature: Image style Tests
     When I am on "/admin/config/media/responsive-image-style"
     Then I should see "Bio Frame"
     And I should see "Cards"
+    And I should see "Category Tiles"
     And I should see "Hero image"
     And I should see "Hero image tall"
     And I should see "Results Image"
@@ -44,6 +48,7 @@ Feature: Image style Tests
     When I am on "/admin/structure/display-modes/view"
     Then I should see "Bio Frame"
     And I should see "Cards"
+    And I should see "Category Tiles"
     And I should see "Embedded"
     And I should see "Hero image"
     And I should see "Hero image tall"
@@ -60,6 +65,7 @@ Feature: Image style Tests
     When I am on "/admin/structure/media/manage/image/display"
     Then I should see "Bio Frame"
     And I should see "Cards"
+    And I should see "Category Tiles"
     And I should see "Embedded"
     And I should see "Hero image"
     And I should see "Hero image tall"
@@ -81,7 +87,7 @@ Feature: Image style Tests
     Given I am logged into the distro with the "administrator" role
     When I am on "/admin/structure/media/manage/image/display/cards"
     Then I should see "Cards"
-    And I should see "Responsive image: Cards"
+    And I should see "Responsive image style: cards"
 
 # Check WebNY Embedded Image display is present
   Scenario: See if WebNY Embedded Image display exist
@@ -95,14 +101,14 @@ Feature: Image style Tests
     Given I am logged into the distro with the "administrator" role 
     When I am on "/admin/structure/media/manage/image/display/hero_image"
     Then I should see "Hero image"
-    And I should see "Thumbnail style: - None -"
+    And I should see "Breakpoints: 460, 768, 1824"
 
 # Check WebNY Hero Image Tall display is present
   Scenario: See if WebNY Hero Image Tall display exist
     Given I am logged into the distro with the "administrator" role 
     When I am on "/admin/structure/media/manage/image/display/hero_image_tall"
     Then I should see "Hero image tall"
-    And I should see "Thumbnail style: - None -"
+    And I should see "Breakpoints: 460, 768, 1824"
 
 # Check WebNY Media Library Image display is present
   Scenario: See if WebNY Media Library Image display exist
@@ -131,7 +137,7 @@ Feature: Image style Tests
     When I am on "/admin/structure/media/manage/image/display/wysiwyg"
     Then I should see "wysiwyg"
     And I should see "Image style: wysiwyg (660x400)"
-    And I should see "Responsive image: wysiwyg"
+    And I should see "Responsive image style: wysiwyg"
 
 # Check WebNY wysiwyg portrait Image display is present
   Scenario: See if WebNY wysiwyg portrait Image display exist
@@ -139,7 +145,7 @@ Feature: Image style Tests
     When I am on "/admin/structure/media/manage/image/display/wysiwyg_portrait"
     Then I should see "wysiwyg portrait"
     And I should see "Image style: wysiwyg portrait (300x300)"
-    And I should see "Thumbnail style: - None -"
+    And I should see "Breakpoints: none"
 
 # Check that Media Embed button has wysiwyg image styles applied
   Scenario: Check the Media Embed button to see that the wysiwyg image styles are applied
@@ -147,3 +153,11 @@ Feature: Image style Tests
     When I am on "/admin/config/content/embed/button/manage/media"
     Then I should see "wysiwyg"
     And I should see "wysiwyg portrait"
+
+# Check that WebNY Category Tiles Image display is present
+  Scenario: Check the Media Embed button to see that the wysiwyg image styles are applied
+    Given I am logged into the distro with the "administrator" role
+    When I am on "/admin/structure/media/manage/image/display/category_tiles"
+    Then I should see "Image style: Media Image"
+    And I should see "Thumbnail style: Thumbnail (100×100)"
+    And I should see "Responsive image style: category_tiles"
