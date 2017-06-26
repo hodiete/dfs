@@ -2,12 +2,13 @@ bundle: webny
 excluded: 
   - field.field.node.webny_generic_page.field_webny_gencp_contentsect
   - core.entity_form_mode.paragraph.generic_form
-required:
-  - core.base_field_override.node.webny_generic_page.promote
-  - core.base_field_override.node.webny_generic_page.status
+  - language.content_settings.node.webny_generic_page
   - core.entity_form_display.node.webny_generic_page.default
   - core.entity_view_display.node.webny_generic_page.default
   - core.entity_view_display.node.webny_generic_page.teaser
+required:
+  - core.base_field_override.node.webny_generic_page.promote
+  - core.base_field_override.node.webny_generic_page.status
   - core.entity_view_mode.paragraph.generic
   - field.field.node.webny_generic_page.field_webny_gencp_avgtranstime
   - field.field.node.webny_generic_page.field_webny_gencp_contentcat
@@ -31,4 +32,3 @@ required:
   - field.storage.node.field_webny_gencp_navtoggle
   - field.storage.node.field_webny_gencp_sumdes
   - node.type.webny_generic_page
-  - language.content_settings.node.webny_generic_page
