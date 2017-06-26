@@ -35,3 +35,10 @@ Feature: WYSIWYG Frame Paragraph Tests
     When I am on "/admin/structure/paragraphs_type/webny_wysiwyg_pgtype/display/generic"
     Then I should not get a 404 HTTP response
     And I should not see "Access denied"
+
+# Check the backend display form. The Generic form should be enabled
+  Scenario: Does the generic display form exist
+    Given I am logged into the distro with the "administrator" role
+    When I am on "/admin/structure/paragraphs_type/webny_wysiwyg_pgtype/form-display/generic_form"
+    Then I should not get a 404 HTTP response
+    And I should not see "Access denied"
