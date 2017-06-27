@@ -3,7 +3,7 @@
  * videohero javascript file
  */
 
-var videojs = typeof videojs === "undefined" ? {} : videojs;
+var videojs = typeof videojs === 'undefined' ? {} : videojs;
 
 (function ($, Drupal, window, document) {
 
