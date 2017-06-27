@@ -174,6 +174,12 @@ class ProfileConfig {
       $this->getProfileFeatureConfigPath('document_content_type') . '/optional',
       $this->getProfileFeatureConfigPath('paragraphs_types') . '/install',
       $this->getProfileFeatureConfigPath('paragraphs_types') . '/optional',
+      $this->getProfileFeatureConfigPath('generic_content_type') . '/install',
+      $this->getProfileFeatureConfigPath('generic_content_type') . '/optional',
+      $this->getProfileFeatureConfigPath('wysiwyg_frame') . '/install',
+      $this->getProfileFeatureConfigPath('wysiwyg_frame') . '/optional',
+      $this->getProfileFeatureConfigPath('get_involved_frame') . '/install',
+      $this->getProfileFeatureConfigPath('get_involved_frame') . '/optional',
 
     ]);
 

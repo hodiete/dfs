@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: webny_path_generic_pattern
+label: 'Generic Content Page Pattern'
+type: 'canonical_entities:node'
+pattern: '/[node:field_webny_gencp_contentcat]/[node:title]'
+selection_criteria:
+  39d2a2d1-0492-431f-95ff-d3f66a9ff2e0:
+    id: node_type
+    bundles:
+      webny_generic_page: webny_generic_page
+    negate: false
+    context_mapping:
+      node: node
+    uuid: 39d2a2d1-0492-431f-95ff-d3f66a9ff2e0
+selection_logic: and
+weight: -5
+relationships: {  }
