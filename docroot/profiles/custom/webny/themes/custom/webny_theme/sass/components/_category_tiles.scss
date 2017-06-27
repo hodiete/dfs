@@ -82,6 +82,8 @@ $category-tiles-headline-desktop: 800 1.1em $base-font !default;
         display: -ms-flexbox;
         display: -webkit-flex;
         display: flex;
+        justify-content: center;
+        align-items: center;
         background-color: $button-bkgd-color;
         padding: 5px;
         max-width: 330px;
@@ -92,10 +94,8 @@ $category-tiles-headline-desktop: 800 1.1em $base-font !default;
         color: white;
         font-size: 3em;
         text-align: center;
-        justify-content: center;
         transition: all 0.5s ease;
         opacity: 0.9;
-        align-items: center;
         a {
           color: #ffffff;
           display: -webkit-box;
@@ -110,6 +110,10 @@ $category-tiles-headline-desktop: 800 1.1em $base-font !default;
           font-family: $base-font;
           font-size: 16px;
           letter-spacing: 0;
+          width: 100%;
+          height: 100%;
+          justify-content: center;
+          align-items: center;
         }
       }
     }
