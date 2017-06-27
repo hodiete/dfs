@@ -17,12 +17,7 @@ settings:
             - Bold
             - Italic
             - Underline
-            - JustifyLeft
-            - JustifyCenter
-            - JustifyRight
-            - JustifyBlock
-            - Outdent
-            - Indent
+            - Strike
         -
           name: Links
           items:
@@ -41,11 +36,28 @@ settings:
         -
           name: Tools
           items:
-            - Source
-        -
-          name: Insert
-          items:
+            - Cut
+            - Copy
+            - Paste
             - PasteFromWord
+            - RemoveFormat
+            - HorizontalRule
+        -
+          name: Align
+          items:
+            - Indent
+            - Outdent
+        -
+          name: 'Headings and Formatting'
+          items:
+            - Format
+            - SpecialChar
+            - Superscript
+            - Subscript
+        -
+          name: Tables
+          items:
+            - Table
   plugins:
     language:
       language_list: un

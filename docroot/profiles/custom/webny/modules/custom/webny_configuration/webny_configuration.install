@@ -2951,10 +2951,108 @@ function webny_configuration_update_8137() {
 function webny_configuration_update_8138()
 {
 
+
     \Drupal::service('module_installer')
         ->uninstall(['webny_media']);
     \Drupal::service('module_installer')
         ->install(['webny_media']);
+
+}
+
+
+/**
+ * Implements hook_update_n().
+ *
+ * Refresh webny Landing Page content type
+ */
+function webny_configuration_update_8139()
+{
+    \Drupal::service('module_installer')
+        ->uninstall(['webny_landing_page_content_type']);
+    \Drupal::service('module_installer')
+        ->install(['webny_landing_page_content_type']);
+
+    // REFRESH
+    $config_factory = \Drupal::configFactory();
+    $profile_config = \Drupal::service('webny.profile_config');
+
+    // Import new/changed configuration.
+    $config_to_update = [
+        // UPDATE LANDING PAGE OPTIONAL FEATURES
+        'core.entity_form_display.node.webny_landing_page.default',
+        'field.field.node.webny_landing_page.field_webny_landing_paragraph'
+    ];
+
+    $profile_config->bulkImport($config_to_update);
+
+    // Clear the config cache.
+    $config_factory->reset();
+}
+
+/**
+ * INSTALL content categorization taxonomy feature
+ * INSTALL Standard page content type feature
+ * UPDATE/REFRESH WYSIWYG Feature
+ * UPDATE/REFRESH Get Involved
+ * - iojonep
+ */
+function webny_configuration_update_8140() {
+
+    \Drupal::service('module_installer')
+        ->install(['webny_contentcat_taxonomy']);
+    \Drupal::service('module_installer')
+        ->install(['webny_generic_content_type']);
+
+    // REFRESH OPTIONAL CONFIG
+    $config_factory = \Drupal::configFactory();
+    $profile_config = \Drupal::service('webny.profile_config');
+    // Import new/changed configuration.
+    $config_to_update = [
+        'core.entity_form_mode.paragraph.generic_form',
+        'core.entity_form_display.paragraph.webny_wysiwyg_pgtype.generic_form',
+        'core.entity_form_display.paragraph.webny_get_involved_pgtype.generic_form',
+        'core.entity_view_display.paragraph.webny_wysiwyg_pgtype.generic',
+        'core.entity_form_display.node.webny_generic_page.default',
+        'core.entity_view_display.node.webny_generic_page.default',
+        'core.entity_view_display.node.webny_generic_page.teaser',
+        'field.field.node.webny_generic_page.field_webny_gencp_contentsect',
+    ];
+    $profile_config->bulkImport($config_to_update);
+
+    // Clear the config cache.
+    $config_factory->reset();
+
+    \Drupal::service('module_installer')
+        ->uninstall(['webny_get_involved_frame']);
+    \Drupal::service('module_installer')
+        ->install(['webny_get_involved_frame']);
+
+    \Drupal::service('module_installer')
+        ->uninstall(['webny_wysiwyg_frame']);
+    \Drupal::service('module_installer')
+        ->install(['webny_wysiwyg_frame']);
+}
+
+/**
+ * Implements hook_update_n().
+ *
+ * Install allowed_formats and Refresh webny_text_editors and webny_text_formats.
+ * 
+ */
+function webny_configuration_update_8141() {
+    \Drupal::service('module_installer')
+        ->install(['allowed_formats']);
+
+    \Drupal::service('module_installer')
+        ->uninstall(['webny_text_formats']);
+    \Drupal::service('module_installer')
+        ->install(['webny_text_formats']);
+
+    \Drupal::service('module_installer')
+        ->uninstall(['webny_text_editors']);
+    \Drupal::service('module_installer')
+        ->install(['webny_text_editors']);
+
 }
 
 /**

@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_webny_gencp_date
+    - node.type.webny_generic_page
+  module:
+    - datetime
+id: node.webny_generic_page.field_webny_gencp_date
+field_name: field_webny_gencp_date
+entity_type: node
+bundle: webny_generic_page
+label: Date
+description: 'Optional date to display in hero.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime
