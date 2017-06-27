@@ -1,0 +1,87 @@
+{#
+/**
+ * @file
+ * Theme override to display a node for webny-generic-page.
+ * Begin TWIG NODE-WEBNY-GENERIC-PAGE Template
+ * CREATED BY WEBNY
+ */
+#}
+
+{# NODE FIELDS #}
+{# SUMMARY DESCRIPTION              -- field_webny_gencp_sumdes #}
+{# CONTENT CATEGORIZATION           -- field_webny_gencp_contentcat #}
+{# HERO DATE                        -- field_webny_gencp_date #}
+{# HERO DATE                        -- field_webny_gencp_heroimage #}
+{# HERO DESCRIPTION                 -- field_webny_gencp_herodesc #}
+{# KEYWORDS                         -- field_webny_gencp_keywords #}
+{# AVERAGE TIME                     -- field_webny_gencp_avgtranstime #}
+{# HOW TO APPLY                     -- field_webny_gencp_howtoapply #}
+{# NAVIGATION TOGGLE                -- field_webny_gencp_navtoggle #}
+{# CONTENT SECTIONS                 -- field_webny_gencp_contentsect #}
+
+{# DECLARED VARS #}
+{% set hero_image = file_url(node.field_webny_gencp_heroimage.entity.field_image.entity.uri.value) %}
+
+<div class="webny-generic-content-page">
+
+    <article {{ attributes.addClass('hero-layout') }}>
+
+        {# START QUICK EDITS #}
+        {{ title_prefix }}
+
+        {# ====== HERO SECTION ====== #}
+
+        {# HERO DEFINITION #}
+        {% if hero_image == '/' %}
+        <div class="hero-header hero-no-image hero-generic" style="">
+            {% else %}
+            <div class="hero-header hero-has-image hero-generic" style="background-image:url('{{ hero_image }}')">
+                {% endif %}
+                <!-- BACKGROUND GRAD -->
+                <div class="hero-bkg"></div>
+            </div>
+
+            {# HERO INNER DEFINITION #}
+            {% if hero_image == '/' %}
+            <div class="hero-inner hero-generic-inner">
+                {% else %}
+                <div class="hero-inner hero-generic-inner hero-has-image-content">
+                    {% endif %}
+
+                    {# HERO HEADLINE / TITLE #}
+                    <h2>{{ title }}</h2>
+
+                    {# HERO DATE #}
+                    <div class="hero-date">
+                        {{  node.field_webny_gencp_date.value }}
+                    </div>
+
+                    {# HERO DESCRIPTION #}
+                    <div class="hero-summary">
+                        {{ content.field_webny_gencp_herodesc }}
+                    </div>
+
+                    {# HERO KEYWORDS #}
+                    <!-- HERO BUTTONS [USING KEYWORD CLASS] -->
+                    <div class="hero-keywords">
+                        {{ content.field_webny_gencp_keywords }}
+                    </div>
+
+                </div>
+
+                {# ====== END HERO SECTION ====== #}
+
+                {# END QUICK EDITS #}
+                {{ title_suffix }}
+    </article>
+
+    {# GENERIC PARAGRAPHS SECTION #}
+    <div class="page-paragraphs generic-paragraphs">
+        <div class="page-paragraphs-in">
+
+            {{ content.field_webny_gencp_contentsect|without('label') }}
+
+        </div>
+    </div>
+
+</div>
