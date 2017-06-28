@@ -3064,7 +3064,7 @@ function webny_configuration_update_8141() {
 function webny_configuration_update_8142(){
 
     \Drupal::service('module_installer')
-        ->install(['webny_contentcat_taxonomy']);
+        ->uninstall(['webny_generic_content_type']);
     \Drupal::service('module_installer')
         ->install(['webny_generic_content_type']);
 
