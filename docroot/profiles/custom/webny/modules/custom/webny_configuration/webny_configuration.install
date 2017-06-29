@@ -3090,6 +3090,22 @@ function webny_configuration_update_8142(){
 }
 
 /**
+ * Implements hook_update_n().
+ *
+ * Install allowed_formats and Refresh webny_text_editors and webny_text_formats.
+ * 
+ */
+function webny_configuration_update_8143() {
+    
+    \Drupal::service('module_installer')
+        ->uninstall(['webny_text_formats']);
+    \Drupal::service('module_installer')
+        ->install(['webny_text_formats']);
+
+}
+
+
+/**
  * Helper function to enable a Drupal module and print the result.
  *
  * @param string $module_name
