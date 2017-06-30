@@ -66,21 +66,11 @@ $category-tiles-headline-desktop: 800 1.1em $base-font !default;
       padding: 0;
       margin: 0;
       list-style: none;
-      display: -webkit-box;
-      display: -moz-box;
-      display: -ms-flexbox;
-      display: -webkit-flex;
       display: flex;
-      -webkit-flex-flow: row wrap;
-      -ms-flex-flow: row wrap;
       flex-flow: row wrap;
       justify-content: space-around;
 
       .category-tiles-link--field-webny-cat-button-link {
-        display: -webkit-box;
-        display: -moz-box;
-        display: -ms-flexbox;
-        display: -webkit-flex;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -98,10 +88,6 @@ $category-tiles-headline-desktop: 800 1.1em $base-font !default;
         opacity: 0.9;
         a {
           color: #ffffff;
-          display: -webkit-box;
-          display: -moz-box;
-          display: -ms-flexbox;
-          display: -webkit-flex;
           display: flex;
           flex-wrap: wrap;
           text-decoration: none;
@@ -110,8 +96,8 @@ $category-tiles-headline-desktop: 800 1.1em $base-font !default;
           font-family: $base-font;
           font-size: 16px;
           letter-spacing: 0;
-          width: 100%;
           height: 100%;
+          width: 100%;
           justify-content: center;
           align-items: center;
         }
@@ -205,8 +191,43 @@ $category-tiles-headline-desktop: 800 1.1em $base-font !default;
   }
 }// END MAX PC VIEW
 
+// ######################################################################### //
+/* IE 10/9 FOR  */
+@media screen and (min-width:0\0) {
+  .paragraph--type--webny-category-tiles-frame {
+    .category-tiles-link-content {
+      .category-tile-link-flex {
+        .category-tiles-link--field-webny-cat-button-link {
+          a {
+            display: block;
+            word-wrap: break-word;
+            padding-top: 55px;
+            height: 70%;
+          }
+        }
+      }
+    }
+  }
+}
 
-
+// ######################################################################### //
+/* IE 10/9 FOR MOBILE DEVICES */
+@media screen and (min-width:0\0) and (max-width: 768px) {
+  .paragraph--type--webny-category-tiles-frame {
+    .category-tiles-link-content {
+      .category-tile-link-flex {
+        .category-tiles-link--field-webny-cat-button-link {
+          a {
+            display: block;
+            word-wrap: break-word;
+            padding-top: 15px;
+            height: 60%;
+          }
+        }
+      }
+    }
+  }
+}
 
 
 
