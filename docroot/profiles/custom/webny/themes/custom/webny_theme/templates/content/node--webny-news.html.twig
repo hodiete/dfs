@@ -107,12 +107,20 @@
     <div class="news-body-in">
 
         <div class="press-teaser">
-            {% for x,subtitle in node.field_webny_news_subtitles %}
+            {{ content.field_webny_news_subtitles }}
+            {% for item in field_webny_news_subtitle['#items'].getItterator %}
+    {{ item.value }}
+{% endfor %}
+
+            {{ kint(content.field_webny_news_subtitles) }}
+            {# for item in content %}
                 <div class="press-subtitle-item">
-                    {{ node.field_webny_news_subtitles[x].value }}
+                    {{ content.field_webny_news_subtitles }}
                 </div>
 
-            {% endfor %}
+            {% endfor #}
+
+
         </div>
         
         <div class="press-body">
