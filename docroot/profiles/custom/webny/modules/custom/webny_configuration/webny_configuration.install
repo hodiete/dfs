@@ -3104,6 +3104,18 @@ function webny_configuration_update_8143() {
 
 }
 
+/**
+ * Implements hook_update_n().
+ *
+ * disable services module
+ *
+ */
+function webny_configuration_update_8144() {
+
+    \Drupal::service('module_installer')
+        ->uninstall(['services']);
+
+}
 
 /**
  * Helper function to enable a Drupal module and print the result.
