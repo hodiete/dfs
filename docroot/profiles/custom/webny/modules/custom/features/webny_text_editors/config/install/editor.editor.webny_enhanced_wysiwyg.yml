@@ -1,0 +1,79 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - filter.format.webny_enhanced_wysiwyg
+  module:
+    - ckeditor
+format: webny_enhanced_wysiwyg
+editor: ckeditor
+settings:
+  toolbar:
+    rows:
+      -
+        -
+          name: Formatting
+          items:
+            - Bold
+            - Italic
+            - Underline
+            - Strike
+            - HorizontalRule
+        -
+          name: Links
+          items:
+            - DrupalLink
+            - DrupalUnlink
+        -
+          name: Lists
+          items:
+            - BulletedList
+            - NumberedList
+        -
+          name: Media
+          items:
+            - Blockquote
+            - media
+        -
+          name: Tools
+          items:
+            - Cut
+            - Copy
+            - Paste
+            - PasteFromWord
+            - RemoveFormat
+            - Maximize
+        -
+          name: Align
+          items:
+            - JustifyLeft
+            - JustifyCenter
+            - JustifyRight
+            - JustifyBlock
+            - Indent
+            - Outdent
+        -
+          name: 'Headings and Formatting'
+          items:
+            - Format
+            - SpecialChar
+            - Superscript
+            - Subscript
+            - Styles
+        -
+          name: Tables
+          items:
+            - Table
+  plugins:
+    language:
+      language_list: un
+    stylescombo:
+      styles: p.button|Button
+image_upload:
+  status: false
+  scheme: public
+  directory: inline-images
+  max_size: ''
+  max_dimensions:
+    width: null
+    height: null

@@ -54,6 +54,7 @@ installed_extras:
   - mailhog
   - nodejs
   - selenium
+  - solr
   - memcached
   - xdebug
   - varnish
@@ -63,7 +64,7 @@ extra_packages:
 
 # Use PHP 5.6.
 php_version: "5.6"
-php_memory_limit: "192M"
+php_memory_limit: "768M"
 
 # XDebug configuration.
 # Change this value to 1 in order to enable xdebug by default.
@@ -80,3 +81,16 @@ php_xdebug_remote_port: "9000"
 
 post_provision_scripts:
   - "../../../acquia/blt/scripts/drupal-vm/post-provision.sh"
+#solr post provision script to create a solr server in your local VM
+  - "../../../geerlingguy/drupal-vm/examples/scripts/configure-solr.sh"
+
+# Solr Configuration (if enabled above) for more configurations please see: http://docs.drupalvm.com/en/latest/extras/solr/.
+solr_version: "5.5.3"
+solr_xms: "64M"
+solr_xmx: "128M"
+solr_create_user: true
+solr_user: solr
+solr_port: "8983"
+solr_home: /var/solr
+solr_timezone: "UTC"
+

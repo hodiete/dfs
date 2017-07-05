@@ -25,6 +25,7 @@ Feature: Get Involved Frame Paragraph Tests
     Then I should not get a 404 HTTP response
     When I am on "/admin/structure/paragraphs_type/webny_get_involved_pgtype/fields"
     Then I should see "Title"
+    And I should see "Add Frame to Table of Contents"
 	And I should see "Share Title"
     And I should see "Headline"
     And I should see "Description"
@@ -32,4 +33,17 @@ Feature: Get Involved Frame Paragraph Tests
     And I should see "URL"
     When I am on "/admin/structure/paragraphs_type/webny_get_involved_pgtype/display"
     Then I should not get a 404 HTTP response
-	
+
+# Check for the display Mode GENERIC for Get Involved
+  Scenario: Does the generic display mode exist
+    Given I am logged into the distro with the "administrator" role
+    When I am on "/admin/structure/paragraphs_type/webny_get_involved_pgtype/display/generic"
+    Then I should not get a 404 HTTP response
+    And I should not see "Access denied"
+
+# Check the backend display form. The Generic form should be enabled
+  Scenario: Does the generic display form exist
+    Given I am logged into the distro with the "administrator" role
+    When I am on "/admin/structure/paragraphs_type/webny_get_involved_pgtype/form-display/generic_form"
+    Then I should not get a 404 HTTP response
+    And I should not see "Access denied"

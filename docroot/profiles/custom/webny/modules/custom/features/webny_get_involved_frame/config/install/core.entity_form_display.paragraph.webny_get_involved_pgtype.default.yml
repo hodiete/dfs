@@ -6,6 +6,7 @@ dependencies:
     - field.field.paragraph.webny_get_involved_pgtype.field_webny_get_inv_description
     - field.field.paragraph.webny_get_involved_pgtype.field_webny_get_inv_headline
     - field.field.paragraph.webny_get_involved_pgtype.field_webny_get_inv_share_title
+    - field.field.paragraph.webny_get_involved_pgtype.field_webny_get_inv_toc
     - field.field.paragraph.webny_get_involved_pgtype.field_webny_get_involved_title
     - paragraphs.paragraphs_type.webny_get_involved_pgtype
   module:
@@ -17,7 +18,7 @@ bundle: webny_get_involved_pgtype
 mode: default
 content:
   field_webny_get_inv_cta:
-    weight: 4
+    weight: 6
     settings:
       placeholder_url: ''
       placeholder_title: ''
@@ -25,7 +26,7 @@ content:
     type: link_default
     region: content
   field_webny_get_inv_description:
-    weight: 3
+    weight: 4
     settings:
       rows: 5
       placeholder: ''
@@ -33,7 +34,7 @@ content:
     type: string_textarea
     region: content
   field_webny_get_inv_headline:
-    weight: 2
+    weight: 3
     settings:
       size: 60
       placeholder: ''
@@ -41,15 +42,21 @@ content:
     type: string_textfield
     region: content
   field_webny_get_inv_share_title:
-    weight: 1
+    weight: 2
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
     region: content
-  field_webny_get_involved_title:
+  field_webny_get_inv_toc:
     weight: 0
+    settings: {  }
+    third_party_settings: {  }
+    type: options_buttons
+    region: content
+  field_webny_get_involved_title:
+    weight: 1
     settings:
       size: 60
       placeholder: ''
