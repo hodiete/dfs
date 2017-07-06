@@ -71,6 +71,8 @@ $category-tiles-headline-desktop: 800 1.1em $base-font !default;
       justify-content: space-around;
 
       .category-tiles-link--field-webny-cat-button-link {
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -123,8 +125,14 @@ $category-tiles-headline-desktop: 800 1.1em $base-font !default;
         .category-tiles-link--field-webny-cat-button-link {
           width: 21.75%;
           height: 120px;
+          display: inline-block;
+          //vertical-align: top;
           a {
             font-size: 16px;
+            display: inline-block;
+            vertical-align: middle;
+            padding-top: 55px;
+            height: 70%;
           }
         }
       }
@@ -143,8 +151,12 @@ $category-tiles-headline-desktop: 800 1.1em $base-font !default;
           width: 23.3%;
           height: 140px;
           line-height: 20px;
+          display: flex;
           a {
+            display: flex;
+            padding: 0;
             letter-spacing: 2px;
+            height: 100%;
           }
         }
       }
@@ -199,7 +211,7 @@ $category-tiles-headline-desktop: 800 1.1em $base-font !default;
       .category-tile-link-flex {
         .category-tiles-link--field-webny-cat-button-link {
           a {
-            display: block;
+            display: inline-block;
             word-wrap: break-word;
             padding-top: 55px;
             height: 70%;
@@ -218,7 +230,7 @@ $category-tiles-headline-desktop: 800 1.1em $base-font !default;
       .category-tile-link-flex {
         .category-tiles-link--field-webny-cat-button-link {
           a {
-            display: block;
+            display: inline-block;
             word-wrap: break-word;
             padding-top: 15px;
             height: 60%;
