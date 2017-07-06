@@ -7,10 +7,64 @@
 
   'use strict';
 
+  Drupal.Navigator = {
+    init:function() {
+      // TODO: make sure this is targeting more than just wysiwyg.  Needs to be more generic
+      $('.wysiwyg--field-webny-wysiwyg-title').once().each(function() {
+        var hash = $(this).text().toLowerCase().replace(/ /g, "-");
+        $('.sidebar ul').append('<li><a href="#' + hash + '">' + $(this).text() + '</a></li>');
+        $(this).attr('name', hash);
+      });
+
+      $('.sidebar ul li a').once().click(function(e) {
+        // line 119ish
+        e.preventDefault();
+        // name used on title of paragraph
+        var name = $(this).attr('href').replace('#', '');
+        var clickedFrame = $('div[name="' + name + '"');
+        var dest = 0;
+        dest = clickedFrame.offset().top;
+
+        // remove all active classes from lis
+        $('.sidebar ul li').each(function() {
+          $(this).removeClass('active');
+        });
+        // add active class to currently clicked
+        $(this).parent().addClass('active');
+
+        console.log(clickedFrame.offset().top);
+        $('html,body').animate({
+          scrollTop: dest - 100
+        }, 500, 'swing', function(){
+          $(this).addClass('active');
+        });
+      });
+
+      // on load check to see if there is a hash anchor in the URL to force an auto scroll to section on page
+      $(window).on('load', function() {
+        // grab hash from URL (#variable)
+        var hash = window.location.hash;
+        // if hash exists
+        if(hash){
+          //NY.OneStopArticle.deep_linking = true;
+          // trigger a click on the sidebar a where href == hash essentialy loading the page and faking a click moving the scroll down
+          $('.sidebar li a[href="'+hash+'"]').trigger('click');
+        }
+      });
+    }
+  }
+
   Drupal.behaviors.webnyNavigator = {
     attach: function (context, settings) {
       //var fixed_header_top;
       //if($('.sidebar').length > 0) fixed_header_top = -$('.sidebar').position().top + 50;
+      Drupal.Navigator.init();
+
+      $('.wysiwyg--field-webny-wysiwyg-title').waypoint(function(direction) {
+        var name = $(this).text();
+        console.log(name);
+        console.log(direction);
+      });
 
       $('.featured-card--field-webny-card-pg-title').waypoint(function(direction) {
         console.log('Scrolled to waypoint!');
