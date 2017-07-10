@@ -3107,10 +3107,23 @@ function webny_configuration_update_8143() {
 /**
  * Implements hook_update_n().
  *
+ * Refresh webny document content type
+ * 
+ */
+function webny_configuration_update_8144() {
+    \Drupal::service('module_installer')
+        ->uninstall(['webny_document_content_type']);
+    \Drupal::service('module_installer')
+        ->install(['webny_document_content_type']);
+}
+
+/**
+ * Implements hook_update_n().
+ *
  * Refresh Page, News, and Contact content types.
  *
  */
-function webny_configuration_update_8144() {
+function webny_configuration_update_8145() {
 
     \Drupal::service('module_installer')
         ->uninstall(['webny_news_content_type']);
@@ -3126,7 +3139,6 @@ function webny_configuration_update_8144() {
         ->install(['webny_inner_page_content_type']);
 
 }
-
 
 /**
  * Helper function to enable a Drupal module and print the result.
