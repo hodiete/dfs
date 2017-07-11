@@ -16,7 +16,7 @@
 {# KEYWORDS                         -- field_webny_gencp_keywords #}
 {# AVERAGE TIME                     -- field_webny_gencp_avgtranstime #}
 {# HOW TO APPLY                     -- field_webny_gencp_howtoapply #}
-{# NAVIGATION TOGGLE                -- field_webny_gencp_navtoggle #}
+{# NAVIGATION TOGGLE ON/OFF         -- field_webny_gencp_navtoggle #}
 {# CONTENT SECTIONS                 -- field_webny_gencp_contentsect #}
 
 {# DECLARED VARS #}
@@ -75,13 +75,26 @@
                 {{ title_suffix }}
     </article>
 
-    {# GENERIC PARAGRAPHS SECTION #}
-    <div class="page-paragraphs generic-paragraphs">
+
+{% if node.field_webny_gencp_navtoggle.value == 1 %}
+
+    {# NAV ENABLED: GENERIC PARAGRAPHS SECTION WITH SIDEBAR FOR NAVIGATOR / TOC#}
+    <div class="page-paragraphs generic-paragraphs with-nav-sidebar">
         <div class="page-paragraphs-in">
-
+            <aside id="gpnav_sidebar" style="display:none;"></aside>
             {{ content.field_webny_gencp_contentsect|without('label') }}
-
         </div>
     </div>
+
+{% else %}
+
+    {# NAV DISABLED: GENERIC PARAGRAPHS SECTION FOR USE WITHOUT NAV FUNCTIONALITY #}
+    <div class="page-paragraphs generic-paragraphs">
+        <div class="page-paragraphs-in">
+            {{ content.field_webny_gencp_contentsect|without('label') }}
+        </div>
+    </div>
+
+{% endif %}
 
 </div>
