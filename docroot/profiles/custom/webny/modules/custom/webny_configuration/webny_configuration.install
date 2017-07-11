@@ -3120,9 +3120,22 @@ function webny_configuration_update_8144() {
 /**
  * Implements hook_update_n().
  *
+ * disable services module
+ *
+ */
+function webny_configuration_update_8145() {
+
+    \Drupal::service('module_installer')
+        ->uninstall(['services']);
+
+}
+
+/**
+ * Implements hook_update_n().
+ *
  * Refresh webny Landing Page content type
  */
-function webny_configuration_update_8145()
+function webny_configuration_update_8146()
 {
     \Drupal::service('module_installer')
         ->uninstall(['webny_landing_page_content_type']);
@@ -3143,20 +3156,6 @@ function webny_configuration_update_8145()
 
     // Clear the config cache.
     $config_factory->reset();
-}
-
-
-/**
- * Implements hook_update_n().
- *
- * disable services module
- *
- */
-function webny_configuration_update_8145() {
-
-    \Drupal::service('module_installer')
-        ->uninstall(['services']);
-
 }
 
 /**
