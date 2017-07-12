@@ -1,0 +1,200 @@
+// Generic Page Content
+//
+// Generic Page Content styling
+//
+// Markup: generic_page.hbs
+//
+// Style guide: components.generic_page
+// color variables
+$gp-frame-bkgd-color: $color-secondary !default;
+$gp-frame-title-color: $color-mono-black !default;
+$gp-frame-headline-color: $color-mono-white !default;
+$gp-frame-descriptor-title-color: $color-mono-white !default;
+$gp-frame-descriptor-text-color: $color-mono-black !default;
+$gp-frame-descriptor-border: $color-secondary !default;
+$gp-frame-button: $color-mono-white !default;
+
+// ACTIONS BAR BETWEEN HERO AND CONTENT
+.webny-generic-content-page .actions {
+  background-color: #128ec3;
+  font-size: 0.8em;
+  color: #fff;
+  height: 50px;
+  letter-spacing: 1px;
+  position: relative;
+  overflow: hidden;
+}
+
+// ######################################################################### //
+/* MOBILE VIEW */
+aside#gpnav_sidebar {
+  position: relative;
+
+  header {
+    background-color: #242424;
+    font-size: 0.875em;
+    font-family: "Oswald-bold";
+    text-transform: uppercase;
+    padding: 21px 30px;
+    color: #cbcbcb;
+    box-sizing: border-box;
+    border-bottom: 1px solid #404040;
+    letter-spacing: 0.05em;
+    text-rendering: optimizeLegibility;
+    display: none;
+  }
+
+  ul {
+    margin: 0;
+    list-style-type: none;
+    padding-left: 0px;
+
+    li {
+      padding: 21px 30px;
+      margin: 0;
+      box-sizing: border-box;
+      height: auto;
+      /* display: none; */
+      border-bottom: 1px solid #404040;
+      background-color: #242424;
+
+      &:first-child {
+        display: block;
+      }
+
+      &.active a {
+        color: $color-secondary;
+      }
+
+      &.see-all {
+        position: absolute;
+        background-color: transparent;
+        border: none;
+        top: 0;
+        right: 0;
+
+        a {
+          color: #FFF;
+          text-decoration: none;
+          font-size: 1.3em;
+
+          span {
+            display: none;
+
+            &:before {
+              content: "\e601";
+            }
+          }
+        }
+      }
+
+      a {
+        color: #FFF;
+        font: 0.9em/1 'ProximaNovaBold';
+        letter-spacing: 0.01em;
+        font-weight: normal;
+        text-decoration: none;
+        transition: color 0.3s 0s ease-in-out;
+        cursor: pointer;
+
+        &:hover {
+          color: $color-secondary;
+        }
+      }
+    }
+  }
+
+  span.arrow {
+    display: none;
+  }
+}
+
+.gp-article-content {
+  .gp-chapters {
+    padding: 20px 10px 30px !important;
+  }
+  /* .wysiwyg--field-webny-wysiwyg-title {
+    font-size: 1.7em;
+    font-family: 'ProximaNovaExtraBold';
+    color: #24387e;
+    text-transform: none;
+    text-align: left;
+  } */
+}
+
+// ######################################################################### //
+/* MIN TABLET VIEW */
+@media (min-width: $min-tab) {
+  aside#gpnav_sidebar {
+
+    min-width: 150px;
+    position: absolute;
+    height: 100%;
+    left: 0px;
+    width: 20%;
+    overflow: visible;
+    background: #242424;
+
+    header {
+      display: block;
+    }
+
+    ul {
+      li {
+        &.see-all {
+          display: none;
+        }
+      }
+    }
+
+    span.arrow {
+      display: block;
+      position: absolute;
+      top: 84px;
+      right: -40px;
+      width: 0;
+      height: 0;
+      border-top: 20px solid transparent;
+      border-bottom: 20px solid transparent;
+      border-right: 20px solid transparent;
+      border-left: 20px solid #242424;
+      transition: top 0.3s 0s ease-in-out;
+    }
+  }
+
+  .gp-article-content {
+    width: 75%;
+    margin-left: 25%;
+    z-index: 2;
+    padding: 0 20px;
+
+    .gp-chapters {
+      padding: 20px 10px 30px !important;
+    }
+
+    /* .wysiwyg--field-webny-wysiwyg-title {
+      font-size: 2em;
+    } */
+  }
+}
+
+// ######################################################################### //
+/* PC VIEW */
+@media (min-width: $min-pc) {
+  aside#gpnav_sidebar {
+    width: 20%;
+  }
+  .gp-article-content {
+    width: 60%;
+    margin-left: 20%;
+    padding: 0;
+
+    .gp-chapters {
+      padding: 0 !important;
+    }
+
+    section {
+      padding: 50px;
+    }
+  }
+}

@@ -2,6 +2,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - entity_browser.browser.image_browser
     - field.field.node.webny_generic_page.field_webny_gencp_avgtranstime
     - field.field.node.webny_generic_page.field_webny_gencp_contentcat
     - field.field.node.webny_generic_page.field_webny_gencp_contentsect
@@ -16,6 +17,7 @@ dependencies:
     - node.type.webny_generic_page
   module:
     - datetime
+    - entity_browser
     - field_group
     - link
     - metatag
@@ -122,11 +124,16 @@ content:
   field_webny_gencp_heroimage:
     weight: 5
     settings:
-      match_operator: CONTAINS
-      size: 60
-      placeholder: ''
+      entity_browser: image_browser
+      field_widget_display: rendered_entity
+      field_widget_edit: true
+      field_widget_remove: true
+      open: true
+      selection_mode: selection_append
+      field_widget_display_settings:
+        view_mode: media_library
     third_party_settings: {  }
-    type: entity_reference_autocomplete
+    type: entity_browser_entity_reference
     region: content
   field_webny_gencp_howtoapply:
     weight: 7
