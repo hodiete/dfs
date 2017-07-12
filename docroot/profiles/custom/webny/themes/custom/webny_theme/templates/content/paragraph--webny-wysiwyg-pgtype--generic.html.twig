@@ -23,6 +23,8 @@
 {# DISPLAY THE PARAGRAPH #}
 {% block paragraph %}
     <section id="{{ 'toc_' ~ paragraph.id() }}" rel="{{ gp_status }}" class="generic_para {{ paragraph.bundle() }} {{ gp_enabled }}" >
-        {{ content }}
+        {{ content.field_webny_wysiwyg_title }}
+        {{ content.field_webny_wysiwyg_body }}
+        <div class="gp-next-section"></div>
     </section>
 {% endblock paragraph %}
