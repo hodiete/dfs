@@ -71,8 +71,6 @@ $category-tiles-headline-desktop: 800 1.1em $base-font !default;
       justify-content: space-around;
 
       .category-tiles-link--field-webny-cat-button-link {
-        display: -webkit-box;
-        display: -ms-flexbox;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -80,7 +78,7 @@ $category-tiles-headline-desktop: 800 1.1em $base-font !default;
         padding: 5px;
         max-width: 330px;
         width: 44.72881%;
-        height: 80px;
+        min-height: 80px;
         line-height: 17px;
         margin-top: 10px;
         color: white;
@@ -91,7 +89,7 @@ $category-tiles-headline-desktop: 800 1.1em $base-font !default;
         a {
           color: #ffffff;
           display: flex;
-          flex-wrap: wrap;
+          flex-direction: column;
           text-decoration: none;
           transition: all 0.5s ease;
           opacity: 0.9;
@@ -101,7 +99,6 @@ $category-tiles-headline-desktop: 800 1.1em $base-font !default;
           height: 100%;
           width: 100%;
           justify-content: center;
-          align-items: center;
         }
       }
     }
@@ -124,15 +121,11 @@ $category-tiles-headline-desktop: 800 1.1em $base-font !default;
       .category-tile-link-flex {
         .category-tiles-link--field-webny-cat-button-link {
           width: 21.75%;
-          height: 120px;
-          display: inline-block;
+          min-height: 120px;
+          //display: inline-block;
           //vertical-align: top;
           a {
             font-size: 16px;
-            display: inline-block;
-            vertical-align: middle;
-            padding-top: 55px;
-            height: 70%;
           }
         }
       }
@@ -149,14 +142,11 @@ $category-tiles-headline-desktop: 800 1.1em $base-font !default;
       .category-tile-link-flex {
         .category-tiles-link--field-webny-cat-button-link {
           width: 23.3%;
-          height: 140px;
+          min-height: 140px;
           line-height: 20px;
-          display: flex;
+          //display: flex;
           a {
-            display: flex;
-            padding: 0;
             letter-spacing: 2px;
-            height: 100%;
           }
         }
       }
@@ -178,7 +168,7 @@ $category-tiles-headline-desktop: 800 1.1em $base-font !default;
       max-width: 88em;
       .category-tile-link-flex {
         .category-tiles-link--field-webny-cat-button-link {
-          height: 140px;
+          min-height: 140px;
           width: 23.72881%;
           a {
             font-size: 18px;
@@ -203,44 +193,21 @@ $category-tiles-headline-desktop: 800 1.1em $base-font !default;
   }
 }// END MAX PC VIEW
 
-// ######################################################################### //
-/* IE 10/9 FOR  */
-@media screen and (min-width:0\0) {
-  .paragraph--type--webny-category-tiles-frame {
-    .category-tiles-link-content {
-      .category-tile-link-flex {
-        .category-tiles-link--field-webny-cat-button-link {
-          a {
-            display: inline-block;
-            word-wrap: break-word;
-            padding-top: 55px;
-            height: 70%;
-          }
-        }
-      }
-    }
-  }
-}
 
 // ######################################################################### //
-/* IE 10/9 FOR MOBILE DEVICES */
-@media screen and (min-width:0\0) and (max-width: 768px) {
-  .paragraph--type--webny-category-tiles-frame {
-    .category-tiles-link-content {
-      .category-tile-link-flex {
-        .category-tiles-link--field-webny-cat-button-link {
-          a {
-            display: inline-block;
-            word-wrap: break-word;
-            padding-top: 15px;
-            height: 60%;
-          }
-        }
-      }
+/* IE9 STYLING */
+@media screen\0 {
+  .category-tiles-landing { /* clears the frame so the background color is there */
+    &:after {
+      content: ".";
+      visibility: hidden;
+      display: block;
+      height: 0;
+      clear: both;
     }
   }
+  .category-tiles-link--field-webny-cat-button-link {
+    float: left;
+    margin-left: 5px;}
+
 }
-
-
-
-
