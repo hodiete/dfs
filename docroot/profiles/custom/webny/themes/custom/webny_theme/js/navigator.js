@@ -10,11 +10,19 @@
   Drupal.Navigator = {
     init:function() {
       // TODO: make sure this is targeting more than just wysiwyg.  Needs to be more generic
-      $('.wysiwyg--field-webny-wysiwyg-title').once().each(function() {
+      // Loop through each section (paragraph)
+      $('.gp-chapters section').each(function() {
+        // define the hash being used for anchoring (grab title from paragraph, transforming to lowercase,
+        // replacing spaces with dash)
+        var hash = $(this).children('div').text().toLowerCase().replace(/ /g, "-");
+        $('#gpnav_sidebar ul').append('<li><a href="#' + hash + '">' + $(this).children('div').text() + '</a></li>');
+        $(this).children('div').attr('name', hash);
+      })
+      /*$('.wysiwyg--field-webny-wysiwyg-title').once().each(function() {
         var hash = $(this).text().toLowerCase().replace(/ /g, "-");
         $('.sidebar ul').append('<li><a href="#' + hash + '">' + $(this).text() + '</a></li>');
         $(this).attr('name', hash);
-      });
+      });*/
 
       $('.sidebar ul li a').once().click(function(e) {
         // line 119ish
