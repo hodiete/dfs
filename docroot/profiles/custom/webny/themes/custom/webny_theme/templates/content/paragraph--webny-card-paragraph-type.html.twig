@@ -48,8 +48,22 @@ view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
 {% block paragraph %}
     <div{{ attributes.addClass(classes) }}>
         {% block content %}
-            {{ content.field_webny_card_pg_title }}
-            {{ content.field_webny_card_pg_headline }}
+
+            <div class="webny-card-frame-inner">
+                {%  if((paragraph.field_webny_card_pg_title.value is not empty and paragraph.field_webny_card_pg_title.value is not null) or (paragraph.field_webny_card_pg_headline.value is not empty and paragraph.field_webny_card_pg_headline.value is not null)) %}
+                <h2>
+                    <span class="frame-title">
+                        {{ paragraph.field_webny_card_pg_title.value }}
+                    </span>
+                    <span class="frame-headline">
+                     {{ paragraph.field_webny_card_pg_headline.value }}
+                    </span>
+                </h2>
+                {% else %}
+                {% endif %}
+
+            </div>
+
             <div>
             {# maximum amount of cards is 3, so look from 0 - 2 to capture each potential card #}
             {% for i in 0..2 %}

@@ -176,7 +176,7 @@ gulp.task('styles:production', ['clean:css'], function () {
         outputStyle: 'compressed'
       }))
         .pipe(autoprefix({
-          browsers: ['last 2 versions'],
+          browsers: ['last 5 versions'],
           cascade: false
         }))
           .pipe(gulp.dest(options.theme.css));
