@@ -116,7 +116,7 @@ if (isset($_ENV['AH_SITE_ENVIRONMENT'])) {
   }
 } else {
   // Local or other non-acquia-hosted Drupal environment
-  // Currently using 01dev index if Acquia Connector and Acquia Search are enabled for local development
+  // Currently using 01dev index if Acquia Connector and Acquia Search are enabled in local development environment
   $config['acquia_search.settings']['connection_override'] = [
     'scheme' => 'http',
     'port' => 80,
