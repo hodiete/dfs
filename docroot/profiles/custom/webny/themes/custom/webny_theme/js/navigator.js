@@ -14,8 +14,10 @@
         // define the hash being used for anchoring (grab title from paragraph, transforming to lowercase,
         // replacing spaces with dash)
         var hash = $(this).children(':first').text().toLowerCase().replace(/ /g, "-");
-        $('#gpnav_sidebar ul').append('<li><a href="#' + hash + '">' + $(this).children(':first').text() + '</a></li>');
-        $(this).children(':first').attr('name', hash);
+        if ($(this).attr('rel') == 'enabled') {
+          $('#gpnav_sidebar ul').append('<li><a href="#' + hash + '">' + $(this).children(':first').text() + '</a></li>');
+          $(this).children(':first').attr('name', hash);
+        }
       })
 
       $('#gpnav_sidebar ul li a').once().click(function(e) {
