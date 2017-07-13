@@ -9,22 +9,16 @@
 
   Drupal.Navigator = {
     init:function() {
-      // TODO: make sure this is targeting more than just wysiwyg.  Needs to be more generic
       // Loop through each section (paragraph)
-      $('.gp-chapters section').each(function() {
+      $('.gp-chapters section').once().each(function() {
         // define the hash being used for anchoring (grab title from paragraph, transforming to lowercase,
         // replacing spaces with dash)
-        var hash = $(this).children('div').text().toLowerCase().replace(/ /g, "-");
-        $('#gpnav_sidebar ul').append('<li><a href="#' + hash + '">' + $(this).children('div').text() + '</a></li>');
-        $(this).children('div').attr('name', hash);
+        var hash = $(this).children(':first').text().toLowerCase().replace(/ /g, "-");
+        $('#gpnav_sidebar ul').append('<li><a href="#' + hash + '">' + $(this).children(':first').text() + '</a></li>');
+        $(this).children(':first').attr('name', hash);
       })
-      /*$('.wysiwyg--field-webny-wysiwyg-title').once().each(function() {
-        var hash = $(this).text().toLowerCase().replace(/ /g, "-");
-        $('.sidebar ul').append('<li><a href="#' + hash + '">' + $(this).text() + '</a></li>');
-        $(this).attr('name', hash);
-      });*/
 
-      $('.sidebar ul li a').once().click(function(e) {
+      $('#gpnav_sidebar ul li a').once().click(function(e) {
         // line 119ish
         e.preventDefault();
         // name used on title of paragraph
@@ -34,7 +28,7 @@
         dest = clickedFrame.offset().top;
 
         // remove all active classes from lis
-        $('.sidebar ul li').each(function() {
+        $('#gpnav_sidebar ul li').each(function() {
           $(this).removeClass('active');
         });
         // add active class to currently clicked
@@ -56,7 +50,7 @@
         if(hash){
           //NY.OneStopArticle.deep_linking = true;
           // trigger a click on the sidebar a where href == hash essentialy loading the page and faking a click moving the scroll down
-          $('.sidebar li a[href="'+hash+'"]').trigger('click');
+          $('#gpnav_sidebar li a[href="'+hash+'"]').trigger('click');
         }
       });
     }
@@ -74,8 +68,15 @@
         console.log(direction);
       });
 
-      $('.featured-card--field-webny-card-pg-title').waypoint(function(direction) {
-        console.log('Scrolled to waypoint!');
+      $('.actions').waypoint(function(direction) {
+        //console.log('Scrolled to waypoint!');
+        if (direction === 'down') {
+          $('.actions').addClass('stuck');
+          $('#gpnav_sidebar').addClass('stuck');
+        } else {
+          $('.actions').removeClass('stuck');
+          $('#gpnav_sidebar').removeClass('stuck');
+        }
       });
     }
   };
