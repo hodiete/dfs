@@ -1,0 +1,218 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - entity_browser.browser.image_browser
+    - field.field.node.webny_generic_page.field_webny_gencp_avgtranstime
+    - field.field.node.webny_generic_page.field_webny_gencp_contentcat
+    - field.field.node.webny_generic_page.field_webny_gencp_contentsect
+    - field.field.node.webny_generic_page.field_webny_gencp_date
+    - field.field.node.webny_generic_page.field_webny_gencp_herodesc
+    - field.field.node.webny_generic_page.field_webny_gencp_heroimage
+    - field.field.node.webny_generic_page.field_webny_gencp_howtoapply
+    - field.field.node.webny_generic_page.field_webny_gencp_keywords
+    - field.field.node.webny_generic_page.field_webny_gencp_metatags
+    - field.field.node.webny_generic_page.field_webny_gencp_navtoggle
+    - field.field.node.webny_generic_page.field_webny_gencp_sumdes
+    - node.type.webny_generic_page
+  module:
+    - datetime
+    - entity_browser
+    - field_group
+    - link
+    - metatag
+    - paragraphs
+    - path
+    - text
+    - workbench_moderation
+third_party_settings:
+  field_group:
+    group_webny_gencp_herofields:
+      children:
+        - field_webny_gencp_heroimage
+        - field_webny_gencp_date
+        - field_webny_gencp_herodesc
+      parent_name: ''
+      weight: 4
+      format_type: details
+      format_settings:
+        id: webny-hero-fields
+        classes: ''
+        open: false
+        required_fields: true
+      label: 'Hero Fields'
+    group_webny_gencp_transsec:
+      children:
+        - field_webny_gencp_avgtranstime
+        - field_webny_gencp_howtoapply
+      parent_name: ''
+      weight: 5
+      format_type: details
+      format_settings:
+        id: transaction-section
+        classes: ''
+        open: false
+        required_fields: true
+      label: 'Transaction Section'
+    group_webny_gencp_sectoc:
+      children:
+        - field_webny_gencp_navtoggle
+        - field_webny_gencp_contentsect
+      parent_name: ''
+      weight: 6
+      format_type: details
+      format_settings:
+        id: sections-toc
+        classes: ''
+        open: false
+        required_fields: true
+      label: 'Sections and Table of Contents'
+id: node.webny_generic_page.default
+targetEntityType: node
+bundle: webny_generic_page
+mode: default
+content:
+  created:
+    type: datetime_timestamp
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_webny_gencp_avgtranstime:
+    weight: 6
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_webny_gencp_contentcat:
+    weight: 3
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  field_webny_gencp_contentsect:
+    type: entity_reference_paragraphs
+    weight: 9
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: closed
+      add_mode: button
+      form_display_mode: generic_form
+      default_paragraph_type: _none
+    third_party_settings: {  }
+    region: content
+  field_webny_gencp_date:
+    weight: 6
+    settings: {  }
+    third_party_settings: {  }
+    type: datetime_default
+    region: content
+  field_webny_gencp_herodesc:
+    weight: 7
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textfield
+    region: content
+  field_webny_gencp_heroimage:
+    weight: 5
+    settings:
+      entity_browser: image_browser
+      field_widget_display: rendered_entity
+      field_widget_edit: true
+      field_widget_remove: true
+      open: true
+      selection_mode: selection_append
+      field_widget_display_settings:
+        view_mode: media_library
+    third_party_settings: {  }
+    type: entity_browser_entity_reference
+    region: content
+  field_webny_gencp_howtoapply:
+    weight: 7
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
+  field_webny_gencp_keywords:
+    weight: 2
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  field_webny_gencp_metatags:
+    weight: 7
+    settings: {  }
+    third_party_settings: {  }
+    type: metatag_firehose
+    region: content
+  field_webny_gencp_navtoggle:
+    weight: 8
+    settings: {  }
+    third_party_settings: {  }
+    type: options_buttons
+    region: content
+  field_webny_gencp_sumdes:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textfield
+    region: content
+  langcode:
+    type: language_select
+    weight: 8
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 13
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  promote:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 11
+    region: content
+    third_party_settings: {  }
+  sticky:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 12
+    region: content
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 9
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    region: content
+    third_party_settings: {  }
+hidden: {  }
