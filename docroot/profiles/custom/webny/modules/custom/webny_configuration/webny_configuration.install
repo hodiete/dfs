@@ -3192,7 +3192,7 @@ function webny_configuration_update_8148() {
     // REINSTALL THE WHITELISTED CONTENT TYPE FEATURE MODULE
     print webny_configuration_uninstall_module('webny_whitelisted_content');
     print webny_configuration_enable_module('webny_whitelisted_content');
-  
+
     // REFRESH
     $config_factory = \Drupal::configFactory();
     $profile_config = \Drupal::service('webny.profile_config');
