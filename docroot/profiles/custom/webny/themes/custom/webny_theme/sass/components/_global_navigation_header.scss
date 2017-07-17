@@ -266,7 +266,6 @@ $globalnav-secondary-color:   $button-black-50 !default;
         border-bottom-style: solid;
         text-decoration: none;
         color: $nav-fore-color;
-        cursor: pointer;
       }
 
       a:hover,
@@ -282,10 +281,13 @@ $globalnav-secondary-color:   $button-black-50 !default;
         z-index: 5;
         width: 100%;
 
-        > li > a,
+        > li > a {
+          cursor:pointer;
+        }
         > li > span {
           letter-spacing: .02em;
           font-weight: $nav-weight;
+          cursor:default;
         }
       }
     }
