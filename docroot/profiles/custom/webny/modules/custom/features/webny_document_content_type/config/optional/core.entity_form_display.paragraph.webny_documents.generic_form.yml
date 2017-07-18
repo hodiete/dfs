@@ -5,6 +5,7 @@ dependencies:
     - core.entity_form_mode.paragraph.generic_form
     - field.field.paragraph.webny_documents.field_webny_attached_documents
     - field.field.paragraph.webny_documents.field_webny_doc_add_frame_to_toc
+    - field.field.paragraph.webny_documents.field_webny_doc_sub_title
     - field.field.paragraph.webny_documents.field_webny_documents_title
     - paragraphs.paragraphs_type.webny_documents
   module:
@@ -39,5 +40,6 @@ content:
     region: content
 hidden:
   created: true
+  field_webny_doc_sub_title: true
   status: true
   uid: true
