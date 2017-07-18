@@ -92,6 +92,7 @@
       });
 
       $(window).on('resize', function () {
+        // min-tab breakpoint
         if ($(window).width() >= 480) {
           $('#gpnav_sidebar ul').removeClass('sidebar-closed').addClass('sidebar-opened').removeClass('mobile');
         }
