@@ -81,10 +81,8 @@
 
         // if see-all is visible meaning in mobile view
         if ($('#gpnav_sidebar ul li.see-all').is(':visible')) {
-          // add class to mark ul as closed
-          $('#gpnav_sidebar ul').addClass('sidebar-closed');
-          // add class to mark as mobile view
-          $('#gpnav_sidebar ul').addClass('mobile');
+          // add class to mark ul as closed and mobile view
+          $('#gpnav_sidebar ul').addClass('sidebar-closed').addClass('mobile');
         }
         else {
           // in larger views than mobile, toc is always opened
@@ -98,14 +96,10 @@
         // if see-all is visible meaning in mobile view
         if ($('#gpnav_sidebar ul li.see-all').is(':visible')) {
           // add class to mark ul as closed
-          $('#gpnav_sidebar ul').removeClass('sidebar-opened');
-          $('#gpnav_sidebar ul').addClass('sidebar-closed');
-          $('#gpnav_sidebar ul').addClass('mobile');
+          $('#gpnav_sidebar ul').removeClass('sidebar-opened').addClass('sidebar-closed').addClass('mobile');
         }
         else {
-          $('#gpnav_sidebar ul').removeClass('sidebar-closed');
-          $('#gpnav_sidebar ul').addClass('sidebar-opened');
-          $('#gpnav_sidebar ul').removeClass('mobile');
+          $('#gpnav_sidebar ul').removeClass('sidebar-closed').addClass('sidebar-opened').removeClass('mobile');
         }
       });
 
@@ -128,8 +122,7 @@
         // while scrolling if toc li anchor is same as the currently scrolled section, add active class
         $('#gpnav_sidebar ul li').each(function () {
           if ($(this).children('a').attr('href') === '#' + sectionName) {
-            $(this).addClass('active');
-            $(this).show();
+            $(this).addClass('active').show();
             var item = $('#gpnav_sidebar ul li.active');
             if (item.position()) {
               // assign arrow position based on section currently scrolled
