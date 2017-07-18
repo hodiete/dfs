@@ -23,12 +23,26 @@ $gp-frame-button: $color-mono-white !default;
   letter-spacing: 1px;
   position: relative;
   overflow: hidden;
+
+  &.stuck {
+    position: fixed;
+    width: 100%;
+    top: 0px;
+    z-index: 100;
+  }
 }
 
 // ######################################################################### //
 /* MOBILE VIEW */
 aside#gpnav_sidebar {
   position: relative;
+
+  &.stuck {
+    position: fixed;
+    top: 50px;
+    z-index: 10;
+    width: 100%;
+  }
 
   header {
     background-color: #242424;
@@ -49,16 +63,40 @@ aside#gpnav_sidebar {
     list-style-type: none;
     padding-left: 0px;
 
+    &.sidebar-opened.mobile {
+      li {
+        display: block;
+      }
+    }
+
+    &.sidebar-closed.mobile {
+      li:first-child {
+        display: block;
+      }
+      li.active {
+        display: block;
+      }
+      li {
+        display: none;
+      }
+    }
+
     li {
       padding: 21px 30px;
       margin: 0;
       box-sizing: border-box;
       height: auto;
-      /* display: none; */
       border-bottom: 1px solid #404040;
       background-color: #242424;
+      display: none;
 
+      /* display the see-all always */
       &:first-child {
+        display: block;
+      }
+
+      /* only display the li that has the active class attached */
+      &.active {
         display: block;
       }
 
@@ -141,6 +179,7 @@ aside#gpnav_sidebar {
 
     ul {
       li {
+        display: block;
         &.see-all {
           display: none;
         }
@@ -159,6 +198,10 @@ aside#gpnav_sidebar {
       border-right: 20px solid transparent;
       border-left: 20px solid #242424;
       transition: top 0.3s 0s ease-in-out;
+    }
+
+    &.stuck {
+      width: 20% !important;
     }
   }
 
