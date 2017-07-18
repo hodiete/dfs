@@ -58,7 +58,7 @@
 
           // animate to section of page
           $('html,body').animate({
-            scrollTop: dest - 100
+            scrollTop: dest - 130
           }, 500, 'swing', function () {
             $(this).addClass('active');
           });
@@ -131,7 +131,7 @@
             $(this).removeClass('active');
           }
         });
-      }, {offset: 100});
+      }, {offset: 180});
     }
   };
 
