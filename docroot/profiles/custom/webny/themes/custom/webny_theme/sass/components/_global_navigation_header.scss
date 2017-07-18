@@ -268,10 +268,15 @@ $globalnav-secondary-color:   $button-black-50 !default;
         color: $nav-fore-color;
       }
 
-      a:hover,
+      a:hover{
+        text-decoration: none;
+        color: $nav-fore-color;
+        cursor: pointer;
+      }
       span:hover {
         text-decoration: none;
         color: $nav-fore-color;
+        cursor: default;
       }
 
       ul {
@@ -287,7 +292,6 @@ $globalnav-secondary-color:   $button-black-50 !default;
         > li > span {
           letter-spacing: .02em;
           font-weight: $nav-weight;
-          cursor:default;
         }
       }
     }
