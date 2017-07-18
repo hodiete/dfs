@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_webny_doc_sub_title
+    - paragraphs.paragraphs_type.webny_documents
+id: paragraph.webny_documents.field_webny_doc_sub_title
+field_name: field_webny_doc_sub_title
+entity_type: paragraph
+bundle: webny_documents
+label: 'Documents Sub Title'
+description: 'Use this field to add a sub title to the attached documents section.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

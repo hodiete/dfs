@@ -4,6 +4,7 @@ dependencies:
   config:
     - field.field.paragraph.webny_documents.field_webny_attached_documents
     - field.field.paragraph.webny_documents.field_webny_doc_add_frame_to_toc
+    - field.field.paragraph.webny_documents.field_webny_doc_sub_title
     - field.field.paragraph.webny_documents.field_webny_documents_title
     - paragraphs.paragraphs_type.webny_documents
   module:
@@ -14,7 +15,7 @@ bundle: webny_documents
 mode: default
 content:
   field_webny_attached_documents:
-    weight: 7
+    weight: 2
     settings:
       match_operator: CONTAINS
       size: 60
@@ -23,13 +24,21 @@ content:
     type: entity_reference_autocomplete
     region: content
   field_webny_doc_add_frame_to_toc:
-    weight: 8
+    weight: 3
     settings: {  }
     third_party_settings: {  }
     type: options_select
     region: content
+  field_webny_doc_sub_title:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
   field_webny_documents_title:
-    weight: 6
+    weight: 0
     settings:
       size: 60
       placeholder: ''
