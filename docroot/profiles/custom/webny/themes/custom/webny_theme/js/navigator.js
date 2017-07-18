@@ -92,14 +92,11 @@
       });
 
       $(window).on('resize', function () {
-        // if window is resized, handle switchover of classes
-        // if see-all is visible meaning in mobile view
-        if ($('#gpnav_sidebar ul li.see-all').is(':visible')) {
-          // add class to mark ul as closed
-          $('#gpnav_sidebar ul').removeClass('sidebar-opened').addClass('sidebar-closed').addClass('mobile');
+        if ($(window).width() >= 480) {
+          $('#gpnav_sidebar ul').removeClass('sidebar-closed').addClass('sidebar-opened').removeClass('mobile');
         }
         else {
-          $('#gpnav_sidebar ul').removeClass('sidebar-closed').addClass('sidebar-opened').removeClass('mobile');
+          $('#gpnav_sidebar ul').removeClass('sidebar-opened').addClass('sidebar-closed').addClass('mobile');
         }
       });
 
