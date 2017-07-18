@@ -11,15 +11,17 @@
     attach: function (context, settings) {
       // Loop through each section (paragraph)
       $('.gp-chapters section').once().each(function () {
-        // define the hash being used for anchoring grab title from paragraph, transforming to lowercase,
+        // define the hash being used for anchoring; grab title from paragraph, transforming to lowercase,
         // replacing spaces with dash
         var hash = $(this).children(':first').text().toLowerCase().replace(/ /g, "-");
+        // if rel is enabled, this paragraph has been selected to be added to the TOC
         if ($(this).attr('rel') === 'enabled') {
           $('#gpnav_sidebar ul').append('<li><a href="#' + hash + '">' + $(this).children(':first').text() + '</a></li>');
           $(this).children(':first').attr('name', hash);
         }
       });
 
+      // clicking the see-all icon in mobile will toggle classes for control over toc
       $('#gpnav_sidebar ul li.see-all').once().click(function (e) {
         e.preventDefault();
 
@@ -31,8 +33,10 @@
         }
       });
 
+      // toc item click event
       $('#gpnav_sidebar ul li a').click(function (e) {
         e.preventDefault();
+        // only fire if the click is on anything other than see-all icon li
         if (!$(this).parent().hasClass('see-all')) {
           // name used on title of paragraph
           var name = $(this).attr('href').replace('#', '');
@@ -40,13 +44,14 @@
           var dest = 0;
           dest = clickedFrame.offset().top;
 
-          // remove all active classes from lis
+          // remove all active classes from li's
           $('#gpnav_sidebar ul li').each(function () {
             $(this).removeClass('active');
           });
           // add active class to currently clicked parent
           $(this).parent().addClass('active');
 
+          // if in mobile and toc is open, toggle class to closed and let sass take over
           if ($(this).parent().parent().hasClass('sidebar-opened') && $(this).parent().parent().hasClass('mobile')) {
             $(this).parent().parent().removeClass('sidebar-opened').addClass('sidebar-closed');
           }
@@ -66,7 +71,7 @@
         var hash = window.location.hash;
         // if hash exists
         if(hash) {
-          // trigger a click on the sidebar a where href == hash essentialy loading the page and faking a click moving the scroll down
+          // trigger a click on the sidebar a where href == hash essentially loading the page and faking a click moving the scroll down
           $('#gpnav_sidebar li a[href="' + hash + '"]').trigger('click');
         }
         else {
@@ -78,15 +83,18 @@
         if ($('#gpnav_sidebar ul li.see-all').is(':visible')) {
           // add class to mark ul as closed
           $('#gpnav_sidebar ul').addClass('sidebar-closed');
+          // add class to mark as mobile view
           $('#gpnav_sidebar ul').addClass('mobile');
         }
         else {
+          // in larger views than mobile, toc is always opened
           $('#gpnav_sidebar ul').addClass('sidebar-opened');
         }
 
       });
 
       $(window).on('resize', function () {
+        // if window is resized, handle switchover of classes
         // if see-all is visible meaning in mobile view
         if ($('#gpnav_sidebar ul li.see-all').is(':visible')) {
           // add class to mark ul as closed
@@ -101,6 +109,7 @@
         }
       });
 
+      // waypoint library to handle sticky action bar
       $('.actions').waypoint(function (direction) {
         if (direction === 'down') {
           $('.actions').addClass('stuck');
@@ -112,15 +121,18 @@
         }
       });
 
+      // waypoint library to handle scrolling through the page functionality
       $('.gp-chapters section').waypoint(function (direction) {
         var sectonId = this.element.id;
         var sectionName = $('#' + sectonId).children(':first').attr('name');
+        // while scrolling if toc li anchor is same as the currently scrolled section, add active class
         $('#gpnav_sidebar ul li').each(function () {
           if ($(this).children('a').attr('href') === '#' + sectionName) {
             $(this).addClass('active');
             $(this).show();
             var item = $('#gpnav_sidebar ul li.active');
             if (item.position()) {
+              // assign arrow position based on section currently scrolled
               $('#gpnav_sidebar span.arrow').css({top: Math.round(item.position().top + item.height() / 2 + 2) + 'px'});
             }
           }
