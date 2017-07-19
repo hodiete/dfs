@@ -219,6 +219,11 @@ aside#gpnav_sidebar {
       font-size: 2em;
     } */
   }
+
+  // needed to override global footer z-index for this content type since it has the left fixed positioned toc
+  .webny-global-footer {
+    z-index: 10;
+  }
 }
 
 // ######################################################################### //
