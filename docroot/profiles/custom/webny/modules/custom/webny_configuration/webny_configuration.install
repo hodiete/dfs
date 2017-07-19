@@ -3182,6 +3182,34 @@ function webny_configuration_update_8147() {
 }
 
 /**
+ * Implements hook_update_n().
+ *
+ * Refreshes whitelisted content ct updates config - view display for feature card.
+ *
+ */
+function webny_configuration_update_8148() {
+
+    // REINSTALL THE WHITELISTED CONTENT TYPE FEATURE MODULE
+    print webny_configuration_uninstall_module('webny_whitelisted_content');
+    print webny_configuration_enable_module('webny_whitelisted_content');
+
+    // REFRESH
+    $config_factory = \Drupal::configFactory();
+    $profile_config = \Drupal::service('webny.profile_config');
+
+    // Import new/changed configuration.
+    $config_to_update = [
+      // UPDATE LANDING PAGE OPTIONAL FEATURES
+      'core.entity_view_display.node.webny_whitelisted_content.webny_featured_card'
+    ];
+
+    $profile_config->bulkImport($config_to_update);
+
+    // Clear the config cache.
+    $config_factory->reset();
+}
+
+/**
  * Helper function to enable a Drupal module and print the result.
  *
  * @param string $module_name
