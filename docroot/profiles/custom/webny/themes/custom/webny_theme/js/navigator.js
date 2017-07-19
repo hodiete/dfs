@@ -21,11 +21,19 @@
           $('#gpnav_sidebar ul').append('<li><a href="#' + hash + '">' + $(this).children(':first').text() + '</a></li>');
           $(this).children(':first').attr('name', hash);
         }
-        if (nextSection.children(':first').text()) {
+        if (nextSection.children(':first').text() && ) {
           $(this).children('.gp-next-section').children('.gp-next-section-title').html(nextSection.children(':first').text());
         } else {
           $(this).children('.gp-next-section').css('display', 'none');
         }
+      });
+
+      // next section click event
+      $('.gp-next-section-title').once().click(function (e) {
+        e.preventDefault();
+        var hash = $(this).text().toLowerCase().replace(/ /g, "-");
+        console.log(hash);
+        $('#gpnav_sidebar li a[href="#' + hash + '"]').trigger('click');
       });
 
       // clicking the see-all icon in mobile will toggle classes for control over toc
