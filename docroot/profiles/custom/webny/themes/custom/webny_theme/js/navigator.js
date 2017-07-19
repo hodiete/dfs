@@ -11,6 +11,8 @@
     attach: function (context, settings) {
       // Loop through each section (paragraph)
       $('.gp-chapters section').once().each(function () {
+        // define next section object
+        var nextSection = $(this).next();
         // define the hash being used for anchoring; grab title from paragraph, transforming to lowercase,
         // replacing spaces with dash
         var hash = $(this).children(':first').text().toLowerCase().replace(/ /g, "-");
@@ -18,6 +20,11 @@
         if ($(this).attr('rel') === 'enabled') {
           $('#gpnav_sidebar ul').append('<li><a href="#' + hash + '">' + $(this).children(':first').text() + '</a></li>');
           $(this).children(':first').attr('name', hash);
+        }
+        if (nextSection.children(':first').text()) {
+          $(this).children('.gp-next-section').children('.gp-next-section-title').html(nextSection.children(':first').text());
+        } else {
+          $(this).children('.gp-next-section').css('display', 'none');
         }
       });
 
