@@ -154,6 +154,10 @@ aside#gpnav_sidebar {
   }
 }
 
+.gp-next-section {
+  display: none;
+}
+
 // ######################################################################### //
 /* MIN TABLET VIEW */
 @media (min-width: $min-tab) {
@@ -209,6 +213,49 @@ aside#gpnav_sidebar {
   // needed to override global footer z-index for this content type since it has the left fixed positioned toc
   .webny-global-footer {
     z-index: 10;
+  }
+
+  .gp-next-section {
+    display: block;
+    .gp-next-section-links {
+      border-bottom: 1px solid #d9e2e2;
+      margin-bottom: 20px;
+
+      p {
+        width: 48%;
+        display: inline-block;
+        margin: 10px 0;
+        font-family: 'ProximaNovaBold';
+        font-size: 14px;
+        text-transform: uppercase;
+
+        &.gp-next-section-link {
+          width: 50%;
+          text-align: right;
+          font-family: 'ProximaNovaRegular';
+          font-size: 16px;
+          text-transform: none;
+          cursor: pointer;
+
+          &:before {
+            float: right;
+            margin-left: 10px;
+            vertical-align: middle;
+            font-family: 'icomoon';
+            content: "\e632";
+          }
+        }
+      }
+    }
+
+    .gp-next-section-title {
+      font-family: 'ProximaNovaRegular';
+      font-size: 30px;
+      color: #128ec3;
+      margin-bottom: 75px;
+      display: block;
+      cursor: pointer;
+    }
   }
 }
 

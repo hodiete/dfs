@@ -25,6 +25,12 @@
     <section id="{{ 'toc_' ~ paragraph.id() }}" rel="{{ gp_status }}" class="generic_para {{ paragraph.bundle() }} {{ gp_enabled }}" >
         {{ content.field_webny_wysiwyg_title }}
         {{ content.field_webny_wysiwyg_body }}
-        <div class="gp-next-section"></div>
+        <div class="gp-next-section">
+            <div class="gp-next-section-links">
+                <p>Next Section</p>
+                <p class="icon-thin_down_arrow gp-next-section-link">Continue</p>
+            </div>
+            <span class="gp-next-section-title">Testing</span>
+        </div>
     </section>
 {% endblock paragraph %}
