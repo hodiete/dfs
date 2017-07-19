@@ -46,7 +46,7 @@ aside#gpnav_sidebar {
 
   header {
     background-color: #242424;
-    font-size: 0.875em;
+    font-size: 14px; //0.875em;
     font-family: "Oswald-bold";
     text-transform: uppercase;
     padding: 21px 30px;
@@ -128,7 +128,8 @@ aside#gpnav_sidebar {
 
       a {
         color: #FFF;
-        font: 0.9em/1 'ProximaNovaBold';
+        //font: 0.9em/1 'ProximaNovaBold';
+        font: 16.8px 'ProximaNovaBold';
         letter-spacing: 0.01em;
         font-weight: normal;
         text-decoration: none;
@@ -151,13 +152,6 @@ aside#gpnav_sidebar {
   .gp-chapters {
     padding: 20px 10px 30px !important;
   }
-  /* .wysiwyg--field-webny-wysiwyg-title {
-    font-size: 1.7em;
-    font-family: 'ProximaNovaExtraBold';
-    color: #24387e;
-    text-transform: none;
-    text-align: left;
-  } */
 }
 
 // ######################################################################### //
@@ -172,6 +166,10 @@ aside#gpnav_sidebar {
     width: 20%;
     overflow: visible;
     background: #242424;
+
+    &.stuck {
+      width: 20%;
+    }
 
     header {
       display: block;
@@ -199,10 +197,6 @@ aside#gpnav_sidebar {
       border-left: 20px solid #242424;
       transition: top 0.3s 0s ease-in-out;
     }
-
-    &.stuck {
-      width: 20% !important;
-    }
   }
 
   .gp-article-content {
@@ -210,14 +204,6 @@ aside#gpnav_sidebar {
     margin-left: 25%;
     z-index: 2;
     padding: 0 20px;
-
-    .gp-chapters {
-      padding: 20px 10px 30px !important;
-    }
-
-    /* .wysiwyg--field-webny-wysiwyg-title {
-      font-size: 2em;
-    } */
   }
 
   // needed to override global footer z-index for this content type since it has the left fixed positioned toc
