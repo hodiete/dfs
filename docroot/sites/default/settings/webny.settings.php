@@ -15,6 +15,7 @@ if ($is_ah_env) {
 }
 if ($is_local_env) {
 $config['google_analytics.settings']['account'] = '';
+$config['acquia_search.settings']['disable_auto_switch'] = 'TRUE';
 }
 
 
