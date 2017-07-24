@@ -87,7 +87,7 @@
       {%  if not page %}
           {{ title_prefix }}
 
-          <h2{{ title_attributes }}>
+          <h1{{ title_attributes }}>
               <a href="{{ url }}" rel="bookmark">
 
                   {# IMPLEMENTS SHORT TITLE OR 65 CHAR LIMIT TITLE #}
@@ -107,7 +107,7 @@
                   {% endif %}
 
               </a>
-          </h2>
+          </h1>
 
           {{ title_suffix }}
       {% endif %}

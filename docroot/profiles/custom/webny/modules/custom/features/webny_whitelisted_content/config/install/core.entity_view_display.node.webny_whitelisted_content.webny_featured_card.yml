@@ -48,14 +48,10 @@ content:
     third_party_settings:
       linked_field:
         linked: '1'
-        type: custom
-        destination: '[node:url]'
+        type: field
+        destination: field_webny_whitelist_link_url
         advanced:
-          title: ''
-          target: ''
-          class: ''
-          rel: ''
-          text: ''
+          target: _blank
     type: entity_reference_entity_view
     region: content
   field_webny_whitelist_link_url:
