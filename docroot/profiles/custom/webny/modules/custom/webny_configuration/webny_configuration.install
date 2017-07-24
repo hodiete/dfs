@@ -3210,6 +3210,49 @@ function webny_configuration_update_8148() {
 }
 
 /**
+ * Implements hook_update_n().
+ *
+ * Refresh Document, Get Involved, Wysiwyg, Generic and Contact content types.
+ *
+ */
+function webny_configuration_update_8149() {
+
+
+    // REINSTALL THE CONTENT FEATURE MODULES
+    print webny_configuration_uninstall_module('webny_get_involved_frame');
+    print webny_configuration_enable_module('webny_get_involved_frame');
+
+    print webny_configuration_uninstall_module('webny_contact_content_type');
+    print webny_configuration_enable_module('webny_contact_content_type');
+
+    print webny_configuration_uninstall_module('webny_document_content_type');
+    print webny_configuration_enable_module('webny_document_content_type');
+
+    print webny_configuration_uninstall_module('webny_wysiwyg_frame');
+    print webny_configuration_enable_module('webny_wysiwyg_frame');
+        
+    print webny_configuration_uninstall_module('webny_generic_content_type');
+    print webny_configuration_enable_module('webny_generic_content_type');    
+
+    // REFRESH
+    $config_factory = \Drupal::configFactory();
+    $profile_config = \Drupal::service('webny.profile_config');
+
+    // Import new/changed configuration.
+    $config_to_update = [
+      // UPDATE OPTIONAL FEATURES
+      'field.field.node.webny_generic_page.field_webny_gencp_contentsect'
+    ];
+
+    $profile_config->bulkImport($config_to_update);
+
+    // Clear the config cache.
+    $config_factory->reset();
+
+}
+
+
+/**
  * Helper function to enable a Drupal module and print the result.
  *
  * @param string $module_name

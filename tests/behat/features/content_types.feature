@@ -315,6 +315,20 @@ Feature: Check for the existence and fields of content types
     And I should see text matching "Vine Link"
     And I should see text matching "YouTube Link"
 
+# Contact Paragraph Type display
+# Check for the display Mode GENERIC on paragraph type
+  Scenario: Does the generic display mode exist
+    Given I am logged into the distro with the "administrator" role
+    When I am on "/admin/structure/paragraphs_type/webny_documents/display/generic"
+    Then I should not get a 404 HTTP response
+
+# Check the backend display form. The Generic form should be enabled for content authors
+  Scenario: Does the generic display form exist
+    Given I am logged into the distro with the "administrator" role
+    When I am on "/admin/structure/paragraphs_type/webny_documents/form-display/generic_form"
+    Then I should not get a 404 HTTP response
+
+
 # =======================================================================================
 # Check for the existence of a content type
 # CONTENT TYPE: Inner Page
@@ -349,7 +363,7 @@ Feature: Check for the existence and fields of content types
 # Check for the existence of a content type
 # CONTENT TYPE: Generic Page Content
 # ROLE: administrator
-  Scenario: Determine if a content type exists for news with the administrator role and the given fields
+  Scenario: Determine if a content type exists for generic content page with the administrator role and the given fields
     Given I am logged into the distro with the "administrator" role
     When I am on "/node/add/webny_generic_page"
     Then I should not see "Access denied"
@@ -366,6 +380,17 @@ Feature: Check for the existence and fields of content types
     And I should see text matching "Metatags"
     And I should see text matching "Navigator / Table of Content Toggle"
     And I should not see text matching "Add Phone Contact"
+
+# Check for the settings of a content type
+# CONTENT TYPE: Generic Page Content
+# ROLE: administrator
+  Scenario: Determine if a content type for generic content page with the administrator role and the given settings
+    Given I am logged into the distro with the "administrator" role
+    When I am on "/admin/structure/types/manage/webny_generic_page/fields/node.webny_generic_page.field_webny_gencp_contentsect"
+    Then I should not see "Access denied"
+    And the "edit-settings-handler-settings-target-bundles-drag-drop-webny-paragraph-contact-enabled" checkbox should be checked
+    And the "edit-settings-handler-settings-target-bundles-drag-drop-webny-documents-enabled" checkbox should be checked
+    And the "edit-settings-handler-settings-target-bundles-drag-drop-webny-wysiwyg-pgtype-enabled" checkbox should be checked
 
 # Check for the existence of a content type
 # CONTENT TYPE: Landing Page
