@@ -34,12 +34,13 @@ $nav-bottom-text-transform:             $global-footer-top-text-transform ;
   position: relative;
   z-index: 5;
 
-  a {
+  a { cursor: pointer;
     &:link,
     &:visited {
       display: table-cell;
       text-decoration: none;
       color: $nav-bottom-text-color;
+
     }
     &:hover,
     &:active,
@@ -47,6 +48,10 @@ $nav-bottom-text-transform:             $global-footer-top-text-transform ;
       color: $nav-bottom-text-active-color;
       text-decoration: underline;
     }
+  }
+
+  span {
+    cursor: default;
   }
 
   .agency-name,

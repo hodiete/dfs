@@ -31,3 +31,16 @@ I should be able to create a document from the Document content type
     And I should see "Date"
     And I should see "Last Updated"
     And I should see "Language"
+
+# Document Paragraph Type display
+# Check for the display Mode GENERIC
+  Scenario: Does the generic display mode exist
+    Given I am logged into the distro with the "administrator" role
+    When I am on "/admin/structure/paragraphs_type/webny_documents/display/generic"
+    Then I should not get a 404 HTTP response
+
+# Check the backend display form. The Generic form should be enabled for content authors
+  Scenario: Does the generic display form exist
+    Given I am logged into the distro with the "administrator" role
+    When I am on "/admin/structure/paragraphs_type/webny_documents/form-display/generic_form"
+    Then I should not get a 404 HTTP response
