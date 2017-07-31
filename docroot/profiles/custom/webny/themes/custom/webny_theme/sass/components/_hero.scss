@@ -112,9 +112,9 @@ $hero-keyword-text-color: $color-mono-white !default;
     &.hero-has-image-content {
       position: relative;
       z-index: 3;
-      background-color: black;
+      background-color: $hero-bkgd-color;
     }
-    h2 {
+    h1, h2 {
       padding: 20px 20px 0;
       padding-top: 0px;
       margin-top: 56px;
@@ -294,7 +294,7 @@ $hero-keyword-text-color: $color-mono-white !default;
     padding: 7%;
     text-align: left;
     background: white !important;
-    border-top: 5px solid #d5820d;
+    border-top: 5px solid $hero-keyword-hover-bkgd-color;
     margin-top: 0 !important;
     color: #000000;
     box-sizing: border-box;
@@ -363,7 +363,7 @@ $hero-keyword-text-color: $color-mono-white !default;
 
   .hero-generic-summary {
     padding: 0 22px;
-    font-size: 1em;
+    font-size: 30px; /*1em; */
     color: $hero-text-color;
     position:  relative;
     z-index: 5;
