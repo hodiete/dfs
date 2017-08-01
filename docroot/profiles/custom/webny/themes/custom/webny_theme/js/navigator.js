@@ -23,7 +23,8 @@
         }
         if (nextSection.children(':first').text()) {
           $(this).children('.gp-next-section').children('.gp-next-section-title').html(nextSection.children(':first').text());
-        } else {
+        }
+        else {
           $(this).children('.gp-next-section').css('display', 'none');
         }
       });
