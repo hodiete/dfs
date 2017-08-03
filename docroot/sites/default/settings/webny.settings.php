@@ -15,6 +15,7 @@ if ($is_ah_env) {
 }
 if ($is_local_env) {
 $config['google_analytics.settings']['account'] = '';
+$config['acquia_search.settings']['disable_auto_switch'] = 'TRUE';
 }
 
 
@@ -52,7 +53,4 @@ if (isset($_ENV['AH_SITE_ENVIRONMENT']) && $_ENV['AH_SITE_ENVIRONMENT'] != 'prod
     $settings['memcache']['servers'] = $conf['memcache_servers'];
     $settings['memcache']['key_prefix'] = $conf['memcache_key_prefix'];
 }
-
-
-
 

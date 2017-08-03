@@ -156,7 +156,7 @@ gulp.task('styles', ['clean:css'], function () {
         outputStyle: 'expanded'
       }))
         .pipe(autoprefix({
-          browsers: ['last 2 versions'],
+          browsers: ['last 5 versions'],
           cascade: false
         }))
           .pipe(sourcemaps.write())
@@ -176,7 +176,7 @@ gulp.task('styles:production', ['clean:css'], function () {
         outputStyle: 'compressed'
       }))
         .pipe(autoprefix({
-          browsers: ['last 2 versions'],
+          browsers: ['last 5 versions'],
           cascade: false
         }))
           .pipe(gulp.dest(options.theme.css));
@@ -195,7 +195,7 @@ gulp.task('administration', ['clean:css'], function () {
         outputStyle: 'expanded'
       }))
         .pipe(autoprefix({
-          browsers: ['last 2 versions'],
+          browsers: ['last 5 versions'],
           cascade: false
         }))
           .pipe(sourcemaps.write())
@@ -215,7 +215,7 @@ gulp.task('business', ['clean:css'], function () {
         outputStyle: 'expanded'
       }))
         .pipe(autoprefix({
-          browsers: ['last 2 versions'],
+          browsers: ['last 5 versions'],
           cascade: false
         }))
           .pipe(sourcemaps.write())
@@ -235,7 +235,7 @@ gulp.task('education', ['clean:css'], function () {
         outputStyle: 'expanded'
       }))
         .pipe(autoprefix({
-          browsers: ['last 2 versions'],
+          browsers: ['last 5 versions'],
           cascade: false
         }))
           .pipe(sourcemaps.write())
@@ -255,7 +255,7 @@ gulp.task('health-human-serv', ['clean:css'], function () {
         outputStyle: 'expanded'
       }))
         .pipe(autoprefix({
-          browsers: ['last 2 versions'],
+          browsers: ['last 5 versions'],
           cascade: false
         }))
           .pipe(sourcemaps.write())
@@ -275,7 +275,7 @@ gulp.task('local-regional-authorities', ['clean:css'], function () {
         outputStyle: 'expanded'
       }))
         .pipe(autoprefix({
-          browsers: ['last 2 versions'],
+          browsers: ['last 5 versions'],
           cascade: false
         }))
           .pipe(sourcemaps.write())
@@ -295,7 +295,7 @@ gulp.task('public-safety', ['clean:css'], function () {
         outputStyle: 'expanded'
       }))
         .pipe(autoprefix({
-          browsers: ['last 2 versions'],
+          browsers: ['last 5 versions'],
           cascade: false
         }))
           .pipe(sourcemaps.write())
@@ -315,7 +315,7 @@ gulp.task('recreation-environment', ['clean:css'], function () {
         outputStyle: 'expanded'
       }))
         .pipe(autoprefix({
-          browsers: ['last 2 versions'],
+          browsers: ['last 5 versions'],
           cascade: false
         }))
           .pipe(sourcemaps.write())
@@ -335,7 +335,7 @@ gulp.task('statewide-elected-officials', ['clean:css'], function () {
         outputStyle: 'expanded'
       }))
         .pipe(autoprefix({
-          browsers: ['last 2 versions'],
+          browsers: ['last 5 versions'],
           cascade: false
         }))
           .pipe(sourcemaps.write())
@@ -355,7 +355,7 @@ gulp.task('transportation-utilities', ['clean:css'], function () {
         outputStyle: 'expanded'
       }))
         .pipe(autoprefix({
-          browsers: ['last 2 versions'],
+          browsers: ['last 5 versions'],
           cascade: false
         }))
           .pipe(sourcemaps.write())
@@ -375,7 +375,7 @@ gulp.task('custom-ig', ['clean:css'], function () {
         outputStyle: 'expanded'
       }))
         .pipe(autoprefix({
-          browsers: ['last 2 versions'],
+          browsers: ['last 5 versions'],
           cascade: false
         }))
           .pipe(sourcemaps.write())
@@ -395,7 +395,7 @@ gulp.task('styles:styleguide', ['clean:css'], function () {
         outputStyle: 'compressed'
       }))
         .pipe(autoprefix({
-          browsers: ['last 2 versions'],
+          browsers: ['last 5 versions'],
           cascade: false
         }))
           .pipe(gulp.dest(options.theme.css + '/style-guide/'));
@@ -414,7 +414,7 @@ gulp.task('print', ['clean:css'], function () {
         outputStyle: 'compressed'
       }))
         .pipe(autoprefix({
-          browsers: ['last 2 versions'],
+          browsers: ['last 5 versions'],
           cascade: false
         }))
           .pipe(gulp.dest(options.theme.css));

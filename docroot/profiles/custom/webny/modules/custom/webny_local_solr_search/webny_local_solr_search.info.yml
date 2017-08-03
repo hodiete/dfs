@@ -1,0 +1,24 @@
+name: 'WebNY Local Solr Search'
+description: 'Default Solr search core configuration for local development of Solr search pages using Search API and Solr Search modules, and Drupal VM. This is only for local development, DO NOT ENABLE IN A PRODUCTION ENVIRONMENT.'
+type: module
+core: 8.x
+dependencies:
+  - better_exposed_filters
+  - datetime
+  - entity_reference_revisions
+  - file
+  - node
+  - search_api
+  - search_api_solr
+  - text
+  - user
+  - views
+  - webny_contact_content_type
+  - webny_document_content_type
+  - webny_generic_content_type
+  - webny_inner_page_content_type
+  - webny_landing_page_content_type
+  - webny_news_content_type
+  - webny_whitelisted_content
+version: 8.x-1.1
+package: WebNY

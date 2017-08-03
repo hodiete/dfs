@@ -34,6 +34,7 @@ Feature: Get Involved Frame Paragraph Tests
     When I am on "/admin/structure/paragraphs_type/webny_get_involved_pgtype/display"
     Then I should not get a 404 HTTP response
 
+# technically get involved is not used on generic pages, but the view exists
 # Check for the display Mode GENERIC for Get Involved
   Scenario: Does the generic display mode exist
     Given I am logged into the distro with the "administrator" role
