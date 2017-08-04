@@ -14,6 +14,8 @@
         // define next section object
         var nextSection = $(this).next();
         var hash;
+
+
         // define the hash being used for anchoring; grab title from paragraph, transforming to lowercase,
         // replacing spaces with dash, WYSIWYG
         if ($(this).hasClass('webny_wysiwyg_pgtype')) {
@@ -30,6 +32,22 @@
           // convert to lower case, trimming and replacing spaces wth hyphens
           hash = contact.toLowerCase().trim().replace(/ /g, "-");
         }
+        // replacing hash for documents paragraph
+        else if ($(this).hasClass('generic_para webny-documents')) {
+          // for documents reference, if it has a title it will not have children in the first child div
+          // otherwise the first child will be the document itself with children divs
+          if ($(this).children('div:first').children().length > 0) {
+            // has children; no title
+            // create generic documents title and hash
+            hash = 'documents';
+          }
+          else {
+            // has no children; has a title. create hash
+            hash = $(this).children(':first').text().toLowerCase().trim().replace(/ /g, "-");
+          }
+        }
+
+
         // if rel is enabled, this paragraph has been selected to be added to the TOC
         if ($(this).attr('rel') === 'enabled') {
           // if this is a wysiwyg paragraph, grab text from first child
@@ -40,8 +58,20 @@
           else if ($(this).hasClass('generic_para webny-paragraph-contact')) {
             $('#gpnav_sidebar ul').append('<li><a href="#' + hash + '">' + contact + '</a></li>');
           }
+          // if this is a documents paragraph, use title or generic title if needed
+          else if ($(this).hasClass('generic_para webny-documents')) {
+            // same conditional as hash creation. verify if documents has a title or not based on children in first div
+            if ($(this).children('div:first').children().length > 0) {
+              $('#gpnav_sidebar ul').append('<li><a href="#' + hash + '">Documents</a></li>');
+            }
+            else {
+              $('#gpnav_sidebar ul').append('<li><a href="#' + hash + '">' + $(this).children(':first').text() + '</a></li>');
+            }
+          }
           $(this).children(':first').attr('name', hash);
         }
+
+
         if (nextSection.children(':first').text()) {
           if ($(nextSection).hasClass('webny_wysiwyg_pgtype')) {
             $(this).children('.gp-next-section').children('.gp-next-section-title').html(nextSection.children(':first').text());
@@ -53,6 +83,15 @@
             // create string that is used on generic page for contact paragraph
             nsContact = 'Contact ' + nsAgency;
             $(this).children('.gp-next-section').children('.gp-next-section-title').html(nsContact);
+          }
+          else if ($(nextSection).hasClass('generic_para webny-documents')) {
+            // same conditional as hash creation. verify if documents has a title or not based on children in first div
+            if ($(nextSection).children('div:first').children().length > 0) {
+              $(this).children('.gp-next-section').children('.gp-next-section-title').html('Documents');
+            }
+            else {
+              $(this).children('.gp-next-section').children('.gp-next-section-title').html(nextSection.children(':first').text());
+            }
           }
         }
         else {
