@@ -13,16 +13,47 @@
       $('.gp-chapters section').once().each(function () {
         // define next section object
         var nextSection = $(this).next();
+        var hash;
         // define the hash being used for anchoring; grab title from paragraph, transforming to lowercase,
-        // replacing spaces with dash
-        var hash = $(this).children(':first').text().toLowerCase().replace(/ /g, "-");
+        // replacing spaces with dash, WYSIWYG
+        if ($(this).hasClass('webny_wysiwyg_pgtype')) {
+          hash = $(this).children(':first').text().toLowerCase().trim().replace(/ /g, "-");
+        }
+        // replacing hash for contact paragraph
+        else if ($(this).hasClass('generic_para webny-paragraph-contact')) {
+          var agency, contact;
+
+          // grab agency text to build anchor hash
+          agency = $(this).children().children().children().children('span').text().trim();
+          // create string that is used on generic page for contact paragraph
+          contact = 'Contact ' + agency;
+          // convert to lower case, trimming and replacing spaces wth hyphens
+          hash = contact.toLowerCase().trim().replace(/ /g, "-");
+        }
         // if rel is enabled, this paragraph has been selected to be added to the TOC
         if ($(this).attr('rel') === 'enabled') {
-          $('#gpnav_sidebar ul').append('<li><a href="#' + hash + '">' + $(this).children(':first').text() + '</a></li>');
+          // if this is a wysiwyg paragraph, grab text from first child
+          if ($(this).hasClass('webny_wysiwyg_pgtype')) {
+            $('#gpnav_sidebar ul').append('<li><a href="#' + hash + '">' + $(this).children(':first').text() + '</a></li>');
+          }
+          // if this is a contact paragraph, use text from variable
+          else if ($(this).hasClass('generic_para webny-paragraph-contact')) {
+            $('#gpnav_sidebar ul').append('<li><a href="#' + hash + '">' + contact + '</a></li>');
+          }
           $(this).children(':first').attr('name', hash);
         }
         if (nextSection.children(':first').text()) {
-          $(this).children('.gp-next-section').children('.gp-next-section-title').html(nextSection.children(':first').text());
+          if ($(nextSection).hasClass('webny_wysiwyg_pgtype')) {
+            $(this).children('.gp-next-section').children('.gp-next-section-title').html(nextSection.children(':first').text());
+          }
+          else if ($(nextSection).hasClass('generic_para webny-paragraph-contact')) {
+            var nsAgency, nsContact;
+            // grab agency text to build anchor hash
+            nsAgency = $(nextSection).children().children().children().children('span').text().trim();
+            // create string that is used on generic page for contact paragraph
+            nsContact = 'Contact ' + nsAgency;
+            $(this).children('.gp-next-section').children('.gp-next-section-title').html(nsContact);
+          }
         }
         else {
           $(this).children('.gp-next-section').css('display', 'none');
