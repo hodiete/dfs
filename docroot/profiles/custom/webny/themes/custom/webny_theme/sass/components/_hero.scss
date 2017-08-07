@@ -42,6 +42,7 @@
 // color variables
 $hero-bkgd-color: $color-secondary !default;
 $hero-text-color: $color-mono-white !default;
+$hero-transaction-border: $color-secondary !default;
 $hero-transaction-button: $color-primary !default;
 $hero-keyword-bkgd-color: $color-accent-primary !default;
 $hero-keyword-hover-bkgd-color: $color-accent-secondary !default;
@@ -553,7 +554,7 @@ $hero-keyword-text-color: $color-mono-white !default;
       color: #000;
       text-align: center;
       background: white !important;
-      border-left: 5px solid #d5820d;
+      border-left: 5px solid $hero-transaction-border;
       border-top: none;
       margin-top: 0px !important;
       padding: 0px !important;
