@@ -23,7 +23,8 @@
         }
         // replacing hash for contact paragraph
         else if ($(this).hasClass('generic_para webny-paragraph-contact')) {
-          var agency, contact;
+          var agency;
+          var contact;
 
           // grab agency text to build anchor hash
           agency = $(this).children().children().children().children('span').text().trim();
@@ -77,7 +78,8 @@
             $(this).children('.gp-next-section').children('.gp-next-section-title').html(nextSection.children(':first').text());
           }
           else if ($(nextSection).hasClass('generic_para webny-paragraph-contact')) {
-            var nsAgency, nsContact;
+            var nsAgency; 
+            var nsContact;
             // grab agency text to build anchor hash
             nsAgency = $(nextSection).children().children().children().children('span').text().trim();
             // create string that is used on generic page for contact paragraph
