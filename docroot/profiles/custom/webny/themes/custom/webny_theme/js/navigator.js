@@ -78,7 +78,7 @@
             $(this).children('.gp-next-section').children('.gp-next-section-title').html(nextSection.children(':first').text());
           }
           else if ($(nextSection).hasClass('generic_para webny-paragraph-contact')) {
-            var nsAgency; 
+            var nsAgency;
             var nsContact;
             // grab agency text to build anchor hash
             nsAgency = $(nextSection).children().children().children().children('span').text().trim();
