@@ -65,6 +65,8 @@
                     </div>
 
                     {# TRANSACTION TIME #}
+                    {# if there is no transaction time saved, don't show div #}
+                    {% if content.field_webny_gencp_avgtranstime.0 != '' %}
                     <div class="hero-generic-transaction">
                         <div class="hero-generic-transaction-time">
                             Average time of transaction <span class="icon-outline_clock">{{ content.field_webny_gencp_avgtranstime.0 }}</span> minutes
@@ -73,6 +75,7 @@
                             {{ content.field_webny_gencp_howtoapply }}
                         </div>
                     </div>
+                    {% endif %}
 
                 </div>
             </div>
