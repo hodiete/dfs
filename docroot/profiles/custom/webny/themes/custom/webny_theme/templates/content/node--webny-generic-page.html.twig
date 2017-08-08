@@ -48,6 +48,8 @@
                 <div class="hero-inner hero-generic-inner hero-has-image-content">
                     {% endif %}
 
+                    <div class="published-date">{{ content.field_webny_gencp_date.value|date('F j, Y') }}</div>
+
                     {# HERO HEADLINE / TITLE #}
                     <h1>{{ label }}</h1>
 
