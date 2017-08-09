@@ -159,6 +159,22 @@
         }
       });
 
+      // instantiate Waypoint for action/share bar as disabled
+      var actionBarWaypoint = new Waypoint({
+        element: $('.actions'),
+        handler: function(direction) {
+          if (direction === 'down') {
+            $('.actions').addClass('stuck');
+            $('#gpnav_sidebar').addClass('stuck');
+          }
+          else if (direction === 'up') {
+            $('.actions').removeClass('stuck');
+            $('#gpnav_sidebar').removeClass('stuck');
+          }
+        },
+        enabled: false
+      });
+
       // on load check to see if there is a hash anchor in the URL to force an auto scroll to section on page
       $(window).on('load', function () {
         // grab hash from URL (#variable)
@@ -183,6 +199,18 @@
           $('#gpnav_sidebar ul').addClass('sidebar-opened');
         }
 
+        // enable the waypoint object
+        actionBarWaypoint.enable();
+
+        // check if actionbar is above viewport; if so apply stuck class to bar and toc
+        if ($('.actions').offset().top - $(window).scrollTop() < 0) {
+          // actionbar location is negative; apply classes
+          $('.actions').addClass('stuck');
+          $('#gpnav_sidebar').addClass('stuck');
+          // remove first element class of active as this page was loaded low on the page
+          $('#gpnav_sidebar ul').children(':nth-child(2)').removeClass('active');
+        }
+
       });
 
       $(window).on('resize', function () {
@@ -192,18 +220,6 @@
         }
         else {
           $('#gpnav_sidebar ul').removeClass('sidebar-opened').addClass('sidebar-closed').addClass('mobile');
-        }
-      });
-
-      // waypoint library to handle sticky action bar
-      $('.actions').waypoint(function (direction) {
-        if (direction === 'down') {
-          $('.actions').addClass('stuck');
-          $('#gpnav_sidebar').addClass('stuck');
-        }
-        else {
-          $('.actions').removeClass('stuck');
-          $('#gpnav_sidebar').removeClass('stuck');
         }
       });
 
