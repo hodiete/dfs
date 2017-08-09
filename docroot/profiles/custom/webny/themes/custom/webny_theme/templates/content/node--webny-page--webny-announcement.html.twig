@@ -22,14 +22,14 @@
                 {# IMPLEMENTS SHORT TITLE OR 65 CHAR LIMIT TITLE #}
 
                 {% if(vtitle|length <= 65) %}
-                    <h4><a href="{{ url }}">{{ vtitle }}</a></h4>
+                    <h1><a href="{{ url }}">{{ vtitle }}</a></h1>
                 {% else %}
 
                     {% set ws = true %}
                     {% for num in node.label|length..0 %}
                         {% if (num < 65 and  node.label|slice(num)|first == ' ' and ws != false) %}
                             {% set ws = false %}
-                            <h4><a href="{{ url }}">{{ node.label[:num] ~ '...' }}</a></h4>
+                            <h1><a href="{{ url }}">{{ node.label[:num] ~ '...' }}</a></h1>
                         {% endif %}
                     {% endfor %}
 
@@ -44,7 +44,7 @@
                 </div>
             </div>
             <div class="webny-announcement-button">
-              <a href="{{ url }}" title="{{ vtitle }}">LEARN MORE</a>
+              <a href="{{ url }}" aria-label="{{ vtitle }}" title="{{ vtitle }}">LEARN MORE</a>
             </div>
         </div>        
      </div>
