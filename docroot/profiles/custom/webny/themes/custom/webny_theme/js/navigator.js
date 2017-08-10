@@ -14,24 +14,24 @@
         // define next section object
         var nextSection = $(this).next();
         var hash;
+        var agency;
+        var contact;
 
 
         // define the hash being used for anchoring; grab title from paragraph, transforming to lowercase,
         // replacing spaces with dash, WYSIWYG
         if ($(this).hasClass('webny_wysiwyg_pgtype')) {
-          hash = $(this).children(':first').text().toLowerCase().trim().replace(/[^a-zA-Z0-9]/g,"-");
+          hash = $(this).children(':first').text().toLowerCase().trim().replace(/[^a-zA-Z0-9]/g, '-');
         }
         // replacing hash for contact paragraph
         else if ($(this).hasClass('generic_para webny-paragraph-contact')) {
-          var agency;
-          var contact;
 
           // grab agency text to build anchor hash
           agency = $(this).children().children().children().children('span').text().trim();
           // create string that is used on generic page for contact paragraph
           contact = 'Contact ' + agency;
           // convert to lower case, trimming and replacing spaces wth hyphens
-          hash = contact.toLowerCase().trim().replace(/[^a-zA-Z0-9]/g,"-");
+          hash = contact.toLowerCase().trim().replace(/[^a-zA-Z0-9]/g, '-');
         }
         // replacing hash for documents paragraph
         else if ($(this).hasClass('generic_para webny-documents')) {
@@ -44,7 +44,7 @@
           }
           else {
             // has no children; has a title. create hash
-            hash = $(this).children(':first').text().toLowerCase().trim().replace(/[^a-zA-Z0-9]/g,"-");
+            hash = $(this).children(':first').text().toLowerCase().trim().replace(/[^a-zA-Z0-9]/g, '-');
           }
         }
 
@@ -104,14 +104,14 @@
       // next section click event
       $('.gp-next-section-title').once().click(function (e) {
         e.preventDefault();
-        var hash = $(this).text().toLowerCase().replace(/ /g, "-");
+        var hash = $(this).text().toLowerCase().replace(/ /g, '-');
         $('#gpnav_sidebar li a[href="#' + hash + '"]').trigger('click');
       });
 
       // next section continue click event
       $('.gp-next-section-link').once().click(function (e) {
         e.preventDefault();
-        var hash = $(this).parent().parent().children('.gp-next-section-title').text().toLowerCase().replace(/ /g, "-");
+        var hash = $(this).parent().parent().children('.gp-next-section-title').text().toLowerCase().replace(/ /g, '-');
         $('#gpnav_sidebar li a[href="#' + hash + '"]').trigger('click');
       });
 
@@ -162,7 +162,7 @@
       // instantiate Waypoint for action/share bar as disabled
       var actionBarWaypoint = new Waypoint({
         element: $('.actions'),
-        handler: function(direction) {
+        handler: function (direction) {
           if (direction === 'down') {
             $('.actions').addClass('stuck');
             $('#gpnav_sidebar').addClass('stuck');
