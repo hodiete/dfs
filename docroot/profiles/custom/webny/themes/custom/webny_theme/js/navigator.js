@@ -134,7 +134,7 @@
         if (!$(this).parent().hasClass('see-all')) {
           // name used on title of paragraph
           var name = $(this).attr('href').replace('#', '');
-          var clickedFrame = $('div[name="' + name + '"');
+          var clickedFrame = $('div[name="' + name + '"]');
           var dest = 0;
           dest = clickedFrame.offset().top;
 
