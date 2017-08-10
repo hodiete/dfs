@@ -33,19 +33,7 @@ class webnyUNavHeaderBlock extends BlockBase {
      */
     public function build() {
         // return equivalent to theme function
-        $config = \Drupal::config('webny_unav.settings');
-        switch ($config->get('webny_unav.webny_unav_interactive')) {
-            case '0':
-                $block = array(
-                    '#theme' => 'webny_unav_header_static',
-                );
-                break;
-            case '1':
-                $block = array(
-                    '#theme' => 'webny_unav_header_interactive',
-                );
-                break;
-        }
+        $block = array('#theme' => 'webny_unav_header',);
         return $block;
     }
 }
