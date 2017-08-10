@@ -28,9 +28,8 @@ class WebNYUNavForm extends ConfigFormBase {
         $form = parent::buildForm($form, $form_state);
         // Default settings
         $config = $this->config('webny_unav.settings');
-
-        $form['webny_unav_auto'] = $this->_webny_unav_auto_field();
-        $form['webny_unav_interactive'] = $this->_webny_unav_interactive_field();
+        $form['webny_unav_fieldset'] = $this->webnyNYUNavFieldsetField();
+        $form['webny_unav_fieldset']['webny_unav_auto'] = $this->_webny_unav_auto_field();
 
         return $form;
     }
@@ -50,7 +49,6 @@ class WebNYUNavForm extends ConfigFormBase {
     {
         $config = \Drupal::configFactory()->getEditable('webny_unav.settings');
         $config->set('webny_unav.webny_unav_auto', $form_state->getValue('webny_unav_auto'));
-        $config->set('webny_unav.webny_unav_interactive', $form_state->getValue('webny_unav_interactive'));
         $config->save();
         return parent::submitForm($form, $form_state);
     }
@@ -65,9 +63,24 @@ class WebNYUNavForm extends ConfigFormBase {
         ];
     }
 
+    /**
+     * NYS Universal Navigation fieldset field.
+     *
+     * @return array
+     *   Form API element for field.
+     */
+    public function webnyNYUNavFieldsetField() {
+      return array(
+        '#type' => 'fieldset',
+        '#title' => t('NYS Universal navigation options'),
+        '#collapsible' => FALSE,
+        '#collapsed' => FALSE,
+      );
+    }
+
 
     /**
-     * NYS Universal Navigation footer automatic insertion field.
+     * NYS Universal Navigation automatic insertion field.
      *
      * @return array
      *   Form API element for field.
@@ -76,30 +89,11 @@ class WebNYUNavForm extends ConfigFormBase {
         $config = $this->config('webny_unav.settings');
         return array(
             '#type' => 'checkbox',
-            '#title' => t('Universal navigation footer automatic insertion'),
+            '#title' => t('Enable the NYS Universal Navigation'),
             '#default_value' => $config->get('webny_unav.webny_unav_auto'),
             '#multiple' => FALSE,
-            '#description' => t('Select if the universal navigation header and footer are to be automatically inserted into the page.  If not selected, make sure to use the webny Universal Navigation blocks'),
+            '#description' => t('Select if the universal navigation header and footer are to be automatically inserted into the page.  If not selected, make sure to use the WebNY Universal Navigation blocks'),
         );
     }
-
-    /**
-     * NYS Universal Navigation interactive/static header selection.
-     *
-     * @return array
-     *   Form API element for field.
-     */
-    public function _webny_unav_interactive_field() {
-        $config = $this->config('webny_unav.settings');
-        $header_options = array(0 => t('Static'), 1 => t('Interactive'));
-        return array(
-            '#type' => 'radios',
-            '#title' => t('Universal navigation header format'),
-            '#options' => $header_options,
-            '#default_value' => $config->get('webny_unav.webny_unav_interactive'),
-            '#description' => t('Select which header format to use, interactive or static.'),
-        );
-    }
-
-
+    
 }
