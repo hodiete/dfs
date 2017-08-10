@@ -19,7 +19,7 @@
         // define the hash being used for anchoring; grab title from paragraph, transforming to lowercase,
         // replacing spaces with dash, WYSIWYG
         if ($(this).hasClass('webny_wysiwyg_pgtype')) {
-          hash = $(this).children(':first').text().toLowerCase().trim().replace(/ /g, "-");
+          hash = $(this).children(':first').text().toLowerCase().trim().replace(/[^a-zA-Z0-9]/g,"-");
         }
         // replacing hash for contact paragraph
         else if ($(this).hasClass('generic_para webny-paragraph-contact')) {
@@ -31,7 +31,7 @@
           // create string that is used on generic page for contact paragraph
           contact = 'Contact ' + agency;
           // convert to lower case, trimming and replacing spaces wth hyphens
-          hash = contact.toLowerCase().trim().replace(/ /g, "-");
+          hash = contact.toLowerCase().trim().replace(/[^a-zA-Z0-9]/g,"-");
         }
         // replacing hash for documents paragraph
         else if ($(this).hasClass('generic_para webny-documents')) {
@@ -44,7 +44,7 @@
           }
           else {
             // has no children; has a title. create hash
-            hash = $(this).children(':first').text().toLowerCase().trim().replace(/ /g, "-");
+            hash = $(this).children(':first').text().toLowerCase().trim().replace(/[^a-zA-Z0-9]/g,"-");
           }
         }
 
