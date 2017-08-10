@@ -5,20 +5,12 @@
  */
 function webny_unav_theme() {
     return array(
-        'webny_unav_header_static' => array(
-            'template' => 'webny-unav-header-static',
+        'webny_unav_header' => array(
+            'template' => 'webny-unav-header',
             'variables' => array(),
         ),
-        'webny_unav_header_interactive' => array(
-            'template' => 'webny-unav-header-interactive',
-            'variables' => array(),
-        ),
-        'webny_unav_footer_static' => array(
-            'template' => 'webny-unav-footer-static',
-            'variables' => array(),
-        ),
-        'webny_unav_footer_interactive' => array(
-            'template' => 'webny-unav-footer-interactive',
+        'webny_unav_footer' => array(
+            'template' => 'webny-unav-footer',
             'variables' => array(),
         ),
     );
@@ -39,21 +31,10 @@ function webny_unav_page_top(&$page_top) {
     if ($unav_auto == '0' || $is_admin) {
         return;
     }
-
-    switch ($config->get('webny_unav.webny_unav_interactive')) {
-        case '0':
-            $page_top['page_top']['webny_unav'] = array(
-                '#weight' => -1000,
-                '#theme' => 'webny_unav_header_static',
-            );
-            break;
-        case '1':
-            $page_top['page_top']['webny_unav'] = array(
-                '#weight' => -1000,
-                '#theme' => 'webny_unav_header_interactive',
-            );
-            break;
-    }
+    $page_top['page_top']['webny_unav'] = array(
+        '#weight' => -1000,
+        '#theme' => 'webny_unav_header',
+    );
 }
 
 /** Implemtnet hook_page_bottom().
@@ -70,19 +51,8 @@ function webny_unav_page_bottom(&$page_bottom) {
     if ($unav_auto == '0' || $is_admin) {
         return;
     }
-
-    switch ($config->get('webny_unav.webny_unav_interactive')) {
-        case '0':
-            $page_bottom['page_bottom']['webny_unav'] = array(
-                '#weight' => 1000,
-                '#theme' => 'webny_unav_footer_static',
-            );
-            break;
-        case '1':
-            $page_bottom['page_bottom']['webny_unav'] = array(
-                '#weight' => 1000,
-                '#theme' => 'webny_unav_footer_interactive',
-            );
-            break;
-    }
+    $page_bottom['page_bottom']['webny_unav'] = array(
+        '#weight' => 1000,
+        '#theme' => 'webny_unav_footer',
+    );
 }
