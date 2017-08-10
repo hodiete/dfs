@@ -3,6 +3,8 @@
  * navigator toc javascript file.
  */
 
+/* global Waypoint */
+
 (function ($, Drupal, window, document) {
 
   'use strict';
