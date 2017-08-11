@@ -19,6 +19,9 @@
 {# NAVIGATION TOGGLE ON/OFF         -- field_webny_gencp_navtoggle #}
 {# CONTENT SECTIONS                 -- field_webny_gencp_contentsect #}
 
+{# ATTACH JS LIBRARY #}
+{{ attach_libary('webny_theme/navigator') }}
+
 {# DECLARED VARS #}
 {% set hero_image = file_url(node.field_webny_gencp_heroimage.entity.field_image.entity.uri.value) %}
 
