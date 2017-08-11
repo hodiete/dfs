@@ -158,10 +158,8 @@ CKEDITOR.plugins.callouts = {
         var fixedCalloutBody = this.rebuildCalloutBody(editor);
 
         if(fixedCalloutBody !== null){
-
             $(editor.document.$.getElementsByClassName('webny-callouts-section')).remove();
             $(editor.document.$.body).append(fixedCalloutBody);
-            console.log(this.editorDom.body);
         }
 
         // INIT VARS
