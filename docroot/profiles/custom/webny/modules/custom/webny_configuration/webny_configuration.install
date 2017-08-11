@@ -3251,6 +3251,15 @@ function webny_configuration_update_8149() {
 
 }
 
+/**
+ * INSTALL webny_callouts
+ * - iojonep
+ */
+function webny_configuration_update_8150() {
+
+    \Drupal::service('module_installer')
+        ->install(['webny_callouts']);
+}
 
 /**
  * Helper function to enable a Drupal module and print the result.
