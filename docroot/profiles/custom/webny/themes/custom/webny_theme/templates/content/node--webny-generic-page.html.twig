@@ -38,8 +38,8 @@
             <div class="hero-header hero-has-image hero-generic" style="background-image:url('{{ hero_image }}')">
                 {% endif %}
                 <!-- BACKGROUND GRAD -->
-                <div class="hero-bkg"></div>
-            </div>
+                <!--<div class="hero-bkg"></div>-->
+            <!--</div>-->
 
             {# HERO INNER DEFINITION #}
             {% if hero_image == '/' %}
@@ -48,26 +48,41 @@
                 <div class="hero-inner hero-generic-inner hero-has-image-content">
                     {% endif %}
 
-                    {# HERO HEADLINE / TITLE #}
-                    <h2>{{ title }}</h2>
-
-                    {# HERO DATE #}
-                    <div class="hero-date">
-                        {{  node.field_webny_gencp_date.value }}
+                    <div class="published-date">
+                        {% if node.field_webny_gencp_date.value is not empty %}
+                            {{ node.field_webny_gencp_date.value|date('F j, Y') }}
+                        {% endif %}
                     </div>
 
+                    {# HERO HEADLINE / TITLE #}
+                    <h1>{{ label }}</h1>
+
                     {# HERO DESCRIPTION #}
-                    <div class="hero-summary">
+                    <div class="hero-generic-summary">
                         {{ content.field_webny_gencp_herodesc }}
                     </div>
 
                     {# HERO KEYWORDS #}
                     <!-- HERO BUTTONS [USING KEYWORD CLASS] -->
-                    <div class="hero-keywords">
+                    <div class="hero-generic-keywords">
                         {{ content.field_webny_gencp_keywords }}
                     </div>
 
+                    {# TRANSACTION TIME #}
+                    {# if there is no transaction time saved, don't show div #}
+                    {% if content.field_webny_gencp_avgtranstime.0 != '' %}
+                    <div class="hero-generic-transaction">
+                        <div class="hero-generic-transaction-time">
+                            Average time of transaction <span class="icon-outline_clock">{{ content.field_webny_gencp_avgtranstime.0 }}</span> minutes
+                        </div>
+                        <div class="hero-generic-transaction-button">
+                            {{ content.field_webny_gencp_howtoapply }}
+                        </div>
+                    </div>
+                    {% endif %}
+
                 </div>
+            </div>
 
                 {# ====== END HERO SECTION ====== #}
 
@@ -75,14 +90,26 @@
                 {{ title_suffix }}
     </article>
 
+    <div class="actions"></div>
+
 
 {% if node.field_webny_gencp_navtoggle.value == 1 %}
 
     {# NAV ENABLED: GENERIC PARAGRAPHS SECTION WITH SIDEBAR FOR NAVIGATOR / TOC#}
     <div class="page-paragraphs generic-paragraphs with-nav-sidebar">
         <div class="page-paragraphs-in">
-            <aside id="gpnav_sidebar" style="display:none;"></aside>
-            {{ content.field_webny_gencp_contentsect|without('label') }}
+            <aside id="gpnav_sidebar">
+                <header>Sections</header>
+                <ul>
+                    <li class="see-all"><a href="#" class="icon-all_steps"><span>See All</span></a></li>
+                </ul>
+                <span class="arrow"></span>
+            </aside>
+            <div class="gp-article-content">
+                <div class="gp-chapters">
+                    {{ content.field_webny_gencp_contentsect|without('label') }}
+                </div>
+            </div>
         </div>
     </div>
 
