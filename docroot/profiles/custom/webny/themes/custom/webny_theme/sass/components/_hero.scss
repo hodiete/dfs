@@ -224,10 +224,11 @@ $hero-keyword-text-color: $color-mono-white !default;
   .hero-keywords,
   .hero-generic-keywords{
     margin-top: 40px;
-  }
-
-  .hero-generic-keywords{
     padding: 30px;
+
+    & > div > div {
+      margin-bottom: 20px;
+    }
   }
 
   //used only on inner pages currently
