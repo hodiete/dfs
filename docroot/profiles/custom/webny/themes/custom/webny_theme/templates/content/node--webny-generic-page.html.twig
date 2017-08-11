@@ -48,7 +48,11 @@
                 <div class="hero-inner hero-generic-inner hero-has-image-content">
                     {% endif %}
 
-                    <div class="published-date">{{ node.field_webny_gencp_date.value|date('F j, Y') }}</div>
+                    <div class="published-date">
+                        {% if node.field_webny_gencp_date.value is not empty %}
+                            {{ node.field_webny_gencp_date.value|date('F j, Y') }}
+                        {% endif %}
+                    </div>
 
                     {# HERO HEADLINE / TITLE #}
                     <h1>{{ label }}</h1>
