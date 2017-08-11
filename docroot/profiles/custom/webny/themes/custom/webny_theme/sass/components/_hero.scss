@@ -106,9 +106,9 @@ $hero-keyword-text-color: $color-mono-white !default;
   }
 
   .hero-generic-inner {
-    position: relative;
+    position: absolute;
     width: 100%;
-    top: 0;
+    bottom: 0;
     left: 0;
     padding: 0;
     &.hero-has-image-content {
@@ -541,6 +541,9 @@ $hero-keyword-text-color: $color-mono-white !default;
 
     .hero-generic-inner {
       width: 100%;
+      position: relative;
+      top: 0;
+      left: 0;
 
       .published-date {
         margin-top:10px;
