@@ -83,11 +83,24 @@ videohero:
     - webny_theme/videojs-vimeo
     - core/jquery
 
-callouts:
+waypoints:
   js:
-     js/callouts.js: {}
+    ../../../libraries/waypoints/lib/jquery.waypoints.js: {}
+  dependencies:
+    -  core/jquery
+
+navigator:
+  js:
+    js/navigator.js: {}
+
   dependencies:
     - core/drupal
     - core/jquery
     - core/jquery.once
     - webny_theme/waypoints
+
+callouts:
+  js:
+    js/callouts.js: {}
+  dependencies:
+    - core/jquery
