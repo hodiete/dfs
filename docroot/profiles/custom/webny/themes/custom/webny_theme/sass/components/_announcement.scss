@@ -138,35 +138,40 @@ $announcement-button-hover-back-color:  $color-mono-black !default;
 
 
 // ANNOUNCEMENT FIELDS TITLE AND HEADLINES
-.webny-frametitle, .webny-headline{
-    margin: 0 auto;
-    width: 100%;
-    max-width: $max-pc;
-    h3{ 
-        margin-top: 0;
-        padding-bottom: 0;
+.webny-announcement-frame-inner {
+    h2 {
+        margin: 0 auto;
+        width: 100%;
+        max-width: $max-pc;
+        text-align: center;
+        padding: 0;
+        line-height: 1;
+        padding-bottom: 20px;
+
+
+        .frame-title {
+            text-transform: uppercase;
+            color: $announce-frame-title-color;
+            margin-bottom: 0;
+            font: $frame_title; //$oswald;
+            //font-weight: bold;
+            letter-spacing: 2px;
+            text-align: center;
+        }
+
+        .frame-headline {
+            color: $announce-frame-headline-color;
+            //font: bold $frame_headline $frame-headline; //font needs to end with font-family
+            //font-weight: 800;
+            font: $frame-headline;
+            margin-bottom: 0.3em;
+            text-align: center;
+            .front & {
+                font: 800 40px/1 "Proxima Nova", Arial, sans-serif;
+            }
+        }
     }
 }
-
-.frame-title{
-    text-transform: uppercase;
-    color: $announce-frame-title-color;
-    margin-bottom: 0;
-    font: $frame_title; //$oswald;
-    //font-weight: bold;
-    letter-spacing: 2px;
-    text-align: center;
-}
-
-.frame-headline{
-    color: $announce-frame-headline-color;   
-    //font: bold $frame_headline $frame-headline; //font needs to end with font-family
-    //font-weight: 800;
-    font: $frame-headline;
-    margin-bottom: 40px;
-    text-align: center;
-}
-
 // HANDLES LANDING PAGE HOME VS. SECONDARY HEADLINES
 .front .frame-headline{
      //font-size: 3rem;
