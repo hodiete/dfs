@@ -85,7 +85,7 @@
                 coObj.selectedHTML          = coObj.getInlineCalloutHTML(editor);
                 var classNames              = coObj.getSelInlineCalloutClassNames(editor);
 
-                // =============== EDIT CALLOUT ================
+                // =============== EDIT/DELETE CALLOUT ================
                 if(selectedTag === 'SPAN' && classNames.indexOf('web-callout') !== -1) {
 
                     // GET ID OF SPECIFIC CALLOUT BODY VIA DATA ID
@@ -116,18 +116,18 @@
                         $(coObj.editorDom.getElementById('webny-callouts-section-' + coObj.hash)).remove();
                     }
 
+                    // =============== PREPARE DELETE STRING OBJ ===============
+
+                    // ASSIGN THE NEW DELETE STRING TO THE DELETE STRING PROPERTY
+                    coObj.editorBodyDeleteHTML = coObj.prepareDeleteString(editor,icoid);
+
                 } else {
                     // =============== NEW CALLOUT ================
                     // SET THE VALUE OF THE TEXT HIGHLIGHTED
                     this.setValueOf('tab-callout', 'callout_text', editor.getSelection().getSelectedText().toString());
                 }
 
-                // =============== PREPARE DELETE STRING OBJ ===============
-
-                // ASSIGN THE NEW DELETE STRING TO THE DELETE STRING PROPERTY
-                coObj.editorBodyDeleteHTML = coObj.prepareDeleteString(editor,icoid);
-
-                // HIDE DELETE BUTTON AND TEXT IF EMPTY
+                // SUPPRESSION OR DISPLAY OF THE DELETE BUTTON
                 var dialogDelete = $('.callout-delete-desc-html, .cke_dialog_ui_vbox .cke_dialog_ui_button');
                 dialogDelete.hide();
 
@@ -137,43 +137,50 @@
 
             },
             onOk: function() {
-                    var dialog = this;
 
-                    // ADD LOGIC TO GET TEXT FROM FIELDS AND WRAP IN TAGS
+                var dialog = this;
 
-                    // GET THE PLUGIN CALLOUT OBJECT
-                    var coObj = CKEDITOR.plugins.callouts;
+                // GET THE PLUGIN CALLOUT OBJECT
+                var coObj = CKEDITOR.plugins.callouts;
 
-                    // GET RANDOM ID
-                    var randcoid = coObj.getRandomCalloutId() ;
+                // GET RANDOM ID AND CREATE HASH IF NOT AVAILABLE
+                coObj.hash    = coObj.createCalloutHash(editor);
+                var randcoid = coObj.hash + coObj.getRandomCalloutId();
 
-                    // GET EDITOR
-                    var thisEditor = coObj.getCurrentEditor();
+                // GET EDITOR
+                var thisEditor = coObj.getCurrentEditor();
 
-                    // GET VALUES FROM FIELDS
-                    var co_text = dialog.getContentElement('tab-callout','callout_text').getValue();
-                    var co_body = dialog.getContentElement('tab-callout','callout_body').getValue();
+                // GET VALUES FROM FIELDS
+                var co_text = dialog.getContentElement('tab-callout','callout_text').getValue();
+                var co_body = dialog.getContentElement('tab-callout','callout_body').getValue();
 
-                    // CREATE THE INLINE CALLOUT
-                    var inline_value = '';
+                // CREATE THE INLINE CALLOUT
+                var inline_value = '';
 
-                    inline_value = CKEDITOR.dom.element.createFromHtml('<span data-ico="'+randcoid+'" id=\x22ico-'+randcoid+'\x22 ' +
-                        'class=\x22web-callout inline-callout callout-'+ randcoid+'\x22>' +
-                        co_text + '</span>');
+                inline_value = CKEDITOR.dom.element.createFromHtml('<span data-ico="'+randcoid+'" id=\x22ico-'+randcoid+'\x22 ' +
+                    'class=\x22web-callout inline-callout callout-'+ randcoid+'\x22>' +
+                    co_text + '</span>');
 
-                    CKEDITOR.instances[thisEditor].insertElement(inline_value);
+                // INSERT CALLOUT TAG INLINE
+                CKEDITOR.instances[thisEditor].insertElement(inline_value);
 
-                    // BUILD THE CALLOUT -- RETURN calloutSettings
-                    var calloutSettings = coObj.buildCallouts(CKEDITOR.instances[thisEditor], randcoid, co_body);
+                // BUILD THE CALLOUT -- RETURN calloutSettings
+                    /* PARAMS */
+                    // The Current Editor
+                    // Generated or pre-existing Hash
+                    // Concatenation of hash and rand num
+                    // Body field of the dialog
+                console.log(coObj.hash + ' ---- ' + randcoid)
+                var calloutSettings = coObj.buildCallouts(CKEDITOR.instances[thisEditor], coObj.hash, randcoid, co_body);
 
-                },
-                onCancel: function() {
+            },
+            onCancel: function() {
 
-                    // CALLOUTS OBJ CLASS
-                    var coObj = CKEDITOR.plugins.callouts;
+                // CALLOUTS OBJ CLASS
+                var coObj = CKEDITOR.plugins.callouts;
 
-                    // EMPTY BODY AND APPEND ORIGINAL BODY IN THE EDITOR
-                    $(coObj.editorDom.body).empty().append(coObj.editorBodyHTML);
+                // EMPTY BODY AND APPEND ORIGINAL BODY IN THE EDITOR
+                $(coObj.editorDom.body).empty().append(coObj.editorBodyHTML);
 
             }
         };
