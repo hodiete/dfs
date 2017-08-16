@@ -3252,10 +3252,42 @@ function webny_configuration_update_8149() {
 }
 
 /**
- * INSTALL webny_callouts
- * - iojonep
+ * Implements hook_update_n().
+ *
+ * Reinstall the webny_unav module to have a disable and enable form page.
+ *
  */
 function webny_configuration_update_8150() {
+
+
+  // REINSTALL THE NYS UNIVERSAL NAV MODULE
+  \Drupal::service('module_installer')
+    ->uninstall(['webny_unav']);
+  \Drupal::service('module_installer')
+    ->install(['webny_unav']);
+
+  // REFRESH
+  $config_factory = \Drupal::configFactory();
+  $profile_config = \Drupal::service('webny.profile_config');
+
+  // Import new/changed configuration.
+  $config_to_update = [
+    // UPDATE OPTIONAL FEATURES
+    'user.role.site_builder'
+  ];
+
+  $profile_config->bulkImport($config_to_update);
+
+  // Clear the config cache.
+  $config_factory->reset();
+
+}
+
+/**
+ * INSTALL webny_callouts module
+ * - iojonep
+ */
+function webny_configuration_update_8151() {
 
     // INSTALL WEBNY CALLOUTS
     \Drupal::service('module_installer')
