@@ -146,13 +146,13 @@ CKEDITOR.plugins.callouts = {
         } else {
 
             // CREATE A NEW CALLOUT TAG WITH A NEW HASH
-            newHash = this.checkSaltBag(null, this.saltBag) + '-' + editorIDNum;
+            newHash = this.checkSaltBag(null, this.saltBag);
         }
 
         return newHash;
 
     },
-    buildCallouts: function(editor, newCalloutID, newBody) {
+    buildCallouts: function(editor, hash, newCalloutID, newBody) {
 
         // REORDER IF POSSIBLE
         var fixedCalloutBody = this.rebuildCalloutBody(editor);
@@ -163,14 +163,15 @@ CKEDITOR.plugins.callouts = {
         }
 
         // INIT VARS
-        var calloutBody, calloutMarker, calloutText, calloutID, newCOIDString, calloutHash, curNumCalloutID = null;
+        var calloutBody, calloutMarker, calloutText, icoString, bcoString, calloutHash, curCalloutNum = null;
 
         // GET TOTAL EDITOR AND CALLOUTS
         var calloutsInlineArray     = editor.document.$.getElementsByClassName('inline-callout');
 
         // GET THE BODY OBJECT OF THE CURRENT EDITOR
         this.editorHTMLObj          = editor.document.$.body;
-        this.hash                   = this.createCalloutHash(editor);
+        this.hash = hash;
+        console.log('HASH ================================== ' + hash)
 
         // SET THE SECTION TAG STRING AND ASSIGN IT TO THE CALLOUT SECTION HTML
         this.calloutSectionTag = this.setCalloutBodySectionTag(this.hash);
@@ -182,13 +183,20 @@ CKEDITOR.plugins.callouts = {
 
                 calloutMarker   = x + 1;
                 calloutText     = calloutsInlineArray[x].innerHTML;
-                calloutID       = calloutsInlineArray[x].id;
-                calloutHash     = this.hash;
-                newCOIDString   = this.reassignCalloutID(calloutID);
-                curNumCalloutID = parseInt(calloutID.substring(4,17));
+                icoString       = calloutsInlineArray[x].id;
+                bcoString       = this.reassignCalloutID(icoString);
+                curCalloutNum   = icoString.substring(4,20);
+
+
+                console.log('CALLOUT ID: ' + icoString)
+                console.log('STRING: ' + bcoString)
+                console.log('CURRENT: ' + curCalloutNum)
+                console.log('NEW: ' + newCalloutID)
+                console.log(' ')
+
 
                 // GET NEW ENTRY
-                if(curNumCalloutID === newCalloutID){
+                if(curCalloutNum === newCalloutID){
 
                     // ASSIGN THE BODY FIELD FROM THE DIALOG
                     calloutBody = newBody;
@@ -196,20 +204,17 @@ CKEDITOR.plugins.callouts = {
                 // GET PREEXISTING TEXT
                 } else {
 
-                    // CREATE THE BODY CALLOUT ID AND PASS THE VALUE TO THE CALLOUT BODY PROPERTY
-                    var bodyCalloutID = 'bco-' + curNumCalloutID;
-
                     // REMOVE THE FIRST DIV AND SPAN - GET RESULTING HTML
-                    $(editor.document.$.getElementById('callout-order-' + curNumCalloutID)).remove(); // REMOVE SPAN
-                    calloutBody = $(editor.document.$.getElementById('bco-' + curNumCalloutID)).children().html(); // DIV
+                    $(editor.document.$.getElementById('callout-order-' + curCalloutNum)).remove(); // REMOVE SPAN
+                    calloutBody = $(editor.document.$.getElementById(bcoString)).children().html(); // DIV
 
                 }
 
                 // CREATE NEW ENTRY
-                calloutSectionHTML += '<div data-ckhash="'+calloutHash+'" data-bco="'+curNumCalloutID+'" ' +
-                    'id="' + newCOIDString + '" class="body-callouts callout-' + newCOIDString + '">' +
+                calloutSectionHTML += '<div data-ckhash="'+this.hash+'" data-bco="'+curCalloutNum+'" ' +
+                    'id="' + bcoString + '" class="body-callouts callout-' + curCalloutNum + '">' +
                       '<div class="body-callouts-inner"><span data-order="'+ calloutMarker +'" ' +
-                      'id="callout-order-'+curNumCalloutID+'" ' +
+                      'id="callout-order-'+curCalloutNum+'" ' +
                       'class="callout-order inline-callout-order callout-order-'+ calloutMarker +'">' + calloutMarker +'</span> ' +
                     calloutBody.trim() +
                     '</div></div>';
@@ -222,8 +227,8 @@ CKEDITOR.plugins.callouts = {
         calloutSectionHTML += '</div></div>';
 
         // REMOVE ANY CALLOUT BODY SECTION - APPEND THE NEW CALLOUT SECTION HTML TO THE BOTTOM OF THE EDITOR BODY
-        if(editor.document.$.getElementById('webny-callouts-section-'+calloutHash) !== null){
-            $(editor.document.$.getElementById('webny-callouts-section-'+calloutHash)).remove();
+        if(editor.document.$.getElementById('webny-callouts-section-'+this.hash) !== null){
+            $(editor.document.$.getElementById('webny-callouts-section-'+this.hash)).remove();
         }
 
         // APPEND THE CALLOUT SECTION TO THE EDITOR
@@ -254,7 +259,6 @@ CKEDITOR.plugins.callouts = {
             // EASY ACCESSORS
             var ckhash                  = $(editor.document.$.getElementsByClassName('webny-callouts-section')).attr('data-ckhash');
             var calloutInnerObj         = $(editor.document.$.getElementsByClassName('webny-callout-inner')).html();
-            var bodyInnerObj            = $(editor.document.$.getElementsByClassName('body-callouts-inner')).html();
             calloutBodyHTML             = this.setCalloutBodySectionTag(ckhash);
             var calloutBodyText         = '';
 
