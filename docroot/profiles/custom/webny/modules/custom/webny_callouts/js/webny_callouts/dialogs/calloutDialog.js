@@ -170,7 +170,6 @@
                     // Generated or pre-existing Hash
                     // Concatenation of hash and rand num
                     // Body field of the dialog
-                console.log(coObj.hash + ' ---- ' + randcoid)
                 var calloutSettings = coObj.buildCallouts(CKEDITOR.instances[thisEditor], coObj.hash, randcoid, co_body);
 
             },

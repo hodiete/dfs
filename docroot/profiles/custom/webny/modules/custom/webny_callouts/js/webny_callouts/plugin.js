@@ -143,6 +143,11 @@ CKEDITOR.plugins.callouts = {
             // GET CURRENT HASH, SET IT TO THE CALLOUT STRING, PUSH TO SALTBAG
             newHash = this.getSectionTagId(editor).substring(23,40);
 
+            // IF NOT IN LIST ADD SALT
+            if(this.saltBag.indexOf(newHash) === -1) {
+                this.saltBag.push(newHash);
+            }
+
         } else {
 
             // CREATE A NEW CALLOUT TAG WITH A NEW HASH
@@ -171,7 +176,6 @@ CKEDITOR.plugins.callouts = {
         // GET THE BODY OBJECT OF THE CURRENT EDITOR
         this.editorHTMLObj          = editor.document.$.body;
         this.hash = hash;
-        console.log('HASH ================================== ' + hash)
 
         // SET THE SECTION TAG STRING AND ASSIGN IT TO THE CALLOUT SECTION HTML
         this.calloutSectionTag = this.setCalloutBodySectionTag(this.hash);
@@ -186,14 +190,6 @@ CKEDITOR.plugins.callouts = {
                 icoString       = calloutsInlineArray[x].id;
                 bcoString       = this.reassignCalloutID(icoString);
                 curCalloutNum   = icoString.substring(4,20);
-
-
-                console.log('CALLOUT ID: ' + icoString)
-                console.log('STRING: ' + bcoString)
-                console.log('CURRENT: ' + curCalloutNum)
-                console.log('NEW: ' + newCalloutID)
-                console.log(' ')
-
 
                 // GET NEW ENTRY
                 if(curCalloutNum === newCalloutID){
