@@ -36,7 +36,6 @@
             // ========================================================================================================
             // CHECK FOR THE CKEDITOR BEING EDITED
             editor.on('instanceReady', function (e) {
-                var currentEditorName = null;
                 for (var id in CKEDITOR.instances) {
                     CKEDITOR.instances[id].on('focus', function(e) {
 
@@ -84,12 +83,6 @@ CKEDITOR.plugins.callouts = {
         return this.cen;
     },
 
-    setSaltBag: function(){},
-
-    getSaltBag: function(){
-        return this.saltBag;
-    },
-
     /*
         GENERATES A RANDOM ID
      */
@@ -126,13 +119,10 @@ CKEDITOR.plugins.callouts = {
         return $(editor.document.$.getElementsByClassName('webny-callouts-section')).attr('id');
     },
 
+    /*
+        CREATES OR RETRIEVES THE CALLOUT HASH
+     */
     createCalloutHash: function(editor){
-
-        // GET THE EDITOR ID
-        var editorID    = editor.id;
-
-        // GET THE NUMERIC VALUE OF THE EDITOR ID
-        var editorIDNum = editorID.substring(4,10);
 
         // VAR FOR NEW HASH
         var newHash     = null;
@@ -157,6 +147,9 @@ CKEDITOR.plugins.callouts = {
         return newHash;
 
     },
+    /*
+        BUILD CALLOUTS AFTER OK IS PRESSED ON THE CALLOUT DIALOG
+     */
     buildCallouts: function(editor, hash, newCalloutID, newBody) {
 
         // REORDER IF POSSIBLE
