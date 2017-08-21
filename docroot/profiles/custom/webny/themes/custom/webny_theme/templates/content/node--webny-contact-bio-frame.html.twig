@@ -19,6 +19,7 @@
 
 
 <article{{ attributes.addClass(docclasses) }}>
+    {{ title_prefix }}
 
     <div  class="bio-frame-meta">
         <h2>
@@ -31,4 +32,6 @@
         </h2>
     </div>
         {{ content.group_webny_bio_meta_div|without('field_webny_contact_name', 'field_webny_contact_protitle') }}
+
+    {{ title_suffix }}
 </article>
