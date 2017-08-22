@@ -3283,6 +3283,26 @@ function webny_configuration_update_8150() {
 
 }
 
+/**
+ * Implements hook_update_n().
+ *
+ * Install and Enable the What's Related paragraph type
+ * Refresh Generic Page Content Type
+ *
+ */
+function webny_configuration_update_8152() {
+
+
+  // INSTALL THE WHAT'S RELATED FRAME and REINSTALL GENERIC PAGE
+  \Drupal::service('module_installer')
+    ->install(['webny_what_s_related_frame']);
+  \Drupal::service('module_installer')
+    ->uninstall(['webny_generic_content_type']);
+  \Drupal::service('module_installer')
+    ->install(['webny_generic_content_type']);
+
+}
+
 
 /**
  * Helper function to enable a Drupal module and print the result.
