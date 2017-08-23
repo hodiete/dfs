@@ -3286,6 +3286,19 @@ function webny_configuration_update_8150() {
 /**
  * Implements hook_update_n().
  *
+ * uninstall webny_local_solr_search
+ *
+ */
+function webny_configuration_update_8151() {
+
+    \Drupal::service('module_installer')
+        ->uninstall(['webny_local_solr_search']);
+
+}
+
+/**
+ * Implements hook_update_n().
+ *
  * Install and Enable the What's Related paragraph type
  *
  */
@@ -3339,6 +3352,7 @@ function webny_configuration_update_8153() {
     // Clear the config cache.
     $config_factory->reset();
 }
+
 
 
 /**
