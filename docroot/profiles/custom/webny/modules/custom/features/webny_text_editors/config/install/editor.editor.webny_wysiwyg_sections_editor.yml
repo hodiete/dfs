@@ -2,10 +2,10 @@ langcode: en
 status: true
 dependencies:
   config:
-    - filter.format.webny_wysiwyg_frame_editor
+    - filter.format.webny_wysiwyg_sections_editor
   module:
     - ckeditor
-format: webny_wysiwyg_frame_editor
+format: webny_wysiwyg_sections_editor
 editor: ckeditor
 settings:
   toolbar:
@@ -54,6 +54,7 @@ settings:
             - SpecialChar
             - Superscript
             - Subscript
+            - WebNYCallouts
         -
           name: Tables
           items:
