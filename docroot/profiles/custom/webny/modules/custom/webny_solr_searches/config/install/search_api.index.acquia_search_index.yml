@@ -1,0 +1,184 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - field.storage.node.field_webny_gencp_date
+    - field.storage.node.field_webny_gencp_heroimage
+    - field.storage.node.field_webny_gencp_sumdes
+    - field.storage.node.field_webny_gencp_contentcat
+    - field.storage.node.field_webny_gencp_keywords
+    - field.storage.node.field_webny_news_category
+    - field.storage.node.field_webny_news_date
+    - field.storage.node.field_webny_news_image
+    - field.storage.node.field_webny_news_description
+    - field.storage.node.field_webny_news_subtitles
+    - search_api.server.acquia_search_server
+  module:
+    - search_api
+    - node
+id: acquia_search_index
+name: 'Acquia Search Solr Index'
+description: ''
+read_only: false
+field_settings:
+  rendered_item:
+    label: 'Rendered HTML output'
+    property_path: rendered_item
+    type: text
+    configuration:
+      roles:
+        anonymous: anonymous
+      view_mode:
+        'entity:node':
+          webny_contact: ''
+          webny_document: ''
+          webny_generic_page: default
+          webny_landing_page: ''
+          webny_news: ''
+          webny_page: ''
+          webny_whitelisted_content: ''
+  body:
+    label: Body
+    datasource_id: 'entity:node'
+    property_path: body
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.body
+  title:
+    label: Title
+    datasource_id: 'entity:node'
+    property_path: title
+    type: text
+  field_webny_gencp_date:
+    label: 'Generic Page - Date'
+    datasource_id: 'entity:node'
+    property_path: field_webny_gencp_date
+    type: date
+    dependencies:
+      config:
+        - field.storage.node.field_webny_gencp_date
+  field_webny_gencp_heroimage:
+    label: 'Generic Page - Hero Image'
+    datasource_id: 'entity:node'
+    property_path: field_webny_gencp_heroimage
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.field_webny_gencp_heroimage
+  field_webny_gencp_sumdes:
+    label: 'Generic Page - Summary/Description '
+    datasource_id: 'entity:node'
+    property_path: field_webny_gencp_sumdes
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.field_webny_gencp_sumdes
+  field_webny_gencp_contentcat:
+    label: 'Generic Page - Content Categorization'
+    datasource_id: 'entity:node'
+    property_path: field_webny_gencp_contentcat
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.field_webny_gencp_contentcat
+  field_webny_gencp_keywords:
+    label: 'Generic Page - Keywords'
+    datasource_id: 'entity:node'
+    property_path: field_webny_gencp_keywords
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.field_webny_gencp_keywords
+  field_webny_news_category:
+    label: 'News - Category'
+    datasource_id: 'entity:node'
+    property_path: field_webny_news_category
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.field_webny_news_category
+  field_webny_news_date:
+    label: 'News - Date'
+    datasource_id: 'entity:node'
+    property_path: field_webny_news_date
+    type: date
+    dependencies:
+      config:
+        - field.storage.node.field_webny_news_date
+  field_webny_news_image:
+    label: 'News - Image'
+    datasource_id: 'entity:node'
+    property_path: field_webny_news_image
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.field_webny_news_image
+  field_webny_news_description:
+    label: 'News - Summary / Description'
+    datasource_id: 'entity:node'
+    property_path: field_webny_news_description
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.field_webny_news_description
+  field_webny_news_subtitles:
+    label: 'News - Sub Titles'
+    datasource_id: 'entity:node'
+    property_path: field_webny_news_subtitles
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.field_webny_news_subtitles
+  type:
+    label: 'Content type'
+    datasource_id: 'entity:node'
+    property_path: type
+    type: string
+  nid:
+    label: 'Node ID'
+    datasource_id: 'entity:node'
+    property_path: nid
+    type: integer
+  status:
+    label: 'Publishing status'
+    datasource_id: 'entity:node'
+    property_path: status
+    type: boolean
+datasource_settings:
+  'entity:node':
+    plugin_id: 'entity:node'
+    settings:
+      bundles:
+        default: true
+        selected: {  }
+      languages:
+        default: true
+        selected: {  }
+    bundles:
+      default: true
+      selected: {  }
+    languages:
+      default: true
+      selected: {  }
+processor_settings:
+  add_url:
+    plugin_id: add_url
+    settings: {  }
+  aggregated_field: {  }
+  rendered_item: {  }
+tracker_settings:
+  default:
+    plugin_id: default
+    settings: {  }
+options:
+  index_directly: false
+  cron_limit: 50
+  processors:
+    language:
+      status: '1'
+      weight: -50
+      settings: {  }
+      processorPluginId: language
+server: acquia_search_server
