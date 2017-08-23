@@ -3305,6 +3305,9 @@ function webny_configuration_update_8152() {
       // UPDATE OPTIONAL FEATURES
       'core.entity_form_display.paragraph.webny_whats_related_pgtype.generic_form'
     ];
+    $profile_config->bulkImport($config_to_update);
+    // Clear the config cache.
+    $config_factory->reset();
 }
 
 /**
@@ -3332,7 +3335,9 @@ function webny_configuration_update_8153() {
       // UPDATE OPTIONAL FEATURES
       'field.field.node.webny_generic_page.field_webny_gencp_contentsect'
     ];
-
+    $profile_config->bulkImport($config_to_update);
+    // Clear the config cache.
+    $config_factory->reset();
 }
 
 
