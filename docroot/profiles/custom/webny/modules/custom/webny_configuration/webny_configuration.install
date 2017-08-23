@@ -3284,10 +3284,24 @@ function webny_configuration_update_8150() {
 }
 
 /**
- * INSTALL webny_callouts module
- * - iojonep
+ * Implements hook_update_n().
+ *
+ * uninstall webny_local_solr_search
+ *
  */
 function webny_configuration_update_8151() {
+
+    \Drupal::service('module_installer')
+        ->uninstall(['webny_local_solr_search']);
+
+}
+
+/**
+ * INSTALL webny_callouts module
+ * REINSTALL text_formats
+ * - iojonep
+ */
+function webny_configuration_update_8152() {
 
     // INSTALL WEBNY CALLOUTS
     \Drupal::service('module_installer')
@@ -3298,6 +3312,7 @@ function webny_configuration_update_8151() {
         ->uninstall(['webny_text_editors']);
     \Drupal::service('module_installer')
         ->install(['webny_text_editors']);
+
 }
 
 /**
