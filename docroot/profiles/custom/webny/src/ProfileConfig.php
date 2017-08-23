@@ -180,7 +180,9 @@ class ProfileConfig {
       $this->getProfileFeatureConfigPath('wysiwyg_frame') . '/optional',
       $this->getProfileFeatureConfigPath('get_involved_frame') . '/install',
       $this->getProfileFeatureConfigPath('get_involved_frame') . '/optional',
-
+      $this->getProfileFeatureConfigPath('what_s_related_frame') . '/install',
+      $this->getProfileFeatureConfigPath('what_s_related_frame') . '/optional',
+      
     ]);
 
     return $locations->locate($resource . '.yml');
