@@ -3307,12 +3307,17 @@ function webny_configuration_update_8152() {
     \Drupal::service('module_installer')
         ->install(['webny_callouts']);
 
-    // REINSTALL TEXT FORMATS
+    // REINSTALL TEXT FORMATS AND EDITORS
+    
+    \Drupal::service('module_installer')
+        ->uninstall(['webny_text_formats']);
+    \Drupal::service('module_installer')
+        ->install(['webny_text_formats']);
+
     \Drupal::service('module_installer')
         ->uninstall(['webny_text_editors']);
     \Drupal::service('module_installer')
         ->install(['webny_text_editors']);
-
 }
 
 /**
