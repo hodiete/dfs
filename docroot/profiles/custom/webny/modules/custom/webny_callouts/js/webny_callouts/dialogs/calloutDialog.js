@@ -159,7 +159,7 @@
 
                 inline_value = CKEDITOR.dom.element.createFromHtml('<span data-ico="'+randcoid+'" id=\x22ico-'+randcoid+'\x22 ' +
                     'class=\x22web-callout inline-callout callout-'+ randcoid+'\x22>' +
-                    co_text + '</span>');
+                    co_text + '</span><span class="callout-inline-order" class="callout-inline-order-'+randcoid+'"></span>');
 
                 // INSERT CALLOUT TAG INLINE
                 CKEDITOR.instances[thisEditor].insertElement(inline_value);
