@@ -3283,6 +3283,18 @@ function webny_configuration_update_8150() {
 
 }
 
+/**
+ * Implements hook_update_n().
+ *
+ * uninstall webny_local_solr_search
+ *
+ */
+function webny_configuration_update_8151() {
+
+    \Drupal::service('module_installer')
+        ->uninstall(['webny_local_solr_search']);
+
+}
 
 /**
  * Helper function to enable a Drupal module and print the result.

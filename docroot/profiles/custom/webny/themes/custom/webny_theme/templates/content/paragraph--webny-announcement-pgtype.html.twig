@@ -1,3 +1,20 @@
 <div class="announcement-wrap">
-    {{ content }}
+
+    <div class="webny-announcement-frame-inner">
+        {%  if((paragraph.field_webny_announcement_title.value is not empty and paragraph.field_webny_announcement_title.value is not null) or (paragraph.field_webny_announcement_headlne.value is not empty and paragraph.field_webny_announcement_headlne.value is not null)) %}
+            <h2>
+                    <span class="frame-title webny-frametitle">
+                        {{ paragraph.field_webny_announcement_title.value }}
+                    </span>
+
+                    <span class="frame-headline webny-headline">
+                         {{ paragraph.field_webny_announcement_headlne.value }}
+                    </span>
+            </h2>
+        {% else %}
+        {% endif %}
+
+    </div>
+
+    {{ content|without('field_webny_announcement_title', 'field_webny_announcement_headlne') }}
 </div>
