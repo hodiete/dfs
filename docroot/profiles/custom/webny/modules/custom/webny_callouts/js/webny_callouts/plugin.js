@@ -173,6 +173,7 @@ CKEDITOR.plugins.callouts = {
         // SET THE SECTION TAG STRING AND ASSIGN IT TO THE CALLOUT SECTION HTML
         this.calloutSectionTag = this.setCalloutBodySectionTag(this.hash);
         var calloutSectionHTML = this.calloutSectionTag;
+        var orderHash         = '';
 
         // REBUILD CALLOUT BODY SECTION WITH CALLOUT NUMBERS AND BODY
         if(calloutsInlineArray.length > 0){
@@ -199,13 +200,20 @@ CKEDITOR.plugins.callouts = {
 
                 }
 
+                // REORDER INLINE CALLOUT
+                orderHash = 'ico-order-'+curCalloutNum;
+                $(editor.document.$.getElementById(orderHash)).attr('data-ico-order',calloutMarker);
+                $(editor.document.$.getElementById(orderHash)).children().html(calloutMarker);
+
                 // CREATE NEW ENTRY
                 calloutSectionHTML += '<div data-ckhash="'+this.hash+'" data-bco="'+curCalloutNum+'" ' +
                     'id="' + bcoString + '" class="body-callouts callout-' + curCalloutNum + '">' +
-                      '<div class="body-callouts-inner"><span data-order="'+ calloutMarker +'" ' +
+                    '<div class="body-callouts-inner">' +
+                      '<span data-order="'+ calloutMarker +'" ' +
                       'id="callout-order-'+curCalloutNum+'" ' +
-                      'class="callout-order inline-callout-order callout-order-'+ calloutMarker +'">' + calloutMarker +'</span> ' +
-                    calloutBody.trim() +
+                      'class="callout-order inline-callout-order callout-order-'+ calloutMarker +'"><a id="'+this.hash+'">' + calloutMarker +'</a>' +
+                      '</span> ' +
+                      calloutBody.trim() +
                     '</div></div>';
 
                 calloutBody = null;
@@ -237,13 +245,14 @@ CKEDITOR.plugins.callouts = {
     rebuildCalloutBody: function(editor){
 
         var calloutBodyHTML = '';
+        $(editor.document.$.body).html();
 
         // CHECK THE EDITOR FOR THE webny-callouts-section CLASS EXISTENCE
         if(editor.document.$.getElementsByClassName('webny-callouts-section').length > 0){
 
             // INNER VARIABLES
             var id = '';
-            var orderNum = null;
+            var orderNum, orderHash = null;
 
             // EASY ACCESSORS
             var ckhash                  = $(editor.document.$.getElementsByClassName('webny-callouts-section')).attr('data-ckhash');
@@ -284,27 +293,58 @@ CKEDITOR.plugins.callouts = {
     prepareDeleteString: function(editor,icoid){
 
         var ds = '';
+        var thisId = '';
+        var t  = 1;
+
+        // CALLOUTS OBJ CLASS
+        var coObj = CKEDITOR.plugins.callouts;
+
+        // EDITOR DOCUMENT AND $
+        coObj.editorDom = editor.document.$;
 
         // GO THROUGH EACH DOM OBJ IN THE CKEDITOR BODY
         $(this.editorBodyDeleteHTML).each(function (index, value) {
 
+            // REORDER THE ICO SUP NOTES
+            if($(value).find('.ico-order').length > 0){
+                if($(value).find('.ico-order').attr('id') !== 'ico-order-'+icoid) {
+                    $(value).find('.ico-order').each(function (si, sv) {
+                        $(sv).attr('data-ico-order', t);
+                        $(sv).children().html(t);
+                        ++t;
+                    });
+                }
+            } // END IF
+
+
             // CHECK EACH ELEMENT
             if($(value).find('span#ico-'+icoid).length > 0){
 
+                // REMOVE THE INLINE CALLOUT NOTE
+                $(value).find('sup#ico-order-' + icoid).remove();
+
+                // UNWRAP AND ASSIGN VALUE OF CONTENT
                 $(value).find('span#ico-'+icoid).contents().unwrap();
+
+                // ASSIGN THE VALUE OF THE UNWRAPED CONTENTS TO ds
                 ds += $(value)[0].outerHTML;
+
 
             } else {
 
+                // PARAGRAPHS HAVE NO SPAN WITH ID
                 if($(value)[0].classList[0] === 'webny-callouts-section'){
 
                     // REORDER CALLOUT BODY AREA
                     ds += CKEDITOR.plugins.callouts.rebuildCalloutBody(editor);
 
                 } else {
+
+                    // IF NOT THE WEBNY CALLOUTS BODY SECTION
                     ds += $(value)[0].outerHTML;
                 }
             }
+
         });
 
         return ds;
