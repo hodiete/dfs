@@ -101,7 +101,10 @@
                     $(coObj.editorDom.getElementById('bco-' + icoid)).remove();
 
                     // REMOVE THE INLINE CALLOUT
-                    $(coObj.editorDom.getElementById('ico-'+ icoid)).remove();
+                    $(coObj.editorDom.getElementById('ico-' + icoid)).remove();
+
+                    // REMOVE THE INLINE CALLOUT NOTE
+                    $(coObj.editorDom.getElementById('ico-order-' + icoid)).remove();
 
                     // SET BODY TO DIALOG
                     this.setValueOf('tab-callout', 'callout_body', calloutBody);
@@ -155,14 +158,16 @@
                 var co_body = dialog.getContentElement('tab-callout','callout_body').getValue();
 
                 // CREATE THE INLINE CALLOUT
-                var inline_value = '';
+                var inline_value = CKEDITOR.dom.element.createFromHtml('<span data-ico="'+randcoid+'" id="ico-'+randcoid+'" ' +
+                    'class="web-callout inline-callout callout-'+ randcoid+'">' +
+                    co_text + '</span>');
 
-                inline_value = CKEDITOR.dom.element.createFromHtml('<span data-ico="'+randcoid+'" id=\x22ico-'+randcoid+'\x22 ' +
-                    'class=\x22web-callout inline-callout callout-'+ randcoid+'\x22>' +
-                    co_text + '</span><span class="callout-inline-order" class="callout-inline-order-'+randcoid+'"></span>');
+                var inline_note = CKEDITOR.dom.element.createFromHtml('<sup data-ico-order="1" class="ico-order" ' +
+                    ' data-ico="'+randcoid+'" id="ico-order-'+randcoid+'"><a href="#'+randcoid+'">1</a></sup>');
 
                 // INSERT CALLOUT TAG INLINE
                 CKEDITOR.instances[thisEditor].insertElement(inline_value);
+                CKEDITOR.instances[thisEditor].insertElement(inline_note);
 
                 // BUILD THE CALLOUT -- RETURN calloutSettings
                     /* PARAMS */
