@@ -49,6 +49,10 @@
             hash = $(this).children(':first').text().toLowerCase().trim().replace(/[^a-zA-Z0-9]/g, '-');
           }
         }
+        // replacing hash for whats related
+        else if ($(this).hasClass('generic_para webny_whats_related_pgtype')) {
+          hash = $(this).children('h3').text().toLowerCase().trim().replace(/[^a-zA-Z0-9]/g, '-');
+        }
 
 
         // if rel is enabled, this paragraph has been selected to be added to the TOC
@@ -70,6 +74,10 @@
             else {
               $('#gpnav_sidebar ul').append('<li><a href="#' + hash + '">' + $(this).children(':first').text() + '</a></li>');
             }
+          }
+          // if this is a whats related paragraph
+          else if ($(this).hasClass('generic_para webny_whats_related_pgtype')) {
+            $('#gpnav_sidebar ul').append('<li><a href="#' + hash + '">' + $(this).children('h3').text() + '</a></li>');
           }
           $(this).children(':first').attr('name', hash);
         }
@@ -97,6 +105,9 @@
               $(this).children('.gp-next-section').children('.gp-next-section-title').html(nextSection.children(':first').text());
             }
           }
+          else if ($(nextSection).hasClass('generic_para webny_whats_related_pgtype')) {
+            $(this).children('.gp-next-section').children('.gp-next-section-title').html(nextSection.children('h3').text());
+          }
         }
         else {
           $(this).children('.gp-next-section').css('display', 'none');
@@ -106,14 +117,14 @@
       // next section click event
       $('.gp-next-section-title').once().click(function (e) {
         e.preventDefault();
-        var hash = $(this).text().toLowerCase().replace(/ /g, '-');
+        var hash = $(this).text().toLowerCase().replace(/[^a-zA-Z0-9]/g, '-');
         $('#gpnav_sidebar li a[href="#' + hash + '"]').trigger('click');
       });
 
       // next section continue click event
       $('.gp-next-section-link').once().click(function (e) {
         e.preventDefault();
-        var hash = $(this).parent().parent().children('.gp-next-section-title').text().toLowerCase().replace(/ /g, '-');
+        var hash = $(this).parent().parent().children('.gp-next-section-title').text().toLowerCase().replace(/[^a-zA-Z0-9]/g, '-');
         $('#gpnav_sidebar li a[href="#' + hash + '"]').trigger('click');
       });
 
@@ -136,7 +147,7 @@
         if (!$(this).parent().hasClass('see-all')) {
           // name used on title of paragraph
           var name = $(this).attr('href').replace('#', '');
-          var clickedFrame = $('div[name="' + name + '"]');
+          var clickedFrame = $('*[name="' + name + '"]');
           var dest = 0;
           dest = clickedFrame.offset().top;
 
