@@ -2,6 +2,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_view_mode.node.webny_announcement
     - field.field.node.webny_generic_page.field_webny_gencp_avgtranstime
     - field.field.node.webny_generic_page.field_webny_gencp_contentcat
     - field.field.node.webny_generic_page.field_webny_gencp_contentsect
@@ -22,10 +23,10 @@ dependencies:
     - smart_trim
     - text
     - user
-id: node.webny_generic_page.default
+id: node.webny_generic_page.webny_announcement
 targetEntityType: node
 bundle: webny_generic_page
-mode: default
+mode: webny_announcement
 content:
   field_webny_gencp_avgtranstime:
     weight: 7
@@ -81,10 +82,9 @@ content:
     weight: 5
     label: hidden
     settings:
-      link: false
-      view_mode: default
+      link: true
     third_party_settings: {  }
-    type: entity_reference_entity_view
+    type: entity_reference_label
     region: content
   field_webny_gencp_howtoapply:
     weight: 8
@@ -128,8 +128,6 @@ content:
   workbench_moderation_control:
     weight: -20
     region: content
-    settings: {  }
-    third_party_settings: {  }
 hidden:
   field_webny_gencp_metatags: true
   langcode: true
