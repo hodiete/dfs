@@ -68,6 +68,17 @@
     display: inline;
   }
 
+  // WAYPOINT DECORATIONS
+  .activeInlineCallout{
+    background-color: $color-accent-primary;
+    transition: background-color 0.3s 0s ease-in-out;
+  }
+
+  .activeBodyCallout{
+    border: 2px solid $color-accent-primary;
+  }
+
+
 
 } // END Generic Paras
 
@@ -154,6 +165,27 @@
   }
   .ico-order{
     display: none;
+  }
+
+  // BODY BRODER FULL ON ACTIVE
+  .activeBodyCallout{
+    border: 2px solid $color-accent-primary;
+  }
+
+  // FIXED POSITION FOR DESKTOP CALLOUTS
+  .activeCalloutSection {
+    position: fixed;
+    top: 0;
+    padding: 0;
+    right: 26px;
+    width: 16.5%;
+    .webny-callout-inner{
+      position: absolute;
+      right: 0;
+      top: 80px;
+      width: 100%;
+      height: 100%;
+    }
   }
 
 }
