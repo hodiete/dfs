@@ -1,0 +1,49 @@
+{#
+/**
+ * @file
+ * Theme override to display a node.
+ * OVERRIDE the news display for announcements reference. 
+ */
+#}
+{# setting title variable so it can be used 2x #}
+{%  if(node.field_webny_generic_short_title.value is not empty and node.field_webny_generic_short_title.value is not null) %}
+    {% set vtitle = node.field_webny_generic_short_title.value %}
+{% else %}
+    {% set vtitle = node.label %}
+{% endif %}
+
+<article{{ attributes.addClass('webny-announcements') }}>
+  {{ title_prefix }}
+  {% if not page %}
+    <div class="webny-announce-wrap">
+        <div class="webny-announce-wrap-in">
+            <div class="announcement-info">
+
+                {# IMPLEMENTS SHORT TITLE OR 65 CHAR LIMIT TITLE #}
+
+                {% if(vtitle|length <= 65) %}
+                    <h1><a href="{{ url }}">{{ vtitle }}</a></h1>
+                {% else %}
+
+                    {% set ws = true %}
+                    {% for num in node.label|length..0 %}
+                        {% if (num < 65 and  node.label|slice(num)|first == ' ' and ws != false) %}
+                            {% set ws = false %}
+                            <h1><a href="{{ url }}">{{ node.label[:num] ~ '...' }}</a></h1>
+                        {% endif %}
+                    {% endfor %}
+
+                {% endif %}
+
+                <div class="announcement-summary">
+                    {{ content.field_webny_gencp_sumdes }}
+                </div>
+            </div>
+            <div class="webny-announcement-button">
+              <a href="{{ url }}" aria-label="{{ vtitle }}" title="{{ vtitle }}">LEARN MORE</a>
+            </div>
+        </div>    
+    </div>
+  {% endif %}
+  {{ title_suffix }}
+</article>
