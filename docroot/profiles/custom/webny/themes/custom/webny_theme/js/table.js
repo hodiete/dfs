@@ -3,7 +3,6 @@
  * table javascript file.
  */
 
-/* global dataTables */
 
 (function ($, Drupal, window, document) {
 
@@ -11,9 +10,8 @@
 
   Drupal.behaviors.table = {
     attach: function (context, settings) {
-      console.log('table file loading...');
       $('table').dataTable({
-        'order': [[ 0, 'desc' ]],
+        order: [[0, 'desc']],
         paging: false
       });
     }
