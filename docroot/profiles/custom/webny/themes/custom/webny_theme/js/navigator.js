@@ -37,16 +37,15 @@
         }
         // replacing hash for documents paragraph
         else if ($(this).hasClass('generic_para webny-documents')) {
-          // for documents reference, if it has a title it will not have children in the first child div
-          // otherwise the first child will be the document itself with children divs
-          if ($(this).children('div:first').children().length > 0) {
-            // has children; no title
+          // for documents reference, if it has a title it will have the title in the first span within the first h2
+          if ($(this).children('h2').children('span:first').text().length == 0) {
+            // text length is 0; no title
             // create generic documents title and hash
             hash = 'documents';
           }
           else {
             // has no children; has a title. create hash
-            hash = $(this).children(':first').text().toLowerCase().trim().replace(/[^a-zA-Z0-9]/g, '-');
+            hash = $(this).children('h2').children('span:first').text().toLowerCase().trim().replace(/[^a-zA-Z0-9]/g, '-');
           }
         }
         // replacing hash for whats related
@@ -67,8 +66,8 @@
           }
           // if this is a documents paragraph, use title or generic title if needed
           else if ($(this).hasClass('generic_para webny-documents')) {
-            // same conditional as hash creation. verify if documents has a title or not based on children in first div
-            if ($(this).children('div:first').children().length > 0) {
+            // same conditional as hash creation. verify if documents has a title or not based on text length in span
+            if ($(this).children('h2').children('span:first').text().length == 0) {
               $('#gpnav_sidebar ul').append('<li><a href="#' + hash + '">Documents</a></li>');
             }
             else {
@@ -98,7 +97,7 @@
           }
           else if ($(nextSection).hasClass('generic_para webny-documents')) {
             // same conditional as hash creation. verify if documents has a title or not based on children in first div
-            if ($(nextSection).children('div:first').children().length > 0) {
+            if ($(nextSection).children('h2').children('span:first').text().length == 0) {
               $(this).children('.gp-next-section').children('.gp-next-section-title').html('Documents');
             }
             else {
