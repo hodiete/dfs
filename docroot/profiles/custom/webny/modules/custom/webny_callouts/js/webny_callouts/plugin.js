@@ -209,10 +209,10 @@ CKEDITOR.plugins.callouts = {
                 calloutSectionHTML += '<div data-ckhash="'+this.hash+'" data-bco="'+curCalloutNum+'" ' +
                     'id="' + bcoString + '" class="body-callouts callout-' + curCalloutNum + '">' +
                     '<div class="body-callouts-inner">' +
-                      '<span data-order="'+ calloutMarker +'" ' +
+                      '<sup data-order="'+ calloutMarker +'" ' +
                       'id="callout-order-'+curCalloutNum+'" ' +
                       'class="callout-order inline-callout-order callout-order-'+ calloutMarker +'"><a id="'+this.hash+'">' + calloutMarker +'</a>' +
-                      '</span> ' +
+                      '</sup> ' +
                       calloutBody.trim() +
                     '</div></div>';
 
@@ -267,16 +267,16 @@ CKEDITOR.plugins.callouts = {
                 id = $(value)[0].dataset.bco;
                 orderNum = parseInt(index + 1);
 
-                // REMOVE INNER SPAN WITH PREEXISTING ORDER
-                $(value).find('span.callout-order').remove();
+                // REMOVE INNER SUP WITH PREEXISTING ORDER
+                $(value).find('sup.callout-order').remove();
                 calloutBodyText = $(value).children().html();
 
                 // CREATE NEW ENTRY
                 calloutBodyHTML += '<div data-ckhash="'+ckhash+'" data-bco="'+id+'" ' +
                     'id="bco-' + id + '" class="body-callouts callout-' + id + '">' +
-                    '<div class="body-callouts-inner"><span data-order="'+ orderNum +'" ' +
+                    '<div class="body-callouts-inner"><sup data-order="'+ orderNum +'" ' +
                     'id="callout-order-'+id+'" ' +
-                    'class="callout-order inline-callout-order callout-order-'+ orderNum +'">' + orderNum +'</span> ' +
+                    'class="callout-order inline-callout-order callout-order-'+ orderNum +'">' + orderNum +'</sup> ' +
                     calloutBodyText +
                     '</div></div>';
 
@@ -305,6 +305,9 @@ CKEDITOR.plugins.callouts = {
         // GO THROUGH EACH DOM OBJ IN THE CKEDITOR BODY
         $(this.editorBodyDeleteHTML).each(function (index, value) {
 
+            // REMOVE SUP WITH CALLOUT NOTE
+            $(value).find('sup#ico-order-'+icoid).remove();
+
             // REORDER THE ICO SUP NOTES
             if($(value).find('.ico-order').length > 0){
                 if($(value).find('.ico-order').attr('id') !== 'ico-order-'+icoid) {
@@ -315,7 +318,6 @@ CKEDITOR.plugins.callouts = {
                     });
                 }
             } // END IF
-
 
             // CHECK EACH ELEMENT
             if($(value).find('span#ico-'+icoid).length > 0){
@@ -328,7 +330,6 @@ CKEDITOR.plugins.callouts = {
 
                 // ASSIGN THE VALUE OF THE UNWRAPED CONTENTS TO ds
                 ds += $(value)[0].outerHTML;
-
 
             } else {
 
