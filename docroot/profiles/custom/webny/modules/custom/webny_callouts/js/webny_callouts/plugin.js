@@ -61,7 +61,6 @@ CKEDITOR.plugins.callouts = {
     saltBag: [],
     hash: null,
     hashLength: 7,
-    spanClause: null,
     bodyClause: null,
     editorHTMLObj: null,
     editorBodyHTML: null,
@@ -293,7 +292,6 @@ CKEDITOR.plugins.callouts = {
     prepareDeleteString: function(editor,icoid){
 
         var ds = '';
-        var thisId = '';
         var t  = 1;
 
         // CALLOUTS OBJ CLASS

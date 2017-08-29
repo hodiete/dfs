@@ -92,7 +92,6 @@
                     var icoid = coObj.getInlineCalloutIdNum(editor);
 
                     // GET CALLOUT BODY HTML -- BACKUPS
-                    coObj.spanClause = $(coObj.editorDom.getElementById('callout-order-' + icoid));   // GET SPAN;
                     coObj.bodyClause = $(coObj.editorDom.getElementById('bco-' + icoid));             // GET BODY;
                     $(coObj.editorDom.getElementById('callout-order-' + icoid)).remove();             // REMOVE THE SPAN
                     var calloutBody = $(coObj.editorDom.getElementById('bco-' + icoid)).children('div').html(); // DIV
