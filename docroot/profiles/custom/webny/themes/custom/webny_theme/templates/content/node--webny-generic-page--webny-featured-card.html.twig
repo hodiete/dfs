@@ -67,8 +67,8 @@
  */
 #}
 {# setting title variable so it can be used 2x #}
-{%  if(node.field_webny_page_short_title.value is not empty and node.field_webny_page_short_title.value is not null) %}
-  {% set vtitle = node.field_webny_page_short_title.value %}
+{%  if(node.field_webny_generic_short_title.value is not empty and node.field_webny_generic_short_title.value is not null) %}
+  {% set vtitle = node.field_webny_generic_short_title.value %}
 {% else %}
   {% set vtitle = node.label %}
 {% endif %}
