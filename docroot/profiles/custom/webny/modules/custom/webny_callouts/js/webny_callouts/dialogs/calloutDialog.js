@@ -162,7 +162,7 @@
                     co_text + '</span>');
 
                 var inline_note = CKEDITOR.dom.element.createFromHtml('<sup data-ico-order="1" class="ico-order" ' +
-                    ' data-ico="'+randcoid+'" id="ico-order-'+randcoid+'"><a href="#'+randcoid+'">1</a></sup>');
+                    ' data-ico="'+randcoid+'" id="ico-order-'+randcoid+'"><a href="#callout-order-'+randcoid+'">1</a></sup>');
 
                 // INSERT CALLOUT TAG INLINE
                 CKEDITOR.instances[thisEditor].insertElement(inline_value);

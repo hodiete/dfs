@@ -11,6 +11,7 @@
 
       // PROPERTIES
       calloutWaypoint: '',
+      clickVals: 'click touchend',
       waypointId: '',
       calloutBodyId: null,
       screenOffset: (window.innerHeight/2) - 100,
@@ -83,32 +84,41 @@
                       $('.webny-callouts-section').removeClass('activeCalloutSection');
                   }
 
-
-
               }, {offset: 0});
 
               // =====================================================================
               // WAYPOINT FUNCTION FOR FIXED RIGHTHAND NAVIGATION -- HEADER TRIGGER
               $('.gp-next-section').waypoint(function(direction) {
 
-                  console.log('Next Section Hit.')
+                  // REMOVE ALL ACTIVE CALLOUT SECTIONS
+                  $('.webny-callouts-section').removeClass('activeCalloutSection');
 
-                  this.sectionId = '';
+              }, {offset: 0});
+
+              // =====================================================================
+              // WAYPOINT FUNCTION FOR FIXED RIGHTHAND NAVIGATION -- HEADER TRIGGER
+              $('.webny-callouts-section').not(':first').waypoint(function(direction) {
+
+                  // ASSIGN ELEMENT
+                  this.sectionId = '#'+this.element.id;
 
                   // REMOVE ALL ACTIVE CALLOUT SECTIONS
                   $('.webny-callouts-section').removeClass('activeCalloutSection');
 
-                  
-              }, {offset: 0});
+                  if(!$(this.sectionId).hasClass('activeCalloutSection')){
+                      $(this.sectionId).addClass('activeCalloutSection');
+                  }
 
+                  if(direction === 'up'){
+                      $('.webny-callouts-section').removeClass('activeCalloutSection');
+                  }
 
+              }, {offset: 350});
 
-
-          })
+          }); // END ONLOAD
 
       }
-
-
+      
   };
 
 
