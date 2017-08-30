@@ -50,7 +50,7 @@
         }
         // replacing hash for whats related
         else if ($(this).hasClass('generic_para webny_whats_related_pgtype')) {
-          hash = $(this).children('h3').text().toLowerCase().trim().replace(/[^a-zA-Z0-9]/g, '-');
+          hash = $(this).children().children('h3').text().toLowerCase().trim().replace(/[^a-zA-Z0-9]/g, '-');
         }
 
 
@@ -76,7 +76,7 @@
           }
           // if this is a whats related paragraph
           else if ($(this).hasClass('generic_para webny_whats_related_pgtype')) {
-            $('#gpnav_sidebar ul').append('<li><a href="#' + hash + '">' + $(this).children('h3').text() + '</a></li>');
+            $('#gpnav_sidebar ul').append('<li><a href="#' + hash + '">' + $(this).children().children('h3').text() + '</a></li>');
           }
           $(this).children(':first').attr('name', hash);
         }
@@ -105,7 +105,7 @@
             }
           }
           else if ($(nextSection).hasClass('generic_para webny_whats_related_pgtype')) {
-            $(this).children('.gp-next-section').children('.gp-next-section-title').html(nextSection.children('h3').text());
+            $(this).children('.gp-next-section').children('.gp-next-section-title').html(nextSection.children().children('h3').text());
           }
         }
         else {
@@ -116,14 +116,14 @@
       // next section click event
       $('.gp-next-section-title').once().click(function (e) {
         e.preventDefault();
-        var hash = $(this).text().toLowerCase().replace(/[^a-zA-Z0-9]/g, '-');
+        var hash = $(this).text().toLowerCase().trim().replace(/[^a-zA-Z0-9]/g, '-');
         $('#gpnav_sidebar li a[href="#' + hash + '"]').trigger('click');
       });
 
       // next section continue click event
       $('.gp-next-section-link').once().click(function (e) {
         e.preventDefault();
-        var hash = $(this).parent().parent().children('.gp-next-section-title').text().toLowerCase().replace(/[^a-zA-Z0-9]/g, '-');
+        var hash = $(this).parent().parent().children('.gp-next-section-title').text().toLowerCase().trim().replace(/[^a-zA-Z0-9]/g, '-');
         $('#gpnav_sidebar li a[href="#' + hash + '"]').trigger('click');
       });
 
