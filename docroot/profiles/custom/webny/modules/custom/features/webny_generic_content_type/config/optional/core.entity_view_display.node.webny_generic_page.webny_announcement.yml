@@ -2,7 +2,7 @@ langcode: en
 status: true
 dependencies:
   config:
-    - core.entity_view_mode.node.teaser
+    - core.entity_view_mode.node.webny_announcement
     - field.field.node.webny_generic_page.field_webny_gencp_avgtranstime
     - field.field.node.webny_generic_page.field_webny_gencp_contentcat
     - field.field.node.webny_generic_page.field_webny_gencp_contentsect
@@ -17,17 +17,28 @@ dependencies:
     - field.field.node.webny_generic_page.field_webny_generic_short_title
     - node.type.webny_generic_page
   module:
+    - smart_trim
     - user
-id: node.webny_generic_page.teaser
+id: node.webny_generic_page.webny_announcement
 targetEntityType: node
 bundle: webny_generic_page
-mode: teaser
+mode: webny_announcement
 content:
-  links:
-    weight: 100
-    region: content
-  workbench_moderation_control:
-    weight: -20
+  field_webny_gencp_sumdes:
+    weight: 0
+    label: hidden
+    settings:
+      trim_length: '25'
+      trim_type: words
+      trim_suffix: ...
+      more_link: '0'
+      more_text: More
+      trim_options:
+        text: 0
+      more_class: more-link
+      summary_handler: full
+    third_party_settings: {  }
+    type: smart_trim
     region: content
 hidden:
   field_webny_gencp_avgtranstime: true
@@ -40,6 +51,7 @@ hidden:
   field_webny_gencp_keywords: true
   field_webny_gencp_metatags: true
   field_webny_gencp_navtoggle: true
-  field_webny_gencp_sumdes: true
   field_webny_generic_short_title: true
   langcode: true
+  links: true
+  workbench_moderation_control: true
