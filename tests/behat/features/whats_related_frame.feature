@@ -1,6 +1,4 @@
 @api
-
-@api
 Feature: What's Related Frame Paragraph Tests
    - Check to see if What's Related Frame exists on Generic Page
    - Check to see if What's Related Frame can be added to a Generic Page
