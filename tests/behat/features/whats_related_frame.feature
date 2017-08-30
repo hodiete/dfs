@@ -16,8 +16,7 @@ Feature: What's Related Frame Paragraph Tests
    Given I am logged into the distro with the "administrator" role
    When I am on "/node/add/webny_generic_page"
    Then I should not see "Access denied"
-   And when I click "Sections and Table of Contents"
-   Then I should see "Add What's Related"
+   And I should see "Add What's Related"
 
 # Check if What's Related frame can be added to a Generic Page
   Scenario: See if What's Related frame can be added to a Generic Page
