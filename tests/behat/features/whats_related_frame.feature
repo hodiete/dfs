@@ -14,14 +14,15 @@ Feature: What's Related Frame Paragraph Tests
 # Check if What's Related button appears on Generic Content type
   Scenario: See if What's Related button appears on Generic Content type page
    Given I am logged into the distro with the "administrator" role
-   When I am on /node/add/webny_generic_page
+   When I am on "/node/add/webny_generic_page"
    Then I should not see "Access denied"
-   And I should see "Add What's Related"
+   And when I click "Sections and Table of Contents"
+   Then I should see "Add What's Related"
 
 # Check if What's Related frame can be added to a Generic Page
   Scenario: See if What's Related frame can be added to a Generic Page
   Given I am logged into the distro with the "administrator" role
-  When I am on /node/add/webny_generic_page
+  When I am on "/node/add/webny_generic_page"
   And when I click "Add What's Related"
   Then I should see "Add Section to Table of Contents"
   And I should see "Title"
