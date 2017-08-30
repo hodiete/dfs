@@ -40,9 +40,11 @@ paragraph.bundle|clean_class,
         <h3{{ attributes.addClass('webny-whats-related-title') }}>{{ content.field_webny_whats_related_title }}</h3>
 
         {% for i in 0..2 %}
-            <a href="{{ content.field_webny_whats_related_links[i]['#url'] }}" target="_blank" rel="bookmark">{{ content.field_webny_whats_related_links[i]['#title'] }}</a>
+            {% if content.field_webny_whats_related_links[i]['#url'] != null %}
+                 <a href="{{ content.field_webny_whats_related_links[i]['#url'] }}" target="_blank" rel="bookmark">{{ content.field_webny_whats_related_links[i]['#title'] }}</a>
             {# <a href="{{ content.field_webny_whitelist_link_url[i]['#url'] }}" target="_blank" rel="bookmark">{{ content.field_webny_whats_related_links[i]['#title'] }}</a>
             #}{# This is for the whitelisted links, but commenting out for now till the logic is in place #}
+            {% endif %}
         {%  endfor %}
 
     </div>
