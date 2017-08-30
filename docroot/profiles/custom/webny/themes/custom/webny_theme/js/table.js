@@ -10,7 +10,7 @@
 
   Drupal.behaviors.table = {
     attach: function (context, settings) {
-      $('table').dataTable({
+      $('table').once().dataTable({
         order: [[0, 'desc']],
         paging: false
       });
