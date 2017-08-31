@@ -22,10 +22,10 @@ Feature: What's Related Frame Paragraph Tests
   Scenario: See if What's Related frame can be added to a Generic Page
   Given I am logged into the distro with the "administrator" role
   When I am on "/node/add/webny_generic_page"
-  And when I click "Add What's Related"
-  Then I should see "Add Section to Table of Contents"
-  And I should see "Title"
-  And I should see "Related Links"
-  And I should see "URL"
-  And I should see "Link text"
+  Then I should see "Related"
+  # And I should see "Add Section to Table of Contents"
+  # And I should see "Title"
+  # And I should see "Related Links"
+  # And I should see "URL"
+  # And I should see "Link text"
 
