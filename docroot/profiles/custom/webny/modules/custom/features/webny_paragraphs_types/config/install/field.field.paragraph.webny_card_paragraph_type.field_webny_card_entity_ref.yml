@@ -3,6 +3,7 @@ status: true
 dependencies:
   config:
     - field.storage.paragraph.field_webny_card_entity_ref
+    - node.type.webny_generic_page
     - node.type.webny_landing_page
     - node.type.webny_news
     - node.type.webny_page
@@ -22,10 +23,14 @@ settings:
   handler: 'default:node'
   handler_settings:
     target_bundles:
+      webny_generic_page: webny_generic_page
       webny_whitelisted_content: webny_whitelisted_content
       webny_landing_page: webny_landing_page
       webny_news: webny_news
       webny_page: webny_page
     sort:
-      field: _none
+      field: changed
+      direction: DESC
+    auto_create: false
+    auto_create_bundle: webny_landing_page
 field_type: entity_reference

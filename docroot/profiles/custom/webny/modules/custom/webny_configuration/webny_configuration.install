@@ -3283,6 +3283,55 @@ function webny_configuration_update_8150() {
 
 }
 
+/**
+ * Implements hook_update_n().
+ *
+ * uninstall webny_local_solr_search
+ *
+ */
+function webny_configuration_update_8151() {
+
+    \Drupal::service('module_installer')
+        ->uninstall(['webny_local_solr_search']);
+
+}
+
+/**
+ * Implements hook_update_n().
+ *
+ * Update Generic Content Page
+ *
+ */
+function webny_configuration_update_8152() {
+
+    print webny_configuration_uninstall_module('webny_paragraphs_types');
+    print webny_configuration_enable_module('webny_paragraphs_types');
+
+    print webny_configuration_uninstall_module('webny_generic_content_type');
+    print webny_configuration_enable_module('webny_generic_content_type');    
+
+    // REFRESH
+    $config_factory = \Drupal::configFactory();
+    $profile_config = \Drupal::service('webny.profile_config');
+
+    // Import new/changed configuration.
+    $config_to_update = [
+      // UPDATE OPTIONAL FEATURES
+      'field.field.node.webny_generic_page.field_webny_generic_short_title',
+      'field.storage.node.field_webny_generic_short_title',
+      'core.entity_view_display.node.webny_generic_page.webny_announcement',
+      'core.entity_view_display.node.webny_generic_page.webny_featured_card',
+      'core.entity_form_display.node.webny_generic_page.default',
+      'core.entity_view_display.node.webny_generic_page.default',
+      'core.entity_view_display.node.webny_generic_page.teaser'
+    ];
+
+    $profile_config->bulkImport($config_to_update);
+
+    // Clear the config cache.
+    $config_factory->reset();
+
+}
 
 /**
  * Helper function to enable a Drupal module and print the result.
