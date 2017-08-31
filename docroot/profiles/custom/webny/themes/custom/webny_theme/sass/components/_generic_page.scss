@@ -205,10 +205,9 @@ aside#gpnav_sidebar {
   .contact--field-webny-contact-email,
   .contact--field-webny-contact-fax {
     font-family: $base-font !important;
-    font-weight: 800;
+    font-weight: 600;
     display: inline-block;
     margin-bottom: 20px;
-    // margin-left: 10px;
     padding-left: 33px;
   }
 
@@ -221,10 +220,6 @@ aside#gpnav_sidebar {
   .contact-address-value,
   .contact-email-value {
     line-height: $frame-base-line-height;
-    //   -moz-box-sizing: border-box;
-    //   box-sizing: border-box;
-    //   width: 50%;
-    //   padding-left: 35px;
     margin-left: 35px;
   }
 
@@ -263,7 +258,7 @@ aside#gpnav_sidebar {
   .social-media-wrapper .fieldset-wrapper a {
     color: $color-mono-black;
     text-transform: uppercase;
-    font-weight: 800;
+    font-weight: 600;
     font-size: 0.777em;
     display: inline;
     width: 45%;
@@ -377,16 +372,6 @@ aside#gpnav_sidebar {
     z-index: 2;
     padding: 0 20px;
   }
-  /* Contact Frame styling - starts here */
-  .generic-paragraphs{
-    .news-contact-area{
-      width: 100%;
-    }
-    fieldset.social-media-wrapper {
-      padding-bottom: 0;
-    }
-  }
-
 
   // needed to override global footer z-index for this content type since it has the left fixed positioned toc
   .webny-global-footer {
@@ -438,6 +423,29 @@ aside#gpnav_sidebar {
 }
 
 // ######################################################################### //
+/* CUSTOM SMALL TABLET VIEW */
+
+@media (max-width: 968px) {
+  /* Contact Frame styling - starts here */
+  .generic-paragraphs{
+    .news-contact-area{
+      width: 100%;
+    }
+    fieldset.social-media-wrapper {
+      padding-bottom: 0;
+    }
+    .contact-info-wrapper {
+      .contact-col-1,
+      .contact-col-2 {
+        flex-direction: row;
+        width: 100% !important;
+      }
+    }
+  }
+  /* Contact Frame styling - ends here */
+}
+
+// ######################################################################### //
 /* PC VIEW */
 @media (min-width: $min-pc) {
   aside#gpnav_sidebar {
@@ -456,4 +464,15 @@ aside#gpnav_sidebar {
       padding: 50px;
     }
   }
+  /* Contact Frame styling - starts here */
+  .generic-paragraphs {
+    .contact-info-wrapper {
+      padding-left: 0;
+      .contact-col-1,
+      .contact-col-2 {
+        width: 49%;
+      }
+    }
+  }
+   /* Contact Frame styling - ends here */
 }
