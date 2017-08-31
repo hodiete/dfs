@@ -368,6 +368,7 @@ Feature: Check for the existence and fields of content types
     When I am on "/node/add/webny_generic_page"
     Then I should not see "Access denied"
     And I should not get a 404 HTTP response
+    And I should see text matching "Short Title"
     And I should see text matching "Description"
     And I should see text matching "Summary/Description"
     And I should see text matching "Average Transaction Time \(in minutes\)"
@@ -381,7 +382,7 @@ Feature: Check for the existence and fields of content types
     And I should see text matching "Navigator / Table of Content Toggle"
     And I should not see text matching "Add Phone Contact"
 
-# Check for the settings of a content type
+# Check for the settings of a content type, incl display modes
 # CONTENT TYPE: Generic Page Content
 # ROLE: administrator
   Scenario: Determine if a content type for generic content page with the administrator role and the given settings
@@ -391,6 +392,10 @@ Feature: Check for the existence and fields of content types
     And the "edit-settings-handler-settings-target-bundles-drag-drop-webny-paragraph-contact-enabled" checkbox should be checked
     And the "edit-settings-handler-settings-target-bundles-drag-drop-webny-documents-enabled" checkbox should be checked
     And the "edit-settings-handler-settings-target-bundles-drag-drop-webny-wysiwyg-pgtype-enabled" checkbox should be checked
+    When I am on "/admin/structure/types/manage/webny_generic_page/display/webny_announcement"
+    Then I should not see "Access denied"
+    When I am on "/admin/structure/types/manage/webny_generic_page/display/webny_featured_card"
+    Then I should not see "Access denied"
 
 # Check for the existence of a content type
 # CONTENT TYPE: Landing Page
