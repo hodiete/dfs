@@ -3340,10 +3340,36 @@ function webny_configuration_update_8152() {
 /**
  * Implements hook_update_n().
  *
+ * INSTALL webny_callouts module
+ * REINSTALL text_formats
+ * - iojonep
+ */
+function webny_configuration_update_8153() {
+
+    // INSTALL WEBNY CALLOUTS
+    \Drupal::service('module_installer')
+        ->install(['webny_callouts']);
+
+    // REINSTALL TEXT FORMATS AND EDITORS
+
+    \Drupal::service('module_installer')
+        ->uninstall(['webny_text_formats']);
+    \Drupal::service('module_installer')
+        ->install(['webny_text_formats']);
+
+    \Drupal::service('module_installer')
+        ->uninstall(['webny_text_editors']);
+    \Drupal::service('module_installer')
+        ->install(['webny_text_editors']);
+}
+
+/**
+ * Implements hook_update_n().
+ *
  * Install and Enable the What's Related paragraph type
  *
  */
-function webny_configuration_update_8153() {
+function webny_configuration_update_8154() {
 
 
   // INSTALL THE WHAT'S RELATED FRAME
@@ -3371,7 +3397,7 @@ function webny_configuration_update_8153() {
  * Refresh Generic Page Content Type
  *
  */
-function webny_configuration_update_8154() {
+function webny_configuration_update_8155() {
 
 
   //REINSTALL GENERIC PAGE
