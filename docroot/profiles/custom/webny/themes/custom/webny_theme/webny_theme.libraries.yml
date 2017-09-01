@@ -92,6 +92,7 @@ waypoints:
 navigator:
   js:
     js/navigator.js: {}
+
   dependencies:
     - core/drupal
     - core/jquery
@@ -104,6 +105,12 @@ datatables:
   css:
     theme:
       ../../../libraries/datatables/media/css/jquery.dataTables.min.css: {}
+  dependencies:
+    - core/jquery
+
+callouts:
+  js:
+    js/callouts.js: {}
   dependencies:
     - core/jquery
 
