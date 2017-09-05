@@ -20,8 +20,18 @@
 
 <article{{ attributes.addClass(docclasses) }}>
     {{ title_prefix }}
-        {% for i in content %} 
-               {{ i }} 
-        {% endfor %}
+
+    <div  class="bio-frame-meta">
+        <h2>
+            <span class="frame-title">
+                 {{ content.group_webny_bio_meta_div.field_webny_contact_protitle }}
+            </span>
+            <span class="frame-headline">
+                {{ content.group_webny_bio_meta_div.field_webny_contact_name }}
+            </span>
+        </h2>
+    </div>
+        {{ content.group_webny_bio_meta_div|without('field_webny_contact_name', 'field_webny_contact_protitle') }}
+
     {{ title_suffix }}
 </article>

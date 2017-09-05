@@ -14,6 +14,7 @@ dependencies:
     - field.field.node.webny_generic_page.field_webny_gencp_metatags
     - field.field.node.webny_generic_page.field_webny_gencp_navtoggle
     - field.field.node.webny_generic_page.field_webny_gencp_sumdes
+    - field.field.node.webny_generic_page.field_webny_generic_short_title
     - node.type.webny_generic_page
   module:
     - datetime
@@ -33,7 +34,7 @@ third_party_settings:
         - field_webny_gencp_date
         - field_webny_gencp_herodesc
       parent_name: ''
-      weight: 4
+      weight: 5
       format_type: details
       format_settings:
         id: webny-hero-fields
@@ -46,7 +47,7 @@ third_party_settings:
         - field_webny_gencp_avgtranstime
         - field_webny_gencp_howtoapply
       parent_name: ''
-      weight: 5
+      weight: 6
       format_type: details
       format_settings:
         id: transaction-section
@@ -59,7 +60,7 @@ third_party_settings:
         - field_webny_gencp_navtoggle
         - field_webny_gencp_contentsect
       parent_name: ''
-      weight: 6
+      weight: 7
       format_type: details
       format_settings:
         id: sections-toc
@@ -74,7 +75,7 @@ mode: default
 content:
   created:
     type: datetime_timestamp
-    weight: 10
+    weight: 11
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -87,7 +88,7 @@ content:
     type: string_textfield
     region: content
   field_webny_gencp_contentcat:
-    weight: 3
+    weight: 4
     settings:
       match_operator: CONTAINS
       size: 60
@@ -144,7 +145,7 @@ content:
     type: link_default
     region: content
   field_webny_gencp_keywords:
-    weight: 2
+    weight: 3
     settings:
       match_operator: CONTAINS
       size: 60
@@ -153,7 +154,7 @@ content:
     type: entity_reference_autocomplete
     region: content
   field_webny_gencp_metatags:
-    weight: 7
+    weight: 8
     settings: {  }
     third_party_settings: {  }
     type: metatag_firehose
@@ -165,22 +166,30 @@ content:
     type: options_buttons
     region: content
   field_webny_gencp_sumdes:
-    weight: 1
+    weight: 2
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
     type: text_textfield
     region: content
+  field_webny_generic_short_title:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
   langcode:
     type: language_select
-    weight: 8
+    weight: 9
     region: content
     settings: {  }
     third_party_settings: {  }
   path:
     type: path
-    weight: 13
+    weight: 14
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -188,14 +197,14 @@ content:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 11
+    weight: 12
     region: content
     third_party_settings: {  }
   sticky:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 12
+    weight: 13
     region: content
     third_party_settings: {  }
   title:
@@ -208,7 +217,7 @@ content:
     third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete
-    weight: 9
+    weight: 10
     settings:
       match_operator: CONTAINS
       size: 60
