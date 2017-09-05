@@ -210,7 +210,7 @@ CKEDITOR.plugins.callouts = {
                     '<div class="body-callouts-inner">' +
                       '<sup data-order="'+ calloutMarker +'" ' +
                       'id="callout-order-'+curCalloutNum+'" ' +
-                      'class="callout-order inline-callout-order callout-order-'+ calloutMarker +'"><a id="'+this.hash+'">' + calloutMarker +'</a>' +
+                      'class="callout-order inline-callout-order callout-order-'+ calloutMarker +'"><a id="'+curCalloutNum+'">' + calloutMarker +'</a>' +
                       '</sup> ' +
                       calloutBody.trim() +
                     '</div></div>';
