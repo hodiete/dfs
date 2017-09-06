@@ -4,30 +4,44 @@
 //
 // Style guide: base.table
 
-table {
-  width: 100%;
-  th {
-    font-weight: 600;
-    text-align: left;
-    background-color: #eaeaea;
-    padding: 4px 5px;
-  }
-  td {
-    border: 0;
-    outline: none;
-    padding: 4px 5px;
-  }
-  thead {
-    border: 1px solid #d3d3d3;
-    border-bottom: 0;
-  }
-  tbody {
-    border: 1px solid #d3d3d3;
-  }
-  tbody tr:nth-child(even) {
-    background-color: #eef2f3;
-    border-top: 1px solid #d3d3d3;
-    border-bottom: 1px solid #d3d3d3;
-  }
+// ######################################################################### //
+/* START STYLING MOBILE FIRST UNDER HERE */
 
+
+// ######################################################################### //
+/* TABLET VIEW */
+@media (min-width: $min-tab) {
+
+}
+
+// ######################################################################### //
+/* PC VIEW */
+@media (min-width: $min-pc) {
+  table {
+    width: 100%;
+    th {
+      font-weight: 600;
+      text-align: left;
+      background-color: #eaeaea;
+      padding: 4px 5px;
+    }
+    td {
+      border: 0;
+      outline: none;
+      padding: 4px 5px;
+    }
+    thead {
+      border: 1px solid #d3d3d3;
+      border-bottom: 0;
+    }
+    tbody {
+      border: 1px solid #d3d3d3;
+    }
+    tbody tr:nth-child(even) {
+      background-color: #eef2f3;
+      border-top: 1px solid #d3d3d3;
+      border-bottom: 1px solid #d3d3d3;
+    }
+
+  }
 }
