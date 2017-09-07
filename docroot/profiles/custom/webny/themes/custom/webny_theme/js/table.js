@@ -12,7 +12,8 @@
     attach: function (context, settings) {
       $('table').once().dataTable({
         order: [[0, 'desc']],
-        paging: false
+        paging: true,
+        "pageLength": 25
       });
     }
   };
