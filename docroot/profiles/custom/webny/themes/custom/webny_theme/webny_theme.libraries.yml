@@ -92,8 +92,33 @@ waypoints:
 navigator:
   js:
     js/navigator.js: {}
+
   dependencies:
     - core/drupal
     - core/jquery
     - core/jquery.once
     - webny_theme/waypoints
+
+datatables:
+  js:
+    ../../../libraries/datatables/media/js/jquery.dataTables.min.js: {}
+  css:
+    theme:
+      ../../../libraries/datatables/media/css/jquery.dataTables.min.css: {}
+  dependencies:
+    - core/jquery
+
+callouts:
+  js:
+    js/callouts.js: {}
+  dependencies:
+    - core/jquery
+
+table:
+  js:
+    js/table.js: {}
+  dependencies:
+    - core/drupal
+    - core/jquery
+    - core/jquery.once
+    - webny_theme/datatables
