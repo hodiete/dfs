@@ -3366,7 +3366,7 @@ function webny_configuration_update_8153() {
 /**
  * Implements hook_update_n().
  *
- * Install and Enable the What's Related paragraph type
+ * Install and Enable the What's Related paragraph type and Refresh Generic Page Content Type
  *
  */
 function webny_configuration_update_8154() {
@@ -3376,30 +3376,6 @@ function webny_configuration_update_8154() {
   \Drupal::service('module_installer')
     ->install(['webny_what_s_related_frame']);
 
-  // REFRESH
-    $config_factory = \Drupal::configFactory();
-    $profile_config = \Drupal::service('webny.profile_config');
-
-    // Import new/changed configuration.
-    $config_to_update = [
-      // UPDATE OPTIONAL FEATURES
-      'core.entity_form_display.paragraph.webny_whats_related_pgtype.generic_form'
-    ];
-    $profile_config->bulkImport($config_to_update);
-    // Clear the config cache.
-    $config_factory->reset();
-}
-
-
-/**
- * Implements hook_update_n().
- *
- * Refresh Generic Page Content Type
- *
- */
-function webny_configuration_update_8155() {
-
-
   //REINSTALL GENERIC PAGE
   
   \Drupal::service('module_installer')
@@ -3407,13 +3383,14 @@ function webny_configuration_update_8155() {
   \Drupal::service('module_installer')
     ->install(['webny_generic_content_type']);
 
-// REFRESH
+  // REFRESH
     $config_factory = \Drupal::configFactory();
     $profile_config = \Drupal::service('webny.profile_config');
 
     // Import new/changed configuration.
     $config_to_update = [
       // UPDATE OPTIONAL FEATURES
+      'core.entity_form_display.paragraph.webny_whats_related_pgtype.generic_form',
       'field.field.node.webny_generic_page.field_webny_gencp_contentsect'
     ];
     $profile_config->bulkImport($config_to_update);
