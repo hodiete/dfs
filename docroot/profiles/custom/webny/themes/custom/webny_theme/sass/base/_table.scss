@@ -48,6 +48,23 @@
     p {
       font-size: 14px;
     }
-
+    .dataTable thead .sorting {
+      background-image: url("../../images/sort_both.svg");
+      .st0{fill:$color-primary;}
+    }
+    .dataTable thead .sorting_asc {
+      background-image: url("../../images/sort_asc.svg");
+      .st0{fill:$color-primary;}
+    }
+    .dataTable thead .sorting_desc {
+      background-image: url("../../images/sort_desc.svg");
+      .st0{fill:$color-primary;}
+    }
+    //.dataTable thead .sorting_asc_disabled {
+     // background-image: url("../images/sort_asc_disabled.png");
+    //}
+    //.dataTable thead .sorting_desc_disabled {
+     // background-image: url("../images/sort_desc_disabled.png");
+    //}
   }
 }
