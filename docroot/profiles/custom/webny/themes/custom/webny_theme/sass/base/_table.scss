@@ -51,15 +51,21 @@
     }
     .dataTable thead .sorting {
       background-image: url("/profiles/custom/webny/themes/custom/webny_theme/images/sort_both.svg");
-      .st0{fill:$color-primary;}
+      .st0 {
+        fill: $color-primary;
+      }
     }
     .dataTable thead .sorting_asc {
       background-image: url("/profiles/custom/webny/themes/custom/webny_theme/images/sort_asc.svg");
-      .st0{fill:$color-primary;}
+      .st0 {
+        fill: $color-primary;
+      }
     }
     .dataTable thead .sorting_desc {
       background-image: url("/profiles/custom/webny/themes/custom/webny_theme/images/sort_desc.svg");
-      .st0{fill:$color-primary;}
+      .st0 {
+        fill: $color-primary;
+      }
     }
     //.dataTable thead .sorting_asc_disabled {
      // background-image: url("../images/sort_asc_disabled.png");
@@ -67,5 +73,17 @@
     //.dataTable thead .sorting_desc_disabled {
      // background-image: url("../images/sort_desc_disabled.png");
     //}
+    .dataTables_info {
+      display: none;
+    }
+    .dataTables_filter {
+      label, input {
+        display:inline-block;
+        float:left;
+      }
+      label {
+        font-size: 14px;
+      }
+    }
   }
 }
