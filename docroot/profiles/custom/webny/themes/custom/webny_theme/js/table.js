@@ -14,7 +14,7 @@
         order: [],
         paging: true,
         "pageLength": 25, 
-        "pagingType": "full_numbers",
+        "pagingType": "simple_numbers",
         "lengthChange": false,
         "info": false
       });
