@@ -55,7 +55,7 @@ dependencies:
     - search_api
     - node
 _core:
-  default_config_hash: jwwpeNJl2_JiOAOLTsjXPuOVqTg367rBb6WRUm8HUMA
+  default_config_hash: QI1lr9tadiaMeXSQ9quR_f1zOpV6ow1Gd1wbqvdVRxU
 id: acquia_search_index
 name: 'Acquia Search Solr Index'
 description: ''
@@ -185,6 +185,8 @@ field_settings:
     datasource_id: 'entity:node'
     property_path: status
     type: boolean
+    indexed_locked: true
+    type_locked: true
   field_webny_contact_caption:
     label: 'Contact - Caption / Quote'
     datasource_id: 'entity:node'
@@ -489,6 +491,20 @@ field_settings:
     dependencies:
       config:
         - field.storage.node.field_webny_whitelist_stitle
+  uid:
+    label: null
+    datasource_id: 'entity:node'
+    property_path: uid
+    type: integer
+    indexed_locked: true
+    type_locked: true
+  node_grants:
+    label: 'Node access information'
+    property_path: search_api_node_grants
+    type: string
+    indexed_locked: true
+    type_locked: true
+    hidden: true
 datasource_settings:
   'entity:node':
     plugin_id: 'entity:node'
@@ -510,7 +526,121 @@ processor_settings:
     plugin_id: add_url
     settings: {  }
   aggregated_field: {  }
+  content_access:
+    weights:
+      preprocess_query: -30
+  highlight:
+    highlight: always
+    highlight_partial: false
+    excerpt: true
+    excerpt_length: 256
+    exclude_fields: {  }
+    prefix: '<strong>'
+    suffix: '</strong>'
+    weights:
+      postprocess_query: 0
+  html_filter:
+    all_fields: false
+    fields:
+      - rendered_item
+      - body
+      - title
+      - field_webny_gencp_sumdes
+      - field_webny_news_description
+      - field_webny_news_subtitles
+      - type
+      - field_webny_contact_caption
+      - field_webny_contact_address
+      - field_webny_contact_details
+      - field_webny_contact_pro_subtitle
+      - field_webny_contact_protitle
+      - field_webny_document_subtitle
+      - field_webny_landing_short_title
+      - field_webny_landing_subtitle2
+      - field_webny_landing_summary2
+      - field_webny_gencp_herodesc
+      - field_webny_generic_short_title
+      - field_webny_news_location
+      - field_webny_page_description
+      - field_webny_page_short_title
+      - field_webny_page_sub_title
+      - field_webny_whitelist_descript
+      - field_webny_whitelist_link_url
+      - field_webny_whitelist_stitle
+    title: true
+    alt: true
+    tags:
+      h1: 5
+      h2: 3
+      h3: 2
+      strong: 2
+      b: 2
+    weights:
+      preprocess_index: -15
+      preprocess_query: -15
+  ignorecase:
+    all_fields: false
+    fields:
+      - rendered_item
+      - body
+      - title
+      - field_webny_gencp_sumdes
+      - field_webny_news_description
+      - field_webny_news_subtitles
+      - type
+      - field_webny_contact_caption
+      - field_webny_contact_address
+      - field_webny_contact_details
+      - field_webny_contact_pro_subtitle
+      - field_webny_contact_protitle
+      - field_webny_document_subtitle
+      - field_webny_landing_short_title
+      - field_webny_landing_subtitle2
+      - field_webny_landing_summary2
+      - field_webny_gencp_herodesc
+      - field_webny_generic_short_title
+      - field_webny_news_location
+      - field_webny_page_description
+      - field_webny_page_short_title
+      - field_webny_page_sub_title
+      - field_webny_whitelist_descript
+      - field_webny_whitelist_link_url
+      - field_webny_whitelist_stitle
+    weights:
+      preprocess_index: -20
+      preprocess_query: -20
   rendered_item: {  }
+  transliteration:
+    all_fields: false
+    fields:
+      - rendered_item
+      - body
+      - title
+      - field_webny_gencp_sumdes
+      - field_webny_news_description
+      - field_webny_news_subtitles
+      - type
+      - field_webny_contact_caption
+      - field_webny_contact_address
+      - field_webny_contact_details
+      - field_webny_contact_pro_subtitle
+      - field_webny_contact_protitle
+      - field_webny_document_subtitle
+      - field_webny_landing_short_title
+      - field_webny_landing_subtitle2
+      - field_webny_landing_summary2
+      - field_webny_gencp_herodesc
+      - field_webny_generic_short_title
+      - field_webny_news_location
+      - field_webny_page_description
+      - field_webny_page_short_title
+      - field_webny_page_sub_title
+      - field_webny_whitelist_descript
+      - field_webny_whitelist_link_url
+      - field_webny_whitelist_stitle
+    weights:
+      preprocess_index: -20
+      preprocess_query: -20
 tracker_settings:
   default:
     plugin_id: default
