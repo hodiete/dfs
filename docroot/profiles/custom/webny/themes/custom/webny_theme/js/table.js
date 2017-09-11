@@ -15,7 +15,8 @@
         paging: true,
         "pageLength": 25, 
         "pagingType": "full_numbers",
-        "lengthChange": false
+        "lengthChange": false,
+        "info": false
       });
     }
   };
