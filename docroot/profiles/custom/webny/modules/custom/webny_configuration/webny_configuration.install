@@ -3358,6 +3358,20 @@ function webny_configuration_update_8153() {
 }
 
 /**
+ * REINSTALL search_api module
+ */
+function webny_configuration_update_8154() {
+
+  // REINSTALL TEXT FORMATS AND EDITORS
+
+  \Drupal::service('module_installer')
+    ->uninstall(['search_api']);
+  \Drupal::service('module_installer')
+    ->install(['search_api']);
+
+}
+
+/**
  * Helper function to enable a Drupal module and print the result.
  *
  * @param string $module_name
