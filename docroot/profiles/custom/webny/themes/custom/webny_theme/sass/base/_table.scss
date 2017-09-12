@@ -49,42 +49,45 @@
     p {
       font-size: 14px;
     }
-    .dataTable thead .sorting {
-      background-image: url("/profiles/custom/webny/themes/custom/webny_theme/images/sort_both.svg");
-      .st0 {
-        fill: $color-primary;
-      }
+  }
+  .dataTable thead .sorting {
+    background-image: url("/profiles/custom/webny/themes/custom/webny_theme/images/sort_both.svg");
+    .st0 {
+      fill: $color-primary;
     }
-    .dataTable thead .sorting_asc {
-      background-image: url("/profiles/custom/webny/themes/custom/webny_theme/images/sort_asc.svg");
-      .st0 {
-        fill: $color-primary;
-      }
+  }
+  .dataTable thead .sorting_asc {
+    background-image: url("/profiles/custom/webny/themes/custom/webny_theme/images/sort_asc.svg");
+    .st0 {
+      fill: $color-primary;
     }
-    .dataTable thead .sorting_desc {
-      background-image: url("/profiles/custom/webny/themes/custom/webny_theme/images/sort_desc.svg");
-      .st0 {
-        fill: $color-primary;
-      }
+  }
+  .dataTable thead .sorting_desc {
+    background-image: url("/profiles/custom/webny/themes/custom/webny_theme/images/sort_desc.svg");
+    .st0 {
+      fill: $color-primary;
     }
-    //.dataTable thead .sorting_asc_disabled {
-     // background-image: url("../images/sort_asc_disabled.png");
+  }
+  //.dataTable thead .sorting_asc_disabled {
+   // background-image: url("../images/sort_asc_disabled.png");
     //}
     //.dataTable thead .sorting_desc_disabled {
      // background-image: url("../images/sort_desc_disabled.png");
     //}
-    .dataTables_filter {
-      label, input {
-        display:inline-block;
-        float:left;
-      }
-      label {
-        font-size: 14px; margin-right:10px;
-      }
-      input {
-        width: 70%;
-        line-height: 18px;
-      }
+  .dataTables_filter {
+    width: $dataTable.table.width;
+    label, input {
+      display:inline-block;
+      float:left;
+    }
+    label {
+      font-size: 14px; 
+      margin-right:10px;
+    }
+    input {
+      width: 85%;
+      height: 1.625rem;
+      margin-left: 5%;
     }
   }
 }
