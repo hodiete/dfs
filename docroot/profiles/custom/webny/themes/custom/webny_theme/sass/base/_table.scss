@@ -56,13 +56,16 @@
     background-position: right;
     background-repeat: no-repeat;
     background-size: 15px;
+
     .st0 {
       fill: $color-primary;
       stroke: $color-primary;
     }
   }
   .dataTable thead .sorting {
-    background-image: url("/profiles/custom/webny/themes/custom/webny_theme/images/sort_both.svg");
+    mask-image: url("/profiles/custom/webny/themes/custom/webny_theme/images/sort_both.svg");
+    -webkit-mask-image: url("/profiles/custom/webny/themes/custom/webny_theme/images/sort_both.svg");
+    $background-color: $color-primary;
   }
   .dataTable thead .sorting_asc {
     background-image: url("/profiles/custom/webny/themes/custom/webny_theme/images/sort_asc.svg");
