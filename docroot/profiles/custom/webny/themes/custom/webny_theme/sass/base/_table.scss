@@ -50,32 +50,24 @@
       font-size: 14px;
     }
   }
-  .dataTable thead .sorting {
+  .dataTable thead .sorting, .dataTable thead .sorting_asc, .dataTable thead .sorting_desc  {
     background-image: url("/profiles/custom/webny/themes/custom/webny_theme/images/sort_both.svg");
     background-position: right;
     background-repeat: no-repeat;
     background-size: 15px;
     .st0 {
       fill: $color-primary;
+      stroke: $color-primary;
     }
+  }
+  .dataTable thead .sorting {
+    background-image: url("/profiles/custom/webny/themes/custom/webny_theme/images/sort_both.svg");
   }
   .dataTable thead .sorting_asc {
     background-image: url("/profiles/custom/webny/themes/custom/webny_theme/images/sort_asc.svg");
-    background-position: right;
-    background-repeat: no-repeat;
-    background-size: 15px;
-    .st0 {
-      fill: $color-primary;
-    }
   }
   .dataTable thead .sorting_desc {
     background-image: url("/profiles/custom/webny/themes/custom/webny_theme/images/sort_desc.svg");
-    background-position: right;
-    background-repeat: no-repeat;
-    background-size: 15px;
-    .st0 {
-      fill: $color-primary;
-    }
   }
   //.dataTable thead .sorting_asc_disabled {
    // background-image: url("../images/sort_asc_disabled.png");
