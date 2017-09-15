@@ -24,7 +24,6 @@
     th {
       font-weight: 600;
       text-align: left;
-      background-color: $color-mono-dark;
       padding: 4px 5px;
       color: #FFFFFF;
       font-size: 14px;
@@ -38,6 +37,7 @@
     thead {
       border: 1px solid #d3d3d3;
       border-bottom: 0;
+      background-color: $color-mono-dark;
     }
     tbody {
       border: 1px solid #d3d3d3;
@@ -56,6 +56,7 @@
     background-position: right;
     background-repeat: no-repeat;
     background-size: 15px;
+    background-color: $color-primary;
 
     .st0 {
       fill: $color-primary;
@@ -72,7 +73,8 @@
     mask: url("/profiles/custom/webny/themes/custom/webny_theme/images/sort_asc.svg") no-repeat right;
   }
   .dataTable thead .sorting_desc {
-    background-image: url("/profiles/custom/webny/themes/custom/webny_theme/images/sort_desc.svg");
+    -webkit-mask: url("/profiles/custom/webny/themes/custom/webny_theme/images/sort_desc.svg") no-repeat right;
+    mask: url("/profiles/custom/webny/themes/custom/webny_theme/images/sort_desc.svg") no-repeat right;
   }
   //.dataTable thead .sorting_asc_disabled {
    // background-image: url("../images/sort_asc_disabled.png");
