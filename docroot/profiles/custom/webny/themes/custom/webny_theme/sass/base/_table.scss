@@ -60,18 +60,19 @@
     .st0 {
       fill: $color-primary;
       stroke: $color-primary;
+      $background-color: $color-primary;
     }
   }
   .dataTable thead .sorting {
-    background-image: url("/profiles/custom/webny/themes/custom/webny_theme/images/sort_both.svg");
+    -webkit-mask: url("/profiles/custom/webny/themes/custom/webny_theme/images/sort_both.svg") no-repeat right;
+    mask: url("/profiles/custom/webny/themes/custom/webny_theme/images/sort_both.svg") no-repeat right;
   }
   .dataTable thead .sorting_asc {
-    background-image: url("/profiles/custom/webny/themes/custom/webny_theme/images/sort_asc.svg");
+    -webkit-mask: url("/profiles/custom/webny/themes/custom/webny_theme/images/sort_asc.svg") no-repeat right;
+    mask: url("/profiles/custom/webny/themes/custom/webny_theme/images/sort_asc.svg") no-repeat right;
   }
   .dataTable thead .sorting_desc {
-    background-image: url("data:image/svg+xml;charset=utf-8,<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 15 15" style="enable-background:new 0 0 19 19;" xml:space="preserve">
-<path class="st0" d="M9.5,19l-4.9-8.5l9.8,0C12.8,13.3,11.2,16.2,9.5,19L9.5,19z" fill="{$color-primary}"/>
-</svg>");
+    background-image: url("/profiles/custom/webny/themes/custom/webny_theme/images/sort_desc.svg");
   }
   //.dataTable thead .sorting_asc_disabled {
    // background-image: url("../images/sort_asc_disabled.png");
