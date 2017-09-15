@@ -52,21 +52,12 @@
     }
   }
   .dataTable thead .sorting, .dataTable thead .sorting_asc, .dataTable thead .sorting_desc  {
-    background-image: url("/profiles/custom/webny/themes/custom/webny_theme/images/sort_both.svg");
-    background-position: right;
-    background-repeat: no-repeat;
-    background-size: 15px;
     background-color: $color-primary;
-
-    .st0 {
-      fill: $color-primary;
-      stroke: $color-primary;
-      $background-color: $color-primary;
-    }
   }
   .dataTable thead .sorting {
     -webkit-mask: url("/profiles/custom/webny/themes/custom/webny_theme/images/sort_both.svg") no-repeat right;
     mask: url("/profiles/custom/webny/themes/custom/webny_theme/images/sort_both.svg") no-repeat right;
+    
   }
   .dataTable thead .sorting_asc {
     -webkit-mask: url("/profiles/custom/webny/themes/custom/webny_theme/images/sort_asc.svg") no-repeat right;
