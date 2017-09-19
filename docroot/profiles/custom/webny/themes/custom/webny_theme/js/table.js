@@ -20,17 +20,5 @@
       });
     }
   };
-    $.extend( extPagination, {
-		simple_numbers: function ( page, pages ) {
-			return [ '<', _numbers(page, pages), '>' ];
-		},
-
-	
-		// For testing and plug-ins to use
-		_numbers: _numbers,
-	
-		// Number of number buttons (including ellipsis) to show. _Must be odd!_
-		numbers_length: 5
-	} );
 
 })(jQuery, Drupal, this);
