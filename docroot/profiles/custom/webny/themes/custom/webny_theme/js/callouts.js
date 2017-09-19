@@ -51,20 +51,24 @@
         // WAYPOINT FUNCTION FOR FIXED RIGHTHAND NAVIGATION -- ACTION TRIGGER
         $('.actions').waypoint(function (direction) {
 
-          // GET THE FIRST ITEM IN THE ARRAY FOR THE BODY CALLOUTS SECTION
-          this.actionId = $('.webny-callout-inner').children('div:first-child').attr('id').substring(4, 20);
-          var calloutSectionId = '#webny-callouts-section-' + this.actionId.substring(0, 7);
+          // check if webny-callout-inner exists before trying to manipulate based on it
+          if ($('.webny-callout-inner').length) {
 
-          // REMOVE ALL ACTIVE CALLOUT SECTIONS
-          $('.webny-callouts-section').removeClass('activeCalloutSection');
+            // GET THE FIRST ITEM IN THE ARRAY FOR THE BODY CALLOUTS SECTION
+            this.actionId = $('.webny-callout-inner').children('div:first-child').attr('id').substring(4, 20);
+            var calloutSectionId = '#webny-callouts-section-' + this.actionId.substring(0, 7);
 
-          if (!$(calloutSectionId).hasClass('activeCalloutSection')) {
-            $(calloutSectionId).addClass('activeCalloutSection');
-          }
-
-          if (direction === 'up') {
             // REMOVE ALL ACTIVE CALLOUT SECTIONS
             $('.webny-callouts-section').removeClass('activeCalloutSection');
+
+            if (!$(calloutSectionId).hasClass('activeCalloutSection')) {
+              $(calloutSectionId).addClass('activeCalloutSection');
+            }
+
+            if (direction === 'up') {
+              // REMOVE ALL ACTIVE CALLOUT SECTIONS
+              $('.webny-callouts-section').removeClass('activeCalloutSection');
+            }
           }
 
         }, {
