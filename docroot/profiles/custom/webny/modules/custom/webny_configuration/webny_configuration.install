@@ -3372,6 +3372,20 @@ function webny_configuration_update_8154() {
 }
 
 /**
+ * INSTALL Simple hierarchical select module
+ */
+function webny_configuration_update_8155() {
+
+  // INSTALL SHS module
+
+  \Drupal::service('module_installer')
+    ->uninstall(['shs']);
+  \Drupal::service('module_installer')
+    ->install(['shs']);
+
+}
+
+/**
  * Helper function to enable a Drupal module and print the result.
  *
  * @param string $module_name
