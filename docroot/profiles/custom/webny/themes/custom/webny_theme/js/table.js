@@ -11,8 +11,12 @@
   Drupal.behaviors.table = {
     attach: function (context, settings) {
       $('table').once().dataTable({
-        order: [[0, 'desc']],
-        paging: false
+        order: [],
+        paging: true,
+        "pageLength": 25, 
+        "pagingType": "simple_numbers",
+        "lengthChange": false,
+        "info": false
       });
     }
   };

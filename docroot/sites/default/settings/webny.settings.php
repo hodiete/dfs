@@ -14,8 +14,38 @@ if ($is_ah_env) {
   }
 }
 if ($is_local_env) {
-$config['google_analytics.settings']['account'] = '';
-$config['acquia_search.settings']['disable_auto_switch'] = 'TRUE';
+  $config['google_analytics.settings']['account'] = '';
+  // CONNCETION TO DRUPAL VM SOLAR FOR LOCAL SOLR SEARCH
+  $config['search_api.server.acquia_search_server'] = [
+    'langcode' => 'en',
+    'status' => 'true',
+    'name' =>  'Acquia Search API Solr server',
+    'backend_config' => [
+      'connector' => 'basic_auth',
+      'connector_config' => [
+        'scheme' => 'http',
+        'host' => 'webny.dev',
+        'port' => '8983',
+        'path' => '/solr',
+        'core' => 'd8',
+        'timeout' => '5',
+        'index_timeout' => '5',
+        'optimize_timeout' => '10',
+        'commit_within' => '1000',
+        'username' => 'admin',
+        'password' => 'admin',
+        'solr_version' => '',
+        'http_method' => 'AUTO',
+      ],
+
+      'retrieve_data' => 'false',
+      'highlight_data' => 'false',
+      'excerpt' => 'false',
+      'skip_schema_check' => 'false',
+      'site_hash' => 'false',
+    ],
+
+  ];
 }
 
 

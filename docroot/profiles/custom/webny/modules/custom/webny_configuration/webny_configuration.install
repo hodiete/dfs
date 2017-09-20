@@ -3333,7 +3333,7 @@ function webny_configuration_update_8152() {
 
 }
 
-/*
+/**
  * INSTALL webny_callouts module
  * REINSTALL text_formats
  * - iojonep
@@ -3358,11 +3358,25 @@ function webny_configuration_update_8153() {
 }
 
 /**
+ * REINSTALL search_api module
+ */
+function webny_configuration_update_8154() {
+
+  // REINSTALL TEXT FORMATS AND EDITORS
+
+  \Drupal::service('module_installer')
+    ->uninstall(['search_api']);
+  \Drupal::service('module_installer')
+    ->install(['search_api']);
+
+}
+
+/**
  * Implements hook_update_n().
  *
  * refresh media module and entity browsers.
  */
-function webny_configuration_update_8154() {
+function webny_configuration_update_8155() {
 
     print webny_configuration_uninstall_module('webny_media');
     print webny_configuration_enable_module('webny_media');
