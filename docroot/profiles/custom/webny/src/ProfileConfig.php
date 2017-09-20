@@ -179,7 +179,9 @@ class ProfileConfig {
       $this->getProfileFeatureConfigPath('wysiwyg_frame') . '/install',
       $this->getProfileFeatureConfigPath('wysiwyg_frame') . '/optional',
       $this->getProfileFeatureConfigPath('get_involved_frame') . '/install',
-      $this->getProfileFeatureConfigPath('get_involved_frame') . '/optional',
+      $this->getProfileFeatureConfigPath('get_involved_frame') . '/optional', $this->getProfilePath() . '/modules/custom/webny_demo_content/modules/webny_demo_content_admin/' . self::CONFIG_DIR . '/optional',
+      $this->getProfileFeatureConfigPath('demo_content_view') . '/install',
+      $this->getProfileFeatureConfigPath('demo_content_view') . '/optional',
 
     ]);
 

@@ -2,7 +2,6 @@ langcode: en
 status: true
 dependencies:
   config:
-    - media_entity.bundle.image
     - views.view.media_browser
   module:
     - entity_browser_entity_form
@@ -25,6 +24,7 @@ widgets:
       view: media_browser
       view_display: entity_browser_1
       submit_text: 'Select media'
+      auto_select: false
     uuid: 05782e5e-1928-4606-8b3f-f7c333701c25
     weight: -10
     label: 'Select existing'
