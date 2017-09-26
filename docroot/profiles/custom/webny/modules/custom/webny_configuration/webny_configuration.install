@@ -3372,6 +3372,35 @@ function webny_configuration_update_8154() {
 }
 
 /**
+ * Implements hook_update_n().
+ *
+ * refresh media module and entity browsers.
+ */
+function webny_configuration_update_8155() {
+
+    print webny_configuration_uninstall_module('webny_media');
+    print webny_configuration_enable_module('webny_media');
+
+    // REFRESH
+    $config_factory = \Drupal::configFactory();
+    $profile_config = \Drupal::service('webny.profile_config');
+
+    // Import new/changed configuration.
+    $config_to_update = [
+      // UPDATE OPTIONAL FEATURES
+      'entity_browser.browser.image_browser',
+      'entity_browser.browser.media_browser',
+      'entity_browser.browser.multiple_image_browser'
+    ];
+
+    $profile_config->bulkImport($config_to_update);
+
+    // Clear the config cache.
+    $config_factory->reset();
+
+}
+
+/**
  * Helper function to enable a Drupal module and print the result.
  *
  * @param string $module_name
