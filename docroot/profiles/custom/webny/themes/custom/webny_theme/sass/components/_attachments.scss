@@ -115,7 +115,26 @@
   margin-top: 10px;
 }
 
-.download a {
+/*a div.download{
+  &:hover{
+    text-decoration:none;
+  }
+  &:link:hover{
+    text-decoration:none;
+  }
+  &:a:visited{
+    text-decoration:none;
+  }
+}*/
+
+a.download-link {
+  text-decoration: none;
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.download p {
   font-family: $base-font;
   font-size: 0.75rem;
   font-weight: 800;
@@ -134,7 +153,8 @@
 	}
   &:hover{
 	color: $color-mono-black;
-	}	
+    text-decoration: underline;
+	}
 }
 // ######################################################################### //
 /* TABLET VIEW */
