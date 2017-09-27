@@ -9,6 +9,7 @@ dependencies:
     - node.type.webny_news
     - node.type.webny_page
     - node.type.webny_whitelisted_content
+    - system.menu.admin
   module:
     - node
     - user
@@ -696,6 +697,8 @@ display:
       defaults:
         title: false
         header: false
+        filters: false
+        filter_groups: false
       header:
         area:
           id: area
@@ -707,9 +710,133 @@ display:
           empty: true
           tokenize: false
           content:
-            value: "<h2 class=\"webny_dashboard\">Content List</h2>\n<p><em>Use this list to find and filter content that is not published.</em></p>"
+            value: "<h2 class=\"webny_dashboard\">Content List</h2>\n<p><em>Use this list to find and filter content in any moderation state or publication status.</em></p>"
             format: full_html
           plugin_id: text
+      menu:
+        type: normal
+        title: 'Content List'
+        description: 'Use this list to view all content including unpublished works.'
+        expanded: false
+        parent: system.admin_content
+        weight: -15
+        context: '0'
+        menu_name: admin
+      filters:
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: in
+          value:
+            all: all
+            webny_contact: webny_contact
+            webny_document: webny_document
+            webny_generic_page: webny_generic_page
+            webny_landing_page: webny_landing_page
+            webny_news: webny_news
+            webny_page: webny_page
+            webny_whitelisted_content: webny_whitelisted_content
+          group: 1
+          exposed: true
+          expose:
+            operator_id: type_op
+            label: 'Content type'
+            description: ''
+            use_operator: false
+            operator: type_op
+            identifier: type
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+              workflow_author: '0'
+              workflow_approver: '0'
+              media_creator: '0'
+              workflow_publisher: '0'
+              media_manager: '0'
+              site_builder: '0'
+              site_admin: '0'
+              user_admin: '0'
+              content_author: '0'
+            reduce: true
+          is_grouped: false
+          group_info:
+            label: 'Content type'
+            description: null
+            identifier: type
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items:
+              1: {  }
+              2: {  }
+              3: {  }
+          entity_type: node
+          entity_field: type
+          plugin_id: bundle
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: '='
+          value: All
+          group: 1
+          exposed: true
+          expose:
+            operator_id: ''
+            label: 'Published status'
+            description: ''
+            use_operator: false
+            operator: status_op
+            identifier: status
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+              workflow_author: '0'
+              workflow_approver: '0'
+              media_creator: '0'
+              workflow_publisher: '0'
+              media_manager: '0'
+              site_builder: '0'
+              site_admin: '0'
+              user_admin: '0'
+              content_author: '0'
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          plugin_id: boolean
+          entity_type: node
+          entity_field: status
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
     cache_metadata:
       max-age: 0
       contexts:
@@ -723,16 +850,18 @@ display:
   page_2:
     display_plugin: page
     id: page_2
-    display_title: 'Reviewer''s Content List'
+    display_title: 'Unpublished Content List'
     position: 1
     display_options:
       display_extenders: {  }
-      path: content/reviewers
+      path: content/unpublished
       display_description: ''
-      title: 'Reviewer''s Content List'
+      title: 'Unpublished Content List'
       defaults:
         title: false
         header: false
+        filters: false
+        filter_groups: false
       header:
         area:
           id: area
@@ -744,9 +873,133 @@ display:
           empty: true
           tokenize: false
           content:
-            value: "<h2 class=\"webny_dashboard\">Reviewer's List</h2>\n<p><em>Use this list to find and filter content that is not published.</em></p>"
+            value: "<h2 class=\"webny_dashboard\">Unpublished Content List</h2>\n<p><em>Use this list to find all content that is unpublished. You may use filters to find specific content.</em></p>"
             format: full_html
           plugin_id: text
+      menu:
+        type: normal
+        title: 'Unpublished Content'
+        description: 'Use this page to view unpublished content. Filtering options are available.'
+        expanded: false
+        parent: system.admin_content
+        weight: -14
+        context: '0'
+        menu_name: admin
+      filters:
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: in
+          value:
+            all: all
+            webny_contact: webny_contact
+            webny_document: webny_document
+            webny_generic_page: webny_generic_page
+            webny_landing_page: webny_landing_page
+            webny_news: webny_news
+            webny_page: webny_page
+            webny_whitelisted_content: webny_whitelisted_content
+          group: 1
+          exposed: true
+          expose:
+            operator_id: type_op
+            label: 'Content type'
+            description: ''
+            use_operator: false
+            operator: type_op
+            identifier: type
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+              workflow_author: '0'
+              workflow_approver: '0'
+              media_creator: '0'
+              workflow_publisher: '0'
+              media_manager: '0'
+              site_builder: '0'
+              site_admin: '0'
+              user_admin: '0'
+              content_author: '0'
+            reduce: true
+          is_grouped: false
+          group_info:
+            label: 'Content type'
+            description: null
+            identifier: type
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items:
+              1: {  }
+              2: {  }
+              3: {  }
+          entity_type: node
+          entity_field: type
+          plugin_id: bundle
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: '='
+          value: '0'
+          group: 1
+          exposed: true
+          expose:
+            operator_id: ''
+            label: 'Published status'
+            description: ''
+            use_operator: false
+            operator: status_op
+            identifier: status
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+              workflow_author: '0'
+              workflow_approver: '0'
+              media_creator: '0'
+              workflow_publisher: '0'
+              media_manager: '0'
+              site_builder: '0'
+              site_admin: '0'
+              user_admin: '0'
+              content_author: '0'
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          plugin_id: boolean
+          entity_type: node
+          entity_field: status
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
     cache_metadata:
       max-age: 0
       contexts:
