@@ -73,8 +73,6 @@ install:
   # Install proper version of node for front end tasks.
   - nvm install 0.12.7
   - nvm use 0.12.7
-  # Make sure node-sass is the compatible version
-  - npm rebuild node-sass
   # Initialize xvfb (see https://docs.travis-ci.com/user/gui-and-headless-browsers)
   - sudo apt-get install xvfb
   - export DISPLAY=:99.0
