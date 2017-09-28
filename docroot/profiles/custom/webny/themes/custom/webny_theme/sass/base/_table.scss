@@ -4,12 +4,39 @@
 //
 // Style guide: base.table
 
-
+// ######################################################################### //
+/* Mobile responsive styles */
+@media (max-width: $min-tab) {
+  table {
+    width: 100% !important; //responsive
+    td {
+      display: block; //responsive
+      text-align: left;
+    }
+     //td:before styles are for responsive table
+    td:before { 
+      content: attr(data-th); 
+      display: inline-block;
+      text-align: left;  
+      width: 6rem;
+      font-weight: bold;
+    }
+    thead {
+      display: none; //responsive
+    }
+    //use to make top row of each section dark with white text
+    /*tr td:first-child {
+      background: $color-mono-dark; 
+      font-weight: bold; //only if top row 
+      color: #FFFFFF;
+    }*/
+  }
+}
 
 // ######################################################################### //
 /* START STYLING MOBILE FIRST UNDER HERE */
+
 table {
-    width: 100%;
     th {
       font-weight: 600;
       text-align: left;
@@ -42,12 +69,15 @@ table {
   }
   .dataTable thead .sorting {
     background: url("/profiles/custom/webny/libraries/datatables/media/images/sort_both.png") no-repeat right;
+    cursor: pointer;
   }
   .dataTable thead .sorting_asc {
     background: url("/profiles/custom/webny/libraries/datatables/media/images/sort_asc.png") no-repeat right;
+    cursor: pointer;
   }
   .dataTable thead .sorting_desc {
     background: url("/profiles/custom/webny/libraries/datatables/media/images/sort_desc.png") no-repeat right;
+    cursor: pointer;
   }
   //.dataTable thead .sorting_asc_disabled {
    // background-image: url("../images/sort_asc_disabled.png");
@@ -99,14 +129,14 @@ table {
 }
   .dataTables_filter {
     label, input {
-      display:inline-block !important;
+      display: inline-block !important;
     }
     label {
       font-size: 14px; 
       width: 100%;
     }
     input {
-      width: 30% !important;
+      width: 80% !important;
       height: 1.625rem !important;
       margin-left: 3% !important;
     }
@@ -115,11 +145,21 @@ table {
 // ######################################################################### //
 /* TABLET VIEW */
 @media (min-width: $min-tab) {
-
+  table {
+    width: 100% !important; //responsive
+  }
+  .dataTables_filter {
+    width: 50% !important;
+  }
 }
 
 // ######################################################################### //
 /* PC VIEW */
 @media (min-width: $min-pc) {
-  
+  table {
+    width: auto; //leave as user inputed width
+  }
+  .dataTables_filter {
+    width: 30% !important;
+  }
 }

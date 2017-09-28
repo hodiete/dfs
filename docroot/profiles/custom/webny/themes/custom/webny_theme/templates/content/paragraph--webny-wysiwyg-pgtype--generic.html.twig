@@ -23,9 +23,10 @@
 {# DISPLAY THE PARAGRAPH #}
 {% block paragraph %}
     <section id="{{ 'toc_' ~ paragraph.id() }}" rel="{{ gp_status }}" class="generic_para {{ paragraph.bundle() }} {{ gp_enabled }}" >
-        {#{{ content.field_webny_wysiwyg_title }}
-        {{ content.field_webny_wysiwyg_body }}#}
-        {{ content|without('field_webny_wysiwyg_toc') }}
+        <h2>
+            {{ paragraph.field_webny_wysiwyg_title.value }}
+        </h2>
+        {{ content|without('field_webny_wysiwyg_toc', 'field_webny_wysiwyg_title') }}
         <div class="gp-next-section">
             <div class="gp-next-section-links">
                 <p>Next Section</p>
