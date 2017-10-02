@@ -105,14 +105,15 @@
       // next section click event
       $('.gp-next-section-title').once().click(function (e) {
         e.preventDefault();
-        var hash = $(this).text().toLowerCase().replace(/ /g, '-');
+        var hash = $(this).text().toLowerCase().trim().replace(/[^a-zA-Z0-9]/g, '-');
         $('#gpnav_sidebar li a[href="#' + hash + '"]').trigger('click');
       });
 
       // next section continue click event
       $('.gp-next-section-link').once().click(function (e) {
         e.preventDefault();
-        var hash = $(this).parent().parent().children('.gp-next-section-title').text().toLowerCase().replace(/ /g, '-');
+        var hash = $(this).parent().parent().children('.gp-next-section-title').text().toLowerCase().trim().replace(/[^a-zA-Z0-9]/g, '-');
+        console.log(hash);
         $('#gpnav_sidebar li a[href="#' + hash + '"]').trigger('click');
       });
 
