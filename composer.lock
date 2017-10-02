@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "52e427463caee5b9e64973b61c9faf98",
+    "content-hash": "b50a802e753f70234fbdae75073d088d",
     "packages": [
         {
             "name": "acquia/blt",
@@ -723,6 +723,34 @@
             "time": "2017-04-04T11:38:05+00:00"
         },
         {
+            "name": "ckeditor/indentblock",
+            "version": "4.7.3",
+            "dist": {
+                "type": "zip",
+                "url": "http://download.ckeditor.com/indentblock/releases/indentblock_4.7.3.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "type": "ckeditor-library",
+            "extra": {
+                "installer-name": "indentblock"
+            }
+        },
+        {
+            "name": "ckeditor/liststyle",
+            "version": "4.7.3",
+            "dist": {
+                "type": "zip",
+                "url": "http://download.ckeditor.com/liststyle/releases/liststyle_4.7.3.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "type": "ckeditor-library",
+            "extra": {
+                "installer-name": "liststyle"
+            }
+        },
+        {
             "name": "composer/installers",
             "version": "v1.4.0",
             "source": {
@@ -1194,7 +1222,7 @@
                 "dot",
                 "notation"
             ],
-            "time": "2017-01-20 21:14:22"
+            "time": "2017-01-20T21:14:22+00:00"
         },
         {
             "name": "dflydev/placeholder-resolver",
@@ -2371,7 +2399,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://ftp.drupal.org/files/projects/allowed_formats-8.x-1.1.zip",
-                "reference": "8.x-1.1",
+                "reference": null,
                 "shasum": "b7bfc78d7e64f1df37ca6cad118a1ff8f7228b64"
             },
             "require": {
@@ -2435,7 +2463,7 @@
             "keywords": [
                 "Drupal"
             ],
-            "time": "2017-02-16 13:50:06"
+            "time": "2017-02-16T13:50:06+00:00"
         },
         {
             "name": "drupal/better_exposed_filters",
@@ -2495,7 +2523,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://ftp.drupal.org/files/projects/blazy-8.x-1.0-rc2.zip",
-                "reference": "8.x-1.0-rc2",
+                "reference": null,
                 "shasum": "242f3022b039c6fd3b98f6ce1955d295119b4b5a"
             },
             "require": {
@@ -2537,6 +2565,74 @@
             "support": {
                 "source": "http://cgit.drupalcode.org/blazy",
                 "issues": "https://drupal.org/project/issues/blazy"
+            }
+        },
+        {
+            "name": "drupal/ckeditor_indentblock",
+            "version": "1.x-dev",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupal.org/project/ckeditor_indentblock",
+                "reference": "f2551f7898de486be46a5560dc5bac23ed9f231e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/ckeditor_indentblock-8.x-1.x-dev.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "type": "drupal-module"
+        },
+        {
+            "name": "drupal/ckeditor_liststyle",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupal.org/project/ckeditor_liststyle",
+                "reference": "8.x-1.1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/ckeditor_liststyle-8.x-1.1.zip",
+                "reference": "8.x-1.1",
+                "shasum": "3117c878bc709fe649cf5fdf044a509bbe4b4d9d"
+            },
+            "require": {
+                "drupal/core": "*"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-1.x": "1.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-1.1",
+                    "datestamp": "1483281843",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Osman Gormus (osman)",
+                    "homepage": "https://www.drupal.org/u/osman",
+                    "role": "Maintainer"
+                }
+            ],
+            "description": "This plugin adds numbered list and ordered list properties dialogs (available in context menu) in CKEditor.",
+            "homepage": "http://drupal.org/project/ckeditor_liststyle",
+            "keywords": [
+                "Drupal"
+            ],
+            "support": {
+                "source": "http://cgit.drupalcode.org/ckeditor_liststyle",
+                "issues": "http://drupal.org/project/issues/ckeditor_liststyle"
             }
         },
         {
@@ -3532,7 +3628,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://ftp.drupal.org/files/projects/dropzonejs-8.x-1.0-alpha7.zip",
-                "reference": "8.x-1.0-alpha7",
+                "reference": null,
                 "shasum": "62fc6d46cee1d5fa9885bab3e65b3638172311f6"
             },
             "require": {
@@ -3822,7 +3918,7 @@
                 "issues": "https://www.drupal.org/project/issues/embed",
                 "irc": "irc://irc.freenode.org/drupal-media"
             },
-            "time": "2017-03-29 07:02:44"
+            "time": "2017-03-29T07:02:44+00:00"
         },
         {
             "name": "drupal/entity",
@@ -4025,7 +4121,7 @@
                 "issues": "https://www.drupal.org/project/issues/entity_embed",
                 "irc": "irc://irc.freenode.org/drupal-media"
             },
-            "time": "2017-03-29 03:07:13"
+            "time": "2017-03-29T03:07:13+00:00"
         },
         {
             "name": "drupal/entity_reference_revisions",
@@ -4038,7 +4134,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://ftp.drupal.org/files/projects/entity_reference_revisions-8.x-1.3.zip",
-                "reference": "8.x-1.3",
+                "reference": null,
                 "shasum": "78aebb58efbbfcbb2faa40a1afc0830312b32631"
             },
             "require": {
@@ -4092,7 +4188,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://ftp.drupal.org/files/projects/facets-8.x-1.0-alpha11.zip",
-                "reference": "8.x-1.0-alpha11",
+                "reference": null,
                 "shasum": "7b53517e7049048a4379a5e30a2ca4a243ca1fe9"
             },
             "require": {
@@ -4531,7 +4627,7 @@
                 "issues": "http://drupal.org/project/issues/libraries",
                 "irc": "irc://irc.freenode.org/drupal-contribute"
             },
-            "time": "2017-03-15 17:04:08"
+            "time": "2017-03-15T17:04:08+00:00"
         },
         {
             "name": "drupal/linked_field",
@@ -4576,7 +4672,7 @@
             "support": {
                 "source": "http://cgit.drupalcode.org/linked_field"
             },
-            "time": "2017-04-28 16:28:28"
+            "time": "2017-04-28T16:28:28+00:00"
         },
         {
             "name": "drupal/login_security",
@@ -4878,7 +4974,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://ftp.drupal.org/files/projects/media_entity_image-8.x-1.2.zip",
-                "reference": "8.x-1.2",
+                "reference": null,
                 "shasum": "d02d1d793a50ea3b9cb5a3219472fdd27980f4f3"
             },
             "require": {
@@ -5623,7 +5719,7 @@
             "support": {
                 "source": "http://cgit.drupalcode.org/security_review"
             },
-            "time": "2016-10-20 15:43:48"
+            "time": "2016-10-20T15:43:48+00:00"
         },
         {
             "name": "drupal/services",
@@ -5636,7 +5732,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://ftp.drupal.org/files/projects/services-8.x-4.0-beta4.zip",
-                "reference": "8.x-4.0-beta4",
+                "reference": null,
                 "shasum": "d5a1dde872837395bc59247df20a3e6066833d69"
             },
             "require": {
@@ -5694,7 +5790,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://ftp.drupal.org/files/projects/shield-8.x-1.1.zip",
-                "reference": "8.x-1.1",
+                "reference": null,
                 "shasum": "94d4c51c110b9bcd3cd002ee403d46ce8ec5b384"
             },
             "require": {
@@ -6077,7 +6173,7 @@
             "support": {
                 "source": "http://cgit.drupalcode.org/video_embed_brightcove"
             },
-            "time": "2016-04-05 08:35:39"
+            "time": "2016-04-05T08:35:39+00:00"
         },
         {
             "name": "drupal/video_embed_field",
@@ -6228,7 +6324,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://ftp.drupal.org/files/projects/workbench_moderation-8.x-1.2.zip",
-                "reference": "8.x-1.2",
+                "reference": null,
                 "shasum": "3d37b29ed1e7fbf398160fe2494abc4361e4341c"
             },
             "require": {
@@ -7388,6 +7484,48 @@
                 "php"
             ],
             "time": "2017-09-02T17:10:46+00:00"
+        },
+        {
+            "name": "oomphinc/composer-installers-extender",
+            "version": "v1.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/oomphinc/composer-installers-extender.git",
+                "reference": "ca1c4b16b0905c81d1e77e608f36a2eff1a56f56"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/oomphinc/composer-installers-extender/zipball/ca1c4b16b0905c81d1e77e608f36a2eff1a56f56",
+                "reference": "ca1c4b16b0905c81d1e77e608f36a2eff1a56f56",
+                "shasum": ""
+            },
+            "require": {
+                "composer-plugin-api": "^1.0",
+                "composer/installers": "^1.0"
+            },
+            "type": "composer-plugin",
+            "extra": {
+                "class": "OomphInc\\ComposerInstallersExtender\\Plugin"
+            },
+            "autoload": {
+                "psr-4": {
+                    "OomphInc\\ComposerInstallersExtender\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Stephen Beemsterboer",
+                    "email": "stephen@oomphinc.com",
+                    "homepage": "https://github.com/balbuf"
+                }
+            ],
+            "description": "Extend the composer/installers plugin to accept any arbitrary package type.",
+            "homepage": "http://www.oomphinc.com/",
+            "time": "2017-03-31T16:57:39+00:00"
         },
         {
             "name": "paragonie/random_compat",
@@ -11647,7 +11785,8 @@
         "drupal/linked_field": 20,
         "guzzlehttp/guzzle": 20,
         "roave/security-advisories": 20,
-        "drupal/video_embed_brightcove": 20
+        "drupal/video_embed_brightcove": 20,
+        "drupal/ckeditor_indentblock": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
