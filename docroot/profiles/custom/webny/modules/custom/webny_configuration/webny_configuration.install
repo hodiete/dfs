@@ -3410,12 +3410,6 @@ function webny_configuration_update_8156() {
 
   \Drupal::service('module_installer')
     ->install(['ckeditor_liststyle']);
-
-  // Reinstall text editor configuration.
-  \Drupal::service('module_installer')
-      ->uninstall(['webny_text_editors']);
-  \Drupal::service('module_installer')
-      ->install(['webny_text_editors']);
 }
 
 /**
