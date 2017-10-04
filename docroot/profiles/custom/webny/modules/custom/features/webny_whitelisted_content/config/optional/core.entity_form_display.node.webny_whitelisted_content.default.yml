@@ -4,6 +4,7 @@ dependencies:
   config:
     - entity_browser.browser.image_browser
     - field.field.node.webny_whitelisted_content.body
+    - field.field.node.webny_whitelisted_content.field_webny_filter_terms
     - field.field.node.webny_whitelisted_content.field_webny_whitelist_agency_key
     - field.field.node.webny_whitelisted_content.field_webny_whitelist_date
     - field.field.node.webny_whitelisted_content.field_webny_whitelist_descript
@@ -29,6 +30,15 @@ content:
     weight: 3
     settings: {  }
     third_party_settings: {  }
+    region: content
+  field_webny_filter_terms:
+    weight: 26
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
     region: content
   field_webny_whitelist_agency_key:
     weight: 11
