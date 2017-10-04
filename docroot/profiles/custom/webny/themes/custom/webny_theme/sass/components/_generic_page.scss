@@ -23,13 +23,20 @@ $gp-frame-button: $color-mono-white !default;
   letter-spacing: 1px;
   position: relative;
   overflow: hidden;
-
+  .action-label {
+    visibility: hidden;
+  }
   &.stuck {
     position: fixed;
     width: 100%;
     top: 0px;
     z-index: 100;
+    .action-label {
+      visibility: visible;
+      color: #fff;
   }
+  }
+  
 }
 
 // ######################################################################### //
