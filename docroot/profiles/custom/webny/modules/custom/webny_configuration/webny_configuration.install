@@ -3413,6 +3413,18 @@ function webny_configuration_update_8156() {
 }
 
 /**
+ * Install CKEditor List Styles and Indent Block modules.
+ */
+function webny_configuration_update_8156() {
+
+  \Drupal::service('module_installer')
+    ->install(['ckeditor_indentblock']);
+
+  \Drupal::service('module_installer')
+    ->install(['ckeditor_liststyle']);
+}
+
+/**
  * Helper function to enable a Drupal module and print the result.
  *
  * @param string $module_name
