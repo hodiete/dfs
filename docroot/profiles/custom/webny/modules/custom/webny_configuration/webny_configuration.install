@@ -3489,6 +3489,13 @@ function webny_configuration_update_8159() {
 }
 
 /**
+ * Remove the deprecated Subject Heading vocabulary
+ */
+function webny_configuration_update_8157() {
+  \Drupal\taxonomy\Entity\Vocabulary::load('webny_news_subject_heading')->delete();
+}
+
+/**
  * Helper function to enable a Drupal module and print the result.
  *
  * @param string $module_name
