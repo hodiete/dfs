@@ -3,6 +3,7 @@ status: true
 dependencies:
   config:
     - field.field.node.webny_page.body
+    - field.field.node.webny_page.field_webny_filter_terms
     - field.field.node.webny_page.field_webny_page_agency_keywords
     - field.field.node.webny_page.field_webny_page_attdocs_eref
     - field.field.node.webny_page.field_webny_page_description
@@ -30,6 +31,14 @@ content:
     weight: 7
     settings: {  }
     third_party_settings: {  }
+    region: content
+  field_webny_filter_terms:
+    weight: 14
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
     region: content
   field_webny_page_agency_keywords:
     weight: 9
@@ -112,14 +121,14 @@ content:
     region: content
   links:
     weight: 1
+    region: content
     settings: {  }
     third_party_settings: {  }
-    region: content
   workbench_moderation_control:
     weight: 0
+    region: content
     settings: {  }
     third_party_settings: {  }
-    region: content
 hidden:
   field_webny_page_short_title: true
   langcode: true
