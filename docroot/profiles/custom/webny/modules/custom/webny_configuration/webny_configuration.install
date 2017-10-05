@@ -3410,7 +3410,6 @@ function webny_configuration_update_8156() {
 
   \Drupal::service('module_installer')
     ->install(['shs']);
-
 }
 
 
@@ -3597,8 +3596,16 @@ function webny_configuration_update_8161() {
 
 /*
  * Install address and event content type modules.
+ * Refreshes webny_global_and_agency_taxonomies & webny_contentcat_taxonomy.
+ * Enables event modules.
  */
 function webny_configuration_update_8162() {
+  // Refresh taxonomies modules to include additional field storage.
+  print webny_configuration_uninstall_module('webny_global_and_agency_taxonomies');
+  print webny_configuration_enable_module('webny_global_and_agency_taxonomies');
+  print webny_configuration_uninstall_module('webny_contentcat_taxonomy');
+  print webny_configuration_enable_module('webny_contentcat_taxonomy');
+
   // Install address and event modules.
   print webny_configuration_enable_module('address');
   print webny_configuration_enable_module('webny_event_content_type');

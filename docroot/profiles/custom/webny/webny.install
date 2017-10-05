@@ -70,5 +70,9 @@ function webny_install() {
   \Drupal::service('module_installer')
       ->install(['webny_configuration']);
 
-
+  // Import unmet dependencies then enable event module.
+  \Drupal::service('features.manager')
+    ->import(['webny_media']);
+  \Drupal::service('module_installer')
+    ->install(['webny_event_content_type']);
 }
