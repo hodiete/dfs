@@ -31,22 +31,25 @@ $gp-frame-button: $color-mono-white !default;
     width: 100%;
     top: 0px;
     z-index: 100;
-    .action-label {
+    .webny-action-label {
       visibility: visible;
       color: #fff;
       font-family: "ProximaNovaExtrabold";
       font-size: 22px;
+      display: inline-block;
+      padding: 10px 0;
   }
   }
 .webny-action-bar {
   display: inline;
-  float: left;
   overflow: hidden;
 }
 .webny-action-share-button {
   display: inline-block;
-  width: 20%;
+  width: 5%;
+  float: right;
   cursor: pointer;
+  padding: 10px 0;
 
   .icon-email {
     font-size: 12.8px;
@@ -70,6 +73,12 @@ $gp-frame-button: $color-mono-white !default;
     &:hover {
       color: $featured-card-icon-color-hover;
     }
+  }
+  .icon-arrow-up {
+    font-size: 12.8px;
+    color: #fff;
+    &:hover {
+      color: $featured-card-icon-color-hover;
   }
   }
 }
