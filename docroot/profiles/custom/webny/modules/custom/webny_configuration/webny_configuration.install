@@ -3595,6 +3595,30 @@ function webny_configuration_update_8161() {
 }
 
 
+/*
+ * Install address and event content type modules.
+ */
+function webny_configuration_update_8162() {
+  // Install address and event modules.
+  print webny_configuration_enable_module('address');
+  print webny_configuration_enable_module('webny_event_content_type');
+
+  // REFRESH
+  $config_factory = \Drupal::configFactory();
+  $profile_config = \Drupal::service('webny.profile_config');
+
+  // Import new/changed configuration.
+  $config_to_update = [
+    // Update event content type permissions.
+    'user.role.content_author'
+  ];
+
+  $profile_config->bulkImport($config_to_update);
+
+  // Clear the config cache.
+  $config_factory->reset();
+}
+
 /**
  * Helper function to enable a Drupal module and print the result.
  *
