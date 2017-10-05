@@ -3455,6 +3455,7 @@ function webny_configuration_update_8157() {
         'workbench_moderation.moderation_state_transition.unpublished_draft',
         'workbench_moderation.moderation_state_transition.unpublished_needs_review',
         'workbench_moderation.moderation_state_transition.unpublished_published',
+        'views.view.webny_content_lists',
     ];
 
     $profile_config->bulkImport($config_to_update);
