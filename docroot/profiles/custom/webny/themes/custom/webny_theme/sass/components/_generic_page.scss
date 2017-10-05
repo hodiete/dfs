@@ -38,7 +38,41 @@ $gp-frame-button: $color-mono-white !default;
       font-size: 22px;
   }
   }
-  
+.webny-action-bar {
+  display: inline;
+  width: 0;
+  float: left;
+  overflow: hidden;
+}
+.webny-action-share-button {
+  display: inline-block;
+  width: 20%;
+  cursor: pointer;
+
+  .icon-email {
+    font-size: 12.8px;
+    color: $fff;
+    &:hover {
+      color: $featured-card-icon-color-hover;
+    }
+  }
+
+  .icon-facebook {
+    font-size: 12.8px;
+    color: $fff;
+      &:hover {
+        color: $featured-card-icon-color-hover;
+    }
+  }
+
+  .icon-twitter {
+    font-size: 12.8px;
+    color: $fff;
+    &:hover {
+      color: $featured-card-icon-color-hover;
+    }
+  }
+  }
 }
 
 // ######################################################################### //
