@@ -22,7 +22,7 @@ I should be able to create a document from the Document content type
     Given I am logged into the distro with the "administrator" role 
     When I go to "/node/add/webny_document"
     Then I should see "Document Title"
-    And I should see "Body"
+    And I should see "Description"
     And I should see "Subtitle"
     And I should see "File Upload"
     And I should see "Agency Keyword"
@@ -44,3 +44,17 @@ I should be able to create a document from the Document content type
     Given I am logged into the distro with the "administrator" role
     When I am on "/admin/structure/paragraphs_type/webny_documents/form-display/generic_form"
     Then I should not get a 404 HTTP response
+
+# Check if option for basic and full text format's are checked for the description field
+  Scenario: See if Transliteration is enabled for all media uploads
+    Given I am logged into the distro with the "administrator" role
+    When I am on "/admin/structure/types/manage/webny_document/fields/node.webny_document.body"
+    Then the "edit-third-party-settings-allowed-formats-basic-html" checkbox should be checked
+    And the "edit-third-party-settings-allowed-formats-full-html" checkbox should be checked
+
+# Check if option for basic and full text format's are checked for the subtitle
+  Scenario: See if Transliteration is enabled for all media uploads
+    Given I am logged into the distro with the "administrator" role
+    When I am on "/admin/structure/types/manage/webny_document/fields/node.webny_document.field_webny_document_subtitle"
+    Then the "edit-third-party-settings-allowed-formats-basic-html" checkbox should be checked
+    And the "edit-third-party-settings-allowed-formats-full-html" checkbox should be checked
