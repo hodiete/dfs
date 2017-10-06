@@ -86,6 +86,7 @@ $gp-frame-button: $color-mono-white !default;
       color: $featured-card-icon-color-hover;
     }
   }
+  .icon-arrow-up {@include icon(before, arrow-up);}
 }
 
 // ######################################################################### //
@@ -439,11 +440,12 @@ aside#gpnav_sidebar {
         font-size: 13px;
         font-family: 'ProximaNovaRegular';
       } 
+      .webny-action-top a {
+        color: #fff;
+        visibility: visible;
+      }
     }
-  .webny-action-top a {
-    color: #fff;
-    visibility: visible;
-  }
+  
   .webny-share {
     visibility: visible;
     float: right;
