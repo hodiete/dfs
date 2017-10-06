@@ -41,14 +41,9 @@ $gp-frame-button: $color-mono-white !default;
       padding: 10px 0;
     }
     .webny-action-top, .webny-action-top a, .icon-arrow-up{
-      visibility: visible;
+      visibility: hidden;
       display: inline-block;
       float: left;
-      cursor: pointer;
-      color: #fff;
-      padding: 10px;
-      font-size: 13px;
-      font-family: 'ProximaNovaRegular';
     }
   }
 .webny-action-bar {
@@ -57,16 +52,9 @@ $gp-frame-button: $color-mono-white !default;
 }
 .webny-share {
   visibility: hidden;
+  float: right;
   display: inline-block;
   padding: 10px;
-  .webny-action-share-label {
-    font-size: 13px;
-    font-family: 'ProximaNovaRegular';
-  }
-  .webny-action-share-button {
-    display: inline-block;
-    cursor: pointer;
-  }
 }
   .icon-email {
     font-size: 12.8px;
@@ -410,10 +398,8 @@ aside#gpnav_sidebar {
 
     &.stuck {
       width: 20%;
-    }
-    .webny-share {
-      visibility: visible;
-    }
+      }
+}
     header {
       display: block;
     }
@@ -441,6 +427,29 @@ aside#gpnav_sidebar {
       transition: top 0.3s 0s ease-in-out;
     }
   }
+.webny-action-top, .webny-action-top a, .icon-arrow-up {
+  visibility: visible;
+  display: inline-block;
+  float: left;
+  cursor: pointer;
+  color: #fff;
+  padding: 10px;
+  font-size: 13px;
+  font-family: 'ProximaNovaRegular';
+}
+.webny-share {
+  visibility: hidden;
+  float: right;
+  display: inline-block;
+  padding: 10px;
+  .webny-action-share-label {
+    font-size: 13px;
+    font-family: 'ProximaNovaRegular';
+  }
+  .webny-action-share-button {
+    cursor: pointer;
+  }
+}
 
   .gp-article-content {
     width: 75%;
