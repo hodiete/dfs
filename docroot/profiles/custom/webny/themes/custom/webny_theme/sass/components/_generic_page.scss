@@ -23,7 +23,7 @@ $gp-frame-button: $color-mono-white !default;
   letter-spacing: 1px;
   position: relative;
   overflow: hidden;
-  .action-label {
+  .webny-action-label, .webny-action-top {
     visibility: hidden;
   }
   &.stuck {
@@ -39,17 +39,18 @@ $gp-frame-button: $color-mono-white !default;
       display: inline-block;
       padding: 10px 0;
     }
+    .webny-action-top {
+      display: inline-block;
+      float: left;
+      cursor: pointer;
+      padding: 10px;
+    }
   }
 .webny-action-bar {
   display: inline;
   overflow: hidden;
 }
-.webny-action-top {
-  display: inline-block;
-  float: left;
-  cursor: pointer;
-  padding: 10px 0;
-}
+
 .webny-action-share-button {
   display: inline-block;
   width: 5%;
@@ -69,8 +70,8 @@ $gp-frame-button: $color-mono-white !default;
   .icon-facebook {
     font-size: 12.8px;
     color: #fff;
-      &:hover {
-        color: $featured-card-icon-color-hover;
+    &:hover {
+      color: $featured-card-icon-color-hover;
     }
   }
 
@@ -86,7 +87,7 @@ $gp-frame-button: $color-mono-white !default;
     color: #fff;
     &:hover {
       color: $featured-card-icon-color-hover;
-  }
+    }
   }
 }
 
