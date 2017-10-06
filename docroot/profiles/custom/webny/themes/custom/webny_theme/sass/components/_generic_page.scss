@@ -399,7 +399,7 @@ aside#gpnav_sidebar {
     &.stuck {
       width: 20%;
       }
-}
+
     header {
       display: block;
     }
@@ -427,18 +427,20 @@ aside#gpnav_sidebar {
       transition: top 0.3s 0s ease-in-out;
     }
   }
-.webny-action-top, .webny-action-top a, .icon-arrow-up {
-  visibility: visible;
-  display: inline-block;
-  float: left;
-  cursor: pointer;
-  color: #fff;
-  padding: 10px;
-  font-size: 13px;
-  font-family: 'ProximaNovaRegular';
-}
+ &.stuck {
+    .webny-action-top, .webny-action-top a, .icon-arrow-up {
+      visibility: visible;
+      display: inline-block;
+      float: left;
+      cursor: pointer;
+      color: #fff;
+      padding: 10px;
+      font-size: 13px;
+      font-family: 'ProximaNovaRegular';
+    }
+  }
 .webny-share {
-  visibility: hidden;
+  visibility: visible;
   float: right;
   display: inline-block;
   padding: 10px;
