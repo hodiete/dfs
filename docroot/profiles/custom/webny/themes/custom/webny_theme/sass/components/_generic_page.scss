@@ -43,7 +43,6 @@ $gp-frame-button: $color-mono-white !default;
     .webny-action-top, .webny-action-top a, .icon-arrow-up {
       visibility: hidden;
       display: inline-block;
-      float: left;
     }
   }
 .webny-action-bar {
@@ -436,13 +435,15 @@ aside#gpnav_sidebar {
         float: left;
         cursor: pointer;
         color: #fff;
-        padding: 10px;
         font-size: 13px;
         font-family: 'ProximaNovaRegular';
       } 
       .webny-action-top a {
         color: #fff;
         visibility: visible;
+      }
+      .webny-action-top {
+        padding: 10px 5px 10px 30px;
       }
     }
   
