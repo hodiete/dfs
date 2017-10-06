@@ -23,8 +23,9 @@ $gp-frame-button: $color-mono-white !default;
   letter-spacing: 1px;
   position: relative;
   overflow: hidden;
-  .webny-action-label, .webny-action-top {
+  .webny-action-label, .webny-action-top, .icon-arrow-up {
     visibility: hidden;
+    display: inline-block;
   }
   &.stuck {
     position: fixed;
@@ -39,11 +40,14 @@ $gp-frame-button: $color-mono-white !default;
       display: inline-block;
       padding: 10px 0;
     }
-    .webny-action-top {
+    .webny-action-top, .icon-arrow-up {
+      visibility: visible;
       display: inline-block;
       float: left;
       cursor: pointer;
       padding: 10px;
+      font-size: 13px;
+      font-family: 'ProximaNovaRegular';
     }
   }
 .webny-action-bar {
