@@ -40,7 +40,7 @@ $gp-frame-button: $color-mono-white !default;
       display: inline-block;
       padding: 10px 0;
     }
-    .webny-action-top, .icon-arrow-up {
+    .webny-action-top, .webny-action-top a, .icon-arrow-up{
       visibility: visible;
       display: inline-block;
       float: left;
@@ -56,7 +56,6 @@ $gp-frame-button: $color-mono-white !default;
   overflow: hidden;
 }
 .webny-share {
-  float:right;
   visibility: hidden;
   display: inline-block;
   padding: 10px;
@@ -64,7 +63,6 @@ $gp-frame-button: $color-mono-white !default;
     font-size: 13px;
     font-family: 'ProximaNovaRegular';
   }
-
   .webny-action-share-button {
     display: inline-block;
     cursor: pointer;
@@ -414,8 +412,7 @@ aside#gpnav_sidebar {
       width: 20%;
     }
     .webny-share {
-      float:right;
-      visibility: hidden;
+      visibility: visible;
     }
     header {
       display: block;
@@ -545,7 +542,7 @@ aside#gpnav_sidebar {
     }
   }
   .webny-share {
-  visibility: visible;
+    visibility: visible;
   }
   /* Contact Frame styling - starts here */
   .generic-paragraphs {
