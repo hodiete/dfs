@@ -38,7 +38,7 @@ $gp-frame-button: $color-mono-white !default;
       font-family: "ProximaNovaExtrabold";
       font-size: 22px;
       display: inline-block;
-      padding: 10px 0;
+      padding: 10px;
     }
     .webny-action-top, .webny-action-top a, .icon-arrow-up {
       visibility: hidden;
@@ -442,12 +442,13 @@ aside#gpnav_sidebar {
     }
   .webny-action-top a {
     color: #fff;
+    visibility: visible;
   }
   .webny-share {
     visibility: visible;
     float: right;
     display: inline-block;
-    padding: 10px;
+    padding: 8px 75px 8px 0;
     .webny-action-share-label {
       font-size: 13px;
       font-family: 'ProximaNovaRegular';
@@ -456,6 +457,7 @@ aside#gpnav_sidebar {
     .webny-action-share-button {
       cursor: pointer;
       display: inline-block;
+      padding: 0 5px;
     }
   }
 }
