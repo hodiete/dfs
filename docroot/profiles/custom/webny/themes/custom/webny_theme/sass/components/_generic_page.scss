@@ -40,7 +40,7 @@ $gp-frame-button: $color-mono-white !default;
       display: inline-block;
       padding: 10px 0;
     }
-    .webny-action-top, .webny-action-top a, .icon-arrow-up{
+    .webny-action-top, .webny-action-top a, .icon-arrow-up {
       visibility: hidden;
       display: inline-block;
       float: left;
@@ -427,32 +427,38 @@ aside#gpnav_sidebar {
       transition: top 0.3s 0s ease-in-out;
     }
   }
- &.stuck {
-    .webny-action-top, .webny-action-top a, .icon-arrow-up {
-      visibility: visible;
-      display: inline-block;
-      float: left;
-      cursor: pointer;
-      color: #fff;
-      padding: 10px;
+.webny-generic-content-page .actions {
+    &.stuck {
+      .webny-action-top, .icon-arrow-up {
+        visibility: visible;
+        display: inline-block;
+        float: left;
+        cursor: pointer;
+        color: #fff;
+        padding: 10px;
+        font-size: 13px;
+        font-family: 'ProximaNovaRegular';
+      } 
+    }
+  .webny-action-top a {
+    color: #fff;
+  }
+  .webny-share {
+    visibility: visible;
+    float: right;
+    display: inline-block;
+    padding: 10px;
+    .webny-action-share-label {
       font-size: 13px;
       font-family: 'ProximaNovaRegular';
+      display: inline-block;
+    }
+    .webny-action-share-button {
+      cursor: pointer;
+      display: inline-block;
     }
   }
-.webny-share {
-  visibility: visible;
-  float: right;
-  display: inline-block;
-  padding: 10px;
-  .webny-action-share-label {
-    font-size: 13px;
-    font-family: 'ProximaNovaRegular';
-  }
-  .webny-action-share-button {
-    cursor: pointer;
-  }
 }
-
   .gp-article-content {
     width: 75%;
     margin-left: 25%;
