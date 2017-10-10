@@ -3412,6 +3412,7 @@ function webny_configuration_update_8156() {
 
 }
 
+
 /**
  * Install CKEditor List Styles and Indent Block modules.
  */
@@ -3457,6 +3458,34 @@ function webny_configuration_update_8158() {
     // Clear the config cache.
     $config_factory->reset();
 
+}
+
+/**
+* Updates fields in document content type to include external URL
+*/
+function webny_configuration_update_8159() {
+
+  print webny_configuration_uninstall_module('webny_document_content_type');
+  print webny_configuration_enable_module('webny_document_content_type');
+
+  // REFRESH
+  $config_factory = \Drupal::configFactory();
+  $profile_config = \Drupal::service('webny.profile_config');
+
+  // Import new/changed configuration.
+  $config_to_update = [
+    // UPDATE OPTIONAL FEATURES
+    'core.entity_form_display.node.webny_document.default',
+    'core.entity_view_display.node.webny_document.default',
+    'field.field.node.webny_document.field_webny_document_ext_link',
+    'field.field.node.webny_document.field_webny_document_file_upload',
+    'field.storage.node.field_webny_document_ext_link'
+  ];
+
+  $profile_config->bulkImport($config_to_update);
+
+  // Clear the config cache.
+  $config_factory->reset();
 }
 
 /**
