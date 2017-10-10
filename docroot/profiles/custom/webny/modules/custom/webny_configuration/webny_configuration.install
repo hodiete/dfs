@@ -3413,11 +3413,21 @@ function webny_configuration_update_8156() {
 }
 
 /**
- * REFRESH DOCUMENT CONTENT TYPE TO ADD TEXT FORMATS OF FULL/BASIC
- * TO THE SUBTITLE AND DESCRIPTION (BODY) FIELDS
- * -iojonep
+ * Install CKEditor List Styles and Indent Block modules.
  */
 function webny_configuration_update_8157() {
+
+  \Drupal::service('module_installer')
+    ->install(['ckeditor_indentblock', 'ckeditor_liststyle']);
+
+}
+
+/**
+* REFRESH DOCUMENT CONTENT TYPE TO ADD TEXT FORMATS OF FULL/BASIC
+* TO THE SUBTITLE AND DESCRIPTION (BODY) FIELDS
+* -iojonep
+*/
+function webny_configuration_update_8158() {
 
     // REFRESH DOCUMENT CONTENT TYPE
     \Drupal::service('module_installer')
