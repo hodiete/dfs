@@ -57,7 +57,7 @@ function webny_install() {
   \Drupal::configFactory()
       ->getEditable('system.theme')
       ->set('default', 'webny_theme')
-      ->set('admin', 'adminimal_theme')
+      ->set('admin', 'webnycommander')
       ->save(TRUE);
 
   // Enable the admin theme.
