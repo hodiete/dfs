@@ -28,7 +28,7 @@ drush:
 target-hooks:
   frontend-setup:
     dir: '${docroot}/profiles/custom/webny/themes/custom/webny_theme'
-    command: 'npm run install-webny_theme'
+    command: 'npm run install-webny_theme && npm rebuild node-sass'
   frontend-build:
     dir: '${docroot}/profiles/custom/webny/themes/custom/webny_theme'
     command: 'npm run build'
@@ -68,4 +68,3 @@ behat:
   paths:
     - '${repo.root}/tests/behat'
   tags: ~@development
-

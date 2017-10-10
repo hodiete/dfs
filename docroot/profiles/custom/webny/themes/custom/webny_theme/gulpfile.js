@@ -102,7 +102,8 @@ gulp.task('build', [
   'statewide-elected-officials',
   'transportation-utilities',
   'custom-ig',
-  'print'
+  'print',
+  'custom-jcope'
 ], function (cb) {
   // Run linting last, otherwise its output gets lost.
   runSequence(['lint:js'], cb);
@@ -420,6 +421,26 @@ gulp.task('print', ['clean:css'], function () {
           .pipe(gulp.dest(options.theme.css));
 });
 
+// agency - grouping specific style
+gulp.task('custom-jcope', ['clean:css'], function () {
+    return gulp.src(options.theme.sass + 'themes/custom-jcope-theme/custom-jcope.scss')
+        .pipe(sourcemaps.init())
+        .pipe(sassglob())
+        .pipe(globbing({
+            extensions: ['.scss']
+        }))
+        .pipe(sass({
+            errLogToConsole: true,
+            outputStyle: 'expanded'
+        }))
+        .pipe(autoprefix({
+            browsers: ['last 5 versions'],
+            cascade: false
+        }))
+        .pipe(sourcemaps.write())
+        .pipe(gulp.dest(options.theme.css));
+});
+
 // ##################
 // Build style guide.
 // ##################.
@@ -576,6 +597,12 @@ gulp.task('watch:js', ['lint:js'], function () {
   return gulp.watch([options.theme.js + '**/*.js'], options.gulpWatchOptions, [
     'lint:js'
   ]);
+});
+
+gulp.task('watch:css', ['custom-jcope'], function () {
+    return gulp.watch([
+        options.theme.sass + '**/*.scss'
+    ], options.gulpWatchOptions, ['custom-jcope']);
 });
 
 // ######################
