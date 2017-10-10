@@ -8,6 +8,7 @@ dependencies:
     - field.field.node.webny_document.field_webny_doc_last_updated
     - field.field.node.webny_document.field_webny_document_cateogry
     - field.field.node.webny_document.field_webny_document_date
+    - field.field.node.webny_document.field_webny_document_ext_link
     - field.field.node.webny_document.field_webny_document_file_upload
     - field.field.node.webny_document.field_webny_document_language
     - field.field.node.webny_document.field_webny_document_subtitle
@@ -71,6 +72,14 @@ content:
       timezone_override: ''
     third_party_settings: {  }
     type: datetime_default
+    region: content
+  field_webny_document_ext_link:
+    weight: 9
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
     region: content
   field_webny_document_file_upload:
     weight: 3
