@@ -17,4 +17,5 @@ $agency_groupings = array(
   'statewide-elected-officials' => 'Statewide Elected Officials',
   'transportation-utilities' => 'Transportation and Utilities',
   'custom-ig' => 'Custom - Inspector General',
+  'custom-jcope' => 'Custom - JCOPE',
 );
