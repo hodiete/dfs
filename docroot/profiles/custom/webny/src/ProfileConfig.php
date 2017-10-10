@@ -180,6 +180,8 @@ class ProfileConfig {
       $this->getProfileFeatureConfigPath('wysiwyg_frame') . '/optional',
       $this->getProfileFeatureConfigPath('get_involved_frame') . '/install',
       $this->getProfileFeatureConfigPath('get_involved_frame') . '/optional',
+      $this->getProfilePath() . '/themes/custom/webnycommander/' . self::CONFIG_DIR . '/install',
+      $this->getProfilePath() . '/themes/custom/webnycommander/' . self::CONFIG_DIR . '/optional',
 
     ]);
 
