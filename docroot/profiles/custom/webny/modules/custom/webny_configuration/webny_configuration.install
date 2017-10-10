@@ -3417,8 +3417,46 @@ function webny_configuration_update_8156() {
  */
 function webny_configuration_update_8157() {
 
-  \Drupal::service('module_installer')
-    ->install(['ckeditor_indentblock', 'ckeditor_liststyle']);
+    \Drupal::service('module_installer')
+        ->install(['ckeditor_indentblock', 'ckeditor_liststyle']);
+}
+
+/**
+ * Implements hook_update_n().
+ *
+ * Set admin theme to webnycommander Theme.
+ * -iojonep
+ */
+function webny_configuration_update_8158() {
+
+    \Drupal::configFactory()
+        ->getEditable('system.theme')
+        ->set('admin', 'webnycommander')
+        ->save(TRUE);
+
+    // REFRESH
+    $config_factory = \Drupal::configFactory();
+    $profile_config = \Drupal::service('webny.profile_config');
+
+    // Import new/changed configuration.
+    $config_to_update = [
+
+        // UPDATE CONFIG
+        'block.block.webnycommander_breadcrumbs',
+        'block.block.webnycommander_help',
+        'block.block.webnycommander_mainpagecontent',
+        'block.block.webnycommander_pagetitle',
+        'block.block.webnycommander_primary_tabs',
+        'block.block.webnycommander_primaryadminactions',
+        'block.block.webnycommander_secondary_tabs',
+        'block.block.webnycommander_status_messages'
+    ];
+
+    $profile_config->bulkImport($config_to_update);
+
+    // Clear the config cache.
+    $config_factory->reset();
+
 }
 
 /**

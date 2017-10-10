@@ -58,3 +58,18 @@ Feature: Base Admin page tests
     And I should not see "Access denied"
     And I should see "Add redirect"
 
+# Check custom admin theme access - webnycommander
+  Scenario: See if proper access to redirect page exists
+    Given I am logged into the distro with the "administrator" role
+    When I am on "/admin/appearance/settings/webnycommander"
+    Then I should not get a 404 HTTP response
+    And I should not see "Access denied"
+    And I should see "Add redirect"
+
+# Check custom admin theme block access - webnycommander
+  Scenario: See if proper access to redirect page exists
+    Given I am logged into the distro with the "administrator" role
+    When I am on "/admin/structure/block/list/webnycommander"
+    Then I should not get a 404 HTTP response
+    And I should not see "Access denied"
+    And I should see "Add redirect"
