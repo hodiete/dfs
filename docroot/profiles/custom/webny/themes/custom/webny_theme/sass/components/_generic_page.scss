@@ -39,10 +39,15 @@ $gp-frame-button: $color-mono-white !default;
       font-size: 22px;
       display: inline-block;
       padding: 10px;
+      max-width: 50%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
     .webny-action-top, .webny-action-top a, .icon-arrow-up {
       visibility: hidden;
       display: inline-block;
+      vertical-align: top;
     }
   }
 .webny-action-bar {
@@ -427,6 +432,8 @@ aside#gpnav_sidebar {
       transition: top 0.3s 0s ease-in-out;
     }
   }
+
+/* Action Share bar styles */
 .webny-generic-content-page .actions {
     &.stuck {
       .webny-action-top, .icon-arrow-up {
@@ -437,6 +444,9 @@ aside#gpnav_sidebar {
         font-size: 13px;
         font-family: 'ProximaNovaRegular';
       } 
+      .webny-action-label {
+        max-width: 70%;
+      }
       .webny-action-top a, .icon-arrow-up a {
         color: #fff;
         visibility: visible;
@@ -456,7 +466,7 @@ aside#gpnav_sidebar {
     visibility: visible;
     float: right;
     display: inline-block;
-    padding: 12px 75px 8px 0;
+    padding: 12px 50px 8px 0;
     .webny-action-share-label {
       font-size: 13px;
       font-family: 'ProximaNovaRegular';
@@ -469,6 +479,8 @@ aside#gpnav_sidebar {
     }
   }
 }
+/* End Action Share bar styles */
+
   .gp-article-content {
     width: 75%;
     margin-left: 25%;
