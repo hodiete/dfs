@@ -38,7 +38,7 @@
         // replacing hash for documents paragraph
         else if ($(this).hasClass('generic_para webny-documents')) {
           // for documents reference, if it has a title it will have the title in the first span within the first h2
-          if ($(this).children('h2').children('span:first').text().length == 0) {
+          if ($(this).children('h2').children('span:first').text().length === 0) {
             // text length is 0; no title
             // create generic documents title and hash
             hash = 'documents';
@@ -63,7 +63,7 @@
           // if this is a documents paragraph, use title or generic title if needed
           else if ($(this).hasClass('generic_para webny-documents')) {
             // same conditional as hash creation. verify if documents has a title or not based on text length in span
-            if ($(this).children('h2').children('span:first').text().length == 0) {
+            if ($(this).children('h2').children('span:first').text().length === 0) {
               $('#gpnav_sidebar ul').append('<li><a href="#' + hash + '">Documents</a></li>');
             }
             else {
@@ -89,7 +89,7 @@
           }
           else if ($(nextSection).hasClass('generic_para webny-documents')) {
             // same conditional as hash creation. verify if documents has a title or not based on children in first div
-            if ($(nextSection).children('h2').children('span:first').text().length == 0) {
+            if ($(nextSection).children('h2').children('span:first').text().length === 0) {
               $(this).children('.gp-next-section').children('.gp-next-section-title').html('Documents');
             }
             else {
@@ -105,14 +105,14 @@
       // next section click event
       $('.gp-next-section-title').once().click(function (e) {
         e.preventDefault();
-        var hash = $(this).text().toLowerCase().replace(/ /g, '-');
+        var hash = $(this).text().toLowerCase().trim().replace(/[^a-zA-Z0-9]/g, '-');
         $('#gpnav_sidebar li a[href="#' + hash + '"]').trigger('click');
       });
 
       // next section continue click event
       $('.gp-next-section-link').once().click(function (e) {
         e.preventDefault();
-        var hash = $(this).parent().parent().children('.gp-next-section-title').text().toLowerCase().replace(/ /g, '-');
+        var hash = $(this).parent().parent().children('.gp-next-section-title').text().toLowerCase().trim().replace(/[^a-zA-Z0-9]/g, '-');
         $('#gpnav_sidebar li a[href="#' + hash + '"]').trigger('click');
       });
 
