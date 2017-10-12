@@ -3497,12 +3497,6 @@ function webny_configuration_update_8159() {
  */
 function webny_configuration_update_8160() {
 
-    // REFRESH THE WORKFLOW FEATURE
-    \Drupal::service('module_installer')
-        ->uninstall(['webny_workflow_basic_configuration']);
-    \Drupal::service('module_installer')
-        ->install(['webny_workflow_basic_configuration']);
-
     // DELETE ROLES -- WILL BE USING CONFIG DEFAULT FOR PERMISSIONS INSTEAD OF FEATURES
     \Drupal::configFactory()
         ->getEditable('user.role.workflow_publisher')
@@ -3515,6 +3509,12 @@ function webny_configuration_update_8160() {
     \Drupal::configFactory()
         ->getEditable('user.role.workflow_approver')
         ->delete();
+
+    // REFRESH THE WORKFLOW FEATURE
+    \Drupal::service('module_installer')
+        ->uninstall(['webny_workflow_basic_configuration']);
+    \Drupal::service('module_installer')
+        ->install(['webny_workflow_basic_configuration']);
 
     // REFRESH
     $config_factory = \Drupal::configFactory();
