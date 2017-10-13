@@ -25,6 +25,7 @@ I should be able to create a document from the Document content type
     And I should see "Description"
     And I should see "Subtitle"
     And I should see "File Upload"
+    And I should see "External Link"
     And I should see "Agency Keyword"
     And I should see "Global Keyword"
     And I should see "Document Category"
