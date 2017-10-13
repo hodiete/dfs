@@ -24,6 +24,7 @@ dependencies:
     - link
     - paragraphs
     - path
+    - shs
     - text
     - viewfield
     - workbench_moderation
@@ -89,11 +90,12 @@ content:
   field_webny_filter_terms:
     weight: 11
     settings:
-      match_operator: CONTAINS
-      size: 60
-      placeholder: ''
+      display_node_count: false
+      create_new_items: false
+      create_new_levels: false
+      force_deepest: false
     third_party_settings: {  }
-    type: entity_reference_autocomplete
+    type: options_shs
     region: content
   field_webny_landing_agency_key:
     weight: 10

@@ -37,6 +37,7 @@ dependencies:
     - link
     - paragraphs
     - path
+    - shs
     - telephone
     - text
     - workbench_moderation
@@ -280,11 +281,12 @@ content:
   field_webny_filter_terms:
     weight: 33
     settings:
-      match_operator: CONTAINS
-      size: 60
-      placeholder: ''
+      force_deepest: false
+      display_node_count: false
+      create_new_items: false
+      create_new_levels: false
     third_party_settings: {  }
-    type: entity_reference_autocomplete
+    type: options_shs
     region: content
   field_webny_phone_contact:
     type: entity_reference_paragraphs
@@ -295,6 +297,7 @@ content:
       edit_mode: open
       add_mode: dropdown
       form_display_mode: default
+      default_paragraph_type: ''
     third_party_settings: {  }
     region: content
   langcode:

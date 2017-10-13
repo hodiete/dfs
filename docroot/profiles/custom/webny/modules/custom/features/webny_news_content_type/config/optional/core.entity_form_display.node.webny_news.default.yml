@@ -25,6 +25,7 @@ dependencies:
     - entity_browser
     - field_group
     - path
+    - shs
     - text
     - workbench_moderation
 third_party_settings:
@@ -66,11 +67,12 @@ content:
   field_webny_filter_terms:
     weight: 10
     settings:
-      match_operator: CONTAINS
-      size: 60
-      placeholder: ''
+      display_node_count: false
+      create_new_items: false
+      create_new_levels: false
+      force_deepest: false
     third_party_settings: {  }
-    type: entity_reference_autocomplete
+    type: options_shs
     region: content
   field_webny_news_agency_keywords:
     weight: 9

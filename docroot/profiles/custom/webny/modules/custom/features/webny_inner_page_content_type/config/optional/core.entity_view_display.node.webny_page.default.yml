@@ -28,20 +28,12 @@ content:
   body:
     label: hidden
     type: text_default
-    weight: 7
+    weight: 6
     settings: {  }
     third_party_settings: {  }
     region: content
-  field_webny_filter_terms:
-    weight: 14
-    label: hidden
-    settings:
-      link: true
-    third_party_settings: {  }
-    type: entity_reference_label
-    region: content
   field_webny_page_agency_keywords:
-    weight: 9
+    weight: 8
     label: hidden
     settings:
       link: true
@@ -50,7 +42,7 @@ content:
     region: content
   field_webny_page_attdocs_eref:
     type: entity_reference_entity_view
-    weight: 12
+    weight: 11
     label: hidden
     settings:
       view_mode: attached_documents
@@ -58,7 +50,7 @@ content:
     third_party_settings: {  }
     region: content
   field_webny_page_description:
-    weight: 5
+    weight: 4
     label: hidden
     settings: {  }
     third_party_settings: {  }
@@ -66,7 +58,7 @@ content:
     region: content
   field_webny_page_docsec_subtitle:
     type: string
-    weight: 11
+    weight: 10
     label: hidden
     settings:
       link_to_entity: false
@@ -74,14 +66,14 @@ content:
     region: content
   field_webny_page_docsec_title:
     type: string
-    weight: 10
+    weight: 9
     label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
     region: content
   field_webny_page_global_keywords:
-    weight: 6
+    weight: 5
     label: hidden
     settings:
       link: true
@@ -89,7 +81,7 @@ content:
     type: entity_reference_label
     region: content
   field_webny_page_hero_title:
-    weight: 4
+    weight: 3
     label: hidden
     settings:
       link_to_entity: false
@@ -97,7 +89,7 @@ content:
     type: string
     region: content
   field_webny_page_image:
-    weight: 3
+    weight: 2
     label: hidden
     settings:
       link: true
@@ -106,14 +98,14 @@ content:
     type: entity_reference_entity_view
     region: content
   field_webny_page_sub_title:
-    weight: 8
+    weight: 7
     label: hidden
     settings: {  }
     third_party_settings: {  }
     type: text_default
     region: content
   field_webny_page_vis_options:
-    weight: 13
+    weight: 12
     label: hidden
     settings: {  }
     third_party_settings: {  }
@@ -130,5 +122,6 @@ content:
     settings: {  }
     third_party_settings: {  }
 hidden:
+  field_webny_filter_terms: true
   field_webny_page_short_title: true
   langcode: true
