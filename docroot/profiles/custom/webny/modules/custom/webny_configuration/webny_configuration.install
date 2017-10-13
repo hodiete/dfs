@@ -3529,7 +3529,9 @@ function webny_configuration_update_8160() {
     'core.entity_form_display.node.webny_page.default',
     'core.entity_view_display.node.webny_page.default',
     'taxonomy.vocabulary.webny_filter_terms_tax',
-    'language.content_settings.taxonomy_term.webny_filter_terms_tax'
+    'language.content_settings.taxonomy_term.webny_filter_terms_tax',
+    'views.view.demo_content_view',
+    'views.view.webny_news_listing'
   ];
 
   $profile_config->bulkImport($config_to_update);
