@@ -1,0 +1,43 @@
+<?php
+
+/**
+ * @file
+ * Contains webny_secondary_nav.module.
+ */
+
+use Drupal\Core\Link;
+use Drupal\Component\Utility\Xss;
+use Drupal\Core\Url;
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements webny_secondary_nav_help()
+ */
+function webny_secondary_nav_help($route_name, RouteMatchInterface $route_match) {
+
+  switch ($route_name) {
+    case 'help.page.webny_secondary_nav':
+      return t('Integrate Webny Secondary Navigation onto your Drupal site.');
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function webny_secondary_nav_theme() {
+
+}
+
+/**
+ * Function webny_global_nav_preprocess.
+ */
+function webny_secondary_nav_preprocess(&$variables) {
+  $variables['#attached']['library'][] = 'webny_secondary_nav/secondary_nav';
+}
+
+/**
+ * Implemtnet hook_page_bottom().
+ */
+function webny_secondary_nav_page_bottom(&$page_bottom) {
+
+}
