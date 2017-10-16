@@ -162,6 +162,10 @@ $hero-keyword-text-color: $color-mono-white !default;
     position: relative;
   }
 
+  .hero-image img {
+    min-height: 256px;
+  }
+
   .hero-has-image  .hero-bkg {
     background: url("../icons/bkg-gradient.png") repeat-y scroll left top !important;
     height: 100%;
@@ -171,6 +175,10 @@ $hero-keyword-text-color: $color-mono-white !default;
     left: 0;
     width: 100%;
     z-index: 2;
+  }
+
+  .hero-has-image .hero-image img {
+    object-fit: cover;
   }
 
   .hero-image-wrap{
@@ -703,7 +711,8 @@ $hero-keyword-text-color: $color-mono-white !default;
 
     // ALLOW HEIGHT TO BE LARGE IN THIS
     // REGION TO NOT HAVE OVERFLOW FROM HERO
-    .hero-has-image {
+    .hero-has-image,
+    .hero-image img {
       min-height: 610px;
     }
 
@@ -836,11 +845,13 @@ $hero-keyword-text-color: $color-mono-white !default;
       padding: 0 4%;
     }
 
-    .hero-has-image {
+    .hero-has-image,
+    .hero-image img {
       min-height: 427px;
     }
 
-    .hero-has-image.hero-news {
+    .hero-has-image.hero-news,
+    .hero-image img {
       min-height: 512px;
     }
 
@@ -875,7 +886,8 @@ $hero-keyword-text-color: $color-mono-white !default;
   // FRONT MIN HEIGHT ADJUSTMENT
   .front {
     .hero-layout {
-      .hero-landing.hero-has-image {
+      .hero-landing.hero-has-image,
+      .hero-image img {
         min-height: 512px;
       }
     }
