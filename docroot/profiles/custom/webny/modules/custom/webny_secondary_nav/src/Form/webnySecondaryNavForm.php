@@ -19,7 +19,7 @@ class webnySecondaryNavForm extends ConfigFormBase {
      * Fucntion getFormid.
      */
     public function getFormId() {
-        return 'webny_secondary_nav_form';
+        return 'webny_secondary_nav_config_form';
     }
 
     /**
@@ -47,7 +47,10 @@ class webnySecondaryNavForm extends ConfigFormBase {
 
         // LINKED FIELDS AREA
         $form['webny_secnav_linksfieldset'] = $this->webnySecondaryNavHeaderlinksFieldset();
-        $form['webny_secnav_linksfieldset']['webny_links_area'] = $this->webnySecondaryNavLinksArea();
+
+
+        $form['webny_secnav_linksfieldset']['webny_links_title']    = $this->webnySecondaryNavURLTitleField();
+        $form['webny_secnav_linksfieldset']['webny_links_url']      = $this->webnySecondaryNavEntityReferenceField();
 
         // EXAMPLES / HELP SECTION
         $form['webny_secnav_examples'] = $this->webnySecondaryNavDisplayExamples();
@@ -202,11 +205,50 @@ class webnySecondaryNavForm extends ConfigFormBase {
      */
     public function webnySecondaryNavLinksArea() {
         return array(
-            '#type' => 'url',
-            '#title' => $this->t('Home Page'),
-            '#size' => 30,
+
         );
     }
+
+    /**
+     * WEBNY SECONDARY NAVIGATION - ENTITY REFERENCE.
+     *
+     * @return array
+     *   Form API element for field.
+     */
+    public function webnySecondaryNavEntityReferenceField() {
+
+        return array(
+            '#type' => 'entity_autocomplete',
+            '#title' => t('URL / Reference'),
+            '#target_type' => 'node',
+            '#default_value' => '',
+            '#size' => 50,
+            '#selection_setttings' => array(
+                'include_anonymous' => FALSE,
+            ),
+        );
+    }
+
+    /**
+     * WEBNY SECONDARY NAVIGATION - URL TEXT FIELD.
+     *
+     * @return array
+     *   Form API element for field.
+     */
+    public function webnySecondaryNavURLTitleField() {
+
+        return array(
+            '#type' => 'textfield',
+            '#title' => $this->t('URL Title'),
+            '#default_value' => '',
+            '#size' => 50,
+            '#maxlength' => 50,
+            '#required' => TRUE,
+        );
+    }
+
+
+
 
 
 
