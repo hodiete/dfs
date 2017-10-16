@@ -7,6 +7,7 @@
 
 use Drupal\user\Entity\Role;
 use Drupal\Core\Database\Database;
+use Drupal\Core\Utility\UpdateException;
 
 /**
  * Implements hook_update_n().
@@ -3539,6 +3540,57 @@ function webny_configuration_update_8160() {
     // Clear the config cache.
     $config_factory->reset();
 
+}
+
+/**
+ * Remove the deprecated Subject Heading vocabulary
+ */
+function webny_configuration_update_8160() {
+  \Drupal\taxonomy\Entity\Vocabulary::load('webny_news_subject_heading')->delete();
+
+  $config_factory = \Drupal::configFactory();
+  $profile_config = \Drupal::service('webny.profile_config');
+
+  // Import new/changed configuration.
+  $config_to_update = [
+    // Update optional features.
+    'field.field.node.webny_landing_page.field_webny_filter_terms',
+    'core.entity_form_display.node.webny_landing_page.default',
+    'core.entity_view_display.node.webny_landing_page.default',
+    'core.entity_view_display.node.webny_landing_page.teaser',
+    'core.entity_view_display.node.webny_landing_page.webny_announcement',
+    'core.entity_view_display.node.webny_landing_page.webny_featured_card',
+    'field.field.node.webny_news.field_webny_filter_terms',
+    'core.entity_view_display.node.webny_news.default',
+    'core.entity_form_display.node.webny_news.default',
+    'field.field.node.webny_whitelisted_content.field_webny_filter_terms',
+    'core.entity_form_display.node.webny_whitelisted_content.default',
+    'core.entity_view_display.node.webny_whitelisted_content.default',
+    'field.field.node.webny_document.field_webny_filter_terms',
+    'core.entity_form_display.node.webny_document.default',
+    'core.entity_view_display.node.webny_document.default',
+    'field.field.node.webny_generic_page.field_webny_filter_terms',
+    'core.entity_form_display.node.webny_generic_page.default',
+    'core.entity_view_display.node.webny_generic_page.default',
+    'core.entity_view_display.node.webny_generic_page.webny_featured_card',
+    'core.entity_view_display.node.webny_generic_page.webny_announcement',
+    'core.entity_view_display.node.webny_generic_page.teaser',
+    'field.field.node.webny_contact.field_webny_filter_terms',
+    'core.entity_form_display.node.webny_contact.default',
+    'core.entity_view_display.node.webny_contact.default',
+    'field.field.node.webny_page.field_webny_filter_terms',
+    'core.entity_form_display.node.webny_page.default',
+    'core.entity_view_display.node.webny_page.default',
+    'taxonomy.vocabulary.webny_filter_terms_tax',
+    'language.content_settings.taxonomy_term.webny_filter_terms_tax',
+    'views.view.demo_content_view',
+    'views.view.webny_news_listing'
+  ];
+
+  $profile_config->bulkImport($config_to_update);
+
+  // Clear the config cache.
+  $config_factory->reset();
 }
 
 /**
