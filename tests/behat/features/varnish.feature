@@ -2,13 +2,6 @@
 Feature: Varnish Cache Clearing
   -Check to make sure the Varnish is behaving as expected
 
-  Background:
-    Given "webny_news_subject_heading" terms:
-      | name      |
-      | Behat     |
-      | Justin    |
-      | Winter    |
-
   # Check that varnish is up and running
   Scenario: See if proper header value is returned
     Given I am an anonymous user

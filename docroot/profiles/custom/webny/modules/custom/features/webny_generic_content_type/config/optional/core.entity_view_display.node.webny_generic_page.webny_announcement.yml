@@ -3,6 +3,7 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.webny_announcement
+    - field.field.node.webny_generic_page.field_webny_filter_terms
     - field.field.node.webny_generic_page.field_webny_gencp_avgtranstime
     - field.field.node.webny_generic_page.field_webny_gencp_contentcat
     - field.field.node.webny_generic_page.field_webny_gencp_contentsect
@@ -41,6 +42,7 @@ content:
     type: smart_trim
     region: content
 hidden:
+  field_webny_filter_terms: true
   field_webny_gencp_avgtranstime: true
   field_webny_gencp_contentcat: true
   field_webny_gencp_contentsect: true

@@ -28,6 +28,7 @@ I should be able to create whitelisted content
     And I should see "Image"
     And I should see "Agency Keyword"
     And I should see "Global Keyword"
+    And I should see "Filter Terms"
   
 # Check that the Whitelisted Content Display Mode exists
   Scenario: An administrative user should be able to see the Display Mode for Whitelisted Content

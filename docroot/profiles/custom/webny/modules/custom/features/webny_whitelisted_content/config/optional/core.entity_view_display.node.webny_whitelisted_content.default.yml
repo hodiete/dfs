@@ -3,6 +3,7 @@ status: true
 dependencies:
   config:
     - field.field.node.webny_whitelisted_content.body
+    - field.field.node.webny_whitelisted_content.field_webny_filter_terms
     - field.field.node.webny_whitelisted_content.field_webny_whitelist_agency_key
     - field.field.node.webny_whitelisted_content.field_webny_whitelist_date
     - field.field.node.webny_whitelisted_content.field_webny_whitelist_descript
@@ -75,15 +76,16 @@ content:
     region: content
   links:
     weight: 1
+    region: content
     settings: {  }
     third_party_settings: {  }
-    region: content
   workbench_moderation_control:
     weight: 0
+    region: content
     settings: {  }
     third_party_settings: {  }
-    region: content
 hidden:
   body: true
+  field_webny_filter_terms: true
   field_webny_whitelist_stitle: true
   langcode: true

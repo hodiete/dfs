@@ -1,0 +1,11 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - workbench_moderation.moderation_state.needs_review
+    - workbench_moderation.moderation_state.unpublished
+id: unpublished_needs_review
+label: 'Needs Review'
+stateFrom: unpublished
+stateTo: needs_review
+weight: 4
