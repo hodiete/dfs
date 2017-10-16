@@ -3487,7 +3487,9 @@ function webny_configuration_update_8159() {
 
   // Clear the config cache.
   $config_factory->reset();
+
 }
+
 
 /**
  * Remove the deprecated Subject Heading vocabulary
@@ -3539,6 +3541,59 @@ function webny_configuration_update_8160() {
   // Clear the config cache.
   $config_factory->reset();
 }
+
+/**
+ * Implements hook_update_n().
+ *
+ * REFRESH THE WORKFLOW FEATURE
+ * NDD-1073
+ * -iojonep
+ */
+function webny_configuration_update_8161() {
+
+    // DELETE ROLES -- WILL BE USING CONFIG DEFAULT FOR PERMISSIONS INSTEAD OF FEATURES
+    \Drupal::configFactory()
+        ->getEditable('user.role.workflow_publisher')
+        ->delete();
+
+    \Drupal::configFactory()
+        ->getEditable('user.role.workflow_author')
+        ->delete();
+
+    \Drupal::configFactory()
+        ->getEditable('user.role.workflow_approver')
+        ->delete();
+
+    // REFRESH THE WORKFLOW FEATURE
+    \Drupal::service('module_installer')
+        ->uninstall(['webny_workflow_basic_configuration']);
+    \Drupal::service('module_installer')
+        ->install(['webny_workflow_basic_configuration']);
+
+    // REFRESH
+    $config_factory = \Drupal::configFactory();
+    $profile_config = \Drupal::service('webny.profile_config');
+
+    // IMPORT CHANGES / NEW CONFIG
+    $config_to_update = [
+        // UPDATE OPTIONAL FEATURES
+        'workbench_moderation.moderation_state.unpublished',
+        'workbench_moderation.moderation_state_transition.archive_unpublished',
+        'workbench_moderation.moderation_state_transition.published_unpublished',
+        'workbench_moderation.moderation_state_transition.unpublished_archive',
+        'workbench_moderation.moderation_state_transition.unpublished_draft',
+        'workbench_moderation.moderation_state_transition.unpublished_needs_review',
+        'workbench_moderation.moderation_state_transition.unpublished_published',
+        'views.view.webny_content_lists',
+    ];
+
+    $profile_config->bulkImport($config_to_update);
+
+    // Clear the config cache.
+    $config_factory->reset();
+
+}
+
 
 /**
  * Helper function to enable a Drupal module and print the result.

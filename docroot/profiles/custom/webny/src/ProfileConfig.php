@@ -188,7 +188,8 @@ class ProfileConfig {
       $this->getProfileFeatureConfigPath('get_involved_frame') . '/optional',
       $this->getProfilePath() . '/themes/custom/webnycommander/' . self::CONFIG_DIR . '/install',
       $this->getProfilePath() . '/themes/custom/webnycommander/' . self::CONFIG_DIR . '/optional',
-
+      $this->getProfileFeatureConfigPath('workflow_basic_configuration') . '/install',
+      $this->getProfileFeatureConfigPath('workflow_basic_configuration') . '/optional',
     ]);
 
     return $locations->locate($resource . '.yml');
