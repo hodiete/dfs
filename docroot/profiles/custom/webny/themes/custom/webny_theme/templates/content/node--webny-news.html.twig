@@ -58,12 +58,15 @@
     {# CHECK IF THERE IS AN IMAGE #}
 
     {% if hero_image == '/' %}
-        <div class="hero-header hero-news hero-no-image" style="">
+        <div class="hero-header hero-news hero-no-image">
             <div class="hero-bkg"></div>
         </div>
         <div class="hero-no-image-wrap">
     {% else %}
-        <div class="hero-header hero-news hero-has-image" style="background-image:url('{{ hero_image }}')">
+        <div class="hero-header hero-news hero-has-image">
+            <div class="hero-image">
+                {{ content.field_webny_news_image }}
+            </div>
             <div class="hero-bkg"></div>
         </div>
         <div class="hero-image-wrap">
