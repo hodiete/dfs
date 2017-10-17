@@ -3410,7 +3410,6 @@ function webny_configuration_update_8156() {
 
   \Drupal::service('module_installer')
     ->install(['shs']);
-
 }
 
 
@@ -3594,6 +3593,51 @@ function webny_configuration_update_8161() {
 
 }
 
+
+/*
+ * Install address and event content type modules.
+ * Refreshes webny_global_and_agency_taxonomies & webny_contentcat_taxonomy.
+ * Enables event modules.
+ */
+function webny_configuration_update_8162() {
+  // Refresh taxonomies modules to include additional field storage.
+  print webny_configuration_uninstall_module('webny_global_and_agency_taxonomies');
+  print webny_configuration_enable_module('webny_global_and_agency_taxonomies');
+  print webny_configuration_uninstall_module('webny_contentcat_taxonomy');
+  print webny_configuration_enable_module('webny_contentcat_taxonomy');
+
+  // Install address and event modules.
+  print webny_configuration_enable_module('address');
+  print webny_configuration_enable_module('webny_event_content_type');
+
+  // REFRESH
+  $config_factory = \Drupal::configFactory();
+  $profile_config = \Drupal::service('webny.profile_config');
+
+  // Import new/changed configuration.
+  $config_to_update = [
+    'user.role.content_author',
+    'core.entity_form_display.node.webny_event.default',
+    'core.entity_view_display.node.webny_event.default',
+    'field.field.node.webny_event.field_webny_agency_keywords',
+    'field.field.node.webny_event.field_webny_contentcat',
+    'field.field.node.webny_event.field_webny_filter_terms',
+    'core.entity_view_display.node.webny_event.teaser',
+    'core.entity_view_display.node.webny_contact.teaser',
+    'core.entity_view_display.node.webny_contact.webny_contact_bio_frame',
+    'core.entity_view_display.node.webny_contact.webny_contact_for_news',
+    'core.entity_view_display.node.webny_document.attached_documents',
+    'core.entity_view_display.node.webny_document.teaser',
+    'core.entity_view_display.node.webny_page.teaser',
+    'core.entity_view_display.node.webny_page.webny_announcement',
+    'core.entity_view_display.node.webny_page.webny_featured_card'
+  ];
+
+  $profile_config->bulkImport($config_to_update);
+
+  // Clear the config cache.
+  $config_factory->reset();
+}
 
 /**
  * Helper function to enable a Drupal module and print the result.

@@ -161,6 +161,8 @@ class ProfileConfig {
       $this->getProfileFeatureConfigPath('landing_page_content_type') . '/optional',
       $this->getProfileFeatureConfigPath('contact_content_type') . '/install',
       $this->getProfileFeatureConfigPath('contact_content_type') . '/optional',
+      $this->getProfileFeatureConfigPath('event_content_type') . '/install',
+      $this->getProfileFeatureConfigPath('event_content_type') . '/optional',
       $this->getProfileFeatureConfigPath('global_navigation_footer') . '/install',
       $this->getProfileFeatureConfigPath('global_navigation_footer') . '/optional',
       $this->getProfileFeatureConfigPath('image_styles') . '/install',

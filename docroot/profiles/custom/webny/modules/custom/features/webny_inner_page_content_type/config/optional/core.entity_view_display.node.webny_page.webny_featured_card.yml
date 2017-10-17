@@ -2,8 +2,9 @@ langcode: en
 status: true
 dependencies:
   config:
-    - core.entity_view_mode.node.teaser
+    - core.entity_view_mode.node.webny_featured_card
     - field.field.node.webny_page.body
+    - field.field.node.webny_page.field_webny_filter_terms
     - field.field.node.webny_page.field_webny_page_agency_keywords
     - field.field.node.webny_page.field_webny_page_attdocs_eref
     - field.field.node.webny_page.field_webny_page_description
@@ -17,37 +18,59 @@ dependencies:
     - field.field.node.webny_page.field_webny_page_vis_options
     - node.type.webny_page
   module:
+    - linked_field
     - text
     - user
-id: node.webny_page.teaser
+id: node.webny_page.webny_featured_card
 targetEntityType: node
 bundle: webny_page
-mode: teaser
+mode: webny_featured_card
 content:
-  body:
+  field_webny_page_description:
+    weight: 2
     label: hidden
-    type: text_summary_or_trimmed
-    weight: 101
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_webny_page_image:
+    type: entity_reference_entity_view
+    weight: 0
+    label: hidden
     settings:
-      trim_length: 600
+      view_mode: cards
+      link: false
+    third_party_settings:
+      linked_field:
+        linked: '1'
+        type: custom
+        destination: '[node:url]'
+        advanced:
+          title: ''
+          target: ''
+          class: ''
+          rel: ''
+          text: ''
+    region: content
+  field_webny_page_short_title:
+    type: string
+    weight: 1
+    label: hidden
+    settings:
+      link_to_entity: false
     third_party_settings: {  }
     region: content
-  links:
-    weight: 100
-    region: content
-  workbench_moderation_control:
-    weight: -20
-    region: content
 hidden:
+  body: true
+  field_webny_filter_terms: true
   field_webny_page_agency_keywords: true
   field_webny_page_attdocs_eref: true
-  field_webny_page_description: true
   field_webny_page_docsec_subtitle: true
   field_webny_page_docsec_title: true
   field_webny_page_global_keywords: true
   field_webny_page_hero_title: true
-  field_webny_page_image: true
-  field_webny_page_short_title: true
   field_webny_page_sub_title: true
   field_webny_page_vis_options: true
   langcode: true
+  links: true
+  workbench_moderation_control: true
