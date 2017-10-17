@@ -21,7 +21,6 @@
     float: right;
     display: inline-block;
     padding: 12px 25px 8px 0;
-}
     .webny-action-share-label {
     	font-size: 13px;
         font-family: 'ProximaNovaRegular';
@@ -30,30 +29,14 @@
         cursor: pointer;
         padding: 0 5px;
     }
-   .icon-email {
-     font-size: 12.8px;
-     color: #fff;
-     &:hover {
-       color: $color-secondary;
-     }
-   }
- 
-   .icon-facebook {
-     font-size: 12.8px;
-     color: #fff;
-     &:hover {
-       color: $color-secondary;
-     }
-   }
- 
-   .icon-twitter {
-     font-size: 12.8px;
-     color: #fff;
-     &:hover {
-       color: $color-secondary;
-     }
-   }
-  }
+   .icon-email, .icon-facebook, .icon-twitter {
+	    font-size: 12.8px;
+	    color: #fff;
+	    &:hover {
+	    	color: $color-secondary;
+     	}
+    }
+}
 .icon-facebook {@include icon(before, fa-facebook);}
 .icon-twitter {@include icon(before, fa-twitter);}
 .icon-email{ @include icon(before, fa-envelope);}
