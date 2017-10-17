@@ -21,6 +21,7 @@ Feature: Check for the existence and fields of content types
     And I should see text matching "Address"
     And I should see text matching "Redirect Url"
     And I should see text matching "Content Categorization"
+    And I should see text matching "Filter Terms"
     And I should see text matching "Agency Keywords"
     And I should see text matching "Global Keywords"
     And I should see text matching "Hero Image"
