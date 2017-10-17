@@ -75,17 +75,6 @@ $hero-keyword-text-color: $color-mono-white !default;
 }
 
 // ========================================================================= //
-/* HERO HOMEPAGE LAYOUT  ONLY */
-
-.front {
-  .hero-layout {
-    .hero-landing-inner {
-      width: 90%;
-    }
-  }
-}
-
-// ========================================================================= //
 /* HERO LAYOUT */
 .hero-layout {
   position: relative;
@@ -102,6 +91,7 @@ $hero-keyword-text-color: $color-mono-white !default;
       position: relative;
       z-index: 3;
       background-color: black;
+      box-sizing: border-box;
     }
   }
 
@@ -162,10 +152,6 @@ $hero-keyword-text-color: $color-mono-white !default;
     position: relative;
   }
 
-  .hero-image img {
-    min-height: 256px;
-  }
-
   .hero-has-image  .hero-bkg {
     background: url("../icons/bkg-gradient.png") repeat-y scroll left top !important;
     height: 100%;
@@ -177,8 +163,29 @@ $hero-keyword-text-color: $color-mono-white !default;
     z-index: 2;
   }
 
+  .hero-has-image .hero-image {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    min-height: 256px;
+  }
+
+  // This approach is very similar to the `object-fit: cover;` approach, but with support for older browsers.
   .hero-has-image .hero-image img {
-    object-fit: cover;
+    position: absolute;
+    // Center vertically.
+    top:-100%;
+    bottom:-100%;
+    // Center horizontally.
+    left: -100%;
+    right: -100%;
+    // Sizing.
+    margin: auto;
+    height: auto;
+    min-height: 100%;
+    min-width: 100%;
+    max-width: none;
+    width: auto;
   }
 
   .hero-image-wrap{
@@ -712,7 +719,7 @@ $hero-keyword-text-color: $color-mono-white !default;
     // ALLOW HEIGHT TO BE LARGE IN THIS
     // REGION TO NOT HAVE OVERFLOW FROM HERO
     .hero-has-image,
-    .hero-image img {
+    .hero-has-image .hero-image {
       min-height: 610px;
     }
 
@@ -846,12 +853,12 @@ $hero-keyword-text-color: $color-mono-white !default;
     }
 
     .hero-has-image,
-    .hero-image img {
+    .hero-has-image .hero-image {
       min-height: 427px;
     }
 
     .hero-has-image.hero-news,
-    .hero-image img {
+    .hero-has-image.hero-news .hero-image {
       min-height: 512px;
     }
 
@@ -887,7 +894,7 @@ $hero-keyword-text-color: $color-mono-white !default;
   .front {
     .hero-layout {
       .hero-landing.hero-has-image,
-      .hero-image img {
+      .hero-has-image .hero-image {
         min-height: 512px;
       }
     }
