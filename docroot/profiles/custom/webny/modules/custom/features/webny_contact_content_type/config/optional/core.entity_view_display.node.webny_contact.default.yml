@@ -27,6 +27,7 @@ dependencies:
     - field.field.node.webny_contact.field_webny_contact_vimeo_link
     - field.field.node.webny_contact.field_webny_contact_vine_link
     - field.field.node.webny_contact.field_webny_contact_youtube
+    - field.field.node.webny_contact.field_webny_filter_terms
     - field.field.node.webny_contact.field_webny_phone_contact
     - node.type.webny_contact
   module:
@@ -307,13 +308,14 @@ content:
     region: content
   links:
     weight: 1
+    region: content
     settings: {  }
     third_party_settings: {  }
-    region: content
   workbench_moderation_control:
     weight: 0
+    region: content
     settings: {  }
     third_party_settings: {  }
-    region: content
 hidden:
+  field_webny_filter_terms: true
   langcode: true

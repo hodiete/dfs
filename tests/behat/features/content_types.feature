@@ -21,6 +21,7 @@ Feature: Check for the existence and fields of content types
     And I should see text matching "Global Keywords"
   #And I should see text matching "Hero Button"
   #And I should see text matching "Hero Button (additional)"
+    And I should see text matching "Filter Terms"
     And I should see text matching "Hero Title"
     And I should see text matching "Image"
     And I should see text matching "Location"
@@ -108,6 +109,7 @@ Feature: Check for the existence and fields of content types
     And I should see text matching "Views Field"
     And I should see text matching "Add Social Media" 
     And I should see text matching "Metadata"
+    And I should see text matching "Filter Terms"
     And I should not see text matching "Add Phone Contact"
 
 # Check for the existence of a content type
@@ -242,6 +244,7 @@ Feature: Check for the existence and fields of content types
     And I should see text matching "Description/Summary"
     And I should see text matching "Documents Section Title"
     And I should see text matching "Documents Section Sub Title"
+    And I should see text matching "Filter Terms"
     And I should see text matching "Global Keywords"
   #And I should see text matching "Hero Button"
   #And I should see text matching "Hero Button \(Additional\)"
@@ -293,6 +296,7 @@ Feature: Check for the existence and fields of content types
     And I should see text matching "Email"
     And I should see text matching "Facebook Link"
     And I should see text matching "Fax"
+    And I should see text matching "Filter Terms"
     And I should see text matching "Flickr Link"
     And I should see text matching "Global Keywords"
     And I should see text matching "Google"
@@ -380,6 +384,7 @@ Feature: Check for the existence and fields of content types
     And I should see text matching "Keywords"
     And I should see text matching "Metatags"
     And I should see text matching "Navigator / Table of Content Toggle"
+    And I should see text matching "Filter Terms"
     And I should not see text matching "Add Phone Contact"
 
 # Check for the settings of a content type, incl display modes
