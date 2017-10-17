@@ -28,6 +28,7 @@ dependencies:
     - field.field.node.webny_contact.field_webny_contact_vimeo_link
     - field.field.node.webny_contact.field_webny_contact_vine_link
     - field.field.node.webny_contact.field_webny_contact_youtube
+    - field.field.node.webny_contact.field_webny_filter_terms
     - field.field.node.webny_contact.field_webny_phone_contact
     - node.type.webny_contact
   module:
@@ -36,6 +37,7 @@ dependencies:
     - link
     - paragraphs
     - path
+    - shs
     - telephone
     - text
     - workbench_moderation
@@ -276,6 +278,16 @@ content:
     third_party_settings: {  }
     type: link_default
     region: content
+  field_webny_filter_terms:
+    weight: 33
+    settings:
+      force_deepest: false
+      display_node_count: false
+      create_new_items: false
+      create_new_levels: false
+    third_party_settings: {  }
+    type: options_shs
+    region: content
   field_webny_phone_contact:
     type: entity_reference_paragraphs
     weight: 1
@@ -285,6 +297,7 @@ content:
       edit_mode: open
       add_mode: dropdown
       form_display_mode: default
+      default_paragraph_type: ''
     third_party_settings: {  }
     region: content
   langcode:

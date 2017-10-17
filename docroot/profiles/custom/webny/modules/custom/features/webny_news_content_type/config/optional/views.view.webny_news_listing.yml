@@ -48,47 +48,47 @@ display:
         type: bef
         options:
           submit_button: Apply
-          reset_button: 0
+          reset_button: null
           reset_button_label: Reset
           exposed_sorts_label: 'Sort by'
-          expose_sort_order: 0
+          expose_sort_order: null
           sort_asc_label: Asc
           sort_desc_label: Desc
           bef:
             general:
-              allow_secondary: 0
+              allow_secondary: false
               secondary_label: 'Advanced options'
             field_webny_news_category_target_id:
               bef_format: bef
               more_options:
-                bef_select_all_none: 0
-                bef_select_all_none_nested: 0
-                bef_collapsible: 0
-                is_secondary: 0
+                bef_select_all_none: false
+                bef_select_all_none_nested: false
+                bef_collapsible: false
+                is_secondary: false
                 rewrite:
                   filter_rewrite_values: ''
             field_webny_news_global_keywords_target_id:
               bef_format: default
               more_options:
-                is_secondary: 0
+                is_secondary: false
                 rewrite:
                   filter_rewrite_values: ''
             field_webny_news_agency_keywords_target_id:
               bef_format: default
               more_options:
-                is_secondary: 0
+                is_secondary: false
                 rewrite:
                   filter_rewrite_values: ''
             field_webny_news_date_value:
               bef_format: default
               more_options:
-                is_secondary: 0
+                is_secondary: false
                 rewrite:
                   filter_rewrite_values: ''
             field_webny_news_date_value_1:
               bef_format: default
               more_options:
-                is_secondary: 0
+                is_secondary: false
                 rewrite:
                   filter_rewrite_values: ''
       pager:
@@ -972,7 +972,6 @@ display:
             webny_agency_keywords: '0'
             webny_document_category: '0'
             webny_global_keywords: '0'
-            webny_news_subject_heading: '0'
           entity_type: node
           plugin_id: taxonomy_index_tid
         title:
