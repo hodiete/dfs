@@ -3708,18 +3708,8 @@ function webny_configuration_uninstall_module($module_name) {
  * Example usage: webny_configuration_update_profile_configuration_files(['embed.button.media','core.entity_view_mode.media.wysiwyg']);
  */
 function webny_configuration_update_profile_configuration_files($files) {
-  // REFRESH MEDIA EMBED BUTTON CONFIG TO INCLUDE WYSIWYG IMAGE DISPLAY OPTIONS
   $config_factory = \Drupal::configFactory();
   $profile_config = \Drupal::service('webny.profile_config');
-
-  // Import new/changed configuration.
-  $config_to_update = [
-    'embed.button.media',
-    'core.entity_view_mode.media.wysiwyg',
-    'core.entity_view_mode.media.wysiwyg_portrait',
-    'core.entity_view_display.media.image.wysiwyg',
-    'core.entity_view_display.media.image.wysiwyg_portrait',
-  ];
 
   $profile_config->bulkImport($files);
 
