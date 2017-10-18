@@ -161,6 +161,8 @@ class ProfileConfig {
       $this->getProfileFeatureConfigPath('landing_page_content_type') . '/optional',
       $this->getProfileFeatureConfigPath('contact_content_type') . '/install',
       $this->getProfileFeatureConfigPath('contact_content_type') . '/optional',
+      $this->getProfileFeatureConfigPath('event_content_type') . '/install',
+      $this->getProfileFeatureConfigPath('event_content_type') . '/optional',
       $this->getProfileFeatureConfigPath('global_navigation_footer') . '/install',
       $this->getProfileFeatureConfigPath('global_navigation_footer') . '/optional',
       $this->getProfileFeatureConfigPath('image_styles') . '/install',
@@ -188,7 +190,8 @@ class ProfileConfig {
       $this->getProfileFeatureConfigPath('get_involved_frame') . '/optional',
       $this->getProfilePath() . '/themes/custom/webnycommander/' . self::CONFIG_DIR . '/install',
       $this->getProfilePath() . '/themes/custom/webnycommander/' . self::CONFIG_DIR . '/optional',
-
+      $this->getProfileFeatureConfigPath('workflow_basic_configuration') . '/install',
+      $this->getProfileFeatureConfigPath('workflow_basic_configuration') . '/optional',
     ]);
 
     return $locations->locate($resource . '.yml');

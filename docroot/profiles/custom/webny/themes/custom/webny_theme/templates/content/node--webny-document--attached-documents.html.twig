@@ -40,9 +40,9 @@
             <div class="fa-document">&nbsp;</div>
             <h4 class="doc-title" {{ title_attributes }}>
                 {% if absfilepath != '/' %}
-                    <a href="{{ absfilepath }}">{{ label }} abs</a>
+                    <a href="{{ absfilepath }}">{{ label }}</a>
                 {% elseif extfilepath %}
-                  <a href="{{ extfilepath }}">{{ label }} ext</a>
+                  <a href="{{ extfilepath }}">{{ label }}</a>
                 {% else %}
                     {{ label }}
                 {% endif %}
