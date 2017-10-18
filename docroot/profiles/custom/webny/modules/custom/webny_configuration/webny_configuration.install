@@ -3651,11 +3651,6 @@ function webny_configuration_update_8163(){
  * Update pathauto patterns to use shared fields.
  */
 function webny_configuration_update_8163() {
-  webny_configuration_update_profile_configuration_files([
-    'pathauto.pattern.webny_content_category_page_pattern',
-    'pathauto.pattern.webny_path_default_pattern',
-  ]);
-
   webny_configuration_delete_configuration_files([
     'pathauto.pattern.webny_path_generic_pattern',
   ]);
