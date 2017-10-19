@@ -158,7 +158,7 @@ class webnySecondaryNavForm extends ConfigFormBase {
     public function headerWYSIWYGFieldset() {
         return array(
             '#type' => 'details',
-            '#title' => t('Section One'),
+            '#title' => t('Menu Section One'),
             '#open' => TRUE,
         );
     }
@@ -169,7 +169,7 @@ class webnySecondaryNavForm extends ConfigFormBase {
     public function headerlinksFieldset() {
         return array(
             '#type' => 'details',
-            '#title' => t('Section Two'),
+            '#title' => t('Menu Section Two'),
             '#open' => TRUE,
         );
     }
