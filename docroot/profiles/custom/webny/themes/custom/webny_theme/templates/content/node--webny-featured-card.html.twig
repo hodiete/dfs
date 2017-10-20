@@ -72,63 +72,53 @@
 {% else %}
   {% set vtitle = node.label %}
 {% endif %}
-<article{{ attributes.addClass('webny-card') }}>
-  {#
-/**
-<div{{ content_attributes }}>
- */
-#}
-<div class="card-image">
-{{ content.field_webny_page_image }}
-</div>
-<div class="card-content">
-  <div class="card-content-top">
+<div {{ attributes.addClass('webny-card') }}>
+    <div class="card-image">
+    {{ content.field_webny_page_image }}
+    </div>
+    <div class="card-content">
+      <div class="card-content-top">
 
-      {%  if not page %}
-      {{ title_prefix }}
+          {%  if not page %}
+          {{ title_prefix }}
 
-          <h1{{ title_attributes }}>
-          <a href="{{ url }}" rel="bookmark">
+              <h1{{ title_attributes }}>
+              <a href="{{ url }}" rel="bookmark">
 
-              {# IMPLEMENTS SHORT TITLE OR 65 CHAR LIMIT TITLE #}
+                  {# IMPLEMENTS SHORT TITLE OR 65 CHAR LIMIT TITLE #}
 
-             {% if(vtitle|length <= 65) %}
-                {{ vtitle }}
-              {% else %}
+                 {% if(vtitle|length <= 65) %}
+                    {{ vtitle }}
+                  {% else %}
 
-                  {% set ws = true %}
-                  {% for num in node.label|length..0 %}
-                      {% if (num < 65 and  node.label|slice(num)|first == ' ' and ws != false) %}
-                          {% set ws = false %}
-                          {{ node.label[:num] ~ '...' }}
-                      {% endif %}
-                  {% endfor %}
+                      {% set ws = true %}
+                      {% for num in node.label|length..0 %}
+                          {% if (num < 65 and  node.label|slice(num)|first == ' ' and ws != false) %}
+                              {% set ws = false %}
+                              {{ node.label[:num] ~ '...' }}
+                          {% endif %}
+                      {% endfor %}
 
-              {% endif %}
+                  {% endif %}
 
-           </a>
-      </h1>
+               </a>
+          </h1>
 
-      {{ title_suffix }}
+          {{ title_suffix }}
+          {% endif %}
+
+     {% if display_submitted %}
+        <footer>
+          {{ author_picture }}
+          <div{{ author_attributes }}>
+            {% trans %}Submitted by {{ author_name }} on {{ date }}{% endtrans %}
+            {{ metadata }}
+          </div>
+        </footer>
       {% endif %}
+    </div> {# end .card-content-top #}
 
- {% if display_submitted %}
-    <footer>
-      {{ author_picture }}
-      <div{{ author_attributes }}>
-        {% trans %}Submitted by {{ author_name }} on {{ date }}{% endtrans %}
-        {{ metadata }}
-      </div>
-    </footer>
-  {% endif %}
-</div> {# end .card-content-top #}
 
- 
-     {{ content|without('field_webny_page_image','field_webny_page_short_title','node.label') }}
-</div>{# end .card-content #}
-{#
-/**
-</div> 
-*/
-#}
-
+         {{ content|without('field_webny_page_image','field_webny_page_short_title','node.label') }}
+    </div>{# end .card-content #}
+</div>

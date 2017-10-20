@@ -61,8 +61,8 @@
  * @todo Remove the id attribute (or make it a class), because if that gets
  *   rendered twice on a page this is invalid CSS for example: two lists
  *   in different view modes.
- * 
- * webny edits - moved the div around the content variable up above the 
+ *
+ * webny edits - moved the div around the content variable up above the
  * title_prefix area to get the title and content on the same level for css positioning.
  */
 #}
@@ -72,45 +72,38 @@
 {% else %}
   {% set vtitle = node.label %}
 {% endif %}
-<article{{ attributes.addClass('webny-card') }}>
-  {#
-/**
-<div{{ content_attributes }}>
- */
-#}
-<div class="card-image">
-{{ content.field_webny_gencp_heroimage }}
-</div>
-<div class="card-content">
-  <div class="card-content-top">
+<div{{ attributes.addClass('webny-card') }}>
 
-      {%  if not page %}
-      {{ title_prefix }}
+    <div class="card-image">
+    {{ content.field_webny_gencp_heroimage }}
+    </div>
+    <div class="card-content">
+      <div class="card-content-top">
 
-          <h1{{ title_attributes }}>
-          <a href="{{ url }}" rel="bookmark">
+          {%  if not page %}
+          {{ title_prefix }}
 
-              {# IMPLEMENTS SHORT TITLE OR 65 CHAR LIMIT TITLE #}
+              <h1{{ title_attributes }}>
+              <a href="{{ url }}" rel="bookmark">
 
-             {% if(vtitle|length <= 65) %}
-                {{ vtitle }}
-              {% else %}
+                  {# IMPLEMENTS SHORT TITLE OR 65 CHAR LIMIT TITLE #}
 
-                  {% set ws = true %}
-                  {% for num in node.label|length..0 %}
-                      {% if (num < 65 and  node.label|slice(num)|first == ' ' and ws != false) %}
-                          {% set ws = false %}
-                          {{ node.label[:num] ~ '...' }}
-                      {% endif %}
-                  {% endfor %}
+                 {% if(vtitle|length <= 65) %}
+                    {{ vtitle }}
+                  {% else %}
 
-              {% endif %}
+                      {% set ws = true %}
+                      {% for num in node.label|length..0 %}
+                          {% if (num < 65 and  node.label|slice(num)|first == ' ' and ws != false) %}
+                              {% set ws = false %}
+                              {{ node.label[:num] ~ '...' }}
+                          {% endif %}
+                      {% endfor %}
 
-           </a>
-      </h1>
+                  {% endif %}
 
-      {{ title_suffix }}
-      {% endif %}
+               </a>
+          </h1>
 
 
 </div> {# end .card-content-top #}
@@ -120,7 +113,22 @@
 </div>{# end .card-content #}
 {#
 /**
-</div> 
+</div>
 */
 #}
+          {{ title_suffix }}
+          {% endif %}
 
+     {% if display_submitted %}
+        <footer>
+          {{ author_picture }}
+          <div{{ author_attributes }}>
+            {% trans %}Submitted by {{ author_name }} on {{ date }}{% endtrans %}
+            {{ metadata }}
+          </div>
+        </footer>
+      {% endif %}
+    </div> {# end .card-content-top #}
+         {{ content.field_webny_gencp_sumdes }}
+    </div>{# end .card-content #}
+</div>
