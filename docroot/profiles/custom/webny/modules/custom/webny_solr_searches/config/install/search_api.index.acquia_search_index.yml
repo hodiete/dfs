@@ -32,8 +32,6 @@ dependencies:
     - field.storage.node.field_webny_landing_summary2
     - field.storage.node.field_webny_gencp_herodesc
     - field.storage.node.field_webny_generic_short_title
-    - field.storage.node.field_webny_news_agency_keywords
-    - field.storage.node.field_webny_news_global_keywords
     - field.storage.node.field_webny_news_location
     - field.storage.node.field_webny_page_description
     - field.storage.node.field_webny_page_image
@@ -333,14 +331,6 @@ field_settings:
     dependencies:
       config:
         - field.storage.node.field_webny_generic_short_title
-  field_webny_news_agency_keywords:
-    label: 'News - Agency Keywords'
-    datasource_id: 'entity:node'
-    property_path: field_webny_news_agency_keywords
-    type: integer
-    dependencies:
-      config:
-        - field.storage.node.field_webny_news_agency_keywords
   field_webny_news_date_1:
     label: 'News - Date'
     datasource_id: 'entity:node'
@@ -349,14 +339,6 @@ field_settings:
     dependencies:
       config:
         - field.storage.node.field_webny_news_date
-  field_webny_news_global_keywords:
-    label: 'News - Global Keywords'
-    datasource_id: 'entity:node'
-    property_path: field_webny_news_global_keywords
-    type: integer
-    dependencies:
-      config:
-        - field.storage.node.field_webny_news_global_keywords
   field_webny_news_location:
     label: 'News - Location'
     datasource_id: 'entity:node'
