@@ -10,6 +10,7 @@
   Drupal.behaviors.secnavbackend = {
     attach: function (context, settings) {
 
+
       var click = 'click touchend';
       var change = 'change touchend';
 
@@ -17,9 +18,14 @@
       // ONLOAD
 
       // RADIOS
-      var radios_settings   = "input[name='secnav_settings_opts']";
+      var radios_settings   = "input[name='page_choices']";
       var radios_firstsec   = "input[name='secnav_first_opts']";
       var radios_secondsec  = "input[name='secnav_second_opts']";
+
+      // CHECKED
+      var radios_settings_checked   = "input[name='page_choices']:checked";
+      var radios_secone_checked     = "input[name='secnav_first_opts']:checked";
+      var radios_sectwo_checked     = "input[name='secnav_second_opts']:checked";
 
       // BUTTONS
       var addmore_button    = '#secnav-addlinkarea > input';
@@ -27,6 +33,7 @@
 
       // TARGET SECTION/AREAS TO TRIGGER
       var specific_page     = '#secnav-entref-specpage';
+      var specific_page_in  = 'input[name=\'secnav_specific_page\']';
       var section_one       = '#secnav-wysiwyg-one';
       var section_two       = '#secnav-wysiwyg-two';
       var linkarea_wrap     = '#secnav-linkarea-wrap';
@@ -42,26 +49,64 @@
       // PRIMLIMINARY GETTERS
       var currentlinkcount = $(shownlink).length;
 
-      // ONLOAD PREVENTS OF DRUPAL SUBMIT BUTTON HANDLERS
-      $(addmore_button).on(click, function(e) {
-        e.preventDefault();
-      });
-      $(removeone_button).on(click, function(e) {
-        e.preventDefault();
-      });
-
       // ======================================================================================
-      // SHOW / HIDE BUTTONS
+      // ONLOAD
+      $(function(){
 
-      // HIDE IF GREATER THAN OR EQUAL TO 10
-      if(currentlinkcount >= 10){
-        $(addmore_button).hide();
-      }
+        // ======================================================================================
+        // ONLOAD PREVENTS OF DRUPAL SUBMIT BUTTON HANDLERS
+        $(addmore_button).on(click, function(e) {
+          e.preventDefault();
+        });
+        $(removeone_button).on(click, function(e) {
+          e.preventDefault();
+        });
 
-      // HIDE REMOVE IF COUNT LESS THAN ONE OR EQUAL TO 1
-      if(currentlinkcount <= 1){
-        $(removeone_button).hide();
-      }
+        // ======================================================================================
+        // IF SPECIFIC PAGE IS SELECTED
+        if($(radios_settings_checked).val() === 'specific'){
+          $(specific_page_in).show();
+        } else {
+          $(specific_page).hide();
+        }
+
+        // IF SECTION 1 -- WYSIWYG IS SELECTED
+        if($(radios_secone_checked).val() === 'wysiwyg_one'){
+          $(section_one).show();
+        } else {
+          $(section_one).hide();
+        }
+
+        // SECTION TWO RADIO OPTIONS
+        $(section_two).hide();
+        $(linkarea_wrap).hide();
+
+        switch($(radios_sectwo_checked).val()){
+          case 'wysiwyg_two':
+            $(section_two).show();
+          break;
+
+          case 'links_two':
+            $(linkarea_wrap).show();
+          break;
+
+
+        }
+
+        // ======================================================================================
+        // SHOW / HIDE BUTTONS
+
+        // HIDE IF GREATER THAN OR EQUAL TO 10
+        if(currentlinkcount >= 10){
+          $(addmore_button).hide();
+        }
+
+        // HIDE REMOVE IF COUNT LESS THAN ONE OR EQUAL TO 1
+        if(currentlinkcount <= 1){
+          $(removeone_button).hide();
+        }
+
+      });
 
       // ############################################################################################################
       // DYNAMICS / EVENTS
@@ -88,7 +133,7 @@
           // SELECT A PAGE
           case 'specific':
             $(specific_page).fadeIn();
-          }
+        }
 
       });
 
@@ -183,8 +228,8 @@
 
         // UPDATE TARGET
         $(targetToShow)
-          .removeClass('secnav-linkarea-show')
-          .addClass('secnav-linkarea-hide');
+        .removeClass('secnav-linkarea-show')
+        .addClass('secnav-linkarea-hide');
 
         // REMOVE VALUES
         $(targetTitle).val('');

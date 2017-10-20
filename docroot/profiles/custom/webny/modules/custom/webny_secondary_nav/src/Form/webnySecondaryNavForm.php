@@ -4,11 +4,7 @@ namespace Drupal\webny_secondary_nav\Form;
 
 use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\Core\Ajax\AjaxResponse;
-use Drupal\Core\Ajax\HtmlCommand;
-use Drupal\Core\Ajax\InvokeCommand;
-use Drupal\Core\Ajax\UpdateBuildIdCommand;
-use Drupal\Core\Config\ConfigFactoryInterface;
+use Drupal\node\Entity\Node;
 
 /**
  * WEBNY SECONDARY NAVIGATION FORM SECTION
@@ -33,7 +29,6 @@ class webnySecondaryNavForm extends ConfigFormBase {
 
     }
 
-
     /**
      * Function buildForm.
      */
@@ -43,7 +38,8 @@ class webnySecondaryNavForm extends ConfigFormBase {
         $form = parent::buildForm($form, $form_state);
 
         // CONFIGURATION SETTINGS
-        $config = \Drupal::service('config.factory')->getEditable('webny_secondary_nav.settings');
+        //$config = \Drupal::service('config.factory')->getEditable('webny_secondary_nav.settings');
+        $config = $this->config('webny_secondary_nav.settings');
 
         $max_links          = $config->get('webny_secondary_nav.max_links');
         $start_count        = $config->get('webny_secondary_nav.start_count');
@@ -55,14 +51,14 @@ class webnySecondaryNavForm extends ConfigFormBase {
 
         // =========================================================================================================
         // DISPLAY OPTIONS FIELDSET AND MARKUP
-        $form['secnav_displayfieldset'] = $this->displayFieldset();
-        $form['secnav_displayfieldset']['page_choices'] = $this->pageChoices();
-        $form['secnav_displayfieldset']['secnav_specific_page'] = $this->specificPageOption();
+        $form['secnav_set'] = $this->displayFieldset();
+        $form['secnav_set']['page_choices'] = $this->pageChoices();
+        $form['secnav_set']['secnav_specific_page'] = $this->specificPageOption();
 
         // =========================================================================================================
         // FIELDSET AND WYSIWYG AREA ONE
         $form['secnav_set1'] = $this->headerWYSIWYGFieldset();
-        $form['secnav_set1']['options'] = $this->sectionOnePageChoices();
+        $form['secnav_set1']['secnav_first_opts'] = $this->sectionOnePageChoices();
         $form['secnav_set1']['wysiwyg_area_one'] = $this->WYSIWYGAreaOne();
 
         // =========================================================================================================
@@ -71,7 +67,7 @@ class webnySecondaryNavForm extends ConfigFormBase {
 
 
         //$form['secnav_set2']['fieldarea'] = $this->secondAreaOptionArea();
-        $form['secnav_set2']['fieldarea']['options'] = $this->secondSectionChoices();
+        $form['secnav_set2']['fieldarea']['secnav_second_opts'] = $this->secondSectionChoices();
 
         // WYSIWYG AREA TWO
         $form['secnav_set2']['wysiwyg_area_two'] = $this->WYSIWYGAreaTwo();
@@ -89,17 +85,18 @@ class webnySecondaryNavForm extends ConfigFormBase {
                 $field_class = 'secnav-linkarea-hide';
             }
 
-            $form['secnav_set2']['linkarea'][$x]                   = $this->linksArea($x,$field_class);
-            $form['secnav_set2']['linkarea'][$x]['links_title']    = $this->URLTitleField($x);
-            $form['secnav_set2']['linkarea'][$x]['links_url']      = $this->entityReferenceField($x);
+            // TITLE/ENTREF NAMING
+            $title_name     = 'urltitle'.$x;
+            $entref_name    = 'entref'.$x;
 
+            $form['secnav_set2']['linkarea'][$x]               = $this->linksArea($x,$field_class);
+            $form['secnav_set2']['linkarea'][$x][$title_name]  = $this->URLTitleField($x);
+            $form['secnav_set2']['linkarea'][$x][$entref_name] = $this->entityReferenceField($x);
         }
 
         $form['secnav_set2']['linkarea']['wrap'] = $this->linkButtonsWrapper();
         $form['secnav_set2']['linkarea']['wrap']['addbutton'] = $this->addMoreButton();
         $form['secnav_set2']['linkarea']['wrap']['removebutton'] = $this->removeLinkButton();
-
-        //dsm($form);
 
         return $form;
     }
@@ -113,20 +110,38 @@ class webnySecondaryNavForm extends ConfigFormBase {
         $config = \Drupal::configFactory()->getEditable('webny_secondary_nav.settings');
 
         // SECONDARY NAVIGATION SETTINGS -- SET VALUES ON SUBMIT
-        $config->set('webny_secondary_nav.options.page_choices',    $form_state->getValue('page_choices'))
-        ->set('webny_secondary_nav.settings.secnav_specific_page',   $form_state->getValue('secnav_specific_page'))
+    $config->set('webny_secondary_nav.options.page_choices',                $form_state->getValue('page_choices'))
+        ->set('webny_secondary_nav.options.secnav_specific_page',           $form_state->getValue('secnav_specific_page'))
 
         // MENU: FIRST SECTION
-       ->set('webny_secondary_nav.menu_section_one.option',          $form_state->getValue('secnav_first_opts'))
-        ->set('webny_secondary_nav.menu_section_one.wysiwyg',        $form_state->getValue('wysiwyg_area_one[value]'))
+        ->set('webny_secondary_nav.menu_section_one.secnav_first_opts',     $form_state->getValue('secnav_first_opts'))
+        ->set('webny_secondary_nav.menu_section_one.wysiwyg_area_one',      $form_state->getValue('wysiwyg_area_one'))
 
         // MENU: SECOND SECTION
-        ->set('webny_secondary_nav.menu_section_two.option',         $form_state->getValue('secnav_second_opts'))
-        ->set('webny_secondary_nav.menu_section_two.wysiwyg',        $form_state->getValue('wysiwyg_area_two[value]'))
+        ->set('webny_secondary_nav.menu_section_two.secnav_second_opts',    $form_state->getValue('secnav_second_opts'))
+        ->set('webny_secondary_nav.menu_section_two.wysiwyg_area_two',      $form_state->getValue('wysiwyg_area_two'))
 
         // LINKFIELDS
-        ->set('webny_secondary_nav.menu_section_two.title',          $form_state->getValue('links_title'))
-        ->set('webny_secondary_nav.menu_section_two.entref',         $form_state->getValue('links_url'))
+        ->set('webny_secondary_nav.menu_section_two.urltitle1',             $form_state->getValue('urltitle1'))
+        ->set('webny_secondary_nav.menu_section_two.entref1',               $form_state->getValue('entref1'))
+        ->set('webny_secondary_nav.menu_section_two.urltitle2',             $form_state->getValue('urltitle2'))
+        ->set('webny_secondary_nav.menu_section_two.entref2',               $form_state->getValue('entref2'))
+        ->set('webny_secondary_nav.menu_section_two.urltitle3',             $form_state->getValue('urltitle3'))
+        ->set('webny_secondary_nav.menu_section_two.entref3',               $form_state->getValue('entref3'))
+        ->set('webny_secondary_nav.menu_section_two.urltitle4',             $form_state->getValue('urltitle4'))
+        ->set('webny_secondary_nav.menu_section_two.entref4',               $form_state->getValue('entref4'))
+        ->set('webny_secondary_nav.menu_section_two.urltitle5',             $form_state->getValue('urltitle5'))
+        ->set('webny_secondary_nav.menu_section_two.entref5',               $form_state->getValue('entref5'))
+        ->set('webny_secondary_nav.menu_section_two.urltitle6',             $form_state->getValue('urltitle6'))
+        ->set('webny_secondary_nav.menu_section_two.entref6',               $form_state->getValue('entref6'))
+        ->set('webny_secondary_nav.menu_section_two.urltitle7',             $form_state->getValue('urltitle7'))
+        ->set('webny_secondary_nav.menu_section_two.entref7',               $form_state->getValue('entref7'))
+        ->set('webny_secondary_nav.menu_section_two.urltitle8',             $form_state->getValue('urltitle8'))
+        ->set('webny_secondary_nav.menu_section_two.entref8',               $form_state->getValue('entref8'))
+        ->set('webny_secondary_nav.menu_section_two.urltitle9',             $form_state->getValue('urltitle9'))
+        ->set('webny_secondary_nav.menu_section_two.entref9',               $form_state->getValue('entref9'))
+        ->set('webny_secondary_nav.menu_section_two.urltitle10',            $form_state->getValue('urltitle10'))
+        ->set('webny_secondary_nav.menu_section_two.entref10',              $form_state->getValue('entref10'))
 
         ->save();
 
@@ -213,12 +228,12 @@ class webnySecondaryNavForm extends ConfigFormBase {
     public function pageChoices() {
 
         // CONFIGURATION SETTINGS
-        $c = $this->config('webny_secondary_nav.settings');
-        $dbval = $c->get('webny_secondary_nav.options.page_choices');
+        $config = $this->config('webny_secondary_nav.settings');
+        $dbval = $config->get('webny_secondary_nav.options.page_choices');
 
         return array(
             '#type' => 'radios',
-            '#title' => t('Choose where to display the Secondary Navigation'),
+            '#title' => t('Choose where to display the Secondary Navigation - ' . $dbval),
             '#options' => array(
                 'none'=>t('Disabled'),
                 'all'=>t('All web pages'),
@@ -226,9 +241,7 @@ class webnySecondaryNavForm extends ConfigFormBase {
                 'specific'=>t('Choose a specific page'),
             ),
             '#default_value' => $dbval,
-            '#attributes' => array(
-                'name'=>'secnav_settings_opts'
-            )
+            '#attributes' => array()
         );
     }
 
@@ -237,15 +250,25 @@ class webnySecondaryNavForm extends ConfigFormBase {
      */
     public function specificPageOption() {
 
+        $config = $this->config('webny_secondary_nav.settings');
+        $nid = $config->get('webny_secondary_nav.options.secnav_specific_page');
+
+        if(!empty($nid)){
+            $entity = Node::load($nid);
+        } else {
+            $entity = '';
+        }
+
         return array(
             '#type' => 'entity_autocomplete',
             '#title' => t('Choose a specific page to display the secondary navigation.'),
             '#target_type' => 'node',
-            '#default_value' => '',
             '#size' => 70,
+            '#maxlength' => 550,
             '#prefix' => '<div id="secnav-entref-specpage">',
             '#suffix' => '</div>',
             '#selection_setttings' => array(),
+            '#default_value' => $entity,
             '#attributes' => array(
 
             )
@@ -256,6 +279,10 @@ class webnySecondaryNavForm extends ConfigFormBase {
      * WEBNY SECONDARY NAVIGATION - radio choices for section one
      */
     public function sectionOnePageChoices() {
+
+        $config = $this->config('webny_secondary_nav.settings');
+        $dbval = $config->get('webny_secondary_nav.menu_section_one.secnav_first_opts');
+
         return array(
             '#type' => 'radios',
             '#title' => t('Choose an option for the secondary navigation menu\'s left side.'),
@@ -263,23 +290,26 @@ class webnySecondaryNavForm extends ConfigFormBase {
                 'none_one'=>t('Do not display'),
                 'wysiwyg_one'=>t('WYSIWYG'),
             ),
-            '#default_value' => 'none_one',
+            '#default_value' => $dbval,
             '#attributes' => array(
                 'name'=>'secnav_first_opts'
             )
         );
     }
 
-
     /**
      * WEBNY SECONDARY NAVIGATION - WYSIWYG AREA ONE.
      */
     public function WYSIWYGAreaOne() {
+
+        $config = $this->config('webny_secondary_nav.settings');
+        $dbval = $config->get('webny_secondary_nav.menu_section_one.wysiwyg_area_one');
+
         return array(
             '#title' => $this->t('WYSIWYG'),
             '#type' => 'text_format',
             '#format' => 'basic_html',
-            '#default_value' => '',
+            '#default_value' => $dbval['value'],
             '#maxlength' => 250,
             '#prefix' => '<div id="secnav-wysiwyg-one" class="">',
             '#suffix' => '</div>',
@@ -296,6 +326,9 @@ class webnySecondaryNavForm extends ConfigFormBase {
      * WEBNY SECONDARY NAVIGATION - LINKS AREA.
      */
     public function secondAreaOptionArea() {
+
+
+
         return array(
             '#type' => 'fieldset',
             '#prefix' => '<div class="secnav-options-area" id="secnav-options-area">',
@@ -311,6 +344,10 @@ class webnySecondaryNavForm extends ConfigFormBase {
      * WEBNY SECONDARY NAVIGATION - RADIO CHOICES TO SELECT A WYSIWYG OR THE LINK SECTION
      */
     public function secondSectionChoices() {
+
+        $config = $this->config('webny_secondary_nav.settings');
+        $dbval = $config->get('webny_secondary_nav.menu_section_two.secnav_second_opts');
+
         return array(
             '#type' => 'radios',
             '#title' => t('Choose an option for the secondary navigation menu\'s right side.'),
@@ -319,7 +356,7 @@ class webnySecondaryNavForm extends ConfigFormBase {
                 'wysiwyg_two'=>t('WYSIWYG'),
                 'links_two'=>t('Links'),
             ),
-            '#default_value' => 'none_two',
+            '#default_value' => $dbval,
             '#attributes' => array(
                 'name'=>'secnav_second_opts'
             )
@@ -330,17 +367,21 @@ class webnySecondaryNavForm extends ConfigFormBase {
      * WEBNY SECONDARY NAVIGATION - WYSIWYG AREA TWO.
      */
     public function WYSIWYGAreaTwo() {
+
+        $config = $this->config('webny_secondary_nav.settings');
+        $dbval = $config->get('webny_secondary_nav.menu_section_two.wysiwyg_area_two');
+
         return array(
             '#title' => $this->t('WYSIWYG'),
             '#type' => 'text_format',
             '#format' => 'basic_html',
-            '#default_value' => '',
+            '#default_value' => $dbval['value'],
             '#maxlength' => 250,
             '#prefix' => '<div id="secnav-wysiwyg-two">',
             '#suffix' => '</div>',
             '#attributes' => array(
                 'class' => array('field_info_two'),
-                'rows' => '6',
+                'rows' => '5',
                 'cols' => '100',
             ),
             '#wysiwyg' => TRUE,
@@ -364,6 +405,7 @@ class webnySecondaryNavForm extends ConfigFormBase {
      * WEBNY SECONDARY NAVIGATION - LINKS AREA.
      */
     public function linksArea($n, $field_class) {
+
         return array(
             '#type' => 'fieldset',
             '#prefix' => '<div class="'.$field_class.' secnav-area" id="secnav-linksarea-'.$n.'">',
@@ -380,17 +422,26 @@ class webnySecondaryNavForm extends ConfigFormBase {
      */
     public function entityReferenceField($n) {
 
+        $config = $this->config('webny_secondary_nav.settings');
+        $nid = $config->get('webny_secondary_nav.menu_section_two.entref'.$n);
+
+        if(!empty($nid)){
+            $entity = Node::load($nid);
+        } else {
+            $entity = '';
+        }
+
         return array(
             '#type' => 'entity_autocomplete',
             '#title' => t('URL / Reference'),
             '#target_type' => 'node',
-            '#default_value' => '',
+            '#default_value' => $entity,
             '#size' => 70,
             '#prefix' => '<div id="secnav-entref-'.$n.'">',
             '#suffix' => '</div>',
             '#selection_setttings' => array(),
             '#attributes' => array(
-                'data-secnav-erefnum' => $n,
+                'name' => 'entref'.$n
             ),
         );
     }
@@ -400,21 +451,27 @@ class webnySecondaryNavForm extends ConfigFormBase {
      */
     public function URLTitleField($n) {
 
+        $config = $this->config('webny_secondary_nav.settings');
+        $dbval = $config->get('webny_secondary_nav.menu_section_two.urltitle'.$n);
+
         return array(
             '#type' => 'textfield',
             '#title' => $this->t('URL Title'),
-            '#default_value' => '',
+            '#default_value' => $dbval,
             '#size' => 70,
             '#maxlength' => 50,
             '#prefix' => '<div id="secnav-urltitle-'.$n.'">',
             '#suffix' => '</div>',
             '#required' => FALSE,
+            '#attributes' => array(
+                'name' => 'urltitle'.$n
+            )
         );
     }
 
 
     /**
-     * WEBNY SECONDARY NAVIGATION - ADD A LINK FIELD
+     * WEBNY SECONDARY NAVIGATION - BUTTON WRAPPER
      */
     public function linkButtonsWrapper() {
         return array(
@@ -427,7 +484,6 @@ class webnySecondaryNavForm extends ConfigFormBase {
             ),
         );
     }
-
 
     /**
      * WEBNY SECONDARY NAVIGATION - ADD A LINK FIELD
