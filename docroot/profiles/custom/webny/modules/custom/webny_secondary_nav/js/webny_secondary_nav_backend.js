@@ -17,9 +17,9 @@
       // ONLOAD
 
       // RADIOS
-      var radios_settings   = "input[name='secnav-settings-opts']";
-      var radios_firstsec   = "input[name='secnav-first-opts']";
-      var radios_secondsec  = "input[name='secnav-second-opts']";
+      var radios_settings   = "input[name='secnav_settings_opts']";
+      var radios_firstsec   = "input[name='secnav_first_opts']";
+      var radios_secondsec  = "input[name='secnav_second_opts']";
 
       // BUTTONS
       var addmore_button    = '#secnav-addlinkarea > input';
@@ -62,7 +62,6 @@
       if(currentlinkcount <= 1){
         $(removeone_button).hide();
       }
-
 
       // ############################################################################################################
       // DYNAMICS / EVENTS
@@ -133,7 +132,6 @@
           case 'links_two':
             $(linkarea_wrap).fadeIn();
             break;
-
         }
 
       });
@@ -190,8 +188,7 @@
 
         // REMOVE VALUES
         $(targetTitle).val('');
-        $(targetEntRef).val('')
-
+        $(targetEntRef).val('');
 
         // HIDE TARGET
         $(targetToShow).fadeOut();
@@ -206,11 +203,6 @@
         }
 
       });
-
-
-
-
-
 
     }
   }
