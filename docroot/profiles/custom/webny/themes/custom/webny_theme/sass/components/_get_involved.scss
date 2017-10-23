@@ -26,6 +26,15 @@ $getinv-button-border-color:            $color-mono-black !default;
 $getinv-button-text-color:              $color-mono-black !default;
 $getinv-button-back-color:              $button-bkgd-transparent !default;
 $getinv-button-hover-back-color:        $button-white-50 !default;
+// Secondary button colors 
+$getinv-button-border-color-secondary:       $button-border-color !default;
+$getinv-button-text-color-secondary:         $button-text-color !default;
+$getinv-button-hover-back-color-secondary:   $button-black-50 !default;
+// Monochrome button colors 
+$getinv-button-border-color-monochrome:      $color-primary !default;
+$getinv-button-text-color-monochrome:        $button-text-color !default;
+$getinv-button-back-color-monochrome:        $button-bkgd-color!default;
+$getinv-button-hover-back-color-monochrome:  $color-mono-black !default;
 // this overrides the a value set in buttons.scss and the div value below
 $frame-button-max-width:                450px; 
 
@@ -57,10 +66,10 @@ $frame-button-max-width:                450px;
   text-transform: uppercase;
   letter-spacing: 2px;
 }
-.get-involved--field-webny-get-involved-title.secondary {
+.secondary .get-involved--field-webny-get-involved-title{
   color: $get-inv-frame-title-color-secondary;
 }
-.get-involved--field-webny-get-involved-title.monochrome {
+.monochrome .get-involved--field-webny-get-involved-title {
   color: $get-inv-frame-title-color-monochrome;
 }
 
@@ -71,10 +80,10 @@ $frame-button-max-width:                450px;
   margin-bottom: 2rem;
   line-height: 1.25em; //3rem;
 }
-.get-involved--field-webny-get-inv-headline.secondary {
+.secondary .get-involved--field-webny-get-inv-headline {
   color: $get-inv-frame-headline-color-secondary;
 }
-.get-involved--field-webny-get-inv-headline.monochrome {
+.monochrome .get-involved--field-webny-get-inv-headline {
   color: $get-inv-frame-headline-color-monochrome;
 }
 
