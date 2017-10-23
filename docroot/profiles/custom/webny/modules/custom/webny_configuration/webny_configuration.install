@@ -3639,6 +3639,14 @@ function webny_configuration_update_8162() {
   $config_factory->reset();
 }
 
+function webny_configuration_update_8163(){
+
+    \Drupal::service('module_installer')
+        ->uninstall(['webny_metatag']);
+    \Drupal::service('module_installer')
+        ->install(['webny_metatag']);
+}
+
 /**
  * Helper function to enable a Drupal module and print the result.
  *
