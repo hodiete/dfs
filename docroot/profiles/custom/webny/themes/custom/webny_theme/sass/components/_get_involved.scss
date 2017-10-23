@@ -134,6 +134,28 @@ $frame-button-max-width:                450px;
     @include frame-button-base();
 
 }
+.secondary .get-involved--field-webny-get-inv-cta {
+  border: $frame-button-border-size solid $getinv-button-border-color-secondary;
+    &:hover {
+      background-color: $getinv-button-hover-back-color-secondary;
+      border-color: $getinv-button-border-color-secondary;
+    }
+    a {
+      color: $getinv-button-text-color-secondary;
+      background-color: $getinv-button-back-color-secondary;
+    }
+}
+.monochrome .get-involved--field-webny-get-inv-cta {
+  border: $frame-button-border-size solid $getinv-button-border-color-monochrome;
+    &:hover {
+      background-color: $getinv-button-hover-back-color-monochrome;
+      border-color: $getinv-button-border-color-monochrome;
+    }
+    a {
+      color: $getinv-button-text-color-monochrome;
+      background-color: $getinv-button-back-color-monochrome;
+    }
+}
 
 // ######################################################################### //
 /* PC VIEW */
