@@ -24,50 +24,25 @@ function webny_event_content_type_preprocess_node(&$variables) {
   $bundle = $variables['node']->getType();
 
   if ($bundle == 'webny_event') {
-    $start_date = $variables['node']->field_webny_event_date_start->value . 'Z';
-    $end_date = $variables['node']->field_webny_event_date_end->value . 'Z';
+    // Raw values to be formatted in Twig.
+    $variables['start_date'] = $variables['node']->field_webny_event_date_start->value . 'Z';
+    $variables['end_date'] = $variables['node']->field_webny_event_date_end->value . 'Z';
 
-    // Time values for combining.
-    $variables['event_time'] = '';
-    $is_all_day = boolval($variables['node']->field_webny_event_all_day->value);
-    $start_time = date('g:i', strtotime($start_date));
-    $start_time_meridiem = date('A', strtotime($start_date));
-    $end_time = date('g:i', strtotime($end_date));
-    $end_time_meridiem = date('A', strtotime($end_date));
+    $variables['time_zone'] = date('T', strtotime($variables['start_date']));
 
-    $time_zone = date('T', strtotime($start_date));
+    // Day flags.
+    $variables['all_day'] = boolval($variables['node']->field_webny_event_all_day->value);
+    $variables['multi_day'] = (date('dM', strtotime($variables['start_date'])) !== date('dM', strtotime($variables['end_date'])));
 
-    // Combined event_time values.
-    if ($start_time == $end_time  && $start_time_meridiem == $end_time_meridiem) {
-      // Display just the start if times are same.
-      $event_time = "$start_time $start_time_meridiem $time_zone";
-    }
-    elseif ($start_time_meridiem == $end_time_meridiem) {
-      // Display with only 1 am/pm.
-      $event_time = "$start_time - $end_time $end_time_meridiem $time_zone";
-    }
-    else {
-      // Display both hours' am/pm.
-      $event_time = "$start_time $start_time_meridiem - $end_time $end_time_meridiem $time_zone";
-    }
+    // Time flags.
+    $start_time = date('g:i', strtotime($variables['start_date']));
+    $start_time_meridiem = date('A', strtotime($variables['start_date']));
+    $end_time = date('g:i', strtotime($variables['end_date']));
+    $end_time_meridiem = date('A', strtotime($variables['end_date']));
 
-    // Add the time zone.
-    //$event_time .= ' ' . drupal_get_user_timezone();
+    $variables['same_time'] = ($start_time == $end_time  && $start_time_meridiem == $end_time_meridiem);
 
-    // Combined hour value.
-    if (!$is_all_day) {
-      $variables['event_time'] = $event_time;
-    }
-
-    // Flags.
-    $variables['all_day'] = $is_all_day;
-    $variables['multi_day'] = (date('dM', strtotime($start_date)) !== date('dM', strtotime($end_date)));
-
-    // Split date values.
-    $variables['start_day'] = date('d', strtotime($start_date));
-    $variables['start_month'] = date('F', strtotime($start_date));
-    $variables['end_day'] = date('d', strtotime($end_date));
-    $variables['end_month'] = date('F', strtotime($end_date));
+    $variables['same_meridiem'] = ($start_time_meridiem == $end_time_meridiem);
   }
 }
 

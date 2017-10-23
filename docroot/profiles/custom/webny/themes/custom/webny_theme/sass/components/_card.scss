@@ -320,7 +320,7 @@ $featured-card-icon-color-hover: $color-secondary !default;
   }
 
   .day-month-wrapper.multi-day {
-    width: 200px;
+    width: 180px;
   }
 
   .month div,
@@ -363,9 +363,18 @@ $featured-card-icon-color-hover: $color-secondary !default;
     &::before {
       content: '\e613';
       color: #128ec3;
-      vertical-align: middle;
+      vertical-align: text-bottom;
       margin-right: 5px;
       font-family: 'icomoon';
+    }
+
+    div {
+      display: inline;
+    }
+
+    .meridiem,
+    .timezone {
+      font-size: 80%;
     }
   }
 }

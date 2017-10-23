@@ -39,21 +39,28 @@
 {% set hero_image = file_url(node.field_webny_event_heroimage.entity.field_image.entity.uri.value) %}
 
 <h2>Event time:</h2>
-{% if start_day == end_day %}
-   <div class="event-day">{{ start_day }}</div>
-{% else %}
-   <div class="event-day">{{ start_day }}-{{ end_day }}</div>
-{% endif %}
+{# See webny_event_content_type_preprocess_node() for extra variables. #}
 
-{% if start_month == end_month %}
-    <div class="event-month">{{ start_month }}</div>
-{% else %}
-    <div class="event-month">{{ start_month }}-{{ end_month }}</div>
+{% set day_month_classes = ['day-month-wrapper'] %}
+{% if multi_day %}
+    {% set day_month_classes = day_month_classes | merge(['multi-day']) %}
 {% endif %}
+<div class="event-date">
+<div class="{{ day_month_classes | join(' ') }}">
+    <div class="month">
+        <div class="start">{{ start_date | date('F') }}</div>{% if multi_day %}<div class="dash">-</div><div class="end">{{ end_date | date('F') }}</div>{% endif %}
+    </div>
 
-{% if event_time %}
-<div class="event-time">{{ event_time }}</div>
+    <div class="day">
+        {# Because these are inline elements, spacing matters. #}
+        <div class="start">{{ start_date | date('d') }}</div>{% if multi_day %}<div class="dash">-</div><div class="end">{{ end_date | date('d') }}</div>{% endif %}
+    </div>
+</div>
+
+{% if not all_day %}
+    <div class="time">{{ start_date | date('g:i') }}{% if (not same_meridiem) or same_time %} <div class="meridiem">{{ start_date | date('A') }}</div>{% endif %}{% if same_time %} <div class="timezone">{{ time_zone }}</div>{% else %} <div class="dash">-</div> {{ end_date | date('g:i') }} <div class="meridiem">{{ end_date | date('A') }}</div> <div class="timezone">{{ time_zone }}</div>{% endif %}</div>
 {% endif %}
+</div>
 
 <div class="webny-event-content-page">
 
