@@ -22,11 +22,17 @@ class webnySecondaryNavBlockExtension extends \Twig_Extension {
             new \Twig_SimpleFunction('secondaryNavLinks', array($this, 'secondaryNavLinks'), array(
                 'is_safe' => array('html'),
             )),
+            new \Twig_SimpleFunction('wysiwygOneOutput', array($this, 'wysiwygOneOutput'), array(
+                'is_safe' => array('html'),
+            )),
+            new \Twig_SimpleFunction('wysiwygTwoOutput', array($this, 'wysiwygTwoOutput'), array(
+                'is_safe' => array('html'),
+            )),
         );
     }
 
     /**
-     * Function renderBlockMenu.
+     * Function secondaryNavLinks.
      */
     public function secondaryNavLinks() {
 
@@ -59,5 +65,28 @@ class webnySecondaryNavBlockExtension extends \Twig_Extension {
         return $htmlLinks;
 
     }
+
+    /**
+     * Function wysiwygOneOutput.
+     */
+    public function wysiwygOneOutput(){
+
+        $config     = \Drupal::config('webny_secondary_nav.settings');
+        $wysiwyg    = $config->get('webny_secondary_nav.menu_section_one.wysiwyg_area_one');
+        return $wysiwyg['value'];
+
+    }
+
+    /**
+     * Function wysiwygTwoOutput.
+     */
+    public function wysiwygTwoOutput(){
+
+        $config     = \Drupal::config('webny_secondary_nav.settings');
+        $wysiwyg    = $config->get('webny_secondary_nav.menu_section_two.wysiwyg_area_two');
+        return $wysiwyg['value'];
+
+    }
+
 
 }
