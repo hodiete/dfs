@@ -68,12 +68,8 @@
 #}
 
 {# CHECK FOR FRAME BACKGROUND COLOR SELECTED #}
-{% if paragraph.field_webny_get_inv_color.value == ‘primary’ %}
-    {% set gi_color = ‘primary’ %}
-{% elseif paragraph.field_webny_get_inv_color.value == ‘secondary’ %}
-    {% set gi_color = ‘secondary’ %}
-{% elseif paragraph.field_webny_get_inv_color.value == ‘monochrome’ %}
-    {% set gi_color = ‘monochome’ %}
+{% if paragraph.field_webny_get_inv_color.value is not empty and paragraph.field_webny_get_inv_color.value is not null %}
+    {% set gi_color = paragraph.field_webny_get_inv_color.value %}
 {% else %}
     {% set gi_color = ‘’ %}
 {% endif %}
@@ -87,7 +83,7 @@
   ]
 %}
 {% block paragraph %}
-  <div{{ attributes.addClass(classes) }} class="{{ gi_color }}">
+  <div{{ attributes.addClass(classes) }}  class="{{ content.field_webny_get_inv_color }}">
     {% block content %}
       {{ content }}
     {% endblock %}
