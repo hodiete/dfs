@@ -1,6 +1,15 @@
+{# CHECK FOR FRAME BACKGROUND COLOR SELECTED #}
+{% if paragraph.field_webny_get_inv_color.value is not empty and paragraph.field_webny_get_inv_color.value is not null %}
+    {% set gi_color = paragraph.field_webny_get_inv_color.value %}
+{% else %}
+    {% set gi_color = ‘’ %}
+{% endif %}
+
+
 {%
 set classes = [
 'get-involved--' ~ field_name|clean_class,
+gi_color,
 ]
 %}
 <div{{ attributes }}>
