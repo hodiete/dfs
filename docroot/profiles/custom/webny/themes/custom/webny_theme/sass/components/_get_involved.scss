@@ -15,10 +15,10 @@ $get-inv-frame-description-color: $color-mono-black !default;
 $get-inv-frame-bkgd-color-secondary: $color-secondary !default;
 $get-inv-frame-title-color-secondary: $color-mono-black !default;
 $get-inv-frame-headline-color-secondary: $color-mono-white !default;
-// monotonelight color variables
-$get-inv-frame-bkgd-color-monotone: $color-mono-lt !default;
-$get-inv-frame-title-color-monotone: $color-mono-black !default;
-$get-inv-frame-headline-color-monotone: $color-mono-black !default;
+// monochrome light color variables
+$get-inv-frame-bkgd-color-monochrome: $color-mono-lt !default;
+$get-inv-frame-title-color-monochrome: $color-mono-black !default;
+$get-inv-frame-headline-color-monochrome: $color-mono-black !default;
 
 // REASSIGNED VALS FOR GLOBAL SCOPE -- GET INVOLVED 
 // this overrides general button variables in config.scss
@@ -43,11 +43,11 @@ $frame-button-max-width:                450px;
   padding: $frame-padding-lg 3%;
   position:relative;
 }
-.paragraph--type--webny-get-involved-pgtype .secondary {
+.paragraph--type--webny-get-involved-pgtype.secondary {
   background-color: $get-inv-frame-bkgd-color-secondary;
 }
-.paragraph--type--webny-get-involved-pgtype .monotone {
-  background-color: $get-inv-frame-bkgd-color-monotone;
+.paragraph--type--webny-get-involved-pgtype.monochrome {
+  background-color: $get-inv-frame-bkgd-color-monochrome;
 }
 
 .get-involved--field-webny-get-involved-title {
@@ -57,11 +57,11 @@ $frame-button-max-width:                450px;
   text-transform: uppercase;
   letter-spacing: 2px;
 }
-.get-involved--field-webny-get-involved-title .secondary {
+.get-involved--field-webny-get-involved-title.secondary {
   color: $get-inv-frame-title-color-secondary;
 }
-.get-involved--field-webny-get-involved-title .monotone {
-  color: $get-inv-frame-title-color-monotone;
+.get-involved--field-webny-get-involved-title.monochrome {
+  color: $get-inv-frame-title-color-monochrome;
 }
 
 .get-involved--field-webny-get-inv-headline {
@@ -71,11 +71,11 @@ $frame-button-max-width:                450px;
   margin-bottom: 2rem;
   line-height: 1.25em; //3rem;
 }
-.get-involved--field-webny-get-inv-headline .secondary {
+.get-involved--field-webny-get-inv-headline.secondary {
   color: $get-inv-frame-headline-color-secondary;
 }
-.get-involved--field-webny-get-inv-headline .monotone {
-  color: $get-inv-frame-headline-color-monotone;
+.get-involved--field-webny-get-inv-headline.monochrome {
+  color: $get-inv-frame-headline-color-monochrome;
 }
 
 .front .get-involved--field-webny-get-inv-headline {
