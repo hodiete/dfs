@@ -90,7 +90,6 @@
             $(linkarea_wrap).show();
           break;
 
-
         }
 
         // ======================================================================================
@@ -227,9 +226,7 @@
         var targetTitle  = '#secnav-urltitle-'+thisLinkCount  + ' input';
 
         // UPDATE TARGET
-        $(targetToShow)
-        .removeClass('secnav-linkarea-show')
-        .addClass('secnav-linkarea-hide');
+        $(targetToShow).removeClass('secnav-linkarea-show').addClass('secnav-linkarea-hide');
 
         // REMOVE VALUES
         $(targetTitle).val('');

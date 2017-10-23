@@ -5,9 +5,6 @@
  * Contains webny_secondary_nav.module.
  */
 
-use Drupal\Core\Link;
-use Drupal\Component\Utility\Xss;
-use Drupal\Core\Url;
 use Drupal\Core\Routing\RouteMatchInterface;
 
 /**
@@ -28,24 +25,30 @@ function webny_secondary_nav_theme() {
 
     $config = \Drupal::config('webny_secondary_nav.settings');
 
-    $defaultPageChoice  = $config->get('webny_secondary_nav.defaultPageChoice');
+    // ALL VARIABLES TO PASS TO TWIG RENDER ARRAY
+
+    $displayPage          = $config->get('webny_secondary_nav.options.page_choices');
+    $secNavPage           = $config->get('webny_secondary_nav.options.secnav_specific_page');
+    $sectionOneChoice     = $config->get('webny_secondary_nav.menu_section_one.secnav_first_opts');
+    $wysiwygOne           = $config->get('webny_secondary_nav.menu_section_one.wysiwyg_area_one');
+    $sectionTwoChoice     = $config->get('webny_secondary_nav.menu_section_two.secnav_second_opts');
+    $wysiwygTwo           = $config->get('webny_secondary_nav.menu_section_two.wysiwyg_area_two');
 
     return array(
-        'webny_secondary_nav_wysiwyg_area' => array(
-            'template' => 'webny-secondary-nav-wysiwyg-area',
-            'variables' => array(
+        'webny_secondary_nav_block' => array(
+            'template' => 'webny_secondary_nav_block',
 
-            ),
-        ),
-        'webny_secondary_nav_links_area' => array(
-            'template' => 'webny-secondary-nav-links-area',
             'variables' => array(
-                'defaultPageChoice' => $defaultPageChoice,
+                'displayPage'           => $displayPage,
+                'secNavPage'            => $secNavPage,
+                'sectionOneChoice'      => $sectionOneChoice,
+                'wysiwygOne'            => $wysiwygOne,
+                'wysiwygTwo'            => $wysiwygTwo,
+                'sectionTwoChoice'      => $sectionTwoChoice,
             ),
         ),
     );
 }
-
 
 /**
  * Function webny_global_nav_preprocess.

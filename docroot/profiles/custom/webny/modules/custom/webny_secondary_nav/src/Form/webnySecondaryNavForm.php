@@ -66,6 +66,7 @@ class webnySecondaryNavForm extends ConfigFormBase {
         $form['secnav_set2'] = $this->headerlinksFieldset();
 
 
+
         //$form['secnav_set2']['fieldarea'] = $this->secondAreaOptionArea();
         $form['secnav_set2']['fieldarea']['secnav_second_opts'] = $this->secondSectionChoices();
 
@@ -78,25 +79,50 @@ class webnySecondaryNavForm extends ConfigFormBase {
         // LOOP THROUGH 10 TIMES
         for($x = $start_count; $x <= $max_links; $x++) {
 
-            // ADD OR SHOW HIDDEN CLASS
-            if($x <= $linkarea_count) {
-                $field_class = 'secnav-linkarea-show';
-            } else {
-                $field_class = 'secnav-linkarea-hide';
-            }
-
             // TITLE/ENTREF NAMING
             $title_name     = 'urltitle'.$x;
             $entref_name    = 'entref'.$x;
 
-            $form['secnav_set2']['linkarea'][$x]               = $this->linksArea($x,$field_class);
+            $form['secnav_set2']['linkarea'][$x]               = $this->linksArea($x);
             $form['secnav_set2']['linkarea'][$x][$title_name]  = $this->URLTitleField($x);
             $form['secnav_set2']['linkarea'][$x][$entref_name] = $this->entityReferenceField($x);
+
+            //dsm($form['secnav_set2']['linkarea'][$x][$entref_name]);
+
         }
 
         $form['secnav_set2']['linkarea']['wrap'] = $this->linkButtonsWrapper();
         $form['secnav_set2']['linkarea']['wrap']['addbutton'] = $this->addMoreButton();
         $form['secnav_set2']['linkarea']['wrap']['removebutton'] = $this->removeLinkButton();
+
+
+
+
+
+        // CHECK LINKS FOR DEFAULT VALUES AND APPLY CLASSES AS NECESSARY
+        // LOOP THROUGH 10 TIMES -- AGAIN
+        for($x = $start_count; $x <= $max_links; $x++) {
+
+            // TITLE/ENTREF NAMING
+            $title_name     = 'urltitle'.$x;
+            $entref_name    = 'entref'.$x;
+
+            $thisTitle  = $form['secnav_set2']['linkarea'][$x][$title_name]['#default_value'];
+            $thisEntRef = $form['secnav_set2']['linkarea'][$x][$entref_name]['#default_value'];
+
+            // ADD OR SHOW HIDDEN CLASS
+            if($x === 1 || (!empty($thisTitle) && !empty($thisEntRef))) {
+                $field_class = 'secnav-linkarea-show';
+            } else {
+                $field_class = 'secnav-linkarea-hide';
+            }
+
+            $form['secnav_set2']['linkarea'][$x]['#prefix'] = '<div class="'.$field_class.' secnav-area" id="secnav-linksarea-'.$x.'">';
+            $form['secnav_set2']['linkarea'][$x]['#suffix'] = '</div>';
+
+            unset($title_name,$entref_name,$thisTitle,$thisEntRef);
+
+        }
 
         return $form;
     }
@@ -327,8 +353,6 @@ class webnySecondaryNavForm extends ConfigFormBase {
      */
     public function secondAreaOptionArea() {
 
-
-
         return array(
             '#type' => 'fieldset',
             '#prefix' => '<div class="secnav-options-area" id="secnav-options-area">',
@@ -404,11 +428,11 @@ class webnySecondaryNavForm extends ConfigFormBase {
     /**
      * WEBNY SECONDARY NAVIGATION - LINKS AREA.
      */
-    public function linksArea($n, $field_class) {
+    public function linksArea($n) {
 
         return array(
             '#type' => 'fieldset',
-            '#prefix' => '<div class="'.$field_class.' secnav-area" id="secnav-linksarea-'.$n.'">',
+            '#prefix' => '<div class="secnav-area" id="secnav-linksarea-'.$n.'">',
             '#suffix' => '</div>',
             '#title' => $this->t('ADD A LINK AND A TITLE '),
             '#attributes' => array(
@@ -434,6 +458,7 @@ class webnySecondaryNavForm extends ConfigFormBase {
         return array(
             '#type' => 'entity_autocomplete',
             '#title' => t('URL / Reference'),
+            '#maxlength' => NULL,
             '#target_type' => 'node',
             '#default_value' => $entity,
             '#size' => 70,
@@ -492,7 +517,7 @@ class webnySecondaryNavForm extends ConfigFormBase {
 
         return array(
             '#type' => 'button',
-            '#value' => $this->t('Add Another Link Field'),
+            '#value' => $this->t('Add a Link Field'),
             '#is_button' => TRUE,
             '#description' => '',
             '#prefix' => '<div id="secnav-addlinkarea">',

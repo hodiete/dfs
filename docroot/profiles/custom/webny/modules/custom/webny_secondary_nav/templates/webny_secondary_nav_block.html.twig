@@ -1,0 +1,44 @@
+
+{% if displayPage != 'none' %}
+
+    {# CSS STUFF FOR LAYOUT #}
+
+    {# SECONDARY NAVIGATION #}
+    <nav role="navigation" aria-label="secondary navigation">
+
+        {# IF THERE IS A WYSIWYG SELECTED -- DISPLAY #}
+        {% if sectionOneChoice == 'wysiwyg_one' %}
+            {# WYSIWYG ONE #}
+            <div class="secondary-nav-wysiwygone">
+                {# wysiwygOne #}
+                <p>WYSIWYG 1: This works for now.</p>
+            </div>
+        {% endif %}
+
+        {# IF THERE IS A SECOND AREA SELECTED -- DISPLAY  #}
+        {% if sectionTwoChoice != 'none_two' %}
+
+            {% if sectionTwoChoice == 'wysiwyg_two' %}
+
+                {# WYSIWYG TWO #}
+                <div class="secondary-nav-wysiwygtwo">
+                    {# wysiwygTwo #}
+                    <p>WYSIWYG 2: This works for now.</p>
+                </div>
+
+            {% endif %}
+
+            {% if sectionTwoChoice == 'links_two' %}
+
+                {# LINKS #}
+                <ul class="secondary-nav-links">
+                    {{ secondaryNavLinks() }}
+                </ul>
+
+            {% endif %}
+
+        {% endif %}
+
+    </nav>
+
+{% endif %}
