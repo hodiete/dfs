@@ -16,20 +16,82 @@ $gp-frame-button: $color-mono-white !default;
 
 // ACTIONS BAR BETWEEN HERO AND CONTENT
 .webny-generic-content-page .actions {
-  background-color: #128ec3;
+  background-color: $color-primary;
   font-size: 0.8em;
   color: #fff;
   height: 50px;
   letter-spacing: 1px;
   position: relative;
   overflow: hidden;
-
+  .webny-action-label, .webny-action-top, .icon-arrow-up {
+    visibility: hidden;
+    display: inline-block;
+    max-width: 20%;
+  }
   &.stuck {
     position: fixed;
     width: 100%;
     top: 0px;
     z-index: 100;
+    .webny-action-label {
+      visibility: visible;
+      color: #fff;
+      font-family: "ProximaNovaExtrabold";
+      font-size: 22px;
+      display: inline-block;
+      padding: 10px;
+      max-width: 75%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .webny-action-top, .webny-action-top a, .icon-arrow-up {
+      visibility: hidden;
+      display: inline-block;
+      vertical-align: top;
+    }
   }
+.webny-action-bar {
+  display: inline;
+  overflow: hidden;
+}
+.webny-share {
+  visibility: hidden;
+  float: right;
+  display: inline-block;
+  padding: 10px;
+}
+  .icon-email {
+    font-size: 12.8px;
+    color: #fff;
+    &:hover {
+      color: $featured-card-icon-color-hover;
+    }
+  }
+
+  .icon-facebook {
+    font-size: 12.8px;
+    color: #fff;
+    &:hover {
+      color: $featured-card-icon-color-hover;
+    }
+  }
+
+  .icon-twitter {
+    font-size: 12.8px;
+    color: #fff;
+    &:hover {
+      color: $featured-card-icon-color-hover;
+    }
+  }
+  .icon-arrow-up {
+    font-size: 12.8px;
+    color: #fff;
+    &:hover {
+      color: $featured-card-icon-color-hover;
+    }
+  }
+  .icon-arrow-up {@include icon(before, arrow-up);}
 }
 
 // ######################################################################### //
@@ -342,7 +404,7 @@ aside#gpnav_sidebar {
 
     &.stuck {
       width: 20%;
-    }
+      }
 
     header {
       display: block;
@@ -371,6 +433,54 @@ aside#gpnav_sidebar {
       transition: top 0.3s 0s ease-in-out;
     }
   }
+
+/* Action Share bar styles */
+.webny-generic-content-page .actions {
+    &.stuck {
+      .webny-action-top, .icon-arrow-up {
+        visibility: visible;
+        display: inline-block;
+        cursor: pointer;
+        color: #fff;
+        font-size: 13px;
+        font-family: 'ProximaNovaRegular';
+      } 
+      .webny-action-label {
+        max-width: 50%;
+      }
+      .webny-action-top a, .icon-arrow-up a {
+        color: #fff;
+        visibility: visible;
+        &:hover {
+          color: $featured-card-icon-color-hover;
+        }
+      }
+      .webny-action-top {
+        padding: 12px 5px 10px 30px;
+      }
+      .icon-arrow-up {
+        padding-left: 5px;
+      }
+    }
+  
+  .webny-share {
+    visibility: visible;
+    float: right;
+    display: inline-block;
+    padding: 12px 25px 8px 0;
+    .webny-action-share-label {
+      font-size: 13px;
+      font-family: 'ProximaNovaRegular';
+      display: inline-block;
+    }
+    .webny-action-share-button {
+      cursor: pointer;
+      display: inline-block;
+      padding: 0 5px;
+    }
+  }
+}
+/* End Action Share bar styles */
 
   .gp-article-content {
     width: 75%;
@@ -470,6 +580,12 @@ aside#gpnav_sidebar {
       padding: 75px 50px 50px;
       position: relative;
     }
+  }
+  .webny-action-label {
+        max-width: 70%;
+  }
+  .webny-share {
+    padding: 12px 50px 8px 0;
   }
   /* Contact Frame styling - starts here */
   .generic-paragraphs {

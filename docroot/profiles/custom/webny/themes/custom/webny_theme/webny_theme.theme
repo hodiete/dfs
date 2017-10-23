@@ -43,6 +43,7 @@ function webny_theme_preprocess_paragraph__webny_card_paragraph_type(&$variables
 }
 
 /**
+<<<<<<< HEAD
  * Implements hook_preprocess_node__webny_landing_page
  */
 function webny_theme_preprocess_node__webny_landing_page(&$variables) {
@@ -73,6 +74,15 @@ function webny_theme_preprocess_node__webny_news(&$variables) {
  * Implements hook_preprocess_node__webny_event
  */
 function webny_theme_preprocess_node__webny_event(&$variables) {
+    // Load the site name out of configuration.
+    $config = \Drupal::config('system.site');
+    $variables['site_name'] = $config->get('name');
+}
+
+/**
+ * Implements hook_preprocess_node__webny_generic_page__full
+ */
+function webny_theme_preprocess_node__webny_generic_page__full(&$variables) {
     // Load the site name out of configuration.
     $config = \Drupal::config('system.site');
     $variables['site_name'] = $config->get('name');
