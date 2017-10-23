@@ -6,11 +6,19 @@
 //
 // Style guide: components.get_involved
 
-// color variables
+// color variables (primary)
 $get-inv-frame-bkgd-color: $color-accent-primary !default;
 $get-inv-frame-title-color: $color-mono-black !default;
 $get-inv-frame-headline-color: $color-primary !default;
 $get-inv-frame-description-color: $color-mono-black !default;
+// secondary color variables
+$get-inv-frame-bkgd-color-secondary: $color-secondary !default;
+$get-inv-frame-title-color-secondary: $color-mono-black !default;
+$get-inv-frame-headline-color-secondary: $color-mono-white !default;
+// monotonelight color variables
+$get-inv-frame-bkgd-color: $color-accent-lt !default;
+$get-inv-frame-title-color: $color-mono-black !default;
+$get-inv-frame-headline-color: $color-mono-black !default;
 
 // REASSIGNED VALS FOR GLOBAL SCOPE -- GET INVOLVED 
 // this overrides general button variables in config.scss
@@ -35,6 +43,12 @@ $frame-button-max-width:                450px;
   padding: $frame-padding-lg 3%;
   position:relative;
 }
+.paragraph--type--webny-get-involved-pgtype .secondary {
+  background-color: $get-inv-frame-bkgd-color-secondary;
+}
+.paragraph--type--webny-get-involved-pgtype .monotone {
+  background-color: $get-inv-frame-bkgd-color-monotone;
+}
 
 .get-involved--field-webny-get-involved-title {
   font: $frame-title;
@@ -43,6 +57,12 @@ $frame-button-max-width:                450px;
   text-transform: uppercase;
   letter-spacing: 2px;
 }
+.get-involved--field-webny-get-involved-title .secondary {
+  color: $get-inv-frame-title-color-secondary;
+}
+.get-involved--field-webny-get-involved-title .monotone {
+  color: $get-inv-frame-title-color-monotone;
+}
 
 .get-involved--field-webny-get-inv-headline {
   font: $frame-headline;
@@ -50,6 +70,12 @@ $frame-button-max-width:                450px;
   text-align: center;
   margin-bottom: 2rem;
   line-height: 1.25em; //3rem;
+}
+.get-involved--field-webny-get-inv-headline .secondary {
+  color: $get-inv-frame-headline-color-secondary;
+}
+.get-involved--field-webny-get-inv-headline .monotone {
+  color: $get-inv-frame-headline-color-monotone;
 }
 
 .front .get-involved--field-webny-get-inv-headline {
