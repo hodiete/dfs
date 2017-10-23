@@ -5,6 +5,7 @@ namespace Drupal\webny_secondary_nav\Form;
 use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\node\Entity\Node;
+use \Drupal\Core\Url;
 
 /**
  * WEBNY SECONDARY NAVIGATION FORM SECTION
@@ -38,7 +39,6 @@ class webnySecondaryNavForm extends ConfigFormBase {
         $form = parent::buildForm($form, $form_state);
 
         // CONFIGURATION SETTINGS
-        //$config = \Drupal::service('config.factory')->getEditable('webny_secondary_nav.settings');
         $config = $this->config('webny_secondary_nav.settings');
 
         $max_links          = $config->get('webny_secondary_nav.max_links');
@@ -95,10 +95,6 @@ class webnySecondaryNavForm extends ConfigFormBase {
         $form['secnav_set2']['linkarea']['wrap']['addbutton'] = $this->addMoreButton();
         $form['secnav_set2']['linkarea']['wrap']['removebutton'] = $this->removeLinkButton();
 
-
-
-
-
         // CHECK LINKS FOR DEFAULT VALUES AND APPLY CLASSES AS NECESSARY
         // LOOP THROUGH 10 TIMES -- AGAIN
         for($x = $start_count; $x <= $max_links; $x++) {
@@ -133,7 +129,27 @@ class webnySecondaryNavForm extends ConfigFormBase {
     public function submitForm(array &$form, FormStateInterface $form_state) {
 
         // GET NAVIGATION SETTINGS DATA CONFIG OBJECT
-        $config = \Drupal::configFactory()->getEditable('webny_secondary_nav.settings');
+        $config     = \Drupal::configFactory()->getEditable('webny_secondary_nav.settings');
+        $blockConfig = \Drupal::configFactory()->getEditable('block.block.webnysecondarynavigationblock');
+
+        // SET BLOCK CONFIG AS HOMEPAGE
+        if($form_state->getValue('page_choices') === 'home'){
+
+            $homepage = \Drupal::config('system.site')->get('page.front');
+
+            $blockConfig->set('visibility', [])
+            ->set('visibility.request_path', [])
+            ->set('visibility.request_path.id', 'request_path')
+            ->set('visibility.request_path.pages', $homepage)
+            ->set('visibility.request_path.negate', 'false')
+            ->set('visibility.request_path.context_mapping', [])
+            ->save();
+
+        } else {
+            $blockConfig->set('visibility', [])->save();
+        }
+
+
 
         // SECONDARY NAVIGATION SETTINGS -- SET VALUES ON SUBMIT
     $config->set('webny_secondary_nav.options.page_choices',                $form_state->getValue('page_choices'))
@@ -195,7 +211,7 @@ class webnySecondaryNavForm extends ConfigFormBase {
             '#markup' => $this->t('Use this page to add information for secondary navigation under the global navigation 
                                  (agency) menu. Use the WYSIWYG box to enter a 250 character message. The Link section
                                   will be available to use to add up to 10 links. Use both sections or each individual,
-                                  depending on your need.'),
+                                  depending on your need.<br /><br /> Please <a target="_blank" href="/admin/config/development/performance">clear site cache</a> after saving configuration.</a>'),
             '#prefix' => '<p>',
             '#suffix' => '</p>',
         );
@@ -222,7 +238,7 @@ class webnySecondaryNavForm extends ConfigFormBase {
         return array(
             '#type' => 'details',
             '#title' => t('Menu: First Section'),
-            '#open' => TRUE,
+            '#open' => FALSE,
         );
     }
 
@@ -233,7 +249,7 @@ class webnySecondaryNavForm extends ConfigFormBase {
         return array(
             '#type' => 'details',
             '#title' => t('Menu: Second Section'),
-            '#open' => TRUE,
+            '#open' => FALSE,
         );
     }
 
@@ -264,7 +280,7 @@ class webnySecondaryNavForm extends ConfigFormBase {
                 'none'=>t('Disabled'),
                 'all'=>t('All web pages'),
                 'home'=>t('Home page only'),
-                'specific'=>t('Choose a specific page'),
+                //'specific'=>t('Choose a specific page'),
             ),
             '#default_value' => $dbval,
             '#attributes' => array()
