@@ -20,39 +20,33 @@
 {% endblock card_title %}
 
 {% block card_content %}
-    {{ content.field_webny_event_summary }}
+    <div class="summary">
+        {{ content.field_webny_event_summary }}
+    </div>
 
-    {# Date / Time #}
-    {% set date_start = content.field_webny_event_date_start.0['#attributes'].datetime %}
-    {% set date_end = content.field_webny_event_date_end.0['#attributes'].datetime %}
-    {% set all_day = content.field_webny_event_all_day.0['#markup'] %}
+    {# See webny_event_content_type_preprocess_node() for extra variables. #}
 
-    {% set month = date_start | date('F') %}
-    {% set day = date_start | date('j') %}
-
-    {# If not an all day event. #}
-    {% if all_day == '0' %}
-        {% if date_start | date('F') != date_end | date('F') %}
-            {% set month = month ~ " " ~ date_end | date('F') %}
-        {% endif %}
-
-        {% if date_start | date('j') != date_end | date('j') %}
-            {% set day = day ~ " " ~ date_end | date('j') %}
-        {% endif %}
-
-        {% set time = date_start | date('g:i A T') ~ " to " ~ date_end | date('g:i A T') %}
+    {% set day_month_classes = ['day-month-wrapper'] %}
+    {% if multi_day %}
+        {% set day_month_classes = day_month_classes | merge(['multi-day']) %}
     {% endif %}
+    <div class="event-date">
+        <div class="{{ day_month_classes | join(' ') }}">
+            <div class="month">
+                <div class="start">{{ start_month }}</div>{% if multi_day %}<div class="dash">-</div><div class="end">{{ end_month }}</div>{% endif %}
+            </div>
 
-    <div class="month">
-        {{ month }}
-    </div>
+            <div class="day">
+                {# Because these are inline elements, spacing matters. #}
+                <div class="start">{{ start_day }}</div>{% if multi_day %}<div class="dash">-</div><div class="end">{{ end_day }}</div>{% endif %}
+            </div>
+        </div>
 
-    <div class="day">
-        {{ day }}
-    </div>
-
-    <div class="time">
-        {{ time }}
+        {% if not all_day %}
+            <div class="time">
+                {{ event_time }}
+            </div>
+        {% endif %}
     </div>
 
 {% endblock card_content %}

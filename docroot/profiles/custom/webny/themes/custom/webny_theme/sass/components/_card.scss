@@ -300,3 +300,72 @@ $featured-card-icon-color-hover: $color-secondary !default;
     }
   }
 }
+
+/* Event cards. */
+.card-content {
+  .summary p {
+    padding: .5em 1em;
+    padding: .5rem 1rem;
+  }
+
+  .event-date {
+    position: absolute;
+    bottom: 50px;
+  }
+
+  .day-month-wrapper {
+    width: 125px;
+    display: inline-block;
+    vertical-align: top;
+  }
+
+  .day-month-wrapper.multi-day {
+    width: 200px;
+  }
+
+  .month div,
+  .day div {
+    display: inline;
+    padding: 0.2em;
+  }
+
+  .month {
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-family: 'ProximaNovaBold', sans-serif;
+    color: #d5820d;
+  }
+
+  .day {
+    text-align: center;
+    padding: 0.2em;
+    font-size: 42px;
+    color: #000000;
+    font-family: 'ProximaNovaExtrabold', sans-serif;
+
+    .dash {
+      padding: 0;
+    }
+  }
+
+  .time {
+    display: inline-block;
+    font-size: 18px;
+    text-transform: uppercase;
+    border-bottom: 1px solid #e4e4e4;
+    font-family: 'ProximaNovaRegular', sans-serif;
+    color: #000000;
+    margin-bottom: 18px;
+    padding-bottom:18px;
+    margin-right: 18px;
+
+    &::before {
+      content: '\e613';
+      color: #128ec3;
+      vertical-align: middle;
+      margin-right: 5px;
+      font-family: 'icomoon';
+    }
+  }
+}
