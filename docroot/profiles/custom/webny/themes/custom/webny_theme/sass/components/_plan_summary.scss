@@ -23,6 +23,7 @@ $summary-frame-description-color-primary: $color-mono-black !default;
 $summary-frame-bkgd-color-monochrome: $color-mono-lt !default;
 $summary-frame-title-color-monochrome: $color-mono-black !default;
 $summary-frame-headline-color-monochrome: $color-mono-black !default;
+$summary-frame-keypt-title-color-monochrome: $color-primary !default;
 
 // REASSIGNED VALS FOR GLOBAL SCOPE -- SUMMARY
 // this overrides general button variables in config.scss
@@ -124,6 +125,13 @@ $summary-button-hover-back-color-monochrome:  $color-mono-black !default;
   font-weight: 800;
   color: $summary-frame-keypt-title-color;
   margin: 20px 0;
+}
+.monochrome {
+  .keypoint--field-webny-summary-keypoint1,
+  .keypoint--field-webny-summary-keypoint2,
+  .keypoint--field-webny-summary-keypoint3 {
+    color: $summary-frame-keypt-title-color-monochrome;
+  }
 }
 
 .keypoint--field-webny-summary-argument1,
