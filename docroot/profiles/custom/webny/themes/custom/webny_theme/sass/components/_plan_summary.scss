@@ -195,13 +195,14 @@ $summary-button-hover-back-color-monochrome:  $color-mono-black !default;
 }
 .monochrome .keypoint--field-webny-summary-cta {
   border: $frame-button-border-size solid $summary-button-border-color-monochrome;
-  background-color: $summary-button-back-color-monochrome;
+
     &:hover {
       background-color: $summary-button-hover-back-color-monochrome;
       border-color: $summary-button-border-color-monochrome;
     }
     a {
       color: $summary-button-text-color-monochrome;
+      background-color: $summary-button-back-color-monochrome;
     }
 }
 
