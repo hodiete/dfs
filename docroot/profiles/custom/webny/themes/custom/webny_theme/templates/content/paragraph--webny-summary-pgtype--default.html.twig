@@ -38,14 +38,23 @@
  * @ingroup themeable
  */
 #}
+{# CHECK FOR FRAME BACKGROUND COLOR SELECTED #}
+{% if paragraph.field_webny_summary_color.value is not empty and paragraph.field_webny_summary_color.value is not null %}
+    {% set summary_color = paragraph.field_webny_summary_color.value %}
+{% else %}
+    {% set summary_color = ‘’ %}
+{% endif %}
+
 {%
   set classes = [
     'summary-frame',
     'paragraph',
     'paragraph--type--' ~ paragraph.bundle|clean_class,
     view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
+    summary_color,
   ]
 %}
+
 {% block paragraph %}
   <div{{ attributes.addClass(classes) }}>
     {% block content %}
