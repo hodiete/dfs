@@ -77,6 +77,7 @@ $hero-keyword-text-color: $color-mono-white !default;
 // ========================================================================= //
 /* HERO LAYOUT */
 .hero-layout {
+  overflow: hidden;
   position: relative;
 
   .hero-news-inner,
@@ -104,7 +105,7 @@ $hero-keyword-text-color: $color-mono-white !default;
     &.hero-has-image-content {
       position: relative;
       z-index: 3;
-      background-color: transparent;
+      background-color: black;
     }
     .published-date {
       padding: 20px 20px 0;
@@ -130,8 +131,6 @@ $hero-keyword-text-color: $color-mono-white !default;
   .hero-landing-inner {
     position: absolute;
     &.hero-has-image-content {
-      top: 0;
-      left: 0;
       //background: none;
     }
   }
@@ -152,22 +151,13 @@ $hero-keyword-text-color: $color-mono-white !default;
     position: relative;
   }
 
-  .hero-has-image  .hero-bkg {
-    background: url("../icons/bkg-gradient.png") repeat-y scroll left top !important;
-    height: 100%;
-    opacity: 0.9;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 2;
+  .hero-has-image-content {
+    min-height: 256px;
   }
 
   .hero-has-image .hero-image {
     overflow: hidden;
-    position: relative;
     width: 100%;
-    min-height: 256px;
   }
 
   // This approach is very similar to the `object-fit: cover;` approach, but with support for older browsers.
@@ -266,14 +256,14 @@ $hero-keyword-text-color: $color-mono-white !default;
     color: #ffffff;
     cursor: pointer;
     text-decoration: none;
-    display:inline-block;
+    display:block;
     background: transparent;
     border: 1px solid rgba(255,255,255,0.7);
     text-align: center;
     padding: 0 20px;
     letter-spacing: 2px;
     text-transform: uppercase;
-    min-width: 300px;
+    width: auto;
     &:hover {
       border: 1px solid #fff;
       background-color: rgba(0,0,0,0.8)
@@ -556,8 +546,6 @@ $hero-keyword-text-color: $color-mono-white !default;
     }
 
     .hero-generic-inner {
-      width: 100%;
-      position: relative;
       top: 0;
       left: 0;
 
@@ -650,10 +638,8 @@ $hero-keyword-text-color: $color-mono-white !default;
     .hero-landing-inner{
       position: absolute;
       &.hero-has-image-content {
-        top: 0;
-        left: 0;
         background: none;
-        position: absolute;
+        position: relative;
       }
     }
 
@@ -677,7 +663,6 @@ $hero-keyword-text-color: $color-mono-white !default;
     }
 
     .hero-generic-inner {
-      width: 100%;
       margin: 0 !important;
       padding: 0 !important;
 
@@ -716,10 +701,33 @@ $hero-keyword-text-color: $color-mono-white !default;
       }
     }
 
+    .hero-has-image  .hero-bkg {
+      background: url("../icons/bkg-gradient.png") repeat-y scroll left top !important;
+      height: 100%;
+      opacity: 0.9;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 2;
+    }
+
+    .hero-has-image {
+      height: 100%;
+      overflow: hidden;
+      position: absolute;
+      width: 100%;
+
+      div {
+        height: 100%;
+      }
+    }
+
     // ALLOW HEIGHT TO BE LARGE IN THIS
     // REGION TO NOT HAVE OVERFLOW FROM HERO
     .hero-has-image,
-    .hero-has-image .hero-image {
+    .hero-has-image .hero-image,
+    .hero-has-image-content {
       min-height: 610px;
     }
 
@@ -755,10 +763,8 @@ $hero-keyword-text-color: $color-mono-white !default;
     // =====================================================================
     // HERO HAS AN IMAGE
     .hero-image-wrap{
-
+      position: relative;
       width: 100%;
-      position: absolute;
-      top: 0;
 
       .hero-news-inner {
         padding: 0;
@@ -853,12 +859,14 @@ $hero-keyword-text-color: $color-mono-white !default;
     }
 
     .hero-has-image,
-    .hero-has-image .hero-image {
+    .hero-has-image .hero-image,
+    .hero-has-image-content {
       min-height: 427px;
     }
 
     .hero-has-image.hero-news,
-    .hero-has-image.hero-news .hero-image {
+    .hero-has-image.hero-news .hero-image,
+    .hero-has-image.hero-news .hero-has-image-content {
       min-height: 512px;
     }
 
@@ -871,10 +879,8 @@ $hero-keyword-text-color: $color-mono-white !default;
     // =====================================================================
     // HERO HAS AN IMAGE
     .hero-image-wrap{
-
       width: 100%;
-      position: absolute;
-      top: 0;
+      position: relative;
 
       .hero-news-inner {
         padding: 0;
