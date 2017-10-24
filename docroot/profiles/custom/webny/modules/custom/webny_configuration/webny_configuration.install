@@ -3648,6 +3648,35 @@ function webny_configuration_update_8163(){
 }
 
 /**
+ * Implements hook_update_n().
+ *
+ * INSTALL WEBNY SECONDARY NAVIGATION
+ * NDD-990
+ * -iojonep
+ */
+function webny_configuration_update_8161() {
+
+    // INSTALL NEW MODULE
+    \Drupal::service('module_installer')
+        ->install(['webny_secondary_nav']);
+
+    // FORCE OPTIONAL BLOCK POST INSTALL
+    $config_factory = \Drupal::configFactory();
+    $profile_config = \Drupal::service('webny.profile_config');
+
+    // Import new/changed configuration.
+    $config_to_update = [
+        'block.block.webnysecondarynavigationblock',
+    ];
+
+    $profile_config->bulkImport($config_to_update);
+
+    // Clear the config cache.
+    $config_factory->reset();
+
+}
+
+/**
  * Helper function to enable a Drupal module and print the result.
  *
  * @param string $module_name
