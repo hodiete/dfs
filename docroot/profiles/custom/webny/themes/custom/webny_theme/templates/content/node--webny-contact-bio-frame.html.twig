@@ -19,14 +19,13 @@
 {%
   set docclasses = [
     node.bundle ~ "_bioframe"|clean_class,
-    landing_bio_color,
   ]
 %}
 
 {# DEBUG VIA KINT / DEVEL #}
 
 
-<article{{ attributes.addClass(docclasses) }}>
+<article{{ attributes.addClass(docclasses) }} class="{{ landing_bio_color }}">
     {{ title_prefix }}
 
     <div  class="bio-frame-meta">
