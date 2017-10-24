@@ -6,7 +6,6 @@ dependencies:
     - field.storage.node.field_webny_gencp_date
     - field.storage.node.field_webny_gencp_heroimage
     - field.storage.node.field_webny_gencp_sumdes
-    - field.storage.node.field_webny_gencp_keywords
     - field.storage.node.field_webny_news_category
     - field.storage.node.field_webny_news_date
     - field.storage.node.field_webny_news_image
@@ -130,14 +129,6 @@ field_settings:
     dependencies:
       config:
         - field.storage.node.field_webny_gencp_sumdes
-  field_webny_gencp_keywords:
-    label: 'Generic Page - Keywords'
-    datasource_id: 'entity:node'
-    property_path: field_webny_gencp_keywords
-    type: integer
-    dependencies:
-      config:
-        - field.storage.node.field_webny_gencp_keywords
   field_webny_news_category:
     label: 'News - Category'
     datasource_id: 'entity:node'

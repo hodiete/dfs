@@ -6,7 +6,7 @@ dependencies:
     - field.storage.node.field_webny_contentcat
     - field.storage.node.field_webny_gencp_date
     - field.storage.node.field_webny_gencp_heroimage
-    - field.storage.node.field_webny_gencp_keywords
+    - field.storage.node.field_webny_agency_keywords
     - field.storage.node.field_webny_gencp_sumdes
     - field.storage.node.field_webny_news_category
     - field.storage.node.field_webny_news_date
@@ -508,10 +508,10 @@ display:
               webny_tax_contentcat:
                 display_method: label
           plugin_id: search_api_field
-        field_webny_gencp_keywords:
-          id: field_webny_gencp_keywords
+        field_webny_agency_keywords:
+          id: field_webny_agency_keywords
           table: search_api_index_acquia_search_index
-          field: field_webny_gencp_keywords
+          field: field_webny_agency_keywords
           relationship: none
           group_type: group
           admin_label: ''
@@ -854,7 +854,7 @@ display:
         - 'config:field.storage.node.field_webny_contentcat'
         - 'config:field.storage.node.field_webny_gencp_date'
         - 'config:field.storage.node.field_webny_gencp_heroimage'
-        - 'config:field.storage.node.field_webny_gencp_keywords'
+        - 'config:field.storage.node.field_webny_agency_keywords'
         - 'config:field.storage.node.field_webny_gencp_sumdes'
   generic_search_view:
     display_plugin: page
