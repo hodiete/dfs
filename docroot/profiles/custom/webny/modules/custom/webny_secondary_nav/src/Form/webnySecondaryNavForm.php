@@ -138,54 +138,56 @@ class webnySecondaryNavForm extends ConfigFormBase {
             $homepage = \Drupal::config('system.site')->get('page.front');
 
             $blockConfig->set('visibility', [])
-            ->set('visibility.request_path', [])
-            ->set('visibility.request_path.id', 'request_path')
-            ->set('visibility.request_path.pages', $homepage)
-            ->set('visibility.request_path.negate', 'false')
-            ->set('visibility.request_path.context_mapping', [])
-            ->save();
+                ->set('visibility.request_path', [])
+                ->set('visibility.request_path.id', 'request_path')
+                ->set('visibility.request_path.pages', $homepage)
+                ->set('visibility.request_path.negate', false)
+                ->set('visibility.request_path.context_mapping', [])
+                ->save();
 
         } else {
             $blockConfig->set('visibility', [])->save();
         }
 
 
-
         // SECONDARY NAVIGATION SETTINGS -- SET VALUES ON SUBMIT
-    $config->set('webny_secondary_nav.options.page_choices',                $form_state->getValue('page_choices'))
-        ->set('webny_secondary_nav.options.secnav_specific_page',           $form_state->getValue('secnav_specific_page'))
+        $config->set('webny_secondary_nav.options.page_choices',                $form_state->getValue('page_choices'))
+            ->set('webny_secondary_nav.options.secnav_specific_page',           $form_state->getValue('secnav_specific_page'))
 
-        // MENU: FIRST SECTION
-        ->set('webny_secondary_nav.menu_section_one.secnav_first_opts',     $form_state->getValue('secnav_first_opts'))
-        ->set('webny_secondary_nav.menu_section_one.wysiwyg_area_one',      $form_state->getValue('wysiwyg_area_one'))
+            // MENU: FIRST SECTION
+            ->set('webny_secondary_nav.menu_section_one.secnav_first_opts',     $form_state->getValue('secnav_first_opts'))
+            ->set('webny_secondary_nav.menu_section_one.wysiwyg_area_one',      $form_state->getValue('wysiwyg_area_one'))
 
-        // MENU: SECOND SECTION
-        ->set('webny_secondary_nav.menu_section_two.secnav_second_opts',    $form_state->getValue('secnav_second_opts'))
-        ->set('webny_secondary_nav.menu_section_two.wysiwyg_area_two',      $form_state->getValue('wysiwyg_area_two'))
+            // MENU: SECOND SECTION
+            ->set('webny_secondary_nav.menu_section_two.secnav_second_opts',    $form_state->getValue('secnav_second_opts'))
+            ->set('webny_secondary_nav.menu_section_two.wysiwyg_area_two',      $form_state->getValue('wysiwyg_area_two'))
 
-        // LINKFIELDS
-        ->set('webny_secondary_nav.menu_section_two.urltitle1',             $form_state->getValue('urltitle1'))
-        ->set('webny_secondary_nav.menu_section_two.entref1',               $form_state->getValue('entref1'))
-        ->set('webny_secondary_nav.menu_section_two.urltitle2',             $form_state->getValue('urltitle2'))
-        ->set('webny_secondary_nav.menu_section_two.entref2',               $form_state->getValue('entref2'))
-        ->set('webny_secondary_nav.menu_section_two.urltitle3',             $form_state->getValue('urltitle3'))
-        ->set('webny_secondary_nav.menu_section_two.entref3',               $form_state->getValue('entref3'))
-        ->set('webny_secondary_nav.menu_section_two.urltitle4',             $form_state->getValue('urltitle4'))
-        ->set('webny_secondary_nav.menu_section_two.entref4',               $form_state->getValue('entref4'))
-        ->set('webny_secondary_nav.menu_section_two.urltitle5',             $form_state->getValue('urltitle5'))
-        ->set('webny_secondary_nav.menu_section_two.entref5',               $form_state->getValue('entref5'))
-        ->set('webny_secondary_nav.menu_section_two.urltitle6',             $form_state->getValue('urltitle6'))
-        ->set('webny_secondary_nav.menu_section_two.entref6',               $form_state->getValue('entref6'))
-        ->set('webny_secondary_nav.menu_section_two.urltitle7',             $form_state->getValue('urltitle7'))
-        ->set('webny_secondary_nav.menu_section_two.entref7',               $form_state->getValue('entref7'))
-        ->set('webny_secondary_nav.menu_section_two.urltitle8',             $form_state->getValue('urltitle8'))
-        ->set('webny_secondary_nav.menu_section_two.entref8',               $form_state->getValue('entref8'))
-        ->set('webny_secondary_nav.menu_section_two.urltitle9',             $form_state->getValue('urltitle9'))
-        ->set('webny_secondary_nav.menu_section_two.entref9',               $form_state->getValue('entref9'))
-        ->set('webny_secondary_nav.menu_section_two.urltitle10',            $form_state->getValue('urltitle10'))
-        ->set('webny_secondary_nav.menu_section_two.entref10',              $form_state->getValue('entref10'))
+            // LINKFIELDS
+            ->set('webny_secondary_nav.menu_section_two.urltitle1',             $form_state->getValue('urltitle1'))
+            ->set('webny_secondary_nav.menu_section_two.entref1',               $form_state->getValue('entref1'))
+            ->set('webny_secondary_nav.menu_section_two.urltitle2',             $form_state->getValue('urltitle2'))
+            ->set('webny_secondary_nav.menu_section_two.entref2',               $form_state->getValue('entref2'))
+            ->set('webny_secondary_nav.menu_section_two.urltitle3',             $form_state->getValue('urltitle3'))
+            ->set('webny_secondary_nav.menu_section_two.entref3',               $form_state->getValue('entref3'))
+            ->set('webny_secondary_nav.menu_section_two.urltitle4',             $form_state->getValue('urltitle4'))
+            ->set('webny_secondary_nav.menu_section_two.entref4',               $form_state->getValue('entref4'))
+            ->set('webny_secondary_nav.menu_section_two.urltitle5',             $form_state->getValue('urltitle5'))
+            ->set('webny_secondary_nav.menu_section_two.entref5',               $form_state->getValue('entref5'))
+            ->set('webny_secondary_nav.menu_section_two.urltitle6',             $form_state->getValue('urltitle6'))
+            ->set('webny_secondary_nav.menu_section_two.entref6',               $form_state->getValue('entref6'))
+            ->set('webny_secondary_nav.menu_section_two.urltitle7',             $form_state->getValue('urltitle7'))
+            ->set('webny_secondary_nav.menu_section_two.entref7',               $form_state->getValue('entref7'))
+            ->set('webny_secondary_nav.menu_section_two.urltitle8',             $form_state->getValue('urltitle8'))
+            ->set('webny_secondary_nav.menu_section_two.entref8',               $form_state->getValue('entref8'))
+            ->set('webny_secondary_nav.menu_section_two.urltitle9',             $form_state->getValue('urltitle9'))
+            ->set('webny_secondary_nav.menu_section_two.entref9',               $form_state->getValue('entref9'))
+            ->set('webny_secondary_nav.menu_section_two.urltitle10',            $form_state->getValue('urltitle10'))
+            ->set('webny_secondary_nav.menu_section_two.entref10',              $form_state->getValue('entref10'))
 
-        ->save();
+            ->save();
+
+        // CLEAR CACHE
+        drupal_flush_all_caches();
 
         parent::submitForm($form, $form_state);
     }
@@ -211,7 +213,9 @@ class webnySecondaryNavForm extends ConfigFormBase {
             '#markup' => $this->t('Use this page to add information for secondary navigation under the global navigation 
                                  (agency) menu. Use the WYSIWYG box to enter a 250 character message. The Link section
                                   will be available to use to add up to 10 links. Use both sections or each individual,
-                                  depending on your need.<br /><br /> Please <a target="_blank" href="/admin/config/development/performance">clear site cache</a> after saving configuration.</a>'),
+                                  depending on your need.<br /><br /> 
+                                  Please <a target="_blank" href="/admin/config/development/performance">clear site cache</a> after saving 
+                                  configuration if these settings do not work as intended.</a>'),
             '#prefix' => '<p>',
             '#suffix' => '</p>',
         );
@@ -543,7 +547,7 @@ class webnySecondaryNavForm extends ConfigFormBase {
                 'class' => array(''),
                 'type' => 'button',
                 'name' => 'secnav-addmore-links'
-             ),
+            ),
         );
     }
 
