@@ -29,13 +29,13 @@
     {# TEMPLATE AREA #}
 
     {# SECONDARY NAVIGATION #}
-    <div role="navigation" aria-label="Secondary Navigation Menu">
+    <nav role="navigation" aria-label="Secondary Navigation Menu" id="secondary-navigation">
 
         {# IF THERE IS A WYSIWYG SELECTED -- DISPLAY #}
         {% if sectionOneChoice == 'wysiwyg_one' %}
 
             {# WYSIWYG ONE #}
-            <div class="secnav-secone {{ leftSideClass }}">
+            <div class="secnav-secone {{ leftSideClass }}" aria-label="Secondary Navigation - Information Section One">
                 {{ wysiwygOneOutput() }}
             </div>
 
@@ -52,7 +52,7 @@
             {% if sectionTwoChoice == 'wysiwyg_two' %}
 
                 {# WYSIWYG TWO #}
-                <div class="secondary-nav-wysiwygtwo ">
+                <div class="secondary-nav-wysiwygtwo" aria-label="Secondary Navigation - Information Section Two">
                     {{ wysiwygTwoOutput() }}
                 </div>
 
@@ -61,7 +61,7 @@
             {% if sectionTwoChoice == 'links_two' %}
 
                 {# LINKS #}
-                <ul class="secondary-nav-links">
+                <ul class="secondary-nav-links" aria-label="Secondary Navigation Menu Links">
                     {{ secondaryNavLinks() }}
                 </ul>
 
@@ -71,6 +71,6 @@
 
         {% endif %}
 
-    </div>
+    </nav>
 
 {% endif %}
