@@ -3657,8 +3657,7 @@ function webny_configuration_update_8163(){
 function webny_configuration_update_8164() {
 
     // INSTALL NEW MODULE
-    \Drupal::service('module_installer')
-        ->install(['webny_secondary_nav']);
+    print webny_configuration_enable_module('webny_secondary_nav');
 
     // FORCE OPTIONAL BLOCK POST INSTALL
     $config_factory = \Drupal::configFactory();
