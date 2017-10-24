@@ -38,12 +38,21 @@
  * @ingroup themeable
  */
 #}
+
+{# CHECK FOR FRAME BACKGROUND COLOR SELECTED #}
+{% if paragraph.field_webny_tbd_color.value is not empty and paragraph.field_webny_tbd_color.value is not null %}
+    {% set tbd_color = paragraph.field_tbd_color.value %}
+{% else %}
+    {% set tbd_color = ‘’ %}
+{% endif %}
+
 {%
   set classes = [
     'two-button-descriptor-frame',
     'paragraph',
     'paragraph--type--' ~ paragraph.bundle|clean_class,
     view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
+    tbd_color,
   ]
 %}
 {% block paragraph %}
