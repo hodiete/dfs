@@ -213,7 +213,7 @@ class webnySecondaryNavForm extends ConfigFormBase {
             '#markup' => $this->t('Use this page to add information for secondary navigation under the global navigation 
                                  (agency) menu. Use the WYSIWYG box to enter a 250 character message. The Link section
                                   will be available to use to add up to 10 links. Use both sections or each individual,
-                                  depending on your need.<br /><br /> 
+                                  depending on your need.<br /><br />'
                                   ),
             '#prefix' => '<p>',
             '#suffix' => '</p>',
