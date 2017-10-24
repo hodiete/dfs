@@ -214,8 +214,7 @@ class webnySecondaryNavForm extends ConfigFormBase {
                                  (agency) menu. Use the WYSIWYG box to enter a 250 character message. The Link section
                                   will be available to use to add up to 10 links. Use both sections or each individual,
                                   depending on your need.<br /><br /> 
-                                  Please <a target="_blank" href="/admin/config/development/performance">clear site cache</a> after saving 
-                                  configuration if these settings do not work as intended.</a>'),
+                                  ),
             '#prefix' => '<p>',
             '#suffix' => '</p>',
         );
