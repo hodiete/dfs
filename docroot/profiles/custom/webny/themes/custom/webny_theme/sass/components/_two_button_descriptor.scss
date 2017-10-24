@@ -158,6 +158,34 @@ $tbd-button-hover-back-color-monochrome:  $color-mono-black !default;
   @include frame-button-base();
 
 }
+.primary {
+  .descriptor--field-webny-tbd-cta1,
+  .descriptor--field-webny-tbd-cta2 {
+    a {
+        color: $tbd-button-text-color-primary;
+        border: $frame-button-border-size solid $tbd-button-border-color-primary;
+        &:hover {
+          border-color: $tbd-button-border-color-primary;
+          background-color: $tbd-button-hover-back-color-primary;
+        }
+      }
+}
+.monochrome {
+  .descriptor--field-webny-tbd-cta1,
+  .descriptor--field-webny-tbd-cta2 {
+    a {
+      color: $tbd-button-text-color-monochrome;
+      background-color: $tbd-button-back-color-monochrome;
+      border: $frame-button-border-size solid $tbd-button-border-color-monochrome;
+
+      &:hover {
+        background-color: $tbd-button-hover-back-color-monochrome;
+        border-color: $tbd-button-border-color-monochrome;
+      }
+
+    }
+  }
+}
 
 // ######################################################################### //
 /* TABLET VIEW */
