@@ -1,6 +1,60 @@
 @api
 Feature: Check for the existence and fields of content types
 # NEW CT ###########################################################################################################
+### EVENT CONTENT TYPE ###
+# Check for the existence of a content type
+# CONTENT TYPE: Event
+# ROLE: administrator
+  Scenario: Determine if a content type exists for event with the administrator role and the given fields
+    Given I am logged into the distro with the "administrator" role
+    When I am on "/node/add/webny_event"
+    Then I should not see "Access denied"
+    And I should not get a 404 HTTP response
+    Then I should see text matching "Title"
+    And I should see text matching "Short Title"
+    And I should see text matching "Summary/Description"
+    And I should see text matching "Event Details"
+    And I should see text matching "Date Start"
+    And I should see text matching "Date End"
+    And I should see text matching "All day"
+    And I should see text matching "Venue Name"
+    And I should see text matching "Address"
+    And I should see text matching "Redirect Url"
+    And I should see text matching "Content Categorization"
+    And I should see text matching "Filter Terms"
+    And I should see text matching "Agency Keywords"
+    And I should see text matching "Global Keywords"
+    And I should see text matching "Hero Image"
+    And I should see text matching "Navigator / Table of Content Toggle"
+    And I should see text matching "Content Sections"
+
+# Check for the existence of a content type
+# CONTENT TYPE: Event
+# ROLE: anonymous user
+  Scenario: Determine if a content type exists for events with the anonymous user role and the given fields
+    Given I am an anonymous user
+    When I am on "/node/add/webny_event"
+    Then I should see "Access denied"
+# =======================================================================================
+### Default Display Mode ###
+# Check if the display mode for the content type exists
+# CONTENT TYPE: Event
+# ROLE: administrator
+  Scenario: Does the event default display mode exist
+    Given I am logged into the distro with the "administrator" role
+    When I am on "/admin/structure/types/manage/webny_event/display"
+    Then I should not get a 404 HTTP response
+    And I should not see "Access denied"
+
+# Check if the display mode for the content type exists
+# CONTENT TYPE: Event
+# ROLE: anonymous user
+  Scenario: Anon can not access event default display mode
+    Given I am an anonymous user
+    When I am on "/admin/structure/types/manage/webny_event/display"
+    Then I should see "Access denied"
+
+# NEW CT ###########################################################################################################
 ### NEWS CONTENT TYPE ###
 # Check for the existence of a content type
 # CONTENT TYPE: News
