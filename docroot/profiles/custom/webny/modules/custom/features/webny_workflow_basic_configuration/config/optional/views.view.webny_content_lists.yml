@@ -10,6 +10,7 @@ dependencies:
     - node.type.webny_page
     - node.type.webny_whitelisted_content
     - system.menu.admin
+    - user.role.authenticated
   module:
     - node
     - user
@@ -29,9 +30,10 @@ display:
     position: 0
     display_options:
       access:
-        type: perm
+        type: role
         options:
-          perm: 'access content'
+          role:
+            authenticated: authenticated
       cache:
         type: tag
         options: {  }
@@ -682,7 +684,7 @@ display:
         - url
         - url.query_args
         - 'user.node_grants:view'
-        - user.permissions
+        - user.roles
       tags: {  }
   page_1:
     display_plugin: page
@@ -845,7 +847,7 @@ display:
         - url
         - url.query_args
         - 'user.node_grants:view'
-        - user.permissions
+        - user.roles
       tags: {  }
   page_2:
     display_plugin: page
@@ -862,6 +864,7 @@ display:
         header: false
         filters: false
         filter_groups: false
+        access: false
       header:
         area:
           id: area
@@ -1000,6 +1003,11 @@ display:
         operator: AND
         groups:
           1: AND
+      access:
+        type: role
+        options:
+          role:
+            authenticated: authenticated
     cache_metadata:
       max-age: 0
       contexts:
@@ -1008,5 +1016,5 @@ display:
         - url
         - url.query_args
         - 'user.node_grants:view'
-        - user.permissions
+        - user.roles
       tags: {  }
