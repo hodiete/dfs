@@ -8,14 +8,6 @@
  * Available variables:
  * https://api.drupal.org/api/drupal/core!modules!node!templates!node.html.twig/8.2.x 
 #}
-
-{# CHECK FOR FRAME BACKGROUND COLOR SELECTED #}
-{% if paragraph.field_webny_landing_bio_color.value is not empty and paragraph.field_webny_landing_bio_color.value is not null %}
-    {% set landing_bio_color = paragraph.field_webny_landing_bio_color.value %}
-{% else %}
-    {% set landing_bio_color = ‘’ %}
-{% endif %}
-
 {%
   set docclasses = [
     node.bundle ~ "_bioframe"|clean_class,
@@ -25,7 +17,7 @@
 {# DEBUG VIA KINT / DEVEL #}
 
 
-<article{{ attributes.addClass(docclasses) }} class="{{ landing_bio_color }}">
+<article{{ attributes.addClass(docclasses) }}>
     {{ title_prefix }}
 
     <div  class="bio-frame-meta">
