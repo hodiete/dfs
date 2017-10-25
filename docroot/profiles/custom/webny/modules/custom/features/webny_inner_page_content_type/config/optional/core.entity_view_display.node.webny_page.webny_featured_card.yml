@@ -4,7 +4,10 @@ dependencies:
   config:
     - core.entity_view_mode.node.webny_featured_card
     - field.field.node.webny_page.body
+    - field.field.node.webny_page.field_webny_agency_keywords
+    - field.field.node.webny_page.field_webny_contentcat
     - field.field.node.webny_page.field_webny_filter_terms
+    - field.field.node.webny_page.field_webny_global_keywords
     - field.field.node.webny_page.field_webny_page_agency_keywords
     - field.field.node.webny_page.field_webny_page_attdocs_eref
     - field.field.node.webny_page.field_webny_page_description
@@ -62,7 +65,10 @@ content:
     region: content
 hidden:
   body: true
+  field_webny_agency_keywords: true
+  field_webny_contentcat: true
   field_webny_filter_terms: true
+  field_webny_global_keywords: true
   field_webny_page_agency_keywords: true
   field_webny_page_attdocs_eref: true
   field_webny_page_docsec_subtitle: true

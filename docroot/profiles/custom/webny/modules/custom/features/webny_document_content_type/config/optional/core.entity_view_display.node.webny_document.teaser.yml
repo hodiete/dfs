@@ -4,6 +4,8 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.webny_document.body
+    - field.field.node.webny_document.field_webny_agency_keywords
+    - field.field.node.webny_document.field_webny_contentcat
     - field.field.node.webny_document.field_webny_doc_agency_keyword
     - field.field.node.webny_document.field_webny_doc_global_keyword
     - field.field.node.webny_document.field_webny_doc_last_updated
@@ -14,6 +16,7 @@ dependencies:
     - field.field.node.webny_document.field_webny_document_language
     - field.field.node.webny_document.field_webny_document_subtitle
     - field.field.node.webny_document.field_webny_filter_terms
+    - field.field.node.webny_document.field_webny_global_keywords
     - node.type.webny_document
   module:
     - text
@@ -38,6 +41,8 @@ content:
     weight: -20
     region: content
 hidden:
+  field_webny_agency_keywords: true
+  field_webny_contentcat: true
   field_webny_doc_agency_keyword: true
   field_webny_doc_global_keyword: true
   field_webny_doc_last_updated: true
@@ -48,4 +53,5 @@ hidden:
   field_webny_document_language: true
   field_webny_document_subtitle: true
   field_webny_filter_terms: true
+  field_webny_global_keywords: true
   langcode: true
