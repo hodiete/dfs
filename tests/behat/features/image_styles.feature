@@ -101,14 +101,14 @@ Feature: Image style Tests
     Given I am logged into the distro with the "administrator" role 
     When I am on "/admin/structure/media/manage/image/display/hero_image"
     Then I should see "Hero image"
-    And I should see "Breakpoints: 460, 768, 1824"
+    And I should see "Responsive image style: Hero image"
 
 # Check WebNY Hero Image Tall display is present
   Scenario: See if WebNY Hero Image Tall display exist
     Given I am logged into the distro with the "administrator" role 
     When I am on "/admin/structure/media/manage/image/display/hero_image_tall"
     Then I should see "Hero image tall"
-    And I should see "Breakpoints: 460, 768, 1824"
+    And I should see "Responsive image style: Hero image tall"
 
 # Check WebNY Media Library Image display is present
   Scenario: See if WebNY Media Library Image display exist
