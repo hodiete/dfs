@@ -12,16 +12,50 @@
 
 // SECONDARY NAVIGATION COLORS
 $secnav-background-color:   $color-secondary !default;
-$secnav-font-color:         '#fff';
+$secnav-font-color:         #fff;
 
 
+// MOBILE FIRST
+#secondary-navigation {
+
+  width: 100%;
+  background-color: $secnav-background-color;
+  padding: 10px;
+  color: $secnav-font-color;
+
+  p{
+    font-size: 16px;
+    color: $secnav-font-color;
+    margin: 3px 0;
+  }
+
+  .secnav-secone{}
+  .secnav-equal-space{
+    width: 100%;
+
+  }
+
+  // SECTION TWO ##################
+  div.secnav-sectwo {
+
+    // WYSIWYG
 
 
+    // LINKS
+    ul.secondary-nav-links {
+      li {
+        display: inline-block;
+
+        a {
+          font-size: 16px;
+          color: $secnav-font-color;
+        }
+      }
+    }
+  }
 
 
-
-
-
+} // end secondary-navigation
 
 // ######################################################################### //
 /* TABLET VIEW */
@@ -34,6 +68,17 @@ $secnav-font-color:         '#fff';
 /* PC VIEW */
 @media (min-width: $min-pc) {
 
+#secondary-navigation {
+
+  width: 100%;
+  display: flex;
+
+  .secnav-secone{}
+  .secnav-equal-space{
+    width: 48%;
+
+  }
+
 }
 
-
+} // END MIN PC
