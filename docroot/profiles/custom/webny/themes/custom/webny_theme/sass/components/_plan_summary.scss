@@ -6,7 +6,7 @@
 //
 // Style guide: components.plan_summary
 
-// color variables (secondary)
+// color variables (default-secondary)
 $summary-frame-bkgd-color: $color-secondary !default;
 $summary-frame-title-color: $color-mono-black !default;
 $summary-frame-headline-color: $color-mono-white !default;
@@ -19,7 +19,7 @@ $summary-frame-bkgd-color-primary: $color-accent-primary !default;
 $summary-frame-title-color-primary: $color-mono-black !default;
 $summary-frame-headline-color-primary: $color-primary !default;
 $summary-frame-description-color-primary: $color-mono-black !default;
-// monochrome light color variables
+// color variables (monochrome light )
 $summary-frame-bkgd-color-monochrome: $color-mono-lt !default;
 $summary-frame-title-color-monochrome: $color-mono-black !default;
 $summary-frame-headline-color-monochrome: $color-mono-black !default;
@@ -55,12 +55,6 @@ $summary-button-hover-back-color-monochrome:  $color-mono-black !default;
   text-align: center;
   padding: $frame-padding-lg 3%;
 }
-.paragraph--type--webny-summary-pgtype.primary {
-  background-color: $summary-frame-bkgd-color-primary;
-}
-.paragraph--type--webny-summary-pgtype.monochrome {
-  background-color: $summary-frame-bkgd-color-monochrome;
-}
 
 .summaryframe-inner {
   max-width: $max-pc;
@@ -80,12 +74,6 @@ $summary-button-hover-back-color-monochrome:  $color-mono-black !default;
   // padding-top: 1%; // the padding set on the main frame should give the 80px
   // padding-bottom: 1%; // need to evaluate this when changing these to headings
 }
-.primary .keypoint--field-webny-summary-title {
-  color: $summary-frame-title-color-primary;
-}
-.monochrome .keypoint--field-webny-summary-title {
-  color: $summary-frame-title-color-monochrome;
-}
 
 .keypoint--field-webny-summary-headline {
   //font-family: $base-font;
@@ -96,12 +84,6 @@ $summary-button-hover-back-color-monochrome:  $color-mono-black !default;
   text-align: center;
   margin-bottom: 50px;
   line-height: 3rem;
-}
-.primary .keypoint--field-webny-summary-headline {
-  color: $summary-frame-headline-color-primary;
-}
-.monochrome .keypoint--field-webny-summary-headline {
-  color: $summary-frame-headline-color-monochrome;
 }
 
 .front .keypoint--field-webny-summary-headline {
@@ -125,13 +107,6 @@ $summary-button-hover-back-color-monochrome:  $color-mono-black !default;
   font-weight: 800;
   color: $summary-frame-keypt-title-color;
   margin: 20px 0;
-}
-.monochrome {
-  .keypoint--field-webny-summary-keypoint1,
-  .keypoint--field-webny-summary-keypoint2,
-  .keypoint--field-webny-summary-keypoint3 {
-    color: $summary-frame-keypt-title-color-monochrome;
-  }
 }
 
 .keypoint--field-webny-summary-argument1,
@@ -192,7 +167,16 @@ $summary-button-hover-back-color-monochrome:  $color-mono-black !default;
   @include frame-button-base();
 
 }
-.primary .keypoint--field-webny-summary-cta {
+// if primary background color is selected for frame
+.paragraph--type--webny-summary-pgtype.primary {
+  background-color: $summary-frame-bkgd-color-primary;
+  .keypoint--field-webny-summary-title {
+    color: $summary-frame-title-color-primary;
+  }
+  .keypoint--field-webny-summary-headline {
+    color: $summary-frame-headline-color-primary;
+  }
+  .keypoint--field-webny-summary-cta {
     a {
       color: $summary-button-text-color-primary;
       border: $frame-button-border-size solid $summary-button-border-color-primary;
@@ -201,8 +185,23 @@ $summary-button-hover-back-color-monochrome:  $color-mono-black !default;
         background-color: $summary-button-hover-back-color-primary;
       }
     }
+  }
 }
-.monochrome .keypoint--field-webny-summary-cta {
+// if monochrome light background color is selected for frame
+.paragraph--type--webny-summary-pgtype.monochrome {
+  background-color: $summary-frame-bkgd-color-monochrome;
+  .keypoint--field-webny-summary-title {
+    color: $summary-frame-title-color-monochrome;
+  }
+  .keypoint--field-webny-summary-headline {
+    color: $summary-frame-headline-color-monochrome;
+  }
+  .keypoint--field-webny-summary-keypoint1,
+  .keypoint--field-webny-summary-keypoint2,
+  .keypoint--field-webny-summary-keypoint3 {
+    color: $summary-frame-keypt-title-color-monochrome;
+  }
+  .keypoint--field-webny-summary-cta {
     a {
       color: $summary-button-text-color-monochrome;
       background-color: $summary-button-back-color-monochrome;
@@ -212,8 +211,8 @@ $summary-button-hover-back-color-monochrome:  $color-mono-black !default;
         background-color: $summary-button-hover-back-color-monochrome;
         border-color: $summary-button-border-color-monochrome;
       }
-
     }
+  }
 }
 
 
