@@ -6,7 +6,7 @@
 //
 // Style guide: components.two_button_descriptor
 
-// color variables (secondary)
+// color variables (default-secondary)
 $tbd-frame-bkgd-color: $color-secondary !default;
 $tbd-frame-title-color: $color-mono-black !default;
 $tbd-frame-headline-color: $color-mono-white !default;
@@ -19,7 +19,7 @@ $tbd-frame-bkgd-color-primary: $color-accent-primary !default;
 $tbd-frame-title-color-primary: $color-mono-black !default;
 $tbd-frame-headline-color-primary: $color-primary !default;
 $tbd-frame-description-color-primary: $color-mono-black !default;
-// monochrome light color variables
+// color variables (monochrome light)
 $tbd-frame-bkgd-color-monochrome: $color-mono-lt !default;
 $tbd-frame-title-color-monochrome: $color-mono-black !default;
 $tbd-frame-headline-color-monochrome: $color-mono-black !default;
@@ -56,12 +56,6 @@ $tbd-button-hover-back-color-monochrome:  $color-mono-black !default;
   // width: 100%;
   min-height: 450px\9;
 }
-.paragraph--type--webny-tbd-pgtype.primary {
-  background-color: $tbd-frame-bkgd-color-primary;
-}
-.paragraph--type--webny-tbd-pgtype.monochrome {
-  background-color: $tbd-frame-bkgd-color-monochrome;
-}
 
 .tbdframe-inner {
   max-width: $max-pc;
@@ -84,24 +78,12 @@ $tbd-button-hover-back-color-monochrome:  $color-mono-black !default;
   text-transform: uppercase;
   letter-spacing: 2px;
 }
-.primary .descriptor--field-webny-tbd-title {
-  color: $tbd-frame-title-color-primary;
-}
-.monochrome .descriptor--field-webny-tbd-title {
-  color: $tbd-frame-title-color-monochrome;
-}
 
 .descriptor--field-webny-tbd-headline {
   font: $frame-headline;
   color: $tbd-frame-headline-color;
   text-align: center;
   line-height: 3rem;
-}
-.primary .descriptor--field-webny-tbd-headline {
-  color: $tbd-frame-headline-color-primary;
-}
-.monochrome .descriptor--field-webny-tbd-headline {
-  color: $tbd-frame-headline-color-monochrome;
 }
 
 .descriptor--field-webny-tbd-descriptortitle1,
@@ -111,12 +93,6 @@ $tbd-button-hover-back-color-monochrome:  $color-mono-black !default;
   font-weight: 800;
   color: $tbd-frame-descriptor-title-color;
   margin: 20px 0;
-}
-.monochrome {
-  .descriptor--field-webny-tbd-descriptortitle1,
-  .descriptor--field-webny-tbd-descriptortitle2 {
-    color: $summary-frame-keypt-title-color-monochrome;
-  }
 }
 
 .descriptor--field-webny-tbd-descriptor1,
@@ -158,7 +134,16 @@ $tbd-button-hover-back-color-monochrome:  $color-mono-black !default;
   @include frame-button-base();
 
 }
-.primary {
+
+// if primary background color is selected for frame
+.paragraph--type--webny-tbd-pgtype.primary {
+  background-color: $tbd-frame-bkgd-color-primary;
+  .descriptor--field-webny-tbd-title {
+    color: $tbd-frame-title-color-primary;
+  }
+  .descriptor--field-webny-tbd-headline {
+    color: $tbd-frame-headline-color-primary;
+  }
   .descriptor--field-webny-tbd-cta1,
   .descriptor--field-webny-tbd-cta2 {
     a {
@@ -171,7 +156,19 @@ $tbd-button-hover-back-color-monochrome:  $color-mono-black !default;
     }
   }
 }
-.monochrome {
+// if monochrome light background color is selected for frame
+.paragraph--type--webny-tbd-pgtype.monochrome {
+  background-color: $tbd-frame-bkgd-color-monochrome;
+  .descriptor--field-webny-tbd-title {
+    color: $tbd-frame-title-color-monochrome;
+  }
+  .descriptor--field-webny-tbd-headline {
+    color: $tbd-frame-headline-color-monochrome;
+  }
+  .descriptor--field-webny-tbd-descriptortitle1,
+  .descriptor--field-webny-tbd-descriptortitle2 {
+    color: $summary-frame-keypt-title-color-monochrome;
+  }
   .descriptor--field-webny-tbd-cta1,
   .descriptor--field-webny-tbd-cta2 {
     a {
