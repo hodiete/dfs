@@ -3657,6 +3657,20 @@ function webny_configuration_update_8164() {
 }
 
 /**
+ * REFRESH THE TEXT EDITOR FEATURE
+ * NDD-1134
+ * -iojonep
+ */
+function webny_configuration_update_8165() {
+
+    \Drupal::service('module_installer')
+        ->uninstall(['webny_text_editors']);
+    \Drupal::service('module_installer')
+        ->install(['webny_text_editors']);
+
+}
+
+/**
  * Helper function to enable a Drupal module and print the result.
  *
  * @param string $module_name
