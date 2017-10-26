@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: event_content_type
+label: 'Event Content Type'
+type: 'canonical_entities:node'
+pattern: '/event/[node:title]'
+selection_criteria:
+  4892aef7-8236-41d1-bcb0-36094c766cb6:
+    id: node_type
+    bundles:
+      webny_event: webny_event
+    negate: false
+    context_mapping:
+      node: node
+    uuid: 4892aef7-8236-41d1-bcb0-36094c766cb6
+selection_logic: and
+weight: -5
+relationships: {  }

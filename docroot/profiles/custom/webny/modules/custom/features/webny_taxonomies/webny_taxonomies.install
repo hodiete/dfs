@@ -1,0 +1,31 @@
+<?php
+
+use Drupal\Core\Config\FileStorage;
+use Drupal\field\Entity\FieldStorageConfig;
+
+/**
+ * Manually install field storage since features is having issues.
+ */
+function webny_taxonomies_update_8001() {
+  // Create a shell for the fields
+  \Drupal\field\Entity\FieldStorageConfig::create([
+    'field_name' => 'field_webny_filter_terms',
+    'entity_type' => 'node',
+    'type' => 'entity_reference',
+    'cardinality' => -1,
+  ])->save();
+
+  // Import the field storage.
+  $config_files = [
+    'field.storage.node.field_webny_filter_terms'
+  ];
+
+  // Get a storage object so we can read the configuration files.
+  $dir = \Drupal::service('module_handler')->getModule('webny_taxonomies')->getPath();
+  $storage = new FileStorage($dir . '/config/install');
+
+  foreach($config_files as $config_file) {
+    $config = $storage->read($config_file);
+    \Drupal::configFactory()->getEditable($config_file)->setData($config)->save();
+  }
+}
