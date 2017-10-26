@@ -1,7 +1,9 @@
+uuid: ca55998f-d743-47af-a0f0-0812050ea467
 langcode: en
 status: true
 dependencies:
   config:
+    - field.field.paragraph.webny_get_involved_pgtype.field_webny_get_inv_color
     - field.field.paragraph.webny_get_involved_pgtype.field_webny_get_inv_cta
     - field.field.paragraph.webny_get_involved_pgtype.field_webny_get_inv_description
     - field.field.paragraph.webny_get_involved_pgtype.field_webny_get_inv_headline
@@ -17,8 +19,14 @@ targetEntityType: paragraph
 bundle: webny_get_involved_pgtype
 mode: default
 content:
-  field_webny_get_inv_cta:
+  field_webny_get_inv_color:
     weight: 4
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_webny_get_inv_cta:
+    weight: 5
     settings:
       placeholder_url: ''
       placeholder_title: ''

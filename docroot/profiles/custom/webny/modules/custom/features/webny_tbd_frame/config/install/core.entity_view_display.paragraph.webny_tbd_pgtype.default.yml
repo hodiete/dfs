@@ -1,7 +1,9 @@
+uuid: 68382975-5f82-425f-8343-757a4f7c7b83
 langcode: en
 status: true
 dependencies:
   config:
+    - field.field.paragraph.webny_tbd_pgtype.field_webny_tbd_color
     - field.field.paragraph.webny_tbd_pgtype.field_webny_tbd_cta1
     - field.field.paragraph.webny_tbd_pgtype.field_webny_tbd_cta2
     - field.field.paragraph.webny_tbd_pgtype.field_webny_tbd_descriptor1
@@ -19,9 +21,9 @@ third_party_settings:
   field_group:
     group_descriptor_grouping_1:
       children:
+        - field_webny_tbd_descriptortitle1
         - field_webny_tbd_descriptor1
         - field_webny_tbd_cta1
-        - field_webny_tbd_descriptortitle1
       parent_name: group_descriptors_container
       weight: 3
       format_type: html_element
@@ -38,9 +40,9 @@ third_party_settings:
       label: 'Descriptor Grouping 1'
     group_descriptor_grouping_2:
       children:
+        - field_webny_tbd_descriptortitle2
         - field_webny_tbd_descriptor2
         - field_webny_tbd_cta2
-        - field_webny_tbd_descriptortitle2
       parent_name: group_descriptors_container
       weight: 7
       format_type: html_element
@@ -149,4 +151,5 @@ content:
     region: content
 hidden:
   created: true
+  field_webny_tbd_color: true
   uid: true

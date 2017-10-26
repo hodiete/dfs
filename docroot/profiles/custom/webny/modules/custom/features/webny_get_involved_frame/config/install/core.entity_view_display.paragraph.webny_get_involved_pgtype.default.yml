@@ -1,7 +1,9 @@
+uuid: 2fdd3f04-7762-4ef2-af65-bcda7abd8c47
 langcode: en
 status: true
 dependencies:
   config:
+    - field.field.paragraph.webny_get_involved_pgtype.field_webny_get_inv_color
     - field.field.paragraph.webny_get_involved_pgtype.field_webny_get_inv_cta
     - field.field.paragraph.webny_get_involved_pgtype.field_webny_get_inv_description
     - field.field.paragraph.webny_get_involved_pgtype.field_webny_get_inv_headline
@@ -73,6 +75,7 @@ content:
     region: content
 hidden:
   created: true
+  field_webny_get_inv_color: true
   field_webny_get_inv_share_title: true
   field_webny_get_inv_toc: true
   uid: true
