@@ -32,6 +32,7 @@ I should be able to create a document from the Document content type
     And I should see "Date"
     And I should see "Last Updated"
     And I should see "Language"
+    And I should see "Filter Terms"
 
 # Document Paragraph Type display
 # Check for the display Mode GENERIC

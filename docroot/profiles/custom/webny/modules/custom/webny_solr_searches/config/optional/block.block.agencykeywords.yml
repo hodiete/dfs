@@ -1,0 +1,27 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - facets.facet.facet_agency_keywords
+  module:
+    - facets
+    - system
+  theme:
+    - webny_theme
+id: agencykeywords
+theme: webny_theme
+region: content
+weight: 0
+provider: null
+plugin: 'facet_block:facet_agency_keywords'
+settings:
+  id: 'facet_block:facet_agency_keywords'
+  label: 'Agency Keywords'
+  provider: facets
+  label_display: visible
+visibility:
+  request_path:
+    id: request_path
+    pages: '/search/generic*'
+    negate: false
+    context_mapping: {  }

@@ -160,11 +160,19 @@ class ProfileConfig {
       $this->getProfileFeatureConfigPath('landing_page_content_type') . '/install',
       $this->getProfileFeatureConfigPath('landing_page_content_type') . '/optional',
       $this->getProfileFeatureConfigPath('contact_content_type') . '/install',
-      $this->getProfileFeatureConfigPath('contact_page_content_type') . '/optional',
+      $this->getProfileFeatureConfigPath('contact_content_type') . '/optional',
+      $this->getProfileFeatureConfigPath('event_content_type') . '/install',
+      $this->getProfileFeatureConfigPath('event_content_type') . '/optional',
       $this->getProfileFeatureConfigPath('global_navigation_footer') . '/install',
       $this->getProfileFeatureConfigPath('global_navigation_footer') . '/optional',
       $this->getProfileFeatureConfigPath('image_styles') . '/install',
       $this->getProfileFeatureConfigPath('image_styles') . '/optional',
+      $this->getProfileFeatureConfigPath('inner_page_content_type') . '/install',
+      $this->getProfileFeatureConfigPath('inner_page_content_type') . '/optional',
+      $this->getProfileFeatureConfigPath('demo_content_view') . '/install',
+      $this->getProfileFeatureConfigPath('demo_content_view') . '/optional',
+      $this->getProfileFeatureConfigPath('taxonomies') . '/install',
+      $this->getProfileFeatureConfigPath('taxonomies') . '/optional',
       $this->getProfileContribModulePath('yamlform') . '/' . self::CONFIG_DIR . '/install',
       $this->getProfileContribModulePath('webform') . '/' . self::CONFIG_DIR . '/install',
       $this->getProfileFeatureConfigPath('whitelisted_content') . '/install',
@@ -182,7 +190,8 @@ class ProfileConfig {
       $this->getProfileFeatureConfigPath('get_involved_frame') . '/optional',
       $this->getProfilePath() . '/themes/custom/webnycommander/' . self::CONFIG_DIR . '/install',
       $this->getProfilePath() . '/themes/custom/webnycommander/' . self::CONFIG_DIR . '/optional',
-
+      $this->getProfileFeatureConfigPath('workflow_basic_configuration') . '/install',
+      $this->getProfileFeatureConfigPath('workflow_basic_configuration') . '/optional',
     ]);
 
     return $locations->locate($resource . '.yml');
