@@ -3658,9 +3658,10 @@ function webny_configuration_update_8164() {
 
 /**
  * REFRESH THE TEXT EDITOR FEATURE
+ * NDD-1134
  * -iojonep
  */
-function webny_configuration_update_8160() {
+function webny_configuration_update_8165() {
 
     \Drupal::service('module_installer')
         ->uninstall(['webny_text_editors']);
