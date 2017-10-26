@@ -3639,6 +3639,29 @@ function webny_configuration_update_8162() {
   $config_factory->reset();
 }
 
+function webny_configuration_update_8163(){
+
+    \Drupal::service('module_installer')
+        ->uninstall(['webny_bio_frame']);
+    \Drupal::service('module_installer')
+        ->install(['webny_bio_frame']);
+
+    \Drupal::service('module_installer')
+        ->uninstall(['webny_get_involved_frame']);
+    \Drupal::service('module_installer')
+        ->install(['webny_get_involved_frame']);
+
+    \Drupal::service('module_installer')
+        ->uninstall(['webny_summary_frame']);
+    \Drupal::service('module_installer')
+        ->install(['webny_summary_frame']);
+
+    \Drupal::service('module_installer')
+        ->uninstall(['webny_tbd_frame']);
+    \Drupal::service('module_installer')
+        ->install(['webny_tbd_frame']);
+}
+
 /**
  * Helper function to enable a Drupal module and print the result.
  *
