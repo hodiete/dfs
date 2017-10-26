@@ -18,39 +18,92 @@ $secnav-font-color:         #fff;
 // MOBILE FIRST
 #secondary-navigation {
 
+  display: block;
+  border-top: 3px solid #fff;
   width: 100%;
   background-color: $secnav-background-color;
-  padding: 10px;
+  padding: 10px 0 ;
   color: $secnav-font-color;
 
   p{
-    font-size: 16px;
+    font-size: 18px/1em;
     color: $secnav-font-color;
-    margin: 3px 0;
+    margin: 0;
   }
 
-  .secnav-secone{}
-  .secnav-equal-space{
-    width: 100%;
-
+  .secnav-hr{
+    display: block;
+    width: 90%;
+    color: #fff;
+    background-color: #fff;
+    border: 0;
+    border-top: 1px solid #fff;
+    padding: 0;
   }
 
-  // SECTION TWO ##################
+  .secnav-pipe {
+    text-align: center;
+    display: none;
+  }
+
+  // SECTION ONE =================================
+  .secnav-secone {
+    a {
+      &:link {
+        color: $secnav-font-color;
+      }
+      &:visited {
+        color: $secnav-font-color;
+      }
+      &:hover {
+        color: $secnav-font-color;
+      }
+      &:active {
+        color: $secnav-font-color;
+      }
+    }
+  }
+
+  // SECTION TWO =================================
   div.secnav-sectwo {
-
-    // WYSIWYG
-
 
     // LINKS
     ul.secondary-nav-links {
+
+      padding-left: 0;
+
       li {
         display: inline-block;
+        margin: 0;
 
         a {
-          font-size: 16px;
+          font-size: 18px/1em;
+          padding: 0 1em;
           color: $secnav-font-color;
         }
       }
+    }
+  }
+
+
+  // HYBRID SITUATIONS =================================
+
+  // ALIGN A SOLO FRAME CENTER
+  .secnav-secone.secnav-full-space,
+  .secnav-secotwo.secnav-full-space {
+    width: 90%;
+    text-align: center;
+  }
+
+  .secnav-equal-space{
+    width: 90%;
+  }
+
+  .secnav-secone,
+  .secnav-sectwo{
+    margin: 0 1.5em;
+    p {
+      margin-top: 0;
     }
   }
 
@@ -60,6 +113,20 @@ $secnav-font-color:         #fff;
 // ######################################################################### //
 /* TABLET VIEW */
 @media (min-width: $min-tab) {
+
+
+  #secondary-navigation {
+
+    // DISPLAY THE PIPE FOR TABLET ON UP
+    .secnav-pipe {
+      text-align: center;
+      display: none;
+    }
+    .secnav-hr{
+      display: block;
+    }
+
+  }
 
 } // END MIN TABLET VIEW
 
@@ -73,10 +140,25 @@ $secnav-font-color:         #fff;
   width: 100%;
   display: flex;
 
-  .secnav-secone{}
+  .secnav-pipe{
+    width: 2%;
+    display: block;
+  }
+
+  .secnav-hr{
+    display: none;
+  }
+
+  .secnav-secone {
+    text-align: right;
+  }
+
+  .secnav-sectwo {
+    text-align: left;
+  }
+
   .secnav-equal-space{
     width: 48%;
-
   }
 
 }
