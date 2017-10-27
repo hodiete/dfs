@@ -24,8 +24,8 @@ function webny_event_content_type_preprocess_node(&$variables) {
   $bundle = $variables['node']->getType();
 
   if ($bundle == 'webny_event') {
-    $start_date = $variables['node']->field_webny_event_date_start->value;
-    $end_date = $variables['node']->field_webny_event_date_end->value;
+    $start_date = $variables['node']->field_webny_event_date_start->value . 'Z';
+    $end_date = $variables['node']->field_webny_event_date_end->value . 'Z';
 
     // Time values for combining.
     $variables['event_time'] = '';
