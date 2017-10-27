@@ -3671,6 +3671,19 @@ function webny_configuration_update_8165() {
 }
 
 /**
+ * Install webny_location_content_type feature
+ * NDD-1118
+ * -Cat
+ */
+function webny_configuration_update_8168() {
+
+  // INSTALL WebNY Location Content Type
+  \Drupal::service('module_installer')
+    ->install(['webny_location_content_type']);
+
+}
+
+/**
  * Helper function to enable a Drupal module and print the result.
  *
  * @param string $module_name
