@@ -3671,6 +3671,20 @@ function webny_configuration_update_8165() {
 }
 
 /**
+ * Implements hook_update_n().
+ *
+ * Refresh the generic content page content type
+ *
+ */
+function webny_configuration_update_8166(){
+
+    \Drupal::service('module_installer')
+        ->uninstall(['webny_generic_content_type']);
+    \Drupal::service('module_installer')
+        ->install(['webny_generic_content_type']);
+}
+
+/**
  * Helper function to enable a Drupal module and print the result.
  *
  * @param string $module_name
