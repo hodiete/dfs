@@ -71,8 +71,8 @@ install:
   - composer install -v
   - export PATH=$TRAVIS_BUILD_DIR/vendor/bin:$PATH
   # Install proper version of node for front end tasks.
-  - nvm install 4.4.1
-  - nvm use 4.4.1
+  - nvm install 0.12.7
+  - nvm use 0.12.7
   # Initialize xvfb (see https://docs.travis-ci.com/user/gui-and-headless-browsers)
   - sudo apt-get install xvfb
   - export DISPLAY=:99.0
@@ -94,9 +94,8 @@ before_script:
   - mysql -u root -e 'SET GLOBAL wait_timeout = 36000;'
   - mysql -u root -e 'SET GLOBAL max_allowed_packet = 33554432;'
   - sudo service mysql restart
-  - curl https://repo.varnish-cache.org/debian/GPG-key.txt | sudo apt-key add -
+  - curl -s https://packagecloud.io/install/repositories/varnishcache/varnish30/script.deb.sh | sudo bash
   - echo "deb https://repo.varnish-cache.org/ubuntu/ trusty varnish-3.0" | sudo tee -a /etc/apt/sources.list.d/varnish.list
-  - sudo apt-get update -qq
   - sudo apt-get install varnish=3.0.7-1~trusty -y
   - sudo cp ./acquia.vcl.j2 /etc/varnish/default.vcl
   - sudo echo "14bac2e6-1e34-4770-8078-974373b76c90" >> sudo /etc/varnish/secret

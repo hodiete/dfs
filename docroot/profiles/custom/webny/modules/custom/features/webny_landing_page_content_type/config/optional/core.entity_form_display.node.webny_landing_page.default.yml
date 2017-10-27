@@ -3,6 +3,10 @@ status: true
 dependencies:
   config:
     - entity_browser.browser.image_browser
+    - field.field.node.webny_landing_page.field_webny_agency_keywords
+    - field.field.node.webny_landing_page.field_webny_contentcat
+    - field.field.node.webny_landing_page.field_webny_filter_terms
+    - field.field.node.webny_landing_page.field_webny_global_keywords
     - field.field.node.webny_landing_page.field_webny_landing_agency_key
     - field.field.node.webny_landing_page.field_webny_landing_global_key
     - field.field.node.webny_landing_page.field_webny_landing_hero_button
@@ -23,6 +27,7 @@ dependencies:
     - link
     - paragraphs
     - path
+    - shs
     - text
     - viewfield
     - workbench_moderation
@@ -39,26 +44,32 @@ third_party_settings:
       weight: 6
       format_type: tab
       format_settings:
-        id: ''
-        classes: ''
-        formatter: closed
+        label: 'Hero Fields'
+        formatter: open
         description: ''
         required_fields: true
+        id: ''
+        classes: ''
       label: 'Hero Fields'
     group_webny_landing_metadata:
       children:
+        - field_webny_agency_keywords
+        - field_webny_global_keywords
         - field_webny_landing_global_key
         - field_webny_landing_agency_key
+        - field_webny_filter_terms
+        - field_webny_contentcat
         - field_webny_results_view_to_disp
       parent_name: ''
       weight: 9
       format_type: tab
       format_settings:
-        id: ''
-        classes: ''
-        formatter: closed
+        label: Metadata
+        formatter: open
         description: ''
         required_fields: true
+        id: ''
+        classes: ''
       label: Metadata
     group_webny_landing_page_frames:
       children:
@@ -67,11 +78,12 @@ third_party_settings:
       weight: 7
       format_type: tab
       format_settings:
-        id: ''
-        classes: ''
-        formatter: closed
+        label: 'Frames of Content'
+        formatter: open
         description: ''
         required_fields: true
+        id: ''
+        classes: ''
       label: 'Frames of Content'
 id: node.webny_landing_page.default
 targetEntityType: node
@@ -84,8 +96,45 @@ content:
     settings: {  }
     third_party_settings: {  }
     region: content
+  field_webny_agency_keywords:
+    weight: 11
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  field_webny_contentcat:
+    weight: 16
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  field_webny_filter_terms:
+    weight: 15
+    settings:
+      display_node_count: false
+      create_new_items: false
+      create_new_levels: false
+      force_deepest: false
+    third_party_settings: {  }
+    type: options_shs
+    region: content
+  field_webny_global_keywords:
+    weight: 12
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
   field_webny_landing_agency_key:
-    weight: 10
+    weight: 14
     settings:
       match_operator: CONTAINS
       size: 60
@@ -94,7 +143,7 @@ content:
     type: entity_reference_autocomplete
     region: content
   field_webny_landing_global_key:
-    weight: 9
+    weight: 13
     settings:
       match_operator: CONTAINS
       size: 60
@@ -191,7 +240,7 @@ content:
     type: options_buttons
     region: content
   field_webny_results_view_to_disp:
-    weight: 11
+    weight: 17
     settings: {  }
     third_party_settings: {  }
     type: viewfield_select

@@ -11,10 +11,11 @@ third_party_settings:
   workbench_moderation:
     enabled: true
     allowed_moderation_states:
+      - published
       - archived
       - draft
       - needs_review
-      - published
+      - unpublished
     default_moderation_state: draft
 name: 'Landing Page'
 type: webny_landing_page

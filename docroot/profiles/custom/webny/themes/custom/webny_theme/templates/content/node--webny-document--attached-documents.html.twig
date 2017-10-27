@@ -22,6 +22,9 @@
 {%
     set absfilepath = file_url(node.field_webny_document_file_upload.entity.uri.value)
 %}
+{%
+    set extfilepath = node.field_webny_document_ext_link.value
+%}
 
 {# DEBUG VIA KINT / DEVEL #}
 
@@ -36,8 +39,10 @@
           <div class="doc-info">
             <div class="fa-document">&nbsp;</div>
             <h4 class="doc-title" {{ title_attributes }}>
-                {% if absfilepath %}
+                {% if absfilepath != '/' %}
                     <a href="{{ absfilepath }}">{{ label }}</a>
+                {% elseif extfilepath %}
+                  <a href="{{ extfilepath }}">{{ label }}</a>
                 {% else %}
                     {{ label }}
                 {% endif %}
@@ -46,10 +51,17 @@
             <span class="doc-description">{{ content.body }}</span>
           </div><!--end doc-info-->
           
-          <div class="download">
-            <div class="fa-download">&nbsp;</div>
-            <a href="{{ absfilepath }}">Download</a>
-          </div>
+
+            {% if absfilepath != '/' %}
+              <a href="{{ absfilepath }}" class="download-link">
+            {% elseif extfilepath %}
+              <a href="{{ extfilepath }}" class="download-link">
+            {% endif %}
+              <div class="download">
+                <div class="fa-download">&nbsp;</div>
+                <p>Download</p>
+              </div>
+            </a>
             
         </li><!--end document-wrapper-->
     </ul>
