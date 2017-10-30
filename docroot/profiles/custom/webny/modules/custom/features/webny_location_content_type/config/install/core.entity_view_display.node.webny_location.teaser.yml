@@ -1,0 +1,54 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.webny_location.field_webny_agency_keywords
+    - field.field.node.webny_location.field_webny_filter_terms
+    - field.field.node.webny_location.field_webny_location_address
+    - field.field.node.webny_location.field_webny_location_contentsec
+    - field.field.node.webny_location.field_webny_location_counties
+    - field.field.node.webny_location.field_webny_location_heroimage
+    - field.field.node.webny_location.field_webny_location_navtoggle
+    - field.field.node.webny_location.field_webny_location_phone
+    - field.field.node.webny_location.field_webny_location_short_title
+    - field.field.node.webny_location.field_webny_location_summary
+    - field.field.node.webny_location.field_webny_location_type_tax
+    - node.type.webny_location
+  module:
+    - user
+id: node.webny_location.teaser
+targetEntityType: node
+bundle: webny_location
+mode: teaser
+content:
+  field_webny_location_short_title:
+    type: string
+    weight: 1
+    region: content
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+  links:
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  workbench_moderation_control:
+    weight: -20
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  field_webny_agency_keywords: true
+  field_webny_filter_terms: true
+  field_webny_location_address: true
+  field_webny_location_contentsec: true
+  field_webny_location_counties: true
+  field_webny_location_heroimage: true
+  field_webny_location_navtoggle: true
+  field_webny_location_phone: true
+  field_webny_location_summary: true
+  field_webny_location_type_tax: true
+  langcode: true
