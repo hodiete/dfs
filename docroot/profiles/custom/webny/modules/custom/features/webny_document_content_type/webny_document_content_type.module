@@ -1,0 +1,28 @@
+<?php
+
+use Drupal\webny_document_content_type\DocumentFileUrl;
+
+/**
+ * Implements hook_link_alter().
+ */
+function webny_document_content_type_link_alter(&$variables) {
+
+  // Rewrite document links point to their files.
+  if (isset($variables['options']['entity_type']) && $variables['options']['entity_type'] === 'node' && $variables['url']->getRouteName() === 'entity.node.canonical') {
+
+    $node = $variables['options']['entity'];
+
+    if ($node->bundle() !== 'webny_document') {
+      return;
+    }
+
+    /**
+     * Document file Url service.
+     *
+     * @var $document_file_url DocumentFileUrl.
+     */
+    $document_file_url = \Drupal::service('webny_document_content_type.document_file_url');
+
+    $variables['url'] = $document_file_url->getUrl($node);
+  }
+}

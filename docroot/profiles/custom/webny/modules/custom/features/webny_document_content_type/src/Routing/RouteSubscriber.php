@@ -3,24 +3,33 @@
 namespace Drupal\webny_document_content_type\Routing;
 
 use Drupal\Core\Routing\ResettableStackedRouteMatchInterface;
-use Drupal\Core\Url;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpKernel\Event\FilterResponseEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
+use Drupal\webny_document_content_type\DocumentFileUrl;
 
 /**
  * Class \Drupal\webny_document_content_type\Routing\RouteSubscriber.
  */
 class RouteSubscriber implements EventSubscriberInterface {
+
+  /**
+   * The URL generator service.
+   *
+   * @var \Drupal\webny_document_content_type\DocumentFileUrl
+   */
+  private $fileUrl;
+
   /**
    * Constructor for \Drupal\webny\Routing\RouteSubscriber.
    *
    * @param \Drupal\Core\Routing\ResettableStackedRouteMatchInterface $route_match
    *   The current route match object.
    */
-  public function __construct(ResettableStackedRouteMatchInterface $route_match) {
+  public function __construct(ResettableStackedRouteMatchInterface $route_match, DocumentFileUrl $fileUrl) {
     $this->routeMatch = $route_match;
+    $this->fileUrl = $fileUrl;
   }
 
   /**
@@ -46,35 +55,14 @@ class RouteSubscriber implements EventSubscriberInterface {
 
     // Load the node.
     $attributes = $event->getRequest()->attributes;
-    $node_entity = $attributes->get('node');
+    $node = $attributes->get('node');
 
-    if ($node_entity->bundle() !== 'webny_document') {
+    if ($node->bundle() !== 'webny_document') {
       return;
     }
 
-    $external_link = $node_entity->get('field_webny_document_ext_link')->value;
-
-    if (count($node_entity->get('field_webny_document_file_upload')->getValue()) > 0) {
-      $file = $node_entity->get('field_webny_document_file_upload')->get(0)->entity->url();
-    }
-    else {
-      $file = null;
-    }
-
-    if (!empty($file)) {
-      $url = $file;
-    }
-    elseif (!empty($external_link)) {
-      // Use the external link.
-      $url = $external_link;
-    }
-    else {
-      // Redirect to the homepage?
-      $url = Url::fromRoute('<front>', [], ['absolute' => TRUE])->toString();
-    }
-
     $event->setResponse(
-      new RedirectResponse($url)
+      new RedirectResponse($this->fileUrl->getUrl($node)->toString())
     );
   }
 }
