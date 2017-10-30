@@ -104,11 +104,13 @@
     {{ title_prefix }}
     
     {% if hero_image == '/' %}
-        <div class="hero-header hero-no-image hero-landing" style="">
+        <div class="hero-header hero-no-image hero-landing">
     {% else %}
-        <div class="hero-header hero-has-image hero-landing" style="background-image:url('{{ hero_image }}')">
+        <div class="hero-header hero-has-image hero-landing">
     {% endif %}
-        
+            <div class="hero-image">
+            {{ content.field_webny_landing_hero_image }}
+            </div>
         <!-- BACKGROUND GRAD -->
             <div class="hero-bkg"></div>
         </div>
@@ -196,6 +198,23 @@
     {{ title_suffix }}
 
 </article>
+
+<div class="webny-share-bar">
+    <div class="webny-share">
+        <div class="webny-share-bar-icons">
+        <div class="webny-action-share-label">SHARE</div>
+            <div class="webny-action-share-button">
+                <a href="mailto:?Subject={{ site_name }}: {{ node.label }}&Body={{ url('<current>') }}" target="_blank"><span class="icon-email"></span></a>
+            </div>
+            <div class="webny-action-share-button">
+                <a href="http://www.facebook.com/share.php?u={{ url('<current>') }}" target="_blank"><span class="icon-facebook"></span></a>
+            </div>
+            <div class="webny-action-share-button">
+                        <a href="https://twitter.com/intent/tweet?text={{ node.label }}&url={{ url('<current>') }}" target="_blank"><span class="icon-twitter"></span></a>
+            </div>
+        </div>
+    </div>
+</div>
 
 {% endif %}
 

@@ -3642,6 +3642,77 @@ function webny_configuration_update_8162() {
 function webny_configuration_update_8163(){
 
     \Drupal::service('module_installer')
+        ->uninstall(['webny_metatag']);
+    \Drupal::service('module_installer')
+        ->install(['webny_metatag']);
+}
+
+/**
+ * Update pathauto patterns to use shared fields.
+ */
+function webny_configuration_update_8164() {
+  webny_configuration_delete_configuration_files([
+    'pathauto.pattern.webny_path_generic_pattern',
+  ]);
+}
+
+
+/**
+ * REFRESH THE TEXT EDITOR FEATURE
+ * NDD-1134
+ * -iojonep
+ */
+function webny_configuration_update_8165() {
+
+    \Drupal::service('module_installer')
+        ->uninstall(['webny_text_editors']);
+    \Drupal::service('module_installer')
+        ->install(['webny_text_editors']);
+
+}
+
+/*
+ * Responsive hero image updates.
+ */
+function webny_configuration_update_8166() {
+  $config_factory = \Drupal::configFactory();
+  $profile_config = \Drupal::service('webny.profile_config');
+
+  // Import new/changed configuration.
+  $config_to_update = [
+    'core.entity_view_display.media.image.hero_image',
+    'core.entity_view_display.media.image.hero_image_tall',
+    'core.entity_view_display.node.webny_news.default',
+    'core.entity_view_display.node.webny_landing_page.default',
+    'core.entity_view_display.node.webny_generic_page.default',
+    'image.style.mobile_lead',
+    'image.style.narrow_lead',
+    'image.style.wide_lead',
+    'image.style.wide_lead_tall'
+  ];
+
+  $profile_config->bulkImport($config_to_update);
+
+  // Clear the config cache.
+  $config_factory->reset();
+}
+
+/**
+ * Install webny_location_content_type feature
+ * NDD-1118
+ * -Cat
+ */
+function webny_configuration_update_8167() {
+
+  // INSTALL WebNY Location Content Type
+  \Drupal::service('module_installer')
+    ->install(['webny_location_content_type']);
+
+}
+
+/*NDD-1112 frame background colors 
+-Beth */
+function webny_configuration_update_8167() {
         ->uninstall(['webny_summary_frame']);
     \Drupal::service('module_installer')
         ->install(['webny_summary_frame']);
@@ -3692,7 +3763,6 @@ function webny_configuration_update_8163(){
     // Clear the config cache.
     $config_factory->reset();
 }
-
 /**
  * Helper function to enable a Drupal module and print the result.
  *
@@ -3732,4 +3802,30 @@ function webny_configuration_uninstall_module($module_name) {
     catch (Exception $error) {
         throw new UpdateException("An error occurred uninstalling " . $module_name . ": " . $error . "\n");
     }
+}
+
+/**
+ * Helper module to update configuration files in the profile folders.
+ *
+ * Example usage: webny_configuration_update_profile_configuration_files(['embed.button.media','core.entity_view_mode.media.wysiwyg']);
+ */
+function webny_configuration_update_profile_configuration_files($files) {
+  $config_factory = \Drupal::configFactory();
+  $profile_config = \Drupal::service('webny.profile_config');
+
+  $profile_config->bulkImport($files);
+
+  // Clear the config cache.
+  $config_factory->reset();
+}
+
+/**
+ * Helper module to delete configuration files.
+ *
+ * Example usage: webny_configuration_delete_configuration_files(['embed.button.media','core.entity_view_mode.media.wysiwyg']);
+ */
+function webny_configuration_delete_configuration_files($files) {
+  foreach($files as $file) {
+    \Drupal::service('config.factory')->getEditable($file)->delete();
+  }
 }

@@ -8,13 +8,13 @@
  *	  FIELD					TWIG
  *    title:                {{ label }}
  *    body:                 {{ content.body }}
- *    agency_keywords:      {{ content.field_webny_news_agency_keywords }}
+ *    agency_keywords:      {{ content.field_webny_agency_keywords }}
  *    attachments:          {{ content.field_webny_news_attachment }}
  *    teaser:               {{ content.field_webny_news_teaser }}
  *    news_image:           {{ content.field_webny_news_image }}
  *    contact_info:         {{ content.field_webny_news_contact_info }}
  *    news_date:            {{ content.field_webny_news_date }}
- *    global_keywords:      {{ content.field_webny_news_global_keywords }}
+ *    global_keywords:      {{ content.field_webny_global_keywords }}
  *    location:             {{ content.field_webny_news_location }}
  *    subtitle:             {{ content.field_webny_news_sub_title }}
  *
@@ -58,12 +58,15 @@
     {# CHECK IF THERE IS AN IMAGE #}
 
     {% if hero_image == '/' %}
-        <div class="hero-header hero-news hero-no-image" style="">
+        <div class="hero-header hero-news hero-no-image">
             <div class="hero-bkg"></div>
         </div>
         <div class="hero-no-image-wrap">
     {% else %}
-        <div class="hero-header hero-news hero-has-image" style="background-image:url('{{ hero_image }}')">
+        <div class="hero-header hero-news hero-has-image">
+            <div class="hero-image">
+                {{ content.field_webny_news_image }}
+            </div>
             <div class="hero-bkg"></div>
         </div>
         <div class="hero-image-wrap">
@@ -90,8 +93,8 @@
                 </h1>
 
                 {# KEYWORDS FOR NEWS HERO #}
-                <div class="hero-global-keywords">
-                    {{ content.field_webny_news_global_keywords }}
+                <div class="hero-keywords">
+                    {{ content.field_webny_global_keywords }}
                 </div>
 
          </div>
@@ -101,6 +104,22 @@
     {{ title_suffix }}
 
 </article>
+<div class="webny-share-bar">
+    <div class="webny-share">
+        <div class="webny-share-bar-icons">
+        <div class="webny-action-share-label">SHARE</div>
+            <div class="webny-action-share-button">
+                <a href="mailto:?Subject={{ site_name }}: {{ node.label }}&Body={{ url('<current>') }}" target="_blank"><span class="icon-email"></span></a>
+            </div>
+            <div class="webny-action-share-button">
+                <a href="http://www.facebook.com/share.php?u={{ url('<current>') }}" target="_blank"><span class="icon-facebook"></span></a>
+            </div>
+            <div class="webny-action-share-button">
+                        <a href="https://twitter.com/intent/tweet?text={{ node.label }}&url={{ url('<current>') }}" target="_blank"><span class="icon-twitter"></span></a>
+            </div>
+        </div>
+    </div>
+</div>
 
 <div class="news-body">
 	
