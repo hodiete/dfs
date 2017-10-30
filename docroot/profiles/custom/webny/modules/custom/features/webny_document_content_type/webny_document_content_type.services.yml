@@ -1,0 +1,6 @@
+services:
+  webny_document_content_type.route_subscriber:
+    class: \Drupal\webny_document_content_type\Routing\RouteSubscriber
+    arguments: [ '@current_route_match' ]
+    tags:
+      - { name: event_subscriber }
