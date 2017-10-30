@@ -8,7 +8,12 @@ use Drupal\webny_document_content_type\DocumentFileUrl;
 function webny_document_content_type_link_alter(&$variables) {
 
   // Rewrite document links point to their files.
-  if (isset($variables['options']['entity_type']) && $variables['options']['entity_type'] === 'node' && $variables['url']->getRouteName() === 'entity.node.canonical') {
+  if (
+    isset($variables['options']['entity_type'])
+    && $variables['options']['entity_type'] === 'node'
+    && !($variables['url']->isExternal())
+    && $variables['url']->getRouteName() === 'entity.node.canonical'
+  ) {
 
     $node = $variables['options']['entity'];
 

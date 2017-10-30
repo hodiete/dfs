@@ -1,0 +1,32 @@
+<?php
+
+use Drupal\webny_whitelisted_content\WhitelistedFileUrl;
+
+/**
+ * Implements hook_link_alter().
+ */
+function webny_whitelisted_content_link_alter(&$variables) {
+  // Rewrite whitelisted links point to their links.
+  if (
+      isset($variables['options']['entity_type'])
+      && $variables['options']['entity_type'] === 'node'
+      && !($variables['url']->isExternal())
+      && $variables['url']->getRouteName() === 'entity.node.canonical'
+  ) {
+
+    $node = $variables['options']['entity'];
+
+    if ($node->bundle() !== 'webny_whitelisted_content') {
+      return;
+    }
+
+    /**
+     * Whitelisted file Url service.
+     *
+     * @var $whitelisted_file_url WhitelistedFileUrl.
+     */
+    $whitelisted_file_url = \Drupal::service('webny_whitelisted_content.whitelisted_file_url');
+
+    $variables['url'] = $whitelisted_file_url->getUrl($node);
+  }
+}
