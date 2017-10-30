@@ -3647,7 +3647,31 @@ function webny_configuration_update_8163(){
         ->install(['webny_metatag']);
 }
 
+/** Implements hook_update_n().
+ *
+ * Update pathauto patterns to use shared fields.
+ */
+function webny_configuration_update_8164() {
+  webny_configuration_delete_configuration_files([
+    'pathauto.pattern.webny_path_generic_pattern',
+  ]);
+}
+
 /**
+ * REFRESH THE TEXT EDITOR FEATURE
+ * NDD-1134
+ */
+function webny_configuration_update_8165() {
+
+    \Drupal::service('module_installer')
+        ->uninstall(['webny_text_editors']);
+    \Drupal::service('module_installer')
+        ->install(['webny_text_editors']);
+
+}
+
+/**
+<<<<<<< HEAD
  * Update pathauto patterns to use shared fields.
  */
 function webny_configuration_update_8164() {
@@ -3663,10 +3687,14 @@ function webny_configuration_update_8164() {
  * NDD-990
  * -iojonep
  */
-function webny_configuration_update_8165() {
+function webny_configuration_update_8169() {
 
-    // INSTALL NEW MODULE
-    print webny_configuration_enable_module('webny_secondary_nav');
+
+    // NEW MODULE - REINSTALL?
+    \Drupal::service('module_installer')
+        ->uninstall(['webny_secondary_nav']);
+    \Drupal::service('module_installer')
+        ->install(['webny_secondary_nav']);
 
     // FORCE OPTIONAL BLOCK POST INSTALL
     $config_factory = \Drupal::configFactory();
@@ -3674,6 +3702,7 @@ function webny_configuration_update_8165() {
 
     // Import new/changed configuration.
     $config_to_update = [
+        'webny_secondary_nav.settings',
         'block.block.webnysecondarynavigationblock',
     ];
 
