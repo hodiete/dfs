@@ -3712,7 +3712,7 @@ function webny_configuration_update_8167() {
 
 /*NDD-1112 frame background colors 
 -Beth */
-function webny_configuration_update_8167() {
+function webny_configuration_update_8168() {
     
     \Drupal::service('module_installer')
         ->uninstall(['webny_summary_frame']);
@@ -3765,6 +3765,7 @@ function webny_configuration_update_8167() {
     // Clear the config cache.
     $config_factory->reset();
 }
+
 /**
  * Helper function to enable a Drupal module and print the result.
  *
