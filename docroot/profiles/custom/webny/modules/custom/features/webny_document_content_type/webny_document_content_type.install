@@ -1,0 +1,29 @@
+<?php
+
+/**
+ * Migrate public files to private files.
+ */
+function webny_document_content_type_update_8001() {
+  // Get a list of files that are associated with document revisions.
+
+  // @var $query \Drupal\Core\Database\Query\SelectInterface.
+  $query = \Drupal::database()->select('node_revision__field_webny_document_file_upload', 'docf');
+
+  $query->addField('docf', 'field_webny_document_file_upload_target_id', 'fid');
+  $query->distinct();
+  $fids = $query->execute()->fetchCol();
+
+  foreach($fids as $fid) {
+    // Load the file and get it's path.
+    $file = \Drupal\file\Entity\File::load($fid);
+    $path = $file->getFileUri();
+
+    // Process only public files.
+    if (strpos($path, 'public://') !== 0) {
+      continue;
+    }
+
+    // Move the file to the private file system.
+    file_move($file, str_replace('public://', 'private://', $path));
+  }
+}
