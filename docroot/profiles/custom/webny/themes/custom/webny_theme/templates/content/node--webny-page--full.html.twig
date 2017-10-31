@@ -66,10 +66,13 @@
         {{ title_prefix }}
 
         {% if hero_image == '/' %}
-            <div class="hero-header hero-no-image hero-ipage" style="">
+            <div class="hero-header hero-no-image hero-ipage">
         {% else %}
-            <div class="hero-header hero-has-image hero-ipage" style="background-image:url('{{ hero_image }}')">
+            <div class="hero-header hero-has-image hero-ipage">
         {% endif %}
+                <div class="hero-image">
+                    {{ content.field_webny_page_image }}
+                </div>
 
                 <!-- BACKGROUND GRAD -->
                 <div class="hero-bkg"></div>
@@ -96,8 +99,8 @@
                     </div>
 
                     {# KEYWORDS FOR INNER PAGE HERO #}
-                    <div class="hero-global-keywords">
-                        {{ content.field_webny_page_global_keywords }}
+                    <div class="hero-keywords">
+                        {{ content.field_webny_global_keywords }}
                     </div>
 
             </div>
