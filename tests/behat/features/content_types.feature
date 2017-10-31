@@ -463,3 +463,36 @@ Feature: Check for the existence and fields of content types
     Given I am an anonymous user
     When I am on "/node/add/webny_generic_page"
     Then I should see "Access denied"
+
+# NEW CT ###########################################################################################################
+### LOCATION CONTENT TYPE ###
+# Check for the existence of a content type
+# CONTENT TYPE: Location
+# ROLE: administrator
+  Scenario: Determine if a content type exists for location page with the administrator role and the given fields
+    Given I am logged into the distro with the "administrator" role
+    When I am on "/node/add/webny_location"
+    Then I should not see "Access denied"
+    And I should not get a 404 HTTP response
+    And I should see text matching "Location Title"
+    And I should see text matching "Short Title"
+    And I should see text matching "Summary/Description"
+    And I should see text matching "Location Type"
+    And I should see text matching "Address"
+    And I should see text matching "Counties Served"
+    And I should see text matching "Phone"
+    And I should see text matching "Add Phone Contact"
+    And I should see text matching "Filter Terms"
+    And I should see text matching "Hero Image"
+    And I should see text matching "Navigator / Table of Content Toggle"
+    And I should see text matching "Add Documents"
+    And I should see text matching "Add Contact"
+    And I should see text matching "Add WYSIWYG"
+
+# Check for the permission of access on a content type
+# CONTENT TYPE: Location
+# ROLE: anonymous user
+  Scenario: Determine if a content type exists for news with the anonymous user role and the given fields
+    Given I am an anonymous user
+    When I am on "/node/add/webny_location"
+    Then I should see "Access denied"
