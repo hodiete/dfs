@@ -186,6 +186,8 @@ class ProfileConfig {
       $this->getProfileFeatureConfigPath('generic_content_type') . '/optional',
       $this->getProfileFeatureConfigPath('wysiwyg_frame') . '/install',
       $this->getProfileFeatureConfigPath('wysiwyg_frame') . '/optional',
+      $this->getProfileFeatureConfigPath('webny_bio_frame') . '/install',
+      $this->getProfileFeatureConfigPath('webny_bio_frame') . '/optional',
       $this->getProfileFeatureConfigPath('get_involved_frame') . '/install',
       $this->getProfileFeatureConfigPath('get_involved_frame') . '/optional',
       $this->getProfilePath() . '/themes/custom/webnycommander/' . self::CONFIG_DIR . '/install',
