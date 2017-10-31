@@ -3742,7 +3742,13 @@ function webny_configuration_update_8168() {
     'core.entity_view_display.node.webny_landing_page.quick_links_card',
     'core.entity_view_display.node.webny_news.quick_links_card',
     'core.entity_view_display.node.webny_page.quick_links_card',
-    'core.entity_view_display.node.webny_whitelisted_content.quick_links_card'
+    'core.entity_view_display.node.webny_whitelisted_content.quick_links_card',
+    'core.entity_view_display.node.webny_news.teaser',
+    'core.entity_view_display.node.webny_news.webny_announcement',
+    'core.entity_view_display.node.webny_news.webny_featured_card',
+    'core.entity_view_display.node.webny_whitelisted_content.teaser',
+    'core.entity_view_display.node.webny_whitelisted_content.webny_announcement',
+    'core.entity_view_display.node.webny_whitelisted_content.webny_featured_card'
   ];
 
   $profile_config->bulkImport($config_to_update);
