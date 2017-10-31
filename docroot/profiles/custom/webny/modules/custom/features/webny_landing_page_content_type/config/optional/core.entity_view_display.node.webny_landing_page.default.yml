@@ -23,7 +23,6 @@ dependencies:
   module:
     - entity_reference_revisions
     - link
-    - linked_field
     - options
     - text
     - user
@@ -110,21 +109,9 @@ content:
     weight: 1
     label: hidden
     settings:
-      view_mode: hero_image
+      view_mode: hero_image_tall
       link: false
-    third_party_settings:
-      linked_field:
-        type: field
-        destination:
-          field: ''
-          custom: ''
-        advanced:
-          title: ''
-          target: ''
-          class: ''
-          rel: ''
-          text: ''
-        linked: 0
+    third_party_settings: {  }
     region: content
   field_webny_landing_hero_title:
     weight: 2
