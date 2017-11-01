@@ -23,7 +23,6 @@ dependencies:
     - node.type.webny_news
   module:
     - datetime
-    - linked_field
     - text
     - user
 id: node.webny_news.default
@@ -145,21 +144,9 @@ content:
     weight: 2
     label: hidden
     settings:
-      view_mode: hero_image
+      view_mode: hero_image_tall
       link: false
-    third_party_settings:
-      linked_field:
-        type: field
-        destination:
-          field: ''
-          custom: ''
-        advanced:
-          title: ''
-          target: ''
-          class: ''
-          rel: ''
-          text: ''
-        linked: 0
+    third_party_settings: {  }
     type: entity_reference_entity_view
     region: content
   field_webny_news_location:
