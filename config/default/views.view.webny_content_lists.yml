@@ -930,31 +930,69 @@ display:
             identifier: moderation_state
             optional: true
             widget: select
+            multiple: true
+            remember: false
+            default_group: All
+            default_group_multiple:
+              2: 2
+              3: 3
+              4: 4
+              5: 5
+            group_items:
+              1:
+                title: Draft
+                operator: contains
+                value: Draft
+              2:
+                title: 'Needs Review'
+                operator: contains
+                value: 'Needs Review'
+              3:
+                title: Published
+                operator: contains
+                value: Published
+              4:
+                title: Unpublished
+                operator: contains
+                value: Unpublished
+          entity_type: node
+          entity_field: moderation_state
+          plugin_id: string
+        moderation_state_1:
+          id: moderation_state_1
+          table: node_field_data
+          field: moderation_state
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: '!='
+          value: Archived
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
             multiple: false
             remember: false
             default_group: All
             default_group_multiple: {  }
-            group_items:
-              1:
-                title: Archived
-                operator: contains
-                value: Archived
-              2:
-                title: Draft
-                operator: contains
-                value: Draft
-              3:
-                title: 'Needs Review'
-                operator: contains
-                value: 'Needs Review'
-              4:
-                title: Published
-                operator: contains
-                value: Published
-              5:
-                title: Unpublished
-                operator: contains
-                value: Unpublished
+            group_items: {  }
           entity_type: node
           entity_field: moderation_state
           plugin_id: string
@@ -1705,7 +1743,7 @@ display:
             identifier: moderation_state
             required: false
             remember: false
-            multiple: false
+            multiple: true
             remember_roles:
               authenticated: authenticated
           is_grouped: true
@@ -1715,31 +1753,65 @@ display:
             identifier: moderation_state
             optional: true
             widget: select
-            multiple: false
+            multiple: true
             remember: false
             default_group: All
             default_group_multiple: {  }
             group_items:
               1:
-                title: Archived
-                operator: contains
-                value: Archived
-              2:
                 title: Draft
                 operator: contains
                 value: Draft
-              3:
+              2:
                 title: 'Needs Review'
                 operator: contains
                 value: 'Needs Review'
-              4:
+              3:
                 title: Published
                 operator: contains
                 value: Published
-              5:
+              4:
                 title: Unpublished
                 operator: contains
                 value: Unpublished
+          entity_type: node
+          entity_field: moderation_state
+          plugin_id: string
+        moderation_state_1:
+          id: moderation_state_1
+          table: node_field_data
+          field: moderation_state
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: '!='
+          value: Archived
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
           entity_type: node
           entity_field: moderation_state
           plugin_id: string
