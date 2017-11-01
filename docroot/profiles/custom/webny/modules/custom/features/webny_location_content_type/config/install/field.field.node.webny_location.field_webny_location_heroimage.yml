@@ -1,0 +1,27 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_webny_location_heroimage
+    - media_entity.bundle.image
+    - node.type.webny_location
+id: node.webny_location.field_webny_location_heroimage
+field_name: field_webny_location_heroimage
+entity_type: node
+bundle: webny_location
+label: 'Hero Image'
+description: 'Please select a hero image for this page. Minimum dimensions are: 1280 x 512, and the aspect ratio should be 5:2. This image will also be used on any featured cards created for this page.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference
