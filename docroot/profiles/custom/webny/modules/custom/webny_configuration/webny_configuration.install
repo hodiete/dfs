@@ -3711,6 +3711,20 @@ function webny_configuration_update_8167() {
 }
 
 /**
+ * REFRESH webny_location_content_type feature to hide Phone label
+ * NDD-1118
+ * -Cat
+ */
+function webny_configuration_update_8168() {
+
+  \Drupal::service('module_installer')
+    ->uninstall(['webny_location_content_type']);
+  \Drupal::service('module_installer')
+    ->install(['webny_location_content_type']);
+
+}
+
+/**
  * Helper function to enable a Drupal module and print the result.
  *
  * @param string $module_name
