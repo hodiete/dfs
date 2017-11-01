@@ -692,13 +692,13 @@ display:
   page_1:
     display_plugin: page
     id: page_1
-    display_title: 'Archived Content'
+    display_title: 'Archived Content List'
     position: 1
     display_options:
       display_extenders: {  }
       path: admin/webny/list/archived
       display_description: ''
-      title: 'Archived Content'
+      title: 'Archived Content List'
       defaults:
         title: false
         header: false
@@ -717,9 +717,19 @@ display:
           empty: true
           tokenize: false
           content:
-            value: "<h2 class=\"webny_dashboard\">Archived Content List</h2>\n<p><em>This list returns unpublished, archived content.</em></p>"
+            value: "<h2 class=\"webny_dashboard\">Archived Content </h2>\n<p><em>This list returns unpublished, archived content.</em></p>"
             format: full_html
           plugin_id: text
+        result:
+          id: result
+          table: views
+          field: result
+          relationship: none
+          group_type: group
+          admin_label: ''
+          empty: true
+          content: 'Displaying @start - @end of @total'
+          plugin_id: result
       menu:
         type: normal
         title: 'Archived Content'

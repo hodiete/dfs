@@ -669,9 +669,19 @@ display:
           empty: true
           tokenize: false
           content:
-            value: "<h2 class=\"webny_dashboard\">Reviewer's Dashboard</h2>\n<p><em>Use this list to find and filter content that is not published.</em></p>"
+            value: "<h2 class=\"webny_dashboard\">Unpublished Content</h2>\n<p><em>Use this list to find and filter content that is not published and not archived.</em></p>"
             format: full_html
           plugin_id: text
+        result:
+          id: result
+          table: views
+          field: result
+          relationship: none
+          group_type: group
+          admin_label: ''
+          empty: true
+          content: 'Displaying @start - @end of @total'
+          plugin_id: result
       footer: {  }
       empty: {  }
       relationships: {  }
@@ -719,9 +729,19 @@ display:
           empty: true
           tokenize: false
           content:
-            value: "<h2 class=\"webny_dashboard\">Content List</h2>\n<p><em>Use this list to find and filter content in any moderation state or publication status.</em></p>"
+            value: "<h2 class=\"webny_dashboard\">Content List</h2>\n<p><em>Use this list to find and filter any content that is not archived.</em></p>"
             format: full_html
           plugin_id: text
+        result:
+          id: result
+          table: views
+          field: result
+          relationship: none
+          group_type: group
+          admin_label: ''
+          empty: true
+          content: 'Displaying @start - @end of @total'
+          plugin_id: result
       menu:
         type: normal
         title: 'Content List'
@@ -1533,28 +1553,14 @@ display:
       display_extenders: {  }
       path: admin/webny/list/unpublished
       display_description: ''
-      title: 'Unpublished Content'
+      title: 'Unpublished List'
       defaults:
         title: false
-        header: false
+        header: true
         filters: false
         filter_groups: false
         fields: false
         relationships: false
-      header:
-        area:
-          id: area
-          table: views
-          field: area
-          relationship: none
-          group_type: group
-          admin_label: ''
-          empty: true
-          tokenize: false
-          content:
-            value: "<h2 class=\"webny_dashboard\">Unpublished Content</h2>\n<p><em>Find unpublished content from this list. </em></p>"
-            format: full_html
-          plugin_id: text
       menu:
         type: normal
         title: 'Unpublished Content'
