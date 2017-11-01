@@ -10,7 +10,8 @@ dependencies:
     - node.type.webny_page
     - node.type.webny_whitelisted_content
     - system.menu.admin
-    - user.role.authenticated
+    - user.role.administrator
+    - user.role.content_author
   module:
     - node
     - user
@@ -33,7 +34,8 @@ display:
         type: role
         options:
           role:
-            authenticated: authenticated
+            administrator: administrator
+            content_author: content_author
       cache:
         type: tag
         options: {  }
@@ -696,7 +698,7 @@ display:
     position: 1
     display_options:
       display_extenders: {  }
-      path: admin/content/list
+      path: admin/webny/list/content
       display_description: ''
       title: 'Content List'
       defaults:
@@ -909,7 +911,7 @@ display:
             identifier: moderation_state
             required: false
             remember: false
-            multiple: false
+            multiple: true
             remember_roles:
               authenticated: authenticated
               anonymous: '0'
@@ -930,14 +932,13 @@ display:
             identifier: moderation_state
             optional: true
             widget: select
-            multiple: true
+            multiple: false
             remember: false
             default_group: All
             default_group_multiple:
               2: 2
               3: 3
               4: 4
-              5: 5
             group_items:
               1:
                 title: Draft
@@ -1530,9 +1531,9 @@ display:
     position: 1
     display_options:
       display_extenders: {  }
-      path: admin/unpublished/list
+      path: admin/webny/list/unpublished
       display_description: ''
-      title: 'Unpublished List'
+      title: 'Unpublished Content'
       defaults:
         title: false
         header: false
@@ -1551,12 +1552,12 @@ display:
           empty: true
           tokenize: false
           content:
-            value: "<h2 class=\"webny_dashboard\">Unpublished Content List</h2>\n<p><em>Find unpublished content from this list. </em></p>"
+            value: "<h2 class=\"webny_dashboard\">Unpublished Content</h2>\n<p><em>Find unpublished content from this list. </em></p>"
             format: full_html
           plugin_id: text
       menu:
         type: normal
-        title: 'Unpublished List'
+        title: 'Unpublished Content'
         description: 'Use this list to view all content including unpublished works.'
         expanded: false
         parent: system.admin_content
@@ -1753,7 +1754,7 @@ display:
             identifier: moderation_state
             optional: true
             widget: select
-            multiple: true
+            multiple: false
             remember: false
             default_group: All
             default_group_multiple: {  }
