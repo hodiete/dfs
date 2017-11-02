@@ -20,13 +20,15 @@ dependencies:
     - options
     - text
     - user
+_core:
+  default_config_hash: RVchIA7eZleb0NezDOLURbM-q6O6gqon4wB2lZKajNE
 id: node.webny_location.default
 targetEntityType: node
 bundle: webny_location
 mode: default
 content:
   field_webny_location_address:
-    weight: 6
+    weight: 5
     label: above
     settings: {  }
     third_party_settings: {  }
@@ -34,30 +36,31 @@ content:
     region: content
   field_webny_location_contentsec:
     type: entity_reference_revisions_entity_view
-    weight: 10
+    weight: 9
     label: hidden
     settings:
-      view_mode: default
+      view_mode: generic
       link: ''
     third_party_settings: {  }
     region: content
   field_webny_location_counties:
-    weight: 5
+    weight: 4
     label: above
     settings: {  }
     third_party_settings: {  }
     type: list_default
     region: content
   field_webny_location_heroimage:
-    weight: 8
+    weight: 7
     label: hidden
     settings:
-      link: true
+      view_mode: hero_image
+      link: false
     third_party_settings: {  }
-    type: entity_reference_label
+    type: entity_reference_entity_view
     region: content
   field_webny_location_navtoggle:
-    weight: 9
+    weight: 8
     label: hidden
     settings: {  }
     third_party_settings: {  }
@@ -65,30 +68,22 @@ content:
     region: content
   field_webny_location_phone:
     type: entity_reference_revisions_entity_view
-    weight: 7
+    weight: 6
     label: hidden
     settings:
       view_mode: default
       link: ''
     third_party_settings: {  }
     region: content
-  field_webny_location_short_title:
-    weight: 2
-    label: hidden
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    type: string
-    region: content
   field_webny_location_summary:
-    weight: 3
+    weight: 2
     label: hidden
     settings: {  }
     third_party_settings: {  }
     type: text_default
     region: content
   field_webny_location_type_tax:
-    weight: 4
+    weight: 3
     label: hidden
     settings:
       link: true
@@ -108,4 +103,5 @@ content:
 hidden:
   field_webny_agency_keywords: true
   field_webny_filter_terms: true
+  field_webny_location_short_title: true
   langcode: true
