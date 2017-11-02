@@ -37,13 +37,17 @@
 
         {# HERO DEFINITION #}
         {% if hero_image == '/' %}
-        <div class="hero-header hero-no-image hero-generic" style="">
+        <div class="hero-header hero-no-image hero-generic">
             {% else %}
-            <div class="hero-header hero-has-image hero-generic" style="background-image:url('{{ hero_image }}')">
+            <div class="hero-header hero-has-image hero-generic">
                 {% endif %}
+
+                <div class="hero-image">
+                    {{ content.field_webny_gencp_heroimage }}
+                </div>
                 <!-- BACKGROUND GRAD -->
                 <!--<div class="hero-bkg"></div>-->
-            <!--</div>-->
+            </div>
 
             {# HERO INNER DEFINITION #}
             {% if hero_image == '/' %}
@@ -85,7 +89,6 @@
                     </div>
                     {% endif %}
 
-                </div>
             </div>
 
                 {# ====== END HERO SECTION ====== #}
