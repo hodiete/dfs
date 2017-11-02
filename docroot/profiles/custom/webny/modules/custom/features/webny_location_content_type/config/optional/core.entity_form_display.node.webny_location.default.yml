@@ -1,3 +1,4 @@
+uuid: a5283199-2bd8-4e71-80be-10ee88cd972e
 langcode: en
 status: true
 dependencies:
@@ -31,7 +32,7 @@ third_party_settings:
         - field_webny_location_navtoggle
         - field_webny_location_contentsec
       parent_name: ''
-      weight: 8
+      weight: 6
       format_type: details
       format_settings:
         id: section-location-toc
@@ -45,7 +46,7 @@ third_party_settings:
         - field_webny_location_phone
         - field_webny_location_heroimage
       parent_name: ''
-      weight: 7
+      weight: 5
       format_type: details
       format_settings:
         id: webny-hero-fields
@@ -54,7 +55,7 @@ third_party_settings:
         required_fields: true
       label: 'Location Hero Fields'
 _core:
-  default_config_hash: QO9JB2JW5O6XGfjILvbhSmMfT4-90yEuOHaBbWDxTlE
+  default_config_hash: ox3CdgVXUThTlNksOnGYzffNxiyJcXIat3wyWfL175A
 id: node.webny_location.default
 targetEntityType: node
 bundle: webny_location
@@ -67,7 +68,7 @@ content:
     settings: {  }
     third_party_settings: {  }
   field_webny_agency_keywords:
-    weight: 3
+    weight: 7
     settings:
       match_operator: CONTAINS
       size: 60
@@ -76,7 +77,7 @@ content:
     type: entity_reference_autocomplete
     region: content
   field_webny_filter_terms:
-    weight: 5
+    weight: 8
     settings:
       display_node_count: false
       create_new_items: false
@@ -105,7 +106,7 @@ content:
     third_party_settings: {  }
     region: content
   field_webny_location_counties:
-    weight: 6
+    weight: 4
     settings: {  }
     third_party_settings: {  }
     type: options_buttons
@@ -159,7 +160,7 @@ content:
     type: text_textfield
     region: content
   field_webny_location_type_tax:
-    weight: 4
+    weight: 3
     settings:
       match_operator: CONTAINS
       size: 60
