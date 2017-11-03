@@ -1,0 +1,47 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.webny_whitelisted_content.body
+    - field.field.node.webny_whitelisted_content.field_webny_filter_terms
+    - field.field.node.webny_whitelisted_content.field_webny_whitelist_agency_key
+    - field.field.node.webny_whitelisted_content.field_webny_whitelist_date
+    - field.field.node.webny_whitelisted_content.field_webny_whitelist_descript
+    - field.field.node.webny_whitelisted_content.field_webny_whitelist_global_key
+    - field.field.node.webny_whitelisted_content.field_webny_whitelist_image
+    - field.field.node.webny_whitelisted_content.field_webny_whitelist_link_url
+    - field.field.node.webny_whitelisted_content.field_webny_whitelist_stitle
+    - node.type.webny_whitelisted_content
+  module:
+    - text
+    - user
+id: node.webny_whitelisted_content.teaser
+targetEntityType: node
+bundle: webny_whitelisted_content
+mode: teaser
+content:
+  body:
+    label: hidden
+    type: text_summary_or_trimmed
+    weight: 101
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    region: content
+  workbench_moderation_control:
+    weight: -20
+    region: content
+hidden:
+  field_webny_filter_terms: true
+  field_webny_whitelist_agency_key: true
+  field_webny_whitelist_date: true
+  field_webny_whitelist_descript: true
+  field_webny_whitelist_global_key: true
+  field_webny_whitelist_image: true
+  field_webny_whitelist_link_url: true
+  field_webny_whitelist_stitle: true
+  langcode: true
