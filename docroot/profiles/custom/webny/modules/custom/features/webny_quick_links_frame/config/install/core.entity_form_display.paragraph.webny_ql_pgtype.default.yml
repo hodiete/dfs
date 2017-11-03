@@ -1,0 +1,122 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.webny_ql_pgtype.field_webny_ql_col_1
+    - field.field.paragraph.webny_ql_pgtype.field_webny_ql_col_1_button
+    - field.field.paragraph.webny_ql_pgtype.field_webny_ql_col_1_title
+    - field.field.paragraph.webny_ql_pgtype.field_webny_ql_col_2
+    - field.field.paragraph.webny_ql_pgtype.field_webny_ql_col_2_button
+    - field.field.paragraph.webny_ql_pgtype.field_webny_ql_col_2_title
+    - field.field.paragraph.webny_ql_pgtype.field_webny_ql_headline
+    - field.field.paragraph.webny_ql_pgtype.field_webny_ql_title
+    - paragraphs.paragraphs_type.webny_ql_pgtype
+  module:
+    - field_group
+    - link
+    - workbench_moderation
+third_party_settings:
+  field_group:
+    group_ql_col_1:
+      children:
+        - field_webny_ql_col_1_title
+        - field_webny_ql_col_1
+        - field_webny_ql_col_1_button
+      parent_name: ''
+      weight: 2
+      format_type: details
+      format_settings:
+        id: ''
+        classes: ''
+        open: false
+        required_fields: true
+      label: 'Column 1'
+    group_ql_col_2:
+      children:
+        - field_webny_ql_col_2_title
+        - field_webny_ql_col_2
+        - field_webny_ql_col_2_button
+      parent_name: ''
+      weight: 3
+      format_type: details
+      format_settings:
+        id: ''
+        classes: ''
+        open: false
+        required_fields: true
+      label: 'Column 2'
+id: paragraph.webny_ql_pgtype.default
+targetEntityType: paragraph
+bundle: webny_ql_pgtype
+mode: default
+content:
+  field_webny_ql_col_1:
+    weight: 4
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  field_webny_ql_col_1_button:
+    weight: 5
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
+  field_webny_ql_col_1_title:
+    weight: 3
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_webny_ql_col_2:
+    weight: 5
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  field_webny_ql_col_2_button:
+    weight: 6
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
+  field_webny_ql_col_2_title:
+    weight: 4
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_webny_ql_headline:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_webny_ql_title:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+hidden:
+  created: true
+  status: true
+  uid: true
