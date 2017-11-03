@@ -3,17 +3,45 @@
 /**
  * Migrate public files to private files.
  */
-function webny_document_content_type_update_8001() {
-  // Get a list of files that are associated with document revisions.
+function webny_document_content_type_update_8001(&$sandbox) {
+  // If not on ACSF, skip this update.
+  if (!isset($_ENV['AH_SITE_ENVIRONMENT'])) {
+    print "Skipping this update on non-ACSF environments.\n";
+    return;
+  }
 
-  // @var $query \Drupal\Core\Database\Query\SelectInterface.
-  $query = \Drupal::database()->select('node_revision__field_webny_document_file_upload', 'docf');
+  // Initialize the batch variables.
+  if (!isset($sandbox['fids'])){
 
-  $query->addField('docf', 'field_webny_document_file_upload_target_id', 'fid');
-  $query->distinct();
-  $fids = $query->execute()->fetchCol();
+    // Get a list of files that are associated with document revisions.
 
-  foreach($fids as $fid) {
+    // @var $query \Drupal\Core\Database\Query\SelectInterface.
+    $query = \Drupal::database()->select('node_revision__field_webny_document_file_upload', 'docf');
+
+    $query->addField('docf', 'field_webny_document_file_upload_target_id', 'fid');
+    $query->distinct();
+    $fids = $query->execute()->fetchCol();
+
+    $sandbox['fids'] = array_chunk($fids, 10);
+
+    $sandbox['current'] = 0;
+    $sandbox['total'] = count($sandbox['fids']);
+
+    // If there are no updates to run, then set the finished flag and exit.
+    if ($sandbox['total'] === 0){
+      $sandbox['#finished'] = 1;
+      return;
+    }
+  }
+
+  // Select the next group.
+  $sandbox['current']++;
+  $fids_chunk = $sandbox['fids'][$sandbox['current'] - 1];
+
+  print 'Starting chunk ' . $sandbox['current'] . ' of ' . $sandbox['total'] . PHP_EOL;
+
+  // Process the chunk of files.
+  foreach($fids_chunk as $fid) {
     // Load the file and get it's path.
     $file = \Drupal\file\Entity\File::load($fid);
     $path = $file->getFileUri();
@@ -23,7 +51,12 @@ function webny_document_content_type_update_8001() {
       continue;
     }
 
+    print "Moving file $fid : $path.\n";
+
     // Move the file to the private file system.
     file_move($file, str_replace('public://', 'private://', $path));
   }
+
+  // If finished == 1, then Drupal knows we have finished all the passes needed by this update.
+  $sandbox['#finished'] = $sandbox['current'] / $sandbox['total'];
 }
