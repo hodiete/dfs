@@ -3805,6 +3805,21 @@ function webny_configuration_update_8169() {
 
   // Clear the config cache.
   $config_factory->reset();
+
+}
+
+/*
+ * Implements hook_update_n().
+ *
+ * Refresh the generic content page content type
+ *
+ */
+function webny_configuration_update_8170(){
+
+    \Drupal::service('module_installer')
+        ->uninstall(['webny_generic_content_type']);
+    \Drupal::service('module_installer')
+        ->install(['webny_generic_content_type']);
 }
 
 /**
