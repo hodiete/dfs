@@ -40,11 +40,9 @@
             clear:both;
      	}
     }
-    a .icon-email, .icon-facebook, .icon-twitter {
-        &:hover {
+    a:hover .icon-email, .icon-facebook, .icon-twitter {
             text-decoration: none !important;
             clear:both;
-        }
     }
 }
 .icon-facebook {@include icon(before, fa-facebook);}
