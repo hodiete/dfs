@@ -23,8 +23,8 @@ class WhitelistedFileUrl {
       return Url::fromUri($node->get('field_webny_whitelist_link_url')->get(0)->get('uri')->getValue());
     }
     else {
-      // Redirect to the homepage?
-      return Url::fromRoute('<front>', [], ['absolute' => TRUE]);
+      // Return the page not found (404) route.
+      return Url::fromRoute('system.404', [], ['absolute' => TRUE]);
     }
   }
 }
