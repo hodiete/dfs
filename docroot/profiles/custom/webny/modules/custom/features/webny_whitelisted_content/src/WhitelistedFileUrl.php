@@ -10,6 +10,7 @@ use Drupal\Core\Url;
  * Return a Url to a file from a document.
  */
 class WhitelistedFileUrl {
+  private $node;
 
   /**
    * Return a Url object for the file.
@@ -17,14 +18,17 @@ class WhitelistedFileUrl {
    * @param \Drupal\node\Entity\Node $node
    */
   public function getUrl($node) {
-    // First try to use the link.
-    if (count($node->get('field_webny_whitelist_link_url')) > 0) {
-      // Use the link.
-      return Url::fromUri($node->get('field_webny_whitelist_link_url')->get(0)->get('uri')->getValue());
+    $this->node = $node;
+
+    if ($this->nodeHasLink()) {
+      return Url::fromUri($this->node->get('field_webny_whitelist_link_url')->get(0)->get('uri')->getValue());
     }
     else {
-      // Return the page not found (404) route.
       return Url::fromRoute('system.404', [], ['absolute' => TRUE]);
     }
+  }
+
+  private function nodeHasLink() {
+    return (count($this->node->get('field_webny_whitelist_link_url')) > 0);
   }
 }

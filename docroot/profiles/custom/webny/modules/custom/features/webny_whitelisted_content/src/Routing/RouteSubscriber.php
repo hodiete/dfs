@@ -22,6 +22,11 @@ class RouteSubscriber implements EventSubscriberInterface {
   private $fileUrl;
 
   /**
+   * @var \Symfony\Component\HttpKernel\Event\FilterResponseEvent
+   */
+  private $event;
+
+  /**
    * Constructor for \Drupal\webny\Routing\RouteSubscriber.
    *
    * @param \Drupal\Core\Routing\ResettableStackedRouteMatchInterface $route_match
@@ -48,21 +53,16 @@ class RouteSubscriber implements EventSubscriberInterface {
    *   The kernel response event object.
    */
   public function onKernelResponse(FilterResponseEvent $event) {
-    // Re-route the user if they try to a document node page.
-    if ($this->routeMatch->getRouteName() !== 'entity.node.canonical') {
-      return;
+    $this->event = $event;
+
+    if ($this->is_whitelisted_page_link()) {
+      $event->setResponse(
+        new RedirectResponse($this->fileUrl->getUrl($event->getRequest()->attributes->get('node'))->toString())
+      );
     }
+  }
 
-    // Load the node.
-    $attributes = $event->getRequest()->attributes;
-    $node = $attributes->get('node');
-
-    if ($node->bundle() !== 'webny_whitelisted_content') {
-      return;
-    }
-
-    $event->setResponse(
-      new RedirectResponse($this->fileUrl->getUrl($node)->toString())
-    );
+  private function is_whitelisted_page_link() {
+    return ($this->routeMatch->getRouteName() === 'entity.node.canonical' && $this->event->getRequest()->attributes->get('node')->bundle() === 'webny_whitelisted_content');
   }
 }

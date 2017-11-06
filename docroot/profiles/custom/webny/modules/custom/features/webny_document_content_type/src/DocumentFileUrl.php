@@ -10,6 +10,7 @@ use Drupal\Core\Url;
  * Return a Url to a file from a document.
  */
 class DocumentFileUrl {
+  private $node;
 
   /**
    * Return a Url object for the file.
@@ -17,19 +18,24 @@ class DocumentFileUrl {
    * @param \Drupal\node\Entity\Node $node
    */
   public function getUrl($node) {
-    // First try to use the uploaded file.
-    if (count($node->get('field_webny_document_file_upload')->getValue()) > 0) {
-      $file = $node->get('field_webny_document_file_upload')->get(0)->entity;
+    $this->node = $node;
 
-      return Url::fromUri($file->url());
+    if ($this->nodeHasUpload()) {
+      return Url::fromUri($this->node->get('field_webny_document_file_upload')->get(0)->entity->url());
     }
-    elseif (!empty($node->get('field_webny_document_ext_link')->value)) {
-      // Use the external link.
-      return Url::fromUri($node->get('field_webny_document_ext_link')->value);
+    elseif ($this->nodeHasLink()) {
+      return Url::fromUri($this->node->get('field_webny_document_ext_link')->value);
     }
     else {
-      // Return the page not found (404) route.
       return Url::fromRoute('system.404', [], ['absolute' => TRUE]);
     }
+  }
+
+  private function nodeHasUpload() {
+    return (count($this->node->get('field_webny_document_file_upload')->getValue()) > 0);
+  }
+
+  private function nodeHasLink() {
+    return !empty($this->node->get('field_webny_document_ext_link')->value);
   }
 }
