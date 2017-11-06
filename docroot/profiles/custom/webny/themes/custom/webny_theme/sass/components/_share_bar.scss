@@ -30,18 +30,21 @@
         cursor: pointer;
         padding: 0 5px;
         display: inline-block;
-        text-decoration: none;
     }
    .icon-email, .icon-facebook, .icon-twitter {
 	    font-size: 12.8px;
 	    color: #fff;
 	    &:hover {
-	    	color: $color-secondary;
-        }
-        a:hover {       
-                text-decoration: none !important;
-                clear:both;
+	    	color: $color-secondary;       
+            text-decoration: none !important;
+            clear:both;
      	}
+    }
+    a .icon-email, .icon-facebook, .icon-twitter {
+        &:hover {
+            text-decoration: none !important;
+            clear:both;
+        }
     }
 }
 .icon-facebook {@include icon(before, fa-facebook);}
