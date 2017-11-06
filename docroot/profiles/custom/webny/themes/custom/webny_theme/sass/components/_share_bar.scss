@@ -36,7 +36,6 @@
 	    color: #fff;
 	    &:hover {
 	    	color: $color-secondary;       
-            text-decoration: none !important;
             clear:both;
      	}
     }
@@ -63,5 +62,10 @@
     .webny-action-share-button a:hover {
         text-decoration: underline;
         clear:both;
+    }
+    .icon-email, .icon-facebook, .icon-twitter {
+        &:hover {
+            text-decoration: underline;
+        }
     }
 }
