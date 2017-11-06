@@ -11,7 +11,7 @@ function webny_whitelisted_content_link_alter(&$variables) {
 
 function _webny_whitelisted_content_rewrite_whitelisted_links_to_file(&$variables) {
   if (_webny_whitelisted_content_is_whitelisted_page_link($variables)) {
-    $variables['url'] = \Drupal::service('webny_whitelisted_content.document_file_url')->getUrl($variables['options']['entity']);
+    $variables['url'] = \Drupal::service('webny_whitelisted_content.whitelisted_file_url')->getUrl($variables['options']['entity']);
   }
 }
 
