@@ -3724,30 +3724,7 @@ function webny_configuration_update_8167() {
 
 }
 
-/*NDD-1112 frame background colors 
--Beth */
-function webny_configuration_update_8168() {
-    
-    \Drupal::service('module_installer')
-        ->uninstall(['webny_summary_frame']);
-    \Drupal::service('module_installer')
-        ->install(['webny_summary_frame']);
 
-    \Drupal::service('module_installer')
-        ->uninstall(['webny_tbd_frame']);
-    \Drupal::service('module_installer')
-        ->install(['webny_tbd_frame']);
-
-    \Drupal::service('module_installer')
-        ->uninstall(['webny_bio_frame']);
-    \Drupal::service('module_installer')
-        ->install(['webny_bio_frame']);
-
-    \Drupal::service('module_installer')
-        ->uninstall(['webny_get_involved_frame']);
-    \Drupal::service('module_installer')
-        ->install(['webny_get_involved_frame']);
-}
 
 /**
  * Implements hook_update_n().
@@ -3845,6 +3822,31 @@ function webny_configuration_update_8170(){
         ->uninstall(['webny_generic_content_type']);
     \Drupal::service('module_installer')
         ->install(['webny_generic_content_type']);
+}
+
+/*NDD-1112 frame background colors 
+-Beth */
+function webny_configuration_update_8171() {
+    
+    \Drupal::service('module_installer')
+        ->uninstall(['webny_summary_frame']);
+    \Drupal::service('module_installer')
+        ->install(['webny_summary_frame']);
+
+    \Drupal::service('module_installer')
+        ->uninstall(['webny_tbd_frame']);
+    \Drupal::service('module_installer')
+        ->install(['webny_tbd_frame']);
+
+    \Drupal::service('module_installer')
+        ->uninstall(['webny_bio_frame']);
+    \Drupal::service('module_installer')
+        ->install(['webny_bio_frame']);
+
+    \Drupal::service('module_installer')
+        ->uninstall(['webny_get_involved_frame']);
+    \Drupal::service('module_installer')
+        ->install(['webny_get_involved_frame']);
 }
 
 /**
