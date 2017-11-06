@@ -1,0 +1,104 @@
+webny_webny_secondary_nav.settings:
+  type: mapping
+  label: 'Webny Secondary Navigation'
+  mapping:
+    webny_secondary_nav:
+      type: mapping
+      mapping:
+        start_count:
+          type: integer
+          label: 'Start count number of the link fields'
+        max_links:
+          type: integer
+          label: 'Maximum number of the link fields'
+        count:
+          type: integer
+          label: 'Initial count of fields to display'
+        options:
+          type: mapping
+          label: 'Global Navigation Settings'
+          mapping:
+            page_choices:
+              type: radio
+              label: 'Select Where to Display'
+            secnav_specific_page:
+              type: uri
+              label: 'Select Specific Page'
+        menu_section_one:
+          type: mapping
+          label: 'Global Navigation Section One'
+          mapping:
+            secnav_first_opts:
+              type: radio
+              label: 'Select to Display Section One'
+            wysiwyg_area_one:
+              type: text
+              label: 'Section One WYSIWYG Field'
+        menu_section_two:
+          type: mapping
+          label: 'Global Navigation Section Two'
+          mapping:
+            option:
+              type: radio
+              label: 'Select Links or a WYSIWYG Field'
+              mapping:
+                entref-1:
+                  type: uri
+                  label: 'Entity Reference 1'
+                entref-2:
+                  type: uri
+                  label: 'Entity Reference 2'
+                entref-3:
+                  type: uri
+                  label: 'Entity Reference 3'
+                entref-4:
+                  type: uri
+                  label: 'Entity Reference 4'
+                entref-5:
+                  type: uri
+                  label: 'Entity Reference 5'
+                entref-6:
+                  type: uri
+                  label: 'Entity Reference 6'
+                entref-7:
+                  type: uri
+                  label: 'Entity Reference 7'
+                entref-8:
+                  type: uri
+                  label: 'Entity Reference 8'
+                entref-9:
+                  type: uri
+                  label: 'Entity Reference 9'
+                entref-10:
+                  type: uri
+                  label: 'Entity Reference 10'
+                urltitle-1:
+                  type: text
+                  label: 'Title 1'
+                urltitle-2:
+                  type: text
+                  label: 'Title 2'
+                urltitle-3:
+                  type: text
+                  label: 'Title 3'
+                urltitle-4:
+                  type: text
+                  label: 'Title 4'
+                urltitle-5:
+                  type: text
+                  label: 'Title 5'
+                urltitle-6:
+                  type: text
+                  label: 'Title 6'
+                urltitle-7:
+                  type: text
+                  label: 'Title 7'
+                urltitle-8:
+                  type: text
+                  label: 'Title 8'
+                urltitle-9:
+                  type: text
+                  label: 'Title 9'
+                urltitle-10:
+                  type: text
+                  label: 'Title 10'
