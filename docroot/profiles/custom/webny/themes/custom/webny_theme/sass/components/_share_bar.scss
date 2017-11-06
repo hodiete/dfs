@@ -36,6 +36,7 @@
 	    color: #fff;
 	    &:hover {
 	    	color: $color-secondary;
+            text-decoration: none;
      	}
     }
 }
@@ -53,3 +54,11 @@
 
 // ######################################################################### //
 /* PC VIEW */
+
+.icon-email, .icon-facebook, .icon-twitter {
+
+    &:hover {
+        color: $color-secondary;
+        text-decoration: underline;
+    }
+}
