@@ -54,12 +54,13 @@
 
 // ######################################################################### //
 /* PC VIEW */
+@media (min-width: $min-pc) {
+    .icon-email, .icon-facebook, .icon-twitter {
 
-.icon-email, .icon-facebook, .icon-twitter {
-
-    &:hover {
-        color: $color-secondary;
-        text-decoration: underline;
-        clear:both;
+        &:hover {
+            color: $color-secondary;
+            text-decoration: underline;
+            clear:both;
+        }
     }
 }
