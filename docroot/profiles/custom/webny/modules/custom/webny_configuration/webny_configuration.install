@@ -3312,12 +3312,15 @@ function webny_configuration_update_8152() {
     print webny_configuration_enable_module('webny_generic_content_type');    
 
     // REFRESH
+
     $config_factory = \Drupal::configFactory();
     $profile_config = \Drupal::service('webny.profile_config');
 
     // Import new/changed configuration.
     $config_to_update = [
       // UPDATE OPTIONAL FEATURES
+
+
       'field.field.node.webny_generic_page.field_webny_generic_short_title',
       'field.storage.node.field_webny_generic_short_title',
       'core.entity_view_display.node.webny_generic_page.webny_announcement',
@@ -3334,7 +3337,11 @@ function webny_configuration_update_8152() {
 
 }
 
+
 /**
+ * Implements hook_update_n().
+ *
+ *
  * INSTALL webny_callouts module
  * REINSTALL text_formats
  * - iojonep
@@ -3359,6 +3366,9 @@ function webny_configuration_update_8153() {
 }
 
 /**
+ * Implements hook_update_n().
+ *
+ *
  * REINSTALL search_api module
  */
 function webny_configuration_update_8154() {
@@ -3671,7 +3681,11 @@ function webny_configuration_update_8165() {
 
 }
 
-/*
+
+/**
+ * Implements hook_update_n().
+ *
+ *
  * Responsive hero image updates.
  */
 function webny_configuration_update_8166() {
@@ -3733,6 +3747,104 @@ function webny_configuration_update_8168() {
         ->uninstall(['webny_get_involved_frame']);
     \Drupal::service('module_installer')
         ->install(['webny_get_involved_frame']);
+}
+
+/**
+ * Implements hook_update_n().
+ *
+ * Install and Enable the What's Related paragraph type and Refresh Generic Page Content Type
+ *
+ */
+function webny_configuration_update_8168() {
+
+
+  // INSTALL THE WHAT'S RELATED FRAME
+  \Drupal::service('module_installer')
+    ->install(['webny_what_s_related_frame']);
+
+  //REINSTALL GENERIC PAGE
+ 
+  \Drupal::service('module_installer')
+    ->uninstall(['webny_generic_content_type']);
+  \Drupal::service('module_installer')
+    ->install(['webny_generic_content_type']);
+
+  // REFRESH
+    $config_factory = \Drupal::configFactory();
+    $profile_config = \Drupal::service('webny.profile_config');
+
+    // Import new/changed configuration.
+    $config_to_update = [
+      // UPDATE OPTIONAL FEATURES
+      'core.entity_form_display.paragraph.webny_whats_related_pgtype.generic_form',
+      'field.field.node.webny_generic_page.field_webny_gencp_contentsect'
+    ];
+    $profile_config->bulkImport($config_to_update);
+    // Clear the config cache.
+    $config_factory->reset();
+}
+
+/*
+ * Install quick links feature module.
+ * Refreshed modules that include new view mode
+ */
+function webny_configuration_update_8169() {
+  // Refresh features touched by quick links.
+  print webny_configuration_uninstall_module('webny_generic_content_type');
+  print webny_configuration_enable_module('webny_generic_content_type');
+  print webny_configuration_uninstall_module('webny_inner_page_content_type');
+  print webny_configuration_enable_module('webny_inner_page_content_type');
+  print webny_configuration_uninstall_module('webny_landing_page_content_type');
+  print webny_configuration_enable_module('webny_landing_page_content_type');
+  print webny_configuration_uninstall_module('webny_news_content_type');
+  print webny_configuration_enable_module('webny_news_content_type');
+  print webny_configuration_uninstall_module('webny_paragraphs_types');
+  print webny_configuration_enable_module('webny_paragraphs_types');
+  print webny_configuration_uninstall_module('webny_whitelisted_content');
+  print webny_configuration_enable_module('webny_whitelisted_content');
+
+  // Install quick links feature.
+  print webny_configuration_enable_module('webny_quick_links_frame');
+
+  // REFRESH
+  $config_factory = \Drupal::configFactory();
+  $profile_config = \Drupal::service('webny.profile_config');
+
+  // Import new/changed configuration.
+  $config_to_update = [
+    'core.entity_view_display.node.webny_generic_page.quick_links_card',
+    'core.entity_view_display.node.webny_landing_page.quick_links_card',
+    'core.entity_view_display.node.webny_news.quick_links_card',
+    'core.entity_view_display.node.webny_page.quick_links_card',
+    'core.entity_view_display.node.webny_whitelisted_content.quick_links_card',
+    'core.entity_view_display.node.webny_news.teaser',
+    'core.entity_view_display.node.webny_news.webny_announcement',
+    'core.entity_view_display.node.webny_news.webny_featured_card',
+    'core.entity_view_display.node.webny_whitelisted_content.teaser',
+    'core.entity_view_display.node.webny_whitelisted_content.webny_announcement',
+    'core.entity_view_display.node.webny_whitelisted_content.webny_featured_card',
+    'field.field.node.webny_landing_page.field_webny_landing_paragraph'
+  ];
+
+  $profile_config->bulkImport($config_to_update);
+
+  // Clear the config cache.
+  $config_factory->reset();
+
+}
+
+/*
+ * Implements hook_update_n().
+ *
+ * Refresh the generic content page content type
+ *
+ */
+function webny_configuration_update_8170(){
+
+    \Drupal::service('module_installer')
+        ->uninstall(['webny_generic_content_type']);
+    \Drupal::service('module_installer')
+        ->install(['webny_generic_content_type']);
 }
 
 /**

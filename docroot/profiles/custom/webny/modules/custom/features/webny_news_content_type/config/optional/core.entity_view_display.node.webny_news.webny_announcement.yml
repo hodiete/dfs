@@ -2,8 +2,11 @@ langcode: en
 status: true
 dependencies:
   config:
-    - core.entity_view_mode.node.webny_featured_card
+    - core.entity_view_mode.node.webny_announcement
     - field.field.node.webny_news.body
+    - field.field.node.webny_news.field_webny_agency_keywords
+    - field.field.node.webny_news.field_webny_filter_terms
+    - field.field.node.webny_news.field_webny_global_keywords
     - field.field.node.webny_news.field_webny_news_agency_keywords
     - field.field.node.webny_news.field_webny_news_attdocs_eref
     - field.field.node.webny_news.field_webny_news_category
@@ -24,14 +27,14 @@ dependencies:
     - linked_field
     - smart_trim
     - user
-id: node.webny_news.webny_featured_card
+id: node.webny_news.webny_announcement
 targetEntityType: node
 bundle: webny_news
-mode: webny_featured_card
+mode: webny_announcement
 content:
   body:
     type: smart_trim
-    weight: 3
+    weight: 1
     label: hidden
     settings:
       trim_length: '25'
@@ -59,16 +62,16 @@ content:
     region: content
   field_webny_news_date:
     type: datetime_custom
-    weight: 2
+    weight: 0
     label: hidden
     settings:
       timezone_override: ''
-      date_format: 'F j, Y | g A T'
+      date_format: 'F j, Y'
     third_party_settings: {  }
     region: content
   field_webny_news_description:
     type: smart_trim
-    weight: 4
+    weight: 2
     label: hidden
     settings:
       trim_length: '25'
@@ -94,34 +97,10 @@ content:
           text: ''
         linked: 0
     region: content
-  field_webny_news_image:
-    type: entity_reference_entity_view
-    weight: 0
-    label: hidden
-    settings:
-      view_mode: cards
-      link: false
-    third_party_settings:
-      linked_field:
-        linked: '1'
-        type: custom
-        destination: '[node:url]'
-        advanced:
-          title: ''
-          target: ''
-          class: ''
-          rel: ''
-          text: ''
-    region: content
-  field_webny_news_short_title:
-    type: string
-    weight: 1
-    label: hidden
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    region: content
 hidden:
+  field_webny_agency_keywords: true
+  field_webny_filter_terms: true
+  field_webny_global_keywords: true
   field_webny_news_agency_keywords: true
   field_webny_news_attdocs_eref: true
   field_webny_news_category: true
@@ -130,7 +109,9 @@ hidden:
   field_webny_news_docsec_title: true
   field_webny_news_global_keywords: true
   field_webny_news_hero_title: true
+  field_webny_news_image: true
   field_webny_news_location: true
+  field_webny_news_short_title: true
   field_webny_news_subtitles: true
   langcode: true
   links: true
