@@ -1,15 +1,17 @@
+uuid: 40df3945-1f90-4615-870e-48252a8faf12
 langcode: en
 status: true
 dependencies:
   config:
     - field.storage.paragraph.field_webny_ql_col_1
-    - node.type.webny_document
     - node.type.webny_generic_page
     - node.type.webny_landing_page
     - node.type.webny_news
     - node.type.webny_page
     - node.type.webny_whitelisted_content
     - paragraphs.paragraphs_type.webny_ql_pgtype
+_core:
+  default_config_hash: ZEHRUqGPGhM8MmtYnhVJf5Vw-ue5x0QdhGNgq3sJDe8
 id: paragraph.webny_ql_pgtype.field_webny_ql_col_1
 field_name: field_webny_ql_col_1
 entity_type: paragraph
@@ -24,7 +26,6 @@ settings:
   handler: 'default:node'
   handler_settings:
     target_bundles:
-      webny_document: webny_document
       webny_generic_page: webny_generic_page
       webny_landing_page: webny_landing_page
       webny_news: webny_news
@@ -34,5 +35,5 @@ settings:
       field: title
       direction: ASC
     auto_create: false
-    auto_create_bundle: webny_document
+    auto_create_bundle: webny_generic_page
 field_type: entity_reference

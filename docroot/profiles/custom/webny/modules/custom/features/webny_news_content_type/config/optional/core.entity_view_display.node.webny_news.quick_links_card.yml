@@ -1,3 +1,4 @@
+uuid: 9dcf3a42-a533-4726-b0ed-c8d25046edf3
 langcode: en
 status: true
 dependencies:
@@ -23,19 +24,29 @@ dependencies:
     - field.field.node.webny_news.field_webny_news_subtitles
     - node.type.webny_news
   module:
-    - text
+    - smart_trim
     - user
+_core:
+  default_config_hash: UQofW2XevYsXVA9s0zDE_9WGGII8Hr6IqnHLnt01Vxs
 id: node.webny_news.quick_links_card
 targetEntityType: node
 bundle: webny_news
 mode: quick_links_card
 content:
   field_webny_news_description:
-    type: text_trimmed
+    type: smart_trim
     weight: 2
     label: hidden
     settings:
-      trim_length: 600
+      trim_length: '80'
+      trim_type: chars
+      trim_suffix: ...
+      more_link: '0'
+      more_text: More
+      trim_options:
+        text: 0
+      more_class: more-link
+      summary_handler: full
     third_party_settings: {  }
     region: content
   field_webny_news_image:

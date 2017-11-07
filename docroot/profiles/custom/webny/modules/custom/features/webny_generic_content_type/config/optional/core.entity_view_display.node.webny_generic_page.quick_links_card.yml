@@ -1,3 +1,4 @@
+uuid: 5170ab60-0cc9-44c6-86a3-0cbad2a6c58d
 langcode: en
 status: true
 dependencies:
@@ -23,8 +24,10 @@ dependencies:
     - node.type.webny_generic_page
   module:
     - media_entity
-    - text
+    - smart_trim
     - user
+_core:
+  default_config_hash: gc07ISkpIQWF5djgu0kU0VZvjKIJOc-vfFbENYJtnrY
 id: node.webny_generic_page.quick_links_card
 targetEntityType: node
 bundle: webny_generic_page
@@ -42,9 +45,18 @@ content:
   field_webny_gencp_sumdes:
     weight: 2
     label: hidden
-    settings: {  }
+    settings:
+      trim_length: '80'
+      trim_type: chars
+      trim_suffix: ...
+      more_link: '0'
+      more_text: More
+      trim_options:
+        text: 0
+      more_class: more-link
+      summary_handler: full
     third_party_settings: {  }
-    type: text_default
+    type: smart_trim
     region: content
   field_webny_generic_short_title:
     type: string

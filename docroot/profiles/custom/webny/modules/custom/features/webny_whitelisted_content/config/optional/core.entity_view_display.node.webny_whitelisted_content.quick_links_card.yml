@@ -1,3 +1,4 @@
+uuid: 104db791-279d-47f5-8e17-60dd894d8ec4
 langcode: en
 status: true
 dependencies:
@@ -14,8 +15,10 @@ dependencies:
     - field.field.node.webny_whitelisted_content.field_webny_whitelist_stitle
     - node.type.webny_whitelisted_content
   module:
-    - text
+    - smart_trim
     - user
+_core:
+  default_config_hash: f-ZgvP36Lxa6LryD2b5yIInIEO10muBMcaIElEF0DbM
 id: node.webny_whitelisted_content.quick_links_card
 targetEntityType: node
 bundle: webny_whitelisted_content
@@ -24,9 +27,18 @@ content:
   field_webny_whitelist_descript:
     weight: 2
     label: hidden
-    settings: {  }
+    settings:
+      trim_length: '80'
+      trim_type: chars
+      trim_suffix: ...
+      more_link: '0'
+      more_text: More
+      trim_options:
+        text: 0
+      more_class: more-link
+      summary_handler: full
     third_party_settings: {  }
-    type: text_default
+    type: smart_trim
     region: content
   field_webny_whitelist_image:
     weight: 0
