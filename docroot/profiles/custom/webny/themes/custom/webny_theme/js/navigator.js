@@ -173,7 +173,7 @@
 
       // instantiate Waypoint for action/share bar as disabled
       var actionBarWaypoint = new Waypoint({
-        element: $('.actions'),
+        element: $('.webny-action-bar'),
         handler: function (direction) {
           if (direction === 'down') {
             $('.actions').addClass('stuck');
