@@ -5,13 +5,18 @@
  * OVERRIDE the news display for quick links card.
  */
 #}
+{# set variables #}
+{% set image = content.field_webny_news_image %}
+{% set title = content.field_webny_news_short_title %}
+{% set description = content.field_webny_news_description %}
+
 <article{{ attributes.addClass('webny-quick-links') }}>
 
     <div{{ content_attributes }}>
-        <div class="webny-quick-links-image"><a href="{{ url }}">{{ content.field_webny_news_image }}</a></div>
+        <div class="webny-quick-links-image"><a href="{{ url }}">{{ image }}</a></div>
         <div class="webny-quick-links-card-text">
-            <div class="webny-quick-links-title"><a href="{{ url }}">{{ content.field_webny_news_short_title }}</a></div>
-            <div class="webny-quick-links-description">{{ content.field_webny_news_description }}</div>
+            <div class="webny-quick-links-title"><a href="{{ url }}">{{ title }}</a></div>
+            <div class="webny-quick-links-description">{{ description }}</div>
         </div>
     </div>
 
