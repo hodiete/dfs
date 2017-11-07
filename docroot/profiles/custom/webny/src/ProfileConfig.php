@@ -154,6 +154,8 @@ class ProfileConfig {
       $this->getProfilePath() . '/modules/custom/webny_media/' . self::CONFIG_DIR . '/optional',
       $this->getProfilePath() . '/modules/custom/webny_global_nav/' . self::CONFIG_DIR . '/install',
       $this->getProfilePath() . '/modules/custom/webny_global_nav/' . self::CONFIG_DIR . '/optional',
+      $this->getProfilePath() . '/modules/custom/webny_secondary_nav/' . self::CONFIG_DIR . '/install',
+      $this->getProfilePath() . '/modules/custom/webny_secondary_nav/' . self::CONFIG_DIR . '/optional',
       $this->getProfileFeatureConfigPath('base') . '/install',
       $this->getProfileFeatureConfigPath('news_content_type') . '/install',
       $this->getProfileFeatureConfigPath('news_content_type') . '/optional',
@@ -192,6 +194,8 @@ class ProfileConfig {
       $this->getProfilePath() . '/themes/custom/webnycommander/' . self::CONFIG_DIR . '/optional',
       $this->getProfileFeatureConfigPath('workflow_basic_configuration') . '/install',
       $this->getProfileFeatureConfigPath('workflow_basic_configuration') . '/optional',
+        $this->getProfileFeatureConfigPath('what_s_related_frame') . '/install',
+        $this->getProfileFeatureConfigPath('what_s_related_frame') . '/optional',
     ]);
 
     return $locations->locate($resource . '.yml');
