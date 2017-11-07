@@ -932,3 +932,59 @@ $hero-keyword-text-color: $color-mono-white !default;
     width: auto;
   }
 }
+
+// Event Hero with dates.
+.hero-event {
+  background-color: $medblue;
+
+  .hero-background {
+    min-height: 0;
+
+    &.hero-no-image {
+      height: auto;
+    }
+    
+    &.hero-has-image {
+      opacity: 0.8;
+      background-color: transparent;
+    }
+  }
+
+  .hero-event-inner {
+    min-height: 0;
+  }
+
+  .hero-content-wrap {
+    position: relative;
+  }
+
+  &--title-block {
+    float: left;
+    width: calc(100% - 290px);
+  }
+
+  &--date-block {
+    border-left: 1px solid $color-mono-mid;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 280px;
+    height: 100%;
+    padding: 20px 15px 15px;
+
+    @include event-date;
+
+    .month {
+      color: #fff;
+    }
+
+    .day {
+      color: $primaryblue;
+    }
+
+    .address-wrapper::before,
+    .time::before {
+      color: $primaryblue;
+    }
+  }
+}
