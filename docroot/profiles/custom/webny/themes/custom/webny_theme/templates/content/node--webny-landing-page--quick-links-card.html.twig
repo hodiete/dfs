@@ -1,0 +1,18 @@
+{#
+/**
+ * @file
+ * Theme override to display a node.
+ * OVERRIDE the landing page content display for quick links card.
+ */
+#}
+<article{{ attributes.addClass('webny-quick-links') }}>
+
+    <div{{ content_attributes }}>
+        <div class="webny-quick-links-image"><a href="{{ url }}">{{ content.field_webny_landing_hero_image }}</a></div>
+        <div class="webny-quick-links-card-text">
+            <div class="webny-quick-links-title"><a href="{{ url }}">{{ content.field_webny_landing_short_title }}</a></div>
+            <div class="webny-quick-links-description">{{ content.field_webny_landing_summary2 }}</div>
+        </div>
+    </div>
+
+</article>
