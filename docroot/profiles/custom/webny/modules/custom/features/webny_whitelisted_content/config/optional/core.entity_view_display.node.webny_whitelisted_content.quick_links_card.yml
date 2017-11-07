@@ -1,0 +1,57 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.quick_links_card
+    - field.field.node.webny_whitelisted_content.body
+    - field.field.node.webny_whitelisted_content.field_webny_filter_terms
+    - field.field.node.webny_whitelisted_content.field_webny_whitelist_agency_key
+    - field.field.node.webny_whitelisted_content.field_webny_whitelist_date
+    - field.field.node.webny_whitelisted_content.field_webny_whitelist_descript
+    - field.field.node.webny_whitelisted_content.field_webny_whitelist_global_key
+    - field.field.node.webny_whitelisted_content.field_webny_whitelist_image
+    - field.field.node.webny_whitelisted_content.field_webny_whitelist_link_url
+    - field.field.node.webny_whitelisted_content.field_webny_whitelist_stitle
+    - node.type.webny_whitelisted_content
+  module:
+    - text
+    - user
+id: node.webny_whitelisted_content.quick_links_card
+targetEntityType: node
+bundle: webny_whitelisted_content
+mode: quick_links_card
+content:
+  field_webny_whitelist_descript:
+    weight: 2
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_webny_whitelist_image:
+    weight: 0
+    label: hidden
+    settings:
+      view_mode: thumbnail
+      link: false
+    third_party_settings: {  }
+    type: entity_reference_entity_view
+    region: content
+  field_webny_whitelist_stitle:
+    type: string
+    weight: 1
+    region: content
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+hidden:
+  body: true
+  field_webny_filter_terms: true
+  field_webny_whitelist_agency_key: true
+  field_webny_whitelist_date: true
+  field_webny_whitelist_global_key: true
+  field_webny_whitelist_link_url: true
+  langcode: true
+  links: true
+  workbench_moderation_control: true
