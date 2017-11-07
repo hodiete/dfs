@@ -48,6 +48,10 @@
             hash = $(this).children('h2').children('span:first').text().toLowerCase().trim().replace(/[^a-zA-Z0-9]/g, '-');
           }
         }
+        // replacing hash for whats related
+        else if ($(this).hasClass('generic_para webny_whats_related_pgtype')) {
+          hash = $(this).children().children('h3').text().toLowerCase().trim().replace(/[^a-zA-Z0-9]/g, '-');
+        }
 
 
         // if rel is enabled, this paragraph has been selected to be added to the TOC
@@ -69,6 +73,10 @@
             else {
               $('#gpnav_sidebar ul').append('<li><a href="#' + hash + '">' + $(this).children(':first').text() + '</a></li>');
             }
+          }
+          // if this is a whats related paragraph
+          else if ($(this).hasClass('generic_para webny_whats_related_pgtype')) {
+            $('#gpnav_sidebar ul').append('<li><a href="#' + hash + '">' + $(this).children().children('h3').text() + '</a></li>');
           }
           $(this).children(':first').attr('name', hash);
         }
@@ -95,6 +103,9 @@
             else {
               $(this).children('.gp-next-section').children('.gp-next-section-title').html(nextSection.children(':first').text());
             }
+          }
+          else if ($(nextSection).hasClass('generic_para webny_whats_related_pgtype')) {
+            $(this).children('.gp-next-section').children('.gp-next-section-title').html(nextSection.children().children('h3').text());
           }
         }
         else {
