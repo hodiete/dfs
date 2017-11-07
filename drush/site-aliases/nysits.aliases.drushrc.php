@@ -30,6 +30,58 @@ $aliases['01dev.dev'] = array(
     '%drush-script' => 'drush' . $drush_major_version,
   )
 );
+// Site nysits, environment 01dev knowledgebank
+$aliases['01dev.knowledgebank'] = array(
+    'root' => '/var/www/html/nysits.01dev/docroot',
+    'ac-site' => 'nysits',
+    'ac-env' => '01dev',
+    'ac-realm' => 'enterprise-g1',
+    'uri' => 'http://knowledgebank.dev-nysits.acsitefactory.com',
+    'remote-host' => 'staging-538.enterprise-g1.hosting.acquia.com',
+    'remote-user' => 'nysits.01dev',
+    'path-aliases' => array(
+        '%drush-script' => 'drush' . $drush_major_version,
+    )
+);
+// Site nysits, environment 01dev jcope
+$aliases['01dev.jcope'] = array(
+    'root' => '/var/www/html/nysits.01dev/docroot',
+    'ac-site' => 'nysits',
+    'ac-env' => '01dev',
+    'ac-realm' => 'enterprise-g1',
+    'uri' => 'http://jcope.dev-nysits.acsitefactory.com',
+    'remote-host' => 'staging-538.enterprise-g1.hosting.acquia.com',
+    'remote-user' => 'nysits.01dev',
+    'path-aliases' => array(
+        '%drush-script' => 'drush' . $drush_major_version,
+    )
+);
+// Site nysits, environment 01dev amber
+$aliases['01dev.amber'] = array(
+    'root' => '/var/www/html/nysits.01dev/docroot',
+    'ac-site' => 'nysits',
+    'ac-env' => '01dev',
+    'ac-realm' => 'enterprise-g1',
+    'uri' => 'http://amber.dev-nysits.acsitefactory.com',
+    'remote-host' => 'staging-538.enterprise-g1.hosting.acquia.com',
+    'remote-user' => 'nysits.01dev',
+    'path-aliases' => array(
+        '%drush-script' => 'drush' . $drush_major_version,
+    )
+);
+// Site nysits, environment 01dev wcb
+$aliases['01dev.wcb'] = array(
+    'root' => '/var/www/html/nysits.01dev/docroot',
+    'ac-site' => 'nysits',
+    'ac-env' => '01dev',
+    'ac-realm' => 'enterprise-g1',
+    'uri' => 'http://wcb.dev-nysits.acsitefactory.com',
+    'remote-host' => 'staging-538.enterprise-g1.hosting.acquia.com',
+    'remote-user' => 'nysits.01dev',
+    'path-aliases' => array(
+        '%drush-script' => 'drush' . $drush_major_version,
+    )
+);
 // Site nysits, environment 01dev demo
 $aliases['01dev.demo'] = array(
   'root' => '/var/www/html/nysits.01dev/docroot',
@@ -191,13 +243,52 @@ $aliases['01live.uat'] = array(
     '%drush-script' => 'drush' . $drush_major_version,
   )
 );
-// Site nysits, environment 01live uat
+// Site nysits, environment 01live amber
 $aliases['01live.amber'] = array(
   'root' => '/var/www/html/nysits.01live/docroot',
   'ac-site' => 'nysits',
   'ac-env' => '01live',
   'ac-realm' => 'enterprise-g1',
   'uri' => 'http://amber.nysits.acsitefactory.com',
+  'remote-host' => 'web-536.enterprise-g1.hosting.acquia.com',
+  'remote-user' => 'nysits.01live',
+  'path-aliases' => array(
+    '%drush-script' => 'drush' . $drush_major_version,
+  )
+);
+// Site nysits, environment 01live knowledgebank
+$aliases['01live.knowledgebank'] = array(
+  'root' => '/var/www/html/nysits.01live/docroot',
+  'ac-site' => 'nysits',
+  'ac-env' => '01live',
+  'ac-realm' => 'enterprise-g1',
+  'uri' => 'http://knowledgebank.nysits.acsitefactory.com',
+  'remote-host' => 'web-536.enterprise-g1.hosting.acquia.com',
+  'remote-user' => 'nysits.01live',
+  'path-aliases' => array(
+    '%drush-script' => 'drush' . $drush_major_version,
+  )
+);
+// Site nysits, environment 01live jcope
+$aliases['01live.jcope'] = array(
+  'root' => '/var/www/html/nysits.01live/docroot',
+  'ac-site' => 'nysits',
+  'ac-env' => '01live',
+  'ac-realm' => 'enterprise-g1',
+  'uri' => 'http://jcope.nysits.acsitefactory.com',
+  'remote-host' => 'web-536.enterprise-g1.hosting.acquia.com',
+  'remote-user' => 'nysits.01live',
+  'path-aliases' => array(
+    '%drush-script' => 'drush' . $drush_major_version,
+  )
+);
+// Site nysits, environment 01live wcb
+$aliases['01live.wcb'] = array(
+  'root' => '/var/www/html/nysits.01live/docroot',
+  'ac-site' => 'nysits',
+  'ac-env' => '01live',
+  'ac-realm' => 'enterprise-g1',
+  'uri' => 'http://wcb.nysits.acsitefactory.com',
   'remote-host' => 'web-536.enterprise-g1.hosting.acquia.com',
   'remote-user' => 'nysits.01live',
   'path-aliases' => array(
@@ -233,6 +324,58 @@ $aliases['01test.dev'] = array(
   'ac-env' => '01test',
   'ac-realm' => 'enterprise-g1',
   'uri' => 'http://dev.test-nysits.acsitefactory.com',
+  'remote-host' => 'staging-538.enterprise-g1.hosting.acquia.com',
+  'remote-user' => 'nysits.01test',
+  'path-aliases' => array(
+    '%drush-script' => 'drush' . $drush_major_version,
+  )
+);
+// Site nysits, environment 01test knowledgebank
+$aliases['01test.knowledgebank'] = array(
+  'root' => '/var/www/html/nysits.01test/docroot',
+  'ac-site' => 'nysits',
+  'ac-env' => '01test',
+  'ac-realm' => 'enterprise-g1',
+  'uri' => 'http://knowledgebank.test-nysits.acsitefactory.com',
+  'remote-host' => 'staging-538.enterprise-g1.hosting.acquia.com',
+  'remote-user' => 'nysits.01test',
+  'path-aliases' => array(
+    '%drush-script' => 'drush' . $drush_major_version,
+  )
+);
+// Site nysits, environment 01test jcope
+$aliases['01test.jcope'] = array(
+  'root' => '/var/www/html/nysits.01test/docroot',
+  'ac-site' => 'nysits',
+  'ac-env' => '01test',
+  'ac-realm' => 'enterprise-g1',
+  'uri' => 'http://jcope.test-nysits.acsitefactory.com',
+  'remote-host' => 'staging-538.enterprise-g1.hosting.acquia.com',
+  'remote-user' => 'nysits.01test',
+  'path-aliases' => array(
+    '%drush-script' => 'drush' . $drush_major_version,
+  )
+);
+// Site nysits, environment 01test amber
+$aliases['01test.amber'] = array(
+  'root' => '/var/www/html/nysits.01test/docroot',
+  'ac-site' => 'nysits',
+  'ac-env' => '01test',
+  'ac-realm' => 'enterprise-g1',
+  'uri' => 'http://amber.test-nysits.acsitefactory.com',
+  'remote-host' => 'staging-538.enterprise-g1.hosting.acquia.com',
+  'remote-user' => 'nysits.01test',
+  'path-aliases' => array(
+    '%drush-script' => 'drush' . $drush_major_version,
+  )
+);
+// Site nysits, environment 01test wcb
+$aliases['01test.wcb'] = array(
+  'root' => '/var/www/html/nysits.01test/docroot',
+  'ac-site' => 'nysits',
+  'ac-env' => '01test',
+  'ac-realm' => 'enterprise-g1',
+  'uri' => 'http://wcb.test-nysits.acsitefactory.com',
   'remote-host' => 'staging-538.enterprise-g1.hosting.acquia.com',
   'remote-user' => 'nysits.01test',
   'path-aliases' => array(
