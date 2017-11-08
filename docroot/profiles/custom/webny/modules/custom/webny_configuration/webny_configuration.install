@@ -3845,6 +3845,20 @@ function webny_configuration_update_8172() {
 }
 
 /**
+ * REFRESH THE SECONDARY NAVIGATION MODULE -- UPDATED FORM
+ * NDD-1172
+ * -iojonep
+ */
+function webny_configuration_update_8173() {
+
+    // REFRESH DOCUMENT CONTENT TYPE
+    \Drupal::service('module_installer')
+        ->uninstall(['webny_secondary_nav']);
+    \Drupal::service('module_installer')
+        ->install(['webny_secondary_nav']);
+}
+
+/**
  * Helper function to enable a Drupal module and print the result.
  *
  * @param string $module_name
