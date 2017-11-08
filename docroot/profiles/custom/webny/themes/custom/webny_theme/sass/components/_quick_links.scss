@@ -105,11 +105,8 @@ Quick Links Card
     padding: 4px;
     border: solid thin #E4E4E4;
     margin-right: 16px;
-
-    img {
-      width:100px;
-      height:100px;
-    }
+    width:100px;
+    height:100px;
   }
   .webny-quick-links-card-text {
 
@@ -200,9 +197,11 @@ Quick Links Card
 /* PC VIEW */
 @media (min-width: $min-pc) {
 
+  .ql--group-1 {
+    float: left;
+  }
   .ql--group-1,
   .ql--group-2 {
-    float: left;
     width: 48%;
     margin-bottom: 80px;
   } // END groups
