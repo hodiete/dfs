@@ -3734,41 +3734,6 @@ function webny_configuration_update_8168() {
   ]);
 }
 
-/**
- * Implements hook_update_n().
- *
- * Install and Enable the What's Related paragraph type and Refresh Generic Page Content Type
- *
- */
-function webny_configuration_update_8168() {
-
-
-  // INSTALL THE WHAT'S RELATED FRAME
-  \Drupal::service('module_installer')
-    ->install(['webny_what_s_related_frame']);
-
-  //REINSTALL GENERIC PAGE
- 
-  \Drupal::service('module_installer')
-    ->uninstall(['webny_generic_content_type']);
-  \Drupal::service('module_installer')
-    ->install(['webny_generic_content_type']);
-
-  // REFRESH
-    $config_factory = \Drupal::configFactory();
-    $profile_config = \Drupal::service('webny.profile_config');
-
-    // Import new/changed configuration.
-    $config_to_update = [
-      // UPDATE OPTIONAL FEATURES
-      'core.entity_form_display.paragraph.webny_whats_related_pgtype.generic_form',
-      'field.field.node.webny_generic_page.field_webny_gencp_contentsect'
-    ];
-    $profile_config->bulkImport($config_to_update);
-    // Clear the config cache.
-    $config_factory->reset();
-}
-
 /*
  * Install quick links feature module.
  * Refreshed modules that include new view mode
