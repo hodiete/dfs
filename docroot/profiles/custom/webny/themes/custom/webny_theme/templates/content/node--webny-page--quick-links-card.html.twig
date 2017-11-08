@@ -7,8 +7,12 @@
 #}
 {# set variables #}
 {% set image = content.field_webny_page_image %}
-{% set title = content.field_webny_page_short_title %}
 {% set description = content.field_webny_page_description %}
+{% if (node.field_webny_page_short_title.value is not empty and node.field_webny_page_short_title.value is not null) %}
+    {% set title = content.field_webny_page_short_title %}
+{% else %}
+    {% set title = node.label %}
+{% endif %}
 
 <article{{ attributes.addClass('webny-quick-links') }}>
 
