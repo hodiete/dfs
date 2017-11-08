@@ -3870,6 +3870,28 @@ function webny_configuration_update_8172() {
 }
 
 /**
+ * Implements hook_update_n().
+ *
+ *
+ * Permissions update for Content Authors in What's Related paragraph type.
+ */
+function webny_configuration_update_8173() {
+  $config_factory = \Drupal::configFactory();
+  $profile_config = \Drupal::service('webny.profile_config');
+
+  // Import new/changed configuration.
+  $config_to_update = [
+    'user.role.content_author'
+  ];
+
+  $profile_config->bulkImport($config_to_update);
+
+  // Clear the config cache.
+  $config_factory->reset();
+}
+
+
+/**
  * Helper function to enable a Drupal module and print the result.
  *
  * @param string $module_name
