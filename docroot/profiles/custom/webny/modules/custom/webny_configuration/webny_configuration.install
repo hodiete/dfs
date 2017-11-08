@@ -3428,6 +3428,8 @@ function webny_configuration_update_8156() {
  */
 function webny_configuration_update_8157() {
 
+  \Drupal::service('module_installer')
+    ->install(['ckeditor_indentblock', 'ckeditor_liststyle']);
     \Drupal::service('module_installer')
         ->install(['ckeditor_indentblock', 'ckeditor_liststyle']);
 }
@@ -3498,7 +3500,6 @@ function webny_configuration_update_8159() {
   $config_factory->reset();
 
 }
-
 
 /**
  * Remove the deprecated Subject Heading vocabulary
@@ -3879,6 +3880,43 @@ function webny_configuration_update_8171() {
     // Clear the config cache.
     $config_factory->reset();
 }
+
+/**
+ * REFRESH DOCUMENT CONTENT TYPE TO ADD TEXT FORMATS OF FULL/BASIC
+ * TO THE SUBTITLE AND DESCRIPTION (BODY) FIELDS
+ * NDD-1163
+ * -iojonep
+ */
+function webny_configuration_update_8172() {
+
+    // REFRESH DOCUMENT CONTENT TYPE
+    \Drupal::service('module_installer')
+        ->uninstall(['webny_document_content_type']);
+    \Drupal::service('module_installer')
+        ->install(['webny_document_content_type']);
+}
+
+/**
+ * Implements hook_update_n().
+ *
+ *
+ * Permissions update for Content Authors in What's Related paragraph type.
+ */
+function webny_configuration_update_8173() {
+  $config_factory = \Drupal::configFactory();
+  $profile_config = \Drupal::service('webny.profile_config');
+
+  // Import new/changed configuration.
+  $config_to_update = [
+    'user.role.content_author'
+  ];
+
+  $profile_config->bulkImport($config_to_update);
+
+  // Clear the config cache.
+  $config_factory->reset();
+}
+
 
 /**
  * Helper function to enable a Drupal module and print the result.
