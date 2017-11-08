@@ -3825,30 +3825,7 @@ function webny_configuration_update_8170(){
         ->install(['webny_generic_content_type']);
 }
 
-/*NDD-1112 frame background colors 
--Beth */
-function webny_configuration_update_8172() {
-    
-    \Drupal::service('module_installer')
-        ->uninstall(['webny_summary_frame']);
-    \Drupal::service('module_installer')
-        ->install(['webny_summary_frame']);
 
-    \Drupal::service('module_installer')
-        ->uninstall(['webny_tbd_frame']);
-    \Drupal::service('module_installer')
-        ->install(['webny_tbd_frame']);
-
-    \Drupal::service('module_installer')
-        ->uninstall(['webny_bio_frame']);
-    \Drupal::service('module_installer')
-        ->install(['webny_bio_frame']);
-
-    \Drupal::service('module_installer')
-        ->uninstall(['webny_get_involved_frame']);
-    \Drupal::service('module_installer')
-        ->install(['webny_get_involved_frame']);
-}
 
 /**
  * Implements hook_update_n().
@@ -3917,6 +3894,30 @@ function webny_configuration_update_8173() {
   $config_factory->reset();
 }
 
+/*NDD-1112 frame background colors 
+-Beth */
+function webny_configuration_update_8174() {
+    
+    \Drupal::service('module_installer')
+        ->uninstall(['webny_summary_frame']);
+    \Drupal::service('module_installer')
+        ->install(['webny_summary_frame']);
+
+    \Drupal::service('module_installer')
+        ->uninstall(['webny_tbd_frame']);
+    \Drupal::service('module_installer')
+        ->install(['webny_tbd_frame']);
+
+    \Drupal::service('module_installer')
+        ->uninstall(['webny_bio_frame']);
+    \Drupal::service('module_installer')
+        ->install(['webny_bio_frame']);
+
+    \Drupal::service('module_installer')
+        ->uninstall(['webny_get_involved_frame']);
+    \Drupal::service('module_installer')
+        ->install(['webny_get_involved_frame']);
+}
 
 /**
  * Helper function to enable a Drupal module and print the result.
