@@ -7,8 +7,12 @@
 #}
 {# set variables #}
 {% set image = content.field_webny_whitelist_image %}
-{% set title = content.field_webny_whitelist_stitle %}
 {% set description = content.field_webny_whitelist_descript %}
+{% if (node.field_webny_whitelist_stitle.value is not empty and node.field_webny_whitelist_stitle.value is not null) %}
+    {% set title = content.field_webny_whitelist_stitle %}
+{% else %}
+    {% set title = node.label %}
+{% endif %}
 
 <article{{ attributes.addClass('webny-quick-links') }}>
 
