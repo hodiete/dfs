@@ -6,6 +6,8 @@ dependencies:
     - node.type.webny_location
   module:
     - address
+_core:
+  default_config_hash: 8SIU7jkWFD5PxyPd5-XKh_sv31YYBBqkEI2DnCZqZJw
 id: node.webny_location.field_webny_location_address
 field_name: field_webny_location_address
 entity_type: node
@@ -14,7 +16,21 @@ label: Address
 description: ''
 required: false
 translatable: false
-default_value: {  }
+default_value:
+  -
+    country_code: US
+    langcode: null
+    administrative_area: ''
+    locality: ''
+    dependent_locality: ''
+    postal_code: ''
+    sorting_code: ''
+    address_line1: ''
+    address_line2: ''
+    organization: ''
+    given_name: ''
+    additional_name: ''
+    family_name: ''
 default_value_callback: ''
 settings:
   available_countries:
@@ -26,7 +42,7 @@ settings:
     postalCode: postalCode
     sortingCode: sortingCode
     addressLine1: addressLine1
-    addressLine2: addressLine2
+    addressLine2: '0'
     organization: '0'
     givenName: '0'
     additionalName: '0'
