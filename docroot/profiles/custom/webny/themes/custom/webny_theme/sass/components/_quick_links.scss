@@ -107,6 +107,12 @@ Quick Links Card
     margin-right: 16px;
     width:100px;
     height:100px;
+
+    img {
+      max-height: 100%;
+      max-width: 100%;
+      vertical-align: middle;
+    }
   }
   .webny-quick-links-card-text {
 
@@ -189,14 +195,6 @@ Quick Links Card
 /* TABLET VIEW */
 @media (min-width: $min-tablet) {
 
-
-
-} // END MIN TABLET VIEW
-
-// ######################################################################### //
-/* PC VIEW */
-@media (min-width: $min-pc) {
-
   .ql--group-1 {
     float: left;
   }
@@ -205,16 +203,6 @@ Quick Links Card
     width: 48%;
     margin-bottom: 80px;
   } // END groups
-
-  .webny-quick-links-description {
-    display: block !important;
-    text-align: left;
-    font-family: ProximaNovaRegular;
-    font-size: 16px;
-    color: #000;
-    height: 2.4em;
-    line-height: 1.2em;
-  }
 
   .ql--field-webny-ql-col-1-button,
   .ql--field-webny-ql-col-2-button {
@@ -238,36 +226,32 @@ Quick Links Card
     }
   }
 
+} // END MIN TABLET VIEW
+
+// ######################################################################### //
+/* PC VIEW */
+@media (min-width: $min-desktop) {
+
+  .webny-quick-links-description {
+    display: block !important;
+    text-align: left;
+    font-family: ProximaNovaRegular;
+    font-size: 16px;
+    color: #000;
+    height: 2.4em;
+    line-height: 1.2em;
+  }
+
 } // END PC VIEW
 
 @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
   /* IE10-specific styles go here */
 
   @media (min-width: $min-tab) {
-    .descriptors {
-      display: flex;
-      flex-flow: row nowrap;
-      justify-content: center;
-      margin: 50px 0 0 0;
 
-      .descriptor {
-        display: inline-block;
-        margin: 0 auto;
-      }
-    }
   } // END TABLET VIEW
 
   @media (min-width: $min-pc) {
-    .descriptors {
-      display: flex;
-      flex-flow: row nowrap;
-      justify-content: center;
-      margin: 50px 0 0 0;
 
-      .descriptor {
-        display: inline-block;
-        margin: 0 auto;
-      }
-    }
   } // END PC VIEW
 } // END IE10
