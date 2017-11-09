@@ -1,0 +1,54 @@
+{#
+/**
+ * @file
+ * Theme override for the Location Counties Served field
+ *
+ * Available variables:
+ * - attributes: HTML attributes for the containing element.
+ * - label_hidden: Whether to show the field label or not.
+ * - title_attributes: HTML attributes for the title.
+ * - label: The label for the field.
+ * - multiple: TRUE if a field can contain multiple items.
+ * - items: List of all the field items. Each item contains:
+ *   - attributes: List of HTML attributes for each item.
+ *   - content: The field item's content.
+ * - entity_type: The entity type to which the field belongs.
+ * - field_name: The name of the field.
+ * - field_type: The type of the field.
+ * - label_display: The display settings for the label.
+ *
+ * @see template_preprocess_field()
+ */
+#}
+
+{% if label_hidden %}
+  {% if multiple %}
+    <div{{ attributes }}>
+      {% for item in items %}
+        <div{{ item.attributes }}>{{ item.content }}</div>
+      {% endfor %}
+    </div>
+  {% else %}
+    {% for item in items %}
+      <div{{ attributes }}>{{ item.content }}</div>
+    {% endfor %}
+  {% endif %}
+{% else %}
+  <div{{ attributes }} class="location-counties-section">
+    <div{{ title_attributes }} class="location-counties-label">{{ label }}</div>
+    {% if multiple %}
+      <div class="location-counties-fieldwrapper">
+    {% endif %}
+    {% for item in items %}
+        {% if loop.last %}
+            {% set separator = '' %}
+        {% else %}
+            {% set separator = ',' %}
+        {% endif %}
+      <div{{ item.attributes }} class="location-counties">{{ item.content }}{{ separator }}</div>
+    {% endfor %}
+    {% if multiple %}
+      </div>
+    {% endif %}
+  </div>
+{% endif %}
