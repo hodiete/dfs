@@ -4,6 +4,9 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.webny_news.body
+    - field.field.node.webny_news.field_webny_agency_keywords
+    - field.field.node.webny_news.field_webny_filter_terms
+    - field.field.node.webny_news.field_webny_global_keywords
     - field.field.node.webny_news.field_webny_news_agency_keywords
     - field.field.node.webny_news.field_webny_news_attdocs_eref
     - field.field.node.webny_news.field_webny_news_category
@@ -42,6 +45,9 @@ content:
     weight: -20
     region: content
 hidden:
+  field_webny_agency_keywords: true
+  field_webny_filter_terms: true
+  field_webny_global_keywords: true
   field_webny_news_agency_keywords: true
   field_webny_news_attdocs_eref: true
   field_webny_news_category: true
