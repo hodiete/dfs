@@ -1,0 +1,639 @@
+// Location Content
+//
+// Location Content styling
+//
+// Markup: location_page.hbs
+//
+// Styles for the Hero and Hero Inner classes
+// are located in _hero.scss, lines 77, 129, 557, 715.
+//
+
+// LOCATION HERO FIELDS
+.webny-location article.hero-layout {
+  background-color: black;
+}
+.webny-location .hero-inner {
+  padding: 30px 0 10px 20px;
+  margin-bottom: 50px;
+  .location-type-tax{
+    font-family: $base-font;
+    font-size: 12px;
+    font-weight: 600;
+    font-style:  normal;
+    color: #fff;
+  }
+  // Horizontal Line divider with specific size
+  .location-horizontal-line {
+    border-bottom: 1px solid #fff!important;
+    width: 30px;
+  }
+  // Counties Served and Address field
+  .location-counties-served-field,
+  .location-address-field,
+  .location-phone {
+    margin-top: 30px;
+  }
+  // Labels above Counties Served, Address, Phone
+  .location-counties-label,
+  .location-address-label,
+  span.phone-label {
+    font-family:$oswald;
+    font-weight: normal;
+    font-style: normal;
+    font-size: 14px;
+    color: $primarygold;
+    text-transform: uppercase;
+  }
+  // Field content Counties Served, Address, Phone
+  .location-counties,
+  .location-address,
+  .para-phone-field a {
+    font-family: $base-font;
+    font-size: 16px;
+    font-weight: 600;
+    font-style:  normal;
+    color: #fff;
+  }
+  // Counties Served section
+  .location-counties-fieldwrapper {
+    display: inline-block;
+  }
+  .location-counties {
+    float: left;
+    margin-right: 8px;
+  }
+
+  .location-address p.address,
+  .location-counties-fieldwrapper {
+    line-height: 20px;
+  }
+
+  .location-address-field .location-address p.address span.country{
+    display: none;
+  }
+
+  .location-address-field .location-address {
+    margin-right: 40px;
+  }
+
+  // Line up both Phone Numbers on one line with a Vertical divider
+  .first-phone,
+  .last-phone,
+  .location-vertical-line {
+    float:left;
+  }
+  // Phone Label on top of Phone number
+  .para-phone-field a {
+    position: relative;
+    right: 10px;
+  }
+  .para-phone-field span.phone-label {
+    display: block;
+  }
+
+  // Vertical Line divider with specific size
+  .location-vertical-line {
+    border-left: 1px solid #fff!important;
+    height: 40px;
+    position: relative;
+    top: 8px;
+    left: 15px;
+    margin-right: 40px;
+  }
+}
+
+// ######################################################################### //
+/* MOBILE VIEW */
+aside#locnav_sidebar {
+  position: relative;
+
+  &.stuck {
+    position: fixed;
+    top: 50px;
+    z-index: 10;
+    width: 100%;
+  }
+
+  header {
+    background-color: #1d1d1d;
+    font-size: 14px; //0.875em;
+    font-family: "Oswald-bold";
+    text-transform: uppercase;
+    padding: 21px 30px;
+    color: #cbcbcb;
+    box-sizing: border-box;
+    border-bottom: 1px solid #404040;
+    letter-spacing: 0.05em;
+    text-rendering: optimizeLegibility;
+    display: none;
+  }
+
+  ul {
+    margin: 0;
+    list-style-type: none;
+    padding-left: 0px;
+
+    &.sidebar-opened {
+      li {
+        display: block;
+      }
+    }
+
+    &.sidebar-closed.mobile {
+      li:first-child {
+        display: block;
+      }
+      li.active {
+        display: block;
+      }
+      li {
+        display: none;
+      }
+    }
+
+    li {
+      padding: 21px 30px;
+      margin: 0;
+      box-sizing: border-box;
+      height: auto;
+      border-bottom: 1px solid #404040;
+      background-color: #242424;
+      display: none;
+
+      /* display the see-all always */
+      &:first-child {
+        display: block;
+      }
+
+      /* only display the li that has the active class attached */
+      &.active {
+        display: block;
+      }
+
+      &.active a {
+        color: $color-secondary;
+      }
+
+      &.see-all {
+        position: absolute;
+        background-color: transparent;
+        border: none;
+        top: 0;
+        right: 0;
+
+        a {
+          color: #FFF;
+          text-decoration: none;
+          font-size: 1.3em;
+
+          span {
+            display: none;
+
+            &:before {
+              content: "\e601";
+            }
+          }
+        }
+      }
+
+      a {
+        color: #FFF;
+        //font: 0.9em/1 'ProximaNovaBold';
+        font: 16.8px 'ProximaNovaBold';
+        letter-spacing: 0.01em;
+        font-weight: normal;
+        text-decoration: none;
+        transition: color 0.3s 0s ease-in-out;
+        cursor: pointer;
+
+        &:hover {
+          color: $color-secondary;
+        }
+      }
+    }
+  }
+
+  span.arrow {
+    display: none;
+  }
+}
+
+/* display generic paragraphs at 100% width */
+.location-paragraphs {
+  width:100%;
+}
+
+.loc-article-content {
+  .loc-chapters {
+    padding: 20px 10px 30px !important;
+  }
+
+  h2 {
+    font-size: 2em;
+    text-align: left;
+    line-height: 45px;
+  }
+}
+
+.loc-next-section {
+  display: none;
+}
+
+/* Contact Frame styling - starts here */
+.location-paragraphs{
+  fieldset {
+    border: none;
+    margin: 0 0 1px;
+  }
+  .contact-phone,
+  .contact-address,
+  .contact-email,
+  .contact-fax {
+    position: relative;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: flex-start;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    min-height: 95px;
+  }
+
+  .contact-wrapper .contact-address .contact-address-value p {
+    line-height: 22px;
+  }
+
+  .contact-info-wrapper {
+
+    .icon-phone::before,
+    .icon-email::before,
+    .icon-other::before {
+      position: absolute;
+      width: 20px;
+      color: $color-primary;
+    }
+    .icon-phone{ @include icon(before, fa-mobile);}
+    .icon-email{ @include icon(before, fa-envelope);}
+    .icon-other{ @include icon(before, fa-elipses-h);}
+  }
+
+  .contact--field-webny-contact-phone,
+  .contact--field-webny-contact-address,
+  .contact--field-webny-contact-email,
+  .contact--field-webny-contact-fax {
+    font-family: $base-font !important;
+    font-weight: 600;
+    display: inline-block;
+    margin-bottom: 20px;
+    padding-left: 33px;
+  }
+
+  .icon-phone::before {
+    font-size: 1.25em;
+  }
+
+  .contact-phone-value,
+  .contact-fax-value,
+  .contact-address-value,
+  .contact-email-value {
+    line-height: $frame-base-line-height;
+    margin-left: 35px;
+  }
+
+  .contact-address-value p {
+    margin: 0;
+  }
+
+  .phone-number a,
+  .contact-fax-value a {
+    color: $color-mono-black;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  .contact--field-webny-contact-address p {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  .contact-email-value {
+    text-decoration: underline;
+  }
+
+  .social-media-wrapper {
+    border-top: 1px solid $gray-lite;
+    border-bottom: 1px solid $gray-lite;
+    padding-top: 20px;
+    line-height: 40px;
+  }
+
+  .social-media-wrapper .fieldset-wrapper a:hover {
+    text-decoration: none;
+  }
+
+  .social-media-wrapper .fieldset-wrapper a {
+    color: $color-mono-black;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 0.777em;
+    display: inline;
+    width: 45%;
+  }
+
+  .social-media-wrapper {
+    .icon-facebook::before,
+    .icon-twitter::before,
+    .icon-youtube::before,
+    .icon-instagram::before,
+    .icon-google-plus::before,
+    .icon-soundcloud::before,
+    .icon-snapchat::before,
+    .icon-vine::before,
+    .icon-flickr::before,
+    .icon-rss::before,
+    .icon-pinterest::before,
+    .icon-tumblr::before,
+    .icon-linkedin::before,
+    .icon-vimeo::before {
+      color: $color-primary;
+      padding-right: 15px;
+      display: inline-block;
+      font-size: 1em;
+    }
+
+    .icon-facebook:hover:before,
+    .icon-twitter:hover:before,
+    .icon-youtube:hover:before,
+    .icon-instagram:hover:before,
+    .icon-google-plus:hover:before,
+    .icon-soundcloud:hover:before,
+    .icon-snapchat:hover:before,
+    .icon-vine:hover:before,
+    .icon-flickr:hover:before,
+    .icon-rss:hover:before,
+    .icon-pinterest:hover:before,
+    .icon-tumblr:hover:before,
+    .icon-linkedin:hover:before,
+    .icon-vimeo:hover:before {
+      color: $color-secondary;
+    }
+
+    .icon-facebook {@include icon(before, fa-facebook);}
+    .icon-twitter {@include icon(before, fa-twitter);}
+    .icon-youtube {@include icon(before, fa-youtube);}
+    .icon-instagram {@include icon(before, fa-instagram);}
+    .icon-google-plus {@include icon(before, fa-google-plus);}
+    .icon-soundcloud {@include icon(before, fa-soundcloud);}
+    .icon-square {@include icon(before, square);}
+    .icon-snapchat {@include icon(before, fa-snapchat-ghost);}
+    .icon-vine {@include icon(before, fa-vine);}
+    .icon-flickr {@include icon(before, fa-flickr);}
+    .icon-rss {@include icon(before, fa-rss);}
+    .icon-pinterest {@include icon(before, fa-pinterest-p);}
+    .icon-tumblr {@include icon(before, fa-tumblr);}
+    .icon-linkedin {@include icon(before, fa-linkedin-square);}
+    .icon-vimeo {@include icon(before, fa-vimeo-square);}
+  }
+}
+/* Contact Frame styling - ends here */
+
+// ######################################################################### //
+/* MIN TABLET VIEW */
+@media (min-width: $min-tab) {
+  .webny-location .hero-inner {
+    margin: 80px 0px 0px 60px;
+    .location-type-tax {
+      font-size: 18px;
+      margin: 0px;
+    }
+    .location-horizontal-line{
+      margin: 10px 0px 0px 0px;
+    }
+    .location-counties-served-field {
+      margin-top: 40px;
+    }
+    // Labels above Counties Served, Address, Phone
+    .location-counties-label,
+    .location-address-label,
+    span.phone-label {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+    // Field content Counties Served, Address, Phone
+    .location-counties,
+    .location-address,
+    .para-phone-field a{
+      font-size: 26px;
+    }
+    .location-address p.address,
+    .location-counties-fieldwrapper {
+      line-height: 27px;
+    }
+  }
+  aside#locnav_sidebar {
+
+    min-width: 150px;
+    position: absolute;
+    height: 100%;
+    left: 0px;
+    width: 20%;
+    overflow: visible;
+    background: #242424;
+
+    &.stuck {
+      width: 20%;
+    }
+
+    header {
+      display: block;
+    }
+
+    ul {
+      li {
+        display: block;
+        &.see-all {
+          display: none;
+        }
+      }
+    }
+
+    span.arrow {
+      display: block;
+      position: absolute;
+      top: 84px;
+      right: -40px;
+      width: 0;
+      height: 0;
+      border-top: 20px solid transparent;
+      border-bottom: 20px solid transparent;
+      border-right: 20px solid transparent;
+      border-left: 20px solid #242424;
+      transition: top 0.3s 0s ease-in-out;
+    }
+  }
+
+  /* Action Share bar styles */
+  .webny-location-content-type .actions {
+    &.stuck {
+      .webny-action-top, .icon-arrow-up {
+        visibility: visible;
+        display: inline-block;
+        cursor: pointer;
+        color: #fff;
+        font-size: 13px;
+        font-family: 'ProximaNovaRegular';
+      }
+      .webny-action-label {
+        max-width: 50%;
+      }
+      .webny-action-top a, .icon-arrow-up a {
+        color: #fff;
+        visibility: visible;
+        &:hover {
+          color: $featured-card-icon-color-hover;
+        }
+      }
+      .webny-action-top {
+        padding: 12px 5px 10px 30px;
+      }
+      .icon-arrow-up {
+        padding-left: 5px;
+      }
+    }
+
+    .webny-share {
+      visibility: visible;
+      float: right;
+      display: inline-block;
+      padding: 12px 25px 8px 0;
+      .webny-action-share-label {
+        font-size: 13px;
+        font-family: 'ProximaNovaRegular';
+        display: inline-block;
+      }
+      .webny-action-share-button {
+        cursor: pointer;
+        display: inline-block;
+        padding: 0 5px;
+      }
+    }
+  }
+  /* End Action Share bar styles */
+
+  .loc-article-content {
+    width: 75%;
+    margin-left: 25%;
+    z-index: 2;
+    padding: 0 20px;
+  }
+
+  // needed to override global footer z-index for this content type since it has the left fixed positioned toc
+  .webny-global-footer {
+    z-index: 10;
+  }
+
+  .loc-next-section {
+    display: block;
+    .loc-next-section-links {
+      border-bottom: 1px solid #d9e2e2;
+      margin-bottom: 20px;
+
+      p {
+        width: 48%;
+        display: inline-block;
+        margin: 10px 0;
+        font-family: 'ProximaNovaBold';
+        font-size: 14px;
+        text-transform: uppercase;
+
+        &.loc-next-section-link {
+          width: 50%;
+          text-align: right;
+          font-family: 'ProximaNovaRegular';
+          font-size: 16px;
+          text-transform: none;
+          cursor: pointer;
+
+          &:before {
+            float: right;
+            margin-left: 10px;
+            vertical-align: middle;
+            font-family: 'icomoon';
+            content: "\e632";
+          }
+        }
+      }
+    }
+
+    .loc-next-section-title {
+      font-family: 'ProximaNovaRegular';
+      font-size: 30px;
+      color: #128ec3;
+      margin-bottom: 75px;
+      display: block;
+      cursor: pointer;
+    }
+  }
+}
+
+// ######################################################################### //
+/* CUSTOM SMALL TABLET VIEW */
+
+@media (max-width: 968px) {
+  /* Contact Frame styling - starts here */
+  .location-paragraphs{
+    .news-contact-area{
+      width: 100%;
+    }
+    fieldset.social-media-wrapper {
+      padding-bottom: 0;
+    }
+    .contact-info-wrapper {
+      .contact-col-1,
+      .contact-col-2 {
+        flex-direction: row;
+        width: 100% !important;
+      }
+    }
+  }
+  /* Contact Frame styling - ends here */
+}
+
+// ######################################################################### //
+/* PC VIEW */
+@media (min-width: $min-pc) {
+  aside#locnav_sidebar {
+    width: 20%;
+  }
+  .loc-article-content {
+    width: 60%;
+    margin-left: 20%;
+    padding: 0;
+
+    .loc-chapters {
+      padding: 0 !important;
+    }
+
+    section {
+      padding: 75px 50px 50px;
+      position: relative;
+    }
+  }
+  .webny-action-label {
+    max-width: 70%;
+  }
+  .webny-share {
+    padding: 12px 50px 8px 0;
+  }
+  /* Contact Frame styling - starts here */
+  .location-paragraphs {
+    .contact-info-wrapper {
+      padding-left: 0;
+      .contact-col-1,
+      .contact-col-2 {
+        width: 49%;
+      }
+    }
+  }
+  /* Contact Frame styling - ends here */
+}
