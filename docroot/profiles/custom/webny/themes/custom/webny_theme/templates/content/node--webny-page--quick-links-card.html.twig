@@ -19,7 +19,21 @@
     <div{{ content_attributes }}>
         <div class="webny-quick-links-image"><a href="{{ url }}">{{ image }}</a></div>
         <div class="webny-quick-links-card-text">
-            <div class="webny-quick-links-title"><a href="{{ url }}">{{ title }}</a></div>
+            <div class="webny-quick-links-title"><a href="{{ url }}">
+                {% if(title|length <= 65) %}
+                    {{ title }}
+                {% else %}
+
+                    {% set ws = true %}
+                    {% for num in node.label|length..0 %}
+                        {% if (num < 65 and  node.label|slice(num)|first == ' ' and ws != false) %}
+                            {% set ws = false %}
+                            {{ node.label[:num] ~ '...' }}
+                        {% endif %}
+                    {% endfor %}
+
+                {% endif %}
+                </a></div>
             <div class="webny-quick-links-description">{{ description }}</div>
         </div>
     </div>
