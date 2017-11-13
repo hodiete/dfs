@@ -76,7 +76,7 @@ $hero-keyword-text-color: $color-mono-white !default;
 
 .hero-no-image.hero-location {
   background-color: $hero-bkgd-color;
-  height: 440px;
+  height: 390px;
   width: 100%;
 }
 
@@ -553,7 +553,7 @@ $hero-keyword-text-color: $color-mono-white !default;
 
   .hero-no-image.hero-location {
     background-color: $hero-bkgd-color;
-    min-height: 660px;
+    height: 500px;
     width: 100%;
   }
 
@@ -752,11 +752,11 @@ $hero-keyword-text-color: $color-mono-white !default;
 
     // ALLOW HEIGHT TO BE LARGE IN THIS
     // REGION TO NOT HAVE OVERFLOW FROM HERO
-    .hero-has-image,
-    .hero-has-image .hero-image,
-    .hero-has-image-content{
-      min-height: 610px;
-    }
+    //  .hero-has-image,
+    // .hero-has-image .hero-image,
+    //  .hero-has-image-content{
+    //    min-height: 610px;
+    //  }
 
     .hero-inner.hero-news-inner{
       h1{
@@ -842,7 +842,6 @@ $hero-keyword-text-color: $color-mono-white !default;
 
   } // END HERO-layout
 
-
   .front {
     .hero-layout {
 
@@ -878,12 +877,6 @@ $hero-keyword-text-color: $color-mono-white !default;
 // ######################################################################### //
 /* FULL DESKTOP VIEW */
 @media (min-width: 60em) {
-  .webny-location {
-    .hero-layout {
-      min-height: 660px;
-    }
-  }
-
   .hero-layout {
 
     .hero-inner{
@@ -900,10 +893,6 @@ $hero-keyword-text-color: $color-mono-white !default;
     .hero-has-image.hero-news .hero-image,
     .hero-has-image.hero-news .hero-has-image-content {
       min-height: 512px;
-    }
-
-    .hero-has-image .hero-location{
-      min-height: 660px;
     }
 
     .hero-inner.hero-news-inner{
