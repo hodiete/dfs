@@ -44,8 +44,11 @@
     {% set hero_image_class = 'hero-has-image' %}
     {% set hero_has_image_content = 'hero-has-image-content' %}
 {% endif %}
+{% set nav_toggle = node.field_webny_event_navtoggle.value %}
+{% set toc_includes_body = true %}
+{% set toc_content_sections = content.field_webny_event_contentsect|without('label') %}
 
-<div class="webny-event-content-page">
+<div class="webny-event-content-page webny-toc-page">
 
     {# NEW HERO SECTION #}
 
@@ -77,61 +80,12 @@
 
         {# Event date block #}
         <div class="hero-event--date-block">
-            {% include '@webny_theme/content/webny--event-date.html.twig' %}
+            {% include '@webny_theme/includes/webny--event-date.html.twig' %}
         </div>
 
     </article>
 
-    <div class="actions">
-        <div class="webny-share-bar webny-action-bar">
-            <div class="webny-share">
-                <div class="webny-share-bar-icons">
-                    <div class="webny-action-share-label">SHARE</div>
-                    <div class="webny-action-share-button">
-                        <a href="mailto:?Subject={{ site_name }}: {{ node.label }}&Body={{ url('<current>') }}" target="_blank"><span class="icon-email"></span></a>
-                    </div>
-                    <div class="webny-action-share-button">
-                        <a href="http://www.facebook.com/share.php?u={{ url('<current>') }}" target="_blank"><span class="icon-facebook"></span></a>
-                    </div>
-                    <div class="webny-action-share-button">
-                        <a href="https://twitter.com/intent/tweet?text={{ node.label }}&url={{ url('<current>') }}" target="_blank"><span class="icon-twitter"></span></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    {% if node.field_webny_event_navtoggle.value == 1 %}
-        {# NAV ENABLED: PARAGRAPHS SECTION WITH SIDEBAR FOR NAVIGATOR / TOC#}
-        <div class="page-paragraphs gp-paragraphs with-nav-sidebar">
-            <div class="page-paragraphs-in">
-                <aside id="gpnav_sidebar">
-                    <header>Sections</header>
-                    <ul>
-                        <li class="see-all"><a href="#" class="icon-all_steps"><span>See All</span></a></li>
-                    </ul>
-                    <span class="arrow"></span>
-                </aside>
-                <div class="gp-article-content">
-                    <div class="gp-chapters">
-                        {{ content.body }}
-                        {{ content.field_webny_event_contentsect|without('label') }}
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    {% else %}
-
-        {# NAV DISABLED: GENERIC PARAGRAPHS SECTION FOR USE WITHOUT NAV FUNCTIONALITY #}
-        <div class="page-paragraphs gp-paragraphs">
-            <div class="page-paragraphs-in">
-                {{ content.body }}
-                {{ content.field_webny_event_contentsect|without('label') }}
-            </div>
-        </div>
-
-    {% endif %}
+    {% include '@webny_theme/includes/webny--action-bar.html.twig' %}
+    {% include '@webny_theme/includes/webny--toc.html.twig' %}
 
 </div>
