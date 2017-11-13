@@ -364,6 +364,7 @@ class webnySecondaryNavForm extends ConfigFormBase {
                 'cols' => '100',
             ),
             '#wysiwyg' => TRUE,
+            '#allowed_formats' => array('full_html', 'basic_html'),
         );
     }
 
@@ -428,6 +429,7 @@ class webnySecondaryNavForm extends ConfigFormBase {
                 'cols' => '100',
             ),
             '#wysiwyg' => TRUE,
+            '#allowed_formats' => array('full_html', 'basic_html'),
         );
     }
 
