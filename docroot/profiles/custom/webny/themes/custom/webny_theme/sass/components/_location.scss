@@ -13,8 +13,7 @@
   background-color: black;
 }
 .webny-location .hero-inner {
-  padding: 30px 0 10px 20px;
-  margin-bottom: 50px;
+  padding: 35px 0 10px 20px;
   .location-type-tax{
     font-family: $base-font;
     font-size: 12px;
@@ -31,7 +30,7 @@
   .location-counties-served-field,
   .location-address-field,
   .location-phone {
-    margin-top: 30px;
+    margin-top: 12px;
   }
   // Labels above Counties Served, Address, Phone
   .location-counties-label,
@@ -74,6 +73,11 @@
 
   .location-address-field .location-address {
     margin-right: 40px;
+  }
+
+  // Bottom padding on phone field area - breathing room for sharebar
+  .location-phone {
+    padding-bottom: 80px;
   }
 
   // Line up both Phone Numbers on one line with a Vertical divider
@@ -401,7 +405,7 @@ aside#locnav_sidebar {
 /* MIN TABLET VIEW */
 @media (min-width: $min-tab) {
   .webny-location .hero-inner {
-    margin: 80px 0px 0px 60px;
+    margin: 50px 0px 0px 40px;
     .location-type-tax {
       font-size: 18px;
       margin: 0px;
@@ -417,7 +421,16 @@ aside#locnav_sidebar {
     .location-address-label,
     span.phone-label {
       font-size: 18px;
-      margin-bottom: 10px;
+      margin-bottom: 5px;
+    }
+    // Counties Served and Address field
+    .location-counties-served-field,
+    .location-address-field {
+      margin-top: 15px;
+    }
+
+    .location-phone {
+      margin-top: 25px;
     }
     // Field content Counties Served, Address, Phone
     .location-counties,
@@ -580,6 +593,15 @@ aside#locnav_sidebar {
 /* CUSTOM SMALL TABLET VIEW */
 
 @media (max-width: 968px) {
+  // Custom override for location hero height with image content
+  .hero-layout {
+    .hero-has-image .hero-location,
+    .hero-has-image .hero-location .hero-image,
+    .hero-location-inner .hero-has-image-content {
+      min-height: 380px;
+    }
+  }
+
   /* Contact Frame styling - starts here */
   .location-paragraphs{
     .news-contact-area{
@@ -602,6 +624,16 @@ aside#locnav_sidebar {
 // ######################################################################### //
 /* PC VIEW */
 @media (min-width: $min-pc) {
+  // Custom override for location hero height with image content
+  .webny-location {
+      .hero-layout {
+        .hero-has-image .hero-location,
+        .hero-has-image .hero-location .hero-image,
+        .hero-location-inner .hero-has-image-content {
+          min-height: 380px !important;
+        }
+    }
+  }
   aside#locnav_sidebar {
     width: 20%;
   }
