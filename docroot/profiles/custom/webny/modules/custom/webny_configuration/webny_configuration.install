@@ -2858,7 +2858,7 @@ function webny_configuration_update_8134() {
  * - iojonep
  */
 function webny_configuration_update_8135(){
-    
+
     $config_factory = \Drupal::configFactory();
     $profile_config = \Drupal::service('webny.profile_config');
 
@@ -3038,7 +3038,7 @@ function webny_configuration_update_8140() {
  * Implements hook_update_n().
  *
  * Install allowed_formats and Refresh webny_text_editors and webny_text_formats.
- * 
+ *
  */
 function webny_configuration_update_8141() {
     \Drupal::service('module_installer')
@@ -3094,10 +3094,10 @@ function webny_configuration_update_8142(){
  * Implements hook_update_n().
  *
  * Install allowed_formats and Refresh webny_text_editors and webny_text_formats.
- * 
+ *
  */
 function webny_configuration_update_8143() {
-    
+
     \Drupal::service('module_installer')
         ->uninstall(['webny_text_formats']);
     \Drupal::service('module_installer')
@@ -3109,7 +3109,7 @@ function webny_configuration_update_8143() {
  * Implements hook_update_n().
  *
  * Refresh webny document content type
- * 
+ *
  */
 function webny_configuration_update_8144() {
     \Drupal::service('module_installer')
@@ -3231,9 +3231,9 @@ function webny_configuration_update_8149() {
 
     print webny_configuration_uninstall_module('webny_wysiwyg_frame');
     print webny_configuration_enable_module('webny_wysiwyg_frame');
-        
+
     print webny_configuration_uninstall_module('webny_generic_content_type');
-    print webny_configuration_enable_module('webny_generic_content_type');    
+    print webny_configuration_enable_module('webny_generic_content_type');
 
     // REFRESH
     $config_factory = \Drupal::configFactory();
@@ -3309,7 +3309,7 @@ function webny_configuration_update_8152() {
     print webny_configuration_enable_module('webny_paragraphs_types');
 
     print webny_configuration_uninstall_module('webny_generic_content_type');
-    print webny_configuration_enable_module('webny_generic_content_type');    
+    print webny_configuration_enable_module('webny_generic_content_type');
 
     // REFRESH
 
@@ -3741,7 +3741,7 @@ function webny_configuration_update_8168() {
     ->install(['webny_what_s_related_frame']);
 
   //REINSTALL GENERIC PAGE
- 
+
   \Drupal::service('module_installer')
     ->uninstall(['webny_generic_content_type']);
   \Drupal::service('module_installer')
@@ -3873,11 +3873,7 @@ function webny_configuration_update_8172() {
         ->install(['webny_document_content_type']);
 }
 
-/**
- * Implements hook_update_n().
- *
- *
- * Permissions update for Content Authors in What's Related paragraph type.
+ /* Permissions update for Content Authors in What's Related paragraph type.
  */
 function webny_configuration_update_8173() {
   $config_factory = \Drupal::configFactory();
@@ -3894,9 +3890,46 @@ function webny_configuration_update_8173() {
   $config_factory->reset();
 }
 
+
+
+/**
+ * REFRESH THE SECONDARY NAVIGATION MODULE -- UPDATED FORM
+ * NDD-1172
+ * -iojonep
+ */
+function webny_configuration_update_8174() {
+
+    // REFRESH DOCUMENT CONTENT TYPE
+    \Drupal::service('module_installer')
+        ->uninstall(['webny_secondary_nav']);
+    \Drupal::service('module_installer')
+        ->install(['webny_secondary_nav']);
+}
+
+/**
+ * Implements hook_update_n().
+ *
+ *
+ * Permissions update for Quick Links paragraph type.
+ */
+function webny_configuration_update_8175() {
+  $config_factory = \Drupal::configFactory();
+  $profile_config = \Drupal::service('webny.profile_config');
+  // Import new/changed configuration.
+  $config_to_update = [
+    'user.role.anonymous',
+    'user.role.authenticated',
+    'user.role.content_author'
+  ];
+  $profile_config->bulkImport($config_to_update);
+
+  // Clear the config cache.
+  $config_factory->reset();
+
+}
 /*NDD-1112 frame background colors 
 -Beth */
-function webny_configuration_update_8174() {
+function webny_configuration_update_8176() {
     
     \Drupal::service('module_installer')
         ->uninstall(['webny_summary_frame']);

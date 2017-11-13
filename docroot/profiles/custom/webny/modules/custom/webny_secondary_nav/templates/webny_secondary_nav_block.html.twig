@@ -15,6 +15,7 @@
         {% set leftSideClass  = 'secnav-equal-space' %}
         {% set rightSideClass = 'secnav-equal-space' %}
         {% set borderPipeHTML = '<span class="secnav-pipe">|</span>' %}
+        {% set borderHrHTML = '<hr class="secnav-hr" />' %}
 
     {% else %}
 
@@ -42,7 +43,9 @@
         {% endif %}
 
         {# WILL DISPLAY BASED ON REQUIREMENTS #}
-        {{ borderPipeHTML|raw }}
+            {{ borderPipeHTML|raw }}
+            {{ borderHrHTML|raw }}
+
 
         {# IF THERE IS A SECOND AREA SELECTED -- DISPLAY  #}
         {% if sectionTwoChoice != 'none_two' %}
