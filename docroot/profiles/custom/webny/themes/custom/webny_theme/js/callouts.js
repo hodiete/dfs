@@ -61,8 +61,11 @@
             // REMOVE ALL ACTIVE CALLOUT SECTIONS
             $('.webny-callouts-section').removeClass('activeCalloutSection');
 
-            if (!$(calloutSectionId).hasClass('activeCalloutSection')) {
-              $(calloutSectionId).addClass('activeCalloutSection');
+            // CHECK IF THE FIRST SECTION HAS A CALLOUT
+            if (!$(calloutSectionId).hasClass('activeCalloutSection') &&
+              $('.page-paragraphs .generic_para').first().children().hasClass('webny-callouts-section')) {
+
+                $(calloutSectionId).addClass('activeCalloutSection');
             }
 
             if (direction === 'up') {
@@ -88,7 +91,7 @@
 
         // =====================================================================
         // WAYPOINT FUNCTION FOR FIXED RIGHTHAND NAVIGATION -- HEADER TRIGGER
-        $('.webny-callouts-section').not(':first').waypoint(function (direction) {
+        $('.webny-callouts-section').waypoint(function (direction) {
 
           // ASSIGN ELEMENT
           this.sectionId = '#' + this.element.id;
