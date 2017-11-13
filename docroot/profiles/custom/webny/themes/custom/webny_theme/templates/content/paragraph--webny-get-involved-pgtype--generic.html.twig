@@ -22,7 +22,7 @@
 
 {# DISPLAY THE PARAGRAPH #}
 {% block paragraph %}
-    <section id="{{ 'toc_' ~ paragraph.id() }}" rel="{{ gp_status }}" class="generic_para {{ paragraph.bundle() }} {{ gp_enabled }}" >
+    <section id="{{ 'toc_' ~ paragraph.id() }}" rel="{{ gp_status }}" class="toc-para {{ paragraph.bundle() }} {{ gp_enabled }}" >
         {{ content }}
     </section>
 {% endblock paragraph %}

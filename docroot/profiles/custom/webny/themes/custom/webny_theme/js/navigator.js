@@ -12,7 +12,7 @@
   Drupal.behaviors.navigator = {
     attach: function (context, settings) {
       // Loop through each section (paragraph)
-      $('.gp-chapters section').once().each(function () {
+      $('.toc-chapters section').once().each(function () {
         // define next section object
         var nextSection = $(this).next();
         var hash;
@@ -26,7 +26,7 @@
           hash = $(this).children(':first').text().toLowerCase().trim().replace(/[^a-zA-Z0-9]/g, '-');
         }
         // replacing hash for contact paragraph
-        else if ($(this).hasClass('generic_para webny-paragraph-contact')) {
+        else if ($(this).hasClass('toc-para webny-paragraph-contact')) {
 
           // grab agency text to build anchor hash
           agency = $(this).children().children().children().children('span').text().trim();
@@ -36,7 +36,7 @@
           hash = contact.toLowerCase().trim().replace(/[^a-zA-Z0-9]/g, '-');
         }
         // replacing hash for documents paragraph
-        else if ($(this).hasClass('generic_para webny-documents')) {
+        else if ($(this).hasClass('toc-para webny-documents')) {
           // for documents reference, if it has a title it will have the title in the first span within the first h2
           if ($(this).children('h2').children('span:first').text().length === 0) {
             // text length is 0; no title
@@ -49,7 +49,7 @@
           }
         }
         // replacing hash for whats related
-        else if ($(this).hasClass('generic_para webny_whats_related_pgtype')) {
+        else if ($(this).hasClass('toc-para webny_whats_related_pgtype')) {
           hash = $(this).children().children('h3').text().toLowerCase().trim().replace(/[^a-zA-Z0-9]/g, '-');
         }
 
@@ -58,25 +58,25 @@
         if ($(this).attr('rel') === 'enabled') {
           // if this is a wysiwyg paragraph, grab text from first child
           if ($(this).hasClass('webny_wysiwyg_pgtype')) {
-            $('#gpnav_sidebar ul').append('<li><a href="#' + hash + '">' + $(this).children(':first').text() + '</a></li>');
+            $('#toc-sidebar ul').append('<li><a href="#' + hash + '">' + $(this).children(':first').text() + '</a></li>');
           }
           // if this is a contact paragraph, use text from variable
-          else if ($(this).hasClass('generic_para webny-paragraph-contact')) {
-            $('#gpnav_sidebar ul').append('<li><a href="#' + hash + '">' + contact + '</a></li>');
+          else if ($(this).hasClass('toc-para webny-paragraph-contact')) {
+            $('#toc-sidebar ul').append('<li><a href="#' + hash + '">' + contact + '</a></li>');
           }
           // if this is a documents paragraph, use title or generic title if needed
-          else if ($(this).hasClass('generic_para webny-documents')) {
+          else if ($(this).hasClass('toc-para webny-documents')) {
             // same conditional as hash creation. verify if documents has a title or not based on text length in span
             if ($(this).children('h2').children('span:first').text().length === 0) {
-              $('#gpnav_sidebar ul').append('<li><a href="#' + hash + '">Documents</a></li>');
+              $('#toc-sidebar ul').append('<li><a href="#' + hash + '">Documents</a></li>');
             }
             else {
-              $('#gpnav_sidebar ul').append('<li><a href="#' + hash + '">' + $(this).children(':first').text() + '</a></li>');
+              $('#toc-sidebar ul').append('<li><a href="#' + hash + '">' + $(this).children(':first').text() + '</a></li>');
             }
           }
           // if this is a whats related paragraph
-          else if ($(this).hasClass('generic_para webny_whats_related_pgtype')) {
-            $('#gpnav_sidebar ul').append('<li><a href="#' + hash + '">' + $(this).children().children('h3').text() + '</a></li>');
+          else if ($(this).hasClass('toc-para webny_whats_related_pgtype')) {
+            $('#toc-sidebar ul').append('<li><a href="#' + hash + '">' + $(this).children().children('h3').text() + '</a></li>');
           }
           $(this).children(':first').attr('name', hash);
         }
@@ -84,51 +84,51 @@
 
         if (nextSection.children(':first').text()) {
           if ($(nextSection).hasClass('webny_wysiwyg_pgtype')) {
-            $(this).children('.gp-next-section').children('.gp-next-section-title').html(nextSection.children(':first').text());
+            $(this).children('.next-section').children('.next-section-title').html(nextSection.children(':first').text());
           }
-          else if ($(nextSection).hasClass('generic_para webny-paragraph-contact')) {
+          else if ($(nextSection).hasClass('toc-para webny-paragraph-contact')) {
             var nsAgency;
             var nsContact;
             // grab agency text to build anchor hash
             nsAgency = $(nextSection).children().children().children().children('span').text().trim();
             // create string that is used on generic page for contact paragraph
             nsContact = 'Contact ' + nsAgency;
-            $(this).children('.gp-next-section').children('.gp-next-section-title').html(nsContact);
+            $(this).children('.next-section').children('.next-section-title').html(nsContact);
           }
-          else if ($(nextSection).hasClass('generic_para webny-documents')) {
+          else if ($(nextSection).hasClass('toc-para webny-documents')) {
             // same conditional as hash creation. verify if documents has a title or not based on children in first div
             if ($(nextSection).children('h2').children('span:first').text().length === 0) {
-              $(this).children('.gp-next-section').children('.gp-next-section-title').html('Documents');
+              $(this).children('.next-section').children('.next-section-title').html('Documents');
             }
             else {
-              $(this).children('.gp-next-section').children('.gp-next-section-title').html(nextSection.children(':first').text());
+              $(this).children('.next-section').children('.next-section-title').html(nextSection.children(':first').text());
             }
           }
-          else if ($(nextSection).hasClass('generic_para webny_whats_related_pgtype')) {
-            $(this).children('.gp-next-section').children('.gp-next-section-title').html(nextSection.children().children('h3').text());
+          else if ($(nextSection).hasClass('toc-para webny_whats_related_pgtype')) {
+            $(this).children('.next-section').children('.next-section-title').html(nextSection.children().children('h3').text());
           }
         }
         else {
-          $(this).children('.gp-next-section').css('display', 'none');
+          $(this).children('.next-section').css('display', 'none');
         }
       });
 
       // next section click event
-      $('.gp-next-section-title').once().click(function (e) {
+      $('.next-section-title').once().click(function (e) {
         e.preventDefault();
         var hash = $(this).text().toLowerCase().trim().replace(/[^a-zA-Z0-9]/g, '-');
-        $('#gpnav_sidebar li a[href="#' + hash + '"]').trigger('click');
+        $('#toc-sidebar li a[href="#' + hash + '"]').trigger('click');
       });
 
       // next section continue click event
-      $('.gp-next-section-link').once().click(function (e) {
+      $('.next-section-link').once().click(function (e) {
         e.preventDefault();
-        var hash = $(this).parent().parent().children('.gp-next-section-title').text().toLowerCase().trim().replace(/[^a-zA-Z0-9]/g, '-');
-        $('#gpnav_sidebar li a[href="#' + hash + '"]').trigger('click');
+        var hash = $(this).parent().parent().children('.next-section-title').text().toLowerCase().trim().replace(/[^a-zA-Z0-9]/g, '-');
+        $('#toc-sidebar li a[href="#' + hash + '"]').trigger('click');
       });
 
       // clicking the see-all icon in mobile will toggle classes for control over toc
-      $('#gpnav_sidebar ul li.see-all').once().click(function (e) {
+      $('#toc-sidebar ul li.see-all').once().click(function (e) {
         e.preventDefault();
 
         if ($(this).parent().hasClass('sidebar-closed')) {
@@ -140,7 +140,7 @@
       });
 
       // toc item click event
-      $('#gpnav_sidebar ul li a').click(function (e) {
+      $('#toc-sidebar ul li a').click(function (e) {
         e.preventDefault();
         // only fire if the click is on anything other than see-all icon li
         if (!$(this).parent().hasClass('see-all')) {
@@ -151,7 +151,7 @@
           dest = clickedFrame.offset().top;
 
           // remove all active classes from li's
-          $('#gpnav_sidebar ul li').each(function () {
+          $('#toc-sidebar ul li').each(function () {
             $(this).removeClass('active');
           });
           // add active class to currently clicked parent
@@ -177,11 +177,11 @@
         handler: function (direction) {
           if (direction === 'down') {
             $('.actions').addClass('stuck');
-            $('#gpnav_sidebar').addClass('stuck');
+            $('#toc-sidebar').addClass('stuck');
           }
           else if (direction === 'up') {
             $('.actions').removeClass('stuck');
-            $('#gpnav_sidebar').removeClass('stuck');
+            $('#toc-sidebar').removeClass('stuck');
           }
         },
         enabled: false
@@ -194,21 +194,21 @@
         // if hash exists
         if(hash) {
           // trigger a click on the sidebar a where href == hash essentially loading the page and faking a click moving the scroll down
-          $('#gpnav_sidebar li a[href="' + hash + '"]').trigger('click');
+          $('#toc-sidebar li a[href="' + hash + '"]').trigger('click');
         }
         else {
           // set first item in toc as active on load if there is no hash
-          $('#gpnav_sidebar ul').children(':nth-child(2)').addClass('active');
+          $('#toc-sidebar ul').children(':nth-child(2)').addClass('active');
         }
 
         // if see-all is visible meaning in mobile view
-        if ($('#gpnav_sidebar ul li.see-all').is(':visible')) {
+        if ($('#toc-sidebar ul li.see-all').is(':visible')) {
           // add class to mark ul as closed and mobile view
-          $('#gpnav_sidebar ul').addClass('sidebar-closed').addClass('mobile');
+          $('#toc-sidebar ul').addClass('sidebar-closed').addClass('mobile');
         }
         else {
           // in larger views than mobile, toc is always opened
-          $('#gpnav_sidebar ul').addClass('sidebar-opened');
+          $('#toc-sidebar ul').addClass('sidebar-opened');
         }
 
         // enable the waypoint object
@@ -218,9 +218,9 @@
         if ($('.actions').offset().top - $(window).scrollTop() < 0) {
           // actionbar location is negative; apply classes
           $('.actions').addClass('stuck');
-          $('#gpnav_sidebar').addClass('stuck');
+          $('#toc-sidebar').addClass('stuck');
           // remove first element class of active as this page was loaded low on the page
-          $('#gpnav_sidebar ul').children(':nth-child(2)').removeClass('active');
+          $('#toc-sidebar ul').children(':nth-child(2)').removeClass('active');
         }
 
       });
@@ -228,25 +228,25 @@
       $(window).on('resize', function () {
         // min-tab breakpoint
         if ($(window).width() >= 480) {
-          $('#gpnav_sidebar ul').removeClass('sidebar-closed').addClass('sidebar-opened').removeClass('mobile');
+          $('#toc-sidebar ul').removeClass('sidebar-closed').addClass('sidebar-opened').removeClass('mobile');
         }
         else {
-          $('#gpnav_sidebar ul').removeClass('sidebar-opened').addClass('sidebar-closed').addClass('mobile');
+          $('#toc-sidebar ul').removeClass('sidebar-opened').addClass('sidebar-closed').addClass('mobile');
         }
       });
 
       // waypoint library to handle scrolling through the page functionality
-      $('.gp-chapters section').waypoint(function (direction) {
+      $('.toc-chapters section').waypoint(function (direction) {
         var sectonId = this.element.id;
         var sectionName = $('#' + sectonId).children(':first').attr('name');
         // while scrolling if toc li anchor is same as the currently scrolled section, add active class
-        $('#gpnav_sidebar ul li').each(function () {
+        $('#toc-sidebar ul li').each(function () {
           if ($(this).children('a').attr('href') === '#' + sectionName) {
             $(this).addClass('active').show();
-            var item = $('#gpnav_sidebar ul li.active');
+            var item = $('#toc-sidebar ul li.active');
             if (item.position()) {
               // assign arrow position based on section currently scrolled
-              $('#gpnav_sidebar span.arrow').css({top: Math.round(item.position().top + item.height() / 2 + 2) + 'px'});
+              $('#toc-sidebar span.arrow').css({top: Math.round(item.position().top + item.height() / 2 + 2) + 'px'});
             }
           }
           else {
