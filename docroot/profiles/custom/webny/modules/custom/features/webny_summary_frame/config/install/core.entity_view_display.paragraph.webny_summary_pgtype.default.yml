@@ -5,6 +5,7 @@ dependencies:
     - field.field.paragraph.webny_summary_pgtype.field_webny_summary_argument1
     - field.field.paragraph.webny_summary_pgtype.field_webny_summary_argument2
     - field.field.paragraph.webny_summary_pgtype.field_webny_summary_argument3
+    - field.field.paragraph.webny_summary_pgtype.field_webny_summary_color
     - field.field.paragraph.webny_summary_pgtype.field_webny_summary_cta
     - field.field.paragraph.webny_summary_pgtype.field_webny_summary_headline
     - field.field.paragraph.webny_summary_pgtype.field_webny_summary_keypoint1
@@ -118,7 +119,7 @@ content:
     type: text_default
     region: content
   field_webny_summary_cta:
-    weight: 6
+    weight: 3
     label: hidden
     settings:
       trim_length: 128
@@ -171,4 +172,5 @@ content:
     region: content
 hidden:
   created: true
+  field_webny_summary_color: true
   uid: true

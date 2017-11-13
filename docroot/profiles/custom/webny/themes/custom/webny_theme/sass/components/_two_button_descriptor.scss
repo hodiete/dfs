@@ -6,7 +6,7 @@
 //
 // Style guide: components.two_button_descriptor
 
-// color variables
+// color variables (default-secondary)
 $tbd-frame-bkgd-color: $color-secondary !default;
 $tbd-frame-title-color: $color-mono-black !default;
 $tbd-frame-headline-color: $color-mono-white !default;
@@ -14,12 +14,32 @@ $tbd-frame-descriptor-title-color: $color-mono-white !default;
 $tbd-frame-descriptor-text-color: $color-mono-black !default;
 $tbd-frame-descriptor-border: $color-secondary !default;
 $tbd-frame-button: $color-mono-white !default;
+// color variables (primary)
+$tbd-frame-bkgd-color-primary: $color-accent-primary !default;
+$tbd-frame-title-color-primary: $color-mono-black !default;
+$tbd-frame-headline-color-primary: $color-primary !default;
+$tbd-frame-description-color-primary: $color-mono-black !default;
+// color variables (monochrome light)
+$tbd-frame-bkgd-color-monochrome: $color-mono-lt !default;
+$tbd-frame-title-color-monochrome: $color-mono-black !default;
+$tbd-frame-headline-color-monochrome: $color-mono-black !default;
+$tbd-frame-descriptor-title-color-monochrome: $color-primary !default;
 // REASSIGNED VALS FOR GLOBAL SCOPE -- SUMMARY
 // this overrides general button variables in config.scss
 $tbd-button-border-color:           $button-border-color !default;
 $tbd-button-text-color:             $button-text-color !default;
 $tbd-button-back-color:             $button-bkgd-transparent !default;
 $tbd-button-hover-back-color:       $button-black-50 !default;
+// Primary button colors
+$tbd-button-border-color-primary:            $color-mono-black !default;
+$tbd-button-text-color-primary:              $color-mono-black !default;
+$tbd-button-back-color-primary:              $button-bkgd-transparent !default;
+$tbd-button-hover-back-color-primary:        $button-white-50 !default;
+// Monochrome button colors 
+$tbd-button-border-color-monochrome:      $color-primary !default;
+$tbd-button-text-color-monochrome:        $button-text-color !default;
+$tbd-button-back-color-monochrome:        $button-bkgd-color!default;
+$tbd-button-hover-back-color-monochrome:  $color-mono-black !default;
 
 // ######################################################################### //
 /* START STYLING MOBILE FIRST UNDER HERE */
@@ -113,6 +133,56 @@ $tbd-button-hover-back-color:       $button-black-50 !default;
   // BUTTON CALLS
   @include frame-button-base();
 
+}
+
+// if primary background color is selected for frame
+.paragraph--type--webny-tbd-pgtype.primary {
+  background-color: $tbd-frame-bkgd-color-primary;
+  .descriptor--field-webny-tbd-title {
+    color: $tbd-frame-title-color-primary;
+  }
+  .descriptor--field-webny-tbd-headline {
+    color: $tbd-frame-headline-color-primary;
+  }
+  .descriptor--field-webny-tbd-cta1,
+  .descriptor--field-webny-tbd-cta2 {
+    a {
+        color: $tbd-button-text-color-primary;
+        border: $frame-button-border-size solid $tbd-button-border-color-primary;
+        &:hover {
+          border-color: $tbd-button-border-color-primary;
+          background-color: $tbd-button-hover-back-color-primary;
+        }
+    }
+  }
+}
+// if monochrome light background color is selected for frame
+.paragraph--type--webny-tbd-pgtype.monochrome {
+  background-color: $tbd-frame-bkgd-color-monochrome;
+  .descriptor--field-webny-tbd-title {
+    color: $tbd-frame-title-color-monochrome;
+  }
+  .descriptor--field-webny-tbd-headline {
+    color: $tbd-frame-headline-color-monochrome;
+  }
+  .descriptor--field-webny-tbd-descriptortitle1,
+  .descriptor--field-webny-tbd-descriptortitle2 {
+    color: $summary-frame-keypt-title-color-monochrome;
+  }
+  .descriptor--field-webny-tbd-cta1,
+  .descriptor--field-webny-tbd-cta2 {
+    a {
+      color: $tbd-button-text-color-monochrome;
+      background-color: $tbd-button-back-color-monochrome;
+      border: $frame-button-border-size solid $tbd-button-border-color-monochrome;
+
+      &:hover {
+        background-color: $tbd-button-hover-back-color-monochrome;
+        border-color: $tbd-button-border-color-monochrome;
+      }
+
+    }
+  }
 }
 
 // ######################################################################### //
