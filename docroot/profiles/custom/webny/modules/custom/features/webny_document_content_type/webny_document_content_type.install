@@ -1,0 +1,64 @@
+<?php
+
+/**
+ * We are commenting out this update hook because it is going to be part of a
+ * multi-part migration that updates nodes as well.
+ *
+ * See NDD-1205.
+ */
+
+///**
+// * Migrate public files to private files.
+// */
+//function webny_document_content_type_update_8001(&$sandbox) {
+//  if (isset($_ENV['AH_SITE_ENVIRONMENT'])) {
+//    if (!isset($sandbox['file_ids'])) {
+//      $sandbox['current'] = 0;
+//
+//      $file_ids = _webny_document_content_type_get_document_file_ids();
+//      $sandbox['file_ids'] = array_chunk($file_ids, 10);
+//
+//      $sandbox['total'] = count($sandbox['fids']);
+//
+//      if ($sandbox['total'] === 0){
+//        $sandbox['#finished'] = 1;
+//        return;
+//      }
+//    }
+//
+//    $sandbox['current']++;
+//
+//    print 'Starting chunk ' . $sandbox['current'] . ' of ' . $sandbox['total'] . PHP_EOL;
+//
+//    $file_ids_chunk = $sandbox['file_ids'][$sandbox['current'] - 1];
+//
+//    foreach($file_ids_chunk as $file_id) {
+//      _webny_document_content_type_move_file($file_id);
+//    }
+//
+//    // If finished == 1, then Drupal knows we have finished all the passes needed by this update.
+//    $sandbox['#finished'] = $sandbox['current'] / $sandbox['total'];
+//  }
+//}
+
+function _webny_document_content_type_get_document_file_ids() {
+  // @var $query \Drupal\Core\Database\Query\SelectInterface.
+  $query = \Drupal::database()->select('node_revision__field_webny_document_file_upload', 'docf');
+  $query->addField('docf', 'field_webny_document_file_upload_target_id', 'fid');
+  $query->distinct();
+  $file_ids = $query->execute()->fetchCol();
+
+  return $file_ids;
+}
+
+function _webny_document_content_type_move_file($file_id) {
+  $file = \Drupal\file\Entity\File::load($file_id);
+
+  $path = $file->getFileUri();
+
+  if (strpos($path, 'public://') >= 0) {
+    print "Moving file $file_id : $path.\n";
+
+    file_move($file, str_replace('public://', 'private://', $path));
+  }
+}
