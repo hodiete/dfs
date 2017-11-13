@@ -15,15 +15,6 @@
                 {{ title_suffix }}
             {% endif %}
 
-            {% if display_submitted %}
-                <footer>
-                    {{ author_picture }}
-                    <div{{ author_attributes }}>
-                        {% trans %}Submitted by {{ author_name }} on {{ date }}{% endtrans %}
-                        {{ metadata }}
-                    </div>
-                </footer>
-            {% endif %}
             {%  block card_footer %}{% endblock card_footer %}
         </div>
         {%  block card_content %}{% endblock card_content %}
