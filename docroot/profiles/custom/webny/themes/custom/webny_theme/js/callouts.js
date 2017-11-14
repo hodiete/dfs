@@ -62,13 +62,6 @@
             this.actionId = $('.webny-callout-inner').children('div:first-child').attr('id').substring(4, 20);
             var calloutSectionId = '#webny-callouts-section-' + this.actionId.substring(0, 7);
 
-            // CHECK IF THE FIRST SECTION HAS A CALLOUT
-            if (!$(calloutSectionId).hasClass('activeCalloutSection') &&
-              $('.page-paragraphs .generic_para').first().children().hasClass('webny-callouts-section')) {
-
-                $(calloutSectionId).addClass('activeCalloutSection');
-            }
-
             if (direction === 'up') {
               // REMOVE ALL ACTIVE CALLOUT SECTIONS
               $('.webny-callouts-section').removeClass('activeCalloutSection');
