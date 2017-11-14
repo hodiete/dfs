@@ -3,7 +3,6 @@ status: true
 dependencies:
   config:
     - field.storage.paragraph.field_webny_ql_col_1
-    - node.type.webny_document
     - node.type.webny_generic_page
     - node.type.webny_landing_page
     - node.type.webny_news
@@ -24,7 +23,6 @@ settings:
   handler: 'default:node'
   handler_settings:
     target_bundles:
-      webny_document: webny_document
       webny_generic_page: webny_generic_page
       webny_landing_page: webny_landing_page
       webny_news: webny_news
@@ -34,5 +32,5 @@ settings:
       field: title
       direction: ASC
     auto_create: false
-    auto_create_bundle: webny_document
+    auto_create_bundle: webny_generic_page
 field_type: entity_reference

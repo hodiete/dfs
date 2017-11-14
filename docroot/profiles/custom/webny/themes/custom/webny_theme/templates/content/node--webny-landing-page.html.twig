@@ -199,6 +199,11 @@
 
 </article>
 
+{# IF IS NOT A FILTER PAGE  #}
+{% if node.field_webny_results_view_to_disp.value is empty %}
+
+    {# PRINT THE SHAREBAR #}
+
 <div class="webny-share-bar">
     <div class="webny-share">
         <div class="webny-share-bar-icons">
@@ -215,6 +220,8 @@
         </div>
     </div>
 </div>
+
+{% endif %}
 
 {% endif %}
 

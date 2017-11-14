@@ -6,11 +6,19 @@
 //
 // Style guide: components.get_involved
 
-// color variables
+// color variables (default - primary)
 $get-inv-frame-bkgd-color: $color-accent-primary !default;
 $get-inv-frame-title-color: $color-mono-black !default;
 $get-inv-frame-headline-color: $color-primary !default;
 $get-inv-frame-description-color: $color-mono-black !default;
+// color variables (secondary)
+$get-inv-frame-bkgd-color-secondary: $color-secondary !default;
+$get-inv-frame-title-color-secondary: $color-mono-black !default;
+$get-inv-frame-headline-color-secondary: $color-mono-white !default;
+// color variables (monochrome light)
+$get-inv-frame-bkgd-color-monochrome: $color-mono-lt !default;
+$get-inv-frame-title-color-monochrome: $color-mono-black !default;
+$get-inv-frame-headline-color-monochrome: $color-mono-black !default;
 
 // REASSIGNED VALS FOR GLOBAL SCOPE -- GET INVOLVED 
 // this overrides general button variables in config.scss
@@ -18,6 +26,15 @@ $getinv-button-border-color:            $color-mono-black !default;
 $getinv-button-text-color:              $color-mono-black !default;
 $getinv-button-back-color:              $button-bkgd-transparent !default;
 $getinv-button-hover-back-color:        $button-white-50 !default;
+// Secondary button colors 
+$getinv-button-border-color-secondary:       $button-border-color !default;
+$getinv-button-text-color-secondary:         $button-text-color !default;
+$getinv-button-hover-back-color-secondary:   $button-black-50 !default;
+// Monochrome button colors 
+$getinv-button-border-color-monochrome:      $color-primary !default;
+$getinv-button-text-color-monochrome:        $button-text-color !default;
+$getinv-button-back-color-monochrome:        $button-bkgd-color!default;
+$getinv-button-hover-back-color-monochrome:  $color-mono-black !default;
 // this overrides the a value set in buttons.scss and the div value below
 $frame-button-max-width:                450px; 
 
@@ -98,6 +115,47 @@ $frame-button-max-width:                450px;
     // BUTTON CALLS
     @include frame-button-base();
 
+}
+// if secondary background color is selected for frame
+.paragraph--type--webny-get-involved-pgtype.secondary {
+  background-color: $get-inv-frame-bkgd-color-secondary;
+  .get-involved--field-webny-get-involved-title {
+    color: $get-inv-frame-title-color-secondary;
+  }
+  .get-involved--field-webny-get-inv-headline {
+    color: $get-inv-frame-headline-color-secondary;
+  }
+  .get-involved--field-webny-get-inv-cta {
+    border: $frame-button-border-size solid $getinv-button-border-color-secondary;
+    &:hover {
+      border-color: $getinv-button-border-color-secondary;
+      background-color: $getinv-button-hover-back-color-secondary;
+    }
+    a {
+      color: $getinv-button-text-color-secondary;
+    }
+  }
+}
+// if monochrome light background color is selected for frame
+.paragraph--type--webny-get-involved-pgtype.monochrome {
+  background-color: $get-inv-frame-bkgd-color-monochrome;
+  .get-involved--field-webny-get-involved-title {
+    color: $get-inv-frame-title-color-monochrome;
+  }
+  .get-involved--field-webny-get-inv-headline {
+    color: $get-inv-frame-headline-color-monochrome;
+  }
+  .get-involved--field-webny-get-inv-cta {
+    border: $frame-button-border-size solid $getinv-button-border-color-monochrome;
+    background-color: $getinv-button-back-color-monochrome;
+    &:hover {
+      background-color: $getinv-button-hover-back-color-monochrome;
+      border-color: $getinv-button-border-color-monochrome;
+    }
+    a {
+      color: $getinv-button-text-color-monochrome;
+    }
+  }
 }
 
 // ######################################################################### //

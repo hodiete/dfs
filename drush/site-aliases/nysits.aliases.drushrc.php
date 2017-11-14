@@ -82,6 +82,19 @@ $aliases['01dev.uat'] = array(
     '%drush-script' => 'drush' . $drush_major_version,
   )
 );
+// Site nysits, environment 01dev uat
+$aliases['01dev.wcb'] = array(
+    'root' => '/var/www/html/nysits.01dev/docroot',
+    'ac-site' => 'nysits',
+    'ac-env' => '01dev',
+    'ac-realm' => 'enterprise-g1',
+    'uri' => 'http://wcb.dev-nysits.acsitefactory.com',
+    'remote-host' => 'staging-538.enterprise-g1.hosting.acquia.com',
+    'remote-user' => 'nysits.01dev',
+    'path-aliases' => array(
+        '%drush-script' => 'drush' . $drush_major_version,
+    )
+);
 $aliases['01dev.livedev'] = array(
   'parent' => '@nysits.01dev',
   'root' => '/mnt/gfs/nysits.01dev/livedev/docroot',
@@ -204,6 +217,19 @@ $aliases['01live.amber'] = array(
     '%drush-script' => 'drush' . $drush_major_version,
   )
 );
+// Site nysits, environment 01live uat
+$aliases['01live.wcb'] = array(
+    'root' => '/var/www/html/nysits.01live/docroot',
+    'ac-site' => 'nysits',
+    'ac-env' => '01live',
+    'ac-realm' => 'enterprise-g1',
+    'uri' => 'http://wcb.nysits.acsitefactory.com',
+    'remote-host' => 'web-536.enterprise-g1.hosting.acquia.com',
+    'remote-user' => 'nysits.01live',
+    'path-aliases' => array(
+        '%drush-script' => 'drush' . $drush_major_version,
+    )
+);
 $aliases['01live.livedev'] = array(
   'parent' => '@nysits.01live',
   'root' => '/mnt/gfs/nysits.01live/livedev/docroot',
@@ -290,6 +316,19 @@ $aliases['01test.uat'] = array(
   'path-aliases' => array(
     '%drush-script' => 'drush' . $drush_major_version,
   )
+);
+// Site nysits, environment 01test wcb
+$aliases['01test.wcb'] = array(
+    'root' => '/var/www/html/nysits.01test/docroot',
+    'ac-site' => 'nysits',
+    'ac-env' => '01test',
+    'ac-realm' => 'enterprise-g1',
+    'uri' => 'http://wcb.test-nysits.acsitefactory.com',
+    'remote-host' => 'staging-538.enterprise-g1.hosting.acquia.com',
+    'remote-user' => 'nysits.01test',
+    'path-aliases' => array(
+        '%drush-script' => 'drush' . $drush_major_version,
+    )
 );
 $aliases['01test.livedev'] = array(
   'parent' => '@nysits.01test',
