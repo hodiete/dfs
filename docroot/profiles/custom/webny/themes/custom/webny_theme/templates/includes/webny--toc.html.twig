@@ -1,7 +1,6 @@
 {#
 Uses parent vars:
 nav_toggle (boolean)
-toc_includes_body (boolean)
 toc_content_sections (paragraph field)
 #}
 
@@ -18,22 +17,6 @@ toc_content_sections (paragraph field)
       </aside>
       <div class="article-content">
         <div class="toc-chapters">
-          {% if toc_includes_body %}
-            {# Mimic paragraph formatting for use in toc listing #}
-            <div>
-              <section id="toc_00" rel="enabled" class="generic_para webny_wysiwyg_pgtype gp_enabled">
-                <h2 name="event-details">Event details</h2>
-                <div class="wysiwyg--field-webny-wysiwyg-body">{{ content.body }}</div>
-                <div class="gp-next-section" style="display: none;">
-                  <div class="gp-next-section-links">
-                    <p>Next Section</p>
-                    <p class="icon-thin_down_arrow gp-next-section-link">Continue</p>
-                  </div>
-                  <span class="gp-next-section-title"></span>
-                </div>
-              </section>
-            </div>
-          {% endif %}
           {{ toc_content_sections }}
         </div>
       </div>
@@ -45,22 +28,6 @@ toc_content_sections (paragraph field)
   {# NAV DISABLED: GENERIC PARAGRAPHS SECTION FOR USE WITHOUT NAV FUNCTIONALITY #}
   <div class="page-paragraphs gp-paragraphs">
     <div class="page-paragraphs-in">
-      {% if toc_includes_body %}
-        {# Mimic paragraph formatting for use in toc listing #}
-        <div>
-          <section id="toc_00" rel="enabled" class="generic_para webny_wysiwyg_pgtype gp_enabled">
-            <h2 name="event-details">Event details</h2>
-            <div class="wysiwyg--field-webny-wysiwyg-body">{{ content.body }}</div>
-            <div class="gp-next-section" style="display: none;">
-              <div class="gp-next-section-links">
-                <p>Next Section</p>
-                <p class="icon-thin_down_arrow gp-next-section-link">Continue</p>
-              </div>
-              <span class="gp-next-section-title"></span>
-            </div>
-          </section>
-        </div>
-      {% endif %}
       {{ toc_content_sections }}
     </div>
   </div>

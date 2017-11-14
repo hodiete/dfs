@@ -8,7 +8,6 @@
 #}
 
 {# NODE FIELDS #}
-{# Event details                    -- body #}
 {# Agency keywords                  -- field_webny_agency_keywords #}
 {# Content categorization           -- field_webny_contentcat #}
 {# Location                         -- field_webny_event_address #}
@@ -25,11 +24,6 @@
 {# Global Keywords                  -- field_webny_global_keywords #}
 
 {# CUSTOM NODE VARIABLES #}
-{# Combined time value              -- event_time #}
-{# Start day                        -- start_day #}
-{# Start month                      -- start_month #}
-{# End day                          -- end_day #}
-{# End month                        -- end_month #}
 {# See webny_event_content_type_preprocess_node() for extra variables. #}
 
 {# ATTACH JS LIBRARY #}
@@ -45,7 +39,6 @@
     {% set hero_has_image_content = 'hero-has-image-content' %}
 {% endif %}
 {% set nav_toggle = node.field_webny_event_navtoggle.value %}
-{% set toc_includes_body = true %}
 {% set toc_content_sections = content.field_webny_event_contentsect|without('label') %}
 
 <div class="webny-event-content-page webny-toc-page">
@@ -70,7 +63,7 @@
                     <h1>{{ label }}</h1>
 
                     <div class="hero-keywords">
-                        {{ content.field_webny_global_keywords }}
+                        {{ content.field_webny_agency_keywords }}
                     </div>
                 </div>
             </div>
