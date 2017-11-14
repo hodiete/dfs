@@ -26,6 +26,10 @@
 
       $(function () {
 
+        var $firstSection = $('.gp-chapters').children()[0];
+        var firstSectionID = $($firstSection).attr('id');
+
+
         // =====================================================================
         // WAYPOINT FUNCTION FOR INLINE CALLOUT TRIGGERS
         $('.inline-callout').waypoint(function (direction) {
@@ -93,24 +97,51 @@
           // ASSIGN ELEMENT
           this.sectionId = '#' + this.element.id;
 
-          // REMOVE ALL ACTIVE CALLOUT SECTIONS
-          $('.webny-callouts-section').removeClass('activeCalloutSection');
+          if($(this.sectionId).parent().parent().attr('id') !== firstSectionID){
+            // REMOVE ALL ACTIVE CALLOUT SECTIONS
+            $('.webny-callouts-section').removeClass('activeCalloutSection');
 
-          // IF SCROLLING DOWN
-          if (direction === 'down') {
+            // IF SCROLLING DOWN
+            if (direction === 'down') {
+
+              // CHECK IF CLASS IS NOT ACTIVE AND MAKE ACTIVE ON WAYPOINT
+              if (!$(this.sectionId).hasClass('activeCalloutSection')) {
+                $(this.sectionId).addClass('activeCalloutSection');
+              }
+
+            }
+
+            if (direction === 'up') {
+              $('.webny-callouts-section').removeClass('activeCalloutSection');
+            }
+          }
+
+        }, {
+          offset: 250
+        });
+
+
+        // =====================================================================
+        // WAYPOINT FUNCTION FOR FIXED RIGHTHAND NAVIGATION -- HEADER TRIGGER
+        $('.webny-callouts-section').waypoint(function (direction) {
+
+          // ASSIGN ELEMENT
+          this.sectionId = '#' + this.element.id;
+
+          if($(this.sectionId).parent().parent().attr('id') === firstSectionID){
+            // REMOVE ALL ACTIVE CALLOUT SECTIONS
+            $('.webny-callouts-section').removeClass('activeCalloutSection');
+
             // CHECK IF CLASS IS NOT ACTIVE AND MAKE ACTIVE ON WAYPOINT
             if (!$(this.sectionId).hasClass('activeCalloutSection')) {
               $(this.sectionId).addClass('activeCalloutSection');
             }
           }
 
-          if (direction === 'up') {
-            $('.webny-callouts-section').removeClass('activeCalloutSection');
-          }
-
-        }, {
-          offset: 250
+        },{
+          offset: 112
         });
+
 
       }); // END ONLOAD
 
