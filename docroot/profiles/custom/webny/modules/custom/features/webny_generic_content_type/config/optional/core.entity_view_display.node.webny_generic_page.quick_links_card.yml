@@ -23,7 +23,7 @@ dependencies:
     - node.type.webny_generic_page
   module:
     - media_entity
-    - text
+    - smart_trim
     - user
 id: node.webny_generic_page.quick_links_card
 targetEntityType: node
@@ -42,9 +42,18 @@ content:
   field_webny_gencp_sumdes:
     weight: 2
     label: hidden
-    settings: {  }
+    settings:
+      trim_length: '80'
+      trim_type: chars
+      trim_suffix: ...
+      more_link: '0'
+      more_text: More
+      trim_options:
+        text: 0
+      more_class: more-link
+      summary_handler: full
     third_party_settings: {  }
-    type: text_default
+    type: smart_trim
     region: content
   field_webny_generic_short_title:
     type: string
