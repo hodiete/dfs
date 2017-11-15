@@ -106,9 +106,11 @@ $hero-keyword-text-color: $color-mono-white !default;
       position: relative;
       z-index: 3;
       background-color: black;
+      box-sizing: border-box;
     }
     .published-date {
       padding: 20px 20px 0;
+      color: #fff;
       font-family: 'ProximaNovaBold';
       font-size: 0.7em;
       text-transform: uppercase;
@@ -229,7 +231,7 @@ $hero-keyword-text-color: $color-mono-white !default;
   .hero-keywords,
   .hero-generic-keywords{
     margin-top: 40px;
-    padding: 30px;
+    padding: 30px 15px 30px 30px;
 
     & > div > div {
       margin-bottom: 20px;
@@ -545,10 +547,10 @@ $hero-keyword-text-color: $color-mono-white !default;
       height: 385px;
     }
 
+
     .hero-generic-inner {
       top: 0;
       left: 0;
-
       .published-date {
         margin-top:10px;
       }
@@ -665,7 +667,9 @@ $hero-keyword-text-color: $color-mono-white !default;
     .hero-generic-inner {
       margin: 0 !important;
       padding: 0 !important;
-
+        &.hero-has-image-content {
+          background: none;
+        }
       .published-date {
         margin-top:20px;
       }
@@ -713,10 +717,10 @@ $hero-keyword-text-color: $color-mono-white !default;
     }
 
     .hero-has-image {
-      height: 100%;
       overflow: hidden;
       position: absolute;
       width: 100%;
+      height: 100%;
 
       div {
         height: 100%;
@@ -728,7 +732,7 @@ $hero-keyword-text-color: $color-mono-white !default;
     .hero-has-image,
     .hero-has-image .hero-image,
     .hero-has-image-content {
-      min-height: 610px;
+      min-height: 510px;
     }
 
     .hero-inner.hero-news-inner{
@@ -747,10 +751,6 @@ $hero-keyword-text-color: $color-mono-white !default;
       .hero-summary{
         width: $hero-header-width;
       }
-    }
-
-    .hero-landing-inner{
-      width: 66%;
     }
 
     h1,h2{
@@ -818,11 +818,6 @@ $hero-keyword-text-color: $color-mono-white !default;
 
   .front {
     .hero-layout {
-
-      .hero-landing-inner {
-        width: 50%;
-        max-width: 600px;
-      }
 
       .hero-video-frame {
         .hero-video-inner {
