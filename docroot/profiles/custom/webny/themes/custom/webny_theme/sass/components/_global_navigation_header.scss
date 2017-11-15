@@ -537,6 +537,10 @@ $globalnav-secondary-color:   $button-black-50 !default;
                 padding: 15px;
               }
             }
+            // HIDE TOP LINKS ON DROPDOWN ON DESKTOP
+            li.gnav-toplink {
+              display: none;
+            }
           }
 
           &:last-child ul {
