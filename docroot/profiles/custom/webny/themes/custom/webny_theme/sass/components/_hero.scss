@@ -226,32 +226,27 @@ $hero-keyword-text-color: $color-mono-white !default;
     z-index: 3;
   }
 
-  .hero-keywords,
-  .hero-generic-keywords{
+  .hero-buttons,
+  .hero-keywords{
     margin-top: 40px;
-    padding: 30px;
+    padding: 30px 30px 30px 0;
 
     & > div > div {
       margin-bottom: 20px;
     }
   }
 
-  //used only on inner pages currently
-  .hero-keywords > div > div{
-    //display: inline-block;
-  }
   //used on landing pages
-  .hero-keywords div {
-    //display:inline-block;
+  .hero-buttons div {
     margin: 17px 0;
   }
 
-  .hero-generic-keywords > div > div {
+  .hero-keywords > div > div {
     display:inline-block;
   }
 
 
-  .hero-keywords a {
+  .hero-buttons a {
     font: 13px/4 "proxima nova";
     color: #ffffff;
     cursor: pointer;
@@ -270,7 +265,7 @@ $hero-keyword-text-color: $color-mono-white !default;
     }
   }
 
-  .hero-generic-keywords a {
+  .hero-keywords a {
     position:relative;
     font: 13px/4 "Oswald";
     font-weight: bold;
@@ -620,15 +615,15 @@ $hero-keyword-text-color: $color-mono-white !default;
 @media (min-width: $min-pc) {
 
   .hero-layout {
-    .hero-keywords a {
+    .hero-buttons a {
       min-width: 200px;
     }
     //used only on inner pages currently
-    .hero-keywords > div > div{
+    .hero-buttons > div > div{
       display: inline-block;
     }
     //used on landing pages
-    .hero-keywords div {
+    .hero-buttons div {
       display:inline-block;
       margin: 0 20px 0 0;
     }
@@ -930,5 +925,61 @@ $hero-keyword-text-color: $color-mono-white !default;
 @media (min-width: 48em) and (max-width: 910px) {
   .hero-layout .hero-video-frame .hero-video-inner .video-js.vjs-vimeo > .vjs-control-bar {
     width: auto;
+  }
+}
+
+// Event Hero with dates.
+.hero-event {
+  background-color: $medblue;
+
+  .hero-background {
+    min-height: 0;
+
+    &.hero-no-image {
+      height: auto;
+    }
+    
+    &.hero-has-image {
+      opacity: 0.8;
+      background-color: transparent;
+    }
+  }
+
+  .hero-content-wrap {
+    position: relative;
+  }
+
+  &--inner {
+    min-height: 0;
+  }
+
+  &--title-block {
+    float: left;
+    width: calc(100% - 290px);
+  }
+
+  &--date-block {
+    border-left: 1px solid $color-mono-mid;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 280px;
+    height: 100%;
+    padding: 20px 15px 15px;
+
+    @include event-date;
+
+    .month {
+      color: #fff;
+    }
+
+    .day {
+      color: $primaryblue;
+    }
+
+    .address-wrapper::before,
+    .time::before {
+      color: $primaryblue;
+    }
   }
 }

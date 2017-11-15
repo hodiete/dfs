@@ -2,6 +2,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_view_mode.node.webny_featured_card
     - field.field.node.webny_event.field_webny_agency_keywords
     - field.field.node.webny_event.field_webny_contentcat
     - field.field.node.webny_event.field_webny_event_address
@@ -19,66 +20,32 @@ dependencies:
     - field.field.node.webny_event.field_webny_global_keywords
     - node.type.webny_event
   module:
-    - address
     - datetime
-    - entity_reference_revisions
     - link
-    - options
+    - linked_field
     - text
     - user
-id: node.webny_event.default
+id: node.webny_event.webny_featured_card
 targetEntityType: node
 bundle: webny_event
-mode: default
+mode: webny_featured_card
 content:
-  field_webny_agency_keywords:
-    type: entity_reference_label
-    weight: 14
-    region: content
-    label: hidden
-    settings:
-      link: true
-    third_party_settings: {  }
-  field_webny_contentcat:
-    weight: 10
-    label: hidden
-    settings:
-      link: true
-    third_party_settings: {  }
-    type: entity_reference_label
-    region: content
-  field_webny_event_address:
-    weight: 9
-    label: hidden
-    settings: {  }
-    third_party_settings: {  }
-    type: address_default
-    region: content
   field_webny_event_all_day:
     weight: 6
     label: hidden
     settings:
-      format: default
-      format_custom_false: ''
+      format: boolean
       format_custom_true: ''
+      format_custom_false: ''
     third_party_settings: {  }
     type: boolean
-    region: content
-  field_webny_event_contentsect:
-    type: entity_reference_revisions_entity_view
-    weight: 12
-    label: hidden
-    settings:
-      view_mode: generic
-      link: ''
-    third_party_settings: {  }
     region: content
   field_webny_event_date_end:
     weight: 5
     label: hidden
     settings:
-      format_type: medium
       timezone_override: ''
+      format_type: html_datetime
     third_party_settings: {  }
     type: datetime_default
     region: content
@@ -86,29 +53,29 @@ content:
     weight: 4
     label: hidden
     settings:
-      format_type: medium
       timezone_override: ''
+      format_type: html_datetime
     third_party_settings: {  }
     type: datetime_default
     region: content
   field_webny_event_heroimage:
-    weight: 7
+    weight: 2
     label: hidden
     settings:
-      view_mode: hero_image
+      view_mode: cards
       link: false
-    third_party_settings: {  }
+    third_party_settings:
+      linked_field:
+        linked: '1'
+        type: custom
+        destination: '[node:url]'
+        advanced: {  }
     type: entity_reference_entity_view
     region: content
-  field_webny_event_navtoggle:
-    weight: 11
-    label: hidden
-    settings: {  }
-    third_party_settings: {  }
-    type: list_default
-    region: content
   field_webny_event_redirect_url:
-    weight: 13
+    type: link
+    weight: 0
+    region: content
     label: hidden
     settings:
       trim_length: 80
@@ -117,49 +84,33 @@ content:
       rel: ''
       target: ''
     third_party_settings: {  }
-    type: link
-    region: content
   field_webny_event_short_title:
-    weight: 2
+    type: string
+    weight: 1
+    region: content
     label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
-    region: content
   field_webny_event_summary:
     weight: 3
     label: hidden
-    settings: {  }
-    third_party_settings: {  }
-    type: text_default
-    region: content
-  field_webny_event_venue_name:
-    weight: 8
-    label: hidden
     settings:
-      link_to_entity: false
+      trim_length: 150
     third_party_settings: {  }
-    type: string
+    type: text_trimmed
     region: content
-  field_webny_global_keywords:
-    type: entity_reference_label
-    weight: 15
-    region: content
-    label: hidden
-    settings:
-      link: true
-    third_party_settings: {  }
-  links:
-    weight: 1
-    region: content
-    settings: {  }
-    third_party_settings: {  }
   workbench_moderation_control:
-    weight: 0
+    weight: -20
     region: content
-    settings: {  }
-    third_party_settings: {  }
 hidden:
+  field_webny_agency_keywords: true
+  field_webny_contentcat: true
+  field_webny_event_address: true
+  field_webny_event_contentsect: true
+  field_webny_event_navtoggle: true
+  field_webny_event_venue_name: true
   field_webny_filter_terms: true
+  field_webny_global_keywords: true
   langcode: true
+  links: true
