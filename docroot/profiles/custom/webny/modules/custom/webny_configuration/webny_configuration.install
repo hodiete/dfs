@@ -3953,6 +3953,18 @@ function webny_configuration_update_8176() {
 }
 
 /**
+ * INSTALLS THE WEBNY_ADMINSTRATION FEATURE
+ * NDD-1195
+ * -iojonep
+ */
+function webny_configuration_update_8177() {
+
+    // INSTALL ADMINISTRATION FEATURE
+    \Drupal::service('module_installer')
+        ->install(['webny_administration']);
+}
+
+/**
  * Helper function to enable a Drupal module and print the result.
  *
  * @param string $module_name

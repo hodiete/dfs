@@ -34,9 +34,10 @@
    .icon-email, .icon-facebook, .icon-twitter {
 	    font-size: 12.8px;
 	    color: #fff;
-	    &:hover {
-	    	color: $color-secondary;
-     	}
+    }
+    .webny-action-share-button a:hover {
+            text-decoration: none !important;
+            clear:both;
     }
 }
 .icon-facebook {@include icon(before, fa-facebook);}
@@ -57,3 +58,15 @@
 
 // ######################################################################### //
 /* PC VIEW */
+@media (min-width: $min-pc) {
+    .webny-action-share-button a:hover {
+        text-decoration: underline;
+        clear:both;
+    }
+    .icon-email, .icon-facebook, .icon-twitter {
+        &:hover {
+            text-decoration: underline;
+            color: $color-secondary; 
+        }
+    }
+}

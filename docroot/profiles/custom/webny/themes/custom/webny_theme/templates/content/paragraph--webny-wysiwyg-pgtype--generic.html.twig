@@ -22,17 +22,17 @@
 
 {# DISPLAY THE PARAGRAPH #}
 {% block paragraph %}
-    <section id="{{ 'toc_' ~ paragraph.id() }}" rel="{{ gp_status }}" class="generic_para {{ paragraph.bundle() }} {{ gp_enabled }}" >
+    <section id="{{ 'toc_' ~ paragraph.id() }}" rel="{{ gp_status }}" class="toc-para {{ paragraph.bundle() }} {{ gp_enabled }}" >
         <h2>
             {{ paragraph.field_webny_wysiwyg_title.value }}
         </h2>
         {{ content|without('field_webny_wysiwyg_toc', 'field_webny_wysiwyg_title') }}
-        <div class="gp-next-section">
-            <div class="gp-next-section-links">
+        <div class="next-section">
+            <div class="next-section-links">
                 <p>Next Section</p>
-                <p class="icon-thin_down_arrow gp-next-section-link">Continue</p>
+                <p class="icon-thin_down_arrow next-section-link">Continue</p>
             </div>
-            <span class="gp-next-section-title"></span>
+            <span class="next-section-title"></span>
         </div>
     </section>
 {% endblock paragraph %}
