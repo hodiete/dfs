@@ -2,6 +2,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.paragraph.webny_tbd_pgtype.field_webny_tbd_color
     - field.field.paragraph.webny_tbd_pgtype.field_webny_tbd_cta1
     - field.field.paragraph.webny_tbd_pgtype.field_webny_tbd_cta2
     - field.field.paragraph.webny_tbd_pgtype.field_webny_tbd_descriptor1
@@ -20,11 +21,11 @@ third_party_settings:
   field_group:
     group_descriptor_grouping_1:
       children:
+        - field_webny_tbd_descriptortitle1
         - field_webny_tbd_descriptor1
         - field_webny_tbd_cta1
-        - field_webny_tbd_descriptortitle1
       parent_name: ''
-      weight: 2
+      weight: 3
       format_type: fieldset
       format_settings:
         id: ''
@@ -34,11 +35,11 @@ third_party_settings:
       label: 'Descriptor Grouping 1'
     group_descriptor_grouping_2:
       children:
+        - field_webny_tbd_descriptortitle2
         - field_webny_tbd_descriptor2
         - field_webny_tbd_cta2
-        - field_webny_tbd_descriptortitle2
       parent_name: ''
-      weight: 6
+      weight: 4
       format_type: fieldset
       format_settings:
         id: ''
@@ -51,6 +52,12 @@ targetEntityType: paragraph
 bundle: webny_tbd_pgtype
 mode: default
 content:
+  field_webny_tbd_color:
+    weight: 2
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
   field_webny_tbd_cta1:
     weight: 5
     settings:

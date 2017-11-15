@@ -1,0 +1,22 @@
+
+<div {{ attributes.addClass('webny-card') }}>
+
+    {% block card_image %}{% endblock card_image %}
+
+    <div class="card-content">
+        <div class="card-content-top">
+            {%  if not page %}
+                {{ title_prefix }}
+
+                <h1{{ title_attributes }}>
+                    <a href="{{ url }}" rel="bookmark">{% block card_title %}{% endblock card_title %}</a>
+                </h1>
+
+                {{ title_suffix }}
+            {% endif %}
+
+            {%  block card_footer %}{% endblock card_footer %}
+        </div>
+        {%  block card_content %}{% endblock card_content %}
+    </div>
+</div>
