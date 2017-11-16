@@ -21,126 +21,65 @@
 {# Summary                     -- field_webny_location_summary #}
 
 {# ATTACH JS LIBRARY #}
-{{ attach_library('webny_theme/navigator_location') }}
+{{ attach_library('webny_theme/navigator') }}
 {{ attach_library('webny_theme/callouts') }}
 
 {# DECLARED VARS #}
 {% set hero_image = file_url(node.field_webny_location_heroimage.entity.field_image.entity.uri.value) %}
+{% if hero_image == '/' %}
+    {% set hero_image_class = 'hero-no-image' %}
+{% else %}
+    {% set hero_image_class = 'hero-has-image' %}
+    {% set hero_has_image_content = 'hero-has-image-content' %}
+{% endif %}
+{% set nav_toggle = node.field_webny_location_navtoggle.value %}
+{% set toc_content_sections = content.field_webny_location_contentsec|without('label') %}
 
-<div class="webny-location">
+<div class="webny-location webny-toc-page">
+
+    {# NEW HERO SECTION #}
 
     <article {{ attributes.addClass('hero-layout') }}>
 
         {# START QUICK EDITS #}
         {{ title_prefix }}
 
-        {# ====== HERO SECTION ====== #}
-
-        {# HERO DEFINITION #}
-        {% if hero_image == '/' %}
-        <div class="hero-header hero-no-image hero-location">
-            {% else %}
-            <div class="hero-header hero-has-image hero-location">
-                {% endif %}
-
-                <div class="hero-image">
-                    {{ content.field_webny_location_heroimage }}
-                </div>
-                <!-- BACKGROUND GRAD -->
-                <div class="hero-bkg"></div>
+        <div class="hero-header  {{ hero_image_class }} hero-location">
+            <div class="hero-image">
+                {{ content.field_webny_location_heroimage }}
             </div>
+            <div class="hero-bkg"></div>
+        </div>
 
+        <div class="hero-content-wrap">
             {# HERO INNER DEFINITION #}
-            {% if hero_image == '/' %}
-            <div class="hero-inner hero-location-inner">
-                {% else %}
-                <div class="hero-inner hero-location-inner hero-has-image-content">
-                    {% endif %}
+            <div class="hero-inner hero-location-inner {{ hero_has_image_content }}">
+                {# LOCATION TYPE TAXONOMY #}
+                <div class="location-type-tax">{{ content.field_webny_location_type_tax }}</div>
 
-                    {# LOCATION TYPE TAXONOMY #}
-                    <div class="location-type-tax">
-                        {{ content.field_webny_location_type_tax }}
-                    </div>
+                <div class="location-horizontal-line"></div>
 
-                    <div class="location-horizontal-line"></div>
+                {# HERO HEADLINE / TITLE #}
+                <h1>{{ label }}</h1>
 
-                    {# HERO HEADLINE / TITLE #}
-                    <h1>{{ label }}</h1>
+                {# COUNTIES SERVED #}
+                <div class="location-counties-served-field">{{ content.field_webny_location_counties }}</div>
 
-                    {# COUNTIES SERVED #}
-                    <div class="location-counties-served-field">
-                        {{ content.field_webny_location_counties }}
-                    </div>
+                {# ADDRESS #}
+                <div class="location-address-field">{{ content.field_webny_location_address }}</div>
 
-                    {# ADDRESS #}
-                    <div class="location-address-field">
-                        {{ content.field_webny_location_address }}
-                    </div>
-
-                    {# PHONE #}
-                    <div class="location-phone">
-                        {{ content.field_webny_location_phone }}
-                    </div>
-
+                {# PHONE #}
+                <div class="location-phone">{{ content.field_webny_location_phone }}</div>
             </div>
-
-                {# ====== END HERO SECTION ====== #}
-
-                {# END QUICK EDITS #}
-                {{ title_suffix }}
         </div>
-        </div>
+
+        {# ====== END HERO SECTION ====== #}
+
+        {{ title_suffix }}
+
     </article>
 
+    {% include '@webny_theme/includes/webny--action-bar.html.twig' %}
+    {% include '@webny_theme/includes/webny--toc.html.twig' %}
 
-    <div class="webny-share-bar">
-        <div class="webny-share">
-            <div class="webny-share-bar-icons">
-                <div class="webny-action-share-label">SHARE</div>
-                <div class="webny-action-share-button">
-                    <a href="mailto:?Subject={{ site_name }}: {{ node.label }}&Body={{ url('<current>') }}" target="_blank"><span class="icon-email"></span></a>
-                </div>
-                <div class="webny-action-share-button">
-                    <a href="http://www.facebook.com/share.php?u={{ url('<current>') }}" target="_blank"><span class="icon-facebook"></span></a>
-                </div>
-                <div class="webny-action-share-button">
-                    <a href="https://twitter.com/intent/tweet?text={{ node.label }}&url={{ url('<current>') }}" target="_blank"><span class="icon-twitter"></span></a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-{% if node.field_webny_location_navtoggle.value == 1 %}
-
-    {# NAV ENABLED: LOCATION PARAGRAPHS SECTION WITH SIDEBAR FOR NAVIGATOR / TOC#}
-    <div class="page-paragraphs location-paragraphs with-nav-sidebar">
-        <div class="page-paragraphs-in">
-            <aside id="locnav_sidebar">
-                <header>Sections</header>
-                <ul>
-                    <li class="see-all"><a href="#" class="icon-all_steps"><span>See All</span></a></li>
-                </ul>
-                <span class="arrow"></span>
-            </aside>
-            <div class="loc-article-content">
-                <div class="loc-chapters">
-                    {{ content.field_webny_location_contentsec|without('label') }}
-                </div>
-            </div>
-        </div>
-    </div>
-
-{% else %}
-
-    {# NAV DISABLED: LOCATION PARAGRAPHS SECTION FOR USE WITHOUT NAV FUNCTIONALITY #}
-    <div class="page-paragraphs location-paragraphs">
-        <div class="page-paragraphs-in">
-            {{ content.field_webny_location_contentsec|without('label') }}
-        </div>
-    </div>
-
-{% endif %}
 </div>
-</div>
-
