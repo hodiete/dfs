@@ -75,19 +75,9 @@ $hero-keyword-text-color: $color-mono-white !default;
 }
 
 // ========================================================================= //
-/* HERO HOMEPAGE LAYOUT  ONLY */
-
-.front {
-  .hero-layout {
-    .hero-landing-inner {
-      width: 90%;
-    }
-  }
-}
-
-// ========================================================================= //
 /* HERO LAYOUT */
 .hero-layout {
+  overflow: hidden;
   position: relative;
 
   .hero-news-inner,
@@ -102,6 +92,7 @@ $hero-keyword-text-color: $color-mono-white !default;
       position: relative;
       z-index: 3;
       background-color: black;
+      box-sizing: border-box;
     }
   }
 
@@ -114,10 +105,12 @@ $hero-keyword-text-color: $color-mono-white !default;
     &.hero-has-image-content {
       position: relative;
       z-index: 3;
-      background-color: transparent;
+      background-color: black;
+      box-sizing: border-box;
     }
     .published-date {
       padding: 20px 20px 0;
+      color: #fff;
       font-family: 'ProximaNovaBold';
       font-size: 0.7em;
       text-transform: uppercase;
@@ -140,8 +133,6 @@ $hero-keyword-text-color: $color-mono-white !default;
   .hero-landing-inner {
     position: absolute;
     &.hero-has-image-content {
-      top: 0;
-      left: 0;
       //background: none;
     }
   }
@@ -162,15 +153,31 @@ $hero-keyword-text-color: $color-mono-white !default;
     position: relative;
   }
 
-  .hero-has-image  .hero-bkg {
-    background: url("../icons/bkg-gradient.png") repeat-y scroll left top !important;
-    height: 100%;
-    opacity: 0.9;
-    position: absolute;
-    top: 0;
-    left: 0;
+  .hero-has-image-content {
+    min-height: 256px;
+  }
+
+  .hero-has-image .hero-image {
+    overflow: hidden;
     width: 100%;
-    z-index: 2;
+  }
+
+  // This approach is very similar to the `object-fit: cover;` approach, but with support for older browsers.
+  .hero-has-image .hero-image img {
+    position: absolute;
+    // Center vertically.
+    top:-100%;
+    bottom:-100%;
+    // Center horizontally.
+    left: -100%;
+    right: -100%;
+    // Sizing.
+    margin: auto;
+    height: auto;
+    min-height: 100%;
+    min-width: 100%;
+    max-width: none;
+    width: auto;
   }
 
   .hero-image-wrap{
@@ -221,52 +228,45 @@ $hero-keyword-text-color: $color-mono-white !default;
     z-index: 3;
   }
 
-  .hero-keywords,
-  .hero-generic-keywords{
+  .hero-buttons,
+  .hero-keywords{
     margin-top: 40px;
-    padding: 30px;
-
+    padding: 30px 15px 30px 30px;
     & > div > div {
       margin-bottom: 20px;
     }
   }
 
-  //used only on inner pages currently
-  .hero-keywords > div > div{
-    //display: inline-block;
-  }
   //used on landing pages
-  .hero-keywords div {
-    //display:inline-block;
+  .hero-buttons div {
     margin: 17px 0;
   }
 
-  .hero-generic-keywords > div > div {
+  .hero-keywords > div > div {
     display:inline-block;
   }
 
-
-  .hero-keywords a {
+  .hero-buttons a {
     font: 14px/4 "proxima nova";
     font-weight: bold;
     color: #ffffff;
     cursor: pointer;
     text-decoration: none;
-    display:inline-block;
+    display:block;
     background: transparent;
     border: 1px solid rgba(255,255,255,0.7);
     text-align: center;
     padding: 0 20px;
     letter-spacing: 2px;
     text-transform: uppercase;
-    min-width: 300px;
+    width: auto;
     &:hover {
       border: 1px solid #fff;
       background-color: rgba(0,0,0,0.8)
     }
   }
 
-  .hero-generic-keywords a {
+  .hero-keywords a {
     position:relative;
     font: 13px/4 "Oswald";
     font-weight: bold;
@@ -541,15 +541,10 @@ $hero-keyword-text-color: $color-mono-white !default;
       height: 385px;
     }
 
+
     .hero-generic-inner {
-      width: 100%;
-      position: relative;
       top: 0;
       left: 0;
-
-      .published-date {
-        margin-top:10px;
-      }
 
       h1 {
         width: 70%;
@@ -618,15 +613,15 @@ $hero-keyword-text-color: $color-mono-white !default;
 @media (min-width: $min-pc) {
 
   .hero-layout {
-    .hero-keywords a {
+    .hero-buttons a {
       min-width: 200px;
     }
     //used only on inner pages currently
-    .hero-keywords > div > div{
+    .hero-buttons > div > div{
       display: inline-block;
     }
     //used on landing pages
-    .hero-keywords div {
+    .hero-buttons div {
       display:inline-block;
       margin: 0 20px 0 0;
     }
@@ -636,10 +631,8 @@ $hero-keyword-text-color: $color-mono-white !default;
     .hero-landing-inner{
       position: absolute;
       &.hero-has-image-content {
-        top: 0;
-        left: 0;
         background: none;
-        position: absolute;
+        position: relative;
       }
     }
 
@@ -663,10 +656,11 @@ $hero-keyword-text-color: $color-mono-white !default;
     }
 
     .hero-generic-inner {
-      width: 100%;
       margin: 0 !important;
       padding: 0 !important;
-
+        &.hero-has-image-content {
+          background: none;
+        }
       .published-date {
         margin-top:20px;
       }
@@ -702,10 +696,34 @@ $hero-keyword-text-color: $color-mono-white !default;
       }
     }
 
+    .hero-has-image  .hero-bkg {
+      background: url("../icons/bkg-gradient.png") repeat-y scroll left top !important;
+      height: 100%;
+      opacity: 0.9;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 2;
+    }
+
+    .hero-has-image {
+      overflow: hidden;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+
+      div {
+        height: 100%;
+      }
+    }
+
     // ALLOW HEIGHT TO BE LARGE IN THIS
     // REGION TO NOT HAVE OVERFLOW FROM HERO
-    .hero-has-image {
-      min-height: 610px;
+    .hero-has-image,
+    .hero-has-image .hero-image,
+    .hero-has-image-content {
+      min-height: 510px;
     }
 
     .hero-inner.hero-news-inner{
@@ -726,10 +744,6 @@ $hero-keyword-text-color: $color-mono-white !default;
       }
     }
 
-    .hero-landing-inner{
-      width: 66%;
-    }
-
     h1,h2{
       font-size: 48px;
       line-height: 60px;
@@ -740,10 +754,8 @@ $hero-keyword-text-color: $color-mono-white !default;
     // =====================================================================
     // HERO HAS AN IMAGE
     .hero-image-wrap{
-
+      position: relative;
       width: 100%;
-      position: absolute;
-      top: 0;
 
       .hero-news-inner {
         padding: 0;
@@ -798,11 +810,6 @@ $hero-keyword-text-color: $color-mono-white !default;
   .front {
     .hero-layout {
 
-      .hero-landing-inner {
-        width: 50%;
-        max-width: 600px;
-      }
-
       .hero-video-frame {
         .hero-video-inner {
           .video-js {
@@ -837,11 +844,15 @@ $hero-keyword-text-color: $color-mono-white !default;
       padding: 0 4%;
     }
 
-    .hero-has-image {
+    .hero-has-image,
+    .hero-has-image .hero-image,
+    .hero-has-image-content {
       min-height: 427px;
     }
 
-    .hero-has-image.hero-news {
+    .hero-has-image.hero-news,
+    .hero-has-image.hero-news .hero-image,
+    .hero-has-image.hero-news .hero-has-image-content {
       min-height: 512px;
     }
 
@@ -854,10 +865,8 @@ $hero-keyword-text-color: $color-mono-white !default;
     // =====================================================================
     // HERO HAS AN IMAGE
     .hero-image-wrap{
-
       width: 100%;
-      position: absolute;
-      top: 0;
+      position: relative;
 
       .hero-news-inner {
         padding: 0;
@@ -876,7 +885,8 @@ $hero-keyword-text-color: $color-mono-white !default;
   // FRONT MIN HEIGHT ADJUSTMENT
   .front {
     .hero-layout {
-      .hero-landing.hero-has-image {
+      .hero-landing.hero-has-image,
+      .hero-has-image .hero-image {
         min-height: 512px;
       }
     }
@@ -906,5 +916,61 @@ $hero-keyword-text-color: $color-mono-white !default;
 @media (min-width: 48em) and (max-width: 910px) {
   .hero-layout .hero-video-frame .hero-video-inner .video-js.vjs-vimeo > .vjs-control-bar {
     width: auto;
+  }
+}
+
+// Event Hero with dates.
+.hero-event {
+  background-color: $medblue;
+
+  .hero-background {
+    min-height: 0;
+
+    &.hero-no-image {
+      height: auto;
+    }
+    
+    &.hero-has-image {
+      opacity: 0.8;
+      background-color: transparent;
+    }
+  }
+
+  .hero-content-wrap {
+    position: relative;
+  }
+
+  &--inner {
+    min-height: 0;
+  }
+
+  &--title-block {
+    float: left;
+    width: calc(100% - 290px);
+  }
+
+  &--date-block {
+    border-left: 1px solid $color-mono-mid;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 280px;
+    height: 100%;
+    padding: 20px 15px 15px;
+
+    @include event-date;
+
+    .month {
+      color: #fff;
+    }
+
+    .day {
+      color: $primaryblue;
+    }
+
+    .address-wrapper::before,
+    .time::before {
+      color: $primaryblue;
+    }
   }
 }

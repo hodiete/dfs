@@ -1,0 +1,58 @@
+<?php
+
+/**
+ * @file
+ * Contains webny_secondary_nav.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements webny_secondary_nav_help()
+ */
+function webny_secondary_nav_help($route_name, RouteMatchInterface $route_match) {
+
+  switch ($route_name) {
+    case 'help.page.webny_secondary_nav':
+      return t('Integrate Webny Secondary Navigation onto your Drupal site.');
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function webny_secondary_nav_theme() {
+
+    $config = \Drupal::config('webny_secondary_nav.settings');
+
+    // ALL VARIABLES TO PASS TO TWIG RENDER ARRAY
+
+    $displayPage          = $config->get('webny_secondary_nav.options.page_choices');
+    $secNavPage           = $config->get('webny_secondary_nav.options.secnav_specific_page');
+    $sectionOneChoice     = $config->get('webny_secondary_nav.menu_section_one.secnav_first_opts');
+    $wysiwygOne           = $config->get('webny_secondary_nav.menu_section_one.wysiwyg_area_one');
+    $sectionTwoChoice     = $config->get('webny_secondary_nav.menu_section_two.secnav_second_opts');
+    $wysiwygTwo           = $config->get('webny_secondary_nav.menu_section_two.wysiwyg_area_two');
+
+    return array(
+        'webny_secondary_nav_block' => array(
+            'template' => 'webny_secondary_nav_block',
+
+            'variables' => array(
+                'displayPage'           => $displayPage,
+                'secNavPage'            => $secNavPage,
+                'sectionOneChoice'      => $sectionOneChoice,
+                'wysiwygOne'            => $wysiwygOne,
+                'wysiwygTwo'            => $wysiwygTwo,
+                'sectionTwoChoice'      => $sectionTwoChoice,
+            ),
+        ),
+    );
+}
+
+/**
+ * Function webny_global_nav_preprocess.
+ */
+function webny_secondary_nav_preprocess(&$variables) {
+  $variables['#attached']['library'][] = 'webny_secondary_nav/secondary-nav';
+}

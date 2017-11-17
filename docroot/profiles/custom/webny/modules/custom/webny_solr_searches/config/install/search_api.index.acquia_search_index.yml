@@ -6,8 +6,6 @@ dependencies:
     - field.storage.node.field_webny_gencp_date
     - field.storage.node.field_webny_gencp_heroimage
     - field.storage.node.field_webny_gencp_sumdes
-    - field.storage.node.field_webny_gencp_contentcat
-    - field.storage.node.field_webny_gencp_keywords
     - field.storage.node.field_webny_news_category
     - field.storage.node.field_webny_news_date
     - field.storage.node.field_webny_news_image
@@ -19,34 +17,27 @@ dependencies:
     - field.storage.node.field_webny_contact_address
     - field.storage.node.field_webny_contact_details
     - field.storage.node.field_webny_phone_contact
+    - field.storage.node.field_webny_agency_keywords
+    - field.storage.node.field_webny_contentcat
+    - field.storage.node.field_webny_global_keywords
     - field.storage.node.field_webny_contact_pro_subtitle
     - field.storage.node.field_webny_contact_protitle
     - field.storage.node.field_webny_document_cateogry
-    - field.storage.node.field_webny_doc_global_keyword
     - field.storage.node.field_webny_doc_last_updated
-    - field.storage.node.field_webny_doc_agency_keyword
     - field.storage.node.field_webny_document_date
     - field.storage.node.field_webny_document_subtitle
-    - field.storage.node.field_webny_landing_agency_key
-    - field.storage.node.field_webny_landing_global_key
     - field.storage.node.field_webny_landing_short_title
     - field.storage.node.field_webny_landing_subtitle2
     - field.storage.node.field_webny_landing_summary2
     - field.storage.node.field_webny_gencp_herodesc
     - field.storage.node.field_webny_generic_short_title
-    - field.storage.node.field_webny_news_agency_keywords
-    - field.storage.node.field_webny_news_global_keywords
     - field.storage.node.field_webny_news_location
-    - field.storage.node.field_webny_page_agency_keywords
-    - field.storage.node.field_webny_page_global_keywords
     - field.storage.node.field_webny_page_description
     - field.storage.node.field_webny_page_image
     - field.storage.node.field_webny_page_short_title
     - field.storage.node.field_webny_page_sub_title
-    - field.storage.node.field_webny_whitelist_agency_key
     - field.storage.node.field_webny_whitelist_date
     - field.storage.node.field_webny_whitelist_descript
-    - field.storage.node.field_webny_whitelist_global_key
     - field.storage.node.field_webny_whitelist_image
     - field.storage.node.field_webny_whitelist_link_url
     - field.storage.node.field_webny_whitelist_stitle
@@ -88,6 +79,30 @@ field_settings:
     datasource_id: 'entity:node'
     property_path: title
     type: text
+  field_webny_contentcat:
+    label: 'Content Categorization'
+    datasource_id: 'entity:node'
+    property_path: field_webny_contentcat
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.field_webny_contentcat
+  field_webny_agency_keywords:
+    label: 'Agency Keywords'
+    datasource_id: 'entity:node'
+    property_path: field_webny_agency_keywords
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.field_webny_agency_keywords
+  field_webny_global_keywords:
+    label: 'Global Keywords'
+    datasource_id: 'entity:node'
+    property_path: field_webny_global_keywords
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.field_webny_global_keywords
   field_webny_gencp_date:
     label: 'Generic Page - Date'
     datasource_id: 'entity:node'
@@ -112,22 +127,6 @@ field_settings:
     dependencies:
       config:
         - field.storage.node.field_webny_gencp_sumdes
-  field_webny_gencp_contentcat:
-    label: 'Generic Page - Content Categorization'
-    datasource_id: 'entity:node'
-    property_path: field_webny_gencp_contentcat
-    type: integer
-    dependencies:
-      config:
-        - field.storage.node.field_webny_gencp_contentcat
-  field_webny_gencp_keywords:
-    label: 'Generic Page - Keywords'
-    datasource_id: 'entity:node'
-    property_path: field_webny_gencp_keywords
-    type: integer
-    dependencies:
-      config:
-        - field.storage.node.field_webny_gencp_keywords
   field_webny_news_category:
     label: 'News - Category'
     datasource_id: 'entity:node'
@@ -257,14 +256,6 @@ field_settings:
     dependencies:
       config:
         - field.storage.node.field_webny_document_cateogry
-  field_webny_doc_global_keyword:
-    label: 'Document - Global Keyword'
-    datasource_id: 'entity:node'
-    property_path: field_webny_doc_global_keyword
-    type: integer
-    dependencies:
-      config:
-        - field.storage.node.field_webny_doc_global_keyword
   field_webny_doc_last_updated:
     label: 'Document - Last Updated'
     datasource_id: 'entity:node'
@@ -273,14 +264,6 @@ field_settings:
     dependencies:
       config:
         - field.storage.node.field_webny_doc_last_updated
-  field_webny_doc_agency_keyword:
-    label: 'Document - Agency Keyword'
-    datasource_id: 'entity:node'
-    property_path: field_webny_doc_agency_keyword
-    type: integer
-    dependencies:
-      config:
-        - field.storage.node.field_webny_doc_agency_keyword
   field_webny_document_date:
     label: 'Document - Publication Date'
     datasource_id: 'entity:node'
@@ -297,22 +280,6 @@ field_settings:
     dependencies:
       config:
         - field.storage.node.field_webny_document_subtitle
-  field_webny_landing_agency_key:
-    label: 'Landing Page - Agency Keywords'
-    datasource_id: 'entity:node'
-    property_path: field_webny_landing_agency_key
-    type: integer
-    dependencies:
-      config:
-        - field.storage.node.field_webny_landing_agency_key
-  field_webny_landing_global_key:
-    label: 'Landing Page - Global Keywords'
-    datasource_id: 'entity:node'
-    property_path: field_webny_landing_global_key
-    type: integer
-    dependencies:
-      config:
-        - field.storage.node.field_webny_landing_global_key
   field_webny_landing_short_title:
     label: 'Landing Page - Short Title'
     datasource_id: 'entity:node'
@@ -353,14 +320,6 @@ field_settings:
     dependencies:
       config:
         - field.storage.node.field_webny_generic_short_title
-  field_webny_news_agency_keywords:
-    label: 'News - Agency Keywords'
-    datasource_id: 'entity:node'
-    property_path: field_webny_news_agency_keywords
-    type: integer
-    dependencies:
-      config:
-        - field.storage.node.field_webny_news_agency_keywords
   field_webny_news_date_1:
     label: 'News - Date'
     datasource_id: 'entity:node'
@@ -369,14 +328,6 @@ field_settings:
     dependencies:
       config:
         - field.storage.node.field_webny_news_date
-  field_webny_news_global_keywords:
-    label: 'News - Global Keywords'
-    datasource_id: 'entity:node'
-    property_path: field_webny_news_global_keywords
-    type: integer
-    dependencies:
-      config:
-        - field.storage.node.field_webny_news_global_keywords
   field_webny_news_location:
     label: 'News - Location'
     datasource_id: 'entity:node'
@@ -385,22 +336,6 @@ field_settings:
     dependencies:
       config:
         - field.storage.node.field_webny_news_location
-  field_webny_page_agency_keywords:
-    label: 'Page - Agency Keywords'
-    datasource_id: 'entity:node'
-    property_path: field_webny_page_agency_keywords
-    type: integer
-    dependencies:
-      config:
-        - field.storage.node.field_webny_page_agency_keywords
-  field_webny_page_global_keywords:
-    label: 'Page - Global Keywords'
-    datasource_id: 'entity:node'
-    property_path: field_webny_page_global_keywords
-    type: integer
-    dependencies:
-      config:
-        - field.storage.node.field_webny_page_global_keywords
   field_webny_page_description:
     label: 'Page - Description/Summary'
     datasource_id: 'entity:node'
@@ -433,14 +368,6 @@ field_settings:
     dependencies:
       config:
         - field.storage.node.field_webny_page_sub_title
-  field_webny_whitelist_agency_key:
-    label: 'Whitelisted Content - Agency Keyword'
-    datasource_id: 'entity:node'
-    property_path: field_webny_whitelist_agency_key
-    type: integer
-    dependencies:
-      config:
-        - field.storage.node.field_webny_whitelist_agency_key
   field_webny_whitelist_date:
     label: 'Whitelisted Content - Date'
     datasource_id: 'entity:node'
@@ -457,14 +384,6 @@ field_settings:
     dependencies:
       config:
         - field.storage.node.field_webny_whitelist_descript
-  field_webny_whitelist_global_key:
-    label: 'Whitelisted Content - Global Keyword'
-    datasource_id: 'entity:node'
-    property_path: field_webny_whitelist_global_key
-    type: integer
-    dependencies:
-      config:
-        - field.storage.node.field_webny_whitelist_global_key
   field_webny_whitelist_image:
     label: 'Whitelisted Content - Image'
     datasource_id: 'entity:node'

@@ -9,11 +9,11 @@
 
 {# NODE FIELDS #}
 {# SUMMARY DESCRIPTION              -- field_webny_gencp_sumdes #}
-{# CONTENT CATEGORIZATION           -- field_webny_gencp_contentcat #}
+{# CONTENT CATEGORIZATION           -- field_webny_contentcat #}
 {# HERO DATE                        -- field_webny_gencp_date #}
 {# HERO DATE                        -- field_webny_gencp_heroimage #}
 {# HERO DESCRIPTION                 -- field_webny_gencp_herodesc #}
-{# KEYWORDS                         -- field_webny_gencp_keywords #}
+{# KEYWORDS                         -- field_webny_agency_keywords #}
 {# AVERAGE TIME                     -- field_webny_gencp_avgtranstime #}
 {# HOW TO APPLY                     -- field_webny_gencp_howtoapply #}
 {# NAVIGATION TOGGLE ON/OFF         -- field_webny_gencp_navtoggle #}
@@ -25,8 +25,10 @@
 
 {# DECLARED VARS #}
 {% set hero_image = file_url(node.field_webny_gencp_heroimage.entity.field_image.entity.uri.value) %}
+{% set nav_toggle = node.field_webny_gencp_navtoggle.value %}
+{% set toc_content_sections = content.field_webny_gencp_contentsect|without('label') %}
 
-<div class="webny-generic-content-page">
+<div class="webny-generic-content-page webny-toc-page">
 
     <article {{ attributes.addClass('hero-layout') }}>
 
@@ -37,13 +39,17 @@
 
         {# HERO DEFINITION #}
         {% if hero_image == '/' %}
-        <div class="hero-header hero-no-image hero-generic" style="">
+        <div class="hero-header hero-no-image hero-generic">
             {% else %}
-            <div class="hero-header hero-has-image hero-generic" style="background-image:url('{{ hero_image }}')">
+            <div class="hero-header hero-has-image hero-generic">
                 {% endif %}
+
+                <div class="hero-image">
+                    {{ content.field_webny_gencp_heroimage }}
+                </div>
                 <!-- BACKGROUND GRAD -->
-                <!--<div class="hero-bkg"></div>-->
-            <!--</div>-->
+                <div class="hero-bkg"></div>
+            </div>
 
             {# HERO INNER DEFINITION #}
             {% if hero_image == '/' %}
@@ -67,9 +73,8 @@
                     </div>
 
                     {# HERO KEYWORDS #}
-                    <!-- HERO BUTTONS [USING KEYWORD CLASS] -->
-                    <div class="hero-generic-keywords">
-                        {{ content.field_webny_gencp_keywords }}
+                    <div class="hero-keywords">
+                        {{ content.field_webny_agency_keywords }}
                     </div>
 
                     {# TRANSACTION TIME #}
@@ -85,7 +90,6 @@
                     </div>
                     {% endif %}
 
-                </div>
             </div>
 
                 {# ====== END HERO SECTION ====== #}
@@ -94,57 +98,7 @@
                 {{ title_suffix }}
     </article>
 
-    <div class="actions">
-        <div class="webny-action-bar">
-            <div class="webny-action-top"><a href="#top">TOP<span class="icon-arrow-up"></span></a></div>
-            <div class="webny-action-label">{{ node.label }}</div>
-            <div class="webny-share">
-                <div class="webny-action-share-label">SHARE</div>
-                <div class="webny-action-share-button">
-                    <a href="mailto:?Subject={{ site_name }}: {{ node.label }}&Body={{ url('<current>') }}" target="_blank"><span class="icon-email"></span></a>
-                </div>
-                <div class="webny-action-share-button">
-                    <a href="http://www.facebook.com/share.php?u={{ url('<current>') }}" target="_blank"><span class="icon-facebook"></span></a>
-                </div>
-                <div class="webny-action-share-button">
-                    <a href="https://twitter.com/intent/tweet?text={{ node.label }}&url={{ url('<current>') }}" target="_blank"><span class="icon-twitter"></span></a>
-                </div>
-            </div>
-        </div>
-
-
-    </div>
-
-
-{% if node.field_webny_gencp_navtoggle.value == 1 %}
-
-    {# NAV ENABLED: GENERIC PARAGRAPHS SECTION WITH SIDEBAR FOR NAVIGATOR / TOC#}
-    <div class="page-paragraphs generic-paragraphs with-nav-sidebar">
-        <div class="page-paragraphs-in">
-            <aside id="gpnav_sidebar">
-                <header>Sections</header>
-                <ul>
-                    <li class="see-all"><a href="#" class="icon-all_steps"><span>See All</span></a></li>
-                </ul>
-                <span class="arrow"></span>
-            </aside>
-            <div class="gp-article-content">
-                <div class="gp-chapters">
-                    {{ content.field_webny_gencp_contentsect|without('label') }}
-                </div>
-            </div>
-        </div>
-    </div>
-
-{% else %}
-
-    {# NAV DISABLED: GENERIC PARAGRAPHS SECTION FOR USE WITHOUT NAV FUNCTIONALITY #}
-    <div class="page-paragraphs generic-paragraphs">
-        <div class="page-paragraphs-in">
-            {{ content.field_webny_gencp_contentsect|without('label') }}
-        </div>
-    </div>
-
-{% endif %}
+    {% include '@webny_theme/includes/webny--action-bar.html.twig' %}
+    {% include '@webny_theme/includes/webny--toc.html.twig' %}
 
 </div>
