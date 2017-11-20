@@ -3965,6 +3965,14 @@ function webny_configuration_update_8177() {
 }
 
 /**
+ * Enable Acquia Connector which is required by search.
+ */
+function webny_configuration_update_8178() {
+  \Drupal::service('module_installer')
+    ->install(['webny_solr_searches']);
+}
+
+/**
  * Helper function to enable a Drupal module and print the result.
  *
  * @param string $module_name
