@@ -226,7 +226,8 @@ aside#toc-sidebar {
   .contact-phone,
   .contact-address,
   .contact-email,
-  .contact-fax {
+  .contact-fax,
+  .contact-mapdir {
     position: relative;
     display: flex;
     flex-flow: column wrap;
@@ -244,7 +245,8 @@ aside#toc-sidebar {
 
     .icon-phone::before,
     .icon-email::before,
-    .icon-other::before {
+    .icon-other::before,
+    .icon-mapdir::before{
       position: absolute;
       width: 20px;
       color: $color-primary;
@@ -252,12 +254,14 @@ aside#toc-sidebar {
     .icon-phone{ @include icon(before, fa-mobile);}
     .icon-email{ @include icon(before, fa-envelope);}
     .icon-other{ @include icon(before, fa-elipses-h);}
+    .icon-mapdir{ @include icon(before, email);}
   }
 
   .contact--field-webny-contact-phone,
   .contact--field-webny-contact-address,
   .contact--field-webny-contact-email,
-  .contact--field-webny-contact-fax {
+  .contact--field-webny-contact-fax,
+  .contact--field-webny-contact-mapdir {
     font-family: $base-font !important;
     font-weight: 600;
     display: inline-block;
@@ -272,7 +276,8 @@ aside#toc-sidebar {
   .contact-phone-value,
   .contact-fax-value,
   .contact-address-value,
-  .contact-email-value {
+  .contact-email-value,
+  .contact-mapdir-value{
     line-height: $frame-base-line-height;
     margin-left: 35px;
   }

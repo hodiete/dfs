@@ -12,6 +12,19 @@
   *  Office Address:        field_webny_contact_address
   *  Other Details:         field_webny_contact_details
   *  Phone (array):         field_webny_contact_phone
+  *  Language Code          node.field_webny_contact_mapdir.0.langcode
+  *  Country Code:          node.field_webny_contact_mapdir.0.country_code
+  *  State:                 node.field_webny_contact_mapdir.0.administrative_area
+  *  Locality/City:         node.field_webny_contact_mapdir.0.locality
+  *  Locality:              node.field_webny_contact_mapdir.0.dependent_locality
+  *  Postal Code/ ZIP:      node.field_webny_contact_mapdir.0.postal_code
+  *  Sorting Code:          node.field_webny_contact_mapdir.0.sorting_code
+  *  Address Line 1:        node.field_webny_contact_mapdir.0.address_line1
+  *  Address Line 2:        node.field_webny_contact_mapdir.0.address_line2
+  *  Organization Name:     node.field_webny_contact_mapdir.0.organization
+  *  First Name:            node.field_webny_contact_mapdir.0.given_name
+  *  Middle Name:           node.field_webny_contact_mapdir.0.additional_name
+  *  Last Name:             node.field_webny_contact_mapdir.0.family_name
   *
   */
  /**
@@ -43,6 +56,31 @@ set iconclass = [
 'icon-phone',
 ]
 %}
+
+{# ############################################################################################ #}
+{# GOOGLE MAPS INTEGRATION #}
+{% set map_addr1    = node.field_webny_contact_mapdir.0.address_line1 %}
+{% set map_city     = node.field_webny_contact_mapdir.0.locality %}
+{% set map_state    = node.field_webny_contact_mapdir.0.administrative_area %}
+{% set map_zip      = node.field_webny_contact_mapdir.0.postal_code %}
+{% set map_zipsort  = node.field_webny_contact_mapdir.0.sorting_code %}
+
+{% if(  map_addr1   is not empty and
+        map_city    is not empty and
+        map_state   is not empty and
+        map_zip     is not empty )
+%}
+    {%  set google_dirlink      = 'https://google.com/maps?q=' ~ map_addr1 ~ '+' ~ map_city ~ ',+' ~ map_state ~ '+' ~ map_zip %}
+    {%  set google_dirlink_alt  = 'Address to Google Maps: ' ~ map_addr1 ~ '+' ~ map_city ~ ',+' ~ map_state ~ '+' ~ map_zip %}
+    {%  set google_dirlink_linktext  = map_addr1 ~ ' ' ~ map_city ~ ', ' ~ map_state ~ ' ' ~ map_zip %}
+{% else %}
+    {%  set google_dirlink = 'nada' %}
+    {%  set google_dirlink_alt  = '' %}
+    {%  set google_dirlink_linktext  = '' %}
+{% endif %}
+{# ############################################################################################ #}
+
+
 <article{{ attributes.addClass(default_classes) }}>
     {# THIS IS NECESSARY FOR QUICK EDITING THE CONTACT NODE ASSOCIATED WITH THIS CONTENT #}
     {{ title_prefix }}
@@ -119,8 +157,33 @@ set iconclass = [
                     </div>
                 </div>
                 {% endif %}
+
+
+
+
+                <div class="contact-col-2">
+                    <div class="contact-mapdir">
+                        <div class="icon-mapdir">
+                            <div class="contact--field-webny-contact-mapdir">Map Directions:</div>
+                        </div>
+                        <div class="contact-mapdir-value">
+                            <a target="_blank" href="{{ google_dirlink }}" alt="{{ google_dirlink_alt }}" title="{{ google_dirlink_alt }}">
+                                {{ google_dirlink_linktext }}
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
             </div>
            </fieldset>
+
+
+            {# kint(node.field_webny_contact_mapdir) #}
+
+
 
            <fieldset class="social-media-wrapper">
                 <div class="fieldset-wrapper">
