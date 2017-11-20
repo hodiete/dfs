@@ -31,7 +31,7 @@ third_party_settings:
         - field_webny_location_navtoggle
         - field_webny_location_contentsec
       parent_name: ''
-      weight: 10
+      weight: 6
       format_type: details
       format_settings:
         id: section-location-toc
@@ -39,6 +39,22 @@ third_party_settings:
         open: false
         required_fields: true
       label: 'Sections and Table of Contents'
+    group_location_hero_fields:
+      children:
+        - field_webny_location_address
+        - field_webny_location_phone
+        - field_webny_location_heroimage
+      parent_name: ''
+      weight: 5
+      format_type: details
+      format_settings:
+        id: webny-hero-fields
+        classes: ''
+        open: true
+        required_fields: true
+      label: 'Location Hero Fields'
+_core:
+  default_config_hash: ox3CdgVXUThTlNksOnGYzffNxiyJcXIat3wyWfL175A
 id: node.webny_location.default
 targetEntityType: node
 bundle: webny_location
@@ -46,12 +62,12 @@ mode: default
 content:
   created:
     type: datetime_timestamp
-    weight: 13
+    weight: 11
     region: content
     settings: {  }
     third_party_settings: {  }
   field_webny_agency_keywords:
-    weight: 8
+    weight: 7
     settings:
       match_operator: CONTAINS
       size: 60
@@ -60,7 +76,7 @@ content:
     type: entity_reference_autocomplete
     region: content
   field_webny_filter_terms:
-    weight: 7
+    weight: 8
     settings:
       display_node_count: false
       create_new_items: false
@@ -70,7 +86,7 @@ content:
     type: options_shs
     region: content
   field_webny_location_address:
-    weight: 4
+    weight: 11
     settings:
       default_country: US
     third_party_settings: {  }
@@ -89,13 +105,13 @@ content:
     third_party_settings: {  }
     region: content
   field_webny_location_counties:
-    weight: 5
+    weight: 4
     settings: {  }
     third_party_settings: {  }
     type: options_buttons
     region: content
   field_webny_location_heroimage:
-    weight: 9
+    weight: 13
     settings:
       entity_browser: image_browser
       field_widget_display: rendered_entity
@@ -116,7 +132,7 @@ content:
     region: content
   field_webny_location_phone:
     type: entity_reference_paragraphs
-    weight: 6
+    weight: 12
     settings:
       title: 'Phone Number'
       title_plural: 'Phone Numbers'
@@ -153,26 +169,26 @@ content:
     region: content
   langcode:
     type: language_select
-    weight: 15
+    weight: 13
     region: content
     settings: {  }
     third_party_settings: {  }
   path:
     type: path
-    weight: 16
+    weight: 14
     region: content
     settings: {  }
     third_party_settings: {  }
   promote:
     type: boolean_checkbox
-    weight: 12
+    weight: 10
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
   sticky:
     type: boolean_checkbox
-    weight: 11
+    weight: 9
     region: content
     settings:
       display_label: true
@@ -187,7 +203,7 @@ content:
     third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete
-    weight: 14
+    weight: 12
     region: content
     settings:
       match_operator: CONTAINS

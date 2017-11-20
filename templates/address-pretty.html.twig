@@ -1,0 +1,30 @@
+{#
+/**
+ * @file
+ * Theme override for an address field display.
+ *
+ * Available variables:
+ * - address: The main address element.
+ *   - locale: The language locale in which the address is created.
+ *   - lines: The container for all address lines.
+ *     - class: The class name of the address line.
+ *     - value: The value of the address line.
+ *     - lines: The nested address lines used instead of the value variable.
+ *              Used when displaying some address lines inline with other lines.
+ *       - class: The class name of the inline address line.
+ *       - value: The value of the inline address line.
+ */
+#}
+<div class="address" translate="no">
+  {% for class, line in address.lines %}
+  {% if line.lines|length > 0 %}
+  <div class="{{ class }}">
+    {% for subclass, inline in line.lines %}
+    <span class="{{ subclass }}">{{ inline.value }}</span>
+    {% endfor %}
+  </div>
+  {% else %}
+  <div class="{{ class }}">{{ line.value }}</div>
+  {% endif %}
+  {% endfor %}
+</div>
