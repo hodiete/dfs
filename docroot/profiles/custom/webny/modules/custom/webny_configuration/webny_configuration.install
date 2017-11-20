@@ -3873,7 +3873,7 @@ function webny_configuration_update_8172() {
         ->install(['webny_document_content_type']);
 }
 
- /* Permissions update for Content Authors in What's Related paragraph type.
+/** Permissions update for Content Authors in What's Related paragraph type.
  */
 function webny_configuration_update_8173() {
   $config_factory = \Drupal::configFactory();
@@ -3889,8 +3889,6 @@ function webny_configuration_update_8173() {
   // Clear the config cache.
   $config_factory->reset();
 }
-
-
 
 /**
  * REFRESH THE SECONDARY NAVIGATION MODULE -- UPDATED FORM
@@ -3927,8 +3925,10 @@ function webny_configuration_update_8175() {
   $config_factory->reset();
 
 }
-/*NDD-1112 frame background colors 
--Beth */
+
+/** NDD-1112 frame background colors
+* -Beth
+*/
 function webny_configuration_update_8176() {
     
     \Drupal::service('module_installer')
@@ -3965,7 +3965,6 @@ function webny_configuration_update_8177() {
 }
 
 /**
->>>>>>> WIP
  * Helper function to enable a Drupal module and print the result.
  *
  * @param string $module_name
