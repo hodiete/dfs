@@ -47,7 +47,7 @@ class webnyGlobalNavBlockExtension extends \Twig_Extension {
 
         // ASSIGN HTML CONST
         $ultop = '<ul class="gnav-ul">';
-        $litop = '<li class="gnav-mitems" aria-expanded="false">';
+        $litop = '<li class="gnav-mitems gnav-topli" aria-expanded="false">';
         $ulsub = '<ul class="gnav-items-ul" aria-hidden="true">';
         $lisub = '<li>';
         $litopalt = '<li class="gnav-toplink">';
@@ -69,34 +69,45 @@ class webnyGlobalNavBlockExtension extends \Twig_Extension {
 
                 // PREASSIGN COUNT TO 1
                 $subcount = 1;
-
-                // BUILD LIST ITEM AND UL SUB ITEM
                 $newmenu .= $litop . $link;
-                $newmenu .= $ulsub;
 
-                foreach ($item->subtree as $subitem){
 
-                    // SUBITEM META
-                    $subtitle   = $subitem->link->getTitle();
-                    $suburl     = $subitem->link->getUrlObject();
-                    $sublink    = \Drupal\Core\Link::fromTextAndUrl(t($subtitle), $suburl)->toString();
+                // ENSURE SIZE OF ARRAY BEFORE LOOPING
+                if(sizeof($item->subtree) > 0){
 
-                    // ADD TOP LEVEL LINK AS A LINK
-                    if($subcount == 1){
-                        $newmenu .= $litopalt . $link . $lic;
+                    $newmenu .= $ulsub;
+
+                    foreach ($item->subtree as $subitem){
+
+                        // SUBITEM META
+                        $subtitle   = $subitem->link->getTitle();
+                        $suburl     = $subitem->link->getUrlObject();
+                        $sublink    = \Drupal\Core\Link::fromTextAndUrl(t($subtitle), $suburl)->toString();
+
+                        // ADD TOP LEVEL LINK AS A LINK
+                        if($subcount == 1){
+
+                            // BUILD LIST ITEM AND UL SUB ITEM
+                            if(!empty($url->toString())){
+                                $newmenu .= $litopalt . $link . $lic;
+                            }
+
+                        }
+
+                        // CONSTRUCT SUBURL
+                        $newmenu .= $lisub . $sublink . $lic;
+
+                        // INCREMENT SUBCOUNT
+                        $subcount++;
+
+                        unset($subitem);
+
                     }
 
-                    // CONSTRUCT SUBURL
-                    $newmenu .= $lisub . $sublink . $lic;
+                    // CLOSE THE UL AND TOP LEVEL LI ELEMENT
+                    $newmenu .= $ulc . $lic;
 
-                    // INCREMENT SUBCOUNT
-                    $subcount++;
-
-                }
-
-                // CLOSE THE UL AND TOP LEVEL LI ELEMENT
-                $newmenu .= $ulc . $lic;
-
+                };
 
             } else {
 
