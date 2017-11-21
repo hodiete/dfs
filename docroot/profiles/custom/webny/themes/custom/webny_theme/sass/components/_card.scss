@@ -308,16 +308,14 @@ $featured-card-icon-color-hover: $color-secondary !default;
     padding: .5rem 1rem;
     line-height: 22px;
   }
-  .card-content-top {
-    max-height: 3em;
-  }
-.card-event {
-  &--date-block {
-    padding: .5em 1em;
-    padding: .5rem 1rem;
 
-    //_event_date_card.scss Mixin
-    @include event-date-card;
+  .card-event {
+    &--date-block {
+      padding: .5em 1em;
+      padding: .5rem 1rem;
+
+      //_event_date_card.scss Mixin
+      @include event-date-card;
 
     }
   }
