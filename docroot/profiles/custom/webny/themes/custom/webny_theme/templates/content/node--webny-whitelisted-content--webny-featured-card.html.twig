@@ -1,65 +1,23 @@
-{#
-/**
- * WHITELISTED CARD - NODE TEMPLATE
- * @see template_preprocess_node()
- *
- */
-#}
+{% extends 'profiles/custom/webny/themes/custom/webny_theme/templates/content/webny--card-base.html.twig' %}
+
 {%  if(node.field_webny_whitelist_stitle.value is not empty and node.field_webny_whitelist_stitle.value is not null) %}
-  {% set vtitle = node.field_webny_whitelist_stitle.value %}
+    {% set vtitle = node.field_webny_whitelist_stitle.value %}
 {% else %}
-  {% set vtitle = node.label %}
+    {% set vtitle = node.label %}
 {% endif %}
-<article{{ attributes.addClass('webny-card') }}>
 
-    <div class="card-image">
-        {{ content.field_webny_whitelist_image }}
-    </div>
-    <div class="card-content">
-        <div class="card-content-top">
-            {%  if not page %}
-                {{ title_prefix }}
+{% block card_image %}
+    {% if (content.field_webny_whitelisted_image["#items"] is not empty) %}
+        <div class="card-image">
+            {{ content.field_webny_whitelist_image }}
+        </div>
+    {% endif %}
+{% endblock card_image %}
 
-                <h1{{ title_attributes }}>
-                    <a href="{{ content.field_webny_whitelist_link_url[0]['#url'] }}" target="_blank" rel="bookmark">
+{% block card_title %}
+    {{ vtitle | webny_trim_card_title }}
+{% endblock card_title %}
 
-                        {# IMPLEMENTS SHORT TITLE OR 65 CHAR LIMIT TITLE #}
-                        
-                        {% if(vtitle|length <= 65) %}
-                            {{ vtitle }}
-                        {% else %}
-
-                            {% set ws = true %}
-                            {% for num in node.label|length..0 %}
-                                {% if (num < 65 and  node.label|slice(num)|first == ' ' and ws != false) %}
-                                    {% set ws = false %}
-                                    {{ node.label[:num] ~ '...' }}
-                                {% endif %}
-                            {% endfor %}
-
-                        {% endif %}
-
-                    </a>
-                </h1>
-
-                {{ title_suffix }}
-            {% endif %}
-
-            {% if display_submitted %}
-                <footer>
-                    {{ author_picture }}
-                    <div{{ author_attributes }}>
-                        {% trans %}Submitted by {{ author_name }} on {{ date }}{% endtrans %}
-                        {{ metadata }}
-                    </div>
-                </footer>
-            {% endif %}
-
-            {# content.field_webny_whitelist_date #}
-        </div> {# end .card-content-top #}
-
-        {{ content|without('field_webny_whitelist_agency_key','field_webny_whitelist_global_key', 'field_webny_agency_keywords','field_webny_global_keywords','field_webny_whitelist_link_url','field_webny_whitelist_image', 'field_webny_whitelist_date', 'field_webny_whitelist_stitle','node.label') }}
-
-    </div> {# end .card-content #}
-
-
+{% block card_content %}
+    {{ content|without('field_webny_whitelist_agency_key','field_webny_whitelist_global_key', 'field_webny_agency_keywords','field_webny_global_keywords','field_webny_whitelist_link_url','field_webny_whitelist_image', 'field_webny_whitelist_date', 'field_webny_whitelist_stitle','node.label') }}
+{% endblock card_content %}

@@ -52,7 +52,7 @@
     'paragraph',
     'paragraph--type--' ~ paragraph.bundle|clean_class,
     view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
-    'generic_para',
+    'toc-para',
     paragraph.bundle|clean_class,
     'gp_enabled',
   ]
@@ -64,12 +64,12 @@
     {% block content %}
       {{ content|without('field_webny_contact_add_sect_toc') }}
     {% endblock %}
-    <div class="gp-next-section">
-      <div class="gp-next-section-links">
+    <div class="next-section">
+      <div class="next-section-links">
           <p>Next Section</p>
-          <p class="icon-thin_down_arrow gp-next-section-link">Continue</p>
+          <p class="icon-thin_down_arrow next-section-link">Continue</p>
       </div>
-      <span class="gp-next-section-title"></span>
+      <span class="next-section-title"></span>
     </div>
   </section>
 {% endblock paragraph %}
