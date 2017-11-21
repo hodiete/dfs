@@ -11,6 +11,35 @@
 
   Drupal.behaviors.navigator = {
     attach: function (context, settings) {
+      // define variaables used for TOC scrolling
+      var elementsMax = 12;
+      var elementsCount;
+      var elementsDiff;
+      var elementsPadding;
+
+      // calculate math needed for scrolling
+      elementsCount = $('#toc-sidebar ul li').length;
+      elementsDiff = (elementsMax - elementsCount);
+      elementsPadding = (elementsDiff * 70);
+
+      // scroll for TOC
+      $(window).scroll(function() {
+
+        if ($('#toc-sidebar').css('position') == 'fixed' && $('#toc-sidebar ul li.see-all').css('display') == 'none') {
+
+          if ($('#toc-sidebar li:nth-child(6)').hasClass('active')) {
+            var tocHeight = $('#toc-sidebar').height();
+            tocHeight = tocHeight + elementsPadding;
+            $('#toc-sidebar').css('height', tocHeight + 'px');
+            $('#toc-sidebar').css('position', 'fixed').css('bottom', '50px').css('top', '-50px').css('transition-duration', '1s');
+          } else if ($('#toc-sidebar li:nth-child(5)').hasClass('active')) {
+            $('#toc-sidebar').css('bottom', '-50px').css('top', '50px').css('transition-duration', '1s');
+          }
+
+        }
+
+      });
+
       // Loop through each section (paragraph)
       $('.toc-chapters section').once().each(function () {
         // define next section object
@@ -180,6 +209,7 @@
             $('#toc-sidebar').addClass('stuck');
           }
           else if (direction === 'up') {
+            $('#toc-sidebar').removeAttr('style');
             $('.actions').removeClass('stuck');
             $('#toc-sidebar').removeClass('stuck');
           }
