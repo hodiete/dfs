@@ -13,7 +13,6 @@ Feature: Check for the existence and fields of content types
     Then I should see text matching "Title"
     And I should see text matching "Short Title"
     And I should see text matching "Summary/Description"
-    And I should see text matching "Event Details"
     And I should see text matching "Date Start"
     And I should see text matching "Date End"
     And I should see text matching "All day"

@@ -1,0 +1,45 @@
+{# Shared event date/location markup. #}
+{% set day_month_classes = ['day-month-wrapper'] %}
+{% if multi_day %}
+  {% set day_month_classes = day_month_classes | merge(['multi-day']) %}
+{% endif %}
+
+<div class="event-date">
+  <div class="{{ day_month_classes | join(' ') }}">
+    <div class="month">
+      {% if not multi_day %}
+        <div class="start">{{ start_date | date('F') }}</div>
+      {% else %}
+        <div class="start">{{ start_date | date('M') }}</div>
+        <div class="dash">&mdash;</div>
+        <div class="end">{{ end_date | date('M') }}</div>
+      {% endif %}
+    </div>
+
+    <div class="day">
+      <div class="start">{{ start_date | date('d') }}</div>
+      {% if multi_day %}
+        <div class="dash">&mdash;</div>
+        <div class="end">{{ end_date | date('d') }}</div>
+      {% endif %}
+    </div>
+  </div>
+
+  {% if not all_day %}
+    <div class="time">
+      <div class="start_date">{{ start_date | date('g:i') }}</div>
+      {% if (not same_meridiem) or same_time %}
+        <div class="meridiem">{{ start_date | date('A') }}</div>
+      {% endif %}
+      {% if not same_time %}
+        <div class="dash">&mdash;</div>
+        <div class="end-date">{{ end_date | date('g:i') }}</div>
+        <div class="meridiem">{{ end_date | date('A') }}</div>
+      {% endif %}
+    </div>
+  {% endif %}
+
+  <div class="address-wrapper">
+    {{ content.field_webny_event_address }}
+  </div>
+</div>
