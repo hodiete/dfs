@@ -1,3 +1,4 @@
+uuid: null
 langcode: en
 status: true
 dependencies:
@@ -15,6 +16,7 @@ dependencies:
     - field.field.node.webny_contact.field_webny_contact_image
     - field.field.node.webny_contact.field_webny_contact_instagram
     - field.field.node.webny_contact.field_webny_contact_linkedin
+    - field.field.node.webny_contact.field_webny_contact_mapdir
     - field.field.node.webny_contact.field_webny_contact_name
     - field.field.node.webny_contact.field_webny_contact_pintrest
     - field.field.node.webny_contact.field_webny_contact_pro_subtitle
@@ -32,6 +34,7 @@ dependencies:
     - field.field.node.webny_contact.field_webny_phone_contact
     - node.type.webny_contact
   module:
+    - address
     - entity_reference_revisions
     - field_group
     - link
@@ -59,6 +62,7 @@ third_party_settings:
         - field_webny_contact_email
         - field_webny_contact_address
         - field_webny_contact_fax
+        - field_webny_contact_mapdir
       parent_name: group_contact_wrapper
       weight: 2
       label: ''
@@ -118,7 +122,7 @@ content:
     type: email_mailto
     region: content
   field_webny_contact_facebook:
-    weight: 7
+    weight: 13
     label: hidden
     settings:
       trim_length: 80
@@ -148,7 +152,7 @@ content:
     type: telephone_link
     region: content
   field_webny_contact_flickr_link:
-    weight: 15
+    weight: 21
     label: hidden
     settings:
       trim_length: 80
@@ -170,7 +174,7 @@ content:
     type: link_separate
     region: content
   field_webny_contact_google:
-    weight: 11
+    weight: 17
     label: hidden
     settings:
       trim_length: 80
@@ -192,7 +196,7 @@ content:
     type: link_separate
     region: content
   field_webny_contact_instagram:
-    weight: 10
+    weight: 16
     label: hidden
     settings:
       trim_length: 80
@@ -214,7 +218,7 @@ content:
     type: link_separate
     region: content
   field_webny_contact_linkedin:
-    weight: 19
+    weight: 25
     label: hidden
     settings:
       trim_length: 80
@@ -235,8 +239,15 @@ content:
           text: LinkedIn
     type: link_separate
     region: content
+  field_webny_contact_mapdir:
+    type: address_default
+    weight: 7
+    region: content
+    label: above
+    settings: {  }
+    third_party_settings: {  }
   field_webny_contact_pintrest:
-    weight: 17
+    weight: 23
     label: hidden
     settings:
       trim_length: 80
@@ -258,7 +269,7 @@ content:
     type: link_separate
     region: content
   field_webny_contact_rss_link:
-    weight: 16
+    weight: 22
     label: hidden
     settings:
       trim_length: 80
@@ -280,7 +291,7 @@ content:
     type: link_separate
     region: content
   field_webny_contact_snapchat:
-    weight: 13
+    weight: 19
     label: hidden
     settings:
       trim_length: 80
@@ -302,7 +313,7 @@ content:
     type: link_separate
     region: content
   field_webny_contact_soundcloud:
-    weight: 12
+    weight: 18
     label: hidden
     settings:
       trim_length: 80
@@ -324,7 +335,7 @@ content:
     type: link_separate
     region: content
   field_webny_contact_tumblr_link:
-    weight: 18
+    weight: 24
     label: hidden
     settings:
       trim_length: 80
@@ -346,7 +357,7 @@ content:
     type: link_separate
     region: content
   field_webny_contact_twitter:
-    weight: 8
+    weight: 14
     label: hidden
     settings:
       trim_length: 80
@@ -368,7 +379,7 @@ content:
     type: link_separate
     region: content
   field_webny_contact_vimeo_link:
-    weight: 20
+    weight: 26
     label: hidden
     settings:
       trim_length: 80
@@ -390,7 +401,7 @@ content:
     type: link_separate
     region: content
   field_webny_contact_vine_link:
-    weight: 14
+    weight: 20
     label: hidden
     settings:
       trim_length: 80
@@ -412,7 +423,7 @@ content:
     type: link_separate
     region: content
   field_webny_contact_youtube:
-    weight: 9
+    weight: 15
     label: hidden
     settings:
       trim_length: 80
