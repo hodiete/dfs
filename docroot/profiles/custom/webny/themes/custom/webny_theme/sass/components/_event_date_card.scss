@@ -1,0 +1,104 @@
+// Base event date & location card styles.
+@mixin event-date-card {
+  .day-month-wrapper {
+    padding-bottom: 20px;
+    text-align: center;
+  }
+
+  .multi-day {
+    .day div,
+    .month div {
+      float: left;
+      width: 65px;
+
+      &.dash {
+        width: 25px;
+      }
+    }
+  }
+
+  .month {
+    @include clearfix;
+
+    color: $primarygold;
+    font-size: 14px;
+    font-family: $base-font;
+    font-weight: 800;
+    padding-bottom: 10px;
+    text-transform: uppercase;
+
+    div {
+      text-align: left;
+    }
+
+    .dash {
+      color: transparent;
+    }
+  }
+
+  .day {
+    @include clearfix;
+
+    font-size: 42px;
+    color: #000;
+    font-family: $base-font;
+    font-weight: 800;
+
+    div {
+      text-align: left;
+    }
+
+    .dash {
+      font-size: 15px;
+      font-weight: 600;
+    }
+  }
+
+  .time {
+    font-family: $base-font;
+    font-size: 13px;
+    line-height: 16px;
+    text-transform: uppercase;
+
+    @include icon(before, fa-clock);
+
+    &::before {
+      color: $medblue;
+      display: inline-block;
+      font-size: 13px;
+      vertical-align: top;
+      width: 23px;
+    }
+
+    div {
+      display: inline-block;
+    }
+  }
+
+  .address-wrapper {
+    border-top: 1px solid $color-mono-mid;
+    margin-top: 15px;
+    padding-top: 15px;
+
+    @include icon(before, fa-pin);
+
+    &::before {
+      color: $medblue;
+      float: left;
+      font-size: 13px;
+      vertical-align: top;
+      width: 23px;
+    }
+  }
+
+  .address {
+    float: left;
+    font-family: $base-font;
+    font-size: 13px;
+    line-height: 16px;
+    margin: 0px;
+    span.country {
+      display: none;
+    }
+  }
+}
