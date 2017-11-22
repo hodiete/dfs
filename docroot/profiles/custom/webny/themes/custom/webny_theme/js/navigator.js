@@ -210,7 +210,6 @@
 
       // find difference in toc height and height of all elements. Include some buffer for footer
       tocOffset = (tocHeight - elementHeight - 100);
-      console.log(tocOffset);
 
       // scroll for TOC
       $(window).scroll(function() {
@@ -219,13 +218,21 @@
         if ($('#toc-sidebar').css('position') == 'fixed' && $('#toc-sidebar ul li.see-all').css('display') == 'none') {
 
           tocHeight = tocHeight + elementsPadding;
-          $('#toc-sidebar').css('height', tocHeight + 'px');
-          if ($('#toc-sidebar li:nth-child(6)').hasClass('active')) {
-            $('#toc-sidebar').css('position', 'fixed').css('top', tocOffset + 'px').css('transition-duration', '1s');
-          } else if ($('#toc-sidebar li:nth-child(5)').hasClass('active')) {
-            $('#toc-sidebar').css('top', '50px').css('transition-duration', '1s');
-          }
 
+          $('#toc-sidebar').css('height', tocHeight + 'px');
+
+          // ADD CONIDTION TO TRIGGER ONLY WHEN THERE ARE 8 OR MORE ELEMENTS (7 TOCs)
+          // AND THE BROWSER HEIGHT IS LESS THAN 750 px.
+          if($('#toc-sidebar li').length >= 8 && window.innerHeight < 750) {
+
+            if ($('#toc-sidebar li:nth-child(6)').hasClass('active')) {
+              $('#toc-sidebar').css('position', 'fixed').css('top', tocOffset + 'px').css('transition-duration', '1s');
+            }
+
+            else if ($('#toc-sidebar li:nth-child(5)').hasClass('active')) {
+              $('#toc-sidebar').css('top', '50px').css('transition-duration', '1s');
+            }
+          }
         }
 
       });
