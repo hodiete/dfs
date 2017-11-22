@@ -70,4 +70,8 @@ function webny_install() {
   \Drupal::service('module_installer')
       ->install(['webny_configuration']);
 
+  // Enable Solr configuration module.
+  \Drupal::service('module_installer')
+    ->install(['webny_solr_searches']);
+
 }
