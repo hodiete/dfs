@@ -42,7 +42,7 @@ class webnySecondaryNavBlockExtension extends \Twig_Extension {
         $startCount     = $config->get('webny_secondary_nav.start_count');
         $htmlLinks      = '';
 
-        for($x = $startCount; $x < $maxlinks; $x++) {
+        for($x = $startCount; $x <= $maxlinks; $x++) {
 
             $title = 'urltitle'.$x;
             $linkr = 'entref'.$x;

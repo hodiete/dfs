@@ -4,7 +4,9 @@ dependencies:
   config:
     - core.entity_view_mode.node.quick_links_card
     - field.field.node.webny_whitelisted_content.body
+    - field.field.node.webny_whitelisted_content.field_webny_agency_keywords
     - field.field.node.webny_whitelisted_content.field_webny_filter_terms
+    - field.field.node.webny_whitelisted_content.field_webny_global_keywords
     - field.field.node.webny_whitelisted_content.field_webny_whitelist_agency_key
     - field.field.node.webny_whitelisted_content.field_webny_whitelist_date
     - field.field.node.webny_whitelisted_content.field_webny_whitelist_descript
@@ -14,7 +16,7 @@ dependencies:
     - field.field.node.webny_whitelisted_content.field_webny_whitelist_stitle
     - node.type.webny_whitelisted_content
   module:
-    - text
+    - smart_trim
     - user
 id: node.webny_whitelisted_content.quick_links_card
 targetEntityType: node
@@ -24,9 +26,18 @@ content:
   field_webny_whitelist_descript:
     weight: 2
     label: hidden
-    settings: {  }
+    settings:
+      trim_length: '80'
+      trim_type: chars
+      trim_suffix: ...
+      more_link: '0'
+      more_text: More
+      trim_options:
+        text: 0
+      more_class: more-link
+      summary_handler: full
     third_party_settings: {  }
-    type: text_default
+    type: smart_trim
     region: content
   field_webny_whitelist_image:
     weight: 0
@@ -47,7 +58,9 @@ content:
     third_party_settings: {  }
 hidden:
   body: true
+  field_webny_agency_keywords: true
   field_webny_filter_terms: true
+  field_webny_global_keywords: true
   field_webny_whitelist_agency_key: true
   field_webny_whitelist_date: true
   field_webny_whitelist_global_key: true

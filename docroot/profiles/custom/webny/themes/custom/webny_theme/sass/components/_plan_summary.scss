@@ -6,7 +6,7 @@
 //
 // Style guide: components.plan_summary
 
-// color variables
+// color variables (default-secondary)
 $summary-frame-bkgd-color: $color-secondary !default;
 $summary-frame-title-color: $color-mono-black !default;
 $summary-frame-headline-color: $color-mono-white !default;
@@ -14,12 +14,33 @@ $summary-frame-keypt-title-color: $color-mono-white !default;
 $summary-frame-keypt-text-color: $color-mono-black !default;
 $summary-frame-keypt-border: $color-secondary !default;
 $summary-frame-button: $color-mono-white !default;
+// color variables (primary)
+$summary-frame-bkgd-color-primary: $color-accent-primary !default;
+$summary-frame-title-color-primary: $color-mono-black !default;
+$summary-frame-headline-color-primary: $color-primary !default;
+$summary-frame-description-color-primary: $color-mono-black !default;
+// color variables (monochrome light )
+$summary-frame-bkgd-color-monochrome: $color-mono-lt !default;
+$summary-frame-title-color-monochrome: $color-mono-black !default;
+$summary-frame-headline-color-monochrome: $color-mono-black !default;
+$summary-frame-keypt-title-color-monochrome: $color-primary !default;
+
 // REASSIGNED VALS FOR GLOBAL SCOPE -- SUMMARY
 // this overrides general button variables in config.scss
 $summary-button-border-color:           $button-border-color !default;
 $summary-button-text-color:             $button-text-color !default;
 $summary-button-back-color:             $button-bkgd-transparent !default;
 $summary-button-hover-back-color:       $button-black-50 !default;
+// Primary button colors
+$summary-button-border-color-primary:            $color-mono-black !default;
+$summary-button-text-color-primary:              $color-mono-black !default;
+$summary-button-back-color-primary:              $button-bkgd-transparent !default;
+$summary-button-hover-back-color-primary:        $button-white-50 !default;
+// Monochrome button colors 
+$summary-button-border-color-monochrome:      $color-primary !default;
+$summary-button-text-color-monochrome:        $button-text-color !default;
+$summary-button-back-color-monochrome:        $button-bkgd-color!default;
+$summary-button-hover-back-color-monochrome:  $color-mono-black !default;
 
 // ######################################################################### //
 /* START STYLING MOBILE FIRST UNDER HERE */
@@ -146,6 +167,54 @@ $summary-button-hover-back-color:       $button-black-50 !default;
   @include frame-button-base();
 
 }
+// if primary background color is selected for frame
+.paragraph--type--webny-summary-pgtype.primary {
+  background-color: $summary-frame-bkgd-color-primary;
+  .keypoint--field-webny-summary-title {
+    color: $summary-frame-title-color-primary;
+  }
+  .keypoint--field-webny-summary-headline {
+    color: $summary-frame-headline-color-primary;
+  }
+  .keypoint--field-webny-summary-cta {
+    a {
+      color: $summary-button-text-color-primary;
+      border: $frame-button-border-size solid $summary-button-border-color-primary;
+      &:hover {
+        border-color: $summary-button-border-color-primary;
+        background-color: $summary-button-hover-back-color-primary;
+      }
+    }
+  }
+}
+// if monochrome light background color is selected for frame
+.paragraph--type--webny-summary-pgtype.monochrome {
+  background-color: $summary-frame-bkgd-color-monochrome;
+  .keypoint--field-webny-summary-title {
+    color: $summary-frame-title-color-monochrome;
+  }
+  .keypoint--field-webny-summary-headline {
+    color: $summary-frame-headline-color-monochrome;
+  }
+  .keypoint--field-webny-summary-keypoint1,
+  .keypoint--field-webny-summary-keypoint2,
+  .keypoint--field-webny-summary-keypoint3 {
+    color: $summary-frame-keypt-title-color-monochrome;
+  }
+  .keypoint--field-webny-summary-cta {
+    a {
+      color: $summary-button-text-color-monochrome;
+      background-color: $summary-button-back-color-monochrome;
+      border: $frame-button-border-size solid $summary-button-border-color-monochrome;
+
+      &:hover {
+        background-color: $summary-button-hover-back-color-monochrome;
+        border-color: $summary-button-border-color-monochrome;
+      }
+    }
+  }
+}
+
 
 // ######################################################################### //
 /* TABLET VIEW */
