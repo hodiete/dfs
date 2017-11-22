@@ -218,7 +218,11 @@ aside#toc-sidebar {
 }
 
 /* Contact Frame styling - starts here */
-.generic-paragraphs{
+.gp-paragraphs{
+  .news-contact-area p{
+    margin: 0 auto;
+    padding: 0 8%;
+  }
   fieldset {
     border: none;
     margin: 0 0 1px;
@@ -522,6 +526,12 @@ aside#toc-sidebar {
       cursor: pointer;
     }
   }
+  .gp-paragraphs {
+    .news-contact-area p {
+      margin: 0 auto;
+      padding: 0;
+    }
+  }
 }
 
 // ######################################################################### //
@@ -529,7 +539,7 @@ aside#toc-sidebar {
 
 @media (max-width: 968px) {
   /* Contact Frame styling - starts here */
-  .generic-paragraphs{
+  .gp-paragraphs{
     .news-contact-area{
       width: 100%;
     }

@@ -74,6 +74,12 @@ $hero-keyword-text-color: $color-mono-white !default;
   height: 487px;
 }
 
+.hero-no-image.hero-location {
+  background-color: $hero-bkgd-color;
+  height: 390px;
+  width: 100%;
+}
+
 // ========================================================================= //
 /* HERO LAYOUT */
 .hero-layout {
@@ -120,7 +126,24 @@ $hero-keyword-text-color: $color-mono-white !default;
       padding-top: 0px;
       margin-top: 56px;
     }
+  }
 
+  .hero-location-inner {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    padding: 0;
+    &.hero-has-image-content {
+      position: relative;
+      z-index: 3;
+    }
+    h1, h2 {
+      padding-bottom: 0px;
+      padding-top: 0px;
+      margin-top: 10px;
+    }
   }
 
   .hero-no-image.hero-news{
@@ -207,16 +230,6 @@ $hero-keyword-text-color: $color-mono-white !default;
     display: inline-block;
   }
 
-  .hero-location {
-    border-left: 1px solid #d9e2e2;
-    display: inline-block;
-    font-family: $base-font;
-    margin-left: 5px;
-    padding-left: 9px;
-    text-transform: none;
-    color: $hero-text-color;
-  }
-
   h1,h2{
 
     color: $hero-text-color;
@@ -246,9 +259,9 @@ $hero-keyword-text-color: $color-mono-white !default;
     display:inline-block;
   }
 
-
   .hero-buttons a {
-    font: 13px/4 "proxima nova";
+    font: 14px/4 "proxima nova";
+    font-weight: bold;
     color: #ffffff;
     cursor: pointer;
     text-decoration: none;
@@ -534,6 +547,12 @@ $hero-keyword-text-color: $color-mono-white !default;
 /* MIN TABLET VIEW */
 @media (min-width: $min-tab) {
 
+  .hero-no-image.hero-location {
+    background-color: $hero-bkgd-color;
+    height: 500px;
+    width: 100%;
+  }
+
   .hero-layout {
 
     .hero-no-image.hero-generic {
@@ -686,6 +705,14 @@ $hero-keyword-text-color: $color-mono-white !default;
       }
     }
 
+    .hero-location-inner {
+      padding: 0 !important;
+
+      h1 {
+        margin-top: 10px;
+      }
+    }
+
 
     .hero-no-image.hero-ipage,
     .hero-no-image.hero-landing {
@@ -806,7 +833,6 @@ $hero-keyword-text-color: $color-mono-white !default;
 
   } // END HERO-layout
 
-
   .front {
     .hero-layout {
 
@@ -837,7 +863,6 @@ $hero-keyword-text-color: $color-mono-white !default;
 // ######################################################################### //
 /* FULL DESKTOP VIEW */
 @media (min-width: 60em) {
-
   .hero-layout {
 
     .hero-inner{
@@ -880,7 +905,7 @@ $hero-keyword-text-color: $color-mono-white !default;
 
     }
 
-  } // END HERO LAYOUT
+  }// END HERO LAYOUT
 
   // FRONT MIN HEIGHT ADJUSTMENT
   .front {
