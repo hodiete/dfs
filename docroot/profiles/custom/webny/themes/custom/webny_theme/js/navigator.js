@@ -19,6 +19,7 @@
       var elementHeight = 0;
       var tocHeight;
       var tocOffset;
+      var fixedtocOffset = 0;
 
       // Loop through each section (paragraph)
       $('.toc-chapters section').once().each(function () {
@@ -208,6 +209,17 @@
       elementsPadding = (elementsDiff * 70);
       tocHeight = $('#toc-sidebar').height();
 
+      // TIERS OF HEIGHT FOR FIXED DYNAMICS
+      if(window.innerHeight < 800){
+        fixedtocOffset = -50;
+      }
+      if(window.innerHeight < 700){
+        fixedtocOffset = -100;
+      }
+      if(window.innerHeight < 600){
+        fixedtocOffset = -200;
+      }
+
       // find difference in toc height and height of all elements. Include some buffer for footer
       tocOffset = (tocHeight - elementHeight - 100);
 
@@ -223,10 +235,10 @@
 
           // ADD CONIDTION TO TRIGGER ONLY WHEN THERE ARE 8 OR MORE ELEMENTS (7 TOCs)
           // AND THE BROWSER HEIGHT IS LESS THAN 750 px.
-          if($('#toc-sidebar li').length >= 8 && window.innerHeight < 750) {
+          if($('#toc-sidebar li').length >= 7 && window.innerHeight < 800) {
 
             if ($('#toc-sidebar li:nth-child(6)').hasClass('active')) {
-              $('#toc-sidebar').css('position', 'fixed').css('top', tocOffset + 'px').css('transition-duration', '1s');
+              $('#toc-sidebar').css('position', 'fixed').css('top', fixedtocOffset + 'px').css('transition-duration', '1s');
             }
 
             else if ($('#toc-sidebar li:nth-child(5)').hasClass('active')) {
