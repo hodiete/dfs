@@ -483,7 +483,19 @@ aside#toc-sidebar {
   .webny-global-footer {
     z-index: 10;
   }
-
+  // change widths and hide next section when TOC is not used
+  .page-paragraphs:not(.with-nav-sidebar) {
+    width: 90%;
+    max-width: 780px;
+    //margin-top: 60px;
+    margin: 60px auto 0 auto;
+    .next-section {
+      display: none;
+    }
+    .toc-para {
+      padding-bottom: 75px;
+    }
+  }
   .next-section {
     display: block;
     margin-top: 75px;
