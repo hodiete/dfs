@@ -11,6 +11,15 @@
 
   Drupal.behaviors.navigator = {
     attach: function (context, settings) {
+      // define variaables used for TOC scrolling
+      var elementsMax = 12;
+      var elementsCount;
+      var elementsDiff;
+      var elementsPadding;
+      var elementHeight = 0;
+      var tocHeight;
+      var tocOffset;
+
       // Loop through each section (paragraph)
       $('.toc-chapters section').once().each(function () {
         // define next section object
@@ -180,11 +189,45 @@
             $('#toc-sidebar').addClass('stuck');
           }
           else if (direction === 'up') {
+            $('#toc-sidebar').removeAttr('style');
             $('.actions').removeClass('stuck');
             $('#toc-sidebar').removeClass('stuck');
           }
         },
         enabled: false
+      });
+
+      // verify height of all list items in TOC to calculate space needed
+      $('#toc-sidebar ul li').each(function() {
+        elementHeight += parseInt($(this).outerHeight());
+      });
+
+      // calculate math needed for scrolling
+      elementsCount = $('#toc-sidebar ul li').length;
+      elementsDiff = (elementsMax - elementsCount);
+      elementsPadding = (elementsDiff * 70);
+      tocHeight = $('#toc-sidebar').height();
+
+      // find difference in toc height and height of all elements. Include some buffer for footer
+      tocOffset = (tocHeight - elementHeight - 100);
+      console.log(tocOffset);
+
+      // scroll for TOC
+      $(window).scroll(function() {
+
+        // verify we are not in mobile
+        if ($('#toc-sidebar').css('position') == 'fixed' && $('#toc-sidebar ul li.see-all').css('display') == 'none') {
+
+          tocHeight = tocHeight + elementsPadding;
+          $('#toc-sidebar').css('height', tocHeight + 'px');
+          if ($('#toc-sidebar li:nth-child(6)').hasClass('active')) {
+            $('#toc-sidebar').css('position', 'fixed').css('top', tocOffset + 'px').css('transition-duration', '1s');
+          } else if ($('#toc-sidebar li:nth-child(5)').hasClass('active')) {
+            $('#toc-sidebar').css('top', '50px').css('transition-duration', '1s');
+          }
+
+        }
+
       });
 
       // on load check to see if there is a hash anchor in the URL to force an auto scroll to section on page
