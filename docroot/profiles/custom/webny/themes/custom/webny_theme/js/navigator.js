@@ -210,14 +210,17 @@
       tocHeight = $('#toc-sidebar').height();
 
       // TIERS OF HEIGHT FOR FIXED DYNAMICS
-      if(window.innerHeight < 800){
-        fixedtocOffset = -50;
+      if(window.innerHeight < 900){
+        fixedtocOffset = -75;
       }
-      if(window.innerHeight < 700){
+      if(window.innerHeight < 825){
         fixedtocOffset = -100;
       }
-      if(window.innerHeight < 600){
-        fixedtocOffset = -200;
+      if(window.innerHeight < 725){
+        fixedtocOffset = -150;
+      }
+      if(window.innerHeight < 625){
+        fixedtocOffset = -225;
       }
 
       // find difference in toc height and height of all elements. Include some buffer for footer
@@ -235,7 +238,7 @@
 
           // ADD CONIDTION TO TRIGGER ONLY WHEN THERE ARE 8 OR MORE ELEMENTS (7 TOCs)
           // AND THE BROWSER HEIGHT IS LESS THAN 750 px.
-          if($('#toc-sidebar li').length >= 7 && window.innerHeight < 800) {
+          if($('#toc-sidebar li').length >= 7 && window.innerHeight < 900) {
 
             if ($('#toc-sidebar li:nth-child(6)').hasClass('active')) {
               $('#toc-sidebar').css('position', 'fixed').css('top', fixedtocOffset + 'px').css('transition-duration', '1s');
