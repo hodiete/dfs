@@ -289,7 +289,7 @@
             var item = $('#toc-sidebar ul li.active');
             if (item.position()) {
               // assign arrow position based on section currently scrolled
-              $('#toc-sidebar span.arrow').css({top: Math.round(item.position().top + item.height() / 2 - 2) + 'px'});
+              $('#toc-sidebar span.arrow').css({top: Math.round(item.position().top + item.height() / 2 - 10) + 'px'});
             }
           }
           else {
