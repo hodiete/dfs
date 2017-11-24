@@ -173,8 +173,8 @@
 
           // animate to section of page
           $('html,body').animate({
-            scrollTop: dest - 110
-          }, 500, 'swing', function () {
+            scrollTop: dest - 130
+          }, 580, 'swing', function () {
             $(this).addClass('active');
           });
         }
