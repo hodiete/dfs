@@ -296,7 +296,7 @@
             $(this).removeClass('active');
           }
         });
-      }, {offset: 180});
+      }, {offset: 160});
     }
   };
 
