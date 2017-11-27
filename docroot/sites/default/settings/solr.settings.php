@@ -18,3 +18,11 @@ if ($is_local_env && !getenv('TRAVIS')) {
   $config['search_api.index.webny_index']['read_only'] = FALSE;
   $config['search_api.index.webny_index']['status'] = TRUE;
 }
+
+if ($is_ah_env) {
+  $config['search_api.server.acquia_search_server']['status'] = TRUE;
+  $config['search_api.server.local_webny']['status'] = FALSE;
+
+  $config['search_api.index.webny_index']['read_only'] = FALSE;
+  $config['search_api.index.webny_index']['status'] = TRUE;
+}
