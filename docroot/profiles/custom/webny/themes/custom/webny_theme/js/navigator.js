@@ -198,7 +198,7 @@
       });
 
       // verify height of all list items in TOC to calculate space needed
-      $('#toc-sidebar ul li').each(function() {
+      $('#toc-sidebar ul li').each(function () {
         elementHeight += parseInt($(this).outerHeight());
       });
 
@@ -209,24 +209,24 @@
       tocHeight = $('#toc-sidebar').height();
 
       // TIERS OF HEIGHT FOR FIXED DYNAMICS
-      if(window.innerHeight < 900){
+      if(window.innerHeight < 900) {
         fixedtocOffset = -75;
       }
-      if(window.innerHeight < 825){
+      if(window.innerHeight < 825) {
         fixedtocOffset = -100;
       }
-      if(window.innerHeight < 725){
+      if(window.innerHeight < 725) {
         fixedtocOffset = -150;
       }
-      if(window.innerHeight < 625){
+      if(window.innerHeight < 625) {
         fixedtocOffset = -225;
       }
 
       // scroll for TOC
-      $(window).scroll(function() {
+      $(window).scroll(function () {
 
         // verify we are not in mobile
-        if ($('#toc-sidebar').css('position') == 'fixed' && $('#toc-sidebar ul li.see-all').css('display') == 'none') {
+        if ($('#toc-sidebar').css('position') === 'fixed' && $('#toc-sidebar ul li.see-all').css('display') === 'none') {
 
           tocHeight = tocHeight + elementsPadding;
 
