@@ -18,7 +18,6 @@
       var elementsPadding;
       var elementHeight = 0;
       var tocHeight;
-      var tocOffset;
       var fixedtocOffset = 0;
 
       // Loop through each section (paragraph)
@@ -222,9 +221,6 @@
       if(window.innerHeight < 625){
         fixedtocOffset = -225;
       }
-
-      // find difference in toc height and height of all elements. Include some buffer for footer
-      tocOffset = (tocHeight - elementHeight - 100);
 
       // scroll for TOC
       $(window).scroll(function() {
