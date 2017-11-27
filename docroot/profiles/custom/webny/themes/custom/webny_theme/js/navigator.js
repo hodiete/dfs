@@ -209,7 +209,7 @@
       tocHeight = $('#toc-sidebar').height();
 
       // find difference in toc height and height of all elements. Include some buffer for footer
-      tocOffset = (tocHeight - elementHeight - 50);
+      tocOffset = (tocHeight - elementHeight - 150);
       console.log(tocOffset);
 
       // scroll for TOC
