@@ -156,7 +156,7 @@
           // name used on title of paragraph
           var name = $(this).attr('href').replace('#', '');
           var clickedFrame = $('*[name="' + name + '"]');
-          var dest = -50;
+          var dest = 0;
           dest = clickedFrame.offset().top;
 
           // remove all active classes from li's
