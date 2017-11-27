@@ -157,7 +157,7 @@
           var name = $(this).attr('href').replace('#', '');
           var clickedFrame = $('*[name="' + name + '"]');
           var dest = 0;
-          dest = clickedFrame.offset().top;
+          dest = clickedFrame.offset().top - 50;
 
           // remove all active classes from li's
           $('#toc-sidebar ul li').each(function () {
