@@ -3975,6 +3975,12 @@ function webny_configuration_update_8178() {
 /** Permissions update for Site Administrators for Secondary Navigation 
  */
 function webny_configuration_update_8179() {
+    // REINSTALL THE SECONDARY NAV MODULE
+  \Drupal::service('module_installer')
+    ->uninstall(['webny_secondary_nav']);
+  \Drupal::service('module_installer')
+    ->install(['webny_secondary_nav']);
+
   $config_factory = \Drupal::configFactory();
   $profile_config = \Drupal::service('webny.profile_config');
 
