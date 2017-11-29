@@ -22,10 +22,10 @@
 #}
 
 {% set numberOfItems = items|length %} 
-{% for item in items %} 
-    {% if numberOfItems == loop.index %} 
-        <div class="last-phone">{{ item.content }}</div>
-         {% else %} 
-        <div class="first-phone">{{ item.content }}</div><div class="location-vertical-line"></div>
-    {% endif %} 
-{% endfor %}
+	{% for item in items %} 
+		{% if numberOfItems == loop.index %} 
+			<div class="last-phone">{{ item.content }}</div>
+		{% else %} 
+			<div class="first-phone">{{ item.content }}</div><div class="location-vertical-line"></div>
+		{% endif %} 
+	{% endfor %}
