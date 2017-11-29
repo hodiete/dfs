@@ -1,0 +1,12 @@
+{% extends 'profiles/custom/webny/themes/custom/webny_theme/templates/content/webny--teaser-base.html.twig' %}
+
+
+{% set title = node.label %}
+
+{% block hero_image %}{% endblock hero_image %}
+
+{% block content %}
+    <div class="description">
+        {{ content.body }}
+    </div>
+{% endblock content %}
