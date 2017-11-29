@@ -18,7 +18,7 @@
       var elementsPadding;
       var elementHeight = 0;
       var tocHeight;
-      var tocOffset;
+      var fixedtocOffset = 0;
 
       // Loop through each section (paragraph)
       $('.toc-chapters section').once().each(function () {
@@ -198,7 +198,7 @@
       });
 
       // verify height of all list items in TOC to calculate space needed
-      $('#toc-sidebar ul li').each(function() {
+      $('#toc-sidebar ul li').each(function () {
         elementHeight += parseInt($(this).outerHeight());
       });
 
@@ -208,24 +208,42 @@
       elementsPadding = (elementsDiff * 70);
       tocHeight = $('#toc-sidebar').height();
 
-      // find difference in toc height and height of all elements. Include some buffer for footer
-      tocOffset = (tocHeight - elementHeight - 100);
-      console.log(tocOffset);
+      // TIERS OF HEIGHT FOR FIXED DYNAMICS
+      if(window.innerHeight < 900) {
+        fixedtocOffset = -75;
+      }
+      if(window.innerHeight < 825) {
+        fixedtocOffset = -100;
+      }
+      if(window.innerHeight < 725) {
+        fixedtocOffset = -150;
+      }
+      if(window.innerHeight < 625) {
+        fixedtocOffset = -225;
+      }
 
       // scroll for TOC
-      $(window).scroll(function() {
+      $(window).scroll(function () {
 
         // verify we are not in mobile
-        if ($('#toc-sidebar').css('position') == 'fixed' && $('#toc-sidebar ul li.see-all').css('display') == 'none') {
+        if ($('#toc-sidebar').css('position') === 'fixed' && $('#toc-sidebar ul li.see-all').css('display') === 'none') {
 
           tocHeight = tocHeight + elementsPadding;
-          $('#toc-sidebar').css('height', tocHeight + 'px');
-          if ($('#toc-sidebar li:nth-child(6)').hasClass('active')) {
-            $('#toc-sidebar').css('position', 'fixed').css('top', tocOffset + 'px').css('transition-duration', '1s');
-          } else if ($('#toc-sidebar li:nth-child(5)').hasClass('active')) {
-            $('#toc-sidebar').css('top', '50px').css('transition-duration', '1s');
-          }
 
+          $('#toc-sidebar').css('height', tocHeight + 'px');
+
+          // ADD CONIDTION TO TRIGGER ONLY WHEN THERE ARE 8 OR MORE ELEMENTS (7 TOCs)
+          // AND THE BROWSER HEIGHT IS LESS THAN 750 px.
+          if($('#toc-sidebar li').length >= 7 && window.innerHeight < 900) {
+
+            if ($('#toc-sidebar li:nth-child(6)').hasClass('active')) {
+              $('#toc-sidebar').css('position', 'fixed').css('top', fixedtocOffset + 'px').css('transition-duration', '1s');
+            }
+
+            else if ($('#toc-sidebar li:nth-child(5)').hasClass('active')) {
+              $('#toc-sidebar').css('top', '50px').css('transition-duration', '1s');
+            }
+          }
         }
 
       });
