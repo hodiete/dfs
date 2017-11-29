@@ -22,10 +22,10 @@
 #}
 
 {% set numberOfItems = items|length %} 
-  {% for item in items %} 
-    {% if numberOfItems == loop.index %} 
-      {{ item.content }}
-    {% else %} 
-      {{ item.content }}
-    {% endif %} 
+  {% for item in items %}
+      {% if numberOfItems == loop.index %} 
+          {{ item.content }}
+      {% else %} 
+          {{ item.content }}
+      {% endif %} 
   {% endfor %}
