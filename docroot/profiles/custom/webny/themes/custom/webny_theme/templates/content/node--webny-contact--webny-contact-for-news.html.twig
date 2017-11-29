@@ -82,8 +82,6 @@ set iconclass = [
                                     ~ map_state|replace(' ','+') ~ '+'
                                     ~ map_zip %}
 
-
-    {%  set google_dirlink_linktext = map_addr1 ~ '<br /> ' ~ map_city ~ ', ' ~ map_state ~ ' ' ~ map_zip %}
     {%  set googlemap = true %}
 
 {% endif %}
@@ -172,7 +170,8 @@ set iconclass = [
                             </div>
                             <div class="contact-mapdir-value">
                                 <a target="_blank" href="{{ google_dirlink }}">
-                                    {{ google_dirlink_linktext }}
+                                    {{ map_addr1 }}<br />
+                                    {{ map_city }} {{ map_state }}, {{ map_zip }}
                                 </a>
                             </div>
                         </div>
