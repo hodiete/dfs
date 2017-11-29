@@ -1,5 +1,7 @@
 <?php
 
+use Drupal\node\Entity\Node;
+
 /**
  * Implements hook_preprocess_html().
  */
@@ -43,7 +45,6 @@ function webny_theme_preprocess_paragraph__webny_card_paragraph_type(&$variables
 }
 
 /**
-<<<<<<< HEAD
  * Implements hook_preprocess_node__webny_landing_page
  */
 function webny_theme_preprocess_node__webny_landing_page(&$variables) {
@@ -86,6 +87,39 @@ function webny_theme_preprocess_node__webny_generic_page__full(&$variables) {
     // Load the site name out of configuration.
     $config = \Drupal::config('system.site');
     $variables['site_name'] = $config->get('name');
+}
+
+/**
+ * Implements hook_preprocess_node__webny_location__teaser
+ */
+function webny_theme_preprocess_node__webny_location__teaser(&$variables) {
+  /** @var \Drupal\node\Entity\Node $node */
+  $node = &$variables['node'];
+  if ($node && $node instanceof Node) {
+    if ($node->hasField('field_webny_location_counties')) {
+      $trimmed = FALSE;
+      /** @var \Drupal\Core\Field\FieldItemList $counties */
+      $field_webny_location_counties = $node->get('field_webny_location_counties');
+      $allowed_values = options_allowed_values($field_webny_location_counties->getFieldDefinition()->getFieldStorageDefinition(), $node);
+
+      $county_ids = array_column($field_webny_location_counties->getValue(), 'value');
+      if (count($county_ids) >= 24) {
+        $county_ids = array_slice($county_ids, 0, 25);
+        $trimmed = TRUE;
+      }
+      $counties = [];
+      foreach ($county_ids as $county_id) {
+        if (isset($allowed_values[$county_id])) {
+          $counties[] = $allowed_values[$county_id];
+        }
+      }
+      $counties_string = join(', ', $counties);
+      if ($trimmed) {
+        $counties_string .= '...';
+      }
+      $variables['counties_string'] = $counties_string;
+    }
+  }
 }
 
 /**
