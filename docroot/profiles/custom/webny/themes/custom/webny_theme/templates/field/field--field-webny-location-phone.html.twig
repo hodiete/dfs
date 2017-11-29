@@ -21,11 +21,11 @@
 */
 #}
 
-{% set numberOfItems = items|length %} 
+{% set numberOfItems = items|length %}
   {% for item in items %}
-      {% if numberOfItems == loop.index %} 
+      {% if numberOfItems == loop.index %}
           {{ item.content }}
-      {% else %} 
+      {% else %}
           {{ item.content }}
-      {% endif %} 
+      {% endif %}
   {% endfor %}
