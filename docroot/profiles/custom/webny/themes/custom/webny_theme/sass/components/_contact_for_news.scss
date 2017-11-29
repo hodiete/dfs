@@ -29,13 +29,12 @@ $contact-for-news-icons: $color-secondary !default;
     padding: 0;
   }
 
-  .contact-info-wrapper {
-  }
-
   .contact-phone,
   .contact-address,
   .contact-email,
-  .contact-fax {
+  .contact-fax,
+  .contact-mapdir {
+
     position: relative;
     display: flex;
     flex-flow: column wrap;
@@ -53,7 +52,8 @@ $contact-for-news-icons: $color-secondary !default;
 
     .icon-phone::before,
     .icon-email::before,
-    .icon-other::before {
+    .icon-other::before,
+    .icon-mapdir::before{
       position: absolute;
       width: 20px;
       color: $color-primary;
@@ -61,12 +61,14 @@ $contact-for-news-icons: $color-secondary !default;
     .icon-phone{ @include icon(before, fa-mobile);}
     .icon-email{ @include icon(before, fa-envelope);}
     .icon-other{ @include icon(before, fa-elipses-h);}
+    .icon-mapdir{ @include icon(before, mapdir);}
   }
 
   .contact--field-webny-contact-phone,
   .contact--field-webny-contact-address,
   .contact--field-webny-contact-email,
-  .contact--field-webny-contact-fax {
+  .contact--field-webny-contact-fax,
+  .contact--field-webny-contact-mapdir {
     font-family: $base-font !important;
     font-weight: 800;
     display: inline-block;
@@ -82,7 +84,8 @@ $contact-for-news-icons: $color-secondary !default;
     .contact-phone-value,
     .contact-fax-value,
     .contact-address-value,
-    .contact-email-value {
+    .contact-email-value,
+    .contact-mapdir-value{
       line-height: $frame-base-line-height;
    //   -moz-box-sizing: border-box;
    //   box-sizing: border-box;

@@ -357,6 +357,7 @@ Feature: Check for the existence and fields of content types
     And I should see text matching "Instagram Link"
     And I should see text matching "LinkedIn Link"
     And I should see text matching "Link to Resource"
+    And I should see text matching "Map Directions"
     And I should see text matching "Name"
     And I should see text matching "Other Details"
     And I should see text matching "Phone"
