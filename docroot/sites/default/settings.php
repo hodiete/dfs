@@ -755,4 +755,5 @@ $settings['file_scan_ignore_directories'] = [
 # }
 require DRUPAL_ROOT . "/../vendor/acquia/blt/settings/blt.settings.php";
 require DRUPAL_ROOT . "/sites/default/settings/webny.settings.php";
+require DRUPAL_ROOT . "/sites/default/settings/solr.settings.php";
 // require DRUPAL_ROOT . "/sites/default/settings/trusted_host.settings.php";

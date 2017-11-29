@@ -3965,6 +3965,37 @@ function webny_configuration_update_8177() {
 }
 
 /**
+ * Enable Acquia Connector which is required by search.
+ */
+function webny_configuration_update_8178() {
+  \Drupal::service('module_installer')
+    ->install(['webny_solr_searches']);
+}
+
+/** Permissions update for Site Administrators for Secondary Navigation 
+ */
+function webny_configuration_update_8179() {
+    // REINSTALL THE SECONDARY NAV MODULE
+  \Drupal::service('module_installer')
+    ->uninstall(['webny_secondary_nav']);
+  \Drupal::service('module_installer')
+    ->install(['webny_secondary_nav']);
+
+  $config_factory = \Drupal::configFactory();
+  $profile_config = \Drupal::service('webny.profile_config');
+
+  // Import new/changed configuration.
+  $config_to_update = [
+    'user.role.site_admin'
+  ];
+
+  $profile_config->bulkImport($config_to_update);
+
+  // Clear the config cache.
+  $config_factory->reset();
+}
+
+/**
  * Helper function to enable a Drupal module and print the result.
  *
  * @param string $module_name
