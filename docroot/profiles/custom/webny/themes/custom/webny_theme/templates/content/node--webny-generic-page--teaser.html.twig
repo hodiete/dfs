@@ -1,0 +1,35 @@
+{% if (node.field_webny_generic_page_short_title.value is not empty and node.field_webny_generic_page_short_title.value is not null) %}
+  {% set title = content.field_webny_generic_page_short_title %}
+{% else %}
+  {% set title = node.label %}
+{% endif %}
+
+<article{{ attributes.addClass('webny-teaser') }}>
+  <div class="webny-teaser-wrapper">
+    <a class="webny-teaser-image" href="{{ url }}">
+      {% if not content.field_webny_gencp_heroimage.0 %}
+        {#{{ source('profiles/custom/webny/themes/custom/webny_theme/images/NYS_StateOutline.svg') }}#}
+      {% else %}
+        {{ content.field_webny_gencp_heroimage }}
+      {% endif %}
+    </a>
+    <div class="webny-teaser-content-wrapper">
+      {% if content.field_webny_filter_terms.0 %}
+        <div class="webny-teaser-filter-terms">{{ content.field_webny_filter_terms }}</div>
+      {% endif %}
+      <div class="webny-teaser-title">
+        <a href="{{ url }}">
+          {% if title|length <= 65 %}
+            {{ title }}
+          {% else %}
+            {{ title|slice(0, 65) ~ '...' }}
+          {% endif %}
+        </a>
+      </div>
+      <div class="description">
+        {{ content.field_webny_gencp_sumdes }}
+      </div>
+    </div>
+    {{ content.links }}
+  </div>
+</article>
