@@ -1,7 +1,8 @@
 <?php
 
-namespace Drupal\Core\Link;
+
 namespace Drupal\webny_global_nav\Twig;
+use Drupal\Core\Link;
 
 /**
  * Class WebnyGlobalNavBlockExtension extends \Twig_Extension.
@@ -29,7 +30,7 @@ class webnyGlobalNavBlockExtension extends \Twig_Extension {
     /**
      * Function renderBlockMenu.
      */
-    public function globalNavBlock($menu_name, $type, $format) {
+    public function globalNavBlock($menu_name) {
         $menu_tree = \Drupal::menuTree();
         $parameters = $menu_tree->getCurrentRouteMenuTreeParameters($menu_name)->onlyEnabledLinks()->setMaxDepth(2);
 
@@ -44,6 +45,8 @@ class webnyGlobalNavBlockExtension extends \Twig_Extension {
 
         // GET MENU TREE
         $tree = $menu_tree->transform($tree, $manipulators);
+
+        $menu = $menu_tree->build($tree);
 
         // ASSIGN HTML CONST
         $ultop = '<ul class="gnav-ul">';
@@ -60,68 +63,88 @@ class webnyGlobalNavBlockExtension extends \Twig_Extension {
         // CREATE ELEMENTS
         foreach ($tree as $item) {
 
-            // TOP LEVEL LINK PARMS
-            $title  = $item->link->getTitle();
-            $url    = $item->link->getUrlObject();
-            $link   = \Drupal\Core\Link::fromTextAndUrl(t($title), $url)->toString();
+            // CHECK TYPE. IF STRING, PASS
+            if(gettype($item->link->getTitle()) == 'string') {
 
-            if($item->hasChildren){
+                // TOP LEVEL LINK PARMS
+                $title = $item->link->getTitle();
+                $url = $item->link->getUrlObject();
+                $link = Link::fromTextAndUrl(t($title), $url)->toString();
 
-                // PREASSIGN COUNT TO 1
-                $subcount = 1;
-                $newmenu .= $litop . $link;
+                if ($item->hasChildren) {
+
+                    // PREASSIGN COUNT TO 1
+                    $subcount = 1;
+                    $firstChild = TRUE;
+                    $lastChild = sizeof($item->subtree);
+
+                    // ADD THE FIRST LEVEL LINK
+                    $newmenu .= $litop . $link;
+
+                    // ENSURE SIZE OF ARRAY BEFORE LOOPING
+                    if ($lastChild > 0) {
 
 
-                // ENSURE SIZE OF ARRAY BEFORE LOOPING
-                if(sizeof($item->subtree) > 0){
+                        foreach ($item->subtree as $subitem) {
 
-                    $newmenu .= $ulsub;
+                            // CHECK TYPE. IF STRING, PASS
+                            if(gettype($subitem->link->getTitle()) == 'string') {
 
-                    foreach ($item->subtree as $subitem){
+                                // SUBITEM META
+                                $subtitle = $subitem->link->getTitle();
+                                $suburl = $subitem->link->getUrlObject();
+                                $sublink = Link::fromTextAndUrl(t($subtitle), $suburl)->toString();
 
-                        // SUBITEM META
-                        $subtitle   = $subitem->link->getTitle();
-                        $suburl     = $subitem->link->getUrlObject();
-                        $sublink    = \Drupal\Core\Link::fromTextAndUrl(t($subtitle), $suburl)->toString();
 
-                        // ADD TOP LEVEL LINK AS A LINK
-                        if($subcount == 1){
+                                // RUN THIS FIRST AND THATS ALL
+                                if($firstChild){
+                                    $newmenu .= $ulsub;
+                                    $firstChild = FALSE;
+                                }
 
-                            // BUILD LIST ITEM AND UL SUB ITEM
-                            if(!empty($url->toString())){
-                                $newmenu .= $litopalt . $link . $lic;
-                            }
+                                // ADD TOP LEVEL LINK AS A LINK
+                                if ($subcount == 1) {
 
-                        }
+                                    // BUILD LIST ITEM AND UL SUB ITEM
+                                    if (!empty($url->toString())) {
+                                        $newmenu .= $litopalt . $link . $lic;
+                                    }
 
-                        // CONSTRUCT SUBURL
-                        $newmenu .= $lisub . $sublink . $lic;
+                                }
 
-                        // INCREMENT SUBCOUNT
-                        $subcount++;
+                                // CONSTRUCT SUBURL
+                                $newmenu .= $lisub . $sublink . $lic;
+
+                            } // END IF SUBITEM IS STRING
+
+                            // INCREMENT SUBCOUNT
+                            $subcount++;
+
+                        } // END INNER FOR
+
+                        // CLOSE THE UL AND TOP LEVEL LI ELEMENT
+                        $newmenu .= $ulc . $lic;
 
                         unset($subitem);
 
-                    }
+                    };
 
-                    // CLOSE THE UL AND TOP LEVEL LI ELEMENT
-                    $newmenu .= $ulc . $lic;
+                } else {
 
-                };
+                    // CREATE A STAND ALONE LINK
+                    $newmenu .= $litop . $link . $lic;
 
-            } else {
+                } // END IF/ELSE
 
-                // CREATE A STAND ALONE LINK
-                $newmenu .= $litop . $link . $lic;
+            } // END CHECK TYPE
 
-            }
-
-        }
+        } // END FOR OUTTER
 
         // CLOSE MAIN CONTAINER
         $newmenu .= $ulc;
 
-        return  array('#markup' => $newmenu);
+        return array('#markup' => $newmenu);
     }
+
 
 }
