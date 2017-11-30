@@ -21,7 +21,14 @@ function webny_solr_searches_views_pre_view($view) {
       // Has matching term. Set a term id argument.
       if ($terms) {
         $filter_term_id = reset($terms)->tid->value;
-        $view->setArguments([$filter_term_id]);
+        $parents = \Drupal::service('entity_type.manager')
+          ->getStorage('taxonomy_term')
+          ->loadParents($filter_term_id);
+
+        // Exclude child terms.
+        if (!$parents) {
+          $view->setArguments([$filter_term_id]);
+        }
       }
     }
   }
