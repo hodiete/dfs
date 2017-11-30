@@ -82,8 +82,7 @@ class webnyGlobalNavBlockExtension extends \Twig_Extension {
                     $newmenu .= $litop . $link;
 
                     // ENSURE SIZE OF ARRAY BEFORE LOOPING
-                    if ($lastChild > 0) {
-
+                    if (sizeof($item->subtree) > 0) {
 
                         foreach ($item->subtree as $subitem) {
 
@@ -94,7 +93,6 @@ class webnyGlobalNavBlockExtension extends \Twig_Extension {
                                 $subtitle = $subitem->link->getTitle();
                                 $suburl = $subitem->link->getUrlObject();
                                 $sublink = Link::fromTextAndUrl(t($subtitle), $suburl)->toString();
-
 
                                 // RUN THIS FIRST AND THATS ALL
                                 if($firstChild){
@@ -115,15 +113,21 @@ class webnyGlobalNavBlockExtension extends \Twig_Extension {
                                 // CONSTRUCT SUBURL
                                 $newmenu .= $lisub . $sublink . $lic;
 
+                                if($lastChild == $subcount){
+
+                                    // CLOSE THE UL AND TOP LEVEL LI ELEMENT
+                                    $newmenu .= $ulc . $lic;
+                                }
+
+
                             } // END IF SUBITEM IS STRING
+
 
                             // INCREMENT SUBCOUNT
                             $subcount++;
 
                         } // END INNER FOR
 
-                        // CLOSE THE UL AND TOP LEVEL LI ELEMENT
-                        $newmenu .= $ulc . $lic;
 
                         unset($subitem);
 
