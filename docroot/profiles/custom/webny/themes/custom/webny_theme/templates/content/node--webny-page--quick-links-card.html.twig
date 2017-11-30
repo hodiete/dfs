@@ -5,7 +5,7 @@
  * OVERRIDE the inner page display for quick links card.
  */
 #}
-{% set description = content.field_webny_news_description %}
+{% set description = content.field_webny_page_description %}
 {% if (node.field_webny_page_short_title.value is not empty and node.field_webny_page_short_title.value is not null) %}
     {% set title = content.field_webny_page_short_title %}
 {% else %}
