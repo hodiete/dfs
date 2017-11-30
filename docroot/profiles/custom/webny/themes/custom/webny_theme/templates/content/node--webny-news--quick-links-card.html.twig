@@ -6,15 +6,6 @@
  */
 #}
 
-{# set variables #}
-{% if content.field_webny_news_image is not empty %}
-    {% set image = content.field_webny_news_image %}
-{% else %}
-    {% set image %}
-        <div class="fallback-image">{% include '@webny_theme/includes/NYGov_Newspaper.svg.twig' %}</div>
-    {% endset %}
-{% endif %}
-
 
 {% set description = content.field_webny_news_description %}
 {% if (node.field_webny_news_short_title.value is not empty and node.field_webny_news_short_title.value is not null) %}
@@ -26,23 +17,30 @@
 <article{{ attributes.addClass('webny-quick-links') }}>
 
     <div{{ content_attributes }}>
-        <div class="webny-quick-links-image"><a href="{{ url }}">{{ image }}</a></div>
+        <div class="webny-quick-links-image"><a href="{{ url }}">
+                {% if (node.field_webny_news_image is not empty and node.field_webny_news_image is not null) %}
+                    {{ content.field_webny_news_image }}
+                {% else %}
+                    <div class="fallback-image">{% include '@webny_theme/includes/NYGov_Newspaper.svg.twig' %}</div>
+                {% endif %}
+
+            </a></div>
         <div class="webny-quick-links-card-text">
             <div class="webny-quick-links-title"><a href="{{ url }}">
-                {% if(title|length <= 65) %}
-                    {{ title }}
-                {% else %}
+                    {% if(title|length <= 65) %}
+                        {{ title }}
+                    {% else %}
 
-                    {% set ws = true %}
-                    {% for num in node.label|length..0 %}
-                        {% if (num < 65 and  node.label|slice(num)|first == ' ' and ws != false) %}
-                            {% set ws = false %}
-                            {{ node.label[:num] ~ '...' }}
-                        {% endif %}
-                    {% endfor %}
+                        {% set ws = true %}
+                        {% for num in node.label|length..0 %}
+                            {% if (num < 65 and  node.label|slice(num)|first == ' ' and ws != false) %}
+                                {% set ws = false %}
+                                {{ node.label[:num] ~ '...' }}
+                            {% endif %}
+                        {% endfor %}
 
-                {% endif %}
-            </a></div>
+                    {% endif %}
+                </a></div>
             <div class="webny-quick-links-description">{{ description }}</div>
         </div>
     </div>
