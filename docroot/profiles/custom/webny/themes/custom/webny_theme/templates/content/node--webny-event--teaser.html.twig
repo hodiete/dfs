@@ -26,17 +26,19 @@
   <div class="webny-teaser-content-wrapper__details-left">
 {% endblock optional_wrapper_start %}
 
+{% block description %}
+  {% if content.field_webny_event_summary %}
+    <div class="description">
+      {{ content.field_webny_event_summary }}
+    </div>
+  {% endif %}
+{% endblock description %}
+
 {% block optional_wrapper_end %}
   </div>
 {% endblock optional_wrapper_end %}
 
-
 {% block content %}
-    {% if content.field_webny_event_summary %}
-      <div class="description">
-        {{ content.field_webny_event_summary }}
-      </div>
-    {% endif %}
     <div class="webny-teaser-content-wrapper__details-right">
       {% include '@webny_theme/includes/webny--event-date.html.twig' %}
     </div>

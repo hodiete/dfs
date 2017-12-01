@@ -23,9 +23,12 @@
                 {% endif %}
               </a>
             {% endblock title %}
+
             {# If optional_wrapper_start is utilized, so should this #}
-            {% block optional_wrapper_end %}{% endblock optional_wrapper_end %}
           </div>
+          {% block description %}{% endblock description %}
+          {% block optional_wrapper_end %}{% endblock optional_wrapper_end %}
+
           {% block content %}{% endblock content %}
           </div>
           {% block footer %}
