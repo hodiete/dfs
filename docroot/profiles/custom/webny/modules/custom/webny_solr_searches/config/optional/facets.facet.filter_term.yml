@@ -15,10 +15,13 @@ show_only_one_result: false
 field_identifier: field_webny_filter_terms
 facet_source_id: 'search_api:views_page__webny_search__webny_search_page'
 widget:
-  type: links
+  type: checkbox
   config:
     show_numbers: false
     soft_limit: 0
+    soft_limit_settings:
+      show_less_label: 'Show less'
+      show_more_label: 'Show more'
 query_operator: or
 use_hierarchy: false
 expand_hierarchy: false
@@ -59,11 +62,6 @@ processor_configs:
     settings:
       exclude: ''
       regex: false
-  hide_non_narrowing_result_processor:
-    processor_id: hide_non_narrowing_result_processor
-    weights:
-      build: -10
-    settings: {  }
   taxonomy_levels:
     processor_id: taxonomy_levels
     weights:
