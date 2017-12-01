@@ -1,0 +1,21 @@
+{% extends 'profiles/custom/webny/themes/custom/webny_theme/templates/content/webny--teaser-base.html.twig' %}
+
+{% if (node.field_webny_whitelist_stitle.value is not empty and node.field_webny_whitelist_stitle.value is not null) %}
+    {% set title = content.field_webny_whitelist_stitle %}
+{% else %}
+    {% set title = node.label %}
+{% endif %}
+
+{% block hero_image %}
+    {% if not content.field_webny_whitelist_image.0 %}
+
+    {% else %}
+        {{ content.field_webny_whitelist_image }}
+    {% endif %}
+{% endblock hero_image %}
+
+{% block content %}
+    <div class="description">
+      {{ content.field_webny_whitelist_descript }}
+    </div>
+{% endblock content %}

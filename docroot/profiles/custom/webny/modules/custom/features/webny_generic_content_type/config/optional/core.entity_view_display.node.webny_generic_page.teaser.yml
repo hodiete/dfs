@@ -21,33 +21,68 @@ dependencies:
     - field.field.node.webny_generic_page.field_webny_global_keywords
     - node.type.webny_generic_page
   module:
+    - text
     - user
 id: node.webny_generic_page.teaser
 targetEntityType: node
 bundle: webny_generic_page
 mode: teaser
 content:
+  field_webny_filter_terms:
+    type: entity_reference_label
+    weight: 0
+    region: content
+    label: hidden
+    settings:
+      link: false
+    third_party_settings: {  }
+  field_webny_gencp_herodesc:
+    type: text_default
+    weight: 5
+    region: content
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+  field_webny_gencp_heroimage:
+    type: entity_reference_entity_view
+    weight: 4
+    region: content
+    label: hidden
+    settings:
+      view_mode: results_image
+      link: false
+    third_party_settings: {  }
+  field_webny_gencp_sumdes:
+    type: text_default
+    weight: 3
+    region: content
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+  field_webny_generic_short_title:
+    type: string
+    weight: 2
+    region: content
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
   links:
-    weight: 100
+    weight: 1
     region: content
-  workbench_moderation_control:
-    weight: -20
-    region: content
+    settings: {  }
+    third_party_settings: {  }
 hidden:
   field_webny_agency_keywords: true
   field_webny_contentcat: true
-  field_webny_filter_terms: true
   field_webny_gencp_avgtranstime: true
   field_webny_gencp_contentcat: true
   field_webny_gencp_contentsect: true
   field_webny_gencp_date: true
-  field_webny_gencp_herodesc: true
-  field_webny_gencp_heroimage: true
   field_webny_gencp_howtoapply: true
   field_webny_gencp_keywords: true
   field_webny_gencp_metatags: true
   field_webny_gencp_navtoggle: true
-  field_webny_gencp_sumdes: true
-  field_webny_generic_short_title: true
   field_webny_global_keywords: true
   langcode: true
+  workbench_moderation_control: true
