@@ -2,6 +2,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - block.block.filterterm
     - search_api.index.webny_index
     - taxonomy.vocabulary.webny_filter_terms_tax
   module:
@@ -48,9 +49,9 @@ display:
           bef:
             general:
               allow_secondary: false
-              secondary_label: 'Advanced options'
-              autosubmit: true
-              autosubmit_hide: true
+              secondary_label: ''
+              autosubmit: false
+              autosubmit_hide: false
             rendered_item:
               bef_format: default
               slider_options:
@@ -58,7 +59,7 @@ display:
                 bef_slider_max: null
                 bef_slider_step: !!float 1
                 bef_slider_animate: ''
-                bef_slider_orientation: ''
+                bef_slider_orientation: horizontal
               more_options:
                 is_secondary: false
             created_date:
@@ -223,11 +224,11 @@ display:
           exposed: true
           expose:
             operator_id: rendered_item_op
-            label: Search
+            label: Refine
             description: ''
             use_operator: false
             operator: rendered_item_op
-            identifier: rendered_item
+            identifier: keyword
             required: false
             remember: false
             multiple: false
@@ -274,7 +275,7 @@ display:
           exposed: true
           expose:
             operator_id: created_date_op
-            label: 'Date From'
+            label: From
             description: ''
             use_operator: false
             operator: created_date_op
@@ -373,8 +374,31 @@ display:
             label: ''
           plugin_id: search_api
       title: Search
-      header: {  }
-      footer: {  }
+      header:
+        result:
+          id: result
+          table: views
+          field: result
+          relationship: none
+          group_type: group
+          admin_label: ''
+          empty: false
+          content: '<span class="results-total-number">@total</span> Results Found'
+          plugin_id: result
+      footer:
+        entity_block:
+          id: entity_block
+          table: views
+          field: entity_block
+          relationship: none
+          group_type: group
+          admin_label: ''
+          empty: false
+          tokenize: true
+          target: filterterm
+          view_mode: default
+          bypass_access: true
+          plugin_id: entity
       empty: {  }
       relationships: {  }
       arguments:
@@ -416,6 +440,7 @@ display:
           not: false
           plugin_id: search_api
       display_extenders: {  }
+      css_class: ''
     cache_metadata:
       max-age: -1
       contexts:
@@ -435,7 +460,7 @@ display:
         type: none
       defaults:
         cache: false
-      exposed_block: true
+      exposed_block: false
     cache_metadata:
       max-age: -1
       contexts:
