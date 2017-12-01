@@ -6,6 +6,7 @@
     {% set title = node.label %}
 {% endif %}
 
+
 {% block hero_image %}
     {% if not content.field_webny_event_heroimage.0 %}
         {{ source('profiles/custom/webny/themes/custom/webny_theme/images/NYGov_Events.svg') }}
@@ -14,11 +15,26 @@
     {% endif %}
 {% endblock hero_image %}
 
+{% block optional_wrapper_start %}
+  <div class="webny-teaser-content-wrapper__details-left">
+{% endblock optional_wrapper_start %}
+
+{% block optional_wrapper_end %}
+  </div>
+{% endblock optional_wrapper_end %}
+
+
 {% block content %}
-    <div class="description">
-      {{ content.field_webny_event_summary }}
-    </div>
-    <div class="event-date">
-        {% include '@webny_theme/includes/webny--event-date.html.twig' %}
+    {% if content.field_webny_event_summary %}
+      <div class="description">
+        {{ content.field_webny_event_summary }}
+      </div>
+    {% endif %}
+    <div class="webny-teaser-content-wrapper__details-right">
+      {% include '@webny_theme/includes/webny--event-date.html.twig' %}
     </div>
 {% endblock content %}
+
+{% block footer %}
+  {{ content.links }}
+{% endblock %}
