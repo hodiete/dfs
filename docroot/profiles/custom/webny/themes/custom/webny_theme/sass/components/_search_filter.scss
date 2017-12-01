@@ -74,6 +74,30 @@
     padding: 2px 20px;
   }
 
+  .form-item-keyword {
+    position: relative;
+
+    input {
+      padding: 7px 20px 7px 40px;
+      border: solid 1px $darkgray;
+      border-radius: 30px;
+      outline: none;
+      vertical-align: baseline;
+      line-height: 20px;
+      width: 100%;
+    }
+
+    &:after {
+      color: #d5820d;
+      font-family: $icon-font;
+      content: "\e607";
+      font-size: 18px;
+      position: absolute;
+      left: 12px;
+      bottom: 3px;
+    }
+  }
+
   input[type="date"]:focus {
     color: $color-mono-black;
   }
