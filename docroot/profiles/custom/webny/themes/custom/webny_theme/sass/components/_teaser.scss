@@ -23,32 +23,33 @@
         padding: 20px;
       }
 
-      .st0 {
+      img {
+        max-width: none;
+      }
+
+      .st0,
+      .st1 {
         stroke: $color-mono-white;
       }
     }
-
-    //@include breakpoint($min-desktop) {
-    //  margin-right: 25px;
-    //}
   }
 
   &-content-wrapper {
     width: 100%;
     box-sizing: border-box;
-    //padding: 10px 15px 0;
     font-size: 14px;
 
     &__details {
-      display: flex;
-      padding: 0 15px;
+      //display: flex;
+      padding: 10px 15px 0;
 
       @include breakpoint($min-tablet) {
         height: 184px;
+        box-sizing: border-box;
       }
 
       @include breakpoint($min-desktop) {
-        padding: 0 25px;
+        padding: 20px 25px 0;
       }
     }
 
@@ -92,6 +93,21 @@
     @include breakpoint($min-desktop) {
       font-size: 16px;
     }
+  }
+
+  &__events{
+    .webny-teaser-content-wrapper__details {
+        display: flex;
+        padding: 0 15px;
+
+        @include breakpoint($min-tablet) {
+          height: 184px;
+        }
+
+        @include breakpoint($min-desktop) {
+          padding: 0 25px;
+        }
+      }
   }
 
   &-filter-terms {
@@ -140,6 +156,10 @@
     @include breakpoint($min-desktop) {
       font-size: 19px;
     }
+  }
+
+  .description {
+    line-height: 1.1;
   }
 
   .event-date__wrapper {
