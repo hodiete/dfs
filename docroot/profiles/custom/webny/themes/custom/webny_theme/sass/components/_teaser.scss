@@ -13,7 +13,7 @@
     @include breakpoint($min-tablet) {
       display: block;
       float: left;
-      //margin-right: 15px;
+      height: 242px;
 
       svg {
         width: 202px;
@@ -21,6 +21,10 @@
         background-color: $color-secondary;
         fill: $color-mono-white;
         padding: 20px;
+      }
+
+      .st0 {
+        stroke: $color-mono-white;
       }
     }
 
@@ -31,21 +35,50 @@
 
   &-content-wrapper {
     width: 100%;
-    //max-height: 184px;
     box-sizing: border-box;
-    padding: 10px 15px 0;
+    //padding: 10px 15px 0;
     font-size: 14px;
 
     &__details {
       display: flex;
+      padding: 0 15px;
+
+      @include breakpoint($min-tablet) {
+        height: 184px;
+      }
+
+      @include breakpoint($min-desktop) {
+        padding: 0 25px;
+      }
     }
 
     &__details-left {
+      padding-top: 10px;
       flex-basis: 40%;
+      border-right: 1px solid $gray-lite;
+      margin-right: 20px;
+
+      @include breakpoint($min-tablet) {
+        margin-right: 0;
+      }
+
+      @include breakpoint($min-desktop) {
+        margin-right: 20px;
+        padding-top: 20px;
+      }
+
+      @include breakpoint($min-wide) {
+        flex-basis: 50%;
+      }
     }
 
     &__details-right {
+      padding-top: 10px;
       flex-basis: 60%;
+
+      @include breakpoint($min-desktop) {
+        padding-top: 20px;
+      }
     }
 
     @include breakpoint($min-mobile) {
@@ -58,7 +91,6 @@
 
     @include breakpoint($min-desktop) {
       font-size: 16px;
-      padding: 20px 25px 0;
     }
   }
 
@@ -113,37 +145,68 @@
   .event-date__wrapper {
     display: flex;
     flex-direction: column;
+
+    @include breakpoint($min-wide) {
+      width: 71%;
+    }
   }
 
   .event-date {
+    @include event-date;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
+    flex-direction: column;
+
+    @include breakpoint($min-wide) {
+      flex-direction: row;
+    }
+
+    .day-month-wrapper {
+      padding-bottom: 15px;
+
+      @include breakpoint($min-wide) {
+        padding-bottom: 20px;
+      }
+    }
+
+    .time {
+      color: $color-mono-black;
+      padding-left: 20px;
+
+      @include breakpoint($min-wide) {
+        padding: 0;
+      }
+    }
+
+    .address {
+      color: $color-mono-black;
+
+      &-wrapper {
+        margin-top: 10px;
+        padding-top: 10px;
+
+        @include breakpoint($min-wide){
+          margin-top: 20px;
+          padding-top: 20px;
+        }
+      }
+    }
   }
 
   .day-month-wrapper {
-    align-self: center;
+    width: 100%;
+
+    @include breakpoint($min-wide) {
+      width: 24%;
+    }
   }
 
   .month {
-    color: $primarygold;
-    font-family: 'ProximaNovaExtrabold', sans-serif;
-    font-size: 14px;
-    text-transform: uppercase;
     text-align: center;
   }
 
   .day {
-    font-size: 41px;
-    font-family: 'ProximaNovaExtrabold', sans-serif;
     text-align: center;
-  }
-
-  .time {
-    @include icon(before, fa-clock);
-  }
-
-  .time div {
-    display: inline;
   }
 
   .meridiem {
@@ -151,37 +214,52 @@
     text-transform: lowercase;
   }
 
-  .links {
+  .address-wrapper {
+    padding-left: 20px;
+
+    @include breakpoint($min-wide) {
+      padding: 0;
+    }
+
+    .city-state-zip {
+      display: block;
+
+      @include breakpoint($min-wide) {
+        display: inline;
+      }
+    }
+
+    .separator {
+      margin-left: -4px;
+    }
+  }
+
+  .links,
+  .actions {
     list-style: none;
-    padding: 4px 0;
+    padding: 4px 36px;
     margin-bottom: 0;
     background-color: $color-mono-lt;
     border: 1px solid $gray-lite;
 
     @include breakpoint($min-mobile) {
-      padding: 10px 0;
+      padding: 10px 43px;
     }
+  }
 
-    a {
-      position: relative;
-      left: 38px;
-      text-transform: uppercase;
-      font-weight: bold;
-      font-size: 15px;
-      color: black;
+  .links a {
+    position: relative;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 15px;
+    color: black;
 
-      &::before {
-        content: '\f054';
-        font-family: 'icomoon';
-        color: $primarygold;
-        position: absolute;
-        left: -20px;
-      }
-
-      @include breakpoint($min-tablet) {
-        left: 25px;
-      }
+    &::before {
+      content: '\f054';
+      font-family: 'icomoon';
+      color: $primarygold;
+      position: absolute;
+      left: -20px;
     }
-
   }
 }

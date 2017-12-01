@@ -160,3 +160,21 @@ $min-mob:   20em;
   background: rgb($r, $g, $b);
   background: rgba($r, $g, $b, $pertc);
 }
+
+@mixin visually-hidden() {
+  position: absolute !important;
+  clip: rect(1px, 1px, 1px, 1px);
+  overflow: hidden;
+  height: 1px;
+  width: 1px;
+  word-wrap: normal;
+}
+
+@mixin visually-hidden-off() {
+  position: static !important;
+  clip: auto;
+  overflow: auto;
+  height: auto;
+  width: auto;
+  word-wrap: normal;
+}

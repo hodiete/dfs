@@ -16,7 +16,7 @@
       {{ dependent_locality.code }}
     {% endif %}
     {% if locality or postal_code or administrative_area %}
-      {{ locality }}, {{ administrative_area }} {{ postal_code }}
+      <span class="city-state-zip">{{ locality }}<span class="separator">,</span> {{ administrative_area }} {{ postal_code }}</span>
     {% endif %}
     {{ country.name }}
   </p>
