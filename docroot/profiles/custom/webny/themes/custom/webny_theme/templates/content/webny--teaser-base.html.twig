@@ -1,6 +1,9 @@
+{% block link_direct %}
+  {% set link = url %}
+{% endblock link_direct %}
 <article{{ attributes.addClass('webny-teaser') }}>
     <div class="webny-teaser-wrapper">
-        <a class="webny-teaser-image" href="{{ url }}">
+        <a class="webny-teaser-image" href="{{ link }}">
             {% block hero_image %}{% endblock hero_image %}
         </a>
         <div class="webny-teaser-content-wrapper">
@@ -12,7 +15,7 @@
           {% endif %}
           <div class="webny-teaser-title">
             {% block title %}
-              <a href="{{ url }}">
+              <a href="{{ link }}">
                 {% if title|length <= 65 %}
                   {{ title }}
                 {% else %}

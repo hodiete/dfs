@@ -1,6 +1,12 @@
 {% extends 'profiles/custom/webny/themes/custom/webny_theme/templates/content/webny--teaser-base.html.twig' %}
 {% set attributes = attributes.addClass('webny-teaser__events') %}
 
+{% if content.field_webny_event_redirect_url.0 %}
+  {% set link = content.field_webny_event_redirect_url.0 %}
+{% else %}
+  {% set link = url %}
+{% endif %}
+
 {% if (node.field_webny_event_short_title.value is not empty and node.field_webny_event_short_title.value is not null) %}
     {% set title = content.field_webny_event_short_title %}
 {% else %}

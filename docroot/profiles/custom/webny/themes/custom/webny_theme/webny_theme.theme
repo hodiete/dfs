@@ -123,16 +123,6 @@ function webny_theme_preprocess_node__webny_location__teaser(&$variables) {
 }
 
 /**
- * Implements hook_preprocess_node__webny_event__teaser
- */
-function webny_theme_preprocess_node__webny_event__teaser(&$variables) {
-  $content_type = $variables['node']->getType();
-  if ($content_type === 'webny_event') {
-    $variables['details_class'] = 'webny-teaser-content-wrapper__details';
-  }
-}
-
-/**
  * Implements hook_preprocess_field
  */
 function webny_theme_preprocess_field(&$variables) {
@@ -143,6 +133,7 @@ function webny_theme_preprocess_field(&$variables) {
     $variables['locality'] = $variables['element']['0']['locality'];
     $variables['postal_code'] = $variables['element']['0']['postal_code'];
   }
+
 }
 
 /**
