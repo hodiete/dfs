@@ -12,7 +12,7 @@
 
 .body-sidebars-first {
   @include breakpoint($min-tablet) {
-    aside.sidebar-first {
+    aside.layout-sidebar-first {
       @include span(3 of 12);
 
       > * {
@@ -20,7 +20,7 @@
       }
     }
 
-    section#content {
+    main .layout-content {
       @include span(9 of 12 last);
 
       > * {
@@ -36,7 +36,7 @@
 
 .body-sidebars-second {
   @include breakpoint($min-tablet) {
-    aside.sidebar-second {
+    aside.layout-sidebar-second {
       @include span(3 of 12 last);
 
       > * {
@@ -44,7 +44,7 @@
       }
     }
 
-    section#content {
+    main .layout-content {
       @include span(9 of 12);
 
       > * {
@@ -60,7 +60,7 @@
 
 .body-sidebars-both {
   @include breakpoint($min-tablet) {
-    aside.sidebar-first {
+    aside.layout-sidebar-first {
       @include span(2 of 12);
 
       > * {
@@ -68,7 +68,7 @@
       }
     }
 
-    section#content {
+    main .layout-content {
       @include span(8 of 12);
 
       > * {
@@ -76,7 +76,7 @@
       }
     }
 
-    aside.sidebar-second {
+    aside.layout-sidebar-second {
       @include span(2 of 12 last);
 
       > * {
@@ -91,14 +91,7 @@
 //////////////////////////////////
 
 .body-sidebars-none {
-  section#content {
-    @include span(12 of 12);
-
-    > * {
-      padding-left: 15px;
-      padding-right: 15px;
-    }
-  }
+  // No sidebars rules.
 }
 
 //////////////////////////////////

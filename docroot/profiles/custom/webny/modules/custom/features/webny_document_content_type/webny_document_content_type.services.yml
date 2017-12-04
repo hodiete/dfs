@@ -8,3 +8,10 @@ services:
       - { name: event_subscriber }
   webny_document_content_type.document_file_url:
     class: \Drupal\webny_document_content_type\DocumentFileUrl
+  webny_document_content_type.finish_response_subscriber:
+    class: Drupal\webny_document_content_type\EventSubscriber\FinishResponseSubscriber
+    tags:
+      - { name: event_subscriber }
+    arguments:
+      - '@config.factory'
+      - '@current_user'

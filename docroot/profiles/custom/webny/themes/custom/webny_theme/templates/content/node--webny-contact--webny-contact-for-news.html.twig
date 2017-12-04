@@ -12,7 +12,19 @@
   *  Office Address:        field_webny_contact_address
   *  Other Details:         field_webny_contact_details
   *  Phone (array):         field_webny_contact_phone
-  *
+  *  Language Code          node.field_webny_contact_mapdir.0.langcode
+  *  Country Code:          node.field_webny_contact_mapdir.0.country_code
+  *  State:                 node.field_webny_contact_mapdir.0.administrative_area
+  *  Locality/City:         node.field_webny_contact_mapdir.0.locality
+  *  Locality:              node.field_webny_contact_mapdir.0.dependent_locality
+  *  Postal Code/ ZIP:      node.field_webny_contact_mapdir.0.postal_code
+  *  Sorting Code:          node.field_webny_contact_mapdir.0.sorting_code
+  *  Address Line 1:        node.field_webny_contact_mapdir.0.address_line1
+  *  Address Line 2:        node.field_webny_contact_mapdir.0.address_line2
+  *  Organization Name:     node.field_webny_contact_mapdir.0.organization
+  *  First Name:            node.field_webny_contact_mapdir.0.given_name
+  *  Middle Name:           node.field_webny_contact_mapdir.0.additional_name
+  *  Last Name:             node.field_webny_contact_mapdir.0.family_name
   */
  /**
   *
@@ -43,6 +55,38 @@ set iconclass = [
 'icon-phone',
 ]
 %}
+
+{# ################################################################################################################# #}
+{# GOOGLE MAPS INTEGRATION #}
+{% set map_addr1    = node.field_webny_contact_mapdir.0.address_line1 %}
+{% set map_addr2    = node.field_webny_contact_mapdir.0.address_line2 %}
+{% set map_city     = node.field_webny_contact_mapdir.0.locality %}
+{% set map_state    = node.field_webny_contact_mapdir.0.administrative_area %}
+{% set map_zip      = node.field_webny_contact_mapdir.0.postal_code %}
+
+{# MAP VARS #}
+{% set google_dirlink = '' %}
+{% set google_dirlink_linktext  = '' %}
+{% set googlemap = false %}
+
+{# SET MAP DATA TO VARS IF THERE IS MAP INFORMATION DATA #}
+{% if(  map_addr1   is not empty and
+        map_city    is not empty and
+        map_state   is not empty and
+        map_zip     is not empty )
+%}
+    {%  set google_dirlink          = 'https://google.com/maps?q='
+                                    ~ map_addr1|replace(' ','+') ~ '+'
+                                    ~ map_addr2|replace(' ','+') ~ '+'
+                                    ~ map_city|replace(' ','+') ~ ',+'
+                                    ~ map_state|replace(' ','+') ~ '+'
+                                    ~ map_zip %}
+
+    {%  set googlemap = true %}
+
+{% endif %}
+{# ################################################################################################################# #}
+
 <article{{ attributes.addClass(default_classes) }}>
     {# THIS IS NECESSARY FOR QUICK EDITING THE CONTACT NODE ASSOCIATED WITH THIS CONTENT #}
     {{ title_prefix }}
@@ -52,11 +96,7 @@ set iconclass = [
         </h2>
         {# THIS IS WHERE WE BUILD THE NODE STRUCTURE #}
         <div{{ content_attributes.addClass('news-contact-area') }}>
-            {#  DO WE NEED THIS SINCE THE TITLE IS IN THE H2 ABOVE?
-               <div>
-                   {{ node.field_webny_contact_name.value }}
-               </div>
-            #}
+
             <div>{{  node.field_webny_contact_details.value|raw }}
             </div>
 
@@ -64,61 +104,80 @@ set iconclass = [
                 <div class="fieldset-wrapper">
 
                 {% if(content.field_webny_phone_contact[0] is not null and content.field_webny_phone_contact[0] is not empty) %}
-                <div class="contact-col-1">
-                    <div class="contact-phone">
-                        <div class="icon-phone">
-                            <div class="contact--field-webny-contact-phone">Contact us by phone:</div>
-                        </div>
-                        {# LOOP PHONE AND VALUES #}
-                        <div class="contact-phone-value">
-                            {{ content.field_webny_phone_contact }}
+                    <div class="contact-col-1">
+                        <div class="contact-phone">
+                            <div class="icon-phone">
+                                <div class="contact--field-webny-contact-phone">Contact us by phone:</div>
+                            </div>
+                            {# LOOP PHONE AND VALUES #}
+                            <div class="contact-phone-value">
+                                {{ content.field_webny_phone_contact }}
+                            </div>
                         </div>
                     </div>
-                </div>
                 {% endif %}
 
                 {% if(node.field_webny_contact_email.value is not empty and node.field_webny_contact_email.value is not null) %}
-                <div class="contact-col-2">
-                    <div class="contact-email">
-                        <div class="icon-email">
-                            <div class="contact--field-webny-contact-email">Contact us by email:</div>
-                        </div>
-                        {% for k,v  in node.field_webny_contact_email %}
-                            <div class="contact-email-value">
-                                <div><a href="mailto:{{ node.field_webny_contact_email[k].value }}">{{ node.field_webny_contact_email[k].value }}</div></a>
+                    <div class="contact-col-2">
+                        <div class="contact-email">
+                            <div class="icon-email">
+                                <div class="contact--field-webny-contact-email">Contact us by email:</div>
                             </div>
-                        {% endfor %}
+                            {% for k,v  in node.field_webny_contact_email %}
+                                <div class="contact-email-value">
+                                    <div><a href="mailto:{{ node.field_webny_contact_email[k].value }}">{{ node.field_webny_contact_email[k].value }}</div></a>
+                                </div>
+                            {% endfor %}
+                        </div>
                     </div>
-                </div>
                 {% endif %}
+
                 {% if(node.field_webny_contact_address.value is not empty and node.field_webny_contact_address.value is not null) %}
-                <div class="contact-col-1">
-                    <div class="contact-address">
-                        <div class="icon-email">
-                            <div class="contact--field-webny-contact-address">Contact us by mail:</div>
-                        </div>
-                        {% for k,v  in node.field_webny_contact_address %}
-                            <div class="contact-address-value">
-                                <div>{{ node.field_webny_contact_address[k].value|raw }}</div>
+                    <div class="contact-col-1">
+                        <div class="contact-address">
+                            <div class="icon-email">
+                                <div class="contact--field-webny-contact-address">Mailing Address:</div>
                             </div>
-                        {% endfor %}
+                            {% for k,v  in node.field_webny_contact_address %}
+                                <div class="contact-address-value">
+                                    <div>{{ node.field_webny_contact_address[k].value|raw }}</div>
+                                </div>
+                            {% endfor %}
+                        </div>
                     </div>
-                </div>
                 {% endif %}
+
                 {% if(node.field_webny_contact_fax.value is not empty and node.field_webny_contact_fax.value is not null) %}
-                <div class="contact-col-2">
-                    <div class="contact-fax">
-                        <div class="icon-other">
-                            <div class="contact--field-webny-contact-fax">Contact us by fax:</div>
-                        </div>
-                        {% for k,v in node.field_webny_contact_fax %}
-                            <div class="contact-fax-value">
-                                <div>{{ node.field_webny_contact_fax[k].value }}</div>
+                    <div class="contact-col-2">
+                        <div class="contact-fax">
+                            <div class="icon-other">
+                                <div class="contact--field-webny-contact-fax">Contact us by fax:</div>
                             </div>
-                        {% endfor %}
+                            {% for k,v in node.field_webny_contact_fax %}
+                                <div class="contact-fax-value">
+                                    <div>{{ node.field_webny_contact_fax[k].value }}</div>
+                                </div>
+                            {% endfor %}
+                        </div>
                     </div>
-                </div>
                 {% endif %}
+
+                {% if (googlemap == true) %}
+                    <div class="contact-col-2">
+                        <div class="contact-mapdir">
+                            <div class="icon-mapdir">
+                                <div class="contact--field-webny-contact-mapdir">Map Directions:</div>
+                            </div>
+                            <div class="contact-mapdir-value">
+                                <a target="_blank" href="{{ google_dirlink }}">
+                                    {{ map_addr1 }}<br />
+                                    {{ map_city }} {{ map_state }}, {{ map_zip }}
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+
             </div>
            </fieldset>
 
