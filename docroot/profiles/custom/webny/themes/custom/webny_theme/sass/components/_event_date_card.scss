@@ -7,7 +7,8 @@
 
   .multi-day {
     .day div,
-    .month div {
+    .month div,
+    .event-year div {
       float: left;
       width: 65px;
 
@@ -43,6 +44,7 @@
     color: #000;
     font-family: $base-font;
     font-weight: 800;
+    padding-bottom: 5px;
 
     div {
       text-align: left;
@@ -51,6 +53,30 @@
     .dash {
       font-size: 15px;
       font-weight: 600;
+    }
+  }
+
+  .event-year {
+    @include clearfix;
+
+    font-size: 16px;
+    color:#000;
+    font-family: $base-font;
+    font-weight: 600;
+
+    div {
+      text-align: center;
+    }
+
+    .dash {
+      color: transparent;
+    }
+
+    .start-event-year {
+      width: 50px !important;
+    }
+    .end-event-year {
+      width: 83px !important;
     }
   }
 
