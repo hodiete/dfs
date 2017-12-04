@@ -1,0 +1,25 @@
+<article{{ attributes.addClass('webny-teaser') }}>
+    <div class="webny-teaser-wrapper">
+        <a class="webny-teaser-image" href="{{ url }}">
+            {% block hero_image %}{% endblock hero_image %}
+        </a>
+        <div class="webny-teaser-content-wrapper">
+            {% if content.field_webny_filter_terms.0 %}
+                <div class="webny-teaser-filter-terms">{{ content.field_webny_filter_terms }}</div>
+            {% endif %}
+            <div class="webny-teaser-title">
+                {% block title %}
+                    <a href="{{ url }}">
+                        {% if title|length <= 65 %}
+                            {{ title }}
+                        {% else %}
+                            {{ title|slice(0, 65) ~ '...' }}
+                        {% endif %}
+                    </a>
+                {% endblock title %}
+            </div>
+            {% block content %}{% endblock content %}
+        </div>
+        {{ content.links }}
+    </div>
+</article>

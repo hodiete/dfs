@@ -1,0 +1,35 @@
+<?php
+
+/**
+ * @file
+ * Contains webny_solr_searches.module.
+ */
+
+use Drupal\Component\Utility\Html;
+
+/**
+* Implements hook_views_pre_execute().
+*/
+function webny_solr_searches_views_pre_view($view) {
+  // Filter terms /search/% page view.
+  if ($view->current_display == 'webny_search_page') {
+    // Set filter term id contextual filter based url value.
+    if (isset($view->args[0])) {
+      $filter_term_name = str_replace('-', ' ', $view->args[0]);
+      $terms = taxonomy_term_load_multiple_by_name($filter_term_name, 'webny_filter_terms_tax');
+
+      // Has matching term. Set a term id argument.
+      if ($terms) {
+        $filter_term_id = reset($terms)->tid->value;
+        $parents = \Drupal::service('entity_type.manager')
+          ->getStorage('taxonomy_term')
+          ->loadParents($filter_term_id);
+
+        // Exclude child terms.
+        if (!$parents) {
+          $view->setArguments([$filter_term_id]);
+        }
+      }
+    }
+  }
+}
