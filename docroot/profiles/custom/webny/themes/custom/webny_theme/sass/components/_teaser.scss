@@ -48,30 +48,26 @@
   &-filter-terms {
     position: relative;
     margin-bottom: 10px;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 600;
+    font-family: "ProximaNovaRegular", Arial, sans-serif;
 
     @include breakpoint($min-desktop) {
       margin-bottom: 20px;
     }
-
-    &::after {
-      content: '';
-      position: absolute;
-      bottom: -4px;
-      width: 40px;
-      height: 2px;
-      background: $gray-lite;
-
-      @include breakpoint($min-mobile) {
-        bottom: -6px;
-      }
-
-      @include breakpoint($min-desktop) {
-        bottom: -10px;
-      }
-    }
   }
+
+  &-filter-term-border {
+      width: 40px;
+      border-bottom: 1px solid $gray-lite;
+      display: inline-block;
+  }
+
+  span {
+    &-filter-term-border  {
+        margin: 9px 0;
+    }
+  }  
 
   &-title {
     font-size: 19px;
@@ -124,6 +120,6 @@
         left: 25px;
       }
     }
-
   }
+
 }
