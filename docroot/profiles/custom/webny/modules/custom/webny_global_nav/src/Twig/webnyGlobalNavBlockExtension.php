@@ -46,13 +46,12 @@ class webnyGlobalNavBlockExtension extends \Twig_Extension {
         // GET MENU TREE
         $tree = $menu_tree->transform($tree, $manipulators);
 
-        $menu = $menu_tree->build($tree);
-
         // ASSIGN HTML CONST
         $ultop = '<ul class="gnav-ul">';
         $litop = '<li class="gnav-mitems gnav-topli" aria-expanded="false">';
         $ulsub = '<ul class="gnav-items-ul" aria-hidden="true">';
         $lisub = '<li>';
+        $litopsolo = '<li class="gnav-mitems gnav-topli solotop" aria-expanded="false">';
         $litopalt = '<li class="gnav-toplink">';
         $ulc = '</ul>';
         $lic = '</li>';
@@ -71,72 +70,75 @@ class webnyGlobalNavBlockExtension extends \Twig_Extension {
                 $url = $item->link->getUrlObject();
                 $link = Link::fromTextAndUrl(t($title), $url)->toString();
 
-                if ($item->hasChildren) {
+                // PREASSIGN COUNT TO 1
+                $subcount = 1;
+                $lastChild = sizeof($item->subtree);
+                $firstSubChild = TRUE;
 
-                    // PREASSIGN COUNT TO 1
-                    $subcount = 1;
-                    $firstChild = TRUE;
-                    $lastChild = sizeof($item->subtree);
+                if ($lastChild > 0) {
 
+                    // ===================================================================================
                     // ADD THE FIRST LEVEL LINK
                     $newmenu .= $litop . $link;
 
-                    // ENSURE SIZE OF ARRAY BEFORE LOOPING
-                    if (sizeof($item->subtree) > 0) {
+                    foreach ($item->subtree as $subitem) {
 
-                        foreach ($item->subtree as $subitem) {
+                        // CHECK TYPE. IF STRING, PASS
+                        if (gettype($subitem->link->getTitle()) == 'string') {
 
-                            // CHECK TYPE. IF STRING, PASS
-                            if(gettype($subitem->link->getTitle()) == 'string') {
+                            // SUBITEM META
+                            $subtitle = $subitem->link->getTitle();
+                            $suburl = $subitem->link->getUrlObject();
+                            $sublink = Link::fromTextAndUrl(t($subtitle), $suburl)->toString();
 
-                                // SUBITEM META
-                                $subtitle = $subitem->link->getTitle();
-                                $suburl = $subitem->link->getUrlObject();
-                                $sublink = Link::fromTextAndUrl(t($subtitle), $suburl)->toString();
+                            // RUN THIS FIRST AND THATS ALL
+                            if ($firstSubChild == TRUE) {
 
-                                // RUN THIS FIRST AND THATS ALL
-                                if($firstChild){
-                                    $newmenu .= $ulsub;
-                                    $firstChild = FALSE;
+                                // ===================================================================================
+                                $newmenu .= $ulsub;
+
+                                // BUILD LIST ITEM AND UL SUB ITEM
+                                if (!empty($url->toString())) {
+
+                                    // ===================================================================================
+                                    $newmenu .= $litopalt . $link . $lic;
                                 }
 
-                                // ADD TOP LEVEL LINK AS A LINK
-                                if ($subcount == 1) {
+                                $firstSubChild = FALSE;
 
-                                    // BUILD LIST ITEM AND UL SUB ITEM
-                                    if (!empty($url->toString())) {
-                                        $newmenu .= $litopalt . $link . $lic;
-                                    }
+                            }
 
-                                }
-
-                                // CONSTRUCT SUBURL
-                                $newmenu .= $lisub . $sublink . $lic;
-
-                                if($lastChild == $subcount){
-
-                                    // CLOSE THE UL AND TOP LEVEL LI ELEMENT
-                                    $newmenu .= $ulc . $lic;
-                                }
+                            // ===================================================================================
+                            // CONSTRUCT SUBURL
+                            $newmenu .= $lisub . $sublink . $lic;
 
 
-                            } // END IF SUBITEM IS STRING
+                        } // END IF SUBITEM IS STRING
 
 
-                            // INCREMENT SUBCOUNT
-                            $subcount++;
+                        if ($lastChild == $subcount) {
 
-                        } // END INNER FOR
+                            // CLOSE THE UL AND TOP LEVEL LI ELEMENT
+                            $newmenu .= $ulc;
+
+                        }
+
+                        // INCREMENT SUBCOUNT
+                        $subcount++;
+
+                    } // END INNER FOR
 
 
-                        unset($subitem);
+                    // ===================================================================================
+                    // CLOSE TOP LEVEL LI ELEMENT
+                    $newmenu .= $lic;
 
-                    };
 
                 } else {
 
                     // CREATE A STAND ALONE LINK
-                    $newmenu .= $litop . $link . $lic;
+                    $newmenu .= $litopsolo . $link . $lic;
+
 
                 } // END IF/ELSE
 
@@ -146,6 +148,8 @@ class webnyGlobalNavBlockExtension extends \Twig_Extension {
 
         // CLOSE MAIN CONTAINER
         $newmenu .= $ulc;
+
+
 
         return array('#markup' => $newmenu);
     }
