@@ -231,7 +231,7 @@ $globalnav-secondary-color:   $button-black-50 !default;
         padding-left: $menu-arrow-active-link-padding;
         font-weight: $nav-weight;
         letter-spacing: .03em;
-        color: $nav-fore-color;
+        color: transparent;
       }
 
       &.#{$webny-global-prefix}active > a:before,
@@ -464,10 +464,12 @@ $globalnav-secondary-color:   $button-black-50 !default;
       font-size: 16px;
       & > ul > li > a:hover {
         text-decoration: underline;
+        color: $nav-fore-color;
       }
 
       & > ul > li > span:hover {
         text-decoration: none;
+        color: $nav-fore-color;
       }
 
       h1 {
@@ -509,6 +511,7 @@ $globalnav-secondary-color:   $button-black-50 !default;
             height: $medium-screen-link-height;
             vertical-align: middle;
             padding: 0 15px;
+            color: $nav-fore-color;
 
             &:before,
             &:after {
@@ -536,6 +539,10 @@ $globalnav-secondary-color:   $button-black-50 !default;
                 display: block;
                 padding: 15px;
               }
+            }
+            // HIDE TOP LINKS ON DROPDOWN ON DESKTOP
+            li.gnav-toplink {
+                display: none;
             }
           }
 

@@ -58,7 +58,7 @@ class WebnyGlobalNavFooterExtension extends \Twig_Extension {
     // Finally, build a renderable array from the transformed tree.
     $menu = $menu_tree->build($tree);
 
-    return array('#markup' => drupal_render($menu));
+    return array('#markup' => \Drupal::service('renderer')->render($menu, FALSE));
   }
 
 }

@@ -16,39 +16,91 @@ dependencies:
     - field.field.node.webny_location.field_webny_location_type_tax
     - node.type.webny_location
   module:
+    - address
+    - entity_reference_revisions
+    - options
+    - text
     - user
 id: node.webny_location.teaser
 targetEntityType: node
 bundle: webny_location
 mode: teaser
 content:
+  field_webny_filter_terms:
+    type: entity_reference_label
+    weight: 2
+    region: content
+    label: hidden
+    settings:
+      link: false
+    third_party_settings: {  }
+  field_webny_location_address:
+    type: address_default
+    weight: 9
+    region: content
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+  field_webny_location_counties:
+    type: list_default
+    weight: 4
+    region: content
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+  field_webny_location_heroimage:
+    type: entity_reference_entity_view
+    weight: 1
+    region: content
+    label: hidden
+    settings:
+      view_mode: results_image
+      link: false
+    third_party_settings: {  }
+  field_webny_location_phone:
+    type: entity_reference_revisions_entity_view
+    weight: 7
+    region: content
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
   field_webny_location_short_title:
     type: string
-    weight: 1
+    weight: 3
     region: content
     label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
+  field_webny_location_summary:
+    type: text_default
+    weight: 6
+    region: content
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+  field_webny_location_type_tax:
+    type: entity_reference_label
+    weight: 8
+    region: content
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
   links:
-    weight: 0
+    weight: 5
     region: content
     settings: {  }
     third_party_settings: {  }
   workbench_moderation_control:
-    weight: -20
+    weight: 0
     region: content
     settings: {  }
     third_party_settings: {  }
 hidden:
   field_webny_agency_keywords: true
-  field_webny_filter_terms: true
-  field_webny_location_address: true
   field_webny_location_contentsec: true
-  field_webny_location_counties: true
-  field_webny_location_heroimage: true
   field_webny_location_navtoggle: true
-  field_webny_location_phone: true
-  field_webny_location_summary: true
-  field_webny_location_type_tax: true
   langcode: true
