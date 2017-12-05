@@ -80,6 +80,11 @@ $hero-keyword-text-color: $color-mono-white !default;
   width: 100%;
 }
 
+.hero-no-image.hero-event {
+  background-color: $hero-bkgd-color;
+  height: 385px;
+}
+
 // ========================================================================= //
 /* HERO LAYOUT */
 .hero-layout {
@@ -88,7 +93,8 @@ $hero-keyword-text-color: $color-mono-white !default;
 
   .hero-news-inner,
   .hero-ipage-inner,
-  .hero-landing-inner{
+  .hero-landing-inner,
+  .hero-event--inner{
     padding: 40px 8%;
     position: relative;
     top: 0;
@@ -153,7 +159,8 @@ $hero-keyword-text-color: $color-mono-white !default;
 
   .hero-news-inner,
   .hero-ipage-inner,
-  .hero-landing-inner {
+  .hero-landing-inner,
+  .hero-event--inner{
     position: absolute;
     &.hero-has-image-content {
       //background: none;
@@ -161,7 +168,8 @@ $hero-keyword-text-color: $color-mono-white !default;
   }
 
   .hero-no-image + .hero-ipage-inner,
-  .hero-no-image + .hero-landing-inner {
+  .hero-no-image + .hero-landing-inner,
+  .hero-no-image + .hero-event--inner{
     position: absolute;
   }
 
@@ -541,7 +549,9 @@ $hero-keyword-text-color: $color-mono-white !default;
     width: auto;
   }
 
-} // END HERO-LAYOUT
+}
+
+// END HERO-LAYOUT
 
 // ######################################################################### //
 /* MIN TABLET VIEW */
@@ -949,20 +959,6 @@ $hero-keyword-text-color: $color-mono-white !default;
 
 // Event Hero with dates.
 .hero-event {
-  background-color: $medblue;
-
-  .hero-background {
-    min-height: 0;
-
-    &.hero-no-image {
-      height: auto;
-    }
-    
-    &.hero-has-image {
-      opacity: 0.8;
-      background-color: transparent;
-    }
-  }
 
   .hero-content-wrap {
     position: relative;
