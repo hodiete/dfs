@@ -46,8 +46,6 @@ class webnyGlobalNavBlockExtension extends \Twig_Extension {
         // GET MENU TREE
         $tree = $menu_tree->transform($tree, $manipulators);
 
-        $menu = $menu_tree->build($tree);
-
         // ASSIGN HTML CONST
         $ultop = '<ul class="gnav-ul">';
         $litop = '<li class="gnav-mitems gnav-topli" aria-expanded="false">';
@@ -60,7 +58,6 @@ class webnyGlobalNavBlockExtension extends \Twig_Extension {
 
         // CREATE TOP LEVEL UL
         $newmenu = $ultop;
-        $counter = 0;
 
         // CREATE ELEMENTS
         foreach ($tree as $item) {
