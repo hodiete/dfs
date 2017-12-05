@@ -111,6 +111,31 @@
   }
 }
 
+// Location Fields in the Teaser display.
+.webny-teaser {
+  .location-counties-fieldwrapper {
+    line-height: 1;
+    height: 100px;
+
+    @include breakpoint($min-mobile) {
+      line-height: 1.1;
+    }
+
+    @include breakpoint($min-desktop) {
+      height: 81px;
+    }
+  }
+
+  .location-counties {
+    display: inline;
+  }
+
+  .location-counties-label {
+    float: left;
+    margin-right: 8px;
+  }
+}
+
 
 
 // ######################################################################### //

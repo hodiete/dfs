@@ -205,22 +205,18 @@
       // calculate math needed for scrolling
       elementsCount = $('#toc-sidebar ul li').length;
       elementsDiff = (elementsMax - elementsCount);
-      elementsPadding = (elementsDiff * 70);
+      elementsPadding = (elementsDiff * 100);
       tocHeight = $('#toc-sidebar').height();
+      var liLoop;
+      var liHeight = 0;
 
-      // TIERS OF HEIGHT FOR FIXED DYNAMICS
-      if(window.innerHeight < 900) {
-        fixedtocOffset = -75;
+      // loop through each li to add the height due to larger height li's
+      for (liLoop = 0; liLoop <= $('#toc-sidebar li').length; liLoop++) {
+        liHeight += $('#toc-sidebar li:nth-child(' + liLoop + ')').height();
       }
-      if(window.innerHeight < 825) {
-        fixedtocOffset = -100;
-      }
-      if(window.innerHeight < 725) {
-        fixedtocOffset = -150;
-      }
-      if(window.innerHeight < 625) {
-        fixedtocOffset = -225;
-      }
+
+      // set offset to negative total height, plus padding of triggered elements
+      fixedtocOffset = -(liHeight) + $('#toc-sidebar li:nth-child(6)').height() + $('#toc-sidebar li:nth-child(7)').height();
 
       // scroll for TOC
       $(window).scroll(function () {
@@ -236,11 +232,11 @@
           // AND THE BROWSER HEIGHT IS LESS THAN 750 px.
           if($('#toc-sidebar li').length >= 7 && window.innerHeight < 900) {
 
-            if ($('#toc-sidebar li:nth-child(6)').hasClass('active')) {
+            if ($('#toc-sidebar li:nth-child(7)').hasClass('active')) {
               $('#toc-sidebar').css('position', 'fixed').css('top', fixedtocOffset + 'px').css('transition-duration', '1s');
             }
 
-            else if ($('#toc-sidebar li:nth-child(5)').hasClass('active')) {
+            else if ($('#toc-sidebar li:nth-child(6)').hasClass('active')) {
               $('#toc-sidebar').css('top', '50px').css('transition-duration', '1s');
             }
           }

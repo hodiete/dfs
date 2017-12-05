@@ -1,0 +1,27 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - facets.facet.filter_term
+  module:
+    - facets
+    - system
+  theme:
+    - webny_theme
+id: filterterm
+theme: webny_theme
+region: sidebar_first
+weight: -1
+provider: null
+plugin: 'facet_block:filter_term'
+settings:
+  id: 'facet_block:filter_term'
+  label: Filter
+  provider: facets
+  label_display: visible
+visibility:
+  request_path:
+    id: request_path
+    pages: '/search/*'
+    negate: false
+    context_mapping: {  }

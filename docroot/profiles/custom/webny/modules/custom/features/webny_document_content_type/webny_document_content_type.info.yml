@@ -3,6 +3,7 @@ description: 'This content type is used to upload documents.'
 type: module
 core: 8.x
 dependencies:
+  - allowed_formats
   - datetime
   - field
   - field_group
@@ -14,6 +15,7 @@ dependencies:
   - paragraphs
   - path
   - shs
+  - smart_trim
   - taxonomy
   - text
   - user

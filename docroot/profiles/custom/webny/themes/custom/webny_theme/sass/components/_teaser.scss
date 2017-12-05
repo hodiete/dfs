@@ -1,0 +1,129 @@
+.webny-teaser {
+  width: 75%;
+  margin: 20px auto;
+  border: 1px solid $gray-lite;
+
+  &-image {
+    display: none;
+
+    @include breakpoint($min-tablet) {
+      display: block;
+      float: left;
+      margin-right: 15px;
+
+      svg {
+        width: 202px;
+        height: 202px;
+        background-color: $color-secondary;
+        fill: $color-mono-white;
+        padding: 20px;
+      }
+    }
+
+    @include breakpoint($min-desktop) {
+      margin-right: 25px;
+    }
+  }
+
+  &-content-wrapper {
+    max-height: 184px;
+    box-sizing: border-box;
+    padding: 10px 15px 0;
+    font-size: 14px;
+
+    @include breakpoint($min-mobile) {
+      font-size: 16px;
+    }
+
+    @include breakpoint($min-tablet) {
+      font-size: 14px;
+    }
+
+    @include breakpoint($min-desktop) {
+      font-size: 16px;
+      padding: 20px 25px 0;
+    }
+  }
+
+  &-filter-terms {
+    position: relative;
+    margin-bottom: 10px;
+    font-size: 16px;
+    font-weight: 600;
+
+    @include breakpoint($min-desktop) {
+      margin-bottom: 20px;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      width: 40px;
+      height: 2px;
+      background: $gray-lite;
+
+      @include breakpoint($min-mobile) {
+        bottom: -6px;
+      }
+
+      @include breakpoint($min-desktop) {
+        bottom: -10px;
+      }
+    }
+  }
+
+  &-title {
+    font-size: 19px;
+    font-weight: 600;
+    margin-bottom: 7px;
+    line-height: .9;
+    word-wrap: break-word;
+
+    @include breakpoint($min-mobile) {
+      margin-bottom: 10px;
+      line-height: 27px;
+    }
+
+    @include breakpoint($min-tablet) {
+      font-size: 15px;
+    }
+    @include breakpoint($min-desktop) {
+      font-size: 19px;
+    }
+  }
+
+  .links {
+    list-style: none;
+    padding: 4px 0;
+    margin-bottom: 0;
+    background-color: $color-mono-lt;
+    border: 1px solid $gray-lite;
+
+    @include breakpoint($min-mobile) {
+      padding: 10px 0;
+    }
+
+    a {
+      position: relative;
+      left: 38px;
+      text-transform: uppercase;
+      font-weight: bold;
+      font-size: 15px;
+      color: black;
+
+      &::before {
+        content: '\f054';
+        font-family: 'icomoon';
+        color: $primarygold;
+        position: absolute;
+        left: -20px;
+      }
+
+      @include breakpoint($min-tablet) {
+        left: 25px;
+      }
+    }
+
+  }
+}
