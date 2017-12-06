@@ -47,6 +47,14 @@ function webny_solr_searches_views_pre_view($view) {
 function webny_solr_searches_preprocess_views_view(&$variables) {
   $view = $variables['view'];
 
+  // Create a facet block for the page view.
+  if ($view->current_display == 'webny_search_page') {
+    $variables['filter_term_block'] = \Drupal::service('plugin.manager.block')
+      ->createInstance('facet_block:filter_term')
+      ->build();
+  }
+
+  // Get the term name ('search_group') to display as the view title bar.
   if ($view->id() == 'webny_search') {
     $search_group = \Drupal::service('entity_type.manager')
       ->getStorage('taxonomy_term')

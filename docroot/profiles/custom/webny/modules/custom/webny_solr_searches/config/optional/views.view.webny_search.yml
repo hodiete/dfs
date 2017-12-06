@@ -387,20 +387,7 @@ display:
           empty: false
           content: '<span class="results-total-number">@total</span> Results Found'
           plugin_id: result
-      footer:
-        entity_block:
-          id: entity_block
-          table: views
-          field: entity_block
-          relationship: none
-          group_type: group
-          admin_label: ''
-          empty: false
-          tokenize: true
-          target: filterterm
-          view_mode: default
-          bypass_access: true
-          plugin_id: entity
+      footer: {  }
       empty: {  }
       relationships: {  }
       arguments:

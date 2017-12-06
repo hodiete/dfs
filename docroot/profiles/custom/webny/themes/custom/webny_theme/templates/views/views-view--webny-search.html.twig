@@ -61,8 +61,13 @@ dom_id ? 'js-view-dom-id-' ~ dom_id,
   <aside class="filter-sidebar">
     <div class="filter-toggle hidden">Filter Options</div>
     <div class="filter-sidebar-content">
-      {# Facets block rendered using the 'Render Entity - Block' option. #}
-      {{ footer }}
+      {# Facets block. #}
+      {% if filter_term_block %}
+      <div class="block-filter-term">
+        <h2>Filter</h2>
+        {{ filter_term_block }}
+      </div>
+      {% endif %}
       {# Views exposed filters. #}
       {{ exposed }}
     </div>
