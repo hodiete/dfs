@@ -1,7 +1,8 @@
 .webny-teaser {
-  width: 75%;
-  margin: 20px auto;
+  //width: 75%;
+  margin: 20px;
   border: 1px solid $gray-lite;
+  font-family: "ProximaNovaRegular", Arial, sans-serif;
 
   &-image {
     display: none;
@@ -47,13 +48,13 @@
 
   &-filter-terms {
     position: relative;
-    margin-bottom: 10px;
     font-size: 14px;
-    font-weight: 600;
-    font-family: "ProximaNovaRegular", Arial, sans-serif;
+    line-height: 14px;
+    padding-top: 5px;
+    
 
     @include breakpoint($min-desktop) {
-      margin-bottom: 20px;
+      padding-top: 0;
     }
   }
 
@@ -70,11 +71,11 @@
   }  
 
   &-title {
-    font-size: 19px;
+    font-size: 1.17em;
     font-weight: 600;
     margin-bottom: 7px;
     line-height: .9;
-    word-wrap: break-word;
+
 
     @include breakpoint($min-mobile) {
       margin-bottom: 10px;
@@ -92,7 +93,7 @@
   .links {
     list-style: none;
     padding: 4px 0;
-    margin-bottom: 0;
+    margin: 1px -1px -1px;
     background-color: $color-mono-lt;
     border: 1px solid $gray-lite;
 
@@ -105,7 +106,7 @@
       left: 38px;
       text-transform: uppercase;
       font-weight: bold;
-      font-size: 15px;
+      font-size: 13px;
       color: black;
 
       &::before {
