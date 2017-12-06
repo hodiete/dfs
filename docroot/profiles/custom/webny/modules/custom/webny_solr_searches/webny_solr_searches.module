@@ -5,8 +5,6 @@
  * Contains webny_solr_searches.module.
  */
 
-use Drupal\Component\Utility\Html;
-
 /**
 * Implements hook_views_pre_execute().
 */
@@ -15,12 +13,21 @@ function webny_solr_searches_views_pre_view($view) {
   if ($view->current_display == 'webny_search_page') {
     // Set filter term id contextual filter based url value.
     if (isset($view->args[0])) {
-      $filter_term_name = str_replace('-', ' ', $view->args[0]);
-      $terms = taxonomy_term_load_multiple_by_name($filter_term_name, 'webny_filter_terms_tax');
+      // Check for numeric value or name.
+      if (is_numeric($view->args[0])) {
+        $filter_term_id = $view->args[0];
+      }
+      else {
+        $filter_term_name = str_replace('-', ' ', $view->args[0]);
+        $terms = taxonomy_term_load_multiple_by_name($filter_term_name, 'webny_filter_terms_tax');
 
-      // Has matching term. Set a term id argument.
-      if ($terms) {
-        $filter_term_id = reset($terms)->tid->value;
+        // Has matching term. Set a term id argument.
+        if ($terms) {
+          $filter_term_id = reset($terms)->tid->value;
+        }
+      }
+
+      if (isset($filter_term_id)) {
         $parents = \Drupal::service('entity_type.manager')
           ->getStorage('taxonomy_term')
           ->loadParents($filter_term_id);
@@ -31,5 +38,43 @@ function webny_solr_searches_views_pre_view($view) {
         }
       }
     }
+  }
+}
+
+/**
+ * Implements hook_preprocess_views_view().
+ */
+function webny_solr_searches_preprocess_views_view(&$variables) {
+  $view = $variables['view'];
+
+  // Create a facet block for the page view.
+  if ($view->current_display == 'webny_search_page') {
+    $variables['filter_term_block'] = \Drupal::service('plugin.manager.block')
+      ->createInstance('facet_block:filter_term')
+      ->build();
+  }
+
+  // Get the term name ('search_group') to display as the view title bar.
+  if ($view->id() == 'webny_search') {
+    $search_group = \Drupal::service('entity_type.manager')
+      ->getStorage('taxonomy_term')
+      ->load($view->args[0])
+      ->getName();
+
+    if ($search_group) {
+      $variables['search_group'] = $search_group;
+    }
+  }
+}
+
+/**
+ * Implements hook_form_alter();
+ */
+function webny_solr_searches_form_alter(&$form, $form_state, $form_id) {
+  $view = $form_state->getStorage('view');
+
+  if ($form_id == 'views_exposed_form' && $view['view']->id() == 'webny_search') {
+    // Add placeholder text to keyword search field.
+    $form['keyword']['#attributes']['placeholder'] = t('Keyword(s)');
   }
 }
