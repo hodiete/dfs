@@ -118,7 +118,7 @@
           }
         }
         else {
-          $(this).children('.next-section').css('display', 'none');
+          $(this).children('.next-section').remove();
         }
       });
 
