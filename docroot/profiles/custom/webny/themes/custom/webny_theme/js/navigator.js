@@ -171,9 +171,9 @@
             $(this).parent().parent().removeClass('sidebar-opened').addClass('sidebar-closed');
           }
 
-          // animate to section of page
+          // animate to section of page; subtract 100 from the offset to handle scroll location with title above
           $('html,body').animate({
-            scrollTop: dest - 130
+            scrollTop: dest - 100
           }, 500, 'swing', function () {
             $(this).addClass('active');
           });
@@ -294,23 +294,52 @@
 
       // waypoint library to handle scrolling through the page functionality
       $('.toc-chapters section').waypoint(function (direction) {
-        var sectonId = this.element.id;
-        var sectionName = $('#' + sectonId).children(':first').attr('name');
-        // while scrolling if toc li anchor is same as the currently scrolled section, add active class
-        $('#toc-sidebar ul li').each(function () {
-          if ($(this).children('a').attr('href') === '#' + sectionName) {
-            $(this).addClass('active').show();
-            var item = $('#toc-sidebar ul li.active');
-            if (item.position()) {
-              // assign arrow position based on section currently scrolled
-              $('#toc-sidebar span.arrow').css({top: Math.round(item.position().top + item.height() / 2 + 2) + 'px'});
+        if (direction === 'down') {
+          var sectonId = this.element.id;
+          var sectionName = $('#' + sectonId).children(':first').attr('name');
+          // while scrolling if toc li anchor is same as the currently scrolled section, add active class
+          $('#toc-sidebar ul li').each(function () {
+            if ($(this).children('a').attr('href') === '#' + sectionName) {
+              $(this).addClass('active').show();
+              var item = $('#toc-sidebar ul li.active');
+              if (item.position()) {
+                // assign arrow position based on section currently scrolled
+                $('#toc-sidebar span.arrow').css({top: Math.round(item.position().top + item.height() / 2 + 2) + 'px'});
+              }
             }
-          }
-          else {
-            $(this).removeClass('active');
-          }
-        });
-      }, {offset: 180});
+            else {
+              $(this).removeClass('active');
+            }
+          });
+        }
+      }, {offset: 200});
+
+      // handle up scrolling with waypoints triggering on bottom of dynamic height of the element
+      $('.toc-chapters section').waypoint(function (direction) {
+        if (direction === 'up') {
+          var sectonId = this.element.id;
+          var sectionName = $('#' + sectonId).children(':first').attr('name');
+          // while scrolling if toc li anchor is same as the currently scrolled section, add active class
+          $('#toc-sidebar ul li').each(function () {
+            if ($(this).children('a').attr('href') === '#' + sectionName) {
+              $(this).addClass('active').show();
+              var item = $('#toc-sidebar ul li.active');
+              if (item.position()) {
+                // assign arrow position based on section currently scrolled
+                $('#toc-sidebar span.arrow').css({top: Math.round(item.position().top + item.height() / 2 + 2) + 'px'});
+              }
+            }
+            else {
+              $(this).removeClass('active');
+            }
+          });
+        }
+      }, {offset: function() {
+        // dynamically return an offset based on element height
+        return -$(this.element).height();
+      }});
+
+
     }
   };
 
