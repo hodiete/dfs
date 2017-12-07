@@ -19,6 +19,12 @@ function webny_theme_preprocess_html(&$variables) {
   else {
     $variables['attributes']['class'][] = 'body-sidebars-none';
   }
+
+  // Add view class to body.
+  if (isset($variables['page']['content']['system_main']['#view_id'])) {
+    $view_id = $variables['page']['content']['system_main']['#view_id'];
+    $variables['attributes']['class'][] = 'views-page-' . str_replace('_', '-', $view_id);
+  }
 }
 
 /**
