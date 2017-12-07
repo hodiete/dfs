@@ -223,9 +223,21 @@ figure.embedded-entity.align-center {
       display: inline-block;
     }
   }
-
+   
   .page-paragraphs {
     width: 100%;
+  }
+  .gp-paragraphs:not(.with-nav-sidebar) {
+    width: 90%;
+    max-width: 780px;
+    //margin-top: 60px;
+    margin: 60px auto 0 auto;
+    .next-section {
+      display: none;
+    }
+    .toc-para {
+      padding-bottom: 75px;
+    }
   }
 
   .news-body,
