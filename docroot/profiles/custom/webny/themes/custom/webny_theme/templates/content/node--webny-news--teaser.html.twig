@@ -1,0 +1,29 @@
+{% extends 'profiles/custom/webny/themes/custom/webny_theme/templates/content/webny--teaser-base.html.twig' %}
+
+{% if (node.field_webny_news_short_title.value is not empty and node.field_webny_news_short_title.value is not null) %}
+    {% set title = content.field_webny_news_short_title %}
+{% else %}
+    {% set title = node.label %}
+{% endif %}
+
+{% block hero_image %}
+    {% if not content.field_webny_news_image.0 %}
+        <div class="fallback-newspaper">{{ source('profiles/custom/webny/themes/custom/webny_theme/images/NYGov_Newspaper.svg') }}</div>
+    {% else %}
+        {{ content.field_webny_news_image }}
+    {% endif %}
+{% endblock hero_image %}
+
+{% block content %}
+    <div class="news-date-fieldwrapper">
+        <div class="news-listing-date">
+            {{ node.field_webny_news_date.value|date("F j, Y") }}
+        </div> |
+        <div class="news-listing-time">
+            {{ node.field_webny_news_date.value|date("g:i A T") }}
+        </div>
+    </div>
+    <div class="news-description-fieldwrapper">
+        <div class="news-description-label">{{ content.field_webny_news_description }}</div>
+    </div>
+{% endblock content %}
