@@ -1,25 +1,39 @@
+{% block link_direct %}
+  {% set link = url %}
+{% endblock link_direct %}
 <article{{ attributes.addClass('webny-teaser') }}>
     <div class="webny-teaser-wrapper">
-        <a class="webny-teaser-image" href="{{ url }}">
+        <a class="webny-teaser-image" href="{{ link }}">
             {% block hero_image %}{% endblock hero_image %}
         </a>
         <div class="webny-teaser-content-wrapper">
-            {% if content.field_webny_filter_terms.0 %}
-                <div class="webny-teaser-filter-terms">{{ content.field_webny_filter_terms }}</div>
-            {% endif %}
-            <div class="webny-teaser-title">
-                {% block title %}
-                    <a href="{{ url }}">
-                        {% if title|length <= 65 %}
-                            {{ title }}
-                        {% else %}
-                            {{ title|slice(0, 65) ~ '...' }}
-                        {% endif %}
-                    </a>
-                {% endblock title %}
-            </div>
-            {% block content %}{% endblock content %}
+          <div class="webny-teaser-content-wrapper__details">
+          {# Gives an option for another wrapper under .webny-teaser-content-wrapper__details #}
+          {% block optional_wrapper_start %}{% endblock optional_wrapper_start %}
+          {% if content.field_webny_filter_terms.0 %}
+            <div class="webny-teaser-filter-terms">{{ content.field_webny_filter_terms }}</div>
+          {% endif %}
+          <div class="webny-teaser-title">
+            {% block title %}
+              <a href="{{ link }}">
+                {% if title|length <= 65 %}
+                  {{ title }}
+                {% else %}
+                  {{ title|slice(0, 65) ~ '...' }}
+                {% endif %}
+              </a>
+            {% endblock title %}
+
+            {# If optional_wrapper_start is utilized, so should this #}
+          </div>
+          {% block description %}{% endblock description %}
+          {% block optional_wrapper_end %}{% endblock optional_wrapper_end %}
+
+          {% block content %}{% endblock content %}
+          </div>
+          {% block footer %}
+            {{ content.links }}
+          {% endblock %}
         </div>
-        {{ content.links }}
     </div>
 </article>
