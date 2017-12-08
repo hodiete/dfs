@@ -54,7 +54,7 @@ $summary-button-hover-back-color-monochrome:  $color-mono-black !default;
   //margin: 0 auto;
   text-align: center;
   //padding: $frame-padding-lg 3%;
-  padding: 70px 3%;
+  padding: 70px 3% 60px 3%;
 }
 
 .summaryframe-inner {
@@ -160,9 +160,10 @@ $summary-button-hover-back-color-monochrome:  $color-mono-black !default;
     border: $frame-button-border-size solid $summary-button-border-color;
     color: $summary-button-text-color;
     background-color: $summary-button-back-color;
-    padding: 16px 20px 0 20px !important;
+    padding: 17px 20px 0 20px !important;
     height: 45px !important;
     font-size: 13px !important;
+    min-width: 0 !important;
     &:visited, &:link{
       color: $summary-button-text-color;
     }
