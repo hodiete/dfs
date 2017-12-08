@@ -3,7 +3,7 @@
 {% if (node.field_webny_landing_short_title.value is not empty and node.field_webny_landing_short_title.value is not null) %}
   {% set title = content.field_webny_landing_short_title %}
 {% else %}
-    {% set title = node.label %}
+  {% set title = node.label %}
 {% endif %}
 
 {% block hero_image %}
@@ -20,4 +20,4 @@
       {{ content.field_webny_landing_summary2 }}
     </div>
   </div>
-{% endblock content %}
+{% endblock content %} 
