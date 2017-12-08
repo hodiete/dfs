@@ -1,0 +1,22 @@
+<?php
+
+/**
+ * @file
+ * Install updates for webny_solr_searches.
+ */
+
+/**
+ * Implements hook_update_n().
+ *
+ * Remove no-longer used filter blocks config.
+ */
+function webny_solr_searches_update_8001() {
+  // Displaying within view instead.
+  \Drupal::configFactory()
+    ->getEditable('block.block.exposedformwebny_searchwebny_search_page')
+    ->delete();
+  // Now rendering block instead in view hook.
+  \Drupal::configFactory()
+    ->getEditable('block.block.filterterm')
+    ->delete();
+}
