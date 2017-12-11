@@ -22,6 +22,7 @@ Feature: Image style Tests
     And I should see "Medium (220×220)"
     And I should see "mobile lead (320x256)"
     And I should see "narrow lead (768x307)"
+    And I should see "Quick Links Square (100x100)"
     And I should see "Results (240x240)"
     And I should see "Teaser"
     And I should see "Thumbnail (100×100)"
