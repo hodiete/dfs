@@ -9,7 +9,9 @@
                 {{ title_prefix }}
 
                 <h1{{ title_attributes }}>
-                    <a href="{{ url }}" rel="bookmark">{% block card_title %}{% endblock card_title %}</a>
+                    {% block card_title_url %}{% endblock card_title_url %}
+                        {#<a href="{{ url }}" rel="bookmark">#}
+                    {% block card_title %}{% endblock card_title %}</a>
                 </h1>
 
                 {{ title_suffix }}

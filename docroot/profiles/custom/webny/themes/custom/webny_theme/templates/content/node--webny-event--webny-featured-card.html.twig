@@ -19,6 +19,15 @@
     {{ vtitle | webny_trim_card_title }}
 {% endblock card_title %}
 
+{% block card_title_url %}
+    {% if content.field_webny_event_redirect_url.value starts with 'http://' %}
+        <a target="_blank" href="{{ url }}" rel="bookmark">
+    {% else %}
+        <a href="{{ url }}" rel="bookmark">
+    {% endif %}
+{% endblock card_title_url %}
+
+
 {% block card_content %}
     <div class="summary">
         {{ content.field_webny_event_summary }}

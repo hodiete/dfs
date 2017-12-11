@@ -9,7 +9,7 @@
 {% block card_image %}
     {% if (content.field_webny_whitelist_image["#items"] is not empty) %}
         <div class="card-image">
-            {{ content.field_webny_whitelist_image }}
+            {{ content.field_webny_whitelist_image }} 
         </div>
     {% endif %}
 {% endblock card_image %}
@@ -17,6 +17,11 @@
 {% block card_title %}
     {{ vtitle | webny_trim_card_title }}
 {% endblock card_title %}
+
+{#test block #}
+{% block card_title_url %}
+	<a target="_blank" href="{{ url }}" rel="bookmark">
+{% endblock card_title_url %}
 
 {% block card_content %}
     {{ content|without('field_webny_whitelist_agency_key','field_webny_whitelist_global_key', 'field_webny_agency_keywords','field_webny_global_keywords','field_webny_whitelist_link_url','field_webny_whitelist_image', 'field_webny_whitelist_date', 'field_webny_whitelist_stitle','node.label') }}

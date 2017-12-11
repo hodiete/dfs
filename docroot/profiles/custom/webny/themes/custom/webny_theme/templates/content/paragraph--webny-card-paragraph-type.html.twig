@@ -115,7 +115,7 @@ view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
                                                 <a target="_blank" href="{{ paragraph.field_webny_card_entity_ref[i].entity.field_webny_whitelist_link_url.0.url }}" title="{{ paragraph.field_webny_card_entity_ref[i].entity.field_webny_whitelist_link_url.0.url }}">{{ paragraph.field_webny_card_entity_ref[i].entity.field_webny_whitelist_link_url.0.url }}</a>
                                             {% endif %}
                                         {% else %}
-                                            <a target="_blank" href="{{ host }}{{ card_url[i] }}" title="{{ content.field_webny_card_entity_ref[i]['#node'].getTitle() }}">LEARN MORE</a>
+                                            <a href="{{ host }}{{ card_url[i] }}" title="{{ content.field_webny_card_entity_ref[i]['#node'].getTitle() }}">LEARN MORE</a>
                                         {% endif %}
                                     </span>
                                 </div>
