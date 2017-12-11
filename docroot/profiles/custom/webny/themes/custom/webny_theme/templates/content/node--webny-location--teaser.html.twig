@@ -15,8 +15,12 @@
 {% endblock hero_image %}
 
 {% block content %}
-  <div class="location-counties-fieldwrapper">
-    <div class="location-counties-label">{{ content.field_webny_location_counties['#title'] }}:</div>
-      {{ counties_string }}
-  </div>
+    {% if content.field_webny_location_counties['#title'] is not empty and content.field_webny_location_counties['#title'] is not null  %}
+      <div class="location-counties-fieldwrapper">
+          <div class="location-counties-label">{{ content.field_webny_location_counties['#title'] }}:</div>
+              {{ counties_string }}
+      </div>
+    {% else %}
+      <div class="location-counties-fieldwrapper"></div>
+    {% endif %}
 {% endblock content %}
