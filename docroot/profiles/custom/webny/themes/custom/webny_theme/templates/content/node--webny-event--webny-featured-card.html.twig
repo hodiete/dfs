@@ -20,7 +20,10 @@
 {% endblock card_title %}
 
 {% block card_title_url %}
-        <a href="{{ url }}" rel="bookmark">
+    {% if content.field_webny_event_redirect_url.0 %}
+        {% set url = content.field_webny_event_redirect_url.0 %}
+    {% endif %}
+    <a href="{{ url }}" rel="bookmark">
 {% endblock card_title_url %}
 
 
