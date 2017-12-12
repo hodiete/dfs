@@ -53,7 +53,8 @@ $summary-button-hover-back-color-monochrome:  $color-mono-black !default;
   background-color: $summary-frame-bkgd-color;
   //margin: 0 auto;
   text-align: center;
-  padding: $frame-padding-lg 3%;
+  //padding: $frame-padding-lg 3%;
+  padding: 70px 3% 60px 3%;
 }
 
 .summaryframe-inner {
@@ -71,6 +72,7 @@ $summary-button-hover-back-color-monochrome:  $color-mono-black !default;
   text-align: center;
   text-transform: uppercase;
   letter-spacing: 2px;
+  margin-bottom: 10px;
   // padding-top: 1%; // the padding set on the main frame should give the 80px
   // padding-bottom: 1%; // need to evaluate this when changing these to headings
 }
@@ -79,10 +81,11 @@ $summary-button-hover-back-color-monochrome:  $color-mono-black !default;
   //font-family: $base-font;
   //font-size: $frame-headline;
   //font-weight: 800;
-  font: $frame-headline;
+  //font: $frame-headline;
+  font: 48px "Proxima Nova Extrabold",Arial,sans-serif;
   color: $summary-frame-headline-color;
   text-align: center;
-  margin-bottom: 50px;
+  //margin-bottom: 50px;
   line-height: 3rem;
 }
 
@@ -102,18 +105,24 @@ $summary-button-hover-back-color-monochrome:  $color-mono-black !default;
 .keypoint--field-webny-summary-keypoint1,
 .keypoint--field-webny-summary-keypoint2,
 .keypoint--field-webny-summary-keypoint3{
-  font-family: $base-font;
-  font-size: $base-font-size;
-  font-weight: 800;
+  //font-family: $base-font;
+  //font-size: $base-font-size;
+  //font-weight: 800;
+  font: 22px "Proxima Nova Bold",Arial,sans-serif;
+  line-height: 26px;
   color: $summary-frame-keypt-title-color;
   margin: 20px 0;
+  height: 52px;
 }
 
 .keypoint--field-webny-summary-argument1,
 .keypoint--field-webny-summary-argument2,
 .keypoint--field-webny-summary-argument3{
   font-family: $base-font;
-  font-size: 0.7778rem;
+  //font-size: 0.7778rem;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 24px;
   color: $summary-frame-keypt-text-color;
   padding: 0 16px;
   margin-bottom: 30px;
@@ -150,7 +159,10 @@ $summary-button-hover-back-color-monochrome:  $color-mono-black !default;
     border: $frame-button-border-size solid $summary-button-border-color;
     color: $summary-button-text-color;
     background-color: $summary-button-back-color;
-
+    padding: 17px 20px 0 20px !important;
+    height: 45px !important;
+    font-size: 13px !important;
+    min-width: 0 !important;
     &:visited, &:link{
       color: $summary-button-text-color;
     }
@@ -231,7 +243,7 @@ $summary-button-hover-back-color-monochrome:  $color-mono-black !default;
 .keypoint--field-webny-summary-argument3{
   font-family: $base-font;
   font-size: 0.7778rem;
-  font-weight: 800;
+  font-weight: 600;
 }
 
 
@@ -239,7 +251,8 @@ $summary-button-hover-back-color-monochrome:  $color-mono-black !default;
 //  display: inline-block;
   float: left;
   width: 30%;
-  margin-bottom: 30px;
+  //margin-bottom: 30px;
+  margin: 0 30px 30px 30px;
   
 }
 
@@ -273,29 +286,54 @@ $summary-button-hover-back-color-monochrome:  $color-mono-black !default;
 
 .keypoints {
  display:flex;
- flex-flow: row nowrap;
+ display: -webkit-flex;
+ display: -ms-flexbox;
+ //flex-flow: row nowrap;
  justify-content:center;
-}
+ margin: 50px 0;
+
  
 .keypoint{
-    padding: 1.5%;
-    margin-bottom: 30px;
+    //padding: 1.5%;
+    padding: 0;
+    //margin-bottom: 30px;
+    //margin: 0 30px 30px 30px;
+    max-width: 360px; //with padding
+    flex: 1;
+    margin: 0;
   }
-
+.keypoint--field-webny-summary-keypoint1,
+.keypoint--field-webny-summary-keypoint2,
+.keypoint--field-webny-summary-keypoint3{
+  padding: 0;
+  margin: 0 30px 25px 30px;
+  max-width: 300px;
+}
 .keypoint--field-webny-summary-argument1,
 .keypoint--field-webny-summary-argument2,
 .keypoint--field-webny-summary-argument3{
-  font-size: $base-font-size;
   font-weight: $frame-base-semi-bold;
+  font: $base-font-size "Proxima Nova",Arial,sans-serif;
   line-height: 24px;
+  vertical-align: top;
+  margin: 0 30px;
+  padding: 0;
+  max-width: 300px;
+
+  p{
+    margin: 0; 
+    padding: 0;
+  }
 }
   
 .keypoint:nth-of-type(2n+2) {
-  border-left:2px solid lighten($summary-frame-keypt-border, 20%);
+  border-left:1px solid lighten($summary-frame-keypt-border, 20%);
+  order: 1;
 }
   
 .keypoint:nth-of-type(1n+2) {
-  border-left:2px solid lighten($summary-frame-keypt-border, 20%);
+  border-left:1px solid lighten($summary-frame-keypt-border, 20%);
+  order: 2;
 }
-
+}
 }
