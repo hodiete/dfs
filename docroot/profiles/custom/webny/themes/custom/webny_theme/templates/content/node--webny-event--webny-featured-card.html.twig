@@ -26,25 +26,10 @@
 
     {# See webny_event_content_type_preprocess_node() for extra variables. #}
 
-    {% set day_month_classes = ['day-month-wrapper'] %}
-    {% if multi_day %}
-        {% set day_month_classes = day_month_classes | merge(['multi-day']) %}
-    {% endif %}
-    <div class="event-date">
-        <div class="{{ day_month_classes | join(' ') }}">
-            <div class="month">
-                <div class="start">{{ start_date | date('F') }}</div>{% if multi_day %}<div class="dash">-</div><div class="end">{{ end_date | date('F') }}</div>{% endif %}
-            </div>
+    {# Event date block #}
+   <div class="card-event--date-block">
+       {% include '@webny_theme/includes/webny--event-date.html.twig' %}
+   </div>
 
-            <div class="day">
-                {# Because these are inline elements, spacing matters. #}
-                <div class="start">{{ start_date | date('d') }}</div>{% if multi_day %}<div class="dash">-</div><div class="end">{{ end_date | date('d') }}</div>{% endif %}
-            </div>
-        </div>
-
-        {% if not all_day %}
-            <div class="time">{{ start_date | date('g:i') }}{% if (not same_meridiem) or same_time %} <div class="meridiem">{{ start_date | date('A') }}</div>{% endif %}{% if same_time %} <div class="timezone">{{ time_zone }}</div>{% else %} <div class="dash">-</div> {{ end_date | date('g:i') }} <div class="meridiem">{{ end_date | date('A') }}</div> <div class="timezone">{{ time_zone }}</div>{% endif %}</div>
-        {% endif %}
-    </div>
 
 {% endblock card_content %}

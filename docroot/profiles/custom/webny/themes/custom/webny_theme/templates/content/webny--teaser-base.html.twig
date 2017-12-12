@@ -3,19 +3,31 @@
 {% endblock link_direct %}
 <article{{ attributes.addClass('webny-teaser') }}>
     <div class="webny-teaser-wrapper">
-        <a class="webny-teaser-image" href="{{ link }}">
+        <a class="webny-teaser-image" href="{{ url }}">
             {% block hero_image %}{% endblock hero_image %}
         </a>
         <div class="webny-teaser-content-wrapper">
+
           <div class="webny-teaser-content-wrapper__details">
           {# Gives an option for another wrapper under .webny-teaser-content-wrapper__details #}
           {% block optional_wrapper_start %}{% endblock optional_wrapper_start %}
-          {% if content.field_webny_filter_terms.0 %}
-            <div class="webny-teaser-filter-terms">{{ content.field_webny_filter_terms }}</div>
-          {% endif %}
+            <div class="webny-teaser-filter-terms">
+                {% for k,v in node.field_webny_filter_terms.value %}
+                {% if content.field_webny_filter_terms[k] %}
+                    
+                          {% if loop.last %}
+                            {% set separator = '' %}
+                          {% else %}
+                            {% set separator = ', ' %}
+                          {% endif %}
+                          {{ content.field_webny_filter_terms[k] }}{{ separator }}
+                {% endif %}
+            {% endfor %}
+            </div>
+            <span class="webny-teaser-filter-term-border"></span>
           <div class="webny-teaser-title">
             {% block title %}
-              <a href="{{ link }}">
+              <a href="{{ url }}">
                 {% if title|length <= 65 %}
                   {{ title }}
                 {% else %}
@@ -34,6 +46,7 @@
           {% block footer %}
             {{ content.links }}
           {% endblock %}
+
         </div>
     </div>
 </article>
