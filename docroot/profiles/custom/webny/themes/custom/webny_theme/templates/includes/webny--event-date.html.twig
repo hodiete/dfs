@@ -21,7 +21,16 @@
       {% if multi_day %}
         <div class="dash">&mdash;</div>
         <div class="end">{{ end_date | date('d') }}</div>
+
       {% endif %}
+    </div>
+
+    <div class="event-year">
+      <div class="start-event-year">{{ start_date | date('Y') }}</div>
+        {% if multi_day %}
+          <div class="dash">&mdash;</div>
+          <div class="end-event-year">{{ end_date | date('Y') }}</div>
+        {% endif %}
     </div>
   </div>
 
