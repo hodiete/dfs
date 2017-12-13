@@ -4021,7 +4021,7 @@ function webny_configuration_update_8180() {
 /**
  * Implements hook_update_n().
  *
- * Update roles for 'filter term listing' paragraph type.
+ * Update config for 'filter term listing' paragraph type.
  */
 function webny_configuration_update_8181() {
   $config_factory = \Drupal::configFactory();
@@ -4029,6 +4029,7 @@ function webny_configuration_update_8181() {
 
   // Import new/changed configuration.
   $config_to_update = [
+    'field.field.node.webny_landing_page.field_webny_landing_paragraph',
     'user.role.anonymous',
     'user.role.authenticated',
     'user.role.content_author'
