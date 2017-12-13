@@ -14,8 +14,10 @@ dependencies:
     - field.field.node.webny_whitelisted_content.field_webny_whitelist_image
     - field.field.node.webny_whitelisted_content.field_webny_whitelist_link_url
     - field.field.node.webny_whitelisted_content.field_webny_whitelist_stitle
+    - image.style.quick_links_square
     - node.type.webny_whitelisted_content
   module:
+    - media_entity
     - smart_trim
     - user
 id: node.webny_whitelisted_content.quick_links_card
@@ -43,10 +45,10 @@ content:
     weight: 0
     label: hidden
     settings:
-      view_mode: thumbnail
-      link: false
+      image_style: quick_links_square
+      image_link: ''
     third_party_settings: {  }
-    type: entity_reference_entity_view
+    type: media_thumbnail
     region: content
   field_webny_whitelist_stitle:
     type: string
