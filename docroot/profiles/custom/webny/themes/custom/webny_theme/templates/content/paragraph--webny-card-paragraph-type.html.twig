@@ -78,7 +78,7 @@ view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
                             <div class="webny-card-cta">
                               <span class="icon-right-caret">
                                 {# url portion from link field, title from referenced node, title portion from link field #}
-                                <a target="_blank" href="{{ attribute(paragraph, "field_webny_card_cta_#{i + 1}").0.url }}" title="{{ content.field_webny_card_entity_ref[i]['#node'].getTitle() }}">{{ attribute(paragraph, "field_webny_card_cta_#{i + 1}").0.title }}</a>
+                                <a href="{{ attribute(paragraph, "field_webny_card_cta_#{i + 1}").0.url }}" title="{{ content.field_webny_card_entity_ref[i]['#node'].getTitle() }}">{{ attribute(paragraph, "field_webny_card_cta_#{i + 1}").0.title }}</a>
                               </span>
                             </div>
                             {# if card includes a share bar #}
@@ -122,7 +122,7 @@ view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
                                                 <a target="_blank" href="{{ host }}{{ card_url[i] }}" title="{{ content.field_webny_card_entity_ref[i]['#node'].getTitle() }}">LEARN MORE</a>
                                             {% endif %}
                                         {% else %}
-                                            <a target="_blank" href="{{ host }}{{ card_url[i] }}" title="{{ content.field_webny_card_entity_ref[i]['#node'].getTitle() }}">LEARN MORE</a>
+                                            <a href="{{ host }}{{ card_url[i] }}" title="{{ content.field_webny_card_entity_ref[i]['#node'].getTitle() }}">LEARN MORE</a>
                                         {% endif %}
                                     </span>
                                 </div>
