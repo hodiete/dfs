@@ -21,25 +21,36 @@
       {% if multi_day %}
         <div class="dash">&mdash;</div>
         <div class="end">{{ end_date | date('d') }}</div>
+
       {% endif %}
+    </div>
+
+    <div class="event-year">
+      <div class="start-event-year">{{ start_date | date('Y') }}</div>
+        {% if multi_day %}
+          <div class="dash">&mdash;</div>
+          <div class="end-event-year">{{ end_date | date('Y') }}</div>
+        {% endif %}
     </div>
   </div>
 
-  {% if not all_day %}
-    <div class="time">
-      <div class="start_date">{{ start_date | date('g:i') }}</div>
-      {% if (not same_meridiem) or same_time %}
-        <div class="meridiem">{{ start_date | date('A') }}</div>
-      {% endif %}
-      {% if not same_time %}
-        <div class="dash">&mdash;</div>
-        <div class="end-date">{{ end_date | date('g:i') }}</div>
-        <div class="meridiem">{{ end_date | date('A') }}</div>
-      {% endif %}
-    </div>
-  {% endif %}
+  <div class="event-date__wrapper">
+    {% if not all_day %}
+      <div class="time">
+        <div class="start_date">{{ start_date | date('g:i') }}</div>
+        {% if (not same_meridiem) or same_time %}
+          <div class="meridiem">{{ start_date | date('A') }}</div>
+        {% endif %}
+        {% if not same_time %}
+          <div class="dash">&mdash;</div>
+          <div class="end-date">{{ end_date | date('g:i') }}</div>
+          <div class="meridiem">{{ end_date | date('A') }}</div>
+        {% endif %}
+      </div>
+    {% endif %}
 
-  <div class="address-wrapper">
-    {{ content.field_webny_event_address }}
+    <div class="address-wrapper">
+      {{ content.field_webny_event_address }}
+    </div>
   </div>
 </div>

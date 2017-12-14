@@ -20,6 +20,7 @@ dependencies:
     - field.field.node.webny_event.field_webny_global_keywords
     - node.type.webny_event
   module:
+    - address
     - datetime
     - link
     - linked_field
@@ -30,8 +31,15 @@ targetEntityType: node
 bundle: webny_event
 mode: webny_featured_card
 content:
+  field_webny_event_address:
+    type: address_default
+    weight: 8
+    region: content
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
   field_webny_event_all_day:
-    weight: 6
+    weight: 7
     label: hidden
     settings:
       format: boolean
@@ -41,7 +49,7 @@ content:
     type: boolean
     region: content
   field_webny_event_date_end:
-    weight: 5
+    weight: 6
     label: hidden
     settings:
       timezone_override: ''
@@ -50,7 +58,7 @@ content:
     type: datetime_default
     region: content
   field_webny_event_date_start:
-    weight: 4
+    weight: 5
     label: hidden
     settings:
       timezone_override: ''
@@ -59,7 +67,7 @@ content:
     type: datetime_default
     region: content
   field_webny_event_heroimage:
-    weight: 2
+    weight: 3
     label: hidden
     settings:
       view_mode: cards
@@ -74,7 +82,7 @@ content:
     region: content
   field_webny_event_redirect_url:
     type: link
-    weight: 0
+    weight: 1
     region: content
     label: hidden
     settings:
@@ -86,14 +94,14 @@ content:
     third_party_settings: {  }
   field_webny_event_short_title:
     type: string
-    weight: 1
+    weight: 2
     region: content
     label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
   field_webny_event_summary:
-    weight: 3
+    weight: 4
     label: hidden
     settings:
       trim_length: 150
@@ -101,12 +109,13 @@ content:
     type: text_trimmed
     region: content
   workbench_moderation_control:
-    weight: -20
+    weight: 0
     region: content
+    settings: {  }
+    third_party_settings: {  }
 hidden:
   field_webny_agency_keywords: true
   field_webny_contentcat: true
-  field_webny_event_address: true
   field_webny_event_contentsect: true
   field_webny_event_navtoggle: true
   field_webny_event_venue_name: true

@@ -1,7 +1,19 @@
 .webny-teaser {
-  width: 75%;
+  //width: 75%;
+  //margin: 20px;
+  //width: 90%;
   margin: 20px auto;
   border: 1px solid $gray-lite;
+  font-family: "ProximaNovaRegular", Arial, sans-serif;
+
+  &-wrapper {
+    display: flex;
+  }
+
+  .layout-container ul li {
+    margin: 5px 0 !important;
+    padding: 0;
+  }
 
   &-image {
     display: none;
@@ -9,7 +21,7 @@
     @include breakpoint($min-tablet) {
       display: block;
       float: left;
-      margin-right: 15px;
+      height: 240px;
 
       svg {
         width: 202px;
@@ -18,18 +30,71 @@
         fill: $color-mono-white;
         padding: 20px;
       }
-    }
 
-    @include breakpoint($min-desktop) {
-      margin-right: 25px;
+      .list-fallback-img svg {
+        padding: 70px;
+        width: 102px;
+        height: 102px;
+      }
+
+      img {
+        max-width: none;
+      }
+
+      .st0,
+      .st1 {
+        stroke: $color-mono-white;
+      }
     }
   }
 
   &-content-wrapper {
-    max-height: 184px;
+    width: 100%;
     box-sizing: border-box;
-    padding: 10px 15px 0;
     font-size: 14px;
+
+    &__details {
+      //display: flex;
+      padding: 10px 15px 0;
+
+      @include breakpoint($min-tablet) {
+        height: 184px;
+        box-sizing: border-box;
+      }
+
+      @include breakpoint($min-desktop) {
+        padding: 20px 25px 0;
+      }
+    }
+
+    &__details-left {
+      padding-top: 10px;
+      flex-basis: 40%;
+      border-right: 1px solid $gray-lite;
+      margin-right: 20px;
+
+      @include breakpoint($min-tablet) {
+        margin-right: 0;
+      }
+
+      @include breakpoint($min-desktop) {
+        margin-right: 20px;
+        padding-top: 20px;
+      }
+
+      @include breakpoint($min-wide) {
+        flex-basis: 50%;
+      }
+    }
+
+    &__details-right {
+      padding-top: 10px;
+      flex-basis: 60%;
+
+      @include breakpoint($min-desktop) {
+        padding-top: 20px;
+      }
+    }
 
     @include breakpoint($min-mobile) {
       font-size: 16px;
@@ -41,44 +106,54 @@
 
     @include breakpoint($min-desktop) {
       font-size: 16px;
-      padding: 20px 25px 0;
     }
+  }
+
+  &__events{
+    .webny-teaser-content-wrapper__details {
+        display: flex;
+        padding: 0 15px;
+
+        @include breakpoint($min-tablet) {
+          height: 184px;
+        }
+
+        @include breakpoint($min-desktop) {
+          padding: 0 25px;
+        }
+      }
   }
 
   &-filter-terms {
     position: relative;
-    margin-bottom: 10px;
-    font-size: 16px;
-    font-weight: 600;
+    font-size: 14px;
+    line-height: 14px;
+    padding-top: 5px;
+    
 
     @include breakpoint($min-desktop) {
-      margin-bottom: 20px;
-    }
-
-    &::after {
-      content: '';
-      position: absolute;
-      bottom: -4px;
-      width: 40px;
-      height: 2px;
-      background: $gray-lite;
-
-      @include breakpoint($min-mobile) {
-        bottom: -6px;
-      }
-
-      @include breakpoint($min-desktop) {
-        bottom: -10px;
-      }
+      padding-top: 0;
     }
   }
 
+  &-filter-term-border {
+      width: 40px;
+      border-bottom: 1px solid $gray-lite;
+      display: inline-block;
+  }
+
+  span {
+    &-filter-term-border  {
+        margin: 9px 0;
+    }
+  }  
+
   &-title {
-    font-size: 19px;
+    font-size: 1.17em;
     font-weight: 600;
     margin-bottom: 7px;
     line-height: .9;
-    word-wrap: break-word;
+
 
     @include breakpoint($min-mobile) {
       margin-bottom: 10px;
@@ -93,37 +168,130 @@
     }
   }
 
-  .links {
+  .description {
+    line-height: 1.1;
+  }
+
+  .event-date__wrapper {
+    display: flex;
+    flex-direction: column;
+
+    @include breakpoint($min-wide) {
+      width: 71%;
+    }
+  }
+
+  .event-date {
+    @include event-date;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+
+    @include breakpoint($min-wide) {
+      flex-direction: row;
+    }
+
+    .day-month-wrapper {
+      padding-bottom: 15px;
+
+      @include breakpoint($min-wide) {
+        padding-bottom: 20px;
+      }
+    }
+
+    .time {
+      color: $color-mono-black;
+      padding-left: 20px;
+
+      @include breakpoint($min-wide) {
+        padding: 0;
+      }
+    }
+
+    .address {
+      color: $color-mono-black;
+
+      &-wrapper {
+        margin-top: 10px;
+        padding-top: 10px;
+
+        @include breakpoint($min-wide){
+          margin-top: 20px;
+          padding-top: 20px;
+        }
+      }
+    }
+  }
+
+  .day-month-wrapper {
+    width: 100%;
+
+    @include breakpoint($min-wide) {
+      width: 24%;
+    }
+  }
+
+  .month {
+    text-align: center;
+  }
+
+  .day {
+    text-align: center;
+  }
+
+  .meridiem {
+    font-size: 12px;
+    text-transform: lowercase;
+  }
+
+  .address-wrapper {
+    padding-left: 20px;
+
+    @include breakpoint($min-wide) {
+      padding: 0;
+    }
+
+    .city-state-zip {
+      display: block;
+
+      @include breakpoint($min-wide) {
+        display: inline;
+      }
+    }
+
+    .separator {
+      margin-left: -4px;
+    }
+  }
+
+  .links,
+  .actions {
     list-style: none;
-    padding: 4px 0;
-    margin-bottom: 0;
+    padding: 4px 36px;
+    margin: 1px 0 -1px 0;    
     background-color: $color-mono-lt;
     border: 1px solid $gray-lite;
 
     @include breakpoint($min-mobile) {
-      padding: 10px 0;
+      padding: 10px 43px;
     }
-
-    a {
-      position: relative;
-      left: 38px;
-      text-transform: uppercase;
-      font-weight: bold;
-      font-size: 15px;
-      color: black;
-
-      &::before {
-        content: '\f054';
-        font-family: 'icomoon';
-        color: $primarygold;
-        position: absolute;
-        left: -20px;
-      }
-
-      @include breakpoint($min-tablet) {
-        left: 25px;
-      }
-    }
-
   }
+
+  .links a {
+    position: relative;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 13px;
+    color: black;
+
+
+    &::before {
+      content: '\f054';
+      font-family: 'icomoon';
+      color: $primarygold;
+      position: absolute;
+      left: -20px;
+    }
+  }
+
 }

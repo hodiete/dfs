@@ -19,8 +19,10 @@ dependencies:
     - field.field.node.webny_page.field_webny_page_short_title
     - field.field.node.webny_page.field_webny_page_sub_title
     - field.field.node.webny_page.field_webny_page_vis_options
+    - image.style.quick_links_square
     - node.type.webny_page
   module:
+    - media_entity
     - smart_trim
     - user
 id: node.webny_page.quick_links_card
@@ -48,10 +50,10 @@ content:
     weight: 0
     label: hidden
     settings:
-      view_mode: thumbnail
-      link: false
+      image_style: quick_links_square
+      image_link: ''
     third_party_settings: {  }
-    type: entity_reference_entity_view
+    type: media_thumbnail
     region: content
   field_webny_page_short_title:
     type: string
