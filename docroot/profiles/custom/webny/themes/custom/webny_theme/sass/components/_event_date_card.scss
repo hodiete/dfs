@@ -1,5 +1,5 @@
-// Base event date & location.
-@mixin event-date {
+// Base event date & location card styles.
+@mixin event-date-card {
   .day-month-wrapper {
     padding-bottom: 20px;
     text-align: center;
@@ -10,10 +10,10 @@
     .month div,
     .event-year div {
       float: left;
-      width: 85px;
+      width: 65px;
 
       &.dash {
-        width: 30px;
+        width: 25px;
       }
     }
   }
@@ -21,7 +21,7 @@
   .month {
     @include clearfix;
 
-    color: $primarygold;
+    color: $color-primary;
     font-size: 14px;
     font-family: $base-font;
     font-weight: 800;
@@ -29,7 +29,7 @@
     text-transform: uppercase;
 
     div {
-      text-align: center;
+      text-align: left;
     }
 
     .dash {
@@ -47,11 +47,11 @@
     padding-bottom: 5px;
 
     div {
-      text-align: center;
+      text-align: left;
     }
 
     .dash {
-      font-size: 34px;
+      font-size: 15px;
       font-weight: 600;
     }
   }
@@ -72,11 +72,15 @@
       color: transparent;
     }
 
+    .start-event-year {
+      width: 50px !important;
+    }
+    .end-event-year {
+      width: 83px !important;
+    }
   }
 
-
   .time {
-    color: #fff;
     font-family: $base-font;
     font-size: 13px;
     line-height: 16px;
@@ -85,7 +89,7 @@
     @include icon(before, fa-clock);
 
     &::before {
-      color: $medblue;
+      color: $color-secondary;
       display: inline-block;
       font-size: 13px;
       vertical-align: top;
@@ -105,7 +109,7 @@
     @include icon(before, fa-pin);
 
     &::before {
-      color: $medblue;
+      color: $color-secondary;
       float: left;
       font-size: 13px;
       vertical-align: top;
@@ -114,10 +118,13 @@
   }
 
   .address {
-    color: #fff;
     float: left;
     font-family: $base-font;
     font-size: 13px;
     line-height: 16px;
+    margin: 0px;
+    span.country {
+      display: none;
+    }
   }
 }

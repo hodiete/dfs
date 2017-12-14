@@ -19,6 +19,11 @@
     {{ vtitle | webny_trim_card_title }}
 {% endblock card_title %}
 
+{% block card_title_url %}
+	<a href="{{ url }}" rel="bookmark">
+{% endblock card_title_url %}
+
+
 {% block card_content %}
     {{ content|without('field_webny_landing_hero_image', 'field_webny_landing_short_title','node.label') }}
 {% endblock card_content %}
