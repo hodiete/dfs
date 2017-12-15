@@ -1,10 +1,18 @@
 .webny-teaser {
-  width: 90%;
+  //width: 75%;
+  //margin: 20px;
+  //width: 90%;
   margin: 20px auto;
   border: 1px solid $gray-lite;
+  font-family: "ProximaNovaRegular", Arial, sans-serif;
 
   &-wrapper {
     display: flex;
+  }
+
+  .layout-container ul li {
+    margin: 5px 0 !important;
+    padding: 0;
   }
 
   &-image {
@@ -13,7 +21,7 @@
     @include breakpoint($min-tablet) {
       display: block;
       float: left;
-      height: 242px;
+      height: 240px;
 
       svg {
         width: 202px;
@@ -21,6 +29,12 @@
         background-color: $color-secondary;
         fill: $color-mono-white;
         padding: 20px;
+      }
+
+      .list-fallback-img svg {
+        padding: 70px;
+        width: 102px;
+        height: 102px;
       }
 
       img {
@@ -112,38 +126,34 @@
 
   &-filter-terms {
     position: relative;
-    margin-bottom: 10px;
-    font-size: 16px;
-    font-weight: 600;
+    font-size: 14px;
+    line-height: 14px;
+    padding-top: 5px;
+    
 
     @include breakpoint($min-desktop) {
-      margin-bottom: 20px;
-    }
-
-    &::after {
-      content: '';
-      position: absolute;
-      bottom: -4px;
-      width: 40px;
-      height: 2px;
-      background: $gray-lite;
-
-      @include breakpoint($min-mobile) {
-        bottom: -6px;
-      }
-
-      @include breakpoint($min-desktop) {
-        bottom: -10px;
-      }
+      padding-top: 0;
     }
   }
 
+  &-filter-term-border {
+      width: 40px;
+      border-bottom: 1px solid $gray-lite;
+      display: inline-block;
+  }
+
+  span {
+    &-filter-term-border  {
+        margin: 9px 0;
+    }
+  }  
+
   &-title {
-    font-size: 19px;
+    font-size: 1.17em;
     font-weight: 600;
     margin-bottom: 7px;
     line-height: .9;
-    word-wrap: break-word;
+
 
     @include breakpoint($min-mobile) {
       margin-bottom: 10px;
@@ -258,7 +268,7 @@
   .actions {
     list-style: none;
     padding: 4px 36px;
-    margin-bottom: 0;
+    margin: 1px 0 -1px 0;    
     background-color: $color-mono-lt;
     border: 1px solid $gray-lite;
 
@@ -271,8 +281,9 @@
     position: relative;
     text-transform: uppercase;
     font-weight: bold;
-    font-size: 15px;
+    font-size: 13px;
     color: black;
+
 
     &::before {
       content: '\f054';
@@ -282,4 +293,5 @@
       left: -20px;
     }
   }
+
 }

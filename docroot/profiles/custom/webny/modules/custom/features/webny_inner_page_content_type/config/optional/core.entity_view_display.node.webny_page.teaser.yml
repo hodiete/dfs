@@ -28,34 +28,59 @@ targetEntityType: node
 bundle: webny_page
 mode: teaser
 content:
-  body:
+  field_webny_filter_terms:
+    type: entity_reference_label
+    weight: 2
+    region: content
     label: hidden
-    type: text_summary_or_trimmed
-    weight: 101
     settings:
-      trim_length: 600
+      link: false
     third_party_settings: {  }
+  field_webny_page_description:
+    type: text_default
+    weight: 4
     region: content
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+  field_webny_page_image:
+    type: entity_reference_entity_view
+    weight: 1
+    region: content
+    label: hidden
+    settings:
+      view_mode: results_image
+      link: false
+    third_party_settings: {  }
+  field_webny_page_short_title:
+    type: string
+    weight: 3
+    region: content
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
   links:
-    weight: 100
+    weight: 5
     region: content
+    settings: {  }
+    third_party_settings: {  }
   workbench_moderation_control:
-    weight: -20
+    weight: 0
     region: content
+    settings: {  }
+    third_party_settings: {  }
 hidden:
+  body: true
   field_webny_agency_keywords: true
   field_webny_contentcat: true
-  field_webny_filter_terms: true
   field_webny_global_keywords: true
   field_webny_page_agency_keywords: true
   field_webny_page_attdocs_eref: true
-  field_webny_page_description: true
   field_webny_page_docsec_subtitle: true
   field_webny_page_docsec_title: true
   field_webny_page_global_keywords: true
   field_webny_page_hero_title: true
-  field_webny_page_image: true
-  field_webny_page_short_title: true
   field_webny_page_sub_title: true
   field_webny_page_vis_options: true
   langcode: true
