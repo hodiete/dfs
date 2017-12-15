@@ -47,6 +47,7 @@ $hero-transaction-button: $color-primary !default;
 $hero-keyword-bkgd-color: $color-accent-primary !default;
 $hero-keyword-hover-bkgd-color: $color-accent-secondary !default;
 $hero-keyword-text-color: $color-mono-white !default;
+$hero-event-date-color: $color-accent-primary !default;
 
 // ************************* //
 // HERO PARTIAL
@@ -82,7 +83,7 @@ $hero-keyword-text-color: $color-mono-white !default;
 
 .hero-no-image.hero-event {
   background-color: $hero-bkgd-color;
-  height: 385px;
+  height: 455px;
 }
 
 // ========================================================================= //
@@ -255,6 +256,14 @@ $hero-keyword-text-color: $color-mono-white !default;
     padding: 30px 15px 30px 30px;
     & > div > div {
       margin-bottom: 20px;
+    }
+  }
+  .hero-event {
+    .hero-buttons,
+    .hero-keywords {
+      margin-top: 0px;
+      padding: 30px 15px 30px 30px;
+
     }
   }
 
@@ -432,6 +441,66 @@ $hero-keyword-text-color: $color-mono-white !default;
 
     }
   }
+
+  // Event Hero with dates - mobile Start here.
+  .hero-event {
+    width: auto;
+
+    .hero-content-wrap {
+      position: relative;
+    }
+
+    &--date-block {
+      width: auto;
+      padding: 0;
+      margin-top: 30px;
+
+      @include event-date;
+
+      .month {
+        color: $hero-keyword-text-color;
+      }
+
+      .day {
+        color: $hero-event-date-color;
+      }
+
+      .event-year {
+        color: $hero-keyword-text-color;
+      }
+
+      .address-wrapper::before,
+      .time::before {
+        color: $hero-event-date-color;
+      }
+      .day-month-wrapper {
+        margin-left: -22px;
+        width: auto;
+      }
+      .address span.country {
+        display:none;
+      }
+    }
+  }
+
+  // Custom height and width for background with image for events
+  .hero-inner.hero-event--inner.hero-has-image-content{
+    min-height: 455px;
+    width: 100%;
+  }
+
+  // Custom margin and padding for event keywords
+  .hero-event--title-block .hero-keywords{
+    margin: 30px 0 0 0;
+    padding: 0;
+  }
+
+  // Custom width for event inner classes to make border-bottom the correct width
+  .hero-inner.hero-event--inner {
+    width: 85%;
+  }
+  // Event Hero with dates - mobile Ends here.
+
 
   // =====================================================================
   // HERO HAS NO IMAGE -- MAKE RELATIVE
@@ -635,6 +704,61 @@ $hero-keyword-text-color: $color-mono-white !default;
         margin: 0 auto;
       }
     }
+
+    // Event Hero with dates - Tablet
+    .hero-event {
+
+      .hero-content-wrap {
+        position: relative;
+      }
+
+      &--inner {
+        min-height: 0;
+      }
+
+      &--title-block {
+        float: left;
+        width: calc(100% - 290px);
+        margin: 50px 0px 0px 50px;
+      }
+
+      &--date-block {
+        border-left: 1px solid $color-mono-mid;
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding: 20px 50px 15px;
+        margin-top: 0;
+        height: 385px;
+
+        .day-month-wrapper {
+          margin-left: 0!important;
+
+        }
+
+      }
+
+
+    }
+    // Reset Event Hero height on Tablet
+    .hero-no-image.hero-event {
+      height: 385px;
+    }
+
+    .hero-inner.hero-event--inner {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+    }
+
+    .hero-inner.hero-event--inner.hero-has-image-content{
+      .hero-event--date-block{
+        height:100%;
+      }
+    }
+
+
+
   } // END HERO LAYOUT
 
 } // END TABLET
@@ -958,48 +1082,3 @@ $hero-keyword-text-color: $color-mono-white !default;
   }
 }
 
-// Event Hero with dates.
-.hero-event {
-
-  .hero-content-wrap {
-    position: relative;
-  }
-
-  &--inner {
-    min-height: 0;
-  }
-
-  &--title-block {
-    float: left;
-    width: calc(100% - 290px);
-  }
-
-  &--date-block {
-    border-left: 1px solid $color-mono-mid;
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 280px;
-    height: 100%;
-    padding: 20px 15px 15px;
-
-    @include event-date;
-
-    .month {
-      color: #fff;
-    }
-
-    .day {
-      color: $primaryblue;
-    }
-
-    .event-year {
-      color: $primaryblue;
-    }
-
-    .address-wrapper::before,
-    .time::before {
-      color: $primaryblue;
-    }
-  }
-}
