@@ -48,6 +48,8 @@ $hero-keyword-bkgd-color: $color-accent-primary !default;
 $hero-keyword-hover-bkgd-color: $color-accent-secondary !default;
 $hero-keyword-text-color: $color-mono-white !default;
 $hero-event-date-color: $color-accent-primary !default;
+$hero-event-bkgd-transparent-white: $button-white-20 !default;
+$hero-event-bkgd-transparent-black: $button-black-20 !default;
 
 // ************************* //
 // HERO PARTIAL
@@ -744,20 +746,23 @@ $hero-event-date-color: $color-accent-primary !default;
     .hero-no-image.hero-event {
       height: 385px;
     }
+    //Event transparent background - black - without an image
+    .hero-event--date-block{
+      background: $hero-event-bkgd-transparent-black;
+    }
 
     .hero-inner.hero-event--inner {
       margin: 0;
       padding: 0;
       width: 100%;
     }
-
+    //Event transparent background - black - without an image
     .hero-inner.hero-event--inner.hero-has-image-content{
       .hero-event--date-block{
         height:100%;
+        background: $hero-event-bkgd-transparent-white;
       }
     }
-
-
 
   } // END HERO LAYOUT
 
