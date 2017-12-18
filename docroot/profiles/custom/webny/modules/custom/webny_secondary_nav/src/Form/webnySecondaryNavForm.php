@@ -309,7 +309,7 @@ class webnySecondaryNavForm extends ConfigFormBase {
             '#title' => t('Choose a specific page to display the secondary navigation.'),
             '#target_type' => 'node',
             '#size' => 70,
-            '#maxlength' => 550,
+            '#maxlength' => NULL,
             '#prefix' => '<div id="secnav-entref-specpage">',
             '#suffix' => '</div>',
             '#selection_setttings' => array(),
@@ -355,7 +355,7 @@ class webnySecondaryNavForm extends ConfigFormBase {
             '#type' => 'text_format',
             '#format' => 'basic_html',
             '#default_value' => $dbval['value'],
-            '#maxlength' => 250,
+            '#maxlength' => NULL,
             '#prefix' => '<div id="secnav-wysiwyg-one" class="">',
             '#suffix' => '</div>',
             '#attributes' => array(
@@ -420,7 +420,7 @@ class webnySecondaryNavForm extends ConfigFormBase {
             '#type' => 'text_format',
             '#format' => 'basic_html',
             '#default_value' => $dbval['value'],
-            '#maxlength' => 250,
+            '#maxlength' => NULL,
             '#prefix' => '<div id="secnav-wysiwyg-two">',
             '#suffix' => '</div>',
             '#attributes' => array(
