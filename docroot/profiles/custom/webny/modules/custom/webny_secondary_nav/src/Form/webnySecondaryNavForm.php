@@ -309,7 +309,7 @@ class webnySecondaryNavForm extends ConfigFormBase {
             '#title' => t('Choose a specific page to display the secondary navigation.'),
             '#target_type' => 'node',
             '#size' => 70,
-            '#maxlength' => NULL,
+            '#maxlength' => 550,
             '#prefix' => '<div id="secnav-entref-specpage">',
             '#suffix' => '</div>',
             '#selection_setttings' => array(),
