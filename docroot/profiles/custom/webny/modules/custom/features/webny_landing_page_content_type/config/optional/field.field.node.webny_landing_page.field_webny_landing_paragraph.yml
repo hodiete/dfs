@@ -8,6 +8,7 @@ dependencies:
     - paragraphs.paragraphs_type.webny_bio_pgtype
     - paragraphs.paragraphs_type.webny_card_paragraph_type
     - paragraphs.paragraphs_type.webny_category_tiles_frame
+    - paragraphs.paragraphs_type.webny_filter_term_listing
     - paragraphs.paragraphs_type.webny_get_involved_pgtype
     - paragraphs.paragraphs_type.webny_ql_pgtype
     - paragraphs.paragraphs_type.webny_social_media_connect
@@ -41,6 +42,7 @@ settings:
       webny_video_pgtype: webny_video_pgtype
       webny_social_media_connect: webny_social_media_connect
       webny_tbd_pgtype: webny_tbd_pgtype
+      webny_filter_term_listing: webny_filter_term_listing
       webny_ql_pgtype: webny_ql_pgtype
     target_bundles_drag_drop:
       webny_card_paragraph_type:
@@ -82,7 +84,13 @@ settings:
       webny_paragraph_contact:
         weight: 21
         enabled: false
+      webny_filter_term_listing:
+        enabled: true
+        weight: 22
       webny_ql_pgtype:
         enabled: true
         weight: 23
+      webny_whats_related_pgtype:
+        weight: 31
+        enabled: false
 field_type: entity_reference_revisions
