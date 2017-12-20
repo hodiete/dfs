@@ -4,7 +4,7 @@
 {% set title = node.label %}
 
 {% block hero_image %}
-    {{ source('profiles/custom/webny/themes/custom/webny_theme/images/NYGov_Report.svg') }}
+    <div class="list-fallback-img">{{ source('profiles/custom/webny/themes/custom/webny_theme/images/NYGov_Report.svg') }}</div>
 {% endblock hero_image %}
 
 {% block content %}
@@ -12,3 +12,11 @@
         {{ content.body }}
     </div>
 {% endblock content %}
+
+{% block footer %}
+    <ul class="links inline">
+        <li class="node-readmore">
+            <a href="{{ url }}" rel="tag" title="{{ title }}">Download<span class="visually-hidden"> about {{ title }}</span></a>
+        </li>
+    </ul>
+{% endblock %}
