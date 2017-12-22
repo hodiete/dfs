@@ -18,12 +18,12 @@ function webny_solr_searches_views_pre_view($view) {
         $filter_term_id = $view->args[0];
       }
       else {
-        $filter_term_name = str_replace('-', ' ', $view->args[0]);
-        $terms = taxonomy_term_load_multiple_by_name($filter_term_name, 'webny_filter_terms_tax');
+        $filter_term_name = str_replace('-', '_', $view->args[0]);
+        $term = taxonomy_term_machine_name_load($filter_term_name, 'webny_filter_terms_tax');
 
         // Has matching term. Set a term id argument.
-        if ($terms) {
-          $filter_term_id = reset($terms)->tid->value;
+        if ($term) {
+          $filter_term_id = $term->tid->value;
         }
       }
 

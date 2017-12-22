@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "09c63a30d83ea7a984bcb9415abdc994",
+    "content-hash": "e3adf9250f6047acf90ccd2d794dccf1",
     "packages": [
         {
             "name": "acquia/blt",
@@ -6466,6 +6466,53 @@
             }
         },
         {
+            "name": "drupal/taxonomy_machine_name",
+            "version": "1.0.0-alpha4",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupal.org/project/taxonomy_machine_name",
+                "reference": "8.x-1.0-alpha4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/taxonomy_machine_name-8.x-1.0-alpha4.zip",
+                "reference": "8.x-1.0-alpha4",
+                "shasum": "4740368598e5228053509d045283e508622f4029"
+            },
+            "require": {
+                "drupal/core": "*"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-1.x": "1.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-1.0-alpha4",
+                    "datestamp": "1495030687",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Alpha releases are not covered by Drupal security advisories."
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Sebastien @Actualys",
+                    "homepage": "https://www.drupal.org/user/380104"
+                }
+            ],
+            "description": "Provides a new property to store machine name for taxonomy terms.",
+            "homepage": "https://www.drupal.org/project/taxonomy_machine_name",
+            "support": {
+                "source": "http://cgit.drupalcode.org/taxonomy_machine_name"
+            }
+        },
+        {
             "name": "drupal/token",
             "version": "1.0.0",
             "source": {
@@ -12314,7 +12361,8 @@
         "guzzlehttp/guzzle": 20,
         "roave/security-advisories": 20,
         "drupal/video_embed_brightcove": 20,
-        "drupal/ckeditor_indentblock": 20
+        "drupal/ckeditor_indentblock": 20,
+        "drupal/taxonomy_machine_name": 15
     },
     "prefer-stable": true,
     "prefer-lowest": false,
