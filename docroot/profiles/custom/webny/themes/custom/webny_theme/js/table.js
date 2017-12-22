@@ -30,14 +30,20 @@
   var tablebody = document.querySelectorAll('tbody');
   for(var t = 0; t < headers.length; t++) {
     headertext[t] = [];
-    for (var a = 0, headrow; headrow = headers[t].rows[0].cells[a]; a++) {
-      var current = headrow; headertext[t].push(current.textContent.replace(/\r?\n|\r/, ''));
+    for (var a = 0; a < headers[t].rows[0].cells.length; a++) {
+      var current = headers[t].rows[0].cells[a];
+      headertext[t].push(current.textContent.replace(/\r?\n|\r/, ''));
     }
   }
   if (headers.length > 0) {
-    for (var h = 0, tbody; tbody = tablebody[h]; h++) {
-      for (var i = 0, row; row = tbody.rows[i]; i++) {
-        for (var j = 0, col; col = row.cells[j]; j++) {
+    for (var h = 0, tbody; h < 1; h++) {
+      tbody = tablebody[h];
+
+      for (var i = 0, row; i < 1; i++) {
+        row = tbody.rows[i];
+
+        for (var j = 0, col; j < 1; j++) {
+          col = row.cells[j];
           col.setAttribute('data-th', headertext[h][j]);
         }
       }
