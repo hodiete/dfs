@@ -78,10 +78,17 @@ class TaxonomyFilterArgProcessor extends ProcessorPluginBase implements BuildPro
     if (isset($route_parameters['arg_0'])) {
       // Get argument value from first result.
       $arg_value = $route_parameters['arg_0'];
-      $filter_term_machine = str_replace('-', '_', $arg_value);
-      // Load term by machine name.
-      $term = taxonomy_term_machine_name_load($filter_term_machine, $term_vocab);
-      $parent_tid = $term->tid->value;
+
+      // Check for numeric value or name.
+      if (is_numeric($arg_value)) {
+        $parent_tid = $arg_value;
+      }
+      else {
+        $filter_term_machine = str_replace('-', '_', $arg_value);
+        // Load term by machine name.
+        $term = taxonomy_term_machine_name_load($filter_term_machine, $term_vocab);
+        $parent_tid = $term->tid->value;
+      }
     }
     elseif (isset($route_parameters['node'])) {
       // No arg parameter, check node for views paragraph type.
