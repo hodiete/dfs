@@ -361,7 +361,20 @@ display:
           content: '<span class="results-total-number">@total</span> Results Found'
           plugin_id: result
       footer: {  }
-      empty: {  }
+      empty:
+        area:
+          id: area
+          table: views
+          field: area
+          relationship: none
+          group_type: group
+          admin_label: ''
+          empty: true
+          tokenize: false
+          content:
+            value: '<span class="results-total-number">[view:total-rows]</span>  items containing [view:webny-filter-args]'
+            format: full_html
+          plugin_id: text
       relationships: {  }
       arguments: {  }
       display_extenders: {  }
