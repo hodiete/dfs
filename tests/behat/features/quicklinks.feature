@@ -17,7 +17,7 @@ Feature: Check for the existence of the quick links display mode and it's use
     When I am on "/admin/config/media/image-styles/manage/quick_links_square"
     Then I should not see "Access denied"
     And I should not get a 404 HTTP response
-    Then I should see text matching "Focal Point Crop 100×100"
+    Then I should see text matching "Focal Point Scale and Crop 100×100 "
     And I should see text matching "Quick Links Square \(100x100\)"
 
 
