@@ -5,6 +5,8 @@
  * Contains webny_solr_searches.module.
  */
 
+use Drupal\Core\Render\BubbleableMetadata;
+
 /**
 * Implements hook_views_pre_execute().
 */
@@ -115,4 +117,47 @@ function webny_solr_searches_modules_installed($modules) {
       taxonomy_machine_name_update_term($term);
     }
   }
+}
+
+/**
+ * Implements hook_token_info_alter().
+ */
+function webny_solr_searches_token_info_alter(&$info) {
+  $info['tokens']['view']['webny-filter-args'] = [
+    'name' => t('WebNY: view filter arguments'),
+    'description' => t('Comma delimited arguments.'),
+  ];
+}
+
+/**
+ * Implements hook_tokens().
+ */
+function webny_solr_searches_tokens($type, $tokens, array $data, array $options, BubbleableMetadata $bubbleable_metadata) {
+  $replacements = [];
+
+  if ($type == 'view' && !empty($data['view'])) {
+    $view = $data['view'];
+
+    $bubbleable_metadata->addCacheableDependency($view->storage);
+
+    foreach ($tokens as $name => $original) {
+      switch ($name) {
+        case 'webny-filter-args':
+          $exclude_keys = [
+            'f',
+            'ajax_page_state',
+            '_wrapper_format',
+            'drupal_ajax'
+          ];
+
+          $exposed_inputs = array_filter($view->getExposedInput());
+          $exposed_inputs = array_diff_key($exposed_inputs, array_flip($exclude_keys));
+          $replacements[$original] = '"' . implode('", "', $exposed_inputs) . '"';
+
+          break;
+      }
+    }
+  }
+
+  return $replacements;
 }
