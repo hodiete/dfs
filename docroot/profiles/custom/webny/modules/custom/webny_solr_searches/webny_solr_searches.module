@@ -152,8 +152,18 @@ function webny_solr_searches_tokens($type, $tokens, array $data, array $options,
 
           $exposed_inputs = array_filter($view->getExposedInput());
           $exposed_inputs = array_diff_key($exposed_inputs, array_flip($exclude_keys));
-          $replacements[$original] = '"' . implode('", "', $exposed_inputs) . '"';
 
+          // Modify input values for presentation.
+          if (isset($exposed_inputs['keyword'])) {
+            $exposed_inputs['keyword'] = '"' . $exposed_inputs['keyword'] . '"';
+          }
+          if (isset($exposed_inputs['created_date'])) {
+            $exposed_inputs['created_date'] = 'From: ' . date('m-d-Y', strtotime($exposed_inputs['created_date']));
+          }
+          if (isset($exposed_inputs['created_date_1'])) {
+            $exposed_inputs['created_date_1'] = 'To: ' . date('m-d-Y', strtotime($exposed_inputs['created_date_1']));
+          }
+          $replacements[$original] = implode(', ', $exposed_inputs);
           break;
       }
     }
