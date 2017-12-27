@@ -34,7 +34,7 @@ $ql-button-hover-back-color:       $button-black-50 !default;
   //text-align: center;
   padding: $frame-padding-lg 3%;
   // width: 100%;
-  min-height: 450px\9;
+  //min-height: 450px\9;
 }
 
 .qlframe-inner {
@@ -210,21 +210,13 @@ Quick Links Card
 @media (min-width: $min-tablet) {
 
   .ql-col-group {
-    display: flex;
+   display: flex;
     flex-flow: row nowrap;
     .ql--group-1,
     .ql--group-2 {
       display: flex;
-      flex: 1 0 auto;
       flex-flow: column nowrap;
-     // padding: 1.5%;
-     // margin-bottom: 30px;
-      align-content: flex-end;
-      max-height: 1000px;
-      display: inline-block\9;
-      float: left\9;
-      width: 46%\9;
-      overflow: hidden\9;
+  
     }
     .ql--group-1-items,
     .ql--group-2-items {
@@ -234,17 +226,7 @@ Quick Links Card
     .ql--field-webny-ql-col-2-button {
       align-self: flex-end;
     }
-    clear: both;
   }
-
-  .ql--group-1 {
-    float: left;
-  }
-  .ql--group-1,
-  .ql--group-2 {
-    width: 48%;
-    //margin-bottom: 80px;
-  } // END groups
 
   .ql--field-webny-ql-col-1-button,
   .ql--field-webny-ql-col-2-button {
@@ -274,31 +256,6 @@ Quick Links Card
 /* PC VIEW */
 @media (min-width: $min-desktop) {
 
-  .ql-col-group {
-    display: flex;
-    flex-flow: row nowrap;
-    .ql--group-1,
-    .ql--group-2 {
-      display: flex;
-      flex: 1 0 auto;
-      flex-flow: column nowrap;
-      align-content: flex-end;
-      display: inline-block\9;
-      float: left\9;
-      width: 46%\9;
-      overflow: hidden\9;
-    }
-    .ql--group-1-items,
-    .ql--group-2-items {
-      flex: 5;
-    }
-    .ql--field-webny-ql-col-1-button,
-    .ql--field-webny-ql-col-2-button {
-      align-self: flex-end;
-    }
-
-  }
-
   .webny-quick-links-description {
     display: block !important;
     text-align: left;
@@ -315,12 +272,7 @@ Quick Links Card
   /* IE10-specific styles go here */
 
   @media (min-width: $min-tab) {
-  .paragraph--type--webny-ql-pgtype {
-    .ql--group-1-items,
-    .ql--group-2-items {
-      min-height: 450px; //set to avoid scroll bars that appear in IE11
-    }
-  }
+  
   } // END TABLET VIEW
 
   @media (min-width: $min-pc) {
