@@ -372,8 +372,8 @@ display:
           empty: true
           tokenize: false
           content:
-            value: '<span class="results-total-number">[view:total-rows]</span>  items containing [view:webny-filter-args]'
-            format: full_html
+            value: '<span class="results-total-number">[view:total-rows]</span> results found containing [view:webny-filter-args]'
+            format: basic_html
           plugin_id: text
       relationships: {  }
       arguments: {  }
@@ -697,6 +697,9 @@ display:
         cache: false
         arguments: false
         use_ajax: false
+        exposed_form: false
+        header: false
+        empty: false
       exposed_block: false
       arguments:
         field_webny_filter_terms:
@@ -737,6 +740,44 @@ display:
           not: false
           plugin_id: search_api
       use_ajax: false
+      exposed_form:
+        type: basic
+        options:
+          submit_button: Apply
+          reset_button: false
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sort by'
+          expose_sort_order: false
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+      header:
+        area:
+          id: area
+          table: views
+          field: area
+          relationship: none
+          group_type: group
+          admin_label: ''
+          empty: false
+          tokenize: false
+          content:
+            value: '<span class="results-total-number">[view:total-rows]</span> results found [view:webny-filter-args]'
+            format: full_html
+          plugin_id: text
+      empty:
+        area:
+          id: area
+          table: views
+          field: area
+          relationship: none
+          group_type: group
+          admin_label: ''
+          empty: true
+          tokenize: false
+          content:
+            value: '<span class="results-total-number">[view:total-rows]</span> results found [view:webny-filter-args]'
+            format: full_html
+          plugin_id: text
     cache_metadata:
       max-age: -1
       contexts:
