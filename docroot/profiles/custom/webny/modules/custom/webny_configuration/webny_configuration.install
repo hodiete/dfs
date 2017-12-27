@@ -4042,6 +4042,28 @@ function webny_configuration_update_8181() {
 }
 
 /**
+ * NDD-1233 QUICK LINKS SQUARE
+ *
+ * REFRESH WEBNY MEDIA OPTIONAL FILES
+ *
+ * DEV: IOJONEP
+ */
+function webny_configuration_update_8182() {
+    $config_factory = \Drupal::configFactory();
+    $profile_config = \Drupal::service('webny.profile_config');
+
+    // Import new/changed configuration.
+    $config_to_update = [
+        'image.style.quick_links_square'
+    ];
+
+    $profile_config->bulkImport($config_to_update);
+
+    // Clear the config cache.
+    $config_factory->reset();
+}
+
+/**
  * Helper function to enable a Drupal module and print the result.
  *
  * @param string $module_name
