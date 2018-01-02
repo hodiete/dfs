@@ -19,12 +19,13 @@ $summary-frame-bkgd-color-primary: $color-accent-primary !default;
 $summary-frame-title-color-primary: $color-mono-black !default;
 $summary-frame-headline-color-primary: $color-primary !default;
 $summary-frame-description-color-primary: $color-mono-black !default;
+$summary-frame-keypt-border-primary: $color-mono-white !default;
 // color variables (monochrome light )
 $summary-frame-bkgd-color-monochrome: $color-mono-lt !default;
 $summary-frame-title-color-monochrome: $color-mono-black !default;
 $summary-frame-headline-color-monochrome: $color-mono-black !default;
 $summary-frame-keypt-title-color-monochrome: $color-primary !default;
-
+ 
 // REASSIGNED VALS FOR GLOBAL SCOPE -- SUMMARY
 // this overrides general button variables in config.scss
 $summary-button-border-color:           $button-border-color !default;
@@ -198,6 +199,7 @@ $summary-button-hover-back-color-monochrome:  $color-mono-black !default;
       }
     }
   }
+
 }
 // if monochrome light background color is selected for frame
 .paragraph--type--webny-summary-pgtype.monochrome {
@@ -276,7 +278,19 @@ $summary-button-hover-back-color-monochrome:  $color-mono-black !default;
   margin: 0 0.5%;
   float: left;
 }
-  
+
+// if primary background color is selected for frame
+  .paragraph--type--webny-summary-pgtype.primary {
+    .keypoint:nth-of-type(2n+2) {
+      border-left:2px solid lighten($summary-frame-keypt-border-primary, 20%);
+    }
+    .keypoint:nth-of-type(1n+2) {
+      border-left:2px solid lighten($summary-frame-keypt-border-primary, 20%);
+    }
+    .sectionBorder {
+      border-left-color: lighten($summary-frame-keypt-border-primary, 20%);
+    }
+  }
 } // END MIN TABLET VIEW
 
 
@@ -335,5 +349,15 @@ $summary-button-hover-back-color-monochrome:  $color-mono-black !default;
   border-left:1px solid lighten($summary-frame-keypt-border, 20%);
   order: 2;
 }
+  // if primary background color is selected for frame
+  .paragraph--type--webny-summary-pgtype.primary {
+    .keypoint:nth-of-type(2n+2) {
+      border-left:1px solid lighten($summary-frame-keypt-border-primary, 20%);
+    }
+      
+    .keypoint:nth-of-type(1n+2) {
+      border-left:1px solid lighten($summary-frame-keypt-border-primary, 20%);
+    }
+  }
 }
 }
