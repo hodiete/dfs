@@ -5,7 +5,9 @@
  * Contains webny_solr_searches.module.
  */
 
+use Drupal\Component\Utility\Html;
 use Drupal\Core\Render\BubbleableMetadata;
+use Drupal\Core\Render\Markup;
 
 /**
 * Implements hook_views_pre_execute().
@@ -140,18 +142,24 @@ function webny_solr_searches_tokens($type, $tokens, array $data, array $options,
 
     $bubbleable_metadata->addCacheableDependency($view->storage);
 
+    $exclude_input_keys = [
+      'f',
+      'ajax_page_state',
+      '_wrapper_format',
+      'drupal_ajax'
+    ];
+
+    $exposed_inputs = array_filter($view->getExposedInput());
+    $has_facet_input = isset($exposed_inputs['f']);
+    $exposed_inputs = array_diff_key($exposed_inputs, array_flip($exclude_input_keys));
+
     foreach ($tokens as $name => $original) {
       switch ($name) {
         case 'webny-filter-args':
-          $exclude_keys = [
-            'f',
-            'ajax_page_state',
-            '_wrapper_format',
-            'drupal_ajax'
-          ];
-
-          $exposed_inputs = array_filter($view->getExposedInput());
-          $exposed_inputs = array_diff_key($exposed_inputs, array_flip($exclude_keys));
+          if (!$exposed_inputs) {
+            $replacements[$original] = '';
+            break;
+          }
 
           // Modify input values for presentation.
           if (isset($exposed_inputs['keyword'])) {
@@ -163,7 +171,20 @@ function webny_solr_searches_tokens($type, $tokens, array $data, array $options,
           if (isset($exposed_inputs['created_date_1'])) {
             $exposed_inputs['created_date_1'] = 'To: ' . date('m-d-Y', strtotime($exposed_inputs['created_date_1']));
           }
-          $replacements[$original] = implode(', ', $exposed_inputs);
+
+          $replacements[$original] = 'containing ' . implode(', ', $exposed_inputs);
+          break;
+
+        case 'webny-filter-clear':
+          if (!$exposed_inputs && !$has_facet_input) {
+            $replacements[$original] = '';
+            break;
+          }
+
+          $dom_id = Html::escape($view->dom_id);
+          $markup = '<span data-dom-id="' . $dom_id . '" class="js-form-clear-all">Clear All</span>';
+          // Return known safe string as markup.
+          $replacements[$original] = Markup::create($markup);
           break;
       }
     }
