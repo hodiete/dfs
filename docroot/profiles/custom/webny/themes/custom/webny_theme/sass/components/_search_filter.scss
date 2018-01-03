@@ -1,6 +1,6 @@
 .webny-search-container .filter-sidebar {
   // Mobile collapsible filter sidebar.
-  @include breakpoint(max-width ($min-tablet - 1)) {
+  @include breakpoint(max-width ($min-desktop - 1)) {
     @include clearfix;
 
     background-color: $exposedbkgrnd;
@@ -232,7 +232,7 @@
     }
   }
 
-  @include breakpoint($min-tablet) {
+  @include breakpoint($min-desktop) {
     .filter-sidebar {
       @include span(3 of 12);
     }

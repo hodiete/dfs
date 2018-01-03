@@ -18,7 +18,7 @@
   &-image {
     display: none;
 
-    @include breakpoint($min-tablet) {
+    @include breakpoint($min-desktop) {
       display: block;
       float: left;
       height: 240px;
@@ -57,9 +57,9 @@
       //display: flex;
       padding: 10px 15px 0;
 
-      @include breakpoint($min-tablet) {
+      @include breakpoint($min-desktop) {
         height: 184px;
-        box-sizing: border-box;
+        //box-sizing: border-box;
       }
 
       @include breakpoint($min-desktop) {
@@ -73,8 +73,8 @@
       border-right: 1px solid $gray-lite;
       margin-right: 20px;
 
-      @include breakpoint($min-tablet) {
-        margin-right: 0;
+      @include breakpoint($min-desktop) {
+        //margin-right: 0;
       }
 
       @include breakpoint($min-desktop) {
