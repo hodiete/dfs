@@ -6,6 +6,17 @@
   border: 1px solid $gray-lite;
   font-family: "ProximaNovaRegular", Arial, sans-serif;
 
+  .webny-card-teaser {
+
+    height: 73px;
+    line-height: 18px;
+
+    @include breakpoint($min-tablet) {
+      height: 100px;
+    }
+
+  }
+
   &-wrapper {
     display: flex;
   }
@@ -170,6 +181,7 @@
 
   .description {
     line-height: 1.1;
+    height: 100px;
   }
 
   .event-date__wrapper {
@@ -271,6 +283,8 @@
     margin: 1px 0 -1px 0;    
     background-color: $color-mono-lt;
     border: 1px solid $gray-lite;
+    border-left: 0;
+    border-right: 0;
 
     @include breakpoint($min-mobile) {
       padding: 10px 43px;
