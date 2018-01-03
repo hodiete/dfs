@@ -4019,6 +4019,51 @@ function webny_configuration_update_8180() {
 }
 
 /**
+ * Implements hook_update_n().
+ *
+ * Update config for 'filter term listing' paragraph type.
+ */
+function webny_configuration_update_8181() {
+  $config_factory = \Drupal::configFactory();
+  $profile_config = \Drupal::service('webny.profile_config');
+
+  // Import new/changed configuration.
+  $config_to_update = [
+    'field.field.node.webny_landing_page.field_webny_landing_paragraph',
+    'user.role.anonymous',
+    'user.role.authenticated',
+    'user.role.content_author'
+  ];
+
+  $profile_config->bulkImport($config_to_update);
+
+  // Clear the config cache.
+  $config_factory->reset();
+}
+
+/**
+ * NDD-1233 QUICK LINKS SQUARE
+ *
+ * REFRESH WEBNY MEDIA OPTIONAL FILES
+ *
+ * DEV: IOJONEP
+ */
+function webny_configuration_update_8182() {
+    $config_factory = \Drupal::configFactory();
+    $profile_config = \Drupal::service('webny.profile_config');
+
+    // Import new/changed configuration.
+    $config_to_update = [
+        'image.style.quick_links_square'
+    ];
+
+    $profile_config->bulkImport($config_to_update);
+
+    // Clear the config cache.
+    $config_factory->reset();
+}
+
+/**
  * Helper function to enable a Drupal module and print the result.
  *
  * @param string $module_name

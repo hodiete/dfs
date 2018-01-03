@@ -37,19 +37,11 @@ set classes = [
 'view-id-' ~ id,
 'view-display-id-' ~ display_id,
 dom_id ? 'js-view-dom-id-' ~ dom_id,
-'webny-search-container',
 ]
 %}
 
 {# Search filter js. #}
 {{ attach_library('webny_theme/search-filter') }}
-
-{% if search_group %}
-<div class="results-head">
-  <span class="results-head-title"> All </span>
-  <span class="results-head-headline"> {{ search_group }} </span>
-</div>
-{% endif %}
 
 <div{{ attributes.addClass(classes) }}>
   {{ title_prefix }}
@@ -58,53 +50,63 @@ dom_id ? 'js-view-dom-id-' ~ dom_id,
   {% endif %}
   {{ title_suffix }}
 
-  <aside class="filter-sidebar">
-    <div class="filter-toggle hidden">Filter Options</div>
-    <div class="filter-sidebar-content">
-      {# Facets block. #}
-      {% if filter_term_block %}
-      <div class="block-filter-term">
-        <h2>Filter</h2>
-        {{ filter_term_block }}
+  {% if search_group %}
+    <div class="results-head">
+      <span class="results-head-title"> All </span>
+      <span class="results-head-headline"> {{ search_group }} </span>
+    </div>
+  {% endif %}
+
+  <div class="webny-search-container">
+
+    <aside class="filter-sidebar">
+      <div class="filter-toggle hidden">Filter Options</div>
+      <div class="filter-sidebar-content">
+        {# Facets block. #}
+        {% if filter_term_block %}
+        <div class="block-filter-term">
+          <h2>Filter</h2>
+          {{ filter_term_block }}
+        </div>
+        {% endif %}
+        {# Views exposed filters. #}
+        {{ exposed }}
       </div>
+    </aside>
+
+    <div class="view-main-content">
+      {% if attachment_before %}
+        <div class="attachment attachment-before">
+          {{ attachment_before }}
+        </div>
       {% endif %}
-      {# Views exposed filters. #}
-      {{ exposed }}
+
+      <div class="results-total">
+        {{ header }}
+      </div>
+
+      {% if rows %}
+        <div class="view-content">
+          {{ rows }}
+        </div>
+      {% elseif empty %}
+        <div class="view-empty">
+          {{ empty }}
+        </div>
+      {% endif %}
+
+      {% if pager %}
+        {{ pager }}
+      {% endif %}
+      {% if attachment_after %}
+        <div class="attachment attachment-after">
+          {{ attachment_after }}
+        </div>
+      {% endif %}
+      {% if more %}
+        {{ more }}
+      {% endif %}
+
     </div>
-  </aside>
-
-  <div class="view-main-content">
-    {% if attachment_before %}
-      <div class="attachment attachment-before">
-        {{ attachment_before }}
-      </div>
-    {% endif %}
-
-    <div class="results-total">
-      {{ header }}
-    </div>
-
-    {% if rows %}
-      <div class="view-content">
-        {{ rows }}
-      </div>
-    {% elseif empty %}
-      <div class="view-empty">
-        {{ empty }}
-      </div>
-    {% endif %}
-
-    {% if pager %}
-      {{ pager }}
-    {% endif %}
-    {% if attachment_after %}
-      <div class="attachment attachment-after">
-        {{ attachment_after }}
-      </div>
-    {% endif %}
-    {% if more %}
-      {{ more }}
-    {% endif %}
-
   </div>
 </div>

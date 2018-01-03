@@ -18,12 +18,12 @@ function webny_solr_searches_views_pre_view($view) {
         $filter_term_id = $view->args[0];
       }
       else {
-        $filter_term_name = str_replace('-', ' ', $view->args[0]);
-        $terms = taxonomy_term_load_multiple_by_name($filter_term_name, 'webny_filter_terms_tax');
+        $filter_term_name = str_replace('-', '_', $view->args[0]);
+        $term = taxonomy_term_machine_name_load($filter_term_name, 'webny_filter_terms_tax');
 
         // Has matching term. Set a term id argument.
-        if ($terms) {
-          $filter_term_id = reset($terms)->tid->value;
+        if ($term) {
+          $filter_term_id = $term->tid->value;
         }
       }
 
@@ -54,8 +54,16 @@ function webny_solr_searches_preprocess_views_view(&$variables) {
       ->build();
   }
 
+  // Create a facet block for the block view.
+  if ($view->current_display == 'webny_search_block') {
+    $variables['filter_term_block'] = \Drupal::service('plugin.manager.block')
+      ->createInstance('facet_block:filter_term_block')
+      ->build();
+  }
+
   // Get the term name ('search_group') to display as the view title bar.
   if ($view->id() == 'webny_search') {
+    // Search group is the term name used for the view's title bar.
     $search_group = \Drupal::service('entity_type.manager')
       ->getStorage('taxonomy_term')
       ->load($view->args[0])
@@ -76,5 +84,35 @@ function webny_solr_searches_form_alter(&$form, $form_state, $form_id) {
   if ($form_id == 'views_exposed_form' && $view['view']->id() == 'webny_search') {
     // Add placeholder text to keyword search field.
     $form['keyword']['#attributes']['placeholder'] = t('Keyword(s)');
+  }
+}
+
+/**
+ * Prepares variables for paragraph templates.
+ */
+function webny_solr_searches_preprocess_paragraph(array &$variables) {
+  $type = $variables['paragraph']->getEntityTypeId();
+  $bundle = $variables['paragraph']->bundle();
+  $paragraph = $variables['elements']['#paragraph'];
+
+  // Filter terms listing handling.
+  if ($type == 'paragraph' && $bundle == 'webny_filter_term_listing') {
+    // Add view as the output.
+    $term_id = $paragraph->webny_filter_term->getValue()[0]['target_id'];
+    $variables['content']['webny_filter_term'] = views_embed_view('webny_search', 'webny_search_block', $term_id);
+  }
+}
+
+// Add machine names to filter terms taxonomy post module install.
+function webny_solr_searches_modules_installed($modules) {
+  if (in_array('taxonomy_machine_name', $modules)) {
+    $term_storage = \Drupal::service('entity_type.manager')
+      ->getStorage('taxonomy_term');
+    $terms = $term_storage->loadTree('webny_filter_terms_tax', 0, NULL, TRUE);
+
+    foreach ($terms as $term) {
+      // If term machine name is empty then create one.
+      taxonomy_machine_name_update_term($term);
+    }
   }
 }
