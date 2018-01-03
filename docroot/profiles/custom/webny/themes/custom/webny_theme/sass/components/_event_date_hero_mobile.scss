@@ -1,0 +1,123 @@
+// Base event date & location.
+@mixin event-date-hero-mobile {
+  .day-month-wrapper {
+    padding-bottom: 20px;
+    text-align: center;
+  }
+
+  .multi-day {
+    .day div,
+    .month div,
+    .event-year div {
+      float: left;
+      width: 85px;
+
+      &.dash {
+        width: 30px;
+      }
+    }
+  }
+
+  .month {
+    @include clearfix;
+
+    color: $primarygold;
+    font-size: 14px;
+    font-family: $base-font;
+    font-weight: 800;
+    padding-bottom: 10px;
+    text-transform: uppercase;
+
+    div {
+      text-align: center;
+    }
+
+    .dash {
+      color: transparent;
+    }
+  }
+
+  .day {
+    @include clearfix;
+
+    font-size: 42px;
+    color: #000;
+    font-family: $base-font;
+    font-weight: 800;
+    padding-bottom: 5px;
+
+    div {
+      text-align: center;
+    }
+
+    .dash {
+      font-size: 34px;
+      font-weight: 600;
+    }
+  }
+
+  .event-year {
+    @include clearfix;
+
+    font-size: 16px;
+    color:#000;
+    font-family: $base-font;
+    font-weight: 600;
+
+    div {
+      text-align: center;
+    }
+
+    .dash {
+      color: transparent;
+    }
+
+  }
+
+
+  .time {
+    color: #fff;
+    font-family: $base-font;
+    font-size: 13px;
+    line-height: 16px;
+    text-transform: uppercase;
+
+    @include icon(before, fa-clock);
+
+    &::before {
+      color: $medblue;
+      display: inline-block;
+      font-size: 13px;
+      vertical-align: top;
+      width: 23px;
+    }
+
+    div {
+      display: inline-block;
+    }
+  }
+
+  .address-wrapper {
+    border-top: 1px solid $color-mono-mid;
+    margin-top: 15px;
+    padding-top: 15px;
+
+    @include icon(before, fa-pin);
+
+    &::before {
+      color: $medblue;
+      float: left;
+      font-size: 13px;
+      vertical-align: top;
+      width: 23px;
+    }
+  }
+
+  .address {
+    color: #fff;
+    float: left;
+    font-family: $base-font;
+    font-size: 13px;
+    line-height: 16px;
+  }
+}
