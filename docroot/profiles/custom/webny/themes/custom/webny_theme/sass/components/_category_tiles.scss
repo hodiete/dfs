@@ -64,11 +64,11 @@ $category-tiles-headline-desktop: 800 1.1em $base-font !default;
     float: none;
     .category-tile-link-flex{
       padding: 0;
-      margin: 0;
+      margin-left: 5%;
       list-style: none;
       display: flex;
       flex-flow: row wrap;
-      justify-content: space-around;
+      justify-content: flex-start;
 
       .category-tiles-link--field-webny-cat-button-link {
         display: flex;
@@ -76,8 +76,9 @@ $category-tiles-headline-desktop: 800 1.1em $base-font !default;
         align-items: center;
         background-color: $button-bkgd-color;
         padding: 5px;
+        margin-left: 20px;
         max-width: 330px;
-        width: 44.72881%;
+        width: 35%;
         min-height: 80px;
         line-height: 17px;
         margin-top: 14px;
@@ -120,7 +121,8 @@ $category-tiles-headline-desktop: 800 1.1em $base-font !default;
       max-width: 44em;
       .category-tile-link-flex {
         .category-tiles-link--field-webny-cat-button-link {
-          width: 21.75%;
+          width: 18%;
+          // margin: 1%;
           min-height: 120px;
           //display: inline-block;
           //vertical-align: top;
@@ -141,7 +143,8 @@ $category-tiles-headline-desktop: 800 1.1em $base-font !default;
       max-width: 54em;
       .category-tile-link-flex {
         .category-tiles-link--field-webny-cat-button-link {
-          width: 23.3%;
+          width: 18%;
+          //margin: 1%;
           min-height: 140px;
           line-height: 20px;
           //display: flex;
@@ -169,7 +172,8 @@ $category-tiles-headline-desktop: 800 1.1em $base-font !default;
       .category-tile-link-flex {
         .category-tiles-link--field-webny-cat-button-link {
           min-height: 140px;
-          width: 22.8%;
+          width: 21%;
+          margin: 1%;
           margin-top: 20px;
           a {
             font-size: 18px;
