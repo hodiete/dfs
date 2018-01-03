@@ -34,7 +34,7 @@ $ql-button-hover-back-color:       $button-black-50 !default;
   //text-align: center;
   padding: $frame-padding-lg 3%;
   // width: 100%;
-  min-height: 450px\9;
+  //min-height: 450px\9;
 }
 
 .qlframe-inner {
@@ -132,7 +132,7 @@ Quick Links Card
 
     .webny-quick-links-title {
       text-align: left;
-      padding-top: 20px;
+      padding-top: 10px;
 
       a {
         font-family: ProximaNovaSemibold;
@@ -209,14 +209,24 @@ Quick Links Card
 /* TABLET VIEW */
 @media (min-width: $min-tablet) {
 
-  .ql--group-1 {
-    float: left;
+  .ql-col-group {
+   display: flex;
+    flex-flow: row nowrap;
+    .ql--group-1,
+    .ql--group-2 {
+      display: flex;
+      flex-flow: column nowrap;
+  
+    }
+    .ql--group-1-items,
+    .ql--group-2-items {
+      flex: 5 0 auto;
+    }
+    .ql--field-webny-ql-col-1-button,
+    .ql--field-webny-ql-col-2-button {
+      align-self: flex-end;
+    }
   }
-  .ql--group-1,
-  .ql--group-2 {
-    width: 48%;
-    margin-bottom: 80px;
-  } // END groups
 
   .ql--field-webny-ql-col-1-button,
   .ql--field-webny-ql-col-2-button {
@@ -262,7 +272,7 @@ Quick Links Card
   /* IE10-specific styles go here */
 
   @media (min-width: $min-tab) {
-
+  
   } // END TABLET VIEW
 
   @media (min-width: $min-pc) {

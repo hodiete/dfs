@@ -6,14 +6,14 @@ dependencies:
     - views.view.webny_search
   module:
     - search_api
-id: filter_term
-name: 'Filter Term'
+id: filter_term_block
+name: 'Filter term block'
 url_alias: filter_term
 weight: 0
 min_count: 1
 show_only_one_result: false
 field_identifier: field_webny_filter_terms
-facet_source_id: 'search_api:views_page__webny_search__webny_search_page'
+facet_source_id: 'search_api:views_block__webny_search__webny_search_block'
 widget:
   type: checkbox
   config:
@@ -67,7 +67,7 @@ processor_configs:
     weights:
       build: 5
     settings:
-      views_filter_arg: '0'
+      views_filter_arg: '1'
       term_vocab: webny_filter_terms_tax
   taxonomy_levels:
     processor_id: taxonomy_levels
