@@ -25,14 +25,5 @@ function webny_solr_searches_update_8001() {
  * Generate taxonomy machine name for existing filter terms.
  */
 function webny_solr_searches_update_8002() {
-  $term_storage = \Drupal::service('entity_type.manager')
-    ->getStorage('taxonomy_term');
-  $terms = $term_storage->loadTree('webny_filter_terms_tax');
-
-  foreach ($terms as $t) {
-    if ($t->machine_name == NULL) {
-      $term = $term_storage->load($t->tid);
-      $term->save();
-    }
-  }
+  // Note: update removed in favor of implementing hook_modules_installed().
 }
