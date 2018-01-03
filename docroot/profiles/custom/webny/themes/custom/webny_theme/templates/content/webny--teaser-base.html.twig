@@ -3,6 +3,7 @@
 {% endblock link_direct %}
 <article{{ attributes.addClass('webny-teaser') }}>
     <div class="webny-teaser-wrapper">
+        {# <a class="webny-teaser-image" href="{{ url }}"> #}
         <a class="webny-teaser-image" href="{{ url }}">
             {% block hero_image %}{% endblock hero_image %}
         </a>
@@ -27,7 +28,8 @@
             <span class="webny-teaser-filter-term-border"></span>
           <div class="webny-teaser-title">
             {% block title %}
-              <a href="{{ url }}">
+                {# <a href="{{ link }}"> #}
+                <a href="{{ url }}">
                 {% if title|length <= 65 %}
                   {{ title }}
                 {% else %}
@@ -44,7 +46,7 @@
           {% block content %}{% endblock content %}
           </div>
           {% block footer %}
-            {{ content.links }}
+            {#{{ content.links }}#}
           {% endblock %}
 
         </div>

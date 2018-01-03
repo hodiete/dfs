@@ -39,7 +39,7 @@
         "drupal/entity_browser": "1.3",
         "drupal/entity_embed": "dev-1.x",
         "drupal/entity_reference_revisions": "1.3",
-        "drupal/facets": "^1.0",
+        "drupal/facets": "1.0-beta1",
         "drupal/features": "3.5.0",
         "drupal/field_group": "1.0-rc6",
         "drupal/focal_point": "1.0-beta4",
@@ -93,7 +93,9 @@
         "drupal/ckeditor_indentblock": "1.x-dev",
         "ckeditor/indentblock": "^4.7",
         "ckeditor/liststyle": "^4.7",
-        "drupal/address": "^1.2"
+        "drupal/address": "^1.2",
+        "drupal/config_update": "1.5",
+        "drupal/taxonomy_machine_name": "^1.0@alpha"
     },
     "scripts": {
         "blt-alias": "blt install-alias -Dcreate_alias=true",
@@ -194,7 +196,8 @@
             "drupal/core": {
                 "Ignore front end vendor folders to improve directory search performance": "https://www.drupal.org/files/issues/ignore_front_end_vendor-2329453-116.patch",
                 "Check for the presence of image file array before using it in a function call": "https://www.drupal.org/files/issues/2745491-15.patch",
-                "Turn Views exposed filters for dates into date fields": "https://www.drupal.org/files/issues/views_exposed_filter-2710793-8.patch"
+                "Turn Views exposed filters for dates into date fields": "https://www.drupal.org/files/issues/views_exposed_filter-2710793-8.patch",
+                "Fix 'view_path' set to /views/ajax after second ajax request": "https://www.drupal.org/files/issues/2866386-4.patch"
             },
             "drupal/adminimal_theme": {
                 "Incompatible with admin toolbar": "https://www.drupal.org/files/issues/incompatible_with_admin-2635456-4_0.patch"
@@ -213,6 +216,10 @@
             },
             "drupal/acquia_connector": {
                 "Acquia Search use core per environment": "patches/acquia_connector--acquia_search--use-solr-core-per-environment.patch"
+            },
+            "drupal/facets": {
+                "Ajax facets": "https://www.drupal.org/files/issues/ajax_facets_blocks_for-2826449-85.patch",
+                "Ajax facets embedded in view": "patches/facets-ajax-2826449-85-revised.patch"
             }
         },
         "installer-types": ["ckeditor-library"],

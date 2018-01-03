@@ -117,9 +117,9 @@ view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
                                         {# included for event card using redirect url field #}
                                         {% elseif (entity_type[i] == 'webny_event') %}
                                             {% if (paragraph.field_webny_card_entity_ref[i].entity.field_webny_event_redirect_url.0.url is not empty) %}
-                                                <a target="_blank" href="{{ paragraph.field_webny_card_entity_ref[i].entity.field_webny_event_redirect_url.0.url }}" title="{{ paragraph.field_webny_card_entity_ref[i].entity.field_webny_event_redirect_url.0.url }}">LEARN MORE</a>
+                                                <a href="{{ paragraph.field_webny_card_entity_ref[i].entity.field_webny_event_redirect_url.0.url }}" title="{{ paragraph.field_webny_card_entity_ref[i].entity.field_webny_event_redirect_url.0.url }}">LEARN MORE</a>
                                             {% else %}
-                                                <a target="_blank" href="{{ host }}{{ card_url[i] }}" title="{{ content.field_webny_card_entity_ref[i]['#node'].getTitle() }}">LEARN MORE</a>
+                                                <a href="{{ host }}{{ card_url[i] }}" title="{{ content.field_webny_card_entity_ref[i]['#node'].getTitle() }}">LEARN MORE</a>
                                             {% endif %}
                                         {% else %}
                                             <a href="{{ host }}{{ card_url[i] }}" title="{{ content.field_webny_card_entity_ref[i]['#node'].getTitle() }}">LEARN MORE</a>

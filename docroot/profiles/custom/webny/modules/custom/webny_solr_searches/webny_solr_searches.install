@@ -20,3 +20,10 @@ function webny_solr_searches_update_8001() {
     ->getEditable('block.block.filterterm')
     ->delete();
 }
+
+/**
+ * Generate taxonomy machine name for existing filter terms.
+ */
+function webny_solr_searches_update_8002() {
+  // Note: update removed in favor of implementing hook_modules_installed().
+}
