@@ -71,12 +71,18 @@ $tbd-button-hover-back-color-monochrome:  $color-mono-black !default;
   text-align: center;
 }
 
+.descriptor-wrapper {
+  display:inline-block;
+  width: 80%;
+}
+
 .descriptor--field-webny-tbd-title {
   font: $frame-title;
   color: $tbd-frame-title-color;
   text-align: center;
   text-transform: uppercase;
   letter-spacing: 2px;
+  margin-bottom: 10px;
 }
 
 .descriptor--field-webny-tbd-headline {
@@ -289,9 +295,12 @@ $tbd-button-hover-back-color-monochrome:  $color-mono-black !default;
         }
       }
 
-      &:nth-of-type(2n+2) {
+      .descriptor-wrapper {
         border-left:2px solid lighten($tbd-frame-descriptor-border, 20%);
       }
+     /* &:nth-of-type(2n+2) {
+        border-left:2px solid lighten($tbd-frame-descriptor-border, 20%);
+      }*/
 
     } // END descriptor
 

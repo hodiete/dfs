@@ -59,7 +59,24 @@
   <div{{ attributes.addClass(classes) }}>
     {% block content %}
       <div class="tbdframe-inner">
-        {{ content }}
+          <div class=“descriptor--field-webny-tbd-title”>{{ content.field_webny_tbd_title }}</div>
+          <div class=“descriptor--field-webny-tbd-headline”>{{ content.field_webny_tbd_headline }}</div>
+          <div class=“descriptors”>
+              <div class=“descriptor”>
+                  <div class=“descriptor-wrapper”>
+                      <div class=“descriptor--field-webny-tbd-descriptortitle1”>{{ paragraph.field_webny_tbd_descriptortitle1.value }}</div>
+                      <div class=“descriptor--field-webny-tbd-descriptor1”>{{ content.field_webny_tbd_descriptor1 }}</div>
+                  </div>
+                  <div class=“descriptor--field-webny-tbd-cta1”>{{ content.field_webny_tbd_cta1 }}</div>
+              </div>
+              <div class=“descriptor”>
+                  <div class=“descriptor-wrapper”>
+                      <div class=“descriptor--field-webny-tbd-descriptortitle2”>{{ content.field_webny_tbd_descriptortitle2 }}</div>
+                      <div class=“descriptor--field-webny-tbd-descriptor2”>{{ content.field_webny_tbd_descriptor2 }}</div>
+                  </div>
+                  <div class=“descriptor--field-webny-tbd-cta2”>{{ content.field_webny_tbd_cta2 }}</div>
+              </div>
+          </div>
       </div>
     {% endblock %}
   </div>
