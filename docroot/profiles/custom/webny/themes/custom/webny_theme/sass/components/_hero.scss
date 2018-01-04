@@ -635,11 +635,21 @@ $hero-event-bkgd-transparent-black: $bkgd-black-50 !default;
 
   .hero-layout {
 
+    .hero-landing-inner, .hero-ipage-inner {
+      h2, h1 {
+        width: 66%;
+        max-width: 690px;
+      }
+      .hero-summary{
+        width: 66%;
+        max-width: 690px;
+      }
+    }
+
     .hero-no-image.hero-generic {
       background-color: $hero-bkgd-color;
       height: 385px;
     }
-
 
     .hero-generic-inner {
       top: 0;
@@ -831,7 +841,7 @@ $hero-event-bkgd-transparent-black: $bkgd-black-50 !default;
       margin: 60px 0 0 0;
       padding: 0 2%;
       width: $hero-inner-width;
-      h1{
+      h1, h2{
         width: $hero-header-width;
       }
     }
@@ -932,7 +942,7 @@ $hero-event-bkgd-transparent-black: $bkgd-black-50 !default;
     }
 
 
-    .hero-ipage-inner{
+    .hero-ipage-inner, .hero-landing-inner{
       .hero-summary{
         width: $hero-header-width;
       }
