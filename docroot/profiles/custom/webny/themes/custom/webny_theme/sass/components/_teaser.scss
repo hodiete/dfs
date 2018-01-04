@@ -99,10 +99,13 @@
     }
 
     &__details-right {
-      padding-top: 10px;
+      padding-top: 20px;
       flex-basis: 60%;
 
-      @include breakpoint($min-desktop) {
+      @include breakpoint($min-tablet) {
+        padding-top: 0px;
+      }
+      @include breakpoint($min-wide) {
         padding-top: 20px;
       }
     }
@@ -206,6 +209,10 @@
     .day-month-wrapper {
       padding-bottom: 15px;
 
+      @include breakpoint($min-mobile) {
+        padding-bottom: 5px;
+      }
+
       @include breakpoint($min-wide) {
         padding-bottom: 20px;
       }
@@ -226,10 +233,21 @@
       &-wrapper {
         margin-top: 10px;
         padding-top: 10px;
+        display: flex;
+
+
+        @include breakpoint($min-tablet) {
+          padding: 5px 20px;
+        }
+
+        @include breakpoint($min-desktop) {
+          padding: 5px 20px;
+        }
 
         @include breakpoint($min-wide){
           margin-top: 20px;
           padding-top: 20px;
+          padding-left: 0;
         }
       }
     }
