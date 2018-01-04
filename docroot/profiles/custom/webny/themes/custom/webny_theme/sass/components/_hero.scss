@@ -48,8 +48,7 @@ $hero-keyword-bkgd-color: $color-accent-primary !default;
 $hero-keyword-hover-bkgd-color: $color-accent-secondary !default;
 $hero-keyword-text-color: $color-mono-white !default;
 $hero-event-date-color: $color-accent-primary !default;
-$hero-event-bkgd-transparent-white: $button-white-20 !default;
-$hero-event-bkgd-transparent-black: $button-black-20 !default;
+$hero-event-bkgd-transparent-black: $bkgd-black-50 !default;
 
 // ************************* //
 // HERO PARTIAL
@@ -62,10 +61,6 @@ $hero-event-bkgd-transparent-black: $button-black-20 !default;
 // ========================================================================= //
 /* FONTS / SIZES */
 
-.hero-has-image{
-  background-color: $hero-bkgd-color;
-  opacity: .9;
-}
 
 .hero-no-image{
   background-color: $hero-bkgd-color;
@@ -457,7 +452,7 @@ $hero-event-bkgd-transparent-black: $button-black-20 !default;
       padding: 0;
       margin-top: 30px;
 
-      @include event-date;
+      @include event-date-hero-mobile;
 
       .month {
         color: $hero-keyword-text-color;
@@ -476,7 +471,6 @@ $hero-event-bkgd-transparent-black: $button-black-20 !default;
         color: $hero-event-date-color;
       }
       .day-month-wrapper {
-        margin-left: -22px;
         width: auto;
       }
       .address span.country {
@@ -628,6 +622,11 @@ $hero-event-bkgd-transparent-black: $button-black-20 !default;
 /* MIN TABLET VIEW */
 @media (min-width: $min-tab) {
 
+  .hero-has-image{
+    background-color: $hero-bkgd-color;
+    opacity: .9;
+  }
+
   .hero-no-image.hero-location {
     background-color: $hero-bkgd-color;
     height: 500px;
@@ -720,7 +719,7 @@ $hero-event-bkgd-transparent-black: $button-black-20 !default;
 
       &--title-block {
         float: left;
-        width: calc(100% - 290px);
+        width: calc(100% - 350px);
         margin: 50px 0px 0px 50px;
       }
 
@@ -732,10 +731,36 @@ $hero-event-bkgd-transparent-black: $button-black-20 !default;
         padding: 20px 50px 15px;
         margin-top: 0;
         height: 385px;
+        min-width: 150px;
 
         .day-month-wrapper {
           margin-left: 0!important;
 
+        }
+
+        @include event-date
+
+        .month {
+          color: $hero-keyword-text-color;
+        }
+
+        .day {
+          color: $hero-event-date-color;
+        }
+
+        .event-year {
+          color: $hero-keyword-text-color;
+        }
+
+        .address-wrapper::before,
+        .time::before {
+          color: $hero-event-date-color;
+        }
+        .day-month-wrapper {
+          width: auto;
+        }
+        .address span.country {
+          display:none;
         }
 
       }
@@ -759,7 +784,7 @@ $hero-event-bkgd-transparent-black: $button-black-20 !default;
     .hero-inner.hero-event--inner.hero-has-image-content{
       .hero-event--date-block{
         height:100%;
-        background: $hero-event-bkgd-transparent-white;
+        background: $hero-event-bkgd-transparent-black;
       }
     }
 
@@ -918,6 +943,12 @@ $hero-event-bkgd-transparent-black: $button-black-20 !default;
       line-height: 60px;
       color: $color-mono-white;
       font-weight: 800;
+    }
+
+    .hero-event {
+      &--title-block {
+        width: calc(100% - 290px);
+      }
     }
 
     // =====================================================================
