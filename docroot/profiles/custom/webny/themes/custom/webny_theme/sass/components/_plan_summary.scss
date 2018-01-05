@@ -248,6 +248,12 @@ $summary-button-hover-back-color-monochrome:  $color-mono-black !default;
   font-weight: 600;
 }
 
+.keypoint--field-webny-summary-keypoint1,
+.keypoint--field-webny-summary-keypoint2,
+.keypoint--field-webny-summary-keypoint3{
+  height: 75px;
+}
+
 
 .keypoint{
 //  display: inline-block;
@@ -324,11 +330,12 @@ $summary-button-hover-back-color-monochrome:  $color-mono-black !default;
   padding: 0;
   margin: 0 30px 25px 30px;
   max-width: 300px;
+  //height: 52px;
 }
 .keypoint--field-webny-summary-argument1,
 .keypoint--field-webny-summary-argument2,
 .keypoint--field-webny-summary-argument3{
-  font-weight: $frame-base-semi-bold;
+  font-weight: 600;
   font: $base-font-size "Proxima Nova",Arial,sans-serif;
   line-height: 24px;
   vertical-align: top;
