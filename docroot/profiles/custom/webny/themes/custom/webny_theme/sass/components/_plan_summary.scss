@@ -12,7 +12,7 @@ $summary-frame-title-color: $color-mono-black !default;
 $summary-frame-headline-color: $color-mono-white !default;
 $summary-frame-keypt-title-color: $color-mono-white !default;
 $summary-frame-keypt-text-color: $color-mono-black !default;
-$summary-frame-keypt-border: $color-secondary !default;
+$summary-frame-keypt-border: $color-mono-white !default;
 $summary-frame-button: $color-mono-white !default;
 // color variables (primary)
 $summary-frame-bkgd-color-primary: $color-accent-primary !default;
@@ -25,7 +25,11 @@ $summary-frame-bkgd-color-monochrome: $color-mono-lt !default;
 $summary-frame-title-color-monochrome: $color-mono-black !default;
 $summary-frame-headline-color-monochrome: $color-mono-black !default;
 $summary-frame-keypt-title-color-monochrome: $color-primary !default;
+<<<<<<< HEAD
  
+=======
+$summary-frame-keypt-border-monochrome: $color-primary !default;
+
 // REASSIGNED VALS FOR GLOBAL SCOPE -- SUMMARY
 // this overrides general button variables in config.scss
 $summary-button-border-color:           $button-border-color !default;
@@ -279,6 +283,7 @@ $summary-button-hover-back-color-monochrome:  $color-mono-black !default;
   float: left;
 }
 
+
 // if primary background color is selected for frame
   .paragraph--type--webny-summary-pgtype.primary {
     .keypoint:nth-of-type(2n+2) {
@@ -291,6 +296,22 @@ $summary-button-hover-back-color-monochrome:  $color-mono-black !default;
       border-left-color: lighten($summary-frame-keypt-border-primary, 20%);
     }
   }
+
+// if monochrome light background color is selected for frame
+.paragraph--type--webny-summary-pgtype.monochrome {
+  .keypoint:nth-of-type(2n+2) {
+    border-left:2px solid lighten($summary-frame-keypt-border-monochrome, 20%);
+  }
+
+  .keypoint:nth-of-type(1n+2) {
+    border-left:2px solid lighten($summary-frame-keypt-border-monochrome, 20%);
+  }
+    
+  .sectionBorder {
+    border-left-color: lighten($summary-frame-keypt-border-monochrome, 20%);
+  }
+}  
+
 } // END MIN TABLET VIEW
 
 
@@ -358,6 +379,16 @@ $summary-button-hover-back-color-monochrome:  $color-mono-black !default;
     .keypoint:nth-of-type(1n+2) {
       border-left:1px solid lighten($summary-frame-keypt-border-primary, 20%);
     }
+  }
+}
+// if monochrome light background color is selected for frame
+.paragraph--type--webny-summary-pgtype.monochrome {
+  .keypoint:nth-of-type(2n+2) {
+    border-left:1px solid lighten($summary-frame-keypt-border-monochrome, 20%);
+  }
+  
+  .keypoint:nth-of-type(1n+2) {
+    border-left:1px solid lighten($summary-frame-keypt-border-monochrome, 20%);
   }
 }
 }

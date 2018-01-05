@@ -257,4 +257,22 @@
     }
 
   }
+
+  .js-form-clear-all {
+    color: $medblue;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 14px;
+    margin-left: 6px;
+
+    &:before {
+      content: '\e614';
+      display: inline-block;
+      font-family: $icon-font;
+      font-size: 10px;
+      line-height: 1;
+      margin-right: 2px;
+    }
+  }
+
 }
