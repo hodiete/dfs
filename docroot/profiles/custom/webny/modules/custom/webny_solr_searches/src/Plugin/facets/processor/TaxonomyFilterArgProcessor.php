@@ -92,16 +92,21 @@ class TaxonomyFilterArgProcessor extends ProcessorPluginBase implements BuildPro
     }
     elseif (isset($route_parameters['node'])) {
       // No arg parameter, check node for views paragraph type.
+      $pathinfo = ltrim(\Drupal::service('path.current')->getPath(), '/');
+      $url_object = \Drupal::service('path.validator')
+        ->getUrlIfValid($pathinfo);
+      // Get current route params because ajax request will reference home node.
+      $ajax_route_params = $url_object->getRouteParameters();
+      // Get the landing page paragraphs from the current node.
       $paragraph_storage = $this->entityTypeManager->getStorage('paragraph');
       $node = $this->entityTypeManager
         ->getStorage('node')
-        ->load($route_parameters['node']);
+        ->load($ajax_route_params['node']);
       $paragraphs = $node->field_webny_landing_paragraph->getValue();
 
       // Find paragraph with the filter listing view.
       foreach ($paragraphs as $key => $value) {
         $paragraph = $paragraph_storage->load($paragraphs[$key]['target_id']);
-
         if ($paragraph->getType() == 'webny_filter_term_listing') {
           // Set the $parent_tid to the taxonomy id.
           $parent_tid = $paragraph->webny_filter_term->getValue()[0]['target_id'];

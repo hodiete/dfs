@@ -83,15 +83,12 @@ dom_id ? 'js-view-dom-id-' ~ dom_id,
 
       <div class="results-total">
         {{ header }}
+        {{ empty }}
       </div>
 
       {% if rows %}
         <div class="view-content">
           {{ rows }}
-        </div>
-      {% elseif empty %}
-        <div class="view-empty">
-          {{ empty }}
         </div>
       {% endif %}
 

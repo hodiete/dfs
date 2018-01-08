@@ -12,7 +12,7 @@ $tbd-frame-title-color: $color-mono-black !default;
 $tbd-frame-headline-color: $color-mono-white !default;
 $tbd-frame-descriptor-title-color: $color-mono-white !default;
 $tbd-frame-descriptor-text-color: $color-mono-black !default;
-$tbd-frame-descriptor-border: $color-secondary !default;
+$tbd-frame-descriptor-border: $color-mono-white !default;
 $tbd-frame-button: $color-mono-white !default;
 // color variables (primary)
 $tbd-frame-bkgd-color-primary: $color-accent-primary !default;
@@ -25,6 +25,7 @@ $tbd-frame-bkgd-color-monochrome: $color-mono-lt !default;
 $tbd-frame-title-color-monochrome: $color-mono-black !default;
 $tbd-frame-headline-color-monochrome: $color-mono-black !default;
 $tbd-frame-descriptor-title-color-monochrome: $color-primary !default;
+$tbd-frame-descriptor-border-monochrome: $color-primary !default;
 // REASSIGNED VALS FOR GLOBAL SCOPE -- SUMMARY
 // this overrides general button variables in config.scss
 $tbd-button-border-color:           $button-border-color !default;
@@ -238,6 +239,7 @@ $tbd-button-hover-back-color-monochrome:  $color-mono-black !default;
     } // END descriptor
 
   } // END descriptors
+
   // if primary background color is selected for frame
     .paragraph--type--webny-tbd-pgtype.primary {
       .descriptor {
@@ -246,6 +248,15 @@ $tbd-button-hover-back-color-monochrome:  $color-mono-black !default;
         }
       }
     }
+
+  // if monochrome light background color is selected for frame
+  .paragraph--type--webny-tbd-pgtype.monochrome {
+    .descriptor {
+      &:nth-of-type(2n+2) {
+        border-left:2px solid lighten($tbd-frame-descriptor-border-monochrome, 20%);
+      }
+    }
+  }
 } // END MIN TABLET VIEW
 
 // ######################################################################### //
@@ -300,6 +311,7 @@ $tbd-button-hover-back-color-monochrome:  $color-mono-black !default;
     } // END descriptor
 
   } // END descriptors
+
   // if primary background color is selected for frame
     .paragraph--type--webny-tbd-pgtype.primary {
       .descriptor{
@@ -309,6 +321,14 @@ $tbd-button-hover-back-color-monochrome:  $color-mono-black !default;
       }
     }
 
+
+  .paragraph--type--webny-tbd-pgtype.monochrome {
+    .descriptor {
+      &:nth-of-type(2n+2) {
+        border-left:2px solid lighten($tbd-frame-descriptor-border-monochrome, 20%);
+      }
+    }
+  }
 } // END PC VIEW
 
 @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
