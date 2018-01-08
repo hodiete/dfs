@@ -33,7 +33,7 @@
       });
 
       // Show/hide filter toggle based on viewport width.
-      var updateFilter = function() {
+      var updateFilter = function () {
         var viewportWidth = $(window).width();
 
         if (viewportWidth < 768) {
