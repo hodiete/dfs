@@ -2,7 +2,7 @@
  * @file
  * Callouts Javascript File
  */
-(function ($, Drupal, window, document) {
+(function ($, Drupal, window) {
 
   'use strict';
 
@@ -60,7 +60,7 @@
 
             // GET THE FIRST ITEM IN THE ARRAY FOR THE BODY CALLOUTS SECTION
             this.actionId = $('.webny-callout-inner').children('div:first-child').attr('id').substring(4, 20);
-            var calloutSectionId = '#webny-callouts-section-' + this.actionId.substring(0, 7);
+            // var calloutSectionId = '#webny-callouts-section-' + this.actionId.substring(0, 7);
 
             if (direction === 'up') {
               // REMOVE ALL ACTIVE CALLOUT SECTIONS
@@ -76,8 +76,8 @@
         // WAYPOINT FUNCTION FOR FIXED RIGHTHAND NAVIGATION -- HEADER TRIGGER
         $('.gp-next-section').waypoint(function (direction) {
 
-            // REMOVE ALL ACTIVE CALLOUT SECTIONS
-            $('.webny-callouts-section').removeClass('activeCalloutSection');
+          // REMOVE ALL ACTIVE CALLOUT SECTIONS
+          $('.webny-callouts-section').removeClass('activeCalloutSection');
 
         }, {
           offset: 200
@@ -90,7 +90,7 @@
           // ASSIGN ELEMENT
           this.sectionId = '#' + this.element.id;
 
-          if($(this.sectionId).parent().parent().attr('id') !== firstSectionID){
+          if($(this.sectionId).parent().parent().attr('id') !== firstSectionID) {
             // REMOVE ALL ACTIVE CALLOUT SECTIONS
             $('.webny-callouts-section').removeClass('activeCalloutSection');
 
@@ -121,7 +121,7 @@
           // ASSIGN ELEMENT
           this.sectionId = '#' + this.element.id;
 
-          if($(this.sectionId).parent().parent().attr('id') === firstSectionID){
+          if($(this.sectionId).parent().parent().attr('id') === firstSectionID) {
             // REMOVE ALL ACTIVE CALLOUT SECTIONS
             $('.webny-callouts-section').removeClass('activeCalloutSection');
 
@@ -131,7 +131,7 @@
             }
           }
 
-        },{
+        }, {
           offset: 112
         });
 

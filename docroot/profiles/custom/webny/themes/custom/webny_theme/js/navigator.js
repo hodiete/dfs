@@ -334,7 +334,7 @@
             }
           });
         }
-      }, {offset: function() {
+      }, {offset: function () {
         // dynamically return an offset based on element height
         return -$(this.element).height();
       }});
