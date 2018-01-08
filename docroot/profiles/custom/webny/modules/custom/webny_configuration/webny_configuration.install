@@ -4064,6 +4064,26 @@ function webny_configuration_update_8182() {
 }
 
 /**
+ * Permissions for content editors to modify authored on date
+ *
+ * NDD-1272 - Beth
+ */
+function webny_configuration_update_8183() {
+  $config_factory = \Drupal::configFactory();
+  $profile_config = \Drupal::service('webny.profile_config');
+
+  // Import new/changed configuration.
+  $config_to_update = [
+    'user.role.content_author'
+  ];
+
+  $profile_config->bulkImport($config_to_update);
+
+  // Clear the config cache.
+  $config_factory->reset();
+}
+
+/**
  * Helper function to enable a Drupal module and print the result.
  *
  * @param string $module_name
