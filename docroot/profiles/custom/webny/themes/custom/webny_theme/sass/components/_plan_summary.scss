@@ -19,6 +19,7 @@ $summary-frame-bkgd-color-primary: $color-accent-primary !default;
 $summary-frame-title-color-primary: $color-mono-black !default;
 $summary-frame-headline-color-primary: $color-primary !default;
 $summary-frame-description-color-primary: $color-mono-black !default;
+$summary-frame-keypt-border-primary: $color-mono-white !default;
 // color variables (monochrome light )
 $summary-frame-bkgd-color-monochrome: $color-mono-lt !default;
 $summary-frame-title-color-monochrome: $color-mono-black !default;
@@ -108,7 +109,7 @@ $summary-button-hover-back-color-monochrome:  $color-mono-black !default;
 .keypoint--field-webny-summary-keypoint3{
   font-family: $base-font;
   font-size: 1.222em;
-  font-weight: 600;
+  font-weight: bold;
   //font: 22px "Proxima Nova Bold",Arial,sans-serif;
   line-height: 26px;
   color: $summary-frame-keypt-title-color;
@@ -133,6 +134,7 @@ $summary-button-hover-back-color-monochrome:  $color-mono-black !default;
 .keypoint--field-webny-summary-argument2 p,
 .keypoint--field-webny-summary-argument3 p {
   text-align: center;
+  font-weight: 600;
 }
 
 .keypoint:nth-of-type(2n+2) {
@@ -199,6 +201,7 @@ $summary-button-hover-back-color-monochrome:  $color-mono-black !default;
       }
     }
   }
+
 }
 // if monochrome light background color is selected for frame
 .paragraph--type--webny-summary-pgtype.monochrome {
@@ -247,6 +250,12 @@ $summary-button-hover-back-color-monochrome:  $color-mono-black !default;
   font-weight: 600;
 }
 
+.keypoint--field-webny-summary-keypoint1,
+.keypoint--field-webny-summary-keypoint2,
+.keypoint--field-webny-summary-keypoint3{
+  height: 75px;
+}
+
 
 .keypoint{
 //  display: inline-block;
@@ -278,6 +287,20 @@ $summary-button-hover-back-color-monochrome:  $color-mono-black !default;
   float: left;
 }
 
+
+// if primary background color is selected for frame
+  .paragraph--type--webny-summary-pgtype.primary {
+    .keypoint:nth-of-type(2n+2) {
+      border-left:2px solid lighten($summary-frame-keypt-border-primary, 20%);
+    }
+    .keypoint:nth-of-type(1n+2) {
+      border-left:2px solid lighten($summary-frame-keypt-border-primary, 20%);
+    }
+    .sectionBorder {
+      border-left-color: lighten($summary-frame-keypt-border-primary, 20%);
+    }
+  }
+
 // if monochrome light background color is selected for frame
 .paragraph--type--webny-summary-pgtype.monochrome {
   .keypoint:nth-of-type(2n+2) {
@@ -292,6 +315,7 @@ $summary-button-hover-back-color-monochrome:  $color-mono-black !default;
     border-left-color: lighten($summary-frame-keypt-border-monochrome, 20%);
   }
 }  
+
 } // END MIN TABLET VIEW
 
 
@@ -323,11 +347,13 @@ $summary-button-hover-back-color-monochrome:  $color-mono-black !default;
   padding: 0;
   margin: 0 30px 25px 30px;
   max-width: 300px;
+  height: 52px;
 }
+
 .keypoint--field-webny-summary-argument1,
 .keypoint--field-webny-summary-argument2,
 .keypoint--field-webny-summary-argument3{
-  font-weight: $frame-base-semi-bold;
+  font-weight: 600;
   font: $base-font-size "Proxima Nova",Arial,sans-serif;
   line-height: 24px;
   vertical-align: top;
@@ -350,6 +376,16 @@ $summary-button-hover-back-color-monochrome:  $color-mono-black !default;
   border-left:1px solid lighten($summary-frame-keypt-border, 20%);
   order: 2;
 }
+  // if primary background color is selected for frame
+  .paragraph--type--webny-summary-pgtype.primary {
+    .keypoint:nth-of-type(2n+2) {
+      border-left:1px solid lighten($summary-frame-keypt-border-primary, 20%);
+    }
+      
+    .keypoint:nth-of-type(1n+2) {
+      border-left:1px solid lighten($summary-frame-keypt-border-primary, 20%);
+    }
+  }
 }
 // if monochrome light background color is selected for frame
 .paragraph--type--webny-summary-pgtype.monochrome {
