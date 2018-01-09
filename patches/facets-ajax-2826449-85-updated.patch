@@ -92,9 +92,18 @@ index eba53e6..9b406f5 100644
    $.fn.replaceFacets = function(data) {
      if (data.replaceWith === '') {
 diff --git a/src/Plugin/facets/url_processor/QueryString.php b/src/Plugin/facets/url_processor/QueryString.php
-index 445a79f..3128d1a 100644
+index 445a79f..4e64692 100644
 --- a/src/Plugin/facets/url_processor/QueryString.php
 +++ b/src/Plugin/facets/url_processor/QueryString.php
+@@ -58,7 +58,7 @@ class QueryString extends UrlProcessorPluginBase {
+
+     $request = $this->request;
+     if ($facet->getFacetSource()->getPath()) {
+-      $request = Request::create($facet->getFacetSource()->getPath());
++      $request = Request::create(ltrim($facet->getFacetSource()->getPath(), '/'));
+     }
+
+     // Grab any route params from the original request.
 @@ -142,9 +142,11 @@ class QueryString extends UrlProcessorPluginBase {
        if ($result_get_params->all() !== [$this->filterKey => []]) {
          $new_url_params = $result_get_params->all();
