@@ -6,6 +6,17 @@
   border: 1px solid $gray-lite;
   font-family: "ProximaNovaRegular", Arial, sans-serif;
 
+  .webny-card-teaser {
+
+    height: 73px;
+    line-height: 18px;
+
+    @include breakpoint($min-tablet) {
+      height: 100px;
+    }
+
+  }
+
   &-wrapper {
     display: flex;
   }
@@ -18,7 +29,7 @@
   &-image {
     display: none;
 
-    @include breakpoint($min-tablet) {
+    @include breakpoint($min-desktop) {
       display: block;
       float: left;
       height: 240px;
@@ -57,9 +68,9 @@
       //display: flex;
       padding: 10px 15px 0;
 
-      @include breakpoint($min-tablet) {
-        height: 184px;
-        box-sizing: border-box;
+      @include breakpoint($min-desktop) {
+        height: 164px;
+        //box-sizing: border-box;
       }
 
       @include breakpoint($min-desktop) {
@@ -73,8 +84,8 @@
       border-right: 1px solid $gray-lite;
       margin-right: 20px;
 
-      @include breakpoint($min-tablet) {
-        margin-right: 0;
+      @include breakpoint($min-desktop) {
+        //margin-right: 0;
       }
 
       @include breakpoint($min-desktop) {
@@ -88,10 +99,13 @@
     }
 
     &__details-right {
-      padding-top: 10px;
+      padding-top: 20px;
       flex-basis: 60%;
 
-      @include breakpoint($min-desktop) {
+      @include breakpoint($min-tablet) {
+        padding-top: 0px;
+      }
+      @include breakpoint($min-wide) {
         padding-top: 20px;
       }
     }
@@ -170,6 +184,7 @@
 
   .description {
     line-height: 1.1;
+    height: 100px;
   }
 
   .event-date__wrapper {
@@ -194,6 +209,10 @@
     .day-month-wrapper {
       padding-bottom: 15px;
 
+      @include breakpoint($min-mobile) {
+        padding-bottom: 5px;
+      }
+
       @include breakpoint($min-wide) {
         padding-bottom: 20px;
       }
@@ -214,10 +233,21 @@
       &-wrapper {
         margin-top: 10px;
         padding-top: 10px;
+        display: flex;
+
+
+        @include breakpoint($min-tablet) {
+          padding: 5px 20px;
+        }
+
+        @include breakpoint($min-desktop) {
+          padding: 5px 20px;
+        }
 
         @include breakpoint($min-wide){
           margin-top: 20px;
           padding-top: 20px;
+          padding-left: 0;
         }
       }
     }
@@ -271,6 +301,8 @@
     margin: 1px 0 -1px 0;    
     background-color: $color-mono-lt;
     border: 1px solid $gray-lite;
+    border-left: 0;
+    border-right: 0;
 
     @include breakpoint($min-mobile) {
       padding: 10px 43px;

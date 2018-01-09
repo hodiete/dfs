@@ -21,7 +21,7 @@ dependencies:
     - field.field.node.webny_page.field_webny_page_vis_options
     - node.type.webny_page
   module:
-    - text
+    - smart_trim
     - user
 id: node.webny_page.teaser
 targetEntityType: node
@@ -37,11 +37,20 @@ content:
       link: false
     third_party_settings: {  }
   field_webny_page_description:
-    type: text_default
+    type: smart_trim
     weight: 4
     region: content
     label: hidden
-    settings: {  }
+    settings:
+      trim_length: '130'
+      trim_type: chars
+      trim_suffix: ...
+      more_link: '0'
+      more_text: More
+      trim_options:
+        text: 0
+      more_class: more-link
+      summary_handler: full
     third_party_settings: {  }
   field_webny_page_image:
     type: entity_reference_entity_view
