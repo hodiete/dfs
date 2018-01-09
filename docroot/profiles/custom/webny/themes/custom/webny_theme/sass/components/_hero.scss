@@ -740,7 +740,7 @@ $hero-event-bkgd-transparent-black: $bkgd-black-50 !default;
         right: 0;
         padding: 20px 50px 15px;
         margin-top: 0;
-        height: 385px;
+        height: 427px;
         min-width: 150px;
 
         .day-month-wrapper {
@@ -774,12 +774,25 @@ $hero-event-bkgd-transparent-black: $bkgd-black-50 !default;
         }
 
       }
-      
+
     }
     // Reset Event Hero height on Tablet
-    .hero-no-image.hero-event {
-      height: 385px;
+    .hero-no-image.hero-event,
+    .hero-has-image.hero-event{
+      min-height: 427px;
     }
+
+    .hero-has-image .hero-bkg {
+      background: url("../icons/bkg-gradient.png") repeat-y scroll left top !important;
+      height: 100%;
+      opacity: 0.9;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 2;
+    }
+
     //Event transparent background - black - without an image
     .hero-event--date-block{
       background: $hero-event-bkgd-transparent-black;
@@ -790,6 +803,13 @@ $hero-event-bkgd-transparent-black: $bkgd-black-50 !default;
       padding: 0;
       width: 100%;
     }
+    .hero-event--inner {
+      &.hero-has-image-content {
+        position: absolute;
+        background-color: transparent;
+      }
+    }
+
     //Event transparent background - black - with an image
     .hero-inner.hero-event--inner.hero-has-image-content{
       .hero-event--date-block{
