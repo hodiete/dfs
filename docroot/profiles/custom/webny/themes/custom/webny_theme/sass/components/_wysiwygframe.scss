@@ -52,7 +52,19 @@ $wysiwyg-frame-text-color: $color-mono-black !default;
 // I'm not setting text-align center on the body field because they want the left, right, center and justify wysiwyg buttons and this text-align would override that 
 .wysiwyg--field-webny-wysiwyg-body {
   color: $wysiwyg-frame-text-color;
-  font-size: $frame-base-font-size;
+  font-size: 16px;
   line-height: $frame-base-line-height;
+}
+
+// ######################################################################### //
+/* TABLET VIEW */
+@media (min-width: 30em) {
+  .wysiwyg--field-webny-wysiwyg-body {
+    font-size: 18px;
+  }
+
+  .landing-paragraphs .wysiwyg--field-webny-wysiwyg-body {
+    font-size: 16px;
+  }
 }
 

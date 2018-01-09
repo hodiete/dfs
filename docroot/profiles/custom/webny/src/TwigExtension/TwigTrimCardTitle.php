@@ -38,6 +38,6 @@ class TwigTrimCardTitle extends \Twig_Extension {
     // Look for the last space character and trim to there so words are not cut off.
     $output = substr($output, 0, strrpos($output, ' '));
 
-    return $string . " ...";
+    return $output . " ...";
   }
 }
