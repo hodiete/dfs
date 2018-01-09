@@ -48,7 +48,7 @@
           }
 
         }, {
-          offset: 300
+          offset: 0
         });
 
         // =====================================================================
@@ -74,7 +74,7 @@
 
         // =====================================================================
         // WAYPOINT FUNCTION FOR FIXED RIGHTHAND NAVIGATION -- HEADER TRIGGER
-        $('.gp-next-section').waypoint(function (direction) {
+        $('.next-section').waypoint(function (direction) {
 
           // REMOVE ALL ACTIVE CALLOUT SECTIONS
           $('.webny-callouts-section').removeClass('activeCalloutSection');
@@ -110,7 +110,7 @@
           }
 
         }, {
-          offset: 250
+          offset: 125
         });
 
 
