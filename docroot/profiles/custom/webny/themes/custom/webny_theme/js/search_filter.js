@@ -32,11 +32,19 @@
         window.history.pushState(null, document.title, href_no_params);
       });
 
+      // set filtertoggle based on viewportwidth
+      if ($(window).width() < 1024) {
+        $(sidebarToggleElement).removeClass('hidden');
+      }
+      else {
+        $(sidebarToggleElement).addClass('hidden');
+      }
+
       // Show/hide filter toggle based on viewport width.
       var updateFilter = function () {
         var viewportWidth = $(window).width();
 
-        if (viewportWidth < 768) {
+        if (viewportWidth < 1024) {
           $(sidebarToggleElement).removeClass('hidden');
         }
         else {
