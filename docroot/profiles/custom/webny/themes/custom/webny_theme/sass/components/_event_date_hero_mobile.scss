@@ -1,5 +1,5 @@
-// Base event date & location card styles.
-@mixin event-date-card {
+// Base event date & location.
+@mixin event-date-hero-mobile {
   .day-month-wrapper {
     padding-bottom: 20px;
     text-align: center;
@@ -10,18 +10,31 @@
     .month div,
     .event-year div {
       float: left;
-      width: 65px;
+      width: 85px;
 
       &.dash {
-        width: 25px;
+        width: 60px;
       }
+    }
+
+    .month .start {
+      padding-left: 11px;
+    }
+    .month .end {
+      padding-left: 0px;
+    }
+    .event-year .start-event-year{
+      padding-left: 10px;
+    }
+    .event-year .end-event-year {
+      padding-left: 0px;
     }
   }
 
   .month {
     @include clearfix;
 
-    color: $color-primary;
+    color: $primarygold;
     font-size: 14px;
     font-family: $base-font;
     font-weight: 800;
@@ -51,7 +64,7 @@
     }
 
     .dash {
-      font-size: 15px;
+      font-size: 34px;
       font-weight: 600;
     }
   }
@@ -65,22 +78,18 @@
     font-weight: 600;
 
     div {
-      text-align: center;
+      text-align: left;
     }
 
     .dash {
       color: transparent;
     }
 
-    .start-event-year {
-      width: 50px !important;
-    }
-    .end-event-year {
-      width: 83px !important;
-    }
   }
 
+
   .time {
+    color: #fff;
     font-family: $base-font;
     font-size: 13px;
     line-height: 16px;
@@ -89,7 +98,7 @@
     @include icon(before, fa-clock);
 
     &::before {
-      color: $color-secondary;
+      color: $medblue;
       display: inline-block;
       font-size: 13px;
       vertical-align: top;
@@ -109,7 +118,7 @@
     @include icon(before, fa-pin);
 
     &::before {
-      color: $color-secondary;
+      color: $medblue;
       float: left;
       font-size: 13px;
       vertical-align: top;
@@ -118,14 +127,10 @@
   }
 
   .address {
-    //float: left;
-    display: inline-block;
+    color: #fff;
+    float: left;
     font-family: $base-font;
     font-size: 13px;
     line-height: 16px;
-    margin: 0px;
-    span.country {
-      display: none;
-    }
   }
 }

@@ -157,7 +157,13 @@
           var name = $(this).attr('href').replace('#', '');
           var clickedFrame = $('*[name="' + name + '"]');
           var dest = 0;
-          dest = clickedFrame.offset().top;
+          // add a conditional to check if the action bar/share bar is fixed/docked. If it isnt docked we need to remove 50px from the calculation as the scroll animation doesn't calculate properly
+          if ($('.actions').css('position') == 'fixed') {
+            dest = clickedFrame.offset().top;
+          } else {
+            dest = clickedFrame.offset().top - 50;
+          }
+
 
           // remove all active classes from li's
           $('#toc-sidebar ul li').each(function () {
@@ -334,7 +340,7 @@
             }
           });
         }
-      }, {offset: function() {
+      }, {offset: function () {
         // dynamically return an offset based on element height
         return -$(this.element).height();
       }});

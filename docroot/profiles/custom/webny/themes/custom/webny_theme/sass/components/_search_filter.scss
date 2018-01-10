@@ -1,6 +1,6 @@
 .webny-search-container .filter-sidebar {
   // Mobile collapsible filter sidebar.
-  @include breakpoint(max-width ($min-tablet - 1)) {
+  @include breakpoint(max-width ($min-desktop - 1)) {
     @include clearfix;
 
     background-color: $exposedbkgrnd;
@@ -232,7 +232,7 @@
     }
   }
 
-  @include breakpoint($min-tablet) {
+  @include breakpoint($min-desktop) {
     .filter-sidebar {
       @include span(3 of 12);
     }
@@ -257,4 +257,22 @@
     }
 
   }
+
+  .js-form-clear-all {
+    color: $medblue;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 14px;
+    margin-left: 6px;
+
+    &:before {
+      content: '\e614';
+      display: inline-block;
+      font-family: $icon-font;
+      font-size: 10px;
+      line-height: 1;
+      margin-right: 2px;
+    }
+  }
+
 }
