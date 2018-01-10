@@ -47,6 +47,8 @@ $hero-transaction-button: $color-primary !default;
 $hero-keyword-bkgd-color: $color-accent-primary !default;
 $hero-keyword-hover-bkgd-color: $color-accent-secondary !default;
 $hero-keyword-text-color: $color-mono-white !default;
+$hero-event-date-color: $color-accent-primary !default;
+$hero-event-bkgd-transparent-black: $bkgd-black-50 !default;
 
 // ************************* //
 // HERO PARTIAL
@@ -59,10 +61,6 @@ $hero-keyword-text-color: $color-mono-white !default;
 // ========================================================================= //
 /* FONTS / SIZES */
 
-.hero-has-image{
-  background-color: $hero-bkgd-color;
-  opacity: .9;
-}
 
 .hero-no-image{
   background-color: $hero-bkgd-color;
@@ -80,6 +78,11 @@ $hero-keyword-text-color: $color-mono-white !default;
   width: 100%;
 }
 
+.hero-no-image.hero-event {
+  background-color: $hero-bkgd-color;
+  height: 455px;
+}
+
 // ========================================================================= //
 /* HERO LAYOUT */
 .hero-layout {
@@ -88,7 +91,8 @@ $hero-keyword-text-color: $color-mono-white !default;
 
   .hero-news-inner,
   .hero-ipage-inner,
-  .hero-landing-inner{
+  .hero-landing-inner,
+  .hero-event--inner{
     padding: 40px 8%;
     position: relative;
     top: 0;
@@ -153,7 +157,8 @@ $hero-keyword-text-color: $color-mono-white !default;
 
   .hero-news-inner,
   .hero-ipage-inner,
-  .hero-landing-inner {
+  .hero-landing-inner,
+  .hero-event--inner{
     position: absolute;
     &.hero-has-image-content {
       //background: none;
@@ -161,7 +166,8 @@ $hero-keyword-text-color: $color-mono-white !default;
   }
 
   .hero-no-image + .hero-ipage-inner,
-  .hero-no-image + .hero-landing-inner {
+  .hero-no-image + .hero-landing-inner,
+  .hero-no-image + .hero-event--inner{
     position: absolute;
   }
 
@@ -247,6 +253,14 @@ $hero-keyword-text-color: $color-mono-white !default;
     padding: 30px 15px 30px 30px;
     & > div > div {
       margin-bottom: 20px;
+    }
+  }
+  .hero-event {
+    .hero-buttons,
+    .hero-keywords {
+      margin-top: 0px;
+      padding: 30px 15px 30px 30px;
+
     }
   }
 
@@ -425,6 +439,65 @@ $hero-keyword-text-color: $color-mono-white !default;
     }
   }
 
+  // Event Hero with dates - mobile Start here.
+  .hero-event {
+    width: auto;
+
+    .hero-content-wrap {
+      position: relative;
+    }
+
+    &--date-block {
+      width: auto;
+      padding: 0;
+      margin-top: 30px;
+
+      @include event-date-hero-mobile;
+
+      .month {
+        color: $hero-keyword-text-color;
+      }
+
+      .day {
+        color: $hero-event-date-color;
+      }
+
+      .event-year {
+        color: $hero-keyword-text-color;
+      }
+
+      .address-wrapper::before,
+      .time::before {
+        color: $hero-event-date-color;
+      }
+      .day-month-wrapper {
+        width: auto;
+      }
+      .address span.country {
+        display:none;
+      }
+    }
+  }
+
+  // Custom height and width for background with image for events
+  .hero-inner.hero-event--inner.hero-has-image-content{
+    min-height: 455px;
+    width: 100%;
+  }
+
+  // Custom margin and padding for event keywords
+  .hero-event--title-block .hero-keywords{
+    margin: 30px 0 0 0;
+    padding: 0;
+  }
+
+  // Custom width for event inner classes to make border-bottom the correct width
+  .hero-inner.hero-event--inner {
+    width: 85%;
+  }
+  // Event Hero with dates - mobile Ends here.
+
+
   // =====================================================================
   // HERO HAS NO IMAGE -- MAKE RELATIVE
 
@@ -541,11 +614,18 @@ $hero-keyword-text-color: $color-mono-white !default;
     width: auto;
   }
 
-} // END HERO-LAYOUT
+}
+
+// END HERO-LAYOUT
 
 // ######################################################################### //
 /* MIN TABLET VIEW */
 @media (min-width: $min-tab) {
+
+  .hero-has-image{
+    background-color: $hero-bkgd-color;
+    opacity: .9;
+  }
 
   .hero-no-image.hero-location {
     background-color: $hero-bkgd-color;
@@ -635,6 +715,109 @@ $hero-keyword-text-color: $color-mono-white !default;
         margin: 0 auto;
       }
     }
+
+    // Event Hero with dates - Tablet
+    .hero-event {
+
+      .hero-content-wrap {
+        position: relative;
+      }
+
+      &--inner {
+        min-height: 0;
+      }
+
+      &--title-block {
+        float: left;
+        width: calc(100% - 350px);
+        margin: 50px 0px 0px 50px;
+      }
+
+      &--date-block {
+        border-left: 1px solid $color-mono-mid;
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding: 20px 50px 15px;
+        margin-top: 0;
+        height: 427px;
+        min-width: 150px;
+
+        .day-month-wrapper {
+          margin-left: 0!important;
+
+        }
+
+        @include event-date
+
+        .month {
+          color: $hero-keyword-text-color;
+        }
+
+        .day {
+          color: $hero-event-date-color;
+        }
+
+        .event-year {
+          color: $hero-keyword-text-color;
+        }
+
+        .address-wrapper::before,
+        .time::before {
+          color: $hero-event-date-color;
+        }
+        .day-month-wrapper {
+          width: auto;
+        }
+        .address span.country {
+          display:none;
+        }
+
+      }
+
+    }
+    // Reset Event Hero height on Tablet
+    .hero-no-image.hero-event,
+    .hero-has-image.hero-event{
+      min-height: 427px;
+    }
+
+    .hero-has-image .hero-bkg {
+      background: url("../icons/bkg-gradient.png") repeat-y scroll left top !important;
+      height: 100%;
+      opacity: 0.9;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 2;
+    }
+
+    //Event transparent background - black - without an image
+    .hero-event--date-block{
+      background: $hero-event-bkgd-transparent-black;
+    }
+
+    .hero-inner.hero-event--inner {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+    }
+    .hero-event--inner {
+      &.hero-has-image-content {
+        position: absolute;
+        background-color: transparent;
+      }
+    }
+
+    //Event transparent background - black - with an image
+    .hero-inner.hero-event--inner.hero-has-image-content{
+      .hero-event--date-block{
+        height:100%;
+        background: $hero-event-bkgd-transparent-black;
+      }
+    }
+
   } // END HERO LAYOUT
 
 } // END TABLET
@@ -659,7 +842,8 @@ $hero-keyword-text-color: $color-mono-white !default;
 
     .hero-news-inner,
     .hero-ipage-inner,
-    .hero-landing-inner{
+    .hero-landing-inner,
+    .hero-event--inner {
       position: absolute;
       &.hero-has-image-content {
         background: none;
@@ -789,6 +973,12 @@ $hero-keyword-text-color: $color-mono-white !default;
       line-height: 60px;
       color: $color-mono-white;
       font-weight: 800;
+    }
+
+    .hero-event {
+      &--title-block {
+        width: calc(100% - 290px);
+      }
     }
 
     // =====================================================================
@@ -957,62 +1147,3 @@ $hero-keyword-text-color: $color-mono-white !default;
   }
 }
 
-// Event Hero with dates.
-.hero-event {
-  background-color: $medblue;
-
-  .hero-background {
-    min-height: 0;
-
-    &.hero-no-image {
-      height: auto;
-    }
-    
-    &.hero-has-image {
-      opacity: 0.8;
-      background-color: transparent;
-    }
-  }
-
-  .hero-content-wrap {
-    position: relative;
-  }
-
-  &--inner {
-    min-height: 0;
-  }
-
-  &--title-block {
-    float: left;
-    width: calc(100% - 290px);
-  }
-
-  &--date-block {
-    border-left: 1px solid $color-mono-mid;
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 280px;
-    height: 100%;
-    padding: 20px 15px 15px;
-
-    @include event-date;
-
-    .month {
-      color: #fff;
-    }
-
-    .day {
-      color: $primaryblue;
-    }
-
-    .event-year {
-      color: $primaryblue;
-    }
-
-    .address-wrapper::before,
-    .time::before {
-      color: $primaryblue;
-    }
-  }
-}
