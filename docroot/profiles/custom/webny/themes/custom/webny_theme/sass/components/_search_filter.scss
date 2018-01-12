@@ -138,6 +138,11 @@
       position: relative;
       padding: 0;
 
+      .facet-item__value {
+        display: block;
+        overflow: hidden;
+      }
+
       &:last-child {
         margin-bottom: 0;
       }
@@ -166,6 +171,7 @@
           font-size: 28px;
           vertical-align: middle;
           margin-right: 10px;
+          float: left;
         }
       }
 
@@ -176,6 +182,7 @@
           color: $color-accent-primary;
           font-family: $icon-font;
           content: "\e61f";
+          float: left;
         }
 
         &.option:active{
