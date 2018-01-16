@@ -4084,6 +4084,27 @@ function webny_configuration_update_8183() {
 }
 
 /**
+ * Permissions for site-admins and site-builder roles to administer the Shield module
+ *
+ * NDD-1377 - Beth
+ */
+function webny_configuration_update_8184() {
+  $config_factory = \Drupal::configFactory();
+  $profile_config = \Drupal::service('webny.profile_config');
+
+  // Import new/changed configuration.
+  $config_to_update = [
+    'user.role.site_admin',
+    'user.role.site_builder'
+  ];
+
+  $profile_config->bulkImport($config_to_update);
+
+  // Clear the config cache.
+  $config_factory->reset();
+}
+
+/**
  * Helper function to enable a Drupal module and print the result.
  *
  * @param string $module_name
