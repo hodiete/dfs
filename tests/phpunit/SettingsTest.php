@@ -31,11 +31,10 @@ class SettingsTest extends TestBase {
    * Test configuration for production environment on ACE.
    */
   public function testProd() {
-
     $this->setupParams('prod');
     require $this->drupalRoot . '/sites/default/settings.php';
 
-    $this->assertContains($config['system.logging']['error_level'], 'hide');
+    $this->assertContains($GLOBALS['config']['system.logging']['error_level'], 'hide');
   }
 
   /**
