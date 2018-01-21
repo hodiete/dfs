@@ -9,9 +9,6 @@ project:
     protocol: http
     hostname: '${project.machine_name}.dev'
   acquia_subname: acsfdev
-  themes:
-    - webny_theme
-  hash_salt: NZ4pGCYwwI0kPGr5KwDkK1IgC2XOl8jFURj7q8lgAUBw6xxRXlWJNZZ
 git:
   default_branch: develop
   remotes:
@@ -26,26 +23,6 @@ drush:
     remote-ig-prod: 01live.ig
     remote-wcb-prod: 01live.wcb
   default_alias: '${drush.aliases.local}'
-target-hooks:
-  frontend-setup:
-    dir: '${docroot}/profiles/custom/webny/themes/custom/webny_theme'
-    command: 'npm run install-webny_theme && npm rebuild node-sass'
-  frontend-build:
-    dir: '${docroot}/profiles/custom/webny/themes/custom/webny_theme'
-    command: 'npm run build'
-  post-deploy-build:
-    dir: '${docroot}'
-    command: 'echo ''No post-deploy build configured.'''
-  post-setup-build:
-    dir: '${docroot}'
-    command: 'echo ''No post-setup build configured.'''
-import: '${repo.root}/blt/custom/phing/tasks/build.xml'
-# Configuration management options, such as core CM or features.
-cm:
-  features:
-    bundle: webny
-    # A core feature is overridden, so set this to false.
-    no-overrides: 'false'
 modules:
   local:
     enable: [dblog, devel, seckit, views_ui]
@@ -62,14 +39,30 @@ modules:
   prod:
     enable: [acquia_connector, shield]
     uninstall: [devel, field_ui, views_ui]
-  # Deploy will be used whenever the code update is run on ACSF.
   deploy:
     enable: [acquia_connector, shield]
     uninstall: [devel, field_ui, views_ui]
+target-hooks:
+  frontend-setup:
+    dir: '${docroot}/profiles/custom/webny/themes/custom/webny_theme'
+    command: 'npm run install-webny_theme && npm rebuild node-sass'
+  frontend-build:
+    dir: '${docroot}/profiles/custom/webny/themes/custom/webny_theme'
+    command: 'npm run build'
+  post-deploy-build:
+    dir: '${docroot}'
+    command: 'echo ''No post-deploy build configured.'''
+  post-setup-build:
+    dir: '${docroot}'
+    command: 'echo ''No post-setup build configured.'''
+cm:
+  features:
+    bundle: webny
+    no-overrides: 'false'
+  strategy: features
 blt:
   update:
     ignore-existing-file: '${repo.root}/scripts/blt/ignore-existing.txt'
-hosting: acsf
 phpunit:
   failures: false
 disable-targets:
@@ -79,3 +72,4 @@ behat:
   paths:
     - '${repo.root}/tests/behat'
   tags: ~@development
+  web-driver: selenium
