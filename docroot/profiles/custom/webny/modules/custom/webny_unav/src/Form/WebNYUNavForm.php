@@ -34,6 +34,7 @@ class WebNYUNavForm extends ConfigFormBase {
 
         $form['webny_alt_unav_fieldset'] = $this->webnyAltUNavFieldsetField();
         $form['webny_alt_unav_fieldset']['webny_alt_unav_translate'] = $this->_webny_alt_unav_translation_field();
+        $form['webny_alt_unav_fieldset']['webny_alt_unav_search'] = $this->_webny_alt_unav_search_field();
 
         return $form;
     }
@@ -55,6 +56,7 @@ class WebNYUNavForm extends ConfigFormBase {
         $config->set('webny_unav.webny_unav_auto', $form_state->getValue('webny_unav_auto'));
         $config->set('webny_unav.webny_alt_unav_auto', $form_state->getValue('webny_alt_unav_auto'));
         $config->set('webny_unav.webny_alt_unav_translate', $form_state->getValue('webny_alt_unav_translate'));
+        $config->set('webny_unav.webny_alt_unav_search', $form_state->getValue('webny_alt_unav_search'));
         $config->save();
         return parent::submitForm($form, $form_state);
     }
@@ -148,6 +150,23 @@ class WebNYUNavForm extends ConfigFormBase {
       '#default_value' => $config->get('webny_unav.webny_alt_unav_translate'),
       '#multiple' => FALSE,
       '#description' => t('Select if you would like to display a translate option in the Alternative Universal Navigation'),
+    );
+  }
+
+  /**
+   * NYS Alternative Universal Navigation search option
+   *
+   * @return array
+   *   Form API element for field
+   */
+  public function _webny_alt_unav_search_field() {
+    $config = $this->config('webny_unav.settings');
+    return array(
+      '#type' => 'checkbox',
+      '#title' => t('Enable search for the NYS Alternative Universal Navigation'),
+      '#default_value' => $config->get('weby_unav.webny_alt_unav_search'),
+      '#multiple' => FALSE,
+      '#description' => t('Select if you would like to display search on the Alternative Universal Navigation'),
     );
   }
     
