@@ -79,8 +79,11 @@
          {% endif %}
 
                 {# DATE / LOCATION #}
-                <div class="hero-published-date">
-                    {{ content.field_webny_news_date }} <div class="hero-location">{{ content.field_webny_news_location }}</div>
+                <div class="hero-published-date hero-news-date">
+                    {{ content.field_webny_news_date }} 
+                    {% if node.field_webny_news_location.value is not null and node.field_webny_news_location.value is not empty  %}
+                      | <div class="hero-location">{{ content.field_webny_news_location }}</div>
+                    {% endif %}
                 </div>
 
                 {# HERO TITLE #}
