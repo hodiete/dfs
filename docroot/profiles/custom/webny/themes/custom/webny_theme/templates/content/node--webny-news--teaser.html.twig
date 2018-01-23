@@ -1,10 +1,20 @@
 {% extends 'profiles/custom/webny/themes/custom/webny_theme/templates/content/webny--teaser-base.html.twig' %}
 
-{% if (node.field_webny_news_short_title.value is not empty and node.field_webny_news_short_title.value is not null) %}
-    {% set title = content.field_webny_news_short_title %}
-{% else %}
-    {% set title = node.label %}
-{% endif %}
+{% block title %}
+    {% if (node.field_webny_news_short_title.value is not empty and node.field_webny_news_short_title.value is not null) %}
+        {% set title = content.field_webny_news_short_title %}
+    {% else %}
+        {% set title = node.label %}
+    {% endif %}
+
+    <a href="{{ url }}">
+        {% if title|length <= 65 %}
+            {{ title }}
+        {% else %}
+            {{ title|slice(0, 65) ~ '...' }}
+        {% endif %}
+    </a>
+{% endblock title %}
 
 {% block hero_image %}
     {% if not content.field_webny_news_image.0 %}
