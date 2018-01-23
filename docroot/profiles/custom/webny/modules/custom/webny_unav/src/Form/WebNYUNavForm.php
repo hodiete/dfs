@@ -32,6 +32,9 @@ class WebNYUNavForm extends ConfigFormBase {
         $form['webny_unav_fieldset']['webny_unav_auto'] = $this->_webny_unav_auto_field();
         $form['webny_unav_fieldset']['webny_alt_unav_auto'] = $this->_webny_alt_unav_auto_field();
 
+        $form['webny_alt_unav_fieldset'] = $this->webnyAltUNavFieldsetField();
+        $form['webny_alt_unav_fieldset']['webny_alt_unav_translate'] = $this->_webny_alt_unav_translation_field();
+
         return $form;
     }
 
@@ -51,6 +54,7 @@ class WebNYUNavForm extends ConfigFormBase {
         $config = \Drupal::configFactory()->getEditable('webny_unav.settings');
         $config->set('webny_unav.webny_unav_auto', $form_state->getValue('webny_unav_auto'));
         $config->set('webny_unav.webny_alt_unav_auto', $form_state->getValue('webny_alt_unav_auto'));
+        $config->set('webny_unav.webny_alt_unav_translate', $form_state->getValue('webny_alt_unav_translate'));
         $config->save();
         return parent::submitForm($form, $form_state);
     }
@@ -74,7 +78,7 @@ class WebNYUNavForm extends ConfigFormBase {
     public function webnyNYUNavFieldsetField() {
       return array(
         '#type' => 'fieldset',
-        '#title' => t('NYS Universal navigation options'),
+        '#title' => t('NYS Universal navigation Insertion options'),
         '#collapsible' => FALSE,
         '#collapsed' => FALSE,
       );
@@ -108,11 +112,43 @@ class WebNYUNavForm extends ConfigFormBase {
      $config = $this->config('webny_unav.settings');
      return array(
        '#type' => 'checkbox',
-       '#title' => t('Enable the NYS Alternate Universal Navigation'),
+       '#title' => t('Enable the NYS Alternative Universal Navigation'),
        '#default_value' => $config->get('webny_unav.webny_alt_unav_auto'),
        '#multiple' => FALSE,
        '#description' => t('Select if the alternate universal navigation header is to be automatically inserted into the page.  If not selected, make sure to use the WebNY Alternate Universal Navigation block'),
      );
    }
+
+  /**
+   * NYS Alternative Universal Navigation options fieldset field
+   *
+   * @return array
+   *   Form API element for field
+   */
+  public function webnyAltUNavFieldsetField() {
+    return array(
+      '#type' => 'fieldset',
+      '#title' => t('NYS Alternative Universal Navigation Options'),
+      '#collapsible' => FALSE,
+      '#collapsed' => FALSE,
+    );
+  }
+
+  /**
+   * NYS Alternative Universal Navigation translation option
+   *
+   * @return array
+   *   Form API element for field
+   */
+  public function _webny_alt_unav_translation_field() {
+    $config = $this->config('webny_unav.settings');
+    return array(
+      '#type' => 'checkbox',
+      '#title' => t('Enable translate for the NYS Alternative Universal Navigation'),
+      '#default_value' => $config->get('webny_unav.webny_alt_unav_translate'),
+      '#multiple' => FALSE,
+      '#description' => t('Select if you would like to display a translate option in the Alternative Universal Navigation'),
+    );
+  }
     
 }
