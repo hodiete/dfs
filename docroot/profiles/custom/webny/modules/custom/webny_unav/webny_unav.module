@@ -56,3 +56,10 @@ function webny_unav_page_bottom(&$page_bottom) {
         '#theme' => 'webny_unav_footer',
     );
 }
+
+/**
+ * Function webny_unav_preprocess.
+ */
+function webny_unav_preprocess(&$variables) {
+  $variables['#attached']['library'][] = 'webny_unav/webny-unav';
+}
