@@ -111,7 +111,7 @@ class WebNYUNavForm extends ConfigFormBase {
        '#title' => t('Enable the NYS Alternate Universal Navigation'),
        '#default_value' => $config->get('webny_unav.webny_alt_unav_auto'),
        '#multiple' => FALSE,
-       '#description' => t('Select if the alternate universal navigation header and footer are to be automatically inserted into the page.  If not selected, make sure to use the WebNY Alternate Universal Navigation blocks'),
+       '#description' => t('Select if the alternate universal navigation header is to be automatically inserted into the page.  If not selected, make sure to use the WebNY Alternate Universal Navigation block'),
      );
    }
     
