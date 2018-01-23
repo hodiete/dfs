@@ -30,6 +30,7 @@ class WebNYUNavForm extends ConfigFormBase {
         $config = $this->config('webny_unav.settings');
         $form['webny_unav_fieldset'] = $this->webnyNYUNavFieldsetField();
         $form['webny_unav_fieldset']['webny_unav_auto'] = $this->_webny_unav_auto_field();
+        $form['webny_unav_fieldset']['webny_alt_unav_auto'] = $this->_webny_alt_unav_auto_field();
 
         return $form;
     }
@@ -95,5 +96,22 @@ class WebNYUNavForm extends ConfigFormBase {
             '#description' => t('Select if the universal navigation header and footer are to be automatically inserted into the page.  If not selected, make sure to use the WebNY Universal Navigation blocks'),
         );
     }
+
+   /**
+    * NYS Universal Alternate Navigation automatic insertion field.
+    *
+    * @return array
+    *   Form API element for field.
+    */
+   public function _webny_alt_unav_auto_field() {
+     $config = $this->config('webny_unav.settings');
+     return array(
+       '#type' => 'checkbox',
+       '#title' => t('Enable the NYS Alternate Universal Navigation'),
+       '#default_value' => $config->get('webny_unav.webny_alt_unav_auto'),
+       '#multiple' => FALSE,
+       '#description' => t('Select if the alternate universal navigation header and footer are to be automatically inserted into the page.  If not selected, make sure to use the WebNY Alternate Universal Navigation blocks'),
+     );
+   }
     
 }
