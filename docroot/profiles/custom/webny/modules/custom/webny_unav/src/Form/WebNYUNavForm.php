@@ -50,6 +50,7 @@ class WebNYUNavForm extends ConfigFormBase {
     {
         $config = \Drupal::configFactory()->getEditable('webny_unav.settings');
         $config->set('webny_unav.webny_unav_auto', $form_state->getValue('webny_unav_auto'));
+        $config->set('webny_unav.webny_alt_unav_auto', $form_state->getValue('webny_alt_unav_auto'));
         $config->save();
         return parent::submitForm($form, $form_state);
     }
