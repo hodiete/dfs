@@ -77,11 +77,16 @@ function webny_unav_page_bottom(&$page_bottom) {
 function webny_unav_preprocess(&$variables) {
   $moduleHandler = \Drupal::service('module_handler');
   if ($moduleHandler->moduleExists('webny_global_nav')) {
-    $config = \Drupal::config('webny_global_nav.settings');
-    $variables['agencyname'] = $config->get('webny_global_nav.agencyname');
+    $globalNavConfig = \Drupal::config('webny_global_nav.settings');
+    $variables['agencyname'] = $globalNavConfig->get('webny_global_nav.agencyname');
   } else {
     $variables['agencyname'] = '';
   }
+
+  $unavConfig = \Drupal::config('webny_unav.settings');
+  $variables['gsa_client'] = $unavConfig->get('webny_unav.webny_alt_unav_search_client');
+  $variables['gsa_collection'] = $unavConfig->get('webny_unav.webny_alt_unav_search_collection');
+
   $variables['#attached']['library'][] = 'webny_unav/webny-unav';
 
 }
