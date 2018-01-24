@@ -39,6 +39,7 @@ class WebNYUNavForm extends ConfigFormBase {
         $form['webny_alt_unav_fieldset']['webny_alt_unav_search_fieldset'] = $this->webnyAltUNavSearchFieldsetField();
         $form['webny_alt_unav_fieldset']['webny_alt_unav_search_fieldset']['webny_alt_unav_search_client'] = $this->_webny_alt_unav_search_client_field();
         $form['webny_alt_unav_fieldset']['webny_alt_unav_search_fieldset']['webny_alt_unav_search_collection'] = $this->_webny_alt_unav_search_collection_field();
+        $form['webny_alt_unav_fieldset']['webny_alt_unav_search_fieldset']['webny_alt_unav_search_proxy_stylesheet'] = $this->_webny_alt_unav_search_proxy_stylesheet_field();
 
         return $form;
     }
@@ -63,6 +64,7 @@ class WebNYUNavForm extends ConfigFormBase {
         $config->set('webny_unav.webny_alt_unav_search', $form_state->getValue('webny_alt_unav_search'));
         $config->set('webny_unav.webny_alt_unav_search_client', $form_state->getValue('webny_alt_unav_search_client'));
         $config->set('webny_unav.webny_alt_unav_search_collection', $form_state->getValue('webny_alt_unav_search_collection'));
+        $config->set('webny_unav.webny_alt_unav_search_proxy_stylesheet', $form_state->getValue('webny_alt_unav_search_proxy_stylesheet'));
         $config->save();
         return parent::submitForm($form, $form_state);
     }
@@ -220,6 +222,22 @@ class WebNYUNavForm extends ConfigFormBase {
       '#title' => t('GSA Collection'),
       '#default_value' => $config->get('webny_unav.webny_alt_unav_search_collection'),
       '#description' => t('Enter your GSA collection name'),
+    );
+  }
+
+  /**
+   * NYS Alternative Universal Navigation search proxy stylesheet data
+   *
+   * @return array
+   *   Form API element for field
+   */
+  public function _webny_alt_unav_search_proxy_stylesheet_field() {
+    $config = $this->config('webny_unav.settings');
+    return array(
+      '#type' => 'textfield',
+      '#title' => t('GSA Proxy Stylesheet'),
+      '#default_value' => $config->get('webny_unav.webny_alt_unav_search_proxy_stylesheet'),
+      '#description' => t('Enter your GSA proxy stylesheet'),
     );
   }
     
