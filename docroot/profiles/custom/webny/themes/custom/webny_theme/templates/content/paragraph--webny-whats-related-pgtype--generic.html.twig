@@ -36,7 +36,7 @@ paragraph.bundle|clean_class,
 {% block paragraph %}
     <section id="{{ 'toc_' ~ paragraph.id() }}" rel="{{ gp_status }}" class="toc-para {{ paragraph.bundle() }} {{ gp_enabled }}" >
     <div class="webny_whats_related_pgtype">
-
+      <span class="toc-mobile-spacer"></span>
         <h3{{ attributes.addClass('webny-whats-related-title') }}>{{ paragraph.field_webny_whats_related_title.value }}</h3>
 
         {% for i in 0..2 %}
