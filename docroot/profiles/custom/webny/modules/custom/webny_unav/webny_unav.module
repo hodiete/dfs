@@ -76,4 +76,6 @@ function webny_unav_page_bottom(&$page_bottom) {
  */
 function webny_unav_preprocess(&$variables) {
   $variables['#attached']['library'][] = 'webny_unav/webny-unav';
+  $config = \Drupal::config('webny_global_nav.settings');
+  $variables['agencyname'] = $config->get('webny_global_nav.agencyname');
 }
