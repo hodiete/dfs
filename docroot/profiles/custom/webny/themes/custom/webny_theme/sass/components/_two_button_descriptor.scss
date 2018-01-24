@@ -65,17 +65,12 @@ $tbd-button-hover-back-color-monochrome:  $color-mono-black !default;
 }
 
 .descriptor {
-  display: inline-block;
-  width: 95%;
-  padding: 0 1%;
   overflow: auto;
   vertical-align: top;
   text-align: center;
 }
 
 .descriptor-wrapper {
-  display:inline-block;
-  width: 80%;
 }
 
 .descriptor--field-webny-tbd-title {
@@ -224,12 +219,11 @@ $tbd-button-hover-back-color-monochrome:  $color-mono-black !default;
 
       &:nth-of-type(2n+2) {
         padding-left: 0;
-        margin-right: 20px;
       }
 
       .descriptor1-wrapper,
       .descriptor2-wrapper {
-        margin-bottom: 90px;
+        margin-bottom: 50px;
         min-height: 290px;
         flex: 10;
       }
@@ -241,10 +235,12 @@ $tbd-button-hover-back-color-monochrome:  $color-mono-black !default;
           padding-left: 20px;
         }
 
+      .descriptor1-wrapper {
+        padding-right: 20px;
+      }
+
         .descriptor--field-webny-tbd-descriptortitle1,
         .descriptor--field-webny-tbd-descriptortitle2 {
-          // flex: 1;
-          min-height: 80px; // this is 2x line height
           margin-top: 0;
           margin-bottom: 0;
           padding-left: 0;
@@ -316,8 +312,6 @@ $tbd-button-hover-back-color-monochrome:  $color-mono-black !default;
       display: flex;
       flex: 1;
       flex-flow: column nowrap;
-      padding: 1.5%;
-     // margin-bottom: 30px;
       align-content: flex-end;
       display: inline-block\9;
       float: left\9;
@@ -332,8 +326,6 @@ $tbd-button-hover-back-color-monochrome:  $color-mono-black !default;
 
       .descriptor--field-webny-tbd-descriptortitle1,
       .descriptor--field-webny-tbd-descriptortitle2 {
-        // flex: 1;
-        min-height: 80px; // this is 2x line height
       }
 
       .descriptor--field-webny-tbd-descriptor1,
@@ -347,6 +339,7 @@ $tbd-button-hover-back-color-monochrome:  $color-mono-black !default;
       .descriptor--field-webny-tbd-cta1,
       .descriptor--field-webny-tbd-cta2 {
         flex: 1;
+        margin: 0 20px;
 
         a {
           min-width: 175px;
