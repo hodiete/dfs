@@ -170,7 +170,7 @@ class WebNYUNavForm extends ConfigFormBase {
     return array(
       '#type' => 'checkbox',
       '#title' => t('Enable search for the NYS Alternative Universal Navigation'),
-      '#default_value' => $config->get('weby_unav.webny_alt_unav_search'),
+      '#default_value' => $config->get('webny_unav.webny_alt_unav_search'),
       '#multiple' => FALSE,
       '#description' => t('Select if you would like to display search on the Alternative Universal Navigation'),
     );
@@ -202,7 +202,7 @@ class WebNYUNavForm extends ConfigFormBase {
     return array(
       '#type' => 'textfield',
       '#title' => t('GSA Client'),
-      '#default_value' => $config->get('weby_unav.webny_alt_unav_search_client'),
+      '#default_value' => $config->get('webny_unav.webny_alt_unav_search_client'),
       '#description' => t('Enter your GSA client name'),
     );
   }
@@ -218,7 +218,7 @@ class WebNYUNavForm extends ConfigFormBase {
     return array(
       '#type' => 'textfield',
       '#title' => t('GSA Collection'),
-      '#default_value' => $config->get('weby_unav.webny_alt_unav_search_collection'),
+      '#default_value' => $config->get('webny_unav.webny_alt_unav_search_collection'),
       '#description' => t('Enter your GSA collection name'),
     );
   }
