@@ -57,24 +57,14 @@ function webny_unav_page_bottom(&$page_bottom) {
     // Skip menu if not Auto or on administrative page.
     $config = \Drupal::config('webny_unav.settings');
     $unav_auto = $config->get('webny_unav.webny_unav_auto');
-    $alt_unav_auto = $config->get('webny_unav.webny_alt_unav_auto');
     $is_admin = \Drupal::service('router.admin_context')->isAdminRoute();
-    // UNAV OFF, ALT UNAV OFF, IS ADMIN RETURN NOTHING
-    if ($unav_auto == '0' || $alt_unav_auto == '0' || $is_admin) {
+    if ($unav_auto == '0' || $is_admin) {
         return;
-    // UNAV ON
-    } else if ($unav_auto == '1') {
-      $page_bottom['page_bottom']['webny_unav'] = array(
+    }
+    $page_bottom['page_bottom']['webny_unav'] = array(
         '#weight' => 1000,
         '#theme' => 'webny_unav_footer',
-      );
-    // ALT UNAV ON
-    } else if ($alt_unav_auto == '1') {
-      $page_bottom['page_bottom']['webny_unav'] = array(
-        '#weight' => 1000,
-        '#theme' => 'webny_alt_unav_footer',
-      );
-    }
+    );
 }
 
 /**
