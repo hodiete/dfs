@@ -1,3 +1,31 @@
 <div id="alternative-universal-navigation" class="alternative-universal-container">
-
+    <div class="alternative-unav-agency-name">{{ agencyname }}</div>
+    {% if gsa == '1' %}
+        {% set site_url = url("<front>") %}
+        {% if 'ny.gov' in site_url|render|render %}
+            {# production environment based on site_url including ny.gov #}
+            {% set gsa_action = 'http://search.its.ny.gov/search' %}
+        {% else %}
+            {# non-production environment #}
+            {% set gsa_action = 'http://qa.search.its.ny.gov/search' %}
+        {% endif %}
+        <div class="alternative-unav-gsa">
+            {{ site_url }}
+            <form action="{{ gsa_action }}" method="get">
+                <input type="text" name="q" />
+                <input type="hidden" name="client" value="{{ gsa_client }}">
+                <input type="hidden" name="output" value="xml_no_dtd">
+                <input type="hidden" name="proxystylesheet" value="{{ gsa_proxy_stylesheet }}">
+                <input type="hidden" name="sort" value="date:D:L:d1">
+                <input type="hidden" name="wc" value="200">
+                <input type="hidden" name="wc_mc" value="1">
+                <input type="hidden" name="oe" value="UTF-8">
+                <input type="hidden" name="ie" value="UTF-8">
+                <input type="hidden" name="ud" value="1">
+                <input type="hidden" name="site" value="{{ gsa_collection }}">
+                <input type="hidden" name="sitesearch" value="{{ site_url }}" />
+                <input type="submit" name="submit" />
+            </form>
+        </div>
+    {% endif %}
 </div>
