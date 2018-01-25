@@ -2,6 +2,15 @@
 
 
 {% set title = node.label %}
+{% block title %}
+    <a href="{{ url }}">
+        {% if title|length <= 65 %}
+            {{ title }}
+        {% else %}
+            {{ title|slice(0, 65) ~ '...' }}
+        {% endif %}
+    </a>
+{% endblock title %}
 
 {% block hero_image %}
     <div class="list-fallback-img">{{ source('profiles/custom/webny/themes/custom/webny_theme/images/NYGov_Report.svg') }}</div>
