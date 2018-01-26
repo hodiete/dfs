@@ -39,6 +39,7 @@ modules:
   prod:
     enable: [acquia_connector, shield]
     uninstall: [devel, field_ui, views_ui]
+  # Deploy will be used whenever the code update is run on ACSF.
   deploy:
     enable: [acquia_connector, shield]
     uninstall: [devel, field_ui, views_ui]
@@ -59,6 +60,7 @@ cm:
   allow-overrides: 'true'
   features:
     bundle: webny
+    # A core feature is overridden, so set this to false.
     no-overrides: 'false'
   strategy: features
 blt:
