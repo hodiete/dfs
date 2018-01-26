@@ -1,9 +1,9 @@
 # Update the hostname to the local development environment hostname.
-vagrant_hostname: webny.dev
+vagrant_hostname: webny.ld
 vagrant_machine_name: webny
 
 # Set the IP address so it doesn't conflict with other Drupal VM instances.
-vagrant_ip: 192.168.202.92
+vagrant_ip: 192.168.188.144
 
 # Use Ubuntu 16.04 LTS to match Acquia Cloud environments.
 vagrant_box: geerlingguy/ubuntu1604
@@ -55,6 +55,7 @@ installed_extras:
   - nodejs
   - selenium
   - xdebug
+  - memcached
 
 # PHP 7.1 is recommended for Acquia Cloud: https://docs.acquia.com/acquia-cloud/manage/php#php-version).
 php_version: "7.1"

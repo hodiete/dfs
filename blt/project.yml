@@ -7,7 +7,7 @@ project:
     contrib: false
   local:
     protocol: http
-    hostname: '${project.machine_name}.dev'
+    hostname: '${project.machine_name}.ld'
   acquia_subname: acsfdev
 git:
   default_branch: develop
@@ -56,6 +56,7 @@ target-hooks:
     dir: '${docroot}'
     command: 'echo ''No post-setup build configured.'''
 cm:
+  allow-overrides: 'true'
   features:
     bundle: webny
     no-overrides: 'false'
@@ -73,3 +74,7 @@ behat:
     - '${repo.root}/tests/behat'
   tags: ~@development
   web-driver: selenium
+setup:
+  drupal:
+    install:
+      import-config: false

@@ -119,7 +119,7 @@ gulp.task('build:dev', ['styles', 'styleguide'], function (cb) {
 // Launch the Server
 // ##########.
 gulp.task('browser-sync', ['styles'], function() {
-  browserSync.init({proxy: "webny.dev"});
+  browserSync.init({proxy: "webny.ld"});
 
   gulp.watch(options.theme.sass + '**/*.scss', ['styles']);
   gulp.watch(options.theme.css + '**/*.css').on('change', browserSync.reload);
