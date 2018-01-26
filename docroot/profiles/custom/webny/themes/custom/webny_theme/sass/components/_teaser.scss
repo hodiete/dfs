@@ -203,11 +203,15 @@
     flex-direction: column;
 
     @include breakpoint($min-wide) {
-      flex-direction: row;
+      flex-direction: column;
     }
 
     .day-month-wrapper {
-      padding-bottom: 15px;
+      padding-bottom: 10px;
+      width: auto;
+      margin: auto;
+      justify-content: center;
+
 
       @include breakpoint($min-mobile) {
         padding-bottom: 5px;
@@ -263,10 +267,25 @@
 
   .month {
     text-align: center;
+    display: flex;
+    justify-content: row;
   }
 
   .day {
     text-align: center;
+    display: flex;
+    justify-content: row;
+  }
+
+  .event-year {
+    text-align: center;
+    display: flex;
+    justify-content: row;
+
+    .start-event-year,
+    .end-event-year {
+      font-size: 13px;
+    }
   }
 
   .meridiem {
