@@ -295,6 +295,8 @@
 
   .address-wrapper {
     padding-left: 20px;
+    display: flex;
+    flex-direction: column;
 
     @include breakpoint($min-wide) {
       padding: 0;
@@ -303,6 +305,11 @@
     .venue-name {
       font-size: 13px;
       line-height: 16px;
+      background-color: #00BCD4;
+    }
+
+    .venue-name>div {
+      color: #000;
     }
 
     .city-state-zip {
