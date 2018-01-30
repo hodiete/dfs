@@ -742,7 +742,7 @@ display:
           break_phrase: false
           not: false
           plugin_id: search_api
-      use_ajax: false
+      use_ajax: true
       exposed_form:
         type: basic
         options:
@@ -764,7 +764,7 @@ display:
           empty: false
           tokenize: false
           content:
-            value: '<span class="results-total-number">[view:total-rows]</span> results found [view:webny-filter-args]'
+            value: '<span class="results-total-number">[view:total-rows]</span> results found [view:webny-filter-args] [view:webny-filter-clear]'
             format: full_html
           plugin_id: text
       empty:
@@ -778,7 +778,7 @@ display:
           empty: true
           tokenize: false
           content:
-            value: '<span class="results-total-number">[view:total-rows]</span> results found [view:webny-filter-args]'
+            value: '<span class="results-total-number">[view:total-rows]</span> results found [view:webny-filter-args] [view:webny-filter-clear]'
             format: full_html
           plugin_id: text
     cache_metadata:

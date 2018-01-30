@@ -25,17 +25,28 @@
 {% endblock hero_image %}
 
 {% block content %}
-    <div class="news-date-fieldwrapper">
-        <div class="news-listing-date">
-            {{ node.field_webny_news_date.value|date("F j, Y") }}
-        </div> |
-        <div class="news-listing-time">
-            {{ node.field_webny_news_date.value|date("g:i A T") }}
+    {% if (node.field_webny_news_description.value is empty) %}
+        <div class="news-date-fieldwrapper no-description">
+            <div class="news-listing-date">
+                {{ node.field_webny_news_date.value|date("F j, Y") }}
+            </div> |
+            <div class="news-listing-time">
+                {{ node.field_webny_news_date.value|date("g:i A T") }}
+            </div>
         </div>
-    </div>
-    <div class="news-description-fieldwrapper">
-        <div class="news-description-label">{{ content.field_webny_news_description }}</div>
-    </div>
+    {% else %}
+        <div class="news-date-fieldwrapper">
+            <div class="news-listing-date">
+                {{ node.field_webny_news_date.value|date("F j, Y") }}
+            </div> |
+            <div class="news-listing-time">
+                {{ node.field_webny_news_date.value|date("g:i A T") }}
+            </div>
+        </div>
+        <div class="news-description-fieldwrapper">
+            <div class="news-description-label">{{ content.field_webny_news_description }}</div>
+        </div>
+    {% endif %}
 {% endblock content %}
 
 {% block footer %}
