@@ -84,6 +84,7 @@ function webny_unav_preprocess(&$variables) {
   }
 
   $unavConfig = \Drupal::config('webny_unav.settings');
+  $variables['gt'] = $unavConfig->get('webny_unav.webny_alt_unav_translate');
   $variables['gsa'] = $unavConfig->get('webny_unav.webny_alt_unav_search');
   $variables['gsa_client'] = $unavConfig->get('webny_unav.webny_alt_unav_search_client');
   $variables['gsa_collection'] = $unavConfig->get('webny_unav.webny_alt_unav_search_collection');

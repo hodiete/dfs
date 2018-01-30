@@ -1,5 +1,6 @@
 <div id="alternative-universal-navigation" class="alternative-universal-container">
     <div class="alternative-unav-agency-name">{{ agencyname }}</div>
+    {# if google search appliance has been selected #}
     {% if gsa == '1' %}
         {% set site_url = url("<front>") %}
         {% if 'ny.gov' in site_url|render|render %}
@@ -28,14 +29,17 @@
             </form>
         </div>
     {% endif %}
-    <a id="alternative-unav-translate-link" href="#"> Translate</a>
-    <div id="google_translate_element"></div>
-    <script type="text/javascript">
-        function googleTranslateElementInit () {
-            new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
-        }
-    </script>
-    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    {# if translate textbox has been selected #}
+    {% if gt == '1' %}
+        <a id="alternative-unav-translate-link" href="#"> Translate</a>
+        <div id="google_translate_element"></div>
+        <script type="text/javascript">
+            function googleTranslateElementInit () {
+                new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+            }
+        </script>
+        <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    {% endif %}
 </div>
 
 {{ attach_library('webny_unav/webny-alt-unav') }}
