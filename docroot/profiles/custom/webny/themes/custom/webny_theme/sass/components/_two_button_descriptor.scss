@@ -65,12 +65,12 @@ $tbd-button-hover-back-color-monochrome:  $color-mono-black !default;
 }
 
 .descriptor {
-  display: inline-block;
-  width: 95%;
-  padding: 0 1%;
   overflow: auto;
   vertical-align: top;
   text-align: center;
+}
+
+.descriptor-wrapper {
 }
 
 .descriptor--field-webny-tbd-title {
@@ -79,6 +79,7 @@ $tbd-button-hover-back-color-monochrome:  $color-mono-black !default;
   text-align: center;
   text-transform: uppercase;
   letter-spacing: 2px;
+  margin-bottom: 10px;
 }
 
 .descriptor--field-webny-tbd-headline {
@@ -88,13 +89,22 @@ $tbd-button-hover-back-color-monochrome:  $color-mono-black !default;
   line-height: 3rem;
 }
 
+.front .descriptor--field-webny-tbd-headline {
+  font: $frame-headline-front;
+}
+
 .descriptor--field-webny-tbd-descriptortitle1,
 .descriptor--field-webny-tbd-descriptortitle2 {
   font-family: $base-font;
-  font-size: $base-font-size;
+  font-size: 1.222rem;
   font-weight: 800;
   color: $tbd-frame-descriptor-title-color;
   margin: 20px 0;
+  padding-bottom: 30px;
+}
+
+.descriptor--field-webny-tbd-descriptortitle2 {
+  padding-left: 30px;
 }
 
 .descriptor--field-webny-tbd-descriptor1,
@@ -201,29 +211,57 @@ $tbd-button-hover-back-color-monochrome:  $color-mono-black !default;
       display: flex;
       flex: 1;
       flex-flow: column nowrap;
-      margin-bottom: 30px;
+     // margin-bottom: 30px;
       align-content: flex-end;
       float: left\9;
       width: 46%\9;
       overflow: hidden\9;
 
       &:nth-of-type(2n+2) {
-        border-left:2px solid lighten($tbd-frame-descriptor-border, 20%);
-        border-top: 0;
+        padding-left: 0;
       }
 
-      .descriptor--field-webny-tbd-descriptortitle1,
-      .descriptor--field-webny-tbd-descriptortitle2 {
-        // flex: 1;
-        min-height: 54px; // this is 2x line height
+      .descriptor1-wrapper,
+      .descriptor2-wrapper {
+        margin-bottom: 50px;
+        min-height: 290px;
+        flex: 10;
       }
 
-      .descriptor--field-webny-tbd-descriptor1,
-      .descriptor--field-webny-tbd-descriptor2{
-        flex: 5; // used 5 to handle very large descriptors
-        font-family: $base-font;
-        font-size: 0.7778rem;
-        font-weight: 800;
+        //&:nth-of-type(2n+2)
+      .descriptor2-wrapper {
+          border-left: 2px solid lighten($tbd-frame-descriptor-border, 20%);
+          border-top: 0;
+          padding-left: 20px;
+        }
+
+      .descriptor1-wrapper {
+        padding-right: 20px;
+      }
+
+        .descriptor--field-webny-tbd-descriptortitle1,
+        .descriptor--field-webny-tbd-descriptortitle2 {
+          margin-top: 0;
+          margin-bottom: 0;
+          padding-left: 0;
+        }
+
+        .descriptor--field-webny-tbd-descriptor1,
+        .descriptor--field-webny-tbd-descriptor2 {
+          flex: 5; // used 5 to handle very large descriptors
+          font-family: $base-font;
+          font-size: 0.7778rem;
+          font-weight: 800;
+          margin-bottom: 0;
+
+          p {
+            margin-bottom: 50px;
+          }
+        }
+
+      .descriptor--field-webny-tbd-descriptor2 {
+       // margin-left: 30px;
+       // padding-left: 0;
       }
 
       .descriptor--field-webny-tbd-cta1,
@@ -235,6 +273,7 @@ $tbd-button-hover-back-color-monochrome:  $color-mono-black !default;
         }
 
       }
+
 
     } // END descriptor
 
@@ -273,23 +312,25 @@ $tbd-button-hover-back-color-monochrome:  $color-mono-black !default;
       display: flex;
       flex: 1;
       flex-flow: column nowrap;
-      padding: 1.5%;
-      margin-bottom: 30px;
       align-content: flex-end;
       display: inline-block\9;
       float: left\9;
       width: 46%\9;
       overflow: hidden\9;
 
+      .descriptor1-wrapper,
+      .descriptor2-wrapper {
+        flex: 5; // used 5 to handle very large descriptors
+        min-height: 290px;
+      }
+
       .descriptor--field-webny-tbd-descriptortitle1,
       .descriptor--field-webny-tbd-descriptortitle2 {
-        // flex: 1;
-        min-height: 54px; // this is 2x line height
       }
 
       .descriptor--field-webny-tbd-descriptor1,
       .descriptor--field-webny-tbd-descriptor2{
-        flex: 5; // used 5 to handle very large descriptors
+       // flex: 5; // used 5 to handle very large descriptors
         font-size: $base-font-size;
         font-weight: $frame-base-semi-bold;
         line-height: 24px;
@@ -298,23 +339,29 @@ $tbd-button-hover-back-color-monochrome:  $color-mono-black !default;
       .descriptor--field-webny-tbd-cta1,
       .descriptor--field-webny-tbd-cta2 {
         flex: 1;
+        margin: 0 20px;
 
         a {
           min-width: 175px;
         }
       }
 
-      &:nth-of-type(2n+2) {
+      .descriptor-wrapper {
         border-left:2px solid lighten($tbd-frame-descriptor-border, 20%);
       }
-      
+
+     /* &:nth-of-type(2n+2) {
+        border-left:2px solid lighten($tbd-frame-descriptor-border, 20%);
+      }*/
+
     } // END descriptor
 
   } // END descriptors
 
   // if primary background color is selected for frame
     .paragraph--type--webny-tbd-pgtype.primary {
-      .descriptor{
+      .descriptor1-wrapper,
+      .descriptor2-wrapper {
         &:nth-of-type(2n+2) {
         border-left:2px solid lighten($tbd-frame-descriptor-border-primary, 20%);
         }
@@ -323,7 +370,8 @@ $tbd-button-hover-back-color-monochrome:  $color-mono-black !default;
 
 
   .paragraph--type--webny-tbd-pgtype.monochrome {
-    .descriptor {
+    .descriptor1-wrapper,
+    .descriptor2-wrapper {
       &:nth-of-type(2n+2) {
         border-left:2px solid lighten($tbd-frame-descriptor-border-monochrome, 20%);
       }
