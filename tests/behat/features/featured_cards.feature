@@ -25,17 +25,17 @@ Feature: Featured Card Paragraph Tests
     Then I should not see "You are not authorized to access this page"
 
 # Check if card is created on landing page
-  Scenario: An administrator should be able to create cards on a landing page
-    Given "webny_page" content:
-      | title      | summary/description   |
-      | testpage5  | test content          |
-    And "webny_landing_page" content:
-      | title     | edit-field-webny-landing-paragraph-0-subform-field-webny-card-entity-ref-0-target-id |
-      | Testpage2 | testpage5|
-    When I go to "testpage5"
-    #Given I wait for AJAX to finish.
-    Then I should not see "You are not authorized to access this page"
-    When I go to "Testpage2"
-    Then I should not see "You are not authorized to access this page"
-    #And I should see "LEARN MORE" -- this won't work until GoutteDriver changed due to iframes
+#  Scenario: An administrator should be able to create cards on a landing page
+#    Given "webny_page" content:
+#      | title      | summary/description   |
+#      | testpage5  | test content          |
+#    And "webny_landing_page" content:
+#      | title     | edit-field-webny-landing-paragraph-0-subform-field-webny-card-entity-ref-0-target-id |
+#      | Testpage2 | testpage5|
+#    When I go to "testpage5"
+#    #Given I wait for AJAX to finish.
+#    Then I should not see "You are not authorized to access this page"
+#    When I go to "Testpage2"
+#    Then I should not see "You are not authorized to access this page"
+#    #And I should see "LEARN MORE" -- this won't work until GoutteDriver changed due to iframes
     

@@ -19,7 +19,7 @@ class ReplaceTestsAllCommandHook extends BltTasks {
   public function replaceTests() {
     $this->invokeCommands([
       'tests:behat',
-      'tests:phpunit',
+      'tests:security-updates',
       'frontend:test',
     ]);
   }
