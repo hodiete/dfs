@@ -3,7 +3,7 @@ Feature: Image media creation
 
   @javascript
   Scenario: Creating an image with the media creator role
-    Given I am logged into the distro with the "media_manager" role 
+    Given I am logged into the distro with the "media_manager" role
     When I visit "/media/add/image"
     And I attach the file "drupal.png" to "Image"
     And I wait for AJAX to finish
