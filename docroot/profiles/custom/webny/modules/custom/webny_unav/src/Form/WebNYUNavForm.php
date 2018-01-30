@@ -33,6 +33,7 @@ class WebNYUNavForm extends ConfigFormBase {
         $form['webny_unav_fieldset']['webny_alt_unav_auto'] = $this->_webny_alt_unav_auto_field();
 
         $form['webny_alt_unav_fieldset'] = $this->webnyAltUNavFieldsetField();
+        $form['webny_alt_unav_fieldset']['webny_alt_unav_image'] = $this->_webny_alt_unav_image();
         $form['webny_alt_unav_fieldset']['webny_alt_unav_translate'] = $this->_webny_alt_unav_translation_field();
         $form['webny_alt_unav_fieldset']['webny_alt_unav_search'] = $this->_webny_alt_unav_search_field();
 
@@ -66,6 +67,10 @@ class WebNYUNavForm extends ConfigFormBase {
         $config->set('webny_unav.webny_alt_unav_search_collection', $form_state->getValue('webny_alt_unav_search_collection'));
         $config->set('webny_unav.webny_alt_unav_search_proxy_stylesheet', $form_state->getValue('webny_alt_unav_search_proxy_stylesheet'));
         $config->save();
+
+        // CLEAR CACHE
+        drupal_flush_all_caches();
+
         return parent::submitForm($form, $form_state);
     }
 
@@ -240,5 +245,20 @@ class WebNYUNavForm extends ConfigFormBase {
       '#description' => t('Enter your GSA proxy stylesheet'),
     );
   }
-    
+
+  /**
+   * NYS Alternative Universal Navigation image
+   *
+   * @return array
+   *    Form API element for field
+   */
+  public function _webny_alt_unav_image() {
+    return array(
+      /*'#type' => 'managed_file',
+      '#title' => t('Image'),
+      '#description' => t('The uploaded image will be displayed on the Alternative Universal Navigation'),
+      '#upload_location' => 'public://alternative_unav/',*/
+
+    );
+  }
 }
