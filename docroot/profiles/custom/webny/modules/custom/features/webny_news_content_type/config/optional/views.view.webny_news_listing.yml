@@ -1287,7 +1287,7 @@ display:
           exclude: false
           alter:
             alter_text: true
-            text: "{% if field_webny_news_description is not empty and field_webny_news_description is not null %}\n        {{ field_webny_news_description }}\n{%  else %}\n    {{ body }}\n{% endif %}"
+            text: "{% if field_webny_news_description is not empty and field_webny_news_description is not null %}\n        <p>{{ field_webny_news_description }}</p>\n{%  else %}\n    {{ body }}\n{% endif %}"
             make_link: false
             path: ''
             absolute: false
