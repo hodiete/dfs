@@ -268,6 +268,7 @@
         if ($('#toc-sidebar ul li.see-all').is(':visible')) {
           // add class to mark ul as closed and mobile view
           $('#toc-sidebar ul').addClass('sidebar-closed').addClass('mobile');
+          $('.toc-mobile-spacer').addClass('mobile');
         }
         else {
           // in larger views than mobile, toc is always opened
@@ -292,9 +293,11 @@
         // min-tab breakpoint
         if ($(window).width() >= 480) {
           $('#toc-sidebar ul').removeClass('sidebar-closed').addClass('sidebar-opened').removeClass('mobile');
+          $('.toc-mobile-spacer').removeClass('mobile');
         }
         else {
           $('#toc-sidebar ul').removeClass('sidebar-opened').addClass('sidebar-closed').addClass('mobile');
+          $('.toc-mobile-spacer').addClass('mobile');
         }
       });
 

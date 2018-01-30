@@ -63,7 +63,8 @@
 {% block paragraph %}
   <section id="{{ 'toc_' ~ paragraph.id() }}" rel="{{ gp_status }}" {{ attributes.addClass(classes) }}>
         {%  if((paragraph.field_webny_documents_title.value is not empty and paragraph.field_webny_documents_title.value is not null) or (paragraph.field_webny_documents_headlne.value is not empty and paragraph.field_webny_documents_headlne.value is not null)) %}
-            <h2>
+              <h2>
+                    <span class="toc-mobile-spacer"></span>
                     <span class="frame-title webny-frametitle">
                         {{ paragraph.field_webny_documents_title.value }}
                     </span>
@@ -71,7 +72,7 @@
                     <span class="frame-headline webny-headline">
                          {{ paragraph.field_webny_documents_headlne.value }}
                     </span>
-            </h2>
+              </h2>
         {% else %}
         {% endif %}
 

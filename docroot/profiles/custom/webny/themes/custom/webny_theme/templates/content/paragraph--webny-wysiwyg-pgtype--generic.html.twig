@@ -24,6 +24,7 @@
 {% block paragraph %}
     <section id="{{ 'toc_' ~ paragraph.id() }}" rel="{{ gp_status }}" class="toc-para {{ paragraph.bundle() }} {{ gp_enabled }}" >
         <h2>
+            <span class="toc-mobile-spacer"></span>
             {{ paragraph.field_webny_wysiwyg_title.value }}
         </h2>
         {{ content|without('field_webny_wysiwyg_toc', 'field_webny_wysiwyg_title') }}
