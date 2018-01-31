@@ -33,7 +33,7 @@ class WebNYUNavForm extends ConfigFormBase {
         $form['webny_unav_fieldset']['webny_alt_unav_auto'] = $this->_webny_alt_unav_auto_field();
 
         $form['webny_alt_unav_fieldset'] = $this->webnyAltUNavFieldsetField();
-        $form['webny_alt_unav_fieldset']['webny_alt_unav_image'] = $this->_webny_alt_unav_image();
+        //$form['webny_alt_unav_fieldset']['webny_alt_unav_image'] = $this->_webny_alt_unav_image();
         $form['webny_alt_unav_fieldset']['webny_alt_unav_translate'] = $this->_webny_alt_unav_translation_field();
         $form['webny_alt_unav_fieldset']['webny_alt_unav_search'] = $this->_webny_alt_unav_search_field();
 
@@ -252,13 +252,13 @@ class WebNYUNavForm extends ConfigFormBase {
    * @return array
    *    Form API element for field
    */
-  public function _webny_alt_unav_image() {
+  /*public function _webny_alt_unav_image() {
     return array(
-      /*'#type' => 'managed_file',
+      '#type' => 'managed_file',
       '#title' => t('Image'),
       '#description' => t('The uploaded image will be displayed on the Alternative Universal Navigation'),
-      '#upload_location' => 'public://alternative_unav/',*/
+      '#upload_location' => 'public://alternative_unav/',
 
     );
-  }
+  }*/
 }
