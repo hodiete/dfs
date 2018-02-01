@@ -22,7 +22,7 @@
   }
 
   .layout-container ul li {
-    margin: 5px 0 !important;
+    margin: 9px 0 !important;
     padding: 0;
   }
 
@@ -129,11 +129,11 @@
         padding: 0 15px;
 
         @include breakpoint($min-tablet) {
-          height: 184px;
+          height: 188px;
         }
 
         @include breakpoint($min-desktop) {
-          padding: 0 25px;
+          padding: 0 15px;
         }
       }
   }
@@ -151,9 +151,10 @@
   }
 
   &-filter-term-border {
-      width: 40px;
-      border-bottom: 1px solid $gray-lite;
+      width: 60px;
+      border-bottom: 1px solid $color-mono-mid;
       display: inline-block;
+      margin: 15px 0 13px 0;
   }
 
   span {
@@ -163,10 +164,14 @@
   }  
 
   &-title {
-    font-size: 1.17em;
+    font-size: 19px;
     font-weight: 600;
     margin-bottom: 7px;
-    line-height: .9;
+    line-height: 21px;
+
+    a{
+      color: $medblue;
+    }
 
 
     @include breakpoint($min-mobile) {
@@ -328,7 +333,8 @@
   .links,
   .actions {
     list-style: none;
-    padding: 4px 36px;
+    //padding: 4px 30px;
+    padding: 7px 33px;
     margin: 1px 0 -1px 0;    
     background-color: $color-mono-lt;
     border: 1px solid $gray-lite;
@@ -336,16 +342,18 @@
     border-right: 0;
 
     @include breakpoint($min-mobile) {
-      padding: 10px 43px;
+      padding: 10px 33px;
     }
   }
 
   .links a {
     position: relative;
     text-transform: uppercase;
-    font-weight: bold;
+    font-weight: 800;
     font-size: 13px;
     color: black;
+    letter-spacing: 1px;
+
 
 
     &::before {
@@ -353,7 +361,9 @@
       font-family: 'icomoon';
       color: $primarygold;
       position: absolute;
-      left: -20px;
+      left: -19px;
+      line-height: 13px;
+      padding-top: 6px;
     }
   }
 
