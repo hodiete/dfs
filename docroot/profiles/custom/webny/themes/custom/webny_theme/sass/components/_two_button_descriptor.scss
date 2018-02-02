@@ -320,7 +320,7 @@ $tbd-button-hover-back-color-monochrome:  $color-mono-black !default;
 
       .descriptor1-wrapper,
       .descriptor2-wrapper {
-        flex: 12; // used 5 to handle very large descriptors
+        flex: 12; // used 12 to handle very large descriptors
         min-height: 290px;
       }
 
@@ -392,6 +392,7 @@ $tbd-button-hover-back-color-monochrome:  $color-mono-black !default;
       .descriptor {
         display: inline-block;
         margin: 0 auto;
+        overflow: visible; //keep ie 11 on windows 7 scrollbars away
       }
     }
   } // END TABLET VIEW
@@ -404,9 +405,20 @@ $tbd-button-hover-back-color-monochrome:  $color-mono-black !default;
       margin: 50px 0 0 0;
 
       .descriptor {
-        display: inline-block;
+        //display: inline-block;
         margin: 0 auto;
       }
     }
   } // END PC VIEW
 } // END IE10
+
+@media screen\0 {
+  .paragraph--type--webny-tbd-pgtype
+    &:after { 
+     content: "."; 
+     visibility: hidden; 
+     display: block; 
+     height: 0; 
+     clear: both;
+    }
+} // clear for IE9
