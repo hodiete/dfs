@@ -28,16 +28,6 @@ class SettingsTest extends TestBase {
   }
 
   /**
-   * Test configuration for production environment on ACE.
-   */
-  public function testProd() {
-    $this->setupParams('prod');
-    require $this->drupalRoot . '/sites/default/settings.php';
-
-    $this->assertContains($GLOBALS['config']['system.logging']['error_level'], 'hide');
-  }
-
-  /**
    * Tests Phing setup:drupal:settings target.
    */
   public function testSetupLocalSettings() {
