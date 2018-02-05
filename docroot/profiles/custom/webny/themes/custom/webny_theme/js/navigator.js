@@ -328,6 +328,7 @@
           // add class to mark ul as closed and mobile view
           $('#toc-sidebar ul').addClass('sidebar-closed').addClass('mobile');
           $('.toc-mobile-spacer').addClass('mobile');
+          $('.toc-chapters').addClass('mview');
         }
         else {
           // in larger views than mobile, toc is always opened
@@ -354,10 +355,13 @@
         if ($(window).width() >= 480) {
           $('#toc-sidebar ul').removeClass('sidebar-closed').addClass('sidebar-opened').removeClass('mobile');
           $('.toc-mobile-spacer').removeClass('mobile');
+          $('.toc-chapters').removeClass('mview');
         }
         else {
           $('#toc-sidebar ul').removeClass('sidebar-opened').addClass('sidebar-closed').addClass('mobile');
           $('.toc-mobile-spacer').addClass('mobile');
+          $('.toc-chapters').addClass('mview');
+
         }
       });
 
