@@ -19,7 +19,13 @@
       var elementHeight = 0;
       var tocHeight;
       var fixedtocOffset = 0;
+      var scrollFixedOffset = 100;
+      var scrollRelOffset = 0;
+      var isTOCStuck = $('.webny-toc-page .actions').hasClass('stuck');
+      var scrollOffestForTOC = '';
+      var tocElemHeight = '';
 
+      // ###############################################################################################################
       // Loop through each section (paragraph)
       $('.toc-chapters section').once().each(function () {
         // define next section object
@@ -122,6 +128,7 @@
         }
       });
 
+      // ###############################################################################################################
       // next section click event
       $('.next-section-title').once().click(function (e) {
         e.preventDefault();
@@ -148,8 +155,12 @@
         }
       });
 
+      // ###############################################################################################################
       // toc item click event
       $('#toc-sidebar ul li a').click(function (e) {
+
+        var vals = $(this).html().trim();
+
         e.preventDefault();
         // only fire if the click is on anything other than see-all icon li
         if (!$(this).parent().hasClass('see-all')) {
@@ -157,13 +168,61 @@
           var name = $(this).attr('href').replace('#', '');
           var clickedFrame = $('*[name="' + name + '"]');
           var dest = 0;
+          var destOffset = 0;
+          var destOffsetPadding = 0;            // INITIALIZE AND SET TO ZERO UNTIL WE DO DYNAMICS
+          var relativeOffseter = 150;           // OFFSET VALUE FOR TITLE SPACER WHEN CLICKED IN RELATIVE MODE
+          var tocElemPaddingTop;
+          var tocElemPaddingBottom;
+          var tocElemHeight;
+
           // add a conditional to check if the action bar/share bar is fixed/docked. If it isnt docked we need to remove 50px from the calculation as the scroll animation doesn't calculate properly
           if ($('.actions').css('position') == 'fixed') {
-            dest = clickedFrame.offset().top;
-          } else {
-            dest = clickedFrame.offset().top - 50;
-          }
+            dest = clickedFrame.offset().top - 100;
+            console.log('FIXED');
 
+          } else {
+
+            // OBTAIN THE DYNAMIC HEIGHT OF THE MENU AND SUBTRACT THAT FROM THE OFFSET TOP DEST
+            console.log('RELATIVE');
+
+            var thisClickedItem = $(this);
+
+            console.log('Cal dis from top: ' + thisClickedItem.offset().top);
+
+            // CALCULATE THE HEIGHT OF THE TOC -- INCLUDES PADDING
+            // ***** CHANGE THIS TO RUN ONCE ON FIRST ACTION *****
+
+            if($(this).parent().parent().hasClass('mobile')){
+              $('#toc-sidebar > ul > li').each(function() {
+
+                  if($(this).index() !== 0 ){
+
+                    // GET DYNAMICS FROM TOC
+                    tocElemPaddingTop     = parseInt($(this).css('padding-top'));
+                    tocElemPaddingBottom  = parseInt($(this).css('padding-bottom'));
+                    tocElemHeight         = parseInt($(this).height());
+
+                    // CALCULATE THE DYNAMIC OFFSET
+                    destOffset += tocElemHeight + destOffsetPadding + tocElemPaddingTop + tocElemPaddingBottom ;
+
+                    console.log('Index: ' + $(this).index() + ' This Height: ' + $(this).height() + ' Total Height: ' + destOffset);
+                  }
+
+              });
+
+              // ASSIGN DEST
+              dest = clickedFrame.offset().top - destOffset - relativeOffseter;
+
+            } else {
+
+              // DESKTOP MODE
+              dest = clickedFrame.offset().top - relativeOffseter;
+
+            }
+
+
+
+          }
 
           // remove all active classes from li's
           $('#toc-sidebar ul li').each(function () {
@@ -179,13 +238,16 @@
 
           // animate to section of page; subtract 100 from the offset to handle scroll location with title above
           $('html,body').animate({
-            scrollTop: dest - 100
+            scrollTop: dest
           }, 500, 'swing', function () {
             $(this).addClass('active');
           });
+
         }
       });
 
+
+      // ###############################################################################################################
       // instantiate Waypoint for action/share bar as disabled
       var actionBarWaypoint = new Waypoint({
         element: $('.webny-action-bar'),
@@ -203,6 +265,7 @@
         enabled: false
       });
 
+      // ###############################################################################################################
       // verify height of all list items in TOC to calculate space needed
       $('#toc-sidebar ul li').each(function () {
         elementHeight += parseInt($(this).outerHeight());
@@ -250,6 +313,7 @@
 
       });
 
+      // ###############################################################################################################
       // on load check to see if there is a hash anchor in the URL to force an auto scroll to section on page
       $(window).on('load', function () {
         // grab hash from URL (#variable)
@@ -289,6 +353,7 @@
 
       });
 
+      // ###############################################################################################################
       $(window).on('resize', function () {
         // min-tab breakpoint
         if ($(window).width() >= 480) {
@@ -323,6 +388,7 @@
         }
       }, {offset: 200});
 
+      // ###############################################################################################################
       // handle up scrolling with waypoints triggering on bottom of dynamic height of the element
       $('.toc-chapters section').waypoint(function (direction) {
         if (direction === 'up') {
