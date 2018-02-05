@@ -1,5 +1,5 @@
 <div{{ attributes }}>
-  <p class="address" translate="no">
+  <div class="address" translate="no">
     {% if given_name or family_name %}
       {{ given_name }} {{ family_name }}
     {% endif %}
@@ -16,8 +16,8 @@
       {{ dependent_locality.code }}
     {% endif %}
     {% if locality or postal_code or administrative_area %}
-      <span class="city-state-zip">{{ locality }}<span class="separator">,</span> {{ administrative_area }} {{ postal_code }}</span>
+      <span class="separator">, </span><span class="city-state-zip">{{ locality }}<span class="separator">,</span> {{ administrative_area }} {{ postal_code }}</span>
     {% endif %}
-    {{ country.name }}
-  </p>
+    {{ country.name }} 
+  </div>
 </div>
