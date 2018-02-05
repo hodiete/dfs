@@ -19,11 +19,9 @@
       var elementHeight = 0;
       var tocHeight;
       var fixedtocOffset = 0;
-      var scrollFixedOffset = 100;
-      var scrollRelOffset = 0;
-      var isTOCStuck = $('.webny-toc-page .actions').hasClass('stuck');
-      var scrollOffestForTOC = '';
-      var tocElemHeight = '';
+
+      // USED FOR WAYPOINT UP DYNAMICS
+      var thisFrmHeight, thisFrmOffset, dynamicFrmOffset;
 
       // ###############################################################################################################
       // Loop through each section (paragraph)
@@ -171,23 +169,21 @@
           var destOffset = 0;
           var destOffsetPadding = 0;            // INITIALIZE AND SET TO ZERO UNTIL WE DO DYNAMICS
           var relativeOffseter = 150;           // OFFSET VALUE FOR TITLE SPACER WHEN CLICKED IN RELATIVE MODE
-          var tocElemPaddingTop;
-          var tocElemPaddingBottom;
-          var tocElemHeight;
+          var tocElemPaddingTop, tocElemPaddingBottom, tocElemHeight, mobilePad;
+
+          // CALCULATE A MOBILE OFFSET
+          if($('.sidebar-opened').hasClass('mobile')){
+            mobilePad = 50;
+          } else {
+            mobilePad = 0;
+          }
 
           // add a conditional to check if the action bar/share bar is fixed/docked. If it isnt docked we need to remove 50px from the calculation as the scroll animation doesn't calculate properly
-          if ($('.actions').css('position') == 'fixed') {
-            dest = clickedFrame.offset().top - 100;
-            console.log('FIXED');
+          if ($('.actions').css('position') === 'fixed') {
+
+            dest = clickedFrame.offset().top - 100 - mobilePad;
 
           } else {
-
-            // OBTAIN THE DYNAMIC HEIGHT OF THE MENU AND SUBTRACT THAT FROM THE OFFSET TOP DEST
-            console.log('RELATIVE');
-
-            var thisClickedItem = $(this);
-
-            console.log('Cal dis from top: ' + thisClickedItem.offset().top);
 
             // CALCULATE THE HEIGHT OF THE TOC -- INCLUDES PADDING
             // ***** CHANGE THIS TO RUN ONCE ON FIRST ACTION *****
@@ -195,32 +191,31 @@
             if($(this).parent().parent().hasClass('mobile')){
               $('#toc-sidebar > ul > li').each(function() {
 
-                  if($(this).index() !== 0 ){
+                if($(this).index() !== 0 ){
 
-                    // GET DYNAMICS FROM TOC
-                    tocElemPaddingTop     = parseInt($(this).css('padding-top'));
-                    tocElemPaddingBottom  = parseInt($(this).css('padding-bottom'));
-                    tocElemHeight         = parseInt($(this).height());
+                  // GET DYNAMICS FROM TOC
+                  tocElemPaddingTop     = parseInt($(this).css('padding-top'));
+                  tocElemPaddingBottom  = parseInt($(this).css('padding-bottom'));
+                  tocElemHeight         = parseInt($(this).height());
 
-                    // CALCULATE THE DYNAMIC OFFSET
-                    destOffset += tocElemHeight + destOffsetPadding + tocElemPaddingTop + tocElemPaddingBottom ;
 
-                    console.log('Index: ' + $(this).index() + ' This Height: ' + $(this).height() + ' Total Height: ' + destOffset);
-                  }
+
+
+                  // CALCULATE THE DYNAMIC OFFSET
+                  destOffset += tocElemHeight + destOffsetPadding + tocElemPaddingTop + tocElemPaddingBottom;
+                }
 
               });
 
               // ASSIGN DEST
-              dest = clickedFrame.offset().top - destOffset - relativeOffseter;
+              dest = clickedFrame.offset().top - destOffset - relativeOffseter - mobilePad;
 
             } else {
 
               // DESKTOP MODE
-              dest = clickedFrame.offset().top - relativeOffseter;
+              dest = clickedFrame.offset().top - relativeOffseter - mobilePad;
 
             }
-
-
 
           }
 
@@ -369,6 +364,7 @@
       // waypoint library to handle scrolling through the page functionality
       $('.toc-chapters section').waypoint(function (direction) {
         if (direction === 'down') {
+
           var sectonId = this.element.id;
           var sectionName = $('#' + sectonId).children(':first').attr('name');
           // while scrolling if toc li anchor is same as the currently scrolled section, add active class
@@ -386,7 +382,7 @@
             }
           });
         }
-      }, {offset: 200});
+      }, {offset: 275});
 
       // ###############################################################################################################
       // handle up scrolling with waypoints triggering on bottom of dynamic height of the element
@@ -409,9 +405,14 @@
             }
           });
         }
-      }, {offset: function () {
+      }, {offset: function (dynamicFrmOffset) {
         // dynamically return an offset based on element height
-        return -$(this.element).height();
+
+        thisFrmHeight = parseInt($(this.element).height());
+        thisFrmOffset = parseInt($('#toc-sidebar > ul > li.active').height()) + 200;
+        dynamicFrmOffset = 0 - thisFrmHeight + thisFrmOffset;
+
+        return dynamicFrmOffset;
       }});
 
 
@@ -419,3 +420,4 @@
   };
 
 })(jQuery, Drupal, this);
+
