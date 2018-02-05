@@ -220,6 +220,11 @@
     display: flex;
     justify-content: space-between;
     flex-direction: column;
+    .day div,
+    .month div,
+    .event-year div {
+        margin: auto;
+    }
 
     .month {
       padding-bottom: 3px !important;
@@ -236,7 +241,7 @@
       }
       @include breakpoint($min-tablet) {
        padding: 15px 0 0 0 !important;
-      }
+       }
     }
     
     @include breakpoint($min-wide) {
@@ -346,14 +351,15 @@
     .event-year div, 
     .start div {
       float: left;
-      width: 45px !important;
+      width: 45px !important; 
       &.dash {
         width: 20px !important;
         padding: 0 11px;
         font-size: 20px;
       }
     }
-}
+  }
+  
 
   .meridiem {
     font-size: 12px;
