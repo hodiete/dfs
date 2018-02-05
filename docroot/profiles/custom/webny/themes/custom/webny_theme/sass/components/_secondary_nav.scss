@@ -23,13 +23,15 @@ $secnav-font-color:         #000;
   display: block;
   width: 100%;
   background-color: $secnav-background-color;
-  padding: 10px 0 ;
+  padding: 15px 0 ;
   color: $secnav-font-color;
+  border-top: 4px solid #fff;
 
   p{
     font-size: 18px/1em;
     color: $secnav-font-color;
     margin: 0;
+    text-align: center;
   }
 
   .secnav-hr{
@@ -76,15 +78,24 @@ $secnav-font-color:         #000;
     ul.secondary-nav-links {
 
       padding-left: 0;
+      text-align: center;
 
       li {
         margin: 0;
         list-style: none;
         display: inline-block;
 
+        &:after {
+          content: "|";
+        }
+
+        &:last-child:after {
+          content: "";
+        }
+
         a {
           font-size: 18px/1em;
-          padding: 0 1em;
+          padding: 0 0.25em;
           color: $secnav-font-color;
 
           &:first-child {
@@ -156,9 +167,14 @@ $secnav-font-color:         #000;
   width: 100%;
   display: flex;
 
+  p {
+    text-align: right;
+  }
+
   .secnav-pipe{
-    width: 2%;
+    //width: 1%;
     display: block;
+    border-right: 1px solid black;
   }
 
   .secnav-hr{
@@ -171,6 +187,10 @@ $secnav-font-color:         #000;
 
   .secnav-sectwo {
     text-align: left;
+
+    ul.secondary-nav-links {
+      text-align: left;
+    }
   }
 
   .secnav-equal-space{
