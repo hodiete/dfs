@@ -198,9 +198,6 @@
                   tocElemPaddingBottom  = parseInt($(this).css('padding-bottom'));
                   tocElemHeight         = parseInt($(this).height());
 
-
-
-
                   // CALCULATE THE DYNAMIC OFFSET
                   destOffset += tocElemHeight + destOffsetPadding + tocElemPaddingTop + tocElemPaddingBottom;
                 }
