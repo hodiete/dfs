@@ -20,8 +20,7 @@ third_party_settings:
   field_group:
     group_descriptor_grouping_1:
       children:
-        - field_webny_tbd_descriptortitle1
-        - field_webny_tbd_descriptor1
+        - group_tbd_descriptor_1_wrapper
         - field_webny_tbd_cta1
       parent_name: group_descriptors_container
       weight: 3
@@ -39,11 +38,10 @@ third_party_settings:
       label: 'Descriptor Grouping 1'
     group_descriptor_grouping_2:
       children:
-        - field_webny_tbd_descriptortitle2
-        - field_webny_tbd_descriptor2
+        - group_tbd_descriptor_2_wrapper
         - field_webny_tbd_cta2
       parent_name: group_descriptors_container
-      weight: 7
+      weight: 4
       format_type: html_element
       format_settings:
         label: 'Descriptor Grouping 2'
@@ -73,13 +71,47 @@ third_party_settings:
         effect: none
         speed: fast
       label: 'Descriptors Container'
+    group_tbd_descriptor_1_wrapper:
+      children:
+        - field_webny_tbd_descriptortitle1
+        - field_webny_tbd_descriptor1
+      parent_name: group_descriptor_grouping_1
+      weight: 20
+      format_type: html_element
+      format_settings:
+        id: ''
+        classes: descriptor1-wrapper
+        element: div
+        show_label: false
+        label_element: h3
+        attributes: ''
+        effect: none
+        speed: fast
+      label: 'Descriptor 1 Wrapper'
+    group_tbd_descriptor_2_wrapper:
+      children:
+        - field_webny_tbd_descriptortitle2
+        - field_webny_tbd_descriptor2
+      parent_name: group_descriptor_grouping_2
+      weight: 20
+      format_type: html_element
+      format_settings:
+        id: ''
+        classes: descriptor2-wrapper
+        element: div
+        show_label: false
+        label_element: h3
+        attributes: ''
+        effect: none
+        speed: fast
+      label: 'Descriptor 2 Wrapper'
 id: paragraph.webny_tbd_pgtype.default
 targetEntityType: paragraph
 bundle: webny_tbd_pgtype
 mode: default
 content:
   field_webny_tbd_cta1:
-    weight: 6
+    weight: 21
     label: hidden
     settings:
       trim_length: 80
@@ -91,7 +123,7 @@ content:
     type: link
     region: content
   field_webny_tbd_cta2:
-    weight: 10
+    weight: 21
     label: hidden
     settings:
       trim_length: 80
@@ -103,21 +135,21 @@ content:
     type: link
     region: content
   field_webny_tbd_descriptor1:
-    weight: 5
+    weight: 22
     label: hidden
     settings: {  }
     third_party_settings: {  }
     type: text_default
     region: content
   field_webny_tbd_descriptor2:
-    weight: 9
+    weight: 22
     label: hidden
     settings: {  }
     third_party_settings: {  }
     type: text_default
     region: content
   field_webny_tbd_descriptortitle1:
-    weight: 4
+    weight: 21
     label: hidden
     settings:
       link_to_entity: false
@@ -125,7 +157,7 @@ content:
     type: string
     region: content
   field_webny_tbd_descriptortitle2:
-    weight: 8
+    weight: 21
     label: hidden
     settings:
       link_to_entity: false

@@ -29,7 +29,7 @@
 
         // Submit and clear url parameters.
         Drupal.ajax(views_ajax_settings).execute();
-        window.history.pushState(null, document.title, href_no_params);
+        window.history.pushState(null, document.title, '/' + href_no_params);
       });
 
       // set filtertoggle based on viewportwidth
