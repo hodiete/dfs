@@ -61,6 +61,10 @@ $results-pager-color: $color-tertiary !default;
 // if we have other results related displays, this can probably be placed in base 
 .results-total {
   padding: 20px 0;
+
+  strong {
+    color: $results-highlight-color;
+  }
 }
 
 .results-total-number {
