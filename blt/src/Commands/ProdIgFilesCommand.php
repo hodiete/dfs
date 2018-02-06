@@ -10,7 +10,6 @@ use Acquia\Blt\Robo\BltTasks;
  * As of BLT version 8.9.0 all Phing commands are obsolete.
  * See https://github.com/acquia/blt/releases/tag/8.9.0.
  * This is a port of a custom Phing command to Robo.
- * The original Phing commands are located in /blt/custom/phing.
  */
 /**
  * Synchronize Files from remote (remote [prod-ig] --> local).
