@@ -10,6 +10,8 @@ namespace Drupal\webny_unav\Form;
 use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\system\Entity\Menu;
+use Drupal\file\Entity\File;
+use Drupal\image\Entity\ImageStyle;
 
 class WebNYUNavForm extends ConfigFormBase {
 
@@ -33,7 +35,10 @@ class WebNYUNavForm extends ConfigFormBase {
         $form['webny_unav_fieldset']['webny_alt_unav_auto'] = $this->_webny_alt_unav_auto_field();
 
         $form['webny_alt_unav_fieldset'] = $this->webnyAltUNavFieldsetField();
-        //$form['webny_alt_unav_fieldset']['webny_alt_unav_image'] = $this->_webny_alt_unav_image();
+        if ($config->get('webny_unav.webny_alt_unav_image') != '') {
+          $form['webny_alt_unav_fieldset']['webny_alt_unav_image_render'] = $this->_webny_alt_unav_image_render();
+        }
+        $form['webny_alt_unav_fieldset']['webny_alt_unav_image'] = $this->_webny_alt_unav_image();
         $form['webny_alt_unav_fieldset']['webny_alt_unav_translate'] = $this->_webny_alt_unav_translation_field();
         $form['webny_alt_unav_fieldset']['webny_alt_unav_search'] = $this->_webny_alt_unav_search_field();
 
@@ -66,6 +71,21 @@ class WebNYUNavForm extends ConfigFormBase {
         $config->set('webny_unav.webny_alt_unav_search_client', $form_state->getValue('webny_alt_unav_search_client'));
         $config->set('webny_unav.webny_alt_unav_search_collection', $form_state->getValue('webny_alt_unav_search_collection'));
         $config->set('webny_unav.webny_alt_unav_search_proxy_stylesheet', $form_state->getValue('webny_alt_unav_search_proxy_stylesheet'));
+
+        // check if image is uploaded
+        $fids = $form_state->getValue(['webny_alt_unav_fieldset' => 'webny_alt_unav_image']);
+        if (!empty($fids)) {
+          $fid = $fids[0];
+          $file = File::load($fid);
+          $file_uri = $file->getFileUri();
+          $style = ImageStyle::load('alternative_universal_navigation');
+          $destination = $style->buildUri($file_uri);
+          // create image style applied image and if successful add destination to config
+          if ($style->createDerivative($file_uri, $destination)) {
+            $config->set('webny_unav.webny_alt_unav_image', file_create_url($destination));
+          }
+        }
+
         $config->save();
 
         // CLEAR CACHE
@@ -252,13 +272,27 @@ class WebNYUNavForm extends ConfigFormBase {
    * @return array
    *    Form API element for field
    */
-  /*public function _webny_alt_unav_image() {
+  public function _webny_alt_unav_image() {
     return array(
       '#type' => 'managed_file',
       '#title' => t('Image'),
+      '#multiple' => FALSE,
       '#description' => t('The uploaded image will be displayed on the Alternative Universal Navigation'),
       '#upload_location' => 'public://alternative_unav/',
-
     );
-  }*/
+  }
+
+  /**
+   * NYS Alternative Universal Navigation rendered image
+   *
+   * @return array
+   *    Form API element for field/markup
+   */
+  public function _webny_alt_unav_image_render() {
+    $config = $this->config('webny_unav.settings');
+    return array(
+      '#type' => 'markup',
+      '#markup' => '<p><strong>Current Image</strong></p><img id="alternative-unav-image" src="'. $config->get('webny_unav.webny_alt_unav_image') .'" />',
+    );
+  }
 }
