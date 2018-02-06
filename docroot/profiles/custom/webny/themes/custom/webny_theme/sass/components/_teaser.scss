@@ -101,11 +101,11 @@
 
     &__details-right {
       //padding-top: 12px;
-      
 
       @include breakpoint($min-tablet) {
         padding-top: 0px;
         //flex-basis: 40%;
+        width: 100%;
       }
     }
 
@@ -251,7 +251,7 @@
     .day-month-wrapper {
       padding-bottom: 10px;
       justify-content: center;
-
+      width: 150px;
 
       @include breakpoint($min-tablet) {
         width: auto;
