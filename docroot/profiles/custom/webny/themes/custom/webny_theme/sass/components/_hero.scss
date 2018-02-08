@@ -64,7 +64,7 @@ $hero-event-bkgd-transparent-black: $bkgd-black-50 !default;
 
 .hero-no-image{
   background-color: $hero-bkgd-color;
-  height: 385px;
+  height: 400px;
 }
 
 .hero-no-image.hero-generic {
@@ -103,6 +103,17 @@ $hero-event-bkgd-transparent-black: $bkgd-black-50 !default;
       z-index: 3;
       background-color: black;
       box-sizing: border-box;
+    }
+
+  .hero-landing-inner {
+    h2, h1 {
+      width: 100%;
+      max-width: 690px;
+      }
+    .hero-summary {
+     width: 100%;
+     max-width: 690px;
+      }
     }
   }
 
@@ -255,8 +266,8 @@ $hero-event-bkgd-transparent-black: $bkgd-black-50 !default;
 
   .hero-buttons,
   .hero-keywords{
-    margin-top: 40px;
-    padding: 30px 15px 30px 0px;
+    margin-top: 0px;
+    padding: 0px 15px 30px 0px;
     & > div > div {
       margin-bottom: 20px;
     }
@@ -424,6 +435,7 @@ $hero-event-bkgd-transparent-black: $bkgd-black-50 !default;
     position:  relative;
     z-index: 5;
     text-align: left;
+    width: 100%;
   }
 
   .hero-live-now{
@@ -641,16 +653,19 @@ $hero-event-bkgd-transparent-black: $bkgd-black-50 !default;
 
   .hero-layout {
 
-    .hero-landing-inner, .hero-ipage-inner {
-      h2, h1 {
-        width: 66%;
-        max-width: 690px;
-      }
-      .hero-summary{
-        width: 66%;
-        max-width: 690px;
-      }
-    }
+       .hero-landing-inner, .hero-ipage-inner {
+         h2, h1 {
+           width: 100%;
+           max-width: 690px;
+         }
+         .hero-summary{
+           width: 100%;
+           max-width: 690px;
+         }
+         .hero-buttons {
+           padding-top: 30px;
+         }
+       }
 
     .hero-no-image.hero-generic {
       background-color: $hero-bkgd-color;
