@@ -645,7 +645,7 @@ $hero-event-bkgd-transparent-black: $bkgd-black-50 !default;
     .hero-landing-inner, .hero-ipage-inner {
       h2, h1 {
         width: 66%;
-        padding-top: 60px;
+       // padding-top: 60px;
         max-width: 690px;
       }
       .hero-summary{
@@ -853,6 +853,7 @@ $hero-event-bkgd-transparent-black: $bkgd-black-50 !default;
     .hero-landing-inner,
     .hero-event--inner {
       position: absolute;
+      padding-top: 60px !important;
       &.hero-has-image-content {
         background: none;
         position: relative;
