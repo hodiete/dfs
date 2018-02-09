@@ -151,10 +151,16 @@ function webny_solr_searches_modules_installed($modules) {
  * Implements hook_token_info_alter().
  */
 function webny_solr_searches_token_info_alter(&$info) {
+  // Custom view tokens.
   $info['tokens']['view']['webny-filter-args'] = [
     'name' => t('WebNY: view filter arguments'),
     'description' => t('Comma delimited arguments.'),
   ];
+  // Taxonomy machine name in hyphenated form.
+  $info['tokens']['term']['machine_name_hyphenated'] = array(
+    'name' => t('Machine name hyphenated'),
+    'description' => t('The hyphenated machine name of the taxonomy term.'),
+  );
 }
 
 /**
@@ -163,6 +169,20 @@ function webny_solr_searches_token_info_alter(&$info) {
 function webny_solr_searches_tokens($type, $tokens, array $data, array $options, BubbleableMetadata $bubbleable_metadata) {
   $replacements = [];
 
+  // Term token to provide hyphenated verison of taxonomy machine name.
+  if ($type == 'term' && !empty($data['term'])) {
+    $term = $data['term'];
+
+    foreach ($tokens as $name => $original) {
+      switch ($name) {
+        case 'machine_name_hyphenated':
+          $replacements[$original] = str_replace('_', '-', $term->machine_name->value);
+          break;
+      }
+    }
+  }
+
+  // View tokens to provide filter summary values and clear-all link.
   if ($type == 'view' && !empty($data['view'])) {
     $view = $data['view'];
 
