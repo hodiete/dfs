@@ -167,10 +167,6 @@ $secnav-font-color:         #000;
   width: 100%;
   display: flex;
 
-  p {
-    text-align: right;
-  }
-
   .secnav-pipe{
     //width: 1%;
     display: block;
@@ -181,16 +177,27 @@ $secnav-font-color:         #000;
     display: none;
   }
 
-  .secnav-secone {
+  .secnav-secone,
+  .secnav-secone p {
     text-align: right;
   }
 
-  .secnav-sectwo {
+  .secnav-sectwo,
+  .secnav-sectwo p {
     text-align: left;
 
     ul.secondary-nav-links {
       text-align: left;
     }
+  }
+
+  .secnav-sectwo.secnav-full-space,
+  .secnav-secone.secnav-full-space,
+  .secnav-sectwo.secnav-full-space p,
+  .secnav-secone.secnav-full-space p {
+
+      text-align: center;
+
   }
 
   .secnav-equal-space{
