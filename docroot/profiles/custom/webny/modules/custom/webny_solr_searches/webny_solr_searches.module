@@ -214,7 +214,13 @@ function webny_solr_searches_tokens($type, $tokens, array $data, array $options,
               // Extract id from value (ex. filter_term:123).
               $farr = explode(':', $f);
               $fid = array_pop($farr);
-              $facet_name = Term::load($fid)->get('name')->value;
+              // The facet could either be an agency keyword string or term id.
+              if (is_numeric($fid) && Term::load($fid)) {
+                $facet_name = Term::load($fid)->get('name')->value;
+              }
+              else {
+                $facet_name = $fid;
+              }
               return '<strong>' . $facet_name . '</strong>';
             }, $facet_inputs);
             $facet_inputs_last = (count($facet_inputs_markup) > 1) ?
