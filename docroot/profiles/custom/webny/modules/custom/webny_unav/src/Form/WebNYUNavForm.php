@@ -277,7 +277,7 @@ class WebNYUNavForm extends ConfigFormBase {
       '#type' => 'managed_file',
       '#title' => t('Image'),
       '#multiple' => FALSE,
-      '#description' => t('The uploaded image will be displayed on the Alternative Universal Navigation'),
+      '#description' => t('The uploaded image will be displayed on the Alternative Universal Navigation. Recommended: for optimal results, use a square image with a height of 70px (all images uploaded will be scaled down to 70px high).'),
       '#upload_location' => 'public://alternative_unav/',
     );
   }
