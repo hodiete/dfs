@@ -195,7 +195,24 @@ aside#toc-sidebar {
     display: none;
   }
 }
-
+.toc-mobile-spacer {
+  &.mobile {
+    height: 25px;
+    display: block;
+    margin-top: -25px;
+    visibility: hidden;
+  }
+}
+.webny_whats_related_pgtype {
+  .toc-mobile-spacer {
+    &.mobile {
+      height: 25px;
+      display: block;
+      margin-top: -25px;
+      visibility: hidden;
+    }
+  }
+}
 /* display generic paragraphs at 100% width */
 .gp-paragraphs {
   width:100%;
@@ -207,11 +224,22 @@ aside#toc-sidebar {
   }
 
   h2 {
-    font-size: 2em;
+   // font-size: 2em;
     text-align: left;
     line-height: 45px;
   }
 }
+
+.article-content {
+  .toc-chapters.mview {
+    section {
+      padding-top: 30px;
+      padding-bottom: 30px;
+    }
+  }
+}
+
+
 
 .next-section {
   display: none;
