@@ -130,7 +130,8 @@ $hero-event-bkgd-transparent-black: $bkgd-black-50 !default;
       box-sizing: border-box;
     }
     .published-date {
-      padding: 20px 20px 0;
+      //padding: 20px 20px 0;
+      padding: 40px 20px 0;
       color: #fff;
       font-family: 'ProximaNovaBold';
       font-size: 0.7em;
@@ -212,8 +213,8 @@ $hero-event-bkgd-transparent-black: $bkgd-black-50 !default;
   .hero-has-image .hero-image img {
     position: absolute;
     // Center vertically.
-    top:-100%;
-    bottom:-100%;
+    //top:-100%;
+    //bottom:-100%;
     // Center horizontally.
     left: -100%;
     right: -100%;
@@ -652,7 +653,7 @@ $hero-event-bkgd-transparent-black: $bkgd-black-50 !default;
   }
 
   .hero-layout {
-
+    
        .hero-landing-inner, .hero-ipage-inner {
          h2, h1 {
            width: 100%;
@@ -866,6 +867,7 @@ $hero-event-bkgd-transparent-black: $bkgd-black-50 !default;
     .hero-landing-inner,
     .hero-event--inner {
       position: absolute;
+      padding-top: 60px !important;
       &.hero-has-image-content {
         background: none;
         position: relative;
@@ -879,7 +881,8 @@ $hero-event-bkgd-transparent-black: $bkgd-black-50 !default;
     }
 
     .hero-inner{
-      margin: 60px 0 0 0;
+      //margin: 60px 0 0 0;
+      margin: 0;
       padding: 0 2%;
       width: $hero-inner-width;
       h1, h2{
@@ -898,7 +901,7 @@ $hero-event-bkgd-transparent-black: $bkgd-black-50 !default;
           background: none;
         }
       .published-date {
-        margin-top:20px;
+        //margin-top:20px;
         margin-left: 20px;
       }
 
@@ -1098,6 +1101,11 @@ $hero-event-bkgd-transparent-black: $bkgd-black-50 !default;
     .hero-has-image-content {
       min-height: 427px;
     }
+// Reset Event Hero height on Desktop
+    .hero-no-image.hero-event,
+    .hero-has-image.hero-event{
+      min-height: 455px;
+    }
 
     .hero-has-image.hero-news,
     .hero-has-image.hero-news .hero-image,
@@ -1135,8 +1143,12 @@ $hero-event-bkgd-transparent-black: $bkgd-black-50 !default;
   .front {
     .hero-layout {
       .hero-landing.hero-has-image,
-      .hero-has-image .hero-image {
+      .hero-has-image .hero-image,
+      .hero-has-image,
+      .hero-has-image .hero-image,
+      .hero-has-image-content {
         min-height: 512px;
+        height: 512px;
       }
     }
   }

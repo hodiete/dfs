@@ -3,7 +3,7 @@
   //margin: 20px;
   //width: 90%;
   margin: 20px auto;
-  border: 1px solid $gray-lite;
+  border: 1px solid $color-mono-mid;
   font-family: "ProximaNovaRegular", Arial, sans-serif;
 
   .webny-card-teaser {
@@ -22,7 +22,7 @@
   }
 
   .layout-container ul li {
-    margin: 5px 0 !important;
+    margin: 9px 0 !important;
     padding: 0;
   }
 
@@ -69,7 +69,7 @@
       padding: 10px 15px 0;
 
       @include breakpoint($min-desktop) {
-        height: 164px;
+        height: 167px;
         //box-sizing: border-box;
       }
 
@@ -79,18 +79,19 @@
     }
 
     &__details-left {
-      padding-top: 10px;
-      flex-basis: 40%;
-      border-right: 1px solid $gray-lite;
-      margin-right: 20px;
+      padding-top: 20px;
 
-      @include breakpoint($min-desktop) {
-        //margin-right: 0;
+
+      @include breakpoint($min-tablet) {
+        flex-basis: 60%;
+        border-right: 1px solid $color-mono-mid;
+        margin-right: 15px;
       }
 
       @include breakpoint($min-desktop) {
-        margin-right: 20px;
+        margin-right: 15px;
         padding-top: 20px;
+        flex-basis: 50%;
       }
 
       @include breakpoint($min-wide) {
@@ -99,14 +100,12 @@
     }
 
     &__details-right {
-      padding-top: 20px;
-      flex-basis: 60%;
+      //padding-top: 12px;
 
       @include breakpoint($min-tablet) {
         padding-top: 0px;
-      }
-      @include breakpoint($min-wide) {
-        padding-top: 20px;
+        //flex-basis: 40%;
+        width: 100%;
       }
     }
 
@@ -124,16 +123,27 @@
   }
 
   &__events{
+    max-height: 382px;
+    height: 382px;
+    .description {
+      display: none;
+    }
+
+    @include breakpoint($min-tablet) {
+      height: 240px;
+    }
+
     .webny-teaser-content-wrapper__details {
-        display: flex;
         padding: 0 15px;
+        height: 329px;
 
         @include breakpoint($min-tablet) {
-          height: 184px;
+          height: 188px;
+          display: flex;
         }
 
         @include breakpoint($min-desktop) {
-          padding: 0 25px;
+          padding: 0 15px;
         }
       }
   }
@@ -145,15 +155,21 @@
     padding-top: 5px;
     
 
-    @include breakpoint($min-desktop) {
+    @include breakpoint($min-tablet) {
       padding-top: 0;
+      font-size: 16px;
+      line-height: 16px;
+    }
+    @include breakpoint($min-desktop) {
+      font-size: 14px;
     }
   }
 
   &-filter-term-border {
-      width: 40px;
-      border-bottom: 1px solid $gray-lite;
+      width: 60px;
+      border-bottom: 1px solid $color-mono-mid;
       display: inline-block;
+      margin: 13px 0 2px 0;
   }
 
   span {
@@ -163,22 +179,29 @@
   }  
 
   &-title {
-    font-size: 1.17em;
+    font-size: 18px;
     font-weight: 600;
-    margin-bottom: 7px;
-    line-height: .9;
+    margin-bottom: 18px;
+    line-height: 21px;
 
-
-    @include breakpoint($min-mobile) {
-      margin-bottom: 10px;
-      line-height: 27px;
+    a{
+      color: $medblue;
     }
+
+
+    //@include breakpoint($min-mobile) {
+    //  margin-bottom: 10px;
+    //  line-height: 27px;
+    //}
 
     @include breakpoint($min-tablet) {
-      font-size: 15px;
+      font-size: 20px;
+      line-height: 24px;
+      padding-right: 15px;
     }
     @include breakpoint($min-desktop) {
-      font-size: 19px;
+      font-size: 18px;
+      line-height: 21px;
     }
   }
 
@@ -191,9 +214,9 @@
     display: flex;
     flex-direction: column;
 
-    @include breakpoint($min-wide) {
-      width: 71%;
-    }
+    //@include breakpoint($min-wide) {
+     // width: 71%;
+    //}
   }
 
   .event-date {
@@ -201,26 +224,67 @@
     display: flex;
     justify-content: space-between;
     flex-direction: column;
+    .day div,
+    .month div,
+    .event-year div {
+        margin: auto;
+    }
 
+    .month {
+      padding-bottom: 3px !important;
+    }
+    .day {
+      padding-bottom: 0px !important;
+    }
+    .address-wrapper { 
+      height: 48px;
+      overflow: hidden;
+      @include breakpoint($min-tablet) {
+        padding: 5px 0 0 0 !important;
+        height: 32px;
+        overflow: hidden;
+      }
+      @include breakpoint($min-tablet) {
+       padding: 15px 0 0 0 !important;
+       }
+    }
+    
     @include breakpoint($min-wide) {
-      flex-direction: row;
+      flex-direction: column;
     }
 
     .day-month-wrapper {
-      padding-bottom: 15px;
+      padding-bottom: 10px;
+      justify-content: center;
+      width: 150px;
 
-      @include breakpoint($min-mobile) {
+      @include breakpoint($min-tablet) {
+        width: auto;
+        margin: auto;
+        padding-top: 10px;
         padding-bottom: 5px;
       }
-
-      @include breakpoint($min-wide) {
-        padding-bottom: 20px;
+      @include breakpoint($min-desktop) {
+        padding: 15px 0 0px 0;
+        width: auto;
+        margin: auto;
       }
+     // @include breakpoint($min-wide) {
+     //   padding-bottom: 20px;
+      //}
+
     }
 
     .time {
       color: $color-mono-black;
-      padding-left: 20px;
+      //padding-left: 20px;
+      &::before {
+        width: 13px; 
+        padding-right: 5px;
+      }
+      @include breakpoint($min-desktop) {
+        font-weight: 600;
+      }
 
       @include breakpoint($min-wide) {
         padding: 0;
@@ -229,11 +293,20 @@
 
     .address {
       color: $color-mono-black;
+      padding-left: 0 !important;
 
       &-wrapper {
         margin-top: 10px;
         padding-top: 10px;
-        display: flex;
+        font-size: 13px;
+        line-height: 16px;
+        
+        &::before {
+          height: 48px;
+        }
+        .event-address {
+          padding-left: 23px;
+        }
 
 
         @include breakpoint($min-tablet) {
@@ -241,21 +314,20 @@
         }
 
         @include breakpoint($min-desktop) {
-          padding: 5px 20px;
+          padding: 5px 15px;
         }
 
-        @include breakpoint($min-wide){
-          margin-top: 20px;
-          padding-top: 20px;
-          padding-left: 0;
-        }
+       // @include breakpoint($min-wide) {
+        //  margin-top: 20px;
+        //  padding-top: 20px;
+        //  padding-left: 0;
+       // }
       }
     }
   }
 
   .day-month-wrapper {
     width: 100%;
-
     @include breakpoint($min-wide) {
       width: 24%;
     }
@@ -263,11 +335,43 @@
 
   .month {
     text-align: center;
+    display: flex;
+    justify-content: row;
   }
 
   .day {
     text-align: center;
+    display: flex;
+    justify-content: row;
   }
+
+  .event-year {
+    text-align: center;
+    display: flex;
+    justify-content: row;
+    font-size: 13px !important;
+
+    .start-event-year,
+    .end-event-year {
+      font-size: 13px !important;
+    }
+  }
+//took from _event_date.scss to overwrite default behavior to use on teaser pages
+  .multi-day {
+    .day div,
+    .month div,
+    .event-year div, 
+    .start div {
+      float: left;
+      width: 45px !important; 
+      &.dash {
+        //width: 20px !important;
+        padding: 0 0 0 5px;
+        font-size: 20px;
+      }
+    }
+  }
+  
 
   .meridiem {
     font-size: 12px;
@@ -275,14 +379,34 @@
   }
 
   .address-wrapper {
-    padding-left: 20px;
+    
+    @include breakpoint($min-desktop) {
+      padding-left: 20px;
+      //display: flex;
+      flex-direction: column;
+    }
 
     @include breakpoint($min-wide) {
       padding: 0;
     }
 
+    .venue-name {
+      font-size: 13px;
+      line-height: 16px;
+      //padding-left: 23px;
+      padding-left: 0 !important;
+    }
+
+    .venue-name>div {
+      color: #000;
+      @include breakpoint($min-tablet) {
+        height: 16px; 
+        overflow: hidden;
+      }
+    }
+
     .city-state-zip {
-      display: block;
+      display: inline;
 
       @include breakpoint($min-wide) {
         display: inline;
@@ -297,24 +421,27 @@
   .links,
   .actions {
     list-style: none;
-    padding: 4px 36px;
+    //padding: 4px 30px;
+    padding: 8px 33px;
     margin: 1px 0 -1px 0;    
     background-color: $color-mono-lt;
-    border: 1px solid $gray-lite;
+    border: 1px solid $color-mono-mid;
     border-left: 0;
     border-right: 0;
 
     @include breakpoint($min-mobile) {
-      padding: 10px 43px;
+      padding: 8px 33px;
     }
   }
 
   .links a {
     position: relative;
     text-transform: uppercase;
-    font-weight: bold;
+    font-weight: 800;
     font-size: 13px;
     color: black;
+    letter-spacing: 1px;
+
 
 
     &::before {
@@ -322,7 +449,9 @@
       font-family: 'icomoon';
       color: $primarygold;
       position: absolute;
-      left: -20px;
+      left: -19px;
+      line-height: 13px;
+      //margin-top: 6px;
     }
   }
 
