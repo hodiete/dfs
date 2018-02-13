@@ -83,9 +83,7 @@ $hero-event-bkgd-transparent-black: $bkgd-black-50 !default;
   height: 455px;
 }
 
-.hero-header,
-.hero-no-image,
-.hero-landing {
+.hero-no-image.hero-landing {
   height: 450px;
 }
 
@@ -657,6 +655,10 @@ $hero-event-bkgd-transparent-black: $bkgd-black-50 !default;
     height: 385px;
   }
 
+  .hero-no-image.hero-landing {
+    height: 385px;
+  }
+
   .hero-no-image.hero-location {
     background-color: $hero-bkgd-color;
     height: 500px;
@@ -877,6 +879,10 @@ $hero-event-bkgd-transparent-black: $bkgd-black-50 !default;
     .hero-buttons div {
       display:inline-block;
       margin: 30px 20px 0 0;
+    }
+
+    .hero-no-image.hero-landing {
+      height: 385px;
     }
 
     .hero-news-inner,
