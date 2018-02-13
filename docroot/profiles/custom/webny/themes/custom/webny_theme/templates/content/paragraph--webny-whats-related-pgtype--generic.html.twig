@@ -39,7 +39,7 @@ paragraph.bundle|clean_class,
       <span class="toc-mobile-spacer"></span>
         <h3{{ attributes.addClass('webny-whats-related-title') }}>{{ paragraph.field_webny_whats_related_title.value }}</h3>
 
-        {% for i in 0..2 %}
+        {% for i in 0..9 %}
             {% if content.field_webny_whats_related_links[i]['#url'] != null %}
                  <a href="{{ content.field_webny_whats_related_links[i]['#url'] }}" rel="bookmark">{{ content.field_webny_whats_related_links[i]['#title'] }}</a>
             {# <a href="{{ content.field_webny_whitelist_link_url[i]['#url'] }}" target="_blank" rel="bookmark">{{ content.field_webny_whats_related_links[i]['#title'] }}</a>
