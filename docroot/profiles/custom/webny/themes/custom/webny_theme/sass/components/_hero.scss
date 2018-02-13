@@ -83,6 +83,12 @@ $hero-event-bkgd-transparent-black: $bkgd-black-50 !default;
   height: 455px;
 }
 
+.hero-header,
+.hero-no-image,
+.hero-landing {
+  height: 450px;
+}
+
 // ========================================================================= //
 /* HERO LAYOUT */
 .hero-layout {
@@ -285,6 +291,7 @@ $hero-event-bkgd-transparent-black: $bkgd-black-50 !default;
   //used on landing pages
   .hero-buttons div {
     margin: 17px 0;
+    padding-top: 0px;
   }
 
   .hero-keywords > div > div {
@@ -646,14 +653,24 @@ $hero-event-bkgd-transparent-black: $bkgd-black-50 !default;
     opacity: .9;
   }
 
+  .hero-no-image {
+    height: 385px;
+  }
+
   .hero-no-image.hero-location {
     background-color: $hero-bkgd-color;
     height: 500px;
     width: 100%;
   }
 
+  .hero-header,
+  .hero-no-image,
+  .hero-landing {
+    min-height: 385px;
+  }
+
   .hero-layout {
-    
+
        .hero-landing-inner, .hero-ipage-inner {
          h2, h1 {
            width: 100%;
@@ -664,7 +681,7 @@ $hero-event-bkgd-transparent-black: $bkgd-black-50 !default;
            max-width: 690px;
          }
          .hero-buttons {
-           padding-top: 30px;
+          // padding-top: 30px;
          }
        }
 
@@ -859,7 +876,7 @@ $hero-event-bkgd-transparent-black: $bkgd-black-50 !default;
     //used on landing pages
     .hero-buttons div {
       display:inline-block;
-      margin: 0 20px 0 0;
+      margin: 30px 20px 0 0;
     }
 
     .hero-news-inner,
