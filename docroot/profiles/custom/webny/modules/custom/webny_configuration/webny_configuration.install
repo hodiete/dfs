@@ -4105,11 +4105,11 @@ function webny_configuration_update_8184() {
 }
 
 /**
- * NDD-1233 QUICK LINKS SQUARE
+ * NDD-1036 ALTERNATIVE UNIVERSAL NAVIGATION
  *
- * REFRESH WEBNY MEDIA OPTIONAL FILES
+ * REFRESH UNAV FILES
  *
- * DEV: IOJONEP
+ * DEV: VAN
  */
 function webny_configuration_update_8185() {
   // REINSTALL THE SECONDARY NAV MODULE
@@ -4123,6 +4123,7 @@ function webny_configuration_update_8185() {
 
   // Import new/changed configuration.
   $config_to_update = [
+    'webny_unav.settings',
     'image.style.alternative_universal_navigation'
   ];
 
