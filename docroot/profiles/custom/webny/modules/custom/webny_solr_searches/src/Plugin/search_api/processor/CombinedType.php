@@ -67,18 +67,6 @@ class CombinedType extends ProcessorPluginBase {
       $combined_type = $types_without_content_ctgy[$item_bundle];
     }
 
-    // Exception for location - use the "location type" taxonomy if used.
-    if ($item_bundle == 'webny_location') {
-      $fields = $this->index->getFields();
-      foreach ($item->getField('field_webny_location_type_tax__name') as $value) {
-        $location_type_name = $value;
-      }
-      // Overwrite value if location type exists.
-      if ($location_type_name) {
-        $combined_type = $location_type_name;      
-      }
-    }
-
     // Types that may have category term.
     if (array_key_exists($item_bundle, $types_with_content_ctgy)) {
       $fields = $this->index->getFields();
