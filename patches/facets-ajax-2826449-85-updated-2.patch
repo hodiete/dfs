@@ -96,13 +96,13 @@ index 445a79f..4e64692 100644
 --- a/src/Plugin/facets/url_processor/QueryString.php
 +++ b/src/Plugin/facets/url_processor/QueryString.php
 @@ -58,7 +58,7 @@ class QueryString extends UrlProcessorPluginBase {
-
+ 
      $request = $this->request;
      if ($facet->getFacetSource()->getPath()) {
 -      $request = Request::create($facet->getFacetSource()->getPath());
 +      $request = Request::create(ltrim($facet->getFacetSource()->getPath(), '/'));
      }
-
+ 
      // Grab any route params from the original request.
 @@ -142,9 +142,11 @@ class QueryString extends UrlProcessorPluginBase {
        if ($result_get_params->all() !== [$this->filterKey => []]) {
@@ -120,7 +120,7 @@ index 445a79f..4e64692 100644
          // Set the new url parameters.
          $url->setOption('query', $new_url_params);
 diff --git a/src/Widget/WidgetPluginBase.php b/src/Widget/WidgetPluginBase.php
-index 4f724a1..10fbab7 100644
+index 4f724a1..3931bc1 100644
 --- a/src/Widget/WidgetPluginBase.php
 +++ b/src/Widget/WidgetPluginBase.php
 @@ -10,6 +10,7 @@ use Drupal\Core\Url;
@@ -131,8 +131,13 @@ index 4f724a1..10fbab7 100644
  
  /**
   * A base class for widgets that implements most of the boilerplate.
-@@ -63,10 +64,33 @@ abstract class WidgetPluginBase extends PluginBase implements WidgetPluginInterf
+@@ -61,12 +62,38 @@ abstract class WidgetPluginBase extends PluginBase implements WidgetPluginInterf
+         $pathinfo = $request->getPathInfo();
+         $url_object = \Drupal::service('path.validator')
            ->getUrlIfValid($pathinfo);
++        if (!$url_object) {
++          return [];
++        }
          $route_params = $url_object->getRouteParameters();
          $route_name = $url_object->getRouteName();
 +
