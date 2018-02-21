@@ -6,7 +6,7 @@
             <div class="pane-page-logo">
                 <div class="pane-content">
                     {% if alt_unav_image is not null or alt_unav_image is not empty %}
-                        <a href="#">
+                        <a href="{{ url('<front>') }}">
                             <img alt="{{ site_name }}" src="{{ alt_unav_image }}" />
                         </a>
                     {% endif %}
