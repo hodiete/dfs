@@ -5,9 +5,11 @@
 
             <div class="pane-page-logo">
                 <div class="pane-content">
-                    <a href="#">
-                        <img alt="Alternative Universal Navigation Logo" src="{{ alt_unav_image }}" />
-                    </a>
+                    {% if alt_unav_image is not null or alt_unav_image is not empty %}
+                        <a href="#">
+                            <img alt="Alternative Universal Navigation Logo" src="{{ alt_unav_image }}" />
+                        </a>
+                    {% endif %}
                 </div>
 
             </div>
