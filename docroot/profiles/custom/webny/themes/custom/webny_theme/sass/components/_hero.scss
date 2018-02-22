@@ -126,7 +126,8 @@ $hero-event-bkgd-transparent-black: $bkgd-black-50 !default;
     width: 100%;
     bottom: 0;
     left: 0;
-    padding: 0;
+    padding-top: 20px;
+    height: 500px;
     &.hero-has-image-content {
       position: relative;
       z-index: 3;
@@ -135,7 +136,7 @@ $hero-event-bkgd-transparent-black: $bkgd-black-50 !default;
     }
     .published-date {
       //padding: 20px 20px 0;
-      padding: 40px 20px 0;
+      padding: 40px 0 0 40px;
       color: #fff;
       font-family: 'ProximaNovaBold';
       font-size: 0.7em;
@@ -145,6 +146,10 @@ $hero-event-bkgd-transparent-black: $bkgd-black-50 !default;
       padding: 20px 40px 0;
       padding-top: 0px;
       margin-top: 56px;
+    }
+
+    .hero-keywords {
+      margin-left: 40px;
     }
   }
 
@@ -277,6 +282,7 @@ $hero-event-bkgd-transparent-black: $bkgd-black-50 !default;
       margin-bottom: 20px;
     }
   }
+
   .hero-event {
     .hero-buttons,
     .hero-keywords {
@@ -427,7 +433,7 @@ $hero-event-bkgd-transparent-black: $bkgd-black-50 !default;
 
   .hero-generic-summary {
     padding: 0 22px 0 40px;
-    font-size: 30px; /*1em; */
+    font-size: 18px; /*1em; */
     color: $hero-text-color;
     position:  relative;
     z-index: 5;
@@ -704,6 +710,7 @@ $hero-event-bkgd-transparent-black: $bkgd-black-50 !default;
       .hero-generic-summary {
         width: 66%;
         max-width: 690px;
+        font-size: 30px;
       }
     }
 
@@ -925,7 +932,7 @@ $hero-event-bkgd-transparent-black: $bkgd-black-50 !default;
         }
       .published-date {
         //margin-top:20px;
-        margin-left: 20px;
+        //margin-left: 20px;
       }
 
       h1 {
@@ -1116,7 +1123,7 @@ $hero-event-bkgd-transparent-black: $bkgd-black-50 !default;
   .hero-layout {
 
     .hero-inner{
-      padding: 0 4%;
+      padding: 0 30px;
     }
 
     .hero-has-image,
