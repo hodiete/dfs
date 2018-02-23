@@ -1,7 +1,15 @@
+{%
+set classes = [
+'webny-teaser',
+'teaser--type--' ~ node.bundle|clean_class
+]
+%}
+
+
 {% block link_direct %}
   {% set link = url %}
 {% endblock link_direct %}
-<article{{ attributes.addClass('webny-teaser') }}>
+<article{{ attributes.addClass(classes) }}>
     <div class="webny-teaser-wrapper">
         {# <a class="webny-teaser-image" href="{{ url }}"> #}
         <a class="webny-teaser-image" href="{{ url }}">
