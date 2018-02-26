@@ -12,9 +12,21 @@
 
       var click = 'click touchend';
 
-      $('#alternative-unav-translate-link').on(click, function() {
-        console.log('clicked');
-        $('.goog-te-menu-frame').toggle();
+      // on click for translate link
+      $('#alternative-unav-translate').on(click, function() {
+        // set provided google iframe to absolutely positioned
+        $('.goog-te-menu-frame').css('position', 'absolute').css('top', '125px');
+
+        // Google sends us three iframes for some reason. Only handle the first instance
+        $('.goog-te-menu-frame').each(function(index, value) {
+          if (index == 0) {
+            if ($(this).css('display') == 'block') {
+              $(this).css('display', 'none');
+            } else {
+              $(this).css('display', 'block');
+            }
+          }
+        });
       });
     }
   }
