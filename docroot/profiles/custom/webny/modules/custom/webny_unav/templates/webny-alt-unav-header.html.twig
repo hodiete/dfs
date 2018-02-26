@@ -1,7 +1,62 @@
 <div id="alternative-universal-navigation" class="alternative-universal-container">
     <header id="alternative-unav-header" class="alternative-unav-header" role="banner">
         <div class="header">
-            <div class="pane-alt-unav-global-menu"></div>
+
+            <div class="alternative-unav-global-menu">
+
+                {# if google search appliance has been selected #}
+                {% if gsa == '1' %}
+                    {% set site_url = url("<front>") %}
+                    {% if 'ny.gov' in site_url|render|render %}
+                        {# production environment based on site_url including ny.gov #}
+                        {% set gsa_action = 'http://search.its.ny.gov/search' %}
+                    {% else %}
+                        {# non-production environment #}
+                        {% set gsa_action = 'http://qa.search.its.ny.gov/search' %}
+                    {% endif %}
+                    <div class="alternative-unav-gsa">
+                        <form action="{{ gsa_action }}" method="get">
+                            <input id="alternative-unav-search" placeholder="Search" data-type="search" aria-label="search" name="q" />
+                            <span class="ui-helper-hidden-accessible" role="status" aria-live="polite"></span>
+                            <span class="icon-search"></span>
+                            <button class="alternative-unav-search-submit" type="submit">Submit</button>
+                            <input type="hidden" name="client" value="{{ gsa_client }}">
+                            <input type="hidden" name="output" value="xml_no_dtd">
+                            <input type="hidden" name="proxystylesheet" value="{{ gsa_proxy_stylesheet }}">
+                            <input type="hidden" name="sort" value="date:D:L:d1">
+                            <input type="hidden" name="wc" value="200">
+                            <input type="hidden" name="wc_mc" value="1">
+                            <input type="hidden" name="oe" value="UTF-8">
+                            <input type="hidden" name="ie" value="UTF-8">
+                            <input type="hidden" name="ud" value="1">
+                            <input type="hidden" name="site" value="{{ gsa_collection }}">
+                            <input type="hidden" name="sitesearch" value="{{ site_url }}" />
+                            <input type="submit" name="submit" />
+                        </form>
+                    </div>
+                {% endif %}
+
+                {# if translate textbox has been selected #}
+                {% if gt == '1' %}
+                    <div class="alternative-unav-links">
+                        <ul id="alternative-unav-settings" class="alternative-unav-settings">
+                            <li class="alternative-unav-settings-translate">
+                                <a id="alternative-unav-translate" href="#">Translate</a>
+                                <div id="google_translate_element"></div>
+                                <script type="text/javascript">
+                                  function googleTranslateElementInit () {
+                                    new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+                                  }
+                                </script>
+                                <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+                            </li>
+                        </ul>
+                    </div>
+                {% endif %}
+                <div class="universal_searcher">
+                    <form></form>
+                </div>
+            </div>
 
             <div class="pane-page-logo">
                 <div class="pane-content">
@@ -13,49 +68,15 @@
                 </div>
 
             </div>
-        </div>
 
-        <!--<div class="alternative-unav-agency-name">{{ agencyname }}</div>
-        {# if google search appliance has been selected #}
-        {% if gsa == '1' %}
-            {% set site_url = url("<front>") %}
-            {% if 'ny.gov' in site_url|render|render %}
-                {# production environment based on site_url including ny.gov #}
-                {% set gsa_action = 'http://search.its.ny.gov/search' %}
-            {% else %}
-                {# non-production environment #}
-                {% set gsa_action = 'http://qa.search.its.ny.gov/search' %}
-            {% endif %}
-            <div class="alternative-unav-gsa">
-                <form action="{{ gsa_action }}" method="get">
-                    <input placeholder="Search" type="text" name="q" />
-                    <input type="hidden" name="client" value="{{ gsa_client }}">
-                    <input type="hidden" name="output" value="xml_no_dtd">
-                    <input type="hidden" name="proxystylesheet" value="{{ gsa_proxy_stylesheet }}">
-                    <input type="hidden" name="sort" value="date:D:L:d1">
-                    <input type="hidden" name="wc" value="200">
-                    <input type="hidden" name="wc_mc" value="1">
-                    <input type="hidden" name="oe" value="UTF-8">
-                    <input type="hidden" name="ie" value="UTF-8">
-                    <input type="hidden" name="ud" value="1">
-                    <input type="hidden" name="site" value="{{ gsa_collection }}">
-                    <input type="hidden" name="sitesearch" value="{{ site_url }}" />
-                    <input type="submit" name="submit" />
-                </form>
+            <div class="alternative-unav-global-name">
+                <div class="alternative-unav-agency-name">
+                    <div class="alternative-unav-agency-state">New York State</div>
+                    <div class="alternative-unav-agency-agency">{{ agencyname }}</div>
+                </div>
             </div>
-        {% endif %}
-        {# if translate textbox has been selected #}
-        {% if gt == '1' %}
-            <a id="alternative-unav-translate-link" href="#"> Translate</a>
-            <div id="google_translate_element"></div>
-            <script type="text/javascript">
-              function googleTranslateElementInit () {
-                new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
-              }
-            </script>
-            <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-        {% endif %}
-        -->
+
+        </div> <!-- end header class -->
         <div id="expand-menu-mobile"></div>
     </header>
 </div>
