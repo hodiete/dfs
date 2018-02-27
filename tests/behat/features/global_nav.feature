@@ -6,7 +6,7 @@ Feature: Global Navigation Module
   Scenario: If I go to the Global Navigation Page, I should see a few main category fields.
     Given I am logged into the distro with the "administrator" role
     When I am on "/admin/config/webny-globalnav"
-    Then I should not see "Access denied"
+    Then I should not see "You are not authorized to access this page"
     #And I should see "Agency name"
 	#And I should see "Agency grouping color"
 	#And I should see "Global navigation header automatic insertion"

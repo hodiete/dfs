@@ -7,7 +7,7 @@ Feature: Attached Documents to Nodes
   Scenario: See if document attachment fields exist on adding a Page
     Given I am logged into the distro with the "administrator" role 
     When I am on "/node/add/webny_page"
-    Then I should not see "Access denied"
+    Then I should not see "You are not authorized to access this page"
     And I should see "Documents Section Title"
     And I should see "Documents Section Sub Title"
     And I should see text matching "Attached Documents"
@@ -17,7 +17,7 @@ Feature: Attached Documents to Nodes
   Scenario: See if document attachment fields exist on adding a News Page
     Given I am logged into the distro with the "administrator" role 
     When I am on "/node/add/webny_news"
-    Then I should not see "Access denied"
+    Then I should not see "You are not authorized to access this page"
     And I should see "Documents Section Title"
     And I should see "Documents Section Sub Title"
     And I should see text matching "Attached Documents"
