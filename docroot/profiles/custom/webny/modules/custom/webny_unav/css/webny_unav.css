@@ -43,8 +43,9 @@
     height: 84px;
     position: absolute;
     left: 0;
-    top: 0;
+    top: -84px;
     width: 100%;
+    transition: all 0.3s ease 0s;
 }
 
 .header {
@@ -60,8 +61,65 @@
     display: none;
 }
 
-.header .alternative-unav-global-menu {
+.header .alternative-unav-global-menu .alternative-unav-links {
     display: none;
+}
+
+.header .alternative-unav-global-menu .alternative-unav-gsa {
+    position: relative;
+    text-align: left;
+}
+.header .alternative-unav-global-menu .alternative-unav-gsa form {
+    position: relative;
+    font-size: 16px;
+    padding: 20px 40px;
+    text-align: center;
+    z-index: 100;
+    background-color: rgb(248, 250, 250);
+}
+.header .alternative-unav-global-menu .alternative-unav-gsa form #alternative-unav-search {
+    display: block;
+    border-color: rgb(217, 226, 226);
+    border-radius: 30px;
+    border-width: 1px;
+    border-style: solid;
+    color: rgb(0, 0, 0);
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 20px;
+    margin: 0;
+    padding: 7px 30px;
+    position: relative;
+    font-family: "Proxima Nova", Arial, sans-serif;
+}
+.header .alternative-unav-global-menu .alternative-unav-gsa form .icon-search {
+    font-family: "icomoon";
+    font-size: 16px;
+    font-weight: 400;
+    left: 50px;
+    line-height: 16px;
+    position: absolute;
+    text-align: center;
+    top: 30px;
+}
+.header .alternative-unav-global-menu .alternative-unav-gsa form .icon-search:before {
+    content: "\e607"
+}
+.header .alternative-unav-global-menu .alternative-unav-gsa form .alternative-unav-search-submit {
+    display:none;
+    background-color: rgba(0, 0, 0, 0);
+    color: rgb(18, 142, 195);
+    cursor: pointer;
+    font-family: "Proxima Nova", Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    position: absolute;
+    right: 16px;
+    top: 5.6px;
+    width: 0px;
+    margin: 0px;
+    overflow: hidden;
+    text-align: center;
 }
 
 .header .pane-alt-unav-global-menu {
@@ -96,7 +154,7 @@
 
 .header .pane-page-logo .pane-content img {
     margin: 0 auto;
-    padding: 6px 10px;
+    padding: 10px 10px;
     max-height: 70px;
     text-align: left;
 }
@@ -111,8 +169,10 @@
     border-left: solid 1px #d9e2e2;
     cursor: pointer;
     z-index: 100;
+    top: 94px;
 }
 .alternative-unav-header #expand-menu-mobile:before {
+    display: block;
     position: absolute;
     font-family: 'icomoon';
     speak: none;
@@ -136,6 +196,14 @@
     margin-left: -9px;
 }
 
+.alternative-unav-header.nav-open #expand-menu-mobile:before {
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
+
 .alternative-unav-header .alternative-unav-links {
     display: none;
 }
@@ -154,6 +222,7 @@
         width: 60%;
     }
     .header .alternative-unav-global-name .alternative-unav-agency-name {
+        transition: all 0.3s ease 0s;
         padding: 25px 0;
     }
     .header .alternative-unav-global-name .alternative-unav-agency-name .alternative-unav-agency-state {
@@ -173,7 +242,7 @@
         float: right;
         position: relative;
         text-align: left;
-        margin-top: 35px;
+        /*margin-top: 35px;*/
     }
     .header .alternative-unav-global-menu .alternative-unav-gsa {
         position: relative;
@@ -182,9 +251,16 @@
     }
     .header .alternative-unav-global-menu .alternative-unav-gsa form {
         position: absolute;
-        right: 120px;
-        top: -9px;
+        right: 130px;
+        top: 28px;
         width: 140px;
+        z-index: 100;
+        transition-delay: 0;
+        transition-duration: 0.33s;
+        transition-property: left;
+        transition-timing-function: ease;
+        background-color: #FFF;
+        padding: 0;
     }
     .header .alternative-unav-global-menu .alternative-unav-gsa form #alternative-unav-search {
         display: block;
@@ -201,6 +277,7 @@
         position: relative;
         width: 80px;
         font-family: "Proxima Nova", Arial, sans-serif;
+        transition: all 0.3s ease 0s;
     }
     .header .alternative-unav-global-menu .alternative-unav-gsa form .icon-search {
         font-family: "icomoon";
@@ -211,25 +288,36 @@
         position: absolute;
         text-align: center;
         top: 10px;
+        transition: all 0.3s ease 0s;
     }
     .header .alternative-unav-global-menu .alternative-unav-gsa form .icon-search:before {
         content: "\e607"
     }
+    .header .alternative-unav-global-menu .alternative-unav-gsa form.search-open .alternative-unav-search-submit {
+        border-left-width: 1px;
+        width: 85px;
+        padding: .2em 1em;
+    }
     .header .alternative-unav-global-menu .alternative-unav-gsa form .alternative-unav-search-submit {
-        display:none;
-        background-color: rgba(0, 0, 0, 0);
-        color: rgb(18, 142, 195);
-        cursor: pointer;
         font-family: "Proxima Nova", Arial, sans-serif;
         font-size: 16px;
         font-weight: 600;
+        transition: .3s all;
+        background: none;
+        border: 0 solid #d9e2e2;
+        color: #128ec3;
+        padding: .2em 0;
         position: absolute;
-        right: 16px;
-        top: 5.6px;
-        width: 0px;
-        margin: 0px;
+        right: 1em;
+        top: .35em;
+        width: 0;
         overflow: hidden;
-        text-align: center;
+        line-height: 1.3em;
+        border-radius: 0;
+        display: block;
+    }
+    .header .alternative-unav-global-menu .alternative-unav-links {
+        display: block;
     }
     .header .pane-page-logo {
         padding: 8px 0;
@@ -251,6 +339,7 @@
     }
     .alternative-unav-header #expand-menu-mobile {
         z-index: 0;
+        display: none;
     }
     .alternative-unav-header .alternative-unav-links {
         display: block;
@@ -268,7 +357,7 @@
         padding: 0;
         position: absolute;
         right: 30px;
-        top: -7px;
+        top: 25px;
     }
     .alternative-unav-header .alternative-unav-links ul.alternative-unav-settings li.alternative-unav-settings-translate {
         padding: 10px 15px;
