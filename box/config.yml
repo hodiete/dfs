@@ -56,6 +56,8 @@ installed_extras:
   - selenium
   - xdebug
   - memcached
+  - solr
+  - varnish
 
 # PHP 7.1 is recommended for Acquia Cloud: https://docs.acquia.com/acquia-cloud/manage/php#php-version).
 php_version: "7.1"
@@ -80,3 +82,8 @@ php_memory_limit: "768M"
 
 post_provision_scripts:
   - "../../../acquia/blt/scripts/drupal-vm/post-provision.sh"
+#solr post provision script to create a solr server in your local VM
+  - "../../../../box/configure-solr.sh"
+
+# Solr Configuration (if enabled above) for more configurations please see: http://docs.drupalvm.com/en/latest/extras/solr/.
+solr_version: "4.5.1"
