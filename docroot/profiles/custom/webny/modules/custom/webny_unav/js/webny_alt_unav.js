@@ -21,6 +21,8 @@
 
       });
 
+      // on load and resize of window
+      // if mobile set positioning and width of search box, header and arrow
       $(window).on('load resize', function () {
         if ($(window).width() < 768) {
           var windowWidth = $(window).width();
@@ -32,8 +34,44 @@
           $('#alternative-unav-search').css('width', '80px');
           $('#alternative-universal-navigation header').css('top', '0px');
         }
+
+        // if in desktop mode
+        // handle search box animations
+        if ($(window).width() >= 768) {
+          // set default left position on search icon when switched to desktop
+          $('.icon-search').css('left', '10px');
+
+          $('#alternative-unav-search').on(click, function (e) {
+            e.stopPropagation();
+            // search box is 80px wide, meaning it hasn't been expanded yet
+            if ($('#alternative-unav-search').css('width') == '80px') {
+              var sbMove = $('#alternative-unav-search').offset().left - $('.pane-page-logo').width();
+              var sbWidth = ($('#alternative-unav-search').width() + sbMove);
+
+              $('#alternative-unav-search').css('left', -sbMove + 'px').css('width', sbWidth);
+              $('.icon-search').css('left', -(sbMove - 10) + 'px');
+              $('.alternative-unav-gsa form').addClass('search-open');
+              $('.alternative-unav-agency-name').hide();
+            }
+          });
+
+          $('body').on(click, function() {
+            $('#alternative-unav-search').css('left', '0px').css('width', '80px');
+            $('.icon-search').css('left', '10px');
+            $('.alternative-unav-gsa form').removeClass('search-open');
+            $('.alternative-unav-agency-name').show();
+          });
+
+        } else {
+          // unbind event handlers in mobile
+          $('#alternative-unav-search').off();
+          $('body').off();
+          // set default left position on search icon when switched to mobile
+          $('.icon-search').css('left', '50px');
+        }
       });
 
+      // on click of arrow mobile menu
       $('#expand-menu-mobile').on(click, function() {
         if ($('#alternative-universal-navigation header').css('top') === '-84px') {
           $('#alternative-universal-navigation header').css('top', '0px');
@@ -46,29 +84,6 @@
 
       });
 
-      if ($(window).width() >= 768) {
-        $('#alternative-unav-search').on(click, function (e) {
-          e.stopPropagation();
-          if ($('#alternative-unav-search').css('width') == '80px') {
-            var sbMove = $('#alternative-unav-search').offset().left - $('.pane-page-logo').width();
-            var sbWidth = ($('#alternative-unav-search').width() + sbMove);
-
-            console.log(sbMove);
-
-            $('#alternative-unav-search').css('left', -sbMove + 'px').css('width', sbWidth);
-            $('.icon-search').css('left', -(sbMove - 10) + 'px');
-            $('.alternative-unav-gsa form').addClass('search-open');
-            $('.alternative-unav-agency-name').hide();
-          }
-        });
-
-        $('body').on(click, function() {
-          $('#alternative-unav-search').css('left', '0px').css('width', '80px');
-          $('.icon-search').css('left', '10px');
-          $('.alternative-unav-gsa form').removeClass('search-open');
-          $('.alternative-unav-agency-name').show();
-        });
-      }
     }
   }
 })(jQuery, Drupal, this);
