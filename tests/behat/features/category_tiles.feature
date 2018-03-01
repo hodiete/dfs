@@ -7,7 +7,7 @@ Feature: Category Tiles Paragraph Tests
   Scenario: See if Add Category Tiles button and fields exist
     Given I am logged into the distro with the "administrator" role
     When I am on "/node/add/webny_landing_page"
-    Then I should not see "Access denied"
+    Then I should not see "You are not authorized to access this page"
     When I press the "Add Category Tiles" button
     Then I should see text matching "Category Tiles"
     And I should see "BACKGROUND IMAGE"

@@ -8,7 +8,7 @@ Feature: Announcement Highlight Paragraph Tests
   Scenario: See if Add Announcement button and fields exist
     Given I am logged into the distro with the "administrator" role
     When I am on "/node/add/webny_landing_page"
-    Then I should not see "Access denied"
+    Then I should not see "You are not authorized to access this page"
     When I press the "Add Announcement" button
     Then I should see "Announcement Title"
     And I should see "Announcement Headline"

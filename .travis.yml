@@ -5,10 +5,19 @@ language: php
 dist: trusty
 
 php:
-  - 5.6
+  - 7.1
 
 matrix:
   fast_finish: true
+
+env:
+  global:
+    - COMPOSER_BIN=$TRAVIS_BUILD_DIR/vendor/bin
+    - BLT_DIR=$TRAVIS_BUILD_DIR/vendor/acquia/blt
+    - BUILD_DIR=$TRAVIS_BUILD_DIR
+
+jdk:
+  - oraclejdk8
 
 cache:
   bundler: true
@@ -19,7 +28,7 @@ cache:
   - "$HOME/.npm"
   - "$HOME/.nvm"
   - "vendor"
- # Cache front end dependecies to dramatically improve build time.
+  # Cache front end dependecies to dramatically improve build time.
   - "docroot/profiles/custom/webny/themes/custom/webny_theme/node_modules"
   - "docroot/profiles/custom/webny/themes/custom/webny_theme/bower_components"
 
@@ -28,6 +37,7 @@ addons:
   - svn-43.enterprise-g1.hosting.acquia.com
   - staging-538.enterprise-g1.hosting.acquia.com
   - web-536.enterprise-g1.hosting.acquia.com
+  chrome: stable
   apt:
     packages:
     - mysql-server-5.6
@@ -36,7 +46,7 @@ addons:
 
 # @see https://docs.travis-ci.com/user/notifications
 notifications:
-# - hipchat: [api token]@[room id or name]
+# - slack: '<account>:<token>#[channel]'
   slack: 'webnydistro:iSJ8dsk7Ym139SMpL470llno'
 
 before_install:
@@ -53,7 +63,7 @@ before_install:
   - echo "memory_limit=-1" >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
   - git config --global user.name "Travis-CI"
   - git config --global user.email "noreply@travis-ci.org"
-  - mysql -u root -e "CREATE DATABASE drupal; CREATE USER 'drupal'@'localhost' IDENTIFIED BY 'drupal'; GRANT ALL ON drupal.* TO 'drupal'@'localhost';"
+  # - mysql -u root -e "CREATE DATABASE drupal; CREATE USER 'drupal'@'localhost' IDENTIFIED BY 'drupal'; GRANT ALL ON drupal.* TO 'drupal'@'localhost';"
   - echo "extension = memcached.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
   # Tweak PHP configuration.
   # Copied from Lightning.
@@ -62,6 +72,8 @@ before_install:
   - echo 'sendmail_path = /bin/true' >> drupal.php.ini;
   - phpenv config-add drupal.php.ini
   - phpenv rehash
+  # Exit build early if only documentation was changed in a Pull Request.
+  # - source ${BLT_DIR}/scripts/travis/exit_early
 
 install:
   # Load composer dependencies.
@@ -71,16 +83,10 @@ install:
   - composer install -v
   - export PATH=$TRAVIS_BUILD_DIR/vendor/bin:$PATH
   # Install proper version of node for front end tasks.
-  - nvm install 0.12.7
-  - nvm use 0.12.7
-  # Initialize xvfb (see https://docs.travis-ci.com/user/gui-and-headless-browsers)
-  - sudo apt-get install xvfb
-  - export DISPLAY=:99.0
-  - sh -e /etc/init.d/xvfb start
-  # Installs chromedriver to vendor/bin.
-  - ./vendor/acquia/blt/scripts/linux/install-chrome.sh $TRAVIS_BUILD_DIR/vendor/bin
-  # Use JDK 8.
-  - jdk_switcher use oraclejdk8
+  - nvm install 8.9.4
+  - nvm use 8.9.4
+  - source ${BLT_DIR}/scripts/travis/setup_environment
+  - source ${BLT_DIR}/scripts/travis/setup_project
 
 before_script:
   # Clear drush release history cache, to pick up new releases.
@@ -93,22 +99,26 @@ before_script:
   # Increasing SQL packet size to avoid time out errors.
   - mysql -u root -e 'SET GLOBAL wait_timeout = 36000;'
   - mysql -u root -e 'SET GLOBAL max_allowed_packet = 33554432;'
-  - sudo service mysql restart
-  - curl -s https://packagecloud.io/install/repositories/varnishcache/varnish30/script.deb.sh | sudo bash
-  - echo "deb https://repo.varnish-cache.org/ubuntu/ trusty varnish-3.0" | sudo tee -a /etc/apt/sources.list.d/varnish.list
-  - sudo apt-get install varnish=3.0.7-1~trusty -y
-  - sudo cp ./acquia.vcl.j2 /etc/varnish/default.vcl
-  - sudo echo "14bac2e6-1e34-4770-8078-974373b76c90" >> sudo /etc/varnish/secret
-  - sudo service varnish restart
 
 script:
-  - touch project.local.yml
-  - blt -Dbehat.run-server=true -Dcreate_alias=false -Dbehat.launch-phantom=true ci:build:validate:test
+  - source ${BLT_DIR}/scripts/travis/run_tests
 
 deploy:
    - provider: script
-     script: blt deploy -Ddeploy.commitMsg="Automated commit by Travis CI for Build ${TRAVIS_BUILD_ID}" -Ddeploy.branch="${TRAVIS_BRANCH}-build"
+     script: "${BLT_DIR}/scripts/travis/deploy_branch"
      skip_cleanup: true
      on:
-       all_branches: true
-       php: 5.6
+       branch: develop
+       php: 7.1
+   - provider: script
+     script: "${BLT_DIR}/scripts/travis/deploy_branch"
+     skip_cleanup: true
+     on:
+       branch: master
+       php: 7.1
+   - provider: script
+     script: "${BLT_DIR}/scripts/travis/deploy_tag"
+     skip_cleanup: true
+     on:
+       tags: true
+       php: 7.1

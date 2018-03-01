@@ -8,14 +8,14 @@ Feature: What's Related Frame Paragraph Tests
   Scenario: See if What's Related Frame exists on the Generic Page content type
      Given I am logged into the distro with the "administrator" role
      When I am on "/admin/structure/types/manage/webny_generic_page/fields/node.webny_generic_page.field_webny_gencp_contentsect"
-     Then I should not see "Access denied"
+     Then I should not see "You are not authorized to access this page"
      And I should see "What's Related"
 
 # Check if What's Related button appears on Generic Content type
   Scenario: See if What's Related button appears on Generic Content type page
    Given I am logged into the distro with the "administrator" role
    When I am on "/node/add/webny_generic_page"
-   Then I should not see "Access denied"
+   Then I should not see "You are not authorized to access this page"
    And I should see "Related"
 
 # Check if What's Related frame can be added to a Generic Page

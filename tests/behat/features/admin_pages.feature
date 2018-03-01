@@ -7,7 +7,7 @@ Feature: Base Admin page tests
     Given I am logged into the distro with the "administrator" role
     When I am on "/admin/config/webny-globalnav"
     Then I should not get a 404 HTTP response
-    And I should not see "Access denied"
+    And I should not see "You are not authorized to access this page"
     And I should see "GLOBAL HEADER NAVIGATION OPTIONS"
 
 # Check contact page access
@@ -15,7 +15,7 @@ Feature: Base Admin page tests
     Given I am logged into the distro with the "administrator" role
     When I am on "/admin/content"
     Then I should not get a 404 HTTP response
-    And I should not see "Access denied"
+    And I should not see "You are not authorized to access this page"
     And I should see "Add content"
 
 # Check feature page access
@@ -31,7 +31,7 @@ Feature: Base Admin page tests
     Given I am logged into the distro with the "administrator" role
     When I am on "/admin/structure/menu"
     Then I should not get a 404 HTTP response
-    And I should not see "Access denied"
+    And I should not see "You are not authorized to access this page"
     And I should see "Main navigation"
 
 # Check user page access
@@ -39,7 +39,7 @@ Feature: Base Admin page tests
     Given I am logged into the distro with the "administrator" role
     When I am on "/admin/people"
     Then I should not get a 404 HTTP response
-    And I should not see "Access denied"
+    And I should not see "You are not authorized to access this page"
     And I should see "Add user"
 
 # Check moderation states page access
@@ -47,7 +47,7 @@ Feature: Base Admin page tests
     Given I am logged into the distro with the "administrator" role
     When I am on "/admin/structure/workbench-moderation/states"
     Then I should not get a 404 HTTP response
-    And I should not see "Access denied"
+    And I should not see "You are not authorized to access this page"
     And I should see "Add Moderation state"
 
 # Check redirect page access
@@ -55,7 +55,7 @@ Feature: Base Admin page tests
     Given I am logged into the distro with the "administrator" role
     When I am on "/admin/config/search/redirect"
     Then I should not get a 404 HTTP response
-    And I should not see "Access denied"
+    And I should not see "You are not authorized to access this page"
     And I should see "Add redirect"
 
 # Check custom admin theme access - webnycommander
@@ -63,7 +63,7 @@ Feature: Base Admin page tests
     Given I am logged into the distro with the "administrator" role
     When I am on "/admin/appearance/settings/webnycommander"
     Then I should not get a 404 HTTP response
-    And I should not see "Access denied"
+    And I should not see "You are not authorized to access this page"
     And I should see "Add redirect"
 
 # Check custom admin theme block access - webnycommander
@@ -71,5 +71,5 @@ Feature: Base Admin page tests
     Given I am logged into the distro with the "administrator" role
     When I am on "/admin/structure/block/list/webnycommander"
     Then I should not get a 404 HTTP response
-    And I should not see "Access denied"
+    And I should not see "You are not authorized to access this page"
     And I should see "Add redirect"
