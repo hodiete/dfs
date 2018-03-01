@@ -41,7 +41,7 @@
           // set default left position on search icon when switched to desktop
           $('.icon-search').css('left', '10px');
 
-          $('#alternative-unav-search').on(click, function (e) {
+          $('#alternative-unav-search').once().on(click, function (e) {
             e.stopPropagation();
             // search box is 80px wide, meaning it hasn't been expanded yet
             if ($('#alternative-unav-search').css('width') == '80px') {
