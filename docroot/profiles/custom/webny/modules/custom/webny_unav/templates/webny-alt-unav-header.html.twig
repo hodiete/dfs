@@ -7,6 +7,11 @@
                 {# if google search appliance has been selected #}
                 {% if gsa == '1' %}
                     {% set site_url = url("<front>") %}
+                    {% if gt == '1' %}
+                        {% set right_position = 'translate' %}
+                    {% else %}
+                        {% set right_position = 'no-translate' %}
+                    {% endif %}
                     {% if 'ny.gov' in site_url|render|render %}
                         {# production environment based on site_url including ny.gov #}
                         {% set gsa_action = 'http://search.its.ny.gov/search' %}
@@ -15,7 +20,7 @@
                         {% set gsa_action = 'http://qa.search.its.ny.gov/search' %}
                     {% endif %}
                     <div class="alternative-unav-gsa">
-                        <form action="{{ gsa_action }}" method="get">
+                        <form action="{{ gsa_action }}" method="get" class="{{ right_position }}">
                             <input id="alternative-unav-search" placeholder="Search" data-type="search" aria-label="search" name="q" />
                             <span class="ui-helper-hidden-accessible" role="status" aria-live="polite"></span>
                             <span class="icon-search"></span>
@@ -34,6 +39,8 @@
                             <input type="submit" name="submit" />
                         </form>
                     </div>
+                {% else %}
+                    <div class="alternative-unav-gsa"></div>
                 {% endif %}
 
                 {# if translate textbox has been selected #}
@@ -74,7 +81,9 @@
             </div>
 
         </div> <!-- end header class -->
-        <div id="expand-menu-mobile"></div>
+        {% if gsa == '1' %}
+            <div id="expand-menu-mobile"></div>
+        {% endif %}
     </header>
 </div>
 
