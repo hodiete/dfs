@@ -99,6 +99,7 @@ before_script:
   # Increasing SQL packet size to avoid time out errors.
   - mysql -u root -e 'SET GLOBAL wait_timeout = 36000;'
   - mysql -u root -e 'SET GLOBAL max_allowed_packet = 33554432;'
+  - echo -e "Host svn-43.enterprise-g1.hosting.acquia.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 
 script:
   - source ${BLT_DIR}/scripts/travis/run_tests
