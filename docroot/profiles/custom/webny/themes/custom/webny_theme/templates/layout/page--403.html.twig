@@ -1,0 +1,32 @@
+
+<div class="layout-container">
+    <div class="body-area">
+        <div class="body-area-in">
+            <div class="page-body">
+
+                <h1>Access Denied.</h1>
+                <br />
+
+                {# PAGE SUGGESTION ALGO -- FOUND IN webny_fourox CUSTOM MODULE #}
+                {{ fouroxSuggestions() }}
+
+                {%  if getHasSuggestions() == 1 %}
+
+                    <h5>You were looking for this URL. </h5>
+                    {{ getUserURL() }}
+                    <br /><br />
+
+                    <h5>This document may have moved. Please try this URL.</h5>
+                    <a href="{{ getSuggestionURL() }}">{{ getSuggestionURLFull() }}</a>
+                    <br /><br />
+
+                {% endif %}
+
+                <h3>You do not have permission to access this page.</h3>
+                <h4>Please visit our <a href="/" title="homepage" alt="homepage">HOMEPAGE</a></h4>
+                <br />
+
+            </div>
+        </div>
+    </div>
+</div>

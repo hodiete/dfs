@@ -1,0 +1,36 @@
+
+<div class="layout-container">
+    <div class="body-area">
+        <div class="body-area-in">
+            <div class="page-body">
+
+
+                {# RUN THIS FUNCTION TO DETERMINE TO SHOW SUGGSETIONS #}
+                {{ fouroxSuggestions() }}
+
+                <h1>Sorry, this page was not found.</h1>
+                <br />
+
+                {%  if getHasSuggestions() == 1 %}
+
+                    <h5>You were looking for this URL. </h5>
+                    {{ getUserURL() }}
+                    <br /><br />
+
+                    <h5>This document may have moved. Please try this URL.</h5>
+                    <a href="{{ getSuggestionURL() }}">{{ getSuggestionURLFull() }}</a>
+                    <br /><br />
+
+                {% endif %}
+
+
+
+                <h4>The requested URL does not exist.</h4>
+                <h4>Please visit our <a href="/" title="homepage" alt="homepage">HOMEPAGE</a></h4>
+                <br />
+
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
