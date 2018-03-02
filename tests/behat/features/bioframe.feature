@@ -8,7 +8,7 @@ Feature: Bioframe / Contact Content Type
   Scenario: If I go to the contact content type, I should see Five (5) new fields and a title of BIO FRAME
     Given I am logged into the distro with the "administrator" role
     When I am on "/node/add/webny_contact"
-    Then I should not see "Access denied"
+    Then I should not see "You are not authorized to access this page"
     And I should see text matching "Professional Title"
     And I should see text matching "Name"
     And I should see text matching "Professional Subtitle"

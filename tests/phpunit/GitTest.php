@@ -64,21 +64,6 @@ class GitTasksTest extends TestBase {
   }
 
   /**
-   * Tests operation of scripts/git-hooks/pre-commit.
-   *
-   * Should assert that code validation via phpcs is functioning.
-   */
-  public function testGitPreCommitHook() {
-    // Commits must be executed inside of new project directory.
-    chdir($this->projectDirectory);
-    $prefix = $this->config['project']['prefix'];
-    $command = "git commit --amend -m '$prefix-123: This is a good commit.' 2>&1";
-    $output = shell_exec($command);
-    $this->assertNotContains('PHP Code Sniffer was not found', $output);
-    $this->assertContains('Sniffing staged files via PHP Code Sniffer.', $output);
-  }
-
-  /**
    * Asserts that a given commit message is valid or not.
    *
    * @param bool $is_valid

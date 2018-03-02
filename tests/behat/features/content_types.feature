@@ -8,7 +8,7 @@ Feature: Check for the existence and fields of content types
   Scenario: Determine if a content type exists for event with the administrator role and the given fields
     Given I am logged into the distro with the "administrator" role
     When I am on "/node/add/webny_event"
-    Then I should not see "Access denied"
+    Then I should not see "You are not authorized to access this page"
     And I should not get a 404 HTTP response
     Then I should see text matching "Title"
     And I should see text matching "Short Title"
@@ -33,7 +33,7 @@ Feature: Check for the existence and fields of content types
   Scenario: Determine if a content type exists for events with the anonymous user role and the given fields
     Given I am an anonymous user
     When I am on "/node/add/webny_event"
-    Then I should see "Access denied"
+    Then I should see "You are not authorized to access this page"
 # =======================================================================================
 ### Default Display Mode ###
 # Check if the display mode for the content type exists
@@ -43,7 +43,7 @@ Feature: Check for the existence and fields of content types
     Given I am logged into the distro with the "administrator" role
     When I am on "/admin/structure/types/manage/webny_event/display"
     Then I should not get a 404 HTTP response
-    And I should not see "Access denied"
+    And I should not see "You are not authorized to access this page"
 
 # Check if the display mode for the content type exists
 # CONTENT TYPE: Event
@@ -51,7 +51,7 @@ Feature: Check for the existence and fields of content types
   Scenario: Anon can not access event default display mode
     Given I am an anonymous user
     When I am on "/admin/structure/types/manage/webny_event/display"
-    Then I should see "Access denied"
+    Then I should see "You are not authorized to access this page"
 
 # NEW CT ###########################################################################################################
 ### NEWS CONTENT TYPE ###
@@ -61,7 +61,7 @@ Feature: Check for the existence and fields of content types
   Scenario: Determine if a content type exists for news with the administrator role and the given fields
     Given I am logged into the distro with the "administrator" role
     When I am on "/node/add/webny_news"
-    Then I should not see "Access denied"
+    Then I should not see "You are not authorized to access this page"
     And I should not get a 404 HTTP response
     Then I should see text matching "Agency Keywords"
     And I should see text matching "Attached Documents"
@@ -88,7 +88,7 @@ Feature: Check for the existence and fields of content types
 #  Scenario: Determine if a content type exists for news with the content author role and the given fields
 #    Given I am logged in as a user with the content author role
 #    When I am on "/node/add/webny_news"
-#    Then I should not see "Access denied"
+#    Then I should not see "You are not authorized to access this page"
 #    And I should not get a 404 HTTP response
 #    Then I should see text matching "Agency Keywords"
 #    And I should see text matching "Attached Documents"
@@ -111,7 +111,7 @@ Feature: Check for the existence and fields of content types
   Scenario: Determine if a content type exists for news with the anonymous user role and the given fields
     Given I am an anonymous user
     When I am on "/node/add/webny_news"
-    Then I should see "Access denied"
+    Then I should see "You are not authorized to access this page"
 # =======================================================================================
 ### Default Display Mode ###
 # Check if the display mode for the content type exists
@@ -121,7 +121,7 @@ Feature: Check for the existence and fields of content types
     Given I am logged into the distro with the "administrator" role
     When I am on "/admin/structure/types/manage/webny_news/display"
     Then I should not get a 404 HTTP response
-    And I should not see "Access denied"
+    And I should not see "You are not authorized to access this page"
 
 # Check if the display mode for the content type exists
 # CONTENT TYPE: News
@@ -129,7 +129,7 @@ Feature: Check for the existence and fields of content types
   Scenario: Does the default display mode exist
     Given I am an anonymous user
     When I am on "/admin/structure/types/manage/webny_news/display"
-    Then I should see "Access denied"
+    Then I should see "You are not authorized to access this page"
 
 # NEW CT ###########################################################################################################
 ### LANDING PAGE CONTENT TYPE ###
@@ -139,7 +139,7 @@ Feature: Check for the existence and fields of content types
   Scenario: Determine if a content type exists for landing page with the administrator role and the given fields
     Given I am logged into the distro with the "administrator" role
     When I am on "/node/add/webny_landing_page"
-    Then I should not see "Access denied"
+    Then I should not see "You are not authorized to access this page"
     And I should not get a 404 HTTP response
     And I should see text matching "Agency Keywords"
     And I should see text matching "Global Keywords"
@@ -171,7 +171,7 @@ Feature: Check for the existence and fields of content types
   Scenario: Determine if a content type exists for news with the anonymous user role and the given fields
     Given I am an anonymous user
     When I am on "/node/add/webny_landing_page"
-    Then I should see "Access denied"
+    Then I should see "You are not authorized to access this page"
 # =======================================================================================
 ### Check Paragraph Types Functionality ###
 # Check for the existence of a paragraph type
@@ -230,7 +230,7 @@ Feature: Check for the existence and fields of content types
     Given I am logged into the distro with the "administrator" role 
     When I am on "/admin/structure/types/manage/webny_landing_page/display"
     Then I should not get a 404 HTTP response
-    And I should not see "Access denied"
+    And I should not see "You are not authorized to access this page"
 
 # Check if the display mode for the content type exists
 # CONTENT TYPE: Landing Page
@@ -239,7 +239,7 @@ Feature: Check for the existence and fields of content types
   Scenario: The default display mode should not display
     Given I am an anonymous user
     When I am on "/admin/structure/types/manage/webny_landing_page/display"
-    Then I should see "Access denied"
+    Then I should see "You are not authorized to access this page"
 # =======================================================================================
 ### Announcement Display Mode ###
 
@@ -251,7 +251,7 @@ Feature: Check for the existence and fields of content types
     Given I am logged into the distro with the "administrator" role 
     When I am on "/admin/structure/types/manage/webny_landing_page/display/webny_announcement"
     Then I should not get a 404 HTTP response
-    And I should not see "Access denied"
+    And I should not see "You are not authorized to access this page"
 # Check if the display mode for the content type exists
 # CONTENT TYPE: Landing Page
 # ROLE: anonymous user
@@ -259,7 +259,7 @@ Feature: Check for the existence and fields of content types
   Scenario: The default display mode should not display
     Given I am an anonymous user
     When I am on "/admin/structure/types/manage/webny_landing_page/display/webny_announcement"
-    Then I should see "Access denied"
+    Then I should see "You are not authorized to access this page"
 
 # =======================================================================================
 ### Feature Card Display Mode ###
@@ -271,7 +271,7 @@ Feature: Check for the existence and fields of content types
     Given I am logged into the distro with the "administrator" role 
     When I am on "/admin/structure/types/manage/webny_landing_page/display/webny_featured_card"
     Then I should not get a 404 HTTP response
-    And I should not see "Access denied"
+    And I should not see "You are not authorized to access this page"
 # Check if the display mode for the content type exists
 # CONTENT TYPE: Landing Page
 # ROLE: anonymous user
@@ -279,7 +279,7 @@ Feature: Check for the existence and fields of content types
   Scenario: The feature card display mode should not display
     Given I am an anonymous user
     When I am on "/admin/structure/types/manage/webny_landing_page/display/webny_featured_card"
-    Then I should see "Access denied"
+    Then I should see "You are not authorized to access this page"
 
 # NEW CT ###########################################################################################################
 ### INNER PAGE CONTENT TYPE ###
@@ -289,7 +289,7 @@ Feature: Check for the existence and fields of content types
   Scenario: Determine if a content type exists for news with the administrator role and the given fields
     Given I am logged into the distro with the "administrator" role 
     When I am on "/node/add/webny_page"
-    Then I should not see "Access denied"
+    Then I should not see "You are not authorized to access this page"
     And I should not get a 404 HTTP response
     Then I should see text matching "Agency Keywords"
     And I should see text matching "Attached Documents"
@@ -314,7 +314,7 @@ Feature: Check for the existence and fields of content types
   Scenario: Determine if a content type exists for news with the anonymous user role and the given fields
     Given I am an anonymous user
     When I am on "/node/add/webny_page"
-    Then I should see "Access denied"
+    Then I should see "You are not authorized to access this page"
 
 # =======================================================================================
 ### Default Display Mode ###
@@ -325,7 +325,7 @@ Feature: Check for the existence and fields of content types
     Given I am logged into the distro with the "administrator" role 
     When I am on "/admin/structure/types/manage/webny_page/display"
     Then I should not get a 404 HTTP response
-    And I should not see "Access denied"
+    And I should not see "You are not authorized to access this page"
 
 # Check if the display mode for the content type exists
 # CONTENT TYPE: Inner Page
@@ -333,7 +333,7 @@ Feature: Check for the existence and fields of content types
   Scenario: Does the default display mode exist
     Given I am an anonymous user
     When I am on "/admin/structure/types/manage/webny_page/display"
-    Then I should see "Access denied"
+    Then I should see "You are not authorized to access this page"
 
 # NEW CT ###########################################################################################################
 ### CONTACT CONTENT TYPE ###
@@ -343,7 +343,7 @@ Feature: Check for the existence and fields of content types
   Scenario: Determine if a content type exists for news with the administrator role and the given fields
     Given I am logged into the distro with the "administrator" role 
     When I am on "/node/add/webny_contact"
-    Then I should not see "Access denied"
+    Then I should not see "You are not authorized to access this page"
     And I should not get a 404 HTTP response
     And I should see text matching "Caption / Quote"
     And I should see text matching "Email"
@@ -394,7 +394,7 @@ Feature: Check for the existence and fields of content types
   Scenario: Determine if a content type exists for news with the anonymous user role and the given fields
     Given I am an anonymous user
     When I am on "/node/add/webny_contact"
-    Then I should see "Access denied"
+    Then I should see "You are not authorized to access this page"
 
 # =======================================================================================
 ### Default Display Mode ###
@@ -405,7 +405,7 @@ Feature: Check for the existence and fields of content types
     Given I am logged into the distro with the "administrator" role 
     When I am on "/admin/structure/types/manage/webny_contact/display"
     Then I should not get a 404 HTTP response
-    And I should not see "Access denied"
+    And I should not see "You are not authorized to access this page"
 
 # =======================================================================================
 # Check if the display mode for the content type exists
@@ -414,7 +414,7 @@ Feature: Check for the existence and fields of content types
   Scenario: Does the default display mode exist
     Given I am an anonymous user
     When I am on "/admin/structure/types/manage/webny_contact/display"
-    Then I should see "Access denied"
+    Then I should see "You are not authorized to access this page"
 
 # NEW CT ###########################################################################################################
 ### GENERIC PAGE CONTENT TYPE ###
@@ -424,7 +424,7 @@ Feature: Check for the existence and fields of content types
   Scenario: Determine if a content type exists for generic content page with the administrator role and the given fields
     Given I am logged into the distro with the "administrator" role
     When I am on "/node/add/webny_generic_page"
-    Then I should not see "Access denied"
+    Then I should not see "You are not authorized to access this page"
     And I should not get a 404 HTTP response
     And I should see text matching "Short Title"
     And I should see text matching "Description"
@@ -447,14 +447,14 @@ Feature: Check for the existence and fields of content types
   Scenario: Determine if a content type for generic content page with the administrator role and the given settings
     Given I am logged into the distro with the "administrator" role
     When I am on "/admin/structure/types/manage/webny_generic_page/fields/node.webny_generic_page.field_webny_gencp_contentsect"
-    Then I should not see "Access denied"
+    Then I should not see "You are not authorized to access this page"
     And the "edit-settings-handler-settings-target-bundles-drag-drop-webny-paragraph-contact-enabled" checkbox should be checked
     And the "edit-settings-handler-settings-target-bundles-drag-drop-webny-documents-enabled" checkbox should be checked
     And the "edit-settings-handler-settings-target-bundles-drag-drop-webny-wysiwyg-pgtype-enabled" checkbox should be checked
     When I am on "/admin/structure/types/manage/webny_generic_page/display/webny_announcement"
-    Then I should not see "Access denied"
+    Then I should not see "You are not authorized to access this page"
     When I am on "/admin/structure/types/manage/webny_generic_page/display/webny_featured_card"
-    Then I should not see "Access denied"
+    Then I should not see "You are not authorized to access this page"
 
 # Check for the existence of a content type
 # CONTENT TYPE: Landing Page
@@ -462,7 +462,7 @@ Feature: Check for the existence and fields of content types
   Scenario: Determine if a content type exists for news with the anonymous user role and the given fields
     Given I am an anonymous user
     When I am on "/node/add/webny_generic_page"
-    Then I should see "Access denied"
+    Then I should see "You are not authorized to access this page"
 
 # NEW CT ###########################################################################################################
 ### LOCATION CONTENT TYPE ###
@@ -472,7 +472,7 @@ Feature: Check for the existence and fields of content types
   Scenario: Determine if a content type exists for location page with the administrator role and the given fields
     Given I am logged into the distro with the "administrator" role
     When I am on "/node/add/webny_location"
-    Then I should not see "Access denied"
+    Then I should not see "You are not authorized to access this page"
     And I should not get a 404 HTTP response
     And I should see text matching "Location Title"
     And I should see text matching "Short Title"
@@ -495,4 +495,4 @@ Feature: Check for the existence and fields of content types
   Scenario: Determine if a content type exists for news with the anonymous user role and the given fields
     Given I am an anonymous user
     When I am on "/node/add/webny_location"
-    Then I should see "Access denied"
+    Then I should see "You are not authorized to access this page"
