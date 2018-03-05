@@ -15,7 +15,7 @@
       // on click for translate link
       $('#alternative-unav-translate').on(click, function() {
         // set provided google iframe to absolutely positioned
-        $('.goog-te-menu-frame').css('position', 'absolute').css('z-index', '100').css('top', '125px');
+        $('.goog-te-menu-frame').css('position', 'absolute').css('z-index', '300').css('top', '125px');
 
         $('.goog-te-menu-frame:first').toggle();
 
