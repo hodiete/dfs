@@ -50,11 +50,8 @@ class webnyfouroxsection extends \Twig_Extension {
      * Function fouroxSuggestions() to provide new link suggestions to the user.
      */
     public function fouroxSuggestions() {
-
         $fourox = $this->getSuggestedFiles();
-
-        //return NULL;
-        return "SQL 1:<br />". $fourox['sql1']. "<br /><br /> SQL 2: <br />". $fourox['sql2']."<br /><br />";
+        return NULL;
     }
 
     /**
