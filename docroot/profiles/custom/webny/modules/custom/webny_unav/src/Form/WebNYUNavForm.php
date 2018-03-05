@@ -77,6 +77,13 @@ class WebNYUNavForm extends ConfigFormBase {
         if (!empty($fids)) {
           $fid = $fids[0];
           $file = File::load($fid);
+          // verify file is set as permanent and saved to database
+          $file->setPermanent();
+          $file->save();
+          // register the file with the webny_unav module so it is not deleted via cron
+          $file_usage = \Drupal::service('file.usage');
+          $file_usage->add($file, 'webny_unav', 'webny_unav', \Drupal::currentUser()->id());
+
           $file_uri = $file->getFileUri();
           $style = ImageStyle::load('alternative_universal_navigation');
           $destination = $style->buildUri($file_uri);
