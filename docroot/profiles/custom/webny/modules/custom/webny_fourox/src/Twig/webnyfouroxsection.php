@@ -51,7 +51,7 @@ class webnyfouroxsection extends \Twig_Extension {
      */
     public function fouroxSuggestions() {
         $fourox = $this->getSuggestedFiles();
-        return NULL;
+        return $fourox;
     }
 
     /**
@@ -91,23 +91,27 @@ class webnyfouroxsection extends \Twig_Extension {
 
     /**
      * Function formatURLstring() to format URL string for processing
+     * // ppt pptx xls xlsx doc docx odt pdf txt csv odg sxw ods rtf zip rar gz 7z tar
+     * // AUTOMATIC DOWNLOADS FOR ZIP
      */
     public function formatURLstring($str) {
 
-        $str = explode('_',$str);
-        $es = $str[0];
+        $searchStr = '';
 
-        // STRIP .pdf FROM STRING IF EXISTS
-        if(substr($es, strlen($es) - 4, strlen($es)) == '.pdf'){
-            $es = str_replace('_', '', substr($es, 0,strlen($es) - 4));
+        // EXPLODE AT THE MIME TYPE
+        $mime = explode('.', $str);
+        $mime = '.' . $mime[1];
+
+        // GET STRING PARTS BEFORE ANY UNDERSCORE, IF ANY
+        $fs = explode('_',$str);
+
+        if($fs[1] != NULL){
+            $searchStr = $fs[0];
+        } else {
+            $searchStr = str_replace('.', '', substr($fs[0], 0,strlen($fs[0]) - strlen($mime)));
         }
 
-        // STRIP .docx FROM STRING IF EXISTS
-        if(substr($es, strlen($es) - 5, strlen($es)) == '.docx'){
-            $es = str_replace('_', '', substr($es, 0,strlen($es) - 5));
-        }
-
-        return $es;
+        return $searchStr;
 
     }
 
@@ -147,7 +151,8 @@ class webnyfouroxsection extends \Twig_Extension {
                  e.`entity_id`, t.`fid`, e.`field_webny_document_file_upload_target_id` as `efid`                                
                  FROM `file_managed` t, `node_revision__field_webny_document_file_upload` e 
                  WHERE e.`field_webny_document_file_upload_target_id` = t.`fid` AND 
-                       t.changed > ".$fox['timespan']. " AND e.entity_id = " .$fox['eid'] . "
+                       t.changed > ".$fox['timespan']. " AND e.entity_id = " .$fox['eid'] . " 
+                       AND t.uri LIKE '%".$fox['search']."%'
                  ORDER by t.`created` DESC LIMIT 1";
 
         $drc['sql'] = $doubleCheckQuery;
@@ -195,7 +200,7 @@ class webnyfouroxsection extends \Twig_Extension {
         $suggestionStr          = NULL;
         $fid                    = NULL;
         $eid                    = NULL;
-        $curbedSearchString     = NULL;
+        $formattedSearchString  = NULL;
         $suggestionsQuery       = NULL;
         $this->hasSuggestion    = FALSE;
         $filename               = '';
@@ -231,10 +236,10 @@ class webnyfouroxsection extends \Twig_Extension {
         if($filename != '') {
 
             // STRING WITHOUT EXTENTIONS -- SCRUB
-            $curbedSearchString = $this->formatURLstring($filename);
+            $formattedSearchString = $this->formatURLstring($filename);
 
             // DO TEST ONLY IF THERE'S A SEARCH STRING AVAILABLE
-            if($curbedSearchString != NULL) {
+            if($formattedSearchString != NULL) {
 
                 // PREFIX URL
                 $urlPrefix = '/system/files/';
@@ -245,7 +250,7 @@ class webnyfouroxsection extends \Twig_Extension {
                      e.`entity_id`, t.`fid`, e.`field_webny_document_file_upload_target_id` as `efid`                                
                      FROM `file_managed` t, `node_revision__field_webny_document_file_upload` e 
                      WHERE e.`field_webny_document_file_upload_target_id` = t.`fid` AND 
-                           t.changed > $timelimit AND t.uri LIKE '%$curbedSearchString%'
+                           t.changed > $timelimit AND t.uri LIKE '%$formattedSearchString%'
                      ORDER by t.`created` DESC LIMIT 1 
                      ";
 
@@ -277,6 +282,7 @@ class webnyfouroxsection extends \Twig_Extension {
         $fourox['timespan'] = $timespan;
         $fourox['sql1']     = $suggestionsQuery;
         $fourox['filename'] = $filename;
+        $fourox['search']   = $formattedSearchString;
 
         return $fourox;
 
