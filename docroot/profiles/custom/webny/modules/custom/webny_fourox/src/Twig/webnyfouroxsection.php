@@ -51,7 +51,7 @@ class webnyfouroxsection extends \Twig_Extension {
      */
     public function fouroxSuggestions() {
         $fourox = $this->getSuggestedFiles();
-        return $fourox;
+        return NULL;
     }
 
     /**
@@ -105,7 +105,7 @@ class webnyfouroxsection extends \Twig_Extension {
         // GET STRING PARTS BEFORE ANY UNDERSCORE, IF ANY
         $fs = explode('_',$str);
 
-        if($fs[1] != NULL){
+        if(sizeof($fs) > 1){
             $searchStr = $fs[0];
         } else {
             $searchStr = str_replace('.', '', substr($fs[0], 0,strlen($fs[0]) - strlen($mime)));
@@ -196,7 +196,7 @@ class webnyfouroxsection extends \Twig_Extension {
     protected function getSuggestionByName(){
 
         // VARS
-        $fourox                 = array();
+        $fourox                 = array('fid'=>'');
         $suggestionStr          = NULL;
         $fid                    = NULL;
         $eid                    = NULL;
