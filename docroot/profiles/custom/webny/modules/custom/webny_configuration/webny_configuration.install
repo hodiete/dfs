@@ -4105,6 +4105,18 @@ function webny_configuration_update_8184() {
 }
 
 /**
+ * INSTALLS the Access Unpublished contrib module
+ * NDD-1386
+ * -Cat
+ */
+function webny_configuration_update_8185() {
+
+  // INSTALL ADMINISTRATION FEATURE
+  \Drupal::service('module_installer')
+    ->install(['access_unpublished']);
+}
+
+/**
  * Helper function to enable a Drupal module and print the result.
  *
  * @param string $module_name
