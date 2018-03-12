@@ -21,4 +21,4 @@ Feature: Contibuted Modules Test
     Given I am logged into the distro with the "administrator" role
     When I am on "/admin/structure/webform"
     Then I should not get a 404 HTTP response
-    And I should not see "Access denied"
+    And I should not see "You are not authorized to access this page"

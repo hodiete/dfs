@@ -28,9 +28,9 @@ class DrushTest extends TestBase {
     foreach ($dirs as $dir) {
       chdir($dir);
       print "Executing \"$command\" in $dir \n";
-      // If it contains the local URI, we know it is correctly loading
+      // If it contains the database settings, we know it is correctly loading
       // drushrc.php.
-      $this->assertContains('http://127.0.0.1:8080', shell_exec($command));
+      $this->assertContains('localhost', shell_exec($command));
     }
   }
 

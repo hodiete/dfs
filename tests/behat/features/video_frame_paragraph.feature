@@ -4,7 +4,7 @@ Feature: Video Frame Tests
   Scenario: Check that all required Video fields are available
     Given I am logged into the distro with the "administrator" role 
     When I am on "/node/add/webny_landing_page"
-    Then I should not see "Access denied"
+    Then I should not see "You are not authorized to access this page"
     When I press the "Add Video" button
     #title field - Need to use css selector because we use the generic text "Title" for the label
     Then I should see an ".form-item-field-webny-landing-paragraph-0-subform-field-webny-landing-pg-vid-title-0-value" element

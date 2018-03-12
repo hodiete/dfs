@@ -30,8 +30,13 @@ if [ ! -e "$SOLR_SETUP_COMPLETE_FILE" ]; then
   # Fix file permissions.
   sudo chown -R solr:solr $SOLR_CORE_PATH/conf
 
-  # Restart Apache Solr.
-  sudo service solr restart
+  # After updating drupalvm the solr service stopped working.
+  # The next few lines is intended to fix this issue.
+  # The solr.service file is apparently not needed for solr version 4.5.1.
+  # see https://github.com/acquia/blt/issues/2246#issuecomment-359870148
+  sudo rm /etc/systemd/system/solr.service
+  sudo systemctl daemon-reload
+  sudo service solr start
 
   # Create a file to indicate this script has already run.
   sudo touch $SOLR_SETUP_COMPLETE_FILE
