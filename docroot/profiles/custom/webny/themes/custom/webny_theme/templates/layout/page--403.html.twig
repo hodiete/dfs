@@ -1,0 +1,31 @@
+
+<div class="layout-container">
+    <div class="body-area">
+        <div class="body-area-in">
+            <div class="page-body">
+
+                {# PAGE SUGGESTION ALGO -- FOUND IN webny_fourox CUSTOM MODULE #}
+                {{ fouroxSuggestions() }}
+
+                {%  if getHasSuggestions() == 1 %}
+
+                    <h3>You were looking for this URL. </h3>
+                    {{ getUserURL() }}
+                    <br /><br />
+
+                    <h3>This document may have moved. Please try this URL.</h3>
+                    <a href="{{ getSuggestionURL() }}">{{ getSuggestionURLFull() }}</a>
+                    <br /><br />
+
+
+                {% else %}
+                    <h1>Access Denied.</h1><br />
+                    <h3>You do not have permission to access this page.</h3>
+                    <br /><br />
+
+                {% endif %}
+
+            </div>
+        </div>
+    </div>
+</div>
