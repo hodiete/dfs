@@ -1,14 +1,19 @@
-#!/bin/sh
+#!/bin/bash
 #
-# Cloud Hook: post-code-deploy
+# Cloud Hook: post-code-update
 #
-# The post-code-deploy hook is run whenever you use the Workflow page to
-# deploy new code to an environment, either via drag-drop or by selecting
-# an existing branch or tag from the Code drop-down list. See
-# ../README.md for details.
+# The post-code-update hook runs in response to code commits. When you
+# push commits to a Git branch, the post-code-update hooks runs for
+# each environment that is currently running that branch.
 #
-# Usage: post-code-deploy site target-env source-branch deployed-tag repo-url
-#                         repo-type
+# The arguments for post-code-update are the same as for post-code-deploy,
+# with the source-branch and deployed-tag arguments both set to the name of
+# the environment receiving the new code.
+#
+# post-code-update only runs if your site is using a Git repository. It does
+# not support SVN.
+
+set -ev
 
 site="$1"
 target_env="$2"
@@ -18,6 +23,14 @@ repo_url="$5"
 repo_type="$6"
 drush_alias=${site}'.'${target_env}
 
-. `dirname $0`/../webny_functions.sh
+# Removed custom deploy hooks in favor of scripts maintained in BLT. 
+# Uncomment below to restore custom BLT override scripts.
 
-env_refresh ${target_env} ${drush_alias}
+# . `dirname $0`/../webny_functions.sh
+# env_refresh ${target_env} ${drush_alias}
+
+  . /var/www/html/$site.$target_env/vendor/acquia/blt/scripts/cloud-hooks/functions.sh
+  deploy_updates
+  . `dirname $0`/../slack.sh
+
+set +v

@@ -1,0 +1,172 @@
+diff --git a/js/checkbox-widget.js b/js/checkbox-widget.js
+index 47744de..dacccbb 100644
+--- a/js/checkbox-widget.js
++++ b/js/checkbox-widget.js
+@@ -3,7 +3,7 @@
+  * Transforms links into checkboxes.
+  */
+ 
+-(function ($) {
++(function ($, drupalSettings) {
+ 
+   'use strict';
+ 
+@@ -34,6 +34,7 @@
+     var description = $link.html();
+     var href = $link.attr('href');
+     var id = $link.data('drupal-facet-item-id');
++    var isAjax = drupalSettings.hasOwnProperty('facets_views_ajax');
+ 
+     var checkbox = $('<input type="checkbox" class="facets-checkbox">')
+       .attr('id', id)
+@@ -43,7 +44,13 @@
+ 
+     checkbox.on('change.facets', function (e) {
+       Drupal.facets.disableFacet($link.parents('.js-facets-checkbox-links'));
+-      $(this).siblings('a').trigger('click');
++
++      if (isAjax) {
++        $(this).siblings('a').trigger('click');
++      }
++      else {
++        window.location.href = $(this).data('facetsredir');
++      }
+     });
+ 
+     if (active) {
+@@ -77,4 +84,4 @@
+     e.preventDefault();
+   };
+ 
+-})(jQuery);
++})(jQuery, drupalSettings);
+diff --git a/js/facets-views-ajax.js b/js/facets-views-ajax.js
+index eba53e6..9b406f5 100644
+--- a/js/facets-views-ajax.js
++++ b/js/facets-views-ajax.js
+@@ -55,7 +55,7 @@
+         }
+         // Update view on facet item click
+         else {
+-          $('[data-drupal-facet-id=' + facetId + ']').find('.facet-item').each(function (index, facet_item) {
++          $('[data-drupal-facet-id=' + facetId + ']', context).find('.facet-item').each(function (index, facet_item) {
+             $(facet_item).children('a').click(function (e) {
+               e.preventDefault();
+               updateFacetsView($(this).attr('href'), current_dom_id);
+@@ -109,13 +109,18 @@
+ 
+     // Refresh facets blocks
+     updateFacetsBlocks(href);
+-  }
++  };
+ 
+   // Helper function, updates facet blocks
+   var updateFacetsBlocks = function(href) {
+     var settings = drupalSettings;
+     var facets_blocks = facetsBlocks();
+ 
++    // Exit if facet_blocks is empty (may've been inserted in view).
++    if ($.isEmptyObject(facets_blocks)) {
++      return;
++    }
++
+     // Update facet blocks.
+     var facet_settings = {
+       url: Drupal.url('facets-block/ajax'),
+@@ -154,7 +159,7 @@
+     }
+ 
+     return update_summary;
+-  }
++  };
+ 
+   // Helper function, return facet blocks
+   var facetsBlocks = function() {
+@@ -173,7 +178,7 @@
+     });
+ 
+     return facets_blocks;
+-  }
++  };
+ 
+   $.fn.replaceFacets = function(data) {
+     if (data.replaceWith === '') {
+diff --git a/src/Plugin/facets/url_processor/QueryString.php b/src/Plugin/facets/url_processor/QueryString.php
+index 445a79f..4e64692 100644
+--- a/src/Plugin/facets/url_processor/QueryString.php
++++ b/src/Plugin/facets/url_processor/QueryString.php
+@@ -58,7 +58,7 @@ class QueryString extends UrlProcessorPluginBase {
+ 
+     $request = $this->request;
+     if ($facet->getFacetSource()->getPath()) {
+-      $request = Request::create($facet->getFacetSource()->getPath());
++      $request = Request::create(ltrim($facet->getFacetSource()->getPath(), '/'));
+     }
+ 
+     // Grab any route params from the original request.
+@@ -142,9 +142,11 @@ class QueryString extends UrlProcessorPluginBase {
+       if ($result_get_params->all() !== [$this->filterKey => []]) {
+         $new_url_params = $result_get_params->all();
+ 
+-        // Facet links should be page-less.
+-        // See https://www.drupal.org/node/2898189.
+-        unset($new_url_params['page']);
++        if (!$get_params->get('_wrapper_format') == 'drupal_ajax') {
++          // Facet links should be page-less.
++          // See https://www.drupal.org/node/2898189.
++          unset($new_url_params['page']);
++        }
+ 
+         // Set the new url parameters.
+         $url->setOption('query', $new_url_params);
+diff --git a/src/Widget/WidgetPluginBase.php b/src/Widget/WidgetPluginBase.php
+index 4f724a1..3931bc1 100644
+--- a/src/Widget/WidgetPluginBase.php
++++ b/src/Widget/WidgetPluginBase.php
+@@ -10,6 +10,7 @@ use Drupal\Core\Url;
+ use Drupal\facets\FacetInterface;
+ use Drupal\facets\Result\Result;
+ use Drupal\facets\Result\ResultInterface;
++use Drupal\Component\Utility\Html;
+ 
+ /**
+  * A base class for widgets that implements most of the boilerplate.
+@@ -61,12 +62,38 @@ abstract class WidgetPluginBase extends PluginBase implements WidgetPluginInterf
+         $pathinfo = $request->getPathInfo();
+         $url_object = \Drupal::service('path.validator')
+           ->getUrlIfValid($pathinfo);
++        if (!$url_object) {
++          return [];
++        }
+         $route_params = $url_object->getRouteParameters();
+         $route_name = $url_object->getRouteName();
++
+         // Additional check needed if facets are tied up with a block on the page.
+         if ($result->getUrl()->getRouteName() === 'facets.block.ajax') {
+           $result->setUrl(new Url($route_name, $route_params, $options));
+         }
++
++        // Facets block was inserted as part of the reloaded view.
++        if ($pathinfo == '/views/ajax') {
++          $pathinfo = ltrim(\Drupal::service('path.current')->getPath(), '/');
++          $url_object = \Drupal::service('path.validator')
++            ->getUrlIfValid($pathinfo);
++          $route_params = $url_object->getRouteParameters();
++          $route_name = $url_object->getRouteName();
++
++          // Gather parameters from the request missing from the url.
++          $request_params = $request->query->all();
++          unset($request_params['f']);
++          // Combine query options with request parameters.
++          $options['query'] = array_merge($options['query'], $request_params);
++          // Discard options not needed as url parameters.
++          unset($options['query']['q']);
++          unset($options['query']['_wrapper_format']);
++          unset($options['query']['ajax_page_state']);
++
++          $result->setUrl(new Url($route_name, $route_params, $options));
++        }
++
+         return $this->buildListItems($facet, $result);
+       }
+     }, $facet->getResults());

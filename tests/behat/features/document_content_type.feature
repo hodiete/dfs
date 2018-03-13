@@ -7,7 +7,7 @@ I should be able to create a document from the Document content type
   Scenario: An administrative user should be able create document content
     Given I am logged into the distro with the "administrator" role 
     When I go to "/node/add/webny_document"
-    Then I should not see "Access denied"
+    Then I should not see "You are not authorized to access this page"
     And I should see the text "Create Document"
     
     
@@ -15,7 +15,7 @@ I should be able to create a document from the Document content type
   Scenario: An anonymous user should not be able to create a document
     Given I am not logged in
     When I go to "/node/add/webny_document"
-    Then I should see "Access denied"
+    Then I should see "You are not authorized to access this page"
     
 # Check that the Document Content type contains the appropriate fields
   Scenario: An administrative user should be able to see all the fields of the content type
