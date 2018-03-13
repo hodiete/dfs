@@ -43,6 +43,9 @@ class webnyfouroxsection extends \Twig_Extension {
             new \Twig_SimpleFunction('getSuggestionURL', array($this, 'getSuggestionURL'), array(
                 'is_safe' => array('html'),
             )),
+            new \Twig_SimpleFunction('getDomainSearchURL', array($this, 'getDomainSearchURL'), array(
+                'is_safe' => array('html'),
+            )),
         );
     }
 
@@ -87,6 +90,14 @@ class webnyfouroxsection extends \Twig_Extension {
      */
     protected function getTimespan() {
         return $this->timespan;
+    }
+
+    /**
+     * Function getFouroxDomain()
+     */
+    public function getDomainSearchURL() {
+        return "http://search.its.ny.gov/search?sort=&output=xml_no_dtd&ie=UTF-8&oe=UTF-8&client=default_frontend".
+               "&proxystylesheet=default_frontend&site=default_collection&q=&sitesearch=".$_SERVER['SERVER_NAME'];
     }
 
     /**
