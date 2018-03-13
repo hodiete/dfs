@@ -1,0 +1,64 @@
+/* FOUROX SCSS - MOBILE FIRST */
+
+
+// TOP MESSAGE
+.fourox_secone{
+
+  .fourox_warning::before {
+    color: $color-primary;
+    font-size: 56px;
+    margin-right: 23px;
+
+  }
+
+  .fourox_warning{
+    @include icon(before, warning_sign);
+  }
+
+  .fourox_nys{
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  img {
+    border: 0;
+  }
+
+  .fourox_emsg{
+    display: flex;
+  }
+}
+
+// SUGGESTIONS BLOCK
+.fourox_suggestions {
+  margin: 20px 0 20px 100px;
+
+  a > span::after {
+    //color: $color-primary;
+  }
+
+  a > span {
+    @include icon(after, external-link);
+  }
+
+}
+
+// RECOMMENDATIONS
+.fourox_reco {
+  margin: 0 0 25px 100px;
+
+  .fourox_reco_pages {
+    margin-left: 25px;
+  }
+
+  .fourox_reco_pages a > span::after {
+    //color: $color-primary;
+  }
+
+  .fourox_reco_pages a > span {
+    @include icon(after, external-link);
+  }
+
+
+}
