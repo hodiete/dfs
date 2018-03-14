@@ -131,7 +131,7 @@ class ProfileConfig {
    *   An array of the YAML parsed file.
    */
   protected function load($resource) {
-    return Yaml::parse($this->locateResource($resource));
+      return Yaml::parse(file_get_contents($this->locateResource($resource)));
   }
 
   /**
