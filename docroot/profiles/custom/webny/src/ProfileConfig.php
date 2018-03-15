@@ -131,7 +131,7 @@ class ProfileConfig {
    *   An array of the YAML parsed file.
    */
   protected function load($resource) {
-    return Yaml::parse($this->locateResource($resource));
+      return Yaml::parse(file_get_contents($this->locateResource($resource)));
   }
 
   /**
@@ -156,6 +156,7 @@ class ProfileConfig {
       $this->getProfilePath() . '/modules/custom/webny_global_nav/' . self::CONFIG_DIR . '/optional',
       $this->getProfilePath() . '/modules/custom/webny_secondary_nav/' . self::CONFIG_DIR . '/install',
       $this->getProfilePath() . '/modules/custom/webny_secondary_nav/' . self::CONFIG_DIR . '/optional',
+      $this->getProfilePath() . '/modules/custom/webny_unav/' . self::CONFIG_DIR . '/install',
       $this->getProfileFeatureConfigPath('base') . '/install',
       $this->getProfileFeatureConfigPath('news_content_type') . '/install',
       $this->getProfileFeatureConfigPath('news_content_type') . '/optional',
