@@ -7,14 +7,14 @@ I should be able to create whitelisted content
   Scenario: An administrative user should be able create whitelisted content
     Given I am logged into the distro with the "administrator" role 
     When I go to "/node/add/webny_whitelisted_content"
-    Then I should not see "You are not authorized to access this page"
+    Then I should not see "the page that you are looking for is not found"
     And I should see the text "Create Whitelisted Content"
     
 # Check that an anonymous user cannot create whitelisted content
   Scenario: An anonymous user should not be able to create whitelisted content
     Given I am not logged in
     When I go to "/node/add/webny_whitelisted_content"
-    Then I should see "You are not authorized to access this page"
+    Then I should see "the page that you are looking for is not found"
     
 # Check that the Whitelisted Content type contains the appropriate fields
   Scenario: An administrative user should be able to see all the fields of the content type
@@ -34,4 +34,4 @@ I should be able to create whitelisted content
   Scenario: An administrative user should be able to see the Display Mode for Whitelisted Content
   Given I am logged into the distro with the "administrator" role 
   When I go to "/admin/structure/types/manage/webny_whitelisted_content/display"
-  Then I should not see "You are not authorized to access this page"
+  Then I should not see "the page that you are looking for is not found"
