@@ -3,7 +3,11 @@
     -- See region--header.twig.html for parent definition template
 #}
 {% if headerauto == 1 %}
-    <nav id="webny-global-header" class="webny-global-header {{ headerformat }}" aria-label="primary-site" >
+    {% if unavsetting == '1' %}
+        <nav id="webny-global-header" class="webny-global-header {{ headerformat }} alt-unav" aria-label="primary-site" >
+    {% else %}
+        <nav id="webny-global-header" class="webny-global-header {{ headerformat }}" aria-label="primary-site" >
+    {% endif %}
         <div class="nav-toggle">
             <a href="#" role="button" id="webny-menu-control">Navigation menu</a>
         </div>
