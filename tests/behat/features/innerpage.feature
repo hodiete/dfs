@@ -4,7 +4,7 @@ Feature: Innerpage Tests
   Scenario: An administrative user should be able create innerpage content
     Given I am logged into the distro with the "administrator" role 
     When I go to "/node/add/webny_page"
-    Then I should not see "You are not authorized to access this page"
+    Then I should not see "the page that you are looking for is not found"
     And I should see the text "Create Page"
     
   Scenario: An administrative user should be able to add to all fields
@@ -35,4 +35,4 @@ Feature: Innerpage Tests
   Scenario: An anonymous user should not be able create innerpage content
     Given I am an Anonymous user 
     When I go to "/node/add/webny_page"
-    Then I should see "You are not authorized to access this page"
+    Then I should see "the page that you are looking for is not found"
