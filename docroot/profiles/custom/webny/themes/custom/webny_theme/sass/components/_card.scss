@@ -92,10 +92,8 @@ $featured-card-icon-color-hover: $color-secondary !default;
   //flex: 1 1 auto;
 }
 .card-content {
-  flex:0 1 auto;
   min-height: 325px; //separate from flex to help with IE issues, min-height helps keep button at bottom
-  display: flex;
-  flex-direction: column;
+  display: block;
 }
 
 // includes title (label) and date (if it exists)
