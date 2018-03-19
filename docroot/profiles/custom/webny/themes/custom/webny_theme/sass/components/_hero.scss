@@ -107,6 +107,7 @@ $hero-event-bkgd-transparent-black: $bkgd-black-50 !default;
       z-index: 3;
       background-color: black;
       box-sizing: border-box;
+
     }
 
   .hero-landing-inner {
@@ -514,6 +515,9 @@ $hero-event-bkgd-transparent-black: $bkgd-black-50 !default;
       .address span.country {
         display:none;
       }
+      .venue-name div {
+        color: $hero-keyword-text-color;
+      }
     }
   }
 
@@ -832,7 +836,9 @@ $hero-event-bkgd-transparent-black: $bkgd-black-50 !default;
         .address span.country {
           display:none;
         }
-
+        .venue-name div {
+          color: $hero-keyword-text-color;
+        }
       }
 
     }
