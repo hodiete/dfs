@@ -330,6 +330,14 @@ $globalnav-secondary-color:   $button-black-50 !default;
     &.horizontal{
       font-weight: $nav-weight;
 
+      &.alt-unav {
+        h1 {
+          a {
+            display: none;
+          }
+        }
+      }
+
       h1 {
         a,
         a:link,
@@ -456,6 +464,13 @@ $globalnav-secondary-color:   $button-black-50 !default;
       h1 {
         display: inline-block;
       }
+      &.alt-unav {
+        h1 {
+          a {
+            display: none;
+          }
+        }
+      }
     }
 
     &.unstacked.horizontal,
@@ -570,11 +585,25 @@ $globalnav-secondary-color:   $button-black-50 !default;
           }
         }
       }
+      &.alt-unav {
+        h1 {
+          display: none;
+        }
+      }
     }
 
     &.stacked.horizontal{
       @include in-context-menu();
       min-height: 118px;
+
+      &.alt-unav {
+        min-height: 0;
+        h1 {
+          a {
+            display: none;
+          }
+        }
+      }
 
       h1 {
         display: block;
@@ -587,7 +616,7 @@ $globalnav-secondary-color:   $button-black-50 !default;
         a:hover,
         a:active {
           height: 44px;
-          padding-top: 17px
+          padding-top: 17px;
         }
       }
 
@@ -648,6 +677,13 @@ $globalnav-secondary-color:   $button-black-50 !default;
       > ul,
       h1 {
         display: inline-block;
+      }
+      &.alt-unav {
+        h1 {
+          a {
+            display: none;
+          }
+        }
       }
     }
 
@@ -756,11 +792,24 @@ $globalnav-secondary-color:   $button-black-50 !default;
           }
         }
       }
+      &.alt-unav {
+        h1 {
+          display: none;
+        }
+      }
     }
 
     &.stacked.horizontal{
       @include in-context-menu();
       height: 148px;
+
+      &.alt-unav {
+        h1 {
+          a {
+            display: none;
+          }
+        }
+      }
 
       h1 {
         display: block;

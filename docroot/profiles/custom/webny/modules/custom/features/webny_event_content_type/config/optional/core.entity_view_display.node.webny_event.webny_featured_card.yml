@@ -23,7 +23,6 @@ dependencies:
     - address
     - datetime
     - link
-    - linked_field
     - text
     - user
 id: node.webny_event.webny_featured_card
@@ -72,12 +71,7 @@ content:
     settings:
       view_mode: cards
       link: false
-    third_party_settings:
-      linked_field:
-        linked: '1'
-        type: custom
-        destination: '[node:url]'
-        advanced: {  }
+    third_party_settings: {  }
     type: entity_reference_entity_view
     region: content
   field_webny_event_redirect_url:

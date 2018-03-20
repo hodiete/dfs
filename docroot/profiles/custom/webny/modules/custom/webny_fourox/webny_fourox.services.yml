@@ -1,0 +1,9 @@
+services:
+  webny_fourox.twig.page-403:
+    class: Drupal\webny_fourox\Twig\webnyfouroxsection
+    tags:
+      - { name: twig.extension }
+  webny_fourox.twig.page-404:
+      class: Drupal\webny_fourox\Twig\webnyfouroxsection
+      tags:
+        - { name: twig.extension }

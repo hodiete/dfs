@@ -4105,6 +4105,48 @@ function webny_configuration_update_8184() {
 }
 
 /**
+ * NDD-1036 ALTERNATIVE UNIVERSAL NAVIGATION
+ *
+ * REFRESH UNAV FILES
+ *
+ * DEV: VAN
+ */
+function webny_configuration_update_8185() {
+  // REINSTALL THE SECONDARY NAV MODULE
+  \Drupal::service('module_installer')
+    ->uninstall(['webny_unav']);
+  \Drupal::service('module_installer')
+    ->install(['webny_unav']);
+
+  $config_factory = \Drupal::configFactory();
+  $profile_config = \Drupal::service('webny.profile_config');
+
+  // Import new/changed configuration.
+  $config_to_update = [
+    'webny_unav.settings',
+    'image.style.alternative_universal_navigation'
+  ];
+
+  $profile_config->bulkImport($config_to_update);
+
+  // Clear the config cache.
+  $config_factory->reset();
+}
+
+/**
+ * NDD-1386
+ * INSTALLS the Access Unpublished contrib module
+ *
+ * DEV:Cat
+ */
+
+function webny_configuration_update_8186() {
+  // INSTALL ADMINISTRATION FEATURE
+  \Drupal::service('module_installer')
+    ->install(['access_unpublished']);
+}
+
+/**
  * Helper function to enable a Drupal module and print the result.
  *
  * @param string $module_name
