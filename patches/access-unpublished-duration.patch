@@ -1,0 +1,30 @@
+diff --git a/src/Form/AccessUnpublishedForm.php b/src/Form/AccessUnpublishedForm.php
+index f930848..f598770 100644
+--- a/src/Form/AccessUnpublishedForm.php
++++ b/src/Form/AccessUnpublishedForm.php
+@@ -180,10 +180,6 @@ class AccessUnpublishedForm implements ContainerInjectionInterface {
+         '#options' => [
+           86400 => $this->t('@days Days', ['@days' => 1]),
+           172800 => $this->t('@days Days', ['@days' => 2]),
+-          345600 => $this->t('@days Days', ['@days' => 4]),
+-          604800 => $this->t('@days Days', ['@days' => 7]),
+-          1209600 => $this->t('@days Days', ['@days' => 14]),
+-          -1 => $this->t('Unlimited'),
+         ],
+         '#default_value' => $this->config->get('duration'),
+       ];
+diff --git a/src/Form/SettingsForm.php b/src/Form/SettingsForm.php
+index 003165f..6871105 100644
+--- a/src/Form/SettingsForm.php
++++ b/src/Form/SettingsForm.php
+@@ -50,10 +50,6 @@ class SettingsForm extends ConfigFormBase {
+       '#options' => [
+         86400 => $this->t('@days Days', ['@days' => 1]),
+         172800 => $this->t('@days Days', ['@days' => 2]),
+-        345600 => $this->t('@days Days', ['@days' => 4]),
+-        604800 => $this->t('@days Days', ['@days' => 7]),
+-        1209600 => $this->t('@days Days', ['@days' => 14]),
+-        -1 => $this->t('Unlimited'),
+       ],
+       '#default_value' => $config->get('duration'),
+     ];

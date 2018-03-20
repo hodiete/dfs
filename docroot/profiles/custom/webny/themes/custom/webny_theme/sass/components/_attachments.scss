@@ -234,7 +234,7 @@ a.download-link {
 .fa-document {
   display: inline-block;
   color: $color-primary;
-  padding: 5px 20px 20px 20px;
+  padding: 5px 10px 20px 10px;
   text-align: center;
  // vertical-align: top;
   position: absolute;
@@ -244,7 +244,7 @@ a.download-link {
   
 .doc-info {
   display: inline-block;
-  width: 59%;
+  width: 47%;
   position: relative;  
   border-left: 1px solid $gray-lite;
   left: 15%;
@@ -256,7 +256,7 @@ a.download-link {
   display: flex;
   justify-content: center;
   flex-direction: column;
-  width: 20%;
+  width: 30%;
   padding-top: 0%;
   padding-bottom: 0%;
   height: 100%;
@@ -272,4 +272,17 @@ a.download-link {
  .download a:visited{
  color: $color-mono-black;
 } 
+}
+
+//For wide desktops
+@media (min-width: $max-pc) {
+  .download {
+    width: 20%;
+  }
+  .doc-info {
+    width: 59%;
+  }
+  .fa-document {
+    padding: 5px 20px 20px 20px;
+  }
 }

@@ -421,16 +421,15 @@
   .links,
   .actions {
     list-style: none;
-    //padding: 4px 30px;
-    padding: 8px 33px;
+    padding: 8px 31px;
     margin: 1px 0 -1px 0;    
     background-color: $color-mono-lt;
     border: 1px solid $color-mono-mid;
     border-left: 0;
     border-right: 0;
 
-    @include breakpoint($min-mobile) {
-      padding: 8px 33px;
+    @include breakpoint($min-tablet) {
+      padding: 8px 23px;
     }
   }
 
@@ -448,10 +447,14 @@
       content: '\f054';
       font-family: 'icomoon';
       color: $primarygold;
-      position: absolute;
-      left: -19px;
-      line-height: 13px;
+      position: relative;
+      left: -18px;
+      //line-height: 13px;
+      //margin: 6px 0;
       //margin-top: 6px;
+      @include breakpoint($min-tablet) {
+        left: -8px;
+      }
     }
   }
 
