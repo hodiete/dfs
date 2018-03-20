@@ -14,8 +14,8 @@ use Drupal\Core\Block\BlockBase;
  *
  * @Block(
  *     id = "webny_unav_header_block",
- *     admin_label = @Translation("webny uNav Header"),
- *     category = @Translation("webny")
+ *     admin_label = @Translation("WebNY Universal Navigation Header Block"),
+ *     category = @Translation("WebNY Universal Navigation")
  * )
  */
 

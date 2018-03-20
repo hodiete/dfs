@@ -27,6 +27,13 @@ function webny_global_nav_help($route_name, RouteMatchInterface $route_match) {
 function webny_global_nav_theme() {
   $url = Url::fromUri('internal:/');
   $config = \Drupal::config('webny_global_nav.settings');
+  $moduleHandler = \Drupal::service('module_handler');
+  if ($moduleHandler->moduleExists('webny_unav')) {
+    $unav_config = \Drupal::config('webny_unav.settings');
+    $unav_setting = $unav_config->get('webny_unav.webny_alt_unav_auto');
+  } else {
+    $unav_setting = '0';
+  }
 
   $header_format  = $config->get('webny_global_nav.headerformat');
   $footer_format  = $config->get('webny_global_nav.footerformat');
@@ -52,6 +59,7 @@ function webny_global_nav_theme() {
               'headerformat'    => $header_format,
               'headermenu'      => $header_menu,
               'headerauto'      => $header_auto,
+              'unavsetting'     => $unav_setting,
           ),
       ),
     'webny_global_nav_header' => array(
@@ -61,6 +69,7 @@ function webny_global_nav_theme() {
         'headerformat' => $header_format,
         'headermenu' => $header_menu,
         'headerauto' => $header_auto,
+        'unavsetting'     => $unav_setting,
       ),
     ),
     'webny_global_nav_footer' => array(

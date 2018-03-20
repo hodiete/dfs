@@ -90,7 +90,8 @@
         "drupal/devel": "^1.2",
         "symfony/polyfill-php70": "^1.6",
         "drush/drush": "8.1.16",
-        "acquia/acsf-tools": "^8.1"
+        "acquia/acsf-tools": "^8.1",
+        "drupal/access_unpublished": "^1.0@alpha"
     },
     "scripts": {
         "post-drupal-scaffold-cmd": [
@@ -203,6 +204,9 @@
             "drupal/facets": {
                 "Ajax facets": "https://www.drupal.org/files/issues/ajax_facets_blocks_for-2826449-85.patch",
                 "Ajax facets embedded in view": "patches/facets-ajax-2826449-85-updated-2.patch"
+            },
+            "drupal/access_unpublished":{
+                "Restrict lifetime token removing unlimited and week options": "patches/access-unpublished-duration.patch"
             }
         },
         "installer-types": [
