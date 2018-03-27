@@ -22,7 +22,8 @@
     .webny-action-label {
       visibility: visible;
       color: #fff;
-      font-family: "ProximaNovaExtrabold";
+      //font-family: "ProximaNovaExtrabold";
+      font-weight: 800;
       font-size: 22px;
       display: inline-block;
       padding: 10px;
@@ -95,7 +96,8 @@ aside#toc-sidebar {
   header {
     background-color: #1d1d1d;
     font-size: 14px; //0.875em;
-    font-family: "Oswald-bold";
+    font-family: "Oswald";
+    font-weight: 700;
     text-transform: uppercase;
     padding: 21px 30px;
     color: #cbcbcb;
@@ -177,9 +179,9 @@ aside#toc-sidebar {
       a {
         color: #FFF;
         //font: 0.9em/1 'ProximaNovaBold';
-        font: 16.8px 'ProximaNovaBold';
+        font-size: 16.8px;
         letter-spacing: 0.01em;
-        font-weight: normal;
+        font-weight: 700;
         text-decoration: none;
         transition: color 0.3s 0s ease-in-out;
         cursor: pointer;
@@ -467,7 +469,7 @@ aside#toc-sidebar {
         cursor: pointer;
         color: #fff;
         font-size: 13px;
-        font-family: 'ProximaNovaRegular';
+        //font-family: 'ProximaNovaRegular';
       }
       .webny-action-label {
         max-width: 50%;
@@ -494,7 +496,7 @@ aside#toc-sidebar {
       padding: 12px 25px 8px 0;
       .webny-action-share-label {
         font-size: 13px;
-        font-family: 'ProximaNovaRegular';
+        //font-family: 'ProximaNovaRegular';
         display: inline-block;
       }
       .webny-action-share-button {
@@ -542,14 +544,16 @@ aside#toc-sidebar {
           width: 48%;
           display: inline-block;
           margin: 10px 0;
-          font-family: 'ProximaNovaBold';
+          //font-family: 'ProximaNovaBold';
+          font-weight: 700;
           font-size: 14px;
           text-transform: uppercase;
 
           &.next-section-link {
             width: 50%;
             text-align: right;
-            font-family: 'ProximaNovaRegular';
+            //font-family: 'ProximaNovaRegular';
+            font-weight: normal;
             font-size: 16px;
             text-transform: none;
             cursor: pointer;
@@ -566,7 +570,7 @@ aside#toc-sidebar {
       }
 
     .next-section-title {
-      font-family: 'ProximaNovaRegular';
+      //font-family: 'ProximaNovaRegular';
       font-size: 30px;
       color: #128ec3;
       margin-bottom: 75px;
