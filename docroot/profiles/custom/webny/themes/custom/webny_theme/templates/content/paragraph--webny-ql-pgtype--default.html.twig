@@ -49,8 +49,16 @@ view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
 {% block paragraph %}
     <div{{ attributes.addClass(classes) }}>
         {% block content %}
-            <div class="qlframe-inner">
-                {{ content }}
+        	{# if only one column has a title, add class to other column so the QL boxes are aligned #}
+        	{% if paragraph.field_webny_ql_col_1_title.value is not empty and paragraph.field_webny_ql_col_1_title.value is not null and paragraph.field_webny_ql_col_2_title.value == null %}
+                <div class="qlframe-inner qlcol1-title">
+            {% elseif paragraph.field_webny_ql_col_1_title.value == null and paragraph.field_webny_ql_col_2_title.value is not empty and paragraph.field_webny_ql_col_2_title.value is not null %}
+            	<div class="qlframe-inner qlcol2-title">
+			{% else %}
+			    <div class="qlframe-inner">
+			{% endif %}
+          
+                {{ content }} 
             </div>
         {% endblock %}
     </div>
