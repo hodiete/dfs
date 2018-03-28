@@ -15,7 +15,7 @@ git:
     - 'nysits@svn-43.enterprise-g1.hosting.acquia.com:nysits.git'
 drush:
   aliases:
-    remote: 01dev.dev
+    remote: 01live.qa
     local: self
     ci: self
     remote-dev-dev: 01dev.dev
@@ -71,6 +71,8 @@ phpunit:
 disable-targets:
   validate:
     composer: true
+  tests:
+    security-updates: true
 behat:
   paths:
     - '${repo.root}/tests/behat'
