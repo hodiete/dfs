@@ -159,12 +159,12 @@ $tbd-button-hover-back-color-monochrome:  $color-mono-black !default;
   .descriptor--field-webny-tbd-cta1,
   .descriptor--field-webny-tbd-cta2 {
     a {
-        color: $tbd-button-text-color-primary;
-        border: $frame-button-border-size solid $tbd-button-border-color-primary;
-        &:hover {
-          border-color: $tbd-button-border-color-primary;
-          background-color: $tbd-button-hover-back-color-primary;
-        }
+      color: $tbd-button-text-color-primary;
+      border: $frame-button-border-size solid $tbd-button-border-color-primary;
+      &:hover {
+        border-color: $tbd-button-border-color-primary;
+        background-color: $tbd-button-hover-back-color-primary;
+      }
     }
   }
 }
@@ -211,7 +211,7 @@ $tbd-button-hover-back-color-monochrome:  $color-mono-black !default;
       display: flex;
       flex: 1;
       flex-flow: column nowrap;
-     // margin-bottom: 30px;
+      // margin-bottom: 30px;
       align-content: flex-end;
       float: left\9;
       width: 46%\9;
@@ -228,40 +228,40 @@ $tbd-button-hover-back-color-monochrome:  $color-mono-black !default;
         flex: 10;
       }
 
-        //&:nth-of-type(2n+2)
+      //&:nth-of-type(2n+2)
       .descriptor2-wrapper {
-          border-left: 2px solid lighten($tbd-frame-descriptor-border, 20%);
-          border-top: 0;
-          padding-left: 20px;
-        }
+        border-left: 1px solid lighten($tbd-frame-descriptor-border, 20%);
+        border-top: 0;
+        padding-left: 20px;
+      }
 
       .descriptor1-wrapper {
         padding-right: 20px;
       }
 
-        .descriptor--field-webny-tbd-descriptortitle1,
-        .descriptor--field-webny-tbd-descriptortitle2 {
-          margin-top: 0;
-          margin-bottom: 0;
-          padding-left: 0;
-        }
+      .descriptor--field-webny-tbd-descriptortitle1,
+      .descriptor--field-webny-tbd-descriptortitle2 {
+        margin-top: 0;
+        margin-bottom: 0;
+        padding-left: 0;
+      }
 
-        .descriptor--field-webny-tbd-descriptor1,
-        .descriptor--field-webny-tbd-descriptor2 {
-          flex: 5; // used 5 to handle very large descriptors
-          font-family: $base-font;
-          font-size: 0.7778rem;
-          font-weight: 800;
-          margin-bottom: 0;
+      .descriptor--field-webny-tbd-descriptor1,
+      .descriptor--field-webny-tbd-descriptor2 {
+        flex: 5; // used 5 to handle very large descriptors
+        font-family: $base-font;
+        font-size: 0.7778rem;
+        font-weight: 800;
+        margin-bottom: 0;
 
-          p {
-            margin-bottom: 50px;
-          }
+        p {
+          margin-bottom: 50px;
         }
+      }
 
       .descriptor--field-webny-tbd-descriptor2 {
-       // margin-left: 30px;
-       // padding-left: 0;
+        // margin-left: 30px;
+        // padding-left: 0;
       }
 
       .descriptor--field-webny-tbd-cta1,
@@ -274,28 +274,20 @@ $tbd-button-hover-back-color-monochrome:  $color-mono-black !default;
 
       }
 
-
     } // END descriptor
 
   } // END descriptors
 
-  // if primary background color is selected for frame
-    .paragraph--type--webny-tbd-pgtype.primary {
-      .descriptor {
-        &:nth-of-type(2n+2) {
-          border-left:2px solid lighten($tbd-frame-descriptor-border-primary, 20%);
-        }
+  // MONOCHROME OVERRIDE
+  .monochrome {
+    .descriptors {
+      .descriptor2-wrapper {
+        border-left: 1px solid $tbd-frame-descriptor-border-monochrome;
       }
     }
+  } // END MONOCHROME
 
-  // if monochrome light background color is selected for frame
-  .paragraph--type--webny-tbd-pgtype.monochrome {
-    .descriptor {
-      &:nth-of-type(2n+2) {
-        border-left:2px solid lighten($tbd-frame-descriptor-border-monochrome, 20%);
-      }
-    }
-  }
+
 } // END MIN TABLET VIEW
 
 // ######################################################################### //
@@ -330,7 +322,7 @@ $tbd-button-hover-back-color-monochrome:  $color-mono-black !default;
 
       .descriptor--field-webny-tbd-descriptor1,
       .descriptor--field-webny-tbd-descriptor2{
-       // flex: 5; // used 5 to handle very large descriptors
+        // flex: 5; // used 5 to handle very large descriptors
         font-size: $base-font-size;
         font-weight: $frame-base-semi-bold;
         line-height: 24px;
@@ -347,33 +339,33 @@ $tbd-button-hover-back-color-monochrome:  $color-mono-black !default;
       }
 
       .descriptor-wrapper {
-        border-left:2px solid lighten($tbd-frame-descriptor-border, 20%);
+        border-left:1px solid lighten($tbd-frame-descriptor-border, 20%);
       }
 
-     /* &:nth-of-type(2n+2) {
-        border-left:2px solid lighten($tbd-frame-descriptor-border, 20%);
-      }*/
+      /* &:nth-of-type(2n+2) {
+         border-left:1px solid lighten($tbd-frame-descriptor-border, 20%);
+       }*/
 
     } // END descriptor
 
   } // END descriptors
 
   // if primary background color is selected for frame
-    .paragraph--type--webny-tbd-pgtype.primary {
-      .descriptor1-wrapper,
-      .descriptor2-wrapper {
-        &:nth-of-type(2n+2) {
-        border-left:2px solid lighten($tbd-frame-descriptor-border-primary, 20%);
-        }
+  .paragraph--type--webny-tbd-pgtype.primary {
+    .descriptor1-wrapper,
+    .descriptor2-wrapper {
+      &:nth-of-type(2n+2) {
+        border-left:1px solid lighten($tbd-frame-descriptor-border-primary, 20%);
       }
     }
+  }
 
 
   .paragraph--type--webny-tbd-pgtype.monochrome {
     .descriptor1-wrapper,
     .descriptor2-wrapper {
       &:nth-of-type(2n+2) {
-        border-left:2px solid lighten($tbd-frame-descriptor-border-monochrome, 20%);
+        border-left:1px solid lighten($tbd-frame-descriptor-border-monochrome, 20%);
       }
     }
   }
@@ -414,11 +406,11 @@ $tbd-button-hover-back-color-monochrome:  $color-mono-black !default;
 
 @media screen\0 {
   .paragraph--type--webny-tbd-pgtype
-    &:after { 
-     content: "."; 
-     visibility: hidden; 
-     display: block; 
-     height: 0; 
-     clear: both;
-    }
+  &:after {
+    content: ".";
+    visibility: hidden;
+    display: block;
+    height: 0;
+    clear: both;
+  }
 } // clear for IE9
