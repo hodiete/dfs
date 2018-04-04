@@ -84,6 +84,34 @@ set iconclass = [
 
     {%  set googlemap = true %}
 
+{# TEST TO HIDE SOMETHING #}
+{% if(
+    node.field_webny_contact_facebook.value is null and
+    node.field_webny_contact_twitter.value is null and
+    node.field_webny_contact_twitter.value is null and
+    node.field_webny_contact_youtube.value is null and
+    node.field_webny_contact_instagram.value is null and
+    node.field_webny_contact_google.value is null and
+    node.field_webny_contact_soundcloud.value is null and
+    node.field_webny_contact_snapchat.value is null and
+    node.field_webny_contact_vine_link.value is null and
+    node.field_webny_contact_vine_link.value is null and
+    node.field_webny_contact_flickr_link.value is null and
+    node.field_webny_contact_rss_link.value is null and
+    node.field_webny_contact_pintrest.value is null and
+    node.field_webny_contact_tumblr_link.value is null and
+    node.field_webny_contact_linkedin.value is null and
+    node.field_webny_contact_vimeo_link.value is null
+    )
+
+%}
+{%  set border_bottom = 'border-hide' %}
+
+{% else %}
+{%  set border_bottom = 'border-show' %}
+
+{% endif %}
+
 {% endif %}
 {# ################################################################################################################# #}
 
@@ -181,7 +209,7 @@ set iconclass = [
             </div>
            </fieldset>
 
-           <fieldset class="social-media-wrapper">
+           <fieldset class="social-media-wrapper {{ border_bottom }}">
                 <div class="fieldset-wrapper">
 
                     {% if(node.field_webny_contact_facebook.value is not empty and node.field_webny_contact_facebook.value is not null) %}
