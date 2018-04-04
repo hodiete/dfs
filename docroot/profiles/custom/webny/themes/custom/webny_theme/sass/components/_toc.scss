@@ -340,7 +340,7 @@ aside#toc-sidebar {
 
   .social-media-wrapper {
     border-top: 1px solid $gray-lite;
-    border-bottom: 1px solid $gray-lite;
+   // border-bottom: 1px solid $gray-lite;
     padding-top: 20px;
     line-height: 40px;
   }
@@ -411,6 +411,14 @@ aside#toc-sidebar {
     .icon-tumblr {@include icon(before, fa-tumblr);}
     .icon-linkedin {@include icon(before, fa-linkedin-square);}
     .icon-vimeo {@include icon(before, fa-vimeo-square);}
+  }
+
+  .border-hide {
+    border-bottom: none;
+  }
+
+  .border-show {
+    border-bottom: 1px solid $gray-lite;
   }
 }
 /* Contact Frame styling - ends here */
