@@ -20,6 +20,9 @@ $wysiwyg-frame-text-color: $color-mono-black !default;
   margin: 0 auto;
   //padding: 0 8%; //taken from ny.gov padding on frames --hidden to remove indent so everything lines
 }
+.landing-paragraphs .wysiwyg--field-webny-wysiwyg-body {
+  padding: 0 8%;
+}
 
 .paragraph--type--webny-wysiwyg-pgtype {
   background-color: $wysiwyg-frame-bkgd-color;
@@ -66,5 +69,13 @@ $wysiwyg-frame-text-color: $color-mono-black !default;
   .landing-paragraphs .wysiwyg--field-webny-wysiwyg-body {
     font-size: 16px;
   }
+
+// ######################################################################## //
+/* DESKTOP VIEW */
+@media (min-width: $min-desktop) { 
+  .landing-paragraphs .wysiwyg--field-webny-wysiwyg-body { 
+    padding: 0;
+  }
+}
 }
 
