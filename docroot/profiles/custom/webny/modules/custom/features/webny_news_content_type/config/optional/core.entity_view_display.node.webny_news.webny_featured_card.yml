@@ -4,6 +4,7 @@ dependencies:
   config:
     - core.entity_view_mode.node.webny_featured_card
     - field.field.node.webny_news.body
+    - field.field.node.webny_news.field_webny_news_meta_tags
     - field.field.node.webny_news.field_webny_agency_keywords
     - field.field.node.webny_news.field_webny_filter_terms
     - field.field.node.webny_news.field_webny_global_keywords
@@ -125,6 +126,7 @@ content:
     third_party_settings: {  }
     region: content
 hidden:
+  field_webny_news_meta_tags: true
   field_webny_agency_keywords: true
   field_webny_filter_terms: true
   field_webny_global_keywords: true

@@ -3,6 +3,7 @@ status: true
 dependencies:
   config:
     - field.field.node.webny_whitelisted_content.body
+    - field.field.node.webny_whitelisted_content.field_webny_whitelist_meta_tags
     - field.field.node.webny_whitelisted_content.field_webny_agency_keywords
     - field.field.node.webny_whitelisted_content.field_webny_filter_terms
     - field.field.node.webny_whitelisted_content.field_webny_global_keywords
@@ -104,6 +105,7 @@ content:
     third_party_settings: {  }
 hidden:
   body: true
+  field_webny_whitelist_meta_tags: true
   field_webny_filter_terms: true
   field_webny_whitelist_stitle: true
   langcode: true
