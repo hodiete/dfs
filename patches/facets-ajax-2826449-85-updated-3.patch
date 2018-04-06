@@ -120,7 +120,7 @@ index 445a79f..4e64692 100644
          // Set the new url parameters.
          $url->setOption('query', $new_url_params);
 diff --git a/src/Widget/WidgetPluginBase.php b/src/Widget/WidgetPluginBase.php
-index 4f724a1..3931bc1 100644
+index 4f724a1..c832972 100644
 --- a/src/Widget/WidgetPluginBase.php
 +++ b/src/Widget/WidgetPluginBase.php
 @@ -10,6 +10,7 @@ use Drupal\Core\Url;
@@ -131,7 +131,7 @@ index 4f724a1..3931bc1 100644
  
  /**
   * A base class for widgets that implements most of the boilerplate.
-@@ -61,12 +62,38 @@ abstract class WidgetPluginBase extends PluginBase implements WidgetPluginInterf
+@@ -61,12 +62,42 @@ abstract class WidgetPluginBase extends PluginBase implements WidgetPluginInterf
          $pathinfo = $request->getPathInfo();
          $url_object = \Drupal::service('path.validator')
            ->getUrlIfValid($pathinfo);
@@ -157,6 +157,10 @@ index 4f724a1..3931bc1 100644
 +          // Gather parameters from the request missing from the url.
 +          $request_params = $request->query->all();
 +          unset($request_params['f']);
++          // The facet links contain a query parameter for "page" which can
++          // lead to false dead-ends in search results views. The next line
++          // removes the page parameter from the facet links.
++          unset($options['query']['page']);
 +          // Combine query options with request parameters.
 +          $options['query'] = array_merge($options['query'], $request_params);
 +          // Discard options not needed as url parameters.
