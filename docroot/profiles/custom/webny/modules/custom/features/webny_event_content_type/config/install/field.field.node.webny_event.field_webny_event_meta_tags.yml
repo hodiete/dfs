@@ -2,14 +2,14 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_webny_news_meta_tags
-    - node.type.webny_news
+    - field.storage.node.field_webny_event_meta_tags
+    - node.type.webny_event
   module:
     - metatag
-id: node.webny_news.field_webny_news_meta_tags
-field_name: field_webny_news_meta_tags
+id: node.webny_event.field_webny_event_meta_tags
+field_name: field_webny_event_meta_tags
 entity_type: node
-bundle: webny_news
+bundle: webny_event
 label: 'Metatags'
 description: '<strong>This field is designated for meta information for search engines. Fill out each field as necessary. </strong>'
 required: false
