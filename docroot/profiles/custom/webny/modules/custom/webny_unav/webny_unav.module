@@ -90,7 +90,7 @@ function webny_unav_preprocess(&$variables) {
   $variables['gsa_collection'] = $unavConfig->get('webny_unav.webny_alt_unav_search_collection');
   $variables['gsa_proxy_stylesheet'] = $unavConfig->get('webny_unav.webny_alt_unav_search_proxy_stylesheet');
   $variables['gsa_sitesearch'] = \Drupal::request()->getHost();
-  $variables['alt_unav_image'] = $unavConfig->get('webny_unav.webny_alt_unav_image');
+  $variables['alt_unav_image'] = '//' . $_SERVER['HTTP_HOST'] . $unavConfig->get('webny_unav.webny_alt_unav_image');
   $variables['site_name'] = \Drupal::config('system.site')->get('name');
 
   $variables['#attached']['library'][] = 'webny_unav/webny-unav';
