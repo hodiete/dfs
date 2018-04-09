@@ -5,3 +5,11 @@
     display: inline-block;
   }
 }
+
+// Safari 9 specific fixes
+@supports (overflow:-webkit-marquee) and (justify-content:inherit) {
+  a.webny-teaser-image {
+    display: block;
+    min-width: 242px;
+  }
+}
