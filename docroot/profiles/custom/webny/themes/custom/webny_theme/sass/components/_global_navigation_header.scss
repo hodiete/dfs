@@ -352,6 +352,7 @@ $globalnav-secondary-color:   $button-black-50 !default;
       &.unstacked {
         font-size: 14px;
         line-height: 18px;
+        height: 80px;
         @include in-context-menu();
 
         h1 {
@@ -569,8 +570,9 @@ $globalnav-secondary-color:   $button-black-50 !default;
     }
 
     &.unstacked.horizontal {
+      height: 75px;
       > h1 {
-        margin: 10px;
+        /*margin: 10px;*/
       }
 
       > ul {
@@ -581,7 +583,7 @@ $globalnav-secondary-color:   $button-black-50 !default;
           a:hover,
           a:active,
           span {
-            height: 95px;
+            height: 75px;
           }
         }
       }
@@ -594,14 +596,17 @@ $globalnav-secondary-color:   $button-black-50 !default;
 
     &.stacked.horizontal{
       @include in-context-menu();
-      min-height: 118px;
+      min-height: 115px;
 
       &.alt-unav {
-        min-height: 0;
+        min-height: 75px;
         h1 {
           a {
             display: none;
           }
+        }
+        ul {
+          padding-top: 15px;
         }
       }
 
@@ -793,6 +798,7 @@ $globalnav-secondary-color:   $button-black-50 !default;
         }
       }
       &.alt-unav {
+        min-height: 75px;
         h1 {
           display: none;
         }
@@ -804,6 +810,7 @@ $globalnav-secondary-color:   $button-black-50 !default;
       height: 148px;
 
       &.alt-unav {
+        min-height: 75px;
         h1 {
           a {
             display: none;
