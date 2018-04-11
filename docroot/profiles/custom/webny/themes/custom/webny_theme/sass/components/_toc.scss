@@ -215,9 +215,13 @@ aside#toc-sidebar {
     }
   }
 }
-/* display generic paragraphs at 100% width */
+/* display generic paragraphs at 100% width -- changed to 98% so they didn't bleed off page */
 .gp-paragraphs {
-  width:100%;
+  width: 100%;
+}
+.gp-paragraphs:not(.with-nav-sidebar) {
+  padding: 0 3%;
+  width: 95%; 
 }
 
 .article-content {
@@ -522,6 +526,11 @@ aside#toc-sidebar {
     z-index: 2;
     padding: 0 20px;
   }
+  .article-content {
+  .toc-chapters {
+    padding: 20px 30px 30px !important;
+    }
+  }
 
   // needed to override global footer z-index for this content type since it has the left fixed positioned toc
   .webny-global-footer {
@@ -588,6 +597,7 @@ aside#toc-sidebar {
   }
 }
   .gp-paragraphs {
+    padding: 0 3% 0 0 ;
     .news-contact-area p {
       margin: 0 auto;
       padding: 0;
@@ -646,6 +656,8 @@ aside#toc-sidebar {
   }
   /* Contact Frame styling - starts here */
   .gp-paragraphs {
+    width: 100%;
+    padding: 0; 
     .contact-info-wrapper {
       padding-left: 0;
       .contact-col-1,
