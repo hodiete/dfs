@@ -74,7 +74,9 @@
 
                     {# HERO KEYWORDS #}
                     <div class="hero-keywords">
-                        {{ content.field_webny_agency_keywords }}
+                        {% for term in node.field_webny_agency_keywords %}
+                            <a href="/keywords/{{ term.entity.machine_name.value }}">{{ term.entity.name.value }}</a>
+                        {% endfor %}
                     </div>
 
                     {# TRANSACTION TIME #}
@@ -101,4 +103,7 @@
     {% include '@webny_theme/includes/webny--action-bar.html.twig' %}
     {% include '@webny_theme/includes/webny--toc.html.twig' %}
 
+
 </div>
+
+
