@@ -11,11 +11,19 @@ use Drupal\Core\Render\Markup;
 use Drupal\taxonomy\Entity\Term;
 
 /**
-* Implements hook_views_pre_execute().
+* Implements hook_views_pre_execute(). 
+*
+* Convert the url path part (with taxonomy machine name) 
+* to an id for the views contextual filter.  
 */
 function webny_solr_searches_views_pre_view($view) {
-  // Filter terms /search/% page view.
-  if ($view->current_display == 'webny_search_page') {
+  // Filter terms /search/% & /keyword/% page views.
+  $current_display = $view->current_display;
+  $view_display_filters = [
+    'webny_search_page' => 'webny_filter_terms_tax',
+    'webny_keywords_page' => 'webny_agency_keywords'
+  ];
+  if (array_key_exists($current_display, $view_display_filters)) {
     // Set filter term id contextual filter based url value.
     if (isset($view->args[0])) {
       // Check for numeric value or name.
@@ -24,7 +32,9 @@ function webny_solr_searches_views_pre_view($view) {
       }
       else {
         $filter_term_name = str_replace('-', '_', $view->args[0]);
-        $term = taxonomy_term_machine_name_load($filter_term_name, 'webny_filter_terms_tax');
+        $term = taxonomy_term_machine_name_load(
+          $filter_term_name, $view_display_filters[$current_display]
+        );
 
         // Has matching term. Set a term id argument.
         if ($term) {
@@ -33,12 +43,19 @@ function webny_solr_searches_views_pre_view($view) {
       }
 
       if (isset($filter_term_id)) {
-        $parents = \Drupal::service('entity_type.manager')
-          ->getStorage('taxonomy_term')
-          ->loadParents($filter_term_id);
+        // Exclude child terms on the /search/% view only.
+        if ($current_display == 'webny_search_page') {
+          $parents = \Drupal::service('entity_type.manager')
+            ->getStorage('taxonomy_term')
+            ->loadParents($filter_term_id);
 
-        // Exclude child terms.
-        if (!$parents) {
+          // Exclude child terms.
+          if (!$parents) {
+            $view->setArguments([$filter_term_id]);
+          }
+        }
+        // Term id exists, so set it as-is.
+        else {
           $view->setArguments([$filter_term_id]);
         }
       }
@@ -66,8 +83,16 @@ function webny_solr_searches_preprocess_views_view(&$variables) {
       ->build();
   }
 
+  // Create a facet block for the keywords view.
+  if ($view->current_display == 'webny_keywords_page') {
+    $variables['filter_term_block'] = \Drupal::service('plugin.manager.block')
+      ->createInstance('facet_block:combined_type')
+      ->build();
+  }
+
   // Get the term name ('search_group') to display as the view title bar.
-  if ($view->id() == 'webny_search') {
+  $search_views = ['webny_search', 'webny_keywords'];
+  if (in_array($view->id(), $search_views)) {
     // Search group is the term name used for the view's title bar.
     $search_group = \Drupal::service('entity_type.manager')
       ->getStorage('taxonomy_term')
@@ -85,8 +110,8 @@ function webny_solr_searches_preprocess_views_view(&$variables) {
  */
 function webny_solr_searches_form_alter(&$form, $form_state, $form_id) {
   $view = $form_state->getStorage('view');
-
-  if ($form_id == 'views_exposed_form' && $view['view']->id() == 'webny_search') {
+  $search_views = ['webny_search', 'webny_keywords'];
+  if ($form_id == 'views_exposed_form' && in_array($view['view']->id(), $search_views)) {
     // Add placeholder text to keyword search field.
     $form['keyword']['#attributes']['placeholder'] = t('Keyword(s)');
   }
@@ -126,10 +151,16 @@ function webny_solr_searches_modules_installed($modules) {
  * Implements hook_token_info_alter().
  */
 function webny_solr_searches_token_info_alter(&$info) {
+  // Custom view tokens.
   $info['tokens']['view']['webny-filter-args'] = [
     'name' => t('WebNY: view filter arguments'),
     'description' => t('Comma delimited arguments.'),
   ];
+  // Taxonomy machine name in hyphenated form.
+  $info['tokens']['term']['machine_name_hyphenated'] = array(
+    'name' => t('Machine name hyphenated'),
+    'description' => t('The hyphenated machine name of the taxonomy term.'),
+  );
 }
 
 /**
@@ -138,6 +169,20 @@ function webny_solr_searches_token_info_alter(&$info) {
 function webny_solr_searches_tokens($type, $tokens, array $data, array $options, BubbleableMetadata $bubbleable_metadata) {
   $replacements = [];
 
+  // Term token to provide hyphenated verison of taxonomy machine name.
+  if ($type == 'term' && !empty($data['term'])) {
+    $term = $data['term'];
+
+    foreach ($tokens as $name => $original) {
+      switch ($name) {
+        case 'machine_name_hyphenated':
+          $replacements[$original] = str_replace('_', '-', $term->machine_name->value);
+          break;
+      }
+    }
+  }
+
+  // View tokens to provide filter summary values and clear-all link.
   if ($type == 'view' && !empty($data['view'])) {
     $view = $data['view'];
 
@@ -169,7 +214,13 @@ function webny_solr_searches_tokens($type, $tokens, array $data, array $options,
               // Extract id from value (ex. filter_term:123).
               $farr = explode(':', $f);
               $fid = array_pop($farr);
-              $facet_name = Term::load($fid)->get('name')->value;
+              // The facet could either be an agency keyword string or term id.
+              if (is_numeric($fid) && Term::load($fid)) {
+                $facet_name = Term::load($fid)->get('name')->value;
+              }
+              else {
+                $facet_name = $fid;
+              }
               return '<strong>' . $facet_name . '</strong>';
             }, $facet_inputs);
             $facet_inputs_last = (count($facet_inputs_markup) > 1) ?
