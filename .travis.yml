@@ -31,8 +31,6 @@ cache:
   # Cache front end dependecies to dramatically improve build time.
   - "docroot/profiles/custom/webny/themes/custom/webny_theme/node_modules"
   - "docroot/profiles/custom/webny/themes/custom/webny_theme/bower_components"
-before_cache:
-  - cp vendor/acquia/blt/composer.required.json vendor/acquia/blt
 
 addons:
   ssh_known_hosts:
@@ -80,8 +78,6 @@ before_install:
 install:
   # Load composer dependencies.
   - composer validate --no-check-all --ansi
-  # Remove acquia packages from cache before running `composer install`.
-  - rm -rf vendor/acquia
   - composer install -v
   - export PATH=$TRAVIS_BUILD_DIR/vendor/bin:$PATH
   # Install proper version of node for front end tasks.
