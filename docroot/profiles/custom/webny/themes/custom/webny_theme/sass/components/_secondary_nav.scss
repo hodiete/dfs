@@ -23,12 +23,12 @@ $secnav-font-color:         #000;
   display: block;
   width: 100%;
   background-color: $secnav-background-color;
-  padding: 15px 0 ;
+  padding: 13px 0;
   color: $secnav-font-color;
   border-top: 4px solid #fff;
 
   p{
-    font-size: 18px/1em;
+    font-size: 14px;
     color: $secnav-font-color;
     margin: 0;
     text-align: center;
@@ -42,6 +42,8 @@ $secnav-font-color:         #000;
     border: 0;
     border-top: 2px solid #fff;
     padding: 0;
+    margin-top: 11px;
+    margin-bottom: 11px;
   }
 
   .secnav-pipe {
@@ -94,7 +96,7 @@ $secnav-font-color:         #000;
         }
 
         a {
-          font-size: 18px/1em;
+          font-size: 14px;
           padding: 0 0.25em;
           color: $secnav-font-color;
 
@@ -126,14 +128,9 @@ $secnav-font-color:         #000;
     margin: 0;
   }
 
-
-
   .secnav-equal-space {
     width: 90%;
   }
-
-
-
 
 } // end secondary-navigation
 
@@ -144,6 +141,8 @@ $secnav-font-color:         #000;
 
   #secondary-navigation {
 
+    padding: 5px 0;
+
     // DISPLAY THE PIPE FOR TABLET ON UP
     .secnav-pipe {
       text-align: center;
@@ -152,6 +151,12 @@ $secnav-font-color:         #000;
     .secnav-hr{
       display: block;
     }
+
+    .secnav-hr{
+      margin-top: 4px;
+      margin-bottom: 4px;
+    }
+
 
   }
 
@@ -166,6 +171,7 @@ $secnav-font-color:         #000;
 
   width: 100%;
   display: flex;
+  padding: 3px 0;
 
   .secnav-pipe{
     //width: 1%;
