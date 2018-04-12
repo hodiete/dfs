@@ -4147,6 +4147,18 @@ function webny_configuration_update_8186() {
 }
 
 /**
+ * NDD-1450
+ * DEV:Van
+ */
+
+function webny_configuration_update_8187() {
+  // GET VARS FOR POST REFRESH UPDATES
+  $collection = 'default_collection';
+  $setConfig = \Drupal::configFactory()->getEditable('webny_unav.settings');
+  $setConfig->set('webny_unav.webny_alt_unav_search_collection', $collection)->save();
+}
+
+/**
  * Helper function to enable a Drupal module and print the result.
  *
  * @param string $module_name

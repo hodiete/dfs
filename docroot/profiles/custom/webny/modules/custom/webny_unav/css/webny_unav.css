@@ -215,6 +215,9 @@
     .alternative-universal-container {
         height: 90px;
     }
+    .alternative-universal-container header {
+        top: 0;
+    }
     .header {
         height: 90px;
     }
@@ -222,10 +225,11 @@
         display: block;
         position: relative;
         width: 60%;
+        padding-left: 60px;
     }
     .header .alternative-unav-global-name .alternative-unav-agency-name {
         transition: all 0.3s ease 0s;
-        padding: 25px 0;
+        padding: 21px 0;
     }
     .header .alternative-unav-global-name .alternative-unav-agency-name .alternative-unav-agency-state {
         font-size: 16px;
@@ -234,9 +238,9 @@
         color: #E07604;
     }
     .header .alternative-unav-global-name .alternative-unav-agency-name .alternative-unav-agency-agency {
-        font-size: 18px;
+        font-size: 22px;
         font-family: "D Sari Bold", Arial, sans-serif;
-        line-height: 20px;
+        line-height: 24px;
         color: #031D3D;
     }
     .header .alternative-unav-global-menu {
@@ -329,16 +333,17 @@
     }
     .header .pane-page-logo {
         padding: 3px 0;
-        width: 18%;
+        width: 160px;
         text-align: center;
         float: left;
         border-right: none;
     }
     .header .pane-page-logo .pane-content {
-        padding: 7px 10px;
+        padding: 7px 0px 7px 60px;
     }
     .header .pane-page-logo .pane-content a {
         padding-bottom: 0px;
+        width: 70px;
     }
     .header .pane-page-logo .pane-content a img{
         margin: 0;

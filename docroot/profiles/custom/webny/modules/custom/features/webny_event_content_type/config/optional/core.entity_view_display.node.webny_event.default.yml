@@ -38,8 +38,13 @@ content:
     region: content
     label: hidden
     settings:
-      link: true
-    third_party_settings: {  }
+      link: false
+    third_party_settings:
+      linked_field:
+        linked: '1'
+        type: custom
+        destination: '/keywords/[node:field_webny_agency_keywords:entity:machine_name_hyphenated]'
+        advanced: {  }
   field_webny_contentcat:
     weight: 10
     label: hidden

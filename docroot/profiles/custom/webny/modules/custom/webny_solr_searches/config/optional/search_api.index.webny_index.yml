@@ -20,7 +20,9 @@ dependencies:
     - field.storage.node.field_webny_contentcat
     - search_api.server.acquia_search_server
   module:
+    - taxonomy
     - search_api
+    - webny_solr_searches
     - node
 id: webny_index
 name: 'WebNY Index'
@@ -52,6 +54,17 @@ field_settings:
           webny_news: default
           webny_page: default
           webny_whitelisted_content: default
+  webny_combined_type:
+    label: 'Combined Type'
+    property_path: webny_combined_type
+    type: string
+  aggregated_field:
+    label: 'Aggregated field'
+    property_path: aggregated_field
+    type: string
+    configuration:
+      type: union
+      fields: {  }
   title:
     label: Title
     datasource_id: 'entity:node'
@@ -214,6 +227,26 @@ field_settings:
     dependencies:
       config:
         - field.storage.node.field_webny_contentcat
+  field_webny_contentcat__name:
+    label: 'Content Categorization Name'
+    datasource_id: 'entity:node'
+    property_path: 'field_webny_contentcat:entity:name'
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.field_webny_contentcat
+      module:
+        - taxonomy
+  field_webny_location_type_tax__name:
+    label: 'Location Type Name'
+    datasource_id: 'entity:node'
+    property_path: 'field_webny_location_type_tax:entity:name'
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.field_webny_location_type_tax
+      module:
+        - taxonomy
 datasource_settings:
   'entity:node':
     bundles:
@@ -223,44 +256,17 @@ datasource_settings:
       default: true
       selected: {  }
 processor_settings:
-  rendered_item: {  }
-  add_url: {  }
-  aggregated_field: {  }
   hierarchy:
     fields:
       field_webny_filter_terms: taxonomy_term-parent
     weights:
       preprocess_index: -45
-  entity_status: {  }
-  ignorecase:
-    all_fields: false
-    fields:
-      - rendered_item
-      - title
-      - type
-      - field_webny_document_language
-      - field_webny_event_venue_name
-      - field_webny_news_location
-      - field_webny_location_address_postal_code
-    weights:
-      preprocess_index: -20
-      preprocess_query: -20
-  transliteration:
-    all_fields: false
-    fields:
-      - rendered_item
-      - title
-      - type
-      - field_webny_document_language
-      - field_webny_event_venue_name
-      - field_webny_news_location
-      - field_webny_location_address_postal_code
-    weights:
-      preprocess_index: -20
-      preprocess_query: -20
+  add_url: {  }
+  aggregated_field: {  }
   content_access:
     weights:
       preprocess_query: -30
+  entity_status: {  }
   html_filter:
     all_fields: false
     fields:
@@ -276,6 +282,34 @@ processor_settings:
     weights:
       preprocess_index: -15
       preprocess_query: -15
+  ignorecase:
+    all_fields: false
+    fields:
+      - rendered_item
+      - title
+      - type
+      - field_webny_document_language
+      - field_webny_event_venue_name
+      - field_webny_news_location
+      - field_webny_location_address_postal_code
+    weights:
+      preprocess_index: -20
+      preprocess_query: -20
+  rendered_item: {  }
+  transliteration:
+    all_fields: false
+    fields:
+      - rendered_item
+      - title
+      - type
+      - field_webny_document_language
+      - field_webny_event_venue_name
+      - field_webny_news_location
+      - field_webny_location_address_postal_code
+    weights:
+      preprocess_index: -20
+      preprocess_query: -20
+  combined_type: {  }
 tracker_settings:
   default: {  }
 options:

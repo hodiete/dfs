@@ -62,16 +62,15 @@
                 {% endif %}
             </div>
 
+            {% if alt_unav_image is not null and alt_unav_image is not empty and alt_unav_image|length %}
             <div class="pane-page-logo">
                 <div class="pane-content">
-                    {% if alt_unav_image is not null or alt_unav_image is not empty %}
-                        <a href="{{ url('<front>') }}">
-                            <img alt="{{ site_name }}" src="{{ alt_unav_image }}" />
-                        </a>
-                    {% endif %}
+                    <a href="{{ url('<front>') }}">
+                        <img alt="{{ site_name }}" src="{{ alt_unav_image }}" />
+                    </a>
                 </div>
-
             </div>
+            {% endif %}
 
             <div class="alternative-unav-global-name">
                 <div class="alternative-unav-agency-name">
