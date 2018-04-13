@@ -89,7 +89,9 @@ class WebNYUNavForm extends ConfigFormBase {
           $destination = $style->buildUri($file_uri);
           // create image style applied image and if successful add destination to config
           if ($style->createDerivative($file_uri, $destination)) {
-            $config->set('webny_unav.webny_alt_unav_image', file_create_url($destination));
+            // pass url created by file_create_url to parse_url to pull path to save
+            $parsed_url = parse_url(file_create_url($destination));
+            $config->set('webny_unav.webny_alt_unav_image', $parsed_url['path']);
           }
         }
 

@@ -45,6 +45,10 @@ settings:
         -
           name: Align
           items:
+            - JustifyLeft
+            - JustifyCenter
+            - JustifyRight
+            - JustifyBlock
             - Indent
             - Outdent
         -
@@ -64,7 +68,9 @@ settings:
     language:
       language_list: un
     stylescombo:
-      styles: p.button|Button
+      styles: span.button|Button
+    indentblock:
+      enable: 0
 image_upload:
   status: false
   scheme: public
