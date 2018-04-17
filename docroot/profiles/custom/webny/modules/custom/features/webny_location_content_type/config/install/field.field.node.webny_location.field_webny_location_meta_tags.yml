@@ -2,15 +2,15 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_webny_gencp_metatags
-    - node.type.webny_generic_page
+    - field.storage.node.field_webny_location_meta_tags
+    - node.type.webny_location
   module:
     - metatag
-id: node.webny_generic_page.field_webny_gencp_metatags
-field_name: field_webny_gencp_metatags
+id: node.webny_location.field_webny_location_meta_tags
+field_name: field_webny_location_meta_tags
 entity_type: node
-bundle: webny_generic_page
-label: 'Metatags '
+bundle: webny_location
+label: 'Metatags'
 description: '<strong>This field is designated for meta information for search engines. Fill out each field as necessary. </strong>'
 required: false
 translatable: false
