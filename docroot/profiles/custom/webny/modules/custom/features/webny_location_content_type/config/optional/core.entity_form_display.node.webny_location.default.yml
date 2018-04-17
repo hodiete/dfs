@@ -9,6 +9,7 @@ dependencies:
     - field.field.node.webny_location.field_webny_location_contentsec
     - field.field.node.webny_location.field_webny_location_counties
     - field.field.node.webny_location.field_webny_location_heroimage
+    - field.field.node.webny_location.field_webny_location_meta_tags
     - field.field.node.webny_location.field_webny_location_navtoggle
     - field.field.node.webny_location.field_webny_location_phone
     - field.field.node.webny_location.field_webny_location_short_title
@@ -19,6 +20,7 @@ dependencies:
     - address
     - entity_browser
     - field_group
+    - metatag
     - paragraphs
     - path
     - shs
@@ -61,6 +63,12 @@ content:
   created:
     type: datetime_timestamp
     weight: 11
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_webny_location_meta_tags:
+    type: metatag_firehose
+    weight: 15
     region: content
     settings: {  }
     third_party_settings: {  }

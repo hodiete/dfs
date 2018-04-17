@@ -14,12 +14,14 @@ dependencies:
     - field.field.node.webny_whitelisted_content.field_webny_whitelist_global_key
     - field.field.node.webny_whitelisted_content.field_webny_whitelist_image
     - field.field.node.webny_whitelisted_content.field_webny_whitelist_link_url
+    - field.field.node.webny_whitelisted_content.field_webny_whitelist_meta_tags
     - field.field.node.webny_whitelisted_content.field_webny_whitelist_stitle
     - node.type.webny_whitelisted_content
   module:
     - datetime
     - entity_browser
     - link
+    - metatag
     - path
     - shs
     - text
@@ -35,6 +37,12 @@ content:
     settings: {  }
     third_party_settings: {  }
     region: content
+  field_webny_whitelist_meta_tags:
+    type: metatag_firehose
+    weight: 17
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   field_webny_agency_keywords:
     weight: 12
     settings:
