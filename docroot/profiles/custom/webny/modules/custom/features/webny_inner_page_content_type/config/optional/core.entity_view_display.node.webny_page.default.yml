@@ -15,6 +15,7 @@ dependencies:
     - field.field.node.webny_page.field_webny_page_global_keywords
     - field.field.node.webny_page.field_webny_page_hero_title
     - field.field.node.webny_page.field_webny_page_image
+    - field.field.node.webny_page.field_webny_page_meta_tags
     - field.field.node.webny_page.field_webny_page_short_title
     - field.field.node.webny_page.field_webny_page_sub_title
     - field.field.node.webny_page.field_webny_page_vis_options
@@ -39,7 +40,7 @@ content:
     weight: 9
     label: hidden
     settings:
-      link: true
+      link: false
     third_party_settings: {  }
     type: entity_reference_label
     region: content
@@ -149,6 +150,7 @@ content:
     settings: {  }
     third_party_settings: {  }
 hidden:
+  field_webny_page_meta_tags: true
   field_webny_filter_terms: true
   field_webny_page_short_title: true
   langcode: true

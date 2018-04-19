@@ -19,6 +19,7 @@ dependencies:
     - field.field.node.webny_news.field_webny_news_hero_title
     - field.field.node.webny_news.field_webny_news_image
     - field.field.node.webny_news.field_webny_news_location
+    - field.field.node.webny_news.field_webny_news_meta_tags
     - field.field.node.webny_news.field_webny_news_short_title
     - field.field.node.webny_news.field_webny_news_subtitles
     - node.type.webny_news
@@ -26,6 +27,7 @@ dependencies:
     - datetime
     - entity_browser
     - field_group
+    - metatag
     - path
     - shs
     - text
@@ -66,6 +68,12 @@ content:
     settings: {  }
     third_party_settings: {  }
     region: content
+  field_webny_news_meta_tags:
+    type: metatag_firehose
+    weight: 24
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   field_webny_agency_keywords:
     weight: 10
     settings:
