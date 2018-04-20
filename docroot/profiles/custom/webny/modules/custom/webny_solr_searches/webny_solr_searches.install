@@ -27,3 +27,17 @@ function webny_solr_searches_update_8001() {
 function webny_solr_searches_update_8002() {
   // Note: update removed in favor of implementing hook_modules_installed().
 }
+
+/**
+ * Generate taxonomy machine name for agency keywords terms.
+ */
+function webny_solr_searches_update_8003() {
+  $term_storage = \Drupal::service('entity_type.manager')
+    ->getStorage('taxonomy_term');
+  $terms = $term_storage->loadTree('webny_agency_keywords', 0, NULL, TRUE);
+
+  foreach ($terms as $term) {
+    // If term machine name is empty then create one.
+    taxonomy_machine_name_update_term($term);
+  }
+}

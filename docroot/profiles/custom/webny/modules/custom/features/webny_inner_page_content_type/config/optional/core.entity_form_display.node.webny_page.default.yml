@@ -16,6 +16,7 @@ dependencies:
     - field.field.node.webny_page.field_webny_page_global_keywords
     - field.field.node.webny_page.field_webny_page_hero_title
     - field.field.node.webny_page.field_webny_page_image
+    - field.field.node.webny_page.field_webny_page_meta_tags
     - field.field.node.webny_page.field_webny_page_short_title
     - field.field.node.webny_page.field_webny_page_sub_title
     - field.field.node.webny_page.field_webny_page_vis_options
@@ -23,6 +24,7 @@ dependencies:
   module:
     - entity_browser
     - field_group
+    - metatag
     - path
     - shs
     - text
@@ -64,6 +66,12 @@ content:
     settings: {  }
     third_party_settings: {  }
     region: content
+  field_webny_page_meta_tags:
+    type: metatag_firehose
+    weight: 23
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   field_webny_agency_keywords:
     weight: 9
     settings:
@@ -74,7 +82,7 @@ content:
     type: entity_reference_autocomplete
     region: content
   field_webny_contentcat:
-    weight: 26
+    weight: 20
     settings:
       match_operator: CONTAINS
       size: 60
@@ -220,7 +228,7 @@ content:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 121
+    weight: 22
     third_party_settings: {  }
     region: content
   sticky:
@@ -248,6 +256,8 @@ content:
     third_party_settings: {  }
     region: content
   url_redirects:
-    weight: 50
+    weight: 21
     region: content
+    settings: {  }
+    third_party_settings: {  }
 hidden: {  }

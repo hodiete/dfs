@@ -35,7 +35,7 @@
                             <input type="hidden" name="ie" value="UTF-8">
                             <input type="hidden" name="ud" value="1">
                             <input type="hidden" name="site" value="{{ gsa_collection }}">
-                            <input type="hidden" name="sitesearch" value="{{ site_url }}" />
+                            <input type="hidden" name="sitesearch" value="{{ gsa_sitesearch }}" />
                             <input type="submit" name="submit" />
                         </form>
                     </div>
@@ -62,20 +62,19 @@
                 {% endif %}
             </div>
 
+            {% if alt_unav_image is not null and alt_unav_image is not empty and alt_unav_image|length %}
             <div class="pane-page-logo">
                 <div class="pane-content">
-                    {% if alt_unav_image is not null or alt_unav_image is not empty %}
-                        <a href="{{ url('<front>') }}">
-                            <img alt="{{ site_name }}" src="{{ alt_unav_image }}" />
-                        </a>
-                    {% endif %}
+                    <a href="{{ url('<front>') }}">
+                        <img alt="{{ site_name }}" src="{{ alt_unav_image }}" />
+                    </a>
                 </div>
-
             </div>
+            {% endif %}
 
             <div class="alternative-unav-global-name">
                 <div class="alternative-unav-agency-name">
-                    <div class="alternative-unav-agency-agency">{{ agencyname|raw }}</div>
+                    <div class="alternative-unav-agency-agency"><a href="{{ url('<front>') }}">{{ agencyname|raw }}</a></div>
                 </div>
             </div>
 

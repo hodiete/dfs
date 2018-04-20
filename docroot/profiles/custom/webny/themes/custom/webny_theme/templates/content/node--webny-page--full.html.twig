@@ -100,7 +100,9 @@
 
                     {# KEYWORDS FOR INNER PAGE HERO #}
                     <div class="hero-keywords">
-                        {{ content.field_webny_agency_keywords }}
+                        {% for term in node.field_webny_agency_keywords %}
+                            <a href="/keywords/{{ term.entity.machine_name.value }}">{{ term.entity.name.value }}</a>
+                        {% endfor %}
                     </div>
 
             </div>
