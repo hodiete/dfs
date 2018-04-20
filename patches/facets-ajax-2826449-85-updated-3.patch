@@ -157,16 +157,17 @@ index 4f724a1..c832972 100644
 +          // Gather parameters from the request missing from the url.
 +          $request_params = $request->query->all();
 +          unset($request_params['f']);
-+          // The facet links contain a query parameter for "page" which can
-+          // lead to false dead-ends in search results views. The next line
-+          // removes the page parameter from the facet links.
-+          unset($options['query']['page']);
 +          // Combine query options with request parameters.
 +          $options['query'] = array_merge($options['query'], $request_params);
 +          // Discard options not needed as url parameters.
 +          unset($options['query']['q']);
 +          unset($options['query']['_wrapper_format']);
 +          unset($options['query']['ajax_page_state']);
++
++          // The facet links contain a query parameter for "page" which can
++          // lead to false dead-ends in search results views. The next line
++          // removes the page parameter from the facet links.
++          unset($options['query']['page']);
 +
 +          $result->setUrl(new Url($route_name, $route_params, $options));
 +        }
