@@ -163,7 +163,6 @@ index 4f724a1..c832972 100644
 +          unset($options['query']['q']);
 +          unset($options['query']['_wrapper_format']);
 +          unset($options['query']['ajax_page_state']);
-+
 +          // The facet links contain a query parameter for "page" which can
 +          // lead to false dead-ends in search results views. The next line
 +          // removes the page parameter from the facet links.
