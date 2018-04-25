@@ -8,9 +8,14 @@
 {% endif %}
 
 {% block card_image %}
-    {% if (content.field_webny_news_image["#items"] is not empty) %}
+    {% if (content.field_webny_news_image["#items"] is not empty and
+           content.field_webny_news_image["#items"] is not null) %}
         <div class="card-image">
             {{ content.field_webny_news_image }}
+        </div>
+    {% else %}
+        <div class="fallback-image">
+            {% include '@webny_theme/includes/NYGov_Newspaper.svg.twig' %}
         </div>
     {% endif %}
 {% endblock card_image %}

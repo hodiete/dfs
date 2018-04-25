@@ -17,6 +17,10 @@
                 <a href="{{ url }}">{{ content.field_webny_event_heroimage }}</a>
             {% endif %}
         </div>
+    {% else %}
+        <div class="fallback-image">
+            {% include '@webny_theme/includes/NYGov_Events.svg.twig' %}
+        </div>
     {% endif %}
 {% endblock card_image %}
 

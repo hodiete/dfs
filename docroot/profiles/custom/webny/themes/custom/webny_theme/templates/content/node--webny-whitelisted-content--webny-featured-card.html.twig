@@ -11,6 +11,10 @@
         <div class="card-image">
             {{ content.field_webny_whitelist_image }} 
         </div>
+    {% else %}
+        <div class="fallback-image">
+            {% include '@webny_theme/includes/OpenBrowserArrow.svg.twig' %}
+        </div>
     {% endif %}
 {% endblock card_image %}
 
