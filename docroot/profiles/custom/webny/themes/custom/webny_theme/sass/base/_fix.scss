@@ -6,3 +6,139 @@
   }
 }
 
+// Safari 9 specific fixes
+@supports (overflow:-webkit-marquee) and (justify-content:inherit) {
+  a.webny-teaser-image {
+    display: block;
+    min-width: 242px;
+  }
+}
+
+// Safari 6.1-10.0
+@media screen and (min-color-index:0) and (-webkit-min-device-pixel-ratio:0)  {
+  //fixes for NDD-1454 - iPad Air 2, iPad Mini 2, iPad 4, iPad Mini 4.
+  .webny-search-container {
+    display: block;
+  }
+  .webny-teaser {
+    .webny-card-teaser {
+    }
+
+    &-wrapper {
+      display: block;
+    }
+
+    &-content-wrapper {
+
+      &__details-left {
+        @include breakpoint($min-tablet) {
+          width: 37%;
+        }
+      }
+
+      &__details-right {
+        @include breakpoint($min-tablet) {
+          width: 63%;
+        }
+      }
+
+      &__events{
+        @include breakpoint($min-tablet) {
+          max-height: 240px;
+          height: 240px;
+        }
+        .description {
+          display: none;
+        }
+
+        .webny-teaser-content-wrapper__details {
+          @include breakpoint($min-tablet) {
+            height: 188px;
+          }
+        }
+      }
+
+      &-filter-terms {
+        padding-top: 5px;
+      }
+
+      .event-date {
+        @include event-date;
+
+        .day-month-wrapper {
+          padding-bottom: 10px;
+          justify-content: center;
+          width: 150px;
+        }
+
+        .time {
+          color: $color-mono-black;
+          &::before {
+            width: 13px;
+            padding-right: 5px;
+          }
+        }
+
+        .address {
+          color: $color-mono-black;
+          padding-left: 0 !important;
+
+          &-wrapper {
+            margin-top: 10px;
+            padding-top: 10px;
+            font-size: 13px;
+            line-height: 16px;
+
+            &::before {
+              height: 48px;
+            }
+            .event-address {
+              padding-left: 23px;
+            }
+          }
+        }
+      }
+
+      .day-month-wrapper {
+        width: 100%;
+        @include breakpoint($min-wide) {
+          width: 24%;
+        }
+      }
+
+      .month {
+        text-align: center;
+        display: block;
+      }
+
+      .day {
+        text-align: center;
+        display: block;
+      }
+
+      .event-year {
+        text-align: center;
+        display: block;
+        font-size: 13px !important;
+
+        .start-event-year,
+        .end-event-year {
+          font-size: 13px !important;
+        }
+      }
+      .multi-day {
+        .day div,
+        .month div,
+        .event-year div,
+        .start div {
+          float: left;
+          width: 45px !important;
+          &.dash {
+            padding: 0 0 0 5px;
+            font-size: 20px;
+          }
+        }
+      }
+    }
+  }
+}
