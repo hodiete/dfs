@@ -10,9 +10,10 @@
 {% block card_image %}
     {% if (content.field_webny_news_image["#items"] is not empty and
            content.field_webny_news_image["#items"] is not null) %}
-        <div class="card-image">
-            {{ content.field_webny_news_image }}
-        </div>
+        <a href="{{ url }}">
+            <div class="card-image" style="background-image: url('{{ file_url(node.field_webny_news_image.entity.field_image.entity.uri.value | image_style('card_vertical')) }}');">
+            </div>
+        </a>
     {% else %}
         <div class="fallback-image">
             {% include '@webny_theme/includes/NYGov_Newspaper.svg.twig' %}
