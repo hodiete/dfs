@@ -8,9 +8,10 @@
 
 {% block card_image %}
     {% if (content.field_webny_whitelist_image["#items"] is not empty) %}
-        <div class="card-image">
-            {{ content.field_webny_whitelist_image }} 
-        </div>
+        <a href="{{ url }}">
+            <div class="card-image" style="background-image: url('{{ file_url(node.field_webny_whitelist_image.entity.field_image.entity.uri.value | image_style('card_vertical')) }}');">
+            </div>
+        </a>
     {% else %}
         <div class="fallback-image">
             {% include '@webny_theme/includes/OpenBrowserArrow.svg.twig' %}
