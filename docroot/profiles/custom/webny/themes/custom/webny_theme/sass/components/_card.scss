@@ -13,6 +13,7 @@ $featured-card-arrow-color: $color-primary !default;
 $featured-card-arrow-color-hover: $color-secondary !default;
 $featured-card-icon-color: $color-primary !default;
 $featured-card-icon-color-hover: $color-secondary !default;
+$featured-card-fallback-img-bkg: $color-secondary !default;
 
 // CARDS WRAPPER FOR PADDING
 .cards-wrap{
@@ -20,7 +21,7 @@ $featured-card-icon-color-hover: $color-secondary !default;
 }
 
 .paragraph--type--webny-card-paragraph-type {
-  font-size: 18px; 
+  font-size: 18px;
   max-width: $max-pc; // to constrain the spread of the cards
   margin: 0 auto; //centers when constrained
   //padding: $frame-padding-sm 0; 
@@ -89,7 +90,9 @@ $featured-card-icon-color-hover: $color-secondary !default;
 
 // adding classes to fix instances where some cards don't have dates, etc.
 .card-image {
-  //flex: 1 1 auto;
+  height: 225px;
+  width: 100%;
+  background-repeat: no-repeat;
 }
 .card-content {
   min-height: 325px; //separate from flex to help with IE issues, min-height helps keep button at bottom
@@ -108,7 +111,7 @@ $featured-card-icon-color-hover: $color-secondary !default;
 .webny-card h1 {
   padding: 1.25rem 1rem .5rem 1rem;
   font-size: 20px;
-  line-height: 1.2em;  
+  line-height: 1.2em;
   flex: 1 0 auto;
   font-weight: 400;
   min-height: 2.25em;
@@ -117,7 +120,7 @@ $featured-card-icon-color-hover: $color-secondary !default;
   }
 }
 .webny-card .webny-card-date {
-  padding: .5rem 1rem;  
+  padding: .5rem 1rem;
   flex: 1 0 auto;
 }
 
@@ -133,7 +136,7 @@ $featured-card-icon-color-hover: $color-secondary !default;
   padding: .75em 1em;
   background-color:$call-to-action;
   border-top: 1px solid $gray-lite;
-  
+
   letter-spacing: 1px;
 
   .icon-right-caret {
@@ -166,7 +169,7 @@ $featured-card-icon-color-hover: $color-secondary !default;
     height: 19px;
     float: left;
     overflow: hidden;
-    
+
     transition: width .5s ease-in-out;
 
   }
@@ -221,13 +224,32 @@ $featured-card-icon-color-hover: $color-secondary !default;
   }
 }
 
+.fallback-image {
+  display: block;
+  height: 225px;
+  background-color: $featured-card-fallback-img-bkg;
+  margin: 0 auto;
+  width: 100%;
+  position: relative;
+  top: 0;
+
+  svg {
+    height: 93px;
+    width: 100%;
+    border: 0;
+    background-color: $featured-card-fallback-img-bkg;
+    fill: $featured-card-frame-title-color;
+    position: relative;
+    top: 29%;
+  }
+}
 
 .icon-right-caret{ @include icon(before, fa-caret-right);}
 
 .paragraph--type--webny-card-paragraph-type {
   @include breakpoint($min-mobile) {
    &>div {
-  
+
   flex-direction: row;
   flex-wrap: wrap;
     }
@@ -252,7 +274,7 @@ $featured-card-icon-color-hover: $color-secondary !default;
     //min-height:230px; // with flex chrome stretches card content so titles still line up if there is only one card with an image, IE does not
   }
 
-  .card-content { 
+  .card-content {
     min-height: 475px; // separate from flex to help with IE issues, min-height helps keep button at bottom
   }
 
@@ -266,15 +288,15 @@ $featured-card-icon-color-hover: $color-secondary !default;
 
 @media screen\0 {
   .paragraph--type--webny-card-paragraph-type>div{
-    &:after { 
-     content: "."; 
-     visibility: hidden; 
-     display: block; 
-     height: 0; 
+    &:after {
+     content: ".";
+     visibility: hidden;
+     display: block;
+     height: 0;
      clear: both;
     }
     &>div {
-    float:left; /* overcomes flexbox limitationson IE 8,9,10 */  
+    float:left; /* overcomes flexbox limitationson IE 8,9,10 */
     }
   }
 }
