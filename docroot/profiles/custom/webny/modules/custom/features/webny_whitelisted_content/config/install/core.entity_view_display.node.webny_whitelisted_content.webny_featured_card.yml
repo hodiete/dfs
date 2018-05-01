@@ -13,6 +13,7 @@ dependencies:
     - field.field.node.webny_whitelisted_content.field_webny_whitelist_global_key
     - field.field.node.webny_whitelisted_content.field_webny_whitelist_image
     - field.field.node.webny_whitelisted_content.field_webny_whitelist_link_url
+    - field.field.node.webny_whitelisted_content.field_webny_whitelist_meta_tags
     - field.field.node.webny_whitelisted_content.field_webny_whitelist_stitle
     - node.type.webny_whitelisted_content
   module:
@@ -79,6 +80,7 @@ content:
     region: content
 hidden:
   body: true
+  field_webny_whitelist_meta_tags: true
   field_webny_agency_keywords: true
   field_webny_filter_terms: true
   field_webny_global_keywords: true

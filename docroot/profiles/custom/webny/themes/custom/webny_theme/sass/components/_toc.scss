@@ -166,12 +166,19 @@ aside#toc-sidebar {
           text-decoration: none;
           font-size: 1.3em;
 
+          &:before {
+            font-family: 'icomoon';
+            speak: none;
+            font-style: normal;
+            font-weight: normal;
+            font-variant: normal;
+            text-transform: none;
+            -webkit-font-smoothing: antialiased;
+            content: "\e601";
+          }
+
           span {
             display: none;
-
-            &:before {
-              content: "\e601";
-            }
           }
         }
       }
@@ -344,7 +351,7 @@ aside#toc-sidebar {
 
   .social-media-wrapper {
     border-top: 1px solid $gray-lite;
-    border-bottom: 1px solid $gray-lite;
+   // border-bottom: 1px solid $gray-lite;
     padding-top: 20px;
     line-height: 40px;
   }
@@ -415,6 +422,14 @@ aside#toc-sidebar {
     .icon-tumblr {@include icon(before, fa-tumblr);}
     .icon-linkedin {@include icon(before, fa-linkedin-square);}
     .icon-vimeo {@include icon(before, fa-vimeo-square);}
+  }
+
+  .border-hide {
+    border-bottom: none;
+  }
+
+  .border-show {
+    border-bottom: 1px solid $gray-lite;
   }
 }
 /* Contact Frame styling - ends here */
