@@ -23,6 +23,11 @@
  * @see template_preprocess_html()
  */
 #}
+{% set loggedin = '' %}
+{% if logged_in %}
+  {% set loggedin = 'user-loggedin' %}
+{% endif %}
+
 <!DOCTYPE html>
 <html{{ html_attributes }}>
   <head>
@@ -31,7 +36,7 @@
     <css-placeholder token="{{ placeholder_token|raw }}">
     <js-placeholder token="{{ placeholder_token|raw }}">
   </head>
-  <body{{ attributes }}>
+  <body{{ attributes.addClass(loggedin) }}>
     {#
       Keyboard navigation/accessibility link to main content section in
       page.html.twig.
