@@ -166,12 +166,19 @@ aside#toc-sidebar {
           text-decoration: none;
           font-size: 1.3em;
 
+          &:before {
+            font-family: 'icomoon';
+            speak: none;
+            font-style: normal;
+            font-weight: normal;
+            font-variant: normal;
+            text-transform: none;
+            -webkit-font-smoothing: antialiased;
+            content: "\e601";
+          }
+
           span {
             display: none;
-
-            &:before {
-              content: "\e601";
-            }
           }
         }
       }
