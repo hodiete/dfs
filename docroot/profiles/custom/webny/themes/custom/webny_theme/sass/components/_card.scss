@@ -225,7 +225,7 @@ $featured-card-fallback-img-bkg: $color-secondary !default;
   }
 }
 
-.fallback-image {
+.card-fallback-image {
   display: block;
   height: 225px;
   background-color: $featured-card-fallback-img-bkg;
@@ -239,10 +239,14 @@ $featured-card-fallback-img-bkg: $color-secondary !default;
     width: 100%;
     border: 0;
     background-color: $featured-card-fallback-img-bkg;
-    fill: $featured-card-frame-title-color;
     position: relative;
     top: 29%;
   }
+
+  .st0 {
+    stroke: #ffffff;
+  }
+
 }
 
 .icon-right-caret{ @include icon(before, fa-caret-right);}
