@@ -185,7 +185,7 @@
     line-height: 21px;
 
     a{
-      color: $medblue;
+      color: $color-secondary;
     }
 
 
@@ -259,14 +259,14 @@
       width: 150px;
 
       @include breakpoint($min-tablet) {
-        width: auto;
+        width: 150px;
         margin: auto;
         padding-top: 10px;
         padding-bottom: 5px;
       }
       @include breakpoint($min-desktop) {
         padding: 15px 0 0px 0;
-        width: auto;
+        width: 150px;
         margin: auto;
       }
      // @include breakpoint($min-wide) {
@@ -446,7 +446,7 @@
     &::before {
       content: '\f054';
       font-family: 'icomoon';
-      color: $primarygold;
+      color: $color-accent-primary;
       position: relative;
       left: -18px;
       //line-height: 13px;
