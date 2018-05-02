@@ -4159,6 +4159,18 @@ function webny_configuration_update_8187() {
 }
 
 /**
+ * NDD-1480
+ * DEV:IOJONEP
+ * INSTALLS THE WEBNY PHOTO GALLERY
+ */
+
+
+function webny_configuration_update_8188() {
+    \Drupal::service('module_installer')
+        ->install(['webny_photo_gallery']);
+}
+
+/**
  * Helper function to enable a Drupal module and print the result.
  *
  * @param string $module_name
