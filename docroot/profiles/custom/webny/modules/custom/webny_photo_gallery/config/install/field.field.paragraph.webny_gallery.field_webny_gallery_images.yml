@@ -1,0 +1,28 @@
+uuid: 71dff03f-66a1-4e97-91ea-9fbd1d83e76f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_webny_gallery_images
+    - media_entity.bundle.image
+    - paragraphs.paragraphs_type.webny_gallery
+id: paragraph.webny_gallery.field_webny_gallery_images
+field_name: field_webny_gallery_images
+entity_type: paragraph
+bundle: webny_gallery
+label: Images
+description: 'Use these fields to add images.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

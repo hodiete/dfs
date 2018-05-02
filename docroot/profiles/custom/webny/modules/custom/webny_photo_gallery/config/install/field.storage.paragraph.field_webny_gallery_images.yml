@@ -1,0 +1,20 @@
+uuid: 8c08f99b-52d2-49e8-8e1c-0f69a314baef
+langcode: en
+status: true
+dependencies:
+  module:
+    - media_entity
+    - paragraphs
+id: paragraph.field_webny_gallery_images
+field_name: field_webny_gallery_images
+entity_type: paragraph
+type: entity_reference
+settings:
+  target_type: media
+module: core
+locked: false
+cardinality: 10
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
