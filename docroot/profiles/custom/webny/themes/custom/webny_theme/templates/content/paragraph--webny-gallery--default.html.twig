@@ -31,32 +31,36 @@ set inner_classes = [
         {# GALLERY SECTION HTML #}
 
         <div class="webny-gallery-container">
-            <div class="webny-gallery-ul">
+
             {%  for photo in paragraph.field_webny_gallery_images %}
                 {% set index = photo.name %}
 
-                {# IMAGE SECTION #}
-                <div class="webny-gallery-li" data-webny-img="{{ index }}">
-                    <img src="{{ file_url(content.field_webny_gallery_images['#items'][index].entity.field_image.entity.uri.value) }}"
-                         alt="{{ content.field_webny_gallery_images['#items'][index].entity.field_image.alt }}"
-                         title="{{ content.field_webny_gallery_images['#items'][index].entity.field_image.title }}" />
-                </div>
+                <div class="webny-gallery-entry gallery-entry-{{ index + 1 }}" data-webny-cell="{{ index + 1 }}">
 
-                {# DESCRIPTION SECTION #}
-                <div class="webny-gallery-desc">
-                    <span class="webny-gallery-back"></span>
-                    <span class="webny-gallery-desc">
-                        {{ paragraph.field_webny_gallery_image_desc[index].value|raw }}
-                    </span>
-                    <span class="webny-gallery-fwd"></span>
-                </div>
+                    {# IMAGE SECTION #}
+                    <div class="gallery-imgdiv gallery-imgdiv-{{ index + 1 }}" data-webny-img="{{ index + 1 }}">
+                        <img src="{{ file_url(content.field_webny_gallery_images['#items'][index].entity.field_image.entity.uri.value) }}"
+                             alt="{{ content.field_webny_gallery_images['#items'][index].entity.field_image.alt }}"
+                             title="{{ content.field_webny_gallery_images['#items'][index].entity.field_image.title }}" />
+                    </div>
 
-                {# MOBILE SUPPORT -- HIDDEN BY DEFAULT #}
-                <div class="webny-gallery-mobile-pages"></div>
+                    {# DESCRIPTION SECTION #}
+                    <div class="webny-gallery-desc">
+                        <div class="webny-gallery-back"></div>
+                        <div class="webny-gallery-desc">
+                            {{ paragraph.field_webny_gallery_image_desc[index].value|raw }}
+                        </div>
+                        <div class="webny-gallery-fwd"></div>
+                    </div>
+
+                </div>
 
             {% endfor %}
-            </div>
+
         </div>
+
+        {# MOBILE SUPPORT -- HIDDEN BY DEFAULT #}
+        <div class="webny-gallery-mobile-pages"></div>
 
     </div>
 </div>
