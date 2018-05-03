@@ -1,0 +1,28 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - image.style.webny_gallery_image
+    - image.style.webny_gallery_image_mobile
+  theme:
+    - webny_theme
+id: webny_gallery_res
+label: 'WebNY Gallery'
+image_style_mappings:
+  -
+    breakpoint_id: webny_theme.wide
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: webny_gallery_image
+  -
+    breakpoint_id: webny_theme.narrow
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: webny_gallery_image
+  -
+    breakpoint_id: webny_theme.mobile
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: webny_gallery_image_mobile
+breakpoint_group: webny_theme
+fallback_image_style: webny_gallery_image
