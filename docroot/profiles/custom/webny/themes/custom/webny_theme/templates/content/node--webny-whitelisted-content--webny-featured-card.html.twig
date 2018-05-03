@@ -13,9 +13,11 @@
             </div>
         </a>
     {% else %}
-        <div class="card-fallback-image">
-            {% include '@webny_theme/includes/OpenBrowserArrow.svg.twig' %}
-        </div>
+        <a href="{{ url }}">
+            <div class="card-fallback-image">
+                {% include '@webny_theme/includes/OpenBrowserArrow.svg.twig' %}
+            </div>
+        </a>
     {% endif %}
 {% endblock card_image %}
 

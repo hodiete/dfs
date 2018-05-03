@@ -15,9 +15,11 @@
             </div>
         </a>
     {% else %}
-        <div class="card-fallback-image">
-            {% include '@webny_theme/includes/NYS_StateOutline.svg.twig' %}
-        </div>
+        <a href="{{ url }}">
+            <div class="card-fallback-image">
+                {% include '@webny_theme/includes/NYS_StateOutline.svg.twig' %}
+            </div>
+        </a>
     {% endif %}
 {% endblock card_image %}
 
