@@ -1,0 +1,62 @@
+
+{# PARAGRAPHS - WEBNY PHOTO GALLERY #}
+
+{%
+set classes = [
+'webny-photo-gallery'
+]
+%}
+
+{%
+set inner_classes = [
+'webny-photo-gallery-in'
+]
+%}
+
+{# START THE GALLERY #}
+<div {{ attributes.addClass(classes) }}>
+    <div {{ attributes.addClass(inner_classes) }}>
+
+        {# TITLE AND HEADLINE STANDARD WEBNY STYLE #}
+        <div class="webny-gallery-meta">
+            {% if paragraph.field_webny_gallery_title.value is not empty and paragraph.field_webny_gallery_title.value is not null %}
+                <h2>{{ paragraph.field_webny_gallery_title.value }}</h2>
+            {% endif %}
+
+            {% if paragraph.field_webny_gallery_headline.value is not empty and paragraph.field_webny_gallery_headline.value is not null %}
+                <h3>{{ paragraph.field_webny_gallery_headline.value }}</h3>
+            {% endif %}
+        </div>
+
+        {# GALLERY SECTION HTML #}
+
+        <div class="webny-gallery-container">
+            <div class="webny-gallery-ul">
+            {%  for photo in paragraph.field_webny_gallery_images %}
+                {% set index = photo.name %}
+
+                {# IMAGE SECTION #}
+                <div class="webny-gallery-li" data-webny-img="{{ index }}">
+                    <img src="{{ file_url(content.field_webny_gallery_images['#items'][index].entity.field_image.entity.uri.value) }}"
+                         alt="{{ content.field_webny_gallery_images['#items'][index].entity.field_image.alt }}"
+                         title="{{ content.field_webny_gallery_images['#items'][index].entity.field_image.title }}" />
+                </div>
+
+                {# DESCRIPTION SECTION #}
+                <div class="webny-gallery-desc">
+                    <span class="webny-gallery-back"></span>
+                    <span class="webny-gallery-desc">
+                        {{ paragraph.field_webny_gallery_image_desc[index].value|raw }}
+                    </span>
+                    <span class="webny-gallery-fwd"></span>
+                </div>
+
+                {# MOBILE SUPPORT -- HIDDEN BY DEFAULT #}
+                <div class="webny-gallery-mobile-pages"></div>
+
+            {% endfor %}
+            </div>
+        </div>
+
+    </div>
+</div>
