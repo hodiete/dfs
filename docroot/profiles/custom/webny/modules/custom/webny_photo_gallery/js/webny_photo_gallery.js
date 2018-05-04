@@ -10,6 +10,21 @@
   Drupal.behaviors.photogallery = {
     attach: function (context, settings) {
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
   }
 })(jQuery, Drupal, this);
