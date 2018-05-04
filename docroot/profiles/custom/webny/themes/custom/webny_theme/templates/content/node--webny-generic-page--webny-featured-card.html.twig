@@ -8,10 +8,18 @@
 {% endif %}
 
 {% block card_image %}
+
     {% if (content.field_webny_gencp_heroimage["#items"] is not empty) %}
-        <div class="card-image">
-            {{ content.field_webny_gencp_heroimage }}
-        </div>
+        <a href="{{ url }}">
+            <div class="card-image" style="background-image: url('{{ file_url(node.field_webny_gencp_heroimage.entity.field_image.entity.uri.value | image_style('card_vertical')) }}');">
+            </div>
+        </a>
+    {% else %}
+        <a href="{{ url }}">
+            <div class="card-fallback-image">
+                {% include '@webny_theme/includes/NYS_StateOutline.svg.twig' %}
+            </div>
+        </a>
     {% endif %}
 {% endblock card_image %}
 
@@ -20,9 +28,9 @@
 {% endblock card_title %}
 
 {% block card_title_url %}
-	<a href="{{ url }}" rel="bookmark">
-{% endblock card_title_url %}
+<a href="{{ url }}" rel="bookmark">
+    {% endblock card_title_url %}
 
-{% block card_content %}
-    <div class="webny-card-teaser">{{ content.field_webny_gencp_sumdes }}</div>
-{% endblock card_content %}
+    {% block card_content %}
+        <div class="webny-card-teaser">{{ content.field_webny_gencp_sumdes }}</div>
+    {% endblock card_content %}
