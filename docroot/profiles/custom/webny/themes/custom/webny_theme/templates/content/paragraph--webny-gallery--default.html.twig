@@ -72,7 +72,12 @@ set inner_classes = [
         </div>
 
         {# MOBILE SUPPORT -- HIDDEN BY DEFAULT #}
-        <div class="webny-gallery-mobile-pages"></div>
+        <div class="webny-gallery-mobile-pages">
+            {%  for photo in paragraph.field_webny_gallery_images %}
+                {% set index = photo.name %}
+                <div class="galpage" data-galpage="{{ index + 1 }}"></div>
+            {% endfor %}
+        </div>
 
     </div>
 </div>
