@@ -18,15 +18,25 @@ set inner_classes = [
     <div {{ attributes.addClass(inner_classes) }}>
 
         {# TITLE AND HEADLINE STANDARD WEBNY STYLE #}
+        {% if   ( paragraph.field_webny_gallery_title.value is not empty and
+        paragraph.field_webny_gallery_title.value is not null) or
+        ( paragraph.field_webny_gallery_headline.value is not empty and
+        paragraph.field_webny_gallery_headline.value is not null )
+        %}
         <div class="webny-gallery-meta">
-            {% if paragraph.field_webny_gallery_title.value is not empty and paragraph.field_webny_gallery_title.value is not null %}
-                <h2>{{ paragraph.field_webny_gallery_title.value }}</h2>
-            {% endif %}
+            <h2>
 
-            {% if paragraph.field_webny_gallery_headline.value is not empty and paragraph.field_webny_gallery_headline.value is not null %}
-                <h3>{{ paragraph.field_webny_gallery_headline.value }}</h3>
-            {% endif %}
+                {% if paragraph.field_webny_gallery_title.value is not empty and paragraph.field_webny_gallery_title.value is not null %}
+                    <span class="frame-title">{{ paragraph.field_webny_gallery_title.value }}</span>
+                {% endif %}
+
+                {% if paragraph.field_webny_gallery_headline.value is not empty and paragraph.field_webny_gallery_headline.value is not null %}
+                    <span class="frame-headline">{{ paragraph.field_webny_gallery_headline.value }}</span>
+                {% endif %}
+
+            </h2>
         </div>
+        {% endif %}
 
         {# GALLERY SECTION HTML #}
 
@@ -39,15 +49,17 @@ set inner_classes = [
 
                     {# IMAGE SECTION #}
                     <div class="gallery-imgdiv gallery-imgdiv-{{ index + 1 }}" data-webny-img="{{ index + 1 }}">
+                        {# <img src="{{ file_url(content.field_webny_gallery_images['#items'][index].entity.field_image.entity.uri.value|image_style('webny_gallery_image')) }}" #}
                         <img src="{{ file_url(content.field_webny_gallery_images['#items'][index].entity.field_image.entity.uri.value) }}"
                              alt="{{ content.field_webny_gallery_images['#items'][index].entity.field_image.alt }}"
                              title="{{ content.field_webny_gallery_images['#items'][index].entity.field_image.title }}" />
                     </div>
 
+
                     {# DESCRIPTION SECTION #}
                     <div class="webny-gallery-desc">
                         <div class="webny-gallery-back"></div>
-                        <div class="webny-gallery-desc">
+                        <div class="webny-gallery-text">
                             {{ paragraph.field_webny_gallery_image_desc[index].value|raw }}
                         </div>
                         <div class="webny-gallery-fwd"></div>
