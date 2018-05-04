@@ -8,10 +8,18 @@
 {% endif %}
 
 {% block card_image %}
-    {% if (content.field_webny_news_image["#items"] is not empty) %}
-        <div class="card-image">
-            {{ content.field_webny_news_image }}
-        </div>
+    {% if (content.field_webny_news_image["#items"] is not empty and
+           content.field_webny_news_image["#items"] is not null) %}
+        <a href="{{ url }}">
+            <div class="card-image" style="background-image: url('{{ file_url(node.field_webny_news_image.entity.field_image.entity.uri.value | image_style('card_vertical')) }}');">
+            </div>
+        </a>
+    {% else %}
+        <a href="{{ url }}">
+            <div class="card-fallback-image">
+                {% include '@webny_theme/includes/NYGov_Newspaper.svg.twig' %}
+            </div>
+        </a>
     {% endif %}
 {% endblock card_image %}
 
