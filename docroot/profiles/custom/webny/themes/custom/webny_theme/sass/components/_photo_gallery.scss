@@ -1,0 +1,155 @@
+// WebNY Photo Gallery
+//
+// Styles for the WebNY Photo Gallery Frame (Paragraph Type)
+//
+// For more information please see the story sources: https://itswebny.atlassian.net/browse/NDD-1480
+//
+// Style guide: photo_gallery.hbs
+
+// ##################################################################
+// VARS
+$gallery-frame-title-color: $color-primary !default;
+$gallery-frame-headline-color: $color-mono-black !default;
+$gallery-frame-headline-font-size: 24px;
+$gallery-frame-headline-line-height: 30px;
+
+
+// ##################################################################
+/* MOBILE FIRST STYLES */
+
+.webny-gallery-meta {
+
+  h2 {
+    margin: 0 auto;
+    width: 100%;
+    max-width: $max-pc;
+    text-align: center;
+    padding: 0;
+    line-height: 1;
+    padding-bottom: 40px;
+
+    .frame-title {
+      text-transform: uppercase;
+      color: $gallery-frame-title-color;
+      margin-bottom: 0;
+      font: $frame_title;
+      letter-spacing: 2px;
+      text-align: center;
+    }
+
+    .frame-headline {
+      color: $gallery-frame-headline-color;
+      font: $frame-headline;
+      text-align: center;
+      display: block;
+      .front & {
+        font: 800 40px/1 "Proxima Nova", Arial, sans-serif;
+      }
+    }
+  }
+
+}
+
+// =======================================================
+// GALLERY CONTAINER
+.webny-gallery-container {
+
+  margin: 0 auto;
+  width: 100%;
+
+  .webny-gallery-entry {
+    display: none;
+    margin: 0 auto;
+    width: 474px;
+
+    img {
+      width: 474px;
+      height: 267px
+    }
+
+    &:nth-child(1) {
+      display: block;
+    }
+  }
+
+  .webny-gallery-desc {
+    margin: 0 auto;
+    border: 1px solid #d9e2e2;
+
+
+    .webny-gallery-fwd,
+    .webny-gallery-back {
+      margin: 0 auto;
+      width: 9%;
+    }
+
+    .webny-gallery-fwd:before,
+    .webny-gallery-back:before {
+      font-family: 'icomoon';
+      speak: none;
+      font-style: normal;
+      font-weight: normal;
+      font-variant: normal;
+      text-transform: none;
+      display: block;
+      text-align: center;
+      cursor: pointer;
+    }
+
+    .webny-gallery-back {
+      display: inline-block;
+      vertical-align: middle;
+    }
+    .webny-gallery-back:before {
+      content: "\e60d";
+    }
+
+    .webny-gallery-text {
+      width: 80%;
+      padding: 20px 0;
+      display: inline-block;
+      vertical-align: middle;
+      font-size: 14px;
+      line-height: 18px;
+    }
+
+    .webny-gallery-fwd {
+      display: inline-block;
+      vertical-align: middle;
+    }
+    .webny-gallery-fwd:before {
+      content: "\e624";
+    }
+  }
+}
+
+// ######################################################################### //
+/* MIN TABLET VIEW */
+@media (min-width: $min-tab) {
+
+  .webny-gallery-container {
+    .webny-gallery-entry {
+      width: 630px;
+      img {
+        width: 630px;
+        height: 355px
+      }
+    }
+  }
+}
+
+
+// ######################################################################### //
+/* MIN DESKTOP VIEW */
+@media (min-width: $min-pc) {
+
+
+}
+
+
+// ######################################################################### //
+/* FULL DESKTOP VIEW */
+@media (min-width: 60em) {
+
+
+}
