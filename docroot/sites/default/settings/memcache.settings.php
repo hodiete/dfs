@@ -3,7 +3,7 @@
 # Memcache configuration.
 if (isset($settings['memcache']['servers'])) {
   /**
-  Memcache settings for the memcache API contrib module - from https://www.drupal.org/project/drupal/issues/2766509
+  Memcache settings for the memcache API contrib module - from memcache module README.txt and https://docs.acquia.com/acquia-cloud/performance/memcached
    *
    */
   $memcache_exists = class_exists('Memcache', FALSE);
