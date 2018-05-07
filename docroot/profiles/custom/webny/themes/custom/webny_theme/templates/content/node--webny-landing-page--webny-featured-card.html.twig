@@ -9,9 +9,16 @@
 
 {% block card_image %}
     {% if (content.field_webny_landing_hero_image["#items"] is not empty) %}
-        <div class="card-image">
-            {{ content.field_webny_landing_hero_image }}
-        </div>
+        <a href="{{ url }}">
+            <div class="card-image" style="background-image: url('{{ file_url(node.field_webny_landing_hero_image.entity.field_image.entity.uri.value | image_style('card_vertical')) }}');">
+            </div>
+        </a>
+    {% else %}
+        <a href="{{ url }}">
+            <div class="card-fallback-image">
+                {% include '@webny_theme/includes/NYS_StateOutline.svg.twig' %}
+            </div>
+        </a>
     {% endif %}
 {% endblock card_image %}
 
