@@ -1,18 +1,17 @@
 <?php
 
-# Memcache configuration - for Local environment only.
-if (!isset($_ENV['AH_SITE_ENVIRONMENT']) && isset($conf['memcache_servers'])) {
+# Memcache configuration.
+if (isset($settings['memcache']['servers'])) {
   /**
   Memcache settings for the memcache API contrib module - from https://www.drupal.org/project/drupal/issues/2766509
    *
    */
-  if (class_exists(\Composer\Autoload\ClassLoader::class)) {
-    $class_loader = new \Composer\Autoload\ClassLoader();
+  $memcache_exists = class_exists('Memcache', FALSE);
+  $memcached_exists = class_exists('Memcached', FALSE);
+  if ($memcache_exists || $memcached_exists) {
     $class_loader->addPsr4('Drupal\\memcache\\', 'profiles/custom/webny/modules/contrib/memcache/src');
-    $class_loader->register();
-    $settings['container_yamls'][] = DRUPAL_ROOT . 'profiles/custom/webny/modules/contrib/memcache/memcache.services.yml';
 
-    // Bootstrap cache.container with memcache rather than database.
+    // Define custom bootstrap container definition to use Memcache for cache.container.
     $settings['bootstrap_container_definition'] = [
       'parameters' => [],
       'services' => [
@@ -31,7 +30,7 @@ if (!isset($_ENV['AH_SITE_ENVIRONMENT']) && isset($conf['memcache_servers'])) {
         ],
         'memcache.backend.cache.factory' => [
           'class' => 'Drupal\memcache\DrupalMemcacheFactory',
-          'arguments' => ['@memcache.config'],
+          'arguments' => ['@memcache.config']
         ],
         'memcache.backend.cache.container' => [
           'class' => 'Drupal\memcache\DrupalMemcacheFactory',
@@ -63,13 +62,5 @@ if (!isset($_ENV['AH_SITE_ENVIRONMENT']) && isset($conf['memcache_servers'])) {
     // Use memcache as the default bin.
     $settings['cache']['default'] = 'cache.backend.memcache';
 
-    # Set up a default cache bin for memcache
-    $settings['memcache']['bins'] = [ 'default' => 'default' ];
-
-    # Acquia is in the process of upgrading the platform-provided memcache
-    # settings. This is the recommended approach for now.
-    $settings['memcache']['servers'] = $conf['memcache_servers'];
-    $settings['memcache']['key_prefix'] = $conf['memcache_key_prefix'];
   }
-
 }
