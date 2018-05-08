@@ -273,7 +273,9 @@
 
       // loop through each li to add the height due to larger height li's
       for (liLoop = 0; liLoop <= $('#toc-sidebar li').length; liLoop++) {
-        liHeight += $('#toc-sidebar li:nth-child(' + liLoop + ')').height();
+        if (!isNaN($('#toc-sidebar li:nth-child(' + liLoop + ')').height())) {
+          liHeight += $('#toc-sidebar li:nth-child(' + liLoop + ')').height();
+        }
       }
 
       // set offset to negative total height, plus padding of triggered elements
@@ -284,7 +286,6 @@
 
         // verify we are not in mobile
         if ($('#toc-sidebar').css('position') === 'fixed' && $('#toc-sidebar ul li.see-all').css('display') === 'none') {
-
           tocHeight = tocHeight + elementsPadding;
 
           $('#toc-sidebar').css('height', tocHeight + 'px');
