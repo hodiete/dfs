@@ -1,4 +1,14 @@
-<div class="announcement-wrap">
+{%
+  set classes = [
+    'paragraph',
+    'announcement-wrap',
+    'paragraph--type--' ~ paragraph.bundle|clean_class,
+  view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
+  bio_color,
+  ]
+%}
+
+<div{{ attributes.addClass(classes) }}>
 
     <div class="webny-announcement-frame-inner">
         {%  if((paragraph.field_webny_announcement_title.value is not empty and paragraph.field_webny_announcement_title.value is not null) or (paragraph.field_webny_announcement_headlne.value is not empty and paragraph.field_webny_announcement_headlne.value is not null)) %}
