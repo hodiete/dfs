@@ -88,6 +88,76 @@ $hero-event-bkgd-transparent-black: $bkgd-black-50 !default;
 }
 
 // ========================================================================= //
+/* HERO QUICK EDIT FIX */
+.user-loggedin {
+  .front {
+    .hero-layout .hero-has-image .hero-image {
+        .contextual-region {
+
+          position: static;
+
+          @media (min-width: 768px) and (max-width: 959px) {
+            position: static;
+          }
+
+          @media (min-width: 960px) {
+            position: static;
+
+          }
+        }
+    }
+  }
+
+  .hero-layout .hero-has-image.hero-generic .hero-image {
+    .contextual-region {
+
+      position: static;
+
+      @media (min-width: 768px) and (max-width: 959px) {
+        position: static;
+      }
+
+      @media (min-width: 960px) {
+        position: static;
+
+      }
+    }
+  }
+
+
+
+}
+  /*
+  .contextual-region {
+
+    position: static;
+
+    @media (min-width: 768px) and (max-width: 959px) {
+      position: static;
+    }
+
+    @media (max-width: 960px) {
+      position: static;
+
+    }
+  }
+  .hero-layout {
+
+    position: static;
+
+    @media (min-width: 768px) and (max-width: 959px) {
+      position: static;
+    }
+
+    @media (max-width: 960px) {
+      position: static;
+    }
+
+  }
+  /*
+
+
+// ========================================================================= //
 /* HERO LAYOUT */
 .hero-layout {
   overflow: hidden;
