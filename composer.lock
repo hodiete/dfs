@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "6b614a6e3ce69dd2308a95b4d03fcfa7",
+    "content-hash": "06a38a02cbaa9a0a98bed68396807d19",
     "packages": [
         {
             "name": "acquia/acsf-tools",
@@ -2022,7 +2022,7 @@
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
             "license": [
-                "GPL-2.0+"
+                "GPL-2.0-or-later"
             ],
             "authors": [
                 {
@@ -2511,7 +2511,7 @@
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
             "license": [
-                "GPL-2.0+"
+                "GPL-2.0-or-later"
             ],
             "authors": [
                 {
@@ -2523,6 +2523,7 @@
                     "homepage": "https://www.drupal.org/user/139189"
                 }
             ],
+            "description": "Drupal administration theme with modern minimalist design.",
             "homepage": "https://www.drupal.org/project/adminimal_theme",
             "support": {
                 "source": "http://cgit.drupalcode.org/adminimal_theme"
@@ -2637,7 +2638,7 @@
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
             "license": [
-                "GPL-2.0+"
+                "GPL-2.0-or-later"
             ],
             "authors": [
                 {
@@ -2683,7 +2684,7 @@
             "keywords": [
                 "Drupal"
             ],
-            "time": "2017-01-19T19:05:39+00:00"
+            "time": "2017-02-16 13:50:06"
         },
         {
             "name": "drupal/better_exposed_filters",
@@ -2718,12 +2719,24 @@
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
             "license": [
-                "GPL-2.0+"
+                "GPL-2.0-or-later"
             ],
             "authors": [
                 {
+                    "name": "jkopel",
+                    "homepage": "https://www.drupal.org/user/66207"
+                },
+                {
                     "name": "mikeker",
                     "homepage": "https://www.drupal.org/user/192273"
+                },
+                {
+                    "name": "mortona2k",
+                    "homepage": "https://www.drupal.org/user/1029484"
+                },
+                {
+                    "name": "rlhawk",
+                    "homepage": "https://www.drupal.org/user/352283"
                 }
             ],
             "description": "Provides advanced options (such as links, checkboxes, or jQueryUI widgets) for exposed Views elements.",
@@ -2838,7 +2851,7 @@
                 "source": "http://cgit.drupalcode.org/ckeditor_indentblock/",
                 "issues": "https://www.drupal.org/project/issues/ckeditor_indentblock"
             },
-            "time": "2018-04-22T23:02:02+00:00"
+            "time": "2018-04-22 23:02:02"
         },
         {
             "name": "drupal/ckeditor_liststyle",
@@ -3169,7 +3182,7 @@
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
             "license": [
-                "GPL-2.0+"
+                "GPL-2.0-or-later"
             ],
             "authors": [
                 {
@@ -3594,6 +3607,10 @@
                     "role": "Maintainer"
                 },
                 {
+                    "name": "joelpittet",
+                    "homepage": "https://www.drupal.org/user/160302"
+                },
+                {
                     "name": "merlinofchaos",
                     "homepage": "https://www.drupal.org/user/26979"
                 },
@@ -3737,7 +3754,7 @@
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
             "license": [
-                "GPL-2.0+"
+                "GPL-2.0-or-later"
             ],
             "authors": [
                 {
@@ -3906,7 +3923,7 @@
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
             "license": [
-                "GPL-2.0+"
+                "GPL-2.0-or-later"
             ],
             "authors": [
                 {
@@ -3978,24 +3995,24 @@
                 "issues": "https://www.drupal.org/project/issues/embed",
                 "irc": "irc://irc.freenode.org/drupal-media"
             },
-            "time": "2017-03-29T07:02:44+00:00"
+            "time": "2017-03-29 07:02:44"
         },
         {
             "name": "drupal/entity",
-            "version": "1.0.0-beta1",
+            "version": "1.0.0-beta3",
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/entity",
-                "reference": "8.x-1.0-beta1"
+                "reference": "8.x-1.0-beta3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/entity-8.x-1.0-beta1.zip",
-                "reference": "8.x-1.0-beta1",
-                "shasum": "6965349818de8cb820113b6841076162190c1a4c"
+                "url": "https://ftp.drupal.org/files/projects/entity-8.x-1.0-beta3.zip",
+                "reference": "8.x-1.0-beta3",
+                "shasum": "5d74dbef7bff0db099517b2c7aad14312eb02afa"
             },
             "require": {
-                "drupal/core": "~8.3"
+                "drupal/core": "~8.5"
             },
             "type": "drupal-module",
             "extra": {
@@ -4003,8 +4020,8 @@
                     "dev-1.x": "1.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-1.0-beta1",
-                    "datestamp": "1505895844",
+                    "version": "8.x-1.0-beta3",
+                    "datestamp": "1520958485",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "Beta releases are not covered by Drupal security advisories."
@@ -4189,7 +4206,7 @@
                 "issues": "https://www.drupal.org/project/issues/entity_embed",
                 "irc": "irc://irc.freenode.org/drupal-media"
             },
-            "time": "2017-03-29T03:07:13+00:00"
+            "time": "2017-03-29 03:07:13"
         },
         {
             "name": "drupal/entity_reference_revisions",
@@ -4227,7 +4244,7 @@
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
             "license": [
-                "GPL-2.0+"
+                "GPL-2.0-or-later"
             ],
             "authors": [
                 {
@@ -4338,7 +4355,7 @@
                 },
                 "drupal": {
                     "version": "8.x-3.5",
-                    "datestamp": "1488908583",
+                    "datestamp": "1519703584",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -4731,7 +4748,7 @@
                 "issues": "http://drupal.org/project/issues/libraries",
                 "irc": "irc://irc.freenode.org/drupal-contribute"
             },
-            "time": "2017-03-15T17:04:08+00:00"
+            "time": "2017-03-15 17:04:08"
         },
         {
             "name": "drupal/linked_field",
@@ -4763,7 +4780,7 @@
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
             "license": [
-                "GPL-2.0+"
+                "GPL-2.0-or-later"
             ],
             "authors": [
                 {
@@ -4780,7 +4797,7 @@
             "support": {
                 "source": "http://cgit.drupalcode.org/linked_field"
             },
-            "time": "2017-04-28T16:28:28+00:00"
+            "time": "2017-04-28 16:28:28"
         },
         {
             "name": "drupal/login_security",
@@ -4815,7 +4832,7 @@
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
             "license": [
-                "GPL-2.0+"
+                "GPL-2.0-or-later"
             ],
             "authors": [
                 {
@@ -4882,7 +4899,7 @@
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
             "license": [
-                "GPL-2.0+"
+                "GPL-2.0-or-later"
             ],
             "authors": [
                 {
@@ -4957,7 +4974,7 @@
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
             "license": [
-                "GPL-2.0+"
+                "GPL-2.0-or-later"
             ],
             "authors": [
                 {
@@ -5215,7 +5232,7 @@
                 },
                 "drupal": {
                     "version": "8.x-2.0-alpha5",
-                    "datestamp": "1508351344",
+                    "datestamp": "1508351413",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "Alpha releases are not covered by Drupal security advisories."
@@ -5427,7 +5444,7 @@
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
             "license": [
-                "GPL-2.0+"
+                "GPL-2.0-or-later"
             ],
             "authors": [
                 {
@@ -5542,7 +5559,7 @@
                 },
                 "drupal": {
                     "version": "8.x-1.1",
-                    "datestamp": "1520897880",
+                    "datestamp": "1525419785",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -5602,7 +5619,7 @@
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
             "license": [
-                "GPL-2.0+"
+                "GPL-2.0-or-later"
             ],
             "authors": [
                 {
@@ -5801,7 +5818,7 @@
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
             "license": [
-                "GPL-2.0+"
+                "GPL-2.0-or-later"
             ],
             "authors": [
                 {
@@ -5875,7 +5892,7 @@
             "support": {
                 "source": "http://cgit.drupalcode.org/security_review"
             },
-            "time": "2018-02-20T20:48:19+00:00"
+            "time": "2018-02-20 20:48:19"
         },
         {
             "name": "drupal/services",
@@ -6042,7 +6059,7 @@
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
             "license": [
-                "GPL-2.0+"
+                "GPL-2.0-or-later"
             ],
             "authors": [
                 {
@@ -6284,7 +6301,7 @@
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
             "license": [
-                "GPL-2.0+"
+                "GPL-2.0-or-later"
             ],
             "authors": [
                 {
@@ -6331,7 +6348,7 @@
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
             "license": [
-                "GPL-2.0+"
+                "GPL-2.0-or-later"
             ],
             "authors": [
                 {
@@ -6448,7 +6465,7 @@
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
             "license": [
-                "GPL-2.0+"
+                "GPL-2.0-or-later"
             ],
             "authors": [
                 {
@@ -6461,7 +6478,7 @@
             "support": {
                 "source": "http://cgit.drupalcode.org/video_embed_brightcove"
             },
-            "time": "2016-04-05T08:35:39+00:00"
+            "time": "2016-04-05 08:35:39"
         },
         {
             "name": "drupal/video_embed_field",
@@ -8797,12 +8814,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "d3268ea60c79284f9a8db7b78eb48cc99cc5d471"
+                "reference": "bc0c7361e137f205dc5775583701743b5c4edcda"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/d3268ea60c79284f9a8db7b78eb48cc99cc5d471",
-                "reference": "d3268ea60c79284f9a8db7b78eb48cc99cc5d471",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/bc0c7361e137f205dc5775583701743b5c4edcda",
+                "reference": "bc0c7361e137f205dc5775583701743b5c4edcda",
                 "shasum": ""
             },
             "conflict": {
@@ -8833,13 +8850,14 @@
                 "doctrine/mongodb-odm-bundle": ">=2,<3.0.1",
                 "doctrine/orm": ">=2,<2.4.8|>=2.5,<2.5.1",
                 "dompdf/dompdf": ">=0.6,<0.6.2",
-                "drupal/core": ">=7,<7.58|>=8,<8.4.6|>=8.5,<8.5.1",
-                "drupal/drupal": ">=7,<7.58|>=8,<8.4.6|>=8.5,<8.5.1",
+                "drupal/core": ">=7,<7.59|>=8,<8.4.8|>=8.5,<8.5.3",
+                "drupal/drupal": ">=7,<7.59|>=8,<8.4.8|>=8.5,<8.5.3",
                 "erusev/parsedown": "<1.7",
                 "ezsystems/ezpublish-legacy": ">=5.3,<5.3.12.3|>=5.4,<5.4.11.3|>=2017.8,<2017.8.1.1|>=2017.12,<2017.12.2.1",
                 "firebase/php-jwt": "<2",
                 "friendsofsymfony/rest-bundle": ">=1.2,<1.2.2",
                 "friendsofsymfony/user-bundle": ">=1.2,<1.3.5",
+                "fuel/core": "<=1.8",
                 "gree/jose": "<=2.2",
                 "gregwar/rst": "<1.0.3",
                 "guzzlehttp/guzzle": ">=6,<6.2.1|>=4.0.0-rc2,<4.2.4|>=5,<5.3.1",
@@ -8952,7 +8970,7 @@
                 }
             ],
             "description": "Prevents installation of composer packages with known security vulnerabilities: no API, simply require it",
-            "time": "2018-04-30T07:23:33+00:00"
+            "time": "2018-05-09T13:33:28+00:00"
         },
         {
             "name": "se/selenium-server-standalone",
