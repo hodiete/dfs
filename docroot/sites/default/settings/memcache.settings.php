@@ -68,11 +68,6 @@ if (isset($_ENV['AH_SITE_ENVIRONMENT']) && $_ENV['AH_SITE_ENVIRONMENT'] != 'prod
     // Use memcache as the default bin.
     $settings['cache']['default'] = 'cache.backend.memcache';
 
-    # Acquia is in the process of upgrading the platform-provided memcache
-    # settings. This is the recommended approach for now.
-    $settings['memcache']['servers'] = $conf['memcache_servers'];
-    $settings['memcache']['key_prefix'] = $conf['memcache_key_prefix'];
-
   }
   // Local memcache settings connecting to Drupal VM localhost, 127.0.0.1:11211.
   else {
