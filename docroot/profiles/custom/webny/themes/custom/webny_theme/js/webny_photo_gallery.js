@@ -198,7 +198,6 @@
     }
   };
 
-
   // MAIN FUN ====================================================================================================
   // CALCULATE ALL EVENTS
 
@@ -215,15 +214,49 @@
     nygallery.nextImage();
   });
 
-
-  // MOBILE SECTION  =============================================================================================
   $(window).resize(function() {
 
     // PROCESSES RESIZE
     var bw = nygallery.getBrowserWidth();
     nygallery.resizeDynamics(bw);
-
   });
+
+  // MOBILE ONLY FUN SECTION  =============================================================================================
+
+  // CREATE EVENTS FOR SWIPE RIGHT AND SWIPE LEFT
+  var touchstartX   = 0;
+  var touchstartY   = 0;
+  var touchendX     = 0;
+  var touchendY     = 0;
+
+  var swipeArea = document.getElementById('galleyinmob');
+
+  swipeArea.addEventListener('touchstart', function(event) {
+    touchstartX = event.changedTouches[0].screenX;
+    touchstartY = event.changedTouches[0].screenY;
+  }, false);
+
+  swipeArea.addEventListener('touchend', function(event) {
+    touchendX = event.changedTouches[0].screenX;
+    touchendY = event.changedTouches[0].screenY;
+    swipe.swipeAreaHandler();
+  }, false);
+
+  var swipe = {
+
+    // SWIPE HANDLER
+    swipeAreaHandler: function() {
+
+      if (touchendX < touchstartX) {
+        nygallery.nextImage();
+      }
+
+      if (touchendX > touchstartX) {
+        nygallery.prevImage();
+      }
+    }
+
+  };
 
   // BUTTON CONTROL, MOBILE
   // TOUCH/CLICK BUTTON
