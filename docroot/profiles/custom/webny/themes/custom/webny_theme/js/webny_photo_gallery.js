@@ -73,7 +73,11 @@
       nygallery.next = nygallery.getNextImgNumber();
       var np = '.gallery-entry-'+nygallery.next;
 
-      // REMOVE / ASSIGN
+      // REMOVE / ASSIGN ACTIVE CLASS
+      $('.galpage').removeClass('galactive');
+      $('.galpage:nth-child('+nygallery.next+')').addClass('galactive');
+
+      // REMOVE / ASSIGN CURRENT IMG CLASS
       $(cp).removeClass('gallery-current-img');
       $(np).addClass('gallery-current-img');
 
@@ -100,10 +104,13 @@
       nygallery.prev = nygallery.getPreviousImgNumber();
       var pp = '.gallery-entry-'+nygallery.prev;
 
-      // REMOVE / ASSIGN
+      // REMOVE / ASSIGN ACTIVE CLASS
+      $('.galpage').removeClass('galactive');
+      $('.galpage:nth-child('+nygallery.prev+')').addClass('galactive');
+
+      // REMOVE / ASSIGN CURRENT IMG CLASS
       $(cp).removeClass('gallery-current-img');
       $(pp).addClass('gallery-current-img');
-
 
       if(parseInt(nygallery.curr) === 1){
         nygallery.transition = (nygallery.masterWidthVar * parseInt(nygallery.getImagesCount())) - nygallery.masterWidthVar;
@@ -264,6 +271,10 @@
 
       var clickedNum = $(this).attr('data-galpage');
       var currentNum = $('.gallery-current-img').attr('data-webny-cell');
+
+    // REMOVE / ASSIGN ACTIVE CLASS
+    $('.galpage').removeClass('galactive');
+    $('.galpage:nth-child('+clickedNum+')').addClass('galactive');
 
       nygallery.mobileSelectImg(parseInt(clickedNum),parseInt(currentNum));
 

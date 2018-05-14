@@ -68,7 +68,6 @@ set inner_classes = [
                                      title="{{ content.field_webny_gallery_images['#items'][index].entity.field_image.title }}" />
                             </div>
 
-
                             {# DESCRIPTION SECTION #}
                             <div class="webny-gallery-desc">
                                 <div class="webny-gallery-back"></div>
@@ -90,7 +89,13 @@ set inner_classes = [
         <div class="webny-gallery-mobile-pages">
             {%  for photo in paragraph.field_webny_gallery_images %}
                 {% set index = photo.name %}
-                <div class="galpage" data-galpage="{{ index + 1 }}"></div>
+
+                {% if(index == 0) %}
+                    {% set activeClass = 'galactive' %}
+                {% else %}
+                    {% set activeClass = '' %}
+                {% endif %}
+                <div class="galpage {{ activeClass }}" data-galpage="{{ index + 1 }}"></div>
             {% endfor %}
         </div>
 
