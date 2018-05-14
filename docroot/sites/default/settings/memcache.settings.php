@@ -1,7 +1,7 @@
 <?php
 
 # Memcache configuration for ACSF.
-if (isset($_ENV['AH_SITE_ENVIRONMENT']) && $_ENV['AH_SITE_ENVIRONMENT'] != 'prod') {
+if (isset($_ENV['AH_SITE_ENVIRONMENT'])) {
   // Check for PHP Memcached libraries.
   /**
    * Memcache settings for the memcache API contrib module - from https://docs.acquia.com/article/resolving-installation-problems-drupal-8-memcache
