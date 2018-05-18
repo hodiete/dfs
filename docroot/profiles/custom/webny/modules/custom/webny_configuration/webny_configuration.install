@@ -4159,6 +4159,21 @@ function webny_configuration_update_8187() {
 }
 
 /**
+ * NDD-1460 Admin Menu Updates
+ *
+ * 
+ * DEV: lmurdock
+ */
+function webny_configuration_update_8188() {
+  // REINSTALL THE WebNY Admin Toolbar MODULE
+  \Drupal::service('module_installer')
+    ->uninstall(['webny_admin_toolbar']);
+  \Drupal::service('module_installer')
+    ->install(['webny_admin_toolbar']);
+
+}
+
+/**
  * Helper function to enable a Drupal module and print the result.
  *
  * @param string $module_name
