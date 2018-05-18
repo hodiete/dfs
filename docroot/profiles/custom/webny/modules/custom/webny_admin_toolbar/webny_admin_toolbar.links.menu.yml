@@ -1,0 +1,61 @@
+webny_admin_toolbar.add_content:
+  title: Add Content
+  description: 'Add different pieces of content.'
+  parent: system.admin_content
+  route_name: system.admin_content
+  weight: -20
+webny_admin_toolbar.add_contact:
+  title: Add Contact
+  description: 'Add a contact.'
+  parent: webny_admin_toolbar.add_content
+  route_name: node.add
+  route_parameters: { node_type: 'webny_contact' }
+webny_admin_toolbar.add_document:
+  title: Add Document
+  description: 'Add a document.'
+  parent: webny_admin_toolbar.add_content
+  route_name: node.add
+  route_parameters: { node_type: 'webny_document' }
+webny_admin_toolbar.add_event:
+  title: Add Event
+  description: 'Add an event.'
+  parent: webny_admin_toolbar.add_content
+  route_name: node.add
+  route_parameters: { node_type: 'webny_event' }
+webny_admin_toolbar.add_generic_page:
+  title: Add Generic Page
+  description: 'Add a generic page.'
+  parent: webny_admin_toolbar.add_content
+  route_name: node.add
+  route_parameters: { node_type: 'webny_generic_page' }
+webny_admin_toolbar.add_landing_page:
+  title: Add Landing Page
+  description: 'Add a landing page.'
+  parent: webny_admin_toolbar.add_content
+  route_name: node.add
+  route_parameters: { node_type: 'webny_landing_page' }
+webny_admin_toolbar.add_location:
+  title: Add Location
+  description: 'Add a location.'
+  parent: webny_admin_toolbar.add_content
+  route_name: node.add
+  route_parameters: { node_type: 'webny_location' }
+webny_admin_toolbar.add_news:
+  title: Add News
+  description: 'Add a news piece.'
+  parent: webny_admin_toolbar.add_content
+  route_name: node.add
+  route_parameters: { node_type: 'webny_news' }
+webny_admin_toolbar.add_page:
+  title: Add Page
+  description: 'Add a page.'
+  parent: webny_admin_toolbar.add_content
+  route_name: node.add
+  route_parameters: { node_type: 'webny_page' }
+webny_admin_toolbar.add_whitelisted_content:
+  title: Add Whitelisted Content
+  description: 'Add a piece of whitelisted content.'
+  parent: webny_admin_toolbar.add_content
+  route_name: node.add
+  route_parameters: { node_type: 'webny_whitelisted_content' }
+
