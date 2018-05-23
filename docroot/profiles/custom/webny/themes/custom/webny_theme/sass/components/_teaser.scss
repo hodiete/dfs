@@ -33,7 +33,6 @@
       display: block;
       float: left;
       height: 240px;
-      padding-right: 20px;
 
       svg {
         width: 202px;
@@ -68,9 +67,6 @@
     &__details {
       //display: flex;
       padding: 10px 15px 0;
-      @include breakpoint($min-tablet) {
-        padding: 20px 15px 0;
-      }
 
       @include breakpoint($min-desktop) {
         height: 167px;
@@ -83,18 +79,18 @@
     }
 
     &__details-left {
-      padding-top: 10px;
+      padding-top: 20px;
 
 
       @include breakpoint($min-tablet) {
         flex-basis: 60%;
-        padding-top: 20px;
         border-right: 1px solid $color-mono-mid;
         margin-right: 15px;
       }
 
       @include breakpoint($min-desktop) {
         margin-right: 15px;
+        padding-top: 20px;
         flex-basis: 50%;
       }
 
@@ -147,7 +143,7 @@
       }
 
       @include breakpoint($min-desktop) {
-        padding: 0 15px 0 0;
+        padding: 0 15px;
       }
     }
   }
