@@ -85,11 +85,13 @@ $frame-button-max-width:                450px;
 .get-involved--cta-wrapper > div {
   display: flex;
   flex-flow: column;
+  max-width: 460px;
+  margin: auto;
 }
 
 .get-involved--field-webny-get-inv-cta {
 
-  margin: 3% 1% 0 1%; // for vertical spacing of buttons on mobile and old IE browsers on desktop
+  margin: 40px 1% 0 1%; // for vertical spacing of buttons on mobile and old IE browsers on desktop
   flex-grow: 1; // so buttons stretch to available space
   max-width: $frame-button-max-width; // but buttons shouldn't stretch too much
   text-align: center;
@@ -165,6 +167,12 @@ $frame-button-max-width:                450px;
   .get-involved--cta-wrapper > div {
    flex-flow: row;
     justify-content: center;
+    max-width: none;
+  }
+
+  .get-involved--field-webny-get-inv-cta {
+
+    margin: 40px 1% 0 1%;
   }
 
 } // END MIN PC VIEW
