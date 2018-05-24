@@ -64,10 +64,6 @@ var gallery_backend = {
 
     var target_cell = '';
 
-    // REMOVE DRAGGABLE CELL
-    var drag_dead = gallery_backend.gallery_description_item + ' .field-multiple-drag';
-    $(drag_dead).html('');
-
     for(var i = 0; i < gallery_backend.gallery_description_item.length; ++i) {
       target_cell = '.field--name-field-webny-gallery-image-desc .field-multiple-table tbody tr.draggable:nth-child('+i+') td:nth-child(2)';
       $(target_cell).prepend(gallery_backend.prepend_desc_title(i));
@@ -120,8 +116,9 @@ var gallery_backend = {
   Drupal.behaviors.videohero = {
     attach: function (context, settings) {
 
-      // INITIAL ORDERING
+      // ORDER THE GALLERY PROPERLY
       gallery_backend.photo_order();
+
 
       // REORDER AFTER CLICK UP
       $(gallery_backend.gallery_item).on('mouseup', function (){
@@ -142,11 +139,9 @@ var gallery_backend = {
 
   };
 
+})(jQuery, Drupal, this);
 
 // ONLOAD
 $(function(){
   gallery_backend.description_order();
 });
-
-
-})(jQuery, Drupal, this);
