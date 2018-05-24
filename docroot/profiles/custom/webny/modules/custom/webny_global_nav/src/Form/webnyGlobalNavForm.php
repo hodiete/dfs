@@ -5,6 +5,8 @@ namespace Drupal\webny_global_nav\Form;
 use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\system\Entity\Menu;
+use Drupal\file\Entity\File;
+use Drupal\image\Entity\ImageStyle;
 
 /**
  * Class webnyGlobalNavForm.
@@ -30,6 +32,11 @@ class WebnyGlobalNavForm extends ConfigFormBase {
     $form['webny_global_nav_header_fieldset'] = $this->webnyGlobalNavHeaderFieldsetField();
     $form['webny_global_nav_header_fieldset']['webny_global_nav_header_auto'] = $this->webnyGlobalNavHeaderAutoField();
     $form['webny_global_nav_header_fieldset']['webny_global_nav_header_name'] = $this->webnyGlobalNavAgencyNameField();
+    if ($config->get('webny_global_nav.agencylogo') != '') {
+      $form['webny_global_nav_header_fieldset']['webny_global_nav_header_logo_render'] = $this->webnyGlobalNavAgencyLogoRender();
+    } else {
+      $form['webny_global_nav_header_fieldset']['webny_global_nav_header_logo'] = $this->webnyGlobalNavAgencyLogo();
+    }
     $form['webny_global_nav_header_fieldset']['webny_global_nav_header_format'] = $this->webnyGlobalNavheaderFormatField();
     $form['webny_global_nav_header_fieldset']['webny_global_nav_header_menu'] = $this->webnyGlobalNavHeaderMenuField();
 
@@ -86,7 +93,33 @@ class WebnyGlobalNavForm extends ConfigFormBase {
     $config->set('webny_global_nav.socialmedia.yelp',        $form_state->getValue('socialmedia_yelp'));
     $config->set('webny_global_nav.socialmedia.youtube',     $form_state->getValue('socialmedia_youtube'));
 
+    // check if image is uploaded
+    $fids = $form_state->getValue(['webny_global_nav_header_fieldset' => 'webny_global_nav_header_logo']);
+    if (!empty($fids)) {
+      $fid = $fids[0];
+      $file = File::load($fid);
+      // verify file is set as permanent and saved to database
+      $file->setPermanent();
+      $file->save();
+      // register the file with the webny_unav module so it is not deleted via cron
+      $file_usage = \Drupal::service('file.usage');
+      $file_usage->add($file, 'webny_global_nav', 'webny_global_nav', \Drupal::currentUser()->id());
+
+      $file_uri = $file->getFileUri();
+      $style = ImageStyle::load('global_navigation_logo');
+      $destination = $style->buildUri($file_uri);
+      // create image style applied image and if successful add destination to config
+      if ($style->createDerivative($file_uri, $destination)) {
+        // pass url created by file_create_url to parse_url to pull path to save
+        $parsed_url = parse_url(file_create_url($destination));
+        $config->set('webny_global_nav.agencylogo', $parsed_url['path']);
+      }
+    }
+
     $config->save();
+
+    // CLEAR CACHE
+    drupal_flush_all_caches();
 
     return parent::submitForm($form, $form_state);
   }
@@ -175,6 +208,41 @@ class WebnyGlobalNavForm extends ConfigFormBase {
       '#maxlength' => 128,
       '#size' => '60',
       '#description' => t('Enter the agency name for the global navigation.  You can use &#60;br&#47;&#62; to cause the name to split.'),
+    );
+  }
+
+  /**
+   * Webny Global Navigation agency logo
+   *
+   * @return array
+   *   Form API element for field
+   */
+  public function webnyGlobalNavAgencyLogo() {
+    return array(
+      // uncomment to incorporate media entity browser
+      /*'#type' => 'entity_browser',
+      '#entity_browser' => 'media_browser',
+      '#title' => $this->t('Agency Logo'),
+      '#description' => t('Select the Agency Logo.'),*/
+      '#type' => 'managed_file',
+      '#title' => t('Agency Logo'),
+      '#multiple' => FALSE,
+      '#description' => t('The uploaded image will be displayed on the Global Navigation. Recommended: for optimal results, use a square image with a height of 70px (all images uploaded will be scaled down to 70px high).'),
+      '#upload_location' => 'public://global_navigation_logo/',
+    );
+  }
+
+  /**
+   * Webny Global Navigation agency logo render field
+   *
+   * @return array
+   *   Form API element for field
+   */
+  public function webnyGlobalNavAgencyLogoRender() {
+    $config = $this->config('webny_global_nav.settings');
+    return array(
+      '#type' => 'markup',
+      '#markup' => '<p><strong>Current Image</strong></p><img src="'. $config->get('webny_global_nav.agencylogo') .'" />',
     );
   }
 
