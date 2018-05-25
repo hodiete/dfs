@@ -3,6 +3,7 @@ status: true
 dependencies:
   config:
     - field.field.paragraph.webny_paragraph_contact.field_webny_contact_add_sect_toc
+    - field.field.paragraph.webny_paragraph_contact.field_webny_contact_card_link
     - field.field.paragraph.webny_paragraph_contact.field_webny_contact_pargrph_info
     - paragraphs.paragraphs_type.webny_paragraph_contact
   module:
@@ -15,6 +16,13 @@ content:
   field_webny_contact_add_sect_toc:
     weight: 0
     label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+    region: content
+  field_webny_contact_card_link:
+    weight: 2
+    label: above
     settings: {  }
     third_party_settings: {  }
     type: list_default
