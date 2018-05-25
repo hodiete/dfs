@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_webny_doc_card_link
+    - paragraphs.paragraphs_type.webny_documents
+  module:
+    - options
+id: paragraph.webny_documents.field_webny_doc_card_link
+field_name: field_webny_doc_card_link
+entity_type: paragraph
+bundle: webny_documents
+label: 'Add as a Card Link'
+description: 'Use this content on Landing Page cards.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string
