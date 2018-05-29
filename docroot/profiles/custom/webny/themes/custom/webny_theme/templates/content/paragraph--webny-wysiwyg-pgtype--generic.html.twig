@@ -27,7 +27,7 @@
             <span class="toc-mobile-spacer"></span>
             {{ paragraph.field_webny_wysiwyg_title.value }}
         </h2>
-        {{ content|without('field_webny_wysiwyg_toc', 'field_webny_wysiwyg_title') }}
+        {{ content|without('field_webny_wysiwyg_toc', 'field_webny_wysiwyg_title', 'field_webny_wysiwyg_card_link') }}
         <div class="next-section">
             <div class="next-section-links">
                 <p>Next Section</p>
