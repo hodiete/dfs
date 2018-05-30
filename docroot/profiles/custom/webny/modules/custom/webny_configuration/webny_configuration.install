@@ -4158,6 +4158,27 @@ function webny_configuration_update_8187() {
   $setConfig->set('webny_unav.webny_alt_unav_search_collection', $collection)->save();
 }
 
+/**
+ * NDD-987 GLOBAL NAVIGATION LOGO UPDATE
+ *
+ * DEV: VAN
+ */
+function webny_configuration_update_8188() {
+
+  $config_factory = \Drupal::configFactory();
+  $profile_config = \Drupal::service('webny.profile_config');
+
+  // Import new/changed configuration.
+  $config_to_update = [
+    'image.style.global_navigation_logo'
+  ];
+
+  $profile_config->bulkImport($config_to_update);
+
+  // Clear the config cache.
+  $config_factory->reset();
+}
+
 
 /**
  * Helper function to enable a Drupal module and print the result.
