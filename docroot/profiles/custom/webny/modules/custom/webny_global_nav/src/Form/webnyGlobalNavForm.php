@@ -32,8 +32,10 @@ class WebnyGlobalNavForm extends ConfigFormBase {
     $form['webny_global_nav_header_fieldset'] = $this->webnyGlobalNavHeaderFieldsetField();
     $form['webny_global_nav_header_fieldset']['webny_global_nav_header_auto'] = $this->webnyGlobalNavHeaderAutoField();
     $form['webny_global_nav_header_fieldset']['webny_global_nav_header_name'] = $this->webnyGlobalNavAgencyNameField();
+    //$form['webny_global_nav_header_fieldset']['webny_global_nav_header_logo_container'] = $this->webnyGlobalNavAgencyLogoContainer();
     if ($config->get('webny_global_nav.agencylogo') != '') {
       $form['webny_global_nav_header_fieldset']['webny_global_nav_header_logo_render'] = $this->webnyGlobalNavAgencyLogoRender();
+      //$form['webny_global_nav_header_fieldset']['webny_global_nav_header_logo_removal'] = $this->webnyGlobalNavAgencyLogoRemoval();
     } else {
       $form['webny_global_nav_header_fieldset']['webny_global_nav_header_logo'] = $this->webnyGlobalNavAgencyLogo();
     }
@@ -113,6 +115,8 @@ class WebnyGlobalNavForm extends ConfigFormBase {
         // pass url created by file_create_url to parse_url to pull path to save
         $parsed_url = parse_url(file_create_url($destination));
         $config->set('webny_global_nav.agencylogo', $parsed_url['path']);
+        // set fid into config for later usage
+        $config->set('webny_global_nav.agencylogofid', $fid);
       }
     }
 
@@ -212,6 +216,19 @@ class WebnyGlobalNavForm extends ConfigFormBase {
   }
 
   /**
+   * Webny Global Navigation logo containter
+   *
+   * @return array
+   *   Form API element for field
+   */
+  public function webnyGlobalNavAgencyLogoContainer() {
+    return array(
+      '#type' => 'container',
+      '#attributes' => ['id' => 'agency_logo_container'],
+    );
+  }
+
+  /**
    * Webny Global Navigation agency logo
    *
    * @return array
@@ -242,9 +259,46 @@ class WebnyGlobalNavForm extends ConfigFormBase {
     $config = $this->config('webny_global_nav.settings');
     return array(
       '#type' => 'markup',
-      '#markup' => '<p><strong>Current Image</strong></p><img src="'. $config->get('webny_global_nav.agencylogo') .'" />',
+      '#prefix' => '<div id="agency_logo_container">',
+      '#markup' => '<p><strong>Current Image</strong><br /><img src="'. $config->get('webny_global_nav.agencylogo') .'" /></p>',
     );
   }
+
+  /** Webny Global Navigation agency logo removal button
+   *
+   * @return array
+   *  Form API element for field
+   */
+  /*public function webnyGlobalNavAgencyLogoRemoval() {
+    return array(
+      '#type' => 'button',
+      '#value' => t('Remove Logo'),
+      '#suffix' => '</div>',
+      '#ajax' => array(
+        'callback' => [$this, 'webnyGlobalNavAgencyLogoRemoveFile'],
+        'wrapper' => 'agency_logo_container',
+      ),
+    );
+  }*/
+
+  /** Webny Global Navigation agency logo removal callback
+   *
+   * @return array
+   *   Ajax Form Callback
+   */
+  /*public function webnyGlobalNavAgencyLogoRemoveFile() {
+    $config = $this->config('webny_global_nav.settings');
+    $configEdit = \Drupal::configFactory()->getEditable('webny_global_nav.settings');
+    $fid = $config->get('webny_global_nav.agencylogofid');
+
+    file_delete($fid);
+    $configEdit->set('webny_global_nav.agencylogo', '');
+    $configEdit->set('webny_global_nav.agencylogofid', '');
+
+    return array('#type' => 'markup', '#markup' => '<p>Logo removed.</p>',);
+
+    //return $this->webnyGlobalNavAgencyLogo();
+  }*/
 
   /**
    * Webny Global Navigation agency grouping color field.
