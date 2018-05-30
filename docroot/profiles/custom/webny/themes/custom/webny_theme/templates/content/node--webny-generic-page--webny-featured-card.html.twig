@@ -29,8 +29,18 @@
 
 {% block card_title_url %}
 <a href="{{ url }}" rel="bookmark">
-    {% endblock card_title_url %}
+{% endblock card_title_url %}
 
-    {% block card_content %}
-        <div class="webny-card-teaser">{{ content.field_webny_gencp_sumdes }}</div>
-    {% endblock card_content %}
+{% block card_content %}
+    <div class="webny-card-teaser">{{ content.field_webny_gencp_sumdes }}</div>
+{% endblock card_content %}
+
+{% block card_links %}
+
+    <div class="generic-card-links">
+        
+    </div>
+
+
+{% endblock card_links %}
+
