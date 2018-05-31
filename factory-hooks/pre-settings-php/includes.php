@@ -15,5 +15,5 @@ require DRUPAL_ROOT . '/sites/default/settings/webny.settings.php';
  
 // TEST FOR CLI
 if (php_sapi_name() == "cli") {
-  ini_set('memory_limit', '768M');
+  ini_set('memory_limit', '1536M');
 }
