@@ -96,8 +96,11 @@ class webnyfouroxsection extends \Twig_Extension {
      * Function getFouroxDomain()
      */
     public function getDomainSearchURL() {
-        return "http://search.its.ny.gov/search?sort=&output=xml_no_dtd&ie=UTF-8&oe=UTF-8&client=default_frontend".
-               "&proxystylesheet=default_frontend&site=default_collection&q=&sitesearch=".$_SERVER['SERVER_NAME'];
+
+        return "http://search.its.ny.gov/search?as_sitesearch=".$_SERVER['SERVER_NAME']."&btnG=Search&".
+        "client=default_frontend&output=xml_no_dtd&proxystylesheet=default_frontend".
+        "&ulang=en&sort=date%3AD%3AL%3Ad1&entqr=3&entqrm=0&wc=200&wc_mc=1&oe=UTF-8&ie=UTF-8&ud=1&site=default_collection&q=";
+
     }
 
     /**
