@@ -32,13 +32,14 @@ class WebnyGlobalNavForm extends ConfigFormBase {
     $form['webny_global_nav_header_fieldset'] = $this->webnyGlobalNavHeaderFieldsetField();
     $form['webny_global_nav_header_fieldset']['webny_global_nav_header_auto'] = $this->webnyGlobalNavHeaderAutoField();
     $form['webny_global_nav_header_fieldset']['webny_global_nav_header_name'] = $this->webnyGlobalNavAgencyNameField();
-    //$form['webny_global_nav_header_fieldset']['webny_global_nav_header_logo_container'] = $this->webnyGlobalNavAgencyLogoContainer();
+    $form['webny_global_nav_header_fieldset']['webny_global_nav_header_logo_fieldset'] = $this->webnyGlobalNavAgencyLogoFieldsetField();
+    $form['webny_global_nav_header_fieldset']['webny_global_nav_header_logo_fieldset']['webny_global_nav_header_logo_container'] = $this->webnyGlobalNavAgencyLogoContainer();
+    $form['webny_global_nav_header_fieldset']['webny_global_nav_header_logo_fieldset']['webny_global_nav_header_logo_removal_container'] = $this->webnyGlobalNavAgencyLogoRemovalContainer();
     if ($config->get('webny_global_nav.agencylogo') != '') {
-      $form['webny_global_nav_header_fieldset']['webny_global_nav_header_logo_render'] = $this->webnyGlobalNavAgencyLogoRender();
-      //$form['webny_global_nav_header_fieldset']['webny_global_nav_header_logo_removal'] = $this->webnyGlobalNavAgencyLogoRemoval();
-    } else {
-      $form['webny_global_nav_header_fieldset']['webny_global_nav_header_logo'] = $this->webnyGlobalNavAgencyLogo();
+      $form['webny_global_nav_header_fieldset']['webny_global_nav_header_logo_fieldset']['webny_global_nav_header_logo_removal_container']['webny_global_nav_header_logo_render'] = $this->webnyGlobalNavAgencyLogoRender();
+      $form['webny_global_nav_header_fieldset']['webny_global_nav_header_logo_fieldset']['webny_global_nav_header_logo_removal_container']['webny_global_nav_header_logo_removal'] = $this->webnyGlobalNavAgencyLogoRemoval();
     }
+    $form['webny_global_nav_header_fieldset']['webny_global_nav_header_logo_fieldset']['webny_global_nav_header_logo_container']['webny_global_nav_header_logo'] = $this->webnyGlobalNavAgencyLogo();
     $form['webny_global_nav_header_fieldset']['webny_global_nav_header_format'] = $this->webnyGlobalNavheaderFormatField();
     $form['webny_global_nav_header_fieldset']['webny_global_nav_header_menu'] = $this->webnyGlobalNavHeaderMenuField();
 
@@ -216,6 +217,21 @@ class WebnyGlobalNavForm extends ConfigFormBase {
   }
 
   /**
+   * Webny Global Navigation agency logo details field.
+   *
+   * @return array
+   *   Form API element for field.
+   */
+  public function webnyGlobalNavAgencyLogoFieldsetField() {
+    return array(
+      '#type' => 'details',
+      '#title' => t('Agency Logo Options'),
+      '#collapsible' => TRUE,
+      '#collapsed' => TRUE,
+    );
+  }
+
+  /**
    * Webny Global Navigation logo containter
    *
    * @return array
@@ -225,6 +241,19 @@ class WebnyGlobalNavForm extends ConfigFormBase {
     return array(
       '#type' => 'container',
       '#attributes' => ['id' => 'agency_logo_container'],
+    );
+  }
+
+  /**
+   * Webny Global Navigation logo removal container
+   *
+   * @return array
+   *   Form API element for field
+   */
+  public function webnyGlobalNavAgencyLogoRemovalContainer() {
+    return array(
+      '#type' => 'container',
+      '#attributes' => ['id' => 'agency_logo_removal_container'],
     );
   }
 
@@ -242,9 +271,9 @@ class WebnyGlobalNavForm extends ConfigFormBase {
       '#title' => $this->t('Agency Logo'),
       '#description' => t('Select the Agency Logo.'),*/
       '#type' => 'managed_file',
-      '#title' => t('Agency Logo'),
+      '#title' => t('Upload Logo'),
       '#multiple' => FALSE,
-      '#description' => t('The uploaded image will be displayed on the Global Navigation. Recommended: for optimal results, use a square image with a height of 70px (all images uploaded will be scaled down to 70px high).'),
+      '#description' => t('The uploaded image will be displayed on the Global Navigation. (all images uploaded will be scaled down to a height of 45px).'),
       '#upload_location' => 'public://global_navigation_logo/',
     );
   }
@@ -259,8 +288,8 @@ class WebnyGlobalNavForm extends ConfigFormBase {
     $config = $this->config('webny_global_nav.settings');
     return array(
       '#type' => 'markup',
-      '#prefix' => '<div id="agency_logo_container">',
-      '#markup' => '<p><strong>Current Image</strong><br /><img src="'. $config->get('webny_global_nav.agencylogo') .'" /></p>',
+      //'#prefix' => '<div id="agency_logo_container">',
+      '#markup' => '<p><strong>Uploaded Logo</strong><br /><img src="'. $config->get('webny_global_nav.agencylogo') .'" /></p>',
     );
   }
 
@@ -269,24 +298,24 @@ class WebnyGlobalNavForm extends ConfigFormBase {
    * @return array
    *  Form API element for field
    */
-  /*public function webnyGlobalNavAgencyLogoRemoval() {
+  public function webnyGlobalNavAgencyLogoRemoval() {
     return array(
       '#type' => 'button',
       '#value' => t('Remove Logo'),
-      '#suffix' => '</div>',
+      //'#suffix' => '</div>',
       '#ajax' => array(
         'callback' => [$this, 'webnyGlobalNavAgencyLogoRemoveFile'],
-        'wrapper' => 'agency_logo_container',
+        'wrapper' => 'agency_logo_removal_container',
       ),
     );
-  }*/
+  }
 
   /** Webny Global Navigation agency logo removal callback
    *
    * @return array
    *   Ajax Form Callback
    */
-  /*public function webnyGlobalNavAgencyLogoRemoveFile() {
+  public function webnyGlobalNavAgencyLogoRemoveFile(array $form, FormStateInterface $form_state) {
     $config = $this->config('webny_global_nav.settings');
     $configEdit = \Drupal::configFactory()->getEditable('webny_global_nav.settings');
     $fid = $config->get('webny_global_nav.agencylogofid');
@@ -294,11 +323,13 @@ class WebnyGlobalNavForm extends ConfigFormBase {
     file_delete($fid);
     $configEdit->set('webny_global_nav.agencylogo', '');
     $configEdit->set('webny_global_nav.agencylogofid', '');
+    $configEdit->save();
 
-    return array('#type' => 'markup', '#markup' => '<p>Logo removed.</p>',);
+    // CLEAR CACHE
+    drupal_flush_all_caches();
 
-    //return $this->webnyGlobalNavAgencyLogo();
-  }*/
+    return array('#type' => 'markup', '#markup' => '<p><strong>Logo Removed.</strong></p>',);
+  }
 
   /**
    * Webny Global Navigation agency grouping color field.
