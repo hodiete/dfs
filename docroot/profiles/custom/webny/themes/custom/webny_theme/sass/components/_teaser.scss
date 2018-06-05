@@ -68,8 +68,8 @@
     &__details {
       //display: flex;
       padding: 10px 15px 0;
-      @include breakpoint($min-tablet) {
-        padding: 20px 15px 0;
+      @include breakpoint($min-tablet) { //has needed padding
+        padding: 20px 15px 0; //has needed padding
       }
 
       @include breakpoint($min-desktop) {
@@ -83,12 +83,12 @@
     }
 
     &__details-left {
-      padding-top: 10px;
+      padding-top: 10px; //has needed padding
 
 
       @include breakpoint($min-tablet) {
         flex-basis: 60%;
-        padding-top: 20px;
+        padding-top: 20px; //has needed padding
         border-right: 1px solid $color-mono-mid;
         margin-right: 15px;
       }
@@ -147,7 +147,7 @@
       }
 
       @include breakpoint($min-desktop) {
-        padding: 0 15px 0 0;
+        padding: 0 15px 0 0; //has needed padding
       }
     }
   }
