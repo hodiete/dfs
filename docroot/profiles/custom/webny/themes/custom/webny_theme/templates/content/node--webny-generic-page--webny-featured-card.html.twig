@@ -37,10 +37,15 @@
 
 {% block card_links %}
 
-    <div class="generic-card-links">
-        {{ addCardLinks(node.id) }}
-    </div>
-
+    {% if node.field_webny_gencp_card_switch.value == 'yes' %}
+        <div class="generic-card-links">
+            <div class="generic-card-links-in">
+                <ul>
+                    {{ addCardLinks(node.id) }}
+                </ul>
+            </div>
+        </div>
+    {% endif %}
 
 {% endblock card_links %}
 
