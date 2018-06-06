@@ -6,14 +6,6 @@
   }
 }
 
-// Safari 9 specific fixes
-@supports (overflow:-webkit-marquee) and (justify-content:inherit) {
-  a.webny-teaser-image {
-    display: block;
-    min-width: 242px;
-  }
-}
-
 // Safari 6.1-10.0
 @media screen and (min-color-index:0) and (-webkit-min-device-pixel-ratio:0)  {
   //fixes for NDD-1454 - iPad Air 2, iPad Mini 2, iPad 4, iPad Mini 4.
