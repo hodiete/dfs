@@ -108,22 +108,59 @@ class AddCardLinks extends \Twig_Extension {
                     switch ($paragraph->entity->getType()) {
                         case 'webny_paragraph_contact':
                             $checkval = $paragraph->entity->field_webny_contact_card_link->value;
+
+                            /*
+                             * // LOGIC TO BE USED FOR NDD-1499
+                             *
+                             * if($paragraph->entity->get('name_of_new_field')->value !== NULL &&
+                             *    !empty($paragraph->entity->get('name_of_new_field')->value)){
+                             *      $title = 'Contact '.$paragraph->entity->get('name_of_new_field')->value
+                             * } else {
+                             *      $title = 'Contact ' . $this->getEntityTitle($paragraph, 'field_webny_contact_pargrph_info');
+                             * }
+                             * */
+
+                            // DETERMINE WHICH TITLE TO USE FOR CONTACT
                             $title = 'Contact ' . $this->getEntityTitle($paragraph, 'field_webny_contact_pargrph_info');
                             break;
 
                         case 'webny_documents':
                             $checkval = $paragraph->entity->field_webny_doc_card_link->value;
-                            $title = $this->getEntityTitle($paragraph, 'field_webny_attached_documents');
+
+                            // DETERMINE WHICH TITLE TO USE FOR DOCUMENTS
+                            if($paragraph->entity->get('field_webny_documents_title')->value !== NULL &&
+                                !empty($paragraph->entity->get('field_webny_documents_title')->value)){
+                                $title = 'Contact '.$paragraph->entity->get('field_webny_documents_title')->value;
+                            } else {
+                                $title = $this->getEntityTitle($paragraph, 'field_webny_attached_documents');
+                            }
+
                             break;
 
                         case 'webny_whats_related_pgtype':
                             $checkval = $paragraph->entity->field_webny_whats_related_card->value;
-                            $title = $paragraph->entity->get('field_webny_whats_related_title')->value;
+
+                            // DETERMINE WHICH TITLE TO USE FOR WHAT'S RELATED
+                            if($paragraph->entity->get('field_webny_whats_related_title')->value !== NULL &&
+                                !empty($paragraph->entity->get('field_webny_whats_related_title')->value)){
+                                $title = $paragraph->entity->get('field_webny_whats_related_title')->value;
+                            } else {
+                                $title = $this->getEntityTitle($paragraph, 'field_webny_whats_related_title');
+                            }
+
                             break;
 
                         case 'webny_wysiwyg_pgtype':
                             $checkval = $paragraph->entity->field_webny_wysiwyg_card_link->value;
-                            $title = $paragraph->entity->get('field_webny_wysiwyg_title')->value;
+
+                            // DETERMINE WHICH TITLE TO USE FOR WYSIWYG
+                            if($paragraph->entity->get('field_webny_wysiwyg_title')->value !== NULL &&
+                                !empty($paragraph->entity->get('field_webny_wysiwyg_title')->value)){
+                                $title = $paragraph->entity->get('field_webny_wysiwyg_title')->value;
+                            } else {
+                                $title = $this->getEntityTitle($paragraph, 'field_webny_wysiwyg_title');
+                            }
+
                             break;
                     };
 
