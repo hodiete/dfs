@@ -167,11 +167,14 @@ class AddCardLinks extends \Twig_Extension {
                     if ($checkval === 'yes') {
 
                         $display_counter++;
+                        $addedClass = '';
 
                         if($display_counter == 1){
                             $addedClass = 'first-card-link';
-                        } else {
-                            $addedClass = '';
+                        }
+
+                        if($display_counter == 3){
+                            $addedClass = 'last-card-link';
                         }
 
                         $url = $aliaspath . '#' . $this->createGenChapterString($title);
