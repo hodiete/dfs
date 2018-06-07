@@ -4,10 +4,13 @@ dependencies:
   config:
     - core.entity_form_mode.paragraph.generic_form
     - field.field.paragraph.webny_paragraph_contact.field_webny_contact_add_sect_toc
+    - field.field.paragraph.webny_paragraph_contact.field_webny_contact_card_link
     - field.field.paragraph.webny_paragraph_contact.field_webny_contact_pargrph_info
     - paragraphs.paragraphs_type.webny_paragraph_contact
   module:
     - workbench_moderation
+_core:
+  default_config_hash: fumd-ukxFi-XVzNoubmy_umryzPq-PLPQxKsZmN8jAI
 id: paragraph.webny_paragraph_contact.generic_form
 targetEntityType: paragraph
 bundle: webny_paragraph_contact
@@ -19,8 +22,14 @@ content:
     third_party_settings: {  }
     type: options_buttons
     region: content
-  field_webny_contact_pargrph_info:
+  field_webny_contact_card_link:
+    type: options_buttons
     weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_webny_contact_pargrph_info:
+    weight: 2
     settings:
       match_operator: CONTAINS
       size: 60
