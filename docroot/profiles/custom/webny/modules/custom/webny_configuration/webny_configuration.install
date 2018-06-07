@@ -4158,6 +4158,41 @@ function webny_configuration_update_8187() {
   $setConfig->set('webny_unav.webny_alt_unav_search_collection', $collection)->save();
 }
 
+/**
+ * NDD-1356: GENERIC PAGE UPDATES TO CARDS
+ *
+ * REFRESH FEATURES FOR CONTACT, DOCUMENT, WYSIWYG, WHAT'S RELATED
+ *
+ * DEV: IOJONEP
+ */
+function webny_configuration_update_8188() {
+
+
+    $config_factory = \Drupal::configFactory();
+    $profile_config = \Drupal::service('webny.profile_config');
+
+    // Import new/changed configuration.
+    $config_to_update = [
+        'core.entity_form_display.paragraph.webny_documents.generic_form.yml',
+        'core.entity_view_display.paragraph.webny_paragraph_contact.generic',
+        'core.entity_form_display.node.webny_generic_page.default',
+        'core.entity_view_display.node.webny_generic_page.default',
+        'core.entity_view_display.node.webny_generic_page.webny_featured_card',
+        'core.entity_form_display.paragraph.webny_whats_related_pgtype.generic_form',
+        'core.entity_form_display.paragraph.webny_wysiwyg_pgtype.generic_form',
+        'core.entity_view_display.paragraph.webny_wysiwyg_pgtype.generic'
+    ];
+
+    $profile_config->bulkImport($config_to_update);
+
+    // Clear the config cache.
+    $config_factory->reset();
+}
+
+
+
+
+
 
 /**
  * Helper function to enable a Drupal module and print the result.
