@@ -286,7 +286,7 @@ $featured-card-fallback-img-bkg: $color-secondary !default;
       }
 
       &:hover {
-        color: #128ec3;
+        color: $featured-card-frame-title-color;
         text-decoration: none;
       }
 
@@ -295,15 +295,22 @@ $featured-card-fallback-img-bkg: $color-secondary !default;
       text-decoration: none;
       color: #000000;
       text-transform: uppercase;
-      border-bottom: 1px solid #e4e4e4;
       margin-bottom: 10px;
       padding-bottom: 10px;
       letter-spacing: 1px;
     }
+
+    li.last-card-link a,
+    li:last-child a{
+      border-bottom: 0;
+    }
+
+    li.first-card-link:last-child a{
+      border-bottom: 1px solid #e4e4e4;
+    }
+
   }
 }
-
-
 
 .icon-right-caret{ @include icon(before, fa-caret-right);}
 
