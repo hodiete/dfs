@@ -130,7 +130,7 @@ class AddCardLinks extends \Twig_Extension {
                             // DETERMINE WHICH TITLE TO USE FOR DOCUMENTS
                             if($paragraph->entity->get('field_webny_documents_title')->value !== NULL &&
                                 !empty($paragraph->entity->get('field_webny_documents_title')->value)){
-                                $title = 'Contact '.$paragraph->entity->get('field_webny_documents_title')->value;
+                                $title = $paragraph->entity->get('field_webny_documents_title')->value;
                             } else {
                                 $title = $this->getEntityTitle($paragraph, 'field_webny_attached_documents');
                             }
