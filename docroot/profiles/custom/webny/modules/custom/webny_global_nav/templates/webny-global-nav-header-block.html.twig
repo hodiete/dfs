@@ -11,7 +11,11 @@
         <div class="nav-toggle">
             <a href="#" role="button" id="webny-menu-control">Navigation menu</a>
         </div>
+    {% if agencylogo is not null and agencylogo is not empty %}
+        <div class="webny-global-logo"><a href="/"><img src="{{ agencylogo }}" alt="{{ agencyname|raw }}" /></a></div>
+    {% else %}
         <h1><a href="/">{{ agencyname|raw }}</a></h1>
-            {{ globalNavBlock(headermenu) }}
+    {% endif %}
+    {{ globalNavBlock(headermenu) }}
     </nav>
 {% endif %}
