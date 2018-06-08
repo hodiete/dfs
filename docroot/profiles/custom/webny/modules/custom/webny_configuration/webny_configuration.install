@@ -4159,13 +4159,34 @@ function webny_configuration_update_8187() {
 }
 
 /**
+ * NDD-987 GLOBAL NAVIGATION LOGO UPDATE
+ *
+ * DEV: VAN
+ */
+function webny_configuration_update_8188() {
+
+  $config_factory = \Drupal::configFactory();
+  $profile_config = \Drupal::service('webny.profile_config');
+
+  // Import new/changed configuration.
+  $config_to_update = [
+    'image.style.global_navigation_logo'
+  ];
+
+  $profile_config->bulkImport($config_to_update);
+
+  // Clear the config cache.
+  $config_factory->reset();
+}
+
+/**
  * NDD-1356: GENERIC PAGE UPDATES TO CARDS
  *
  * REFRESH FEATURES FOR CONTACT, DOCUMENT, WYSIWYG, WHAT'S RELATED
  *
  * DEV: IOJONEP
  */
-function webny_configuration_update_8188() {
+function webny_configuration_update_8189() {
 
 
     $config_factory = \Drupal::configFactory();
@@ -4188,11 +4209,6 @@ function webny_configuration_update_8188() {
     // Clear the config cache.
     $config_factory->reset();
 }
-
-
-
-
-
 
 /**
  * Helper function to enable a Drupal module and print the result.

@@ -41,6 +41,7 @@ function webny_global_nav_theme() {
   $footer_auto    = $config->get('webny_global_nav.footerauto');
   $header_menu    = $config->get('webny_global_nav.headermenu');
   $footer_menu    = $config->get('webny_global_nav.footermenu');
+  $agency_logo    = $config->get('webny_global_nav.agencylogo');
 
   // CREATE AGENCY NAME VAR FOR TWIG
   $tagList = array(); 
@@ -56,6 +57,7 @@ function webny_global_nav_theme() {
           'template' => 'webny-global-nav-header-block',
           'variables' => array(
               'agencyname'      => $agency_name,
+              'agencylogo'      => $agency_logo,
               'headerformat'    => $header_format,
               'headermenu'      => $header_menu,
               'headerauto'      => $header_auto,
@@ -66,6 +68,7 @@ function webny_global_nav_theme() {
       'template' => 'webny-global-nav-header',
       'variables' => array(
         'agencyname' => $agency_name,
+        'agencylogo' => $agency_logo,
         'headerformat' => $header_format,
         'headermenu' => $header_menu,
         'headerauto' => $header_auto,
