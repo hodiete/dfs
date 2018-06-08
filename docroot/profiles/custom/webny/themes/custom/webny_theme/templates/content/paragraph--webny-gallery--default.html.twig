@@ -24,9 +24,11 @@ set inner_classes = [
 
         {# TITLE AND HEADLINE STANDARD WEBNY STYLE #}
         {% if   ( paragraph.field_webny_gallery_title.value is not empty and
-        paragraph.field_webny_gallery_title.value is not null) or
+          paragraph.field_webny_gallery_title.value is not null) or
         ( paragraph.field_webny_gallery_headline.value is not empty and
-        paragraph.field_webny_gallery_headline.value is not null )
+          paragraph.field_webny_gallery_headline.value is not null ) or
+        ( paragraph.field_webny_gallery_description.value is not empty and
+          paragraph.field_webny_gallery_description.value is not null)
         %}
         <div class="webny-gallery-meta">
             <h2>
@@ -40,8 +42,20 @@ set inner_classes = [
                 {% endif %}
 
             </h2>
+
+            {# OVERALL DESCRIPTION -- BASIC HTML #}
+            {% if paragraph.field_webny_gallery_description.value is not empty and
+            paragraph.field_webny_gallery_description.value is not null %}
+                <div class="frame-description">
+                    {{ paragraph.field_webny_gallery_description.value|raw }}
+                </div>
+            {% endif %}
+
         </div>
+
         {% endif %}
+
+
 
         {# GALLERY SECTION HTML #}
         <div class="webny-gallery">

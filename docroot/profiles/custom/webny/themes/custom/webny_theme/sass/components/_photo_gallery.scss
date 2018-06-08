@@ -18,9 +18,11 @@ $gallery-frame-headline-line-height: 30px;
 
 .webny-gallery-meta {
 
+  margin: 0 auto;
+
   h2 {
     margin: 0 auto;
-    width: 100%;
+    width: 90%;
     max-width: $max-pc;
     text-align: center;
     padding: 0;
@@ -45,6 +47,13 @@ $gallery-frame-headline-line-height: 30px;
         font: 800 40px/1 "Proxima Nova", Arial, sans-serif;
       }
     }
+  }
+
+  .frame-description {
+    width: 90%;
+    margin: 1.5rem auto 2.25rem;
+    font-size: 16px;
+    line-height: 22px;
   }
 }
 
@@ -168,6 +177,12 @@ $gallery-frame-headline-line-height: 30px;
 /* MIN TABLET VIEW */
 @media (min-width: $min-tab) {
 
+  .webny-gallery-meta {
+    .frame-description {
+      width: 90%;
+      max-width: $max-pc;
+    }
+  }
 
   // =======================================================
   // GALLERY CONTAINER
@@ -264,6 +279,14 @@ $gallery-frame-headline-line-height: 30px;
 // ######################################################################### //
 /* MIN DESKTOP VIEW */
 @media (min-width: $min-pc) {
+
+  .webny-gallery-meta {
+    .frame-description {
+      width: 80%;
+      max-width: $max-pc;
+    }
+  }
+
 
   .webny-gallery-mobile-pages {
     display: none;
