@@ -20,9 +20,15 @@ var drupalLayout        = $('main, .webny-global-footer');
 var lastItem            = $('#webny-global-header').find('li.gnav-topli').last();
 
 // MENU CALCULATIONS
-var lastItemLeftPos     = $(lastItem).position().left;
-var windowRightPos      = $(window).width();
-var lastItemDiff        = (windowRightPos - lastItemLeftPos);
+var lastItemLeftPos     = 0;
+var windowRightPos      = 0;
+var lastItemDiff        = 0;
+
+if ($('#webny-global-header').length > 0) {
+    var lastItemLeftPos = $(lastItem).position().left;
+    var windowRightPos  = $(window).width();
+    var lastItemDiff    = (windowRightPos - lastItemLeftPos);
+}
 
 // EVENT VARS
 var running             = null;     // USED AS A PRECAUTION TO STOP PROPAGATION
