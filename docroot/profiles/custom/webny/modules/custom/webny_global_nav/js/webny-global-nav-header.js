@@ -17,6 +17,18 @@ var menuNoLink          = $('#webny-global-header > ul > li > span');
 var agencyNameLink      = $('#webny-global-header > h1 a');
 var menuDrops           = $('#webny-global-header > ul > li > ul');
 var drupalLayout        = $('main, .webny-global-footer');
+var lastItem            = $('#webny-global-header').find('li.gnav-topli').last();
+
+// MENU CALCULATIONS
+var lastItemLeftPos     = 0;
+var windowRightPos      = 0;
+var lastItemDiff        = 0;
+
+if ($('#webny-global-header').length > 0) {
+    var lastItemLeftPos = $(lastItem).position().left;
+    var windowRightPos  = $(window).width();
+    var lastItemDiff    = (windowRightPos - lastItemLeftPos);
+}
 
 // EVENT VARS
 var running             = null;     // USED AS A PRECAUTION TO STOP PROPAGATION
@@ -110,6 +122,12 @@ function desktop_mode(){
             }
         }
     });
+
+    // SET RIGHT ALIGN ON LAST SUBMENU IF IT EXISTS AND IS WIDER THAN VIEWPORT
+    if (lastItemDiff < 300) {
+        // last item is less than 300 width. Make ul right aligned
+        $(lastItem).find('ul').css('right', '0');
+    }
 
     // RESET NAV HEADER TO DEFAULT STATE -- FROM HEADER TITLE
     keyupCall(agencyNameLink);
