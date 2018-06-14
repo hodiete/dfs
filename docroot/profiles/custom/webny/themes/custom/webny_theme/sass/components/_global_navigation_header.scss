@@ -589,10 +589,11 @@ $globalnav-secondary-color:   $button-black-50 !default;
     }
 
     &.unstacked.horizontal {
-      height: 75px;
+      min-height: 75px;
 
       .webny-global-logo {
         float:left;
+        min-height: 75px;
         img {
           padding: 15px 0 15px 60px;
         }
