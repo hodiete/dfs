@@ -4188,7 +4188,6 @@ function webny_configuration_update_8188() {
  */
 function webny_configuration_update_8189() {
 
-
     $config_factory = \Drupal::configFactory();
     $profile_config = \Drupal::service('webny.profile_config');
 
@@ -4208,6 +4207,60 @@ function webny_configuration_update_8189() {
 
     // Clear the config cache.
     $config_factory->reset();
+
+    /**
+     *  UPDATE EACH GENERIC PAGE CONTENT TYPE CONTENT FRAME, ADD EACH CHECKBOX FOR CARD LINK TO YES (ENABLE).
+     *  MASTER CONTROL SWITCH STILL DISABLED BY DEFAULT.
+     */
+
+    /*
+    // VARS
+    $x = 0;
+    $nids = NULL;
+
+    // GET NODES
+    $nodes = \Drupal::entityTypeManager()->getStorage('node')->loadByProperties(['type' => 'webny_generic_page']);
+
+    // GET GCP NODES
+    foreach($nodes as $n){
+        $nids[$x] = $n->id();
+        $x++;
+    } // END FOREACH
+
+    foreach($nids as $n){
+
+        // GET NODES ONE AT A TIME
+        $in = \Drupal::entityTypeManager()->getStorage('node')->load($n);
+
+        foreach ($in->get('field_webny_gencp_contentsect') as $p) {
+
+            // GET THE TYPE OF ENTITY
+            switch ($p->entity->getType()) {
+                case 'webny_paragraph_contact':
+                    $p->entity->set('field_webny_contact_card_link', 'yes');
+                    $p->entity->save();
+                    break;
+
+                case 'webny_documents':
+                    $p->entity->set('field_webny_doc_card_link', 'yes');
+                    $p->entity->save();
+                    break;
+
+                case 'webny_whats_related_pgtype':
+                    $p->entity->set('field_webny_whats_related_card', 'yes');
+                    $p->entity->save();
+                    break;
+
+                case 'webny_wysiwyg_pgtype':
+                    $p->entity->set('field_webny_wysiwyg_card_link', 'yes');
+                    $p->entity->save();
+                    break;
+            };
+        }
+    }
+    */
+
+
 }
 
 /**
