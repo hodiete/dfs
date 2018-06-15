@@ -1,46 +1,36 @@
-uuid: 7921753f-49b6-49e9-96bf-4c307310813d
+uuid: dbddb7d4-e8d3-4823-b778-f8c109de2f80
 langcode: en
 status: true
 dependencies:
   config:
-    - core.entity_form_mode.paragraph.generic_form
     - field.field.paragraph.webny_paragraph_contact.field_webny_contact_add_sect_toc
     - field.field.paragraph.webny_paragraph_contact.field_webny_contact_pargrph_info
     - field.field.paragraph.webny_paragraph_contact.field_webny_contact_title
     - paragraphs.paragraphs_type.webny_paragraph_contact
   module:
-    - workbench_moderation
+    - options
 _core:
-  default_config_hash: qCg3HvXYQoxWGBJTLRQON5IY8AzHXwgCUvUcRKUm4Xk
-id: paragraph.webny_paragraph_contact.generic_form
+  default_config_hash: _N8ZHqjs7r4U1ZZVrFKflx0XOJfxbLcL5NkyhcctWRU
+id: paragraph.webny_paragraph_contact.default
 targetEntityType: paragraph
 bundle: webny_paragraph_contact
-mode: generic_form
+mode: default
 content:
   field_webny_contact_add_sect_toc:
     weight: 0
+    label: hidden
     settings: {  }
     third_party_settings: {  }
-    type: options_buttons
+    type: list_default
     region: content
   field_webny_contact_pargrph_info:
-    weight: 2
-    settings:
-      match_operator: CONTAINS
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-    type: entity_reference_autocomplete
-    region: content
-  field_webny_contact_title:
-    type: string_textfield
     weight: 1
-    region: content
+    label: hidden
     settings:
-      size: 60
-      placeholder: ''
+      view_mode: webny_contact_for_news
+      link: false
     third_party_settings: {  }
+    type: entity_reference_entity_view
+    region: content
 hidden:
-  created: true
-  status: true
-  uid: true
+  field_webny_contact_title: true
