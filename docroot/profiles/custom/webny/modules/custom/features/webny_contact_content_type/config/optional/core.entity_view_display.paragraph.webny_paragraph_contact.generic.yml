@@ -5,6 +5,7 @@ dependencies:
     - core.entity_view_mode.paragraph.generic
     - field.field.paragraph.webny_paragraph_contact.field_webny_contact_add_sect_toc
     - field.field.paragraph.webny_paragraph_contact.field_webny_contact_pargrph_info
+    - field.field.paragraph.webny_paragraph_contact.field_webny_contact_title
     - paragraphs.paragraphs_type.webny_paragraph_contact
   module:
     - options
@@ -29,4 +30,12 @@ content:
     third_party_settings: {  }
     type: entity_reference_entity_view
     region: content
+  field_webny_contact_title:
+    type: string
+    weight: 2
+    region: content
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
 hidden: {  }
