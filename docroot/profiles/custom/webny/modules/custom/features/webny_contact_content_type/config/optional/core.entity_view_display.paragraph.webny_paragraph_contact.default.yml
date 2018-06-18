@@ -2,18 +2,16 @@ langcode: en
 status: true
 dependencies:
   config:
-    - core.entity_view_mode.paragraph.generic
     - field.field.paragraph.webny_paragraph_contact.field_webny_contact_add_sect_toc
-    - field.field.paragraph.webny_paragraph_contact.field_webny_contact_card_link
     - field.field.paragraph.webny_paragraph_contact.field_webny_contact_pargrph_info
     - field.field.paragraph.webny_paragraph_contact.field_webny_contact_title
     - paragraphs.paragraphs_type.webny_paragraph_contact
   module:
     - options
-id: paragraph.webny_paragraph_contact.generic
+id: paragraph.webny_paragraph_contact.default
 targetEntityType: paragraph
 bundle: webny_paragraph_contact
-mode: generic
+mode: default
 content:
   field_webny_contact_add_sect_toc:
     weight: 0
@@ -22,15 +20,8 @@ content:
     third_party_settings: {  }
     type: list_default
     region: content
-  field_webny_contact_card_link:
-    type: list_default
-    weight: 1
-    region: content
-    label: hidden
-    settings: {  }
-    third_party_settings: {  }
   field_webny_contact_pargrph_info:
-    weight: 2
+    weight: 1
     label: hidden
     settings:
       view_mode: webny_contact_for_news
@@ -38,12 +29,5 @@ content:
     third_party_settings: {  }
     type: entity_reference_entity_view
     region: content
-  field_webny_contact_title:
-    type: string
-    weight: 2
-    region: content
-    label: hidden
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-hidden: {  }
+hidden:
+  field_webny_contact_title: true
