@@ -4,6 +4,7 @@ dependencies:
   config:
     - entity_browser.browser.image_browser
     - field.field.node.webny_generic_page.field_webny_agency_keywords
+    - field.field.node.webny_generic_page.field_webny_assoc_landing_page
     - field.field.node.webny_generic_page.field_webny_contentcat
     - field.field.node.webny_generic_page.field_webny_filter_terms
     - field.field.node.webny_generic_page.field_webny_gencp_avgtranstime
@@ -35,6 +36,7 @@ third_party_settings:
   field_group:
     group_webny_gencp_herofields:
       children:
+        - field_webny_assoc_landing_page
         - field_webny_gencp_heroimage
         - field_webny_gencp_date
         - field_webny_gencp_herodesc
@@ -93,6 +95,15 @@ content:
     third_party_settings: {  }
     type: entity_reference_autocomplete
     region: content
+  field_webny_assoc_landing_page:
+    weight: 122
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
   field_webny_contentcat:
     weight: 6
     settings:
@@ -142,13 +153,13 @@ content:
     third_party_settings: {  }
     region: content
   field_webny_gencp_date:
-    weight: 6
+    weight: 124
     settings: {  }
     third_party_settings: {  }
     type: datetime_default
     region: content
   field_webny_gencp_herodesc:
-    weight: 7
+    weight: 125
     settings:
       size: 60
       placeholder: ''
@@ -156,7 +167,7 @@ content:
     type: text_textfield
     region: content
   field_webny_gencp_heroimage:
-    weight: 5
+    weight: 123
     settings:
       entity_browser: image_browser
       field_widget_display: rendered_entity
@@ -277,4 +288,6 @@ content:
   url_redirects:
     weight: 50
     region: content
+    settings: {  }
+    third_party_settings: {  }
 hidden: {  }
