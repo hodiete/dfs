@@ -55,8 +55,14 @@
             {% if hero_image == '/' %}
             <div class="hero-inner hero-generic-inner">
                 {% else %}
-                <div class="hero-inner hero-generic-inner hero-has-image-content">
+                <a class="hero-inner hero-generic-inner hero-has-image-content">
                     {% endif %}
+
+                    <div class="assoc-landing">
+                        {% if content.field_webny_assoc-landing-page is not empty %}
+                            {{ content.field_webny_assoc_landing_page }}
+                        {% endif %}
+                    </div>
 
                     <div class="published-date">
                         {% if node.field_webny_gencp_date.value is not empty %}
@@ -105,5 +111,4 @@
 
 
 </div>
-
 
