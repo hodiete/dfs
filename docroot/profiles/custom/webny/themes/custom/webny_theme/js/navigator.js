@@ -46,7 +46,11 @@
           // create string that is used on generic page for contact paragraph
           contact = 'Contact ' + agency;
           // convert to lower case, trimming and replacing spaces wth hyphens
-          hash = contact.toLowerCase().trim().replace(/[^a-zA-Z0-9]/g, '-');
+          if ($(this).attr('data-toc-title') == '') {
+            hash = contact.toLowerCase().trim().replace(/[^a-zA-Z0-9]/g, '-');
+          } else {
+            hash = $(this).attr('data-toc-title').toLowerCase().trim().replace(/[^a-zA-Z0-9]/g, '-');
+          }
         }
         // replacing hash for documents paragraph
         else if ($(this).hasClass('toc-para webny-documents')) {
@@ -75,7 +79,12 @@
           }
           // if this is a contact paragraph, use text from variable
           else if ($(this).hasClass('toc-para webny-paragraph-contact')) {
-            $('#toc-sidebar ul').append('<li><a href="#' + hash + '">' + contact + '</a></li>');
+            // check if this contact paragraph has a custom TOC title
+            if ($(this).attr('data-toc-title') == '') {
+              $('#toc-sidebar ul').append('<li><a href="#' + hash + '">' + contact + '</a></li>');
+            } else {
+              $('#toc-sidebar ul').append('<li><a href="#' + hash + '">' + $(this).attr('data-toc-title') + '</a></li>');
+            }
           }
           // if this is a documents paragraph, use title or generic title if needed
           else if ($(this).hasClass('toc-para webny-documents')) {
