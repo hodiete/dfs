@@ -58,17 +58,17 @@
                 <a class="hero-inner hero-generic-inner hero-has-image-content">
                     {% endif %}
 
-                    <div class="assoc-landing">
-                        {% if content.field_webny_assoc-landing-page is not empty %}
+                    {% if content.field_webny_assoc-landing-page is not empty %}
+                        <div class="assoc-landing">
                             {{ content.field_webny_assoc_landing_page }}
-                        {% endif %}
-                    </div>
+                        </div>
+                    {% endif %}
 
-                    <div class="published-date">
-                        {% if node.field_webny_gencp_date.value is not empty %}
+                    {% if node.field_webny_gencp_date.value is not empty %}
+                        <div class="published-date">
                             {{ node.field_webny_gencp_date.value|date('F j, Y') }}
-                        {% endif %}
-                    </div>
+                        </div>
+                    {% endif %}
 
                     {# HERO HEADLINE / TITLE #}
                     <h1>{{ label }}</h1>
