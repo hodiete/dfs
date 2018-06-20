@@ -10,7 +10,6 @@ dependencies:
     - paragraphs.paragraphs_type.webny_gallery
   module:
     - smart_trim
-    - text
 id: paragraph.webny_gallery.default
 targetEntityType: paragraph
 bundle: webny_gallery
@@ -46,9 +45,21 @@ content:
   field_webny_gallery_image_desc:
     weight: 4
     label: hidden
-    settings: {  }
+    settings:
+      trim_length: 30
+      trim_type: words
+      trim_suffix: ...
+      wrap_class: trimmed
+      more_text: More
+      more_class: more-link
+      wrap_output: false
+      more_link: false
+      trim_options:
+        text: false
+        trim_zero: false
+      summary_handler: full
     third_party_settings: {  }
-    type: text_default
+    type: smart_trim
     region: content
   field_webny_gallery_images:
     weight: 3
