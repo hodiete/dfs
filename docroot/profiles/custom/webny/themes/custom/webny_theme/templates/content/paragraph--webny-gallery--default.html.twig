@@ -77,7 +77,7 @@ set inner_classes = [
                             {# IMAGE SECTION #}
                             <div class="gallery-imgdiv gallery-imgdiv-{{ index + 1 }}" data-webny-img="{{ index + 1 }}">
                                 {# <img src="{{ file_url(content.field_webny_gallery_images['#items'][index].entity.field_image.entity.uri.value|image_style('webny_gallery_image')) }}" #}
-                                <img src="{{ file_url(content.field_webny_gallery_images['#items'][index].entity.field_image.entity.uri.value) }}"
+                                <img src="{{ file_url(content.field_webny_gallery_images['#items'][index].entity.field_image.entity.uri.value|image_style('webny_gallery_image')) }}"
                                      alt="{{ content.field_webny_gallery_images['#items'][index].entity.field_image.alt }}"
                                      title="{{ content.field_webny_gallery_images['#items'][index].entity.field_image.title }}" />
                             </div>
