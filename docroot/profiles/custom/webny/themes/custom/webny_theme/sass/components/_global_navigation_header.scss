@@ -356,12 +356,12 @@ $globalnav-secondary-color:   $button-black-50 !default;
       &.unstacked {
         font-size: 14px;
         line-height: 18px;
-        height: 80px;
+        min-height: 80px;
         @include in-context-menu();
 
         .webny-global-logo {
           float:left;
-          height: 45px;
+          height: 80px;
           img {
             padding: 17px 0 18px 30px;
           }
@@ -380,7 +380,7 @@ $globalnav-secondary-color:   $button-black-50 !default;
         }
 
         > ul {
-          padding-left: 15px;
+          padding: 23px 0 23px 15px;
           display:inline-block;
           & > li > a:hover {
             text-decoration: underline;
@@ -586,10 +586,11 @@ $globalnav-secondary-color:   $button-black-50 !default;
     }
 
     &.unstacked.horizontal {
-      height: 75px;
+      min-height: 75px;
 
       .webny-global-logo {
         float:left;
+        min-height: 75px;
         img {
           padding: 15px 0 15px 60px;
         }

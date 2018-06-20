@@ -60,7 +60,7 @@
 
 {# DISPLAY THE PARAGRAPH #}
 {% block paragraph %}
-  <section id="{{ 'toc_' ~ paragraph.id() }}" rel="{{ gp_status }}" {{ attributes.addClass(classes) }}>
+  <section id="{{ 'toc_' ~ paragraph.id() }}" rel="{{ gp_status }}" data-toc-title="{{ paragraph.field_webny_contact_title.value }}" {{ attributes.addClass(classes) }}>
     <span class="toc-mobile-spacer"></span>
     {% block content %}
       {{ content|without('field_webny_contact_add_sect_toc') }}
