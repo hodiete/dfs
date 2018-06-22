@@ -58,11 +58,19 @@
                 <div class="hero-inner hero-generic-inner hero-has-image-content">
                     {% endif %}
 
-                    <div class="published-date">
-                        {% if node.field_webny_gencp_date.value is not empty %}
+                    <div class="hero-generic-wrapper">
+
+                    {% if content.field_webny_assoc-landing-page is not empty %}
+                        <div class="assoc-landing">
+                            {{ content.field_webny_assoc_landing_page }}
+                        </div>
+                    {% endif %}
+
+                    {% if node.field_webny_gencp_date.value is not empty %}
+                        <div class="published-date">
                             {{ node.field_webny_gencp_date.value|date('F j, Y') }}
-                        {% endif %}
-                    </div>
+                        </div>
+                    {% endif %}
 
                     {# HERO HEADLINE / TITLE #}
                     <h1>{{ label }}</h1>
@@ -78,6 +86,8 @@
                             <a href="/keywords/{{ term.entity.machine_name.value }}">{{ term.entity.name.value }}</a>
                         {% endfor %}
                     </div>
+
+                    </div><!--end hero-generic-wrapper-->
 
                     {# TRANSACTION TIME #}
                     {# if there is no transaction time saved, don't show div #}
@@ -105,5 +115,4 @@
 
 
 </div>
-
 
