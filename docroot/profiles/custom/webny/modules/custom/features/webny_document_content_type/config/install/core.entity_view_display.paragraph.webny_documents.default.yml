@@ -4,6 +4,7 @@ dependencies:
   config:
     - field.field.paragraph.webny_documents.field_webny_attached_documents
     - field.field.paragraph.webny_documents.field_webny_doc_add_frame_to_toc
+    - field.field.paragraph.webny_documents.field_webny_doc_card_link
     - field.field.paragraph.webny_documents.field_webny_doc_sub_title
     - field.field.paragraph.webny_documents.field_webny_documents_title
     - paragraphs.paragraphs_type.webny_documents
@@ -15,31 +16,38 @@ bundle: webny_documents
 mode: default
 content:
   field_webny_attached_documents:
-    weight: 1
-    label: above
+    weight: 4
+    label: hidden
     settings:
       link: true
     third_party_settings: {  }
     type: entity_reference_label
     region: content
   field_webny_doc_add_frame_to_toc:
-    weight: 2
-    label: above
+    weight: 0
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+    region: content
+  field_webny_doc_card_link:
+    weight: 1
+    label: hidden
     settings: {  }
     third_party_settings: {  }
     type: list_default
     region: content
   field_webny_doc_sub_title:
     weight: 3
-    label: above
+    label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
     type: string
     region: content
   field_webny_documents_title:
-    weight: 0
-    label: above
+    weight: 2
+    label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }

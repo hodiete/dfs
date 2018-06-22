@@ -5,6 +5,7 @@ dependencies:
     - core.entity_form_mode.paragraph.generic_form
     - field.field.paragraph.webny_documents.field_webny_attached_documents
     - field.field.paragraph.webny_documents.field_webny_doc_add_frame_to_toc
+    - field.field.paragraph.webny_documents.field_webny_doc_card_link
     - field.field.paragraph.webny_documents.field_webny_doc_sub_title
     - field.field.paragraph.webny_documents.field_webny_documents_title
     - paragraphs.paragraphs_type.webny_documents
@@ -16,7 +17,7 @@ bundle: webny_documents
 mode: generic_form
 content:
   field_webny_attached_documents:
-    weight: 2
+    weight: 3
     settings:
       match_operator: CONTAINS
       size: 60
@@ -30,8 +31,14 @@ content:
     third_party_settings: {  }
     type: options_buttons
     region: content
-  field_webny_documents_title:
+  field_webny_doc_card_link:
+    type: options_buttons
     weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_webny_documents_title:
+    weight: 2
     settings:
       size: 60
       placeholder: ''
