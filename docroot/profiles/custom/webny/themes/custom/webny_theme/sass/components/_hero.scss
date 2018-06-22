@@ -205,9 +205,37 @@ $hero-event-bkgd-transparent-black: $bkgd-black-50 !default;
       background-color: black;
       box-sizing: border-box;
     }
+
+    .assoc-landing > div {
+      padding-left: 40px;
+
+    }
+
+    .assoc-landing > div > a {
+
+      font-family: 'Proxima Nova';
+      font-size: 14px;
+      color: $color-mono-white;
+      font-weight: bold;
+
+
+      &:before {
+        font-family: 'icomoon';
+        content: "\F104";
+        color: white;
+        padding-right: 5px;
+      }
+      &:hover {
+        text-decoration: none;
+      }
+    }
+
+
+
     .published-date {
       //padding: 20px 20px 0;
-      padding: 0px 0 0 40px;
+      padding-left: 40px;
+      padding-top: 30px;
       color: #fff;
       font-family: 'Proxima Nova';
       font-weight: 700;
@@ -789,7 +817,7 @@ $hero-event-bkgd-transparent-black: $bkgd-black-50 !default;
       left: 0;
 
       .published-date {
-        padding-top: 40px;
+        padding-top: 30px;
       }
 
       h1 {
@@ -1016,6 +1044,10 @@ $hero-event-bkgd-transparent-black: $bkgd-black-50 !default;
       min-height: 428px;
     }
 
+    .hero-generic-wrapper {
+      padding-top: 30px;
+    }
+
     .hero-generic-inner {
       margin: 0 !important;
       padding: 0 !important;
@@ -1025,10 +1057,11 @@ $hero-event-bkgd-transparent-black: $bkgd-black-50 !default;
       .published-date {
         //margin-top:20px;
         //margin-left: 20px;
+        padding-top: 30px;
       }
 
       h1 {
-        margin-top: 56px;
+        margin-top: 10px;
       }
 
       .hero-generic-transaction {

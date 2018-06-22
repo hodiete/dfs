@@ -29,8 +29,23 @@
 
 {% block card_title_url %}
 <a href="{{ url }}" rel="bookmark">
-    {% endblock card_title_url %}
+{% endblock card_title_url %}
 
-    {% block card_content %}
-        <div class="webny-card-teaser">{{ content.field_webny_gencp_sumdes }}</div>
-    {% endblock card_content %}
+{% block card_content %}
+    <div class="webny-card-teaser">{{ content.field_webny_gencp_sumdes }}</div>
+{% endblock card_content %}
+
+{% block card_links %}
+
+    {% if node.field_webny_gencp_card_switch.value == 'yes' %}
+        <div class="generic-card-links">
+            <div class="generic-card-links-in">
+                <ul>
+                    {{ addCardLinks(node.id) }}
+                </ul>
+            </div>
+        </div>
+    {% endif %}
+
+{% endblock card_links %}
+

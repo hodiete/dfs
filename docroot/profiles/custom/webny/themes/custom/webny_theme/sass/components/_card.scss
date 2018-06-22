@@ -131,6 +131,7 @@ $featured-card-fallback-img-bkg: $color-secondary !default;
   vertical-align: top;
   font-size:   $frame-base-font-size;
   line-height: $frame-base-line-height;
+  min-height: 125px;
 }
 
 .webny-card .webny-card-cta {
@@ -248,6 +249,71 @@ $featured-card-fallback-img-bkg: $color-secondary !default;
     stroke: #ffffff;
   }
 
+}
+
+// CARD LINKS
+.generic-card-links {
+  margin-bottom: auto;
+  width: auto;
+  float: none;
+  padding: 20px 15px 0;
+  display: flex;
+
+  .generic-card-links-in {
+
+    width: 100%;
+    align-self: flex-end;
+
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      font-size: 13px;
+      line-height: 18px;
+    }
+
+    li {
+      text-decoration: none;
+      list-style: none;
+    }
+
+    a {
+      @include icon(after, fa-caret-right);
+
+      &:after {
+        color: #128ec3;
+        float: right;
+      }
+
+      &:hover {
+        color: $featured-card-frame-title-color;
+        text-decoration: none;
+      }
+
+      font-family: 'ProximaNovaBold', sans-serif;
+      display: block;
+      text-decoration: none;
+      color: #000000;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      padding-bottom: 10px;
+      letter-spacing: 1px;
+    }
+
+    a {
+      border-bottom: 1px solid #e4e4e4;
+    }
+
+    li.last-card-link a,
+    li:last-child a{
+      border-bottom: 0;
+    }
+
+    li.first-card-link:last-child a{
+      border-bottom: 1px solid #e4e4e4;
+    }
+
+  }
 }
 
 .icon-right-caret{ @include icon(before, fa-caret-right);}

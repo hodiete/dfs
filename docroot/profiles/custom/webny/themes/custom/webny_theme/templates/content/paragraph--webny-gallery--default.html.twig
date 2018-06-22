@@ -1,0 +1,117 @@
+
+{# PARAGRAPHS - WEBNY PHOTO GALLERY #}
+
+{%
+set classes = [
+'webny-photo-gallery'
+]
+%}
+
+{%
+set inner_classes = [
+'webny-photo-gallery-in'
+]
+%}
+
+{{ attach_library('webny_theme/webny-photo-gallery') }}
+
+{# VARS #}
+{% set showcaseImg = '' %}
+
+{# START THE GALLERY #}
+<div {{ attributes.addClass(classes) }}>
+    <div {{ attributes.addClass(inner_classes) }}>
+
+        {# TITLE AND HEADLINE STANDARD WEBNY STYLE #}
+        {% if   ( paragraph.field_webny_gallery_title.value is not empty and
+          paragraph.field_webny_gallery_title.value is not null) or
+        ( paragraph.field_webny_gallery_headline.value is not empty and
+          paragraph.field_webny_gallery_headline.value is not null ) or
+        ( paragraph.field_webny_gallery_description.value is not empty and
+          paragraph.field_webny_gallery_description.value is not null)
+        %}
+        <div class="webny-gallery-meta">
+            <h2>
+
+                {% if paragraph.field_webny_gallery_title.value is not empty and paragraph.field_webny_gallery_title.value is not null %}
+                    <span class="frame-title">{{ paragraph.field_webny_gallery_title.value }}</span>
+                {% endif %}
+
+                {% if paragraph.field_webny_gallery_headline.value is not empty and paragraph.field_webny_gallery_headline.value is not null %}
+                    <span class="frame-headline">{{ paragraph.field_webny_gallery_headline.value }}</span>
+                {% endif %}
+
+            </h2>
+
+            {# OVERALL DESCRIPTION -- BASIC HTML #}
+            {% if paragraph.field_webny_gallery_description.value is not empty and
+            paragraph.field_webny_gallery_description.value is not null %}
+                <div class="frame-description">
+                    {{ paragraph.field_webny_gallery_description.value|raw }}
+                </div>
+            {% endif %}
+
+        </div>
+
+        {% endif %}
+
+
+
+        {# GALLERY SECTION HTML #}
+        <div class="webny-gallery">
+            <div class="webny-gallery-main">
+                <div class="webny-gallery-container">
+                    <div class="webny-gallery-container-in" id="galleyinmob">
+
+                    {%  for photo in paragraph.field_webny_gallery_images %}
+                        {% set index = photo.name %}
+
+                        {% if(index == 0) %}
+                            {% set showcaseImg = 'gallery-current-img' %}
+                        {% else %}
+                            {% set showcaseImg = '' %}
+                        {% endif %}
+
+                        <div class="webny-gallery-entry gallery-entry-{{ index + 1 }} {{ showcaseImg }}" data-webny-cell="{{ index + 1 }}">
+
+                            {# IMAGE SECTION #}
+                            <div class="gallery-imgdiv gallery-imgdiv-{{ index + 1 }}" data-webny-img="{{ index + 1 }}">
+                                {# <img src="{{ file_url(content.field_webny_gallery_images['#items'][index].entity.field_image.entity.uri.value|image_style('webny_gallery_image')) }}" #}
+                                <img src="{{ file_url(content.field_webny_gallery_images['#items'][index].entity.field_image.entity.uri.value|image_style('webny_gallery_image')) }}"
+                                     alt="{{ content.field_webny_gallery_images['#items'][index].entity.field_image.alt }}"
+                                     title="{{ content.field_webny_gallery_images['#items'][index].entity.field_image.title }}" />
+                            </div>
+
+                            {# DESCRIPTION SECTION #}
+                            <div class="webny-gallery-desc">
+                                <div class="webny-gallery-back"></div>
+                                <div class="webny-gallery-text">
+                                    {{ content.field_webny_gallery_image_desc[index] }}
+                                </div>
+                                <div class="webny-gallery-fwd"></div>
+                            </div>
+
+                        </div>
+
+                    {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {# MOBILE SUPPORT -- HIDDEN BY DEFAULT #}
+        <div class="webny-gallery-mobile-pages">
+            {%  for photo in paragraph.field_webny_gallery_images %}
+                {% set index = photo.name %}
+
+                {% if(index == 0) %}
+                    {% set activeClass = 'galactive' %}
+                {% else %}
+                    {% set activeClass = '' %}
+                {% endif %}
+                <div class="galpage {{ activeClass }}" data-galpage="{{ index + 1 }}"></div>
+            {% endfor %}
+        </div>
+
+    </div>
+</div>

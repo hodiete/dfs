@@ -24,14 +24,15 @@ if ($is_local_env) {
  * Contains caching configuration.
  */
 
-# General cache TTL config.
-$config['system.performance']['cache']['page']['max_age'] = 900;
+# General cache TTL config. Set to 1 year, recommended for Purge and Acquia Purge cache invalidation using Varnish.
+$config['system.performance']['cache']['page']['max_age'] = 31536000;
 
 if ($is_ah_env) {
   switch ($ah_env) {
     case '01dev':
-      # Disable page cache on dev. Note that this is set locally in development.services.yml.
-      $config['system.performance']['cache']['page']['max_age'] = 5;
+      # Disable page cache on dev. Note that this is also set locally in development.services.yml.
+      # Set to 1 year for dev Purge and Acquia Purge testing on dev server.
+      $config['system.performance']['cache']['page']['max_age'] = 31536000;
       break;
     case '01live':
       $config['system.logging']['error_level'] = 'hide';

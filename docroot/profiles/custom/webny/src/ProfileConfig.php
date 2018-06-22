@@ -156,6 +156,8 @@ class ProfileConfig {
       $this->getProfilePath() . '/modules/custom/webny_global_nav/' . self::CONFIG_DIR . '/optional',
       $this->getProfilePath() . '/modules/custom/webny_secondary_nav/' . self::CONFIG_DIR . '/install',
       $this->getProfilePath() . '/modules/custom/webny_secondary_nav/' . self::CONFIG_DIR . '/optional',
+      $this->getProfilePath() . '/modules/custom/webny_photo_gallery/' . self::CONFIG_DIR . '/install',
+      $this->getProfilePath() . '/modules/custom/webny_photo_gallery/' . self::CONFIG_DIR . '/optional',
       $this->getProfilePath() . '/modules/custom/webny_unav/' . self::CONFIG_DIR . '/install',
       $this->getProfileFeatureConfigPath('base') . '/install',
       $this->getProfileFeatureConfigPath('news_content_type') . '/install',

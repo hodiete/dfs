@@ -4,9 +4,11 @@ dependencies:
   config:
     - entity_browser.browser.image_browser
     - field.field.node.webny_generic_page.field_webny_agency_keywords
+    - field.field.node.webny_generic_page.field_webny_assoc_landing_page
     - field.field.node.webny_generic_page.field_webny_contentcat
     - field.field.node.webny_generic_page.field_webny_filter_terms
     - field.field.node.webny_generic_page.field_webny_gencp_avgtranstime
+    - field.field.node.webny_generic_page.field_webny_gencp_card_switch
     - field.field.node.webny_generic_page.field_webny_gencp_contentcat
     - field.field.node.webny_generic_page.field_webny_gencp_contentsect
     - field.field.node.webny_generic_page.field_webny_gencp_date
@@ -35,6 +37,7 @@ third_party_settings:
   field_group:
     group_webny_gencp_herofields:
       children:
+        - field_webny_assoc_landing_page
         - field_webny_gencp_heroimage
         - field_webny_gencp_date
         - field_webny_gencp_herodesc
@@ -63,6 +66,7 @@ third_party_settings:
     group_webny_gencp_sectoc:
       children:
         - field_webny_gencp_navtoggle
+        - field_webny_gencp_card_switch
         - field_webny_gencp_contentsect
       parent_name: ''
       weight: 11
@@ -73,6 +77,8 @@ third_party_settings:
         open: false
         required_fields: true
       label: 'Sections and Table of Contents'
+_core:
+  default_config_hash: Roix3FpTtTMcwQ1tPU9p-Z-HynwysGi6MLvKN4tKujk
 id: node.webny_generic_page.default
 targetEntityType: node
 bundle: webny_generic_page
@@ -80,12 +86,21 @@ mode: default
 content:
   created:
     type: datetime_timestamp
-    weight: 15
+    weight: 16
     region: content
     settings: {  }
     third_party_settings: {  }
   field_webny_agency_keywords:
     weight: 3
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  field_webny_assoc_landing_page:
+    weight: 122
     settings:
       match_operator: CONTAINS
       size: 60
@@ -120,6 +135,12 @@ content:
     third_party_settings: {  }
     type: string_textfield
     region: content
+  field_webny_gencp_card_switch:
+    weight: 9
+    settings: {  }
+    third_party_settings: {  }
+    type: options_buttons
+    region: content
   field_webny_gencp_contentcat:
     weight: 7
     settings:
@@ -131,7 +152,7 @@ content:
     region: content
   field_webny_gencp_contentsect:
     type: entity_reference_paragraphs
-    weight: 9
+    weight: 10
     settings:
       title: Paragraph
       title_plural: Paragraphs
@@ -142,13 +163,13 @@ content:
     third_party_settings: {  }
     region: content
   field_webny_gencp_date:
-    weight: 6
+    weight: 124
     settings: {  }
     third_party_settings: {  }
     type: datetime_default
     region: content
   field_webny_gencp_herodesc:
-    weight: 7
+    weight: 125
     settings:
       size: 60
       placeholder: ''
@@ -156,7 +177,7 @@ content:
     type: text_textfield
     region: content
   field_webny_gencp_heroimage:
-    weight: 5
+    weight: 123
     settings:
       entity_browser: image_browser
       field_widget_display: rendered_entity
@@ -225,14 +246,14 @@ content:
     region: content
   langcode:
     type: language_select
-    weight: 13
+    weight: 14
     region: content
     settings:
       include_locked: true
     third_party_settings: {  }
   path:
     type: path
-    weight: 18
+    weight: 19
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -240,21 +261,21 @@ content:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 16
+    weight: 17
     region: content
     third_party_settings: {  }
   status:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 121
+    weight: 21
     third_party_settings: {  }
     region: content
   sticky:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 17
+    weight: 18
     region: content
     third_party_settings: {  }
   title:
@@ -267,7 +288,7 @@ content:
     third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete
-    weight: 14
+    weight: 15
     settings:
       match_operator: CONTAINS
       size: 60
@@ -275,6 +296,8 @@ content:
     region: content
     third_party_settings: {  }
   url_redirects:
-    weight: 50
+    weight: 20
     region: content
+    settings: {  }
+    third_party_settings: {  }
 hidden: {  }
