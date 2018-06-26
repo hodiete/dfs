@@ -8,7 +8,6 @@ dependencies:
     - field.field.node.webny_generic_page.field_webny_contentcat
     - field.field.node.webny_generic_page.field_webny_filter_terms
     - field.field.node.webny_generic_page.field_webny_gencp_avgtranstime
-    - field.field.node.webny_generic_page.field_webny_gencp_card_switch
     - field.field.node.webny_generic_page.field_webny_gencp_contentcat
     - field.field.node.webny_generic_page.field_webny_gencp_contentsect
     - field.field.node.webny_generic_page.field_webny_gencp_date
@@ -66,7 +65,6 @@ third_party_settings:
     group_webny_gencp_sectoc:
       children:
         - field_webny_gencp_navtoggle
-        - field_webny_gencp_card_switch
         - field_webny_gencp_contentsect
       parent_name: ''
       weight: 11
@@ -77,8 +75,6 @@ third_party_settings:
         open: false
         required_fields: true
       label: 'Sections and Table of Contents'
-_core:
-  default_config_hash: Roix3FpTtTMcwQ1tPU9p-Z-HynwysGi6MLvKN4tKujk
 id: node.webny_generic_page.default
 targetEntityType: node
 bundle: webny_generic_page
@@ -86,7 +82,7 @@ mode: default
 content:
   created:
     type: datetime_timestamp
-    weight: 16
+    weight: 15
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -135,12 +131,6 @@ content:
     third_party_settings: {  }
     type: string_textfield
     region: content
-  field_webny_gencp_card_switch:
-    weight: 9
-    settings: {  }
-    third_party_settings: {  }
-    type: options_buttons
-    region: content
   field_webny_gencp_contentcat:
     weight: 7
     settings:
@@ -152,7 +142,7 @@ content:
     region: content
   field_webny_gencp_contentsect:
     type: entity_reference_paragraphs
-    weight: 10
+    weight: 9
     settings:
       title: Paragraph
       title_plural: Paragraphs
@@ -246,14 +236,14 @@ content:
     region: content
   langcode:
     type: language_select
-    weight: 14
+    weight: 13
     region: content
     settings:
       include_locked: true
     third_party_settings: {  }
   path:
     type: path
-    weight: 19
+    weight: 18
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -261,21 +251,21 @@ content:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 17
+    weight: 16
     region: content
     third_party_settings: {  }
   status:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 21
+    weight: 121
     third_party_settings: {  }
     region: content
   sticky:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 18
+    weight: 17
     region: content
     third_party_settings: {  }
   title:
@@ -288,7 +278,7 @@ content:
     third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete
-    weight: 15
+    weight: 14
     settings:
       match_operator: CONTAINS
       size: 60
@@ -296,7 +286,7 @@ content:
     region: content
     third_party_settings: {  }
   url_redirects:
-    weight: 20
+    weight: 50
     region: content
     settings: {  }
     third_party_settings: {  }
