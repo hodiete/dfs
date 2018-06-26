@@ -78,7 +78,8 @@
 
     {% block content %}
 
-      {{ content|without('field_webny_doc_add_frame_to_toc', 'field_webny_doc_sub_title', 'field_webny_documents_title', 'field_webny_documents_headlne') }}
+      {{ content|without('field_webny_doc_add_frame_to_toc', 'field_webny_doc_sub_title',
+        'field_webny_documents_title', 'field_webny_documents_headlne', 'field_webny_doc_card_link') }}
     {% endblock %}
     <div class="next-section">
       <div class="next-section-links">

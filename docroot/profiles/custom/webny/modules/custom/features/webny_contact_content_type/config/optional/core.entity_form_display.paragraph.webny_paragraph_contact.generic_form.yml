@@ -4,6 +4,7 @@ dependencies:
   config:
     - core.entity_form_mode.paragraph.generic_form
     - field.field.paragraph.webny_paragraph_contact.field_webny_contact_add_sect_toc
+    - field.field.paragraph.webny_paragraph_contact.field_webny_contact_card_link
     - field.field.paragraph.webny_paragraph_contact.field_webny_contact_pargrph_info
     - field.field.paragraph.webny_paragraph_contact.field_webny_contact_title
     - paragraphs.paragraphs_type.webny_paragraph_contact
@@ -20,6 +21,12 @@ content:
     third_party_settings: {  }
     type: options_buttons
     region: content
+  field_webny_contact_card_link:
+    type: options_buttons
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   field_webny_contact_pargrph_info:
     weight: 2
     settings:
