@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_webny_gencp_howtoapply
+    - node.type.webny_generic_page
+  module:
+    - link
+id: node.webny_generic_page.field_webny_gencp_howtoapply
+field_name: field_webny_gencp_howtoapply
+entity_type: node
+bundle: webny_generic_page
+label: 'How to Apply (link field)'
+description: 'Add a link and text for the button which will direct users to complete the transaction.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 17
+  title: 2
+field_type: link
