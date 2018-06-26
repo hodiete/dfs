@@ -1,0 +1,161 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.webny_contact_bio_frame
+    - field.field.node.webny_contact.field_webny_contact_address
+    - field.field.node.webny_contact.field_webny_contact_caption
+    - field.field.node.webny_contact.field_webny_contact_details
+    - field.field.node.webny_contact.field_webny_contact_email
+    - field.field.node.webny_contact.field_webny_contact_facebook
+    - field.field.node.webny_contact.field_webny_contact_fax
+    - field.field.node.webny_contact.field_webny_contact_flickr_link
+    - field.field.node.webny_contact.field_webny_contact_global_key
+    - field.field.node.webny_contact.field_webny_contact_google
+    - field.field.node.webny_contact.field_webny_contact_image
+    - field.field.node.webny_contact.field_webny_contact_instagram
+    - field.field.node.webny_contact.field_webny_contact_linkedin
+    - field.field.node.webny_contact.field_webny_contact_mapdir
+    - field.field.node.webny_contact.field_webny_contact_name
+    - field.field.node.webny_contact.field_webny_contact_pintrest
+    - field.field.node.webny_contact.field_webny_contact_pro_subtitle
+    - field.field.node.webny_contact.field_webny_contact_protitle
+    - field.field.node.webny_contact.field_webny_contact_reslink
+    - field.field.node.webny_contact.field_webny_contact_rss_link
+    - field.field.node.webny_contact.field_webny_contact_snapchat
+    - field.field.node.webny_contact.field_webny_contact_soundcloud
+    - field.field.node.webny_contact.field_webny_contact_tumblr_link
+    - field.field.node.webny_contact.field_webny_contact_twitter
+    - field.field.node.webny_contact.field_webny_contact_vimeo_link
+    - field.field.node.webny_contact.field_webny_contact_vine_link
+    - field.field.node.webny_contact.field_webny_contact_youtube
+    - field.field.node.webny_contact.field_webny_filter_terms
+    - field.field.node.webny_contact.field_webny_phone_contact
+    - node.type.webny_contact
+  module:
+    - field_group
+    - link
+    - user
+third_party_settings:
+  field_group:
+    group_webny_bio_meta_div:
+      children:
+        - field_webny_contact_protitle
+        - field_webny_contact_name
+        - field_webny_contact_pro_subtitle
+        - field_webny_contact_caption
+        - field_webny_contact_reslink
+      parent_name: ''
+      weight: 0
+      label: 'Bio Frame Meta'
+      format_type: html_element
+      format_settings:
+        label: 'Bio Frame Meta'
+        id: ''
+        classes: bio-frame-meta
+        element: div
+        show_label: false
+        label_element: h3
+        attributes: ''
+        effect: none
+        speed: fast
+    group_webny_bio_image_div:
+      children:
+        - field_webny_contact_image
+      parent_name: ''
+      weight: 1
+      label: 'Bio Image Container'
+      format_type: html_element
+      format_settings:
+        label: 'Bio Image Container'
+        id: ''
+        classes: bio-frame-image
+        element: div
+        show_label: false
+        label_element: h3
+        attributes: ''
+        effect: none
+        speed: fast
+id: node.webny_contact.webny_contact_bio_frame
+targetEntityType: node
+bundle: webny_contact
+mode: webny_contact_bio_frame
+content:
+  field_webny_contact_caption:
+    weight: 7
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
+  field_webny_contact_image:
+    weight: 1
+    label: hidden
+    settings:
+      view_mode: bio_frame
+      link: false
+    third_party_settings: {  }
+    type: entity_reference_entity_view
+    region: content
+  field_webny_contact_name:
+    weight: 5
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_webny_contact_pro_subtitle:
+    type: string
+    weight: 6
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    region: content
+  field_webny_contact_protitle:
+    weight: 4
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_webny_contact_reslink:
+    weight: 8
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+    region: content
+hidden:
+  field_webny_contact_address: true
+  field_webny_contact_details: true
+  field_webny_contact_email: true
+  field_webny_contact_facebook: true
+  field_webny_contact_fax: true
+  field_webny_contact_flickr_link: true
+  field_webny_contact_global_key: true
+  field_webny_contact_google: true
+  field_webny_contact_instagram: true
+  field_webny_contact_linkedin: true
+  field_webny_contact_pintrest: true
+  field_webny_contact_rss_link: true
+  field_webny_contact_snapchat: true
+  field_webny_contact_soundcloud: true
+  field_webny_contact_tumblr_link: true
+  field_webny_contact_twitter: true
+  field_webny_contact_vimeo_link: true
+  field_webny_contact_vine_link: true
+  field_webny_contact_youtube: true
+  field_webny_filter_terms: true
+  field_webny_phone_contact: true
+  field_webny_contact_mapdir: true
+  langcode: true
+  links: true
+  workbench_moderation_control: true
