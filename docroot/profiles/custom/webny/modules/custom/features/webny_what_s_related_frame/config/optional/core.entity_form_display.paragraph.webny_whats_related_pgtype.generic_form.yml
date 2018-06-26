@@ -3,7 +3,6 @@ status: true
 dependencies:
   config:
     - core.entity_form_mode.paragraph.generic_form
-    - field.field.paragraph.webny_whats_related_pgtype.field_webny_whats_related_card
     - field.field.paragraph.webny_whats_related_pgtype.field_webny_whats_related_links
     - field.field.paragraph.webny_whats_related_pgtype.field_webny_whats_related_title
     - field.field.paragraph.webny_whats_related_pgtype.field_webny_whats_related_toc
@@ -16,14 +15,8 @@ targetEntityType: paragraph
 bundle: webny_whats_related_pgtype
 mode: generic_form
 content:
-  field_webny_whats_related_card:
-    type: options_buttons
-    weight: 1
-    region: content
-    settings: {  }
-    third_party_settings: {  }
   field_webny_whats_related_links:
-    weight: 3
+    weight: 2
     settings:
       placeholder_url: ''
       placeholder_title: ''
@@ -31,7 +24,7 @@ content:
     type: link_default
     region: content
   field_webny_whats_related_title:
-    weight: 2
+    weight: 1
     settings:
       size: 60
       placeholder: ''

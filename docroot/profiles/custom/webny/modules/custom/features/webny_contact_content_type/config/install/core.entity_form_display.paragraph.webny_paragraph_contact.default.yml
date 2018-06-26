@@ -4,10 +4,9 @@ dependencies:
   config:
     - field.field.paragraph.webny_paragraph_contact.field_webny_contact_add_sect_toc
     - field.field.paragraph.webny_paragraph_contact.field_webny_contact_pargrph_info
-    - field.field.paragraph.webny_paragraph_contact.field_webny_contact_title
     - paragraphs.paragraphs_type.webny_paragraph_contact
   module:
-    - options
+    - workbench_moderation
 id: paragraph.webny_paragraph_contact.default
 targetEntityType: paragraph
 bundle: webny_paragraph_contact
@@ -15,19 +14,20 @@ mode: default
 content:
   field_webny_contact_add_sect_toc:
     weight: 0
-    label: hidden
     settings: {  }
     third_party_settings: {  }
-    type: list_default
+    type: options_select
     region: content
   field_webny_contact_pargrph_info:
     weight: 1
-    label: hidden
     settings:
-      view_mode: webny_contact_for_news
-      link: false
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
-    type: entity_reference_entity_view
+    type: entity_reference_autocomplete
     region: content
 hidden:
-  field_webny_contact_title: true
+  created: true
+  status: true
+  uid: true
