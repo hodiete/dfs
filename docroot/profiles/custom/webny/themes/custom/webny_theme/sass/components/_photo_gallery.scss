@@ -27,7 +27,7 @@ $gallery-frame-headline-line-height: 30px;
     text-align: center;
     padding: 0;
     line-height: 1;
-    padding-bottom: 40px;
+    padding-bottom: 0px;
 
     .frame-title {
       text-transform: uppercase;
@@ -50,8 +50,13 @@ $gallery-frame-headline-line-height: 30px;
   }
 
   .frame-description {
+
+    p {
+      margin: 0 auto;
+    }
+
     width: 90%;
-    margin: 1.5rem auto 2.25rem;
+    margin: 20px auto 50px;
     font-size: 16px;
     line-height: 22px;
     text-align: center;
@@ -357,7 +362,7 @@ $gallery-frame-headline-line-height: 30px;
               padding: 20px 0;
               display: inline-block;
               vertical-align: middle;
-              font-size: 14px;
+              font-size: 16px;
               line-height: 18px;
             }
 
