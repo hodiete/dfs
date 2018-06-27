@@ -50,6 +50,8 @@
             hash = contact.toLowerCase().trim().replace(/[^a-zA-Z0-9]/g, '-');
           } else {
             hash = $(this).attr('data-toc-title').toLowerCase().trim().replace(/[^a-zA-Z0-9]/g, '-');
+            // update paragraph title if custom title is added
+            $(this).children('div').children('article').children('h2').text($(this).attr('data-toc-title'));
           }
         }
         // replacing hash for documents paragraph
