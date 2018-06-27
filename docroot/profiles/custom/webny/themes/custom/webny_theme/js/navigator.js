@@ -104,7 +104,7 @@
         }
 
         // check if the next section has an id attribute indicating there is a next section
-        // previously we were checking for text in the title which doesn't translate to all paragraph types
+        // previously we were checking for text in the title which doesn't translate to all paragraph types 
         if (nextSection.attr('id')) {
           if ($(nextSection).hasClass('webny_wysiwyg_pgtype')) {
             $(this).children('.next-section').children('.next-section-title').html(nextSection.children(':first').text());
