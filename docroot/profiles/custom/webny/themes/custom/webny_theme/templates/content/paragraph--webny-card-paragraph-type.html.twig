@@ -110,9 +110,17 @@ view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
                                         {% if (entity_type[i] == 'webny_whitelisted_content') %}
                                             {# if title is not empty print title, else print url in title and link text #}
                                             {% if (paragraph.field_webny_card_entity_ref[i].entity.field_webny_whitelist_link_url.0.title is not empty) %}
-                                                <a target="_self" href="{{ paragraph.field_webny_card_entity_ref[i].entity.field_webny_whitelist_link_url.0.url }}" title="{{ paragraph.field_webny_card_entity_ref[i].entity.field_webny_whitelist_link_url.0.title }}">{{ paragraph.field_webny_card_entity_ref[i].entity.field_webny_whitelist_link_url.0.title }}</a>
+                                                {% if (paragraph.field_webny_card_entity_ref[i].entity.field_webny_whitelist_target.0.value == '1') %}
+                                                    <a target="_blank" href="{{ paragraph.field_webny_card_entity_ref[i].entity.field_webny_whitelist_link_url.0.url }}" title="{{ paragraph.field_webny_card_entity_ref[i].entity.field_webny_whitelist_link_url.0.title }}">{{ paragraph.field_webny_card_entity_ref[i].entity.field_webny_whitelist_link_url.0.title }}</a>
+                                                {% else %}
+                                                    <a target="_self" href="{{ paragraph.field_webny_card_entity_ref[i].entity.field_webny_whitelist_link_url.0.url }}" title="{{ paragraph.field_webny_card_entity_ref[i].entity.field_webny_whitelist_link_url.0.title }}">{{ paragraph.field_webny_card_entity_ref[i].entity.field_webny_whitelist_link_url.0.title }}</a>
+                                                {% endif %}
                                             {% else %}
-                                                <a target="_self" href="{{ paragraph.field_webny_card_entity_ref[i].entity.field_webny_whitelist_link_url.0.url }}" title="{{ paragraph.field_webny_card_entity_ref[i].entity.field_webny_whitelist_link_url.0.url }}">{{ paragraph.field_webny_card_entity_ref[i].entity.field_webny_whitelist_link_url.0.url }}</a>
+                                                {% if (paragraph.field_webny_card_entity_ref[i].entity.field_webny_whitelist_target.0.value == '1') %}
+                                                    <a target="_blank" href="{{ paragraph.field_webny_card_entity_ref[i].entity.field_webny_whitelist_link_url.0.url }}" title="{{ paragraph.field_webny_card_entity_ref[i].entity.field_webny_whitelist_link_url.0.url }}">{{ paragraph.field_webny_card_entity_ref[i].entity.field_webny_whitelist_link_url.0.url }}</a>
+                                                {% else %}
+                                                    <a target="_self" href="{{ paragraph.field_webny_card_entity_ref[i].entity.field_webny_whitelist_link_url.0.url }}" title="{{ paragraph.field_webny_card_entity_ref[i].entity.field_webny_whitelist_link_url.0.url }}">{{ paragraph.field_webny_card_entity_ref[i].entity.field_webny_whitelist_link_url.0.url }}</a>
+                                                {% endif %}
                                             {% endif %}
                                         {# included for event card using redirect url field #}
                                         {% elseif (entity_type[i] == 'webny_event') %}
