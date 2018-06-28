@@ -151,11 +151,17 @@ $gallery-frame-headline-line-height: 30px;
           line-height: 18px;
         }
 
+        // LOAD INIT OF DESCRIPTIONS
         .gallery-desc-entry{
           display: none;
         }
 
-        .gallery-desc-entry:nth-child(1){
+        .galdescactive.gallery-desc-entry:nth-child(1){
+          display: block;
+        }
+
+        // DISPLAY BLOCK FOR ACTIVE GAL DESCRIPTION
+        .gallery-desc-entry.galdescactive {
           display: block;
         }
 
