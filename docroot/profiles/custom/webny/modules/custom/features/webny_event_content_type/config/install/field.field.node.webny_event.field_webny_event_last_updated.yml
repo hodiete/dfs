@@ -1,0 +1,21 @@
+uuid: 4821c0d8-ad48-4829-a0eb-929c3b9a53cc
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_webny_event_last_updated
+    - node.type.webny_event
+  module:
+    - datetime
+id: node.webny_event.field_webny_event_last_updated
+field_name: field_webny_event_last_updated
+entity_type: node
+bundle: webny_event
+label: 'Last Updated Date/Time'
+description: 'Add a last updated date and time to display in the hero.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

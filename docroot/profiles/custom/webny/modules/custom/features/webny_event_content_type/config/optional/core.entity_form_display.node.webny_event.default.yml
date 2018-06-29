@@ -1,3 +1,4 @@
+uuid: null
 langcode: en
 status: true
 dependencies:
@@ -11,11 +12,13 @@ dependencies:
     - field.field.node.webny_event.field_webny_event_date_end
     - field.field.node.webny_event.field_webny_event_date_start
     - field.field.node.webny_event.field_webny_event_heroimage
+    - field.field.node.webny_event.field_webny_event_last_updated
     - field.field.node.webny_event.field_webny_event_meta_tags
     - field.field.node.webny_event.field_webny_event_navtoggle
     - field.field.node.webny_event.field_webny_event_redirect_url
     - field.field.node.webny_event.field_webny_event_short_title
     - field.field.node.webny_event.field_webny_event_summary
+    - field.field.node.webny_event.field_webny_event_upd_time
     - field.field.node.webny_event.field_webny_event_venue_name
     - field.field.node.webny_event.field_webny_filter_terms
     - field.field.node.webny_event.field_webny_global_keywords
@@ -40,7 +43,7 @@ third_party_settings:
         - field_webny_event_date_end
         - field_webny_event_all_day
       parent_name: ''
-      weight: 4
+      weight: 3
       format_type: details
       format_settings:
         label: 'Event Date'
@@ -54,7 +57,7 @@ third_party_settings:
         - field_webny_event_navtoggle
         - field_webny_event_contentsect
       parent_name: ''
-      weight: 12
+      weight: 11
       format_type: details
       format_settings:
         id: section-toc
@@ -67,7 +70,7 @@ third_party_settings:
         - field_webny_event_venue_name
         - field_webny_event_address
       parent_name: ''
-      weight: 5
+      weight: 4
       format_type: details
       format_settings:
         label: Location
@@ -76,6 +79,22 @@ third_party_settings:
         id: section-location
         classes: ''
       label: Location
+    group_last_updated:
+      children:
+        - field_webny_event_last_updated
+        - field_webny_event_upd_time
+      parent_name: ''
+      weight: 21
+      format_type: details
+      format_settings:
+        label: 'Last Updated'
+        open: true
+        required_fields: true
+        id: last-updated
+        classes: ''
+      label: 'Last Updated'
+_core:
+  default_config_hash: 8hPjRDWIgfOHFRiCpwc7KdKmmounV_Y7HVgepfro3qQ
 id: node.webny_event.default
 targetEntityType: node
 bundle: webny_event
@@ -83,18 +102,12 @@ mode: default
 content:
   created:
     type: datetime_timestamp
-    weight: 15
-    region: content
-    settings: {  }
-    third_party_settings: {  }
-  field_webny_event_meta_tags:
-    type: metatag_firehose
-    weight: 19
+    weight: 14
     region: content
     settings: {  }
     third_party_settings: {  }
   field_webny_agency_keywords:
-    weight: 9
+    weight: 8
     settings:
       match_operator: CONTAINS
       size: 60
@@ -103,7 +116,7 @@ content:
     type: entity_reference_autocomplete
     region: content
   field_webny_contentcat:
-    weight: 7
+    weight: 6
     settings:
       match_operator: CONTAINS
       size: 60
@@ -150,7 +163,7 @@ content:
     type: datetime_default
     region: content
   field_webny_event_heroimage:
-    weight: 11
+    weight: 10
     settings:
       entity_browser: image_browser
       field_widget_display: rendered_entity
@@ -163,6 +176,24 @@ content:
     third_party_settings: {  }
     type: entity_browser_entity_reference
     region: content
+  field_webny_event_last_upd_time:
+    weight: 123
+    settings: {  }
+    third_party_settings: {  }
+    type: datetime_timestamp
+    region: content
+  field_webny_event_last_updated:
+    weight: 22
+    settings: {  }
+    third_party_settings: {  }
+    type: datetime_default
+    region: content
+  field_webny_event_meta_tags:
+    type: metatag_firehose
+    weight: 18
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   field_webny_event_navtoggle:
     weight: 14
     settings: {  }
@@ -170,7 +201,7 @@ content:
     type: options_buttons
     region: content
   field_webny_event_redirect_url:
-    weight: 6
+    weight: 5
     settings:
       placeholder_url: ''
       placeholder_title: ''
@@ -193,6 +224,13 @@ content:
     third_party_settings: {  }
     type: text_textfield
     region: content
+  field_webny_event_upd_time:
+    weight: 23
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+    region: content
   field_webny_event_venue_name:
     weight: 16
     settings:
@@ -202,7 +240,7 @@ content:
     type: string_textfield
     region: content
   field_webny_filter_terms:
-    weight: 8
+    weight: 7
     settings:
       display_node_count: false
       create_new_items: false
@@ -212,7 +250,7 @@ content:
     type: options_shs
     region: content
   field_webny_global_keywords:
-    weight: 10
+    weight: 9
     settings:
       match_operator: CONTAINS
       size: 60
@@ -222,14 +260,14 @@ content:
     region: content
   langcode:
     type: language_select
-    weight: 13
+    weight: 12
     region: content
     settings:
       include_locked: true
     third_party_settings: {  }
   path:
     type: path
-    weight: 18
+    weight: 17
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -237,21 +275,21 @@ content:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 16
+    weight: 15
     region: content
     third_party_settings: {  }
   status:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 121
+    weight: 20
     third_party_settings: {  }
     region: content
   sticky:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 17
+    weight: 16
     region: content
     third_party_settings: {  }
   title:
@@ -264,7 +302,7 @@ content:
     third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete
-    weight: 14
+    weight: 13
     settings:
       match_operator: CONTAINS
       size: 60
@@ -272,6 +310,8 @@ content:
     region: content
     third_party_settings: {  }
   url_redirects:
-    weight: 50
+    weight: 19
     region: content
+    settings: {  }
+    third_party_settings: {  }
 hidden: {  }
