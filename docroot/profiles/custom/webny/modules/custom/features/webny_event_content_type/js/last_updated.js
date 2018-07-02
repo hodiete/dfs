@@ -6,7 +6,8 @@
       var lastupdated_time = '#edit-field-webny-event-last-updated-0-value-time';
       var lastupdated_checkbox = '#edit-field-webny-event-upd-time-value';
 
-      if ($(lastupdated_time).val() === '') {
+      // if time isn't set, set a default of midnight to pass form validation
+      if ($(lastupdated_time).val() === '' && $(lastupdated_date).val() !== '') {
         $(lastupdated_time).val('00:00:00');
       }
 
@@ -20,6 +21,19 @@
       // if checked, toggle the display of the time textbox
       $(lastupdated_checkbox).change(function () {
         $(lastupdated_time).toggle();
+      });
+
+      // when the value of date changes
+      $(lastupdated_date).change(function () {
+        // if a value is being added to the date, but the time has no value
+        if ($(lastupdated_date).val() !== '' && $(lastupdated_time).val() === '') {
+          // set a default value to pass form validation
+          $(lastupdated_time).val('00:00:00');
+        // if the value of date is being removed
+        } else if ($(lastupdated_date).val() === '') {
+          // make sure to also update the time to be removed to pass form validation
+          $(lastupdated_time).val('');
+        }
       });
     }
   };
