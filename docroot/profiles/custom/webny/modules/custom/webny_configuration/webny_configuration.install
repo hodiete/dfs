@@ -4242,6 +4242,19 @@ function webny_configuration_update_8190() {
 }
 
 /**
+ * NDD-1548
+ * INSTALLS the Security Kit contrib module
+ *
+ * DEV:Cat
+ */
+
+function webny_configuration_update_8191() {
+  // INSTALL ADMINISTRATION FEATURE
+  \Drupal::service('module_installer')
+    ->install(['seckit']);
+}
+
+/**
  * Helper function to enable a Drupal module and print the result.
  *
  * @param string $module_name
