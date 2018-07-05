@@ -81,6 +81,11 @@
       $(cp).removeClass('gallery-current-img');
       $(np).addClass('gallery-current-img');
 
+      // DESCRIPTION SECTION
+      // REMOVE / ASSIGN ACTIVE CLASS
+      $('.gallery-desc-entry').removeClass('galdescactive');
+      $('.gallery-desc-entry:nth-child('+nygallery.next+')').addClass('galdescactive');
+
       if(parseInt(nygallery.next) === 1){
         nygallery.transition = 0;
       } else {
@@ -96,6 +101,7 @@
     // GO TO PREVIOUS IMAGE
     prevImage: function() {
 
+      // IMAGE SECTION
       // GET CURRENT POSITION - GET ITS CLASS
       nygallery.curr = nygallery.getCurrentPosition();
       var cp = '.gallery-entry-'+nygallery.curr;
@@ -112,6 +118,12 @@
       $(cp).removeClass('gallery-current-img');
       $(pp).addClass('gallery-current-img');
 
+      // DESCRIPTION SECTION
+      // REMOVE / ASSIGN ACTIVE CLASS
+      $('.gallery-desc-entry').removeClass('galdescactive');
+      $('.gallery-desc-entry:nth-child('+nygallery.prev+')').addClass('galdescactive');
+
+      // MOVE THE IMAGE BACKWARDS
       if(parseInt(nygallery.curr) === 1){
         nygallery.transition = (nygallery.masterWidthVar * parseInt(nygallery.getImagesCount())) - nygallery.masterWidthVar;
       } else {
@@ -221,6 +233,30 @@
     nygallery.nextImage();
   });
 
+  // SCROLL LEFT (PREVIOUS) CLICK ENTER
+  $(".webny-gallery-back").on('keyup', function(e){
+
+    var kpress = e.which;
+
+    if(kpress === 13){
+      e.preventDefault();
+      nygallery.prevImage();
+    }
+
+  });
+
+  // SCROLL LEFT (PREVIOUS) CLICK ENTER
+  $(".webny-gallery-fwd").on('keyup', function(e){
+
+    var kpress = e.which;
+
+    if(kpress === 13){
+      e.preventDefault();
+      nygallery.nextImage();
+    }
+
+  });
+
   $(window).resize(function() {
 
     // PROCESSES RESIZE
@@ -272,9 +308,13 @@
       var clickedNum = $(this).attr('data-galpage');
       var currentNum = $('.gallery-current-img').attr('data-webny-cell');
 
-    // REMOVE / ASSIGN ACTIVE CLASS
+    // REMOVE / ASSIGN ACTIVE CLASS - PHOTO
     $('.galpage').removeClass('galactive');
     $('.galpage:nth-child('+clickedNum+')').addClass('galactive');
+
+    // REMOVE / ASSIGN ACTIVE CLASS - DESCRIPTION
+    $('.gallery-desc-entry').removeClass('galdescactive');
+    $('.gallery-desc-entry:nth-child('+clickedNum+')').addClass('galdescactive');
 
       nygallery.mobileSelectImg(parseInt(clickedNum),parseInt(currentNum));
 
