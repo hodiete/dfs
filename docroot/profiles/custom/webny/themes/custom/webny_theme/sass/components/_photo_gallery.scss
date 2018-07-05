@@ -83,6 +83,7 @@ $gallery-frame-headline-line-height: 30px;
       width: 100%;
       position: relative;
       overflow: hidden;
+      line-height: 0;
 
       .webny-gallery-container-in {
         // INLINE BLOCK - https://davidwalsh.name/remove-whitespace-inline-block
@@ -90,10 +91,12 @@ $gallery-frame-headline-line-height: 30px;
         width: 3520px;
         left: 0;
         display: block;
+        margin: 0 auto;
 
         .webny-gallery-entry {
           display: inline-block;
           width: 352px;
+          margin: 0 auto;
 
           img {
             height: auto;
@@ -118,6 +121,7 @@ $gallery-frame-headline-line-height: 30px;
           width: 8%;
           content: "";
           display: inline-block;
+          cursor: pointer;
         }
 
         .webny-gallery-fwd {
