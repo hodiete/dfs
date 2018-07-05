@@ -53,5 +53,14 @@
         <div class="venue-name">{{ content.field_webny_event_venue_name }}</div>
         <div class="event-address">{{ content.field_webny_event_address }}</div>
     </div>
+
+    <div class="last-updated-wrapper">
+        <div class="last-updated-label">Updated:&nbsp;</div>
+        {% if node.field_webny_event_upd_time.value == '0' %}
+            <div class="last-updated">{{ last_updated | date('F j, Y') }}</div>
+        {% else %}
+            <div class="last-updated">{{ last_updated | date('F j, Y g:ia') }}</div>
+        {% endif %}
+    </div>
   </div>
 </div>
