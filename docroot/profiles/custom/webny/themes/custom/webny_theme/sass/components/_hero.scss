@@ -914,7 +914,7 @@ $hero-event-bkgd-transparent-black: $bkgd-black-50 !default;
 
         }
 
-        @include event-date
+        @include event-date;
 
         .month {
           color: $hero-keyword-text-color;
@@ -941,6 +941,19 @@ $hero-event-bkgd-transparent-black: $bkgd-black-50 !default;
         .venue-name div {
           color: $hero-keyword-text-color;
         }
+
+        .last-updated-wrapper::before {
+          color: $color-accent-primary;
+        }
+
+        .last-updated-wrapper > .last-updated-label {
+          color: #fff;
+        }
+
+        .last-updated-wrapper > .last-updated {
+          color: #fff;
+        }
+
       }
 
     }
