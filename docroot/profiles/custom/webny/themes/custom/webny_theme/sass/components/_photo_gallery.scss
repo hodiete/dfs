@@ -83,6 +83,7 @@ $gallery-frame-headline-line-height: 30px;
       width: 100%;
       position: relative;
       overflow: hidden;
+      line-height: 0;
 
       .webny-gallery-container-in {
         // INLINE BLOCK - https://davidwalsh.name/remove-whitespace-inline-block
@@ -90,10 +91,12 @@ $gallery-frame-headline-line-height: 30px;
         width: 3520px;
         left: 0;
         display: block;
+        margin: 0 auto;
 
         .webny-gallery-entry {
           display: inline-block;
           width: 352px;
+          margin: 0 auto;
 
           img {
             height: auto;
@@ -103,51 +106,71 @@ $gallery-frame-headline-line-height: 30px;
             //display: block;
           }
         }
-
-        .webny-gallery-desc {
-          margin: 0 auto;
-          border: 1px solid #d9e2e2;
-
-          .webny-gallery-fwd,
-          .webny-gallery-back {
-            margin: 0 auto;
-            width: 8%;
-            content: "";
-            display: inline-block;
-          }
-
-          .webny-gallery-fwd {
-            width: 10%;
-          }
-
-          .webny-gallery-fwd:before,
-          .webny-gallery-back:before {
-            font-family: 'icomoon';
-            speak: none;
-            font-style: normal;
-            font-weight: normal;
-            font-variant: normal;
-            text-transform: none;
-            display: block;
-            text-align: center;
-            cursor: pointer;
-            color: #128ec3;
-            // INLINE BLOCK - https://davidwalsh.name/remove-whitespace-inline-block
-            font-size: 14px;
-          }
-          .webny-gallery-back:before {
-          }
-
-          .webny-gallery-text {
-            width: 80%;
-            padding: 20px 0;
-            display: inline-block;
-            vertical-align: middle;
-            font-size: 16px;
-            line-height: 18px;
-          }
-        }
       }
+
+      .webny-gallery-desc {
+        margin: 0 auto;
+        border: 1px solid #d9e2e2;
+        width: 350px;
+        //width: 3520px;
+
+
+        .webny-gallery-fwd,
+        .webny-gallery-back {
+          margin: 0 auto;
+          width: 8%;
+          content: "";
+          display: inline-block;
+          cursor: pointer;
+        }
+
+        .webny-gallery-fwd {
+          width: 10%;
+        }
+
+        .webny-gallery-fwd:before,
+        .webny-gallery-back:before {
+          font-family: 'icomoon';
+          speak: none;
+          font-style: normal;
+          font-weight: normal;
+          font-variant: normal;
+          text-transform: none;
+          display: block;
+          text-align: center;
+          cursor: pointer;
+          color: #128ec3;
+          // INLINE BLOCK - https://davidwalsh.name/remove-whitespace-inline-block
+          font-size: 14px;
+        }
+        .webny-gallery-back:before {
+        }
+
+        .webny-gallery-text {
+          width: 80%;
+          padding: 20px 0;
+          display: inline-block;
+          vertical-align: middle;
+          font-size: 16px;
+          line-height: 18px;
+        }
+
+        // LOAD INIT OF DESCRIPTIONS
+        .gallery-desc-entry{
+          display: none;
+        }
+
+        .galdescactive.gallery-desc-entry:nth-child(1){
+          display: block;
+        }
+
+        // DISPLAY BLOCK FOR ACTIVE GAL DESCRIPTION
+        .gallery-desc-entry.galdescactive {
+          display: block;
+        }
+
+      } // END MAIN DESC
+
     }
   }
 }
@@ -232,51 +255,53 @@ $gallery-frame-headline-line-height: 30px;
               //display: block;
             }
           }
+        }
 
-          .webny-gallery-desc {
+        .webny-gallery-desc {
+          margin: 0 auto;
+          border: 1px solid #d9e2e2;
+          width: 472px;
+
+          .webny-gallery-fwd,
+          .webny-gallery-back {
             margin: 0 auto;
-            border: 1px solid #d9e2e2;
+            width: 8%;
+            content: "";
+            display: inline-block;
+          }
 
-            .webny-gallery-fwd,
-            .webny-gallery-back {
-              margin: 0 auto;
-              width: 8%;
-              content: "";
-              display: inline-block;
-            }
+          .webny-gallery-fwd {
+            width: 10%;
+          }
 
-            .webny-gallery-fwd {
-              width: 10%;
-            }
+          .webny-gallery-fwd:before,
+          .webny-gallery-back:before {
+            font-family: 'icomoon';
+            speak: none;
+            font-style: normal;
+            font-weight: normal;
+            font-variant: normal;
+            text-transform: none;
+            display: block;
+            text-align: center;
+            cursor: pointer;
+            color: #128ec3;
+            // INLINE BLOCK - https://davidwalsh.name/remove-whitespace-inline-block
+            font-size: 14px;
+          }
+          .webny-gallery-back:before {
+          }
 
-            .webny-gallery-fwd:before,
-            .webny-gallery-back:before {
-              font-family: 'icomoon';
-              speak: none;
-              font-style: normal;
-              font-weight: normal;
-              font-variant: normal;
-              text-transform: none;
-              display: block;
-              text-align: center;
-              cursor: pointer;
-              color: #128ec3;
-              // INLINE BLOCK - https://davidwalsh.name/remove-whitespace-inline-block
-              font-size: 14px;
-            }
-            .webny-gallery-back:before {
-            }
-
-            .webny-gallery-text {
-              width: 80%;
-              padding: 20px 0;
-              display: inline-block;
-              vertical-align: middle;
-              font-size: 16px;
-              line-height: 18px;
-            }
+          .webny-gallery-text {
+            width: 80%;
+            padding: 20px 0;
+            display: inline-block;
+            vertical-align: middle;
+            font-size: 16px;
+            line-height: 18px;
           }
         }
+
       }
     }
   }
@@ -326,55 +351,57 @@ $gallery-frame-headline-line-height: 30px;
             }
           }
           // END ENTRY
-
-          .webny-gallery-desc {
-
-            .webny-gallery-fwd,
-            .webny-gallery-back {
-              margin: 0 auto;
-              width: 9%;
-            }
-
-            .webny-gallery-fwd:before,
-            .webny-gallery-back:before {
-              font-family: 'icomoon';
-              speak: none;
-              font-style: normal;
-              font-weight: normal;
-              font-variant: normal;
-              text-transform: none;
-              display: block;
-              text-align: center;
-              cursor: pointer;
-              color: #128ec3;
-            }
-
-            .webny-gallery-back {
-              display: inline-block;
-              vertical-align: middle;
-            }
-            .webny-gallery-back:before {
-              content: "\e60d";
-            }
-
-            .webny-gallery-text {
-              width: 80%;
-              padding: 20px 0;
-              display: inline-block;
-              vertical-align: middle;
-              font-size: 16px;
-              line-height: 18px;
-            }
-
-            .webny-gallery-fwd {
-              display: inline-block;
-              vertical-align: middle;
-            }
-            .webny-gallery-fwd:before {
-              content: "\e624";
-            }
-          } // END DESC
         } // END CONTAINER-IN
+
+        .webny-gallery-desc {
+          width: 628px;
+
+          .webny-gallery-fwd,
+          .webny-gallery-back {
+            margin: 0 auto;
+            width: 9%;
+          }
+
+          .webny-gallery-fwd:before,
+          .webny-gallery-back:before {
+            font-family: 'icomoon';
+            speak: none;
+            font-style: normal;
+            font-weight: normal;
+            font-variant: normal;
+            text-transform: none;
+            display: block;
+            text-align: center;
+            cursor: pointer;
+            color: #128ec3;
+          }
+
+          .webny-gallery-back {
+            display: inline-block;
+            vertical-align: middle;
+          }
+          .webny-gallery-back:before {
+            content: "\e60d";
+          }
+
+          .webny-gallery-text {
+            width: 80%;
+            padding: 20px 0;
+            display: inline-block;
+            vertical-align: middle;
+            font-size: 16px;
+            line-height: 18px;
+          }
+
+          .webny-gallery-fwd {
+            display: inline-block;
+            vertical-align: middle;
+          }
+          .webny-gallery-fwd:before {
+            content: "\e624";
+          }
+        } // END DESC
+
       } // END CONTAINER
     } // END OF MAIN
   } // END OF GALLERY
