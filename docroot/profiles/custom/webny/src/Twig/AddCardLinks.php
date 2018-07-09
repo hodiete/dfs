@@ -19,6 +19,10 @@ class AddCardLinks extends \Twig_Extension {
             new \Twig_SimpleFunction('addCardLinks', array($this, 'addCardLinks'), array(
                 'is_safe' => array('html'),
             )),
+            new \Twig_SimpleFunction('getWYSIWYGTitle', array($this, 'getWYSIWYGTitle'), array(
+                'is_safe' => array('html'),
+            )),
+
         );
     }
 
@@ -69,6 +73,13 @@ class AddCardLinks extends \Twig_Extension {
     }
 
     /**
+     * GETS The Magic Value For WYSIWYG fields without a title
+     */
+    public static function getWYSIWYGTitle() {
+        return "Featured Highlights";
+    }
+
+    /**
      * Function addCardLinks
      */
     public function addCardLinks($nid) {
@@ -94,7 +105,7 @@ class AddCardLinks extends \Twig_Extension {
         $display_counter = 0;
 
         // DEFAULT WYSIWYG Title
-        $defaultWYSIWYGTitle = "View Highlights";
+        $defaultWYSIWYGTitle = $this->getWYSIWYGTitle();
 
         // TITLE AND URL VARS
         $title  = NULL;
