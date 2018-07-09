@@ -46,7 +46,7 @@ notifications:
 
 before_install:
   # install MySql 5.6
-  - sudo -E apt-get -yq --no-install-suggests --no-install-recommends --allow-remove-essential --allow-change-held-packages install mysql-server-5.6 mysql-client-core-5.6 mysql-client-5.6
+  - sudo -E apt-get -yq --no-install-suggests --no-install-recommends --force-yes install mysql-server-5.6 mysql-client-core-5.6 mysql-client-5.6
   # Enable aliases for non-interactive shell.
   - shopt -s expand_aliases
   - composer selfupdate
