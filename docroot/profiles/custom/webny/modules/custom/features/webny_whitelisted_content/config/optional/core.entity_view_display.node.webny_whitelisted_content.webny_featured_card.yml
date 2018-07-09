@@ -1,11 +1,13 @@
-uuid: null
+uuid: 8cbeefa3-e6cd-413c-889d-87d1e2e99cb0
 langcode: en
 status: true
 dependencies:
   config:
     - core.entity_view_mode.node.webny_featured_card
     - field.field.node.webny_whitelisted_content.body
+    - field.field.node.webny_whitelisted_content.field_webny_agency_keywords
     - field.field.node.webny_whitelisted_content.field_webny_filter_terms
+    - field.field.node.webny_whitelisted_content.field_webny_global_keywords
     - field.field.node.webny_whitelisted_content.field_webny_whitelist_agency_key
     - field.field.node.webny_whitelisted_content.field_webny_whitelist_date
     - field.field.node.webny_whitelisted_content.field_webny_whitelist_descript
@@ -14,6 +16,7 @@ dependencies:
     - field.field.node.webny_whitelisted_content.field_webny_whitelist_link_url
     - field.field.node.webny_whitelisted_content.field_webny_whitelist_meta_tags
     - field.field.node.webny_whitelisted_content.field_webny_whitelist_stitle
+    - field.field.node.webny_whitelisted_content.field_webny_whitelist_target
     - node.type.webny_whitelisted_content
   module:
     - datetime
@@ -22,7 +25,7 @@ dependencies:
     - text
     - user
 _core:
-  default_config_hash: KA5a9QHiAXnbixKbOkGmL0Q15HvLyNyPF7URLDgLNZA
+  default_config_hash: iYkEg0UEEUYk_RK949wAQvA5n-bHzAE9WBlZpj8556c
 id: node.webny_whitelisted_content.webny_featured_card
 targetEntityType: node
 bundle: webny_whitelisted_content
@@ -81,10 +84,13 @@ content:
     region: content
 hidden:
   body: true
-  field_webny_whitelist_meta_tags: true
+  field_webny_agency_keywords: true
   field_webny_filter_terms: true
+  field_webny_global_keywords: true
   field_webny_whitelist_agency_key: true
   field_webny_whitelist_global_key: true
+  field_webny_whitelist_meta_tags: true
+  field_webny_whitelist_target: true
   langcode: true
   links: true
   workbench_moderation_control: true

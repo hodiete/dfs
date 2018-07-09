@@ -15,6 +15,7 @@ dependencies:
     - field.field.node.webny_whitelisted_content.field_webny_whitelist_link_url
     - field.field.node.webny_whitelisted_content.field_webny_whitelist_meta_tags
     - field.field.node.webny_whitelisted_content.field_webny_whitelist_stitle
+    - field.field.node.webny_whitelisted_content.field_webny_whitelist_target
     - node.type.webny_whitelisted_content
   module:
     - datetime
@@ -36,14 +37,8 @@ content:
     settings: {  }
     third_party_settings: {  }
     region: content
-  field_webny_whitelist_meta_tags:
-    type: metatag_firehose
-    weight: 17
-    region: content
-    settings: {  }
-    third_party_settings: {  }
   field_webny_agency_keywords:
-    weight: 12
+    weight: 13
     settings:
       match_operator: CONTAINS
       size: 60
@@ -52,7 +47,7 @@ content:
     type: entity_reference_autocomplete
     region: content
   field_webny_filter_terms:
-    weight: 14
+    weight: 15
     settings:
       display_node_count: false
       create_new_items: false
@@ -62,7 +57,7 @@ content:
     type: options_shs
     region: content
   field_webny_global_keywords:
-    weight: 13
+    weight: 14
     settings:
       match_operator: CONTAINS
       size: 60
@@ -71,7 +66,7 @@ content:
     type: entity_reference_autocomplete
     region: content
   field_webny_whitelist_agency_key:
-    weight: 15
+    weight: 16
     settings:
       match_operator: CONTAINS
       size: 60
@@ -94,7 +89,7 @@ content:
     type: text_textarea
     region: content
   field_webny_whitelist_global_key:
-    weight: 16
+    weight: 17
     settings:
       match_operator: CONTAINS
       size: 60
@@ -103,7 +98,7 @@ content:
     type: entity_reference_autocomplete
     region: content
   field_webny_whitelist_image:
-    weight: 11
+    weight: 12
     settings:
       entity_browser: image_browser
       field_widget_display: rendered_entity
@@ -124,6 +119,12 @@ content:
     third_party_settings: {  }
     type: link_default
     region: content
+  field_webny_whitelist_meta_tags:
+    type: metatag_firehose
+    weight: 18
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   field_webny_whitelist_stitle:
     weight: 1
     settings:
@@ -131,6 +132,13 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
+    region: content
+  field_webny_whitelist_target:
+    weight: 11
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
     region: content
   langcode:
     type: language_select
@@ -156,7 +164,7 @@ content:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 121
+    weight: 20
     third_party_settings: {  }
     region: content
   sticky:
@@ -184,7 +192,9 @@ content:
     third_party_settings: {  }
     region: content
   url_redirects:
-    weight: 50
+    weight: 19
     region: content
+    settings: {  }
+    third_party_settings: {  }
 hidden:
   body: true
