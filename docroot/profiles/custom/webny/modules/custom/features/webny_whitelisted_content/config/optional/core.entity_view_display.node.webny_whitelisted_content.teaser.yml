@@ -1,3 +1,4 @@
+uuid: b4fa80bf-5b6e-49a5-b037-0c1e30189bac
 langcode: en
 status: true
 dependencies:
@@ -15,11 +16,14 @@ dependencies:
     - field.field.node.webny_whitelisted_content.field_webny_whitelist_link_url
     - field.field.node.webny_whitelisted_content.field_webny_whitelist_meta_tags
     - field.field.node.webny_whitelisted_content.field_webny_whitelist_stitle
+    - field.field.node.webny_whitelisted_content.field_webny_whitelist_target
     - node.type.webny_whitelisted_content
   module:
     - link
     - smart_trim
     - user
+_core:
+  default_config_hash: C1IJMIOi8-7ebTHGQbfNqQCrrU7bncQEqExGuVjHGfA
 id: node.webny_whitelisted_content.teaser
 targetEntityType: node
 bundle: webny_whitelisted_content
@@ -85,11 +89,12 @@ content:
     third_party_settings: {  }
 hidden:
   body: true
-  field_webny_whitelist_meta_tags: true
   field_webny_agency_keywords: true
   field_webny_global_keywords: true
   field_webny_whitelist_agency_key: true
   field_webny_whitelist_date: true
   field_webny_whitelist_global_key: true
+  field_webny_whitelist_meta_tags: true
+  field_webny_whitelist_target: true
   langcode: true
   workbench_moderation_control: true
