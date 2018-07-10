@@ -50,6 +50,8 @@
             hash = contact.toLowerCase().trim().replace(/[^a-zA-Z0-9]/g, '-');
           } else {
             hash = $(this).attr('data-toc-title').toLowerCase().trim().replace(/[^a-zA-Z0-9]/g, '-');
+            // update paragraph title if custom title is added
+            $(this).children('div').children('article').children('h2').text($(this).attr('data-toc-title'));
           }
         }
         // replacing hash for documents paragraph
@@ -103,19 +105,24 @@
           $(this).children(':first').attr('name', hash);
         }
 
-
-        if (nextSection.children(':first').text()) {
+        // check if the next section has an id attribute indicating there is a next section
+        // previously we were checking for text in the title which doesn't translate to all paragraph types 
+        if (nextSection.attr('id')) {
           if ($(nextSection).hasClass('webny_wysiwyg_pgtype')) {
             $(this).children('.next-section').children('.next-section-title').html(nextSection.children(':first').text());
           }
           else if ($(nextSection).hasClass('toc-para webny-paragraph-contact')) {
-            var nsAgency;
-            var nsContact;
-            // grab agency text to build anchor hash
-            nsAgency = $(nextSection).children().children().children().children('span').text().trim();
-            // create string that is used on generic page for contact paragraph
-            nsContact = 'Contact ' + nsAgency;
-            $(this).children('.next-section').children('.next-section-title').html(nsContact);
+            if ($(nextSection).attr('data-toc-title') == '') {
+              var nsAgency;
+              var nsContact;
+              // grab agency text to build anchor hash
+              nsAgency = $(nextSection).children().children().children().children('span').text().trim();
+              // create string that is used on generic page for contact paragraph
+              nsContact = 'Contact ' + nsAgency;
+              $(this).children('.next-section').children('.next-section-title').html(nsContact);
+            } else {
+              $(this).children('.next-section').children('.next-section-title').html($(nextSection).attr('data-toc-title'));
+            }
           }
           else if ($(nextSection).hasClass('toc-para webny-documents')) {
             // same conditional as hash creation. verify if documents has a title or not based on children in first div

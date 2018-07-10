@@ -25,19 +25,19 @@ drush:
   default_alias: '${drush.aliases.local}'
 modules:
   local:
-    enable: [dblog, devel, seckit, views_ui]
-    uninstall: [acsf, shield, big_pipe]
+    enable: [dblog, devel, views_ui]
+    uninstall: [acsf, big_pipe, seckit, shield]
   ci:
     enable: {  }
     uninstall: [acquia_connector, shield, big_pipe]
   dev:
-    enable: [acquia_connector, shield]
+    enable: [acquia_connector, seckit, shield]
     uninstall: [big_pipe]
   test:
-    enable: [acquia_connector, shield]
+    enable: [acquia_connector, seckit, shield]
     uninstall: [devel, views_ui, big_pipe]
   prod:
-    enable: [acquia_connector, shield, big_pipe]
+    enable: [acquia_connector, big_pipe, seckit, shield]
     uninstall: [devel, field_ui, views_ui]
   # Deploy will be used whenever the code update is run on ACSF.
   deploy:
