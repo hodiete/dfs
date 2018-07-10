@@ -82,19 +82,33 @@ set inner_classes = [
                                      title="{{ content.field_webny_gallery_images['#items'][index].entity.field_image.title }}" />
                             </div>
 
-                            {# DESCRIPTION SECTION #}
-                            <div class="webny-gallery-desc">
-                                <div class="webny-gallery-back"></div>
-                                <div class="webny-gallery-text">
-                                    {{ content.field_webny_gallery_image_desc[index] }}
-                                </div>
-                                <div class="webny-gallery-fwd"></div>
-                            </div>
-
                         </div>
 
                     {% endfor %}
+
                     </div>
+
+                    {# DESCRIPTION SECTION #}
+                    <div class="webny-gallery-desc">
+                        <div class="webny-gallery-back" tabindex="0"></div>
+                        <div class="webny-gallery-text">
+                            {%  for p in paragraph.field_webny_gallery_images %}
+                                {% set j = p.name %}
+
+                                {% if(j == 0) %}
+                                    {% set galdesc = 'galdescactive' %}
+                                {% else %}
+                                    {% set galdesc = '' %}
+                                {% endif %}
+
+                            <div class="{{ galdesc }} gallery-desc-entry gallery-des-{{ j + 1 }}" data-webny-pgdesc="{{ j + 1 }}">
+                                {{ content.field_webny_gallery_image_desc[j] }}
+                            </div>
+                            {% endfor %}
+                        </div>
+                        <div class="webny-gallery-fwd" tabindex="0"></div>
+                    </div>
+
                 </div>
             </div>
         </div>
