@@ -4323,6 +4323,50 @@ function webny_configuration_update_8191() {
 }
 
 /**
+ * NDD-1535
+ * DEV:VAN
+ * UPDATES TO WHITELISTED CONTENT
+ */
+
+function webny_configuration_update_8191() {
+  // REINSTALL THE WEBNY WHITELISTED CONTENT FEATURE
+  \Drupal::service('module_installer')
+    ->uninstall(['webny_whitelisted_content']);
+  \Drupal::service('module_installer')
+    ->install(['webny_whitelisted_content']);
+
+  $config_factory = \Drupal::configFactory();
+  $profile_config = \Drupal::service('webny.profile_config');
+
+  // Import new/changed configuration.
+  $config_to_update = [
+    'core.entity_view_display.node.webny_whitelisted_content.quick_links_card',
+    'core.entity_view_display.node.webny_whitelisted_content.teaser',
+    'core.entity_view_display.node.webny_whitelisted_content.webny_announcement',
+    'core.entity_view_display.node.webny_whitelisted_content.webny_featured_card',
+  ];
+
+  $profile_config->bulkImport($config_to_update);
+
+  // Clear the config cache.
+  $config_factory->reset();
+
+}
+
+/**
+ * NDD-1548
+ * INSTALLS the Security Kit contrib module
+ *
+ * DEV:Cat
+ */
+
+function webny_configuration_update_8192() {
+  // INSTALL SECKIT MODULE
+  \Drupal::service('module_installer')
+    ->install(['seckit']);
+}
+
+/**
  * Helper function to enable a Drupal module and print the result.
  *
  * @param string $module_name
