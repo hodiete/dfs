@@ -14,11 +14,13 @@
       var rand_date_prefix = '2017-01-01T';
 
       // Move end date into start date fieldset.
+      /*
       $(start_fieldset).closest('fieldset').find('legend span').text('DATE');
       $(end_time_value).closest('fieldset').hide();
       $(end_value_fields + ' ' + end_time_value).prependTo(end_value_fields);
       $(date_to_divider).prependTo(end_value_fields);
       $(end_value_fields).appendTo(start_fieldset);
+      */
 
       // All day toggle.
       $(all_day_checkbox).change(function () {
