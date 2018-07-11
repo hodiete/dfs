@@ -6,7 +6,7 @@
       var lastupdated_time = '#edit-field-webny-event-last-updated-0-value-time';
       var lastupdated_checkbox = '#edit-field-webny-event-upd-time-value';
 
-      $('#last-updated').prepend('<p style="padding:0 1.5em;">Ability to indicate when content was last updated (optional).</p>');
+      $('#last-updated').once().prepend('<p style="padding:0 1.5em;">Ability to indicate when content was last updated (optional).</p>');
 
       // if time isn't set, set a default of midnight to pass form validation
       if ($(lastupdated_time).val() === '' && $(lastupdated_date).val() !== '') {
