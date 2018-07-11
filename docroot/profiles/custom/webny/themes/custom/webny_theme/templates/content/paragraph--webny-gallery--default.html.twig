@@ -18,6 +18,16 @@ set inner_classes = [
 {# VARS #}
 {% set showcaseImg = '' %}
 
+{% if paragraph.field_webny_gallery_description.value is not empty and
+paragraph.field_webny_gallery_description.value is not null %}
+    {%  set descitpion_set = 1 %}
+    {%  set galdesc50 = '' %}
+{% else %}
+    {%  set descitpion_set = 0 %}
+    {%  set galdesc50 = 'galdesc50' %}
+{% endif %}
+
+
 {# START THE GALLERY #}
 <div {{ attributes.addClass(classes) }}>
     <div {{ attributes.addClass(inner_classes) }}>
@@ -31,7 +41,7 @@ set inner_classes = [
           paragraph.field_webny_gallery_description.value is not null)
         %}
         <div class="webny-gallery-meta">
-            <h2>
+            <h2 class="{{ galdesc50 }}">
 
                 {% if paragraph.field_webny_gallery_title.value is not empty and paragraph.field_webny_gallery_title.value is not null %}
                     <span class="frame-title">{{ paragraph.field_webny_gallery_title.value }}</span>
@@ -44,8 +54,7 @@ set inner_classes = [
             </h2>
 
             {# OVERALL DESCRIPTION -- BASIC HTML #}
-            {% if paragraph.field_webny_gallery_description.value is not empty and
-            paragraph.field_webny_gallery_description.value is not null %}
+            {% if descitpion_set == 1 %}
                 <div class="frame-description">
                     {{ paragraph.field_webny_gallery_description.value|raw }}
                 </div>
