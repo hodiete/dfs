@@ -1,3 +1,4 @@
+uuid: d404fd16-9e04-4c75-a38b-a751542a8c4c
 langcode: en
 status: true
 dependencies:
@@ -6,12 +7,14 @@ dependencies:
     - node.type.webny_event
   module:
     - datetime
+_core:
+  default_config_hash: eJKRlcpc8ed4WARxOs0SACDZJK-UuFUJIFNYVlcSbI8
 id: node.webny_event.field_webny_event_last_updated
 field_name: field_webny_event_last_updated
 entity_type: node
 bundle: webny_event
 label: 'Last Updated Date/Time'
-description: 'Add a last updated date and time to display in the hero.'
+description: 'Add a last updated date, check "Display Time" below to also indicate time.'
 required: false
 translatable: false
 default_value: {  }
