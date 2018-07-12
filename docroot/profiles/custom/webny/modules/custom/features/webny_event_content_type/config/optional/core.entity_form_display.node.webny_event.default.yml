@@ -1,3 +1,4 @@
+uuid: 7a0fbd44-4e99-4886-a4f5-1fded2b1ba5e
 langcode: en
 status: true
 dependencies:
@@ -80,7 +81,6 @@ third_party_settings:
       label: Location
     group_last_updated:
       children:
-        - field_webny_event_last_upd_date
         - field_webny_event_last_updated
         - field_webny_event_upd_time
       parent_name: ''
@@ -88,11 +88,13 @@ third_party_settings:
       format_type: details
       format_settings:
         label: 'Last Updated'
-        open: true
         required_fields: true
         id: last-updated
         classes: ''
+        open: false
       label: 'Last Updated'
+_core:
+  default_config_hash: 9zlLyzd1Z4hos-Ne7rTOhRMfyVOjm73L0-94ZFAxwO0
 id: node.webny_event.default
 targetEntityType: node
 bundle: webny_event
