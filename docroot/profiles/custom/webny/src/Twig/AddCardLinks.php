@@ -134,7 +134,18 @@ class AddCardLinks extends \Twig_Extension {
                                     !empty($paragraph->entity->get('field_webny_contact_title')->value)) {
                                     $title = $paragraph->entity->get('field_webny_contact_title')->value;
                                 } else {
-                                    $title = 'Contact ' . $this->getEntityTitle($paragraph, 'field_webny_contact_pargrph_info');
+
+                                    // ENSURE THE ENTITYE REFERENCE FIELD IS FILLED. IF NOT, DO NOT DISPLAY
+                                    if($paragraph->entity->get('field_webny_contact_pargrph_info')->value !== NULL &&
+                                        !empty($paragraph->entity->get('field_webny_contact_pargrph_info')->value)){
+                                        // ENABLE
+                                        $title = 'Contact ' . $this->getEntityTitle($paragraph, 'field_webny_contact_pargrph_info');
+
+                                    } else {
+                                        // DISABLE
+                                        $checkvalTOC = 0;
+                                    }
+
                                 }
 
                             }
@@ -154,9 +165,19 @@ class AddCardLinks extends \Twig_Extension {
                                     !empty($paragraph->entity->get('field_webny_documents_title')->value)) {
                                     $title = $paragraph->entity->get('field_webny_documents_title')->value;
                                 } else {
-                                    $title = $this->getEntityTitle($paragraph, 'field_webny_attached_documents');
-                                }
 
+
+                                    // ENSURE THE ENTITYE REFERENCE FIELD IS FILLED. IF NOT, DO NOT DISPLAY
+                                    if($paragraph->entity->get('field_webny_attached_documents')->value !== NULL &&
+                                        !empty($paragraph->entity->get('field_webny_attached_documents')->value)){
+                                        // ENABLE
+                                        $title = $this->getEntityTitle($paragraph, 'field_webny_attached_documents');
+
+                                    } else {
+                                        // DISABLE
+                                        $checkvalTOC = 0;
+                                    }
+                                }
                             }
 
                             break;
