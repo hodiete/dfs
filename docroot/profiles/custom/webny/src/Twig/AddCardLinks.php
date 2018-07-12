@@ -136,8 +136,7 @@ class AddCardLinks extends \Twig_Extension {
                                 } else {
 
                                     // ENSURE THE ENTITYE REFERENCE FIELD IS FILLED. IF NOT, DO NOT DISPLAY
-                                    if($paragraph->entity->get('field_webny_contact_pargrph_info')->value !== NULL &&
-                                        !empty($paragraph->entity->get('field_webny_contact_pargrph_info')->value)){
+                                    if(isset($paragraph->entity->field_webny_contact_pargrph_info->entity)){
                                         // ENABLE
                                         $title = 'Contact ' . $this->getEntityTitle($paragraph, 'field_webny_contact_pargrph_info');
 
@@ -166,10 +165,8 @@ class AddCardLinks extends \Twig_Extension {
                                     $title = $paragraph->entity->get('field_webny_documents_title')->value;
                                 } else {
 
-
                                     // ENSURE THE ENTITYE REFERENCE FIELD IS FILLED. IF NOT, DO NOT DISPLAY
-                                    if($paragraph->entity->get('field_webny_attached_documents')->value !== NULL &&
-                                        !empty($paragraph->entity->get('field_webny_attached_documents')->value)){
+                                    if(isset($paragraph->entity->field_webny_attached_documents->entity)){
                                         // ENABLE
                                         $title = $this->getEntityTitle($paragraph, 'field_webny_attached_documents');
 
