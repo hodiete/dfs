@@ -7,6 +7,7 @@ dependencies:
     - field.field.node.webny_generic_page.field_webny_contentcat
     - field.field.node.webny_generic_page.field_webny_filter_terms
     - field.field.node.webny_generic_page.field_webny_gencp_avgtranstime
+    - field.field.node.webny_generic_page.field_webny_gencp_card_switch
     - field.field.node.webny_generic_page.field_webny_gencp_contentcat
     - field.field.node.webny_generic_page.field_webny_gencp_contentsect
     - field.field.node.webny_generic_page.field_webny_gencp_date
@@ -41,14 +42,6 @@ content:
     third_party_settings: {  }
     type: entity_reference_label
     region: content
-  field_webny_assoc_landing_page:
-    weight: 6
-    label: hidden
-    settings:
-      link: true
-    third_party_settings: {  }
-    type: entity_reference_label
-    region: content
   field_webny_contentcat:
     weight: 15
     label: hidden
@@ -58,12 +51,19 @@ content:
     type: entity_reference_label
     region: content
   field_webny_gencp_avgtranstime:
-    weight: 9
+    weight: 8
     label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+    region: content
+  field_webny_gencp_card_switch:
+    weight: 11
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
     region: content
   field_webny_gencp_contentcat:
     weight: 5
@@ -92,7 +92,7 @@ content:
     type: datetime_default
     region: content
   field_webny_gencp_herodesc:
-    weight: 8
+    weight: 7
     label: hidden
     settings:
       trim_length: 25
@@ -110,7 +110,7 @@ content:
     type: smart_trim
     region: content
   field_webny_gencp_heroimage:
-    weight: 7
+    weight: 6
     label: hidden
     settings:
       view_mode: hero_image
@@ -119,7 +119,7 @@ content:
     type: entity_reference_entity_view
     region: content
   field_webny_gencp_howtoapply:
-    weight: 10
+    weight: 9
     label: hidden
     settings:
       trim_length: 80
@@ -139,7 +139,7 @@ content:
     type: entity_reference_label
     region: content
   field_webny_gencp_navtoggle:
-    weight: 11
+    weight: 10
     label: hidden
     settings: {  }
     third_party_settings: {  }
@@ -171,6 +171,7 @@ content:
     settings: {  }
     third_party_settings: {  }
 hidden:
+  field_webny_assoc_landing_page: true
   field_webny_filter_terms: true
   field_webny_gencp_metatags: true
   field_webny_generic_short_title: true

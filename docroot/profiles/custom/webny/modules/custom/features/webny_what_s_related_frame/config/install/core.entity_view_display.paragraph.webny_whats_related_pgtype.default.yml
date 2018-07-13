@@ -2,6 +2,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.paragraph.webny_whats_related_pgtype.field_webny_whats_related_card
     - field.field.paragraph.webny_whats_related_pgtype.field_webny_whats_related_links
     - field.field.paragraph.webny_whats_related_pgtype.field_webny_whats_related_title
     - field.field.paragraph.webny_whats_related_pgtype.field_webny_whats_related_toc
@@ -14,6 +15,13 @@ targetEntityType: paragraph
 bundle: webny_whats_related_pgtype
 mode: default
 content:
+  field_webny_whats_related_card:
+    weight: 3
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+    region: content
   field_webny_whats_related_links:
     weight: 1
     label: hidden

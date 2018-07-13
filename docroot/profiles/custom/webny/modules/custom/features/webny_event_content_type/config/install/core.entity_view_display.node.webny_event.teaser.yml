@@ -11,11 +11,13 @@ dependencies:
     - field.field.node.webny_event.field_webny_event_date_end
     - field.field.node.webny_event.field_webny_event_date_start
     - field.field.node.webny_event.field_webny_event_heroimage
+    - field.field.node.webny_event.field_webny_event_last_updated
     - field.field.node.webny_event.field_webny_event_meta_tags
     - field.field.node.webny_event.field_webny_event_navtoggle
     - field.field.node.webny_event.field_webny_event_redirect_url
     - field.field.node.webny_event.field_webny_event_short_title
     - field.field.node.webny_event.field_webny_event_summary
+    - field.field.node.webny_event.field_webny_event_upd_time
     - field.field.node.webny_event.field_webny_event_venue_name
     - field.field.node.webny_event.field_webny_filter_terms
     - field.field.node.webny_event.field_webny_global_keywords
@@ -124,11 +126,13 @@ content:
     settings: {  }
     third_party_settings: {  }
 hidden:
-  field_webny_event_meta_tags: true
   field_webny_agency_keywords: true
   field_webny_contentcat: true
   field_webny_event_contentsect: true
+  field_webny_event_last_updated: true
+  field_webny_event_meta_tags: true
   field_webny_event_navtoggle: true
+  field_webny_event_upd_time: true
   field_webny_global_keywords: true
   langcode: true
   workbench_moderation_control: true
