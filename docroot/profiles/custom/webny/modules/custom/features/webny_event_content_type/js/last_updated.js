@@ -21,7 +21,7 @@
       }
 
       // if checked, toggle the display of the time textbox
-      $(lastupdated_checkbox).change(function () {
+      $(lastupdated_checkbox).once().change(function () {
         $(lastupdated_time).toggle();
       });
 
