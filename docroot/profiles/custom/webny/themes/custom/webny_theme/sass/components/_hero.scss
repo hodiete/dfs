@@ -256,7 +256,7 @@ $hero-event-bkgd-transparent-black: $bkgd-black-50 !default;
     }
 
     .hero-keywords {
-      margin-left: 40px;
+      margin-left: 60px;
       padding-bottom: 10px;
     }
   }
@@ -904,17 +904,17 @@ $hero-event-bkgd-transparent-black: $bkgd-black-50 !default;
         position: absolute;
         top: 0;
         right: 0;
-        padding: 20px 50px 15px;
+        padding: 28px 50px 15px;
         margin-top: 0;
         height: 427px;
-        min-width: 150px;
+        min-width: 255px;
 
         .day-month-wrapper {
           margin-left: 0!important;
 
         }
 
-        @include event-date
+        @include event-date;
 
         .month {
           color: $hero-keyword-text-color;
@@ -941,6 +941,19 @@ $hero-event-bkgd-transparent-black: $bkgd-black-50 !default;
         .venue-name div {
           color: $hero-keyword-text-color;
         }
+
+        .last-updated-wrapper::before {
+          color: $color-accent-primary;
+        }
+
+        .last-updated-wrapper > .last-updated-label {
+          color: #fff;
+        }
+
+        .last-updated-wrapper > .last-updated {
+          color: #fff;
+        }
+
       }
 
     }
