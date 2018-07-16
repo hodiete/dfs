@@ -27,6 +27,7 @@ function webny_event_content_type_preprocess_node(&$variables) {
     // Raw values to be formatted in Twig.
     $variables['start_date'] = $variables['node']->field_webny_event_date_start->value . 'Z';
     $variables['end_date'] = $variables['node']->field_webny_event_date_end->value . 'Z';
+    $variables['last_updated'] = $variables['node']->field_webny_event_last_updated->value . 'Z';
 
     $variables['time_zone'] = date('T', strtotime($variables['start_date']));
 

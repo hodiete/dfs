@@ -19,6 +19,10 @@ class AddCardLinks extends \Twig_Extension {
             new \Twig_SimpleFunction('addCardLinks', array($this, 'addCardLinks'), array(
                 'is_safe' => array('html'),
             )),
+            new \Twig_SimpleFunction('getWYSIWYGTitle', array($this, 'getWYSIWYGTitle'), array(
+                'is_safe' => array('html'),
+            )),
+
         );
     }
 
@@ -69,6 +73,13 @@ class AddCardLinks extends \Twig_Extension {
     }
 
     /**
+     * GETS The Magic Value For WYSIWYG fields without a title
+     */
+    public static function getWYSIWYGTitle() {
+        return "Featured Highlights";
+    }
+
+    /**
      * Function addCardLinks
      */
     public function addCardLinks($nid) {
@@ -77,20 +88,24 @@ class AddCardLinks extends \Twig_Extension {
         $gpt = $this->getGenericParagraphTypes();
 
         // SET NODE AND PARAGRAPH DATA
-        $this_paragraph = null;
-        $code_block = null;
+        $this_paragraph = NULL;
+        $code_block = NULL;
         $node_storage = \Drupal::entityTypeManager()->getStorage('node');
         $node = $node_storage->load($nid);
         $aliaspath = \Drupal::service('path.alias_manager')->getAliasByPath('/node/'.$nid);
 
-                // CONTENT TYPE ID
+        // CONTENT TYPE ID
         $ct = $node->bundle();
 
         // VARIABLE VALUE OF THE CHECKBOX
-        $checkval = null;
+        $checkval = NULL;
+        $checkvalTOC = NULL;
 
         // THIS WILL BE USED TO DETERMINE TOP THREE
         $display_counter = 0;
+
+        // DEFAULT WYSIWYG Title
+        $defaultWYSIWYGTitle = $this->getWYSIWYGTitle();
 
         // TITLE AND URL VARS
         $title  = NULL;
@@ -107,64 +122,103 @@ class AddCardLinks extends \Twig_Extension {
                     // GET THE TYPE OF ENTITY
                     switch ($paragraph->entity->getType()) {
                         case 'webny_paragraph_contact':
-                            $checkval = $paragraph->entity->field_webny_contact_card_link->value;
 
-                            /*
-                             * // LOGIC TO BE USED FOR NDD-1499
-                             *
-                             * if($paragraph->entity->get('name_of_new_field')->value !== NULL &&
-                             *    !empty($paragraph->entity->get('name_of_new_field')->value)){
-                             *      $title = 'Contact '.$paragraph->entity->get('name_of_new_field')->value
-                             * } else {
-                             *      $title = 'Contact ' . $this->getEntityTitle($paragraph, 'field_webny_contact_pargrph_info');
-                             * }
-                             * */
+                            $checkvalTOC = $paragraph->entity->field_webny_contact_add_sect_toc->value;
 
-                            // DETERMINE WHICH TITLE TO USE FOR CONTACT
-                            $title = 'Contact ' . $this->getEntityTitle($paragraph, 'field_webny_contact_pargrph_info');
+                            if($checkvalTOC == 1) {
+
+                                $checkval = $paragraph->entity->field_webny_contact_card_link->value;
+
+                                // DETERMINE WHICH CONTACT TITLE TO USE
+                                if ($paragraph->entity->get('field_webny_contact_title')->value !== NULL &&
+                                    !empty($paragraph->entity->get('field_webny_contact_title')->value)) {
+                                    $title = $paragraph->entity->get('field_webny_contact_title')->value;
+                                } else {
+
+                                    // ENSURE THE ENTITYE REFERENCE FIELD IS FILLED. IF NOT, DO NOT DISPLAY
+                                    if(isset($paragraph->entity->field_webny_contact_pargrph_info->entity)){
+                                        // ENABLE
+                                        $title = 'Contact ' . $this->getEntityTitle($paragraph, 'field_webny_contact_pargrph_info');
+
+                                    } else {
+                                        // DISABLE
+                                        $checkvalTOC = 0;
+                                    }
+
+                                }
+
+                            }
+
                             break;
 
                         case 'webny_documents':
-                            $checkval = $paragraph->entity->field_webny_doc_card_link->value;
 
-                            // DETERMINE WHICH TITLE TO USE FOR DOCUMENTS
-                            if($paragraph->entity->get('field_webny_documents_title')->value !== NULL &&
-                                !empty($paragraph->entity->get('field_webny_documents_title')->value)){
-                                $title = $paragraph->entity->get('field_webny_documents_title')->value;
-                            } else {
-                                $title = $this->getEntityTitle($paragraph, 'field_webny_attached_documents');
+                            $checkvalTOC = $paragraph->entity->field_webny_doc_add_frame_to_toc->value;
+
+                            if($checkvalTOC == 1) {
+
+                                $checkval = $paragraph->entity->field_webny_doc_card_link->value;
+
+                                // DETERMINE WHICH TITLE TO USE FOR DOCUMENTS
+                                if ($paragraph->entity->get('field_webny_documents_title')->value !== NULL &&
+                                    !empty($paragraph->entity->get('field_webny_documents_title')->value)) {
+                                    $title = $paragraph->entity->get('field_webny_documents_title')->value;
+                                } else {
+
+                                    // ENSURE THE ENTITYE REFERENCE FIELD IS FILLED. IF NOT, DO NOT DISPLAY
+                                    if(isset($paragraph->entity->field_webny_attached_documents->entity)){
+                                        // ENABLE
+                                        $title = $this->getEntityTitle($paragraph, 'field_webny_attached_documents');
+
+                                    } else {
+                                        // DISABLE
+                                        $checkvalTOC = 0;
+                                    }
+                                }
                             }
 
                             break;
 
                         case 'webny_whats_related_pgtype':
-                            $checkval = $paragraph->entity->field_webny_whats_related_card->value;
 
-                            // DETERMINE WHICH TITLE TO USE FOR WHAT'S RELATED
-                            if($paragraph->entity->get('field_webny_whats_related_title')->value !== NULL &&
-                                !empty($paragraph->entity->get('field_webny_whats_related_title')->value)){
-                                $title = $paragraph->entity->get('field_webny_whats_related_title')->value;
-                            } else {
-                                $title = $this->getEntityTitle($paragraph, 'field_webny_whats_related_title');
+                            $checkvalTOC = $paragraph->entity->field_webny_whats_related_toc->value;
+
+                            if($checkvalTOC == 1) {
+
+                                $checkval = $paragraph->entity->field_webny_whats_related_card->value;
+
+                                // DETERMINE WHICH TITLE TO USE FOR WHAT'S RELATED
+                                if ($paragraph->entity->get('field_webny_whats_related_title')->value !== NULL &&
+                                    !empty($paragraph->entity->get('field_webny_whats_related_title')->value)) {
+                                    $title = $paragraph->entity->get('field_webny_whats_related_title')->value;
+                                } else {
+                                    $title = $this->getEntityTitle($paragraph, 'field_webny_whats_related_title');
+                                }
                             }
 
                             break;
 
                         case 'webny_wysiwyg_pgtype':
-                            $checkval = $paragraph->entity->field_webny_wysiwyg_card_link->value;
 
-                            // DETERMINE WHICH TITLE TO USE FOR WYSIWYG
-                            if($paragraph->entity->get('field_webny_wysiwyg_title')->value !== NULL &&
-                                !empty($paragraph->entity->get('field_webny_wysiwyg_title')->value)){
-                                $title = $paragraph->entity->get('field_webny_wysiwyg_title')->value;
-                            } else {
-                                $title = $this->getEntityTitle($paragraph, 'field_webny_wysiwyg_title');
+                            $checkvalTOC = $paragraph->entity->field_webny_wysiwyg_toc->value;
+
+                            if($checkvalTOC == 1) {
+
+                                $checkval = $paragraph->entity->field_webny_wysiwyg_card_link->value;
+
+                                // DETERMINE WHICH TITLE TO USE FOR WYSIWYG
+                                if ($paragraph->entity->get('field_webny_wysiwyg_title')->value !== NULL &&
+                                    !empty($paragraph->entity->get('field_webny_wysiwyg_title')->value)) {
+                                    $title = $paragraph->entity->get('field_webny_wysiwyg_title')->value;
+                                } else {
+                                    $title = $defaultWYSIWYGTitle;
+                                }
                             }
 
                             break;
                     };
 
-                    if ($checkval === 'yes') {
+                    if ($checkval === 'yes' && $checkvalTOC == 1) {
 
                         $display_counter++;
                         $addedClass = '';

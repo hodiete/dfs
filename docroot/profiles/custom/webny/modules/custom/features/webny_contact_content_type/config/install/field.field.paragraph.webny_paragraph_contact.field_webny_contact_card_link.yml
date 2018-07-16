@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_webny_contact_card_link
+    - paragraphs.paragraphs_type.webny_paragraph_contact
+  module:
+    - options
+id: paragraph.webny_paragraph_contact.field_webny_contact_card_link
+field_name: field_webny_contact_card_link
+entity_type: paragraph
+bundle: webny_paragraph_contact
+label: 'Add as a Card Link'
+description: 'Use this content on Landing Page cards.'
+required: false
+translatable: false
+default_value:
+  -
+    value: 'yes'
+default_value_callback: ''
+settings: {  }
+field_type: list_string
