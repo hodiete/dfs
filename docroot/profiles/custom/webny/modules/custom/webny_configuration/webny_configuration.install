@@ -4438,6 +4438,23 @@ function webny_configuration_update_8195() {
 }
 
 /**
+ * NDD-1546
+ * UNINSTALLS webny_demo_content modules and views
+ *
+ * DEV:Cat
+ */
+
+function webny_configuration_update_8196() {
+// UNINSTALL webny_demo_content MODULE
+    \Drupal::service('module_installer')
+        ->uninstall(['webny_demo_content']);
+    \Drupal::service('module_installer')
+        ->uninstall(['webny_demo_content_admin']);
+    \Drupal::service('module_installer')
+        ->uninstall(['webny_demo_content_view']);
+}
+
+/**
  * Helper function to enable a Drupal module and print the result.
  *
  * @param string $module_name
