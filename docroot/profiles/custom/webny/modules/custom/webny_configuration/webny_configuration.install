@@ -4445,7 +4445,9 @@ function webny_configuration_update_8195() {
  */
 
 function webny_configuration_update_8196() {
-// UNINSTALL webny_demo_content MODULE
+// UNINSTALL default_content and webny_demo_content MODULES
+    \Drupal::service('module_installer')
+        ->uninstall(['default_content']);
     \Drupal::service('module_installer')
         ->uninstall(['webny_demo_content']);
     \Drupal::service('module_installer')
