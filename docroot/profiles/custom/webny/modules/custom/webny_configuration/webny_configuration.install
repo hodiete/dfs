@@ -4446,14 +4446,14 @@ function webny_configuration_update_8195() {
 
 function webny_configuration_update_8196() {
 // UNINSTALL default_content and webny_demo_content MODULES
-    \Drupal::service('module_installer')
-        ->uninstall(['default_content']);
-    \Drupal::service('module_installer')
-        ->uninstall(['webny_demo_content']);
-    \Drupal::service('module_installer')
-        ->uninstall(['webny_demo_content_admin']);
-    \Drupal::service('module_installer')
-        ->uninstall(['webny_demo_content_view']);
+  \Drupal::service('module_installer')
+    ->uninstall(['default_content']);
+  \Drupal::service('module_installer')
+    ->uninstall(['webny_demo_content']);
+  \Drupal::service('module_installer')
+    ->uninstall(['webny_demo_content_admin']);
+  \Drupal::service('module_installer')
+    ->uninstall(['webny_demo_content_view']);
 }
 
 /**
