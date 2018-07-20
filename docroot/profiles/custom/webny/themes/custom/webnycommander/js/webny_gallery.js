@@ -99,16 +99,51 @@ var gallery_backend = {
     var ori_loc = null;
 
     var fI = gallery_backend.finalIndex;
+    var fIp = null;
     var sI = gallery_backend.startIndex;
     var gS = gallery_backend.gallerySize;
-
+    var new_spot = null;
+    var old_spot = null;
 
     console.log('Size:  ' + gallery_backend.gallerySize);
     console.log('Start: ' + sI);
     console.log('Final: ' + fI);
 
+    // LAST ITEM
+    if(parseInt(gallery_backend.gallerySize) === parseInt(fI + 1)) {
 
-    // MAKE THE MOVE
+      console.log ('...LAST...');
+      fIp = fI + 1;
+      new_spot = gallery_backend.gallery_description_handle + ':nth-child('+ fI +')';
+
+
+      $(ori_loc).insertAfter(new_des);
+
+    } else { // NOT LAST
+
+      // FIRST IN LIST
+      if(fI === 0){
+
+        console.log('...FIRST...');
+
+      } else { // ITEM NO FIRST OR LAST
+
+        console.log('...MIDDLE...');
+
+      } // END ELSE
+
+    } // END ELSE
+
+
+
+
+
+
+
+
+
+
+
     if(parseInt(fI) === parseInt(gS)){
 
       // GET DESCRIPTIONS
