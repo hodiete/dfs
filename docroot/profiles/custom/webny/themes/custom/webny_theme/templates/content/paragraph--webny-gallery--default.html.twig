@@ -31,19 +31,30 @@ set inner_classes = [
           paragraph.field_webny_gallery_description.value is not null)
         %}
         <div class="webny-gallery-meta">
-            <h2>
-                {% if paragraph.field_webny_gallery_title.value is not empty and paragraph.field_webny_gallery_title.value is not null %}
-                    <span class="frame-title">{{ paragraph.field_webny_gallery_title.value }}</span>
-                {% endif %}
 
-                {% if paragraph.field_webny_gallery_headline.value is not empty and paragraph.field_webny_gallery_headline.value is not null %}
-                    <span class="frame-headline">{{ paragraph.field_webny_gallery_headline.value }}</span>
-                {% endif %}
-            </h2>
+            {% if (paragraph.field_webny_gallery_title.value is not empty and paragraph.field_webny_gallery_title.value is not null) or
+                  (paragraph.field_webny_gallery_headline.value is not empty and paragraph.field_webny_gallery_headline.value is not null)
+            %}
 
-            <div class="frame-description">
-                {{ paragraph.field_webny_gallery_description.value|raw }}
-            </div>
+                <h2>
+                    {% if paragraph.field_webny_gallery_title.value is not empty and paragraph.field_webny_gallery_title.value is not null %}
+                        <span class="frame-title">{{ paragraph.field_webny_gallery_title.value }}</span>
+                    {% endif %}
+
+                    {% if paragraph.field_webny_gallery_headline.value is not empty and paragraph.field_webny_gallery_headline.value is not null %}
+                        <span class="frame-headline">{{ paragraph.field_webny_gallery_headline.value }}</span>
+                    {% endif %}
+                </h2>
+
+            {% endif %}
+
+            {# OVERALL DESCRIPTION -- BASIC HTML #}
+            {% if paragraph.field_webny_gallery_description.value is not empty and
+            paragraph.field_webny_gallery_description.value is not null %}
+                <div class="frame-description">
+                    {{ paragraph.field_webny_gallery_description.value|raw }}
+                </div>
+            {% endif %}
         </div>
         {% endif %}
 
