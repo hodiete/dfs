@@ -135,4 +135,35 @@
     }
   }
 
+  .last-updated-wrapper {
+    border-top: 1px solid $color-mono-mid;
+    margin-top: 15px;
+    padding-top: 15px;
+
+    .last-updated-label {
+      color: #000;
+      font-size: 13px;
+      line-height: 16px;
+      float: left;
+      font-style: italic;
+    }
+
+    @include icon(before, refresh);
+
+    &::before {
+      color: $color-secondary;
+      float: left;
+      font-size: 13px;
+      vertical-align: top;
+      width: 23px;
+    }
+
+    .last-updated {
+      color: #000;
+      font-size: 13px;
+      line-height: 16px;
+      font-style: italic;
+    }
+  }
+
 }

@@ -114,6 +114,7 @@
     border-top: 1px solid $color-mono-mid;
     margin-top: 15px;
     padding-top: 15px;
+    height: 60px;
 
     @include icon(before, fa-pin);
 
@@ -132,5 +133,37 @@
     font-family: $base-font;
     font-size: 13px;
     line-height: 16px;
+    margin-left: 23px;
+  }
+
+  .last-updated-wrapper {
+    border-top: 1px solid $color-mono-mid;
+    margin-top: 15px;
+    padding-top: 15px;
+
+    .last-updated-label {
+      color: #fff;
+      font-size: 13px;
+      line-height: 16px;
+      float: left;
+      font-style: italic;
+    }
+
+    @include icon(before, refresh);
+
+    &::before {
+      color: $color-accent-primary;
+      float: left;
+      font-size: 13px;
+      vertical-align: top;
+      width: 23px;
+    }
+
+    .last-updated {
+      color: #fff;
+      font-size: 13px;
+      line-height: 16px;
+      font-style: italic;
+    }
   }
 }
