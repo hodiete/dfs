@@ -95,11 +95,7 @@ var gallery_backend = {
   reorder: function() {
 
     // VARS
-    var new_des = null;
-    var ori_loc = null;
-
     var fI = gallery_backend.finalIndex;
-    var fIp = null;
     var sI = gallery_backend.startIndex;
     var gS = gallery_backend.gallerySize;
     var new_spot = null;
@@ -112,58 +108,34 @@ var gallery_backend = {
     // LAST ITEM
     if(parseInt(gallery_backend.gallerySize) === parseInt(fI + 1)) {
 
-      console.log ('...LAST...');
-      fIp = fI + 1;
-      new_spot = gallery_backend.gallery_description_handle + ':nth-child('+ fI +')';
+      old_spot = gallery_backend.gallery_description_handle + ':nth-child('+ parseInt(sI+1) +')';
+      new_spot = gallery_backend.gallery_description_handle + ':nth-child('+ parseInt(fI+1) +')';
 
-
-      $(ori_loc).insertAfter(new_des);
+      $(old_spot).insertAfter(new_spot);
 
     } else { // NOT LAST
 
       // FIRST IN LIST
       if(fI === 0){
 
-        console.log('...FIRST...');
+        old_spot = gallery_backend.gallery_description_handle + ':nth-child('+ parseInt(sI+1) +')';
+        new_spot = gallery_backend.gallery_description_handle + ':nth-child(1)';
+
+        $(old_spot).insertBefore(new_spot);
 
       } else { // ITEM NO FIRST OR LAST
 
-        console.log('...MIDDLE...');
+        old_spot = gallery_backend.gallery_description_handle + ':nth-child('+ parseInt(sI+1) +')';
+        new_spot = gallery_backend.gallery_description_handle + ':nth-child('+ parseInt(fI+1) +')';
+
+        $(old_spot).insertBefore(new_spot);
 
       } // END ELSE
 
     } // END ELSE
 
-
-
-
-
-
-
-
-
-
-
-    if(parseInt(fI) === parseInt(gS)){
-
-      // GET DESCRIPTIONS
-      new_des = gallery_backend.gallery_description_handle + ':last-child()';
-      ori_loc = gallery_backend.gallery_description_handle + ':nth-child('+ sI +')';
-
-      $(ori_loc).insertAfter(new_des);
-      console.log('AFTER');
-
-
-    } else {
-
-      // GET DESCRIPTIONS
-      new_des = gallery_backend.gallery_description_handle + ':nth-child('+ fI +')';
-      ori_loc = gallery_backend.gallery_description_handle + ':nth-child('+ sI +')';
-
-      $(ori_loc).insertBefore(new_des);
-      console.log('BEFORE');
-    }
-
+    // REORDER DESCRIPTIONS
+    gallery_backend.description_reorder();
 
   },
 
