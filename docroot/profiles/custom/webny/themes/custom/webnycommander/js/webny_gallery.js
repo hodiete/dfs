@@ -98,14 +98,14 @@ var gallery_backend = {
     var new_des = null;
     var ori_loc = null;
 
-    var fI = gallery_backend.finalIndex + 1;
+    var fI = gallery_backend.finalIndex;
     var sI = gallery_backend.startIndex;
     var gS = gallery_backend.gallerySize;
 
 
-    console.log('GAL Size: ' + gallery_backend.gallerySize);
-    console.log('Original: ' + sI);
-    console.log('Final:    ' + fI);
+    console.log('Size:  ' + gallery_backend.gallerySize);
+    console.log('Start: ' + sI);
+    console.log('Final: ' + fI);
 
 
     // MAKE THE MOVE
@@ -117,8 +117,9 @@ var gallery_backend = {
 
       $(ori_loc).insertAfter(new_des);
       console.log('AFTER');
-    } else {
 
+
+    } else {
 
       // GET DESCRIPTIONS
       new_des = gallery_backend.gallery_description_handle + ':nth-child('+ fI +')';
@@ -184,7 +185,7 @@ var gallery_backend = {
       });
 
       // REORDER AFTER CLICK UP
-      $(gallery_backend.gallery_item).mousedown(function() {
+      $(gallery_backend.gallery_item, context).once('webny-gallery-run').on('mousedown', function(){
 
         // SET DRAGGING AS FALSE
         isDragging = false;
@@ -195,13 +196,13 @@ var gallery_backend = {
         // CHECK THE INDEX OF THE PHOTO
         gallery_backend.photo_number_down = parseInt($(this).index());
 
-      }).mousemove(function(){
+      }).on('mousemove', function(){
 
         // SET AS DRAGGING
         isDragging = true;
         thisIndex = $('.ui-sortable-placeholder').index();
 
-      }).mouseup(function (){
+      }).on('mouseup', function(){
 
         // DETERMINE IF DRAGGING
         wasDragging = isDragging;
@@ -227,9 +228,6 @@ var gallery_backend = {
           }, 50);
         }
       });
-
-
-
 
     },
     detach: function () {}
