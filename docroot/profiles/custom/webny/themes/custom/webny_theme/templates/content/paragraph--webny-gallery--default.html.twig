@@ -22,11 +22,6 @@ set inner_classes = [
 paragraph.field_webny_gallery_description.value is not null %}
     {%  set descitpion_set = 1 %}
     {%  set galdesc50 = '' %}
-{% else %}
-    {%  set descitpion_set = 0 %}
-    {%  set galdesc50 = 'galdesc50' %}
-{% endif %}
-
 
 {# START THE GALLERY #}
 <div {{ attributes.addClass(classes) }}>
@@ -41,8 +36,7 @@ paragraph.field_webny_gallery_description.value is not null %}
           paragraph.field_webny_gallery_description.value is not null)
         %}
         <div class="webny-gallery-meta">
-            <h2 class="{{ galdesc50 }}">
-
+            <h2>
                 {% if paragraph.field_webny_gallery_title.value is not empty and paragraph.field_webny_gallery_title.value is not null %}
                     <span class="frame-title">{{ paragraph.field_webny_gallery_title.value }}</span>
                 {% endif %}
@@ -50,21 +44,13 @@ paragraph.field_webny_gallery_description.value is not null %}
                 {% if paragraph.field_webny_gallery_headline.value is not empty and paragraph.field_webny_gallery_headline.value is not null %}
                     <span class="frame-headline">{{ paragraph.field_webny_gallery_headline.value }}</span>
                 {% endif %}
-
             </h2>
 
-            {# OVERALL DESCRIPTION -- BASIC HTML #}
-            {% if descitpion_set == 1 %}
-                <div class="frame-description">
-                    {{ paragraph.field_webny_gallery_description.value|raw }}
-                </div>
-            {% endif %}
-
+            <div class="frame-description">
+                {{ paragraph.field_webny_gallery_description.value|raw }}
+            </div>
         </div>
-
         {% endif %}
-
-
 
         {# GALLERY SECTION HTML #}
         <div class="webny-gallery">
