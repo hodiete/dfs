@@ -10,6 +10,7 @@ $ = jQuery;
 
 var gallery_backend = {
 
+  Drupal: null,
   order: '',
   gallery_item: '.field--name-field-webny-gallery-images .entities-list .item-container',
   gallery_order: '.field--name-field-webny-gallery-images .gallery-img-order',
@@ -121,6 +122,9 @@ var gallery_backend = {
         old_spot = gallery_backend.gallery_description_handle + ':nth-child('+ parseInt(sI+1) +')';
         new_spot = gallery_backend.gallery_description_handle + ':nth-child(1)';
 
+        //gallery_backend.Drupal.tableDrag.swap(parseInt(sI+1),parseInt(fI+1));
+        //gallery_backend.Drupal.tableDrag.prototype.updateFields();
+
         $(old_spot).insertBefore(new_spot);
 
       } else { // ITEM NO FIRST OR LAST
@@ -171,7 +175,7 @@ var gallery_backend = {
       var isDragging = false;
       var wasDragging = false;
       var thisIndex = false;
-
+      gallery_backend.Drupal = Drupal;
 
       // ORDER THE GALLERY PROPERLY
       gallery_backend.photo_order();
@@ -232,6 +236,12 @@ var gallery_backend = {
           setTimeout(function () {
             gallery_backend.photo_reorder();
             gallery_backend.reorder();
+
+
+            // GET TABLE AND RESTRIPE
+            Drupal.tableDrag['table.field-multiple-table'].restripeTable();
+
+
           }, 50);
         }
       });
