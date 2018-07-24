@@ -37,8 +37,8 @@ modules:
     enable: [acquia_connector, seckit, shield]
     uninstall: [devel, views_ui, big_pipe]
   prod:
-    enable: [acquia_connector, big_pipe, seckit, shield]
-    uninstall: [devel, field_ui, views_ui]
+    enable: [acquia_connector, big_pipe, seckit]
+    uninstall: [devel, field_ui, shield, views_ui]
   # Deploy will be used whenever the code update is run on ACSF.
   deploy:
     enable: [acquia_connector, shield]
