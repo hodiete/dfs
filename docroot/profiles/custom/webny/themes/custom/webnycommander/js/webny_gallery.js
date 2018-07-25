@@ -90,53 +90,76 @@ var gallery_backend = {
   },
 
   // REORDER EVERYTHING BASED ON IMAGES
-  /**
-   * todo: Make the dynamic moves for pics to descriptions
-   */
   reorder: function() {
 
     // VARS
     var fI = gallery_backend.finalIndex;
-    var sI = gallery_backend.startIndex;
+    var tI = gallery_backend.startIndex;
     var gS = gallery_backend.gallerySize;
-    var new_spot = null;
-    var old_spot = null;
+    var old_frame = null;
+    var new_frame = null;
 
-    console.log('Size:  ' + gallery_backend.gallerySize);
-    console.log('Start: ' + sI);
-    console.log('Final: ' + fI);
+    var first = true;     // FIRST TIME RUNNING THROUGH LOOP [BOOL]
+    var sx = null;        // START SPOT [INT]
+    var fx = null;        // FINAL SPOT [INT]
+    var dir = null;       // DIRECTION [STR]
+    var frame = null;     // FRAME TO GET DATA [DOM OBJ]
+    var dS = [];          // DATA STORE [ARR]
 
-    // LAST ITEM
-    if(parseInt(gallery_backend.gallerySize) === parseInt(fI + 1)) {
+    // ADJUSTMENTS
+    var tPlacement = tI + 1;
+    var fPlacement = fI + 1;
 
-      old_spot = gallery_backend.gallery_description_handle + ':nth-child('+ parseInt(sI+1) +')';
-      new_spot = gallery_backend.gallery_description_handle + ':nth-child('+ parseInt(fI+1) +')';
+    // THEY WENT LEFT
+    if(tPlacement > fPlacement){
 
-      $(old_spot).insertAfter(new_spot);
+      dir = 'left';
+      sx = fPlacement;  // FINAL SPOT
+      fx = tPlacement;  // ORIGINAL SPOT
 
-    } else { // NOT LAST
 
-      // FIRST IN LIST
-      if(fI === 0){
+    } else { // THEY WENT RIGHT
 
-        old_spot = gallery_backend.gallery_description_handle + ':nth-child('+ parseInt(sI+1) +')';
-        new_spot = gallery_backend.gallery_description_handle + ':nth-child(1)';
+      dir = 'right';
+      sx = tPlacement;  // ORIGINAL SPOT
+      fx = fPlacement;  // FINAL SPOT
 
-        //gallery_backend.Drupal.tableDrag.swap(parseInt(sI+1),parseInt(fI+1));
-        //gallery_backend.Drupal.tableDrag.prototype.updateFields();
+    }
 
-        $(old_spot).insertBefore(new_spot);
+    // GATHER DATA
+    for(var x = 1; x <= gS; x++){
+      frame = gallery_backend.gallery_description_handle + ':nth-child('+ parseInt(x) +')' + ' .cke_wysiwyg_frame';
+      dS[x] = $(frame).contents().find('body').html();
+    }
 
-      } else { // ITEM NO FIRST OR LAST
+    // WRITE DATA
+    for(z = sx; z <= fx; z++) {
 
-        old_spot = gallery_backend.gallery_description_handle + ':nth-child('+ parseInt(sI+1) +')';
-        new_spot = gallery_backend.gallery_description_handle + ':nth-child('+ parseInt(fI+1) +')';
+      // SLIDE LEFT
+      if(dir === 'left') {
 
-        $(old_spot).insertBefore(new_spot);
+        if(first === true){
+          frame = gallery_backend.gallery_description_handle + ':nth-child('+ parseInt(z) +')' + ' .cke_wysiwyg_frame';
+          $(frame).contents().find('body').html(dS[fx]);
+          first = false;
+        } else {
+          frame = gallery_backend.gallery_description_handle + ':nth-child('+ parseInt(z) +')' + ' .cke_wysiwyg_frame';
+          $(frame).contents().find('body').html(dS[parseInt(z-1)]);
+        }
+      }
 
-      } // END ELSE
+      // SLIDE RIGHT
+      if(dir === 'right') {
 
-    } // END ELSE
+        if(z === fx){
+          frame = gallery_backend.gallery_description_handle + ':nth-child('+ parseInt(z) +')' + ' .cke_wysiwyg_frame';
+          $(frame).contents().find('body').html(dS[sx]);
+        } else {
+          frame = gallery_backend.gallery_description_handle + ':nth-child('+ parseInt(z) +')' + ' .cke_wysiwyg_frame';
+          $(frame).contents().find('body').html(dS[parseInt(z+1)]);
+        }
+      }
+    }
 
     // REORDER DESCRIPTIONS
     gallery_backend.description_reorder();
@@ -239,8 +262,6 @@ var gallery_backend = {
 
 
             // GET TABLE AND RESTRIPE
-            Drupal.tableDrag['table.field-multiple-table'].restripeTable();
-
 
           }, 50);
         }
