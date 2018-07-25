@@ -96,8 +96,6 @@ var gallery_backend = {
     var fI = gallery_backend.finalIndex;
     var tI = gallery_backend.startIndex;
     var gS = gallery_backend.gallerySize;
-    var old_frame = null;
-    var new_frame = null;
 
     var first = true;     // FIRST TIME RUNNING THROUGH LOOP [BOOL]
     var sx = null;        // START SPOT [INT]
@@ -259,8 +257,7 @@ var gallery_backend = {
           setTimeout(function () {
             gallery_backend.photo_reorder();
             gallery_backend.reorder();
-
-
+            
             // GET TABLE AND RESTRIPE
 
           }, 50);
