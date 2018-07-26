@@ -4,13 +4,3 @@
  * @file
  * Install functions for Event content type.
  */
-
-use \Drupal\field\Entity\FieldConfig;
-
-/**
- * Remove event body field.
- */
-function webny_event_content_type_update_8001(&$sandbox) {
-  $field = FieldConfig::loadByName('node', 'webny_event', 'body');
-  $field->delete();
-}
