@@ -4437,6 +4437,19 @@ function webny_configuration_update_8195() {
     ->install(['acquia_purge']);
 }
 
+/** NDD-000: Remove event install file
+ *
+ * Remove event install file, clean key/value for event content type.
+ *
+ * DEV: IOJONEP
+ */
+function webny_configuration_update_8196() {
+
+    $schema_store = \Drupal::keyValue('system.schema');
+    $schema_store->delete('webny_event_content_type');
+
+}
+
 /**
  * NDD-1546
  * UNINSTALLS webny_demo_content modules and views
