@@ -174,8 +174,6 @@ class ProfileConfig {
       $this->getProfileFeatureConfigPath('image_styles') . '/optional',
       $this->getProfileFeatureConfigPath('inner_page_content_type') . '/install',
       $this->getProfileFeatureConfigPath('inner_page_content_type') . '/optional',
-      $this->getProfileFeatureConfigPath('demo_content_view') . '/install',
-      $this->getProfileFeatureConfigPath('demo_content_view') . '/optional',
       $this->getProfileFeatureConfigPath('taxonomies') . '/install',
       $this->getProfileFeatureConfigPath('taxonomies') . '/optional',
       $this->getProfileContribModulePath('yamlform') . '/' . self::CONFIG_DIR . '/install',
