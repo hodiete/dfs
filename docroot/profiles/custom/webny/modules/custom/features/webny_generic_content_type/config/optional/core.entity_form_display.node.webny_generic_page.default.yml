@@ -37,6 +37,7 @@ third_party_settings:
   field_group:
     group_webny_gencp_herofields:
       children:
+        - field_webny_assoc_landing_page
         - field_webny_gencp_heroimage
         - field_webny_gencp_date
         - field_webny_gencp_herodesc
@@ -76,8 +77,6 @@ third_party_settings:
         open: false
         required_fields: true
       label: 'Sections and Table of Contents'
-_core:
-  default_config_hash: Roix3FpTtTMcwQ1tPU9p-Z-HynwysGi6MLvKN4tKujk
 id: node.webny_generic_page.default
 targetEntityType: node
 bundle: webny_generic_page
@@ -98,6 +97,15 @@ content:
     third_party_settings: {  }
     type: entity_reference_autocomplete
     region: content
+  field_webny_assoc_landing_page:
+    type: entity_reference_autocomplete
+    weight: 7
+    region: content
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
   field_webny_contentcat:
     weight: 6
     settings:
@@ -142,7 +150,7 @@ content:
     region: content
   field_webny_gencp_contentsect:
     type: entity_reference_paragraphs
-    weight: 10
+    weight: 11
     settings:
       title: Paragraph
       title_plural: Paragraphs
@@ -153,13 +161,13 @@ content:
     third_party_settings: {  }
     region: content
   field_webny_gencp_date:
-    weight: 6
+    weight: 9
     settings: {  }
     third_party_settings: {  }
     type: datetime_default
     region: content
   field_webny_gencp_herodesc:
-    weight: 7
+    weight: 10
     settings:
       size: 60
       placeholder: ''
@@ -167,7 +175,7 @@ content:
     type: text_textfield
     region: content
   field_webny_gencp_heroimage:
-    weight: 5
+    weight: 8
     settings:
       entity_browser: image_browser
       field_widget_display: rendered_entity
@@ -290,5 +298,4 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
-hidden:
-  field_webny_assoc_landing_page: true
+hidden: {  }
