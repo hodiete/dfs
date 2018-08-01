@@ -51,7 +51,10 @@
 
     <div class="address-wrapper">
         <div class="venue-name">{{ content.field_webny_event_venue_name }}</div>
-        <div class="event-address">{{ content.field_webny_event_address }}</div>
+        {# if last updated is not displaying, or template is full node view, display event address #}
+        {% if last_updated == 'Z' or type == 'full' %}
+            <div class="event-address">{{ content.field_webny_event_address }}</div>
+        {% endif %}
     </div>
 
     {# check if last_updated equals Z to determine if it's empty as Z is added via JS #}
