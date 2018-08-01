@@ -4437,6 +4437,63 @@ function webny_configuration_update_8195() {
     ->install(['acquia_purge']);
 }
 
+/** NDD-000: Remove event install file
+ *
+ * Remove event install file, clean key/value for event content type.
+ *
+ * DEV: IOJONEP
+ */
+function webny_configuration_update_8196()
+{
+
+    $schema_store = \Drupal::keyValue('system.schema');
+    $schema_store->delete('webny_event_content_type');
+
+}
+
+/**
+ * NDD-1546
+ * UNINSTALLS webny_demo_content modules and views
+ *
+ * DEV:Cat
+ */
+
+function webny_configuration_update_8197() {
+// UNINSTALL default_content and webny_demo_content MODULES
+  \Drupal::service('module_installer')
+    ->uninstall(['default_content']);
+  \Drupal::service('module_installer')
+    ->uninstall(['webny_demo_content']);
+  \Drupal::service('module_installer')
+    ->uninstall(['webny_demo_content_admin']);
+  \Drupal::service('module_installer')
+    ->uninstall(['webny_demo_content_view']);
+}
+
+/** NDD-1566: Regression
+ *
+ * Update generic configuration for the view and form modes of the generic content type
+ *
+ * DEV: IOJONEP
+ */
+function webny_configuration_update_8198() {
+
+    $config_factory = \Drupal::configFactory();
+    $profile_config = \Drupal::service('webny.profile_config');
+
+    // Import new/changed configuration.
+    $config_to_update = [
+        'core.entity_form_display.node.webny_generic_page.default',
+        'core.entity_view_display.node.webny_generic_page.default'
+    ];
+
+    $profile_config->bulkImport($config_to_update);
+
+    // Clear the config cache.
+    $config_factory->reset();
+
+}
+
 /**
  * Helper function to enable a Drupal module and print the result.
  *
