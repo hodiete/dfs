@@ -1,0 +1,212 @@
+// Location Content
+//
+// Location Content styling
+//
+// Markup: location_page.hbs
+//
+// Styles for the Hero and Hero Inner classes
+// are located in _hero.scss, lines 77, 129, 557, 715.
+//
+
+
+
+// ######################################################################### //
+/* MOBILE VIEW */
+
+// LOCATION HERO FIELDS
+.webny-location article.hero-layout {
+  background-color: black;
+}
+.webny-location .hero-inner {
+  padding: 35px 0 10px 20px;
+  .location-type-tax{
+    font-family: $base-font;
+    font-size: 12px;
+    font-weight: 600;
+    font-style:  normal;
+    color: #fff;
+  }
+  // Horizontal Line divider with specific size
+  .location-horizontal-line {
+    border-bottom: 1px solid #fff!important;
+    width: 30px;
+  }
+  // Counties Served and Address field
+  .location-counties-served-field,
+  .location-address-field,
+  .location-phone {
+    margin-top: 12px;
+  }
+  // Labels above Counties Served, Address, Phone
+  .location-counties-label,
+  .location-address-label,
+  span.phone-label {
+    font-family:$oswald;
+    font-weight: normal;
+    font-style: normal;
+    font-size: 14px;
+    color: $color-accent-primary;
+    text-transform: uppercase;
+  }
+  // Field content Counties Served, Address, Phone
+  .location-counties,
+  .location-address,
+  .para-phone-field a {
+    font-family: $base-font;
+    font-size: 16px;
+    font-weight: 600;
+    font-style:  normal;
+    color: #fff;
+  }
+  // Counties Served section
+  .location-counties-fieldwrapper {
+    display: inline-block;
+  }
+  .location-counties {
+    float: left;
+    margin-right: 8px;
+  }
+
+  .location-address p.address,
+  .location-counties-fieldwrapper {
+    line-height: 20px;
+  }
+
+  .location-address-field .location-address p.address span.country{
+    display: none;
+  }
+
+  .location-address-field .location-address {
+    margin-right: 40px;
+  }
+
+  // Bottom padding on phone field area - breathing room for sharebar
+  .location-phone {
+    padding-bottom: 80px;
+  }
+
+  // Line up both Phone Numbers on one line with a Vertical divider
+  .first-phone,
+  .last-phone,
+  .location-vertical-line {
+    float:left;
+  }
+  // Phone Label on top of Phone number
+  .para-phone-field a {
+    position: relative;
+    right: 10px;
+  }
+  .para-phone-field span.phone-label {
+    display: block;
+  }
+
+  // Vertical Line divider with specific size
+  .location-vertical-line {
+    border-left: 1px solid #fff!important;
+    height: 40px;
+    position: relative;
+    top: 8px;
+    left: 15px;
+    margin-right: 40px;
+  }
+}
+
+// Location Fields in the Teaser display.
+.webny-teaser {
+  .location-counties-fieldwrapper {
+    line-height: 1;
+    height: 100px;
+
+    @include breakpoint($min-desktop) {
+      height: 81px;
+    }
+  }
+
+  .location-counties {
+    display: inline;
+  }
+
+  .location-counties-label {
+    float: left;
+    margin-right: 8px;
+  }
+}
+
+
+
+// ######################################################################### //
+/* MIN TABLET VIEW */
+@media (min-width: $min-tab) {
+  .webny-location .hero-inner {
+    margin: 50px 0px 0px 40px;
+    .location-type-tax {
+      font-size: 18px;
+      margin: 0px;
+    }
+    .location-horizontal-line{
+      margin: 10px 0px 0px 0px;
+    }
+    .location-counties-served-field {
+      margin-top: 40px;
+    }
+    // Labels above Counties Served, Address, Phone
+    .location-counties-label,
+    .location-address-label,
+    span.phone-label {
+      font-size: 18px;
+      margin-bottom: 5px;
+    }
+    // Counties Served and Address field
+    .location-counties-served-field,
+    .location-address-field {
+      margin-top: 15px;
+    }
+
+    .location-phone {
+      margin-top: 25px;
+    }
+    // Field content Counties Served, Address, Phone
+    .location-counties,
+    .location-address,
+    .para-phone-field a{
+      font-size: 26px;
+    }
+    .location-address p.address,
+    .location-counties-fieldwrapper {
+      line-height: 27px;
+    }
+  }
+
+}
+
+// ######################################################################### //
+/* CUSTOM SMALL TABLET VIEW */
+
+@media (max-width: 968px) {
+  // Custom override for location hero height with image content
+  .hero-layout {
+    .hero-has-image .hero-location,
+    .hero-has-image .hero-location .hero-image,
+    .hero-location-inner .hero-has-image-content {
+      min-height: 380px;
+    }
+  }
+}
+
+// ######################################################################### //
+/* PC VIEW */
+@media (min-width: $min-pc) {
+  // Custom override for location hero height with image content
+  .webny-location {
+    .hero-layout {
+      .hero-has-image .hero-location,
+      .hero-has-image .hero-location .hero-image,
+      .hero-location-inner .hero-has-image-content {
+        min-height: 380px !important;
+      }
+    }
+  }
+  .webny-location .hero-inner {
+    margin: 50px 0px 0px 60px;
+  }
+}

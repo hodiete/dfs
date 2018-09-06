@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_webny_announcement_headlne
+    - paragraphs.paragraphs_type.webny_announcement_pgtype
+id: paragraph.webny_announcement_pgtype.field_webny_announcement_headlne
+field_name: field_webny_announcement_headlne
+entity_type: paragraph
+bundle: webny_announcement_pgtype
+label: 'Announcement Headline'
+description: 'Use this to display a headline on this announcement highlights section. '
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

@@ -1,0 +1,149 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.webny_card_paragraph_type.field_webny_card_cta_1
+    - field.field.paragraph.webny_card_paragraph_type.field_webny_card_cta_2
+    - field.field.paragraph.webny_card_paragraph_type.field_webny_card_cta_3
+    - field.field.paragraph.webny_card_paragraph_type.field_webny_card_entity_ref
+    - field.field.paragraph.webny_card_paragraph_type.field_webny_card_list_1
+    - field.field.paragraph.webny_card_paragraph_type.field_webny_card_list_2
+    - field.field.paragraph.webny_card_paragraph_type.field_webny_card_list_3
+    - field.field.paragraph.webny_card_paragraph_type.field_webny_card_pg_headline
+    - field.field.paragraph.webny_card_paragraph_type.field_webny_card_pg_title
+    - paragraphs.paragraphs_type.webny_card_paragraph_type
+  module:
+    - field_group
+    - link
+    - workbench_moderation
+third_party_settings:
+  field_group:
+    group_webny_card_options:
+      children:
+        - group_webny_card_1_options
+        - group_webny_card_2_options
+        - group_webny_card_3_options
+      parent_name: ''
+      weight: 3
+      format_type: details
+      format_settings:
+        id: ''
+        classes: ''
+        open: false
+        required_fields: true
+      label: 'Card Options'
+    group_webny_card_1_options:
+      children:
+        - field_webny_card_list_1
+        - field_webny_card_cta_1
+      parent_name: group_webny_card_options
+      weight: 6
+      format_type: details
+      format_settings:
+        id: ''
+        classes: ''
+        open: false
+        required_fields: true
+      label: 'Card #1 Options'
+    group_webny_card_2_options:
+      children:
+        - field_webny_card_list_2
+        - field_webny_card_cta_2
+      parent_name: group_webny_card_options
+      weight: 7
+      format_type: details
+      format_settings:
+        id: ''
+        classes: ''
+        open: false
+        required_fields: true
+      label: 'Card #2 Options'
+    group_webny_card_3_options:
+      children:
+        - field_webny_card_list_3
+        - field_webny_card_cta_3
+      parent_name: group_webny_card_options
+      weight: 8
+      format_type: details
+      format_settings:
+        id: ''
+        classes: ''
+        open: false
+        required_fields: true
+      label: 'Card #3 Options'
+id: paragraph.webny_card_paragraph_type.default
+targetEntityType: paragraph
+bundle: webny_card_paragraph_type
+mode: default
+content:
+  field_webny_card_cta_1:
+    type: link_default
+    weight: 8
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_webny_card_cta_2:
+    type: link_default
+    weight: 9
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_webny_card_cta_3:
+    type: link_default
+    weight: 10
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_webny_card_entity_ref:
+    weight: 2
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  field_webny_card_list_1:
+    type: options_select
+    weight: 7
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_webny_card_list_2:
+    type: options_select
+    weight: 8
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_webny_card_list_3:
+    type: options_select
+    weight: 9
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_webny_card_pg_headline:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_webny_card_pg_title:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+hidden:
+  created: true
+  status: true
+  uid: true

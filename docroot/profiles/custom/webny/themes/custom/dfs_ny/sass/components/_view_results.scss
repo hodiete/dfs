@@ -1,0 +1,478 @@
+// View Results
+//
+// Styling for the News List View, including the exposed filters, results, and pager.
+//
+// Markup: view_results.hbs
+//
+// Style guide: components.views_results
+
+// color variables
+$views-results-stroke-color: $color-mono-white !default;
+$views-results-fill-color: $color-secondary !default;
+$results-highlight-color: $color-secondary !default;
+$results-head-bkgrnd: $color-secondary !default;
+$results-head-title: $color-mono-black !default;
+$results-head-headline: $color-mono-white !default;
+$results-pager-color: $color-tertiary !default;
+//.st1 {stroke: red;}
+//.st2 {stroke:gray-lite;}
+.results-head {
+  background-color: $results-head-bkgrnd;
+  text-align: center;
+  padding: 30px 0;
+}
+
+.results-head-title {
+  font: $frame-title;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: $results-head-title;
+}
+
+.results-head-headline {
+  // larger than even the home pg headline, otherwise could use that variable
+  font: 900 2.67em $base-font;
+  color: $results-head-headline;
+  display: block;
+}
+
+
+.results-image svg {
+  background-color:$views-results-fill-color;
+}
+.results-image .st0{
+  opacity:0;
+  fill:$views-results-fill-color;
+}
+.results-image .st1{
+  fill:none;
+  stroke: $views-results-stroke-color;
+  stroke-width:2;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+  stroke-miterlimit:10;
+
+}
+
+.results-image .fallback-img {
+  max-width: 240px;
+}
+
+// if we have other results related displays, this can probably be placed in base 
+.results-total {
+  padding: 20px 0;
+
+  strong {
+    color: $results-highlight-color;
+  }
+}
+
+.results-total-number {
+  font-size: 2.3em; 
+  font-weight: 800;
+  color: $results-highlight-color;
+}
+
+// msg displayed when no results
+.results-empty {
+  text-align:center;
+}
+
+.results {
+  //color: $color-mono-white;
+  font-family: $base-font;
+  background-color: $exposedbkgrnd;
+  position: relative;
+  overflow: hidden;
+
+  .results-exposed-filters-outer {
+    padding: 0 0 0 20px;
+  }
+
+  .results-exposed-filters-title {
+    color: $color-accent-primary;
+    font-size: .9rem;
+    font-family: $oswald;
+    text-transform: uppercase;
+    padding: 1.75em 0 1em 0;
+    font-weight: bold;
+  }
+
+  .filterBodyDisplay {
+    display: block;
+  }
+  .filterBodyHidden {
+    display: none;
+  }
+
+  .filter-display {
+    position: absolute;
+    right:0; 
+    bottom: 0;
+    border:none;
+    padding: 0 20px 0 0;
+  }
+  .filterTogDisplay, .filterTogHidden {
+    position:relative;
+    display:inline-block;
+    //font-size: 38px;
+  }
+
+  form {
+    color: rgb(255, 255, 255);
+    position: relative;
+    margin: 0;
+    padding: 0;
+
+    label {
+      color: $color-mono-white;
+      font-size: 16px;
+      font-weight: normal;
+      margin: .25em 0;
+    }
+    input {
+      float: right;
+      background-color: $exposedbkgrnd;
+      border-style: solid;
+      border-width: 1px;
+      border-color: $color-mono-white;
+      color: $color-mono-white;
+      margin-bottom: 20px;
+    }
+    .button {
+      &:hover {
+        background-color: $exposedbkgrnd;
+        border-color: $color-accent-primary;
+        color: $color-accent-primary;
+      }
+    }
+
+    input[type="text"]:focus, input[type="date"]:focus {
+      color: $color-mono-black;
+    }
+
+    .form-item-field-webny-news-global-keywords-target-id input {
+      border-radius: 15px;
+    }
+    .form-item-field-webny-news-agency-keywords-target-id input {
+      border-radius: 15px;
+    }
+  }
+  .form-item {
+    //width:70%;
+  }
+
+  .results-list {
+    padding-bottom: 20px;
+    padding-top: 20px;
+    background-color: #ffffff;
+   // float: left;
+    width: 100%;
+    overflow: hidden;
+  }
+
+    .results-list-inner {
+    padding: 0 20px;
+  }
+
+  .views-row {
+    border: 1px solid $gray-lite;
+    //padding-left: 0;
+    //min-height: 240px;
+    //width:70%;
+    //overflow: auto;
+    //margin-left: 40px;
+    //margin-right: 40px;
+    //margin-bottom: 8px;
+    //margin-top: 8px;
+    margin: 8px 0px;
+    float: left;
+    width:100%;
+    position: relative;
+
+    .results-title {
+      margin: 10px 0 7px 0;
+      font-size: 19px;
+      padding: 0 10px;
+      a {
+        color: $text-blue;
+        text-decoration: none;
+      }
+    }
+
+    .results-date {
+      font-size: 12px;
+      padding: 0 10px;
+      color: $base-font-color;
+      .results-date-day {
+        font-weight: bold;
+      }
+    }
+
+    .results-image {
+      float: left;
+      margin-right: 16px;
+      max-height:240px;
+      .field-content {
+        max-height: 240px; //something isn't right in here
+      }
+      img {
+        float: left;
+        border: 0;
+      }
+    }
+
+    .views-field-body {
+      padding: 0 10px;
+    }
+
+    .results-teaser {
+      color: $base-font-color;
+      font-size: 16px;
+      padding-right: 16px;
+    }
+  }
+
+  .pager__items {
+    float: right;
+    list-style-type: none;
+    margin-left: 10px;
+    .pager__item {
+      float: left;
+      padding: 16px;
+      color: $results-pager-color;
+      font-weight: 900;
+      font-size: 13px;
+      }
+    .pager__item--next a,
+    .pager__item--previous a,
+    .pager__item--first a,
+    .pager__item--last a
+     {
+      @extend .button;
+      font-weight: normal;
+    }
+  }
+  .category{
+    padding: .7em 0 0 0;
+    font-size: 14px;
+    .category-separator{
+      display: block;
+      position: relative;
+      left: 256px;
+      width: 30px;
+      padding: .3em 0 0 0;
+      border-bottom: 1px solid #e4e4e4;
+    }
+  }
+}
+
+
+
+.results {
+  @include breakpoint($min-desktop) {
+    form.views-exposed-form {
+      @include span(3 of 12){
+        //padding-left: 15px;
+        .filterTog {
+          //display:none;
+        }
+      }
+    }
+    div.results-list {
+      @include span(9 of 12 last) {
+       // padding-right: 25px;
+         min-height: 900px;
+         .results-list-inner {
+         padding: 0 40px;
+       }
+        .views-row {
+         padding-left: 0;
+        }
+      }
+    }
+  }
+  @media (max-width:$min-tablet){
+    .results-image svg {
+      display:none;
+    }
+    .results-exposed-filters-outer{
+      padding: 0 20px 0 20px;
+    }
+    .category{
+      padding: .7em 0 0 .7em;
+      .category-separator{
+        position: relative;
+        left: 0px;
+      }
+    }
+  }
+  @media (min-width:$min-tablet) and (max-width:$min-desktop) {
+    form {
+      max-width: 100%;
+    }
+    .results-exposed-filters-outer {
+      padding: 0 20px 0 20px;
+    }
+  }
+} 
+//the display of the exposed filter area and the toggle desktop vs mobile
+@media screen and (max-width:1023px){
+  .results
+  .filterBodyHidden{
+    display: none;  
+  }
+}
+@media screen and (min-width:1024px){
+  .results .filterBodyHidden{
+    //we want it to always display on desktop
+    display:block
+  } 
+  .results .filter-display {
+    //since desktop should always have the filters, no toggle needed
+    display:none;
+  }
+}
+
+// the following class was placed to fix the issue of the footer rendering into the view results area
+.nygov-universal-footer {
+  //display: flex;
+  clear:both;
+}
+
+// override of core active throbber - avoids tiling
+.js input.form-autocomplete.ui-autocomplete-loading {
+  background-repeat: no-repeat;
+}
+
+// News Listing Filter title
+.results-exposed-filters-title {
+  font: $frame-title;
+}
+// News listing - Filter icons
+.form-radios {
+    .form-item-target-news-category {
+      position: relative;
+      padding: 0 1em 0 2.5em;
+      margin-bottom: 20px;
+
+      input[type="radio"] {
+        display: none;
+      }
+
+    label.option.active-filter-opt{
+      color: $color-accent-primary;
+    }
+
+    input[type="radio"] + label {
+      color: $color-mono-white;
+      display:inline-block;
+      margin:-1px 4px 0 0;
+      vertical-align:middle;
+      cursor:pointer;
+      &:hover {
+        color: $color-mono-white;
+        &:before {
+          color: $color-mono-white;
+          position: absolute;
+          left: 9px;
+        }
+      }
+
+      &:before {
+        position: absolute;
+        left: 9px;
+        color: #7d7d7d;
+        font-family: $icon-font;
+        content: "\e618";
+        font-size: 28px;
+        vertical-align: middle;
+        margin-right: 15px;
+      }
+    }
+
+    input:checked + label {
+      color: $color-accent-primary;
+
+      &:before {
+        position: absolute;
+        left: 9px;
+        color: $color-accent-primary;
+        font-family: $icon-font;
+        content: "\e61f";
+      }
+
+      &.option:active{
+        color: $color-accent-primary;
+      }
+    }
+
+
+    // For IE8 fallback.
+    // Mysteriously doesn't work with a "," and the above selector.
+    input[type="radio"] + label.checked {
+      &:before {
+        color: #f8a81f;
+        font-family: $icon-font;
+        content: "\e61f";
+        position: absolute;
+        left: 9px;
+      }
+      &:hover:before {
+        color: $color-mono-white;
+        content: "\e623";
+        position: absolute;
+      }
+    }
+  }
+
+  &:after {
+    display: block;
+    content: '';
+    border-bottom: 1px solid #404040;
+  }
+
+  &.action-all {
+    &:before {
+      display: block;
+      content: '';
+      border-bottom: 1px solid #404040;
+      position: absolute;
+      left: 9px;
+      padding: 0; margin: 0 0 2em;
+    }
+    &:after { display: none; }
+  }
+}
+
+// News Listing Date selectors
+.results-exposed-filters-outer {
+  input[type="date"]:focus{
+    color: #7d7d7d !important;
+  }
+
+  .js-form-type-date {
+    margin-right: 0.5em;
+    margin-bottom: 10px;
+    vertical-align: top;
+    width: 211px;
+   }
+
+  .js-form-item-field-webny-news-date-value > input,
+  .js-form-item-field-webny-news-date-value-1 > input{
+    width: 100%;
+    height: 35px;
+    background-color: transparent;
+    border: 1px solid #7d7d7d;
+    padding: 0 20px;
+    color: #7d7d7d;
+  }
+  .js-form-item-field-webny-news-date-value > label {
+    margin: 20px 0 0 0;
+  }
+
+  .js-form-item-field-webny-news-date-value-1 > input {
+    margin: 0 0 20px 0;
+    padding: 2px 20px;
+  }
+}

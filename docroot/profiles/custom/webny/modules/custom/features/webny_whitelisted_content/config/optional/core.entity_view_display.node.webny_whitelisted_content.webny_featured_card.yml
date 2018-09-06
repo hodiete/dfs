@@ -1,0 +1,96 @@
+uuid: 8cbeefa3-e6cd-413c-889d-87d1e2e99cb0
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.webny_featured_card
+    - field.field.node.webny_whitelisted_content.body
+    - field.field.node.webny_whitelisted_content.field_webny_agency_keywords
+    - field.field.node.webny_whitelisted_content.field_webny_filter_terms
+    - field.field.node.webny_whitelisted_content.field_webny_global_keywords
+    - field.field.node.webny_whitelisted_content.field_webny_whitelist_agency_key
+    - field.field.node.webny_whitelisted_content.field_webny_whitelist_date
+    - field.field.node.webny_whitelisted_content.field_webny_whitelist_descript
+    - field.field.node.webny_whitelisted_content.field_webny_whitelist_global_key
+    - field.field.node.webny_whitelisted_content.field_webny_whitelist_image
+    - field.field.node.webny_whitelisted_content.field_webny_whitelist_link_url
+    - field.field.node.webny_whitelisted_content.field_webny_whitelist_meta_tags
+    - field.field.node.webny_whitelisted_content.field_webny_whitelist_stitle
+    - field.field.node.webny_whitelisted_content.field_webny_whitelist_target
+    - node.type.webny_whitelisted_content
+  module:
+    - datetime
+    - link
+    - linked_field
+    - text
+    - user
+_core:
+  default_config_hash: iYkEg0UEEUYk_RK949wAQvA5n-bHzAE9WBlZpj8556c
+id: node.webny_whitelisted_content.webny_featured_card
+targetEntityType: node
+bundle: webny_whitelisted_content
+mode: webny_featured_card
+content:
+  field_webny_whitelist_date:
+    weight: 2
+    label: hidden
+    settings:
+      timezone_override: ''
+      date_format: 'F j, Y | g A T'
+    third_party_settings: {  }
+    type: datetime_custom
+    region: content
+  field_webny_whitelist_descript:
+    type: text_default
+    weight: 3
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_webny_whitelist_image:
+    weight: 0
+    label: hidden
+    settings:
+      view_mode: cards
+      link: false
+    third_party_settings:
+      linked_field:
+        linked: '1'
+        type: field
+        destination: field_webny_whitelist_link_url
+        advanced:
+          target: _blank
+    type: entity_reference_entity_view
+    region: content
+  field_webny_whitelist_link_url:
+    type: link
+    weight: 4
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    region: content
+  field_webny_whitelist_stitle:
+    type: string
+    weight: 1
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    region: content
+hidden:
+  body: true
+  field_webny_agency_keywords: true
+  field_webny_filter_terms: true
+  field_webny_global_keywords: true
+  field_webny_whitelist_agency_key: true
+  field_webny_whitelist_global_key: true
+  field_webny_whitelist_meta_tags: true
+  field_webny_whitelist_target: true
+  langcode: true
+  links: true
+  workbench_moderation_control: true

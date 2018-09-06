@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_webny_smframe_other
+    - paragraphs.paragraphs_type.webny_social_media_connect
+  module:
+    - link
+id: paragraph.webny_social_media_connect.field_webny_smframe_other
+field_name: field_webny_smframe_other
+entity_type: paragraph
+bundle: webny_social_media_connect
+label: Other
+description: 'If there is a Social Media outlet that you would like to use not represented above, use this field. Please name the Social Media service in the text box.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 17
+  title: 2
+field_type: link

@@ -1,0 +1,79 @@
+
+{% if displayPage != 'none' %}
+
+    {{ attach_library('webny_secondary_nav/secondary-nav-backend') }}
+
+    {# CSS STUFF FOR LAYOUT #}
+    {%   set leftSideClass  = '' %}
+    {%   set rightSideClass = '' %}
+    {%   set borderPipeHTML = '' %}
+
+    {# LOGIC FOR THE BAR SEPERATOR -- EQUAL SPACE #}
+    {% if sectionOneChoice == 'wysiwyg_one' and sectionTwoChoice != 'none_two' %}
+
+        {# SET VARIABLE TO CENTER JUSTIFIED #}
+        {% set leftSideClass  = 'secnav-equal-space' %}
+        {% set rightSideClass = 'secnav-equal-space' %}
+        {% set borderPipeHTML = '<span class="secnav-pipe"></span>' %}
+        {% set borderHrHTML = '<hr class="secnav-hr" />' %}
+
+    {% else %}
+
+        {# SET VARIABLE TO CENTER JUSTIFIED -- FIRST/SECOND SECTION #}
+        {% set leftSideClass  = 'secnav-full-space' %}
+        {% set rightSideClass = 'secnav-full-space' %}
+        {% set borderPipeHTML = '' %}
+
+    {% endif %}
+
+    {# ######################################################################################################### #}
+    {# TEMPLATE AREA #}
+
+    {# SECONDARY NAVIGATION #}
+    <nav role="navigation" aria-label="Secondary Navigation Menu" id="secondary-navigation">
+
+        {# IF THERE IS A WYSIWYG SELECTED -- DISPLAY #}
+        {% if sectionOneChoice == 'wysiwyg_one' %}
+
+            {# WYSIWYG ONE #}
+            <div class="secnav-secone {{ leftSideClass }}" aria-label="Secondary Navigation - Information Section One">
+                {{ wysiwygOneOutput() }}
+            </div>
+
+        {% endif %}
+
+        {# WILL DISPLAY BASED ON REQUIREMENTS #}
+            {{ borderPipeHTML|raw }}
+            {{ borderHrHTML|raw }}
+
+
+        {# IF THERE IS A SECOND AREA SELECTED -- DISPLAY  #}
+        {% if sectionTwoChoice != 'none_two' %}
+
+            <div class="secnav-sectwo {{ rightSideClass }}">
+
+            {% if sectionTwoChoice == 'wysiwyg_two' %}
+
+                {# WYSIWYG TWO #}
+                <div class="secondary-nav-wysiwygtwo" aria-label="Secondary Navigation - Information Section Two">
+                    {{ wysiwygTwoOutput() }}
+                </div>
+
+            {% endif %}
+
+            {% if sectionTwoChoice == 'links_two' %}
+
+                {# LINKS #}
+                <ul class="secondary-nav-links" aria-label="Secondary Navigation Menu Links">
+                    {{ secondaryNavLinks() }}
+                </ul>
+
+            {% endif %}
+
+            </div>
+
+        {% endif %}
+
+    </nav>
+
+{% endif %}

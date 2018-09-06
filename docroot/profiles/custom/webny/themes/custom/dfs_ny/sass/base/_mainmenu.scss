@@ -1,0 +1,78 @@
+// Naviation Main Menu
+// #block-mainnavigation,
+// #block-dfs-gulp-mainnavigation 
+// nav[role="navigation"] 
+nav #dfs-main-nav-menu {
+  max-width: 1920px;
+  height: 75px;
+  background-color: #09464c; // #09464c
+}
+
+.consumer-information {
+  width: 163px;
+}
+
+// #block-mainnavigation>ul {}
+ul.dfs-main-menu {
+  display: flex;
+  align-items: center;
+  padding: 26px;
+  margin: 0 0 20px 0;
+  height: 20px;
+  font-family: serif;
+  font-size: 15px;
+  font-weight: normal;
+  font-stretch: normal;
+  line-height: 1;
+  letter-spacing: normal;
+  text-align: left;
+}
+
+ul.dfs-main-menu {
+  li {
+    list-style-type: none;
+    padding: 10px 15px;
+  }
+  li a {
+    color: #ffffff;
+    vertical-align: middle;
+    text-decoration: none;
+  }
+  li a:have {
+    color: #000000;
+    text-decoration: none;
+  }
+  li.first {
+    width: 179px;
+    height: 53px;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 1.18;
+    text-align: left;
+    color: #ffffff;
+    padding-top: 20px;
+  }
+  li.portal-login {
+    width: 111px;
+    height: 18px;
+    border-radius: 60px;
+    text-align: right;
+    padding-right: 13px;
+    margin: 0 12px;
+    background: #f2a900 url('../icons/dfs/Portal.svg') bottom left no-repeat;
+    background-size: 27px 27px;
+    background-position: 6px 4px;
+  }
+  li.portal-login a {
+    font-weight: bold;
+    color: #000000;
+  }
+}
+
+div#nav-meta {
+  display: none;
+}
+
+main {
+  margin-bottom: 25px;
+}

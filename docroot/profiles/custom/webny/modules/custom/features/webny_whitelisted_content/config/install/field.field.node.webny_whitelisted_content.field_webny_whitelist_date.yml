@@ -1,0 +1,23 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_webny_whitelist_date
+    - node.type.webny_whitelisted_content
+  module:
+    - datetime
+id: node.webny_whitelisted_content.field_webny_whitelist_date
+field_name: field_webny_whitelist_date
+entity_type: node
+bundle: webny_whitelisted_content
+label: Date
+description: 'Enter the date and time of the content. The default value will be today''s date and the current time.'
+required: true
+translatable: false
+default_value:
+  -
+    default_date_type: now
+    default_date: now
+default_value_callback: ''
+settings: {  }
+field_type: datetime

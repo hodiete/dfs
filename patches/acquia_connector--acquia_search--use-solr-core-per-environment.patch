@@ -1,0 +1,44 @@
+diff --git a/acquia_search/src/PreferredSearchCoreService.php b/acquia_search/src/PreferredSearchCoreService.php
+index 98847d1..847f95a 100644
+--- a/acquia_search/src/PreferredSearchCoreService.php
++++ b/acquia_search/src/PreferredSearchCoreService.php
+@@ -186,23 +186,25 @@ class PreferredSearchCoreService {
+ 
+     $possible_core_ids = array();
+ 
+-    // In index naming, we only accept alphanumeric chars.
+-    $sites_foldername = preg_replace('@[^a-zA-Z0-9]+@', '', $this->sites_foldername);
+     $ah_env = preg_replace('@[^a-zA-Z0-9]+@', '', $this->ah_env);
+ 
+     if ($ah_env) {
+-
+-      // When there is an Acquia DB name defined, priority is to pick
+-      // WXYZ-12345.[env].[db_name], then WXYZ-12345.[env].[site_foldername].
+-      // If we're sure this is prod, then 3rd option is WXYZ-12345.
+-      if ($this->ah_db_name) {
+-        $possible_core_ids[] = $this->acquia_identifier . '.' . $ah_env . '.' . $this->ah_db_name;
+-      }
+-
+-      $possible_core_ids[] = $this->acquia_identifier . '.' . $ah_env . '.' . $sites_foldername;
+-
+-      // @TODO: Support for [id]_[env][sitename] cores?
+-
++      /**
++       * Define a pattern that works for our use case on Acquia Cloud Site Factory.
++       *
++       * We are using one Solr core per environment and these are named with the pattern,
++       * ABCD-12345.01live.default, ABCD-12345.01dev.default, etc. where ABCD-12345 is the
++       * site ID.
++       *
++       * The original logic here did not support the *.default cores and also added suggestions
++       * based on folder and database, neither of which are being used.
++       *
++       * This logic will not apply to non Acquia Cloud Site Factory sites, so we will not be
++       * able to submit a patch that would be merged.
++       *
++       * See https://www.drupal.org/project/acquia_connector/issues/2871721.
++       */
++      $possible_core_ids[] = $this->acquia_identifier . '.' . $ah_env . '.default';
+     }
+ 
+     // For production-only, we allow auto-connecting to the suffix-less core

@@ -1,0 +1,71 @@
+<?php
+
+/**
+ * @file
+ * Functions for webny_event_content_type module.
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+
+/**
+ * Implements hook_form_alter().
+ */
+function webny_event_content_type_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  if (isset($form['field_webny_event_date_start'])) {
+    $form['#validate'][] = '_webny_event_datetime_form_validate';
+    $form['#attached']['library'][] = 'webny_event_content_type/datetime_combine';
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function webny_event_content_type_preprocess_node(&$variables) {
+  $bundle = $variables['node']->getType();
+
+  if ($bundle == 'webny_event') {
+    // Raw values to be formatted in Twig.
+    $variables['start_date'] = $variables['node']->field_webny_event_date_start->value . 'Z';
+    $variables['end_date'] = $variables['node']->field_webny_event_date_end->value . 'Z';
+    $variables['last_updated'] = $variables['node']->field_webny_event_last_updated->value . 'Z';
+
+    $variables['time_zone'] = date('T', strtotime($variables['start_date']));
+
+    // Day flags.
+    $variables['all_day'] = boolval($variables['node']->field_webny_event_all_day->value);
+    $variables['multi_day'] = (date('dM', strtotime($variables['start_date'])) !== date('dM', strtotime($variables['end_date'])));
+
+    // Time flags.
+    $start_time = date('g:i', strtotime($variables['start_date']));
+    $start_time_meridiem = date('A', strtotime($variables['start_date']));
+    $end_time = date('g:i', strtotime($variables['end_date']));
+    $end_time_meridiem = date('A', strtotime($variables['end_date']));
+
+    $variables['same_time'] = ($start_time == $end_time  && $start_time_meridiem == $end_time_meridiem);
+
+    $variables['same_meridiem'] = ($start_time_meridiem == $end_time_meridiem);
+  }
+}
+
+/**
+ * Validates submission values in event form.
+ */
+function _webny_event_datetime_form_validate(array &$form, FormStateInterface $form_state) {
+  $response = $form_state->getUserInput();
+
+  if (isset($response['field_webny_event_date_start']) && is_array($response['field_webny_event_date_end'])) {
+    $start_day = strtotime($response['field_webny_event_date_start'][0]['value']['date']);
+    $end_day = strtotime($response['field_webny_event_date_end'][0]['value']['date']);
+    $start_time = strtotime($response['field_webny_event_date_start'][0]['value']['time']);
+    $end_time = strtotime($response['field_webny_event_date_end'][0]['value']['time']);
+
+    // Confirm to date is not less than from.
+    if (!($end_day >= $start_day)) {
+      $form_state->setErrorByName('field_webny_event_date_end', t('End date must be greater than or equal to from date.'));
+    }
+    // Confirm to time is not less than from.
+    if (!($end_time >= $start_time)) {
+      $form_state->setErrorByName('field_webny_event_date_end', t('End time must be greater than or equal to from time.'));
+    }
+  }
+}

@@ -1,0 +1,184 @@
+// Social Media Frame
+//
+// Social Media Frame styling
+//
+// Markup: smframe.hbs
+//
+// Style guide: components.social_media_frame
+
+// color variables
+$social-media-frame-title-color: $color-primary !default;
+$social-media-frame-headline-color: $color-mono-black !default;
+$social-media-bkgrnd-color: $color-mono-lt !default;
+$social-media-frame-link-color: black !default;
+$social-media-frame-icon-color: $color-primary !default;
+$social-media-frame-icon-hover-color: $color-secondary !default;
+
+.social-media-frame {
+  background-color: $social-media-bkgrnd-color;
+  font-size: $frame-base-font-size; 
+  line-height: $frame-base-line-height;
+  position: relative;
+  //text-align: center;
+  .smframe-inner {
+    max-width: $max-pc;
+    margin: 0 auto;
+    padding: 80px 60px;
+    position: relative;
+  }
+  h3 {
+    text-align:center;
+    line-height: 1;
+    padding: 0;
+    .frame-title {
+      font: $frame-title;
+      letter-spacing: 2px;
+      color: $social-media-frame-title-color;
+      
+      text-transform: uppercase;
+    }
+    .frame-headline {
+      font: $frame-headline;
+      color: $social-media-frame-headline-color;
+      display: block;
+      .front & {
+        //using explicit css for headline instead of variable bc of em conflict
+          font: 800 40px/1 "Proxima Nova", Arial, sans-serif; 
+        }
+     }
+   }
+} 
+
+//css from 
+.social-media-frame {
+  a::before {
+    content: '';
+    position: relative;
+    height: 20px;
+    width: 20px;
+    padding-right: 15px;
+    color: $social-media-frame-icon-color;
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  a:hover::before {
+    color: $social-media-frame-icon-hover-color;
+    text-decoration: none;
+  }
+
+  a {
+    height: 20px;
+    padding: 10px;
+    position: relative;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: $social-media-frame-link-color;
+    font-size: 14px;
+  }
+
+    a[href*="facebook"]{@include icon(before,fa-facebook);}
+
+    a[href*=".xml"]{@include icon(before, fa-rss);}
+    a[href*=".rss"]{@include icon(before, fa-rss);}
+
+    a[href*="flickr"]{@include icon(before, fa-flickr);}
+
+    a[href*="plus.google"]{@include icon(before, fa-google-plus);}
+
+    a[href*="instagram"]{@include icon(before, fa-instagram);}
+
+    a[href*="linkedin"]{@include icon(before, fa-linkedin-square);}
+
+    a[href*="pinterest"]{@include icon(before, fa-pinterest-p);}
+
+    a[href*="snapchat"]{@include icon(before, fa-snapchat-ghost);}
+
+    a[href*="soundcloud"]{@include icon(before, fa-soundcloud);}
+
+    a[href*="tumblr"]{@include icon(before, fa-tumblr);}
+
+    a[href*="twitter"]{@include icon(before, fa-twitter);}
+
+    a[href*="vimeo"]{@include icon(before, fa-vimeo-square);}
+
+    a[href*="play.google"]{@include icon(before, /*fa-google-play*/fa-elipses-h);}
+
+    a[href*="itunes"]{@include icon(before, fa-itunes);}
+
+    a[href*="youtu"]{@include icon(before, fa-youtube);}
+
+    div[class*="smframe-other"] a {@include icon(before, fa-elipses-h);}
+  .sm-frame-links {
+    //display: table-row; //IE 9 evil
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    //position: relative;
+  }
+  .smframe-link {
+    //display: table-cell; //IE 9 evil
+    //display: flex; - can't use flex, IE 10 doesn't break correctlly
+    width: 100%;
+    padding: 10px 0;
+    text-align: center;
+    //justify-content: center;
+  }
+
+}
+
+
+
+// ######################################################################### //
+/* TABLET VIEW */
+@media (min-width: $min-tablet) and (max-width: $min-desktop)   {
+  .sm-frame-links {
+    flex-direction:row;
+    .smframe-link {
+    width:45%;
+    }
+  }
+}
+
+// ######################################################################### //
+/* DESKTOP VIEW */
+@media (min-width: $min-desktop) {
+  .sm-frame-links {
+    flex-direction:row;
+    .smframe-link {
+    width:20%;
+    }
+  }
+}
+
+// ######################################################################### //
+/* WIDE VIEW  > 1280 */
+@media (min-width: $min-wide) {
+  .sm-frame-links {
+    flex-direction:row;
+    .smframe-link {
+    width:20%;
+    }
+  }
+}
+// IE 9 crap bc it doesn't like flexbox
+@media screen and (min-width:0\0) and (min-resolution: .001dpcm) {
+  .sm-frame-links {
+    position: relative;
+    float: left;
+    width: 100%;
+    .smframe-link {
+      position:relative;
+      float:left;
+    }
+  }
+  // clearing
+  .smframe-inner::after { 
+    content: "."; 
+    visibility: hidden; 
+    display: block; 
+    height: 0; 
+    clear: both;
+    }
+}

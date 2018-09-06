@@ -1,0 +1,5 @@
+<div class="reslink">
+  {% for item in items %}
+    <a title="{{ item.content['#title'] }}" aria-label="{{ item.content['#title'] }}" href="{{ item.content['#url'] }}">{{ item.content['#title'] }}</a>
+  {% endfor %}
+</div>

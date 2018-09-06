@@ -1,0 +1,11 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - workbench_moderation.moderation_state.archived
+    - workbench_moderation.moderation_state.unpublished
+id: unpublished_archive
+label: 'Archive (Abandon)'
+stateFrom: unpublished
+stateTo: archived
+weight: 6

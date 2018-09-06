@@ -1,0 +1,43 @@
+<?php
+
+/**
+ * @file
+ * Install updates for webny_solr_searches.
+ */
+
+/**
+ * Implements hook_update_n().
+ *
+ * Remove no-longer used filter blocks config.
+ */
+function webny_solr_searches_update_8001() {
+  // Displaying within view instead.
+  \Drupal::configFactory()
+    ->getEditable('block.block.exposedformwebny_searchwebny_search_page')
+    ->delete();
+  // Now rendering block instead in view hook.
+  \Drupal::configFactory()
+    ->getEditable('block.block.filterterm')
+    ->delete();
+}
+
+/**
+ * Generate taxonomy machine name for existing filter terms.
+ */
+function webny_solr_searches_update_8002() {
+  // Note: update removed in favor of implementing hook_modules_installed().
+}
+
+/**
+ * Generate taxonomy machine name for agency keywords terms.
+ */
+function webny_solr_searches_update_8003() {
+  $term_storage = \Drupal::service('entity_type.manager')
+    ->getStorage('taxonomy_term');
+  $terms = $term_storage->loadTree('webny_agency_keywords', 0, NULL, TRUE);
+
+  foreach ($terms as $term) {
+    // If term machine name is empty then create one.
+    taxonomy_machine_name_update_term($term);
+  }
+}

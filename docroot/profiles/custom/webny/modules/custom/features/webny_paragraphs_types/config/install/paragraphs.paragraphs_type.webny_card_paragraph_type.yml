@@ -1,0 +1,19 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - workbench_moderation
+third_party_settings:
+  workbench_moderation:
+    enabled: 1
+    allowed_moderation_states:
+      - archived
+      - draft
+      - needs_review
+      - published
+    default_moderation_state: draft
+id: webny_card_paragraph_type
+label: Card
+icon_uuid: null
+description: null
+behavior_plugins: {  }

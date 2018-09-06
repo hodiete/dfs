@@ -1,0 +1,183 @@
+// colors vars ///////////////
+// NY.Gov global palette per NY.Gov Web Site Style Guide
+// $primaryblue: #24387E; // primary NY.Gov blue
+// $medblue: #128EC3; // primary color
+// $ltblueaccent: #92DBE4; // accent color
+// $medblueaccent: #0386BE; // accent color
+// $dkblueaccent: #1B2A5E; // accent color
+// $dkyellowaccent: #F4A71C; // accent color
+// $ltyellowaccent: #F3DD6D; // accent color
+
+// $primarygold: #D5820D; // primary color
+// $primarygold-75: #E0A14A; // This is the hex translation of $primarygold at 75% opacity
+// $primarygold-50: #EAC086; // This is the hex translation of $primarygold at 50% opacity
+// $primarygold-25: hsla(35, 88%, 44%, 0.25); // using HSL b/c this hex doesn't exist #F4E0CR This is the hex translation of $primarygold at 25% opacity
+// $secondarygold: #DC9719; // secondary accent
+
+// color scheme architecture
+// using the colors from the ny.gov colors as starting point - these will need to be reivsed
+// * use these colors when setting up the variables at the top of partials
+$color-primary: #24387E !default;
+$color-secondary: #128EC3 !default;
+$color-tertiary: #E8EDEE !default;
+$color-accent-primary: #D5820D !default;
+$color-accent-secondary: #F5A81C !default;
+$text-blue: #007AC2 !default; // blue text links color
+$color-mono-black: #000000;
+$color-mono-dark: #62666A !default;
+$color-mono-mid: #D0D0CE !default;
+$color-mono-lt: #F6F8F8 !default;
+$color-mono-white: #ffffff;
+
+$color-alert-active: #FDC3C3 !default; // pink (taken from amber/psc color scheme for now)
+$color-alert-nonactive: $color-accent-primary !default; // color accent primary chosen based on
+
+//$color-nav-hover: rgba(36,56,126,.5) !default;
+//$color-hover-nav: $dkblueaccent !default; // default hover over background
+
+// additional colors
+$exposedbkgrnd: #242424; // bkground for exposed filters on resuts
+$call-to-action: $color-mono-lt; // background for call to action buttons, areas
+$gray-lite: #e4e4e4; //$imgborder: #e4e4e4; used on ny.gov - same as rgb(228,228,228)
+$color-icon-primary: $color-primary !default; // color used on icons such as news, blue default
+//$keywordBkColor: #7690b6; // Keywords for global taxonomy terms -- News
+
+// keep - used on forms, view_results and ...
+$lightgray: #ddd;
+$midgray: #ccc;
+$darkgray: #999;
+
+// fonts ///////////////
+$base-font: "Proxima Nova", Arial, sans-serif !default;
+$agency-name-font: "D Sari Bold", Arial, sans-serif; // used in header and footer
+$oswald: "Oswald", Arial, sans-serif !default;
+$icon-font: "icomoon"; // Icon Font
+
+$base-font-size: 18px;
+$base-line-height: 27px;
+$base-font-color: #000;
+$frame-title: bold 16px $oswald !default; // currently bold 16px oswald
+$frame-headline: bold 1.8rem $base-font; // currently 32px internal landing pages  // using ems for IE compatibility
+$frame-headline-front: 800 2.22em $base-font; //currently bold 40px proxima home page  // using ems for IE compatibility
+// to help create consistent margins between frames on landing pages - should be 80px between
+//$frame-padding-sm: 40px; // to be used on white background frames
+$frame-padding-lg: 80px; //to be used on color background frames
+//$frame-margin: 40px; //to be used on color background frames
+
+// The length unit in which to output vertical rhythm values.
+// Supported values: px, em, rem.
+$base-unit: 'em' !default;
+
+// SET BASE FONT SIZE AND LINE HEIGHT DEFAULTS FOR FRAMES
+$frame-base-font-size:    16px;  // .88rem
+$frame-base-line-height:  22px;
+$frame-base-semi-bold:    600;   // font weight value
+
+// ===============================================================
+// DEFAULT BUTTONS VARS
+$button-text-color:             $color-mono-white !default;
+$button-border-color:           $button-text-color !default;
+//$button-text-black:             $color-mono-black !default;
+$button-bkgd-color:             $color-primary !default;
+$button-bkgd-transparent:       hsla(0, 0%, 0%, 0.0);     // Default color --transparent -- for buttons
+$button-white-20:               rgba(255,255,255,.2);     // Threshold of 20% White
+$button-white-50:               rgba(255,255,255,.5);     // Threshold of 50% White
+$button-black-20:               rgba(0,0,0,.2);           // Threshold of 20% Black
+$button-black-50:               rgba(0,0,0,.5);           // Threshold of 50% Black
+$button-bkgd-hover-color:       hsla(0, 0%, 0%, 0.4);     // Default color for buttons on hover, used on nav too
+
+// Background Opacity Gradient:
+$bkgd-black-50:                 rgba(98,102,106,.75);     // Threshold of 75% Black
+
+// font with dfs_ny original - remove? ///////////////
+$opensans: 'Open Sans', sans-serif;
+
+// HERO VARS
+$hero-inner-width:    100%;
+$hero-header-width:   66%;
+
+// susy configs ///////////////
+$susy: (
+        columns: 12, // The number of columns in your grid
+        gutters: 1/4, // The size of a gutter in relation to a single column
+);
+
+// breakpoint ///////////////
+$min-wide:    1336px;
+$min-desktop: 1024px;
+$min-tablet:  768px;
+$min-mobile:  461px;
+
+$max-pc:    75em;
+$min-pc:    48em;
+$min-tab:   30em;
+$min-mob:   20em;
+
+// Icon Font Mixin ///////////////
+// For adding font icons to elements using CSS pseudo-elements
+// http://jaydenseric.com/blog/fun-with-sass-and-font-icons
+// https://webdevstudios.com/2015/01/28/mapping-icon-fonts-with-sass
+@mixin icon($position: before, $icon: false, $styles: true) {
+  @if $position == both {
+    $position: 'before, &:after';
+  }
+  // Either a :before or :after pseudo-element, or both, defaulting to :before
+  &:#{$position} {
+    @if $icon {
+      // A particular icon has been specified
+      content: "#{map-get($icons, $icon)}";
+    }
+    @if $styles {
+      // Supportive icon styles required
+      font-family: $icon-font;
+      speak: none;
+      font-style: normal;
+      font-weight: normal;
+      font-variant: normal;
+      text-transform: none;
+      line-height: 1;
+    }
+    // Include any extra rules supplied for the pseudo-element
+    @content;
+  }
+}
+
+@mixin clearfix {
+  zoom: 1;
+
+  &:before,
+  &:after {
+    content: '\0020';
+    display: block;
+    height: 0;
+    overflow: hidden;
+  }
+
+  &:after {
+    clear: both;
+  }
+}
+
+// example mixins ///////////////
+@mixin opac-color($r, $g, $b, $pertc) {
+  background: rgb($r, $g, $b);
+  background: rgba($r, $g, $b, $pertc);
+}
+
+@mixin visually-hidden() {
+  position: absolute !important;
+  clip: rect(1px, 1px, 1px, 1px);
+  overflow: hidden;
+  height: 1px;
+  width: 1px;
+  word-wrap: normal;
+}
+
+@mixin visually-hidden-off() {
+  position: static !important;
+  clip: auto;
+  overflow: auto;
+  height: auto;
+  width: auto;
+  word-wrap: normal;
+}

@@ -1,0 +1,7 @@
+name: 'Workflow Basic Configuration'
+description: "Basic configuration for Workbench Moderation. Adds 3 new Roles: Workflow author, Workflow approver, Workflow publisher. Uses default moderation states:  Draft, Needs Review, Published, Archived. Uses default transitions, deletes archived_published, edits description on 3, and adds 3 transitions. Applies permissions for Workflow author,  Workflow publisher.  Workflow approver is a role for more complex workflow."
+type: module
+core: 8.x
+dependencies:
+  - workbench_moderation
+package: WebNY

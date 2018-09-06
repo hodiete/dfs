@@ -1,0 +1,179 @@
+<?php
+
+/**
+ * @file
+ * Contains webny_global_nav.module.
+ */
+
+use Drupal\Core\Link;
+use Drupal\Component\Utility\Xss;
+use Drupal\Core\Url;
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements webny_global_nav_help()
+ */
+function webny_global_nav_help($route_name, RouteMatchInterface $route_match) {
+
+  switch ($route_name) {
+    case 'help.page.Webny_global_nav':
+      return t('Integrate Webny Global Navigation onto your Drupal site.');
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function webny_global_nav_theme() {
+  $url = Url::fromUri('internal:/');
+  $config = \Drupal::config('webny_global_nav.settings');
+  $moduleHandler = \Drupal::service('module_handler');
+  if ($moduleHandler->moduleExists('webny_unav')) {
+    $unav_config = \Drupal::config('webny_unav.settings');
+    $unav_setting = $unav_config->get('webny_unav.webny_alt_unav_auto');
+  } else {
+    $unav_setting = '0';
+  }
+
+  $header_format  = $config->get('webny_global_nav.headerformat');
+  $footer_format  = $config->get('webny_global_nav.footerformat');
+  $header_auto    = $config->get('webny_global_nav.headerauto');
+  $footer_auto    = $config->get('webny_global_nav.footerauto');
+  $header_menu    = $config->get('webny_global_nav.headermenu');
+  $footer_menu    = $config->get('webny_global_nav.footermenu');
+  $agency_logo    = $config->get('webny_global_nav.agencylogo');
+
+  // CREATE AGENCY NAME VAR FOR TWIG
+  $tagList = array(); 
+  array_push($tagList, 'br');
+  $agency_name = Xss::filter($config->get('webny_global_nav.agencyname'),$tagList);
+  $agency_name_footer = Xss::filter($config->get('webny_global_nav.agencyname'));
+
+  // CREATE AN INDEPENDENT FOOTER WITHOUT A BR TAG FILTERED -- ADDED TO FOOTER TEMPLATE VARS
+  $linked_agency_name = Link::fromTextAndUrl($agency_name, $url)->toString();
+
+  return array(
+      'webny_global_nav_header_block' => array(
+          'template' => 'webny-global-nav-header-block',
+          'variables' => array(
+              'agencyname'      => $agency_name,
+              'agencylogo'      => $agency_logo,
+              'headerformat'    => $header_format,
+              'headermenu'      => $header_menu,
+              'headerauto'      => $header_auto,
+              'unavsetting'     => $unav_setting,
+          ),
+      ),
+    'webny_global_nav_header' => array(
+      'template' => 'webny-global-nav-header',
+      'variables' => array(
+        'agencyname' => $agency_name,
+        'agencylogo' => $agency_logo,
+        'headerformat' => $header_format,
+        'headermenu' => $header_menu,
+        'headerauto' => $header_auto,
+        'unavsetting'     => $unav_setting,
+      ),
+    ),
+    'webny_global_nav_footer' => array(
+      'template' => 'webny-global-nav-footer',
+      'variables' => array(
+        'agencyname' => $agency_name_footer,
+        'footermenu' => $footer_menu,
+        'linkedagencyname' => $linked_agency_name,
+        'footerformat' => $footer_format,
+        'footerauto' => $footer_auto,
+      ),
+    ),
+    'webny_global_nav_footer_social_media' => array(
+      'template' => 'webny-global-nav-footer-social-media',
+      'variables' => array(
+        'social_media_urls' => array(),
+      ),
+    ),
+    'webny_global_nav_footer_social_media_urls' => array(
+      'variables' => array(
+        'social_media_urls' => array(),
+      ),
+    ),
+    'webny_global_nav_footer_social_media_url' => array(
+      'variables' => array(
+        'social_media_url' => array(),
+      ),
+    ),
+    'webny_global_nav_header_menu' => array(
+      'variables' => array(
+        'menu_name' => NULL,
+        'id' => NULL,
+      ),
+    ),
+    'webny_global_nav_header_menu_item' => array(
+      'variables' => array(
+        'element' => NULL,
+        'properties' => NULL,
+      ),
+    ),
+    'webny_global_nav_header_menu_item_link' => array(
+      'variables' => array(
+        'menu_item' => NULL,
+        'link_options' => NULL,
+      ),
+    ),
+    'webny_global_nav_footer_menu' => array(
+      'variables' => array(
+        'menu_name' => NULL,
+        'id' => NULL,
+      ),
+    ),
+    'webny_global_nav_footer_menu_column' => array(
+      'variables' => array(
+        'element' => NULL,
+        'properties' => NULL,
+      ),
+    ),
+    'webny_global_nav_footer_menu_item_link' => array(
+      'variables' => array(
+        'menu_item' => NULL,
+        'link_options' => NULL,
+      ),
+    ),
+  );
+}
+
+/**
+ * Function webny_global_nav_preprocess.
+ */
+function webny_global_nav_preprocess(&$variables) {
+  $variables['#attached']['library'][] = 'webny_global_nav/global-nav';
+}
+
+/**
+ * Implemtnet hook_page_bottom().
+ *
+ * Add uNav footer to the page_bottom region
+ * automatically if Drupal variable footerauto is TRUE.
+ * But don't add global nav if on an administrative page.
+ */
+function webny_global_nav_page_bottom(&$page_bottom) {
+  // Skip menu if not Auto or on administrative page.
+  $config = \Drupal::config('webny_global_nav.settings');
+  $auto = $config->get('webny_global_nav.footerauto');
+  $is_admin = \Drupal::service('router.admin_context')->isAdminRoute();
+  if ($auto == '0' || $is_admin) {
+    return;
+  }
+
+  $page_bottom['page_bottom']['webny_global_nav'] = array(
+    '#weight' => 950,
+    '#theme' => 'webny_global_nav_footer',
+  );
+}
+
+/**
+ * Implement hook_form_FORMID_alter().
+ *
+ * Add description/help text change for Link field in menu items
+ */
+function webny_global_nav_form_menu_link_content_menu_link_content_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+  $form['link']['widget'][0]['uri']['#description'] = t('Start typing the title of a piece of content to select it. You can also enter an internal path such as %add-node or an external URL such as %url. Enter %front to link to the front page. Enter %nolink to leave this menu item unlinked.', array('%front' => '<front>', '%add-node' => '/node/add', '%url' => 'http://example.com', '%nolink' => 'route:<nolink>'));;
+}

@@ -1,0 +1,27 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_webny_whitelist_agency_key
+    - node.type.webny_whitelisted_content
+    - taxonomy.vocabulary.webny_agency_keywords
+id: node.webny_whitelisted_content.field_webny_whitelist_agency_key
+field_name: field_webny_whitelist_agency_key
+entity_type: node
+bundle: webny_whitelisted_content
+label: 'Deprecated Agency Keyword'
+description: 'DO NOT USE'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      webny_agency_keywords: webny_agency_keywords
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

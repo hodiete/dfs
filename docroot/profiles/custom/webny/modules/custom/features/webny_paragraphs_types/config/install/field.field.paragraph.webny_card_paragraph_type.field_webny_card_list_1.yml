@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_webny_card_list_1
+    - paragraphs.paragraphs_type.webny_card_paragraph_type
+  module:
+    - options
+id: paragraph.webny_card_paragraph_type.field_webny_card_list_1
+field_name: field_webny_card_list_1
+entity_type: paragraph
+bundle: webny_card_paragraph_type
+label: 'Card #1 Call to Action'
+description: 'Choose the style bar for the bottom of card #1. Choosing None adds a link to the piece of content within the card with the text "Learn More" as the link. Choosing Call to Action allows for a linked button to appear with chosen custom link and text.  Choosing Share Bar provides a bar with sharing options.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.webny_whitelisted_content
+  module:
+    - text
+id: node.webny_whitelisted_content.body
+field_name: body
+entity_type: node
+bundle: webny_whitelisted_content
+label: Body
+description: 'Telephone links: To add a telephone link, select the text you want to link, click on the ''link'' button, then type ''tel:+'' before the area code and number, without dashes. For example: ''tel:+15185555785'''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: true
+field_type: text_with_summary

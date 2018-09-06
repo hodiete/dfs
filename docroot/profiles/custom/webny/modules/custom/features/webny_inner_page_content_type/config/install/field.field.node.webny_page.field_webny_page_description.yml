@@ -1,0 +1,30 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_webny_page_description
+    - node.type.webny_page
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    basic_html: basic_html
+    full_html: full_html
+    webny_enhanced_wysiwyg: '0'
+    webny_wysiwyg_frame_editor: '0'
+    restricted_html: '0'
+    rich_text: '0'
+    plain_text: '0'
+id: node.webny_page.field_webny_page_description
+field_name: field_webny_page_description
+entity_type: node
+bundle: webny_page
+label: Description/Summary
+description: 'Please enter the description or summary of the page.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

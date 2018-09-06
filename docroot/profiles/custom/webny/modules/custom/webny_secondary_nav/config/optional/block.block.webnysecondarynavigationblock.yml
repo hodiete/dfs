@@ -1,0 +1,19 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - webny_secondary_nav
+  theme:
+    - dfs_ny
+id: webnysecondarynavigationblock
+theme: dfs_ny
+region: header
+weight: 2
+provider: null
+plugin: webny_secondary_nav_block
+settings:
+  id: webny_secondary_nav_block
+  label: 'Secondary Navigation Block'
+  provider: webny_secondary_nav
+  label_display: '0'
+visibility: { }

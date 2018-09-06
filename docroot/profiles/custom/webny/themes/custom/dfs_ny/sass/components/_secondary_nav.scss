@@ -1,0 +1,243 @@
+// Secondary Navigation
+//
+// Styling for Module elements (port for distro)
+//
+// Markup: secondary_navigation.hbs
+//
+// Style guide: components.secondary_navigation
+
+
+// ########################################################################################
+// VARS
+
+// SECONDARY NAVIGATION COLORS
+$secnav-background-color:   $color-tertiary !default;
+$secnav-font-color:         #000;
+
+// MOBILE FIRST
+#secondary-navigation {
+
+  // WILL VERIFY WITH DT ON BORDER TOP - IOJONEP
+  // border-top: 3px solid #fff;
+
+  display: block;
+  width: 100%;
+  background-color: $secnav-background-color;
+  padding: 13px 0;
+  color: $secnav-font-color;
+  border-top: 4px solid #fff;
+
+  p{
+    font-size: 14px;
+    color: $secnav-font-color;
+    margin: 0;
+    text-align: center;
+  }
+
+  .secnav-hr{
+    display: block;
+    width: 90%;
+    color: #fff;
+    background-color: #fff;
+    border: 0;
+    border-top: 2px solid #fff;
+    padding: 0;
+    margin-top: 11px;
+    margin-bottom: 11px;
+  }
+
+  .secnav-pipe {
+    text-align: center;
+    display: none;
+  }
+
+  // SECTION ONE =================================
+  .secnav-secone,
+  .secnav-sectwo {
+    a {
+
+      text-decoration: underline;
+      font-size: 14px;
+
+      &:link {
+        color: $secnav-font-color;
+      }
+      &:visited {
+        color: $secnav-font-color;
+      }
+      &:hover {
+        color: $secnav-font-color;
+      }
+      &:active {
+        color: $secnav-font-color;
+      }
+    }
+  }
+
+  // SECTION TWO =================================
+  .secnav-sectwo {
+
+    // LINKS
+    ul.secondary-nav-links {
+
+      padding-left: 0;
+      text-align: center;
+
+      li {
+        margin: 0;
+        list-style: none;
+        display: inline-block;
+
+        &:after {
+          content: "|";
+        }
+
+        &:last-child:after {
+          content: "";
+        }
+
+        a {
+          font-size: 14px;
+          padding: 0 0.25em;
+          color: $secnav-font-color;
+
+          &:first-child {
+            // padding-left: 0;
+          }
+
+        }
+      }
+    }
+
+  }
+
+  // HYBRID SITUATIONS =================================
+
+  .secnav-secone,
+  .secnav-sectwo {
+    margin: 0 25px;
+    p {
+      margin-top: 0;
+    }
+  }
+
+  // ALIGN A SOLO FRAME CENTER
+  .secnav-secone.secnav-full-space,
+  .secnav-sectwo.secnav-full-space {
+    width: 100%;
+    text-align: center;
+    margin: 0;
+    padding: 26px 0;
+  }
+
+  .secnav-equal-space {
+    width: 90%;
+  }
+
+} // end secondary-navigation
+
+// ######################################################################### //
+/* TABLET VIEW */
+@media (min-width: $min-tab) {
+
+
+  #secondary-navigation {
+
+    padding: 5px 0;
+
+    // DISPLAY THE PIPE FOR TABLET ON UP
+    .secnav-pipe {
+      text-align: center;
+      display: none;
+    }
+    .secnav-hr{
+      display: block;
+    }
+
+    .secnav-hr{
+      margin-top: 4px;
+      margin-bottom: 4px;
+    }
+
+    .secnav-secone.secnav-full-space,
+    .secnav-sectwo.secnav-full-space {
+      padding: 20px 0 ;
+    }
+
+
+  }
+
+} // END MIN TABLET VIEW
+
+
+// ######################################################################### //
+/* PC VIEW */
+@media (min-width: $min-pc) {
+
+#secondary-navigation {
+
+  width: 100%;
+  display: flex;
+  padding: 4px 0;
+
+  .secnav-pipe{
+    //width: 1%;
+    display: block;
+    border-right: 1px solid black;
+  }
+
+  .secnav-hr{
+    display: none;
+  }
+
+  .secnav-secone,
+  .secnav-secone p {
+    text-align: right;
+  }
+
+  .secnav-sectwo,
+  .secnav-sectwo p {
+    text-align: left;
+
+    ul.secondary-nav-links {
+      text-align: left;
+    }
+  }
+
+  .secnav-sectwo.secnav-full-space,
+  .secnav-secone.secnav-full-space,
+  .secnav-sectwo.secnav-full-space p,
+  .secnav-secone.secnav-full-space p {
+
+      text-align: center;
+
+  }
+
+  .secnav-secone.secnav-full-space,
+  .secnav-sectwo.secnav-full-space {
+    padding: 0;
+  }
+
+  .secnav-equal-space{
+    width: 48%;
+  }
+
+  // IF LINKS AND FULL SPACE
+  .secnav-full-space {
+    // LINKS
+    ul.secondary-nav-links {
+      display: flex;
+      justify-content: center;
+
+      a{
+        &:first-child {
+          padding-left: 0;
+        }
+      }
+
+    }
+  }
+
+}
+
+} // END MIN PC

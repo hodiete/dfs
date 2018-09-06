@@ -1,0 +1,84 @@
+project:
+  machine_name: nydfs
+  prefix: NDD
+  human_name: 'New York State Department of Financial Services'
+  profile:
+    name: nydfs
+    contrib: false
+  local:
+    protocol: http
+    hostname: '${project.machine_name}.local'
+  acquia_subname: acsfdev
+git:
+  default_branch: develop
+  remotes:
+    - 'nydfs@svn-29892.prod.hosting.acquia.com:nydfs.git'
+drush:
+  aliases:
+    remote: 01dev.dev
+    local: self
+    ci: self
+    remote-dev-dev: 01dev.dev
+    remote-uat-prod: 01live.uat
+    remote-ig-prod: 01live.ig
+    remote-wcb-prod: 01live.wcb
+  default_alias: '${drush.aliases.local}'
+modules:
+  local:
+    enable: [dblog, devel, views_ui]
+    uninstall: [acsf, big_pipe, seckit, shield]
+  ci:
+    enable: {  }
+    uninstall: [acquia_connector, shield, big_pipe]
+  dev:
+    enable: [acquia_connector, seckit, shield]
+    uninstall: [big_pipe]
+  test:
+    enable: [acquia_connector, seckit, shield]
+    uninstall: [devel, views_ui, big_pipe]
+  prod:
+    enable: [acquia_connector, big_pipe, seckit]
+    uninstall: [devel, field_ui, shield, views_ui]
+  # Deploy will be used whenever the code update is run on ACSF.
+  deploy:
+    enable: [acquia_connector, shield]
+    uninstall: [devel, field_ui, views_ui]
+target-hooks:
+  frontend-setup:
+    dir: '${docroot}/profiles/custom/webny/themes/custom/dfs_ny'
+    command: 'npm run install-dfs_ny && npm rebuild node-sass'
+  frontend-build:
+    dir: '${docroot}/profiles/custom/webny/themes/custom/dfs_ny'
+    command: 'npm run build'
+  post-deploy-build:
+    dir: '${docroot}'
+    command: 'echo ''No post-deploy build configured.'''
+  post-setup-build:
+    dir: '${docroot}'
+    command: 'echo ''No post-setup build configured.'''
+cm:
+  allow-overrides: 'true'
+  features:
+    bundle:
+      webny: webny
+    # A core feature is overridden, so set this to false.
+    no-overrides: 'false'
+  strategy: features
+blt:
+  update:
+    ignore-existing-file: '${repo.root}/scripts/blt/ignore-existing.txt'
+phpunit:
+  failures: false
+disable-targets:
+  validate:
+    composer: true
+  tests:
+    security-updates: true
+behat:
+  paths:
+    - '${repo.root}/tests/behat'
+  tags: ~@development
+  web-driver: selenium
+setup:
+  drupal:
+    install: { import-config: false }

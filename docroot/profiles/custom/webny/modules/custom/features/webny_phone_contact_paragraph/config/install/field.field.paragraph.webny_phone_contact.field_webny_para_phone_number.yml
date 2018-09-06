@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_webny_para_phone_number
+    - paragraphs.paragraphs_type.webny_phone_contact
+  module:
+    - telephone
+id: paragraph.webny_phone_contact.field_webny_para_phone_number
+field_name: field_webny_para_phone_number
+entity_type: paragraph
+bundle: webny_phone_contact
+label: 'Phone Number'
+description: 'Add a phone number.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: telephone

@@ -1,0 +1,132 @@
+// Buttons
+//
+// Button styling.
+//
+// Markup: buttons.hbs
+//
+// Style guide: components.buttons
+
+
+// BUTTON IN FRAMES -- STATICS
+$frame-button-hover-decoration: underline;
+$frame-button-link-decoration:  none;
+$frame-button-letter-spacing:   2px;
+$frame-button-font-size:        14px; // .72rem
+$frame-button-font-weight:        bold;
+$frame-button-min-width:        175px;
+$frame-button-mobile-width:     100%;
+$frame-button-default-padding:  13px 20px;
+$frame-button-border-size:      1px;
+$frame-button-max-width:        250px !default;
+
+.buttonBase {
+  display:inline-block;
+  font-family: $base-font;
+  text-align: center;
+  color:$button-text-color;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 14px 20px;
+  border: 1px solid $button-text-color;
+  cursor: pointer;
+  &:hover {
+	text-decoration: none;
+  }
+  &>a{
+        color: $button-text-color;
+        text-decoration: none;
+        &:hover {
+            text-decoration: none;
+        }
+    }
+}
+
+.button {
+  @extend .buttonBase;
+  background: $button-bkgd-color;
+  border: none;
+  cursor: pointer;
+  &:hover {
+    background: darken($button-bkgd-color, 10%);
+  }
+    
+}
+
+/* .buttonTransparentLt {
+  @extend .buttonBase;
+  background: $button-bkgd-transparent;
+  border-color: $gray-lite;
+  &:hover {
+    background: $button-bkgd-hover-color;
+    border-color: $color-mono-white;
+  }
+}
+
+.buttonTransparentDk {
+  @extend .buttonBase;
+  background: $button-bkgd-transparent;
+  color: $color-mono-black;
+  border:1px solid $color-mono-black;
+  &:hover {
+    background: $button-bkgd-hover-color;
+    border-color: $color-mono-black;
+  }
+}
+
+.buttonDkLt {
+  @extend .buttonBase;
+  background: none;
+  color: $color-mono-black;
+  border-color: $primarygold-50;
+  
+  &:hover {
+    background: $primarygold-50;
+    border-color: $primarygold-75;
+  }
+} */
+
+.buttonMobile {
+  @extend .buttonBase;
+  padding: 20px 20px;
+}
+
+// MIXINS #####################################################################
+
+
+// ============================================================================
+// CUSTOM FRAME BUTTON BASE MIXIN
+/**
+ * Usage: @include frame-button-base();
+ *
+ **/
+
+@mixin frame-button-base(){
+
+  a {
+
+    // BUTTON STATIC REQUIREMENTS
+    padding: $frame-button-default-padding;
+    min-width: $frame-button-min-width;
+    font-size: $frame-button-font-size;
+    font-weight: $frame-button-font-weight;
+    letter-spacing: $frame-button-letter-spacing;
+    text-decoration: $frame-button-link-decoration;
+    cursor: pointer;
+    width: auto;
+    display: inline-block;
+    text-transform: uppercase;
+    text-align: center;
+    margin: 0 auto;
+
+    @include breakpoint($min-mob){
+      display: block;
+    }
+
+    @include breakpoint($min-tab) {
+      max-width: $frame-button-max-width;
+      display: inline-block;
+    }
+
+  }
+
+}

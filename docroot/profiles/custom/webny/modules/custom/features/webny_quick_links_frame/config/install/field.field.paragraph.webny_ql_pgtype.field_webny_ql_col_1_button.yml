@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_webny_ql_col_1_button
+    - paragraphs.paragraphs_type.webny_ql_pgtype
+  module:
+    - link
+id: paragraph.webny_ql_pgtype.field_webny_ql_col_1_button
+field_name: field_webny_ql_col_1_button
+entity_type: paragraph
+bundle: webny_ql_pgtype
+label: 'Quick Links Column 1 Button'
+description: 'The button within the first column of quick links within the quick links frame.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 17
+  title: 1
+field_type: link

@@ -1,0 +1,59 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a paragraph.
+ *
+ * Available variables:
+ * @see template_preprocess_paragraph()
+ *
+ * @ingroup themeable
+ */
+#}
+
+{# CHECK IF PARAGRAPH ENABLED #}
+{% if paragraph.field_webny_whats_related_toc.value == 1 %}
+    {% set gp_enabled = 'gp_enabled' %}
+    {% set gp_status = 'enabled' %}
+{% else %}
+    {% set gp_enabled = '' %}
+    {% set gp_status = 'disabled' %}
+{% endif %}
+
+{%
+set classes = [
+'paragraph',
+'paragraph--type--' ~ paragraph.bundle|clean_class,
+view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
+'toc-para',
+paragraph.bundle|clean_class,
+'gp_enabled',
+]
+%}
+
+
+
+{# DISPLAY THE PARAGRAPH #}
+{% block paragraph %}
+    <section id="{{ 'toc_' ~ paragraph.id() }}" rel="{{ gp_status }}" class="toc-para {{ paragraph.bundle() }} {{ gp_enabled }}" >
+    <div class="webny_whats_related_pgtype">
+      <span class="toc-mobile-spacer"></span>
+        <h3{{ attributes.addClass('webny-whats-related-title') }}>{{ paragraph.field_webny_whats_related_title.value }}</h3>
+
+        {% for i in 0..9 %}
+            {% if content.field_webny_whats_related_links[i]['#url'] != null %}
+                 <a href="{{ content.field_webny_whats_related_links[i]['#url'] }}" rel="bookmark">{{ content.field_webny_whats_related_links[i]['#title'] }}</a>
+            {# <a href="{{ content.field_webny_whitelist_link_url[i]['#url'] }}" target="_blank" rel="bookmark">{{ content.field_webny_whats_related_links[i]['#title'] }}</a>
+            #}{# This is for the whitelisted links, but commenting out for now till the logic is in place #}
+            {% endif %}
+        {%  endfor %}
+
+    </div>
+        <div class="next-section">
+            <div class="next-section-links">
+                <p>Next Section</p>
+                <p class="icon-thin_down_arrow next-section-link">Continue</p>
+            </div>
+            <span class="next-section-title"></span>
+        </div>
+    </section>
+{% endblock paragraph %}

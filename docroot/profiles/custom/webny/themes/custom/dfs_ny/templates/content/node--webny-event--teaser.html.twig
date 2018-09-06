@@ -1,0 +1,64 @@
+{% extends 'profiles/custom/webny/themes/custom/dfs_ny/templates/content/webny--teaser-base.html.twig' %}
+{% set attributes = attributes.addClass('webny-teaser__events') %}
+
+{# link not working so setting url to redirect field if it is filled in #}
+{% if content.field_webny_event_redirect_url.0 %}
+  {% set url = content.field_webny_event_redirect_url.0 %}
+  {#{% set link = content.field_webny_event_redirect_url.0 %}
+{% else %}
+  {% set link = url %}#}
+{% endif %}
+
+{% block title %}
+    {% if (node.field_webny_event_short_title.value is not empty and node.field_webny_event_short_title.value is not null) %}
+        {% set title = content.field_webny_event_short_title %}
+    {% else %}
+        {% set title = node.label %}
+    {% endif %}
+
+    <a href="{{ url }}">
+        {% if title|length <= 65 %}
+            {{ title }}
+        {% else %}
+            {{ title|slice(0, 65) ~ '...' }}
+        {% endif %}
+    </a>
+{% endblock title %}
+
+{% block hero_image %}
+    {% if not content.field_webny_event_heroimage.0 %}
+        <div class="list-fallback-img">{{ source('profiles/custom/webny/themes/custom/dfs_ny/images/NYGov_Events.svg') }}</div>
+    {% else %}
+        {{ content.field_webny_event_heroimage }}
+    {% endif %}
+{% endblock hero_image %}
+
+{% block optional_wrapper_start %}
+  <div class="webny-teaser-content-wrapper__details-left">
+{% endblock optional_wrapper_start %}
+
+{% block description %}
+  {% if content.field_webny_event_summary %}
+    <div class="description">
+      {# content.field_webny_event_summary #}
+    </div>
+  {% endif %}
+{% endblock description %}
+
+{% block optional_wrapper_end %}
+  </div>
+{% endblock optional_wrapper_end %}
+
+{% block content %}
+    <div class="webny-teaser-content-wrapper__details-right">
+      {% include '@dfs_ny/includes/webny--event-date.html.twig' %}
+    </div>
+{% endblock content %}
+
+{% block footer %}
+    <ul class="links inline">
+        <li class="node-readmore">
+            <a href="{{ url }}" rel="tag" title="{{ node.label }}">Learn more<span class="visually-hidden"> about {{ node.label }}</span></a>
+        </li>
+    </ul>
+{% endblock %}

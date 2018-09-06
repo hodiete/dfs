@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_webny_location_counties
+    - node.type.webny_location
+  module:
+    - options
+id: node.webny_location.field_webny_location_counties
+field_name: field_webny_location_counties
+entity_type: node
+bundle: webny_location
+label: 'Counties Served'
+description: 'Select the counties served for the location. '
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_float

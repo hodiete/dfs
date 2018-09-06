@@ -1,0 +1,36 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_webny_announcement_eref
+    - node.type.webny_generic_page
+    - node.type.webny_landing_page
+    - node.type.webny_news
+    - node.type.webny_page
+    - node.type.webny_whitelisted_content
+    - paragraphs.paragraphs_type.webny_announcement_pgtype
+id: paragraph.webny_announcement_pgtype.field_webny_announcement_eref
+field_name: field_webny_announcement_eref
+entity_type: paragraph
+bundle: webny_announcement_pgtype
+label: 'Announcement Entity Reference'
+description: 'This field is for the 6 referenced entities of content to be displayed in the announcement highlight section'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      webny_generic_page: webny_generic_page
+      webny_landing_page: webny_landing_page
+      webny_news: webny_news
+      webny_page: webny_page
+      webny_whitelisted_content: webny_whitelisted_content
+    sort:
+      field: changed
+      direction: DESC
+    auto_create: false
+    auto_create_bundle: webny_landing_page
+field_type: entity_reference

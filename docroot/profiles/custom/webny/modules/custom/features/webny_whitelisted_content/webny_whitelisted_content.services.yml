@@ -1,0 +1,10 @@
+services:
+  webny_whitelisted_content.route_subscriber:
+    class: \Drupal\webny_whitelisted_content\Routing\RouteSubscriber
+    arguments:
+      - '@current_route_match'
+      - '@webny_whitelisted_content.whitelisted_file_url'
+    tags:
+      - { name: event_subscriber }
+  webny_whitelisted_content.whitelisted_file_url:
+    class: \Drupal\webny_whitelisted_content\WhitelistedFileUrl

@@ -1,0 +1,29 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - image.style.category_tiles_desktop
+    - image.style.category_tiles_mobile
+    - image.style.category_tiles_tablet
+  theme:
+    - dfs_ny
+id: category_tiles
+label: 'Category Tiles'
+image_style_mappings:
+  -
+    breakpoint_id: dfs_ny.wide
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: category_tiles_desktop
+  -
+    breakpoint_id: dfs_ny.narrow
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: category_tiles_tablet
+  -
+    breakpoint_id: dfs_ny.mobile
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: category_tiles_mobile
+breakpoint_group: dfs_ny
+fallback_image_style: category_tiles_desktop

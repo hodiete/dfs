@@ -1,0 +1,297 @@
+// Page Title
+//
+// Styling of the Landing Page Title.
+//
+// Markup: page-title.hbs
+//
+// Style guide: components.webny-pagetitle
+
+// color variables - only the variables on the left should be used below
+$title-bar-bkgd-color: $color-accent-primary !default;
+$title-bar-default-text-color: $color-mono-black !default;
+$title-bar-sub-title-color: $color-mono-black !default;
+
+// ************************* //
+// BODY PARTIAL
+// CREATED BY WEBNY
+// ************************* //
+
+// ######################################################################### //
+/* MOBILE FIRST STYLES */
+
+// ========================================================================= //
+/* FONTS / SIZES */
+
+// ========================================================================= //
+/* PARAGRAPH PADDING */
+.webny-page-paragraphs-in > div > div{
+  // padding: 80px 0; // IDEALLY
+}
+
+// ========================================================================= //
+/* NEWS BODY WRAPPER */
+.news-body,
+.body-area{
+
+  .news-body-in,
+  .body-area-in{
+    margin: 0 auto;
+    margin-top: 60px;
+    max-width: 1200px;
+    line-height: 1.7em;
+    font-size: 16px;
+
+    .press-teaser,
+    .body-area-subtitle{
+      margin: 0 auto;
+      margin-top: 60px;
+      font-family: $base-font;
+      //font-size: 1.4em;
+      //line-height: 1.2em;
+      font-style: normal;
+      margin-bottom: 40px;
+      width: 80%;
+      .press-subtitle-item,
+      .body-area-subtitle-item,
+      > div > div {
+        font-size: 1.45rem;
+        margin-bottom: 2rem;
+        line-height: 1.25;
+      }
+    }
+
+    .press-subhead {
+      margin: 0 auto;
+      text-align: left;
+      padding: 20px 0 0 0;
+      overflow: hidden;
+    }
+
+
+    .press-body,
+    .ct-attach{
+      margin: 0 auto;
+      max-width: 780px;
+      width: 80%;
+    }
+
+    .press-contact-info{
+      width: 80%;
+      margin: 80px auto;
+      max-width: 780px;
+
+      h2 a{
+        color: $text-blue;
+        font-size: 36px;
+      }
+
+    }
+
+    .page-body,
+    .category-tiles-body{
+      margin: 0 auto;
+      max-width: 780px;
+      width: 80%;
+    }
+
+  } // END .xx-in
+} // END .xx
+
+// ========================================================================= //
+/* LANDING TITLE SECTION */
+
+.landing-title-area{
+  background: $title-bar-bkgd-color none repeat scroll 0 0;
+  padding: 20px 8%;
+
+  .landing-title h1{
+    font-size: 24px;
+    color: $title-bar-default-text-color;
+    padding: 0;
+  }
+
+  .landing-subtitle{
+    color: $title-bar-sub-title-color;
+    font-size: 24px;
+    display: none;
+    padding: 0 0 16px 52px;
+
+  }
+
+}
+
+.body-area-summary{
+  width: 100%;
+  max-width: 1200px;
+  margin: 80px auto;
+  text-align: center;
+}
+
+// ========================================================================= //
+/* WYSIWYG EMBEDDED IMAGE STYLES */
+// ========================================================================= //
+/* Image Style - wysiwyg 660x400 */
+figure.embedded-entity {
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 660px;
+  /* (below) fix to center figcaption html5 tag outside of image style */
+  text-align: center;
+}
+article.media.media-image.view-mode-wysiwyg {
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 660px;
+  > div {
+    text-align: center;
+  }
+}
+// ========================================================================= //
+/* Image Style - wysiwyg portrait 300x300 */
+article.media.media-image.view-mode-wysiwyg-portrait {
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 300px;
+  > div {
+    text-align: center;
+  }
+}
+/* wysiwyg portrait 300x300 without a caption */
+article.embedded-entity.align-left {
+  margin-left: 0;
+  margin-right: 40px;
+}
+article.embedded-entity.align-right {
+  margin-right: 0;
+  margin-left: 40px;
+}
+/* wysiwyg portrait 300x300 without a caption */
+figure.embedded-entity.align-left {
+  margin-left: 0;
+  margin-right: 40px;
+}
+figure.embedded-entity.align-right {
+  margin-right: 0;
+  margin-left: 40px;
+}
+figure.embedded-entity.align-center {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+
+// ######################################################################### //
+/* TABLET VIEW */
+@media (min-width: 30em) {
+
+  .news-body,
+  .body-area{
+
+    .news-body-in,
+    .body-area-in{
+      max-width: 1200px;
+
+      p, li {
+        font-size: 18px;
+      }
+
+      .page-body,
+      .press-body,
+      .ct-attach,
+      .press-contact-info,
+      .category-tiles-body{
+        width: 80%;
+      }
+
+    }
+  }
+}
+
+// ######################################################################### //
+/* DESKTOP VIEW */
+
+@media (min-width: 48em) {
+  .landing-title-area > div{
+    display: inline-block;
+  }
+  .landing-title-area{
+    padding: 0 2%;
+
+
+    .landing-title h1{
+      font-size: 52px;
+    }
+
+    .landing-subtitle{
+      visibility: visible;
+      display: inline-block;
+    }
+  }
+   
+  .page-paragraphs {
+    width: 100%;
+  }
+  .gp-paragraphs:not(.with-nav-sidebar) {
+    width: 90%;
+    max-width: 780px;
+    //margin-top: 60px;
+    margin: 60px auto 0 auto;
+    .next-section {
+      display: none;
+    }
+    .toc-para {
+      padding-bottom: 75px;
+    }
+  }
+
+  .news-body,
+  .body-area {
+    
+    .news-body-in,
+    .body-area-in{
+      max-width: 1200px;
+
+      .press-teaser,
+      .body-area-subtitle{
+        width: 90%;
+      }
+
+      .page-body,
+      .press-body,
+      .ct-attach,
+      .press-contact-info,
+      .category-tiles-body{
+        width: 90%;
+      }
+
+      p,li{
+        line-height: 1.7em;
+        font-size: 18px;
+      }
+    }
+  }
+
+}  // END TABLET VIEW
+
+
+// ######################################################################### //
+/* DESKTOP VIEW - AT MAX */
+@media (min-width: 60em) {
+
+  // ========================================================================= //
+  /* LANDING / PAGE TITLE SECTION */
+
+  .landing-title-area > div{
+    display: inline-block;
+  }
+
+  .landing-title-area{
+    padding: 0 60px;
+
+    .landing-title h1{
+      font-size: 52px;
+    }
+
+  }
+
+}

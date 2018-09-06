@@ -1,0 +1,238 @@
+{#
+/**
+ * @file
+ * Theme override to display a node for webny-landing-page.
+ * Begin TWIG NODE-WEBNY-LANDING-PAGE Template
+ */
+#}
+
+{{ attach_library('dfs_ny/videohero') }}
+
+{# @PARAMS #}
+{% set hero_image = file_url(node.field_webny_landing_hero_image.entity.field_image.entity.uri.value) %}
+{% set title = '' %}
+{% set hero = '' %}
+
+{# @PARAMS VIDEO #}
+{% set video_player = node.id %}
+{% set video_tech = '' %}
+{% set video_url = node.field_webny_landing_hero_vidurl.uri %}
+{% set video_type = '' %}
+{% set video_poster_image = '' %}
+{% set hero_video_field = '' %}
+{% set video_class = '' %}
+{% set video_text = 'Watch Video' %}
+
+{# SET VIDEO TECH #}
+{% if ( ('youtube' in video_url) or ('youtu.be' in video_url) ) %}
+    {% set video_type = 'video/youtube' %}
+    {% set video_tech = 'youtube' %}
+{% elseif ('vimeo' in video_url) %}
+    {% set video_type = 'video/vimeo' %}
+    {% set video_tech = 'Vimeo' %}
+{% elseif ('brightcove' in video_url) %}
+    {% set video_type = 'brightcove' %}
+    {% set video_tech = 'brightcove' %}
+    {% set video_text = "Watch Live" %}
+{% endif %}
+
+{# SET WHETHER OR NO THERE IS AN IMAGE #}
+{% if hero_image == '/' %}
+  {% set has_image = 'hero-vid-image' %}
+{% else %}
+    {% set has_image = 'hero-vid-noimage' %}
+{% endif %}
+
+
+{# GET VARS FOR DISPLAYING HERO AND TITLES #}
+{%  for k,v in node.field_webny_landing_vis_options %}
+
+    {% if node.field_webny_landing_vis_options[k].value == 'hero' %}
+        {% set hero = 'show' %}
+    {% endif %}
+    {% if node.field_webny_landing_vis_options[k].value == 'title' %}
+        {% set title = 'show' %}
+    {% endif %}
+
+{% endfor %}
+
+{% if (hero == '' and title == '') %}
+   {% set both = 'show' %}
+{% else %}
+    {% set both = '' %}
+{% endif %}
+
+
+{% if title == 'show' %}
+
+<article {{ attributes.addClass('title-layout') }}>
+
+    {% if hero == '' %}
+        {# START QUICK EDITS #}
+        {{ title_prefix }}
+    {% endif %}
+
+    <div class="landing-title-area">
+
+        <!-- HEADLINE LABEL -->
+        <div class="landing-title">
+            <h1>{{ label }}</h1>
+        </div>
+
+        <!-- SUBTITLE LABEL -->
+        <div class="landing-subtitle">
+            <span>{{ content.field_webny_landing_subtitle2 }}</span>
+        </div>
+
+    </div>
+
+    {% if hero == '' %}
+        {# END QUICK EDITS #}
+        {{ title_suffix }}
+    {% endif %}
+
+</article>
+
+{% endif %}
+
+<!-- Logic to Display or Not to Display the Hero section -->
+{% if hero == 'show' or both == 'show' %}
+
+<article {{ attributes.addClass('hero-layout') }}>
+
+    {# START QUICK EDITS #}
+    {{ title_prefix }}
+    
+    {% if hero_image == '/' %}
+        <div class="hero-header hero-no-image hero-landing">
+    {% else %}
+        <div class="hero-header hero-has-image hero-landing">
+    {% endif %}
+            <div class="hero-image">
+            {{ content.field_webny_landing_hero_image }}
+            </div>
+        <!-- BACKGROUND GRAD -->
+            <div class="hero-bkg"></div>
+        </div>
+
+    {% if hero_image == '/' %}
+        <div class="hero-inner hero-landing-inner">
+    {% else %}
+        <div class="hero-inner hero-landing-inner hero-has-image-content">
+    {% endif %}
+
+            <!-- LIVE NOW FOR BRIGHTCOVE -->
+            {% if video_tech == 'brightcove' %}
+                <div class="hero-live-now">
+                    <p>LIVE NOW</p>
+                </div>
+            {% endif %}
+
+            <!-- HEADLINE LABEL -->
+            {% if node.field_webny_landing_hero_title.value is not empty %}
+                <h2>{{ node.field_webny_landing_hero_title.value }}</h2>
+            {% endif %}
+
+            <div class="hero-summary">
+                {{ content.field_webny_landing_summary2 }}
+            </div>
+
+            <!-- HERO BUTTONS -->
+            <div class="hero-buttons">
+
+                {% if video_tech != "" %}
+                    <div class="video_hero_button">
+                        <a href="javascript:" alt="{{ video_text }}" title="{{ video_text }}">  {{ video_text }}</a>
+                    </div>
+                {% endif %}
+
+                {{ content.field_webny_landing_hero_button }}
+
+                {% if video_tech == "" %}
+                    {{ content.field_webny_landing_hero_button2 }}
+                {% endif %}
+
+            </div>
+        </div>
+
+    <!-- VIDEO PLACEMENT -->
+
+         {% if video_tech != '' %}
+
+             <div id="hero-video-frame" class="hero-video-frame  hero-video-hide {{ has_image }} heroplayer-{{ video_tech|lower }}">
+                <div class="hero-video-inner">
+                    <div class="hero-video-close">
+                        <a href="javascript:" alt="Close Video" title="Close Video"></a>
+                    </div>
+
+                    {% if video_tech != 'brightcove' %}
+                        <video id="videojs-heroplayer-{{ video_tech|lower }}"
+                               class="video-js {% if video_tech == 'Vimeo' %} vjs-16-9 {% endif %} hero-video-player hero-type-{{ video_tech|lower }}"
+                                {% if video_tech == 'Vimeo' or video_tech == 'brightcove' %}
+                                    controls
+                                {% endif %}
+
+                               data-setup='{
+                                     "techOrder": ["{{ video_tech }}"],
+                                     "sources": [{ "type": "{{ video_type }}", "src": "{{ video_url }}"}],
+                                     "fluid": false
+                                      {% if video_tech == 'youtube' %}
+                                        , "youtube": { "ytControls": 2 }
+                                      {% endif %}
+
+                                      }'>
+                        </video>
+
+                    {% else  %}
+                        <div id="videojs-heroplayer-{{ video_tech|lower }}" class="hero-video-player hero-type-{{ video_tech|lower }}"
+                             data-setup='{ "techOrder": ["{{ video_tech }}"], "sources": [{ "type": "{{ video_type }}", "src": "{{ video_url }}"}] }'>
+                        </div>
+                    {% endif %}
+
+                </div>
+            </div>
+        {% endif %}
+
+
+
+    {{ title_suffix }}
+
+</article>
+
+{# IF IS NOT A FILTER PAGE  #}
+{% if node.field_webny_results_view_to_disp.value is empty %}
+
+    {# PRINT THE SHAREBAR #}
+
+<div class="webny-share-bar">
+    <div class="webny-share">
+        <div class="webny-share-bar-icons">
+        <div class="webny-action-share-label">SHARE</div>
+            <div class="webny-action-share-button">
+                <a href="mailto:?Subject={{ site_name }}: {{ node.label }}&Body={{ url('<current>') }}"><span class="icon-email"></span></a>
+            </div>
+            <div class="webny-action-share-button">
+                <a href="http://www.facebook.com/share.php?u={{ url('<current>') }}" target="_blank"><span class="icon-facebook"></span></a>
+            </div>
+            <div class="webny-action-share-button">
+                        <a href="https://twitter.com/intent/tweet?text={{ node.label }}&url={{ url('<current>') }}" target="_blank"><span class="icon-twitter"></span></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endif %}
+
+{% endif %}
+
+<div class="page-paragraphs landing-paragraphs">
+    <div class="page-paragraphs-in">
+    {{ content.field_webny_landing_paragraph|without('label') }}
+    </div>
+</div>
+
+<!-- VIEWFIELD -->
+{% if node.field_webny_results_view_to_disp.value is empty %}
+{% else %}
+    {{  content.field_webny_results_view_to_disp }}
+{% endif %}

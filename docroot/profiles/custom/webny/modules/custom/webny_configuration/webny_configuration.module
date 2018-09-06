@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * @file
+ * Contains webny_configuration.module..
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function webny_configuration_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the webny_configuration module.
+    case 'help.page.webny_configuration':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Utility module for deploying platform configuration.') . '</p>';
+      return $output;
+
+    default:
+  }
+}

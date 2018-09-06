@@ -1,0 +1,28 @@
+langcode: en
+status: true
+dependencies: {  }
+id: workflow_publisher
+label: 'Workflow publisher'
+weight: 5
+is_admin: null
+permissions:
+  - 'use draft_archived transition'
+  - 'use draft_draft transition'
+  - 'use draft_needs_review transition'
+  - 'use draft_published transition'
+  - 'use draft_unpublished transition'
+  - 'use needs_review_archive transition'
+  - 'use needs_review_draft transition'
+  - 'use needs_review_needs_review transition'
+  - 'use needs_review_published transition'
+  - 'use needs_review_unpublished transition'
+  - 'use published_archived transition'
+  - 'use published_draft transition'
+  - 'use published_published transition'
+  - 'use published_unpublished transition'
+  - 'use restore_to_draft transition'
+  - 'use unpublished_archive transition'
+  - 'use unpublished_draft transition'
+  - 'use unpublished_needs_review transition'
+  - 'use unpublished_published transition'
+  - 'view any unpublished content'

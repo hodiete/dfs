@@ -1,0 +1,12 @@
+{%
+set classes = [
+'category-tiles-link--' ~ field_name|clean_class,
+]
+%}
+<ul {{ attributes.addClass('category-tile-link-flex') }}>
+    {% for item in items %}
+        <li{{ item.attributes.addClass(classes) }}>
+            <a title="{{ item.content['#title'] }}" href="{{ item.content['#url'] }}">{{ item.content['#title'] }}</a>
+        </li>
+    {% endfor %}
+</ul>

@@ -1,0 +1,27 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_webny_news_category
+    - node.type.webny_news
+    - taxonomy.vocabulary.webny_category_tax
+id: node.webny_news.field_webny_news_category
+field_name: field_webny_news_category
+entity_type: node
+bundle: webny_news
+label: Category
+description: 'For improved content organization, choose one or more of these assigned category terms to use as filters.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      webny_category_tax: webny_category_tax
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

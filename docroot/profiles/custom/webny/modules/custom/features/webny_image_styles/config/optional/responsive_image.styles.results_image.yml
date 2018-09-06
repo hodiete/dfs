@@ -1,0 +1,17 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - image.style.results
+  theme:
+    - dfs_ny
+id: results_image
+label: 'Results Image'
+image_style_mappings:
+  -
+    breakpoint_id: dfs_ny.wide
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: results
+breakpoint_group: dfs_ny
+fallback_image_style: '_empty image_'

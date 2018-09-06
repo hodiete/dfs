@@ -1,0 +1,13 @@
+services:
+  webny.profile_config:
+    class: '\Drupal\webny\ProfileConfig'
+    arguments: ['@config.factory']
+  webny.twig_trim_card_title:
+    arguments: ['@renderer']
+    class: '\Drupal\webny\TwigExtension\TwigTrimCardTitle'
+    tags:
+      - { name: twig.extension }
+  webny.add_card_links:
+    class: '\Drupal\webny\Twig\AddCardLinks'
+    tags:
+      - { name: twig.extension }

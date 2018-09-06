@@ -1,0 +1,51 @@
+{% extends 'profiles/custom/webny/themes/custom/dfs_ny/templates/content/webny--card-base.html.twig' %}
+
+{# setting title variable so it can be used 2x #}
+{%  if(node.field_webny_generic_short_title.value is not empty and node.field_webny_generic_short_title.value is not null) %}
+    {% set vtitle = node.field_webny_generic_short_title.value %}
+{% else %}
+    {% set vtitle = node.label %}
+{% endif %}
+
+{% block card_image %}
+
+    {% if (content.field_webny_gencp_heroimage["#items"] is not empty) %}
+        <a href="{{ url }}">
+            <div class="card-image" style="background-image: url('{{ file_url(node.field_webny_gencp_heroimage.entity.field_image.entity.uri.value | image_style('card_vertical')) }}');">
+            </div>
+        </a>
+    {% else %}
+        <a href="{{ url }}">
+            <div class="card-fallback-image">
+                {% include '@dfs_ny/includes/NYS_StateOutline.svg.twig' %}
+            </div>
+        </a>
+    {% endif %}
+{% endblock card_image %}
+
+{% block card_title %}
+    {{ vtitle | webny_trim_card_title }}
+{% endblock card_title %}
+
+{% block card_title_url %}
+<a href="{{ url }}" rel="bookmark">
+{% endblock card_title_url %}
+
+{% block card_content %}
+    <div class="webny-card-teaser">{{ content.field_webny_gencp_sumdes }}</div>
+{% endblock card_content %}
+
+{% block card_links %}
+
+    {% if node.field_webny_gencp_card_switch.value == 'yes' %}
+        <div class="generic-card-links">
+            <div class="generic-card-links-in">
+                <ul>
+                    {{ addCardLinks(node.id) }}
+                </ul>
+            </div>
+        </div>
+    {% endif %}
+
+{% endblock card_links %}
+

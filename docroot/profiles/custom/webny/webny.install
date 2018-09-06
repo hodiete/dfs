@@ -1,0 +1,77 @@
+<?php
+/**
+ * @file
+ * Install, update and uninstall functions for the webny installation profile.
+ */
+
+use Drupal\user\Entity\User;
+use Drupal\user\RoleInterface;
+use Drupal\shortcut\Entity\Shortcut;
+
+/**
+ * Implements hook_install().
+ *
+ * Performs actions to set up the site for this profile.
+ *
+ * @see system_install()
+ */
+function webny_install() {
+  // Disable the user pictures on nodes.
+  \Drupal::configFactory()
+      ->getEditable('system.theme.global')
+      ->set('features.node_user_picture', FALSE)
+      ->save(TRUE);
+
+  // Restrict user registration to admin role only
+  \Drupal::configFactory()
+      ->getEditable('user.settings')
+      ->set('register', USER_REGISTER_ADMINISTRATORS_ONLY)
+      ->save(TRUE);
+
+
+  // Set front page to "node".
+  \Drupal::configFactory()
+      ->getEditable('system.site')
+      ->set('page.front', '/node')
+      ->save(TRUE);
+
+  // Assign user 1 the "administrator" role.
+  $user = User::load(1);
+  $user->roles[] = 'administrator';
+  $user->save();
+
+  // Allow authenticated users to use shortcuts.
+  user_role_grant_permissions(RoleInterface::AUTHENTICATED_ID, ['access shortcuts']);
+
+  // Populate the default shortcut set.
+  Shortcut::create(
+      [
+          'shortcut_set' => 'default',
+          'title' => t('Content library'),
+          'weight' => 1,
+          'link' => ['uri' => 'internal:/admin/content'],
+      ]
+  )->save();
+
+  // Set the default and admin theme
+  \Drupal::configFactory()
+      ->getEditable('system.theme')
+      ->set('default', 'dfs_ny')
+      ->set('admin', 'webnycommander')
+      ->save(TRUE);
+
+  // Enable the admin theme.
+  \Drupal::configFactory()
+      ->getEditable('node.settings')
+      ->set('use_admin_theme', TRUE)
+      ->save(TRUE);
+
+  // Enable WebNY configuration module.
+  \Drupal::service('module_installer')
+      ->install(['webny_configuration']);
+
+  // Enable Solr configuration module.
+  \Drupal::service('module_installer')
+    ->install(['webny_solr_searches']);
+
+}

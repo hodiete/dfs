@@ -1,0 +1,25 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_webny_page_image
+    - media_entity.bundle.image
+    - node.type.webny_page
+id: node.webny_page.field_webny_page_image
+field_name: field_webny_page_image
+entity_type: node
+bundle: webny_page
+label: Image
+description: 'This is Image that will display as the ''Hero image'' above the titles and text.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+    sort:
+      field: _none
+field_type: entity_reference

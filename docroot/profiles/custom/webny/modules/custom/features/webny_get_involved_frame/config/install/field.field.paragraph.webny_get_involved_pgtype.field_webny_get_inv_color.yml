@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_webny_get_inv_color
+    - paragraphs.paragraphs_type.webny_get_involved_pgtype
+  module:
+    - options
+id: paragraph.webny_get_involved_pgtype.field_webny_get_inv_color
+field_name: field_webny_get_inv_color
+entity_type: paragraph
+bundle: webny_get_involved_pgtype
+label: 'Frame Background Color'
+description: 'Choose a background color for the frame'
+required: false
+translatable: false
+default_value:
+  -
+    value: default
+default_value_callback: ''
+settings: {  }
+field_type: list_string

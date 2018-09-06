@@ -1,0 +1,46 @@
+// Teaser styles for Page Listing Item
+
+.webny-teaser {
+
+  .page-description-fieldwrapper {
+    line-height: 1;
+    height: 100px;
+  }
+}
+
+// MOBILE
+.teaser--type--webny-page {
+  .webny-teaser-title {
+    margin-bottom: 0;
+  }
+
+  .webny-teaser-content-wrapper__details {
+    min-height: 250px;
+  }
+}
+
+// TABLET
+@media (min-width: $min-tab) {
+  .teaser--type--webny-page {
+    .webny-teaser-title {
+      margin-bottom: 18px;
+    }
+    .webny-teaser-content-wrapper__details {
+      min-height: 0px;
+    }
+  }
+
+}
+
+// DESKTOP
+@media (min-width: $min-pc) {
+  .teaser--type--webny-page {
+    .webny-teaser-title {
+      margin-bottom: 5px;
+    }
+    .webny-teaser-content-wrapper__details {
+      min-height: 0px;
+    }
+  }
+
+}

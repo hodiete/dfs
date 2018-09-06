@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_webny_whitelist_target
+    - node.type.webny_whitelisted_content
+id: node.webny_whitelisted_content.field_webny_whitelist_target
+field_name: field_webny_whitelist_target
+entity_type: node
+bundle: webny_whitelisted_content
+label: 'Opens in New Window'
+description: 'Check this option if you''d like this piece of content to open in a new browser window/tab.'
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

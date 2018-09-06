@@ -1,0 +1,126 @@
+# Note that the example .travis.yml file for child projects lives in /install.
+sudo: required
+group: deprecated
+language: php
+dist: trusty
+
+php:
+  - 7.1
+
+matrix:
+  fast_finish: true
+
+env:
+  global:
+    - COMPOSER_BIN=$TRAVIS_BUILD_DIR/vendor/bin
+    - BLT_DIR=$TRAVIS_BUILD_DIR/vendor/acquia/blt
+    - BUILD_DIR=$TRAVIS_BUILD_DIR
+
+jdk:
+  - oraclejdk8
+
+cache:
+  bundler: true
+  apt: true
+  directories:
+  - "$HOME/.composer/cache"
+  - "$HOME/.drush/cache"
+  - "$HOME/.npm"
+  - "$HOME/.nvm"
+  - "vendor"
+  # Cache front end dependecies to dramatically improve build time.
+  - "docroot/profiles/custom/webny/themes/custom/dfs_ny/node_modules"
+  - "docroot/profiles/custom/webny/themes/custom/dfs_ny/bower_components"
+
+addons:
+  ssh_known_hosts:
+  - svn-43.enterprise-g1.hosting.acquia.com
+  - staging-538.enterprise-g1.hosting.acquia.com
+  - web-536.enterprise-g1.hosting.acquia.com
+  chrome: stable
+
+# @see https://docs.travis-ci.com/user/notifications
+notifications:
+# - slack: '<account>:<token>#[channel]'
+  slack: 'webnydistro:iSJ8dsk7Ym139SMpL470llno'
+
+before_install:
+  # install MySql 5.6
+  - sudo -E apt-get -yq --no-install-suggests --no-install-recommends --force-yes install mysql-server-5.6 mysql-client-core-5.6 mysql-client-5.6
+  # Enable aliases for non-interactive shell.
+  - shopt -s expand_aliases
+  - composer selfupdate
+  # Disable xdebug.
+  - phpenv config-rm xdebug.ini
+  # Enable $_ENV variables in PHP.
+  - echo 'variables_order = "EGPCS"' >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
+  # Ensure that always_populate_raw_post_data PHP setting: Not set to -1 does not happen.
+  - echo "always_populate_raw_post_data = -1" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
+  # Increase PHP memory limit.
+  - echo "memory_limit=-1" >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
+  - git config --global user.name "Travis-CI"
+  - git config --global user.email "noreply@travis-ci.org"
+  # - mysql -u root -e "CREATE DATABASE drupal; CREATE USER 'drupal'@'localhost' IDENTIFIED BY 'drupal'; GRANT ALL ON drupal.* TO 'drupal'@'localhost';"
+  - echo "extension = memcached.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
+  # Tweak PHP configuration.
+  # Copied from Lightning.
+  # We were getting an error where drush si is trying to send mail even though the flag to prevent that was set.
+  - echo 'max_execution_time = 120' >> drupal.php.ini;
+  - echo 'sendmail_path = /bin/true' >> drupal.php.ini;
+  - phpenv config-add drupal.php.ini
+  - phpenv rehash
+  # Exit build early if only documentation was changed in a Pull Request.
+  # - source ${BLT_DIR}/scripts/travis/exit_early
+
+install:
+  # Load composer dependencies.
+  - composer validate --no-check-all --ansi
+  - composer install -v
+  - export PATH=$TRAVIS_BUILD_DIR/vendor/bin:$PATH
+  # Install proper version of node for front end tasks.
+  - nvm install 8.9.4
+  - nvm use 8.9.4
+  - source ${BLT_DIR}/scripts/travis/setup_environment
+  - source ${BLT_DIR}/scripts/travis/setup_project
+
+before_script:
+  # Clear drush release history cache, to pick up new releases.
+  - rm -f ~/.drush/cache/download/*---updates.drupal.org-release-history-*
+  # Verify that no git diffs (caused by line ending variation) exist.
+  # - git diff --exit-code
+  # The local.hostname must be set to 0.0.0.0:6081, and NOT 127.0.0.1:8888, because we are using varnish
+  # in front of the drush runserver to run the site on Travis CI.
+  - yaml-cli update:value blt/project.yml project.local.hostname '0.0.0.0:6081'
+  # Increasing SQL packet size to avoid time out errors.
+  - mysql -u root -e 'SET GLOBAL wait_timeout = 36000;'
+  - mysql -u root -e 'SET GLOBAL max_allowed_packet = 33554432;'
+  - echo -e "Host svn-43.enterprise-g1.hosting.acquia.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+
+script:
+  - source ${BLT_DIR}/scripts/travis/run_tests
+
+deploy:
+   - provider: script
+     script: "${BLT_DIR}/scripts/travis/deploy_branch"
+     skip_cleanup: true
+     on:
+       branch: develop
+       php: 7.1
+   - provider: script
+     script: "${BLT_DIR}/scripts/travis/deploy_branch"
+     skip_cleanup: true
+     on:
+       branch: master
+       php: 7.1
+   - provider: script
+     script: "${BLT_DIR}/scripts/travis/deploy_branch"
+     skip_cleanup: true
+     on:
+       branch: WIP
+       php: 7.1
+   - provider: script
+     script: "${BLT_DIR}/scripts/travis/deploy_tag"
+     skip_cleanup: true
+     on:
+       tags: true
+       php: 7.1

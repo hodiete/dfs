@@ -1,0 +1,384 @@
+/**
+ * @webny_unav webny_unav.css
+ */
+
+.alternative-universal-container {
+    height: 84px;
+    background: #FFF;
+    position: relative;
+}
+
+.alternative-unav-header {
+    padding: 0;
+}
+
+.alternative-unav-image {
+    float: left;
+    padding: 6px 10px;
+}
+
+#google_translate_element {
+    display: none;
+}
+
+.alternative-unav-gsa input[type="text"] {
+    float: right;
+    font-family: "Proxima Nova", Arial, sans-serif;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 20px;
+    width: 105px;
+    height: 36px;
+    color: #000;
+    border-radius: 30px;
+    border: solid thin rgb(217, 226, 226);
+    padding: 7px 20px 7px 30px;
+}
+
+.alternative-unav-gsa input[type="submit"] {
+    display: none;
+}
+
+.alternative-universal-container header {
+    height: 84px;
+    position: absolute;
+    left: 0;
+    top: -84px;
+    width: 100%;
+    transition: all 0.3s ease 0s;
+}
+
+.header {
+    font-family: "ProximaNovaSemibold";
+    position: relative;
+    z-index: 10;
+    background: #fff;
+    border: none;
+    height: 84px;
+}
+
+.header .alternative-unav-global-name {
+    display: none;
+}
+
+.header .alternative-unav-global-menu .alternative-unav-links {
+    display: none;
+}
+
+.header .alternative-unav-global-menu .alternative-unav-gsa {
+    position: relative;
+    text-align: left;
+    height: 76px;
+}
+.header .alternative-unav-global-menu .alternative-unav-gsa form {
+    position: relative;
+    font-size: 16px;
+    padding: 20px 40px;
+    text-align: center;
+    z-index: 100;
+    background-color: rgb(248, 250, 250);
+}
+.header .alternative-unav-global-menu .alternative-unav-gsa form #alternative-unav-search {
+    display: block;
+    border-color: rgb(217, 226, 226);
+    border-radius: 30px;
+    border-width: 1px;
+    border-style: solid;
+    color: rgb(0, 0, 0);
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 20px;
+    margin: 0;
+    padding: 7px 30px;
+    position: relative;
+    font-family: "Proxima Nova", Arial, sans-serif;
+}
+.header .alternative-unav-global-menu .alternative-unav-gsa form .icon-search {
+    font-family: "icomoon";
+    font-size: 16px;
+    font-weight: 400;
+    left: 50px;
+    line-height: 16px;
+    position: absolute;
+    text-align: center;
+    top: 30px;
+}
+.header .alternative-unav-global-menu .alternative-unav-gsa form .icon-search:before {
+    content: "\e607"
+}
+.header .alternative-unav-global-menu .alternative-unav-gsa form .alternative-unav-search-submit {
+    display:none;
+    background-color: rgba(0, 0, 0, 0);
+    color: rgb(18, 142, 195);
+    cursor: pointer;
+    font-family: "Proxima Nova", Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    position: absolute;
+    right: 16px;
+    top: 5.6px;
+    width: 0px;
+    margin: 0px;
+    overflow: hidden;
+    text-align: center;
+}
+
+.header .pane-alt-unav-global-menu {
+    overflow: hidden;
+    position: relative;
+}
+
+.header .pane-page-logo {
+    border: none;
+    margin: 0;
+    /*width: 18%;*/
+    text-align: left;
+    position: relative;
+    background: #fff;
+    z-index: 6;
+    border-right: solid 1px #d9e2e2;
+    height: 84px;
+}
+
+.header .pane-page-logo:before {
+    display: none;
+}
+
+.header .pane-page-logo .pane-content {
+    padding: 0 10px;
+}
+
+.header .pane-page-logo .pane-content a {
+    display: block;
+    padding-bottom: 4px;
+    height: 70px;
+}
+
+.header .pane-page-logo .pane-content img {
+    margin: 0 auto;
+    padding: 10px 10px;
+    max-height: 70px;
+    text-align: left;
+}
+
+.alternative-unav-header #expand-menu-mobile {
+    font-size: 1.125em;
+    right: 0;
+    bottom: 12px;
+    position: absolute;
+    width: 65px;
+    height: 55px;
+    border-left: solid 1px #d9e2e2;
+    cursor: pointer;
+    z-index: 100;
+    top: 94px;
+}
+.alternative-unav-header #expand-menu-mobile:before {
+    display: block;
+    position: absolute;
+    font-family: 'icomoon';
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-transition: -webkit-transform 0.3s;
+    -moz-transition: -moz-transform 0.3s;
+    -o-transition: -o-transform 0.3s;
+    transition: transform 0.3s;
+    color: #d5820d;
+    content: "\e616";
+    text-align: center;
+    height: 55px;
+    line-height: 55px;
+    left: 50%;
+    margin-left: -9px;
+}
+
+.alternative-unav-header.nav-open #expand-menu-mobile:before {
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
+
+.alternative-unav-header .alternative-unav-links {
+    display: none;
+}
+
+/* PC VIEW */
+@media (min-width: 48em) {
+    .alternative-universal-container {
+        height: 90px;
+    }
+    .alternative-universal-container header {
+        top: 0;
+    }
+    .header {
+        height: 90px;
+    }
+    .header .alternative-unav-global-name {
+        display: block;
+        position: relative;
+        width: 60%;
+        padding-left: 60px;
+    }
+    .header .alternative-unav-global-name .alternative-unav-agency-name {
+        transition: all 0.3s ease 0s;
+        padding: 21px 0;
+    }
+    .header .alternative-unav-global-name .alternative-unav-agency-name .alternative-unav-agency-state {
+        font-size: 16px;
+        font-family: "D Sari Bold", Arial, sans-serif;
+        line-height: 20px;
+        color: #E07604;
+    }
+    .header .alternative-unav-global-name .alternative-unav-agency-name .alternative-unav-agency-agency a {
+        font-size: 22px;
+        font-family: "D Sari Bold", Arial, sans-serif;
+        line-height: 24px;
+        color: #031D3D;
+        text-decoration: none;
+    }
+    .header .alternative-unav-global-menu {
+        display: block;
+        float: right;
+        position: relative;
+        text-align: left;
+        /*margin-top: 35px;*/
+    }
+    .header .alternative-unav-global-menu .alternative-unav-gsa {
+        position: relative;
+        padding: 0;
+        text-align: left;
+        height: 0;
+    }
+    .header .alternative-unav-global-menu .alternative-unav-gsa form {
+        position: absolute;
+        top: 28px;
+        width: 140px;
+        z-index: 100;
+        transition-delay: 0;
+        transition-duration: 0.33s;
+        transition-property: left;
+        transition-timing-function: ease;
+        background-color: #FFF;
+        padding: 0;
+    }
+    .header .alternative-unav-global-menu .alternative-unav-gsa form.translate {
+        right: 130px;
+    }
+    .header .alternative-unav-global-menu .alternative-unav-gsa form.no-translate {
+        right: 30px;
+    }
+    .header .alternative-unav-global-menu .alternative-unav-gsa form #alternative-unav-search {
+        display: block;
+        border-color: rgb(217, 226, 226);
+        border-radius: 30px;
+        border-width: 1px;
+        border-style: solid;
+        color: rgb(0, 0, 0);
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 20px;
+        margin: 0;
+        padding: 7px 30px;
+        position: relative;
+        width: 80px;
+        font-family: "Proxima Nova", Arial, sans-serif;
+        transition: all 0.3s ease 0s;
+    }
+    .header .alternative-unav-global-menu .alternative-unav-gsa form .icon-search {
+        font-family: "icomoon";
+        font-size: 16px;
+        font-weight: 400;
+        left: 10px;
+        line-height: 16px;
+        position: absolute;
+        text-align: center;
+        top: 10px;
+        transition: all 0.3s ease 0s;
+    }
+    .header .alternative-unav-global-menu .alternative-unav-gsa form .icon-search:before {
+        content: "\e607"
+    }
+    .header .alternative-unav-global-menu .alternative-unav-gsa form.search-open .alternative-unav-search-submit {
+        border-left-width: 1px;
+        width: 85px;
+        padding: .2em 1em;
+    }
+    .header .alternative-unav-global-menu .alternative-unav-gsa form .alternative-unav-search-submit {
+        font-family: "Proxima Nova", Arial, sans-serif;
+        font-size: 16px;
+        font-weight: 600;
+        transition: .3s all;
+        background: none;
+        border: 0 solid #d9e2e2;
+        color: #128ec3;
+        padding: .2em 0;
+        position: absolute;
+        right: 1em;
+        top: .35em;
+        width: 0;
+        overflow: hidden;
+        line-height: 1.3em;
+        border-radius: 0;
+        display: block;
+    }
+    .header .alternative-unav-global-menu .alternative-unav-links {
+        display: block;
+    }
+    .header .pane-page-logo {
+        padding: 3px 0;
+        width: 160px;
+        text-align: center;
+        float: left;
+        border-right: none;
+    }
+    .header .pane-page-logo .pane-content {
+        padding: 7px 0px 7px 60px;
+    }
+    .header .pane-page-logo .pane-content a {
+        padding-bottom: 0px;
+        width: 70px;
+    }
+    .header .pane-page-logo .pane-content a img{
+        margin: 0;
+        padding: 0;
+        max-width: 100%;
+    }
+    .alternative-unav-header #expand-menu-mobile {
+        z-index: 0;
+        display: none;
+    }
+    .alternative-unav-header .alternative-unav-links {
+        display: block;
+        font-family: "ProximaNovaSemiBold";
+        font-size: 16px;
+        line-height: 20px;
+        position: relative;
+        text-align: left;
+    }
+    .alternative-unav-header .alternative-unav-links ul.alternative-unav-settings {
+        list-style-image: none;
+        list-style-position: outside;
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        position: absolute;
+        right: 30px;
+        top: 25px;
+    }
+    .alternative-unav-header .alternative-unav-links ul.alternative-unav-settings li.alternative-unav-settings-translate {
+        padding: 10px 15px;
+    }
+    .alternative-unav-header .alternative-unav-links ul.alternative-unav-settings li.alternative-unav-settings-translate a {
+        cursor: pointer;
+        text-decoration: none;
+        color: rgb(0, 0, 0);
+    }
+}
