@@ -120,7 +120,7 @@ gulp.task('build:dev', ['styles', 'styleguide'], function (cb) {
 // Launch the Server
 // ##########.
 gulp.task('browser-sync', ['styles'], function() {
-  browserSync.init({proxy: "webny.local"});
+  browserSync.init({proxy: "nydfs.local"});
 
   gulp.watch(options.theme.sass + '**/*.scss', ['styles']);
   gulp.watch(options.theme.css + '**/*.css').on('change', browserSync.reload);
@@ -132,7 +132,7 @@ gulp.task('browser-sync', ['styles'], function() {
  * Clear all caches
  */
 gulp.task('clearcache', shell.task([
-  'drush @webny.local cr'
+  'drush @nydfs.local cr'
 ]));
 
 /**

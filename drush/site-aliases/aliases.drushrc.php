@@ -361,14 +361,14 @@
 #  ) + $aliases['server'];
 
 // Local environment.
-$aliases['webny.local'] = array(
+$aliases['nydfs.local'] = array(
   'root' => '/var/www/webny/docroot',
-  'uri' => 'http://webny.local',
+  'uri' => 'http://nydfs.local',
   );
 // Add remote connection options when alias is used outside VM.
 if ('vagrant' != $_SERVER['USER']) {
-  $aliases['webny.local'] += array(
-    'remote-host' => 'webny.local',
+  $aliases['nydfs.local'] += array(
+    'remote-host' => 'nydfs.local',
     'remote-user' => 'vagrant',
     'ssh-options' => '-o PasswordAuthentication=no -i ' . drush_server_home() . '/.vagrant.d/insecure_private_key'
   );
