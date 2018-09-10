@@ -33,15 +33,19 @@ ul.dfs-main-menu {
   li {
     list-style-type: none;
     padding: 10px 15px;
+    &:hover {
+      color: #09464c;
+      background-color: #e5eeee;
+    }
   }
   li a {
     color: #ffffff;
     vertical-align: middle;
     text-decoration: none;
-  }
-  li a:have {
-    color: #000000;
-    text-decoration: none;
+    &:hover {
+      color: #09464c;
+      text-decoration: none;
+    }
   }
   li.first {
     width: 179px;
