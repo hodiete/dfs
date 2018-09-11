@@ -166,3 +166,32 @@ function dfs_ny_library_info_alter(&$libraries, $extension) {
    }
 	 return $suggestions;
  }
+
+
+ /**
+ * Implements hook_theme_suggestions_HOOK_alter().
+ */
+function dfs_ny_theme_suggestions_page_alter(array &$suggestions, array $variables) {
+
+  if ($node = \Drupal::routeMatch()->getParameter('node')) {
+    $content_type = $node->bundle();
+    $suggestions[] = 'page__'.$content_type;
+  }
+}
+
+ /**
+ * Implements hook_theme_preprocess_page().
+ */
+function dfs_ny_preprocess_page(&$variables) {
+  $request = \Drupal::request();
+  $route_match = \Drupal::routeMatch();
+  if ($route_match->getParameter('node')) {
+    $page_title = \Drupal::service('title_resolver')->getTitle($request, $route_match->getRouteObject());
+    $variables['dfs_page_title'] = $page_title;
+  }
+
+  if ($node = \Drupal::routeMatch()->getParameter('node')) {
+    $content_type = $node->bundle();
+    $suggestions[] = 'page__'.$content_type;
+  }
+}

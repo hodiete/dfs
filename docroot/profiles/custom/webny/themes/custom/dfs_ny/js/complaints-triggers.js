@@ -6,6 +6,7 @@
 (function ($, Drupal, window, document) {
 
   'use strict';
+
   $(".in-div-drop-button").click(function () {
     $(this).next().slideToggle(500);
     console.log($(this).next().text());
@@ -30,5 +31,21 @@
     }
 
   });
+
+  // Get URL of image in the header image node's image field.
+  // var imgSrc = $('#complaints-img-header .field-image img').attr('src');
+  var basUrl = '/sites/default/files/landing-banner/';
+  var items = [      
+    basUrl + 'nik-macmillan-280300-unsplash.jpg',
+    basUrl + 'rawpixel-281361-unsplash.jpg',
+    basUrl + 'rawpixel-411169-unsplash.jpg',
+    basUrl + 'rawpixel-567016-unsplash.jpg',
+    basUrl + 'rawpixel-577480-unsplash.jpg',
+    basUrl + 'rawpixel-592444-unsplash.jpg',
+      ];
+  // Set background image of parent block to this image URL.
+  var imgSrc = items[Math.floor(Math.random() * items.length)];
+  $('#complaints-img-header').css('background-image', 'url(' + imgSrc + ')');
+
 
 })(jQuery, Drupal, this);

@@ -33,18 +33,22 @@ ul.dfs-main-menu {
   li {
     list-style-type: none;
     padding: 10px 15px;
-    &:hover {
-      color: #09464c;
-      background-color: #e5eeee;
+    &:hover,
+    &:visited {
+      // color: #e5eeee;
+      background-color: #0f626a;
     }
-  }
-  li a {
-    color: #ffffff;
-    vertical-align: middle;
-    text-decoration: none;
-    &:hover {
-      color: #09464c;
+    a {
+      color: #ffffff;
+      vertical-align: middle;
       text-decoration: none;
+      &:hover {
+        color: #e5eeee;
+        text-decoration: none;
+      }
+      &:visited {
+        text-decoration: none;
+      }
     }
   }
   li.first {
@@ -80,4 +84,22 @@ div#nav-meta {
 
 main {
   margin-bottom: 25px;
+}
+
+#complaints-img-header {
+  margin: 0;
+  background-image: '/sites/default/files/landing-banner/rawpixel-592444-unsplash.jpg';
+  background-position: 0px 516px;
+  background-size: 100%;
+  .banner-title {
+    padding: 97px 60px;
+    width: 35%;
+  }
+  h2 {
+    font-size: 38px;
+    padding: 18px;
+    background-color: #e5eeee;
+    /* max-width: 24%; */
+    text-align: center;
+  }
 }
