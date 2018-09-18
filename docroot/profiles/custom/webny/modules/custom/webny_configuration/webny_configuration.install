@@ -1906,9 +1906,12 @@ function webny_configuration_update_8097() {
     $config = \Drupal::config('webny_global_nav.settings');
 
     $agencyname     = $config->get('webny_global_nav.agencyname');
+    $agencyname     = 'Department of Financial Services';
     $headerauto     = $config->get('webny_global_nav.headerauto');
     $headermenu     = $config->get('webny_global_nav.headermenu');
     $headerformat   = $config->get('webny_global_nav.headerformat');
+
+
     $footerauto     = '1';
     $footerformat   = 'footer-horizontal';
     $footermenu     = 'webny-global-footer-menu';

@@ -194,4 +194,9 @@ function dfs_ny_preprocess_page(&$variables) {
     $content_type = $node->bundle();
     $suggestions[] = 'page__'.$content_type;
   }
+
+  // if(!isset($variables['agencyname'])){
+  //   $variables['agencyname'] = 'Department of Financial Services';
+
+  // }
 }
