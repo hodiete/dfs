@@ -7,9 +7,9 @@
 
 $agency_groupings = array(
   'styles' => 'None (ny.gov colors)',
-  'administration' => 'Administration',
-  'business' => 'Business',
-  'education' => 'Education',
+  // 'administration' => 'Administration',
+  // 'business' => 'Business',
+  // 'education' => 'Education',
   // 'health-human-services' => 'Health and Human Services',
   // 'local-regional-authorities' => 'Local and Regional authorities',
   // 'public-safety' => 'Public Safety',

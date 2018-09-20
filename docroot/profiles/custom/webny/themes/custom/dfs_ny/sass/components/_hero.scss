@@ -1051,6 +1051,10 @@ $hero-event-bkgd-transparent-black: $bkgd-black-50 !default;
       width: $hero-inner-width;
       h1, h2{
         width: $hero-header-width;
+        // width: 35%;
+        padding: 18px;
+        line-height: 50px;
+        margin-top: 33px;
       }
     }
 
@@ -1163,10 +1167,20 @@ $hero-event-bkgd-transparent-black: $bkgd-black-50 !default;
     }
 
     h1,h2{
-      font-size: 48px;
+      /*
+      // font-size: 48px;
       line-height: 60px;
+      font-size: 40px;
       color: $color-mono-white;
-      font-weight: 800;
+      // font-weight: 800;
+      font-weight: bold;
+      */@at-root
+      color: #09464c;
+      font-size: 40px;
+      padding: 18px;
+      background-color: #e5eeeecf;
+      text-align: center;
+
     }
 
     .hero-event {
