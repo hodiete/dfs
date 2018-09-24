@@ -93,10 +93,15 @@ aside.sidebar {
 //////////////////////////////////
 // Complaint Sidebar Rules ///////
 //////////////////////////////////
+.sticky {
+  width: 343px;
+}
+
 .complaint-sidebar {
-  margin-top: 60px !important;
-  padding-left: 0px !important;
+  margin-top: 60px ;
+  padding-left: 0px ;
   display: block;
+    // width: 100%;
 
   .ul-complaint-sidebar {
     padding:0;
@@ -141,7 +146,7 @@ aside.sidebar {
 }
 
 .first-complaints {
-  a {
+  a { 
     background-color: #09464c;
     color: white;
     &:hover {
