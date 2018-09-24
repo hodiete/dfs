@@ -180,6 +180,13 @@ function dfs_ny_theme_suggestions_page_alter(array &$suggestions, array $variabl
   }
 }
 
+function dfs_ny_theme_suggestions_menu_alter(array &$suggestions, array $variables)
+{
+  if (isset($variables['attributes']['block'])) {
+    $suggestions[] = $variables['theme_hook_original'] . '__' . $hook;
+  }
+}
+
 /**
 * Implements hook_theme_preprocess_page().
 */
