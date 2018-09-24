@@ -36,12 +36,12 @@
   // var imgSrc = $('#complaints-img-header .field-image img').attr('src');
   var basUrl = '/sites/default/files/landing-banner/';
   var items = [      
-    basUrl + 'nik-macmillan-280300-unsplash.jpg',
-    basUrl + 'rawpixel-281361-unsplash.jpg',
-    basUrl + 'rawpixel-411169-unsplash.jpg',
-    basUrl + 'rawpixel-567016-unsplash.jpg',
-    basUrl + 'rawpixel-577480-unsplash.jpg',
-    basUrl + 'rawpixel-592444-unsplash.jpg',
+    basUrl + 'Auto_Insurance.jpg',
+    basUrl + 'Banking_Saving_Sending_Borrowing_Money.jpg',
+    basUrl + 'Consumer_Information.jpg',
+    basUrl + 'File_External_Appeal.jpg',
+    basUrl + 'File_Complaint.jpg',
+    basUrl + 'File_No_Fault_Arbitration.jpg',
       ];
   // Set background image of parent block to this image URL.
   var imgSrc = items[Math.floor(Math.random() * items.length)];

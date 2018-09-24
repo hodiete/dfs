@@ -98,19 +98,15 @@ aside.sidebar {
 }
 
 .complaint-sidebar {
-  margin-top: 60px ;
-  padding-left: 0px ;
-  display: block;
-    // width: 100%;
-
+  margin-top: 60px;
+  padding-left: 0px;
+  display: block; // width: 100%;
   .ul-complaint-sidebar {
-    padding:0;
-
+    padding: 0;
     li:nth-child(1) a {
       font-size: 20px;
     }
   }
-  
   ul ul {
     display: none;
     width: 200px;
@@ -126,8 +122,7 @@ aside.sidebar {
     background-color: #fff;
     text-decoration: none;
     height: 36px;
-    padding-top: 20px;
-    // font-family: Helvetica;
+    padding-top: 20px; // font-family: Helvetica;
     font-size: 16px;
     font-weight: normal;
     font-style: normal;
@@ -146,7 +141,7 @@ aside.sidebar {
 }
 
 .first-complaints {
-  a { 
+  a {
     background-color: #09464c;
     color: white;
     &:hover {
@@ -158,6 +153,23 @@ aside.sidebar {
   }
 }
 
-.leaf {
-  // margin: 0 !important;
+// .leaf {
+//   // margin: 0 !important;
+// }
+
+#block-breadcrumbs {
+  width: 45%;
+  margin-bottom: -66px;
+  z-index: 500;
+  ol { 
+    list-style-type: none;
+    display: flex;
+    li {
+      padding: 5px 5px 5px 10px;
+      background-color: #00000063;
+      a {
+        color: white;
+      }
+    }
+  }
 }
