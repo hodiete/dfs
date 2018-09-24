@@ -1,16 +1,24 @@
-.container {
-  margin: 60px 80px 0px 80px;
+@media only screen and (min-width: 768px) {
+  .container{
+    margin: 60px 80px 0px 80px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .container{
+    margin: 60px 0px 0px 0px;
+  }
 }
 
 // Main Page Break
-.break {
+.break{
   width: 100%;
   border-bottom: solid 1px #09464c;
   margin: 16px 0;
 }
 
 // In page dropdown Break
-.dropdown-break {
+.dropdown-break{
   width: 100%;
   height: 0px;
   border-bottom: solid 1px #09464c;
@@ -19,49 +27,40 @@
 }
 
 // Main content formatting.
-.how-to-file {
+.how-to-file{
   margin-top: 60px;
 }
 
-.page-title {
+.page-title{
   color: #09464c !important;
+  font-size: 40px;
 }
 
-.body-text {
+.body-text{
   font-size: 16px;
   line-height: 1.38;
-  strong {
+  strong{
     font-weight: bolder;
   }
-  a {
+  a{
     font-weight: bold;
     color: #09464c !important;
     text-decoration: underline;
   }
 }
 
-.portal-login-button {
-  min-width: 200px;
-  height: 41px;
-  border-radius: 60px;
-  text-align: right;
-  padding: 10px 30px;
-  margin: 0 12px;
-  background: #f2a900 url(../icons/dfs/Portal.svg) bottom left no-repeat;
-  background-size: 27px 27px;
-  background-position: 35px 4px;
-}
-
-.login-button {
+.login-button{
   width: 200px;
   height: 45px;
   border-radius: 60px;
   background-color: #f2a900;
   color: black;
   align-items: center;
-  text-align: center; // position: relative;
+  text-align: center;
+  // position: relative;
   display: inline-flex;
-  p {
+  p{
+
     height: 100%;
     align-items: center;
     font-weight: bold;
@@ -70,20 +69,35 @@
   }
 }
 
-.login-button-icon {
+.login-button-icon{
   margin-top: 8px;
   width: 20px;
   margin: 0 10px 8px 30px;
 }
 
 // The buttons for the PDF and other documents
-.content-forms {
+.content-forms{
   width: 348px;
   height: 99px;
   border: solid 1px #e5eeee;
   display: inline-flex;
   margin: 10px;
-  .content-form-img-box {
+
+  // .content-form-img-box{
+  //   float: left;
+  //   width: 87px;
+  //   display: flex;
+  //   align-items: center;
+  //   text-align: center;
+  //   height: 100%;
+  //   border-right: solid 1px #e5eeee;
+  //   img{
+  //     padding-left: 22px;
+  //     height: 39px;
+  //   }
+  // }
+
+  .content-form-pdf-box{
     float: left;
     width: 87px;
     display: flex;
@@ -91,44 +105,64 @@
     text-align: center;
     height: 100%;
     border-right: solid 1px #e5eeee;
-    img {
-      padding-left: 22px;
-      height: 39px; // width: 30.8px;
-      path {
-        fill: #09464c;
-      }
-    }
+    background-image: url('/profiles/custom/webny/themes/custom/dfs_ny/icons/dfs/pdf-teal.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 40px 60px;
+    // img{
+    //   padding-left: 22px;
+    //   height: 39px;
+    // }
   }
-  .content-form-text-box {
+
+  .content-form-document-box{
+    float: left;
+    width: 87px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    height: 100%;
+    border-right: solid 1px #e5eeee;
+    background-image: url('/profiles/custom/webny/themes/custom/dfs_ny/icons/dfs/doc-teal.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 40px 60px;
+  }
+
+  .content-form-text-box{
     float: right;
     width: 260px;
     text-align: center;
     height: 100%;
     display: flex;
     align-items: center;
-    p {
+    p{
       width: 260px;
       font-size: 20px;
       font-weight: bold;
       color: #09464c;
     }
   }
-  &:hover {
-    .content-form-img-box {
+
+  &:hover{
+    .content-form-pdf-box{
       background-color: #09464c;
-      img {
-        path {
-          fill: white;
-        }
-      }
+      background-image: url('/profiles/custom/webny/themes/custom/dfs_ny/icons/dfs/pdf-white.svg');
+
+    }
+    .content-form-document-box{
+      background-color: #09464c;
+      background-image: url('/profiles/custom/webny/themes/custom/dfs_ny/icons/dfs/doc-white.svg');
     }
   }
+
 }
 
 // Custom LI bullets for the content sections.
 li.body-bullet {
   font-family: Arial;
   font-size: 16px;
+  list-style-type: none !important;
 }
 
 li.body-bullet:before {
@@ -143,33 +177,58 @@ li.body-bullet:before {
 }
 
 // The drop down menus in the content section.
-.in-div-drop-box {
+.in-div-drop-box{
   width: 100%;
-  overflow: overlay;
+  overflow:overlay;
   border-left-width: 15px;
   border-left-color: #09464c;
   border-left-style: none;
 }
 
-.in-div-drop-title {
+.in-div-drop-title{
   font-weight: bolder;
+  @media only screen and (min-width: 768px) {
+    font-size: 18px;
+  }
+
+  @media only screen and (max-width: 767px) {
+    font-size: 16px;
+  }
   color: #09464c !important;
   margin: 25px;
   float: left;
+  max-width: calc(100% - 160px);
 }
 
-.in-div-drop-text {
+.in-div-drop-text{
   color: black !important;
   font-size: 12px;
   margin: 10px 25px 10px 25px;
+  width: calc(80% - 15px);
+  padding-right: 20px;
   display: none;
+  float:left;
+  li{
+    list-style-type: circle;
+  }
+}
+
+.in-div-drop-button{
+  width: 40px;
+  background-color: #09464c;
+  padding-top:5px;
+  color: white;
+  text-align: center;
+  align-items: center;
+  height: 30px;
+  margin: 25px 25px 25px 25px;
   float: right;
 }
 
-.in-div-drop-button {
+.in-view-drop-button{
   width: 40px;
   background-color: #09464c;
-  padding-top: 5px;
+  padding-top:5px;
   color: white;
   text-align: center;
   align-items: center;

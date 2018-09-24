@@ -5,7 +5,7 @@
 // Markup: wysiwygframe.hbs
 //
 // Style guide: components.wysiwygframe
- 
+
 // color variables
 $wysiwyg-frame-bkgd-color: $color-mono-white !default;
 $wysiwyg-frame-title-color: $color-primary !default;
@@ -13,15 +13,16 @@ $wysiwyg-frame-headline-color: $color-mono-black !default;
 $wysiwyg-frame-text-color: $color-mono-black !default;
 
 // for desktop - to keep it from getting too wide to read
-.wysiwyg--field-webny-wysiwyg-title, 
-.wysiwyg--field-webny-wysiwyg-headline, 
+.wysiwyg--field-webny-wysiwyg-title,
+.wysiwyg--field-webny-wysiwyg-headline,
 .wysiwyg--field-webny-wysiwyg-body {
-  max-width: $max-pc; 
-  margin: 0 auto;
+  max-width: $max-pc;
+  // margin: 0 auto;
   //padding: 0 8%; //taken from ny.gov padding on frames --hidden to remove indent so everything lines
 }
 .landing-paragraphs .wysiwyg--field-webny-wysiwyg-body {
-  padding: 0 8%;
+  padding: 0 2.8%; // I added this in, can be changed back if a later issue.
+  // padding: 0 8%;
 }
 
 .paragraph--type--webny-wysiwyg-pgtype {
@@ -30,7 +31,7 @@ $wysiwyg-frame-text-color: $color-mono-black !default;
 }
 
 .wysiwyg--field-webny-wysiwyg-title {
-  font: $frame-title; 
+  font: $frame-title;
   color: $wysiwyg-frame-title-color;
   text-align: center;
   letter-spacing: 2px;
@@ -52,7 +53,7 @@ $wysiwyg-frame-text-color: $color-mono-black !default;
   line-height: 1.25em;
 }
 
-// I'm not setting text-align center on the body field because they want the left, right, center and justify wysiwyg buttons and this text-align would override that 
+// I'm not setting text-align center on the body field because they want the left, right, center and justify wysiwyg buttons and this text-align would override that
 .wysiwyg--field-webny-wysiwyg-body {
   color: $wysiwyg-frame-text-color;
   font-size: 16px;
@@ -72,10 +73,9 @@ $wysiwyg-frame-text-color: $color-mono-black !default;
 
 // ######################################################################## //
 /* DESKTOP VIEW */
-@media (min-width: $min-desktop) { 
-  .landing-paragraphs .wysiwyg--field-webny-wysiwyg-body { 
+@media (min-width: $min-desktop) {
+  .landing-paragraphs .wysiwyg--field-webny-wysiwyg-body {
   //  padding: 0;
   }
 }
 }
-

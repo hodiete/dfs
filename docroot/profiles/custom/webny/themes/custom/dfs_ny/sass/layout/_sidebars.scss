@@ -6,24 +6,28 @@
 //
 // Style guide: layout.sidebars
 //
-ul {
-  list-style-type: none !important;
-}
+ ul{
+   list-style-type: none !important;
+ }
 
 //////////////////////////////////
 // Sidebar First /////////////////
 //////////////////////////////////
+
 .body-sidebars-first {
   @include breakpoint($min-tablet) {
     aside.layout-sidebar-first {
       @include span(3 of 12);
-      >* {
+
+      > * {
         // padding-left: 15px;
       }
     }
+
     main .layout-content {
       @include span(9 of 12 last);
-      >* {
+
+      > * {
         padding-right: 25px;
       }
     }
@@ -33,17 +37,21 @@ ul {
 //////////////////////////////////
 // Sidebar Second ////////////////
 //////////////////////////////////
+
 .body-sidebars-second {
   @include breakpoint($min-tablet) {
     aside.layout-sidebar-second {
       @include span(3 of 12 last);
-      >* {
+
+      > * {
         padding-right: 15px;
       }
     }
+
     main .layout-content {
       @include span(9 of 12);
-      >* {
+
+      > * {
         padding-left: 25px;
       }
     }
@@ -53,23 +61,29 @@ ul {
 //////////////////////////////////
 // Sidebar Both //////////////////
 //////////////////////////////////
+
 .body-sidebars-both {
   @include breakpoint($min-tablet) {
     aside.layout-sidebar-first {
       @include span(2 of 12);
-      >* {
+
+      > * {
         padding-left: 15px;
       }
     }
+
     main .layout-content {
       @include span(8 of 12);
-      >* {
+
+      > * {
         padding-right: 25px;
       }
     }
+
     aside.layout-sidebar-second {
       @include span(2 of 12 last);
-      >* {
+
+      > * {
         padding-right: 15px;
       }
     }
@@ -79,6 +93,7 @@ ul {
 //////////////////////////////////
 // Sidebar None //////////////////
 //////////////////////////////////
+
 .body-sidebars-none {
   // No sidebars rules.
 }
@@ -86,6 +101,7 @@ ul {
 //////////////////////////////////
 // General Sidebar Rules /////////
 //////////////////////////////////
+
 aside.sidebar {
   overflow: hidden;
 }
@@ -93,83 +109,153 @@ aside.sidebar {
 //////////////////////////////////
 // Complaint Sidebar Rules ///////
 //////////////////////////////////
-.sticky {
-  width: 343px;
+
+.complaint-sidebar{
+    margin-top:60px !important;
+    padding-left: 0px !important;
+    display: block;
+
+    ul ul{
+        display: none;
+        width: 200px;
+        background: #FFF;
+        list-style-type: none;
+
+        li{
+          display: block;
+          float: none;
+        }
+    }
+
+    a{
+        display: block;
+        background-color: #fff;
+        text-decoration: none;
+        height: 36px;
+        padding-top: 20px;
+        font-family: Helvetica;
+        font-size: 16px;
+        font-weight: normal;
+        font-style: normal;
+        font-stretch: normal;
+        border-bottom: solid 1px #09464c;
+        line-height: 0.94;
+        letter-spacing: 0.5px;
+        text-align: center;
+        color: #09464c;
+
+        &:hover{
+            background-color: #e5eeee;
+            font-weight: bold;
+            text-decoration: none;
+        }
+    }
 }
 
-.complaint-sidebar {
-  margin-top: 60px;
-  padding-left: 0px;
-  display: block; // width: 100%;
-  .ul-complaint-sidebar {
-    padding: 0;
-    li:nth-child(1) a {
-      font-size: 20px;
+
+.first-complaints{
+
+    a{
+      background-color: #09464c;
+      color: white;
+
+      &:hover{
+        background-color: #09464c;
+        color: white;
+        font-weight: normal;
+        text-decoration: none;
+      }
     }
-  }
-  ul ul {
-    display: none;
-    width: 200px;
-    background: #FFF;
-    list-style-type: none;
-    li {
-      display: block;
-      float: none;
+}
+
+.leaf{
+  margin: 0 !important;
+}
+
+.faq-sidebar{
+    padding-left: 0px !important;
+    display: block;
+
+    ul ul{
+        display: none;
+        width: 200px;
+        background: #FFF;
+        list-style-type: none;
+
+        li{
+          display: block;
+          float: none;
+        }
     }
-  }
-  a {
+
+    a{
+        display: block;
+        background-color: #fff;
+        text-decoration: none;
+        height: 36px;
+        padding-top: 10px;
+        font-family: Helvetica;
+        @media only screen and (max-width: 767px) {
+          font-size: 12px;
+        }
+        @media only screen and (min-width: 768px) {
+          font-size: 16px;
+        }
+        font-weight: normal;
+        font-style: normal;
+        font-stretch: normal;
+        line-height: 0.94;
+        letter-spacing: 0.5px;
+        text-align: center;
+        color: #09464c;
+
+        &:hover{
+            font-weight: bold;
+            text-decoration: none;
+        }
+    }
+}
+
+#block-consumersections-menu{
+    margin-top: 60px;
     display: block;
     background-color: #fff;
     text-decoration: none;
     height: 36px;
-    padding-top: 20px; // font-family: Helvetica;
+    padding-top: 20px;
+    font-family: Helvetica;
     font-size: 16px;
-    font-weight: normal;
+    font-weight: bold;
     font-style: normal;
     font-stretch: normal;
-    border-bottom: solid 1px #09464c;
     line-height: 0.94;
     letter-spacing: 0.5px;
     text-align: center;
     color: #09464c;
-    &:hover {
-      background-color: #e5eeee;
-      font-weight: bold;
-      text-decoration: none;
-    }
-  }
+    border-bottom: solid 1px #09464c;
 }
 
-.first-complaints {
-  a {
-    background-color: #09464c;
-    color: white;
-    &:hover {
-      background-color: #09464c;
-      color: white;
-      font-weight: normal;
-      text-decoration: none;
-    }
-  }
+#block-industrysections-menu{
+    margin-top: 60px;
+    display: block;
+    background-color: #fff;
+    text-decoration: none;
+    height: 36px;
+    padding-top: 20px;
+    font-family: Helvetica;
+    font-size: 16px;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 0.94;
+    letter-spacing: 0.5px;
+    text-align: center;
+    color: #09464c;
+    border-bottom: solid 1px #09464c;
 }
 
-// .leaf {
-//   // margin: 0 !important;
+// .faq-menu-leaf{
+//   margin: 0 !important;
+//   background-color: white;
+//   color:  #09464c;
 // }
-
-#block-breadcrumbs {
-  width: 45%;
-  margin-bottom: -66px;
-  z-index: 500;
-  ol { 
-    list-style-type: none;
-    display: flex;
-    li {
-      padding: 5px 5px 5px 10px;
-      background-color: #00000063;
-      a {
-        color: white;
-      }
-    }
-  }
-}
