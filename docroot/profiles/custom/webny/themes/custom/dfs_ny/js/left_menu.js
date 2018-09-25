@@ -50,7 +50,7 @@
         } else if (stickyTop < windowTop+stickOffset) {
             $sticky.css({ position: 'fixed', top: stickOffset });
         } else {
-            $sticky.css({position: 'absolute', top: 'initial'});
+          $sticky.css({ position: 'relative', top: 'initial'});
         }
       });
     
