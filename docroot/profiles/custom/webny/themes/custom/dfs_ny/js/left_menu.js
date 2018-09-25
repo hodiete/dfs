@@ -7,20 +7,20 @@
   var $sticky2  = $('#webny-global-header');
 
   if (!!$sticky.offset()) { 
-    stickNavigation($sticky, $stickyrStopper);
+    stickNavigation($sticky, $stickyrStopper, false);
   }
   else{
-    stickNavigation($sticky2, $stickyrStopper );
+    stickNavigation($sticky2, $stickyrStopper, true );
 
   }
 
 
 
-  function stickNavigation($sticky, $stickyrStopper) {
+  function stickNavigation($sticky, $stickyrStopper, $topMenu = true) {
 
     console.log('jQuery sticky ready!');
-
     if (!!$sticky.offset()) { // make sure ".sticky" element exists
+      var myPosition = ($topMenu) ? 'relative' : 'absolute' ;
     
       var generalSidebarHeight = $sticky.innerHeight();
       var stickyTop = $sticky.offset().top;
@@ -50,7 +50,7 @@
         } else if (stickyTop < windowTop+stickOffset) {
             $sticky.css({ position: 'fixed', top: stickOffset });
         } else {
-          $sticky.css({ position: 'relative', top: 'initial'});
+          $sticky.css({ position: myPosition, top: 'initial'});
         }
       });
     
