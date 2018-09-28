@@ -1,9 +1,10 @@
 (function ($, Drupal, window, document) {
   "use strick";
 
-  var $sticky = $('.sticky');
+  // var $sticky = $('.sticky');
+  var $sticky = $('#sticky-leftmenu').parent('nav');
   var $stickyrStopper = $('.sticky-stopper');
-  var $fromTopHeight = 510;
+  var $fromTopHeight = ($(window).width() >= 1024 )? 510 : 386 ;
 
   $sticky.css({ position: 'absolute', top: $fromTopHeight });
 
@@ -17,6 +18,13 @@
 
   }
 
+  /*
+  *  toggle the left menu on mobile
+  */
+
+  $("#block-dfs-ny-complaints-menu").click(function () {
+    $("#sticky-leftmenu").toggle('fast');
+  });
 
 
   function stickNavigation($sticky, $stickyrStopper, $topMenu = true, $fromTopHeight = 0) {

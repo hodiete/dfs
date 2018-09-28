@@ -96,6 +96,10 @@ aside.sidebar {
   overflow: hidden;
 }
 
+#block-dfs-ny-complaints {
+  z-index: 3;
+}
+
 //////////////////////////////////
 // Complaint Sidebar Rules ///////
 //////////////////////////////////
@@ -104,11 +108,9 @@ aside.sidebar {
   // padding-left: 0px !important;
   // position: absolute;
   // top: 490px;
- 
-  display: block;
-  // max-width: 348px;
-  width: 22%;
-
+  z-index: 2;
+  display: block; // max-width: 348px;
+  width: 100%;
   ul.ul-complaint-sidebar {
     padding: 0;
   }
@@ -246,3 +248,36 @@ aside.sidebar {
 //   background-color: white;
 //   color:  #09464c;
 // }
+@media (min-width: 1024px) {
+  #block-dfs-ny-complaints-menu {
+    display: none;
+  }
+}
+
+@media (max-width: 1023px) {
+  #block-dfs-ny-complaints-menu {
+    background-color: #09464c;
+    color: white;
+    display: block;
+    text-decoration: none;
+    height: 36px;
+    padding-top: 20px;
+    font-family: Helvetica;
+    font-size: 16px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    border-bottom: solid 1px #09464c;
+    line-height: 0.94;
+    letter-spacing: 0.5px;
+    text-align: center;
+    width: 317px;
+  }
+  
+  #sticky-leftmenu {
+    display: none;
+    ul li.first-complaints {
+      display: none;
+    }
+  }
+}
