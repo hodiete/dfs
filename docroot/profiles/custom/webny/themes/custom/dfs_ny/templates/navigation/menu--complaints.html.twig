@@ -47,15 +47,16 @@
                         {% set classes = ["leaf"] %}
 
 
-{% if loop.first %}
+ {% if loop.first %}
   {% set classes = classes | merge(["first-complaints"]) %}
 {% endif %}
+{#
 {% if loop.last %}
   {% set classes = classes | merge(["last", "dfs-search"]) %}
 {% endif %}
 {% if loop.index == 7 %}
   {% set classes = classes | merge(["portal-login"]) %}
-{% endif %}
+{% endif %} #}
 
                         <li class="{{ classes|join(" ") }} " {{ item.attributes }}>
                             {# {{ kint(item.title) }} #}
