@@ -65,7 +65,7 @@ $globalnav-secondary-color: $button-black-50 !default;
     display: block;
     border-top: 0;
     width: auto;
-    vertical-align: bottom;
+    // vertical-align: bottom;
     a,
     span {
       border-bottom-width: 0;
@@ -138,6 +138,7 @@ $globalnav-secondary-color: $button-black-50 !default;
     font-weight: $nav-weight;
     a,
     a:link,
+
     a:visited,
     a:hover,
     a:active {
@@ -507,9 +508,9 @@ $globalnav-secondary-color: $button-black-50 !default;
           padding: 15px 0 15px 60px;
         }
       }
-      >h1 {
-        /*margin: 10px;*/
-      }
+      // >h1 {
+      //   /*margin: 10px;*/
+      // }
       >ul {
         padding: 0 0 0 45px;
         li {
@@ -544,7 +545,7 @@ $globalnav-secondary-color: $button-black-50 !default;
             display: none;
           }
         }
-        ul {}
+        // ul {}
       }
       h1 {
         display: block;
@@ -702,7 +703,7 @@ $globalnav-secondary-color: $button-black-50 !default;
     ul.gnav-ul {
       li.gnav-topli {
         &:nth-child(1) {
-          width: 223px; // height: 53px;
+          width: 227px;  //223px; (not fit in Safari) // height: 53px;
         }
         &:nth-child(2) {
           // width: 120px;

@@ -141,7 +141,7 @@ $hero-event-bkgd-transparent-black: $bkgd-black-50 !default;
 /* HERO LAYOUT */
 
 .hero-layout {
-  overflow: hidden;
+  // overflow: auto;
   position: relative;
   .hero-news-inner,
   .hero-ipage-inner,
@@ -167,7 +167,7 @@ $hero-event-bkgd-transparent-black: $bkgd-black-50 !default;
       .hero-summary {
         width: 100%;
         max-width: 690px;
-        display: none;
+        // display: none;
       }
     }
   }
@@ -962,6 +962,7 @@ $hero-event-bkgd-transparent-black: $bkgd-black-50 !default;
     .hero-has-image-content {
       // min-height: 510px;
       min-height: 280px;
+      height: 280px;
     }
     .hero-inner.hero-news-inner {
       h1 {
@@ -1107,7 +1108,7 @@ $hero-event-bkgd-transparent-black: $bkgd-black-50 !default;
     }
   } // END HERO LAYOUT
   // FRONT MIN HEIGHT ADJUSTMENT
-  .front {
+  // .front {
     .hero-layout {
       .hero-landing.hero-has-image,
       .hero-has-image .hero-image,
@@ -1118,7 +1119,7 @@ $hero-event-bkgd-transparent-black: $bkgd-black-50 !default;
         height: 280px;
       }
     }
-  }
+  // }
 } // END DESKTOP VIEW
 // OVERRIDES
 // ######################################################################### //

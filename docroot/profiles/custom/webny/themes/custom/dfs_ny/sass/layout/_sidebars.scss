@@ -6,28 +6,30 @@
 //
 // Style guide: layout.sidebars
 //
- ul{
-   list-style-type: none !important;
- }
+ul {
+  list-style-type: none !important;
+}
+
+aside.layout-sidebar-first {
+  nav[role="navigation"] {
+    margin-top: 60px;
+  }
+}
 
 //////////////////////////////////
 // Sidebar First /////////////////
 //////////////////////////////////
-
 .body-sidebars-first {
   @include breakpoint($min-tablet) {
     aside.layout-sidebar-first {
       @include span(3 of 12);
-
-      > * {
+      >* {
         // padding-left: 15px;
       }
     }
-
     main .layout-content {
       @include span(9 of 12 last);
-
-      > * {
+      >* {
         padding-right: 25px;
       }
     }
@@ -37,21 +39,17 @@
 //////////////////////////////////
 // Sidebar Second ////////////////
 //////////////////////////////////
-
 .body-sidebars-second {
   @include breakpoint($min-tablet) {
     aside.layout-sidebar-second {
       @include span(3 of 12 last);
-
-      > * {
+      >* {
         padding-right: 15px;
       }
     }
-
     main .layout-content {
       @include span(9 of 12);
-
-      > * {
+      >* {
         padding-left: 25px;
       }
     }
@@ -61,29 +59,23 @@
 //////////////////////////////////
 // Sidebar Both //////////////////
 //////////////////////////////////
-
 .body-sidebars-both {
   @include breakpoint($min-tablet) {
     aside.layout-sidebar-first {
       @include span(2 of 12);
-
-      > * {
+      >* {
         padding-left: 15px;
       }
     }
-
     main .layout-content {
       @include span(8 of 12);
-
-      > * {
+      >* {
         padding-right: 25px;
       }
     }
-
     aside.layout-sidebar-second {
       @include span(2 of 12 last);
-
-      > * {
+      >* {
         padding-right: 15px;
       }
     }
@@ -93,7 +85,6 @@
 //////////////////////////////////
 // Sidebar None //////////////////
 //////////////////////////////////
-
 .body-sidebars-none {
   // No sidebars rules.
 }
@@ -101,7 +92,6 @@
 //////////////////////////////////
 // General Sidebar Rules /////////
 //////////////////////////////////
-
 aside.sidebar {
   overflow: hidden;
 }
@@ -109,149 +99,146 @@ aside.sidebar {
 //////////////////////////////////
 // Complaint Sidebar Rules ///////
 //////////////////////////////////
+.complaint-sidebar {
+  // margin-top:60px !important;
+  // padding-left: 0px !important;
+  // position: absolute;
+  // top: 490px;
+ 
+  display: block;
+  // max-width: 348px;
+  width: 22%;
 
-.complaint-sidebar{
-    margin-top:60px !important;
-    padding-left: 0px !important;
+  ul.ul-complaint-sidebar {
+    padding: 0;
+  }
+  ul ul {
+    display: none;
+    width: 200px;
+    background: #FFF;
+    list-style-type: none;
+    li {
+      display: block;
+      float: none;
+    }
+  }
+  a {
     display: block;
-
-    ul ul{
-        display: none;
-        width: 200px;
-        background: #FFF;
-        list-style-type: none;
-
-        li{
-          display: block;
-          float: none;
-        }
+    background-color: #fff;
+    text-decoration: none;
+    height: 36px;
+    padding-top: 20px;
+    font-family: Helvetica;
+    font-size: 16px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    border-bottom: solid 1px #09464c;
+    line-height: 0.94;
+    letter-spacing: 0.5px;
+    text-align: center;
+    color: #09464c;
+    &:hover {
+      background-color: #e5eeee;
+      font-weight: bold;
+      text-decoration: none;
     }
-
-    a{
-        display: block;
-        background-color: #fff;
-        text-decoration: none;
-        height: 36px;
-        padding-top: 20px;
-        font-family: Helvetica;
-        font-size: 16px;
-        font-weight: normal;
-        font-style: normal;
-        font-stretch: normal;
-        border-bottom: solid 1px #09464c;
-        line-height: 0.94;
-        letter-spacing: 0.5px;
-        text-align: center;
-        color: #09464c;
-
-        &:hover{
-            background-color: #e5eeee;
-            font-weight: bold;
-            text-decoration: none;
-        }
-    }
+  }
 }
 
-
-.first-complaints{
-
-    a{
+.first-complaints {
+  a {
+    background-color: #09464c;
+    color: white;
+    &:hover {
       background-color: #09464c;
       color: white;
-
-      &:hover{
-        background-color: #09464c;
-        color: white;
-        font-weight: normal;
-        text-decoration: none;
-      }
+      font-weight: normal;
+      text-decoration: none;
     }
+  }
 }
 
-.leaf{
+.leaf {
   margin: 0 !important;
 }
 
-.faq-sidebar{
-    padding-left: 0px !important;
-    display: block;
-
-    ul ul{
-        display: none;
-        width: 200px;
-        background: #FFF;
-        list-style-type: none;
-
-        li{
-          display: block;
-          float: none;
-        }
+.faq-sidebar {
+  padding-left: 0px !important;
+  display: block;
+  ul ul {
+    display: none;
+    width: 200px;
+    background: #FFF;
+    list-style-type: none;
+    li {
+      display: block;
+      float: none;
     }
-
-    a{
-        display: block;
-        background-color: #fff;
-        text-decoration: none;
-        height: 36px;
-        padding-top: 10px;
-        font-family: Helvetica;
-        @media only screen and (max-width: 767px) {
-          font-size: 12px;
-        }
-        @media only screen and (min-width: 768px) {
-          font-size: 16px;
-        }
-        font-weight: normal;
-        font-style: normal;
-        font-stretch: normal;
-        line-height: 0.94;
-        letter-spacing: 0.5px;
-        text-align: center;
-        color: #09464c;
-
-        &:hover{
-            font-weight: bold;
-            text-decoration: none;
-        }
-    }
-}
-
-#block-consumersections-menu{
-    margin-top: 60px;
+  }
+  a {
     display: block;
     background-color: #fff;
     text-decoration: none;
     height: 36px;
-    padding-top: 20px;
+    padding-top: 10px;
     font-family: Helvetica;
-    font-size: 16px;
-    font-weight: bold;
+    @media only screen and (max-width: 767px) {
+      font-size: 12px;
+    }
+    @media only screen and (min-width: 768px) {
+      font-size: 16px;
+    }
+    font-weight: normal;
     font-style: normal;
     font-stretch: normal;
     line-height: 0.94;
     letter-spacing: 0.5px;
     text-align: center;
     color: #09464c;
-    border-bottom: solid 1px #09464c;
+    &:hover {
+      font-weight: bold;
+      text-decoration: none;
+    }
+  }
 }
 
-#block-industrysections-menu{
-    margin-top: 60px;
-    display: block;
-    background-color: #fff;
-    text-decoration: none;
-    height: 36px;
-    padding-top: 20px;
-    font-family: Helvetica;
-    font-size: 16px;
-    font-weight: bold;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: 0.94;
-    letter-spacing: 0.5px;
-    text-align: center;
-    color: #09464c;
-    border-bottom: solid 1px #09464c;
+#block-consumersections-menu {
+  margin-top: 60px;
+  display: block;
+  background-color: #fff;
+  text-decoration: none;
+  height: 36px;
+  padding-top: 20px;
+  font-family: Helvetica;
+  font-size: 16px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 0.94;
+  letter-spacing: 0.5px;
+  text-align: center;
+  color: #09464c;
+  border-bottom: solid 1px #09464c;
+}
+
+#block-industrysections-menu {
+  margin-top: 60px;
+  display: block;
+  background-color: #fff;
+  text-decoration: none;
+  height: 36px;
+  padding-top: 20px;
+  font-family: Helvetica;
+  font-size: 16px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 0.94;
+  letter-spacing: 0.5px;
+  text-align: center;
+  color: #09464c;
+  border-bottom: solid 1px #09464c;
 }
 
 // .faq-menu-leaf{
