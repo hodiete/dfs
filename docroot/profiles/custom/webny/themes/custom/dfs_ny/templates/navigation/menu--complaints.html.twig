@@ -27,51 +27,51 @@
 {# {{ attach_library('dfs_ny/left-menu-js') }} #}
 
 <div class="complaint-sidebar sidebar sticky" id="sticky-leftmenu">
-    {{ menus.menu_links(items, attributes, 0) }}
-    {# {{ kint(menus) }} #}
-    {% macro menu_links(items, attributes, menu_level) %}
-        {% import _self as menus %}
-        {%
+  {{ menus.menu_links(items, attributes, 0) }}
+  {# {{ kint(menus) }} #}
+  {% macro menu_links(items, attributes, menu_level) %}
+    {% import _self as menus %}
+    {%
       set menu_classes = [
         'ul-complaint-sidebar'|clean_class,
       ]
     %}
-        {% if items %}
-            {% if menu_level == 0 %}
-                <ul{{ attributes.addClass(menu_classes) }}>
+    {% if items %}
+      {% if menu_level == 0 %}
+        <ul{{ attributes.addClass(menu_classes) }}>
 
-                {% else %}
-                    <ul>
-                    {% endif %}
-                    {% for item in items %}
-                        {% set classes = ["leaf"] %}
-
-
- {% if loop.first %}
-  {% set classes = classes | merge(["first-complaints"]) %}
-{% endif %}
-{#
-{% if loop.last %}
-  {% set classes = classes | merge(["last", "dfs-search"]) %}
-{% endif %}
-{% if loop.index == 7 %}
-  {% set classes = classes | merge(["portal-login"]) %}
-{% endif %} #}
-
-                        <li class="{{ classes|join(" ") }} " {{ item.attributes }}>
-                            {# {{ kint(item.title) }} #}
-                            {# {% if (loop.index == 7) and (item.title|lower == "portal log in") %} #}
-                            {# <img src="../icons/dfs/Portal.svg" class="icon-portal-svg"> #}
-                            {# {% endif %} #}
-
-                            {{ link(item.title, item.url) }}
-                            {% if item.below %}
-                                {{ menus.menu_links(item.below, attributes, menu_level + 1) }}
-                            {% endif %}
-                        </li>
-                    {% endfor %}
-                </ul>
+        {% else %}
+          <ul>
+          {% endif %}
+          {% for item in items %}
+            {% set classes = ["leaf"] %}
+            {#
+            {% if loop.first %}
+              {% set classes = classes | merge(["first-complaints"]) %}
             {% endif %}
-        {% endmacro %}
+            #}
+            {#
+                        {% if loop.last %}
+                          {% set classes = classes | merge(["last", "dfs-search"]) %}
+                        {% endif %}
+                        {% if loop.index == 7 %}
+                          {% set classes = classes | merge(["portal-login"]) %}
+                        {% endif %} #}
 
-    </div>
+            <li class="{{ classes|join(" ") }} " {{ item.attributes }}>
+              {# {{ kint(item.title) }} #}
+              {# {% if (loop.index == 7) and (item.title|lower == "portal log in") %} #}
+              {# <img src="../icons/dfs/Portal.svg" class="icon-portal-svg"> #}
+              {# {% endif %} #}
+
+              {{ link(item.title, item.url) }}
+              {% if item.below %}
+                {{ menus.menu_links(item.below, attributes, menu_level + 1) }}
+              {% endif %}
+            </li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endmacro %}
+
+  </div>

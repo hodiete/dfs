@@ -1,67 +1,90 @@
 (function ($, Drupal, window, document) {
-  "use strick";
+  'use strick';
 
+  let adminNavHeight = 0;
+  if ($('#toolbar-bar .toolbar-tab .trigger').height() > 10) {
+    adminNavHeight += 45;
+  }
+  if ($('#toolbar-bar .toolbar-menu .toolbar-icon').height() > 10) {
+    adminNavHeight += 46;
+  }
+
+  let heroHeight = 0;
+  if ($('article.hero-layout').height() > 240) {
+    heroHeight = 510;
+  } else {
+    heroHeight = 240;
+    console.log('hero ' + $('article.hero-layout').height()) ;
+  }
   // var $sticky = $('.sticky');
-  var $sticky = $('#sticky-leftmenu').parent('nav');
-  var $stickyrStopper = $('.sticky-stopper');
-  var $fromTopHeight = ($(window).width() >= 1024 )? 510 : 386 ;
+  console.log(`AdminHeiht ` + adminNavHeight);
+
+  let $sticky = $('#sticky-leftmenu').parent('nav');
+  let $stickyrStopper = $('.sticky-stopper');
+  let $fromTopHeight = ($(window).width() >= 1024) ? heroHeight + adminNavHeight : 386 + adminNavHeight;
+
+  console.log(`fromTopHeight ` + $fromTopHeight);
 
   $sticky.css({ position: 'absolute', top: $fromTopHeight });
 
-  var $sticky2  = $('#webny-global-header');
+  let $sticky2 = $('#webny-global-header');
 
-  if (!!$sticky.offset()) { 
+  if ($sticky.offset()) {
     stickNavigation($sticky, $stickyrStopper, false, $fromTopHeight);
   }
-  else{
-    stickNavigation($sticky2, $stickyrStopper, true );
-
+  else {
+    stickNavigation($sticky2, $stickyrStopper, true);
   }
 
   /*
   *  toggle the left menu on mobile
   */
 
-  $("#block-dfs-ny-complaints-menu").click(function () {
+  $('#block-dfs-ny-complaints-menu').click(() => {
+    $("#sticky-leftmenu").toggle('fast');
+  });
+
+  $('#block-consumersections-menu').click(() => {
     $("#sticky-leftmenu").toggle('fast');
   });
 
 
-  function stickNavigation($sticky, $stickyrStopper, $topMenu = true, $fromTopHeight = 0) {
 
+  function stickNavigation($sticky, $stickyrStopper, $topMenu = true, $fromTopHeight = 0) {
     // console.log('jQuery sticky ready!');
-    var myPosition, fromTop;
-    if (!!$sticky.offset()) { // make sure ".sticky" element exists
-      var myPosition = ($topMenu) ? 'relative' : 'absolute' ;
-      if($topMenu){
+    var myPosition, 
+fromTop;
+    if ($sticky.offset()) { // make sure ".sticky" element exists
+      var myPosition = ($topMenu) ? 'relative' : 'absolute';
+      if ($topMenu) {
         myPosition = 'relative';
         fromTop = 0;
-      } else {
+      }
+ else {
         myPosition = 'absolute';
         fromTop = $fromTopHeight;
       }
-      
-    
-      var generalSidebarHeight = $sticky.innerHeight();
-      var stickyTop = $sticky.offset().top;
+
+
+      let generalSidebarHeight = $sticky.innerHeight();
+      let stickyTop = $sticky.offset().top;
       if ($sticky.lenght) {
         // stickyTop = $sticky.offset().top;
       }
-    
 
-    
-      var stickOffset = 10;
-      var stickyStopperPosition = 0;
-    
-      if ($stickyrStopper.length){
+
+
+      let stickOffset = 0;
+      let stickyStopperPosition = 0;
+
+      if ($stickyrStopper.length) {
         stickyStopperPosition = $stickyrStopper.offset().top;
-    
       }
-    
-      var stopPoint = stickyStopperPosition - generalSidebarHeight - stickOffset;
+
+      let stopPoint = stickyStopperPosition - generalSidebarHeight - stickOffset;
       // var diff = stopPoint + stickOffset - (generalSidebarHeight/2) ;
-      var diff = stopPoint + stickOffset;
-      $(window).scroll(function(){ // scroll event
+      let diff = stopPoint + stickOffset;
+      $(window).scroll(() => { // scroll event
         var windowTop = $(window).scrollTop(); // returns number
         // console.log('windowTop ' + windowTop);
         // console.log('diff ' + diff);
@@ -94,8 +117,6 @@
         }
 
       });
-    
     }// End if
   }
-
-})(jQuery, Drupal, this);
+}(jQuery, Drupal, this));

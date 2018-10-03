@@ -42,6 +42,7 @@ $hero-keyword-hover-bkgd-color: $color-accent-secondary !default;
 $hero-keyword-text-color: $color-mono-white !default;
 $hero-event-date-color: $color-accent-primary !default;
 $hero-event-bkgd-transparent-black: $bkgd-black-50 !default;
+$hero-height: 280px;
 // ************************* //
 // HERO PARTIAL
 // CREATED BY WEBNY
@@ -54,7 +55,7 @@ $hero-event-bkgd-transparent-black: $bkgd-black-50 !default;
 
 .hero-no-image {
   background-color: $hero-bkgd-color;
-  height: 385px;
+  height: $hero-height;
 }
 
 .hero-no-image.hero-generic {
@@ -655,10 +656,10 @@ $hero-event-bkgd-transparent-black: $bkgd-black-50 !default;
     opacity: .9;
   }
   .hero-no-image {
-    height: 385px;
+    height: $hero-height;
   }
   .hero-no-image.hero-landing {
-    height: 385px;
+    height: $hero-height;
   }
   .hero-no-image.hero-location {
     background-color: $hero-bkgd-color;
@@ -668,7 +669,7 @@ $hero-event-bkgd-transparent-black: $bkgd-black-50 !default;
   .hero-header,
   .hero-no-image,
   .hero-landing {
-    min-height: 385px;
+    min-height: $hero-height;
   }
   .hero-layout {
     .hero-landing-inner,
@@ -688,7 +689,7 @@ $hero-event-bkgd-transparent-black: $bkgd-black-50 !default;
     }
     .hero-no-image.hero-generic {
       background-color: $hero-bkgd-color;
-      height: 385px;
+      height: $hero-height;
     }
     .hero-generic-inner {
       top: 0;
@@ -859,7 +860,7 @@ $hero-event-bkgd-transparent-black: $bkgd-black-50 !default;
       margin: 30px 20px 0 0;
     }
     .hero-no-image.hero-landing {
-      height: 385px;
+      height: $hero-height;
     }
     .hero-news-inner,
     .hero-ipage-inner,
@@ -930,7 +931,7 @@ $hero-event-bkgd-transparent-black: $bkgd-black-50 !default;
     }
     .hero-no-image.hero-ipage,
     .hero-no-image.hero-landing {
-      min-height: 385px;
+      min-height: $hero-height;
       .hero-inner {
         width: $hero-inner-width;
       }
@@ -1168,7 +1169,7 @@ $hero-event-bkgd-transparent-black: $bkgd-black-50 !default;
 }
 
 @media (min-width: 1024px) {
-  .body-area .body-area-in { 
+  .body-area .body-area-in {
     margin-left: 26%;
   }
 }

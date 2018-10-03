@@ -36,7 +36,7 @@ $title-bar-sub-title-color: $color-mono-black !default;
     margin: 0 auto;
     margin-top: 60px; // max-width: 1200px;
     max-width: 1920px;
-    margin-left: 17%;
+    margin-left: 19%;
     line-height: 1.7em;
     font-size: 16px;
     padding-left: 20px;
@@ -83,6 +83,17 @@ $title-bar-sub-title-color: $color-mono-black !default;
     }
   } // END .xx-in
 } // END .xx
+/*  View for FAQ */
+
+.views-element-container {
+  margin-top: 60px;
+  max-width: 1920px;
+  margin-left: 17%;
+  line-height: 1.7em;
+  font-size: 16px;
+  padding-left: 20px;
+}
+
 // ========================================================================= //
 /* LANDING TITLE SECTION */
 
@@ -277,8 +288,29 @@ figure.embedded-entity.align-center {
       margin-left: 23%;
       padding-left: 20px;
       .page-body {
-        width: 100%;
+        // width: 100%;
       }
     }
+  }
+  .views-element-container {
+    margin-left: 25%;
+    padding-left: 20px; // width: 100%;
+  }
+}
+
+@media (max-width: 1023px) {
+  .body-area {
+    .news-body-in,
+    .body-area-in {
+      margin-left: 0;
+      padding-left: 0;
+      .page-body {
+        width: 90%;
+      }
+    }
+  }
+  .views-element-container {
+    margin-left: 0;
+    padding-left: 0; // width: 100%;
   }
 }

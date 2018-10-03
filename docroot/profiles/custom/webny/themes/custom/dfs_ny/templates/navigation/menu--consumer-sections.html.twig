@@ -24,6 +24,7 @@
   We call a macro which calls itself to render the full tree.
   @see http://twig.sensiolabs.org/doc/tags/macro.html
 #}
+<div class="complaint-sidebar sidebar sticky" id="sticky-leftmenu">
 {{ menus.menu_links(items, attributes, 0) }}
 
 
@@ -31,12 +32,12 @@
   {% import _self as menus %}
   {% if items %}
     {% if menu_level == 0 %}
-      <ul{{ attributes.addClass('menu faq-sidebar') }}>
+<ul{{ attributes.addclass('menu faq-sidebar ul-complaint-sidebar') }}>
     {% else %}
       <ul>
     {% endif %}
     {% for item in items %}
-           {% set classes = ["faq-menu-leaf"] %}
+           {% set classes = ["leaf", "faq-menu-leaf"] %}
 
            <li class="{{ classes|join(" ") }} " {{ item.attributes }}>
 
@@ -49,3 +50,4 @@
     </ul>
   {% endif %}
 {% endmacro %}
+</div>
