@@ -40,13 +40,10 @@
   *  toggle the left menu on mobile
   */
 
-  $('#block-dfs-ny-complaints-menu').click(() => {
-    $("#sticky-leftmenu").toggle('fast');
+  $('.leftmenu-toggle-h2').click(() => {
+    $("#sticky-leftmenu").slideToggle('fast');
   });
 
-  $('#block-consumersections-menu').click(() => {
-    $("#sticky-leftmenu").toggle('fast');
-  });
 
 
 

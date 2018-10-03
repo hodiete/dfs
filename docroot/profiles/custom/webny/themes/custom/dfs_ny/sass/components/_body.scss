@@ -9,6 +9,15 @@
 $title-bar-bkgd-color: $color-accent-primary !default;
 $title-bar-default-text-color: $color-mono-black !default;
 $title-bar-sub-title-color: $color-mono-black !default;
+%right-body-content-shared {
+  margin-top: 60px;
+  max-width: 1920px;
+  margin-left: 19%;
+  line-height: 1.7em;
+  font-size: 16px;
+  padding-left: 20px;
+}
+
 // ************************* //
 // BODY PARTIAL
 // CREATED BY WEBNY
@@ -34,12 +43,15 @@ $title-bar-sub-title-color: $color-mono-black !default;
   .news-body-in,
   .body-area-in {
     margin: 0 auto;
+    /*
     margin-top: 60px; // max-width: 1200px;
     max-width: 1920px;
     margin-left: 19%;
     line-height: 1.7em;
     font-size: 16px;
     padding-left: 20px;
+    */
+    @extend %right-body-content-shared;
     .press-teaser,
     .body-area-subtitle {
       margin: 0 auto;
@@ -86,12 +98,9 @@ $title-bar-sub-title-color: $color-mono-black !default;
 /*  View for FAQ */
 
 .views-element-container {
-  margin-top: 60px;
-  max-width: 1920px;
-  margin-left: 17%;
-  line-height: 1.7em;
-  font-size: 16px;
-  padding-left: 20px;
+  @extend %right-body-content-shared;
+  margin-left: 22%;
+  width: auto;
 }
 
 // ========================================================================= //
