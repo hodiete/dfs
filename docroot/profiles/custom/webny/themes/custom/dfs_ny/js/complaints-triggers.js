@@ -5,6 +5,53 @@
 
 (function ($, Drupal, window, document) {
 
+  $(document).ready(function () {
+    $(".faq-card-box").parent().css({ "padding": "40px 0", "width": "50%", "float": "left", "margin": "0" });
+    $(".faq-card-box").parent().parent().css({ "width": "86%", "margin-left": "7%" });
+    $("#faq").parent().css({ "padding": "0 2.8%" });
+  });
+
+  $(document).ready(function () {
+    $(".short-card-box").parent().css({ "padding": "40px 0", "width": "50%", "float": "left", "margin": "0" });
+    $(".short-card-box").parent().parent().css({ "width": "86%", "margin-left": "7%" });
+    $("#short").parent().css({ "padding": "0 2.8%" });
+  });
+
+  $(document).ready(function () {
+    $("#block-generalquestionsandcomplaints").parent().parent().css({ "width": "100%" });
+  });
+
+
+  // $(document).ready(function(){
+  //     $(".leaf-parent").children.css({"display": "none"});
+
+  $(".parent").find('a').click(function () {
+    $(this).next().toggle();
+    if ($(this).css("border-bottom-style") != "none") {
+      $(this).css({ "border-bottom-style": "none", "background-color": "#e5eeee", "font-weight": "bold" });
+      $(this).find("img").attr('src', '/profiles/custom/webny/themes/custom/dfs_ny/icons/dfs/ArrowUp-teal.svg');
+    }
+    else {
+      $(this).css({ "border-bottom-style": "solid", "background-color": "white", "font-weight": "normal" });
+      $(this).find("img").attr('src', '/profiles/custom/webny/themes/custom/dfs_ny/icons/dfs/ArrowDown-teal.svg');
+    }
+  })
+
+  $(window).resize(function () {
+    if ($(window).width() <= 880) {
+      $(".faq-card-box").parent().css({ "width": "100%" });
+      $(".short-card-box").parent().css({ "width": "100%" });
+    }
+    else {
+      $(".faq-card-box").parent().css({ "width": "50%" });
+      $(".short-card-box").parent().css({ "width": "50%" });
+    }
+  })
+
+/**
+ * Toggle left menu.
+ */
+
   'use strict';
 
   $(".in-div-drop-button").click(function () {
