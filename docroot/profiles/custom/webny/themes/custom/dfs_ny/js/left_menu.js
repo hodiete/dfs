@@ -49,15 +49,13 @@
 
   function stickNavigation($sticky, $stickyrStopper, $topMenu = true, $fromTopHeight = 0) {
     // console.log('jQuery sticky ready!');
-    var myPosition, 
-fromTop;
+    var myPosition, fromTop;
     if ($sticky.offset()) { // make sure ".sticky" element exists
       var myPosition = ($topMenu) ? 'relative' : 'absolute';
       if ($topMenu) {
         myPosition = 'relative';
         fromTop = 0;
-      }
- else {
+      } else {
         myPosition = 'absolute';
         fromTop = $fromTopHeight;
       }
@@ -96,7 +94,7 @@ fromTop;
         // console.log('stickOffset ' + stickOffset);
         if (windowTop <= fromTop) {
           $sticky.css({ position: 'absolute', top: fromTop });
-        }else {
+        } else {
           // console.log('windowTop ' + windowTop);
           // console.log('diff ' + diff);
           if (stopPoint < windowTop) {

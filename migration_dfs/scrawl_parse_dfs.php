@@ -13,82 +13,107 @@ if (!isset($argc)) {
 }
 
 // Number of arguments passed to the script.
-var_dump($argc);
+// var_dump($argc);
 
 // The arguments as an array. first argument is always the script name.
-var_dump($argv);
+// var_dump($argv);
 
 // Eg. 'www.dfs.ny.gov' , 'drupal-8-5-6.dd:8443/dfs'.
 $host = $argv[1];
-
+// Eg. depth to run recursive call.
 $level = $argv[2];
-$local_dir = '/Sites/local_dfs';
-$doc_dir_copy = $local_dir . '/docs';
 
-$file_prefix = '/docs/';
-
+define('LOCAL_DIR', '/Sites/local_dfs');
 define('DHOST', $host);
-$path = "https://$host";
+$path = "http://$host";
 
 define('IMAGE_URL', '/sites/default/files/dfs_images');
 define('FILE_URL', '/docs');
-// $path = "http://www.gungwang.com";
-// $
-$outArr = $listUrlArr = $listPDFArr = $listWordArr = array();
-$listTextArr = $listExcelArr = $listInvalidArr = array();
 
-$outString = $listUrlString = $listPDFString = $listWordString = "";
-$listTextString = $listExcelString = $listInvalidString = "";
+$outArr = $listUrlArr = $listPDFArr = $listWordArr = [];
+$listTextArr = $listExcelArr = $listInvalidArr = [];
+
+$outstring = $listUrlstring = $listPDFstring = $listWordstring = "";
+$listTextstring = $listExcelstring = $listInvalidstring = "";
+
+/**
+ * Contains all contents which will be encoded to json.
+ * @var array ['url1'=> array(), 'url2'=>array()]
+ */
+$nodesJson = [];
 
 _crawl_page($path, $level);
 
 // print_r($outArr);
 
 file_put_contents('./output/url-has-urls.json', json_encode($outArr));
-file_put_contents('./output/url-all.json', json_encode($listUrlArr));
-file_put_contents('./output/url-pdf.json', json_encode($listPDFArr));
-file_put_contents('./output/url-word.json', json_encode($listWordArr));
-file_put_contents('./output/url-excel.json', json_encode($listExcelArr));
-file_put_contents('./output/url-text.json', json_encode($listTextArr));
+// file_put_contents('./output/url-all.json', json_encode($listUrlArr));
+// file_put_contents('./output/url-pdf.json', json_encode($listPDFArr));
+// file_put_contents('./output/url-word.json', json_encode($listWordArr));
+// file_put_contents('./output/url-excel.json', json_encode($listExcelArr));
+// file_put_contents('./output/url-text.json', json_encode($listTextArr));
+
+file_put_contents('./output/json/output-contents.json', json_encode($nodesJson));
 
 
-// set_time_limit(0);
+// set_time_limit(0).
 
-function _crawl_page($url, $depth){
+/**
+ * Crawl pages recursively.
+ * @param  string $url   https://dfs.ny.gov/index.html
+ * @param  number $depth 3
+ * @return void
+ */
+function _crawl_page($url, $depth) {
+  // print "url = $url\n"; exit;
+
   global $outArr, $listUrlArr, $listPDFArr, $listWordArr, $listTextArr, $listExcelArr, $listInvalidArr;
-  global $outString, $listUrlString , $listPDFString , $listWordString ,  $listTextString, $listExcelString , $listInvalidString ;
+  global $outstring, $listUrlstring , $listPDFstring , $listWordstring ,  $listTextstring, $listExcelstring , $listInvalidstring ;
 
   $outArr2 = array();
   $outSring2 = "";
 
   static $seen = array();
-  if (isset($seen[$url]) || $depth === 0) { return; }
-  else { $seen[$url] = true; }
-
-  if (!filter_var($url, FILTER_VALIDATE_URL)) {
-    $listInvalidArr[]= array('url'=>$url);
-    $listInvalidString .= "$url\n";
+  if (isset($seen[$url]) || $depth === 0) {
     return;
   }
-  if (!stristr($url, DHOST)){  return ; }
-  if ( stristr($url, 'mailto:') || stristr($url, 'tel:+1800')) { return; }
+  else {
+    $seen[$url] = TRUE;
+  }
+
+  if (!filter_var($url, FILTER_VALIDATE_URL)) {
+    $listInvalidArr[] = array('url' => $url);
+    $listInvalidstring .= "$url\n";
+    return;
+  }
+
+  if (!stristr($url, DHOST)) {
+    return;
+  }
+  if (stristr($url, 'mailto:') || stristr($url, 'tel:+1800')) {
+    return;
+  }
 
   $parseArr = parse_url($url);
-  if (strstr($url, '#') && isset($parseArr['fragment']) ) {  return; }
+  if (strstr($url, '#') && isset($parseArr['fragment'])) {
+    return;
+  }
 
+  $pathArr = (isset($parseArr['path'])) ? pathinfo($parseArr['path']) : array();
 
-  $pathArr = (isset($parseArr['path']))? pathinfo($parseArr['path']) : array();
-
+  // Call to generate new content and store data in associat array.
+  parse_webpage_content($url, $GLOBALS['nodesJson']);
 
   $dom = new DOMDocument('1.0');
   @$dom->loadHTMLFile($url);
 
   $list = $dom->getElementsByTagName("title");
 
-  if($list->length > 0) {
-      $title = $list->item(0)->textContent;
-  }else{
-    $title= isset($pathArr['basename']) ? $pathArr['basename'] : $parseArr['path'];
+  if ($list->length > 0) {
+    $title = $list->item(0)->textContent;
+  }
+  else {
+    $title = isset($pathArr['basename']) ? $pathArr['basename'] : $parseArr['path'];
   }
 
   $anchors = $dom->getElementsByTagName('a');
@@ -110,7 +135,7 @@ function _crawl_page($url, $depth){
   }
 
   $outArr[] = array( 'url'=>$url, 'links'=>$outArr2 );
-  $outString .= "$outSring2\n";
+  $outstring .= "$outSring2\n";
 
 
 
@@ -119,30 +144,33 @@ function _crawl_page($url, $depth){
     switch ($extension) {
       case 'pdf':
       $listPDFArr[] = array('url'=>$url, 'title' => $title);
-      $listPDFString .= "$url\t$title\n";
+      $listPDFstring .= "$url\t$title\n";
       break;
       case 'doc':
       $listWordArr[] = array('url'=>$url, 'title' => $title);
-      $listWordString .= "$url\t$title\n";
+      $listWordstring .= "$url\t$title\n";
       break;
       case 'docx':
       $listWordArr[] = array('url'=>$url, 'title' => $title);
-      $listWordString .= "$url\t$title\n";
+      $listWordstring .= "$url\t$title\n";
       break;
       case 'txt':
       $listTextArr[] = array('url'=>$url, 'title' => $title);
-      $listTextString .= "$url\t$title\n";
+      $listTextstring .= "$url\t$title\n";
       break;
       case 'xls':
       $listExcelArr[] = array('url'=>$url, 'title' => $title);
-      $listExcelString .= "$url\t$title\n";
+      $listExcelstring .= "$url\t$title\n";
       break;
       case 'xlsx':
       $listExcelArr[] = array('url'=>$url, 'title' => $title);
-      $listExcelString .= "$url\t$title\n";
+      $listExcelstring .= "$url\t$title\n";
       break;
     }
   }
+
+
+  parse_webpage_content($url, $GLOBALS['nodesJson']);
 
   foreach ($anchors as $element) {
     $href = $element->getAttribute('href');
@@ -152,24 +180,38 @@ function _crawl_page($url, $depth){
 
   $listUrlArr[] = array('url'=>$url, 'title' => $title, 'depth'=>$depth);
   $lineStr =  "$url\t$title\t$depth\n";
-  $listUrlString .= $lineStr;
+  $listUrlstring .= $lineStr;
   print $lineStr;
 }
 
-
+/**
+ * Handle the HTTP and HTTPS.
+ * @param  string $urlP  [url]
+ * @param  string $hrefC [url]
+ * @return string        [url]
+ */
 function noneHttpUrl($urlP, $hrefC){
+
   if (0 !== strpos($hrefC, 'http')) {
     //  this is where I changed hobodave's code
     $absUrl = absurl($urlP, $hrefC);
     $hrefC = ($absUrl) ? nodots($absUrl) :  "";
   }
-  return  str_replace('http://', 'https://', $hrefC);;
+  return  $hrefC;
+  // return  str_replace('http://', 'https://', $hrefC);;
 }
-// SRC: https://stackoverflow.com/questions/1243418/php-how-to-resolve-a-relative-url
+
+/**
+ * Handle URL to convert to the absolute url path
+ * @param  string $pgurl  [description]
+ * @param  string $relUrl [description]
+ * @return string         [description]
+ * SRC: https://stackoverflow.com/questions/1243418/php-how-to-resolve-a-relative-url
+ */
 function absurl($pgurl, $relUrl) {
   $parseArr = parse_url($relUrl);
-  if (strstr($relUrl, '#') && isset($parseArr['fragment']) ) {  return false; }
-  if (stristr($relUrl, 'mailto:')) {return false;}
+  if (strstr($relUrl, '#') && isset($parseArr['fragment']) ) {  return FALSE; }
+  if (stristr($relUrl, 'mailto:')) {return FALSE;}
 
   if(strpos($relUrl,'://')){
     return $relUrl; //already absolute
@@ -180,13 +222,18 @@ function absurl($pgurl, $relUrl) {
   if(substr($relUrl,0,1) == '/') {
     return 'https://' . parse_url($pgurl, PHP_URL_HOST).$relUrl; //just add domain
   }
-  if(strpos($pgurl,'/',9)===false) {
+  if(strpos($pgurl,'/',9)===FALSE) {
     $pgurl .= '/';
   }//add slash to domain if needed
 
   return substr($pgurl,0,strrpos($pgurl,'/')+1) . $relUrl; //for relative links, gets current directory and appends new filename
 }
 
+/**
+ * Handle the ../, ../../, .../ in the URL path
+ * @param  string $path [description]
+ * @return string       [without the ../]
+ */
 function nodots($path) { //Resolve dot dot slashes, no regex!
   $arr1 = explode('/',$path);
   $arr2 = array();
@@ -213,7 +260,7 @@ function nodots($path) { //Resolve dot dot slashes, no regex!
   return implode('/', $arr2);
 }
 
-
+/*
 function format_href($href){
   //if(stristr($href, 'queensda')) print "$href\n";
   $href = html_entity_decode($href);
@@ -243,21 +290,21 @@ function format_href($href){
   }
   return $href;
 }
+*/
 
-
-function remove_reletive_path($href){
-  $href = (str_replace(array('../../', '../'), array( '', ''), $href));
-  return $href;
-}
-
+/**
+ * Check if the url is validate
+ * @param  string $url [description]
+ * @return boolean      [description]
+ */
 function getFlag($url)
 {
     $url_response = array();
     $curl = curl_init();
     $curl_options = array();
-    $curl_options[CURLOPT_RETURNTRANSFER] = true;
+    $curl_options[CURLOPT_RETURNTRANSFER] = TRUE;
     $curl_options[CURLOPT_URL] = $url;
-    $curl_options[CURLOPT_NOBODY] = true;
+    $curl_options[CURLOPT_NOBODY] = TRUE;
     $curl_options[CURLOPT_TIMEOUT] = 60;
     curl_setopt_array($curl, $curl_options);
     curl_exec($curl);
@@ -265,20 +312,25 @@ function getFlag($url)
     if ($status == 200)
     {
       //print "$url\n";
-        return true;
+        return TRUE;
     }
     else
     {
-        return false;
+        return FALSE;
     }
     curl_close($curl);
 }
 
 
+/**
+ * Check if the url is top level landing page (menu items)
+ * @param  string  $url [description]
+ * @return boolean      [description]
+ */
 function isNavItem($url){
 
   $arr = array(
-    // menus: top & 2nd level
+    // menus: top & 2nd level..
     '/index.html',
     '/about/dfs_about.htm',
     '/consumer/dfs_consumers.htm',
@@ -334,7 +386,7 @@ function isNavItem($url){
     '/reportpub/commentltr.htm',
     '/reportpub/annualrep.htm',
 
-    // footer
+    // footer..
     '/consumer/fileacomplaint.htm',
     '/consumer/auto/obtain_lien_release.htm',
     '/consumer/tenantrights.htm',
@@ -364,45 +416,32 @@ function isNavItem($url){
   return in_array($url, $arr);
 }
 
-function copy_doc($src, $dst) {
-  $src = $local_dir . $src;
-  $dst = $doc_dir_copy .$dst;
-
-  if (_mycopy($src, $dst) ) {
-    return true;
-  } else {
-    echo "copy $s1 failed \n";
-    return false;
-  }
-
-}
-
-function _mycopy($s1, $s2) {
-  $path = pathinfo($s2);
-  if (!file_exists($path['dirname'])) {
-    mkdir($path['dirname'], 0777, true);
-  }
-  if (!copy($s1, $s2)) {
-    return false;
-  }
-  return true;
-}
-
 /**
- * Parse the content between <div class=""> Contents </div>.
+ * Parse HTML between <div> Main Contents Only</div>.
+ * <div id="homepub">...</div>
+ * <div id="procright">...</div>
+ * <div id="rightcol">...</div>
+ * <div class="pub">...</div>
+ * @param  string $url   https://dfs.ny.gov/index.html
+ * @param  number $depth 3
+ * @return void
  */
-function parse_webpage_content($url) {
+function parse_webpage_content($url, &$nodesJson) {
   $doc = new DOMDocument();
   $prefix = "//div[@id='content']";
-  $content = "";
+
 
   // We don't want to bother with white spaces.
-  $doc->preserveWhiteSpace = false;
+  $doc->preserveWhiteSpace = FALSE;
   // Most HTML Developers are chimps and produce invalid markup...
-  $doc->strictErrorChecking = false;
-  $doc->recover = true;
+  $doc->strictErrorChecking = FALSE;
+  $doc->recover = TRUE;
 
   $doc->loadHTMLFile($url);
+
+  $title = get_dom_title($doc);
+  $content = "";
+  $urlAlians = parse_url($url, PHP_URL_PATH);
 
   $xpath = new DOMXPath($doc);
   $queries = [
@@ -425,9 +464,34 @@ function parse_webpage_content($url) {
 
   }
 
-  return $content;
+  $nodesJson[] = [
+    'type' => [['target_id' => 'dfs_page']],
+    'status' => [['value' => TRUE]],
+    'title' => [['value' => $title]],
+    'path' => [['alias' => $urlAlians]],
+    'body' => [['value' => $content]]
+  ];
+
 }
 
+/**
+ * Get the Dom page title.
+ * @param  DOMDucument $dom [description]
+ * @return string      [description]
+ */
+function get_dom_title(&$dom) {
+  $list = $dom->getElementsByTagName("title");
+  if ($list->length > 0) {
+    return $list->item(0)->textContent;
+  }
+  return FALSE;
+}
+
+/**
+ * Replace old link href with new href.
+ * @param  string $content [html content]
+ * @return string          [html content]
+ */
 function handle_content_url($content) {
   $doc = new DOMDocument();
   $doc->loadHTML($content);
@@ -445,6 +509,11 @@ function handle_content_url($content) {
   return str_replace($links, $links_new, $content);
 }
 
+/**
+ * Replace old image src with new src.
+ * @param string $content [html content] *
+ * @return string  [html content ]
+ */
 function handle_content_img($content) {
   $doc = new DOMDocument();
   $doc->loadHTML($content);
@@ -462,26 +531,80 @@ function handle_content_img($content) {
   return str_replace($links, $links_new, $content);
 }
 
-
+/**
+ * Change to /docs/OLD_HREF if it points to a file.
+ * @param string $href [url]
+ * @return string       [url]
+ */
 function change_url($href) {
   $href = nodots($href);
   $arr = pathinfo($href);
 
-  if ( isset($arr('extension')) && is_a_file($arr('extension')) ) {
-    return FILE_URL . $href;
+  if (isset($arr['extension']) && is_a_file($arr['extension'])) {
+    if (copy_doc($href, FILE_URL . $href)) {
+      return FILE_URL . $href;
+    }
   }
   else {
     return $href;
   }
 }
 
+/**
+ * Change to IMAGE_URL: /sites/default/files/dfs_images.
+ * @param  string $href [old url]
+ * @return string       [new url]
+ */
 function change_url_img($href) {
   $href = nodots($href);
   return IMAGE_URL . $href;
 
 }
 
+/**
+ * Check if extenstion name is a kind of files.
+ * @param  string  $str [extesion name]
+ * @return boolean
+ */
 function is_a_file($str) {
   $arr = ['pdf', 'doc', 'docx', 'txt', 'xls', 'xlsx'];
   return in_array(strtolower($str), $arr);
+}
+
+/**
+ * Help function to Copy files (.
+ * @param  string $src /about/abc/efg-2017.pdf
+ * @param  string $dst /docs/about/abc/efg-2017.pdf
+ * @return Boolean      [description]
+ */
+function copy_doc($src, $dst) {
+  $src = LOCAL_DIR . $src;
+  $dst = LOCAL_DIR . $dst;
+  if (file_exists($dst)) {
+    return $dst;
+  }
+  if (_mycopy($src, $dst)) {
+    return $dst;
+  }
+  else {
+    return FALSE;
+  }
+}
+
+/**
+ * Copy files (PDF, doc, text) to new directory.
+ * @param  string $s1 [current file path]
+ * @param  string $s2 [new file path/direcotry]
+ * @return Boolean
+ */
+function _mycopy($s1, $s2) {
+  $path = pathinfo($s2);
+  if (!file_exists($path['dirname'])) {
+    mkdir($path['dirname'], 0777, TRUE);
+  }
+  if (!copy($s1, $s2)) {
+    echo "copy $s1 to $s2 failed \n";
+    return FALSE;
+  }
+  return $s2;
 }
