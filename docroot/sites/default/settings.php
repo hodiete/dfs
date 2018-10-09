@@ -249,11 +249,7 @@ include dirname(__FILE__) . '/acsf.settings.php';
  *   );
  * @endcode
  */
-// $config_directories = array();
-
-$config_directories = array(
-   CONFIG_SYNC_DIRECTORY => '/var/www/nydfs/config',
-) ;
+$config_directories = array();
 
 /**
  * Settings:
