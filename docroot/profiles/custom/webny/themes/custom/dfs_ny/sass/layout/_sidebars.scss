@@ -6,28 +6,31 @@
 //
 // Style guide: layout.sidebars
 //
- ul{
-   list-style-type: none !important;
- }
+$left-menu-width: 340px;
+ul {
+  list-style-type: none !important;
+}
+
+aside.layout-sidebar-first {
+  nav[role="navigation"] {
+    margin-top: 60px;
+  }
+}
 
 //////////////////////////////////
 // Sidebar First /////////////////
 //////////////////////////////////
-
 .body-sidebars-first {
   @include breakpoint($min-tablet) {
     aside.layout-sidebar-first {
       @include span(3 of 12);
-
-      > * {
+      >* {
         // padding-left: 15px;
       }
     }
-
     main .layout-content {
       @include span(9 of 12 last);
-
-      > * {
+      >* {
         padding-right: 25px;
       }
     }
@@ -37,21 +40,17 @@
 //////////////////////////////////
 // Sidebar Second ////////////////
 //////////////////////////////////
-
 .body-sidebars-second {
   @include breakpoint($min-tablet) {
     aside.layout-sidebar-second {
       @include span(3 of 12 last);
-
-      > * {
+      >* {
         padding-right: 15px;
       }
     }
-
     main .layout-content {
       @include span(9 of 12);
-
-      > * {
+      >* {
         padding-left: 25px;
       }
     }
@@ -61,29 +60,23 @@
 //////////////////////////////////
 // Sidebar Both //////////////////
 //////////////////////////////////
-
 .body-sidebars-both {
   @include breakpoint($min-tablet) {
     aside.layout-sidebar-first {
       @include span(2 of 12);
-
-      > * {
+      >* {
         padding-left: 15px;
       }
     }
-
     main .layout-content {
       @include span(8 of 12);
-
-      > * {
+      >* {
         padding-right: 25px;
       }
     }
-
     aside.layout-sidebar-second {
       @include span(2 of 12 last);
-
-      > * {
+      >* {
         padding-right: 15px;
       }
     }
@@ -93,7 +86,6 @@
 //////////////////////////////////
 // Sidebar None //////////////////
 //////////////////////////////////
-
 .body-sidebars-none {
   // No sidebars rules.
 }
@@ -101,161 +93,213 @@
 //////////////////////////////////
 // General Sidebar Rules /////////
 //////////////////////////////////
-
 aside.sidebar {
   overflow: hidden;
+}
+
+// #block-dfs-ny-complaints {}
+// nav:has(#sticky-leftmenu) {
+//   z-index: 3;
+// }
+main .layout-content nav {
+  z-index: 10;
+  width: $left-menu-width;
 }
 
 //////////////////////////////////
 // Complaint Sidebar Rules ///////
 //////////////////////////////////
-
-.complaint-sidebar{
-    margin-top:60px !important;
-    padding-left: 0px !important;
+.complaint-sidebar {
+  // margin-top:60px !important;
+  // padding-left: 0px !important;
+  // position: absolute;
+  // top: 490px;
+  z-index: 2;
+  display: block; // max-width: 348px;
+  width: $left-menu-width;
+  ul.ul-complaint-sidebar {
+    padding: 0;
+  }
+  ul ul {
+    display: none;
+    width: 200px;
+    background: #FFF;
+    list-style-type: none;
+    li {
+      display: block;
+      float: none;
+    }
+  }
+  a {
     display: block;
-
-    ul ul{
-        display: none;
-        width: 200px;
-        background: #FFF;
-        list-style-type: none;
-
-        li{
-          display: block;
-          float: none;
-        }
+    background-color: #fff;
+    text-decoration: none;
+    height: 36px;
+    padding-top: 20px;
+    font-family: Helvetica;
+    font-size: 16px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    border-bottom: solid 1px #09464c;
+    line-height: 0.94;
+    letter-spacing: 0.5px;
+    text-align: center;
+    color: #09464c;
+    &:hover {
+      background-color: #e5eeee;
+      font-weight: bold;
+      text-decoration: none;
     }
-
-    a{
-        display: block;
-        background-color: #fff;
-        text-decoration: none;
-        height: 36px;
-        padding-top: 20px;
-        font-family: Helvetica;
-        font-size: 16px;
-        font-weight: normal;
-        font-style: normal;
-        font-stretch: normal;
-        border-bottom: solid 1px #09464c;
-        line-height: 0.94;
-        letter-spacing: 0.5px;
-        text-align: center;
-        color: #09464c;
-
-        &:hover{
-            background-color: #e5eeee;
-            font-weight: bold;
-            text-decoration: none;
-        }
-    }
+  }
 }
 
-
-.first-complaints{
-
-    a{
+.first-complaints {
+  a {
+    background-color: #09464c;
+    color: white;
+    &:hover {
       background-color: #09464c;
       color: white;
-
-      &:hover{
-        background-color: #09464c;
-        color: white;
-        font-weight: normal;
-        text-decoration: none;
-      }
+      font-weight: normal;
+      text-decoration: none;
     }
+  }
 }
 
-.leaf{
+.leaf {
   margin: 0 !important;
 }
 
-.faq-sidebar{
-    padding-left: 0px !important;
-    display: block;
-
-    ul ul{
-        display: none;
-        width: 200px;
-        background: #FFF;
-        list-style-type: none;
-
-        li{
-          display: block;
-          float: none;
-        }
+.faq-sidebar {
+  padding-left: 0px !important;
+  display: block;
+  ul ul {
+    display: none;
+    width: 200px;
+    background: #FFF;
+    list-style-type: none;
+    li {
+      display: block;
+      float: none;
     }
-
-    a{
-        display: block;
-        background-color: #fff;
-        text-decoration: none;
-        height: 36px;
-        padding-top: 10px;
-        font-family: Helvetica;
-        @media only screen and (max-width: 767px) {
-          font-size: 12px;
-        }
-        @media only screen and (min-width: 768px) {
-          font-size: 16px;
-        }
-        font-weight: normal;
-        font-style: normal;
-        font-stretch: normal;
-        line-height: 0.94;
-        letter-spacing: 0.5px;
-        text-align: center;
-        color: #09464c;
-
-        &:hover{
-            font-weight: bold;
-            text-decoration: none;
-        }
-    }
-}
-
-#block-consumersections-menu{
-    margin-top: 60px;
+  }
+  a {
     display: block;
     background-color: #fff;
     text-decoration: none;
     height: 36px;
     padding-top: 20px;
     font-family: Helvetica;
-    font-size: 16px;
-    font-weight: bold;
+    @media only screen and (max-width: 767px) {
+      font-size: 12px;
+    }
+    @media only screen and (min-width: 768px) {
+      font-size: 16px;
+    }
+    font-weight: normal;
     font-style: normal;
     font-stretch: normal;
     line-height: 0.94;
     letter-spacing: 0.5px;
     text-align: center;
     color: #09464c;
-    border-bottom: solid 1px #09464c;
+    &:hover {
+      font-weight: bold;
+      text-decoration: none;
+    }
+  }
+}
+/*
+#block-consumersections-menu {
+  margin-top: 60px;
+  display: block;
+  background-color: #fff;
+  text-decoration: none;
+  height: 36px;
+  padding-top: 20px;
+  font-family: Helvetica;
+  font-size: 16px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 0.94;
+  letter-spacing: 0.5px;
+  text-align: center;
+  color: #09464c;
+  border-bottom: solid 1px #09464c;
 }
 
-#block-industrysections-menu{
-    margin-top: 60px;
-    display: block;
-    background-color: #fff;
-    text-decoration: none;
-    height: 36px;
-    padding-top: 20px;
-    font-family: Helvetica;
-    font-size: 16px;
-    font-weight: bold;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: 0.94;
-    letter-spacing: 0.5px;
-    text-align: center;
-    color: #09464c;
-    border-bottom: solid 1px #09464c;
+#block-industrysections-menu {
+  margin-top: 60px;
+  display: block;
+  background-color: #fff;
+  text-decoration: none;
+  height: 36px;
+  padding-top: 20px;
+  font-family: Helvetica;
+  font-size: 16px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 0.94;
+  letter-spacing: 0.5px;
+  text-align: center;
+  color: #09464c;
+  border-bottom: solid 1px #09464c;
 }
-
+*/
 // .faq-menu-leaf{
 //   margin: 0 !important;
 //   background-color: white;
 //   color:  #09464c;
 // }
+/*
+@media (min-width: 1024px) {
+  #block-dfs-ny-complaints-menu,
+  #block-consumersections-menu,
+  #block-industry-sections-menu {
+    display: none;
+  }
+}
+*/
+#block-dfs-ny-complaints-menu,
+#block-consumersections-menu,
+#block-industry-sections-menu {
+  background-color: #09464c;
+  color: white;
+  display: block;
+  text-decoration: none;
+  height: 36px;
+  padding-top: 20px;
+  font-family: Helvetica;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  border-bottom: solid 1px white;
+  line-height: 0.94;
+  letter-spacing: 0.5px;
+  text-align: center;
+  width: $left-menu-width;
+}
+@media (max-width: 1023px) {
+  
+  #sticky-leftmenu {
+    display: none;
+    ul li.first-complaints {
+      display: none;
+    }
+  }
+  .complaint-sidebar a {
+    background-color: #09464c;
+    color: #fff;
+    border-bottom: solid 1px #2e6267;
+    font-weight: normal;
+    &:hover {
+      background-color: black;
+      font-weight: bold;
+      text-decoration: none;
+    }
+  }
+}
