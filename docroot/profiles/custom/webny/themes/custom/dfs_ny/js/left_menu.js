@@ -21,7 +21,7 @@
 
   let $sticky = $('#sticky-leftmenu').parent('nav');
   let $stickyrStopper = $('.sticky-stopper');
-  let $fromTopHeight = ($(window).width() >= 1024) ? heroHeight + adminNavHeight : 386 + adminNavHeight;
+  let $fromTopHeight = ($(window).width() >= 1024) ? heroHeight + adminNavHeight : 389 + adminNavHeight;
 
   console.log(`fromTopHeight ` + $fromTopHeight);
 

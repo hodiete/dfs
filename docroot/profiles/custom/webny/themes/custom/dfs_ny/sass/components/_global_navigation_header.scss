@@ -57,6 +57,30 @@ $menu-arrow-active-link-padding: 48px;
 // GLOBAL NAVIGATION COLORS
 $globalnav-primary-color: $color-primary !default;
 $globalnav-secondary-color: $button-black-50 !default;
+/****  mixin  ****/
+
+@mixin portal-login($minWidth, $width) {
+  min-width: $minWidth;
+  width: $width;
+  height: 41px;
+  border-radius: 60px; // text-align: right;
+  // padding-right: 25px;
+  margin: 16px 12px;
+  background: $color-accent-primary url('../icons/dfs/Portal.svg') bottom left no-repeat;
+  background-size: 26px 25px;
+  background-position: 6px 5px;
+  a {
+    font-weight: bold;
+    color: #000000;
+    height: 42px;
+    padding-left: 40px;
+    &:hover {
+      // background-color: $color-primary;
+      background-color: inherit;
+    }
+  }
+}
+
 // ########################################################################################
 // MIXINS
 @mixin in-context-menu() {
@@ -64,8 +88,7 @@ $globalnav-secondary-color: $button-black-50 !default;
     position: relative;
     display: block;
     border-top: 0;
-    width: auto;
-    // vertical-align: bottom;
+    width: auto; // vertical-align: bottom;
     a,
     span {
       border-bottom-width: 0;
@@ -96,7 +119,9 @@ $globalnav-secondary-color: $button-black-50 !default;
 
 // tool mixins
 // Calculate numbers such as a percent width then subtracting a number
-@mixin calc($property, $expression, $importance: null) {
+@mixin calc($property,
+$expression,
+$importance: null) {
   #{$property}: -webkit-calc(#{$expression});
   #{$property}: calc(#{$expression}) $importance;
 }
@@ -112,7 +137,7 @@ $globalnav-secondary-color: $button-black-50 !default;
   font-weight: $nav-weight;
   font-style: normal;
   z-index: 500;
-  width:100%;
+  width: 100%;
   a:link,
   a:visited,
   a:hover,
@@ -138,7 +163,6 @@ $globalnav-secondary-color: $button-black-50 !default;
     font-weight: $nav-weight;
     a,
     a:link,
-
     a:visited,
     a:hover,
     a:active {
@@ -507,8 +531,7 @@ $globalnav-secondary-color: $button-black-50 !default;
         img {
           padding: 15px 0 15px 60px;
         }
-      }
-      // >h1 {
+      } // >h1 {
       //   /*margin: 10px;*/
       // }
       >ul {
@@ -544,8 +567,7 @@ $globalnav-secondary-color: $button-black-50 !default;
           a {
             display: none;
           }
-        }
-        // ul {}
+        } // ul {}
       }
       h1 {
         display: block;
@@ -648,6 +670,9 @@ $globalnav-secondary-color: $button-black-50 !default;
           width: 116px;
         }
         &:nth-child(7) {
+          @include portal-login(131px,
+          153px);
+          /*
           min-width: 131px;
           width: 153px;
           height: 41px;
@@ -667,6 +692,7 @@ $globalnav-secondary-color: $button-black-50 !default;
               background-color: inherit;
             }
           }
+          */
         }
         &:nth-child(8) {
           // width: 15%;
@@ -703,7 +729,7 @@ $globalnav-secondary-color: $button-black-50 !default;
     ul.gnav-ul {
       li.gnav-topli {
         &:nth-child(1) {
-          width: 227px;  //223px; (not fit in Safari) // height: 53px;
+          width: 227px; //223px; (not fit in Safari) // height: 53px;
         }
         &:nth-child(2) {
           // width: 120px;
