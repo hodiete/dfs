@@ -26,14 +26,27 @@
   //     $(".leaf-parent").children.css({"display": "none"});
 
   $(".parent").find('a').click(function () {
-    $(this).next().toggle();
+    let bgcolor1 = '#e5eeee';
+    let bgcolor2 = 'white';
+    let svgUp = 'arrowup-teal.svg';
+    let svgDown = 'arrowdown-teal.svg';
+    if ($(window).width() <= 1023) {
+      bgcolor2 = '#09464c';
+      bgcolor1 = 'black';
+      svgUp = 'arrowup-white.svg';
+      svgDown = 'arrowdown-white.svg';
+    }
+ 
+    let svgBase = '/profiles/custom/webny/themes/custom/dfs_ny/icons/dfs/';
+
+    $(this).next().slideToggle('600');
     if ($(this).css("border-bottom-style") != "none") {
-      $(this).css({ "border-bottom-style": "none", "background-color": "#e5eeee", "font-weight": "bold" });
-      $(this).find("img").attr('src', '/profiles/custom/webny/themes/custom/dfs_ny/icons/dfs/ArrowUp-teal.svg');
+      $(this).css({ "border-bottom-style": "none", "background-color": bgcolor1, "font-weight": "bold" });
+      $(this).find("img").attr('src', svgBase + svgUp);
     }
     else {
-      $(this).css({ "border-bottom-style": "solid", "background-color": "white", "font-weight": "normal" });
-      $(this).find("img").attr('src', '/profiles/custom/webny/themes/custom/dfs_ny/icons/dfs/ArrowDown-teal.svg');
+      $(this).css({ "border-bottom-style": "solid", "background-color": bgcolor2, "font-weight": "normal" });
+      $(this).find("img").attr('src', svgBase + svgDown);
     }
   })
 

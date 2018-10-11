@@ -7,7 +7,6 @@
 // Style guide: layout.sidebars
 //
 $left-menu-width: 342px;
-
 @mixin leftmenu-h2 ($width) {
   background-color: #09464c;
   color: white;
@@ -137,12 +136,21 @@ main .layout-content nav {
   z-index: 2;
   display: block; // max-width: 348px;
   width: $left-menu-width;
+
   ul.ul-complaint-sidebar {
     padding: 0;
+    li.parent {
+      .expand {
+        margin-right: 30px;
+        width: 14px;
+        float: right;    
+        margin-top: 3px;
+      }
+    }
   }
   ul ul {
     display: none;
-    width: 200px;
+    width: auto;
     background: #FFF;
     list-style-type: none;
     li {
@@ -307,7 +315,7 @@ main .layout-content nav {
   text-align: center;
   width: $left-menu-width;
 }
-*/  
+*/
 
 main nav .leftmenu-toggle-h2 {
   @include leftmenu-h2($left-menu-width);

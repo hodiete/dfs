@@ -10,18 +10,32 @@
   }
 
   let heroHeight = 0;
-  if ($('article.hero-layout').height() > 240) {
-    heroHeight = 510;
-  } else {
-    heroHeight = 240;
-    console.log('hero ' + $('article.hero-layout').height()) ;
+
+  if ($(window).width() >= 1024) {
+    if ($('article.hero-layout').height() > 240) {
+      heroHeight = 280 + 50;
+    }
+    else {
+      heroHeight = 50;
+    }
+  } 
+  else {
+    if ($('article.hero-layout').height() > 240) {
+      heroHeight = 240;
+    }
+    else {
+      heroHeight = 0;
+    }
   }
+
+  
+  console.log('hero ' + heroHeight) ;
   // var $sticky = $('.sticky');
   console.log(`AdminHeiht ` + adminNavHeight);
 
   let $sticky = $('#sticky-leftmenu').parent('nav');
   let $stickyrStopper = $('.sticky-stopper');
-  let $fromTopHeight = ($(window).width() >= 1024) ? heroHeight + adminNavHeight : 389 + adminNavHeight;
+  let $fromTopHeight = ($(window).width() >= 1024) ? 171 + heroHeight + adminNavHeight : 171 + heroHeight + adminNavHeight;
 
   console.log(`fromTopHeight ` + $fromTopHeight);
 

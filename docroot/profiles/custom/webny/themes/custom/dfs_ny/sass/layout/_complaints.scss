@@ -25,17 +25,20 @@ $body-margin-max: 60px 0px 0px 0px;
 }
 
 .login-button {
-  @include portal-login(200px, 200px) ;
+  @include portal-login(200px,
+  200px);
 }
 
 @media only screen and (min-width: 768px) {
-  .body-area .body-area-in .page-body>div {
+  .body-area .body-area-in .page-body>div,
+  .views-element-container>div {
     margin: $body-margin-min;
   }
 }
 
 @media only screen and (max-width: 767px) {
-  .body-area .body-area-in .page-body>div {
+  .body-area .body-area-in .page-body>div,
+  .views-element-container>div {
     margin: $body-margin-max;
   }
 } // Main Page Break
