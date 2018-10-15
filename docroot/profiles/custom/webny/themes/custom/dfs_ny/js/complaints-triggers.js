@@ -24,20 +24,20 @@
 
   // $(document).ready(function(){
   //     $(".leaf-parent").children.css({"display": "none"});
+  let bgcolor1 = '#e5eeee';
+  let bgcolor2 = 'white';
+  let svgUp = 'arrowup-teal.svg';
+  let svgDown = 'arrowdown-teal.svg';  
+  let svgBase = '/profiles/custom/webny/themes/custom/dfs_ny/icons/dfs/';  
+  if ($(window).width() <= 1023) {
+    bgcolor2 = '#09464c';
+    bgcolor1 = 'black';
+    svgUp = 'arrowup-white.svg';
+    svgDown = 'arrowdown-white.svg';
+    $('img.down-up-arrow').attr('src', svgBase + svgDown);
+  }
 
   $(".parent").find('a').click(function () {
-    let bgcolor1 = '#e5eeee';
-    let bgcolor2 = 'white';
-    let svgUp = 'arrowup-teal.svg';
-    let svgDown = 'arrowdown-teal.svg';
-    if ($(window).width() <= 1023) {
-      bgcolor2 = '#09464c';
-      bgcolor1 = 'black';
-      svgUp = 'arrowup-white.svg';
-      svgDown = 'arrowdown-white.svg';
-    }
- 
-    let svgBase = '/profiles/custom/webny/themes/custom/dfs_ny/icons/dfs/';
 
     $(this).next().slideToggle('600');
     if ($(this).css("border-bottom-style") != "none") {
