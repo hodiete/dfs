@@ -14,6 +14,7 @@ $left-menu-width: 342px;
   text-decoration: none;
   height: 36px;
   padding-top: 20px;
+  padding-left: 30px;
   font-family: Helvetica;
   font-size: 16px;
   font-weight: normal;
@@ -22,7 +23,7 @@ $left-menu-width: 342px;
   border-bottom: solid 1px white;
   line-height: 0.94;
   letter-spacing: 0.5px;
-  text-align: center;
+  text-align: left;
   width: $width;
 }
 
@@ -136,14 +137,13 @@ main .layout-content nav {
   z-index: 2;
   display: block; // max-width: 348px;
   width: $left-menu-width;
-
   ul.ul-complaint-sidebar {
     padding: 0;
     li.parent {
       .expand {
         margin-right: 30px;
         width: 14px;
-        float: right;    
+        float: right;
         margin-top: 3px;
       }
     }
@@ -164,6 +164,7 @@ main .layout-content nav {
     text-decoration: none;
     height: 36px;
     padding-top: 20px;
+    padding-left: 30px;
     font-family: Helvetica;
     font-size: 16px;
     font-weight: normal;
@@ -172,7 +173,7 @@ main .layout-content nav {
     border-bottom: solid 1px #09464c;
     line-height: 0.94;
     letter-spacing: 0.5px;
-    text-align: center;
+    text-align: left;
     color: #09464c;
     &:hover {
       background-color: #e5eeee;
@@ -318,7 +319,7 @@ main .layout-content nav {
 */
 
 main nav .leftmenu-toggle-h2 {
-  @include leftmenu-h2($left-menu-width);
+  @include leftmenu-h2(312px);
 }
 
 @media (max-width: 1023px) {
