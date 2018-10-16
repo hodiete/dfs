@@ -45,24 +45,8 @@
           {% endif %}
           {% for item in items %}
             {% set classes = ["leaf"] %}
-            {#
-            {% if loop.first %}
-              {% set classes = classes | merge(["first-complaints"]) %}
-            {% endif %}
-            #}
-            {#
-                        {% if loop.last %}
-                          {% set classes = classes | merge(["last", "dfs-search"]) %}
-                        {% endif %}
-                        {% if loop.index == 7 %}
-                          {% set classes = classes | merge(["portal-login"]) %}
-                        {% endif %} #}
 
             <li class="{{ classes|join(" ") }} " {{ item.attributes }}>
-              {# {{ kint(item.title) }} #}
-              {# {% if (loop.index == 7) and (item.title|lower == "portal log in") %} #}
-              {# <img src="../icons/dfs/Portal.svg" class="icon-portal-svg"> #}
-              {# {% endif %} #}
 
               {{ link(item.title, item.url) }}
               {% if item.below %}
