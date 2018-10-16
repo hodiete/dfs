@@ -106,24 +106,30 @@
         // }
         
         // console.log('stickOffset ' + stickOffset);
-        if (windowTop <= fromTop) {
-          $sticky.css({ position: 'absolute', top: fromTop });
-        } else {
-          // console.log('windowTop ' + windowTop);
-          // console.log('diff ' + diff);
-          if (stopPoint < windowTop) {
-            $sticky.css({ position: 'absolute', top: diff });
-
-          } else if (stickyTop < windowTop + stickOffset) {
-            // console.log('stickyTop ' + stickyTop);
-  
-            $sticky.css({ position: 'fixed', top: stickOffset });
-  
+        if ($topMenu && windowTop <= 90) {
+          $sticky.css({ position: 'relative', top: 'initial' });
+          console.log('windowTop = ' + windowTop);
+        } else {          
+          if (windowTop <= fromTop) {
+            $sticky.css({ position: 'absolute', top: fromTop });
           } else {
-            $sticky.css({ position: myPosition, top: 'initial'});
+            // console.log('windowTop ' + windowTop);
+            // console.log('diff ' + diff);
+            if (stopPoint < windowTop) {
+              $sticky.css({ position: 'absolute', top: diff });
+  
+            } else if (stickyTop < windowTop + stickOffset) {
+              // console.log('stickyTop ' + stickyTop);
+    
+              $sticky.css({ position: 'fixed', top: stickOffset });
+    
+            } else {
+              $sticky.css({ position: myPosition, top: 'initial'});
+            }
+  
           }
-
         }
+
 
       });
     }// End if
