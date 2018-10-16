@@ -148,13 +148,13 @@ $hero-height: 280px;
   .hero-ipage-inner,
   .hero-landing-inner,
   .hero-event--inner {
-    padding: 40px 8%;
-    position: relative;
+    padding: 40px 8%; // position: relative;
     top: 0;
     left: 0;
     background: none;
     &.hero-has-image-content {
-      position: relative; // z-index: 3;
+      // position: relative; 
+      // z-index: 3;
       // background-color: black;
       box-sizing: border-box;
     }
@@ -1159,7 +1159,9 @@ $hero-height: 280px;
 
 @media (max-width: 719px) {
   .hero-layout {
-    .hero-ipage-inner.hero-has-image-content {
+    .hero-ipage-inner,
+    .hero-landing-inner,
+    .hero-has-image-content {
       position: absolute;
       h1 {
         width: 100%;

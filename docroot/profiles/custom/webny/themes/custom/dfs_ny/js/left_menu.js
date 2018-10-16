@@ -27,22 +27,19 @@
       heroHeight = 0;
     }
   }
-
   
-  console.log('hero ' + heroHeight) ;
-  // var $sticky = $('.sticky');
-  console.log(`AdminHeiht ` + adminNavHeight);
-
+  // console.log('hero ' + heroHeight) ;
+  // console.log(`AdminHeiht ` + adminNavHeight);
   let $sticky = $('#sticky-leftmenu').parent('nav');
   let $stickyrStopper = $('.sticky-stopper');
   let $fromTopHeight = ($(window).width() >= 1024) ? 171 + heroHeight + adminNavHeight : 171 + heroHeight + adminNavHeight;
-
-  console.log(`fromTopHeight ` + $fromTopHeight);
-
+  // console.log(`fromTopHeight ` + $fromTopHeight);
+  if ($fromTopHeight >= 410) {
+    $fromTopHeight += 10;
+  }  
   $sticky.css({ position: 'absolute', top: $fromTopHeight });
 
   let $sticky2 = $('#webny-global-header');
-
   if ($sticky.offset()) {
     stickNavigation($sticky, $stickyrStopper, false, $fromTopHeight);
   }
@@ -58,9 +55,13 @@
     $("#sticky-leftmenu").slideToggle('fast');
   });
 
-
-
-
+  /**
+   * @function
+   * @param {object} $sticky 
+   * @param {object} $stickyrStopper
+   * @param {boolean} $topMenu 
+   * @param {number} $fromTopHeight 
+   */
   function stickNavigation($sticky, $stickyrStopper, $topMenu = true, $fromTopHeight = 0) {
     // console.log('jQuery sticky ready!');
     var myPosition, fromTop;
@@ -81,7 +82,7 @@
         // stickyTop = $sticky.offset().top;
       }
 
-
+    
 
       let stickOffset = 0;
       let stickyStopperPosition = 0;
@@ -105,25 +106,33 @@
         //   // stickOffset = Math.abs(fromTop - windowTop);
         // }
         
+    
         // console.log('stickOffset ' + stickOffset);
-        if (windowTop <= fromTop) {
-          $sticky.css({ position: 'absolute', top: fromTop });
-        } else {
-          // console.log('windowTop ' + windowTop);
-          // console.log('diff ' + diff);
-          if (stopPoint < windowTop) {
-            $sticky.css({ position: 'absolute', top: diff });
-
-          } else if (stickyTop < windowTop + stickOffset) {
-            // console.log('stickyTop ' + stickyTop);
-  
-            $sticky.css({ position: 'fixed', top: stickOffset });
-  
+        console.log('fromTop = ' + fromTop) ;
+        if ($topMenu && windowTop <= 90) {
+          $sticky.css({ position: 'relative', top: 'initial' });
+          // console.log('windowTop = ' + windowTop);
+        } else {          
+          if (windowTop <= fromTop) {
+            $sticky.css({ position: 'absolute', top: fromTop });
           } else {
-            $sticky.css({ position: myPosition, top: 'initial'});
+            // console.log('windowTop ' + windowTop);
+            // console.log('diff ' + diff);
+            if (stopPoint < windowTop) {
+              $sticky.css({ position: 'absolute', top: diff });
+  
+            } else if (stickyTop < windowTop + stickOffset) {
+              // console.log('stickyTop ' + stickyTop);
+    
+              $sticky.css({ position: 'fixed', top: stickOffset });
+    
+            } else {
+              $sticky.css({ position: myPosition, top: 'initial'});
+            }
+  
           }
-
         }
+
 
       });
     }// End if
