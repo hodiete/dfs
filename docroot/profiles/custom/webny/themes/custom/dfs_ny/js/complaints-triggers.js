@@ -27,8 +27,8 @@
   let bgcolor1 = '#e5eeee';
   let bgcolor2 = 'white';
   let svgUp = 'arrowup-teal.svg';
-  let svgDown = 'arrowdown-teal.svg';  
-  let svgBase = '/profiles/custom/webny/themes/custom/dfs_ny/icons/dfs/';  
+  let svgDown = 'arrowdown-teal.svg';
+  let svgBase = '/profiles/custom/webny/themes/custom/dfs_ny/icons/dfs/';
   if ($(window).width() <= 1023) {
     bgcolor2 = '#09464c';
     bgcolor1 = 'black';
@@ -54,10 +54,12 @@
     if ($(window).width() <= 880) {
       $(".faq-card-box").parent().css({ "width": "100%" });
       $(".short-card-box").parent().css({ "width": "100%" });
+      $(".apps-lic-card-box").parent().css({"width": "50%"});
     }
     else {
       $(".faq-card-box").parent().css({ "width": "50%" });
       $(".short-card-box").parent().css({ "width": "50%" });
+      $(".apps-lic-card-box").parent().css({"width": "25%"});
     }
   })
 
@@ -123,7 +125,7 @@
   // var imgSrc = $('#complaints-img-header .field-image img').attr('src');
   /*
   var basUrl = '/sites/default/files/landing-banner/';
-  var items = [      
+  var items = [
     basUrl + 'Auto_Insurance.jpg',
     basUrl + 'Banking_Saving_Sending_Borrowing_Money.jpg',
     basUrl + 'Consumer_Information.jpg',
