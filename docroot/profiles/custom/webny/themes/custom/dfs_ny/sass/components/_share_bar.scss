@@ -1,77 +1,85 @@
 // Share Bar styling
 //
 // Markup: share_bar.hbs
-
 // ######################################################################### //
 /* MOBILE VIEW */
-.webny-share-bar {
-	background-color: $color-primary;
-    font-size: 0.8em;
-    color: #fff;
-    height: 50px;
-    letter-spacing: 1px;
-    position: relative;
-    overflow: hidden;
-}
-.webny-share {
-	display: inline;
-    overflow: hidden;
-}
-.webny-share-bar-icons {
-    float: right;
-    display: inline-block;
-    padding: 12px 50px 8px 0;
-    .webny-action-share-label {
-    	font-size: 13px;
-        font-family: 'Proxima Nova';
-        display: inline-block;
-    }
-    .webny-action-share-button {
-        cursor: pointer;
-        padding: 0 5px;
-        display: inline-block;
-    }
-   .icon-email, .icon-facebook, .icon-twitter {
-       font-size: 12.8px;
-       color: #fff;
-       clear:both;
-
-       &:hover {
-           text-decoration: none;
-       }
-    }
-    .webny-action-share-button a:hover {
-            text-decoration: none !important;
-            clear:both;
-    }
-}
-.icon-facebook {@include icon(before, fa-facebook);}
-.icon-twitter {@include icon(before, fa-twitter);}
-.icon-email{ @include icon(before, fa-envelope);}
-
 
 .webny-share-bar {
+  // background-color: $color-primary;
+  background-color: #E5EEEE;
+  font-size: 0.8em;
+  color: #fff;
+  height: 50px;
+  letter-spacing: 1px;
+  position: relative;
+  overflow: hidden;
   display: none;
+}
+
+.webny-share {
+  display: inline;
+  overflow: hidden;
+}
+
+.webny-share-bar-icons {
+  float: right; // display: inline-block;
+  display: none;
+  padding: 12px 50px 8px 0;
+  .webny-action-share-label {
+    font-size: 13px;
+    font-family: 'Proxima Nova';
+    display: inline-block;
+  }
+  .webny-action-share-button {
+    cursor: pointer;
+    padding: 0 5px;
+    display: inline-block;
+  }
+  .icon-email,
+  .icon-facebook,
+  .icon-twitter {
+    font-size: 12.8px;
+    color: #fff;
+    clear: both;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+  .webny-action-share-button a:hover {
+    text-decoration: none !important;
+    clear: both;
+  }
+}
+
+.icon-facebook {
+  @include icon(before, fa-facebook);
+}
+
+.icon-twitter {
+  @include icon(before, fa-twitter);
+}
+
+.icon-email {
+  @include icon(before, fa-envelope);
 }
 
 // ######################################################################### //
 /* MIN TABLET VIEW */
 
-
-
-
-
 // ######################################################################### //
 /* PC VIEW */
+
 @media (min-width: $min-pc) {
-    .webny-action-share-button a:hover {
-        text-decoration: underline;
-        clear:both;
+  .webny-action-share-button a:hover {
+    text-decoration: underline;
+    clear: both;
+  }
+  .icon-email,
+  .icon-facebook,
+  .icon-twitter {
+    &:hover {
+      text-decoration: underline;
+      color: $color-secondary;
     }
-    .icon-email, .icon-facebook, .icon-twitter {
-        &:hover {
-            text-decoration: underline;
-            color: $color-secondary; 
-        }
-    }
+  }
 }

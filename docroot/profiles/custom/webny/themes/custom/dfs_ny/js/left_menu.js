@@ -2,6 +2,11 @@
   'use strick';
 
   let adminNavHeight = 0;
+  let breadcrumHeight = 0;
+  if ($('#nydfs-breadcrumb').height() > 10) {
+    breadcrumHeight = $('#nydfs-breadcrumb').height();
+  }
+
   if ($('#toolbar-bar .toolbar-tab .trigger').height() > 10) {
     adminNavHeight += 45;
   }
@@ -12,19 +17,23 @@
   let heroHeight = 0;
 
   if ($(window).width() >= 1024) {
-    if ($('article.hero-layout').height() > 240) {
+    if ($('article.hero-layout').height() >= 240) {
       heroHeight = 280 + 50;
     }
     else {
       heroHeight = 50;
     }
+
   } 
   else {
-    if ($('article.hero-layout').height() > 240) {
+    if ($('article.hero-layout').height() >= 240) {
       heroHeight = 240;
     }
     else {
       heroHeight = 0;
+    }
+    if ($(window).width() >= 768) {
+      breadcrumHeight += 26;
     }
   }
   
@@ -32,11 +41,14 @@
   // console.log(`AdminHeiht ` + adminNavHeight);
   let $sticky = $('#sticky-leftmenu').parent('nav');
   let $stickyrStopper = $('.sticky-stopper');
-  let $fromTopHeight = ($(window).width() >= 1024) ? 171 + heroHeight + adminNavHeight : 171 + heroHeight + adminNavHeight;
+  let $fromTopHeight = ($(window).width() >= 1024) 
+    ? 171 + heroHeight + adminNavHeight 
+    : 171 + heroHeight + adminNavHeight;
   // console.log(`fromTopHeight ` + $fromTopHeight);
   if ($fromTopHeight >= 410) {
     $fromTopHeight += 10;
   }  
+  $fromTopHeight += breadcrumHeight;
   $sticky.css({ position: 'absolute', top: $fromTopHeight });
 
   let $sticky2 = $('#webny-global-header');

@@ -12,9 +12,9 @@
  * @see template_preprocess_region()
  */
 #}
-{# <div class="complaints-img-header">{{ title }}</div> #}
+
 {% if content %}
-    <div{{ attributes }}>
+    <div{{ attributes }} id="main-layout-content-switch-div">
         {{ content }}
     </div>
 {% endif %}

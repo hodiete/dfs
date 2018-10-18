@@ -1,0 +1,34 @@
+{#
+/**
+ * @file
+ * Default theme implementation for a breadcrumb trail.
+ *
+ * Available variables:
+ * - breadcrumb: Breadcrumb trail items.
+ *
+ * @ingroup themeable
+ */
+#}
+
+{% if breadcrumb %}
+  <nav id="nydfs-breadcrumb" role="navigation" aria-labelledby="system-breadcrumb">
+    <h2 id="system-breadcrumb" class="visually-hidden">{{ 'Breadcrumb'|t }}</h2>
+    <ul>
+    {% for item in breadcrumb %}
+      <li>
+        {% if item.url %}
+          {% if loop.first %}
+          &nbsp;
+          {% else %}
+          <a href="{{ item.url }}"><img class="bread-arrow" 
+          src="/{{ base_path ~ directory }}/icons/dfs/breadcrumb-arrow.svg" 
+          alt="breadcrumb left arrow"></img> {{ item.text }}</a>
+          {% endif %}
+        {% else %}
+          {{ item.text }}
+        {% endif %}
+      </li>
+    {% endfor %}
+    </ul>
+  </nav>
+{% endif %}
