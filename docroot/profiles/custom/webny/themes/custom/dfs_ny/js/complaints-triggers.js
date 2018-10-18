@@ -39,7 +39,7 @@
 
   $(".parent").find('a').click(function () {
 
-    $(this).next().slideToggle('600');
+    $(this).next().slideToggle(100);
     if ($(this).css("border-bottom-style") != "none") {
       $(this).css({ "border-bottom-style": "none", "background-color": bgcolor1, "font-weight": "bold" });
       $(this).find("img").attr('src', svgBase + svgUp);

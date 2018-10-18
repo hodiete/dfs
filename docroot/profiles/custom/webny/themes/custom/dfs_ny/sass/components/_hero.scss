@@ -1175,3 +1175,24 @@ $hero-height: 280px;
     margin-left: 26%;
   }
 }
+
+@media (max-width: 767px) {
+  .hero-layout {
+    h1,
+    h2 {
+      color: #09464c;
+      font-size: 32px;
+      padding: 18px;
+      background-color: #e5eeeecf;
+      text-align: center;
+    }
+    .hero-inner {
+      padding-left: 7%;
+      h1,
+      h2 {
+        width: 95%;
+      }
+    }
+  }
+}
+

@@ -153,6 +153,12 @@ main .layout-content nav {
     width: auto;
     background: #FFF;
     list-style-type: none;
+    padding-left: 5px;
+    a {
+      padding-left: 25px;
+      padding-right: 10px;
+      border-bottom: none;
+    }
     li {
       display: block;
       float: none;
@@ -339,5 +345,29 @@ main nav .leftmenu-toggle-h2 {
       font-weight: bold;
       text-decoration: none;
     }
+  }
+}
+
+main .layout-content nav {
+  @media (max-width: 640px) {
+    margin-left: 21%;
+  }
+  @media (max-width: 520px) {
+    margin-left: 17%;
+  }
+  @media (max-width: 480px) {
+    margin-left: 13%;
+  }
+  @media (max-width: 414px) {
+    margin-left: 9%;
+  }
+  @media (max-width: 375px) {
+    margin-left: 4.5%;
+  }
+  @media (max-width: 360px) {
+    margin-left: 2.5%;
+  }
+  @media (max-width: 350px) {
+    margin-left: 0.7%;
   }
 }
