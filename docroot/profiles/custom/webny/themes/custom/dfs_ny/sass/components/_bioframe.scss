@@ -228,14 +228,16 @@ $bioframe-margin: 15px;
     } // END CONTACT BIOFRAME     
   } // END BIO FRAME    
 } // END PC
-
 .page-paragraphs {
   .short-card-box {
     img.faq-card-image {
       border: 0;
       vertical-align: bottom;
-      top: -70px;
+      top: -90px;
       position: relative;
+      @media (max-width: 1024px) {
+        top: -40px;
+      }
     }
   }
 }
