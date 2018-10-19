@@ -5,9 +5,8 @@
 // Markup: bioframe.hbs
 //
 // Style guide: components.bioframe
-
 // color variables (secondary)
-$bio-frame-bkgnd-color: $color-secondary !default; 
+$bio-frame-bkgnd-color: $color-secondary !default;
 $bio-frame-title-color: $color-mono-black !default;
 $bio-frame-headline-color: $color-mono-white !default;
 // color variables (primary)
@@ -20,183 +19,153 @@ $bio-frame-title-color-monochrome: $color-mono-black !default;
 $bio-frame-headline-color-monochrome: $color-mono-black !default;
 // REASSIGNED VALS FOR GLOBAL SCOPE -- BIO
 // this overrides general button variables in config.scss
-$bio-button-border-color:               $button-border-color !default;
-$bio-button-text-color:                 $button-text-color !default;
-$bio-button-back-color:                 $button-bkgd-transparent !default;
-$bio-button-hover-back-color:           $button-black-50 !default;
+$bio-button-border-color: $button-border-color !default;
+$bio-button-text-color: $button-text-color !default;
+$bio-button-back-color: $button-bkgd-transparent !default;
+$bio-button-hover-back-color: $button-black-50 !default;
 // Primary button colors
-$bio-button-border-color-primary:            $color-mono-black !default;
-$bio-button-text-color-primary:              $color-mono-black !default;
-$bio-button-back-color-primary:              $button-bkgd-transparent !default;
-$bio-button-hover-back-color-primary:        $button-white-50 !default;
+$bio-button-border-color-primary: $color-mono-black !default;
+$bio-button-text-color-primary: $color-mono-black !default;
+$bio-button-back-color-primary: $button-bkgd-transparent !default;
+$bio-button-hover-back-color-primary: $button-white-50 !default;
 // Monochrome button colors 
-$bio-button-border-color-monochrome:      $color-primary !default;
-$bio-button-text-color-monochrome:        $button-text-color !default;
-$bio-button-back-color-monochrome:        $button-bkgd-color!default;
-$bio-button-hover-back-color-monochrome:  $color-mono-black !default;
-
+$bio-button-border-color-monochrome: $color-primary !default;
+$bio-button-text-color-monochrome: $button-text-color !default;
+$bio-button-back-color-monochrome: $button-bkgd-color !default;
+$bio-button-hover-back-color-monochrome: $color-mono-black !default;
 // Margin Vars
 $bioframe-margin: 15px;
-
 // ************************* //
 // BIOFRAME PARTIAL
 // CREATED BY WEBNY
 // ************************* //
-
 // ========================================================================= // 
 // PRELIM OVERRIDES
-.page-paragraphs img{
-    border: 0;   
-    vertical-align: bottom;
+.page-paragraphs img {
+  border: 0;
+  vertical-align: bottom;
 }
 
 // ========================================================================= //
 /* BIOFRAME WRAPPER */
-.bioframe{
+
+.bioframe {
+  width: 100%;
+  margin: 0 auto;
+  background-color: $bio-frame-bkgnd-color; // ADD TO COLOR SCHEME VARS
+  .webny_contact-bioframe {
+    display: block;
     width: 100%;
     margin: 0 auto;
-    background-color: $bio-frame-bkgnd-color;                          // ADD TO COLOR SCHEME VARS
-    
-    .webny_contact-bioframe{
-        
+    padding: 0;
+    position: relative;
+    .bio-frame-image {
+      text-align: center;
+      .media-image>div {
         display: block;
-        width: 100%;
+        line-height: normal;
+      }
+      img {
+        line-height: 0;
+        max-height: 400px;
+        max-width: 400px;
         margin: 0 auto;
-        padding: 0;
-        position: relative; 
-       
-                
-        .bio-frame-image{
-             text-align: center;
-            
-            .media-image > div{
-                display: block;   
-                line-height: normal;
-            }
-            
-            img {
-          
-                line-height: 0;
-                max-height: 400px;
-                max-width: 400px;
-                margin: 0 auto;
-            }
-        } // END BIO IMAGE
-        
-        .bio-frame-meta{
-            vertical-align: top;
-            padding: 2% 4%;
-            
-            .frame-title{
-                text-align: left;
-                color: $bio-frame-title-color; 
-                //margin-bottom: $bioframe-margin; // need to evaluate this when changing these to headings
-                margin-top: 80px;
-                font: $frame-title;
-                display: block;
-            }   
-            
-            .frame-headline{
-                text-align: left;
-                color: $bio-frame-headline-color;                          // ADD TO COLOR SCHEME VARS
-                margin-bottom: 7px;
-                line-height: 1.25em;//3rem;
-                //font-size: 3.3rem;
-                font: $frame-headline;
-            } //see below for font on a home page
-
-            .bioframe-pro-subtitle {
-              font-family: $base-font;
-              font-size: 1.14em;
-              font-weight: bold;
-              color: $color-mono-black;
-              line-height: 30px;
-            }
-
-            .caption{
-                margin-top: 5px;
-                margin-bottom: $bioframe-margin;
-                font-size: $frame-base-font-size;
-                line-height: $frame-base-line-height;
-            }
-            
-            .reslink{
-                
-                margin: 36px 0;
-                text-align: center;
-
-                a {
-                    // BUTTON DYNAMIC REQUIREMENTS
-                    border: $frame-button-border-size solid $bio-button-border-color;
-                    color: $bio-button-text-color;
-                    background-color: $bio-button-back-color;
-                    &:hover {
-                        background-color: $bio-button-hover-back-color;
-                    }
-                }
-
-                // BUTTON CALLS
-                @include frame-button-base();
-
-            }
-                        
-        } // END BIO META
-        
-        
-
-    } // END CONTACT BIOFRAME
-    
-    
-    
-    
+      }
+    } // END BIO IMAGE
+    .bio-frame-meta {
+      vertical-align: top;
+      padding: 2% 4%;
+      .frame-title {
+        text-align: left;
+        color: $bio-frame-title-color; //margin-bottom: $bioframe-margin; // need to evaluate this when changing these to headings
+        margin-top: 80px;
+        font: $frame-title;
+        display: block;
+      }
+      .frame-headline {
+        text-align: left;
+        color: $bio-frame-headline-color; // ADD TO COLOR SCHEME VARS
+        margin-bottom: 7px;
+        line-height: 1.25em; //3rem;
+        //font-size: 3.3rem;
+        font: $frame-headline;
+      } //see below for font on a home page
+      .bioframe-pro-subtitle {
+        font-family: $base-font;
+        font-size: 1.14em;
+        font-weight: bold;
+        color: $color-mono-black;
+        line-height: 30px;
+      }
+      .caption {
+        margin-top: 5px;
+        margin-bottom: $bioframe-margin;
+        font-size: $frame-base-font-size;
+        line-height: $frame-base-line-height;
+      }
+      .reslink {
+        margin: 36px 0;
+        text-align: center;
+        a {
+          // BUTTON DYNAMIC REQUIREMENTS
+          border: $frame-button-border-size solid $bio-button-border-color;
+          color: $bio-button-text-color;
+          background-color: $bio-button-back-color;
+          &:hover {
+            background-color: $bio-button-hover-back-color;
+          }
+        } // BUTTON CALLS
+        @include frame-button-base();
+      }
+    } // END BIO META
+  } // END CONTACT BIOFRAME
 } // END BIOFRAME
 // if primary background color is selected for frame
 .paragraph--type--webny-bio-pgtype.primary {
-    .bioframe {
-        background-color: $bio-frame-bkgd-color-primary;
-            .frame-title{
-                color: $bio-frame-title-color-primary; 
-            }   
-            
-            .frame-headline{
-                color: $bio-frame-headline-color-primary;              
-            }
-            .reslink{
-                a {
-                    // BUTTON DYNAMIC REQUIREMENTS
-                    border: $frame-button-border-size solid $bio-button-border-color-primary;
-                    color: $bio-button-text-color-primary;
-                    background-color: $bio-button-back-color-primary;
-                    &:hover {
-                        background-color: $bio-button-hover-back-color-primary;
-                    }
-                }
-        }
+  .bioframe {
+    background-color: $bio-frame-bkgd-color-primary;
+    .frame-title {
+      color: $bio-frame-title-color-primary;
     }
+    .frame-headline {
+      color: $bio-frame-headline-color-primary;
+    }
+    .reslink {
+      a {
+        // BUTTON DYNAMIC REQUIREMENTS
+        border: $frame-button-border-size solid $bio-button-border-color-primary;
+        color: $bio-button-text-color-primary;
+        background-color: $bio-button-back-color-primary;
+        &:hover {
+          background-color: $bio-button-hover-back-color-primary;
+        }
+      }
+    }
+  }
 }
+
 // if monochrome light background color is selected for frame
 .paragraph--type--webny-bio-pgtype.monochrome {
-    .bioframe {
-        background-color: $bio-frame-bkgd-color-monochrome;
-            .frame-title{
-                color: $bio-frame-title-color-monochrome; 
-            }   
-            
-            .frame-headline{
-                color: $bio-frame-headline-color-monochrome;              
-            }
-            .reslink{
-                a {
-                    // BUTTON DYNAMIC REQUIREMENTS
-                    border: $frame-button-border-size solid $bio-button-border-color-monochrome;
-                    color: $bio-button-text-color-monochrome;
-                    background-color: $bio-button-back-color-monochrome;
-                    &:hover {
-                        background-color: $bio-button-hover-back-color-monochrome;
-                    }
-                }
-        }
+  .bioframe {
+    background-color: $bio-frame-bkgd-color-monochrome;
+    .frame-title {
+      color: $bio-frame-title-color-monochrome;
     }
+    .frame-headline {
+      color: $bio-frame-headline-color-monochrome;
+    }
+    .reslink {
+      a {
+        // BUTTON DYNAMIC REQUIREMENTS
+        border: $frame-button-border-size solid $bio-button-border-color-monochrome;
+        color: $bio-button-text-color-monochrome;
+        background-color: $bio-button-back-color-monochrome;
+        &:hover {
+          background-color: $bio-button-hover-back-color-monochrome;
+        }
+      }
+    }
+  }
 }
 
 .front .bioframe .webny_contact-bioframe .frame-headline {
@@ -205,76 +174,68 @@ $bioframe-margin: 15px;
 
 // ######################################################################### //
 /* MOBILE VIEW */
-@media (min-width: $min-mob) {
-    
-} // END MIN MOBILE VIEW
 
+@media (min-width: $min-mob) {}
+
+// END MIN MOBILE VIEW
 // ######################################################################### //
 /* TABLET VIEW */
-@media (min-width: $min-tab) {
 
-} // END MIN TABLET VIEW
+@media (min-width: $min-tab) {}
 
-
+// END MIN TABLET VIEW
 // ######################################################################### //
 /* PC VIEW */
+
 @media (min-width: $min-pc) {
-
-.bioframe{    
-    
-     .webny_contact-bioframe{
+  .bioframe {
+    .webny_contact-bioframe {
+      display: block;
+      max-width: $max-pc;
+      overflow: auto;
+      position: relative;
+      .bio-frame-image,
+      .bio-frame-meta {
         display: block;
-        max-width: $max-pc;
-        overflow: auto;
-        position: relative; 
-         
-        .bio-frame-image,
-        .bio-frame-meta{
-            display: block;
-           
+      }
+      .bio-frame-image {
+        bottom: 0;
+        float: left;
+        left: 0;
+        top: 0;
+        width: 33%;
+        position: absolute;
+        img {
+          line-height: 0;
+          position: absolute;
+          right: 0;
+          bottom: 0;
+          max-height: 400px;
+          vertical-align: bottom;
         }
-
-        .bio-frame-image{
-                bottom: 0;
-                float: left;
-                left: 0;
-                top: 0;
-                width: 33%;
-                position: absolute;
-
-            img {
-          
-                line-height: 0;
-                position: absolute;
-                right: 0;
-                bottom: 0;
-                max-height: 400px;
-                vertical-align: bottom;
-            }
+      }
+      .bio-frame-meta {
+        width: 60%;
+        padding: 0 2% 0 3%;
+        float: right;
+        .frame-headline {
+          //line-height: 2.5rem;
         }
-
-        .bio-frame-meta{
-            width: 60%;   
-            padding: 0 2% 0 3%;
-            float: right;
-            
-            
-            .frame-headline{
-                //line-height: 2.5rem;
-            }
-            
-            .reslink{
-                
-                text-align: left;
-
-            }
+        .reslink {
+          text-align: left;
         }
-    
-          
-            
-
+      }
     } // END CONTACT BIOFRAME     
-
-} // END BIO FRAME    
-    
+  } // END BIO FRAME    
 } // END PC
+
+.page-paragraphs {
+  .short-card-box {
+    img.faq-card-image {
+      border: 0;
+      vertical-align: bottom;
+      top: -70px;
+      position: relative;
+    }
+  }
+}
