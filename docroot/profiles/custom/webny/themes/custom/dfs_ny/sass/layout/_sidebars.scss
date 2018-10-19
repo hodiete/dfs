@@ -146,6 +146,31 @@ main .layout-content nav {
         float: right;
         margin-top: 3px;
       }
+      ul{
+        display: none;
+        padding-left: 0px;
+        border-bottom: solid 1px #09464c;
+          a{
+              display: block;
+              background-color: #fff;
+              text-decoration: none;
+              height: 24px;
+              font-family: Helvetica;
+              font-size: 12px;
+              font-weight: normal;
+              float: left;
+              font-style: normal;
+              font-stretch: normal;
+              border-bottom: 0px;
+              line-height: 1;
+              letter-spacing: 0.5px;
+              padding-left: 30px;
+              color: #09464c;
+        }
+        a:hover{
+          font-weight: bold;
+        }
+      }
     }
   }
   ul ul {
@@ -179,6 +204,9 @@ main .layout-content nav {
     border-bottom: solid 1px #09464c;
     line-height: 0.94;
     letter-spacing: 0.5px;
+    // text-align: center;
+    width: 100%;
+    float: left;
     text-align: left;
     color: #09464c;
     &:hover {
@@ -237,7 +265,7 @@ main .layout-content nav {
     font-stretch: normal;
     line-height: 0.94;
     letter-spacing: 0.5px;
-    text-align: center;
+    // text-align: center;
     color: #09464c;
     &:hover {
       font-weight: bold;
