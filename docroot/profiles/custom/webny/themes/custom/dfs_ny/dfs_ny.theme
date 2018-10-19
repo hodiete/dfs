@@ -6,7 +6,6 @@
  */
 
 use Drupal\node\Entity\Node;
-// use Drupal\Core\Template\Attribute;
 
 /**
  * Implements hook_preprocess_html().
@@ -71,15 +70,6 @@ function dfs_ny_preprocess_node__webny_page__full(&$variables) {
   // Load the site name out of configuration.
   $config = \Drupal::config('system.site');
   $variables['site_name'] = $config->get('name');
-
-  /* Create variable that contains breadcrumb for node templates. */
-
-  /* create a block object */
-  $my_block_object = \Drupal\block\Entity\Block::load('breadcrumb');
-  dpm($variables['site_name']);
-  /* creates a renderable array from the block object */
-  // $variables['breadcrumb_in_node'] = \Drupal::entityManager()->getViewBuilder('block')->view($my_block_object);
-
 }
 
 /**
@@ -165,7 +155,6 @@ function dfs_ny_library_info_alter(&$libraries, $extension) {
   if (isset($libraries['global-styling']['css']['theme'])) {
     $libraries['global-styling']['css']['theme'] = array('css/' . theme_get_setting('site_color_pallet') . '.css' => array());
   }
-  $temp=0;
 }
 
 /**
@@ -216,27 +205,4 @@ function dfs_ny_preprocess_page(&$variables) {
   // if(!isset($variables['agencyname'])){
   //   $variables['agencyname'] = 'Department of Financial Services';
   // }
-}
-
-/**
- * Implements hook_theme_preprocess_breadcrumb().
- */
-
-function dfs_ny_preprocess_breadcrumb(&$variables) {
-  dpm($variables['breadcrumb']);
-  /*
-  if ($variables['breadcrumb']) {
-    $request = \Drupal::request();
-    $route_match = \Drupal::routeMatch();
-    $page_title = \Drupal::service('title_resolver')->getTitle($request, $route_match->getRouteObject());
-
-    if (!empty($page_title)) {
-      $variables['breadcrumb'][] = [
-        'text' => $page_title,
-        'attributes' => new Attribute(['class' => ['active']])
-      ];
-    }
-  }
-  */
-
 }
