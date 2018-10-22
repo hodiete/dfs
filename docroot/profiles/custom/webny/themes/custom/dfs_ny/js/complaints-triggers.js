@@ -26,26 +26,48 @@
   //     $(".leaf-parent").children.css({"display": "none"});
   let bgcolor1 = '#e5eeee';
   let bgcolor2 = 'white';
+  let bgcolorAct = '#09464c';
   let svgUp = 'arrowup-teal.svg';
   let svgDown = 'arrowdown-teal.svg';
+  let svgUpWhite = 'arrowup-white.svg';
+  let svgDownWhite = 'arrowdown-white.svg';
   let svgBase = '/profiles/custom/webny/themes/custom/dfs_ny/icons/dfs/';
+
   if ($(window).width() <= 1023) {
-    bgcolor2 = '#09464c';
-    bgcolor1 = 'black';
-    svgUp = 'arrowup-white.svg';
-    svgDown = 'arrowdown-white.svg';
+    bgcolor2 = '#e5eeee';
+    // bgcolor1 = '#09464c';
+    // svgUp = 'arrowup-white.svg';
+    // svgDown = 'arrowdown-white.svg';
     $('img.down-up-arrow').attr('src', svgBase + svgDown);
+
+    $('.leftmenu-toggle-h2').append('<img class="expand down-up-arrow" src="/profiles/custom/webny/themes/custom/dfs_ny/icons/dfs/arrowdown-white.svg">');
+
+    $(".leftmenu-toggle-h2").click(function () {
+
+      // $(this).next().slideToggle(100);
+      if ($(this).css("border-bottom-style") != "none") {
+        $(this).css({ "border-bottom-style": "none" });
+        $(this).find("img").attr('src', svgBase + svgUpWhite);
+      }
+      else {
+        $(this).css({ "border-bottom-style": "solid"  });
+        $(this).find("img").attr('src', svgBase + svgDownWhite);
+      }
+    })
+
+
   }
 
   $(".parent").find('a').click(function () {
 
     $(this).next().slideToggle(100);
     if ($(this).css("border-bottom-style") != "none") {
-      $(this).css({ "border-bottom-style": "none", "background-color": bgcolor1, "font-weight": "bold" });
-      $(this).find("img").attr('src', svgBase + svgUp);
+      $(this).css({ "border-bottom-style": "none", "background-color": bgcolorAct, "font-weight": "bold" , "color": "white" });
+      $(this).find("img").attr('src', svgBase + svgUpWhite);
     }
     else {
-      $(this).css({ "border-bottom-style": "solid", "background-color": bgcolor2, "font-weight": "normal" });
+      $(this).css({ "border-bottom-style": "solid", "background-color": bgcolor2, "font-weight": "normal",
+        "color": bgcolorAct });
       $(this).find("img").attr('src', svgBase + svgDown);
     }
   })

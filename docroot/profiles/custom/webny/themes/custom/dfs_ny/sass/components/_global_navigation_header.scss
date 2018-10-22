@@ -68,7 +68,7 @@ $globalnav-secondary-color: $button-black-50 !default;
   margin: 16px 12px;
   background: $color-accent-primary url('../icons/dfs/portal.svg') bottom left no-repeat;
   background-size: 26px 25px;
-  background-position: 6px 5px;
+  background-position: 12px 5px;
   a {
     font-weight: bold;
     color: #000000;
@@ -292,12 +292,17 @@ $importance: null) {
       width: 65px;
       height: 80px;
       display: block;
-      float: left;
       background-image: url('../icons/icon-menu.png');
       background-image: linear-gradient(transparent, transparent), url('../icons/icon-menu.svg');
       background-size: 20px;
       background-repeat: no-repeat;
       background-position: 50%;
+    }
+    a {
+      float: left; 
+    }
+    a.webny-global-active {
+      float: right;
     }
   } // Tablet
   @media (min-width: $min-width-breakpoint) {
@@ -346,7 +351,7 @@ $importance: null) {
           padding: 23px 0 23px 15px;
           display: inline-block;
           &>li>a:hover {
-            text-decoration: underline;
+            text-decoration: none;
           }
           &>li>span:hover {
             text-decoration: none;
@@ -450,7 +455,7 @@ $importance: null) {
       height: auto;
       font-size: 16px;
       &>ul>li>a:hover {
-        text-decoration: underline;
+        text-decoration: none;
         color: $nav-fore-color;
       }
       &>ul>li>span:hover {
@@ -508,7 +513,7 @@ $importance: null) {
               a:hover,
               a:active,
               span {
-                font-size: 16px;
+                font-size: 14px;
                 line-height: 20px;
                 height: auto;
                 display: block;
@@ -733,44 +738,13 @@ $importance: null) {
         }
         &:nth-child(7) {
           min-width: 103px; // width: 103px;
-          width: 10%;
+          // width: 10%;
         }
         &:nth-child(8) {
           width: 13%; // min-width: 145px;
           min-width: 120px;
           margin-left: 1.4%;
           padding-left: 3%;
-        }
-      }
-    } // GW End
-  }
-  @media screen and (max-width: 1023px) {
-    /* 
-     GW: debug DFS Main Navigation Menu 
-  */
-    ul.gnav-ul {
-      li.gnav-topli {
-        &:nth-child(1) {
-          width: 223px; // height: 53px;
-        }
-        &:nth-child(n+1) {
-          // width: 120px;
-          width: auto;
-        } // &:nth-child(7) {
-        //   width: 100%;
-        // }
-        &:nth-child(8) {
-          // width: 100%; // min-width: 145px;
-          margin-left: 0;
-          padding-left: 0%;
-        }
-      }
-    } // GW End
-    ul.gnav-ul {
-      padding: auto; // margin: 0 0 20px 0;
-      li.gnav-topli {
-        &:nth-child(1) {
-          display: none;
         }
       }
     } // GW End
@@ -794,7 +768,7 @@ $importance: null) {
       height: auto;
       font-size: 16px;
       &>ul>li>a:hover {
-        text-decoration: underline;
+        text-decoration: none;
       }
       &>ul>li>span:hover {
         text-decoration: none;
@@ -1035,4 +1009,55 @@ $importance: null) {
       }
     }
   }
+}
+ 
+@media only screen and( max-width: 1280px) {
+  .webny-global-header ul.gnav-ul li.gnav-topli:nth-child(1) {
+    width: 100%;
+    height: 46px;
+    a {
+      // padding: 0;
+    }
+  }
+  .webny-global-header ul.gnav-ul li.gnav-topli:nth-child(2) {
+    a {
+      // margin: 0; 
+      // padding: 0;
+    }
+  }
+}
+
+@media screen and (max-width: 1023px) {
+  /* 
+     GW: debug DFS Main Navigation Menu 
+  */
+  ul.gnav-ul {
+    padding: auto; // margin: 0 0 20px 0;
+    li.gnav-topli {
+      &:nth-child(1) {
+        width: 223px; // height: 53px;
+        display: none;
+      }
+      &:nth-child(n+1) {
+        // width: 120px;
+        width: auto;
+      } // &:nth-child(7) {
+      //   width: 100%;
+      // }
+      &:nth-child(8) {
+        // width: 100%; // min-width: 145px;
+        margin-left: 0;
+        padding-left: 0%;
+      }
+      a {
+        font-weight: 600;
+      }
+    }
+  } // GW End
+}
+
+@media screen and (max-width: 480px) {
+  /* 
+     GW: debug DFS Main Navigation Menu 
+  */
 }

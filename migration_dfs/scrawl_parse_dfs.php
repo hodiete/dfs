@@ -52,8 +52,13 @@ file_put_contents('/Sites/migration/output/url-has-urls.json', json_encode($outA
 // file_put_contents('./output/url-word.json', json_encode($listWordArr));
 // file_put_contents('./output/url-excel.json', json_encode($listExcelArr));
 // file_put_contents('./output/url-text.json', json_encode($listTextArr));
-
-file_put_contents('/Sites/migration/output/json/output-contents.json', json_encode($nodesJson));
+$i = 1;
+foreach ($nodesJson as $json) {
+  $name = "out_$i.json";
+  file_put_contents("/Sites/migration/output/json/$name", json_encode($json));
+  $i++;
+}
+// file_put_contents('/Sites/migration/output/json/output-contents.json', json_encode($nodesJson));
 
 
 // set_time_limit(0).
@@ -438,15 +443,20 @@ function isNavItem($url){
 function parse_webpage_content($url, &$nodesJson, &$doc) {
   // $doc = new DOMDocument();
   $prefix = "//div[@id='content']";
+  $prefix = "";
   // @$doc->loadHTMLFile($url);
-  print "3 url = $url\n";
-  // print_r($doc);
 
   $title = get_dom_title($doc);
   $content = "";
   $urlAlians = parse_url($url, PHP_URL_PATH);
+  if (!$urlAlians || $urlAlians == "/" || $urlAlians == '/index.html') {
+    return;
+  }
 
+  print "3 url = $url\n";
+  print "urlAlians = $urlAlians\n";
   $xpath = new DOMXPath($doc);
+  //print_r($xpath->document);
   $queries = [
     "$prefix//div[@id='homepub']",
     "$prefix//div[@id='procright']",
@@ -455,14 +465,26 @@ function parse_webpage_content($url, &$nodesJson, &$doc) {
   ];
 
   foreach ($queries as $query) {
-    if (!$result = $xpath->query($query)) {
+    $result = $xpath->query($query);
+    if (!$result || $result->length <= 0) {
+      //print_r($result->length);
       continue;
     }
     else {
-      $content = $result->firstChild->nodeValue;
-      $content = handle_content_url($content);
-      $content = handle_content_img($content);
-      break;
+      print "xpath: $query ; result: \n" ;
+      // print_r($result);
+
+      foreach ($result as $node) {
+        // print_r($node);
+        // $content = $doc->saveHTML($node->nodeValue);
+        $content = $doc->saveHTML($node);
+        // var_dump($content);
+        $content = handle_content_url($content);
+        // print_r($content);
+        $content = handle_content_img($content);
+        // print_r($content);
+      }
+      // break;
     }
 
   }
@@ -496,6 +518,8 @@ function get_dom_title(&$dom) {
  * @return string          [html content]
  */
 function handle_content_url($content) {
+
+  // print_r($content); exit;
   $doc = new DOMDocument();
   $doc->loadHTML($content);
   $links = [];
@@ -508,6 +532,9 @@ function handle_content_url($content) {
     $links[] = $href;
     $links_new[] = change_url($href);
   }
+  // var_dump($href);
+  print "url: "; var_dump($links);
+  print "New: "; var_dump($links_new);
 
   return str_replace($links, $links_new, $content);
 }
