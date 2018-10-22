@@ -46,14 +46,14 @@ _crawl_page($path, $level);
 
 // print_r($outArr);
 
-file_put_contents('./output/url-has-urls.json', json_encode($outArr));
+file_put_contents('/Sites/migration/output/url-has-urls.json', json_encode($outArr));
 // file_put_contents('./output/url-all.json', json_encode($listUrlArr));
 // file_put_contents('./output/url-pdf.json', json_encode($listPDFArr));
 // file_put_contents('./output/url-word.json', json_encode($listWordArr));
 // file_put_contents('./output/url-excel.json', json_encode($listExcelArr));
 // file_put_contents('./output/url-text.json', json_encode($listTextArr));
 
-file_put_contents('./output/json/output-contents.json', json_encode($nodesJson));
+file_put_contents('/Sites/migration/output/json/output-contents.json', json_encode($nodesJson));
 
 
 // set_time_limit(0).
@@ -102,10 +102,20 @@ function _crawl_page($url, $depth) {
   $pathArr = (isset($parseArr['path'])) ? pathinfo($parseArr['path']) : array();
 
   // Call to generate new content and store data in associat array.
-  parse_webpage_content($url, $GLOBALS['nodesJson']);
+
+  // parse_webpage_content($url, $GLOBALS['nodesJson']);
 
   $dom = new DOMDocument('1.0');
+
+  // We don't want to bother with white spaces.
+  $dom->preserveWhiteSpace = FALSE;
+  // Most HTML Developers are chimps and produce invalid markup...
+  $dom->strictErrorChecking = FALSE;
+  $dom->recover = TRUE;
+
   @$dom->loadHTMLFile($url);
+  //print "2 url = $url \n"; exit();
+  parse_webpage_content($url, $GLOBALS['nodesJson'], $dom);
 
   $list = $dom->getElementsByTagName("title");
 
@@ -170,7 +180,6 @@ function _crawl_page($url, $depth) {
   }
 
 
-  parse_webpage_content($url, $GLOBALS['nodesJson']);
 
   foreach ($anchors as $element) {
     $href = $element->getAttribute('href');
@@ -426,18 +435,12 @@ function isNavItem($url){
  * @param  number $depth 3
  * @return void
  */
-function parse_webpage_content($url, &$nodesJson) {
-  $doc = new DOMDocument();
+function parse_webpage_content($url, &$nodesJson, &$doc) {
+  // $doc = new DOMDocument();
   $prefix = "//div[@id='content']";
-
-
-  // We don't want to bother with white spaces.
-  $doc->preserveWhiteSpace = FALSE;
-  // Most HTML Developers are chimps and produce invalid markup...
-  $doc->strictErrorChecking = FALSE;
-  $doc->recover = TRUE;
-
-  $doc->loadHTMLFile($url);
+  // @$doc->loadHTMLFile($url);
+  print "3 url = $url\n";
+  // print_r($doc);
 
   $title = get_dom_title($doc);
   $content = "";
