@@ -363,7 +363,7 @@ $importance: null) {
             a:hover,
             a:active,
             span {
-              font-weight: $nav-weight;
+              font-weight: $menu-semi-bold;
               font-size: 14px;
               letter-spacing: .03em;
               padding-left: 15px;
@@ -677,12 +677,11 @@ $importance: null) {
           width: 116px;
         }
         &:nth-child(7) {
-          border:none;
+          border: none;
           @include portal-login(131px,
           153px);
-
           &:hover {
-            font-weight: bold;
+            font-weight: $menu-hover-bold;
             background: #e5eeee url(../icons/dfs/portal.svg) bottom left no-repeat;
             background-size: 26px 25px;
             background-position: 12px 5px;
@@ -1019,18 +1018,20 @@ $importance: null) {
   }
 }
 
-@media only screen and( max-width: 1280px) {
-  .webny-global-header ul.gnav-ul li.gnav-topli:nth-child(1) {
-    width: 100%;
-    height: 46px;
-    a {
-      // padding: 0;
+@media only screen and( min-width: 1024) and (max-width: 1280px) {
+  .webny-global-header ul.gnav-ul li.gnav-topli {
+    &:nth-child(1) {
+      width: 100%;
+      height: 46px;
     }
-  }
-  .webny-global-header ul.gnav-ul li.gnav-topli:nth-child(2) {
-    a {
-      // margin: 0; 
-      // padding: 0;
+    &:nth-child(n+2) {
+      width: 12.9%;
+    }
+    &:nth-child(7) {
+      width: 153px;
+    }
+    &:nth-child(8) {
+      width: 14%;
     }
   }
 }
@@ -1065,7 +1066,16 @@ $importance: null) {
 }
 
 @media screen and (max-width: 480px) {
-  /* 
-     GW: debug DFS Main Navigation Menu 
-  */
+  #webny-global-header > h1 {
+      width: 223px;
+  }
+}
+
+#webny-global-header ul li {
+  a {
+    font-weight: $menu-semi-bold;
+    &:hover {
+      font-weight: $menu-hover-bold;
+    }
+  }
 }

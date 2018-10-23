@@ -46,11 +46,20 @@
 
       // $(this).next().slideToggle(100);
       if ($(this).css("border-bottom-style") != "none") {
-        $(this).css({ "border-bottom-style": "none" });
-        $(this).find("img").attr('src', svgBase + svgUpWhite);
+        $(this).css({ 
+            "border-bottom-style": "none", 
+            "color": "#09464c", 
+            "background-color": "white" 
+          });
+        $(this).find("img").attr('src', svgBase + svgUp);
+        // $(this).toggleClass("h2-open-sub");
       }
       else {
-        $(this).css({ "border-bottom-style": "solid"  });
+        $(this).css({ 
+          "border-bottom-style": "solid",
+          "color": "white",
+          "background-color": "#09464c" 
+        });
         $(this).find("img").attr('src', svgBase + svgDownWhite);
       }
     })
