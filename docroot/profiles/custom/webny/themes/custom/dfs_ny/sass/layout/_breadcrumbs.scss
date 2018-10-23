@@ -13,7 +13,7 @@
   width: 100%; // height: 50px;
   background-color: #E5EEEE;
   ul {
-    margin-left: 29%;
+    margin-left: 24.5%;
     display: flex;
     list-style: none;
     li {
@@ -51,5 +51,23 @@
   }
   #nydfs-article-quickedit-layout {
     order: 4;
+  }
+}
+
+#nydfs-breadcrumb {
+  @media (max-width: 1280px) {
+    ul {
+      margin-left: 28.5%;
+    }
+  }
+  @media (max-width: 480px) {
+    ul {
+      margin-left: 18%;
+    }
+  }
+  @media (max-width: 414px) {
+    ul {
+      margin-left: 15%;
+    }
   }
 }
