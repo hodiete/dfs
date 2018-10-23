@@ -12,7 +12,7 @@
   });
 
   $(document).ready(function () {
-    $(".short-card-box").parent().css({ "padding": "40px 0", "width": "50%", "float": "left", "margin": "0" });
+    $(".short-card-box").parent().css({ "padding": "20px 0", "width": "50%", "float": "left", "margin": "0" });
     $(".short-card-box").parent().parent().css({ "width": "86%", "margin-left": "7%" });
     $("#short").parent().css({ "padding": "0 2.8%" });
   });

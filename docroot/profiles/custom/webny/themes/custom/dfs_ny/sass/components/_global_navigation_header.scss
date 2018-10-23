@@ -299,7 +299,7 @@ $importance: null) {
       background-position: 50%;
     }
     a {
-      float: left; 
+      float: left;
     }
     a.webny-global-active {
       float: right;
@@ -677,8 +677,16 @@ $importance: null) {
           width: 116px;
         }
         &:nth-child(7) {
+          border:none;
           @include portal-login(131px,
           153px);
+
+          &:hover {
+            font-weight: bold;
+            background: #e5eeee url(../icons/dfs/portal.svg) bottom left no-repeat;
+            background-size: 26px 25px;
+            background-position: 12px 5px;
+          }
         }
         &:nth-child(8) {
           // width: 15%;
@@ -1010,7 +1018,7 @@ $importance: null) {
     }
   }
 }
- 
+
 @media only screen and( max-width: 1280px) {
   .webny-global-header ul.gnav-ul li.gnav-topli:nth-child(1) {
     width: 100%;

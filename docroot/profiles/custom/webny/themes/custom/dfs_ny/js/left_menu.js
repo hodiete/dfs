@@ -64,7 +64,9 @@
   */
 
   $('.leftmenu-toggle-h2').click(() => {
-    $("#sticky-leftmenu").slideToggle('fast');
+    if ($(window).width() < 1024) {
+      $("#sticky-leftmenu").slideToggle('fast');
+    }
   });
 
   /**

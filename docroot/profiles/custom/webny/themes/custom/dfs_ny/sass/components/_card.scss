@@ -13,6 +13,12 @@ $featured-card-arrow-color-hover: $color-secondary !default;
 $featured-card-icon-color: $color-primary !default;
 $featured-card-icon-color-hover: $color-secondary !default;
 $featured-card-fallback-img-bkg: $color-secondary !default;
+@mixin color-hover-a-link-teal() {
+  color: white;
+  text-decoration: none;
+  background-color: $color-primary;
+}
+
 // CARDS WRAPPER FOR PADDING
 .cards-wrap {
   //padding: 80px 0;
@@ -419,12 +425,19 @@ $featured-card-fallback-img-bkg: $color-secondary !default;
   width: 90%;
   margin-left: 5%;
   margin-right: 5%;
-  height: 300px;
+  height: 320px;
   border-color: #e5eeee;
   border-width: 1px;
   border-style: solid;
   position: relative;
   overflow-y: hidden;
+  a {
+    background-color: #e5eeee;
+    color: $color-primary;
+  }
+  a:hover {
+    // @include color-hover-a-link-teal();
+  }
 }
 
 .faq-card-image-div {
@@ -440,8 +453,9 @@ $featured-card-fallback-img-bkg: $color-secondary !default;
 }
 
 .short-card-text {
+  padding-top: 10px;
   width: 100%;
-  height: 125px;
+  height: 145px;
 }
 
 .faq-card-link {
@@ -449,12 +463,15 @@ $featured-card-fallback-img-bkg: $color-secondary !default;
   height: 38px;
   background-color: #e5eeee;
   align-items: center;
-  padding-top: 12px;
+  padding-top: 5px;
+
+  &:hover {
+    @include color-hover-a-link-teal();
+  }
   p {
     margin-left: 12px;
     font-size: 12px;
-    font-weight: bold;
-    color: #09464c;
+    font-weight: bold; // color: #09464c;
     &:hover {
       text-decoration: none;
     }
@@ -470,7 +487,7 @@ $featured-card-fallback-img-bkg: $color-secondary !default;
 .faq-card-title {
   font-weight: bold;
   color: #09464c;
-  font-size: 18px;
+  font-size: 20px;
   margin: 0;
   padding: 8px 12px;
 }
@@ -478,7 +495,7 @@ $featured-card-fallback-img-bkg: $color-secondary !default;
 .faq-card-body {
   font-weight: normal;
   color: black;
-  font-size: 12px;
+  font-size: 16px;
   line-height: normal;
   margin: 0;
   padding: 8px 12px;
@@ -528,13 +545,10 @@ $featured-card-fallback-img-bkg: $color-secondary !default;
   float: right;
   margin-top: 8px;
   width: 10px;
-  margin: 8px 10px 8px 30px;
+  margin: 5px 25px 8px 30px;
 }
 
-
-
-
-.apps-lic-card-box{
+.apps-lic-card-box {
   width: 90%;
   margin-left: 5%;
   margin-right: 5%;
@@ -547,15 +561,15 @@ $featured-card-fallback-img-bkg: $color-secondary !default;
   overflow-y: hidden;
   text-align: center;
   display: inline-block;
-  &:hover{
+  &:hover {
     background-color: #09464c;
-    a{
+    a {
       text-decoration: none;
       background-color: #09464c;
       color: white;
     }
   }
-  a{
+  a {
     display: inline-block;
     font-size: 22px;
     font-weight: bold;
@@ -570,14 +584,14 @@ $featured-card-fallback-img-bkg: $color-secondary !default;
   }
 }
 
-.views-field-field-page-link{
+.views-field-field-page-link {
   width: 25%;
   padding: 10px 0px;
   float: left;
   margin: 0px;
 }
 
-.views-row{
+.views-row {
   width: 86%;
   margin-left: 7%;
 }
