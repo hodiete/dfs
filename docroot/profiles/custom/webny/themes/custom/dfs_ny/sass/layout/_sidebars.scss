@@ -13,8 +13,8 @@ $left-menu-width: 342px;
   display: block;
   text-decoration: none;
   height: 36px;
-  padding-top: 20px;
-  padding-left: 30px;
+  padding-top: 20px; // padding-left: 30px;
+  padding-left: 0;
   font-family: Helvetica;
   font-size: 20px;
   font-weight: bold;
@@ -210,8 +210,7 @@ main .layout-content nav {
     text-align: left;
     color: #09464c;
     &:hover {
-      background-color: #e5eeee;
-      // font-weight: bold;
+      background-color: #e5eeee; // font-weight: bold;
       text-shadow: 0 1px 1px #09464c;
       text-decoration: none;
     }
@@ -353,7 +352,7 @@ main .layout-content nav {
 */
 
 main nav .leftmenu-toggle-h2 {
-  @include leftmenu-h2(312px);
+  @include leftmenu-h2(342px);
 }
 
 @media (max-width: 1023px) {
@@ -369,14 +368,18 @@ main nav .leftmenu-toggle-h2 {
       color: #09464c;
       border-bottom: solid 1px #2e6267;
       font-weight: normal;
+      text-decoration: none;
       &:hover {
         background-color: black;
+        color: #fff;
         font-weight: bold;
-        text-decoration: none;
+        letter-spacing: -0.1px;
+         // text-shadow: 0 1px 1px white;
       }
     }
     a.is-active {
       color: #fff;
+      background-color: $color-primary;
     }
   }
 }

@@ -62,7 +62,7 @@
 
     $(this).next().slideToggle(100);
     if ($(this).css("border-bottom-style") != "none") {
-      $(this).css({ "border-bottom-style": "none", "background-color": bgcolorAct, "font-weight": "bold" , "color": "white" });
+      $(this).css({ "border-bottom-style": "none", "background-color": bgcolorAct, "font-weight": "bold" , "color": "white", "letter-spacing": "-0.1px" });
       $(this).find("img").attr('src', svgBase + svgUpWhite);
     }
     else {
