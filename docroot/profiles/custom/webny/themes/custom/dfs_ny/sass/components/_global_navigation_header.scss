@@ -57,6 +57,9 @@ $menu-arrow-active-link-padding: 48px;
 // GLOBAL NAVIGATION COLORS
 $globalnav-primary-color: $color-primary !default;
 $globalnav-secondary-color: $button-black-50 !default;
+$menu-semi-bold: 600;
+$menu-hover-bold: 700;
+
 /****  mixin  ****/
 
 @mixin portal-login($minWidth, $width) {
@@ -722,7 +725,7 @@ $importance: null) {
     ul.gnav-ul {
       li.gnav-topli {
         &:nth-child(1) {
-          width: 227px; //223px; (not fit in Safari) // height: 53px;
+          // width: 227px; //223px; (not fit in Safari) // height: 53px;
         }
         &:nth-child(2) {
           // width: 120px;
@@ -1018,8 +1021,8 @@ $importance: null) {
   }
 }
 
-@media only screen and( min-width: 1024) and (max-width: 1280px) {
-  .webny-global-header ul.gnav-ul li.gnav-topli {
+@media screen and( min-width: 1024px) and (max-width: 1280px) {
+  #webny-global-header ul.gnav-ul li.gnav-topli {
     &:nth-child(1) {
       width: 100%;
       height: 46px;
@@ -1066,8 +1069,8 @@ $importance: null) {
 }
 
 @media screen and (max-width: 480px) {
-  #webny-global-header > h1 {
-      width: 223px;
+  #webny-global-header>h1 {
+    width: 223px;
   }
 }
 

@@ -21,7 +21,7 @@
           {% if loop.index == 2 %}
           <a href="{{ item.url }}"><img class="bread-arrow" 
           src="/{{ base_path ~ directory }}/icons/dfs/breadcrumb-arrow.svg" 
-          alt="breadcrumb left arrow"></img> {{ item.text }}</a>
+          alt="breadcrumb left arrow"></img> &nbsp;Back to {{ item.text }}</a>
           {% endif %}
         {% else %}
           {{ item.text }}
