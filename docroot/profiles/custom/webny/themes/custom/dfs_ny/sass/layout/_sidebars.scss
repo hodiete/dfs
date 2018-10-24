@@ -27,6 +27,12 @@ $left-menu-width: 342px;
   width: $width;
 }
 
+@mixin a-is-active ($bgcolor, $font-weight, $decoration) {
+  text-decoration: $decoration;
+  font-weight: $font-weight;
+  background-color: $bgcolor;
+}
+
 ul {
   list-style-type: none !important;
 }
@@ -151,8 +157,7 @@ main .layout-content nav {
         padding-left: 7px;
         border-bottom: solid 1px #09464c;
         a {
-          display: block;
-          background-color: #fff;
+          display: block; // background-color: #fff;
           text-decoration: none;
           height: 20px;
           font-family: Helvetica;
@@ -164,14 +169,18 @@ main .layout-content nav {
           border-bottom: 0px;
           line-height: 1;
           letter-spacing: 0.5px;
-          padding: 17px 0 0 25px;
+          padding: 10px 0 8px 25px;
           color: #09464c;
         }
         a:hover {
           // font-weight: bold;
           // text-shadow: 0 1px 1px #09464c;
+          background-color: #e5eeee;
           font-weight: bold;
           letter-spacing: 0;
+        }
+        a.is-active {
+          @include a-is-active(#e5eeee, 600, none);
         }
       }
     }
@@ -217,6 +226,9 @@ main .layout-content nav {
       letter-spacing: 0;
       text-decoration: none;
     }
+  }
+  a.is-active {
+    @include a-is-active(#e5eeee, 600, none);
   }
 }
 
