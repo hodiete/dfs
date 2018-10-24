@@ -46,14 +46,19 @@ _crawl_page($path, $level);
 
 // print_r($outArr);
 
-file_put_contents('./output/url-has-urls.json', json_encode($outArr));
+file_put_contents('/Sites/migration/output/url-has-urls.json', json_encode($outArr));
 // file_put_contents('./output/url-all.json', json_encode($listUrlArr));
 // file_put_contents('./output/url-pdf.json', json_encode($listPDFArr));
 // file_put_contents('./output/url-word.json', json_encode($listWordArr));
 // file_put_contents('./output/url-excel.json', json_encode($listExcelArr));
 // file_put_contents('./output/url-text.json', json_encode($listTextArr));
-
-file_put_contents('./output/json/output-contents.json', json_encode($nodesJson));
+$i = 1;
+foreach ($nodesJson as $json) {
+  $name = "out_$i.json";
+  file_put_contents("/Sites/migration/output/json/$name", json_encode($json));
+  $i++;
+}
+// file_put_contents('/Sites/migration/output/json/output-contents.json', json_encode($nodesJson));
 
 
 // set_time_limit(0).
@@ -102,10 +107,20 @@ function _crawl_page($url, $depth) {
   $pathArr = (isset($parseArr['path'])) ? pathinfo($parseArr['path']) : array();
 
   // Call to generate new content and store data in associat array.
-  parse_webpage_content($url, $GLOBALS['nodesJson']);
+
+  // parse_webpage_content($url, $GLOBALS['nodesJson']);
 
   $dom = new DOMDocument('1.0');
+
+  // We don't want to bother with white spaces.
+  $dom->preserveWhiteSpace = FALSE;
+  // Most HTML Developers are chimps and produce invalid markup...
+  $dom->strictErrorChecking = FALSE;
+  $dom->recover = TRUE;
+
   @$dom->loadHTMLFile($url);
+  //print "2 url = $url \n"; exit();
+  parse_webpage_content($url, $GLOBALS['nodesJson'], $dom);
 
   $list = $dom->getElementsByTagName("title");
 
@@ -170,7 +185,6 @@ function _crawl_page($url, $depth) {
   }
 
 
-  parse_webpage_content($url, $GLOBALS['nodesJson']);
 
   foreach ($anchors as $element) {
     $href = $element->getAttribute('href');
@@ -426,24 +440,23 @@ function isNavItem($url){
  * @param  number $depth 3
  * @return void
  */
-function parse_webpage_content($url, &$nodesJson) {
-  $doc = new DOMDocument();
+function parse_webpage_content($url, &$nodesJson, &$doc) {
+  // $doc = new DOMDocument();
   $prefix = "//div[@id='content']";
-
-
-  // We don't want to bother with white spaces.
-  $doc->preserveWhiteSpace = FALSE;
-  // Most HTML Developers are chimps and produce invalid markup...
-  $doc->strictErrorChecking = FALSE;
-  $doc->recover = TRUE;
-
-  $doc->loadHTMLFile($url);
+  $prefix = "";
+  // @$doc->loadHTMLFile($url);
 
   $title = get_dom_title($doc);
   $content = "";
   $urlAlians = parse_url($url, PHP_URL_PATH);
+  if (!$urlAlians || $urlAlians == "/" || $urlAlians == '/index.html') {
+    return;
+  }
 
+  print "3 url = $url\n";
+  print "urlAlians = $urlAlians\n";
   $xpath = new DOMXPath($doc);
+  //print_r($xpath->document);
   $queries = [
     "$prefix//div[@id='homepub']",
     "$prefix//div[@id='procright']",
@@ -452,14 +465,26 @@ function parse_webpage_content($url, &$nodesJson) {
   ];
 
   foreach ($queries as $query) {
-    if (!$result = $xpath->query($query)) {
+    $result = $xpath->query($query);
+    if (!$result || $result->length <= 0) {
+      //print_r($result->length);
       continue;
     }
     else {
-      $content = $result->firstChild->nodeValue;
-      $content = handle_content_url($content);
-      $content = handle_content_img($content);
-      break;
+      print "xpath: $query ; result: \n" ;
+      // print_r($result);
+
+      foreach ($result as $node) {
+        // print_r($node);
+        // $content = $doc->saveHTML($node->nodeValue);
+        $content = $doc->saveHTML($node);
+        // var_dump($content);
+        $content = handle_content_url($content);
+        // print_r($content);
+        $content = handle_content_img($content);
+        // print_r($content);
+      }
+      // break;
     }
 
   }
@@ -493,6 +518,8 @@ function get_dom_title(&$dom) {
  * @return string          [html content]
  */
 function handle_content_url($content) {
+
+  // print_r($content); exit;
   $doc = new DOMDocument();
   $doc->loadHTML($content);
   $links = [];
@@ -505,6 +532,9 @@ function handle_content_url($content) {
     $links[] = $href;
     $links_new[] = change_url($href);
   }
+  // var_dump($href);
+  print "url: "; var_dump($links);
+  print "New: "; var_dump($links_new);
 
   return str_replace($links, $links_new, $content);
 }

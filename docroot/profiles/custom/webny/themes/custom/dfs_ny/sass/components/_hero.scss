@@ -321,6 +321,8 @@ $hero-height: 280px;
   }
   h1,
   h2 {
+    display: inline-block;
+    padding: 30px;
     color: $hero-text-color;
     line-height: 32px;
     font-size: 28px;
@@ -676,7 +678,7 @@ $hero-height: 280px;
     .hero-ipage-inner {
       h2,
       h1 {
-        width: 100%;
+        // width: 100%;
         max-width: 690px;
       }
       .hero-summary {
@@ -686,7 +688,7 @@ $hero-height: 280px;
       .hero-buttons {
         // padding-top: 30px;
       }
-    }
+    } 
     .hero-no-image.hero-generic {
       background-color: $hero-bkgd-color;
       height: $hero-height;
@@ -698,7 +700,7 @@ $hero-height: 280px;
         padding-top: 30px;
       }
       h1 {
-        width: 66%;
+        // width: 66%;
         max-width: 690px;
       }
       .hero-generic-summary {
@@ -886,8 +888,9 @@ $hero-height: 280px;
       h1,
       h2 {
         // width: $hero-header-width;
-        width: $hero-header-width-2; // width: 35%;
-        padding: 18px;
+        // width: $hero-header-width-2; 
+        // width: 35%;
+        // padding: 18px;
         line-height: 50px;
         margin-top: 33px;
       }
@@ -990,7 +993,7 @@ $hero-height: 280px;
       */
       @at-root color: #09464c;
       font-size: 40px;
-      padding: 18px;
+      padding: 30px;
       background-color: #e5eeeecf;
       text-align: center;
     }
@@ -1070,7 +1073,7 @@ $hero-height: 280px;
       padding: 0 30px 0 60px;
       h1,
       h2 {
-        width: $hero-header-width;
+        // width: $hero-header-width;
       }
     }
     .hero-has-image,
@@ -1151,7 +1154,7 @@ $hero-height: 280px;
     .hero-inner {
       h1,
       h2 {
-        width: $hero-header-width-2;
+        // width: $hero-header-width-2;
       }
     }
   }
@@ -1173,5 +1176,25 @@ $hero-height: 280px;
 @media (min-width: 1024px) {
   .body-area .body-area-in {
     margin-left: 26%;
+  }
+}
+
+@media (max-width: 767px) {
+  .hero-layout {
+    h1,
+    h2 {
+      color: #09464c;
+      font-size: 32px;
+      padding: 18px;
+      background-color: #e5eeeecf;
+      text-align: center;
+    }
+    .hero-inner {
+      padding-left: 7%;
+      h1,
+      h2 {
+        width: 92%;
+      }
+    }
   }
 }

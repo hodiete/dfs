@@ -11,7 +11,7 @@ $body-margin-max: 60px 0px 0px 0px;
   margin: 16px 12px;
   background: $color-accent-primary url('../icons/dfs/portal.svg') bottom left no-repeat;
   background-size: 26px 25px;
-  background-position: 6px 5px;
+  background-position: 12px 5px;
   a {
     font-weight: bold;
     color: #000000;
@@ -25,8 +25,15 @@ $body-margin-max: 60px 0px 0px 0px;
 }
 
 .login-button {
+  border: none;
   @include portal-login(200px,
   200px);
+  &:hover {
+    font-weight: bold;
+    background: #e5eeee url(../icons/dfs/portal.svg) bottom left no-repeat;
+    background-size: 26px 25px;
+    background-position: 12px 5px;
+  }
 }
 
 @media only screen and (min-width: 768px) {
@@ -53,6 +60,7 @@ $body-margin-max: 60px 0px 0px 0px;
   border-bottom: solid 1px #09464c;
   margin-top: 0;
   margin-bottom: 0;
+  clear: both;
 } // Main content formatting.
 .how-to-file {
   margin-top: 60px;
@@ -181,7 +189,7 @@ li.body-bullet:before {
 .in-div-drop-title {
   font-weight: bolder;
   @media only screen and (min-width: 768px) {
-    font-size: 18px;
+    font-size: 20px;
   }
   @media only screen and (max-width: 767px) {
     font-size: 16px;
@@ -194,7 +202,7 @@ li.body-bullet:before {
 
 .in-div-drop-text {
   color: black !important;
-  font-size: 12px;
+  font-size: 16px;
   margin: 10px 25px 10px 25px;
   width: calc(80% - 15px);
   padding-right: 20px;
@@ -215,6 +223,15 @@ li.body-bullet:before {
   height: 30px;
   margin: 25px 25px 25px 25px;
   float: right;
+  font-size: 20px;
+  font-weight: bold;
+  &:hover {
+    background-color: $color-tertiary;
+    color: black;
+  }
+  &:focus {
+    outline: 0;
+  }
 }
 
 .in-view-drop-button {

@@ -13,17 +13,17 @@ $left-menu-width: 342px;
   display: block;
   text-decoration: none;
   height: 36px;
-  padding-top: 20px;
-  padding-left: 30px;
+  padding-top: 20px; // padding-left: 30px;
+  padding-left: 0;
   font-family: Helvetica;
-  font-size: 16px;
-  font-weight: normal;
+  font-size: 20px;
+  font-weight: bold;
   font-style: normal;
   font-stretch: normal;
   border-bottom: solid 1px white;
   line-height: 0.94;
   letter-spacing: 0.5px;
-  text-align: left;
+  text-align: center;
   width: $width;
 }
 
@@ -146,29 +146,32 @@ main .layout-content nav {
         float: right;
         margin-top: 3px;
       }
-      ul{
+      ul {
         display: none;
-        padding-left: 0px;
+        padding-left: 7px;
         border-bottom: solid 1px #09464c;
-          a{
-              display: block;
-              background-color: #fff;
-              text-decoration: none;
-              height: 24px;
-              font-family: Helvetica;
-              font-size: 12px;
-              font-weight: normal;
-              float: left;
-              font-style: normal;
-              font-stretch: normal;
-              border-bottom: 0px;
-              line-height: 1;
-              letter-spacing: 0.5px;
-              padding-left: 30px;
-              color: #09464c;
+        a {
+          display: block;
+          background-color: #fff;
+          text-decoration: none;
+          height: 28px;
+          font-family: Helvetica;
+          font-size: 14px;
+          font-weight: normal;
+          float: left;
+          font-style: normal;
+          font-stretch: normal;
+          border-bottom: 0px;
+          line-height: 1;
+          letter-spacing: 0.5px;
+          padding: 7px 0 6px 25px;
+          color: #09464c;
         }
-        a:hover{
+        a:hover {
+          // font-weight: bold;
+          // text-shadow: 0 1px 1px #09464c;
           font-weight: bold;
+          letter-spacing: 0;
         }
       }
     }
@@ -178,6 +181,12 @@ main .layout-content nav {
     width: auto;
     background: #FFF;
     list-style-type: none;
+    padding-left: 5px;
+    a {
+      padding-left: 25px;
+      padding-right: 10px;
+      border-bottom: none;
+    }
     li {
       display: block;
       float: none;
@@ -197,15 +206,15 @@ main .layout-content nav {
     font-stretch: normal;
     border-bottom: solid 1px #09464c;
     line-height: 0.94;
-    letter-spacing: 0.5px;
-    // text-align: center;
-    width: 100%;
+    letter-spacing: 0.5px; // text-align: center;
+    width: 312px;
     float: left;
     text-align: left;
     color: #09464c;
     &:hover {
-      background-color: #e5eeee;
+      background-color: #e5eeee; // font-weight: bold;
       font-weight: bold;
+      letter-spacing: 0;
       text-decoration: none;
     }
   }
@@ -258,8 +267,7 @@ main .layout-content nav {
     font-style: normal;
     font-stretch: normal;
     line-height: 0.94;
-    letter-spacing: 0.5px;
-    // text-align: center;
+    letter-spacing: 0.5px; // text-align: center;
     color: #09464c;
     &:hover {
       font-weight: bold;
@@ -347,7 +355,12 @@ main .layout-content nav {
 */
 
 main nav .leftmenu-toggle-h2 {
-  @include leftmenu-h2(312px);
+  @include leftmenu-h2(342px);
+}
+
+main nav .h1-open-sub {
+  color: #09464c;
+  background-color: white;
 }
 
 @media (max-width: 1023px) {
@@ -357,15 +370,43 @@ main nav .leftmenu-toggle-h2 {
       display: none;
     }
   }
-  .complaint-sidebar a {
-    background-color: #09464c;
-    color: #fff;
-    border-bottom: solid 1px #2e6267;
-    font-weight: normal;
-    &:hover {
-      background-color: black;
-      font-weight: bold;
+  .complaint-sidebar {
+    a {
+      background-color: #E5EEEE; // color: #fff;
+      color: #09464c;
+      border-bottom: solid 1px #2e6267;
+      font-weight: normal;
       text-decoration: none;
+      &:hover {
+        background-color: black;
+        color: #fff;
+        font-weight: bold;
+        letter-spacing: -0.1px; // text-shadow: 0 1px 1px white;
+      }
+    }
+    a.is-active {
+      color: #fff;
+      background-color: $color-primary;
     }
   }
+}
+
+@media (max-width: 640px) {
+  main .layout-content nav {
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+    margin: 0;
+  }
+  main .layout-content #nydfs-breadcrumb {
+    left: 0;
+    transform: translateX(0%);
+  }
+}
+
+.leftmenu-toggle-h2 .expand {
+  margin-right: 30px;
+  width: 14px;
+  float: right;
+  margin-top: 3px;
 }

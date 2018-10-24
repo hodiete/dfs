@@ -12,9 +12,17 @@
  * @see template_preprocess_region()
  */
 #}
+{# {% if content %}
+  <div{{ attributes.addClass('nys-global-footer') }}>
+    {{ content }}
+  </div>
+{% endif %} #}
 
+{# Brian's code below #}
 {% if content %}
-    <div{{ attributes }} id="main-layout-content-switch-div">
-        {{ content }}
+  <div class="dfs-after-region-container" {{ attributes.addClass('nys-global-footer') }}>
+    <div class="dfs-after-region-inner-container">
+      {{ content }}
     </div>
+  </div>
 {% endif %}
