@@ -151,6 +151,12 @@
   });
 
 
+  $("div.faq-card-link").mouseover(function () {
+    $(this).find("img.faq-card-icon").attr("src", svgBase + "arrow-white.svg");
+  });
+  $("div.faq-card-link").mouseout(function () {
+    $(this).find("img.faq-card-icon").attr("src", svgBase + "arrow-teal.svg");
+  });
 
   // Get URL of image in the header image node's image field.
   // var imgSrc = $('#complaints-img-header .field-image img').attr('src');
