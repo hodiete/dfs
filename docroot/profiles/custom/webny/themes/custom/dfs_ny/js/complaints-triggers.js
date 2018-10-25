@@ -67,6 +67,21 @@
 
   }
 
+  /**
+   * Show sub UL of Leftmenu is <a> is-active
+   */
+  let liParent = $(".ul-complaint-sidebar li.parent").find('a.is-active');
+  // console.log(liParent);
+  if (liParent.length == 1) {
+    let currentUl = liParent.parent('li').parent('ul');
+    currentUl.show();
+    currentUl.prev().css({ "border-bottom-style": "none", "background-color": bgcolorAct, "font-weight": "bold", "color": "white", "letter-spacing": "-0.1px" });
+    currentUl.prev().find("img").attr('src', svgBase + svgUpWhite);
+  }
+
+  /**
+   * Toggle the submenu of the leftmenu
+   */
   $(".parent").find('a').click(function () {
 
     $(this).next().slideToggle(100);
@@ -95,7 +110,7 @@
   })
 
 /**
- * Toggle left menu.
+ * Toggle the FAQ section.
  */
 
   'use strict';
@@ -151,6 +166,9 @@
   });
 
 
+  /**
+   *  Change mouse hover CSS on FAQ-Card-Link
+   */
   $("div.faq-card-link").mouseover(function () {
     $(this).find("img.faq-card-icon").attr("src", svgBase + "arrow-white.svg");
   });
