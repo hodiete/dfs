@@ -147,9 +147,9 @@
         //   // stickOffset = Math.abs(fromTop - windowTop);
         // }
         // console.log('stickOffset ' + stickOffset);
-        console.log('fromTop = ' + fromTop) ;
-        console.log("top: " + $sticky.offset().top);
-        console.log("height: " + $(window).height());
+        // console.log('fromTop = ' + fromTop) ;
+        // console.log("top: " + $sticky.offset().top);
+        // console.log("height: " + $(window).height());
 
         // if ($sticky.offset().top < $(window).height() ){
         //   // let pos =  'absolute' : 'fixed';

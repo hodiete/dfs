@@ -64,7 +64,7 @@
       }
     })
 
-
+   
   }
 
   /**
@@ -94,7 +94,13 @@
         "color": bgcolorAct });
       $(this).find("img").attr('src', svgBase + svgDown);
     }
-  })
+  });
+
+  $(document).ready(function () {
+    if ($(window).width() <= 880) {
+      $(".short-card-box").parent().css({ "width": "100%" });
+    }
+  }); 
 
   $(window).resize(function () {
     if ($(window).width() <= 880) {
@@ -107,7 +113,7 @@
       $(".short-card-box").parent().css({ "width": "50%" });
       $(".apps-lic-card-box").parent().css({"width": "25%"});
     }
-  })
+  });
 
 /**
  * Toggle the FAQ section.
@@ -117,9 +123,9 @@
 
   $(".in-div-drop-button").click(function () {
     $(this).next().slideToggle(500);
-    console.log($(this).next().text());
+    // console.log($(this).next().text());
     if ($(this).text() == "+") {
-      console.log("yes");
+      // console.log("yes");
       $(this).text("-");
       $(this).parent().css("border-left-style", "solid");
       $(this).next().css("margin", "10px 25px 10px 10px");
@@ -142,9 +148,9 @@
 
   $(".in-view-drop-button").click(function () {
     $(this).next().slideToggle(500);
-    console.log($(this).next().text());
+    // console.log($(this).next().text());
     if ($(this).text() == "+") {
-      console.log("yes");
+      // console.log("yes");
       $(this).text("-");
       $(this).parent().css("border-left-style", "solid");
       $(this).next().css("margin", "10px 25px 10px 10px");
