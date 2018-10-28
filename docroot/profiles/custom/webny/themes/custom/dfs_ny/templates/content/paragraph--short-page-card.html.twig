@@ -49,7 +49,9 @@ view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
   <div class="short-card-box">
     {% block content %}
       <div class="faq-card-image-div">
-        <img class="faq-card-image" src="{{ file_url(paragraph.field_banner_image.entity.fileuri) }}"/>
+        {# <img class="faq-card-image" src="{{ file_url(paragraph.field_banner_image.entity.fileuri) }}"/> #}
+{{ content.field_banner_image }}
+{# {{ kint(content.field_banner_image) }} #}
       </div>
       <div class="short-card-text">
         <p class="faq-card-title">
