@@ -88,9 +88,24 @@
       }
     })
 
-
+   
   }
 
+  /**
+   * Show sub UL of Leftmenu is <a> is-active
+   */
+  let liParent = $(".ul-complaint-sidebar li.parent").find('a.is-active');
+  // console.log(liParent);
+  if (liParent.length == 1) {
+    let currentUl = liParent.parent('li').parent('ul');
+    currentUl.show();
+    currentUl.prev().css({ "border-bottom-style": "none", "background-color": bgcolorAct, "font-weight": "bold", "color": "white", "letter-spacing": "-0.1px" });
+    currentUl.prev().find("img").attr('src', svgBase + svgUpWhite);
+  }
+
+  /**
+   * Toggle the submenu of the leftmenu
+   */
   $(".parent").find('a').click(function () {
 
     $(this).next().slideToggle(100);
@@ -103,7 +118,13 @@
         "color": bgcolorAct });
       $(this).find("img").attr('src', svgBase + svgDown);
     }
-  })
+  });
+
+  $(document).ready(function () {
+    if ($(window).width() <= 880) {
+      $(".short-card-box").parent().css({ "width": "100%" });
+    }
+  }); 
 
   $(window).resize(function () {
     if ($(window).width() <= 880) {
@@ -116,19 +137,19 @@
       $(".short-card-box").parent().css({ "width": "50%" });
       $(".apps-lic-card-box").parent().css({"width": "25%"});
     }
-  })
+  });
 
 /**
- * Toggle left menu.
+ * Toggle the FAQ section.
  */
 
   'use strict';
 
   $(".in-div-drop-button").click(function () {
     $(this).next().slideToggle(500);
-    console.log($(this).next().text());
+    // console.log($(this).next().text());
     if ($(this).text() == "+") {
-      console.log("yes");
+      // console.log("yes");
       $(this).text("-");
       $(this).parent().css("border-left-style", "solid");
       $(this).next().css("margin", "10px 25px 10px 10px");
@@ -151,9 +172,9 @@
 
   $(".in-view-drop-button").click(function () {
     $(this).next().slideToggle(500);
-    console.log($(this).next().text());
+    // console.log($(this).next().text());
     if ($(this).text() == "+") {
-      console.log("yes");
+      // console.log("yes");
       $(this).text("-");
       $(this).parent().css("border-left-style", "solid");
       $(this).next().css("margin", "10px 25px 10px 10px");
@@ -175,6 +196,9 @@
   });
 
 
+  /**
+   *  Change mouse hover CSS on FAQ-Card-Link
+   */
   $("div.faq-card-link").mouseover(function () {
     $(this).find("img.faq-card-icon").attr("src", svgBase + "arrow-white.svg");
   });

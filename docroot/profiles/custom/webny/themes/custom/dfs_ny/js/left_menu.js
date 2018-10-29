@@ -52,6 +52,16 @@
   $sticky.css({ position: 'absolute', top: $fromTopHeight });
 
   let $sticky2 = $('#webny-global-header');
+/*
+  let scrollHeight = $sticky.height() + $fromTopHeight;
+  let wHeight = $(window).height();
+  console.log("window:" + $(window).height());
+  console.log("sticky:" + $sticky.height() + " | All:" + scrollHeight);
+  if (wHeight < $sticky.height() ) {
+    return;
+  }
+  else 
+  */
   if ($sticky.offset()) {
     stickNavigation($sticky, $stickyrStopper, false, $fromTopHeight);
   }
@@ -78,8 +88,23 @@
    */
   function stickNavigation($sticky, $stickyrStopper, $topMenu = true, $fromTopHeight = 0) {
     // console.log('jQuery sticky ready!');
+    /*
+    console.log("window:" + $(window).height());
+    console.log("sticky:" + $sticky.height());
+    if ($(window).height() + $fromTopHeight < $sticky.height()) {
+      return; 
+    }
+    /*
+    $w = $(window);
+    $w.resize(function () {
+      let pos = $w.height() < $sticky.height() ? 'absolute' : 'fixed';
+      $sticky.css({ position: pos });
+    });
+    */
+
     var myPosition, fromTop;
     if ($sticky.offset()) { // make sure ".sticky" element exists
+ 
       var myPosition = ($topMenu) ? 'relative' : 'absolute';
       if ($topMenu) {
         myPosition = 'relative';
@@ -105,10 +130,12 @@
         stickyStopperPosition = $stickyrStopper.offset().top;
       }
 
-      let stopPoint = stickyStopperPosition - generalSidebarHeight - stickOffset;
+      let stopPoint = stickyStopperPosition - generalSidebarHeight - stickOffset - 200;
       // var diff = stopPoint + stickOffset - (generalSidebarHeight/2) ;
       let diff = stopPoint + stickOffset;
       $(window).scroll(() => { // scroll event
+        // console.log("sticky.offset:");
+        // console.log($sticky.offset());
         var windowTop = $(window).scrollTop(); // returns number
         // console.log('windowTop ' + windowTop);
         // console.log('diff ' + diff);
@@ -119,10 +146,16 @@
         // else {
         //   // stickOffset = Math.abs(fromTop - windowTop);
         // }
-        
-    
         // console.log('stickOffset ' + stickOffset);
-        console.log('fromTop = ' + fromTop) ;
+        // console.log('fromTop = ' + fromTop) ;
+        // console.log("top: " + $sticky.offset().top);
+        // console.log("height: " + $(window).height());
+
+        // if ($sticky.offset().top < $(window).height() ){
+        //   // let pos =  'absolute' : 'fixed';
+        //   // $sticky.css({ position: 'absolute' });
+        // } 
+        // else      
         if ($topMenu && windowTop <= 90) {
           $sticky.css({ position: 'relative', top: 'initial' });
           // console.log('windowTop = ' + windowTop);
