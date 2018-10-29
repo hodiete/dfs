@@ -21,6 +21,30 @@
     $("#block-generalquestionsandcomplaints").parent().parent().css({ "width": "100%" });
   });
 
+  // Sets up the homepage boxes
+  $(document).ready(function () {
+    $(".views-field-field-release-date-created").parent().css({ "width": "48%", "display": "inline-block"});
+    $(".views-field-field-release-date-created").parent().css({ "width": "40%", "display": "inline-block", "padding": "0 4.85%"});
+    $(".views-field-field-release-date-created").first().parent().css({"border-right": "solid 1px #e5eeee"});
+    $(".views-field-field-release-date-created").parent().parent().css({ "padding-left": "6%", "padding-right": "6%"});
+    $(".views-field-field-release-date-created").parent().parent().parent().css({ "margin-top": "15px"});
+    $(".reg-institution-row").parent().parent().css({"margin-top": "15px"});
+    $(".statewide-rows").parent().parent().css({"margin-top": "15px"});
+  });
+
+  $(window).resize(function () {
+    if ($(window).width() <= 880) {
+      $(".faq-card-box").parent().css({ "width": "100%" });
+      $(".short-card-box").parent().css({ "width": "100%" });
+      $(".apps-lic-card-box").parent().css({"width": "50%"});
+    }
+    else {
+      $(".faq-card-box").parent().css({ "width": "50%" });
+      $(".short-card-box").parent().css({ "width": "50%" });
+      $(".apps-lic-card-box").parent().css({"width": "25%"});
+    }
+  })
+
 
   // $(document).ready(function(){
   //     $(".leaf-parent").children.css({"display": "none"});
@@ -46,19 +70,19 @@
 
       // $(this).next().slideToggle(100);
       if ($(this).css("border-bottom-style") != "none") {
-        $(this).css({ 
-            "border-bottom-style": "none", 
-            "color": "#09464c", 
-            "background-color": "white" 
+        $(this).css({
+            "border-bottom-style": "none",
+            "color": "#09464c",
+            "background-color": "white"
           });
         $(this).find("img").attr('src', svgBase + svgUp);
         // $(this).toggleClass("h2-open-sub");
       }
       else {
-        $(this).css({ 
+        $(this).css({
           "border-bottom-style": "solid",
           "color": "white",
-          "background-color": "#09464c" 
+          "background-color": "#09464c"
         });
         $(this).find("img").attr('src', svgBase + svgDownWhite);
       }
