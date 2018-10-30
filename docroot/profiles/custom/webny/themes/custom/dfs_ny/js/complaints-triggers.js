@@ -24,16 +24,30 @@
   // Sets up the homepage boxes
   $(document).ready(function () {
     $(".views-field-field-release-date-created").parent().css({ "width": "48%", "display": "inline-block"});
-    $(".views-field-field-release-date-created").parent().css({ "width": "40%", "display": "inline-block", "padding": "0 4.85%"});
-    $(".views-field-field-release-date-created").first().parent().css({"border-right": "solid 1px #e5eeee"});
-    $(".views-field-field-release-date-created").parent().parent().css({ "padding-left": "6%", "padding-right": "6%"});
+    if ($(window).width() >= 880){
+      $(".views-field-field-release-date-created").first().parent().css({"border-right": "solid 1px #e5eeee"});
+      $(".news-views-row").css({ "width": "40%", "display": "inline-block", "padding": "0 4.5%"});
+    }else{
+      $(".views-field-field-release-date-created").first().parent().css({"border-bottom": "solid 1px #e5eeee"});
+      $(".news-views-row").css({ "width": "80%", "display": "inline-block", "padding": "0 4.5%"});
+    }
+    $(".views-field-field-release-date-created").parent().parent().css({ "padding-left": "5.2%", "padding-right": "5.2%"});
     $(".views-field-field-release-date-created").parent().parent().parent().css({ "margin-top": "15px"});
     $(".reg-institution-row").parent().parent().css({"margin-top": "15px"});
     $(".statewide-rows").parent().parent().css({"margin-top": "15px"});
   });
 
+  // For the footer
+  $(document).ready(function () {
+    $("#block-ourdepartment").parent().css({ "background-color": "#09464c"});
+    $("#block-ourassociates").parent().css({ "background-color": "#09464c"});
+    $("#block-quicklinks").parent().css({ "background-color": "#09464c"});
+    $("#block-website").parent().css({ "background-color": "#09464c"});
+    $("#block-languageassistance").parent().css({ "background-color": "#09464c", "margin": "0"});
+  });
+
   $(window).resize(function () {
-    if ($(window).width() <= 880) {
+    if ($(window).width() <= 1220) {
       $(".faq-card-box").parent().css({ "width": "100%" });
       $(".short-card-box").parent().css({ "width": "100%" });
       $(".apps-lic-card-box").parent().css({"width": "50%"});
@@ -42,6 +56,35 @@
       $(".faq-card-box").parent().css({ "width": "50%" });
       $(".short-card-box").parent().css({ "width": "50%" });
       $(".apps-lic-card-box").parent().css({"width": "25%"});
+    }
+  })
+
+  $(window).resize(function(){
+    if ($(window).width() <= 880){
+        $(".news-views-row").css({"width": "80%"});
+        $(".views-field-field-release-date-created").first().parent().css({"border-bottom": "solid 1px #e5eeee"});
+        $(".views-field-field-release-date-created").first().parent().css({"border-right": "solid 0px #e5eeee"});
+    }else{
+        $(".news-views-row").css({"width": "40%"});
+        $(".views-field-field-release-date-created").first().parent().css({"border-bottom": "solid 0px #e5eeee"});
+        $(".views-field-field-release-date-created").first().parent().css({"border-right": "solid 1px #e5eeee"});
+    }
+    if ($(window).width() <= 500){
+        $(".icons-rows").css({"width": "99%"});
+    }else if($(window).width() <= 880){
+        $(".icons-rows").css({"width": "49%"});
+    }else{
+        $(".icons-rows").css({"width": "24%"});
+    }
+    if($(window).width() <= 500){
+        $(".reg-institution-row").css({"width": "99%"});
+        $(".statewide-rows").css({"width": "99%"});
+    }else if($(window).width() <= 1024){
+        $(".reg-institution-row").css({"width": "49%"});
+        $(".statewide-rows").css({"width": "49%"});
+    }else{
+        $(".reg-institution-row").css({"width": "24%"});
+        $(".statewide-rows").css({"width": "24%"});
     }
   })
 
@@ -88,24 +131,9 @@
       }
     })
 
-   
+
   }
 
-  /**
-   * Show sub UL of Leftmenu is <a> is-active
-   */
-  let liParent = $(".ul-complaint-sidebar li.parent").find('a.is-active');
-  // console.log(liParent);
-  if (liParent.length == 1) {
-    let currentUl = liParent.parent('li').parent('ul');
-    currentUl.show();
-    currentUl.prev().css({ "border-bottom-style": "none", "background-color": bgcolorAct, "font-weight": "bold", "color": "white", "letter-spacing": "-0.1px" });
-    currentUl.prev().find("img").attr('src', svgBase + svgUpWhite);
-  }
-
-  /**
-   * Toggle the submenu of the leftmenu
-   */
   $(".parent").find('a').click(function () {
 
     $(this).next().slideToggle(100);
@@ -118,13 +146,7 @@
         "color": bgcolorAct });
       $(this).find("img").attr('src', svgBase + svgDown);
     }
-  });
-
-  $(document).ready(function () {
-    if ($(window).width() <= 880) {
-      $(".short-card-box").parent().css({ "width": "100%" });
-    }
-  }); 
+  })
 
   $(window).resize(function () {
     if ($(window).width() <= 880) {
@@ -137,19 +159,19 @@
       $(".short-card-box").parent().css({ "width": "50%" });
       $(".apps-lic-card-box").parent().css({"width": "25%"});
     }
-  });
+  })
 
 /**
- * Toggle the FAQ section.
+ * Toggle left menu.
  */
 
   'use strict';
 
   $(".in-div-drop-button").click(function () {
     $(this).next().slideToggle(500);
-    // console.log($(this).next().text());
+    console.log($(this).next().text());
     if ($(this).text() == "+") {
-      // console.log("yes");
+      console.log("yes");
       $(this).text("-");
       $(this).parent().css("border-left-style", "solid");
       $(this).next().css("margin", "10px 25px 10px 10px");
@@ -172,9 +194,9 @@
 
   $(".in-view-drop-button").click(function () {
     $(this).next().slideToggle(500);
-    // console.log($(this).next().text());
+    console.log($(this).next().text());
     if ($(this).text() == "+") {
-      // console.log("yes");
+      console.log("yes");
       $(this).text("-");
       $(this).parent().css("border-left-style", "solid");
       $(this).next().css("margin", "10px 25px 10px 10px");
@@ -196,9 +218,6 @@
   });
 
 
-  /**
-   *  Change mouse hover CSS on FAQ-Card-Link
-   */
   $("div.faq-card-link").mouseover(function () {
     $(this).find("img.faq-card-icon").attr("src", svgBase + "arrow-white.svg");
   });
