@@ -24,7 +24,6 @@
   We call a macro which calls itself to render the full tree.
   @see http://twig.sensiolabs.org/doc/tags/macro.html
 #}
-{# {{ attach_library('dfs_ny/left-menu-js') }} #}
 
 <div class="footer-menu">
   {{ menus.menu_links(items, attributes, 0) }}
@@ -33,8 +32,6 @@
     {% import _self as menus %}
     {%
       set menu_classes = [
-        'ul-footer'|clean_class,
-        'menu'|clean_class,
         'footer'|clean_class
       ]
     %}
