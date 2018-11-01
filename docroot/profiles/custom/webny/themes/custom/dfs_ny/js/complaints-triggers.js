@@ -88,6 +88,48 @@
     }
   })
 
+  // global footer resizing
+  $(window).resize(function(){
+    if ($(window).width() <= 500){
+        $("#block-ourdepartment").css({"width": "90%"});
+        $("#block-languageassistance").css({"width": "90%"});
+        $("#block-ourassociates").css({"width": "90%"});
+        $("#block-quicklinks").css({"width": "90%"});
+        $("#block-website").css({"width": "90%"});
+    }else if ($(window).width() <= 840){
+        $("#block-ourdepartment").css({"width": "28%"});
+        $("#block-languageassistance").css({"width": "28%"});
+        $("#block-ourassociates").css({"width": "28%"});
+        $("#block-quicklinks").css({"width": "28%"});
+        $("#block-website").css({"width": "28%"});
+    }else{
+        $("#block-ourdepartment").css({"width": "15%"});
+        $("#block-languageassistance").css({"width": "15%"});
+        $("#block-ourassociates").css({"width": "15%"});
+        $("#block-quicklinks").css({"width": "15%"});
+        $("#block-website").css({"width": "15%"});
+    }
+  })
+
+
+  $(window).resize(function(){
+    if ($(window).width() <= 500){
+        $(".supervise-title").css({"margin-left": "0", "width": "100%", "float": "center", "text-align": "center"});
+        $(".learn-more-link").css({"margin-right": "8%", "margin-top": "20px", "width": "80%", "float": "right"});
+        $(".footer-text").css({"margin-top": "5px", "width": "100%", "float": "center", "text-align": "center"});
+        $(".footer-title").css({"width": "100%", "float": "center", "text-align": "center"});
+    }else if ($(window).width() <= 840){
+        $(".supervise-title").css({"margin-left": "3%", "width": "22%", "float": "left", "text-align": "left"});
+        $(".learn-more-link").css({"margin-right": "3%", "margin-top": "-1em", "width": "15%", "float": "right"});
+        $(".footer-text").css({"margin-top": "0", "width": "50%", "float": "left", "text-align": "left"});
+        $(".footer-title").css({"width": "50%", "float": "left", "text-align": "left"});
+    }else{
+        $(".supervise-title").css({"margin-left": "10%", "width": "15%", "float": "left", "text-align": "left"});
+        $(".learn-more-link").css({"margin-right": "3%", "margin-top": "-1em", "width": "15%", "float": "left"});
+        $(".footer-text").css({"margin-top": "0", "width": "50%", "float": "left", "text-align": "left"});
+        $(".footer-title").css({"width": "50%", "float": "left", "text-align": "left"});
+    }
+  })
 
   // $(document).ready(function(){
   //     $(".leaf-parent").children.css({"display": "none"});
