@@ -735,6 +735,8 @@ $settings['trusted_host_patterns'] = [
   '^127\.0\.0\.1$',
   '^webny\.local$',
   '^nydfs\.local$',
+  '^nydfs4\.local$', 
+  '^nydfs2\.local$',
   '^*\.local$',
 ];
 
@@ -781,7 +783,7 @@ if (isset($_SERVER['DEVDESKTOP_DRUPAL_SETTINGS_DIR']) && file_exists($_SERVER['D
 }
 // </DDSETTINGS>
 $databases['default']['default'] = array (
-  'database' => 'drupal_dfs',
+  'database' => 'drupal',
   'username' => 'root',
   'password' => 'root',
   'prefix' => '',
