@@ -19,20 +19,21 @@ if (!isset($argc)) {
 // var_dump($argv);
 
 // Eg. 'www.dfs.ny.gov' , 'drupal-8-5-6.dd:8443/dfs'.
-$host = $argv[1];
 // Eg. depth to run recursive call.
 $level = $argv[2];
 
 define('LOCAL_DIR', '/Sites/local_dfs');
-define('DHOST', $host);
-$path = "http://$host";
+define('DHOST', $argv[1]);
+// $full_path = "http://$host";
 
-define('IMAGE_URL', '/sites/default/files/dfs_images');
+$https_http = (stristr(DHOST, 'dfs-old.dd')) ? 'http' : 'https';
+define('HTTP', $https_http);
+
+define('IMAGE_URL', '/sites/default/files/dfs_images/');
 define('FILE_URL', '/docs');
 
 $outArr = $listUrlArr = $listPDFArr = $listWordArr = [];
 $listTextArr = $listExcelArr = $listInvalidArr = [];
-
 $outstring = $listUrlstring = $listPDFstring = $listWordstring = "";
 $listTextstring = $listExcelstring = $listInvalidstring = "";
 
@@ -42,7 +43,7 @@ $listTextstring = $listExcelstring = $listInvalidstring = "";
  */
 $nodesJson = [];
 
-_crawl_page($path, $level);
+_crawl_page(HTTP . "://" . DHOST, $level);
 
 // print_r($outArr);
 
@@ -58,6 +59,9 @@ foreach ($nodesJson as $json) {
   file_put_contents("/Sites/migration/output/json/$name", json_encode($json));
   $i++;
 }
+
+print "\n#### Total Pages: " . count($outArr) . "\n";
+print "#### Total Jsons: " . count($nodesJson) . "\n";
 // file_put_contents('/Sites/migration/output/json/output-contents.json', json_encode($nodesJson));
 
 
@@ -69,36 +73,29 @@ foreach ($nodesJson as $json) {
  * @param  number $depth 3
  * @return void
  */
+
 function _crawl_page($url, $depth) {
-  // print "url = $url\n"; exit;
-
-  global $outArr, $listUrlArr, $listPDFArr, $listWordArr, $listTextArr, $listExcelArr, $listInvalidArr;
-  global $outstring, $listUrlstring , $listPDFstring , $listWordstring ,  $listTextstring, $listExcelstring , $listInvalidstring ;
-
-  $outArr2 = array();
-  $outSring2 = "";
-
+  // print "url = $url | dept = $depth \n";  // print "*";
+  global $listInvalidArr, $listInvalidstring, $outArr ;
   static $seen = array();
+
   if (isset($seen[$url]) || $depth === 0) {
+    $outArr = $seen;
     return;
   }
   else {
     $seen[$url] = TRUE;
   }
-
+  // print_r($seen);
   if (!filter_var($url, FILTER_VALIDATE_URL)) {
     $listInvalidArr[] = array('url' => $url);
     $listInvalidstring .= "$url\n";
     return;
   }
-
   if (!stristr($url, DHOST)) {
+    // print "host=" . DHOST . " | url=$url\n";
     return;
   }
-  if (stristr($url, 'mailto:') || stristr($url, 'tel:+1800')) {
-    return;
-  }
-
   $parseArr = parse_url($url);
   if (strstr($url, '#') && isset($parseArr['fragment'])) {
     return;
@@ -107,11 +104,7 @@ function _crawl_page($url, $depth) {
   $pathArr = (isset($parseArr['path'])) ? pathinfo($parseArr['path']) : array();
 
   // Call to generate new content and store data in associat array.
-
-  // parse_webpage_content($url, $GLOBALS['nodesJson']);
-
   $dom = new DOMDocument('1.0');
-
   // We don't want to bother with white spaces.
   $dom->preserveWhiteSpace = FALSE;
   // Most HTML Developers are chimps and produce invalid markup...
@@ -121,81 +114,31 @@ function _crawl_page($url, $depth) {
   @$dom->loadHTMLFile($url);
   //print "2 url = $url \n"; exit();
   parse_webpage_content($url, $GLOBALS['nodesJson'], $dom);
-
   $list = $dom->getElementsByTagName("title");
-
+  // print_r($list);  print "\n";
+  /*
   if ($list->length > 0) {
     $title = $list->item(0)->textContent;
   }
   else {
     $title = isset($pathArr['basename']) ? $pathArr['basename'] : $parseArr['path'];
   }
-
+  */
+  // print_r($title);  print "\n";
   $anchors = $dom->getElementsByTagName('a');
   $out_anchors = $anchors;
-
-  foreach ($out_anchors as $el) {
-    $href_2 = $el->getAttribute('href');
-    $href_2 = noneHttpUrl($url, $href_2);
-    if ($href_2 == ""){
-      continue;
-    }
-    if (!$fp = curl_init($href_2)) {
-      continue;
-    } elseif ($depth < 12 && isNavItem($href_2)) {
-      continue;
-    }
-    $outArr2[] = array('url'=>$href_2) ;
-    $outSring2 .= "$url\t$href_2\n";
-  }
-
-  $outArr[] = array( 'url'=>$url, 'links'=>$outArr2 );
-  $outstring .= "$outSring2\n";
-
-
-
-  if (isset($pathArr['extension'])) {
-    $extension = strtolower($pathArr['extension']);
-    switch ($extension) {
-      case 'pdf':
-      $listPDFArr[] = array('url'=>$url, 'title' => $title);
-      $listPDFstring .= "$url\t$title\n";
-      break;
-      case 'doc':
-      $listWordArr[] = array('url'=>$url, 'title' => $title);
-      $listWordstring .= "$url\t$title\n";
-      break;
-      case 'docx':
-      $listWordArr[] = array('url'=>$url, 'title' => $title);
-      $listWordstring .= "$url\t$title\n";
-      break;
-      case 'txt':
-      $listTextArr[] = array('url'=>$url, 'title' => $title);
-      $listTextstring .= "$url\t$title\n";
-      break;
-      case 'xls':
-      $listExcelArr[] = array('url'=>$url, 'title' => $title);
-      $listExcelstring .= "$url\t$title\n";
-      break;
-      case 'xlsx':
-      $listExcelArr[] = array('url'=>$url, 'title' => $title);
-      $listExcelstring .= "$url\t$title\n";
-      break;
-    }
-  }
-
-
+  // print_r($dom);  print "\n";
 
   foreach ($anchors as $element) {
-    $href = $element->getAttribute('href');
-    $href = noneHttpUrl($url, $href);
-    _crawl_page($href, $depth - 1);
+    $href_inner = trim($element->getAttribute('href'));
+    // print "1: <a href>=$href | ";
+    if (isset($href_inner)) {
+      $href_inner = noneHttpUrl($url, $href_inner);
+      // print "2: parent-url=$url | HttpsUrl:href=$href\n";
+      _crawl_page($href_inner, $depth - 1);
+    }
+    // print "\n";
   }
-
-  $listUrlArr[] = array('url'=>$url, 'title' => $title, 'depth'=>$depth);
-  $lineStr =  "$url\t$title\t$depth\n";
-  $listUrlstring .= $lineStr;
-  print $lineStr;
 }
 
 /**
@@ -204,145 +147,132 @@ function _crawl_page($url, $depth) {
  * @param  string $hrefC [url]
  * @return string        [url]
  */
-function noneHttpUrl($urlP, $hrefC){
-
-  if (0 !== strpos($hrefC, 'http')) {
-    //  this is where I changed hobodave's code
-    $absUrl = absurl($urlP, $hrefC);
-    $hrefC = ($absUrl) ? nodots($absUrl) :  "";
+function noneHttpUrl($urlParent, $hrefC) {
+  if (stristr($hrefC, 'https://') || stristr($hrefC, 'http://')) {
+    return $hrefC;
   }
-  return  $hrefC;
-  // return  str_replace('http://', 'https://', $hrefC);;
+  if (0 !== strpos($hrefC, 'http')) {
+    $absUrl = absurl($urlParent, $hrefC);
+    return HTTP . '://' . DHOST . $absUrl;
+  }
 }
 
 /**
  * Handle URL to convert to the absolute url path
- * @param  string $pgurl  [description]
- * @param  string $relUrl [description]
+ * @param  string $pgurl  [parent page URL]
+ * @param  string $relUrl [relative url: appliclicen.htm]
  * @return string         [description]
- * SRC: https://stackoverflow.com/questions/1243418/php-how-to-resolve-a-relative-url
  */
 function absurl($pgurl, $relUrl) {
+  $absoluteURL = "";
+  $basePathDIR = pathinfo(parse_url($pgurl, PHP_URL_PATH), PATHINFO_DIRNAME);
+
+  // print "1: pgurl=$pgurl | relUrl=$relUrl\n";
   $parseArr = parse_url($relUrl);
-  if (strstr($relUrl, '#') && isset($parseArr['fragment']) ) {  return FALSE; }
-  if (stristr($relUrl, 'mailto:')) {return FALSE;}
-
-  if(strpos($relUrl,'://')){
-    return $relUrl; //already absolute
+  if (strstr($relUrl, '#') && isset($parseArr['fragment'])) {
+    $absoluteURL = FALSE;
   }
-  if(substr($relUrl,0,2) == '//') {
-    return 'https:'.$relUrl;
-  } //shorthand scheme
-  if(substr($relUrl,0,1) == '/') {
-    return 'https://' . parse_url($pgurl, PHP_URL_HOST).$relUrl; //just add domain
+  elseif (stristr($relUrl, 'mailto:')) {
+    $absoluteURL = FALSE;
   }
-  if(strpos($pgurl,'/',9)===FALSE) {
-    $pgurl .= '/';
-  }//add slash to domain if needed
-
-  return substr($pgurl,0,strrpos($pgurl,'/')+1) . $relUrl; //for relative links, gets current directory and appends new filename
+  elseif (strpos($relUrl, 'http') === 0){
+    $absoluteURL = 10;
+  }
+  elseif (strpos($relUrl, '../') === 0) {
+    $absoluteURL = handle_double_dots($basePathDIR, $relUrl);
+  }
+  elseif (strpos($relUrl, './') === 0) {
+    $absoluteURL = str_replace('./', '', $relUrl);
+    $absoluteURL = ($basePathDIR == '/') ? "/" . $absoluteURL : $basePathDIR . "/" . $absoluteURL;
+  }
+  elseif (strpos($relUrl, '//') === 0) {
+    $absoluteURL = str_replace('//', '/', $relUrl);
+  }
+  elseif (substr($relUrl, 0, 1) == '/') {
+    $absoluteURL = $relUrl;
+  }
+  else {
+    $absoluteURL = ($basePathDIR == '/') ? "/" . $relUrl : $basePathDIR . "/" . $relUrl;
+  }
+  return $absoluteURL;
 }
 
 /**
- * Handle the ../, ../../, .../ in the URL path
- * @param  string $path [description]
- * @return string       [without the ../]
+ * Handle ../  ../../  ../../../ in URL.
  */
-function nodots($path) { //Resolve dot dot slashes, no regex!
-  $arr1 = explode('/',$path);
-  $arr2 = array();
-  foreach($arr1 as $seg) {
-    switch($seg) {
-      case '.':
-      break;
-      case '..':
-      array_pop($arr2);
-      break;
-      case '...':
-      array_pop($arr2); array_pop($arr2);
-      break;
-      case '....':
-      array_pop($arr2); array_pop($arr2); array_pop($arr2);
-      break;
-      case '.....':
-      array_pop($arr2); array_pop($arr2); array_pop($arr2); array_pop($arr2);
-      break;
-      default:
-      $arr2[] = $seg;
-    }
+function handle_double_dots($basePathDIR, $relUrl) {
+  $relUrl = trim($relUrl);
+  print " base==$basePathDIR\n refUrl = $relUrl\n";
+  $absoluteURL = $relUrl;
+
+  $arrPgUrl = explode('/', $basePathDIR);
+
+  if (strpos($relUrl, '../../../') === 0 || strstr($relUrl, '../../../')) {
+    array_pop($arrPgUrl);
+    array_pop($arrPgUrl);
+    array_pop($arrPgUrl);
+    $absoluteURL = str_replace('../../../', '/', $relUrl);
   }
-  return implode('/', $arr2);
+  elseif (strpos($relUrl, '../../') === 0) {
+    array_pop($arrPgUrl);
+    array_pop($arrPgUrl);
+    $absoluteURL = str_replace('../../', '/', $relUrl);
+  }
+  elseif (strpos($relUrl, '../') === 0) {
+    array_pop($arrPgUrl);
+    $absoluteURL = str_replace('../', '/', $relUrl);
+  }
+
+  if (is_array($arrPgUrl) && count($arrPgUrl) > 0) {
+    $newBasePathDIR = implode('/', $arrPgUrl);
+    // print_r($newBasePathDIR); print " <=== \n";
+  }
+  else {
+    $newBasePathDIR = '/';
+  }
+  $absoluteURL = str_replace('///', '/', $absoluteURL);
+  $absoluteURL = str_replace('//', '/', $absoluteURL);
+
+  $absoluteURL = $newBasePathDIR . $absoluteURL;
+  print "FINAL=$absoluteURL \n\n";
+  return $absoluteURL;
+
 }
 
-/*
-function format_href($href){
-  //if(stristr($href, 'queensda')) print "$href\n";
-  $href = html_entity_decode($href);
-
-  if (0 !== strpos($href, 'https') && 0 !== strpos($href, 'http') ) {
-    $path = '/' . ltrim($href, '/');
-    if (extension_loaded('https')) {
-      $href = http_build_url($href , array('path' => $path));
-      //print "- https: " .  $href . "\n";
-    } elseif(extension_loaded('http')){
-      $href = http_build_url($href , array('path' => $path));
-    } else {
-      $parts = parse_url($href);
-      $href = (isset($parts['schema'])) ? $parts['scheme'] . '://' : "https://";
-      //print $parts['scheme'] . "\n";
-      //var_dump($parts);
-      if (isset($parts['user']) && isset($parts['pass'])) {
-        $href .= $parts['user'] . ':' . $parts['pass'] . '@';
-      }
-      $href .= isset($parts['host'])? $parts['host'] : DHOST;
-
-      if (isset($parts['port'])) {
-        $href .= ':' . $parts['port'];
-      }
-      $href .= $path;
-    }
-  }
-  return $href;
-}
-*/
 
 /**
- * Check if the url is validate
+ * Check if the url is validate.
+ *
  * @param  string $url [description]
  * @return boolean      [description]
  */
-function getFlag($url)
-{
-    $url_response = array();
-    $curl = curl_init();
-    $curl_options = array();
-    $curl_options[CURLOPT_RETURNTRANSFER] = TRUE;
-    $curl_options[CURLOPT_URL] = $url;
-    $curl_options[CURLOPT_NOBODY] = TRUE;
-    $curl_options[CURLOPT_TIMEOUT] = 60;
-    curl_setopt_array($curl, $curl_options);
-    curl_exec($curl);
-    $status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
-    if ($status == 200)
-    {
-      //print "$url\n";
-        return TRUE;
-    }
-    else
-    {
-        return FALSE;
-    }
-    curl_close($curl);
-}
-
+ function getFlag($url) {
+   $url_response = array();
+   $curl = curl_init();
+   $curl_options = array();
+   $curl_options[CURLOPT_RETURNTRANSFER] = TRUE;
+   $curl_options[CURLOPT_URL] = $url;
+   $curl_options[CURLOPT_NOBODY] = TRUE;
+   $curl_options[CURLOPT_TIMEOUT] = 60;
+   curl_setopt_array($curl, $curl_options);
+   curl_exec($curl);
+   $status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+   curl_close($curl);
+   if ($status == 200) {
+     return TRUE;
+   }
+   else {
+     return FALSE;
+   }
+ }
 
 /**
  * Check if the url is top level landing page (menu items)
  * @param  string  $url [description]
  * @return boolean      [description]
  */
-function isNavItem($url){
-
+function isNavItem($url) {
+  return true;
   $arr = array(
     // menus: top & 2nd level..
     '/index.html',
@@ -441,20 +371,26 @@ function isNavItem($url){
  * @return void
  */
 function parse_webpage_content($url, &$nodesJson, &$doc) {
+  // print "\n/**** Current URL $url ****/\n";
   // $doc = new DOMDocument();
+  // print_r($doc);
+  if (!check_href_valid($url)) {
+    return FALSE;
+  }
+
   $prefix = "//div[@id='content']";
   $prefix = "";
   // @$doc->loadHTMLFile($url);
 
   $title = get_dom_title($doc);
-  $content = "";
+  // print_r($url);
+  $content = $new_content = "";
   $urlAlians = parse_url($url, PHP_URL_PATH);
   if (!$urlAlians || $urlAlians == "/" || $urlAlians == '/index.html') {
     return;
   }
+  // print "parse_web: url=$url\n urlAlians=$urlAlians\n";
 
-  print "3 url = $url\n";
-  print "urlAlians = $urlAlians\n";
   $xpath = new DOMXPath($doc);
   //print_r($xpath->document);
   $queries = [
@@ -471,7 +407,7 @@ function parse_webpage_content($url, &$nodesJson, &$doc) {
       continue;
     }
     else {
-      print "xpath: $query ; result: \n" ;
+      print "xpath:: $query\n" ;
       // print_r($result);
 
       foreach ($result as $node) {
@@ -479,23 +415,20 @@ function parse_webpage_content($url, &$nodesJson, &$doc) {
         // $content = $doc->saveHTML($node->nodeValue);
         $content = $doc->saveHTML($node);
         // var_dump($content);
-        $content = handle_content_url($content);
+        $new_content = handle_content($url, $content);
         // print_r($content);
-        $content = handle_content_img($content);
-        // print_r($content);
+        $nodesJson[] = [
+          'type' => [['target_id' => 'dfs_page']],
+          'status' => [['value' => TRUE]],
+          'title' => [['value' => $title]],
+          'path' => [['alias' => $urlAlians]],
+          'body' => [['value' => $new_content]]
+        ];
       }
-      // break;
     }
 
   }
 
-  $nodesJson[] = [
-    'type' => [['target_id' => 'dfs_page']],
-    'status' => [['value' => TRUE]],
-    'title' => [['value' => $title]],
-    'path' => [['alias' => $urlAlians]],
-    'body' => [['value' => $content]]
-  ];
 
 }
 
@@ -517,67 +450,128 @@ function get_dom_title(&$dom) {
  * @param  string $content [html content]
  * @return string          [html content]
  */
-function handle_content_url($content) {
+function handle_content($urlCur, $content) {
+  print "/*** urlCur=$urlCur ***/\n";
+  $docDOM = new DOMDocument();
+  // print "#,";
+  @$docDOM->loadHTML($content);
+  // print_r($docDOM);
+  // print "### Before ###\n content\n";
+  $new_content = get_elements($docDOM, $urlCur, $content, 'a', 'href');
+  // print "### After ###\n content\n";
+  $new_content = get_elements($docDOM, $urlCur, $new_content, 'img', 'src');
 
-  // print_r($content); exit;
-  $doc = new DOMDocument();
-  $doc->loadHTML($content);
-  $links = [];
-  $links_new = [];
-
-  $arr = $doc->getElementsByTagName("a");
-
-  foreach ($arr as $item) {
-    $href = $item->getAttribute("href");
-    $links[] = $href;
-    $links_new[] = change_url($href);
-  }
-  // var_dump($href);
-  print "url: "; var_dump($links);
-  print "New: "; var_dump($links_new);
-
-  return str_replace($links, $links_new, $content);
+  return $new_content;
+  // unset($docDOM);
 }
 
 /**
- * Replace old image src with new src.
+ * Replace old tag attributes  with new.
  * @param string $content [html content] *
  * @return string  [html content ]
  */
-function handle_content_img($content) {
-  $doc = new DOMDocument();
-  $doc->loadHTML($content);
+function get_elements(&$docDom, $urlCur, &$content, $tag, $attribut) {
+  // var_dump ($docDom);
+  // print "tag=$tag | att=$attribut\n";
+  $urlCur = parse_url($urlCur, PHP_URL_PATH);
   $links = [];
   $links_new = [];
 
-  $arr = $doc->getElementsByTagName("img");
-
+  $arr = $docDom->getElementsByTagName($tag);
+  $num = 0;
   foreach ($arr as $item) {
-    $href = $item->getAttribute("src");
-    $links[] = $href;
-    $links_new[] = change_url_img($href);
+    $href = trim($item->getAttribute($attribut));
+
+    if (!check_href_valid($href)) {
+      continue;
+    }
+    print "$num :: $href | tag=$tag\n";
+    $num++;
+    if ($tag == 'img') {
+      $hrefNew = change_url_img($urlCur, $href);
+    }
+    elseif ($tag == 'a') {
+      $hrefNew = change_url($urlCur, $href);
+    }
+
+    if (strpos($hrefNew,'//') === 0) {
+      str_replace ($hrefNew, '/', '//');
+    }
+
+    if ($hrefNew != $href) {
+      $links[] = $href;
+      $links_new[] = $hrefNew;
+      // print "\nold: $href \nnew: $hrefNew\n";
+    }
   }
 
-  return str_replace($links, $links_new, $content);
+  if (count($links_new) > 0) {
+    // print "\n#####1 OLD\n";
+    // var_dump($links);
+    // print "\n#####2 NEW\n";
+    // var_dump($links_new);
+    // print "\n******* old *******: \n content\n";
+    $newContent = str_replace($links, $links_new, $content);
+    // print "\n ******* NEW *******: \n newContent\n";
+    // return $newContent;
+  }else {
+    $newContent = $content;
+  }
+
+  return $newContent;
+
 }
 
+
+/**
+ * Check if valide href.
+ */
+
+function check_href_valid($href) {
+
+  if(!isset($href) || $href == "" || strpos($href, '#') === 0) {
+    return FALSE;
+  }
+  if (stristr($href, 'mailto:') ||
+    stristr($href, 'tel:+1') ||
+    stristr($href, 'www.w3') ||
+    stristr($href, 'myportal' ) ||
+    stristr($href, 'queensda.org') ||
+    stristr($href, 'www.ny.gov') ||
+    stristr($href, 'nystateofhealth.ny')
+  ) {
+    return FALSE;
+  }
+
+
+  return TRUE;
+}
 /**
  * Change to /docs/OLD_HREF if it points to a file.
  * @param string $href [url]
  * @return string       [url]
  */
-function change_url($href) {
-  $href = nodots($href);
-  $arr = pathinfo($href);
-
-  if (isset($arr['extension']) && is_a_file($arr['extension'])) {
-    if (copy_doc($href, FILE_URL . $href)) {
-      return FILE_URL . $href;
-    }
-  }
-  else {
+function change_url($urlCur, $href) {
+  $relHref = $href;
+  $absHref = absurl($urlCur, $href);
+  if ($absHref == 10) {
     return $href;
   }
+  elseif (!$absHref) {
+    return $href;
+  }
+  $arr = pathinfo($absHref);
+  // var_dump ($absHref); var_dump ($relHref);
+  print "-- absHref: $absHref\n";
+
+  $filename = $arr['basename'];
+  if (isset($arr['extension']) && is_a_file($arr['extension'])) {
+    print "::FILE :: $absHref\n";
+    if (copy_doc($absHref, FILE_URL . $absHref)) {
+      $absHref = FILE_URL . $absHref;
+    }
+  }
+  return $absHref ;
 }
 
 /**
@@ -585,10 +579,11 @@ function change_url($href) {
  * @param  string $href [old url]
  * @return string       [new url]
  */
-function change_url_img($href) {
-  $href = nodots($href);
-  return IMAGE_URL . $href;
-
+function change_url_img($urlCur, $href) {
+  print "1::img-src: $href\n";
+  $absUrl = absurl($urlCur, $href);
+  print "2::img-src: " . IMAGE_URL. "$absUrl\n";
+  return IMAGE_URL . $absUrl;
 }
 
 /**
@@ -608,17 +603,18 @@ function is_a_file($str) {
  * @return Boolean      [description]
  */
 function copy_doc($src, $dst) {
+  // print "src old:: $src\ndst old:: $dst\n\n";
+  $result = FALSE;
   $src = LOCAL_DIR . $src;
   $dst = LOCAL_DIR . $dst;
   if (file_exists($dst)) {
     return $dst;
   }
   if (_mycopy($src, $dst)) {
-    return $dst;
+    $result = $dst;
   }
-  else {
-    return FALSE;
-  }
+  print "FILE old:: $src\nFile new:: $dst\n\n";
+  return $result;
 }
 
 /**
@@ -628,13 +624,27 @@ function copy_doc($src, $dst) {
  * @return Boolean
  */
 function _mycopy($s1, $s2) {
+  str_replace('//', '/', $s1);
+  str_replace('//', '/', $s2);
   $path = pathinfo($s2);
   if (!file_exists($path['dirname'])) {
     mkdir($path['dirname'], 0777, TRUE);
+    print "Local DIR:: "; print_r($path); print "\n";
   }
+  // no copy on dfs.ny.gov
+  // return $s2;
+
   if (!copy($s1, $s2)) {
-    echo "copy $s1 to $s2 failed \n";
+    echo "--> Copy $s1 to $s2 failed \n";
     return FALSE;
   }
+  print "==> Copy a to b: $s1 => $s2\n";
   return $s2;
+}
+
+/**
+ * Download files (pdf, txt)
+ */
+function _download_file($src_url, $dst_path) {
+
 }
