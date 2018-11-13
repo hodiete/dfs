@@ -29,7 +29,7 @@
       $(".news-views-row").css({ "width": "40%", "display": "inline-block", "padding": "0 4.5%"});
     }else{
       $(".views-field-field-release-date-created").first().parent().css({"border-bottom": "solid 1px #e5eeee"});
-      $(".news-views-row").css({ "width": "80%", "display": "inline-block", "padding": "0 4.5%"});
+      $(".news-views-row").css({ "width": "80%", "display": "inline-block", "padding": "15px 0"});
     }
     $(".views-field-field-release-date-created").parent().parent().css({ "padding-left": "5.2%", "padding-right": "5.2%"});
     $(".views-field-field-release-date-created").parent().parent().parent().css({ "margin-top": "15px"});
