@@ -29,7 +29,7 @@
       $(".news-views-row").css({ "width": "40%", "display": "inline-block", "padding": "0 4.5%"});
     }else{
       $(".views-field-field-release-date-created").first().parent().css({"border-bottom": "solid 1px #e5eeee"});
-      $(".news-views-row").css({ "width": "80%", "display": "inline-block", "padding": "0 4.5%"});
+      $(".news-views-row").css({ "width": "80%", "display": "inline-block", "padding": "15px 0"});
     }
     $(".views-field-field-release-date-created").parent().parent().css({ "padding-left": "5.2%", "padding-right": "5.2%"});
     $(".views-field-field-release-date-created").parent().parent().parent().css({ "margin-top": "15px"});
@@ -62,20 +62,20 @@
 
   $(window).resize(function(){
     if ($(window).width() <= 880){
-        $(".news-views-row").css({"width": "80%"});
+        $(".news-views-row").css({"width": "80%", "padding": "15px 0"});
         $(".views-field-field-release-date-created").first().parent().css({"border-bottom": "solid 1px #e5eeee"});
         $(".views-field-field-release-date-created").first().parent().css({"border-right": "solid 0px #e5eeee"});
     }else{
-        $(".news-views-row").css({"width": "40%"});
+        $(".news-views-row").css({"width": "40%", "padding": "0 4.5%"});
         $(".views-field-field-release-date-created").first().parent().css({"border-bottom": "solid 0px #e5eeee"});
         $(".views-field-field-release-date-created").first().parent().css({"border-right": "solid 1px #e5eeee"});
     }
     if ($(window).width() <= 500){
-        $(".icons-rows").css({"width": "99%"});
+        $(".icons-rows").css({"width": "99%", "padding-bottom": "15px"});
     }else if($(window).width() <= 880){
-        $(".icons-rows").css({"width": "49%"});
+        $(".icons-rows").css({"width": "49%", "padding-bottom": "15px"});
     }else{
-        $(".icons-rows").css({"width": "24%"});
+        $(".icons-rows").css({"width": "24%", "padding-bottom": "0"});
     }
     if($(window).width() <= 500){
         $(".reg-institution-row").css({"width": "99%"});
@@ -133,7 +133,7 @@
   // consumer alert resizing
   $(window).resize(function(){
     if ($(window).width() <= 500){
-        $(".alerts-text").css({"display": "block", "width": "90%", "margin": "10px 0 0 0", "text-align": "center", "background-position": "28%"});
+        $(".alerts-text").css({"display": "block", "width": "91%", "margin": "10px 0 0 0", "text-align": "center", "background-position": "25%"});
         $(".alert-title").css({"display": "block", "width": "100%", "margin": "0", "text-align": "center"});
         $(".alert-body").css({"display": "block", "width": "100%", "margin": "0", "text-align": "center"});
         $(".see-all-alerts-link").css({"display": "block", "width": "50%", "margin": "0 0 10px 0", "text-align": "center", "position": "relative", "left": "23%"});
@@ -142,7 +142,7 @@
 
     }
     else if ($(window).width() <= 750){
-        $(".alerts-text").css({"display": "block", "width": "95%", "margin": "10px 0 0 0", "text-align": "center", "background-position": "33%"});
+        $(".alerts-text").css({"display": "block", "width": "95%", "margin": "10px 0 0 0", "text-align": "center", "background-position": "32%"});
         $(".alert-title").css({"display": "block", "width": "100%", "margin": "0", "text-align": "center"});
         $(".alert-body").css({"display": "block", "width": "100%", "margin": "0", "text-align": "center"});
         $(".see-all-alerts-link").css({"display": "block", "width": "50%", "margin": "0 0 10px 0", "text-align": "center", "position": "relative", "left": "23%"});
