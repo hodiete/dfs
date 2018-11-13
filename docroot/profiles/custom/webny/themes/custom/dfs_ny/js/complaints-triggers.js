@@ -35,6 +35,7 @@
     $(".views-field-field-release-date-created").parent().parent().parent().css({ "margin-top": "15px"});
     $(".reg-institution-row").parent().parent().css({"margin-top": "15px"});
     $(".statewide-rows").parent().parent().css({"margin-top": "15px"});
+    $(".consumer-alert-row").parent().parent().css({"margin": "0"});
   });
 
   // For the footer
@@ -108,6 +109,60 @@
         $("#block-ourassociates").css({"width": "15%"});
         $("#block-quicklinks").css({"width": "15%"});
         $("#block-website").css({"width": "15%"});
+    }
+  })
+
+  // banner resizing
+  $(window).resize(function(){
+    if ($(window).width() <= 500){
+      $(".views-field-field-banner").css({"width": "100%"})
+        $(".banner-body").css({"text-align": "center"});
+        $(".banner-title").css({"width": "380px", "text-align": "center"});
+        $(".banner-image-scroll").css({"display": "block", "width": "120%"});
+        $(".banner-image-scroll:after").css({"background": "none"});
+        $(".banner-link").css({"background": "none", "width": "360px", "text-align": "center"});
+    }else{
+        $(".banner-body").css({"width": "380px", "text-align": "left"});
+        $(".banner-title").css({"width": "90%", "text-align": "left"});
+        $(".banner-image-scroll").css({"display": "block", "width": "2100px"});
+        $(".banner-image-scroll:after").css({"background": "-webkit-linear-gradient(270deg, transparent, #000) left repeat", "background": "linear-gradient(270deg, transparent, #000) left repeat;"});
+        $(".banner-link").css({"background": "none", "width": "auto", "text-align": "center"});
+    }
+  })
+
+  // consumer alert resizing
+  $(window).resize(function(){
+    if ($(window).width() <= 500){
+        $(".alerts-text").css({"display": "block", "width": "90%", "margin": "10px 0 0 0", "text-align": "center", "background-position": "28%"});
+        $(".alert-title").css({"display": "block", "width": "100%", "margin": "0", "text-align": "center"});
+        $(".alert-body").css({"display": "block", "width": "100%", "margin": "0", "text-align": "center"});
+        $(".see-all-alerts-link").css({"display": "block", "width": "50%", "margin": "0 0 10px 0", "text-align": "center", "position": "relative", "left": "23%"});
+        $("#block-views-block-consumer-alerts-block-1").css({"padding-left": "2%", "padding-right": "2%", "height": "auto"});
+        $(".consumer-alert-row").parent().parent().css({"margin": "0"});
+
+    }
+    else if ($(window).width() <= 750){
+        $(".alerts-text").css({"display": "block", "width": "95%", "margin": "10px 0 0 0", "text-align": "center", "background-position": "33%"});
+        $(".alert-title").css({"display": "block", "width": "100%", "margin": "0", "text-align": "center"});
+        $(".alert-body").css({"display": "block", "width": "100%", "margin": "0", "text-align": "center"});
+        $(".see-all-alerts-link").css({"display": "block", "width": "50%", "margin": "0 0 10px 0", "text-align": "center", "position": "relative", "left": "23%"});
+        $("#block-views-block-consumer-alerts-block-1").css({"padding-left": "2%", "padding-right": "2%", "height": "auto"});
+        $(".consumer-alert-row").parent().parent().css({"margin": "0"});
+
+    } else if ($(window).width() <= 900){
+        $(".alerts-text").css({"display": "inline-block", "width": "25%", "margin": "28 0 0 0", "text-align": "left", "background-position": "0"});
+        $(".alert-title").css({"display": "inline-block", "width": "50%", "margin": "0", "margin-top": "28px", "text-align": "left"});
+        $(".alert-body").css({"display": "inline-block", "width": "50%", "margin": "0", "text-align": "left"});
+        $(".see-all-alerts-link").css({"display": "inline-block", "width": "13%", "margin-left": "5%", "margin-top": "34px", "margin-bottom": "0", "left": "auto", "position": "absolute"});
+        $("#block-views-block-consumer-alerts-block-1").css({"padding-left": "2%", "padding-right": "2%", "height": "100px"});
+        $(".consumer-alert-row").parent().parent().css({"margin": "0"});
+    }else{
+        $("#block-views-block-consumer-alerts-block-1").css({"padding-left": "10%", "padding-right": "10%", "height": "100px"});
+        $(".alerts-text").css({"display": "inline-block", "width": "25%", "margin-top": "28px", "text-align": "left", "background-position": "0"});
+        $(".alert-title").css({"display": "inline-block", "width": "50%", "margin-top": "28px", "text-align": "left"});
+        $(".alert-body").css({"display": "inline-block", "width": "50%", "margin": "0", "text-align": "left"});
+        $(".see-all-alerts-link").css({"display": "inline-block", "margin-left": "5%", "margin-top": "34px", "margin-bottom": "0", "left": "auto", "position": "absolute"});
+
     }
   })
 

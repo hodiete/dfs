@@ -737,6 +737,8 @@ $settings['trusted_host_patterns'] = [
   '^nydfs\.local$',
   '^ny*\.local$',
   '^nydfs2\.local$',
+  '^nydfs4\.local$',
+  '^*\.local$',
 ];
 
 /**
