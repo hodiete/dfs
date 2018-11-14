@@ -46,6 +46,7 @@ foreach ($nodesJson as $json) {
   $name = "out_$i.json";
   $dataJson = json_encode($json);
   file_put_contents("/Sites/migration/output/json/$name", $dataJson);
+  print ($json['path'][0]['alias']);
   $i++;
 }
 print "\n#### Total Pages: " . count($outArr) . "\n";
@@ -404,12 +405,30 @@ function parse_webpage_content($url, &$nodesJson, &$doc) {
 function getTermID($path) {
   $path_dir = pathinfo($path, PATHINFO_DIRNAME);
   $terms_map = [
-    'consumer' => '37', // Consumers
-    'banking' => '38', // Applications & Licensing
-    'insurance' => '40', // Industry Guidance
-    'legal' => '41', // Reports & Publications
-    'reportpub' => '41',
-    'about' => '42'  // Contact Us
+    'consumer' => '36', // Consumers
+    'consumer/auto/' => '61', // Consumers - Auto Insurance
+    'consumer/student_protection/' => '66', // Consumers - Student Protection
+    'consumer/shopping_sheet/' => '66', // Consumersm- Student Protection
+
+    'consumer/homeown/' => '71', // Consumers - Help for Homeowners
+    'consumer/inshelp/' => '76', // Consumers - Insurance Help
+    'consumer/ltc/' => '81', // Consumers - Long Term Care
+    'consumer/healthyny/' => '86', // Consumers - Medicare Beneficiaries
+    'consumer/holocaust/' => '91', // Consumers - Holocaust Claims
+
+    'banking' => '96', // Applications & Licensing - Banking
+    'insurance' => '101', // Applications & Licensing - Insurance Companies
+    'insurance/life/' => '106', // Applications & Licensing - Life Insurances
+    'insurance/health/' => '111', // Applications & Licensing - Health Insurers
+
+    'legal' => '46', // Industry Guidence
+
+    'reportpub' => '51', // Reports & Publications
+    'reportpub/wb' => '116', // Reports & Publications - Weekly Bulletins
+
+    'about' => '56'  // Contact Us
+    'about/press/' => '121'  // Contact Us - Press Release
+    'about/statements/' => '126'  // Contact Us - Superintendent Statements
   ];
 
   foreach ($terms_map as $term => $id) {
@@ -641,9 +660,8 @@ function _download_file($src_url, $dst_path) {
 
 }
 
-/**
- *
-*/
+/*
+
 function POST_Drupal($json) {
 
   $crl = curl_init();
@@ -702,3 +720,5 @@ function POST_Drupal($json) {
 
   curl_close($crl);
 }
+
+*/
