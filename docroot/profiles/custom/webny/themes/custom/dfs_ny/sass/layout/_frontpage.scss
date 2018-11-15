@@ -1,0 +1,411 @@
+@media only screen and (max-width: 1023px){
+  .views-element-container {
+    margin-top: 0 !important;
+    margin-left: 0;
+    padding-left: 0; // width: 100%;
+  }
+}
+
+@media only screen and (min-width: 1023px){
+  .views-element-container {
+    margin-top: 60px;
+    margin-left: 0;
+    padding-left: 0; // width: 100%;
+  }
+}
+
+.views-slideshow-controls-bottom .views-slideshow-pager-bullets li.active{
+  background: #09464c;
+}
+
+.views-slideshow-controls-bottom .views-slideshow-pager-bullets li{
+  background: white;
+}
+
+.banner-image-scroll{
+  width: 150%;
+  margin-left: -70px;
+  height: 300px;
+  overflow: hidden;
+}
+
+.banner-image-scroll:after{
+  content: "";
+  display: block;
+  position: relative;
+  width: 50%;
+  height: 100%;
+  bottom: 0;
+  background: -webkit-linear-gradient(270deg, transparent, #000) left repeat;
+  background: linear-gradient(270deg, transparent, #000) left repeat;
+}
+
+.banner-title{
+  margin-top: 80px;
+  margin-left: 30px;
+  font-size: 36px;
+  font-weight: bold;
+  position: absolute;
+  color: white;
+  z-index: 100;
+  a{
+    color: white;
+  }
+}
+
+.banner-link{
+  border: solid white 1px;
+  float: left;
+  height: 2em;
+  font-size: 12px;
+  padding: .5em 1em;
+  text-align: center;
+  margin-top: 200px;
+  margin-left: 30px;
+  font-size: 12px;
+  position: absolute;
+  z-index: 100;
+  a{
+    color: white;
+  }
+  &:hover{
+    background-color: white;
+    a{
+      text-decoration: none;
+      color: black;
+    }
+  }
+}
+
+.banner-body{
+  margin-top: 125px;
+  margin-left: 30px;
+  width: 380px;
+  font-size: 12px;
+  position: absolute;
+  line-height: 1.3;
+  color: white;
+  z-index: 100;
+}
+
+#block-views-block-consumer-alerts-block-1{
+  background-color: #09464c;
+  padding-left: 10%;
+  padding-right: 10%;
+  margin-top: 0;
+  height: 100px;
+  display: inline-block;
+}
+
+.views-element-container{
+  // margin-top: -60px !important;
+}
+
+#block-views-block-front-slideshow-block-1-2{
+  margin-top: -60px !important;
+
+}
+
+@media only screen and (max-width: 1023px){
+  #block-views-block-front-slideshow-block-1{
+    margin-top: -120px !important;
+  }
+}
+
+@media only screen and (min-width: 1023px){
+  #block-views-block-front-slideshow-block-1{
+    margin-top: -60px !important;
+  }
+}
+
+
+.alerts-text{
+  display: inline-block;
+  float: left;
+  width: 25%;
+  height: 36px;
+  font-size: 24px;
+  margin-top: 28px;
+  color: white;
+  padding-left: 36px;
+  padding-top: 10px;
+  font-weight: bold;
+  background-image: url('../icons/Bell.svg');
+  background-size: 36px 36px;
+  background-position: 0;
+  background-repeat: no-repeat;
+}
+
+.alert-title{
+  // display: inline-block;
+  float: left;
+  width: 50%;
+  margin-top: 28px;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 1.3;
+}
+
+.views_slideshow_slide{
+  width: 120%;
+}
+
+.alert-body{
+  // display: inline-block;
+  float: left;
+  width: 50%;
+  color: white;
+  font-size: 12px;
+  line-height: 1.3;
+}
+
+.see-all-alerts-link{
+  display: inline-block;
+  float: left;
+  border: solid white 1px;
+  width: 20%;
+  margin-left: 5%;
+  margin-top: 34px;
+  height: 24px;
+  font-size: 12px;
+  padding: .5em 1em;
+  text-align: center;
+  font-size: 12px;
+  position: absolute;
+  z-index: 100;
+  a{
+    color: white;
+  }
+  &:hover{
+    background-color: white;
+    a{
+      text-decoration: none;
+      color: black;
+    }
+  }
+
+}
+
+.views-slideshow-controls-bottom{
+  margin-top: -28px;
+  position: relative;
+  z-index: 100;
+}
+
+.icon-link{
+  width: 180px;
+  height: 40px;
+  text-align: center;
+  background-color: #09464c;
+  display: inline-block;
+  &:hover{
+    background-color: #042326;
+    a{
+      text-decoration: none;
+    }
+  }
+  a{
+    width: 100%;
+    height: 100%;
+    display: block;
+    padding-top: 14px;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 1px;
+  }
+}
+
+.reg-institution-link{
+  width: 100%;
+  height: auto;
+  text-align: center;
+  background-color: #09464c;
+  display: inline-block;
+  letter-spacing: 1px;
+  &:hover{
+    background-color: #042326;
+    a{
+      text-decoration: none;
+    }
+  }
+  a{
+    width: 100%;
+    height: 100%;
+    display: block;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    // padding-top: 17px;
+    font-weight: 500;
+    padding-top: 18px;
+    padding-bottom: 18px;
+  }
+}
+
+.views-field-field-reg-instituion-link{
+  display: inline-block;
+  width: 90%;
+}
+
+.reg-institution-row{
+  width: 24%;
+  text-align: center;
+  display: inline-block;
+  margin: 10px 0px;
+}
+
+.icons-rows{
+  width: 24%;
+  text-align: center;
+  display: inline-block;
+  margin: 10px 0px;
+}
+
+.views-field-field-icon{
+  width: 180px;
+  height: 125px;
+  display: inline-block;
+}
+
+.icon-image{
+  text-align: center;
+  img{
+    height: 100px !important;
+  }
+}
+
+.views-element-container {
+    margin-left: 0% !important;
+}
+
+.press-release-date{
+  font-size: 20px;
+  color: black;
+  font-weight: bold;
+}
+
+.press-release-title{
+  font-size: 20px;
+  color: #09464c;
+  font-weight: bold;
+  line-height: 1.2;
+}
+
+.press-release-body{
+  margin-top: 17px;
+  font-size: 12px;
+  color: black;
+  line-height: 1.5;
+}
+
+.press-release-link{
+  background-image: url('../icons/dfs/arrow-teal.svg');
+  background-size: 12px 12px;
+  background-position: 100px 50%;
+  background-repeat: no-repeat;
+  padding-top: 3px;
+  a{
+    font-size: 16px;
+    color: #09464c;
+    font-weight: bold;
+    &:hover{
+      text-decoration: none;
+    }
+  }
+}
+
+.front-page-press-centering-div{
+  margin-top: 30px;
+  width: 100%;
+  text-align: center;
+  div{
+    padding-left: 1em;
+    padding-right: 1em;
+  }
+}
+
+#block-views-block-front-page-press-releases-block-1{
+  h2{
+    font-size: 40px;
+    margin-top: 15px;
+    color: #09464c;
+    text-align: center;
+  }
+}
+
+#block-views-block-regulated-institutions-block-1{
+ background-color: #e5eeee;
+ padding: 30px 40px;
+ margin: 45px 35px !important;
+ h2{
+   font-size: 40px;
+   // margin-top: 60px;
+   color: #09464c;
+   text-align: center;
+ }
+}
+
+#block-views-block-statewide-initiative-block-1{
+  h2{
+    font-size: 40px;
+    // margin-top: 60px;
+    color: #09464c;
+    text-align: center;
+  }
+}
+
+.statewide-link{
+  width: 90%;
+  height: 30px;
+  text-align: left;
+  background-color: #e5eeee;
+  display: inline-block;
+  background-image: url('../icons/dfs/arrow-teal.svg');
+  background-size: 12px 12px;
+  background-position:95% 50%;
+  background-repeat: no-repeat;
+  &:hover{
+    background-image: url('../icons/dfs/arrow-white.svg');
+    background-color: #09464c;
+    a{
+      color: white;
+    }
+  }
+  a{
+    margin-left: 10px;
+    color: #09464c;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    padding-top: 2px;
+    width: 100%;
+    height: 100%;
+    display: block;
+    &:hover{
+      color: white;
+      text-decoration: none;
+    }
+  }
+}
+
+.statewide-rows{
+  width: 24%;
+  text-align: center;
+  display: inline-block;
+  margin: 10px 0px;
+}
+
+.views-field-field-statewide-image{
+  width:90%;
+  height: 170px;
+  display: inline-block;
+}
+
+.statewide-image{
+  text-align: center;
+  img{
+    height: 100% !important;
+  }
+}

@@ -1,0 +1,23 @@
+{# 
+{% block content %}
+  <div class="supervise-div">
+    <div class="supervise-title">
+      Who We Supervise
+    </div>
+    {{ content }}
+  </div>
+{% endblock %}
+#}
+
+<div class="supervise-div" {{ attributes }}>
+{% if label %}
+  <div class="supervise-title" {{ title_attributes }}>
+    {{ label }}
+  </div>
+{% endif %}
+    {{ content }}
+</div>
+<div class="dfs-div">
+  Department of Financial Services
+</div>
+

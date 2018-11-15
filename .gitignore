@@ -16,11 +16,13 @@ docroot/profiles/custom/webny/modules/contrib
 docroot/themes/contrib
 docroot/profiles/custom/webny/themes/contrib
 docroot/profiles/contrib
-docroot/libraries
+# docroot/libraries
 drush/contrib
 
 # Ignore custom theme node_modules folders
 docroot/themes/custom/*/node_modules
+docroot/profiles/custom/webny/themes/custom/dfs_ny/node_modules
+docroot/profiles/custom/webny/themes/custom/dfs_ny/package-lock.json
 
 # igore the styles.css andnydfs-sub.css which are generated from gulp
 docroot/profiles/custom/webny/themes/custom/dfs_ny/css/styles.css
@@ -37,6 +39,7 @@ docroot/profiles/custom/webny/themes/custom/dfs_ny/css/public-safety.css
 docroot/profiles/custom/webny/themes/custom/dfs_ny/css/recreation-environment.css
 docroot/profiles/custom/webny/themes/custom/dfs_ny/css/statewide-elected-officials.css
 docroot/profiles/custom/webny/themes/custom/dfs_ny/css/transportation-utilities.css
+docroot/sites/default/services.yml
 
 migration_dfs/migration
 # Ignore build artifacts
@@ -139,9 +142,6 @@ docroot/profiles/custom/webny/libraries/*/
 
 # Ignore private files
 files-private
-<<<<<<< HEAD
-box/config.yml
-=======
 
+box/config.yml
 docroot/sites/default/settings.php
->>>>>>> gung-brian-1.5
