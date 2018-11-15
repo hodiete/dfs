@@ -118,13 +118,15 @@
       $(".views-field-field-banner").css({"width": "100%"})
         $(".banner-body").css({"text-align": "center"});
         $(".banner-title").css({"width": "380px", "text-align": "center"});
-        $(".banner-image-scroll").css({"display": "block", "width": "120%"});
+        // $(".banner-image-scroll").css({"display": "block", "width": "120%"});
+        $(".banner-image-scroll").css({ "display": "block" });
         $(".banner-image-scroll:after").css({"background": "none"});
         $(".banner-link").css({"background": "none", "width": "360px", "text-align": "center"});
     }else{
         $(".banner-body").css({"width": "380px", "text-align": "left"});
         $(".banner-title").css({"width": "90%", "text-align": "left"});
-        $(".banner-image-scroll").css({"display": "block", "width": "2100px"});
+        // $(".banner-image-scroll").css({"display": "block", "width": "100%"});
+        $(".banner-image-scroll").css({"display": "block"});
         $(".banner-image-scroll:after").css({"background": "-webkit-linear-gradient(270deg, transparent, #000) left repeat", "background": "linear-gradient(270deg, transparent, #000) left repeat;"});
         $(".banner-link").css({"background": "none", "width": "auto", "text-align": "center"});
     }
