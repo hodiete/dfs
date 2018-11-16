@@ -37,14 +37,14 @@
     }
   }
   
-  // console.log('hero ' + heroHeight) ;
-  // console.log(`AdminHeiht ` + adminNavHeight);
+  console.log('hero ' + heroHeight) ;
+  console.log(`AdminHeiht ` + adminNavHeight);
   let $sticky = $('#sticky-leftmenu').parent('nav');
   let $stickyrStopper = $('.sticky-stopper');
   let $fromTopHeight = ($(window).width() >= 1024) 
     ? 171 + heroHeight + adminNavHeight 
     : 171 + heroHeight + adminNavHeight;
-  // console.log(`fromTopHeight ` + $fromTopHeight);
+  console.log(`fromTopHeight ` + $fromTopHeight);
   if ($fromTopHeight >= 410) {
     $fromTopHeight += 10;
   }  
@@ -87,7 +87,7 @@
    * @param {number} $fromTopHeight 
    */
   function stickNavigation($sticky, $stickyrStopper, $topMenu = true, $fromTopHeight = 0) {
-    // console.log('jQuery sticky ready!');
+    console.log('jQuery sticky ready!');
     /*
     console.log("window:" + $(window).height());
     console.log("sticky:" + $sticky.height());
@@ -134,10 +134,10 @@
       // var diff = stopPoint + stickOffset - (generalSidebarHeight/2) ;
       let diff = stopPoint + stickOffset;
       $(window).scroll(() => { // scroll event
-        // console.log("sticky.offset:");
-        // console.log($sticky.offset());
+        console.log("sticky.offset:");
+        console.log($sticky.offset());
         var windowTop = $(window).scrollTop(); // returns number
-        // console.log('windowTop ' + windowTop);
+        console.log('windowTop ' + windowTop);
         // console.log('diff ' + diff);
         
         // if (windowTop <= fromTop ) {
