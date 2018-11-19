@@ -58,7 +58,7 @@ function POST_Drupal($json, $postURL) {
 EOF;
 
   print $execStr;
-  if (exec($execStr)){
+  if (exec($execStr)) {
     print "\n###\n";
     return TRUE;
   }

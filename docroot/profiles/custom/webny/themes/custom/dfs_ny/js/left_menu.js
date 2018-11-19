@@ -37,14 +37,14 @@
     }
   }
   
-  console.log('hero ' + heroHeight) ;
-  console.log(`AdminHeiht ` + adminNavHeight);
+  // console.log('hero ' + heroHeight) ;
+  // console.log(`AdminHeiht ` + adminNavHeight);
   let $sticky = $('#sticky-leftmenu').parent('nav');
   let $stickyrStopper = $('.sticky-stopper');
   let $fromTopHeight = ($(window).width() >= 1024) 
     ? 171 + heroHeight + adminNavHeight 
     : 171 + heroHeight + adminNavHeight;
-  console.log(`fromTopHeight ` + $fromTopHeight);
+  // console.log(`fromTopHeight ` + $fromTopHeight);
   if ($fromTopHeight >= 410) {
     $fromTopHeight += 10;
   }  
@@ -87,7 +87,9 @@
    * @param {number} $fromTopHeight 
    */
   function stickNavigation($sticky, $stickyrStopper, $topMenu = true, $fromTopHeight = 0) {
-    console.log('jQuery sticky ready!');
+    // console.log('jQuery sticky ready!');
+    // console.log("sticky.offset 1 :");
+    // console.log($sticky.offset());
     /*
     console.log("window:" + $(window).height());
     console.log("sticky:" + $sticky.height());
@@ -129,15 +131,26 @@
       if ($stickyrStopper.length) {
         stickyStopperPosition = $stickyrStopper.offset().top;
       }
+      else {
+        stickyStopperPosition = 800;
+      }
 
-      let stopPoint = stickyStopperPosition - generalSidebarHeight - stickOffset - 200;
+      let stopPoint = stickyStopperPosition - generalSidebarHeight - stickOffset;
       // var diff = stopPoint + stickOffset - (generalSidebarHeight/2) ;
+      // console.log(stopPoint + " | " + stickyStopperPosition + " | " + generalSidebarHeight + " | " + stickOffset);
+
       let diff = stopPoint + stickOffset;
+     
+
       $(window).scroll(() => { // scroll event
-        console.log("sticky.offset:");
-        console.log($sticky.offset());
+        
+        // if ($sticky.offset().top < 0) {
+        //   console.log("sticky.offset:");
+        //   console.log($sticky.offset());
+        //   // $sticky.offset({top: 0});
+        // }
         var windowTop = $(window).scrollTop(); // returns number
-        console.log('windowTop ' + windowTop);
+        // console.log('windowTop ' + windowTop);
         // console.log('diff ' + diff);
         
         // if (windowTop <= fromTop ) {
@@ -162,9 +175,11 @@
         } else {          
           if (windowTop <= fromTop) {
             $sticky.css({ position: 'absolute', top: fromTop });
+            // console.log('fromTop:' + fromTop);
           } else {
             // console.log('windowTop ' + windowTop);
             // console.log('diff ' + diff);
+            // console.log('stopPoint ' + stopPoint);
             if (stopPoint < windowTop) {
               $sticky.css({ position: 'absolute', top: diff });
   

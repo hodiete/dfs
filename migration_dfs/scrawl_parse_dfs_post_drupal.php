@@ -40,17 +40,20 @@ $nodesJson = [];
 _crawl_page(HTTP . "://" . DHOST, $level);
 
 file_put_contents('/Sites/migration/output/url-has-urls.json', json_encode($outArr));
+
+// $nodesJson = array_unique ($nodesJson);
+
 $i = 1;
 foreach ($nodesJson as $json) {
-  print_r($json['path'][0]['alias']);
+  print_r($json['path'][0]['alias']); print "\n";
   $name = "out_$i.json";
   $dataJson = json_encode($json);
   file_put_contents("/Sites/migration/output/json/$name", $dataJson);
-  print ($json['path'][0]['alias']);
+  // print ($json['path'][0]['alias']);
   $i++;
 }
 print "\n#### Total Pages: " . count($outArr) . "\n";
-print "#### Total Jsons: " . count($nodesJson) . "\n";
+print "#### Total JSons: " . count($nodesJson) . "\n";
 
 // Print running time.
 $time_end = microtime(true);
@@ -70,6 +73,7 @@ function _crawl_page($url, $depth) {
   static $seen = array();
 
   if (isset($seen[$url]) || $depth === 0) {
+    // print "Seen: $url \n";
     $outArr = $seen;
     return;
   }
@@ -409,34 +413,86 @@ function getTermID($path) {
     'consumer/auto/' => '61', // Consumers - Auto Insurance
     'consumer/student_protection/' => '66', // Consumers - Student Protection
     'consumer/shopping_sheet/' => '66', // Consumersm- Student Protection
-
     'consumer/homeown/' => '71', // Consumers - Help for Homeowners
     'consumer/inshelp/' => '76', // Consumers - Insurance Help
     'consumer/ltc/' => '81', // Consumers - Long Term Care
     'consumer/healthyny/' => '86', // Consumers - Medicare Beneficiaries
     'consumer/holocaust/' => '91', // Consumers - Holocaust Claims
-
     'banking' => '96', // Applications & Licensing - Banking
     'insurance' => '101', // Applications & Licensing - Insurance Companies
     'insurance/life/' => '106', // Applications & Licensing - Life Insurances
     'insurance/health/' => '111', // Applications & Licensing - Health Insurers
-
     'legal' => '46', // Industry Guidence
-
     'reportpub' => '51', // Reports & Publications
     'reportpub/wb' => '116', // Reports & Publications - Weekly Bulletins
-
-    'about' => '56'  // Contact Us
-    'about/press/' => '121'  // Contact Us - Press Release
+    'about' => '56',  // Contact Us
+    'about/press/' => '121',  // Contact Us - Press Release
     'about/statements/' => '126'  // Contact Us - Superintendent Statements
   ];
 
-  foreach ($terms_map as $term => $id) {
-    if (strpos($path_dir, "/$term") === 0) {
-      return $id;
-    }
+  if (strpos($path_dir, "/consumer/auto") === 0) {
+    return '61';
   }
-  return '43';
+  elseif (strpos($path_dir, "/consumer/student_protection") === 0) {
+    return '66';
+  }
+  elseif (strpos($path_dir, "/consumer/shopping_sheet") === 0) {
+    return '66';
+  }
+  elseif (strpos($path_dir, "/consumer/homeown") === 0) {
+    return '71';
+  }
+  elseif (strpos($path_dir, "/consumer/inshelp") === 0) {
+    return '76';
+  }
+  elseif (strpos($path_dir, "/consumer/ltc") === 0) {
+    return '81';
+  }
+  elseif (strpos($path_dir, "/consumer/healthyny") === 0) {
+    return '86';
+  }
+  elseif (strpos($path_dir, "/consumer/holocaust") === 0) {
+    return '91';
+  }
+  elseif (strpos($path_dir, "/consumer") === 0) {
+    return '36';
+  }
+
+  if (strpos($path_dir, "/insurance/life") === 0) {
+    return '106';
+  }
+  elseif (strpos($path_dir, "/insurance/health") === 0) {
+    return '111';
+  }
+  elseif (strpos($path_dir, "/insurance") === 0) {
+    return '101';
+  }
+  elseif (strpos($path_dir, "/banking") === 0) {
+    return '96';
+  }
+
+  if (strpos($path_dir, "/legal") === 0) {
+    return '46';
+  }
+
+  if (strpos($path_dir, "/reportpub/wb") === 0) {
+    return '116';
+  }
+  elseif (strpos($path_dir, "/reportpub") === 0) {
+    return '51';
+  }
+
+  if (strpos($path_dir, "/about/statements") === 0) {
+    return '126';
+  }
+  elseif (strpos($path_dir, "/about/press") === 0) {
+    return '121';
+  }
+  elseif (strpos($path_dir, "/about") === 0) {
+    return '56';
+  }
+
+  return '56';
 }
 
 /**
