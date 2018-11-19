@@ -72,6 +72,11 @@ function _crawl_page($url, $depth) {
   global $listInvalidArr, $listInvalidstring, $outArr ;
   static $seen = array();
 
+  if (stristr($url, '/legal/../')) {
+    $url = str_replace('/legal/../', '/', $url);
+    // print "$url\n";
+  }
+
   if (isset($seen[$url]) || $depth === 0) {
     // print "Seen: $url \n";
     $outArr = $seen;
@@ -346,6 +351,9 @@ function isNavItem($url) {
  */
 function parse_webpage_content($url, &$nodesJson, &$doc) {
   // print "\n/**** Current URL $url ****/\n";
+  // if (stristr($url, '../')) {
+  //   print "$url\n";
+  // }
   // $doc = new DOMDocument();
   // print_r($doc);
   if (!check_href_valid($url)) {
@@ -378,7 +386,7 @@ function parse_webpage_content($url, &$nodesJson, &$doc) {
       continue;
     }
     else {
-      print "xpath:: $query\n" ;
+      // print "xpath:: $query\n" ;
       // print_r($result);
       foreach ($result as $node) {
         // print_r($node);
@@ -418,11 +426,18 @@ function getTermID($path) {
     'consumer/ltc/' => '81', // Consumers - Long Term Care
     'consumer/healthyny/' => '86', // Consumers - Medicare Beneficiaries
     'consumer/holocaust/' => '91', // Consumers - Holocaust Claims
+    'healthyny/rates/' => '134', // Consumers - Healthy New York Rates by County
+
     'banking' => '96', // Applications & Licensing - Banking
     'insurance' => '101', // Applications & Licensing - Insurance Companies
     'insurance/life/' => '106', // Applications & Licensing - Life Insurances
     'insurance/health/' => '111', // Applications & Licensing - Health Insurers
+    'insurance/ogco*/' => '133', // Applications & Licensing - Office of General Counsel Opinion
+    'insurance/circltr/' => '135', // Applications & Licensing - Circular Letters Issued
+
     'legal' => '46', // Industry Guidence
+    'legal/interpret/' => '131', // Industry Guidence - Banking Interpretations
+    'legal/industry/' => '132', // Industry Guidence - Legal industry
     'reportpub' => '51', // Reports & Publications
     'reportpub/wb' => '116', // Reports & Publications - Weekly Bulletins
     'about' => '56',  // Contact Us
@@ -458,11 +473,24 @@ function getTermID($path) {
     return '36';
   }
 
+  if (strpos($path_dir, "/healthyny/rates") === 0) {
+    return '134';
+  }
+  elseif (strpos($path_dir, "/healthyny") === 0) {
+    return '136';
+  }
+
   if (strpos($path_dir, "/insurance/life") === 0) {
     return '106';
   }
   elseif (strpos($path_dir, "/insurance/health") === 0) {
     return '111';
+  }
+  elseif (strpos($path_dir, "/insurance/ogco") === 0) {
+    return '133';
+  }
+  elseif (strpos($path_dir, "/insurance/circltr") === 0) {
+    return '135';
   }
   elseif (strpos($path_dir, "/insurance") === 0) {
     return '101';
@@ -471,7 +499,13 @@ function getTermID($path) {
     return '96';
   }
 
-  if (strpos($path_dir, "/legal") === 0) {
+  if (strpos($path_dir, "/legal/interpret") === 0) {
+    return '131';
+  }
+  elseif (strpos($path_dir, "/legal/industry") === 0) {
+    return '52';
+  }
+  elseif (strpos($path_dir, "/legal") === 0) {
     return '46';
   }
 

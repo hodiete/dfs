@@ -57,13 +57,13 @@ function POST_Drupal($json, $postURL) {
    --data-binary '$json'
 EOF;
 
-  print $execStr;
+   // print $execStr;
   if (exec($execStr)) {
-    print "\n###\n";
+    // print "\n###\n";
     return TRUE;
   }
   else {
-    print "\n!!!!!!!!!!!!!!!!!!!!\n";
+    print "!!!!!\n";
     print $execStr;
     return FALSE;
   }
