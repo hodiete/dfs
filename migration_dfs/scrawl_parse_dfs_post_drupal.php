@@ -689,7 +689,7 @@ function change_url_img($urlCur, $href) {
  * @return boolean
  */
 function is_a_file($str) {
-  $arr = ['pdf', 'doc', 'docx', 'txt', 'xls', 'xlsx'];
+  $arr = ['pdf', 'doc', 'docx', 'txt', 'xls', 'xlsx', 'xlsm'];
   return in_array(strtolower($str), $arr);
 }
 
