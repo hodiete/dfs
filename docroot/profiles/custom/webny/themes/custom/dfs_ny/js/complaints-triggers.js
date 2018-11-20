@@ -12,7 +12,12 @@
   });
 
   $(document).ready(function () {
-    $(".short-card-box").parent().css({ "padding": "20px 0", "width": "50%", "float": "left", "margin": "0" });
+    let currentWidth = "100%";
+    if ($(window).width() <= 880) {
+       currentWidth = "100%";
+    }
+
+    $(".short-card-box").parent().css({ "padding": "20px 0", "width": currentWidth, "float": "left", "margin": "0" });
     $(".short-card-box").parent().parent().css({ "width": "86%", "margin-left": "7%" });
     $("#short").parent().css({ "padding": "0 2.8%" });
   });
