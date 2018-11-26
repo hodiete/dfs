@@ -782,7 +782,7 @@ if (isset($_SERVER['DEVDESKTOP_DRUPAL_SETTINGS_DIR']) && file_exists($_SERVER['D
 }
 // </DDSETTINGS>
 $databases['default']['default'] = array(
-  'database' => 'drupal_dfs',
+  'database' => 'drupal',
   'username' => 'root',
   'password' => 'root',
   'prefix' => '',
