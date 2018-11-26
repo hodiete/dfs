@@ -735,10 +735,8 @@ $settings['trusted_host_patterns'] = [
   '^127\.0\.0\.1$',
   '^webny\.local$',
   '^nydfs\.local$',
-  '^ny*\.local$',
   '^nydfs2\.local$',
-  '^nydfs4\.local$',
-  '^*\.local$',
+  '^nydfs*\.local$',
 ];
 
 /**
@@ -783,8 +781,8 @@ if (isset($_SERVER['DEVDESKTOP_DRUPAL_SETTINGS_DIR']) && file_exists($_SERVER['D
   require $_SERVER['DEVDESKTOP_DRUPAL_SETTINGS_DIR'] . '/loc_docroot_dd.inc';
 }
 // </DDSETTINGS>
-$databases['default']['default'] = array (
-  'database' => 'drupal',
+$databases['default']['default'] = array(
+  'database' => 'drupal_dfs',
   'username' => 'root',
   'password' => 'root',
   'prefix' => '',
