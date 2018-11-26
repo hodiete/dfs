@@ -116,7 +116,7 @@
         $("#block-website").css({"width": "15%"});
     }
   })
-/*
+/* 
   // banner resizing
   $(window).resize(function(){
     if ($(window).width() <= 500){
