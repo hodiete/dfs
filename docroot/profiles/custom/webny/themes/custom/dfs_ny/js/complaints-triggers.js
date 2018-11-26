@@ -12,7 +12,12 @@
   });
 
   $(document).ready(function () {
-    $(".short-card-box").parent().css({ "padding": "20px 0", "width": "50%", "float": "left", "margin": "0" });
+    let currentWidth = "100%";
+    if ($(window).width() <= 880) {
+       currentWidth = "100%";
+    }
+
+    $(".short-card-box").parent().css({ "padding": "20px 0", "width": currentWidth, "float": "left", "margin": "0" });
     $(".short-card-box").parent().parent().css({ "width": "86%", "margin-left": "7%" });
     $("#short").parent().css({ "padding": "0 2.8%" });
   });
@@ -20,7 +25,7 @@
   $(document).ready(function () {
     $("#block-generalquestionsandcomplaints").parent().parent().css({ "width": "100%" });
   });
-
+/*
   // Sets up the homepage boxes
   $(document).ready(function () {
     $(".views-field-field-release-date-created").parent().css({ "width": "48%", "display": "inline-block"});
@@ -37,7 +42,7 @@
     $(".statewide-rows").parent().parent().css({"margin-top": "15px"});
     $(".consumer-alert-row").parent().parent().css({"margin": "0"});
   });
-
+*/
   // For the footer
   $(document).ready(function () {
     $("#block-ourdepartment").parent().css({ "background-color": "#09464c"});
@@ -59,7 +64,7 @@
       $(".apps-lic-card-box").parent().css({"width": "25%"});
     }
   })
-
+/*
   $(window).resize(function(){
     if ($(window).width() <= 880){
         $(".news-views-row").css({"width": "80%", "padding": "15px 0"});
@@ -88,7 +93,7 @@
         $(".statewide-rows").css({"width": "24%"});
     }
   })
-
+*/
   // global footer resizing
   $(window).resize(function(){
     if ($(window).width() <= 500){
@@ -111,7 +116,7 @@
         $("#block-website").css({"width": "15%"});
     }
   })
-
+/* 
   // banner resizing
   $(window).resize(function(){
     if ($(window).width() <= 500){
@@ -119,12 +124,14 @@
         $(".banner-body").css({"text-align": "center"});
         $(".banner-title").css({"width": "380px", "text-align": "center"});
         $(".banner-image-scroll").css({"display": "block", "width": "120%"});
+        // $(".banner-image-scroll").css({ "display": "block" });
         $(".banner-image-scroll:after").css({"background": "none"});
         $(".banner-link").css({"background": "none", "width": "360px", "text-align": "center"});
     }else{
         $(".banner-body").css({"width": "380px", "text-align": "left"});
         $(".banner-title").css({"width": "90%", "text-align": "left"});
-        $(".banner-image-scroll").css({"display": "block", "width": "2100px"});
+        $(".banner-image-scroll").css({"display": "block", "width": "100%"});
+        // $(".banner-image-scroll").css({"display": "block"});
         $(".banner-image-scroll:after").css({"background": "-webkit-linear-gradient(270deg, transparent, #000) left repeat", "background": "linear-gradient(270deg, transparent, #000) left repeat;"});
         $(".banner-link").css({"background": "none", "width": "auto", "text-align": "center"});
     }
@@ -165,8 +172,8 @@
 
     }
   })
-
-
+*/
+  // global footer Who We Supervise block
   $(window).resize(function(){
     if ($(window).width() <= 500){
         $(".supervise-title").css({"margin-left": "0", "width": "100%", "float": "center", "text-align": "center"});
