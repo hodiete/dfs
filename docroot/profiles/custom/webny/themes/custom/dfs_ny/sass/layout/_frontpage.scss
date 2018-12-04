@@ -13,7 +13,7 @@
   position: absolute;
   width: 40%;
   padding-top: 80px;
-  padding-left: 60px;
+  padding-left: 6%;
   z-index: 100;
   color: white;
   a {
@@ -71,7 +71,8 @@
   position: absolute;
   width: 60%;
   height: 585px;
-  top: 80px;
+  top: 115px;
+  /*80px;*/
   background: -webkit-linear-gradient(270deg, transparent, #000) left repeat;
   background: linear-gradient(270deg, transparent, #000) left repeat;
   overflow: hidden;
@@ -143,8 +144,8 @@
   z-index: 100;
   a {
     color: white;
-      padding-top: 11px;
-      display: inline-block;
+    padding-top: 11px;
+    display: inline-block;
   }
   &:hover {
     background-color: white;
@@ -402,6 +403,9 @@
   .banner-image-scroll:after {
     height: 350px;
     top: 170px;
+  }
+  .banner-image-scroll:after {
+    width: 95%;
   }
   .views-element-container {
     // margin-top: 60px;
