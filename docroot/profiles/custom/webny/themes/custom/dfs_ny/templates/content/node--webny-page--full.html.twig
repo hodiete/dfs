@@ -1,0 +1,188 @@
+{#
+/**
+ * @file
+ * Theme override to display a node.
+ * CREATED BY WEBNY -- iojonep, lmurdock, mcase
+ * Override theme for Inner Page
+ * Available variables:
+ * https://api.drupal.org/api/drupal/core!modules!node!templates!node.html.twig/8.2.x 
+ */
+#}
+
+{# @PARAMS #}
+{% set hero_image = file_url(node.field_webny_page_image.entity.field_image.entity.uri.value) %}
+{% set title = '' %}
+{% set hero = '' %}
+{% set doc_title = content.field_webny_page_docsec_title %}
+{% set doc_subtitle = content.field_webny_page_docsec_subtitle %}
+{% set doc_eref = content.field_webny_page_attdocs_eref %}
+
+{# GET VARS FOR DISPLAYING HERO AND TITLES #}
+{%  for k,v in node.field_webny_page_vis_options %}
+
+    {% if node.field_webny_page_vis_options[k].value == 'hero' %}
+        {% set hero = 'show' %}
+    {% endif %}
+    {% if node.field_webny_page_vis_options[k].value == 'title' %}
+        {% set title = 'show' %}
+    {% endif %}
+
+{% endfor %}
+
+
+{% if title == 'show' %}
+
+<article {{ attributes.addClass('title-layout') }}>
+
+    {% if hero == '' %}
+        {# START QUICK EDITS #}
+        {{ title_prefix }}
+    {% endif %}
+
+
+    <div class="landing-title-area">
+
+        <!-- HEADLINE LABEL -->
+        <div class="landing-title">
+            <h1>{{ label }}</h1>
+        </div>
+
+    </div>
+
+    {% if hero == '' %}
+        {# START QUICK EDITS #}
+        {{ title_suffix }}
+    {% endif %}
+
+
+</article>
+
+{% endif %}
+
+{% if hero == 'show' %}
+    <article {{ attributes.addClass('hero-layout') }}>
+
+        {# START QUICK EDITS #}
+        {{ title_prefix }}
+
+        {% if hero_image == '/' %}
+            <div class="hero-header hero-no-image hero-ipage">
+        {% else %}
+            <div class="hero-header hero-has-image hero-ipage">
+        {% endif %}
+                <div class="hero-image">
+                    {{ content.field_webny_page_image }}
+                </div>
+
+                <!-- BACKGROUND GRAD -->
+                <div class="hero-bkg"></div>
+            </div>
+
+            {% if hero_image == '/' %}
+                <div class="hero-inner hero-ipage-inner">
+            {% else %}
+                <div class="hero-inner hero-ipage-inner hero-has-image-content">
+            {% endif %}
+
+                    {# HEADLINE LABEL #}
+                    <h1>
+                        {% if node.field_webny_page_hero_title.value is empty %}
+                            {{ label }}
+                        {% else %}
+                            {{ node.field_webny_page_hero_title.value }}
+                        {% endif %}
+                    </h1>
+
+                    {# HERO SUMMARY #}
+                    <div class="hero-summary">
+                        {{ content.field_webny_page_description }}
+                    </div>
+
+                    {# KEYWORDS FOR INNER PAGE HERO #}
+                    <div class="hero-keywords">
+                        {% for term in node.field_webny_agency_keywords %}
+                            <a href="/keywords/{{ term.entity.machine_name.value }}">{{ term.entity.name.value }}</a>
+                        {% endfor %}
+                    </div>
+
+            </div>
+
+         {# END QUICK EDITS #}
+         {{ title_suffix }}
+
+    </article>
+{% endif %}
+
+{% if hero == 'show' %}
+<div class="webny-share-bar">
+    <div class="webny-share">
+        <div class="webny-share-bar-icons">
+        <div class="webny-action-share-label">SHARE</div>
+            <div class="webny-action-share-button">
+                <a href="mailto:?Subject={{ site_name }}: {{ node.label }}&Body={{ url('<current>') }}"><span class="icon-email"></span></a>
+            </div>
+            <div class="webny-action-share-button">
+                <a href="http://www.facebook.com/share.php?u={{ url('<current>') }}" target="_blank"><span class="icon-facebook"></span></a>
+            </div>
+            <div class="webny-action-share-button">
+                        <a href="https://twitter.com/intent/tweet?text={{ node.label }}&url={{ url('<current>') }}" target="_blank"><span class="icon-twitter"></span></a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+
+{% if hero == '' and title == '' %}
+<article {{ attributes.addClass('quickedit-layout') }}>
+    {# START QUICK EDITS #}
+    {{ title_prefix }}
+    {% endif %}
+
+<div class="body-area">
+
+    <div class="body-area-in">
+
+        <div class="body-area-subtitle">
+           
+            {{ content.field_webny_page_sub_title }}
+               
+        </div>
+
+        <div class="page-body">
+            {{ content.body }}
+        </div>
+
+    </div>
+
+</div>
+
+{% if hero == '' and title == '' %}
+    {# END QUICK EDITS #}
+    {{ title_suffix }}
+</article>
+{% endif %}
+
+{# verify at least one field has a value before rendering press-docs div #}
+{% if doc_title[0] is defined or doc_subtitle[0] is defined or doc_eref[0] is defined %}
+
+    <div class="press-docs">
+        {# doc_title will not have a count array if a value was not set in the field #}
+        {% if doc_title[0] is defined %}
+            <h2 class="doc-set-title">{{ doc_title }}</h2>
+        {% endif %}
+
+        {# doc_subtitle will not have a count array if a value was not set in the field #}
+        {% if doc_subtitle[0] is defined %}
+            <h3 class="doc-set-subtitle">{{ doc_subtitle }}</h3>
+        {% endif %}
+
+        {# doc_eref will not have a count array if a value was not set in the field #}
+        {% if doc_eref[0] is defined %}
+            <div class="press-docs-eref">
+                {{ doc_eref }}
+            </div>
+        {% endif %}
+    </div>
+
+{% endif %}

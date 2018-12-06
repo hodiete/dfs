@@ -1,0 +1,169 @@
+// Base event date & location card styles.
+@mixin event-date-card {
+  .day-month-wrapper {
+    padding-bottom: 20px;
+    text-align: center;
+  }
+
+  .multi-day {
+    .day div,
+    .month div,
+    .event-year div {
+      float: left;
+      width: 65px;
+
+      &.dash {
+        width: 25px;
+      }
+    }
+  }
+
+  .month {
+    @include clearfix;
+
+    color: $color-primary;
+    font-size: 14px;
+    font-family: $base-font;
+    font-weight: 800;
+    padding-bottom: 10px;
+    text-transform: uppercase;
+
+    div {
+      text-align: left;
+    }
+
+    .dash {
+      color: transparent;
+    }
+  }
+
+  .day {
+    @include clearfix;
+
+    font-size: 42px;
+    color: #000;
+    font-family: $base-font;
+    font-weight: 800;
+    padding-bottom: 5px;
+
+    div {
+      text-align: left;
+    }
+
+    .dash {
+      font-size: 15px;
+      font-weight: 600;
+    }
+  }
+
+  .event-year {
+    @include clearfix;
+
+    font-size: 16px;
+    color:#000;
+    font-family: $base-font;
+    font-weight: 600;
+
+    div {
+      text-align: center;
+    }
+
+    .dash {
+      color: transparent;
+    }
+
+    .start-event-year {
+      width: 50px !important;
+    }
+    .end-event-year {
+      width: 83px !important;
+    }
+  }
+
+  .time {
+    font-family: $base-font;
+    font-size: 13px;
+    line-height: 16px;
+    text-transform: uppercase;
+
+    @include icon(before, fa-clock);
+
+    &::before {
+      color: $color-secondary;
+      display: inline-block;
+      font-size: 13px;
+      vertical-align: top;
+      width: 23px;
+    }
+
+    div {
+      display: inline-block;
+    }
+  }
+
+  .address-wrapper {
+    border-top: 1px solid $color-mono-mid;
+    margin-top: 15px;
+    padding-top: 15px;
+
+    @include icon(before, fa-pin);
+
+    &::before {
+      color: $color-secondary;
+      float: left;
+      font-size: 13px;
+      vertical-align: top;
+      width: 23px;
+      height: 36px;
+    }
+    .venue-name {
+      color: #000;
+      font-size: 13px;
+      line-height: 16px;
+    }
+  }
+
+  .address {
+    //float: left;
+    display: inline-block;
+    font-family: $base-font;
+    font-size: 13px;
+    line-height: 16px;
+    margin: 0px;
+    span.country {
+      display: none;
+    }
+  }
+
+  .last-updated-wrapper {
+    border-top: 1px solid $color-mono-mid;
+    margin-top: 15px;
+    padding-top: 15px;
+
+    .last-updated-label {
+      color: #000;
+      font-size: 13px;
+      line-height: 16px;
+      float: left;
+      font-style: italic;
+    }
+
+    @include icon(before, refresh);
+
+    &::before {
+      color: $color-secondary;
+      float: left;
+      font-size: 13px;
+      vertical-align: top;
+      width: 23px;
+    }
+
+    .last-updated {
+      color: #000;
+      font-size: 13px;
+      line-height: 16px;
+      font-style: italic;
+    }
+  }
+
+}

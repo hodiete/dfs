@@ -1,0 +1,53 @@
+{% extends 'profiles/custom/webny/themes/custom/dfs_ny/templates/content/webny--card-base.html.twig' %}
+
+{%  if(node.field_webny_whitelist_stitle.value is not empty and node.field_webny_whitelist_stitle.value is not null) %}
+    {% set vtitle = node.field_webny_whitelist_stitle.value %}
+{% else %}
+    {% set vtitle = node.label %}
+{% endif %}
+
+{% block card_image %}
+    {% if (content.field_webny_whitelist_image["#items"] is not empty) %}
+        {% if (node.field_webny_whitelist_target.value == '1') %}
+            <a target="_blank" href="{{ url }}">
+                <div class="card-image" style="background-image: url('{{ file_url(node.field_webny_whitelist_image.entity.field_image.entity.uri.value | image_style('card_vertical')) }}');">
+                </div>
+            </a>
+        {% else %}
+            <a target="_self" href="{{ url }}">
+                <div class="card-image" style="background-image: url('{{ file_url(node.field_webny_whitelist_image.entity.field_image.entity.uri.value | image_style('card_vertical')) }}');">
+                </div>
+            </a>
+        {% endif %}
+    {% else %}
+        {% if (node.field_webny_whitelist_target.value == '1') %}
+            <a target="_blank" href="{{ url }}">
+                <div class="card-fallback-image">
+                    {% include '@dfs_ny/includes/OpenBrowserArrow.svg.twig' %}
+                </div>
+            </a>
+        {% else %}
+            <a target="_self" href="{{ url }}">
+                <div class="card-fallback-image">
+                    {% include '@dfs_ny/includes/OpenBrowserArrow.svg.twig' %}
+                </div>
+            </a>
+        {% endif %}
+    {% endif %}
+{% endblock card_image %}
+
+{% block card_title %}
+    {{ vtitle | webny_trim_card_title }}
+{% endblock card_title %}
+
+{% block card_title_url %}
+    {% if (node.field_webny_whitelist_target.value == '1') %}
+	    <a target="_blank" href="{{ url }}" rel="bookmark">
+    {% else %}
+        <a target="_self" href="{{ url }}" rel="bookmark">
+    {% endif %}
+{% endblock card_title_url %}
+
+{% block card_content %}
+    {{ content|without('field_webny_whitelist_agency_key','field_webny_whitelist_global_key', 'field_webny_agency_keywords','field_webny_global_keywords','field_webny_whitelist_link_url','field_webny_whitelist_image', 'field_webny_whitelist_date', 'field_webny_whitelist_stitle','node.label') }}
+{% endblock card_content %}

@@ -1,0 +1,41 @@
+{% extends 'profiles/custom/webny/themes/custom/dfs_ny/templates/content/webny--teaser-base.html.twig' %}
+
+{% block title %}
+    {% if (node.field_webny_landing_short_title.value is not empty and node.field_webny_landing_short_title.value is not null) %}
+        {% set title = content.field_webny_landing_short_title %}
+    {% else %}
+        {% set title = node.label %}
+    {% endif %}
+
+    <a href="{{ url }}">
+        {% if title|length <= 65 %}
+            {{ title }}
+        {% else %}
+            {{ title|slice(0, 65) ~ '...' }}
+        {% endif %}
+    </a>
+{% endblock title %}
+
+{% block hero_image %}
+  {% if not content.field_webny_landing_hero_image.0 %}
+    <div class="list-fallback-img">{{ source('profiles/custom/webny/themes/custom/dfs_ny/images/NYS_StateOutline.svg') }}</div>
+  {% else %}
+    {{ content.field_webny_landing_hero_image }}
+  {% endif %}
+{% endblock hero_image %}
+
+{% block content %}
+  <div class="landing-summary-fieldwrapper">
+    <div class="description">
+      {{ content.field_webny_landing_summary2 }}
+    </div>
+  </div>
+{% endblock content %} 
+
+{% block footer %}
+    <ul class="links inline">
+        <li class="node-readmore">
+            <a href="{{ url }}" rel="tag" title="{{ node.label }}">Learn more<span class="visually-hidden"> about {{ node.label }}</span></a>
+        </li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,12 @@
+{%
+set classes = [
+'whitelisted--' ~ field_name|clean_class,
+]
+%}
+<span{{ attributes }}>
+    {% for item in items %}
+        <span{{ item.attributes.addClass(classes) }}>
+            <a title="{{ item.content['#title'] }}" href="{{ item.content['#url'] }}">{{ item.content['#title'] }}</a>
+        </span>
+    {% endfor %}
+</span>

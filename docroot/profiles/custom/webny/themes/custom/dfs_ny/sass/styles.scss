@@ -1,0 +1,113 @@
+@import "../node_modules/susy/sass/susy";
+@import "../node_modules/breakpoint-sass/stylesheets/breakpoint";
+/**
+  Normalize reset
+*/
+
+@import "base/reset";
+/**
+  Typography
+*/
+
+@import "base/typography";
+/**
+  Config file that contains centralized variables
+*/
+
+@import "config";
+// Base
+//
+// These are the default base styles applied to HTML elements.
+//
+// Component classes can override these styles, but if no class applies a style
+// to an HTML element, these styles will be the ones displayed.
+//
+// Style guide: base
+@import "base/base";
+@import "base/form";
+@import "base/icons";
+@import "base/table";
+// Form
+//
+// These are the default form styles applied to HTML elements.
+//
+// Style guide: form
+@import "base/form";
+
+/**
+  Main nav menu
+*/
+@import "base/mainmenu";
+
+
+// Layout
+//
+// These are the layout rules.
+//
+// Style guide: layout
+@import "layout/containers";
+@import "layout/sidebars";
+// Components
+//
+// Design components are reusable designs that can be applied using just the CSS
+// class names specified in the component. For more information on standards, structure, variables, and other
+// information, please view the git wiki: https://github.com/ny/WebNY-Distribution-D8/wiki/Components-in-Action
+//
+// Style guide: components
+@import "components/fourox";
+@import "components/tabs";
+@import "components/buttons";
+@import "components/blocks";
+@import "components/pager";
+@import "components/view_results";
+@import "components/global_navigation_header";
+@import "components/global_nav_footer";
+@import "components/secondary_nav";
+@import "components/event_date";
+@import "components/event_date_hero_mobile";
+@import "components/event_date_card";
+@import "components/card";
+@import "components/hero";
+@import "components/body";
+@import "components/contact";
+@import "components/announcement";
+@import "components/attachments";
+@import "components/bioframe";
+@import "components/plan_summary";
+@import "components/get_involved";
+@import "components/photo_gallery";
+@import "components/wysiwygframe";
+@import "components/sitemap";
+@import "components/contact_for_news";
+@import "components/two_button_descriptor";
+@import "components/video_frame";
+@import "components/social_media_frame";
+@import "components/category_tiles";
+@import "components/generic_page";
+@import "components/toc";
+@import "components/callouts";
+@import "components/share_bar";
+@import "components/whats_related";
+@import "components/location";
+@import "components/quick_links";
+@import "components/teaser";
+@import "components/landing_page";
+@import "components/search_filter";
+@import "components/page_teaser";
+@import "components/news_teaser";
+@import "components/webform";
+// States
+//
+// Design components are reusable designs that can be applied using just the CSS
+// class names specified in the component.
+//
+// the import below was a wildcard @import "state/*"; but it's explicit because the build fails w/wildcard
+@import "state/blocks";
+// Print
+//
+// Print specific styling
+//@import "print";
+// Fixes
+//
+// IE specific and other browser specific fixes
+@import "base/fix";

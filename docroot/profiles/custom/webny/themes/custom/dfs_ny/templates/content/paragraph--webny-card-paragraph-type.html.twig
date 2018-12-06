@@ -1,0 +1,146 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a paragraph.
+ *
+ * Available variables:
+ * - paragraph: Full paragraph entity.
+ *   Only method names starting with "get", "has", or "is" and a few common
+ *   methods such as "id", "label", and "bundle" are available. For example:
+ *   - paragraph.getCreatedTime() will return the paragraph creation timestamp.
+ *   - paragraph.id(): The paragraph ID.
+ *   - paragraph.bundle(): The type of the paragraph, for example, "image" or "text".
+ *   - paragraph.getOwnerId(): The user ID of the paragraph author.
+ *   See Drupal\paragraphs\Entity\Paragraph for a full list of public properties
+ *   and methods for the paragraph object.
+ * - content: All paragraph items. Use {{ content }} to print them all,
+ *   or print a subset such as {{ content.field_example }}. Use
+ *   {{ content|without('field_example') }} to temporarily suppress the printing
+ *   of a given child element.
+ * - attributes: HTML attributes for the containing element.
+ *   The attributes.class element may contain one or more of the following
+ *   classes:
+ *   - paragraphs: The current template type (also known as a "theming hook").
+ *   - paragraphs--type-[type]: The current paragraphs type. For example, if the paragraph is an
+ *     "Image" it would result in "paragraphs--type--image". Note that the machine
+ *     name will often be in a short form of the human readable label.
+ *   - paragraphs--view-mode--[view_mode]: The View Mode of the paragraph; for example, a
+ *     preview would result in: "paragraphs--view-mode--preview", and
+ *     default: "paragraphs--view-mode--default".
+ * - view_mode: View mode; for example, "preview" or "full".
+ * - logged_in: Flag for authenticated user status. Will be true when the
+ *   current user is a logged-in member.
+ * - is_admin: Flag for admin user status. Will be true when the current user
+ *   is an administrator.
+ *
+ * @see template_preprocess_paragraph()
+ *
+ * @ingroup themeable
+ */
+#}
+{%
+set classes = [
+'paragraph',
+'paragraph--type--' ~ paragraph.bundle|clean_class,
+view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
+]
+%}
+{% block paragraph %}
+    <div{{ attributes.addClass(classes) }}>
+        {% block content %}
+
+            <div class="webny-card-frame-inner">
+                {%  if((paragraph.field_webny_card_pg_title.value is not empty and paragraph.field_webny_card_pg_title.value is not null) or (paragraph.field_webny_card_pg_headline.value is not empty and paragraph.field_webny_card_pg_headline.value is not null)) %}
+                <h2>
+                    <span class="frame-title">
+                        {{ paragraph.field_webny_card_pg_title.value }}
+                    </span>
+                    <span class="frame-headline">
+                     {{ paragraph.field_webny_card_pg_headline.value }}
+                    </span>
+                </h2>
+                {% else %}
+                {% endif %}
+
+            </div>
+
+            <div>
+            {# maximum amount of cards is 3, so look from 0 - 2 to capture each potential card #}
+            {% for i in 0..2 %}
+                {# there is a chance of less than 3 cards, so verify the currently looped card exists #}
+                {% if content.field_webny_card_entity_ref[i] %}
+                    <div>
+                        <article class="webny-card">
+                            {{ content.field_webny_card_entity_ref[i] }}
+                            {# if card includes a call to action #}
+                            {# The following uses the attribute property to interpolate the variable name we need. #}
+                            {% if (attribute(paragraph, "field_webny_card_list_#{i + 1}").0.value == 'call_to_action') %}
+                            <div class="webny-card-cta">
+                              <span class="icon-right-caret">
+                                {# url portion from link field, title from referenced node, title portion from link field #}
+                                <a href="{{ attribute(paragraph, "field_webny_card_cta_#{i + 1}").0.url }}" title="{{ content.field_webny_card_entity_ref[i]['#node'].getTitle() }}">{{ attribute(paragraph, "field_webny_card_cta_#{i + 1}").0.title }}</a>
+                              </span>
+                            </div>
+                            {# if card includes a share bar #}
+                            {% elseif (attribute(paragraph, "field_webny_card_list_#{i + 1}").0.value == 'share_bar') %}
+                                <div class="webny-card-share-bar">
+                                    <div class="webny-card-share-elements">
+                                        <div class="webny-card-share-button">
+                                            <a href="mailto:?Subject={{ site_name }}: {{ content.field_webny_card_entity_ref[i]['#node'].getTitle() }}&Body={{ host }}{{ card_url[i] }}" target="_blank"><span class="icon-email"></span></a>
+                                        </div>
+                                        <div class="webny-card-share-button">
+                                            <a href="http://www.facebook.com/share.php?u={{ host }}{{ card_url[i] }}" target="_blank"><span class="icon-facebook"></span></a>
+                                        </div>
+                                        <div class="webny-card-share-button">
+                                            <a href="https://twitter.com/intent/tweet?text={{ content.field_webny_card_entity_ref[i]['#node'].getTitle() }}&url={{ host }}{{ card_url[i] }}" target="_blank"><span class="icon-twitter"></span></a>
+                                        </div>
+                                    </div>
+                                    <div class="webny-card-share-right">
+                                        <span class="icon-share">
+                                          <a>Share</a>
+                                        </span>
+                                    </div>
+                                </div>
+                            {# if card is using default functionality #}
+                            {% elseif (attribute(paragraph, "field_webny_card_list_#{i + 1}").0.value == '') %}
+                                <div class="webny-card-cta">
+                                    <span class="icon-right-caret">
+                                        {# url portion from link field, title from referenced node, title portion from link field #}
+                                        {# if node type is whitelisted content make sure to use url field FROM the node and not url OF the node #}
+                                        {% if (entity_type[i] == 'webny_whitelisted_content') %}
+                                            {# if title is not empty print title, else print url in title and link text #}
+                                            {% if (paragraph.field_webny_card_entity_ref[i].entity.field_webny_whitelist_link_url.0.title is not empty) %}
+                                                {% if (paragraph.field_webny_card_entity_ref[i].entity.field_webny_whitelist_target.0.value == '1') %}
+                                                    <a target="_blank" href="{{ paragraph.field_webny_card_entity_ref[i].entity.field_webny_whitelist_link_url.0.url }}" title="{{ paragraph.field_webny_card_entity_ref[i].entity.field_webny_whitelist_link_url.0.title }}">{{ paragraph.field_webny_card_entity_ref[i].entity.field_webny_whitelist_link_url.0.title }}</a>
+                                                {% else %}
+                                                    <a target="_self" href="{{ paragraph.field_webny_card_entity_ref[i].entity.field_webny_whitelist_link_url.0.url }}" title="{{ paragraph.field_webny_card_entity_ref[i].entity.field_webny_whitelist_link_url.0.title }}">{{ paragraph.field_webny_card_entity_ref[i].entity.field_webny_whitelist_link_url.0.title }}</a>
+                                                {% endif %}
+                                            {% else %}
+                                                {% if (paragraph.field_webny_card_entity_ref[i].entity.field_webny_whitelist_target.0.value == '1') %}
+                                                    <a target="_blank" href="{{ paragraph.field_webny_card_entity_ref[i].entity.field_webny_whitelist_link_url.0.url }}" title="{{ paragraph.field_webny_card_entity_ref[i].entity.field_webny_whitelist_link_url.0.url }}">{{ paragraph.field_webny_card_entity_ref[i].entity.field_webny_whitelist_link_url.0.url }}</a>
+                                                {% else %}
+                                                    <a target="_self" href="{{ paragraph.field_webny_card_entity_ref[i].entity.field_webny_whitelist_link_url.0.url }}" title="{{ paragraph.field_webny_card_entity_ref[i].entity.field_webny_whitelist_link_url.0.url }}">{{ paragraph.field_webny_card_entity_ref[i].entity.field_webny_whitelist_link_url.0.url }}</a>
+                                                {% endif %}
+                                            {% endif %}
+                                        {# included for event card using redirect url field #}
+                                        {% elseif (entity_type[i] == 'webny_event') %}
+                                            {% if (paragraph.field_webny_card_entity_ref[i].entity.field_webny_event_redirect_url.0.url is not empty) %}
+                                                <a href="{{ paragraph.field_webny_card_entity_ref[i].entity.field_webny_event_redirect_url.0.url }}" title="{{ paragraph.field_webny_card_entity_ref[i].entity.field_webny_event_redirect_url.0.url }}">LEARN MORE</a>
+                                            {% else %}
+                                                <a href="{{ host }}{{ card_url[i] }}" title="{{ content.field_webny_card_entity_ref[i]['#node'].getTitle() }}">LEARN MORE</a>
+                                            {% endif %}
+                                        {% else %}
+                                            <a href="{{ host }}{{ card_url[i] }}" title="{{ content.field_webny_card_entity_ref[i]['#node'].getTitle() }}">LEARN MORE</a>
+                                        {% endif %}
+                                    </span>
+                                </div>
+                            {% endif %}
+                        </article>
+                    </div>
+                {% endif %}
+            {% endfor %}
+            </div>
+
+        {% endblock %}
+    </div>
+{% endblock paragraph %}

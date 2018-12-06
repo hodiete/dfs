@@ -1,0 +1,103 @@
+// @import '../init';
+
+// This file is used to add styles to the style guide and is not included in
+// the Drupal site. It gets included by the style guide by adding it to the
+// options.styleGuide.css object in gulpfile.js.
+
+// Add an outline to every grid item in the style guide.
+// [id^="kssref-layouts-"] [class^="layout-"][class*="__"] {
+//   outline: 1px dotted color('grey');
+// }
+
+/**
+  Config file that contains centralized variables
+*/
+
+ 
+@import "../config";
+
+div.kss-modifier__wrapper {
+  > * {
+    // float: left;
+    width: 100%;
+    position: relative;
+  }
+}
+
+// Allow section to expand to demonstrate responsive behavior.
+#kss-node .kss-section {
+  max-width: none;
+  overflow: hidden;
+}
+
+/* featured card fix until image styles is fixed @todo - remove then */
+.webny-card img {
+    max-width: 100%;
+    width: 100%;
+}
+
+.visually-hidden { //class is in drupal core - needs to be in styleguide so that html from drupal site is rendered more consistently.
+  display:none;
+}
+
+// Fonts
+//
+// Markup: fonts.hbs
+//
+// Style guide: Color and Font.font
+
+.demo-proxmia {
+  font-family:$base-font;
+}
+.demo-agency-name {
+  font-family:$agency-name-font;
+}
+.demo-oswald {
+  font-family:$oswald;
+}
+
+
+// NY.Gov Color Scheme
+//
+// Markup: color.hbs
+//
+// Style guide: Color and Font.color
+
+
+.swatch {
+  display: inline-block;
+  width: 6rem;
+  height: 6rem;
+  border-radius: .25rem;
+  
+  p {
+  	background: rgba(#000, 0.5);
+  	color: #fff;
+  }
+
+}
+
+.swatch-primaryblue {
+  background-color: $color-primary;
+}
+.swatch-medblue {
+  background-color: $color-secondary;
+}
+// .swatch-dkblueaccent {
+//   background-color: $dkblueaccent;
+// }
+// .swatch-medblueaccent {
+//   background-color: $medblueaccent;
+// }
+.swatch-ltblueaccent {
+  background-color: $color-tertiary;
+}
+.swatch-primarygold {
+  background-color: $color-accent-primary;
+}
+.swatch-secondarygold {
+  background-color: $color-accent-secondary;
+}
+.swatch-text-blue {
+  background-color: $text-blue;
+}

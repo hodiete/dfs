@@ -1,0 +1,78 @@
+//styles for the administration agency
+
+//overwrite stuff
+
+$color-primary: #0E5F9D; // blue
+$color-secondary: #6697bc; // lt blue
+$color-tertiary: #D7EBF5; // blue grey
+$color-accent-primary: #F3DD6D; // yellow
+$color-accent-secondary: #F3F4AA; // lt yellow
+$color-icon-primary: $color-primary; // dusky blue
+// config.scss had global monochrome and link color variables
+
+//$color-nav-hover: rgba(14,95,157,.5); // rgba of #0E5F9D
+
+// color variables which need to be overridden from the base assignment per component
+/* $nav-top-hover-bkgd-color: $color-accent-primary;
+$color-hover-nav: $color-accent-primary;
+
+$nav-bottom-bkgd-color: $color-tertiary;
+$nav-bottom-text-color: black;
+
+$title-bar-bkgd-color: $color-secondary;
+$title-bar-default-text-color: $color-primary;
+$title-bar-sub-title-color: $color-primary;
+
+$summary-frame-bkgd-color: $color-accent-primary;
+$summary-frame-title-color: $color-secondary;
+$summary-frame-headline-color: black;
+$summary-frame-keypt-border: rgba(white, .2);
+
+$announce-frame-title-color: $color-accent-primary;
+$announce-frame-item-bkgd-color: $color-accent-tertiary;
+
+$bio-frame-bkgnd-color: $color-accent-secondary; 
+
+$button-bkgd-color: $color-accent-primary;
+
+$get-inv-frame-bkgd-color: $color-accent-primary;
+$get-inv-frame-title-color: $color-secondary;
+
+$wysiwyg-frame-title-color: $color-accent-primary;
+
+$featured-card-frame-title-color: $color-accent-primary;
+$featured-card-arrow-color: $color-primary; */
+
+// =====================================================================
+// FRAME BUTTONS -- DYNAMIC VARS
+/* 
+// ANNOUNCEMENT OVERRIDES
+$announcement-button-border-color:      #000;
+$announcement-button-text-color:        #000;
+$announcement-button-hover-back-color:  rgba(0,0,0,0.2);
+
+// BIOFRAME OVERRIDES
+$bio-button-border-color:               #000;
+$bio-button-text-color:                 #000;
+$bio-button-hover-back-color:           rgba(255,255,255,0.2);
+
+// GET INVOLVED OVERRIDES
+$getinv-button-border-color:            #000;
+$getinv-button-text-color:              #000;
+$getinv-button-hover-back-color:        rgba(255,255,255,0.2);
+
+// PLAN SUMMARY OVERRIDES
+$summary-button-border-color:           #fff;
+$summary-button-text-color:             #fff;
+$summary-button-hover-back-color:       rgba(255,255,255,0.2);*/
+
+// GLOBAL FOOTER
+$nav-background-color:                  $color-tertiary;
+$global-footer-top-text-decoration:     none;
+$global-footer-top-text-transform:      none; 
+
+// **
+//no overrides for view_results.scss currently
+
+//import base style
+@import "../../styles";

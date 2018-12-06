@@ -1,0 +1,118 @@
+{#
+/**
+ * @file
+ * Theme override to display a node for webny-generic-page.
+ * Begin TWIG NODE-WEBNY-GENERIC-PAGE Template
+ * CREATED BY WEBNY
+ */
+#}
+
+{# NODE FIELDS #}
+{# SUMMARY DESCRIPTION              -- field_webny_gencp_sumdes #}
+{# CONTENT CATEGORIZATION           -- field_webny_contentcat #}
+{# HERO DATE                        -- field_webny_gencp_date #}
+{# HERO DATE                        -- field_webny_gencp_heroimage #}
+{# HERO DESCRIPTION                 -- field_webny_gencp_herodesc #}
+{# KEYWORDS                         -- field_webny_agency_keywords #}
+{# AVERAGE TIME                     -- field_webny_gencp_avgtranstime #}
+{# HOW TO APPLY                     -- field_webny_gencp_howtoapply #}
+{# NAVIGATION TOGGLE ON/OFF         -- field_webny_gencp_navtoggle #}
+{# CONTENT SECTIONS                 -- field_webny_gencp_contentsect #}
+
+{# ATTACH JS LIBRARY #}
+{{ attach_library('dfs_ny/navigator') }}
+{{ attach_library('dfs_ny/callouts') }}
+
+{# DECLARED VARS #}
+{% set hero_image = file_url(node.field_webny_gencp_heroimage.entity.field_image.entity.uri.value) %}
+{% set nav_toggle = node.field_webny_gencp_navtoggle.value %}
+{% set toc_content_sections = content.field_webny_gencp_contentsect|without('label') %}
+
+<div class="webny-generic-content-page webny-toc-page">
+
+    <article {{ attributes.addClass('hero-layout') }}>
+
+        {# START QUICK EDITS #}
+        {{ title_prefix }}
+
+        {# ====== HERO SECTION ====== #}
+
+        {# HERO DEFINITION #}
+        {% if hero_image == '/' %}
+        <div class="hero-header hero-no-image hero-generic">
+            {% else %}
+            <div class="hero-header hero-has-image hero-generic">
+                {% endif %}
+
+                <div class="hero-image">
+                    {{ content.field_webny_gencp_heroimage }}
+                </div>
+                <!-- BACKGROUND GRAD -->
+                <div class="hero-bkg"></div>
+            </div>
+
+            {# HERO INNER DEFINITION #}
+            {% if hero_image == '/' %}
+            <div class="hero-inner hero-generic-inner">
+                {% else %}
+                <div class="hero-inner hero-generic-inner hero-has-image-content">
+                    {% endif %}
+
+                    <div class="hero-generic-wrapper">
+
+                    {% if content.field_webny_assoc-landing-page is not empty %}
+                        <div class="assoc-landing">
+                            {{ content.field_webny_assoc_landing_page }}
+                        </div>
+                    {% endif %}
+
+                    {% if node.field_webny_gencp_date.value is not empty %}
+                        <div class="published-date">
+                            {{ node.field_webny_gencp_date.value|date('F j, Y') }}
+                        </div>
+                    {% endif %}
+
+                    {# HERO HEADLINE / TITLE #}
+                    <h1>{{ label }}</h1>
+
+                    {# HERO DESCRIPTION #}
+                    <div class="hero-generic-summary">
+                        {{ content.field_webny_gencp_herodesc }}
+                    </div>
+
+                    {# HERO KEYWORDS #}
+                    <div class="hero-keywords">
+                        {% for term in node.field_webny_agency_keywords %}
+                            <a href="/keywords/{{ term.entity.machine_name.value }}">{{ term.entity.name.value }}</a>
+                        {% endfor %}
+                    </div>
+
+                    </div><!--end hero-generic-wrapper-->
+
+                    {# TRANSACTION TIME #}
+                    {# if there is no transaction time saved, don't show div #}
+                    {% if content.field_webny_gencp_avgtranstime.0 != '' %}
+                    <div class="hero-generic-transaction">
+                        <div class="hero-generic-transaction-time">
+                            Average time of transaction <span class="icon-outline_clock">{{ content.field_webny_gencp_avgtranstime.0 }}</span> minutes
+                        </div>
+                        <div class="hero-generic-transaction-button">
+                            {{ content.field_webny_gencp_howtoapply }}
+                        </div>
+                    </div>
+                    {% endif %}
+
+            </div>
+
+                {# ====== END HERO SECTION ====== #}
+
+                {# END QUICK EDITS #}
+                {{ title_suffix }}
+    </article>
+
+    {% include '@dfs_ny/includes/webny--action-bar.html.twig' %}
+    {% include '@dfs_ny/includes/webny--toc.html.twig' %}
+
+
+</div>
+

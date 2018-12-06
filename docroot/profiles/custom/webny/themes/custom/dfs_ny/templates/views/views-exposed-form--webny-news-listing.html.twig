@@ -1,0 +1,34 @@
+{#
+/**
+ * @file
+ * Theme override of a views exposed form.
+ *
+ * Available variables:
+ * - form: A render element representing the form.
+ *
+ * @see template_preprocess_views_exposed_form()
+ * based on views-exposed-form.html.twig
+ * WebNY has added the div with .results-exposed-filters-title
+ */
+#}
+{# bringing in jquery toggle function #}
+{{ attach_library('dfs_ny/filter-toggle') }}
+{% if q is not empty %}
+  {#
+    This ensures that, if clean URLs are off, the 'q' is added first,
+    as a hidden form element, so that it shows up first in the POST URL.
+  #}
+{{ q }}
+{% endif %}
+<div class="results-exposed-filters-outer filterTog">
+	<div class="results-exposed-filters-title">
+	    Filter
+	    {#<a href="javascript:;" class="filterTog">Toggle</a>#}
+	</div>
+
+	<div class="filterBody filterBodyHidden">
+		{{ form }}
+		
+	</div>
+	<div class="filter-display"><input type="button" class="filterTogDisplay" value="Expand" /></div>
+</div>

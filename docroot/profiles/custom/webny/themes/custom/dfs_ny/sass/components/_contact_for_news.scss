@@ -1,0 +1,272 @@
+// Contact for News
+//
+// Contact for News styling.
+//
+// Markup: contact_for_news.hbs
+//
+// Style guide: components.contact_for_news
+
+// color variables
+$contact-for-news-title: $color-primary !default;
+$contact-for-news-icons: $color-secondary !default;
+
+
+// ######################################################################### //
+/* START STYLING MOBILE FIRST UNDER HERE */
+
+.press-contact-info {
+  margin: 0 auto;
+  max-width: 780px;
+  width: 80%;
+
+  h2 {
+   font-size: 2rem; //This 36px size overrides the standard 41px h2 size in base styles
+   font-weight: 800;
+  }
+
+  fieldset {
+    border: none;
+    padding: 0;
+  }
+
+  .contact-phone,
+  .contact-address,
+  .contact-email,
+  .contact-fax,
+  .contact-mapdir {
+
+    position: relative;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: flex-start;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    min-height: 95px;
+  }
+
+  .contact-wrapper .contact-address .contact-address-value p {
+    line-height: 22px;
+  }
+
+  .contact-info-wrapper {
+
+    .icon-phone::before,
+    .icon-email::before,
+    .icon-other::before,
+    .icon-mapdir::before{
+      position: absolute;
+      width: 20px;
+      color: $color-primary;
+    }
+    .icon-phone{ @include icon(before, fa-mobile);}
+    .icon-email{ @include icon(before, fa-envelope);}
+    .icon-other{ @include icon(before, fa-elipses-h);}
+    .icon-mapdir{ @include icon(before, mapdir);}
+  }
+
+  .contact--field-webny-contact-phone,
+  .contact--field-webny-contact-address,
+  .contact--field-webny-contact-email,
+  .contact--field-webny-contact-fax,
+  .contact--field-webny-contact-mapdir {
+    font-family: $base-font !important;
+    font-weight: 800;
+    display: inline-block;
+    margin-bottom: 20px;
+   // margin-left: 10px;
+    padding-left: 33px;
+  }
+
+  .icon-phone::before {
+    font-size: 1.25em;
+  }
+
+    .contact-phone-value,
+    .contact-fax-value,
+    .contact-address-value,
+    .contact-email-value,
+    .contact-mapdir-value{
+      line-height: $frame-base-line-height;
+   //   -moz-box-sizing: border-box;
+   //   box-sizing: border-box;
+   //   width: 50%;
+   //   padding-left: 35px;
+      margin-left: 35px;
+    }
+
+    .contact-address-value p {
+      margin: 0;
+    }
+
+    .phone-number a,
+    .contact-fax-value a {
+      color: $color-mono-black;
+      &:hover {
+        text-decoration: none;
+      }
+    }
+
+  .contact--field-webny-contact-address p {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  .contact-email-value {
+    text-decoration: underline;
+  }
+
+  .social-media-wrapper {
+    border-top: 1px solid $gray-lite;
+    //border-bottom: 1px solid $gray-lite;
+    padding-top: 20px;
+
+    .fieldset-wrapper a:hover {
+      text-decoration: none;
+    }
+
+    .fieldset-wrapper a {
+      color: $color-mono-black;
+      text-transform: uppercase;
+      font-weight: 800;
+    }
+
+  }
+
+  .social-media-wrapper .fieldset-wrapper a:hover {
+    text-decoration: none;
+  }
+
+  .social-media-wrapper .fieldset-wrapper a {
+    color: $color-mono-black;
+    text-transform: uppercase;
+    font-weight: 800;
+    font-size: 0.888em;
+    display: inline;
+    min-height: 32px;
+  }
+
+  .social-media-wrapper {
+    .icon-facebook::before,
+    .icon-twitter::before,
+    .icon-youtube::before,
+    .icon-instagram::before,
+    .icon-google-plus::before,
+    .icon-soundcloud::before,
+    .icon-snapchat::before,
+    .icon-vine::before,
+    .icon-flickr::before,
+    .icon-rss::before,
+    .icon-pinterest::before,
+    .icon-tumblr::before,
+    .icon-linkedin::before,
+    .icon-vimeo::before {
+      color: $color-primary;
+      padding-right: 15px;
+      display: inline-block;
+    }
+
+    .icon-facebook:hover:before,
+    .icon-twitter:hover:before,
+    .icon-youtube:hover:before,
+    .icon-instagram:hover:before,
+    .icon-google-plus:hover:before,
+    .icon-soundcloud:hover:before,
+    .icon-snapchat:hover:before,
+    .icon-vine:hover:before,
+    .icon-flickr:hover:before,
+    .icon-rss:hover:before,
+    .icon-pinterest:hover:before,
+    .icon-tumblr:hover:before,
+    .icon-linkedin:hover:before,
+    .icon-vimeo:hover:before {
+      color: $color-secondary;
+    }
+
+    .icon-facebook {@include icon(before, fa-facebook);}
+    .icon-twitter {@include icon(before, fa-twitter);}
+    .icon-youtube {@include icon(before, fa-youtube);}
+    .icon-instagram {@include icon(before, fa-instagram);}
+    .icon-google-plus {@include icon(before, fa-google-plus);}
+    .icon-soundcloud {@include icon(before, fa-soundcloud);}
+    .icon-square {@include icon(before, square);}
+    .icon-snapchat {@include icon(before, fa-snapchat-ghost);}
+    .icon-vine {@include icon(before, fa-vine);}
+    .icon-flickr {@include icon(before, fa-flickr);}
+    .icon-rss {@include icon(before, fa-rss);}
+    .icon-pinterest {@include icon(before, fa-pinterest-p);}
+    .icon-tumblr {@include icon(before, fa-tumblr);}
+    .icon-linkedin {@include icon(before, fa-linkedin-square);}
+    .icon-vimeo {@include icon(before, fa-vimeo-square);}
+  }
+
+}
+// ######################################################################### //
+/* TABLET VIEW */
+@media (min-width: $min-tab) {
+
+  .contact-info-wrapper {
+
+    .fieldset-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: stretch;
+    }
+
+    .contact-col-1,
+    .contact-col-2 {
+      flex-direction: row;
+      width: 49%;
+    }
+
+  }
+
+  .social-media-wrapper {
+
+    .fieldset-wrapper a {
+      color: $color-mono-black;
+      text-transform: uppercase;
+      font-weight: 700;
+      float: left;
+      width: 45%;
+      margin-right: 5%;
+      margin-bottom: 5%;
+    }
+  }
+
+}// END MIN TABLET VIEW
+
+// ######################################################################### //
+
+
+/* PC VIEW */
+@media (min-width: $min-pc) {
+
+.press-contact-info {
+  width: 90%;
+  margin: 20px auto 20px;
+
+  .social-media-wrapper .fieldset-wrapper a {
+    width: 20%;
+  }
+}
+
+} // END MIN PC VIEW
+// ######################################################################## //
+
+/* SMALL PC VIEW */
+@media screen and (max-width: 910px) and (min-width: 768px) {
+
+  .press-contact-info {
+    width: 90%;
+    margin: 20px auto 20px;
+
+
+  .social-media-wrapper .fieldset-wrapper a {
+    width: 45%;
+    margin-right: 5%;
+    margin-bottom: 5%;
+  }
+}
+
+}// END SMALL PC VIEW
+// ######################################################################### //

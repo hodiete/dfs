@@ -180,7 +180,7 @@ class ProfileConfig {
       $this->getProfileContribModulePath('webform') . '/' . self::CONFIG_DIR . '/install',
       $this->getProfileFeatureConfigPath('whitelisted_content') . '/install',
       $this->getProfileFeatureConfigPath('whitelisted_content') . '/optional',
-      $this->getProfileThemeConfigPath('webny_theme') . '/install',
+      $this->getProfileThemeConfigPath('dfs_ny') . '/install',
       $this->getProfileFeatureConfigPath('document_content_type') . '/install',
       $this->getProfileFeatureConfigPath('document_content_type') . '/optional',
       $this->getProfileFeatureConfigPath('paragraphs_types') . '/install',
@@ -263,7 +263,7 @@ class ProfileConfig {
    * Get a profile theme path.
    *
    * @param string $theme_name
-   *   Theme machine name WITH the theme bundle name, e.g. webny_theme, not
+   *   Theme machine name WITH the theme bundle name, e.g. dfs_ny, not
    *   theme.
    *
    * @return string
@@ -276,7 +276,7 @@ class ProfileConfig {
    * Get a profile theme configuration path.
    *
    * @param string $theme_name
-   *   Theme machine name WITH the theme bundle name, e.g. webny_theme, not
+   *   Theme machine name WITH the theme bundle name, e.g. dfs_ny, not
    *   theme.
    *
    * @return string

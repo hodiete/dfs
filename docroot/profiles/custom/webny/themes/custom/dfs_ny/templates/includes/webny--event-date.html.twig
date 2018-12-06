@@ -1,0 +1,72 @@
+{# Shared event date/location markup. #}
+{% set day_month_classes = ['day-month-wrapper'] %}
+{% if multi_day %}
+  {% set day_month_classes = day_month_classes | merge(['multi-day']) %}
+{% endif %}
+
+<div class="event-date">
+  <div class="{{ day_month_classes | join(' ') }}">
+    <div class="month">
+      {% if not multi_day %}
+        <div class="start">{{ start_date | date('F') }}</div>
+      {% else %}
+        <div class="start">{{ start_date | date('M') }}</div>
+        <div class="dash">&mdash;</div>
+        <div class="end">{{ end_date | date('M') }}</div>
+      {% endif %}
+    </div>
+
+    <div class="day">
+      <div class="start">{{ start_date | date('d') }}</div>
+      {% if multi_day %}
+        <div class="dash">&mdash;</div>
+        <div class="end">{{ end_date | date('d') }}</div>
+
+      {% endif %}
+    </div>
+
+    <div class="event-year">
+      <div class="start-event-year">{{ start_date | date('Y') }}</div>
+        {% if multi_day %}
+          <div class="dash">&mdash;</div>
+          <div class="end-event-year">{{ end_date | date('Y') }}</div>
+        {% endif %}
+    </div>
+  </div>
+
+  <div class="event-date__wrapper">
+    {% if not all_day %}
+      <div class="time">
+        <div class="start_date">{{ start_date | date('g:i') }}</div>
+        {% if (not same_meridiem) or same_time %}
+          <div class="meridiem">{{ start_date | date('A') }}</div>
+        {% endif %}
+        {% if not same_time %}
+          <div class="dash">&mdash;</div>
+          <div class="end-date">{{ end_date | date('g:i') }}</div>
+          <div class="meridiem">{{ end_date | date('A') }}</div>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    <div class="address-wrapper">
+        <div class="venue-name">{{ content.field_webny_event_venue_name }}</div>
+        {# if last updated is not displaying, or template is full node view, display event address #}
+        {% if last_updated == 'Z' or type == 'full' %}
+            <div class="event-address">{{ content.field_webny_event_address }}</div>
+        {% endif %}
+    </div>
+
+    {# check if last_updated equals Z to determine if it's empty as Z is added via JS #}
+    {% if last_updated != 'Z' %}
+    <div class="last-updated-wrapper">
+        <div class="last-updated-label">Updated:&nbsp;</div>
+        {% if node.field_webny_event_upd_time.value == '0' %}
+            <div class="last-updated">{{ last_updated | date('F j, Y') }}</div>
+        {% else %}
+            <div class="last-updated">{{ last_updated | date('F j, Y g:ia') }}</div>
+        {% endif %}
+    </div>
+    {% endif %}
+  </div>
+</div>

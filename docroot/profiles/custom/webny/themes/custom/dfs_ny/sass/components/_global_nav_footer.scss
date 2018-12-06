@@ -1,0 +1,395 @@
+// Global Navigation Footer - Menu
+//
+//  Styling for Global Navigation Footer -- This example does not have social media links
+//
+// Markup: global_nav_footer.hbs
+//
+// Style guide: components.global_nav_footer
+
+// Global Navigation Footer - Social Links
+//
+// Styling for Global Navigation Footer -- Social Links
+//
+// Markup: global_nav_social.hbs
+//
+// Style guide: components.global_nav_footer.social
+
+// hint: only these color variables - the left most ones - should be used below
+
+$nav-bottom-bkgd-color:         $color-tertiary !default;
+$nav-bottom-text-color:         $color-mono-black !default;
+$nav-bottom-text-hover-color:   $text-blue !default;
+$nav-bottom-text-active-color:  $color-mono-black !default;
+
+// GLOBAL FOOTER CUSTOM STYLES
+$global-footer-top-text-decoration:     underline !default;
+$global-footer-top-text-transform:      uppercase !default;
+$nav-bottom-text-decoration:            $global-footer-top-text-decoration ;
+$nav-bottom-text-transform:             $global-footer-top-text-transform ;
+
+.webny-global-footer {
+
+  background-color: $nav-bottom-bkgd-color;
+  clear: both;
+  margin:0;
+  position: relative;
+  z-index: 5;
+
+  a { cursor: pointer;
+    &:link,
+    &:visited {
+      display: table-cell;
+      text-decoration: none;
+      color: $nav-bottom-text-color;
+
+    }
+    &:hover,
+    &:active,
+    &:focus {
+      color: $nav-bottom-text-active-color;
+      text-decoration: underline;
+    }
+  }
+
+  span {
+    cursor: default;
+  }
+
+  .agency-name,
+  .footer-menu h2{
+    color: $nav-bottom-text-color;
+    background: $nav-bottom-bkgd-color;
+    margin: 36px 60px 24px 60px;
+    padding: 0;
+    font-size: 22px;
+    line-height: 26px;
+    font-family: $agency-name-font; // via config -- working with D Sari
+    display: inline-block;
+    a:link, a:link:hover, a:hover, a:active, a:focus, a:visited, a:visited:hover {
+      text-decoration: none;
+      color: $nav-bottom-text-color;
+      padding: 0;
+      font-family: $agency-name-font;
+    }
+  }
+
+  nav {
+    padding: 0 60px 15px 60px;
+  }
+
+  ul {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-content: flex-start;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    font-family: $base-font;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 18px;
+    letter-spacing: 0px;
+    text-decoration:  none;
+    text-transform:   none;
+  }
+
+  ul ul {
+    display: flex;
+    flex-direction: column;
+    text-decoration:  none;
+    text-transform:   none;
+    margin-top: 13px;
+  }
+
+  li {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    padding: 0.1rem 2rem 0.5rem 0;
+    width: 90%;
+  }
+
+  nav > ul li{
+    a:hover,
+    a:active{
+      text-decoration: underline;
+    }
+  }
+
+  // FOR THE FOOTER FORMAT OPTIONS --
+  // VERTICAL SETTINGS
+  nav.footer-vertical{
+
+    ul.global-footer-top-links > li > span,
+    ul.global-footer-top-links > li > a {
+
+      font-size: 14px;
+      font-weight: bold;
+
+      &:first-child {
+        border-bottom: 1px solid #333;
+        text-decoration: none;
+        text-transform: $nav-bottom-text-transform;
+        font-size: 16px;
+        font-weight: bold;
+      }
+    }
+
+    ul.global-footer-inner-links{
+      li{
+        width: 100%;
+      }
+    }
+
+  } // END FOOTER VERTICAL LAYOUT -- ALA COLUMNS
+
+  // HORIZONTAL SETTINGS
+  nav.footer-horizontal{
+
+    li{
+      width: 90%;
+    }
+
+    ul.global-footer-top-links > li > a {
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+  } // END FOOTER HORIZONTAL LAYOUT -- ALA LISTED INLINE LINKS
+
+} // END GLOBAL FOOTER
+
+  .social-media h2 {
+    text-align: center;
+    font-size: $base-font-size - 2px;
+    color:$nav-bottom-text-color;
+    text-transform: uppercase;
+  }
+
+  .social-media h2:before,
+  .social-media h2:after {
+    background-color: #000;
+    content: '';
+    display: inline-block;
+    height: 1px;
+    position: relative;
+    vertical-align: middle;
+    width: 20%;
+    top: -1px;
+  }
+
+  .social-media ul{
+    align-content: flex-start;
+    margin: 0 auto;
+    padding-left: 0;
+    width: 100%;
+  }
+
+  .social-media ul li {
+    text-transform: uppercase;
+    padding: .25em 0 1em 0;
+    text-align: left;
+    width: 100%;
+  }
+
+  .social-media h2:before {
+    right: 1.5em;
+    margin-left: -50%;
+  }
+  .social-media h2:after {
+    left: 1.5em;
+    margin-right: -50%;
+  }
+
+  .social-media a::before {
+    content: '';
+    position: relative;
+    height: 20px;
+    width: 20px;
+    padding-right: 15px;
+    color: $color-primary;
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  .social-media a:hover::before {
+    color: $color-secondary;
+    text-decoration: none;
+  }
+
+  .social-media a {
+    height: 20px;
+    padding: 10px 0;
+    position: relative;
+    text-decoration: none;
+  }
+
+  .icon-instagram a:hover:before {
+    text-decoration: none;
+  }
+
+  /* need to fix this to allow different agency color schemes, need to add svg option see NDD-92 notes */
+  .social-media {
+    a[class="imgico_blogger"]{@include icon(before, fa-icon-blogger2);}
+
+    a[class="imgico_delicious"]{@include icon(before, fa-delicious);}
+
+    a[class="imgico_facebook"]{@include icon(before,fa-facebook);}
+
+    a[class="imgico_feed"]{@include icon(before, fa-rss);}
+
+    a[class="imgico_flickr"]{@include icon(before, fa-flickr);}
+
+    a[class="imgico_foursquare"]{@include icon(before, fa-foursquare);}
+
+    a[class="imgico_github"]{@include icon(before, fa-github-square);}
+
+    a[class="imgico_google-plus"]{@include icon(before, fa-google-plus);}
+
+    a[class="imgico_instagram"]{@include icon(before, fa-instagram);}
+
+    a[class="imgico_linkedin"]{@include icon(before, fa-linkedin-square);}
+
+    a[class="imgico_mail"]{@include icon(before, fa-envelope);}
+
+    a[class="imgico_pinterest"]{@include icon(before, fa-pinterest-p);}
+
+    a[class="imgico_reddit"]{@include icon(before, fa-reddit-alien);}
+
+    a[class="imgico_share"]{@include icon(before, fa-share);}
+
+    a[class="imgico_snapchat"]{@include icon(before, fa-snapchat-ghost);}
+
+    a[class="imgico_soundcloud"]{@include icon(before, fa-soundcloud);}
+
+    a[class="imgico_tumblr"]{@include icon(before, fa-tumblr);}
+
+    a[class="imgico_twitter"]{@include icon(before, fa-twitter);}
+
+    a[class="imgico_vimeo"]{@include icon(before, fa-vimeo-square);}
+
+    a[class="imgico_vine"]{@include icon(before, fa-vine);}
+
+    a[class="imgico_yelp"]{@include icon(before, fa-yelp);}
+
+    a[class="imgico_youtube"]{@include icon(before, fa-youtube);}
+
+  }
+
+  /* fixing Unav bleed issues */
+
+  .nygov-universal-footer .l-footer .pane-dsc {
+    margin-top: 1em;
+    margin-bottom: 1em !important;
+  }
+
+  // ######################################################################### //
+  /* MOBILE VIEW */
+  @media (min-width: $min-mobile) {
+
+    .webny-global-footer {
+      nav.footer-vertical {
+        li {
+          width: 100%;
+        }
+      }
+
+      nav.footer-horizontal {
+        li {
+          width: 45%;
+        }
+      }
+    } // END
+
+    .social-media ul li{
+      width: 90%;
+      text-align: left;
+    }
+    .social-media ul{
+
+    }
+
+  } // END MIN MOBILE VIEW
+
+  // ######################################################################### //
+  /* TABLET VIEW */
+  @media (min-width: $min-tablet) {
+    .webny-global-footer {
+      nav.footer-vertical {
+        li {
+          width: 45%;
+        }
+      }
+
+      nav.footer-horizontal {
+        li {
+          width: 40%;
+        }
+      }
+    } // END
+
+    .social-media h2:before,
+    .social-media h2:after {
+      width: 30%;
+    }
+
+    .social-media ul li{
+       width: 45%;
+      text-align: left;
+    }
+
+    .social-media ul{
+    }
+
+
+  } // END MIN TABLET VIEW
+
+  // ######################################################################### //
+  /* DESKTOP VIEW */
+  @media (min-width: $min-desktop) {
+    .webny-global-footer {
+      nav.footer-vertical,
+      nav.footer-horizontal{
+        li {
+          width: 16%;
+        }
+      }
+
+    }
+
+    .social-media h2:before,
+    .social-media h2:after {
+      width: 40%;
+    }
+
+    .social-media ul li{
+        width: 20%;
+        text-align: center;
+    }
+
+    .social-media ul{
+
+    }
+
+  } // END MIN PC
+
+  // ######################################################################### //
+  /* WIDE VIEW  > 1280 */
+  @media (min-width: $min-wide) {
+    .webny-global-footer {
+      nav.footer-vertical {
+        li {
+          width: 17%;
+        }
+      }
+
+      nav.footer-horizontal {
+        li {
+          width: 17%;
+        }
+      }
+    }
+
+  }

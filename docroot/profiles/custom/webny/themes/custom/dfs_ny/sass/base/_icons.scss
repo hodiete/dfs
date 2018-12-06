@@ -1,0 +1,87 @@
+// Use "icon-" class to render icons
+[class^="icon-"], [class*=" icon-"] {
+  font-family: 'icomoon';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  &:before {
+    font-family: 'icomoon';
+  }
+}
+
+// Map icon names to font unicode characters
+$icons: (
+        document:"\e615",
+        fa-document:"\f0f6",
+        download:"\e622",
+        fa-download:"\f019",
+        email:"\e617",
+        fa-envelope:"\f0e0",
+        facebook:"\e621",
+        fa-facebook:"\f09a",
+        fa-elipses-h:"\f141",
+        twitter:"\e604",
+        fa-twitter:"\f099",
+        youtube:"\e637",
+        fa-youtube:"\f16a",
+        instagram:"\e60f",
+        fa-instagram:"\f16d",
+        google-plus:"\e627",
+        fa-google-plus:"\f0d5",
+        soundcloud:"\e63d",
+        fa-soundcloud:"\f1be",
+        square:"\e63b",
+        fa-snapchat-ghost:"\f2ac",
+        vine:"\e602",
+        fa-vine:"\f1ca",
+        flickr:"\e620",
+        fa-flickr:"\f16e",
+        rss:"\e61a",
+        fa-rss:"\f09e",
+        pinterest:"\e60a",
+        fa-pinterest-p:"\f231",
+        tumblr:"\e634",
+        fa-tumblr:"\f173",
+        linkedin:"\e62a",
+        fa-linkedin-square:"\f08c",
+        vimeo:"\e636",
+        fa-vimeo-square:"\f194",
+        phone:"\e62d",
+        fa-mobile:"\f10b",
+        checkmark: "\e60e",
+        fa-checkmark: "\f00c",
+        filter-add:"\e618",
+        fa-filter-add:"\f055",
+        filter-selected:"\e61f",
+        fa-filter-selected:"\f058",
+        filter-subtract:"\e623",
+        fa-foursquare:"\f180",
+        github:"\f09b",
+        fa-github-square:"\f092",
+        fa-reddit-alien:"\f281",
+        fa-share:"\f064",
+        fa-yelp:"\f1e9",
+        fa-caret-right:"\f0da",
+        play-button:"\e631",
+        close-button:"\e611",
+        fa-google-play:"",
+        fa-itunes:"\f179",
+        //blogger:"\f000",
+        fa-icon-blogger2:"\eab8",
+        fa-delicious:"\f1a5",
+        arrow-up:"\f0d8",
+        arrow-left:"\f0d9",
+        fa-pin:"\F041",
+        fa-clock:"\F017",
+        mapdir:"\f041",
+        external-link:"\f08e",
+        warning_sign:"\f071",
+        left-arrow:"\f104",
+        refresh:"\f021",
+);

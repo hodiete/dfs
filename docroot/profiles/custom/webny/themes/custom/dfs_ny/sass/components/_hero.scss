@@ -1,0 +1,1350 @@
+// Hero
+//
+// Styling for various Hero types.
+//
+// For more information please see the story sources: https://itswebny.atlassian.net/browse/NDD-139 and https://itswebny.atlassian.net/browse/NDD-188
+//
+// Style guide: components.hero
+
+
+// Landing Page
+//
+// Styling for the Landing Page Content Type Hero. This example does not contain a photo.
+//
+// For more information please see the story source: https://itswebny.atlassian.net/browse/NDD-188
+//
+// Markup: hero-landing.hbs
+//
+// Style guide: components.hero.landing
+
+// News Page
+//
+// Styling for the News Content Type Hero.
+//
+// For more information please see the story source: https://itswebny.atlassian.net/browse/NDD-139 
+//
+// Markup: hero-news.hbs
+//
+// Style guide: components.hero.news
+
+// Hero Video Frame
+//
+// Styling for the Hero with a Video Frame. This is an example of the video after the 'watch now' button has been clicked.
+//
+// For more information please see the story source: https://itswebny.atlassian.net/browse/NDD-923
+//
+// Markup: hero-video-shown.hbs
+//
+// Style guide: components.hero.video-one
+
+
+
+// color variables
+$hero-bkgd-color: $color-secondary !default;
+$hero-text-color: $color-mono-white !default;
+$hero-transaction-border: $color-secondary !default;
+$hero-transaction-button: $color-primary !default;
+$hero-keyword-bkgd-color: $color-accent-primary !default;
+$hero-keyword-hover-bkgd-color: $color-accent-secondary !default;
+$hero-keyword-text-color: $color-mono-white !default;
+$hero-event-date-color: $color-accent-primary !default;
+$hero-event-bkgd-transparent-black: $bkgd-black-50 !default;
+
+// ************************* //
+// HERO PARTIAL
+// CREATED BY WEBNY
+// ************************* //
+
+// ##################################################################
+/* MOBILE FIRST STYLES */
+
+// ========================================================================= //
+/* FONTS / SIZES */
+
+
+.hero-no-image{
+  background-color: $hero-bkgd-color;
+  height: 385px;
+}
+
+.hero-no-image.hero-generic {
+  background-color: $hero-bkgd-color;
+  height: 487px;
+}
+
+.hero-no-image.hero-location {
+  background-color: $hero-bkgd-color;
+  height: 390px;
+  width: 100%;
+}
+
+.hero-no-image.hero-event {
+  background-color: $hero-bkgd-color;
+  height: 455px;
+}
+
+.hero-no-image.hero-landing {
+  height: 450px;
+}
+
+// ========================================================================= //
+/* HERO QUICK EDIT FIX */
+.user-loggedin {
+  .front {
+    .hero-layout .hero-has-image .hero-image {
+        .contextual-region {
+
+          position: static;
+
+          @media (min-width: 768px) and (max-width: 959px) {
+            position: static;
+          }
+
+          @media (min-width: 960px) {
+            position: static;
+
+          }
+        }
+    }
+  }
+
+  .hero-layout .hero-has-image.hero-generic .hero-image {
+    .contextual-region {
+
+      position: static;
+
+      @media (min-width: 768px) and (max-width: 959px) {
+        position: static;
+      }
+
+      @media (min-width: 960px) {
+        position: static;
+
+      }
+    }
+  }
+
+
+
+}
+  /*
+  .contextual-region {
+
+    position: static;
+
+    @media (min-width: 768px) and (max-width: 959px) {
+      position: static;
+    }
+
+    @media (max-width: 960px) {
+      position: static;
+
+    }
+  }
+  .hero-layout {
+
+    position: static;
+
+    @media (min-width: 768px) and (max-width: 959px) {
+      position: static;
+    }
+
+    @media (max-width: 960px) {
+      position: static;
+    }
+
+  }
+  /*
+
+
+// ========================================================================= //
+/* HERO LAYOUT */
+.hero-layout {
+  overflow: hidden;
+  position: relative;
+
+  .hero-news-inner,
+  .hero-ipage-inner,
+  .hero-landing-inner,
+  .hero-event--inner{
+    padding: 40px 8%;
+    position: relative;
+    top: 0;
+    left: 0;
+    background: none;
+    &.hero-has-image-content {
+      position: relative;
+      z-index: 3;
+      background-color: black;
+      box-sizing: border-box;
+
+    }
+
+  .hero-landing-inner {
+    h2, h1 {
+      width: 100%;
+      max-width: 690px;
+      }
+    .hero-summary {
+     width: 100%;
+     max-width: 690px;
+      }
+    }
+  }
+
+  .hero-generic-inner {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    padding-top: 20px;
+    height: 500px;
+    &.hero-has-image-content {
+      position: relative;
+      z-index: 3;
+      background-color: black;
+      box-sizing: border-box;
+    }
+
+    .assoc-landing > div {
+      padding-left: 60px;
+
+    }
+
+    .assoc-landing > div > a {
+
+      font-family: 'Proxima Nova';
+      font-size: 14px;
+      color: $color-mono-white;
+      font-weight: bold;
+
+
+      &:before {
+        font-family: 'icomoon';
+        content: "\F104";
+        color: white;
+        padding-right: 5px;
+      }
+      &:hover {
+        text-decoration: none;
+      }
+    }
+
+
+
+    .published-date {
+      //padding: 20px 20px 0;
+      padding-left: 60px;
+      padding-top: 30px;
+      color: #fff;
+      font-family: 'Proxima Nova';
+      font-weight: 700;
+      font-size: 0.7em;
+      text-transform: uppercase;
+    }
+    h1, h2 {
+      padding: 20px 40px 0 60px;
+      padding-top: 0px;
+    }
+
+    h1 {
+      margin-top: 10px;
+    }
+
+    h2 {
+      margin-top: 56px;
+    }
+
+    .hero-keywords {
+      margin-left: 60px;
+      padding-bottom: 10px;
+    }
+  }
+
+  .hero-location-inner {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    padding: 0;
+    &.hero-has-image-content {
+      position: relative;
+      z-index: 3;
+    }
+    h1, h2 {
+      padding-bottom: 0px;
+      padding-top: 0px;
+      margin-top: 10px;
+    }
+  }
+
+  .hero-no-image.hero-news{
+    display: block;
+    position: relative;
+  }
+
+  .hero-news-inner,
+  .hero-ipage-inner,
+  .hero-landing-inner,
+  .hero-event--inner{
+    position: absolute;
+    &.hero-has-image-content {
+      //background: none;
+    }
+  }
+
+  .hero-no-image + .hero-ipage-inner,
+  .hero-no-image + .hero-landing-inner,
+  .hero-no-image + .hero-event--inner{
+    position: absolute;
+  }
+
+
+  .hero-header{
+    background-position: 50% 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: $hero-text-color;
+    min-height: 256px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .hero-has-image-content {
+    min-height: 256px;
+  }
+
+  .hero-has-image .hero-image {
+    overflow: hidden;
+    width: 100%;
+  }
+
+  .hero-news-date {
+    .webny-card-date { 
+      font-weight: bold;
+    }
+  }
+
+  // This approach is very similar to the `object-fit: cover;` approach, but with support for older browsers.
+  .hero-has-image .hero-image img {
+    position: absolute;
+    // Center vertically.
+    //top:-100%;
+    //bottom:-100%;
+    // Center horizontally.
+    left: -100%;
+    right: -100%;
+    // Sizing.
+    margin: auto;
+    height: auto;
+    min-height: 100%;
+    min-width: 100%;
+    max-width: none;
+    width: auto;
+  }
+
+  .hero-image-wrap{
+    position: relative;
+
+    .hero-news-inner {
+      padding: 0;
+      margin: 0;
+    }
+
+    .hero-news-inner.hero-has-image-content{
+      padding: 40px 4%;
+    }
+
+  }
+
+  .hero-published-date {
+    font-family: $base-font;
+    font-size: 0.8em;
+    text-transform: uppercase;
+    color: $hero-text-color;
+    position: relative;
+    z-index: 3;
+  }
+
+  .hero-published-date > div{
+    display: inline-block;
+  }
+
+  h1,h2{
+
+    color: $hero-text-color;
+    line-height: 32px;
+    font-size: 28px;
+    width: auto;
+    margin-bottom: 10px;
+    position: relative;
+    z-index: 3;
+  }
+
+  .hero-buttons,
+  .hero-keywords{
+    margin-top: 0px;
+    padding: 10px 15px 30px 0px;
+    & > div > div {
+      margin-bottom: 20px;
+    }
+  }
+
+  .hero-event {
+    .hero-buttons,
+    .hero-keywords {
+      margin-top: 0px;
+      padding: 30px 15px 30px 30px;
+
+    }
+  }
+
+  //used on landing pages
+  .hero-buttons div {
+    margin: 17px 0;
+    padding-top: 0px;
+  }
+
+  .hero-keywords > div > div {
+    display:inline-block;
+  }
+
+  .hero-buttons a {
+    font: 14px/4 'Proxima Nova';
+    font-weight: bold;
+    color: #ffffff;
+    cursor: pointer;
+    text-decoration: none;
+    display:block;
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.7);
+    text-align: center;
+    padding: 0 20px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    width: auto;
+    &:hover {
+      border: 1px solid #fff;
+      background-color: rgba(0,0,0,0.8)
+    }
+  }
+
+  .hero-keywords a {
+    position:relative;
+    font: 13px/4 'Oswald';
+    font-weight: bold;
+    line-height: 14px;
+    letter-spacing: 2px;
+    padding: 10px;
+    text-transform: uppercase;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    color: #ffffff;
+    background-color: $color-accent-primary;
+    margin-right: 38px;
+    &:hover:after {
+      border-color: transparent transparent transparent $color-accent-secondary;
+    }
+    &:hover {
+      background-color: $color-accent-secondary;
+    }
+
+    &:after {
+      border: 19px solid;
+      border-color: transparent transparent transparent $color-accent-primary;
+      height: 0;
+      width: 0;
+      position: absolute;
+      right: -38px;
+      top: 0px;
+      content: "";
+      display: inline-block;
+    }
+  }
+
+  .hero-generic-transaction {
+    padding: 7%;
+    text-align: left;
+    background: white !important;
+    border-top: 5px solid $hero-transaction-border;
+    margin-top: 0 !important;
+    color: #000000;
+    box-sizing: border-box;
+    position: relative;
+
+    .hero-generic-transaction-time {
+      margin: 0 auto;
+      letter-spacing: 2px;
+      padding: 10px 20px;
+      font-size: 0.7em;
+      font-family: 'Proxima Nova';
+      font-weight: 700;
+      text-transform: uppercase;
+      line-height: 1;
+
+      &:before {
+        font-family: 'icomoon';
+        speak: none;
+        font-style: normal;
+        font-weight: normal;
+        font-variant: normal;
+        text-transform: none;
+        line-height: 1;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        content: "\e62c";
+        font-size: 2.7em;
+        float: left;
+        padding-right: 10px;
+      }
+
+
+      span {
+        font-family: 'Proxima Nova';
+        font-weight: 700;
+        font-size: 1.4em;
+        &:before {
+          display: inline-block !important;
+          font-size: 1.1em;
+          vertical-align: top;
+          padding-right: 5px;
+          float: none;
+          content: "";
+        }
+      }
+    }
+
+    .hero-generic-transaction-button {
+      padding: 10px 20px;
+
+      a {
+        padding: 14px;
+        background: $hero-transaction-button;
+        width: 100%;
+        display: block;
+        text-align: center;
+        letter-spacing: 1px;
+        border: 1px solid #fff;
+        font-size: 0.8em;
+        font-family: 'Proxima Nova';
+        font-weight: 700;
+        text-transform: uppercase;
+        color: #fff;
+        line-height: 16px;
+        box-sizing: border-box;
+
+        &:hover {
+          text-decoration: none;
+        }
+      }
+    }
+  }
+
+  .hero-generic-summary {
+    padding: 0 22px 0 60px;
+    font-size: 18px; /*1em; */
+    color: $hero-text-color;
+    position:  relative;
+    z-index: 5;
+    text-align: left;
+    margin-bottom: 25px;
+  }
+
+  .hero-summary{
+    font-size: 1em;
+    color: $hero-text-color;
+    position:  relative;
+    z-index: 5;
+    text-align: left;
+    width: 100%;
+  }
+
+  .hero-live-now{
+    background-color: #E90000;
+    color: #fff;
+    width: 80px;
+    padding: 7px 4px;
+    margin-bottom: 6px;
+
+    p{
+      font-family: $oswald;
+      letter-spacing: 2px;
+      font-weight: bold;
+      font-size: 14px;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+
+    }
+  }
+
+  // Event Hero with dates - mobile Start here.
+  .hero-event {
+    width: auto;
+
+    .hero-content-wrap {
+      position: relative;
+    }
+
+    &--date-block {
+      width: auto;
+      padding: 0;
+      margin-top: 30px;
+
+      @include event-date-hero-mobile;
+
+      .month {
+        color: $hero-keyword-text-color;
+      }
+
+      .day {
+        color: $hero-event-date-color;
+      }
+
+      .event-year {
+        color: $hero-keyword-text-color;
+      }
+
+      .address-wrapper::before,
+      .time::before {
+        color: $hero-event-date-color;
+      }
+      .day-month-wrapper {
+        width: auto;
+      }
+      .address span.country {
+        display:none;
+      }
+      .venue-name div {
+        color: $hero-keyword-text-color;
+      }
+    }
+  }
+
+  // Custom height and width for background with image for events
+  .hero-inner.hero-event--inner.hero-has-image-content{
+    min-height: 455px;
+    width: 100%;
+  }
+
+  // Custom margin and padding for event keywords
+  .hero-event--title-block .hero-keywords{
+    margin: 30px 0 0 0;
+    padding: 0;
+  }
+
+  // Custom width for event inner classes to make border-bottom the correct width
+  .hero-inner.hero-event--inner {
+    width: 85%;
+  }
+  // Event Hero with dates - mobile Ends here.
+
+
+  // =====================================================================
+  // HERO HAS NO IMAGE -- MAKE RELATIVE
+
+
+  .hero-news + .hero-no-image-wrap {
+    min-height: 305px;
+    display: block;
+    padding: 40px 60px;
+    background-color: $hero-bkgd-color;
+
+    .hero-news-inner {
+      position: relative;
+      padding: 0;
+      margin: 0;
+      width: 100%;
+    }
+  }
+
+  .hero-no-image.hero-news {
+    display: none;
+  }
+
+  // =====================================================================
+  // HERO HAS A VIDEO OPTION - OVERRIDE VIDEOJS STYLES
+
+  .hero-video-frame{
+    position: relative;
+    width: 100%;
+    min-height: 320px;
+
+    .hero-video-inner {
+      .video-js {
+        .vjs-tech{
+          border: 0;
+        }
+        width: 100%;
+        margin: 0 auto;
+        min-height: 320px;
+        border: 0;
+      }
+
+      // YOUTUBE OVERRIDE
+      .hero-type-youtube {  }
+
+      .vjs-control-bar {
+        margin: 0 auto;
+        width: auto;
+      }
+      .vimeoplayer {  }
+      .videojs-heroplayer-youtube-dimensions.vjs-fluid,
+      #videojs-heroplayer-vimeo.video-js.vjs-16-9{
+        padding-top: 0;
+      }
+      .vimeoFrame {  }
+
+      .hero-type-youtube .vjs-control-bar{
+        display: none !important;
+      }
+
+    }
+  }
+
+  #hero-video-frame{
+    background-color: #000;
+  }
+
+  .hero-video-close{
+    position: absolute;
+    top: 10px;
+
+    // CONSULT DT ON LEFT OR RIGHT PLACEMENT OF CLOSE
+    right: 10px;
+    z-index: 12;
+
+    a{
+      @include icon(before,close-button);
+      color: #fff;
+      font-size: 30px;
+      opacity: .4;
+      text-decoration: none;
+
+      &:hover{
+        opacity: 1;
+      }
+    }
+  }
+
+  .hero-video-hide{
+    display: none;
+  }
+  .hero-video-show{
+    display: block;
+  }
+  .hero-bkg-removed{
+    background-size: 0;
+    background-color: #000;
+  }
+  .hero-meta-change{
+    background-color: #000;
+    height: 425px;
+  }
+  .video_hero_button > a{
+    @include icon(before, play-button);
+  }
+  .video-js.vjs-default-skin.vjs-paused .vjs-big-play-button {
+    display: block !important;
+  }
+
+  #videojs-heroplayer-vimeo_Vimeo_api.vimeoplayer{
+    overflow: hidden;
+  }
+
+  .ytp-chrome-controls{
+    width: auto;
+  }
+
+}
+
+// END HERO-LAYOUT
+
+// ######################################################################### //
+/* MIN TABLET VIEW */
+@media (min-width: $min-tab) {
+
+  .hero-has-image{
+    background-color: $hero-bkgd-color;
+    opacity: .9;
+  }
+
+  .hero-no-image {
+    height: 385px;
+  }
+
+  .hero-no-image.hero-landing {
+    height: 385px;
+  }
+
+  .hero-no-image.hero-location {
+    background-color: $hero-bkgd-color;
+    height: 500px;
+    width: 100%;
+  }
+
+  .hero-header,
+  .hero-no-image,
+  .hero-landing {
+    min-height: 385px;
+  }
+
+  .hero-layout {
+
+       .hero-landing-inner, .hero-ipage-inner {
+         h2, h1 {
+           width: 100%;
+           max-width: 690px;
+         }
+         .hero-summary{
+           width: 100%;
+           max-width: 690px;
+         }
+         .hero-buttons {
+          // padding-top: 30px;
+         }
+       }
+
+    .hero-no-image.hero-generic {
+      background-color: $hero-bkgd-color;
+      height: 385px;
+    }
+
+    .hero-generic-inner {
+      top: 0;
+      left: 0;
+
+      .published-date {
+        padding-top: 30px;
+      }
+
+      h1 {
+        width: 66%;
+        max-width: 690px;
+      }
+
+      .hero-generic-summary {
+        width: 66%;
+        max-width: 690px;
+        font-size: 30px;
+      }
+    }
+
+    .hero-generic-transaction {
+      box-sizing: border-box;
+      right: 0;
+      position: absolute !important;
+      top: 20%;
+      width: 25%;
+      color: #000;
+      text-align: center;
+      background: white !important;
+      border-left: 5px solid $hero-transaction-border;
+      border-top: none;
+      margin-top: 0px !important;
+      padding: 0px !important;
+      clear: both;
+
+
+      .hero-generic-transaction-time {
+        margin: 0 auto;
+        letter-spacing: 2px;
+        padding: 27px 0px 10px 0px !important;
+        width: 100% !important;
+        line-height: 20px;
+
+        &:before {
+          content: "";
+        }
+
+        span {
+          display: block;
+          font-size: 1.8em !important;
+          margin: 10px 0;
+
+          &:before {
+            display: inline-block !important;
+            font-size: 1.1em;
+            vertical-align: top;
+            padding-right: 5px;
+            float: none;
+            content: "\e62c";
+          }
+        }
+      }
+
+      .hero-generic-transaction-button {
+        padding: 0px 20px 30px 20px !important;
+        width: auto;
+        margin: 0 auto;
+      }
+    }
+
+    // Event Hero with dates - Tablet
+    .hero-event {
+
+      .hero-content-wrap {
+        position: relative;
+      }
+
+      &--inner {
+        min-height: 0;
+      }
+
+      &--title-block {
+        float: left;
+        width: calc(100% - 350px);
+        margin: 50px 0px 0px 60px;
+      }
+
+      &--date-block {
+        border-left: 1px solid $color-mono-mid;
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding: 28px 50px 15px;
+        margin-top: 0;
+        height: 427px;
+        min-width: 255px;
+
+        .day-month-wrapper {
+          margin-left: 0!important;
+
+        }
+
+        @include event-date;
+
+        .month {
+          color: $hero-keyword-text-color;
+        }
+
+        .day {
+          color: $hero-event-date-color;
+        }
+
+        .event-year {
+          color: $hero-keyword-text-color;
+        }
+
+        .address-wrapper::before,
+        .time::before {
+          color: $hero-event-date-color;
+        }
+        .day-month-wrapper {
+          width: auto;
+        }
+        .address span.country {
+          display:none;
+        }
+        .venue-name div {
+          color: $hero-keyword-text-color;
+        }
+
+        .last-updated-wrapper::before {
+          color: $color-accent-primary;
+        }
+
+        .last-updated-wrapper > .last-updated-label {
+          color: #fff;
+        }
+
+        .last-updated-wrapper > .last-updated {
+          color: #fff;
+        }
+
+      }
+
+    }
+    // Reset Event Hero height on Tablet
+    .hero-no-image.hero-event,
+    .hero-has-image.hero-event{
+      min-height: 427px;
+    }
+
+    .hero-has-image .hero-bkg {
+      background: url("../icons/bkg-gradient.png") repeat-y scroll left top !important;
+      height: 100%;
+      opacity: 0.9;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 2;
+    }
+
+    //Event transparent background - black - without an image
+    .hero-event--date-block{
+      background: $hero-event-bkgd-transparent-black;
+    }
+
+    .hero-inner.hero-event--inner {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+    }
+    .hero-event--inner {
+      &.hero-has-image-content {
+        position: absolute;
+        background-color: transparent;
+      }
+    }
+
+    //Event transparent background - black - with an image
+    .hero-inner.hero-event--inner.hero-has-image-content{
+      .hero-event--date-block{
+        height:100%;
+        background: $hero-event-bkgd-transparent-black;
+      }
+    }
+
+  } // END HERO LAYOUT
+
+} // END TABLET
+
+// ######################################################################### //
+/* MIN DESKTOP VIEW */
+@media (min-width: $min-pc) {
+
+  .hero-layout {
+    .hero-buttons a {
+      min-width: 200px;
+    }
+    //used only on inner pages currently
+    .hero-buttons > div > div{
+      display: inline-block;
+    }
+    //used on landing pages
+    .hero-buttons div {
+      display:inline-block;
+      margin: 30px 20px 0 0;
+    }
+
+    .hero-no-image.hero-landing {
+      height: 385px;
+    }
+
+    .hero-news-inner,
+    .hero-ipage-inner,
+    .hero-landing-inner,
+    .hero-event--inner {
+      position: absolute;
+      padding-top: 60px !important;
+      &.hero-has-image-content {
+        background: none;
+        position: relative;
+      }
+    }
+
+    .hero-news-inner{
+      &.hero-has-image-content {
+        position: relative;
+      }
+    }
+
+    .hero-inner{
+      //margin: 60px 0 0 0;
+      margin: 0;
+      padding: 0 2%;
+      width: $hero-inner-width;
+      h1, h2{
+        width: $hero-header-width;
+      }
+    }
+
+    .hero-generic {
+      min-height: 428px;
+    }
+
+    .hero-generic-wrapper {
+      padding-top: 30px;
+    }
+
+    .hero-generic-inner {
+      margin: 0 !important;
+      padding: 0 !important;
+        &.hero-has-image-content {
+          background: none;
+        }
+      .published-date {
+        //margin-top:20px;
+        //margin-left: 20px;
+        padding-top: 30px;
+      }
+
+      h1 {
+        margin-top: 10px;
+      }
+
+      .hero-generic-transaction {
+
+        .hero-generic-transaction-time {
+
+          span {
+            font-size: 3em !important;
+
+            &:before {
+              font-size: 1.1em;
+            }
+          }
+
+        }
+
+      }
+    }
+
+    .hero-location-inner {
+      padding: 0 !important;
+
+      h1 {
+        margin-top: 10px;
+      }
+    }
+
+
+    .hero-no-image.hero-ipage,
+    .hero-no-image.hero-landing {
+      min-height: 385px;
+
+      .hero-inner{
+        width: $hero-inner-width;
+      }
+    }
+
+    .hero-has-image  .hero-bkg {
+      background: url("../icons/bkg-gradient.png") repeat-y scroll left top !important;
+      height: 100%;
+      opacity: 0.9;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 2;
+    }
+
+    .hero-has-image {
+      overflow: hidden;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+
+      div {
+        height: 100%;
+      }
+    }
+
+    // ALLOW HEIGHT TO BE LARGE IN THIS
+    // REGION TO NOT HAVE OVERFLOW FROM HERO
+    .hero-has-image,
+    .hero-has-image .hero-image,
+    .hero-has-image-content {
+      min-height: 510px;
+    }
+
+    .hero-inner.hero-news-inner{
+      h1{
+        width: 90%;
+      }
+    }
+
+    .hero-summary{
+      font-size: 1em;
+      color: $hero-text-color;
+    }
+
+
+    .hero-ipage-inner, .hero-landing-inner{
+      .hero-summary{
+        width: $hero-header-width;
+      }
+    }
+
+    h1,h2{
+      font-size: 48px;
+      line-height: 60px;
+      color: $color-mono-white;
+      font-weight: 800;
+    }
+
+    .hero-event {
+      &--title-block {
+        width: calc(100% - 290px);
+      }
+    }
+
+    // =====================================================================
+    // HERO HAS AN IMAGE
+    .hero-image-wrap{
+      position: relative;
+      width: 100%;
+
+      .hero-news-inner {
+        padding: 0;
+        margin: 0;
+        width: 100%;
+      }
+
+      .hero-news-inner.hero-has-image-content{
+        padding: 40px 4%;
+      }
+    }
+
+    // =====================================================================
+    // VIDEO FRAME
+    .hero-video-frame {
+      .hero-video-inner {
+        .video-js {
+          margin: 0 auto;
+          height: 426px;
+          width: 760px;
+        }
+
+        // YOUTUBE OVERRIDE
+        .hero-type-youtube{
+          height: 427px;
+        }
+
+        .vjs-control-bar {
+          width: 760px;
+        }
+
+        .hero-type-vimeo{
+          height: 428px;
+        }
+
+        .vimeoplayer{ }
+        .vimeoFrame {
+          position: relative;
+        }
+      }
+    } // END VIDEO FRAME SECTION
+
+    .hero-video-close{
+      a{
+        font-size: 50px;
+      }
+    }
+
+  } // END HERO-layout
+
+  .front {
+    .hero-layout {
+
+      .hero-video-frame {
+        .hero-video-inner {
+          .video-js {
+            width: 910px;
+            height: 512px;
+          }
+
+          .vjs-control-bar {
+            width: 910px;
+          }
+
+          // YOUTUBE OVERRIDE
+          .hero-type-youtube{
+            height: 512px;
+            padding: 0;
+          }
+        }
+      }
+
+    }
+  }
+
+} // END DESKTOP MIN VIEW
+
+// ######################################################################### //
+/* FULL DESKTOP VIEW */
+@media (min-width: 60em) {
+  .hero-layout {
+
+    .hero-inner{
+      padding: 0 30px 0 60px;
+    }
+
+    .hero-has-image,
+    .hero-has-image .hero-image,
+    .hero-has-image-content {
+      min-height: 427px;
+    }
+// Reset Event Hero height on Desktop
+    .hero-no-image.hero-event,
+    .hero-has-image.hero-event{
+      min-height: 455px;
+    }
+
+    .hero-has-image.hero-news,
+    .hero-has-image.hero-news .hero-image,
+    .hero-has-image.hero-news .hero-has-image-content {
+      min-height: 512px;
+    }
+
+    .hero-inner.hero-news-inner{
+      h1{
+        width: 70%;
+      }
+    }
+
+    // =====================================================================
+    // HERO HAS AN IMAGE
+    .hero-image-wrap{
+      width: 100%;
+      position: relative;
+
+      .hero-news-inner {
+        padding: 0;
+        margin: 0;
+        width: 100%;
+      }
+
+      .hero-news-inner.hero-has-image-content{
+        padding: 40px 4%;
+      }
+
+    }
+
+  }// END HERO LAYOUT
+
+  // FRONT MIN HEIGHT ADJUSTMENT
+  .front {
+    .hero-layout {
+      .hero-landing.hero-has-image,
+      .hero-has-image .hero-image,
+      .hero-has-image,
+      .hero-has-image .hero-image,
+      .hero-has-image-content {
+        min-height: 512px;
+        height: 512px;
+      }
+    }
+  }
+
+} // END DESKTOP VIEW
+
+// OVERRIDES
+// ######################################################################### //
+/* HERO VIDEO FIX FOR VIMEO -- 575-767 */
+@media (min-width: 575px) and (max-width: 767px) {
+  .hero-layout {
+    .hero-video-frame.heroplayer-vimeo {
+      min-height: 420px;
+      .hero-video-inner {
+        .video-js.vjs-vimeo {
+          max-width: 767px;
+          min-height: 420px;
+        }
+      }
+    }
+  }
+}
+
+// ######################################################################### //
+/* HERO VIDEO FIX FOR VIMEO -- 768-910 */
+@media (min-width: 48em) and (max-width: 910px) {
+  .hero-layout .hero-video-frame .hero-video-inner .video-js.vjs-vimeo > .vjs-control-bar {
+    width: auto;
+  }
+}
+

@@ -1,0 +1,136 @@
+global-styling:
+  version: 1.3
+  css:
+    theme:
+      css/styles.css: {}
+
+print-styles:
+  css:
+    theme:
+      css/print.css: { media: print}
+
+video-js-css:
+  css:
+    theme:
+      ../../../libraries/video.js/dist/video-js.min.css: {}
+
+filter-toggle:
+  version: 1.1
+  js:
+    js/toggle.js: {}
+  dependencies:
+    - core/jquery
+
+search-filter:
+  js:
+    js/search_filter.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal.debounce
+
+two_button_descriptor:
+  version: 1.2
+  js:
+    js/two_button_descriptor.js: {}
+  dependencies:
+    - core/drupal
+    - core/jquery
+
+card:
+  version: 1.4
+  js:
+    js/card.js: {}
+  dependencies:
+    - core/drupal
+    - core/jquery
+
+videoframe:
+  js:
+    js/videoframe.js: {}
+  dependencies:
+    - core/drupal
+    - dfs_ny/videojs
+    - dfs_ny/videojs-ie8
+    - dfs_ny/videojs-youtube
+    - dfs_ny/videojs-vimeo
+    - core/jquery
+
+
+videojs:
+  js:
+    ../../../libraries/video.js/dist/video.min.js: {}
+
+video-js-ie8:
+  header: true
+  js:
+    ../../../libraries/video.js/dist/ie8/videojs-ie8.min.js: {}
+
+videojs-youtube:
+  header: true
+  js:
+    ../../../libraries/videojs-youtube/dist/Youtube.min.js: {}
+  dependencies:
+    - dfs_ny/videojs
+
+videojs-vimeo:
+  header: true
+  js:
+    ../../../libraries/videojs-vimeo/src/Vimeo.js: {}
+  dependencies:
+    - dfs_ny/video-js
+
+videohero:
+  js:
+    js/videohero.js: {}
+  dependencies:
+    - core/drupal
+    - dfs_ny/videojs
+    - dfs_ny/videojs-ie8
+    - dfs_ny/videojs-youtube
+    - dfs_ny/videojs-vimeo
+    - core/jquery
+
+waypoints:
+  js:
+    ../../../libraries/waypoints/lib/jquery.waypoints.js: {}
+  dependencies:
+    -  core/jquery
+
+navigator:
+  js:
+    js/navigator.js: {}
+
+  dependencies:
+    - core/drupal
+    - core/jquery
+    - core/jquery.once
+    - dfs_ny/waypoints
+
+datatables:
+  js:
+    ../../../libraries/datatables/media/js/jquery.dataTables.min.js: {}
+  dependencies:
+    - core/jquery
+
+callouts:
+  js:
+    js/callouts.js: {}
+  dependencies:
+    - core/jquery
+
+table:
+  js:
+    js/table.js: {}
+  dependencies:
+    - core/drupal
+    - core/jquery
+    - core/jquery.once
+    - dfs_ny/datatables
+
+webny-photo-gallery:
+  version: 1.0
+  js:
+    js/webny_photo_gallery.js: {}
+  dependencies:
+    - core/jquery
+    - core/jquery.once

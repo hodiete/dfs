@@ -1,0 +1,23 @@
+//styles for the public safety grouping
+
+//overwrite stuff
+
+$color-primary: #4B6576; // blue gray
+$color-secondary: #8697A3; // mid gray - touch of blue
+$color-tertiary: #E5EBEE; // lt gray blue
+$color-accent-primary: #F4A71C; // orange gold
+$color-accent-secondary: #F3DD6D; // lemon yellow
+// to use this alert color there will prob need to be a holding default variable in the config.scss
+$color-alert-active: #FDC3C3; // pink - config.scss has $color-alert-nonactive
+$color-icon-primary: $color-primary; 
+// config.scss had global monochrome and link color variables
+
+// GLOBAL FOOTER
+$nav-background-color:                  $color-tertiary;
+$global-footer-top-text-decoration:     none;
+$global-footer-top-text-transform:      none; 
+
+// **
+
+//import base style
+@import "../../styles";
