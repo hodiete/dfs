@@ -145,6 +145,7 @@ complaints-js:
 left-menu-js:
   js:
     js/left_menu.js: {}
+    js/search_form_toggle: {}
   dependencies:
     - core/drupal
     - core/jquery
@@ -155,3 +156,10 @@ front-slideshow-js:
   dependencies:
     - core/drupal
     - core/jquery
+
+search-form-js:
+  js:
+    js/search_form_toggle.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal.debounce

@@ -1,0 +1,36 @@
+.dfs-block-search-form {
+  position: relative;
+  margin-top: -65px;
+  float: right;
+  width: 320px;
+  background-color: transparent;
+  /* border: solid 3px #ff7347; */
+  font-size: 16px;
+  text-align: center;
+  /* right: 10px; */
+  z-index: 500;
+  margin-right: 5px;
+  .form-actions {
+    display: none;
+  }
+  input[type="search"],
+  input[type="search"]:focus {
+    font-size: 100%;
+    font-weight: 600;
+    color: #fff;
+    margin: 0;
+    padding: 1rem 1rem 1rem 2.5rem;
+    height: 3rem;
+    width: 100%;
+    border: 3px solid #fff;
+    border-radius: 30px;
+    background: url(../icons/dfs/search_white.svg) bottom left no-repeat;
+    background-color: #08464c;
+    background-size: 24px 24px;
+    background-position: 14px 16px;
+  }
+}
+
+.layout-container main {
+  clear: both;
+}
