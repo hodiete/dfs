@@ -28,10 +28,15 @@
       $(searchClick, context).on('click', function () {
         // $(sidebarToggleElement).removeClass('hidden');
         $(sidebarToggleElement).css('marginRight', rightDistance + 'px');
-        $(sidebarToggleElement).fadeIn(400);
+        $(sidebarToggleElement).fadeIn(500);
         $(searchClick).fadeOut(500);
         $(searchInput).focus();
 
+      });
+
+      $(searchInput).focusout(function() {
+        $(sidebarToggleElement).fadeOut(500);
+        $(searchClick).fadeIn(500);
       });
 
       $(window).resize(function () {
