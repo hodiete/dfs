@@ -94,4 +94,19 @@
     }
   };
 
+
+  Drupal.behaviors.leftmenuMaintContent = {
+    attach: function (context, settings) {
+      // The toggle button.
+      var leftMenu = '#sticky-leftmenu';
+      // Clear all results button (see custom 'webny-filter-clear' token).
+      var viewContainer = '.views-element-container';
+      console.log ("left=" + $(leftMenu).length); 
+      if ($(leftMenu).length === 0) {
+        console.log("2 left=" + $(leftMenu).length); 
+        $(viewContainer).css('marginLeft', "10px");
+      }
+    }
+  };
+
 })(jQuery, Drupal, Drupal.debounce);
