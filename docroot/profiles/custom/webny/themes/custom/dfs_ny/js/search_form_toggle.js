@@ -101,10 +101,12 @@
       var leftMenu = '#sticky-leftmenu';
       // Clear all results button (see custom 'webny-filter-clear' token).
       var viewContainer = '.views-element-container';
+      var bodyAreaIn = '.body-area .body-area-in';
       console.log ("left=" + $(leftMenu).length); 
       if ($(leftMenu).length === 0) {
         console.log("2 left=" + $(leftMenu).length); 
         $(viewContainer).css('marginLeft', "10px");
+        $(bodyAreaIn).css('marginLeft', "10px");
       }
     }
   };
