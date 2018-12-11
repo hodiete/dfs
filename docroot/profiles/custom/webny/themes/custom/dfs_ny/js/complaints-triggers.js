@@ -9,10 +9,11 @@
     $(".faq-card-box").parent().css({ "padding": "40px 0", "width": "50%", "float": "left", "margin": "0" });
     $(".faq-card-box").parent().parent().css({ "width": "86%", "margin-left": "7%" });
     $("#faq").parent().css({ "padding": "0 2.8%" });
+
   });
 
   $(document).ready(function () {
-    let currentWidth = "100%";
+    let currentWidth = "50%";
     if ($(window).width() <= 880) {
        currentWidth = "100%";
     }

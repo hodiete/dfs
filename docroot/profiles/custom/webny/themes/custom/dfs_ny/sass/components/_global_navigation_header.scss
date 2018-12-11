@@ -20,7 +20,6 @@ $drop-down-width-desktop: 300px;
 $medium-screen-link-height: 75px;
 $menu-semi-bold: 600;
 $menu-hover-bold: 700;
-
 // text
 $base-font: "Proxima Nova",
 Arial,
@@ -62,7 +61,6 @@ $globalnav-primary-color: $color-primary !default;
 $globalnav-secondary-color: $button-black-50 !default;
 $menu-semi-bold: 600;
 $menu-hover-bold: 700;
-
 /****  mixin  ****/
 
 @mixin portal-login($minWidth, $width) {
@@ -145,7 +143,9 @@ $importance: null) {
   font-weight: $nav-weight;
   font-style: normal;
   z-index: 500;
-  width: 100%;
+  // width: 100%;
+  width: auto;
+  
   a:link,
   a:visited,
   a:hover,
@@ -1047,7 +1047,7 @@ $importance: null) {
      GW: debug DFS Main Navigation Menu 
   */
   ul.gnav-ul {
-    padding: auto; // margin: 0 0 20px 0;
+    // padding: auto; // margin: 0 0 20px 0;
     li.gnav-topli {
       &:nth-child(1) {
         width: 223px; // height: 53px;
@@ -1062,7 +1062,7 @@ $importance: null) {
       &:nth-child(8) {
         // width: 100%; // min-width: 145px;
         margin-left: 0;
-        padding-left: 0%;
+        padding-left: 0;
       }
       a {
         font-weight: 600;
@@ -1084,4 +1084,17 @@ $importance: null) {
       font-weight: $menu-hover-bold;
     }
   }
+}
+
+@media screen and (max-width: 671px) {
+  #ny-universal-navigation #nygov-header {
+    top: 70px !important;
+    // .l-region--header > .pane-ny-gov-global-menu {
+    //   // height: 0 !important;
+    // }
+  }
+  // #nygov-universal-navigation {
+  //   // z-index: 502;
+  //   // position: inherit;
+  // }
 }

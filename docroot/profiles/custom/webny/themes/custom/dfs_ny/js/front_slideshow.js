@@ -108,4 +108,25 @@
   })
   */
   
+
+  Drupal.behaviors.bannerCover = {
+    attach: function (context, settings) {
+      var bannerCover = '.after-cover-picture';
+      // var tootbar;
+      var coverTop = $(bannerCover).cssInt('top');
+      console.log("1 top= " + coverTop);
+      if ($('#toolbar-bar').length > 0 ) {
+        // tootbar = $('#toolbar-bar')
+
+        coverTop = coverTop + 84;
+        console.log("top= " + coverTop);
+        $(bannerCover).css('top', coverTop);
+      }
+        
+    }
+  };
+
+  jQuery.fn.cssInt = function (prop) {
+    return parseInt(this.css(prop), 10) || 0;
+  };
 })(jQuery, Drupal, this);
