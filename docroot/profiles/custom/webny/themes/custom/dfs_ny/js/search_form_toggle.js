@@ -12,7 +12,7 @@
       // The toggle button.
       var sidebarToggleElement = 'header .dfs-block-search-form';
       var searchClick = '.webny-global-header .gnav-ul .gnav-topli:nth-child(8)';
-      var searchInput = '.dfs-block-search-form .form-search';
+      var searchInput = '.dfs-block-search-form .form-text';
       // Clear all results button (see custom 'webny-filter-clear' token).
       var clearAllButton = '.js-form-clear-all';
 
