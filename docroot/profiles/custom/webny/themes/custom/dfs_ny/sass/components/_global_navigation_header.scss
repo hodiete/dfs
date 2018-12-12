@@ -143,9 +143,8 @@ $importance: null) {
   font-weight: $nav-weight;
   font-style: normal;
   z-index: 500;
-  // width: 100%;
-  width: auto;
-  
+  width: 100%; // width: auto;
+  max-width: 2100px;
   a:link,
   a:visited,
   a:hover,
@@ -1088,12 +1087,10 @@ $importance: null) {
 
 @media screen and (max-width: 671px) {
   #ny-universal-navigation #nygov-header {
-    top: 70px !important;
-    // .l-region--header > .pane-ny-gov-global-menu {
+    top: 70px !important; // .l-region--header > .pane-ny-gov-global-menu {
     //   // height: 0 !important;
     // }
-  }
-  // #nygov-universal-navigation {
+  } // #nygov-universal-navigation {
   //   // z-index: 502;
   //   // position: inherit;
   // }
