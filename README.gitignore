@@ -1,0 +1,150 @@
+# Ignore configuration files that may contain sensitive information.
+local.*
+*.local
+project.local.yml
+
+# Ignore drupal core.
+docroot/core
+
+# Ignore paths that contain user-generated content.
+docroot/sites/*/files
+docroot/sites/*/private
+
+# Ignore contrib modules. These should be created during build process.
+docroot/modules/contrib
+docroot/profiles/custom/webny/modules/contrib
+docroot/themes/contrib
+docroot/profiles/custom/webny/themes/contrib
+docroot/profiles/contrib
+# docroot/libraries
+drush/contrib
+
+docroot/libraries/liststyle
+docroot/libraries/indentblock
+
+# Ignore custom theme node_modules folders
+docroot/themes/custom/*/node_modules
+docroot/profiles/custom/webny/themes/custom/dfs_ny/node_modules
+docroot/profiles/custom/webny/themes/custom/dfs_ny/package-lock.json
+
+# igore the styles.css andnydfs-sub.css which are generated from gulp
+docroot/profiles/custom/webny/themes/custom/dfs_ny/css/styles.css
+docroot/profiles/custom/webny/themes/custom/dfs_ny/css/nydfs-sub.css
+
+docroot/profiles/custom/webny/themes/custom/dfs_ny/css/administration.css
+docroot/profiles/custom/webny/themes/custom/dfs_ny/css/business.css
+docroot/profiles/custom/webny/themes/custom/dfs_ny/css/custom-ig.css
+docroot/profiles/custom/webny/themes/custom/dfs_ny/css/custom-jcope.css
+docroot/profiles/custom/webny/themes/custom/dfs_ny/css/education.css
+docroot/profiles/custom/webny/themes/custom/dfs_ny/css/health-human-services.css
+docroot/profiles/custom/webny/themes/custom/dfs_ny/css/local-regional-authorities.css
+docroot/profiles/custom/webny/themes/custom/dfs_ny/css/public-safety.css
+docroot/profiles/custom/webny/themes/custom/dfs_ny/css/recreation-environment.css
+docroot/profiles/custom/webny/themes/custom/dfs_ny/css/statewide-elected-officials.css
+docroot/profiles/custom/webny/themes/custom/dfs_ny/css/transportation-utilities.css
+docroot/sites/default/services.yml
+
+migration_dfs/migration
+# Ignore build artifacts
+/deploy
+bin/*
+tmp
+reports
+
+# OS X
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Thumbnails
+._*
+
+# Files that might appear on external disk
+.Spotlight-V100
+.Trashes
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# Eclipse
+*.pydevproject
+.project
+.metadata
+tmp/**
+tmp/**/*
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.classpath
+.settings/
+.loadpath
+
+# External tool builders
+.externalToolBuilders/
+
+# Locally stored "Eclipse launch configurations"
+*.launch
+
+# CDT-specific
+.cproject
+
+# PDT-specific
+.buildpathk
+
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
+.\#*
+
+# User-specific stuff:
+.idea/
+.vscode/
+
+#XHProf
+xhprof_*
+
+#Composer vendor
+vendor/
+vendor/.git
+
+#Sass
+.sass-cache
+*.css.map
+
+#Netbeans IDE
+nbproject
+nbproject/*
+
+# DrupalVM
+.vagrant/
+
+# Frontend
+docroot/profiles/custom/webny/themes/custom/dfs_ny/dist
+docroot/profiles/custom/webny/themes/custom/dfs_ny/dist/*
+docroot/profiles/custom/webny/themes/custom/dfs_ny/styleguide
+docroot/profiles/custom/webny/themes/custom/dfs_ny/styleguide/*
+
+# Libraries - External : Included in composer.json
+docroot/profiles/custom/webny/libraries/*
+docroot/profiles/custom/webny/libraries/*/
+!docroot/profiles/custom/webny/libraries/package.json
+
+# Ignore private files
+files-private
+
+# box/config.yml
+docroot/sites/default/settings.php
