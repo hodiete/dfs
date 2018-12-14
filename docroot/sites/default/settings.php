@@ -728,6 +728,14 @@ $settings['container_yamls'][] = __DIR__ . '/services.yml';
  * will allow the site to run off of all variants of example.com and
  * example.org, with all subdomains included.
  */
+$settings['trusted_host_patterns'] = [
+  '^localhost$',
+  '^127\.0\.0\.1$',
+  '^webny\.local$',
+  '^nydfs\.local$',
+  '^nydfs2\.local$',
+  '^nydfs*\.local$',
+];
 
 /**
  * The default list of directories that will be ignored by Drupal's file API.
