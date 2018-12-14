@@ -72,7 +72,7 @@
       // var iframe = '.portal-wrapper iframe';
       // var close = '.portal-wrapper .close';
       // Clear all results button (see custom 'webny-filter-clear' token).
-      console.log(portal);
+      // console.log(portal);
       $(portal).click(function () {
         window.open(this.href);
         return false;
@@ -90,4 +90,19 @@
     }
   };
   
+
+  Drupal.behaviors.externalUrl = {
+    attach: function (context, settings) {
+      // The toggle button.
+      $("a").on("click", function () {
+        var href = $(this).attr("href");
+        console.log(href);
+        if (href.indexOf("http://") == 0 || href.indexOf("https://") == 0) {
+          return confirm("You are leaving our site and go to " + href + "!");
+        }
+      });
+
+    }
+  };
+
 })(jQuery, Drupal, Drupal.debounce);
