@@ -40,6 +40,7 @@ if ($is_ah_env) {
   }
 }
 
+/*
 $settings['trusted_host_patterns'] = [
   '^localhost$',
   '^127\.0\.0\.1$',
@@ -59,3 +60,5 @@ $databases['default']['default'] = array(
   'namespace' => 'Drupal\\Core\\Database\\Driver\\mysql',
   'driver' => 'mysql',
 );
+
+*/
