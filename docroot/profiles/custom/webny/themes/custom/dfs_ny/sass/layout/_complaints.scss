@@ -1,5 +1,5 @@
-$body-margin-min: 60px 40px 0px 50px;
-$body-margin-max: 60px 0px 0px 0px;
+$body-margin-min: 30px 40px 0px 50px;
+$body-margin-max: 30px 0px 0px 0px;
 /****  mixin  ****/
 
 @mixin portal-login($minWidth, $width) {
@@ -25,14 +25,14 @@ a.login-button,
   display: inline-block;
   border: none;
   padding-top: 13px;
-  @include portal-login(150px, 150px);
+  @include portal-login(150px,
+  150px);
   &:hover {
     display: inline-block;
     font-weight: bold;
     background: #e5eeee url(../icons/dfs/portal.svg) bottom left no-repeat;
     background-size: 26px 28px;
     background-position: 36px 11px;
-
   }
 }
 
@@ -268,4 +268,25 @@ option {
   min-height: 1em;
   font-size: 12px;
   padding: 0px 1px 1px;
+}
+
+.page-paragraphs-in>div>div:nth-of-type(1) {
+  padding: 20px 0 0 0;
+}
+
+#block-views-block-apps-and-licensing-view-block-1 {
+  label {
+    margin-top: 4px;
+    width: 100px;
+    float: left;
+    font-size: 16px;
+    display: block;
+    padding-top: 10px;
+  }
+  select {
+    font-size: 16px;
+    option {
+      font-size: 16px;
+    }
+  }
 }

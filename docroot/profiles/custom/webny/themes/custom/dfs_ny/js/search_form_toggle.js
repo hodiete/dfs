@@ -96,9 +96,12 @@
       // The toggle button.
       $("a").on("click", function () {
         var href = $(this).attr("href");
-        console.log(href);
-        if (href.indexOf("http://") == 0 || href.indexOf("https://") == 0) {
-          return confirm("You are leaving our site and go to " + href + "!");
+        var str2 = "dfs.ny.gov";
+        // console.log(href);
+        if (href.indexOf(str2) == -1 ) {
+          if (href.indexOf("http://") == 0 || href.indexOf("https://") == 0) {
+            return confirm("You are about to leave the DFS website. Would you like to continue?");
+          }
         }
       });
 
