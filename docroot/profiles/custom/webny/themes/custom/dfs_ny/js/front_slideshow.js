@@ -21,7 +21,7 @@
     $(".consumer-alert-row").parent().parent().css({ "margin": "0" });
   });
 
-  console.log("front_slideshow"); 
+  // console.log("front_slideshow"); 
   $(window).resize(function () {
     if ($(window).width() <= 880) {
       $(".news-views-row").css({ "width": "80%", "padding": "15px 0" });
@@ -114,13 +114,13 @@
       var bannerCover = '.after-cover-picture';
       // var tootbar;
       var coverTop = $(bannerCover).cssInt('top');
-      console.log("1 top= " + coverTop);
+      // console.log("1 top= " + coverTop);
       if ($('#toolbar-bar').length > 0 ) {
         // tootbar = $('#toolbar-bar')
-
-        coverTop = coverTop + 84;
-        console.log("top= " + coverTop);
-        $(bannerCover).css('top', coverTop);
+        // coverTop = coverTop + 84;
+        // coverTop = 244;
+        // console.log("2 top= " + coverTop);
+        // $(bannerCover).css('top', 244);
       }
         
     }

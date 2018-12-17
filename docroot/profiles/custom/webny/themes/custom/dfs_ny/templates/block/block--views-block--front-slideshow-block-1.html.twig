@@ -1,10 +1,10 @@
 <div class="front-slideshow-banner" {{ attributes }}>
   {% if label %}
-<div class="front-slideshow-title" {{ title_attributes }}>
+    <div class="front-slideshow-title" {{ title_attributes }}>
       {{ label }}
     </div>
   {% endif %}
-{% block content %}
-  {{ content }}
-{% endblock %}
+  {% block content %}
+    {{ content }}
+  {% endblock %}
 </div>

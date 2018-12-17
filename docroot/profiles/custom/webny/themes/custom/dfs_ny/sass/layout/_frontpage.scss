@@ -71,7 +71,7 @@
   position: absolute;
   width: 60%;
   height: 502px;
-  top: 160px;
+  top: 0;
   /*80px;*/
   background: -webkit-linear-gradient(270deg, transparent, #000) left repeat;
   background: linear-gradient(270deg, transparent, #000) left repeat;
@@ -88,7 +88,7 @@
   min-height: 136px;
   height: auto;
   background-color: #09464c;
-  z-index: 1;
+  z-index: 4;
 }
 
 .alerts-text {
@@ -165,7 +165,8 @@
 
 .icon-link {
   width: 180px;
-  height: 40px;
+  height: auto;
+  padding: 0 10px 12px 10px;
   text-align: center;
   background-color: #09464c;
   display: inline-block;
@@ -377,6 +378,12 @@
   }
 }
 
+#block-views-block-front-page-press-releases-block-1{
+  padding-top: 36px;
+
+}
+
+/*****  Resposive CSS *****/
 @media only screen and (max-width: 1280px) {
   #block-views-block-consumer-alerts-block-1 {
     height: auto;
