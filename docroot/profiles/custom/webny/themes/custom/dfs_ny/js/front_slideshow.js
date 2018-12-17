@@ -129,4 +129,35 @@
   jQuery.fn.cssInt = function (prop) {
     return parseInt(this.css(prop), 10) || 0;
   };
+
+
+  Drupal.behaviors.resizeSlideImg = {
+    attach: function (context, settings) {
+
+      $(document).ready(function () {
+        window.onresize = resizeSlideContainer;
+      });
+
+      function getActiveSlideHeight() {
+        var $slide = $(".views_slideshow_cycle_main").filter(function () {
+          if ($(this).css("display") == "block") {
+            return $(this)
+          }
+        });
+
+        return $slide.width();
+      };
+
+      function resizeSlideContainer() {
+        var $slideContainer = $(".views_slideshow_cycle_slide");
+        var sWidth = getActiveSlideHeight();
+        var slideContainerWidth = $slideContainer.width();
+
+        if (slideContainerWidth != sWidth) {
+          $slideContainer.width(sWidth);
+        }
+      };
+
+    }
+  };
 })(jQuery, Drupal, this);
