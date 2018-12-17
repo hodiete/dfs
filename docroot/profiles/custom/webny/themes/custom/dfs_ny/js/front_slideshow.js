@@ -134,8 +134,8 @@
   Drupal.behaviors.resizeSlideImg = {
     attach: function (context, settings) {
 
-      $(document).ready(function () {
-        window.onresize = resizeSlideContainer;
+      $(window).resize(function () {
+        resizeSlideContainer();
       });
 
       function getActiveSlideHeight() {
@@ -150,11 +150,13 @@
 
       function resizeSlideContainer() {
         var $slideContainer = $(".views_slideshow_cycle_slide");
+        var $img = $(".views_slideshow_cycle_slide picture .img");
         var sWidth = getActiveSlideHeight();
         var slideContainerWidth = $slideContainer.width();
 
         if (slideContainerWidth != sWidth) {
           $slideContainer.width(sWidth);
+          $img.width(sWidth);
         }
       };
 
