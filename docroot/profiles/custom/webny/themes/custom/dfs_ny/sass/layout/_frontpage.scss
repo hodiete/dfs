@@ -379,12 +379,12 @@
   }
 }
 
-#block-views-block-front-page-press-releases-block-1{
+#block-views-block-front-page-press-releases-block-1 {
   padding-top: 36px;
-
 }
 
 /*****  Resposive CSS *****/
+
 @media only screen and (max-width: 1280px) {
   #block-views-block-consumer-alerts-block-1 {
     height: auto;
@@ -396,7 +396,6 @@
       margin-top: 0;
     }
   }
-
 }
 
 @media only screen and (max-width: 1023px) {
@@ -412,8 +411,7 @@
     height: 350px; // top: 170px;
   }
   .banner-image-scroll .after-cover-picture {
-    height: 400px;
-    // top: 160px;
+    height: 400px; // top: 160px;
     width: 95%;
   }
   .views-element-container {
@@ -453,8 +451,7 @@
     height: 350px;
   }
   .banner-image-scroll .after-cover-picture {
-    height: 405px;
-    // top: 160px;
+    height: 405px; // top: 160px;
     background-color: rgba(0, 0, 0, 0.4);
     width: 100%;
   }
@@ -465,16 +462,21 @@
     text-align: center;
     .field-content {
       padding: 0 10px;
-      margin-left: 2%;
+      margin-left: 0;
       margin-right: 0;
-      width: 90%;
+      width: 93%;
+      text-align: center;
+      display: inline-block;
+    }
+    .see-all-alerts-link {
+      width: 50%;
     }
   }
   .banner-wrapper-all-texts {
     padding-top: 54px;
     padding-left: 33px;
     .field-content {
-      padding: auto 10px;
+      padding: 10px;
       margin-left: 2%;
       margin-right: 0;
       width: 93%;
@@ -482,6 +484,40 @@
   }
   .views-slideshow-controls-bottom {
     margin-top: -44px;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  #main-layout-content-switch-div {
+    text-align: center;
+  }
+  .banner-wrapper-all-texts {
+    padding-top: 30px;
+    width: 95%;
+    padding-left: 10px;
+    .field-content {
+      padding: 10px;
+      margin-left: 0;
+      margin-right: 0;
+    }
+    .banner-link {
+      width: 50%;
+    }
+     .banner-title {
+      font-size: 40px;
+    }
+  }
+  .front-slideshow-banner {
+    .layout-container ul {
+      padding: 0;
+      margin: 0 0 1px;
+    }
+  }
+  .banner-wrapper-all-texts {
+    padding-top: 30px;
+  }
+  .layout-container ul {
+    padding: 0;
   }
 }
 

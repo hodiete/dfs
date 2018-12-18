@@ -24,7 +24,7 @@
   // console.log("front_slideshow"); 
   $(window).resize(function () {
     if ($(window).width() <= 880) {
-      $(".news-views-row").css({ "width": "80%", "padding": "15px 0" });
+      $(".news-views-row").css({ "width": "90%", "padding": "15px 5%" });
       $(".views-field-field-release-date-created").first().parent().css({ "border-bottom": "solid 1px #e5eeee" });
       $(".views-field-field-release-date-created").first().parent().css({ "border-right": "solid 0px #e5eeee" });
     } else {
@@ -56,7 +56,7 @@
     if ($(window).width() <= 500) {
       $(".views-field-field-banner").css({ "width": "100%" })
       $(".banner-body").css({ "text-align": "center" });
-      $(".banner-title").css({ "width": "380px", "text-align": "center" });
+      $(".banner-title").css({ "width": "90%", "text-align": "center" });
       // $(".banner-image-scroll").css({ "display": "block", "width": "120%" });
       $(".banner-image-scroll").css({ "display": "block" });
       $(".banner-image-scroll:after").css({ "background": "none" });
@@ -70,44 +70,7 @@
     }
   })
 
-  /*
-  // consumer alert resizing
-  $(window).resize(function () {
-    if ($(window).width() <= 500) {
-      $(".alerts-text").css({ "display": "block", "width": "91%", "margin": "10px 0 0 0", "text-align": "center", "background-position": "25%" });
-      $(".alert-title").css({ "display": "block", "width": "100%", "margin": "0", "text-align": "center" });
-      $(".alert-body").css({ "display": "block", "width": "100%", "margin": "0", "text-align": "center" });
-      $(".see-all-alerts-link").css({ "display": "block", "width": "50%", "margin": "0 0 10px 0", "text-align": "center", "position": "relative", "left": "23%" });
-      $("#block-views-block-consumer-alerts-block-1").css({ "padding-left": "2%", "padding-right": "2%", "height": "auto" });
-      $(".consumer-alert-row").parent().parent().css({ "margin": "0" });
-
-    }
-    else if ($(window).width() <= 750) {
-      $(".alerts-text").css({ "display": "block", "width": "95%", "margin": "10px 0 0 0", "text-align": "center", "background-position": "32%" });
-      $(".alert-title").css({ "display": "block", "width": "100%", "margin": "0", "text-align": "center" });
-      $(".alert-body").css({ "display": "block", "width": "100%", "margin": "0", "text-align": "center" });
-      $(".see-all-alerts-link").css({ "display": "block", "width": "50%", "margin": "0 0 10px 0", "text-align": "center", "position": "relative", "left": "23%" });
-      $("#block-views-block-consumer-alerts-block-1").css({ "padding-left": "2%", "padding-right": "2%", "height": "auto" });
-      $(".consumer-alert-row").parent().parent().css({ "margin": "0" });
-
-    } else if ($(window).width() <= 900) {
-      $(".alerts-text").css({ "display": "inline-block", "width": "25%", "margin": "28 0 0 0", "text-align": "left", "background-position": "0" });
-      $(".alert-title").css({ "display": "inline-block", "width": "50%", "margin": "0", "margin-top": "22px", "text-align": "left" });
-      $(".alert-body").css({ "display": "inline-block", "width": "50%", "margin": "0", "text-align": "left" });
-      $(".see-all-alerts-link").css({ "display": "inline-block", "width": "13%",  "margin-bottom": "0", "left": "auto", "position": "absolute" });
-      $("#block-views-block-consumer-alerts-block-1").css({ "padding-left": "2%", "padding-right": "2%" });
-      $(".consumer-alert-row").parent().parent().css({ "margin": "0" });
-    } else {
-      $("#block-views-block-consumer-alerts-block-1").css({ "padding-left": "10%", "padding-right": "10%"});
-      $(".alerts-text").css({ "display": "inline-block", "width": "25%", "margin-top": "22px", "text-align": "left", "background-position": "0" });
-      $(".alert-title").css({ "display": "inline-block", "width": "50%", "margin-top": "22px", "text-align": "left" });
-      $(".alert-body").css({ "display": "inline-block", "width": "50%", "margin": "0", "text-align": "left" });
-      $(".see-all-alerts-link").css({ "display": "inline-block", "margin-bottom": "0", "left": "auto", "position": "absolute" });
-
-    }
-  })
-  */
-  
+    
 
   Drupal.behaviors.bannerCover = {
     attach: function (context, settings) {
