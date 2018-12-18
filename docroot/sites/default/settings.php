@@ -729,7 +729,7 @@ $settings['container_yamls'][] = __DIR__ . '/services.yml';
  * example.org, with all subdomains included.
  */
 
-
+/*
 $settings['trusted_host_patterns'] = [
   '^localhost$',
   '^127\.0\.0\.1$',
@@ -738,7 +738,7 @@ $settings['trusted_host_patterns'] = [
   '^nydfs2\.local$',
   '^nydfs*\.local$',
 ];
-
+*/
 /**
  * The default list of directories that will be ignored by Drupal's file API.
  *
@@ -781,6 +781,7 @@ if (isset($_SERVER['DEVDESKTOP_DRUPAL_SETTINGS_DIR']) && file_exists($_SERVER['D
   require $_SERVER['DEVDESKTOP_DRUPAL_SETTINGS_DIR'] . '/loc_docroot_dd.inc';
 }
 // </DDSETTINGS>
+/*
 $databases['default']['default'] = array(
   'database' => 'drupal',
   'username' => 'root',
@@ -791,3 +792,4 @@ $databases['default']['default'] = array(
   'namespace' => 'Drupal\\Core\\Database\\Driver\\mysql',
   'driver' => 'mysql',
 );
+*/
