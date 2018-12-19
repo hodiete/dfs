@@ -1,9 +1,9 @@
 project:
-  machine_name: webny
+  machine_name: nydfs
   prefix: NDD
-  human_name: 'Web NY'
+  human_name: 'New York State Department of Financial Services'
   profile:
-    name: webny
+    name: nydfs
     contrib: false
   local:
     protocol: http
@@ -12,7 +12,7 @@ project:
 git:
   default_branch: develop
   remotes:
-    - 'nysits@svn-43.enterprise-g1.hosting.acquia.com:nysits.git'
+    - 'nydfs@svn-29892.prod.hosting.acquia.com:nydfs.git'
 drush:
   aliases:
     remote: 01dev.dev
@@ -45,10 +45,10 @@ modules:
     uninstall: [devel, field_ui, views_ui]
 target-hooks:
   frontend-setup:
-    dir: '${docroot}/profiles/custom/webny/themes/custom/webny_theme'
-    command: 'npm run install-webny_theme && npm rebuild node-sass'
+    dir: '${docroot}/profiles/custom/webny/themes/custom/dfs_ny'
+    command: 'npm run install-dfs_ny && npm rebuild node-sass'
   frontend-build:
-    dir: '${docroot}/profiles/custom/webny/themes/custom/webny_theme'
+    dir: '${docroot}/profiles/custom/webny/themes/custom/dfs_ny'
     command: 'npm run build'
   post-deploy-build:
     dir: '${docroot}'

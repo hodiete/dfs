@@ -1706,7 +1706,7 @@ function webny_configuration_update_8088() {
     // Import new/changed configuration.
     $config_to_update = [
         // Updated theme to implement favicon.
-        'webny_theme.settings',
+        'dfs_ny.settings',
     ];
 
     $profile_config->bulkImport($config_to_update);

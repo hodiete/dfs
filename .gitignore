@@ -22,6 +22,18 @@ drush/contrib
 # Ignore custom theme node_modules folders
 docroot/themes/custom/*/node_modules
 
+# Gung: ignore custom them dfs_ny, node_modules for Gulp SASS, 
+docroot/profiles/custom/webny/themes/custom/dfs_ny.tar.gz
+docroot/profiles/custom/webny/themes/custom/dfs_ny
+docroot/profiles/custom/webny/themes/custom/dfs_ny/node_modules
+
+# Gung: ignore other files
+migration_dfs
+docroot/profiles/custom/webny/themes/custom/npm-debug.log
+docroot/sites/default/services.yml
+# docroot/sites/default/settings.php
+docroot/sites/docrott.dd
+
 # Ignore build artifacts
 /deploy
 bin/*
@@ -110,10 +122,10 @@ nbproject/*
 .vagrant/
 
 # Frontend
-docroot/profiles/custom/webny/themes/custom/webny_theme/dist
-docroot/profiles/custom/webny/themes/custom/webny_theme/dist/*
-docroot/profiles/custom/webny/themes/custom/webny_theme/styleguide
-docroot/profiles/custom/webny/themes/custom/webny_theme/styleguide/*
+docroot/profiles/custom/webny/themes/custom/dfs_ny/dist
+docroot/profiles/custom/webny/themes/custom/dfs_ny/dist/*
+docroot/profiles/custom/webny/themes/custom/dfs_ny/styleguide
+docroot/profiles/custom/webny/themes/custom/dfs_ny/styleguide/*
 
 # Libraries - External : Included in composer.json
 docroot/profiles/custom/webny/libraries/*
