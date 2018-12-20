@@ -10,16 +10,24 @@
   Drupal.behaviors.searchFormToggle = {
     attach: function (context, settings) {
       // The toggle button.
+      var searchClick;
+      if ($('#search-mobile-icon').is(":hidden")) {
+        searchClick = '.webny-global-header .gnav-ul .gnav-topli:nth-child(8)';
+      }
+      else {
+        searchClick = '#search-mobile-icon';
+        console.log(searchClick);
+      }
       var sidebarToggleElement = 'header .dfs-block-search-form';
-      var searchClick = '.webny-global-header .gnav-ul .gnav-topli:nth-child(8)';
+
       var searchInput = '.dfs-block-search-form .form-text';
       // Clear all results button (see custom 'webny-filter-clear' token).
       var clearAllButton = '.js-form-clear-all';
 
       var rightDistance = $(window).width() - ($(searchClick).offset().left + $(sidebarToggleElement).width());
-      if (rightDistance <= 10) {
+      if (rightDistance <= 10 || rightDistance > $(window).width() / 3) {
         rightDistance = 10;
-      }
+      } 
 
       $(searchClick).click(function (e) {
         e.preventDefault();

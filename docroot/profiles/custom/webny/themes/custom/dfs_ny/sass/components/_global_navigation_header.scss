@@ -30,7 +30,7 @@ sans-serif; // used in header and footer
 // padding
 $nav-title-padding: 15px 30px 8px 30px; // kept in case anyone still uses this variable
 $nav-title-padding-tablet: 15px 30px 1px 30px;
-$common-link-padding: 30px 48px 30px 30px;
+$common-link-padding: 26px 48px 26px 30px;
 $horizontal-link-padding: 8px 15px;
 $horizontal-tall-link-padding: 25px;
 $horizontal-sub-link-padding: 15px;
@@ -307,7 +307,7 @@ $importance: null) {
       float: left;
     }
     a.webny-global-active {
-      float: right;
+      // float: right;
     }
   } // Tablet
   @media (min-width: $min-width-breakpoint) {
@@ -1060,14 +1060,39 @@ $importance: null) {
       // }
       &:nth-child(8) {
         // width: 100%; // min-width: 145px;
-        margin-left: 0;
-        padding-left: 0;
+        display: none; // margin-left: 0;
+        // padding-left: 0;
       }
       a {
         font-weight: 600;
       }
     }
   } // GW End
+  .webny-global-header ul.gnav-ul li.gnav-topli:nth-child(7) {
+    padding: 13px 5px;
+    a {
+      display: inline-block;
+      border: none;
+      min-width: 119px;
+      width: 119px;
+      height: 18px;
+      border-radius: 58px;
+      margin: 0 23px;
+      background: #f2a900 url(../icons/dfs/portal.svg) bottom left no-repeat;
+      background-position-x: left;
+      background-position-y: bottom;
+      background-size: 26px 25px;
+      background-position: 16px 10px;
+      padding: 15px 20px 15px 62px;
+      color: black;
+      &:hover {
+        font-weight: $menu-hover-bold;
+        background: #e5eeee url(../icons/dfs/portal.svg) bottom left no-repeat;
+        background-size: 26px 25px;
+        background-position: 16px 10px;
+      }
+    }
+  }
 }
 
 @media screen and (max-width: 480px) {

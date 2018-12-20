@@ -8,7 +8,7 @@
   font-size: 16px;
   text-align: center;
   /* right: 10px; */
-  z-index: 500;
+  z-index: 505;
   margin-right: 5px;
   .form-actions {
     display: none;
@@ -60,11 +60,9 @@
   a:link,
   .webny-teaser-title a {
     color: #08464c;
-  }
-  // a.more-link {
+  } // a.more-link {
   //   color: #007AC2;
   // }
-
   h2 {
     font-size: 24px;
   }
@@ -108,9 +106,28 @@
 }
 
 .pager .pager__items {
-      a {
-        font-size: 18px;
-        margin-top: 3px;
-        display: inline-block;
-      }
+  a {
+    font-size: 18px;
+    margin-top: 3px;
+    display: inline-block;
+  }
+}
+
+#search-mobile-icon {
+  img {
+    width: 0;
+    height:0;
+  }
+  @media screen and (max-width: 1023px) {
+    img {
+      width: 30px;
+      height: 30px;
     }
+    display: inline-block;
+    position: relative;
+    float: right;
+    margin-right: 20px;
+    margin-top: -52px;
+    z-index: 500;
+  }
+}
