@@ -7,6 +7,13 @@
 // Style guide: layout.sidebars
 //
 $left-menu-width: 342px;
+
+.sidebar {
+  ul {
+    list-style: none;
+  }
+}
+
 @mixin leftmenu-h2 ($width) {
   background-color: #09464c;
   color: white;
@@ -31,10 +38,6 @@ $left-menu-width: 342px;
   text-decoration: $decoration;
   font-weight: $font-weight;
   background-color: $bgcolor;
-}
-
-ul {
-  list-style-type: none !important;
 }
 
 aside.layout-sidebar-first {
