@@ -62,7 +62,7 @@
 {% if item.below %}
   {% set classes = classes | merge(["parent"]) %}
   <li class="{{ classes|join(" ") }}" {{ item.attributes }}>
-    <a class="toggler">
+    <a class="toggler" style="cursor:pointer";>
       {{ item.title }}
       <img class="expand down-up-arrow" src="/profiles/custom/webny/themes/custom/dfs_ny/icons/dfs/arrowdown-teal.svg">
     </a>

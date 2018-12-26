@@ -8,12 +8,6 @@
 //
 $left-menu-width: 342px;
 
-.sidebar {
-  ul {
-    list-style: none;
-  }
-}
-
 @mixin leftmenu-h2 ($width) {
   background-color: #09464c;
   color: white;
@@ -38,6 +32,19 @@ $left-menu-width: 342px;
   text-decoration: $decoration;
   font-weight: $font-weight;
   background-color: $bgcolor;
+}
+
+.sidebar {
+  ul {
+    list-style: none;
+    li {
+      a {
+        .toggler {
+          cursor: pointer;
+        }
+      }
+    }
+  }
 }
 
 aside.layout-sidebar-first {
@@ -177,11 +184,7 @@ main .layout-content nav {
           color: #09464c;
         }
         a:hover {
-          // font-weight: bold;
-          // text-shadow: 0 1px 1px #09464c;
           background-color: #e5eeee;
-          font-weight: bold;
-          letter-spacing: 0.6px;
         }
         a.is-active {
           @include a-is-active(#e5eeee, 600, none);
@@ -226,8 +229,6 @@ main .layout-content nav {
     color: #09464c;
     &:hover {
       background-color: #e5eeee; // font-weight: bold;
-      font-weight: bold;
-      letter-spacing: 0.6px;
       text-decoration: none;
     }
   }
@@ -243,7 +244,6 @@ main .layout-content nav {
     &:hover {
       background-color: #09464c;
       color: white;
-      font-weight: normal;
       text-decoration: none;
     }
   }
@@ -286,7 +286,6 @@ main .layout-content nav {
     letter-spacing: 0.5px; // text-align: center;
     color: #09464c;
     &:hover {
-      font-weight: bold;
       text-decoration: none;
     }
   }
@@ -397,7 +396,6 @@ main nav .h1-open-sub {
         background-color: black;
         color: #fff;
         font-weight: bold;
-        letter-spacing: 0px; // text-shadow: 0 1px 1px white;
       }
     }
     a.is-active {
