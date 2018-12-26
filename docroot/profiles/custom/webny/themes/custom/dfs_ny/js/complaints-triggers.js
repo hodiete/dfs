@@ -55,20 +55,17 @@
         $("#block-ourdepartment").css({"width": "90%"});
         $("#block-languageassistance").css({"width": "90%"});
         $("#block-ourassociates").css({"width": "90%"});
-        $("#block-quicklinks").css({"width": "90%"});
         $("#block-website").css({"width": "90%"});
     }else if ($(window).width() <= 840){
-        $("#block-ourdepartment").css({"width": "28%"});
-        $("#block-languageassistance").css({"width": "28%"});
-        $("#block-ourassociates").css({"width": "28%"});
-        $("#block-quicklinks").css({"width": "28%"});
-        $("#block-website").css({"width": "28%"});
+        $("#block-ourdepartment").css({"width": "44%"});
+        $("#block-languageassistance").css({"width": "44%"});
+        $("#block-ourassociates").css({"width": "44%"});
+        $("#block-website").css({"width": "44%"});
     }else{
-        $("#block-ourdepartment").css({"width": "15%"});
-        $("#block-languageassistance").css({"width": "15%"});
-        $("#block-ourassociates").css({"width": "15%"});
-        $("#block-quicklinks").css({"width": "15%"});
-        $("#block-website").css({"width": "15%"});
+        $("#block-ourdepartment").css({"width": "20%"});
+        $("#block-languageassistance").css({"width": "20%"});
+        $("#block-ourassociates").css({"width": "20%"});
+        $("#block-website").css({"width": "20%"});
     }
   })
 
