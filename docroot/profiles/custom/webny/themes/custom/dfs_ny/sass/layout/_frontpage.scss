@@ -16,6 +16,7 @@
   padding-left: 6%;
   z-index: 100;
   color: white;
+  text-align: center;
   a {
     color: white;
   }
@@ -86,7 +87,7 @@
   padding-left: 10%;
   padding-right: 10%;
   padding-top: 10px;
-  min-height: 136px;
+  min-height: 120px;
   height: auto;
   background-color: #09464c;
   z-index: 4;
@@ -106,6 +107,9 @@
   background-position: 0;
   font-size: 40px;
   background-repeat: no-repeat;
+  @media (max-width: 480px) {
+    font-size: 32px;
+  }
 }
 
 .alert-title-body-wrapper {
@@ -132,7 +136,7 @@
 .see-all-alerts-link {
   // position: absolute;
   display: block;
-  float: left;
+  float: right;
   margin-left: 1%;
   margin-top: 30px;
   padding: 0;
@@ -187,15 +191,21 @@
     font-weight: bold;
     letter-spacing: 1px;
   }
+  @media (max-width: 480px) {
+    width: 85%;
+    padding: 6px 10px 16px 10px;
+  }
 }
 
 .reg-institution-link {
-  width: 100%;
+  width: auto;
   height: auto;
   text-align: center;
   background-color: #09464c;
   display: inline-block;
   letter-spacing: 1px;
+  padding:1rem;
+
   &:hover {
     background-color: #042326;
     a {
@@ -208,10 +218,9 @@
     display: block;
     color: white;
     font-size: 20px;
-    font-weight: bold; // padding-top: 17px;
+    font-weight: bold;
     font-weight: 500;
-    padding-top: 18px;
-    padding-bottom: 18px;
+    padding:0;
   }
 }
 
@@ -274,9 +283,10 @@
 .press-release-link {
   background-image: url('../icons/dfs/arrow-teal.svg');
   background-size: 12px 12px;
-  background-position: 100px 50%;
+  background-position: 100px 50%; transition:0.4s;
   background-repeat: no-repeat;
   padding-top: 3px;
+
   a {
     font-size: 16px;
     color: #09464c;
@@ -285,6 +295,14 @@
       text-decoration: none;
     }
   }
+  &:hover {
+    background-position: 120px 50%;
+  }
+
+  @media (max-width: 480px) {
+    background: none;
+  }
+
 }
 
 .front-page-press-centering-div {
@@ -303,6 +321,9 @@
     margin-top: 15px;
     color: #09464c;
     text-align: center;
+    @media (max-width: 480px) {
+      font-size: 32px;
+    }
   }
 }
 
@@ -314,6 +335,9 @@
     font-size: 40px; // margin-top: 60px;
     color: #09464c;
     text-align: center;
+    @media (max-width: 480px) {
+      font-size: 32px;
+    }
   }
 }
 
@@ -322,12 +346,15 @@
     font-size: 40px; // margin-top: 60px;
     color: #09464c;
     text-align: center;
+    @media (max-width: 480px) {
+      font-size: 32px;
+    }
   }
 }
 
 .statewide-link {
   width: 90%;
-  height: 30px;
+  height: 40px;
   text-align: left;
   background-color: #e5eeee;
   display: inline-block;
@@ -348,7 +375,7 @@
     font-size: 12px;
     font-weight: bold;
     letter-spacing: 1px;
-    padding-top: 2px;
+    padding-top: 8px;
     width: 100%;
     height: 100%;
     display: block;
@@ -383,13 +410,26 @@
   padding-top: 36px;
 }
 
+// Chris 2.6.8
+#block-views-block-icon-link-view-block-1 {
+  padding-top: 36px;
+}
+
 /*****  Resposive CSS *****/
+
+// Chris 2.6.8
+.banner-wrapper-all-texts {
+  padding-top: 140px;
+}
 
 @media only screen and (max-width: 1280px) {
   #block-views-block-consumer-alerts-block-1 {
     height: auto;
     .alert-title-body-wrapper {
       width: 60%;
+    }
+    .banner-wrapper-all-texts {
+      padding-top: 80px;
     }
     .see-all-alerts-link {
       margin-bottom: 20px;
@@ -405,6 +445,7 @@
     padding-left: 0; // width: 100%;
   }
   .banner-wrapper-all-texts {
+    padding-top: 80px;
     width: 89%;
   }
   .banner-image-scroll {
@@ -489,17 +530,21 @@
 }
 
 @media only screen and (max-width: 500px) {
-  #main-layout-content-switch-div {
+
+  #block-views-block-front-page-press-releases-block-1 {
     text-align: center;
   }
+
+  #block-views-block-front-page-press-releases-block-1 {
+    text-align: center;
+  }
+
   .banner-wrapper-all-texts {
-    padding-top: 30px;
+    padding-top: 60px;
     width: 95%;
     padding-left: 10px;
     .field-content {
       padding: 10px;
-      margin-left: 0;
-      margin-right: 0;
     }
     .banner-link {
       width: 50%;
@@ -515,7 +560,7 @@
     }
   }
   .banner-wrapper-all-texts {
-    padding-top: 30px;
+    padding-top: 60px;
   }
   .layout-container ul {
     padding: 0;

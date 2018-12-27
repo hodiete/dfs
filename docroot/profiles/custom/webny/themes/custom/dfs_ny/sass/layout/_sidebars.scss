@@ -140,6 +140,7 @@ aside.sidebar {
 main .layout-content nav {
   z-index: 20;
   width: $left-menu-width;
+  overflow: hidden;
 }
 
 //////////////////////////////////
@@ -155,22 +156,25 @@ main .layout-content nav {
   width: $left-menu-width;
   ul.ul-complaint-sidebar {
     padding: 0;
-    li.parent {
-      .expand {
+    li
+    {
+      cursor: pointer;
+
+      .parent, .expand {
         margin-right: 30px;
         width: 14px;
         float: right;
         margin-top: 3px;
+        cursor: pointer;
       }
       ul {
         display: none;
         padding-left: 0px;
-        border-bottom: solid 1px #09464c;
+        border-bottom: solid 1px #09464c14;
         a {
-          display: block; 
+          display: block;
           background-color: #fff;
           text-decoration: none;
-          height: 20px;
           font-family: Helvetica;
           font-size: 14px;
           font-weight: normal;
@@ -179,9 +183,12 @@ main .layout-content nav {
           font-stretch: normal;
           border-bottom: 0px;
           line-height: 1;
-          letter-spacing: 0.5px;
-          padding: 10px 0 8px 25px;
+          height: auto;
+          padding: 20px 0 20px 45px;
           color: #09464c;
+        }
+        a {
+          border-bottom: solid 1px #09464c14;
         }
         a:hover {
           background-color: #e5eeee;
@@ -206,6 +213,7 @@ main .layout-content nav {
     li {
       display: block;
       float: none;
+      cursor: pointer;
     }
   }
   a {
@@ -220,7 +228,7 @@ main .layout-content nav {
     font-weight: normal;
     font-style: normal;
     font-stretch: normal;
-    border-bottom: solid 1px #09464c;
+    border-bottom: solid 1px #09464c38;
     line-height: 0.94;
     letter-spacing: 0.5px; // text-align: center;
     width: 312px;
@@ -389,7 +397,7 @@ main nav .h1-open-sub {
     a {
       background-color: #E5EEEE; // color: #fff;
       color: #09464c;
-      border-bottom: solid 1px #2e6267;
+      border-bottom: solid 1px #09464c38;
       font-weight: normal;
       text-decoration: none;
       &:hover {
