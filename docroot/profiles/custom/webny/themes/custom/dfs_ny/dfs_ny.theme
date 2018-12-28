@@ -5,7 +5,7 @@ use Drupal\node\Entity\Node;
 /**
  * Implements hook_preprocess_html().
  */
-function webny_theme_preprocess_html(&$variables) {
+function dfs_ny_preprocess_html(&$variables) {
   // <body> classes for sidebars
   if (isset($variables['page']['sidebar_first']) && isset($variables['page']['sidebar_second'])) {
     $variables['attributes']['class'][] = 'body-sidebars-both';
@@ -30,7 +30,7 @@ function webny_theme_preprocess_html(&$variables) {
 /**
  * Implements hook_preprocess_paragraph__webny_card_paragraph_type
  */
-function webny_theme_preprocess_paragraph__webny_card_paragraph_type(&$variables) {
+function dfs_ny_preprocess_paragraph__webny_card_paragraph_type(&$variables) {
     // Load the site name out of configuration.
     $config = \Drupal::config('system.site');
     $variables['site_name'] = $config->get('name');
@@ -53,7 +53,7 @@ function webny_theme_preprocess_paragraph__webny_card_paragraph_type(&$variables
 /**
  * Implements hook_preprocess_node__webny_landing_page
  */
-function webny_theme_preprocess_node__webny_landing_page(&$variables) {
+function dfs_ny_preprocess_node__webny_landing_page(&$variables) {
     // Load the site name out of configuration.
     $config = \Drupal::config('system.site');
     $variables['site_name'] = $config->get('name');
@@ -62,7 +62,7 @@ function webny_theme_preprocess_node__webny_landing_page(&$variables) {
 /**
  * Implements hook_preprocess_node__webny_page__full
  */
-function webny_theme_preprocess_node__webny_page__full(&$variables) {
+function dfs_ny_preprocess_node__webny_page__full(&$variables) {
     // Load the site name out of configuration.
     $config = \Drupal::config('system.site');
     $variables['site_name'] = $config->get('name');
@@ -71,7 +71,7 @@ function webny_theme_preprocess_node__webny_page__full(&$variables) {
 /**
  * Implements hook_preprocess_node__webny_news
  */
-function webny_theme_preprocess_node__webny_news(&$variables) {
+function dfs_ny_preprocess_node__webny_news(&$variables) {
     // Load the site name out of configuration.
     $config = \Drupal::config('system.site');
     $variables['site_name'] = $config->get('name');
@@ -80,7 +80,7 @@ function webny_theme_preprocess_node__webny_news(&$variables) {
 /**
  * Implements hook_preprocess_node__webny_event
  */
-function webny_theme_preprocess_node__webny_event(&$variables) {
+function dfs_ny_preprocess_node__webny_event(&$variables) {
     // Load the site name out of configuration.
     $config = \Drupal::config('system.site');
     $variables['site_name'] = $config->get('name');
@@ -89,7 +89,7 @@ function webny_theme_preprocess_node__webny_event(&$variables) {
 /**
  * Implements hook_preprocess_node__webny_generic_page__full
  */
-function webny_theme_preprocess_node__webny_generic_page__full(&$variables) {
+function dfs_ny_preprocess_node__webny_generic_page__full(&$variables) {
     // Load the site name out of configuration.
     $config = \Drupal::config('system.site');
     $variables['site_name'] = $config->get('name');
@@ -98,7 +98,7 @@ function webny_theme_preprocess_node__webny_generic_page__full(&$variables) {
 /**
  * Implements hook_preprocess_node__webny_location__teaser
  */
-function webny_theme_preprocess_node__webny_location__teaser(&$variables) {
+function dfs_ny_preprocess_node__webny_location__teaser(&$variables) {
   /** @var \Drupal\node\Entity\Node $node */
   $node = &$variables['node'];
   if ($node && $node instanceof Node) {
@@ -131,7 +131,7 @@ function webny_theme_preprocess_node__webny_location__teaser(&$variables) {
 /**
  * Implements hook_preprocess_field
  */
-function webny_theme_preprocess_field(&$variables) {
+function dfs_ny_preprocess_field(&$variables) {
   if ($variables['field_name'] === 'field_webny_event_address') {
     $variables['address_line1'] = $variables['element']['0']['address_line1'];
     $variables['address_line2'] = $variables['element']['0']['address_line2'];
@@ -145,8 +145,8 @@ function webny_theme_preprocess_field(&$variables) {
 /**
  * Implements hook_library_info_alter(&$libraries, $extension).
  */
-function webny_theme_library_info_alter(&$libraries, $extension) {
-  if ($extension !== 'webny_theme') {
+function dfs_ny_library_info_alter(&$libraries, $extension) {
+  if ($extension !== 'dfs_ny') {
     return;
   }
   if (isset($libraries['global-styling']['css']['theme'])) {
@@ -158,7 +158,7 @@ function webny_theme_library_info_alter(&$libraries, $extension) {
 /**
  * Implements hook_theme_suggestions_field_alter().
  */
- function webny_theme_suggestions_field_alter(&$suggestions, $variables){
+ function dfs_ny_suggestions_field_alter(&$suggestions, $variables){
 	 $suggestions[] = 'field__' . $variables['element']['#bundle'] . '_' . $variables['element']['#field_name'];
 	 $suggestions[] = 'field__' . $variables['element']['#bundle'] . '_' . $variables['element']['#field_name'] . '__' . $variables['element']['#field_type'];
    if ($variables['element']['#view_mode'] === 'teaser') {

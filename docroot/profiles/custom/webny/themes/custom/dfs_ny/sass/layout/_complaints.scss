@@ -1,0 +1,179 @@
+.container {
+  margin: 60px 80px 0px 80px;
+}
+
+// Main Page Break
+.break {
+  width: 100%;
+  border-bottom: solid 1px #09464c;
+  margin: 16px 0;
+}
+
+// In page dropdown Break
+.dropdown-break {
+  width: 100%;
+  height: 0px;
+  border-bottom: solid 1px #09464c;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+// Main content formatting.
+.how-to-file {
+  margin-top: 60px;
+}
+
+.page-title {
+  color: #09464c !important;
+}
+
+.body-text {
+  font-size: 16px;
+  line-height: 1.38;
+  strong {
+    font-weight: bolder;
+  }
+  a {
+    font-weight: bold;
+    color: #09464c !important;
+    text-decoration: underline;
+  }
+}
+
+.portal-login-button {
+  min-width: 200px;
+  height: 41px;
+  border-radius: 60px;
+  text-align: right;
+  padding: 10px 30px;
+  margin: 0 12px;
+  background: #f2a900 url(../icons/dfs/Portal.svg) bottom left no-repeat;
+  background-size: 27px 27px;
+  background-position: 35px 4px;
+}
+
+.login-button {
+  width: 200px;
+  height: 45px;
+  border-radius: 60px;
+  background-color: #f2a900;
+  color: black;
+  align-items: center;
+  text-align: center; // position: relative;
+  display: inline-flex;
+  p {
+    height: 100%;
+    align-items: center;
+    font-weight: bold;
+    font-size: 16px;
+    margin-top: 11px;
+  }
+}
+
+.login-button-icon {
+  margin-top: 8px;
+  width: 20px;
+  margin: 0 10px 8px 30px;
+}
+
+// The buttons for the PDF and other documents
+.content-forms {
+  width: 348px;
+  height: 99px;
+  border: solid 1px #e5eeee;
+  display: inline-flex;
+  margin: 10px;
+  .content-form-img-box {
+    float: left;
+    width: 87px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    height: 100%;
+    border-right: solid 1px #e5eeee;
+    img {
+      padding-left: 22px;
+      height: 39px; // width: 30.8px;
+      path {
+        fill: #09464c;
+      }
+    }
+  }
+  .content-form-text-box {
+    float: right;
+    width: 260px;
+    text-align: center;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    p {
+      width: 260px;
+      font-size: 20px;
+      font-weight: bold;
+      color: #09464c;
+    }
+  }
+  &:hover {
+    .content-form-img-box {
+      background-color: #09464c;
+      img {
+        path {
+          fill: white;
+        }
+      }
+    }
+  }
+}
+
+// Custom LI bullets for the content sections.
+li.body-bullet {
+  font-family: Arial;
+  font-size: 16px;
+}
+
+li.body-bullet:before {
+  background-color: #09464c;
+  border-radius: 50%;
+  content: "";
+  display: inline-block;
+  margin-right: 15px;
+  margin-bottom: 2px;
+  height: 10px;
+  width: 10px;
+}
+
+// The drop down menus in the content section.
+.in-div-drop-box {
+  width: 100%;
+  overflow: overlay;
+  border-left-width: 15px;
+  border-left-color: #09464c;
+  border-left-style: none;
+}
+
+.in-div-drop-title {
+  font-weight: bolder;
+  color: #09464c !important;
+  margin: 25px;
+  float: left;
+}
+
+.in-div-drop-text {
+  color: black !important;
+  font-size: 12px;
+  margin: 10px 25px 10px 25px;
+  display: none;
+  float: right;
+}
+
+.in-div-drop-button {
+  width: 40px;
+  background-color: #09464c;
+  padding-top: 5px;
+  color: white;
+  text-align: center;
+  align-items: center;
+  height: 30px;
+  margin: 25px 25px 25px 25px;
+  float: right;
+}

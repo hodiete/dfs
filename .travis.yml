@@ -34,9 +34,11 @@ cache:
 
 addons:
   ssh_known_hosts:
-  - svn-43.enterprise-g1.hosting.acquia.com
-  - staging-538.enterprise-g1.hosting.acquia.com
-  - web-536.enterprise-g1.hosting.acquia.com
+    - nydfs.dev@staging-28720.prod.hosting.acquia.com
+    - nydfs.test@staging-28720.prod.hosting.acquia.com
+  # - svn-43.enterprise-g1.hosting.acquia.com
+  # - staging-538.enterprise-g1.hosting.acquia.com
+  # - web-536.enterprise-g1.hosting.acquia.com
   chrome: stable
 
 # @see https://docs.travis-ci.com/user/notifications
@@ -116,7 +118,7 @@ deploy:
      script: "${BLT_DIR}/scripts/travis/deploy_branch"
      skip_cleanup: true
      on:
-       branch: WIP
+       branch: master-build
        php: 7.1
    - provider: script
      script: "${BLT_DIR}/scripts/travis/deploy_tag"

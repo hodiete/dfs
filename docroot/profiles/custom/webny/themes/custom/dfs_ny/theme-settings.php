@@ -24,12 +24,12 @@ use Drupal\Core\Form;
  * @param $form_state
  *   A keyed array containing the current state of the form.
  */
-function webny_theme_form_system_theme_settings_alter(&$form, &$form_state) {
+function dfs_ny_form_system_theme_settings_alter(&$form, &$form_state) {
   // keep options for radio buttons, and drop-downs as variables in a separate file
   // so it's easier to manage when changes are needed.
-  require_once(drupal_get_path('theme', 'webny_theme') . '/inc/theme_settings.options.inc');
+  require_once(drupal_get_path('theme', 'dfs_ny') . '/inc/theme_settings.options.inc');
   // Set up a fieldset for WebNY theme options
-  $form['webny_theme_settings'] = array(
+  $form['dfs_ny_settings'] = array(
     '#type'         => 'details',
     '#title'        => t('WebNY Theme'),
     '#description'  => t('Settings for the WebNY theme.'),
@@ -37,7 +37,7 @@ function webny_theme_form_system_theme_settings_alter(&$form, &$form_state) {
     '#open' => TRUE,
   );
   // Set up a drop-down for the flavor options
-  $form['webny_theme_settings']['site_color_pallet'] = array(
+  $form['dfs_ny_settings']['site_color_pallet'] = array(
     '#type' => 'select',
     '#title' => t('Site color palettes:'),
     '#default_value' => theme_get_setting('site_color_pallet'),
