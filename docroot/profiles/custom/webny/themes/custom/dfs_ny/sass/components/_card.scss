@@ -5,7 +5,6 @@
 // Markup: card.hbs
 //
 // Style guide: components.card
-
 // color variables
 $featured-card-frame-title-color: $color-primary !default;
 $featured-card-frame-headline-color: $color-mono-black !default;
@@ -14,9 +13,14 @@ $featured-card-arrow-color-hover: $color-secondary !default;
 $featured-card-icon-color: $color-primary !default;
 $featured-card-icon-color-hover: $color-secondary !default;
 $featured-card-fallback-img-bkg: $color-secondary !default;
+@mixin color-hover-a-link-teal() {
+  color: white;
+  text-decoration: none;
+  background-color: $color-primary;
+}
 
 // CARDS WRAPPER FOR PADDING
-.cards-wrap{
+.cards-wrap {
   //padding: 80px 0;
 }
 
@@ -24,29 +28,36 @@ $featured-card-fallback-img-bkg: $color-secondary !default;
   font-size: 18px;
   max-width: $max-pc; // to constrain the spread of the cards
   margin: 0 auto; //centers when constrained
-  //padding: $frame-padding-sm 0; 
+  //padding: $frame-padding-sm 0;
 }
 
 /* maybe replace with class called webny-card-row? */
+
 .paragraph--type--webny-card-paragraph-type>div {
-  display:flex;
+  display: flex;
   flex-wrap: nowrap;
   flex-direction: column;
-  justify-content:flex-start;
+  justify-content: flex-start; //padding: 1rem; // not sure why this is here - removing to keep frame padding/margin on main frame class
+  //padding-bottom: 80px; // margins and padding are on main frame class
+  justify-content: center;
+}
+
+.paragraph--faq-page-card>div {
+  width: 50%; // justify-content:flex-start;
   //padding: 1rem; // not sure why this is here - removing to keep frame padding/margin on main frame class
   //padding-bottom: 80px; // margins and padding are on main frame class
-  justify-content:center;
+  // justify-content:center;
 }
 
 .paragraph--type--webny-card-paragraph-type>div>div {
-  border:1px solid $gray-lite;
-  font-size:90%;
+  border: 1px solid $gray-lite;
+  font-size: 90%;
   display: flex;
-  margin: .5rem; /* aiming for the 20px between cards that seems to be there in ny.gov web style guide */
+  margin: .5rem;
+  /* aiming for the 20px between cards that seems to be there in ny.gov web style guide */
 }
 
-.paragraph--type--webny-card-paragraph-type
-.featured-card--field-webny-card-pg-title {
+.paragraph--type--webny-card-paragraph-type .featured-card--field-webny-card-pg-title {
   //font-family: $oswald;
   //font-weight: 900;
   //font-size: $frame-title;
@@ -54,17 +65,13 @@ $featured-card-fallback-img-bkg: $color-secondary !default;
   color: $featured-card-frame-title-color;
   text-align: center;
   text-transform: uppercase;
-  padding: 0;
-  //padding-bottom: 10px; // need to evaluate this when changing these to headings
-  letter-spacing: 2px;
-  //padding-top: 80px; // spacing taken care of further up
+  padding: 0; //padding-bottom: 10px; // need to evaluate this when changing these to headings
+  letter-spacing: 2px; //padding-top: 80px; // spacing taken care of further up
 }
 
-.paragraph--type--webny-card-paragraph-type
-.featured-card--field-webny-card-pg-headline {
+.paragraph--type--webny-card-paragraph-type .featured-card--field-webny-card-pg-headline {
   //font-family: $base-font;
-  font:  $frame-headline;
-  //font-weight: 800;
+  font: $frame-headline; //font-weight: 800;
   color: $featured-card-frame-headline-color;
   text-align: center;
   line-height: 1.25em; //2rem;
@@ -75,16 +82,15 @@ $featured-card-fallback-img-bkg: $color-secondary !default;
 .front .paragraph--type--webny-card-paragraph-type .featured-card--field-webny-card-pg-headline {
   //font-size: 40px;
   font: $frame-headline-front;
-  line-height: 1.25em;//3rem;
+  line-height: 1.25em; //3rem;
 }
 
 .webny-card {
-  display:flex;
-  flex-direction:column;
-  flex-grow:1;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
   img {
-    border:none;
- //   max-height: 220px;
+    border: none; //   max-height: 220px;
   }
 }
 
@@ -95,8 +101,19 @@ $featured-card-fallback-img-bkg: $color-secondary !default;
   background-repeat: no-repeat;
   background-position: center;
 }
-.card-content {
+
+.card-content-tall {
   min-height: 325px; //separate from flex to help with IE issues, min-height helps keep button at bottom
+  display: block;
+}
+
+.card-content-wide {
+  min-height: 225px; //separate from flex to help with IE issues, min-height helps keep button at bottom
+  display: block;
+}
+
+.card-content-short {
+  min-height: 125px; //separate from flex to help with IE issues, min-height helps keep button at bottom
   display: block;
 }
 
@@ -117,9 +134,10 @@ $featured-card-fallback-img-bkg: $color-secondary !default;
   font-weight: 400;
   min-height: 2.25em;
   a:link {
-    color:$text-blue;
+    color: $text-blue;
   }
 }
+
 .webny-card .webny-card-date {
   padding: .5rem 1rem;
   flex: 1 0 auto;
@@ -129,18 +147,16 @@ $featured-card-fallback-img-bkg: $color-secondary !default;
 .webny-card .webny-card-teaser {
   padding: .5rem 1rem;
   vertical-align: top;
-  font-size:   $frame-base-font-size;
+  font-size: $frame-base-font-size;
   line-height: $frame-base-line-height;
   min-height: 125px;
 }
 
 .webny-card .webny-card-cta {
   padding: .75em 1em;
-  background-color:$call-to-action;
+  background-color: $call-to-action;
   border-top: 1px solid $gray-lite;
-
   letter-spacing: 1px;
-
   .icon-right-caret {
     font-weight: bold;
     color: $featured-card-arrow-color;
@@ -151,36 +167,30 @@ $featured-card-fallback-img-bkg: $color-secondary !default;
   a {
     padding-left: 5px;
     font-size: 13px;
-    text-transform:uppercase;
+    text-transform: uppercase;
     text-decoration: none;
     color: $color-mono-black;
   }
 }
 
 .webny-card .webny-card-share-bar {
-  position:relative;
+  position: relative;
   padding: .75em 1em;
-  background-color:$call-to-action;
+  background-color: $call-to-action;
   border-top: 1px solid $gray-lite;
-
   letter-spacing: 1px;
-
   .webny-card-share-elements {
     display: inline;
     width: 0;
     height: 19px;
     float: left;
     overflow: hidden;
-
     transition: width .5s ease-in-out;
-
   }
-
   .webny-card-share-button {
     display: inline-block;
     width: 20%;
     cursor: pointer;
-
     .icon-email {
       font-size: 1.25em;
       color: $featured-card-icon-color;
@@ -188,7 +198,6 @@ $featured-card-fallback-img-bkg: $color-secondary !default;
         color: $featured-card-icon-color-hover;
       }
     }
-
     .icon-facebook {
       font-size: 1.25em;
       color: $featured-card-icon-color;
@@ -196,7 +205,6 @@ $featured-card-fallback-img-bkg: $color-secondary !default;
         color: $featured-card-icon-color-hover;
       }
     }
-
     .icon-twitter {
       font-size: 1.25em;
       color: $featured-card-icon-color;
@@ -205,7 +213,6 @@ $featured-card-fallback-img-bkg: $color-secondary !default;
       }
     }
   }
-
   .webny-card-share-right {
     .icon-share {
       font-weight: bold;
@@ -216,11 +223,10 @@ $featured-card-fallback-img-bkg: $color-secondary !default;
       }
     }
   }
-
   a {
     padding-left: 5px;
     font-size: 13px;
-    text-transform:uppercase;
+    text-transform: uppercase;
     text-decoration: none;
     color: $color-mono-black;
   }
@@ -228,13 +234,12 @@ $featured-card-fallback-img-bkg: $color-secondary !default;
 
 .card-fallback-image {
   display: block;
-  height: 225px;
+  height: 125px;
   background-color: $featured-card-fallback-img-bkg;
   margin: 0 auto;
   width: 100%;
   position: relative;
   top: 0;
-
   svg {
     height: 93px;
     width: 100%;
@@ -244,11 +249,9 @@ $featured-card-fallback-img-bkg: $color-secondary !default;
     top: 29%;
     fill: #fff;
   }
-
   .st0 {
     stroke: #ffffff;
   }
-
 }
 
 // CARD LINKS
@@ -257,14 +260,10 @@ $featured-card-fallback-img-bkg: $color-secondary !default;
   width: auto;
   float: none;
   padding: 20px 15px 0;
-  display: flex;
-  // max-height: 200px;
-
+  display: flex; // max-height: 200px;
   .generic-card-links-in {
-
     width: 100%;
     align-self: flex-end;
-
     ul {
       list-style-type: none;
       margin: 0;
@@ -272,26 +271,22 @@ $featured-card-fallback-img-bkg: $color-secondary !default;
       font-size: 13px;
       line-height: 18px;
     }
-
     li {
       text-decoration: none;
       list-style: none;
     }
-
     a {
       @include icon(after, fa-caret-right);
-
       &:after {
         color: #128ec3;
         float: right;
       }
-
       &:hover {
         color: $featured-card-frame-title-color;
         text-decoration: none;
       }
-
-      font-family: 'ProximaNovaBold', sans-serif;
+      font-family: 'ProximaNovaBold',
+      sans-serif;
       display: block;
       text-decoration: none;
       color: #000000;
@@ -300,76 +295,74 @@ $featured-card-fallback-img-bkg: $color-secondary !default;
       padding-bottom: 10px;
       letter-spacing: 1px;
     }
-
     a {
       border-bottom: 1px solid #e4e4e4;
     }
-
     li.last-card-link a,
-    li:last-child a{
+    li:last-child a {
       border-bottom: 0;
     }
-
-    li.first-card-link:last-child a{
+    li.first-card-link:last-child a {
       border-bottom: 1px solid #e4e4e4;
     }
-
   }
 }
 
-.icon-right-caret{ @include icon(before, fa-caret-right);}
+.icon-right-caret {
+  @include icon(before, fa-caret-right);
+}
 
 .paragraph--type--webny-card-paragraph-type {
   @include breakpoint($min-mobile) {
-   &>div {
-
-  flex-direction: row;
-  flex-wrap: wrap;
+    &>div {
+      flex-direction: row;
+      flex-wrap: wrap;
     }
-
     &>div>div {
-      width: 100%; /* rather than flex-basis */
-
+      width: 100%;
+      /* rather than flex-basis */
     }
   }
 }
 
 .paragraph--type--webny-card-paragraph-type>div>div {
   @include breakpoint($min-pc) {
-      width: 30%; /* rather than flex-basis */
-      max-width: 400px; // width of card image style
-    }
+    width: 30%;
+    /* rather than flex-basis */
+    max-width: 400px; // width of card image style
   }
+}
 
 // IE 10 and 11 target
-@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+@media all and (-ms-high-contrast: none),
+(-ms-high-contrast: active) {
   .card-image {
     //min-height:230px; // with flex chrome stretches card content so titles still line up if there is only one card with an image, IE does not
   }
-
   .card-content {
     min-height: 475px; // separate from flex to help with IE issues, min-height helps keep button at bottom
   }
-
   .card-content-top {
     flex: 0 1 8em; // IE 11 and such, needs more
   }
-  .paragraph--type--webny-card-paragraph-type > div > div {
-    display: inline-block; /* fixes images on IE 11 image and title overflow - not sure why */
+  .paragraph--type--webny-card-paragraph-type>div>div {
+    display: inline-block;
+    /* fixes images on IE 11 image and title overflow - not sure why */
   }
 }
 
 @media screen\0 {
-  .paragraph--type--webny-card-paragraph-type>div{
+  .paragraph--type--webny-card-paragraph-type>div {
     &:after {
-     content: ".";
-     visibility: hidden;
-     display: block;
-     height: 0;
-     clear: both;
+      content: ".";
+      visibility: hidden;
+      display: block;
+      height: 0;
+      clear: both;
     }
     &>div {
-    float:left; /* overcomes flexbox limitationson IE 8,9,10 */
+      float: left;
+      /* overcomes flexbox limitationson IE 8,9,10 */
     }
   }
 }
@@ -383,7 +376,6 @@ $featured-card-fallback-img-bkg: $color-secondary !default;
       font: $frame-title;
       letter-spacing: 2px;
       color: $featured-card-frame-title-color;
-
       text-transform: uppercase;
     }
     .frame-headline {
@@ -400,21 +392,206 @@ $featured-card-fallback-img-bkg: $color-secondary !default;
 }
 
 /* Event cards */
+
 .card-content {
   .summary {
     padding: .5em 1em;
     padding: .5rem 1rem;
     line-height: 22px;
   }
-
   .card-event {
     &--date-block {
       padding: .5em 1em 1em 1em;
-      padding: .5rem 1rem 1rem 1rem;
-
-      //_event_date_card.scss Mixin
+      padding: .5rem 1rem 1rem 1rem; //_event_date_card.scss Mixin
       @include event-date-card;
-
     }
   }
+}
+
+// FAQ STUFF
+.faq-card-box {
+  width: 90%;
+  margin-left: 5%;
+  margin-right: 5%;
+  height: 375px;
+  border-color: #e5eeee;
+  border-width: 1px;
+  border-style: solid;
+  position: relative;
+  overflow-y: hidden;
+}
+
+.short-card-box {
+  width: 90%;
+  margin-left: 5%;
+  margin-right: 5%;
+  height: 320px;
+  border-color: #e5eeee;
+  border-width: 1px;
+  border-style: solid;
+  position: relative;
+  overflow-y: hidden;
+  a {
+    background-color: #e5eeee;
+    color: $color-primary;
+  }
+  a:hover {
+    // @include color-hover-a-link-teal();
+  }
+}
+
+.faq-card-image-div {
+  position: relative;
+  height: 125px;
+  width: 100%;
+  overflow: hidden;
+}
+
+.faq-card-text {
+  width: 100%;
+  height: 200px;
+}
+
+.short-card-text {
+  padding-top: 10px;
+  width: 100%;
+  height: 145px;
+}
+
+.faq-card-link {
+  width: 100%;
+  height: 38px;
+  background-color: #e5eeee;
+  align-items: center;
+  padding-top: 5px;
+
+  &:hover {
+    @include color-hover-a-link-teal();
+  }
+  p {
+    margin-left: 28px;
+    font-size: 12px;
+    font-weight: bold; // color: #09464c;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
+
+.faq-card-image {
+  height: auto;
+  width: 100%;
+  overflow: hidden;
+}
+
+.faq-card-title {
+  font-weight: bold;
+  color: #09464c;
+  font-size: 20px;
+  margin: 0;
+  padding: 8px 12px;
+}
+
+.faq-card-body {
+  font-weight: normal;
+  color: black;
+  font-size: 16px;
+  line-height: normal;
+  margin: 0;
+  padding: 8px 12px;
+}
+
+.faq-card-question-body {
+  font-weight: normal;
+  color: black;
+  font-size: 16px;
+  margin: 0;
+  padding: 8px 12px;
+}
+
+// TOP QUESTIONS STUFF
+.top-questions-body {
+  a {
+    color: #09464c;
+    font-size: 12px;
+    font-weight: bold;
+    text-decoration: underline;
+  }
+}
+
+.top-question-card-icon {
+  float: left;
+  margin-top: 8px;
+  width: 8px;
+  margin: 8px 10px 8px;
+}
+
+.top-question-text {
+  width: 85%;
+  float: left;
+  font-size: 12px;
+  margin-right: 8px;
+  margin-left: 8px;
+  margin-top: 4px;
+}
+
+.question-span {
+  width: 100%;
+  overflow: auto;
+  margin: 5px 0;
+}
+
+.faq-card-icon {
+  float: right;
+  margin-top: 8px;
+  width: 10px;
+  margin: 5px 25px 8px 30px;
+}
+
+.apps-lic-card-box {
+  width: 90%;
+  margin-left: 5%;
+  margin-right: 5%;
+  height: 150px;
+  background-color: #e5eeee;
+  font-size: 22px;
+  font-weight: bold;
+  color: #09464c;
+  position: relative;
+  overflow-y: hidden;
+  text-align: center;
+  display: inline-block;
+  &:hover {
+    background-color: #09464c;
+    a {
+      text-decoration: none;
+      background-color: #09464c;
+      color: white;
+    }
+  }
+  a {
+    display: inline-block;
+    font-size: 22px;
+    font-weight: bold;
+    color: #09464c;
+    width: 100%;
+    height: 100%;
+    line-height: 1;
+    padding-top: 50px;
+    text-align: center;
+    align-items: center;
+    vertical-align: middle;
+  }
+}
+
+.views-field-field-page-link {
+  width: 25%;
+  padding: 10px 0px;
+  float: left;
+  margin: 0px;
+}
+
+.views-row {
+  width: 86%;
+  margin-left: 7%;
 }

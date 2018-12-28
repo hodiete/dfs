@@ -5,31 +5,26 @@
 // Markup: global_navigation_header.hbs
 //
 // Style guide: components.global_navigation
-
-
 // ########################################################################################
 // VARS
-
 // generic
 $webny-global-prefix: 'webny-global-';
 $min-width-breakpoint: 768px;
 $max-width-breakpoint: 1024px;
-
-
+$max-width-breakpoint-min: 1025px;
 $horizontal-menu-stacked-size: 53px;
-
 $drop-down-width-mobile: 255px;
 $drop-down-width-hor-5-tablet: 170px;
 $drop-down-width-tablet: 300px;
 $drop-down-width-desktop: 300px;
-
 $medium-screen-link-height: 75px;
-
 // text
-
-$base-font: "Proxima Nova", Arial, sans-serif;
-$agency-name-font: "D Sari Bold", Arial, sans-serif; // used in header and footer
-
+$base-font: "Proxima Nova",
+Arial,
+sans-serif;
+$agency-name-font: "D Sari Bold",
+Arial,
+sans-serif; // used in header and footer
 // padding
 $nav-title-padding: 15px 30px 8px 30px; // kept in case anyone still uses this variable
 $nav-title-padding-tablet: 15px 30px 1px 30px;
@@ -41,16 +36,13 @@ $submenu-padding: 5px 0px;
 $extra-padding: 0px 0px;
 $nav-fore-color: #fff;
 $nav-weight: bold;
-
 //depracated
 $default-font-size: 1em;
 $default-constrained-font-size: .8em;
 $nav-title-size: 1.4em;
 $big-nav-title-size: 1.375em;
-
 // border
 $common-wide-border: 1px solid #fff;
-
 // icons
 // menu arrows
 $menu-arrow-size: 16px;
@@ -62,43 +54,58 @@ $menu-arrow-left: 18px;
 $menu-arrow-left-top: 30px;
 $menu-arrow-left-top-tablet: 31px;
 $menu-arrow-active-link-padding: 48px;
-
 // GLOBAL NAVIGATION COLORS
-$globalnav-primary-color:     $color-primary !default;
-$globalnav-secondary-color:   $button-black-50 !default;
+$globalnav-primary-color: $color-primary !default;
+$globalnav-secondary-color: $button-black-50 !default;
+/****  mixin  ****/
+
+@mixin portal-login($minWidth, $width) {
+  min-width: $minWidth;
+  width: $width;
+  height: 41px;
+  border-radius: 60px; // text-align: right;
+  // padding-right: 25px;
+  margin: 16px 12px;
+  background: $color-accent-primary url('../icons/dfs/portal.svg') bottom left no-repeat;
+  background-size: 26px 25px;
+  background-position: 12px 5px;
+  a {
+    font-weight: bold;
+    color: #000000;
+    height: 42px;
+    padding-left: 40px;
+    &:hover {
+      border-radius: 60px;
+      background: inherit;
+      background-size: inherit;
+      background-position: inherit;
+    }
+  }
+}
 
 // ########################################################################################
 // MIXINS
-
-
-
 @mixin in-context-menu() {
-  > ul {
+  >ul {
     position: relative;
     display: block;
     border-top: 0;
-    width: auto;
-    vertical-align: bottom;
-
+    width: auto; // vertical-align: bottom;
     a,
     span {
       border-bottom-width: 0;
       padding: $horizontal-link-padding;
     }
-
     li,
     li.hidden {
       display: inline-block;
       vertical-align: bottom;
-
       ul {
         position: absolute;
         width: auto;
         border-top: $common-wide-border;
-
         li {
           display: block;
-
           a,
           span {
             padding: $horizontal-sub-link-padding;
@@ -107,28 +114,23 @@ $globalnav-secondary-color:   $button-black-50 !default;
       }
     }
   }
-
   .nav-toggle {
     display: none;
   }
 }
 
 // tool mixins
-
 // Calculate numbers such as a percent width then subtracting a number
-@mixin calc($property, $expression, $importance: null) {
+@mixin calc($property,
+$expression,
+$importance: null) {
   #{$property}: -webkit-calc(#{$expression});
   #{$property}: calc(#{$expression}) $importance;
 }
 
-
-
-
 // ########################################################################################
 // MAIN HEADER SASS
-
 .#{$webny-global-prefix}header {
-
   color: $nav-fore-color;
   font-size: 14px;
   line-height: 17px;
@@ -136,8 +138,8 @@ $globalnav-secondary-color:   $button-black-50 !default;
   position: relative;
   font-weight: $nav-weight;
   font-style: normal;
-
-  a,
+  z-index: 500;
+  width: 100%;
   a:link,
   a:visited,
   a:hover,
@@ -145,14 +147,12 @@ $globalnav-secondary-color:   $button-black-50 !default;
     color: $nav-fore-color;
     text-decoration: none;
   }
-
   .webny-global-logo {
     height: 80px;
     img {
       padding: 17px 0 18px 0;
     }
   }
-
   h1 {
     font-family: $agency-name-font;
     display: table-cell;
@@ -163,7 +163,6 @@ $globalnav-secondary-color:   $button-black-50 !default;
     font-size: 16px;
     line-height: 20px;
     font-weight: $nav-weight;
-
     a,
     a:link,
     a:visited,
@@ -175,39 +174,30 @@ $globalnav-secondary-color:   $button-black-50 !default;
       color: $nav-fore-color;
       font-family: $agency-name-font;
     }
-
     a:hover {
       text-decoration: none;
       color: $nav-fore-color;
     }
-
   }
-
   ul {
     padding: $extra-padding;
     margin: 0;
     display: none;
-
     li {
       padding: 0;
       margin: 0;
-
       &.#{$webny-global-prefix}inactive {
         display: none;
       }
-
       &.#{$webny-global-prefix}active ul {
         display: block;
       }
     }
   }
-
-  ul > li > a[href='#']:after,
-  ul > li > span:after {
+  ul>li>a[href='#']:after,
+  ul>li>span:after {
     background-image: url('../icons/icon-arrow-right.png');
-    background-image:
-            linear-gradient(transparent, transparent),
-            url('../icons/icon-arrow-right.svg');
+    background-image: linear-gradient(transparent, transparent), url('../icons/icon-arrow-right.svg');
     background-size: $menu-arrow-size;
     background-repeat: no-repeat;
     width: 2em;
@@ -217,33 +207,26 @@ $globalnav-secondary-color:   $button-black-50 !default;
     right: $menu-arrow-right;
     top: $menu-arrow-top;
   }
-
-  > ul {
+  >ul {
     position: absolute;
     width: $drop-down-width-mobile;
     border-top: $common-wide-border;
     z-index: 200;
-
     li {
       display: block;
       list-style: none;
       position: relative;
-
-      &.#{$webny-global-prefix}active > a:link,
-      &.#{$webny-global-prefix}active > a:visited,
-      &.#{$webny-global-prefix}active > span {
+      &.#{$webny-global-prefix}active>a:link,
+      &.#{$webny-global-prefix}active>a:visited,
+      &.#{$webny-global-prefix}active>span {
         padding-left: $menu-arrow-active-link-padding;
         font-weight: $nav-weight;
-        letter-spacing: .03em;
-        color: transparent;
+        letter-spacing: .03em; // color: transparent;
       }
-
-      &.#{$webny-global-prefix}active > a:before,
-      &.#{$webny-global-prefix}active > span:before {
+      &.#{$webny-global-prefix}active>a:before,
+      &.#{$webny-global-prefix}active>span:before {
         background-image: url('../icons/icon-arrow-left.png');
-        background-image:
-                linear-gradient(transparent, transparent),
-                url('../icons/icon-arrow-left.svg');
+        background-image: linear-gradient(transparent, transparent), url('../icons/icon-arrow-left.svg');
         background-size: $menu-arrow-size;
         background-repeat: no-repeat;
         width: 2em;
@@ -254,12 +237,10 @@ $globalnav-secondary-color:   $button-black-50 !default;
         left: $menu-arrow-left;
         top: $menu-arrow-left-top;
       }
-
-      &.#{$webny-global-prefix}active > a:after,
-      &.#{$webny-global-prefix}active > span:after {
+      &.#{$webny-global-prefix}active>a:after,
+      &.#{$webny-global-prefix}active>span:after {
         background-image: none;
       }
-
       a:link,
       a:visited,
       span {
@@ -271,45 +252,38 @@ $globalnav-secondary-color:   $button-black-50 !default;
         text-decoration: none;
         color: $nav-fore-color;
       }
-
-      a:hover{
+      a:hover {
         text-decoration: none;
         color: $nav-fore-color;
         cursor: pointer;
       }
-      .gnav-topli{
+      .gnav-topli {
         span:hover {
           color: $nav-fore-color;
         }
       }
-
       ul {
         padding: 0;
         display: none;
         position: initial;
         z-index: 5;
         width: 100%;
-
-        > li > a {
-          cursor:pointer;
+        >li>a {
+          cursor: pointer;
         }
-        > li > span {
+        >li>span {
           letter-spacing: .02em;
           font-weight: $nav-weight;
         }
       }
     }
   }
-
   .#{$webny-global-prefix}active {
     display: block;
-  }
-
-  // button for opening the menu on mobile devices
+  } // button for opening the menu on mobile devices
   .nav-toggle {
     text-indent: -9999px;
     color: transparent;
-
     a,
     a:link,
     a:visited,
@@ -318,22 +292,22 @@ $globalnav-secondary-color:   $button-black-50 !default;
       width: 65px;
       height: 80px;
       display: block;
-      float: left;
       background-image: url('../icons/icon-menu.png');
-      background-image:
-              linear-gradient(transparent, transparent),
-              url('../icons/icon-menu.svg');
+      background-image: linear-gradient(transparent, transparent), url('../icons/icon-menu.svg');
       background-size: 20px;
       background-repeat: no-repeat;
       background-position: 50%;
     }
-  }
-
-  // Tablet
+    a {
+      float: left;
+    }
+    a.webny-global-active {
+      float: right;
+    }
+  } // Tablet
   @media (min-width: $min-width-breakpoint) {
-    &.horizontal{
+    &.horizontal {
       font-weight: $nav-weight;
-
       &.alt-unav {
         h1 {
           a {
@@ -341,7 +315,6 @@ $globalnav-secondary-color:   $button-black-50 !default;
           }
         }
       }
-
       h1 {
         a,
         a:link,
@@ -352,24 +325,20 @@ $globalnav-secondary-color:   $button-black-50 !default;
           line-height: 26px;
         }
       }
-
       &.unstacked {
         font-size: 14px;
         line-height: 18px;
         min-height: 80px;
         @include in-context-menu();
-
         .webny-global-logo {
-          float:left;
+          float: left;
           height: 80px;
           img {
             padding: 17px 0 18px 30px;
           }
         }
-
         h1 {
           height: auto;
-
           a,
           a:link,
           a:visited,
@@ -378,17 +347,15 @@ $globalnav-secondary-color:   $button-black-50 !default;
             padding: $nav-title-padding-tablet;
           }
         }
-
-        > ul {
+        >ul {
           padding: 23px 0 23px 15px;
-          display:inline-block;
-          & > li > a:hover {
-            text-decoration: underline;
-          }
-          & > li > span:hover {
+          display: inline-block;
+          &>li>a:hover {
             text-decoration: none;
           }
-
+          &>li>span:hover {
+            text-decoration: none;
+          }
           li {
             a,
             a:link,
@@ -396,14 +363,13 @@ $globalnav-secondary-color:   $button-black-50 !default;
             a:hover,
             a:active,
             span {
-              font-weight: $nav-weight;
+              font-weight: $menu-semi-bold;
               font-size: 14px;
               letter-spacing: .03em;
               padding-left: 15px;
             }
             ul {
               width: $drop-down-width-hor-5-tablet;
-
               li {
                 a,
                 a:link,
@@ -419,38 +385,32 @@ $globalnav-secondary-color:   $button-black-50 !default;
             }
           }
         }
-
-        ul > li > a[href='#']:after,
-        ul > li > span:after {
+        ul>li>a[href='#']:after,
+        ul>li>span:after {
           background-image: none;
           width: 0;
           margin: 0;
           display: none;
         }
-
-        > ul li.#{$webny-global-prefix}active > a:before,
-        > ul li.#{$webny-global-prefix}active > span:before {
+        >ul li.#{$webny-global-prefix}active>a:before,
+        >ul li.#{$webny-global-prefix}active>span:before {
           background-image: none;
           width: 0;
           margin: 0;
           display: none;
         }
       }
-
       &.stacked {
         font-size: 16px;
         line-height: 22px;
         letter-spacing: .03em;
-
         .webny-global-logo {
           img {
             padding: 15px 0 15px 0;
           }
         }
-
-        > ul {
+        >ul {
           width: $drop-down-width-tablet;
-
           a,
           a:link,
           a:visited,
@@ -459,27 +419,26 @@ $globalnav-secondary-color:   $button-black-50 !default;
           span {
             font-weight: $nav-weight;
           }
-
-          li.#{$webny-global-prefix}active > a:before,
-          li.#{$webny-global-prefix}active > span:before {
+          li.#{$webny-global-prefix}active>a:before,
+          li.#{$webny-global-prefix}active>span:before {
             background-size: $menu-arrow-size-tablet;
             top: $menu-arrow-left-top-tablet;
           }
         }
-
-        > ul > li > a[href='#']:after,
-        > ul > li > span:after {
+        >ul>li>a[href='#']:after,
+        >ul>li>span:after {
           background-size: $menu-arrow-size-tablet;
           top: $menu-arrow-top-tablet;
         }
       }
     }
-  }
-
-  // Desktop
+  } // Desktop
   @media (min-width: $max-width-breakpoint) {
-    &.horizontal{
-      > ul,
+    .webny-global-header h1 {
+      height: 0;
+    }
+    &.horizontal {
+      >ul,
       h1 {
         display: inline-block;
       }
@@ -491,24 +450,20 @@ $globalnav-secondary-color:   $button-black-50 !default;
         }
       }
     }
-
     &.unstacked.horizontal,
-    &.stacked.horizontal{
+    &.stacked.horizontal {
       height: auto;
       font-size: 16px;
-      & > ul > li > a:hover {
-        text-decoration: underline;
-        color: $nav-fore-color;
-      }
-
-      & > ul > li > span:hover {
+      &>ul>li>a:hover {
         text-decoration: none;
         color: $nav-fore-color;
       }
-
+      &>ul>li>span:hover {
+        text-decoration: none;
+        color: $nav-fore-color;
+      }
       h1 {
         padding-left: 60px;
-
         a,
         a:link,
         a:visited,
@@ -520,16 +475,13 @@ $globalnav-secondary-color:   $button-black-50 !default;
           display: table-cell;
           height: $medium-screen-link-height;
           vertical-align: middle;
-
           span {
             display: inline-block;
           }
         }
       }
-
-      > ul {
+      >ul {
         padding: 0 0 0 60px;
-
         li {
           a,
           a:link,
@@ -544,63 +496,52 @@ $globalnav-secondary-color:   $button-black-50 !default;
             vertical-align: middle;
             padding: 0 15px;
             color: $nav-fore-color;
-
             &:before,
             &:after {
-              background-image:none;
+              background-image: none;
             }
           }
-
           ul {
             padding: $submenu-padding;
             top: auto;
             width: $drop-down-width-desktop;
-
             li {
               height: auto;
-
               a,
               a:link,
               a:visited,
               a:hover,
               a:active,
               span {
-                font-size: 16px;
+                font-size: 14px;
                 line-height: 20px;
                 height: auto;
                 display: block;
                 padding: 15px;
               }
-            }
-            // HIDE TOP LINKS ON DROPDOWN ON DESKTOP
+            } // HIDE TOP LINKS ON DROPDOWN ON DESKTOP
             li.gnav-toplink {
-                display: none;
+              display: none;
             }
           }
-
           &:last-child ul {
             left: auto;
           }
         }
       }
     }
-
     &.unstacked.horizontal {
       min-height: 75px;
-
       .webny-global-logo {
-        float:left;
+        float: left;
         min-height: 75px;
         img {
           padding: 15px 0 15px 60px;
         }
-      }
-
-      > h1 {
-        /*margin: 10px;*/
-      }
-
-      > ul {
+      } // >h1 {
+      //   /*margin: 10px;*/
+      // }
+      >ul {
         padding: 0 0 0 45px;
         li {
           a,
@@ -619,32 +560,26 @@ $globalnav-secondary-color:   $button-black-50 !default;
         }
       }
     }
-
-    &.stacked.horizontal{
-      @include in-context-menu();
-      min-height: 115px;
-
+    &.stacked.horizontal {
+      @include in-context-menu(); // min-height: 115px;
+      min-height: 75px; // overflow: -webkit-paged-y;
       .webny-global-logo {
         img {
           padding: 15px 0 15px 60px;
         }
       }
-
       &.alt-unav {
         min-height: 75px;
         h1 {
           a {
             display: none;
           }
-        }
-        ul {}
+        } // ul {}
       }
-
       h1 {
         display: block;
         width: auto;
-        height: auto;
-
+        height: 0;
         a,
         a:link,
         a:visited,
@@ -654,11 +589,9 @@ $globalnav-secondary-color:   $button-black-50 !default;
           padding-top: 17px;
         }
       }
-
-      > ul {
+      >ul {
         padding: 0 0 0 45px;
         display: block;
-
         li {
           a,
           a:link,
@@ -668,12 +601,10 @@ $globalnav-secondary-color:   $button-black-50 !default;
           span {
             height: 75px;
           }
-
           ul {
             top: auto;
             height: auto;
             width: $drop-down-width-desktop;
-
             li {
               a,
               a:link,
@@ -688,29 +619,146 @@ $globalnav-secondary-color:   $button-black-50 !default;
           }
         }
       }
-
-      ul > li > a[href='#']:after,
-      ul > li > span:after {
+      ul>li>a[href='#']:after,
+      ul>li>span:after {
         background-image: none;
         width: 0;
         margin: 0;
         display: none;
       }
-
-      > ul li.#{$webny-global-prefix}active > a:before,
-      > ul li.#{$webny-global-prefix}active > span:before  {
+      >ul li.#{$webny-global-prefix}active>a:before,
+      >ul li.#{$webny-global-prefix}active>span:before {
         background-image: none;
         width: 0;
         margin: 0;
         display: none;
       }
     }
-
+    /* 
+     GW: debug DFS Main Navigation Menu 
+  */
+    ul.gnav-ul {
+      align-items: center;
+      padding: 26px; // margin: 0 0 20px 0;
+      // height: 75px;
+      font-family: serif;
+      line-height: 1;
+      letter-spacing: normal;
+      text-align: left;
+      li.gnav-topli {
+        height: 75px; // line-height: 1.18;
+        a {
+          height: 42px;
+          font-weight: normal;
+        }
+        &:nth-child(1) {
+          display: inline-block;
+          width: 227px; // height: 53px;
+          font-weight: bold; // line-height: 1.18;
+          text-align: left; // padding-top: 20px;
+          a {
+            font-size: 22px;
+            font-weight: bold;
+          }
+        }
+        &:nth-child(2) {
+          width: 203px;
+        }
+        &:nth-child(3) {
+          width: 219px;
+        }
+        &:nth-child(4) {
+          width: 171px;
+        }
+        &:nth-child(5) {
+          width: 205px;
+        }
+        &:nth-child(6) {
+          width: 116px;
+        }
+        &:nth-child(7) {
+          border: none;
+          @include portal-login(131px,
+          153px);
+          &:hover {
+            font-weight: $menu-hover-bold;
+            background: #e5eeee url(../icons/dfs/portal.svg) bottom left no-repeat;
+            background-size: 26px 25px;
+            background-position: 12px 5px;
+          }
+        }
+        &:nth-child(8) {
+          // width: 15%;
+          width: 12%;
+          height: 41px;
+          min-width: 150px;
+          margin-top: 16px;
+          margin-bottom: 16px;
+          margin-left: 1.5%;
+          padding-left: 3%;
+          border: solid 2px #b6c3c2;
+          border-radius: 35px;
+          box-sizing: border-box;
+          background: url(../icons/dfs/search_white.svg) bottom left no-repeat;
+          background-size: 24px 24px;
+          background-position: 14px 8px;
+          fill: #dddddd;
+          a {
+            color: #79a0a2;
+            height: 42px;
+            &:hover {
+              // background-color: $color-primary;
+              background-color: inherit;
+            }
+          }
+        }
+      }
+    } // GW End
+  } // Desktop - for IE8, and its fate, that we code for old browsers at this rate.
+  @media screen and (min-width: $max-width-breakpoint) and (max-width:1600px) {
+    /* 
+     GW: debug DFS Main Navigation Menu 
+  */
+    ul.gnav-ul {
+      li.gnav-topli {
+        &:nth-child(1) {
+          width: 227px; //223px; (not fit in Safari) // height: 53px;
+        }
+        &:nth-child(2) {
+          // width: 120px;
+          width: 9.9%;
+        }
+        &:nth-child(3) {
+          // width: 135px;
+          width: 10.5%;
+        }
+        &:nth-child(4) {
+          // width: 130px;
+          width: 8%;
+        }
+        &:nth-child(5) {
+          width: 10.6%;
+        }
+        &:nth-child(6) {
+          // width: 100px;
+          width: 9.5%;
+        }
+        &:nth-child(7) {
+          min-width: 103px; // width: 103px;
+          // width: 10%;
+        }
+        &:nth-child(8) {
+          width: 12%; // min-width: 145px;
+          min-width: 120px;
+          margin-left: 1.4%;
+          padding-left: 3%;
+        }
+      }
+    } // GW End
   }
-  // Desktop - for IE8, and its fate, that we code for old browsers at this rate.
   @media \0screen {
-    &.horizontal{
-      > ul,
+    &.horizontal {
+      >ul,
       h1 {
         display: inline-block;
       }
@@ -722,23 +770,19 @@ $globalnav-secondary-color:   $button-black-50 !default;
         }
       }
     }
-
     &.unstacked.horizontal,
-    &.stacked.horizontal{
+    &.stacked.horizontal {
       height: auto;
       font-size: 16px;
-      & > ul > li > a:hover {
-        text-decoration: underline;
-      }
-
-      & > ul > li > span:hover {
+      &>ul>li>a:hover {
         text-decoration: none;
       }
-
+      &>ul>li>span:hover {
+        text-decoration: none;
+      }
       h1 {
         width: $drop-down-width-desktop;
         padding-left: 30px;
-
         a,
         a:link,
         a:visited,
@@ -751,16 +795,13 @@ $globalnav-secondary-color:   $button-black-50 !default;
           height: $medium-screen-link-height;
           vertical-align: middle;
           padding-left: 15px;
-
           span {
             display: inline-block;
           }
         }
       }
-
-      > ul {
+      >ul {
         padding: 0 0 0 30px;
-
         li {
           a,
           a:link,
@@ -774,21 +815,17 @@ $globalnav-secondary-color:   $button-black-50 !default;
             height: $medium-screen-link-height;
             vertical-align: middle;
             padding: 0 15px;
-
             &:before,
             &:after {
-              background-image:none;
+              background-image: none;
             }
           }
-
           ul {
             padding: $submenu-padding;
             top: auto;
             width: $drop-down-width-desktop;
-
             li {
               height: auto;
-
               a,
               a:link,
               a:visited,
@@ -803,20 +840,17 @@ $globalnav-secondary-color:   $button-black-50 !default;
               }
             }
           }
-
           &:last-child ul {
             left: auto;
           }
         }
       }
     }
-
     &.unstacked.horizontal {
-      > h1 {
+      >h1 {
         margin: 10px;
       }
-
-      > ul {
+      >ul {
         li {
           a,
           a:link,
@@ -835,11 +869,9 @@ $globalnav-secondary-color:   $button-black-50 !default;
         }
       }
     }
-
-    &.stacked.horizontal{
+    &.stacked.horizontal {
       @include in-context-menu();
       height: 148px;
-
       &.alt-unav {
         min-height: 75px;
         h1 {
@@ -848,12 +880,10 @@ $globalnav-secondary-color:   $button-black-50 !default;
           }
         }
       }
-
       h1 {
         display: block;
         width: auto;
         height: auto;
-
         a,
         a:link,
         a:visited,
@@ -862,10 +892,8 @@ $globalnav-secondary-color:   $button-black-50 !default;
           height: 85px;
         }
       }
-
-      > ul {
+      >ul {
         display: block;
-
         li {
           a,
           a:link,
@@ -875,12 +903,10 @@ $globalnav-secondary-color:   $button-black-50 !default;
           span {
             height: 63px;
           }
-
           ul {
             top: auto;
             height: auto;
             width: $drop-down-width-desktop;
-
             li {
               a,
               a:link,
@@ -895,24 +921,21 @@ $globalnav-secondary-color:   $button-black-50 !default;
           }
         }
       }
-
-      ul > li > a[href='#']:after,
-      ul > li > span:after {
+      ul>li>a[href='#']:after,
+      ul>li>span:after {
         background-image: none;
         width: 0;
         margin: 0;
         display: none;
       }
-
-      > ul li.#{$webny-global-prefix}active > a:before,
-      > ul li.#{$webny-global-prefix}active > span:before  {
+      >ul li.#{$webny-global-prefix}active>a:before,
+      >ul li.#{$webny-global-prefix}active>span:before {
         background-image: none;
         width: 0;
         margin: 0;
         display: none;
       }
     }
-
   }
 }
 
@@ -924,30 +947,24 @@ $globalnav-secondary-color:   $button-black-50 !default;
 
 .#{$webny-global-prefix}header {
   background-color: $color-primary;
-
-  & > ul {
+  &>ul {
     background-color: $color-primary;
-
     a,
     span {
-      border-bottom-color: mix( $color-primary, #fff, 85% );
+      border-bottom-color: mix( $color-primary, #fff, 85%);
     }
-
     a:hover,
     a:active,
     span:hover {
       background-color: $globalnav-secondary-color;
     }
-
-    & > span:hover {
+    &>span:hover {
       text-decoration: none;
     }
-
     ul {
       background-color: $color-primary;
     }
   }
-
   @media (min-width: $min-width-breakpoint) {
     &.horizontal {
       &.unstacked {
@@ -958,19 +975,18 @@ $globalnav-secondary-color:   $button-black-50 !default;
             span:hover {
               background-color: $color-primary;
             }
-            & > span:hover {
+            &>span:hover {
               text-decoration: none;
             }
-            ul > li {
+            ul>li {
               a:hover,
               a:active,
               span:hover {
                 background-color: $globalnav-secondary-color;
               }
-              & > span:hover {
+              &>span:hover {
                 text-decoration: none;
               }
-
             }
           }
         }
@@ -988,13 +1004,12 @@ $globalnav-secondary-color:   $button-black-50 !default;
             span:hover {
               background-color: $color-primary;
             }
-            ul > li {
+            ul>li {
               a:hover,
               a:active,
               span:hover {
                 background-color: $globalnav-secondary-color;
               }
-
             }
           }
         }
@@ -1003,4 +1018,64 @@ $globalnav-secondary-color:   $button-black-50 !default;
   }
 }
 
+@media only screen and( min-width: 1024) and (max-width: 1280px) {
+  .webny-global-header ul.gnav-ul li.gnav-topli {
+    &:nth-child(1) {
+      width: 100%;
+      height: 46px;
+    }
+    &:nth-child(n+2) {
+      width: 12.9%;
+    }
+    &:nth-child(7) {
+      width: 153px;
+    }
+    &:nth-child(8) {
+      width: 14%;
+    }
+  }
+}
 
+@media screen and (max-width: 1023px) {
+  /* 
+     GW: debug DFS Main Navigation Menu 
+  */
+  ul.gnav-ul {
+    padding: auto; // margin: 0 0 20px 0;
+    li.gnav-topli {
+      &:nth-child(1) {
+        width: 223px; // height: 53px;
+        display: none;
+      }
+      &:nth-child(n+1) {
+        // width: 120px;
+        width: auto;
+      } // &:nth-child(7) {
+      //   width: 100%;
+      // }
+      &:nth-child(8) {
+        // width: 100%; // min-width: 145px;
+        margin-left: 0;
+        padding-left: 0%;
+      }
+      a {
+        font-weight: 600;
+      }
+    }
+  } // GW End
+}
+
+@media screen and (max-width: 480px) {
+  #webny-global-header > h1 {
+      width: 223px;
+  }
+}
+
+#webny-global-header ul li {
+  a {
+    font-weight: $menu-semi-bold;
+    &:hover {
+      font-weight: $menu-hover-bold;
+    }
+  }
+}

@@ -68,8 +68,16 @@ view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
             {# maximum amount of cards is 3, so look from 0 - 2 to capture each potential card #}
             {% for i in 0..2 %}
                 {# there is a chance of less than 3 cards, so verify the currently looped card exists #}
+
                 {% if content.field_webny_card_entity_ref[i] %}
-                    <div>
+                    {% if paragraph.field_card_size.value == "Tall" %}
+                    <div class="tall">
+                    {% elseif paragraph.field_card_size.value == "Wide" %}
+                    <div class="wide">
+                    {% elseif paragraph.field_card_size.value == "Short" %}
+                    <div class="short">
+                    {% endif %}
+
                         <article class="webny-card">
                             {{ content.field_webny_card_entity_ref[i] }}
                             {# if card includes a call to action #}

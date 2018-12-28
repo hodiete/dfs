@@ -31,8 +31,8 @@ function dfs_ny_form_system_theme_settings_alter(&$form, &$form_state) {
   // Set up a fieldset for WebNY theme options
   $form['dfs_ny_settings'] = array(
     '#type'         => 'details',
-    '#title'        => t('WebNY Theme'),
-    '#description'  => t('Settings for the WebNY theme.'),
+    '#title'        => t('WebNY DFS Theme'),
+    '#description'  => t('Settings for the WebNY DFS theme.'),
     '#weight' => -1000,
     '#open' => TRUE,
   );

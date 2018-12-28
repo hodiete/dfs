@@ -1,0 +1,73 @@
+.block-breadcrumbs {
+  @include span(8 of 12 last);
+  >* {
+    padding-right: 15px;
+  }
+  ol {
+    list-style-type: none;
+  }
+}
+
+#nydfs-breadcrumb {
+  margin: 0;
+  width: 100%; // height: 50px;
+  background-color: #E5EEEE;
+  ul {
+    margin-left: 24.5%;
+    display: flex;
+    list-style: none;
+    li {
+      padding: 10px 5px;
+      a {
+        font-weight: bold;
+        color: #09464c;
+      }
+      img.bread-arrow {
+        width: 18px;
+        height: 15px;
+        vertical-align: middle;
+      }
+    }
+    @media (max-width: 767px) {
+      margin-left: 1%;
+    }
+  }
+}
+
+#main-layout-content-switch-div {
+  display: flex;
+  flex-direction: column;
+  #block-breadcrumbs {
+    order: 1;
+  }
+  #nydfs-article-hero-banner {
+    order: 0;
+  }
+  .webny-share-bar {
+    order: 2;
+  }
+  .body-area {
+    order: 3;
+  }
+  #nydfs-article-quickedit-layout {
+    order: 4;
+  }
+}
+
+#nydfs-breadcrumb {
+  @media (max-width: 1280px) {
+    ul {
+      margin-left: 28.5%;
+    }
+  }
+  @media (max-width: 480px) {
+    ul {
+      margin-left: 18%;
+    }
+  }
+  @media (max-width: 414px) {
+    ul {
+      margin-left: 15%;
+    }
+  }
+}

@@ -77,6 +77,12 @@
 
   </main>
 
+{% if page.after_content %}
+  <div id="after-content" role="contentinfo">
+    {{ page.after_content }}
+  </div>
+{% endif %}
+
   {% if page.footer %}
     <footer role="contentinfo">
       {{ page.footer }}

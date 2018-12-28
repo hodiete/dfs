@@ -1,12 +1,17 @@
 <?php
 
+/**
+ * @file
+ * Functions to support theming in the dfs_ny theme.
+ */
+
 use Drupal\node\Entity\Node;
 
 /**
  * Implements hook_preprocess_html().
  */
 function dfs_ny_preprocess_html(&$variables) {
-  // <body> classes for sidebars
+  // <body> classes for sidebars.
   if (isset($variables['page']['sidebar_first']) && isset($variables['page']['sidebar_second'])) {
     $variables['attributes']['class'][] = 'body-sidebars-both';
   }
@@ -28,75 +33,74 @@ function dfs_ny_preprocess_html(&$variables) {
 }
 
 /**
- * Implements hook_preprocess_paragraph__webny_card_paragraph_type
+ * Implements hook_preprocess_paragraph__webny_card_paragraph_type().
  */
 function dfs_ny_preprocess_paragraph__webny_card_paragraph_type(&$variables) {
-    // Load the site name out of configuration.
-    $config = \Drupal::config('system.site');
-    $variables['site_name'] = $config->get('name');
+  // Load the site name out of configuration.
+  $config = \Drupal::config('system.site');
+  $variables['site_name'] = $config->get('name');
 
-    // grab the host to pass to the twig template to build URLs
-    $variables['host'] = \Drupal::request()->getSchemeAndHttpHost();
+  // Grab the host to pass to the twig template to build URLs.
+  $variables['host'] = \Drupal::request()->getSchemeAndHttpHost();
 
-    // pull in paragraph object to acquire entity references
-    $paragraph = $variables['paragraph'];
-    $referencedEntities = $paragraph->get('field_webny_card_entity_ref');
+  // Pull in paragraph object to acquire entity references.
+  $paragraph = $variables['paragraph'];
+  $referencedEntities = $paragraph->get('field_webny_card_entity_ref');
 
-    // loop through each referenced entity passing the url as an array to twig
-    foreach($referencedEntities->referencedEntities() as $entity) {
-        $variables['card_url'][] = $entity->url();
-        $variables['entity_type'][] = $entity->bundle();
-    }
-
+  // Loop through each referenced entity passing the url as an array to twig.
+  foreach ($referencedEntities->referencedEntities() as $entity) {
+    $variables['card_url'][] = $entity->url();
+    $variables['entity_type'][] = $entity->bundle();
+  }
 }
 
 /**
- * Implements hook_preprocess_node__webny_landing_page
+ * Implements hook_preprocess_node__webny_landing_page.
  */
 function dfs_ny_preprocess_node__webny_landing_page(&$variables) {
-    // Load the site name out of configuration.
-    $config = \Drupal::config('system.site');
-    $variables['site_name'] = $config->get('name');
+  // Load the site name out of configuration.
+  $config = \Drupal::config('system.site');
+  $variables['site_name'] = $config->get('name');
 }
 
 /**
- * Implements hook_preprocess_node__webny_page__full
- */
+* Implements hook_preprocess_node__webny_page__full
+*/
 function dfs_ny_preprocess_node__webny_page__full(&$variables) {
-    // Load the site name out of configuration.
-    $config = \Drupal::config('system.site');
-    $variables['site_name'] = $config->get('name');
+  // Load the site name out of configuration.
+  $config = \Drupal::config('system.site');
+  $variables['site_name'] = $config->get('name');
 }
 
 /**
- * Implements hook_preprocess_node__webny_news
+ * Implements hook_preprocess_node__webny_news.
  */
 function dfs_ny_preprocess_node__webny_news(&$variables) {
-    // Load the site name out of configuration.
-    $config = \Drupal::config('system.site');
-    $variables['site_name'] = $config->get('name');
+  // Load the site name out of configuration.
+  $config = \Drupal::config('system.site');
+  $variables['site_name'] = $config->get('name');
 }
 
 /**
- * Implements hook_preprocess_node__webny_event
+ * Implements hook_preprocess_node__webny_event.
  */
 function dfs_ny_preprocess_node__webny_event(&$variables) {
-    // Load the site name out of configuration.
-    $config = \Drupal::config('system.site');
-    $variables['site_name'] = $config->get('name');
+  // Load the site name out of configuration.
+  $config = \Drupal::config('system.site');
+  $variables['site_name'] = $config->get('name');
 }
 
 /**
- * Implements hook_preprocess_node__webny_generic_page__full
+ * Implements hook_preprocess_node__webny_generic_page__full.
  */
 function dfs_ny_preprocess_node__webny_generic_page__full(&$variables) {
-    // Load the site name out of configuration.
-    $config = \Drupal::config('system.site');
-    $variables['site_name'] = $config->get('name');
+  // Load the site name out of configuration.
+  $config = \Drupal::config('system.site');
+  $variables['site_name'] = $config->get('name');
 }
 
 /**
- * Implements hook_preprocess_node__webny_location__teaser
+ * Implements hook_preprocess_node__webny_location__teaser.
  */
 function dfs_ny_preprocess_node__webny_location__teaser(&$variables) {
   /** @var \Drupal\node\Entity\Node $node */
@@ -129,8 +133,8 @@ function dfs_ny_preprocess_node__webny_location__teaser(&$variables) {
 }
 
 /**
- * Implements hook_preprocess_field
- */
+* Implements hook_preprocess_field
+*/
 function dfs_ny_preprocess_field(&$variables) {
   if ($variables['field_name'] === 'field_webny_event_address') {
     $variables['address_line1'] = $variables['element']['0']['address_line1'];
@@ -139,12 +143,11 @@ function dfs_ny_preprocess_field(&$variables) {
     $variables['locality'] = $variables['element']['0']['locality'];
     $variables['postal_code'] = $variables['element']['0']['postal_code'];
   }
-
 }
 
 /**
- * Implements hook_library_info_alter(&$libraries, $extension).
- */
+* Implements hook_library_info_alter(&$libraries, $extension).
+*/
 function dfs_ny_library_info_alter(&$libraries, $extension) {
   if ($extension !== 'dfs_ny') {
     return;
@@ -152,17 +155,54 @@ function dfs_ny_library_info_alter(&$libraries, $extension) {
   if (isset($libraries['global-styling']['css']['theme'])) {
     $libraries['global-styling']['css']['theme'] = array('css/' . theme_get_setting('site_color_pallet') . '.css' => array());
   }
-  $temp=0;
 }
 
 /**
- * Implements hook_theme_suggestions_field_alter().
- */
- function dfs_ny_suggestions_field_alter(&$suggestions, $variables){
-	 $suggestions[] = 'field__' . $variables['element']['#bundle'] . '_' . $variables['element']['#field_name'];
-	 $suggestions[] = 'field__' . $variables['element']['#bundle'] . '_' . $variables['element']['#field_name'] . '__' . $variables['element']['#field_type'];
-   if ($variables['element']['#view_mode'] === 'teaser') {
-     $suggestions[] = 'field__' . $variables['element']['#bundle'] . '_' . $variables['element']['#field_name'] . '__' . $variables['element']['#view_mode'];
-   }
-	 return $suggestions;
- }
+* Implements hook_theme_suggestions_field_alter().
+*/
+function dfs_ny_suggestions_field_alter(&$suggestions, $variables) {
+  $suggestions[] = 'field__' . $variables['element']['#bundle'] . '_' . $variables['element']['#field_name'];
+  $suggestions[] = 'field__' . $variables['element']['#bundle'] . '_' . $variables['element']['#field_name'] . '__' . $variables['element']['#field_type'];
+  if ($variables['element']['#view_mode'] === 'teaser') {
+    $suggestions[] = 'field__' . $variables['element']['#bundle'] . '_' . $variables['element']['#field_name'] . '__' . $variables['element']['#view_mode'];
+  }
+  return $suggestions;
+}
+
+/**
+* Implements hook_theme_suggestions_HOOK_alter().
+*/
+function dfs_ny_theme_suggestions_page_alter(array &$suggestions, array $variables) {
+  if ($node = \Drupal::routeMatch()->getParameter('node')) {
+    $content_type = $node->bundle();
+    $suggestions[] = 'page__' . $content_type;
+  }
+}
+
+function dfs_ny_theme_suggestions_menu_alter(array &$suggestions, array $variables)
+{
+  if (isset($variables['attributes']['block'])) {
+    $suggestions[] = $variables['theme_hook_original'] . '__' . $hook;
+  }
+}
+
+/**
+* Implements hook_theme_preprocess_page().
+*/
+function dfs_ny_preprocess_page(&$variables) {
+  $request = \Drupal::request();
+  $route_match = \Drupal::routeMatch();
+  if ($route_match->getParameter('node')) {
+    $page_title = \Drupal::service('title_resolver')->getTitle($request, $route_match->getRouteObject());
+    $variables['dfs_page_title'] = $page_title;
+  }
+
+  if ($node = \Drupal::routeMatch()->getParameter('node')) {
+    $content_type = $node->bundle();
+    $suggestions[] = 'page__' . $content_type;
+  }
+
+  // if(!isset($variables['agencyname'])){
+  //   $variables['agencyname'] = 'Department of Financial Services';
+  // }
+}
