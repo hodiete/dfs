@@ -1,0 +1,25 @@
+uuid: 220bc14a-5320-4188-ad8f-cc299e77a075
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_webny_landing_hero_vidurl
+    - node.type.webny_landing_page
+  module:
+    - link
+_core:
+  default_config_hash: aufg03Fl_ejBASu95kmA2PAJ0Cp0tq_86Tvb5LhYK6s
+id: node.webny_landing_page.field_webny_landing_hero_vidurl
+field_name: field_webny_landing_hero_vidurl
+entity_type: node
+bundle: webny_landing_page
+label: 'Hero Video URL'
+description: "Enter a Video URL from one of the following resources: Brightcove, youtube, Vimeo. \r\nTo add a second button, use the first button field to enter button text and a URL. \r\n\r\n"
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 16
+  title: 0
+field_type: link
