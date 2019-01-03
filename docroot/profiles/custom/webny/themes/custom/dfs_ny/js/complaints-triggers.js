@@ -40,12 +40,12 @@
     if ($(window).width() <= 1220) {
       $(".faq-card-box").parent().css({ "width": "100%" });
       $(".short-card-box").parent().css({ "width": "100%" });
-      $(".apps-lic-card-box").parent().css({"width": "50%"});
+      $(".apps-lic-card-box").parent().parent().css({"width": "50%"});
     }
     else {
       $(".faq-card-box").parent().css({ "width": "50%" });
       $(".short-card-box").parent().css({ "width": "50%" });
-      $(".apps-lic-card-box").parent().css({"width": "25%"});
+      $(".apps-lic-card-box").parent().parent().css({"width": "25%"});
     }
   })
 
@@ -148,18 +148,18 @@
     }
   })
 
-  $(window).resize(function () {
-    if ($(window).width() <= 880) {
-      $(".faq-card-box").parent().css({ "width": "100%" });
-      $(".short-card-box").parent().css({ "width": "100%" });
-      $(".apps-lic-card-box").parent().css({"width": "50%"});
-    }
-    else {
-      $(".faq-card-box").parent().css({ "width": "50%" });
-      $(".short-card-box").parent().css({ "width": "50%" });
-      $(".apps-lic-card-box").parent().css({"width": "25%"});
-    }
-  })
+  // $(window).resize(function () {
+  //   if ($(window).width() <= 880) {
+  //     $(".faq-card-box").parent().css({ "width": "100%" });
+  //     $(".short-card-box").parent().css({ "width": "100%" });
+  //     $(".apps-lic-card-box").parent().parent().css({"width": "50%"});
+  //   }
+  //   else {
+  //     $(".faq-card-box").parent().css({ "width": "50%" });
+  //     $(".short-card-box").parent().css({ "width": "50%" });
+  //     $(".apps-lic-card-box").parent().parent().css({"width": "25%"});
+  //   }
+  // })
 
 /**
  * Toggle left menu.
