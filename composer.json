@@ -162,11 +162,87 @@
                 }
             }
         },
-        
+        "ckeditor/autogrow": {
+          "type": "package",
+          "package": {
+            "name": "ckeditor/autogrow",
+            "version": "4.8.0",
+            "type": "ckeditor-library",
+            "dist": {
+              "url": "https://download.ckeditor.com/autogrow/releases/autogrow_4.8.0.zip",
+              "type": "zip"
+            },
+            "extra": {
+              "installer-name": "autogrow"
+            }
+          }
+        },
+        "ckeditor/codemirror": {
+          "type": "package",
+          "package": {
+            "name": "ckeditor/codemirror",
+            "version": "1.17.3",
+            "type": "ckeditor-library",
+            "dist": {
+              "url": "https://github.com/w8tcha/CKEditor-CodeMirror-Plugin/archive/master.zip",
+              "type": "zip"
+            },
+            "extra": {
+              "installer-name": "codemirror"
+            }
+          }
+        },
+
+        "ckeditor/fakeobjects": {
+          "type": "package",
+          "package": {
+            "name": "ckeditor/fakeobjects",
+            "version": "4.8.0",
+            "type": "ckeditor-library",
+            "dist": {
+              "url": "https://download.ckeditor.com/fakeobjects/releases/fakeobjects_4.8.0.zip",
+              "type": "zip"
+            },
+            "extra": {
+              "installer-name": "fakeobjects"
+            }
+          }
+        },
+        "ckeditor/image": {
+          "type": "package",
+          "package": {
+            "name": "ckeditor/image",
+            "version": "4.8.0",
+            "type": "ckeditor-library",
+            "dist": {
+              "url": "https://download.ckeditor.com/image/releases/image_4.8.0.zip",
+              "type": "zip"
+            },
+            "extra": {
+              "installer-name": "image"
+            }
+          }
+        },
+        "ckeditor/link": {
+          "type": "package",
+          "package": {
+            "name": "ckeditor/link",
+            "version": "4.8.0",
+            "type": "ckeditor-library",
+            "dist": {
+              "url": "https://download.ckeditor.com/link/releases/link_4.8.0.zip",
+              "type": "zip"
+            },
+            "extra": {
+              "installer-name": "link"
+            }
+          }
+        },
+
         "drupal/highlightjs": {
           "type": "package",
           "package": {
-            "name": "components/highlightjs",
+            "name": "drupal/highlightjs",
             "version": "9.7.0",
             "type": "drupal-library",
             "dist": {
@@ -176,6 +252,34 @@
           }
         },
 
+        "drupal/codemirror": {
+          "type": "package",
+          "package": {
+            "name": "drupal/codemirror",
+            "version": "^5.42.2",
+            "type": "drupal-library",
+            "dist": {
+              "url": "https://codemirror.net/codemirror.zip",
+              "type": "zip"
+            }
+          }
+        },
+        "jquery.cycle": {
+          "type": "package",
+          "package": {
+            "name": "jquery/cycle",
+            "version": "^3.0.3",
+            "type": "drupal-library",
+            "extra": {
+              "installer-name": "jquery.cycle"
+            },
+            "dist": {
+              "url": "https://github.com/malsup/cycle/archive/master.zip",
+              "type": "zip"
+            }
+          }
+        }, 
+        
         "asset-packagist": {
             "type": "composer",
             "url": "https://asset-packagist.org"
