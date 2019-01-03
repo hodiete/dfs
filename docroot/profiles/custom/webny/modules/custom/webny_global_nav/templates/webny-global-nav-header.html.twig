@@ -1,3 +1,5 @@
+{# {{ attach_library('dfs_ny/left-menu-js') }} #}
+
 {% if headerauto == 1 %}
     {% if unavsetting == '1' %}
         <nav id="webny-global-header" class="webny-global-header {{ headerformat }} alt-unav" aria-label="primary-site" >
@@ -10,7 +12,7 @@
     {% if agencylogo is not null and agencylogo is not empty %}
         <div class="webny-global-logo"><a href="/"><img src="{{ agencylogo }}" alt="{{ agencyname|raw }}" /></a></div>
     {% else %}
-        <h1><a href="/">{{ agencyname|raw }}</a></h1>
+        {# <h1><a href="/">{{ agencyname|raw }}</a></h1> #}
     {% endif %}
         {{ renderMenu(headermenu, 'header', 'none') }}
     </nav>

@@ -2,16 +2,18 @@
 // Inner container makes sure it lines up with the main content.
 #block-footercomplaint,
 .dfs-footer-container {
-  @include span(9 of 12);
+  // @include span(10 of 12);
 }
 
 #block-footercomplaint,
+#after-content,
 .dfs-footer-inner-container {
   margin: 30px 80px 60px 80px;
   padding: 25px;
   background-color: #e5eeee;
 }
 
+#after-content h2,
 #block-footercomplaint h2,
 .dfs-footer-title {
   color: #09464c;

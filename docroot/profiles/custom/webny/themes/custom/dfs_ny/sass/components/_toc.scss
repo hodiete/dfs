@@ -1,15 +1,16 @@
 // Table of contents page content
-
 // ACTIONS BAR BETWEEN HERO AND CONTENT
 .webny-toc-page .actions {
-  background-color: $color-primary;
+  background-color: $color-secondary;
   font-size: 0.8em;
   color: #fff;
   height: 50px;
   letter-spacing: 1px;
   position: relative;
   overflow: hidden;
-  .webny-action-label, .webny-action-top, .icon-arrow-up {
+  .webny-action-label,
+  .webny-action-top,
+  .icon-arrow-up {
     visibility: hidden;
     display: inline-block;
     max-width: 20%;
@@ -21,8 +22,7 @@
     z-index: 100;
     .webny-action-label {
       visibility: visible;
-      color: #fff;
-      //font-family: "ProximaNovaExtrabold";
+      color: #fff; //font-family: "ProximaNovaExtrabold";
       font-weight: 800;
       font-size: 22px;
       display: inline-block;
@@ -32,7 +32,9 @@
       overflow: hidden;
       text-overflow: ellipsis;
     }
-    .webny-action-top, .webny-action-top a, .icon-arrow-up {
+    .webny-action-top,
+    .webny-action-top a,
+    .icon-arrow-up {
       visibility: hidden;
       display: inline-block;
       vertical-align: top;
@@ -55,7 +57,6 @@
       color: $featured-card-icon-color-hover;
     }
   }
-
   .icon-facebook {
     font-size: 12.8px;
     color: #fff;
@@ -63,7 +64,6 @@
       color: $featured-card-icon-color-hover;
     }
   }
-
   .icon-twitter {
     font-size: 12.8px;
     color: #fff;
@@ -78,47 +78,46 @@
       color: $featured-card-icon-color-hover;
     }
   }
-  .icon-arrow-up {@include icon(before, arrow-up);}
+  .icon-arrow-up {
+    @include icon(before, arrow-up);
+  }
 }
 
 // ######################################################################### //
 /* MOBILE VIEW */
+
 aside#toc-sidebar {
   position: relative;
-
   &.stuck {
     position: fixed;
     top: 50px;
     z-index: 10;
     width: 100%;
   }
-
   header {
-    background-color: #1d1d1d;
+    // background-color: #1d1d1d;
+    background-color: #09464c;
     font-size: 14px; //0.875em;
     font-family: "Oswald";
     font-weight: 700;
     text-transform: uppercase;
     padding: 21px 30px;
     color: #cbcbcb;
-    box-sizing: border-box;
-    border-bottom: 1px solid #404040;
+    box-sizing: border-box; // border-bottom: 1px solid #404040;
+    border-bottom: solid 1px #09464c;
     letter-spacing: 0.05em;
     text-rendering: optimizeLegibility;
     display: none;
   }
-
   ul {
     margin: 0;
     list-style-type: none;
     padding-left: 0px;
-
     &.sidebar-opened {
       li {
         display: block;
       }
     }
-
     &.sidebar-closed.mobile {
       li:first-child {
         display: block;
@@ -130,42 +129,35 @@ aside#toc-sidebar {
         display: none;
       }
     }
-
     li {
       padding: 21px 30px;
       margin: 0;
       box-sizing: border-box;
       height: auto;
-      border-bottom: 1px solid #404040;
-      background-color: #242424;
+      border-bottom: 1px solid #404040; // background-color: #242424;
       display: none;
-
       /* display the see-all always */
       &:first-child {
         display: block;
       }
-
       /* only display the li that has the active class attached */
       &.active {
         display: block;
       }
-
       &.active a {
         color: $color-accent-primary;
       }
-
       &.see-all {
         position: absolute;
         background-color: transparent;
         border: none;
         top: 0;
         right: 0;
-
         a {
-          color: #FFF;
+          // color: #FFF;
+          color: $color-primary;
           text-decoration: none;
           font-size: 1.3em;
-
           &:before {
             font-family: 'icomoon';
             speak: none;
@@ -176,15 +168,13 @@ aside#toc-sidebar {
             -webkit-font-smoothing: antialiased;
             content: "\e601";
           }
-
           span {
             display: none;
           }
         }
       }
-
       a {
-        color: #FFF;
+        color: $color-primary; 
         //font: 0.9em/1 'ProximaNovaBold';
         font-size: 16.8px;
         letter-spacing: 0.01em;
@@ -192,18 +182,17 @@ aside#toc-sidebar {
         text-decoration: none;
         transition: color 0.3s 0s ease-in-out;
         cursor: pointer;
-
         &:hover {
           color: $color-accent-primary;
         }
       }
     }
   }
-
   span.arrow {
     display: none;
   }
 }
+
 .toc-mobile-spacer {
   &.mobile {
     height: 25px;
@@ -212,6 +201,7 @@ aside#toc-sidebar {
     visibility: hidden;
   }
 }
+
 .webny_whats_related_pgtype {
   .toc-mobile-spacer {
     &.mobile {
@@ -222,22 +212,24 @@ aside#toc-sidebar {
     }
   }
 }
+
 /* display generic paragraphs at 100% width -- changed to 98% so they didn't bleed off page */
+
 .gp-paragraphs {
   width: 100%;
 }
+
 .gp-paragraphs:not(.with-nav-sidebar) {
   padding: 0 3%;
-  width: 95%; 
+  width: 95%;
 }
 
 .article-content {
   .toc-chapters {
     padding: 20px 10px 30px !important;
   }
-
   h2 {
-   // font-size: 2em;
+    // font-size: 2em;
     text-align: left;
     line-height: 45px;
   }
@@ -252,16 +244,15 @@ aside#toc-sidebar {
   }
 }
 
-
-
 .next-section {
   display: none;
 }
 
 /* Contact Frame styling - starts here */
+
 .press-contact-info,
-.gp-paragraphs{
-  .news-contact-area p{
+.gp-paragraphs {
+  .news-contact-area p {
     margin: 0 auto;
     padding: 0 8%;
   }
@@ -282,27 +273,31 @@ aside#toc-sidebar {
     margin-bottom: 30px;
     min-height: 95px;
   }
-
   .contact-wrapper .contact-address .contact-address-value p {
     line-height: 22px;
   }
-
   .contact-info-wrapper {
-
     .icon-phone::before,
     .icon-email::before,
     .icon-other::before,
-    .icon-mapdir::before{
+    .icon-mapdir::before {
       position: absolute;
       width: 20px;
       color: $color-primary;
     }
-    .icon-phone{ @include icon(before, fa-mobile);}
-    .icon-email{ @include icon(before, fa-envelope);}
-    .icon-other{ @include icon(before, fa-elipses-h);}
-    .icon-mapdir{ @include icon(before, mapdir);}
+    .icon-phone {
+      @include icon(before, fa-mobile);
+    }
+    .icon-email {
+      @include icon(before, fa-envelope);
+    }
+    .icon-other {
+      @include icon(before, fa-elipses-h);
+    }
+    .icon-mapdir {
+      @include icon(before, mapdir);
+    }
   }
-
   .contact--field-webny-contact-phone,
   .contact--field-webny-contact-address,
   .contact--field-webny-contact-email,
@@ -314,24 +309,20 @@ aside#toc-sidebar {
     margin-bottom: 20px;
     padding-left: 33px;
   }
-
   .icon-phone::before {
     font-size: 1.25em;
   }
-
   .contact-phone-value,
   .contact-fax-value,
   .contact-address-value,
   .contact-email-value,
-  .contact-mapdir-value{
+  .contact-mapdir-value {
     line-height: $frame-base-line-height;
     margin-left: 35px;
   }
-
   .contact-address-value p {
     margin: 0;
   }
-
   .phone-number a,
   .contact-fax-value a {
     color: $color-mono-black;
@@ -339,27 +330,21 @@ aside#toc-sidebar {
       text-decoration: none;
     }
   }
-
   .contact--field-webny-contact-address p {
     margin-top: 0;
     margin-bottom: 0;
   }
-
   .contact-email-value {
     text-decoration: underline;
   }
-
   .social-media-wrapper {
-    border-top: 1px solid $gray-lite;
-   // border-bottom: 1px solid $gray-lite;
+    border-top: 1px solid $gray-lite; // border-bottom: 1px solid $gray-lite;
     padding-top: 20px;
     line-height: 40px;
   }
-
   .social-media-wrapper .fieldset-wrapper a:hover {
     text-decoration: none;
   }
-
   .social-media-wrapper .fieldset-wrapper a {
     color: $color-mono-black;
     text-transform: uppercase;
@@ -368,7 +353,6 @@ aside#toc-sidebar {
     display: inline;
     width: 45%;
   }
-
   .social-media-wrapper {
     .icon-facebook::before,
     .icon-twitter::before,
@@ -389,7 +373,6 @@ aside#toc-sidebar {
       display: inline-block;
       font-size: 1em;
     }
-
     .icon-facebook:hover:before,
     .icon-twitter:hover:before,
     .icon-youtube:hover:before,
@@ -406,55 +389,80 @@ aside#toc-sidebar {
     .icon-vimeo:hover:before {
       color: $color-secondary;
     }
-
-    .icon-facebook {@include icon(before, fa-facebook);}
-    .icon-twitter {@include icon(before, fa-twitter);}
-    .icon-youtube {@include icon(before, fa-youtube);}
-    .icon-instagram {@include icon(before, fa-instagram);}
-    .icon-google-plus {@include icon(before, fa-google-plus);}
-    .icon-soundcloud {@include icon(before, fa-soundcloud);}
-    .icon-square {@include icon(before, square);}
-    .icon-snapchat {@include icon(before, fa-snapchat-ghost);}
-    .icon-vine {@include icon(before, fa-vine);}
-    .icon-flickr {@include icon(before, fa-flickr);}
-    .icon-rss {@include icon(before, fa-rss);}
-    .icon-pinterest {@include icon(before, fa-pinterest-p);}
-    .icon-tumblr {@include icon(before, fa-tumblr);}
-    .icon-linkedin {@include icon(before, fa-linkedin-square);}
-    .icon-vimeo {@include icon(before, fa-vimeo-square);}
+    .icon-facebook {
+      @include icon(before, fa-facebook);
+    }
+    .icon-twitter {
+      @include icon(before, fa-twitter);
+    }
+    .icon-youtube {
+      @include icon(before, fa-youtube);
+    }
+    .icon-instagram {
+      @include icon(before, fa-instagram);
+    }
+    .icon-google-plus {
+      @include icon(before, fa-google-plus);
+    }
+    .icon-soundcloud {
+      @include icon(before, fa-soundcloud);
+    }
+    .icon-square {
+      @include icon(before, square);
+    }
+    .icon-snapchat {
+      @include icon(before, fa-snapchat-ghost);
+    }
+    .icon-vine {
+      @include icon(before, fa-vine);
+    }
+    .icon-flickr {
+      @include icon(before, fa-flickr);
+    }
+    .icon-rss {
+      @include icon(before, fa-rss);
+    }
+    .icon-pinterest {
+      @include icon(before, fa-pinterest-p);
+    }
+    .icon-tumblr {
+      @include icon(before, fa-tumblr);
+    }
+    .icon-linkedin {
+      @include icon(before, fa-linkedin-square);
+    }
+    .icon-vimeo {
+      @include icon(before, fa-vimeo-square);
+    }
   }
-
   .border-hide {
     border-bottom: none;
   }
-
   .border-show {
     border-bottom: 1px solid $gray-lite;
   }
 }
+
 /* Contact Frame styling - ends here */
 
 // ######################################################################### //
 /* MIN TABLET VIEW */
+
 @media (min-width: $min-tab) {
   aside#toc-sidebar {
-
     min-width: 150px;
     position: absolute;
     height: 100%;
     left: 0px;
     width: 20%;
-    overflow: visible;
-    background: #242424;
-
+    overflow: visible; // background: #242424;
+    background: #ffffff;
     &.stuck {
       width: 20%;
     }
-
     header {
       display: block;
     }
-
     ul {
       li {
         display: block;
@@ -463,7 +471,6 @@ aside#toc-sidebar {
         }
       }
     }
-
     span.arrow {
       display: block;
       position: absolute;
@@ -473,27 +480,27 @@ aside#toc-sidebar {
       height: 0;
       border-top: 20px solid transparent;
       border-bottom: 20px solid transparent;
-      border-right: 20px solid transparent;
-      border-left: 20px solid #242424;
+      border-right: 20px solid transparent; // border-left: 20px solid #242424;
+      border-left: 20px solid $color-primary;
       transition: top 0.3s 0s ease-in-out;
     }
   }
-
   /* Action Share bar styles */
   .webny-toc-page .actions {
     &.stuck {
-      .webny-action-top, .icon-arrow-up {
+      .webny-action-top,
+      .icon-arrow-up {
         visibility: visible;
         display: inline-block;
         cursor: pointer;
         color: #fff;
-        font-size: 13px;
-        //font-family: 'ProximaNovaRegular';
+        font-size: 13px; //font-family: 'ProximaNovaRegular';
       }
       .webny-action-label {
         max-width: 50%;
       }
-      .webny-action-top a, .icon-arrow-up a {
+      .webny-action-top a,
+      .icon-arrow-up a {
         color: #fff;
         visibility: visible;
         &:hover {
@@ -507,15 +514,13 @@ aside#toc-sidebar {
         padding-left: 5px;
       }
     }
-
     .webny-share {
       visibility: visible;
       float: right;
       display: inline-block;
       padding: 12px 25px 8px 0;
       .webny-action-share-label {
-        font-size: 13px;
-        //font-family: 'ProximaNovaRegular';
+        font-size: 13px; //font-family: 'ProximaNovaRegular';
         display: inline-block;
       }
       .webny-action-share-button {
@@ -526,7 +531,6 @@ aside#toc-sidebar {
     }
   }
   /* End Action Share bar styles */
-
   .article-content {
     width: 75%;
     margin-left: 25%;
@@ -534,23 +538,18 @@ aside#toc-sidebar {
     padding: 0 20px;
   }
   .article-content {
-  .toc-chapters {
-    padding: 20px 30px 30px !important;
+    .toc-chapters {
+      padding: 20px 30px 30px !important;
     }
-  }
-
-  // needed to override global footer z-index for this content type since it has the left fixed positioned toc
+  } // needed to override global footer z-index for this content type since it has the left fixed positioned toc
   .webny-global-footer {
     z-index: 10;
-  }
-  // change widths and hide next section when TOC is not used
+  } // change widths and hide next section when TOC is not used
   .gp-paragraphs:not(.with-nav-sidebar) {
     width: 90%;
-    max-width: 780px;
-    //margin-top: 60px;
-    margin: 60px auto 0 auto;
-    //.next-section {
-     // display: none;
+    max-width: 780px; //margin-top: 60px;
+    margin: 60px auto 0 auto; //.next-section {
+    // display: none;
     //}
     .toc-para {
       padding-bottom: 75px;
@@ -563,7 +562,6 @@ aside#toc-sidebar {
       .next-section-links {
         border-bottom: 1px solid #d9e2e2;
         margin-bottom: 20px;
-
         p {
           width: 48%;
           display: inline-block;
@@ -572,7 +570,6 @@ aside#toc-sidebar {
           font-weight: 700;
           font-size: 14px;
           text-transform: uppercase;
-
           &.next-section-link {
             width: 50%;
             text-align: right;
@@ -581,7 +578,6 @@ aside#toc-sidebar {
             font-size: 16px;
             text-transform: none;
             cursor: pointer;
-
             &:before {
               float: right;
               margin-left: 10px;
@@ -592,19 +588,18 @@ aside#toc-sidebar {
           }
         }
       }
-
-    .next-section-title {
-      //font-family: 'ProximaNovaRegular';
-      font-size: 30px;
-      color: #128ec3;
-      margin-bottom: 75px;
-      display: block;
-      cursor: pointer;
+      .next-section-title {
+        //font-family: 'ProximaNovaRegular';
+        font-size: 30px;
+        color: #128ec3;
+        margin-bottom: 75px;
+        display: block;
+        cursor: pointer;
+      }
     }
   }
-}
   .gp-paragraphs {
-    padding: 0 3% 0 0 ;
+    padding: 0 3% 0 0;
     .news-contact-area p {
       margin: 0 auto;
       padding: 0;
@@ -617,8 +612,8 @@ aside#toc-sidebar {
 
 @media (max-width: 968px) {
   /* Contact Frame styling - starts here */
-  .gp-paragraphs{
-    .news-contact-area{
+  .gp-paragraphs {
+    .news-contact-area {
       width: 100%;
     }
     fieldset.social-media-wrapper {
@@ -637,6 +632,7 @@ aside#toc-sidebar {
 
 // ######################################################################### //
 /* PC VIEW */
+
 @media (min-width: $min-pc) {
   aside#toc-sidebar {
     width: 20%;
@@ -645,11 +641,9 @@ aside#toc-sidebar {
     width: 60%;
     margin-left: 20%;
     padding: 0;
-
     .toc-chapters {
       padding: 0 !important;
     }
-
     section {
       padding: 75px 50px 50px;
       position: relative;
@@ -664,7 +658,7 @@ aside#toc-sidebar {
   /* Contact Frame styling - starts here */
   .gp-paragraphs {
     width: 100%;
-    padding: 0; 
+    padding: 0;
     .contact-info-wrapper {
       padding-left: 0;
       .contact-col-1,

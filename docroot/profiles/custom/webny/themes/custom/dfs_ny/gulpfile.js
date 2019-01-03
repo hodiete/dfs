@@ -104,7 +104,8 @@ gulp.task('build', [
   'transportation-utilities',
   'custom-ig',
   'print',
-  'custom-jcope'
+  'custom-jcope',
+  'nydfs-sub'
 ], function (cb) {
   // Run linting last, otherwise its output gets lost.
   runSequence(['lint:js'], cb);
@@ -442,6 +443,29 @@ gulp.task('custom-jcope', function () {
         .pipe(gulp.dest(options.theme.css));
 });
 
+
+// agency - grouping specific style
+gulp.task('nydfs-sub', function () {
+  return gulp.src(options.theme.sass + 'themes/nydfs-sub-theme/nydfs-sub.scss')
+    .pipe(sourcemaps.init())
+    .pipe(sassglob())
+    .pipe(globbing({
+      extensions: ['.scss']
+    }))
+    .pipe(sass({
+      errLogToConsole: true,
+      outputStyle: 'expanded'
+    }))
+    .pipe(autoprefix({
+      browsers: ['last 5 versions'],
+      cascade: false
+    }))
+    .pipe(sourcemaps.write())
+    .pipe(gulp.dest(options.theme.css));
+});
+
+
+
 // ##################
 // Build style guide.
 // ##################.
@@ -604,6 +628,12 @@ gulp.task('watch:css', ['custom-jcope'], function () {
     return gulp.watch([
         options.theme.sass + '**/*.scss'
     ], options.gulpWatchOptions, ['custom-jcope']);
+});
+
+gulp.task('watch:css', ['nydfs-sub'], function () {
+  return gulp.watch([
+    options.theme.sass + '**/*.scss'
+  ], options.gulpWatchOptions, ['nydfs-sub']);
 });
 
 // ######################

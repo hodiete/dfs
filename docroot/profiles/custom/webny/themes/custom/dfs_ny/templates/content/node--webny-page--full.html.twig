@@ -5,7 +5,7 @@
  * CREATED BY WEBNY -- iojonep, lmurdock, mcase
  * Override theme for Inner Page
  * Available variables:
- * https://api.drupal.org/api/drupal/core!modules!node!templates!node.html.twig/8.2.x 
+ * https://api.drupal.org/api/drupal/core!modules!node!templates!node.html.twig/8.2.x
  */
 #}
 
@@ -60,7 +60,7 @@
 {% endif %}
 
 {% if hero == 'show' %}
-    <article {{ attributes.addClass('hero-layout') }}>
+    <article id="nydfs-article-hero-banner" {{ attributes.addClass('hero-layout') }}>
 
         {# START QUICK EDITS #}
         {{ title_prefix }}
@@ -115,6 +115,24 @@
 
 {% if hero == 'show' %}
 <div class="webny-share-bar">
+{#
+{% if breadcrumb_in_node %}
+  <nav class="breadcrumb-dfs" role="navigation" aria-labelledby="system-breadcrumb">
+    <h2 id="system-breadcrumb" class="visually-hidden">{{ 'Breadcrumb'|t }}</h2>
+    <ol>
+{% for item in breadcrumb_in_node %}
+        <li>
+          {% if item.url %}
+            <a href="{{ item.url }}">{{ item.text }}</a>
+          {% else %}
+            {{ item.text }}
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ol>
+  </nav>
+{% endif %}
+#}
     <div class="webny-share">
         <div class="webny-share-bar-icons">
         <div class="webny-action-share-label">SHARE</div>
@@ -134,7 +152,7 @@
 
 
 {% if hero == '' and title == '' %}
-<article {{ attributes.addClass('quickedit-layout') }}>
+<article id="nydfs-article-quickedit-layout" {{ attributes.addClass('quickedit-layout') }}>
     {# START QUICK EDITS #}
     {{ title_prefix }}
     {% endif %}
@@ -144,9 +162,9 @@
     <div class="body-area-in">
 
         <div class="body-area-subtitle">
-           
+
             {{ content.field_webny_page_sub_title }}
-               
+
         </div>
 
         <div class="page-body">

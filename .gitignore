@@ -16,23 +16,38 @@ docroot/profiles/custom/webny/modules/contrib
 docroot/themes/contrib
 docroot/profiles/custom/webny/themes/contrib
 docroot/profiles/contrib
-docroot/libraries
+# docroot/libraries
 drush/contrib
+
+docroot/libraries/liststyle
+docroot/libraries/indentblock
 
 # Ignore custom theme node_modules folders
 docroot/themes/custom/*/node_modules
-
-# Gung: ignore custom them dfs_ny, node_modules for Gulp SASS, 
-docroot/profiles/custom/webny/themes/custom/dfs_ny.tar.gz
-docroot/profiles/custom/webny/themes/custom/dfs_ny
 docroot/profiles/custom/webny/themes/custom/dfs_ny/node_modules
+docroot/profiles/custom/webny/themes/custom/dfs_ny/package-lock.json
+docroot/profiles/custom/webny/themes/custom/dfs_ny.tar.gz
 
-# Gung: ignore other files
-migration_dfs
-docroot/profiles/custom/webny/themes/custom/npm-debug.log
+# igore the styles.css andnydfs-sub.css which are generated from gulp
+docroot/profiles/custom/webny/themes/custom/dfs_ny/css/styles.css
+docroot/profiles/custom/webny/themes/custom/dfs_ny/css/nydfs-sub.css
+
+docroot/profiles/custom/webny/themes/custom/dfs_ny/css/administration.css
+docroot/profiles/custom/webny/themes/custom/dfs_ny/css/business.css
+docroot/profiles/custom/webny/themes/custom/dfs_ny/css/custom-ig.css
+docroot/profiles/custom/webny/themes/custom/dfs_ny/css/custom-jcope.css
+docroot/profiles/custom/webny/themes/custom/dfs_ny/css/education.css
+docroot/profiles/custom/webny/themes/custom/dfs_ny/css/health-human-services.css
+docroot/profiles/custom/webny/themes/custom/dfs_ny/css/local-regional-authorities.css
+docroot/profiles/custom/webny/themes/custom/dfs_ny/css/public-safety.css
+docroot/profiles/custom/webny/themes/custom/dfs_ny/css/recreation-environment.css
+docroot/profiles/custom/webny/themes/custom/dfs_ny/css/statewide-elected-officials.css
+docroot/profiles/custom/webny/themes/custom/dfs_ny/css/transportation-utilities.css
 docroot/sites/default/services.yml
+
+migration_dfs
+migration_dfs/migration
 # docroot/sites/default/settings.php
-docroot/sites/docrott.dd
 
 # Ignore build artifacts
 /deploy
@@ -134,3 +149,6 @@ docroot/profiles/custom/webny/libraries/*/
 
 # Ignore private files
 files-private
+
+# box/config.yml
+
