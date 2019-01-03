@@ -81,6 +81,13 @@
         "drupal/ckeditor_indentblock": "1.x-dev",
         "ckeditor/indentblock": "^4.7",
         "ckeditor/liststyle": "^4.7",
+
+        "ckeditor/autogrow": "^4.7",
+        "ckeditor/codemirror": "^4.7",
+        "ckeditor/fakeobjects": "^4.7",
+        "ckeditor/image": "^4.7",
+        "ckeditor/link": "^4.7",
+
         "drupal/address": "1.4",
         "drupal/config_update": "1.5",
         "drupal/taxonomy_machine_name": "^1.0@alpha",
@@ -101,7 +108,13 @@
         "drupal/backup_migrate": "^4.0",
         "drupal/restui": "1.15",
         "drupal/views_slideshow": "^4.6",
-        "drupal/views_slideshow_cycle": "^4.6"
+        "drupal/views_slideshow_cycle": "^4.6",
+
+        "drupal/highlightjs": "^9.7",
+        "drupal/codemirror": "^5.42",
+        "jquery/cycle": "^3.0",
+        "jquery/hoverIntent": "^1.9",
+        "json2": "^1.9"
     },
     "scripts": {
         "post-drupal-scaffold-cmd": [
@@ -147,7 +160,7 @@
                     "installer-name": "indentblock"
                 }
             }
-        },
+        }, 
         "ckeditor/liststyle": {
             "type": "package",
             "package": {
@@ -270,7 +283,7 @@
           "package": {
             "name": "jquery/cycle",
             "version": "3.0.3",
-            "type": "drupal-library",
+            "type": "jquery-library",
             "extra": {
               "installer-name": "jquery.cycle"
             },
@@ -280,7 +293,38 @@
             }
           }
         }, 
-        
+
+        "jquery.hoverIntent": {
+          "type": "package",
+          "package": {
+            "name": "jquery/hoverIntent",
+            "version": "1.9.1",
+            "type": "jquery-library",
+            "extra": {
+              "installer-name": "jquery.hoverIntent"
+            },
+            "dist": {
+              "url": "https://raw.githubusercontent.com/briancherne/jquery-hoverIntent/master/jquery.hoverIntent.js",
+              "type": "js"
+            }
+          }
+        },
+
+        "json2": {
+          "type": "package",
+          "package": {
+            "name": "json2",
+            "version": "1.9.1",
+            "type": "jquery-library",
+            "extra": {
+              "installer-name": "json2"
+            },
+            "dist": {
+              "url": "https://raw.githubusercontent.com/douglascrockford/JSON-js/master/json2.js",
+              "type": "js"
+            }
+          }
+        },        
         "asset-packagist": {
             "type": "composer",
             "url": "https://asset-packagist.org"
