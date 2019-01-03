@@ -464,7 +464,6 @@ $featured-card-fallback-img-bkg: $color-secondary !default;
   background-color: #e5eeee;
   align-items: center;
   padding-top: 5px;
-
   &:hover {
     @include color-hover-a-link-teal();
   }
@@ -474,6 +473,9 @@ $featured-card-fallback-img-bkg: $color-secondary !default;
     font-weight: bold; // color: #09464c;
     &:hover {
       text-decoration: none;
+    }
+    @media (max-width: 480px) {
+      text-align: left;
     }
   }
 }
@@ -548,13 +550,16 @@ $featured-card-fallback-img-bkg: $color-secondary !default;
   margin: 5px 25px 8px 30px;
 }
 
+.dfs-page-header-category,
 .apps-lic-card-box {
-  width: 90%;
-  margin-left: 5%;
-  margin-right: 5%;
+  width: 80%; // margin-left: 10%;
+  margin-right: 10%;
+  padding-left: 5%;
+  padding-right: 5%;
   height: 150px;
   background-color: #e5eeee;
-  font-size: 22px;
+  font-size: 22px; // padding-left: 10px;
+  // padding-right: 10px;
   font-weight: bold;
   color: #09464c;
   position: relative;
@@ -585,13 +590,23 @@ $featured-card-fallback-img-bkg: $color-secondary !default;
 }
 
 .views-field-field-page-link {
-  width: 25%;
-  padding: 10px 0px;
-  float: left;
+  // width: 25%;
+  padding: 10px 0px; // float: left;
   margin: 0px;
 }
 
-.views-row {
-  width: 86%;
-  margin-left: 7%;
-}
+// .views-row {
+//   width: 86%;
+//   margin-left: 7%;  
+// }
+#block-views-block-apps-and-licensing-view-block-1 {
+  form {
+    width: 100%;
+    select {
+      min-width: 162px;
+    }
+  }
+    .views-row {
+      width: 25%;
+    }
+  }

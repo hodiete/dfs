@@ -6,12 +6,34 @@ body {
   padding: 0;
   margin: 0;
   font-size: $base-font-size;
+  // max-width: 2100px;
 }
 
 body {
   font-family: $base-font;
   line-height: $base-line-height;
-  //background: #f5f5f5;
+
+  p {
+    margin: 3px 0 10px;
+  }
+
+
+  hr {
+    margin: 40px 0;
+  }
+
+
+  table {
+    margin: 0 0 1em;
+  }
+  .menu-item {
+    padding-top: 0;
+    margin: 0;
+  }
+  .mq--t {
+    background: #fff;
+    @include opac-color(255, 255, 255, .9);
+  }
 }
 
 .nygov-logo {
@@ -25,12 +47,6 @@ body {
 
 .page-paragraphs-in>div>div:nth-of-type(1) {
   padding: 80px 0 40px 0;
-}
-
-// section containers
-body .mq--t {
-  background: #fff;
-  @include opac-color(255, 255, 255, .9);
 }
 
 // Base Headings
@@ -103,10 +119,7 @@ h6 {
   //line-height: 145%;
 }
 
-body .menu-item {
-  padding-top: 0;
-  margin: 0;
-}
+
 
 // Base Text
 //
@@ -125,10 +138,7 @@ a:visited {
   }
 }
 
-body p {
-  margin: 3px 0 10px;
-  
-}
+
 
 // Blockquote
 //

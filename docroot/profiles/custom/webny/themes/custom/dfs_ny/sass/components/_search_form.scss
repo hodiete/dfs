@@ -1,0 +1,133 @@
+.dfs-block-search-form {
+  position: relative;
+  margin-top: -59px;
+  float: right;
+  width: 280px;
+  background-color: transparent;
+  /* border: solid 3px #ff7347; */
+  font-size: 16px;
+  text-align: center;
+  /* right: 10px; */
+  z-index: 505;
+  margin-right: 5px;
+  .form-actions {
+    display: none;
+  }
+  input[type="search"],
+  input[type="search"]:focus,
+  input[type="text"],
+  input[type="text"]:focus {
+    font-size: 100%;
+    font-weight: 600;
+    color: #fff;
+    margin: 0;
+    padding: 1rem 1rem 1rem 2.5rem;
+    height: 2.4rem;
+    width: 100%;
+    border: 2px solid #fff;
+    border-radius: 30px;
+    background: url(../icons/dfs/search_white.svg) bottom left no-repeat;
+    background-color: #0a4c53;
+    background-size: 24px 24px;
+    background-position: 12px 10px;
+  }
+  #views-exposed-form-acquia-search-page {
+    label {
+      display: none;
+    }
+  }
+}
+
+.layout-container main {
+  clear: both;
+  #views-exposed-form-dfs-site-search-page-1 {
+    margin-bottom: 30px;
+    #edit-search {
+      margin-bottom: 15px;
+    }
+  }
+}
+
+/*******  Acqyua Solr Searh Result ******/
+
+.search-result {
+  border-bottom: 1px solid #bbbbbb;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  clear: both;
+  a,
+  a:link,
+  .webny-teaser-title a {
+    color: #08464c;
+  } // a.more-link {
+  //   color: #007AC2;
+  // }
+  h2 {
+    font-size: 24px;
+  }
+  h1,
+  h3,
+  h4 {
+    font-size: 18px;
+  }
+  article {
+    img,
+    svg {
+      // max-width: 180px;
+      width: 180px;
+      height: 120px;
+      float: left;
+      margin-right: 20px;
+      margin-bottom: 20px;
+      margin-top: 10px;
+    }
+    .more-link,
+    .node-readmor {
+      display: none;
+    }
+    footer {
+      display: none;
+    }
+    .webny-teaser-wrapper ul.links {
+      display: none;
+    }
+  }
+  .dfs-page-header-category {
+    width: auto;
+    margin-right: 0;
+    padding-left: 0;
+    padding-right: 0;
+    height: auto;
+    background-color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+  }
+}
+
+.pager .pager__items {
+  a {
+    font-size: 18px;
+    margin-top: 3px;
+    display: inline-block;
+  }
+}
+
+#search-mobile-icon {
+  img {
+    width: 0;
+    height:0;
+  }
+  @media screen and (max-width: 1023px) {
+    img {
+      width: 30px;
+      height: 30px;
+    }
+    display: inline-block;
+    position: relative;
+    float: right;
+    margin-right: 20px;
+    margin-top: -52px;
+    z-index: 500;
+  }
+}
