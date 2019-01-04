@@ -12,23 +12,29 @@ docroot/sites/*/private
 
 # Ignore contrib modules. These should be created during build process.
 docroot/modules/contrib
+docroot/modules/views_slideshow
+docroot/modules/svg_formatter
+docroot/modules/svg_image
 docroot/profiles/custom/webny/modules/contrib
 docroot/themes/contrib
 docroot/profiles/custom/webny/themes/contrib
 docroot/profiles/contrib
-# docroot/libraries
+docroot/libraries
 drush/contrib
 
-docroot/libraries/liststyle
-docroot/libraries/indentblock
+# docroot/libraries/liststyle
+# docroot/libraries/indentblock
 
 # Ignore custom theme node_modules folders
+docroot/dfs_ny
 docroot/themes/custom/*/node_modules
 docroot/profiles/custom/webny/themes/custom/dfs_ny/node_modules
 docroot/profiles/custom/webny/themes/custom/dfs_ny/package-lock.json
 docroot/profiles/custom/webny/themes/custom/dfs_ny.tar.gz
 
 # igore the styles.css andnydfs-sub.css which are generated from gulp
+docroot/profiles/custom/webny/themes/custom/dfs_ny/css/*.css
+
 docroot/profiles/custom/webny/themes/custom/dfs_ny/css/styles.css
 docroot/profiles/custom/webny/themes/custom/dfs_ny/css/nydfs-sub.css
 

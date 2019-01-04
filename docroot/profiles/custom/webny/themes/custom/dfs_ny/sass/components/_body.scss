@@ -10,8 +10,7 @@ $title-bar-bkgd-color: $color-accent-primary !default;
 $title-bar-default-text-color: $color-mono-black !default;
 $title-bar-sub-title-color: $color-mono-black !default;
 %right-body-content-shared {
-  margin-top: 60px;
-  max-width: 1920px;
+  margin-top: 60px; // max-width: 1920px;
   margin-left: 19%;
   line-height: 1.7em;
   font-size: 16px;
@@ -31,15 +30,16 @@ $title-bar-sub-title-color: $color-mono-black !default;
 // ========================================================================= //
 /* PARAGRAPH PADDING */
 
-.webny-page-paragraphs-in>div>div {
-  // padding: 80px 0; // IDEALLY
-}
+// .webny-page-paragraphs-in>div>div {
+//   // padding: 80px 0; // IDEALLY
+// }
 
 // ========================================================================= //
 /* NEWS BODY WRAPPER */
 
 .news-body,
 .body-area {
+  min-height: 600px;
   .news-body-in,
   .body-area-in {
     // margin: 0 auto;
@@ -255,7 +255,7 @@ figure.embedded-entity.align-center {
     .news-body-in,
     .body-area-in {
       // max-width: 1200px;
-      max-width: 1920px;
+      max-width: $wide1920;
       .press-teaser,
       .body-area-subtitle {
         width: 90%;
@@ -271,9 +271,6 @@ figure.embedded-entity.align-center {
       li {
         line-height: 1.7em;
         font-size: 16px;
-      }
-      p {
-        padding-bottom: 15px;
       }
     }
   }
@@ -324,7 +321,7 @@ figure.embedded-entity.align-center {
     }
   }
   .views-element-container {
-    margin-top: 60px;
+    margin-top: 0;
     margin-left: 0;
     padding-left: 0; // width: 100%;
   }
@@ -336,5 +333,11 @@ figure.embedded-entity.align-center {
 @media (max-width: 719px) {
   main .body-area .body-area-in {
     margin-top: 90px;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-paragraphs {
+    padding-top: 20px;
   }
 }

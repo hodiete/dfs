@@ -18,6 +18,8 @@ $drop-down-width-hor-5-tablet: 170px;
 $drop-down-width-tablet: 300px;
 $drop-down-width-desktop: 300px;
 $medium-screen-link-height: 75px;
+$menu-semi-bold: 600;
+$menu-hover-bold: 700;
 // text
 $base-font: "Proxima Nova",
 Arial,
@@ -28,7 +30,7 @@ sans-serif; // used in header and footer
 // padding
 $nav-title-padding: 15px 30px 8px 30px; // kept in case anyone still uses this variable
 $nav-title-padding-tablet: 15px 30px 1px 30px;
-$common-link-padding: 30px 48px 30px 30px;
+$common-link-padding: 26px 48px 26px 30px;
 $horizontal-link-padding: 8px 15px;
 $horizontal-tall-link-padding: 25px;
 $horizontal-sub-link-padding: 15px;
@@ -57,6 +59,8 @@ $menu-arrow-active-link-padding: 48px;
 // GLOBAL NAVIGATION COLORS
 $globalnav-primary-color: $color-primary !default;
 $globalnav-secondary-color: $button-black-50 !default;
+$menu-semi-bold: 600;
+$menu-hover-bold: 600;
 /****  mixin  ****/
 
 @mixin portal-login($minWidth, $width) {
@@ -139,7 +143,8 @@ $importance: null) {
   font-weight: $nav-weight;
   font-style: normal;
   z-index: 500;
-  width: 100%;
+  width: 100%; // width: auto;
+  // max-width: 2100px;
   a:link,
   a:visited,
   a:hover,
@@ -302,7 +307,7 @@ $importance: null) {
       float: left;
     }
     a.webny-global-active {
-      float: right;
+      // float: right;
     }
   } // Tablet
   @media (min-width: $min-width-breakpoint) {
@@ -678,6 +683,7 @@ $importance: null) {
         }
         &:nth-child(7) {
           border: none;
+          float: right;
           @include portal-login(131px,
           153px);
           &:hover {
@@ -691,6 +697,7 @@ $importance: null) {
           // width: 15%;
           width: 12%;
           height: 41px;
+          float: right;
           min-width: 150px;
           margin-top: 16px;
           margin-bottom: 16px;
@@ -722,7 +729,7 @@ $importance: null) {
     ul.gnav-ul {
       li.gnav-topli {
         &:nth-child(1) {
-          width: 227px; //223px; (not fit in Safari) // height: 53px;
+          // width: 227px; //223px; (not fit in Safari) // height: 53px;
         }
         &:nth-child(2) {
           // width: 120px;
@@ -1018,8 +1025,8 @@ $importance: null) {
   }
 }
 
-@media only screen and( min-width: 1024) and (max-width: 1280px) {
-  .webny-global-header ul.gnav-ul li.gnav-topli {
+@media screen and( min-width: 1024px) and (max-width: 1280px) {
+  #webny-global-header ul.gnav-ul li.gnav-topli {
     &:nth-child(1) {
       width: 100%;
       height: 46px;
@@ -1041,7 +1048,7 @@ $importance: null) {
      GW: debug DFS Main Navigation Menu 
   */
   ul.gnav-ul {
-    padding: auto; // margin: 0 0 20px 0;
+    // padding: auto; // margin: 0 0 20px 0;
     li.gnav-topli {
       &:nth-child(1) {
         width: 223px; // height: 53px;
@@ -1055,19 +1062,44 @@ $importance: null) {
       // }
       &:nth-child(8) {
         // width: 100%; // min-width: 145px;
-        margin-left: 0;
-        padding-left: 0%;
+        display: none; // margin-left: 0;
+        // padding-left: 0;
       }
       a {
         font-weight: 600;
       }
     }
   } // GW End
+  .webny-global-header ul.gnav-ul li.gnav-topli:nth-child(7) {
+    padding: 13px 5px;
+    a {
+      display: inline-block;
+      border: none;
+      min-width: 119px;
+      width: 119px;
+      height: 18px;
+      border-radius: 58px;
+      margin: 0 23px;
+      background: #f2a900 url(../icons/dfs/portal.svg) bottom left no-repeat;
+      background-position-x: left;
+      background-position-y: bottom;
+      background-size: 26px 25px;
+      background-position: 16px 10px;
+      padding: 15px 20px 15px 62px;
+      color: black;
+      &:hover {
+        font-weight: $menu-hover-bold;
+        background: #e5eeee url(../icons/dfs/portal.svg) bottom left no-repeat;
+        background-size: 26px 25px;
+        background-position: 16px 10px;
+      }
+    }
+  }
 }
 
 @media screen and (max-width: 480px) {
-  #webny-global-header > h1 {
-      width: 223px;
+  #webny-global-header>h1 {
+    width: 223px;
   }
 }
 
@@ -1078,4 +1110,15 @@ $importance: null) {
       font-weight: $menu-hover-bold;
     }
   }
+}
+
+@media screen and (max-width: 671px) {
+  #ny-universal-navigation #nygov-header {
+    top: 70px !important; // .l-region--header > .pane-ny-gov-global-menu {
+    //   // height: 0 !important;
+    // }
+  } // #nygov-universal-navigation {
+  //   // z-index: 502;
+  //   // position: inherit;
+  // }
 }

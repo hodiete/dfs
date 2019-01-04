@@ -91,7 +91,7 @@ include dirname(__FILE__) . '/acsf.settings.php';
  * );
  * @endcode
  */
- $databases = array();
+$databases = array();
 
 /**
  * Customizing database settings.
@@ -313,7 +313,7 @@ $settings['hash_salt'] = 'nQgAvL2d4jrTmAAxgAAcIAM1gLlOO-TDqVJNa3T_HjLBfdDD-wnma5
  * After finishing the upgrade, be sure to open this file again and change the
  * TRUE back to a FALSE!
  */
-$settings['update_free_access'] = FALSE;
+$settings['update_free_access'] = false;
 
 /**
  * External access proxy settings:
@@ -466,7 +466,7 @@ if ($settings['hash_salt']) {
   $apc_loader->register();
   $class_loader = $apc_loader;
 }
-*/
+ */
 
 /**
  * Authorized file system operations:
@@ -520,7 +520,7 @@ if ($settings['hash_salt']) {
  * must exist and be writable by Drupal. This directory must be relative to
  * the Drupal installation directory and be accessible over the web.
  */
-$settings['file_public_path'] = 'sites/default/files';
+// $settings['file_public_path'] = 'sites/default/files';
 
 /**
  * Private file path:

@@ -7,6 +7,7 @@
 // Style guide: layout.sidebars
 //
 $left-menu-width: 342px;
+
 @mixin leftmenu-h2 ($width) {
   background-color: #09464c;
   color: white;
@@ -27,8 +28,23 @@ $left-menu-width: 342px;
   width: $width;
 }
 
-ul {
-  list-style-type: none !important;
+@mixin a-is-active ($bgcolor, $font-weight, $decoration) {
+  text-decoration: $decoration;
+  font-weight: $font-weight;
+  background-color: $bgcolor;
+}
+
+.sidebar {
+  ul {
+    list-style: none;
+    li {
+      a {
+        .toggler {
+          cursor: pointer;
+        }
+      }
+    }
+  }
 }
 
 aside.layout-sidebar-first {
@@ -122,8 +138,9 @@ aside.sidebar {
 //   z-index: 3;
 // }
 main .layout-content nav {
-  z-index: 10;
+  z-index: 20;
   width: $left-menu-width;
+  overflow: hidden;
 }
 
 //////////////////////////////////
@@ -139,22 +156,25 @@ main .layout-content nav {
   width: $left-menu-width;
   ul.ul-complaint-sidebar {
     padding: 0;
-    li.parent {
-      .expand {
+    li
+    {
+      cursor: pointer;
+
+      .parent, .expand {
         margin-right: 30px;
         width: 14px;
         float: right;
         margin-top: 3px;
+        cursor: pointer;
       }
       ul {
         display: none;
-        padding-left: 7px;
-        border-bottom: solid 1px #09464c;
+        padding-left: 0px;
+        border-bottom: solid 1px #09464c14;
         a {
           display: block;
           background-color: #fff;
           text-decoration: none;
-          height: 28px;
           font-family: Helvetica;
           font-size: 14px;
           font-weight: normal;
@@ -163,15 +183,18 @@ main .layout-content nav {
           font-stretch: normal;
           border-bottom: 0px;
           line-height: 1;
-          letter-spacing: 0.5px;
-          padding: 7px 0 6px 25px;
+          height: auto;
+          padding: 20px 0 20px 45px;
           color: #09464c;
         }
+        a {
+          border-bottom: solid 1px #09464c14;
+        }
         a:hover {
-          // font-weight: bold;
-          // text-shadow: 0 1px 1px #09464c;
-          font-weight: bold;
-          letter-spacing: 0;
+          background-color: #e5eeee;
+        }
+        a.is-active {
+          @include a-is-active(#e5eeee, 600, none);
         }
       }
     }
@@ -190,6 +213,7 @@ main .layout-content nav {
     li {
       display: block;
       float: none;
+      cursor: pointer;
     }
   }
   a {
@@ -204,7 +228,7 @@ main .layout-content nav {
     font-weight: normal;
     font-style: normal;
     font-stretch: normal;
-    border-bottom: solid 1px #09464c;
+    border-bottom: solid 1px #09464c38;
     line-height: 0.94;
     letter-spacing: 0.5px; // text-align: center;
     width: 312px;
@@ -213,10 +237,11 @@ main .layout-content nav {
     color: #09464c;
     &:hover {
       background-color: #e5eeee; // font-weight: bold;
-      font-weight: bold;
-      letter-spacing: 0;
       text-decoration: none;
     }
+  }
+  a.is-active {
+    @include a-is-active(#e5eeee, 600, none);
   }
 }
 
@@ -227,7 +252,6 @@ main .layout-content nav {
     &:hover {
       background-color: #09464c;
       color: white;
-      font-weight: normal;
       text-decoration: none;
     }
   }
@@ -270,7 +294,6 @@ main .layout-content nav {
     letter-spacing: 0.5px; // text-align: center;
     color: #09464c;
     &:hover {
-      font-weight: bold;
       text-decoration: none;
     }
   }
@@ -374,14 +397,13 @@ main nav .h1-open-sub {
     a {
       background-color: #E5EEEE; // color: #fff;
       color: #09464c;
-      border-bottom: solid 1px #2e6267;
+      border-bottom: solid 1px #09464c38;
       font-weight: normal;
       text-decoration: none;
       &:hover {
         background-color: black;
         color: #fff;
         font-weight: bold;
-        letter-spacing: -0.1px; // text-shadow: 0 1px 1px white;
       }
     }
     a.is-active {

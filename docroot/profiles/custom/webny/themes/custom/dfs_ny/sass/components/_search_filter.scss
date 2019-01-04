@@ -2,24 +2,19 @@
   // Mobile collapsible filter sidebar.
   @include breakpoint(max-width ($min-desktop - 1)) {
     @include clearfix;
-
     background-color: $exposedbkgrnd;
     padding: 0 !important;
-
     .filter-sidebar-content {
       display: none;
     }
-
     &.expanded {
       .filter-sidebar-content {
         display: block;
       }
-
       .filter-toggle:before {
         content: '\e639';
       }
     }
-
     .filter-toggle {
       background: transparent;
       border: none;
@@ -28,7 +23,6 @@
       padding: 20px;
       text-align: left;
       font-weight: bold;
-
       &:before {
         font-family: $icon-font;
         content: '\e616';
@@ -37,9 +31,7 @@
         right: 30px;
       }
     }
-  }
-
-  // Filter sidebar content.
+  } // Filter sidebar content.
   h2,
   .form-item-keyword label,
   .form-item-created-date:before {
@@ -50,21 +42,18 @@
     padding: 0 0 1em 0;
     font-weight: bold;
   }
-
   form {
     color: #fff;
     position: relative;
     margin: 0;
     padding: 0;
   }
-
   label {
     color: $color-mono-white;
     font-size: 16px;
     font-weight: normal;
     margin: .25em 0;
   }
-
   input {
     background-color: $exposedbkgrnd;
     border: 1px solid $darkgray;
@@ -73,10 +62,8 @@
     margin: 0 0 20px 0;
     padding: 2px 20px;
   }
-
   .form-item-keyword {
     position: relative;
-
     input {
       padding: 7px 20px 7px 40px;
       border: solid 1px $darkgray;
@@ -86,7 +73,6 @@
       line-height: 20px;
       width: 100%;
     }
-
     &:after {
       color: #d5820d;
       font-family: $icon-font;
@@ -97,73 +83,59 @@
       bottom: 3px;
     }
   }
-
   input[type="date"]:focus {
     color: $color-mono-black;
   }
-
   input[type="date"] {
     background-color: transparent;
     border: 1px solid $darkgray;
     color: $darkgray;
-
-    &:focus{
+    &:focus {
       color: $darkgray;
     }
   }
-
   input[type="submit"] {
     float: right;
-
     &:hover {
       background-color: $exposedbkgrnd;
       border-color: $color-accent-primary;
       color: $color-accent-primary;
     }
   }
-
   .block-filter-term {
     border-bottom: 1px solid #404040;
     margin-bottom: 20px;
     padding-bottom: 20px;
   }
-
   .item-list__checkbox {
     margin: 0;
     padding: 0;
-
     .facet-item {
       list-style: none;
       margin: 0 0 15px;
       position: relative;
       padding: 0;
-
       .facet-item__value {
         display: block;
         overflow: hidden;
       }
-
       &:last-child {
         margin-bottom: 0;
       }
-
       input[type="checkbox"] {
         display: none;
       }
-
-      input[type="checkbox"] + label {
+      input[type="checkbox"]+label {
         color: $color-mono-white;
-        cursor:pointer;
+        cursor: pointer;
         display: block;
         margin: -1px 4px 0 0;
-
         &:hover {
           color: $color-mono-white;
           &:before {
             color: $color-mono-white;
           }
         }
-
         &:before {
           color: $darkgray;
           font-family: $icon-font;
@@ -174,25 +146,20 @@
           float: left;
         }
       }
-
-      input:checked + label {
+      input:checked+label {
         color: $color-accent-primary;
-
         &:before {
           color: $color-accent-primary;
           font-family: $icon-font;
           content: "\e61f";
           float: left;
         }
-
-        &.option:active{
+        &.option:active {
           color: $color-accent-primary;
         }
-      }
-
-      // For IE8 fallback.
+      } // For IE8 fallback.
       // Mysteriously doesn't work with a "," and the above selector.
-      input[type="checkbox"] + label.checked {
+      input[type="checkbox"]+label.checked {
         &:before {
           color: $color-accent-primary;
           font-family: $icon-font;
@@ -208,7 +175,6 @@
       }
     }
   }
-
   .form-item-created-date:before {
     content: 'Date';
   }
@@ -222,56 +188,44 @@
 .webny-search-container {
   .filter-sidebar {
     padding: 40px 0;
-
-    > * {
+    >* {
       padding-left: 20px;
       padding-right: 20px;
     }
   }
-
   .view-main-content {
     padding-top: 20px;
     padding-bottom: 20px;
-
-    > * {
+    >* {
       padding-left: 20px;
       padding-right: 20px;
     }
   }
-
   @include breakpoint($min-desktop) {
     .filter-sidebar {
       @include span(3 of 12);
     }
-
     @include clearfix;
-
     background-color: $exposedbkgrnd;
     display: flex;
-
     .view-main-content {
       @include span(9 of 12 last);
-
       background: #fff;
       order: 2;
       padding-top: 40px;
       padding-bottom: 40px;
-
-      > * {
+      >* {
         padding-left: 40px;
         padding-right: 40px;
       }
     }
-
   }
-
   .js-form-clear-all {
     color: $color-tertiary;
     cursor: pointer;
     display: inline-block;
     font-size: 14px;
     margin-left: 6px;
-
     &:before {
       content: '\e614';
       display: inline-block;
@@ -281,5 +235,4 @@
       margin-right: 2px;
     }
   }
-
 }

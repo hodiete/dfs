@@ -29,7 +29,7 @@ fwrite(STDERR, sprintf("Scrubbing site database: site: %s; env: %s; db_role: %s;
 include_once $docroot . '/sites/g/sites.inc';
 $sites_json = gardens_site_data_load_file();
 if (!$sites_json) {
-  error('The site registry could not be loaded from the server.');
+  print 'Error: The site registry could not be loaded from the server.';
 }
 $new_domain = FALSE;
 foreach ($sites_json['sites'] as $site_domain => $site_info) {
@@ -48,7 +48,7 @@ foreach ($sites_json['sites'] as $site_domain => $site_info) {
   }
 }
 if (!$new_domain) {
-  error('Could not find the domain that belongs to the site.');
+  print 'Error: Could not find the domain that belongs to the site.';
 }
 
 $docroot = sprintf('/var/www/html/%s.%s/docroot', $site, $env);
