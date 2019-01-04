@@ -7,7 +7,6 @@
 // Style guide: layout.sidebars
 //
 $left-menu-width: 342px;
-
 @mixin leftmenu-h2 ($width) {
   background-color: #09464c;
   color: white;
@@ -156,11 +155,10 @@ main .layout-content nav {
   width: $left-menu-width;
   ul.ul-complaint-sidebar {
     padding: 0;
-    li
-    {
+    li {
       cursor: pointer;
-
-      .parent, .expand {
+      .parent,
+      .expand {
         margin-right: 30px;
         width: 14px;
         float: right;
@@ -377,8 +375,10 @@ main .layout-content nav {
 }
 */
 
-main nav .leftmenu-toggle-h2 {
-  @include leftmenu-h2(342px);
+main nav {
+  .leftmenu-toggle-h2 {
+    @include leftmenu-h2(342px);
+  }
 }
 
 main nav .h1-open-sub {
@@ -411,6 +411,38 @@ main nav .h1-open-sub {
       background-color: $color-primary;
     }
   }
+  main nav {
+    .leftmenu-toggle-h2 {
+      border-bottom-style: solid;
+      color: white;
+      background-color: rgb(9, 70, 76);
+    }
+    .toogle-h2-show {
+      border-bottom-style: none;
+      color: #09464c;
+      background-color: white;
+    }
+  }
+  .ul-complaint-sidebar {
+    a.toggler {
+      border-bottom-style: solid;
+      background-color: rgb(229, 238, 238);
+      font-weight: normal;
+      color: rgb(9, 70, 76);
+      letter-spacing: -0.1px;
+    }
+
+    a.parent-show {
+      border-bottom-style: none;
+      background-color: rgb(9, 70, 76);
+      font-weight: bold;
+      color: white;
+      letter-spacing: -0.1px;
+    }
+
+  }
+  
+
 }
 
 @media (max-width: 640px) {

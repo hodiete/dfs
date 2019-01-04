@@ -89,11 +89,6 @@
     }
   })
 
-  // $(document).ready(function(){
-  //     $(".leaf-parent").children.css({"display": "none"});
-  let bgcolor1 = '#e5eeee';
-  let bgcolor2 = 'white';
-  let bgcolorAct = '#09464c';
   let svgUp = 'arrowup-teal.svg';
   let svgDown = 'arrowdown-teal.svg';
   let svgUpWhite = 'arrowup-white.svg';
@@ -102,31 +97,19 @@
 
   if ($(window).width() <= 1023) {
     bgcolor2 = '#e5eeee';
-    // bgcolor1 = '#09464c';
-    // svgUp = 'arrowup-white.svg';
-    // svgDown = 'arrowdown-white.svg';
+
     $('img.down-up-arrow').attr('src', svgBase + svgDown);
 
     $('.leftmenu-toggle-h2').append('<img class="expand down-up-arrow" src="/profiles/custom/webny/themes/custom/dfs_ny/icons/dfs/arrowdown-white.svg">');
 
     $(".leftmenu-toggle-h2").click(function () {
 
-      // $(this).next().slideToggle(100);
-      if ($(this).css("border-bottom-style") != "none") {
-        $(this).css({
-            "border-bottom-style": "none",
-            "color": "#09464c",
-            "background-color": "white"
-          });
+      $(this).toggleClass("toogle-h2-show");
+      if ($(this).hasClass("toogle-h2-show")) {
         $(this).find("img").attr('src', svgBase + svgUp);
-        // $(this).toggleClass("h2-open-sub");
+
       }
       else {
-        $(this).css({
-          "border-bottom-style": "solid",
-          "color": "white",
-          "background-color": "#09464c"
-        });
         $(this).find("img").attr('src', svgBase + svgDownWhite);
       }
     })
@@ -134,16 +117,13 @@
 
   }
 
-  $(".parent").find('a').click(function () {
-
+  let leftSubMenu = ".ul-complaint-sidebar li.parent";
+  $(leftSubMenu).find('a').click(function () {
+    $(this).toggleClass("parent-show");
     $(this).next().slideToggle(100);
-    if ($(this).css("border-bottom-style") != "none") {
-      $(this).css({ "border-bottom-style": "none", "background-color": bgcolorAct, "font-weight": "bold" , "color": "white", "letter-spacing": "-0.1px" });
-      $(this).find("img").attr('src', svgBase + svgUpWhite);
-    }
+    if ($(this).hasClass("parent-show")) {
+      $(this).find("img").attr('src', svgBase + svgUpWhite);    }
     else {
-      $(this).css({ "border-bottom-style": "solid", "background-color": bgcolor2, "font-weight": "normal",
-        "color": bgcolorAct });
       $(this).find("img").attr('src', svgBase + svgDown);
     }
   })
@@ -224,22 +204,4 @@
   $("div.faq-card-link").mouseout(function () {
     $(this).find("img.faq-card-icon").attr("src", svgBase + "arrow-teal.svg");
   });
-
-  // Get URL of image in the header image node's image field.
-  // var imgSrc = $('#complaints-img-header .field-image img').attr('src');
-  /*
-  var basUrl = '/sites/default/files/landing-banner/';
-  var items = [
-    basUrl + 'Auto_Insurance.jpg',
-    basUrl + 'Banking_Saving_Sending_Borrowing_Money.jpg',
-    basUrl + 'Consumer_Information.jpg',
-    basUrl + 'File_External_Appeal.jpg',
-    basUrl + 'File_Complaint.jpg',
-    basUrl + 'File_No_Fault_Arbitration.jpg',
-      ];
-  // Set background image of parent block to this image URL.
-  var imgSrc = items[Math.floor(Math.random() * items.length)];
-  $('#complaints-img-header').css('background-image', 'url(' + imgSrc + ')');
-  */
-
 })(jQuery, Drupal, this);
