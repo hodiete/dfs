@@ -204,8 +204,7 @@
   background-color: #09464c;
   display: inline-block;
   letter-spacing: 1px;
-  padding:1rem;
-
+  padding: 1rem;
   &:hover {
     background-color: #042326;
     a {
@@ -220,7 +219,7 @@
     font-size: 20px;
     font-weight: bold;
     font-weight: 500;
-    padding:0;
+    padding: 0;
   }
 }
 
@@ -283,10 +282,10 @@
 .press-release-link {
   background-image: url('../icons/dfs/arrow-teal.svg');
   background-size: 12px 12px;
-  background-position: 100px 50%; transition:0.4s;
+  background-position: 100px 50%;
+  transition: 0.4s;
   background-repeat: no-repeat;
   padding-top: 3px;
-
   a {
     font-size: 16px;
     color: #09464c;
@@ -298,11 +297,9 @@
   &:hover {
     background-position: 120px 50%;
   }
-
   @media (max-width: 480px) {
     background: none;
   }
-
 }
 
 .front-page-press-centering-div {
@@ -330,7 +327,7 @@
 #block-views-block-regulated-institutions-block-1 {
   background-color: #e5eeee;
   padding: 30px 40px;
-  margin: 45px 35px ;
+  margin: 45px 35px;
   h2 {
     font-size: 40px; // margin-top: 60px;
     color: #09464c;
@@ -402,7 +399,7 @@
 .statewide-image {
   text-align: center;
   img {
-    height: 100% ;
+    height: 100%;
   }
 }
 
@@ -439,6 +436,10 @@
 }
 
 @media only screen and (max-width: 1023px) {
+  #block-views-block-apps-and-licensing-view-block-1.views-element-container {
+      padding-left: 20px;
+    }
+  
   .views-element-container {
     margin-top: 0;
     margin-left: 0;
@@ -530,15 +531,12 @@
 }
 
 @media only screen and (max-width: 500px) {
-
   #block-views-block-front-page-press-releases-block-1 {
     text-align: center;
   }
-
   #block-views-block-front-page-press-releases-block-1 {
     text-align: center;
   }
-
   .banner-wrapper-all-texts {
     padding-top: 60px;
     width: 95%;
