@@ -16,7 +16,7 @@
       }
       else {
         searchClick = '#search-mobile-icon';
-        console.log(searchClick);
+        // console.log(searchClick);
       }
       var sidebarToggleElement = 'header .dfs-block-search-form';
 

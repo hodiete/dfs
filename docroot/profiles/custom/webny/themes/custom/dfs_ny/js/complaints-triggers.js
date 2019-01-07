@@ -10,9 +10,6 @@
     $(".faq-card-box").parent().parent().css({ "width": "86%", "margin-left": "7%" });
     $("#faq").parent().css({ "padding": "0 2.8%" });
 
-  });
-
-  $(document).ready(function () {
     let currentWidth = "50%";
     if ($(window).width() <= 880) {
        currentWidth = "100%";
@@ -21,14 +18,9 @@
     $(".short-card-box").parent().css({ "padding": "20px 0", "width": currentWidth, "float": "left", "margin": "0" });
     $(".short-card-box").parent().parent().css({ "width": "86%", "margin-left": "7%" });
     $("#short").parent().css({ "padding": "0 2.8%" });
-  });
 
-  $(document).ready(function () {
     $("#block-generalquestionsandcomplaints").parent().parent().css({ "width": "100%" });
-  });
 
-  // For the footer
-  $(document).ready(function () {
     $("#block-ourdepartment").parent().css({ "background-color": "#09464c"});
     $("#block-ourassociates").parent().css({ "background-color": "#09464c"});
     $("#block-quicklinks").parent().css({ "background-color": "#09464c"});
@@ -67,10 +59,8 @@
         $("#block-ourassociates").css({"width": "20%"});
         $("#block-website").css({"width": "20%"});
     }
-  })
 
   // global footer Who We Supervise block
-  $(window).resize(function(){
     if ($(window).width() <= 500){
         $(".supervise-title").css({"margin-left": "0", "width": "100%", "float": "center", "text-align": "center"});
         $(".learn-more-link").css({"margin-right": "8%", "margin-top": "20px", "width": "80%", "float": "right"});
@@ -149,9 +139,9 @@
 
   $(".in-div-drop-button").click(function () {
     $(this).next().slideToggle(500);
-    console.log($(this).next().text());
+    // console.log($(this).next().text());
     if ($(this).text() == "+") {
-      console.log("yes");
+      // console.log("yes");
       $(this).text("-");
       $(this).parent().css("border-left-style", "solid");
       $(this).next().css("margin", "10px 25px 10px 10px");
@@ -174,9 +164,9 @@
 
   $(".in-view-drop-button").click(function () {
     $(this).next().slideToggle(500);
-    console.log($(this).next().text());
+    // console.log($(this).next().text());
     if ($(this).text() == "+") {
-      console.log("yes");
+      // console.log("yes");
       $(this).text("-");
       $(this).parent().css("border-left-style", "solid");
       $(this).next().css("margin", "10px 25px 10px 10px");
