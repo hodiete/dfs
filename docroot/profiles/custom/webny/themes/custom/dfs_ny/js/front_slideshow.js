@@ -79,11 +79,6 @@
       var coverTop = $(bannerCover).cssInt('top');
       // console.log("1 top= " + coverTop);
       if ($('#toolbar-bar').length > 0 ) {
-        // tootbar = $('#toolbar-bar')
-        // coverTop = coverTop + 84;
-        // coverTop = 244;
-        // console.log("2 top= " + coverTop);
-        // $(bannerCover).css('top', 244);
       }
         
     }

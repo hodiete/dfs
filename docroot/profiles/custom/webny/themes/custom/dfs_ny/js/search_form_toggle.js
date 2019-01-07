@@ -77,24 +77,11 @@
       // The toggle button.
       var portal = '.webny-global-header ul.gnav-ul li.gnav-topli:nth-child(7) > a';
       var button = '.login-button';
-      // var iframe = '.portal-wrapper iframe';
-      // var close = '.portal-wrapper .close';
-      // Clear all results button (see custom 'webny-filter-clear' token).
-      // console.log(portal);
       $(portal).click(function () {
         window.open(this.href);
         return false;
       });
-      // $(portal).click(function (e) {
-      //   console.log($(this).attr('href'));
-      //   e.preventDefault();
-      //   $(iframe).attr("src", $(this).attr('href'));
-      //   $(wrapper).fadeIn('slow');
 
-      // });
-      // $(close).click(function () {
-      //   $(this).parent().fadeOut("slow");
-      // });
     }
   };
   
