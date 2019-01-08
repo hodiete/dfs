@@ -83,7 +83,7 @@
         "ckeditor/liststyle": "^4.7",
 
         "ckeditor/autogrow": "^4.7",
-        "ckeditor/codemirror": "^4.7",
+        "ckeditor/codemirror": "^1.17.3",
         "ckeditor/fakeobjects": "^4.7",
         "ckeditor/image": "^4.7",
         "ckeditor/link": "^4.7",
@@ -113,7 +113,8 @@
         "drupal/codemirror": "^5.42",
         "jquery/cycle": "^3.0",
         "jquery/hoverIntent": "^1.9",
-        "json2": "^1.9"
+        "json2": "^1.9",
+        "drupal/hijri": "1.x-dev"
     },
     "scripts": {
         "post-drupal-scaffold-cmd": [
@@ -304,7 +305,7 @@
             },
             "dist": {
               "url": "https://raw.githubusercontent.com/briancherne/jquery-hoverIntent/master/jquery.hoverIntent.js",
-              "type": "js"
+              "type": "file"
             }
           }
         },
@@ -319,8 +320,8 @@
               "installer-name": "json2"
             },
             "dist": {
-              "url": "https://raw.githubusercontent.com/douglascrockford/JSON-js/master/json2.js",
-              "type": "js"
+              "url": "https://github.com/douglascrockford/JSON-js/archive/master.zip",
+              "type": "zip"
             }
           }
         },        

@@ -1,14 +1,13 @@
 //////////////////////////////////
 // Primary Container Rules ///////
 //////////////////////////////////
-
 .mq--t {
   @include container(80em);
 }
 
 // removes title area from home page
 .front .landing-title-area {
-    display: none;
+  display: none;
 }
 
 // add bottom margin to main content container
@@ -19,4 +18,11 @@
 // make skip link background white for accessibility
 .skip-to-main {
   background: #fff;
+}
+
+.layout-container {
+  main {
+    margin-bottom: 25px;
+    min-height: 580px;    
+  }
 }

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "971ad100d71dbb7c84ca6b029a4f5fcf",
+    "content-hash": "2558fb986699f9f85b79c34b90120452",
     "packages": [
         {
             "name": "acquia/acsf-tools",
@@ -655,6 +655,62 @@
             "time": "2017-04-04T11:38:05+00:00"
         },
         {
+            "name": "ckeditor/autogrow",
+            "version": "4.8.0",
+            "dist": {
+                "type": "zip",
+                "url": "https://download.ckeditor.com/autogrow/releases/autogrow_4.8.0.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "type": "ckeditor-library",
+            "extra": {
+                "installer-name": "autogrow"
+            }
+        },
+        {
+            "name": "ckeditor/codemirror",
+            "version": "1.17.3",
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/w8tcha/CKEditor-CodeMirror-Plugin/archive/master.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "type": "ckeditor-library",
+            "extra": {
+                "installer-name": "codemirror"
+            }
+        },
+        {
+            "name": "ckeditor/fakeobjects",
+            "version": "4.8.0",
+            "dist": {
+                "type": "zip",
+                "url": "https://download.ckeditor.com/fakeobjects/releases/fakeobjects_4.8.0.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "type": "ckeditor-library",
+            "extra": {
+                "installer-name": "fakeobjects"
+            }
+        },
+        {
+            "name": "ckeditor/image",
+            "version": "4.8.0",
+            "dist": {
+                "type": "zip",
+                "url": "https://download.ckeditor.com/image/releases/image_4.8.0.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "type": "ckeditor-library",
+            "extra": {
+                "installer-name": "image"
+            }
+        },
+        {
             "name": "ckeditor/indentblock",
             "version": "4.7.3",
             "dist": {
@@ -666,6 +722,20 @@
             "type": "ckeditor-library",
             "extra": {
                 "installer-name": "indentblock"
+            }
+        },
+        {
+            "name": "ckeditor/link",
+            "version": "4.8.0",
+            "dist": {
+                "type": "zip",
+                "url": "https://download.ckeditor.com/link/releases/link_4.8.0.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "type": "ckeditor-library",
+            "extra": {
+                "installer-name": "link"
             }
         },
         {
@@ -3370,6 +3440,17 @@
             }
         },
         {
+            "name": "drupal/codemirror",
+            "version": "5.42.2",
+            "dist": {
+                "type": "zip",
+                "url": "https://codemirror.net/codemirror.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "type": "drupal-library"
+        },
+        {
             "name": "drupal/coder",
             "version": "8.2.12",
             "source": {
@@ -5290,6 +5371,71 @@
                 "source": "http://git.drupal.org/project/google_analytics.git",
                 "issues": "https://www.drupal.org/project/issues/google_analytics"
             }
+        },
+        {
+            "name": "drupal/highlightjs",
+            "version": "9.7.0",
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/components/highlightjs/archive/9.7.0.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "type": "drupal-library"
+        },
+        {
+            "name": "drupal/hijri",
+            "version": "dev-1.x",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupal.org/project/hijri",
+                "reference": "474f4c42cefddd3bb77c222dc5d48a9a9bcb4b08"
+            },
+            "require": {
+                "drupal/core": "~8.0"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-1.x": "1.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-1.x-dev",
+                    "datestamp": "1458023639",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Dev releases are not covered by Drupal security advisories."
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "3ssom",
+                    "homepage": "https://www.drupal.org/user/758014"
+                },
+                {
+                    "name": "Taha.Abdoh",
+                    "homepage": "https://www.drupal.org/user/1630446"
+                },
+                {
+                    "name": "drpl",
+                    "homepage": "https://www.drupal.org/user/334568"
+                },
+                {
+                    "name": "samaphp",
+                    "homepage": "https://www.drupal.org/user/2727247"
+                }
+            ],
+            "description": "This module provides Hijri Date integration with Drupal core date field and with other Drupal contributions such as Views and Date.",
+            "homepage": "https://www.drupal.org/project/hijri",
+            "support": {
+                "source": "http://cgit.drupalcode.org/hijri"
+            },
+            "time": "2016-03-15T06:33:51+00:00"
         },
         {
             "name": "drupal/honeypot",
@@ -7690,55 +7836,6 @@
             }
         },
         {
-            "name": "drupal/views_slideshow_cycle",
-            "version": "4.6.0",
-            "require": {
-                "drupal/core": "~8.0",
-                "drupal/views_slideshow": "self.version"
-            },
-            "type": "metapackage",
-            "extra": {
-                "branch-alias": {
-                    "dev-4.x": "4.x-dev"
-                },
-                "drupal": {
-                    "version": "8.x-4.6",
-                    "datestamp": "1510987085",
-                    "security-coverage": {
-                        "status": "covered",
-                        "message": "Covered by Drupal's security advisory policy"
-                    }
-                }
-            },
-            "notification-url": "https://packages.drupal.org/8/downloads",
-            "license": [
-                "GPL-2.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "NickWilde",
-                    "homepage": "https://www.drupal.org/user/3094661"
-                },
-                {
-                    "name": "aaron",
-                    "homepage": "https://www.drupal.org/user/33420"
-                },
-                {
-                    "name": "redndahead",
-                    "homepage": "https://www.drupal.org/user/160320"
-                },
-                {
-                    "name": "vbouchet",
-                    "homepage": "https://www.drupal.org/user/1671428"
-                }
-            ],
-            "description": "Adds a Rotating slideshow mode to Views Slideshow.",
-            "homepage": "https://www.drupal.org/project/views_slideshow",
-            "support": {
-                "source": "http://cgit.drupalcode.org/views_slideshow"
-            }
-        },
-        {
             "name": "drupal/webform",
             "version": "5.0.0-rc11",
             "source": {
@@ -8812,6 +8909,48 @@
             ],
             "description": "Behat 3 JUnit xml formatter",
             "time": "2016-01-26T17:05:07+00:00"
+        },
+        {
+            "name": "jquery/cycle",
+            "version": "3.0.3",
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/malsup/cycle/archive/master.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "type": "jquery-library",
+            "extra": {
+                "installer-name": "jquery.cycle"
+            }
+        },
+        {
+            "name": "jquery/hoverIntent",
+            "version": "1.9.1",
+            "dist": {
+                "type": "file",
+                "url": "https://raw.githubusercontent.com/briancherne/jquery-hoverIntent/master/jquery.hoverIntent.js",
+                "reference": null,
+                "shasum": null
+            },
+            "type": "jquery-library",
+            "extra": {
+                "installer-name": "jquery.hoverIntent"
+            }
+        },
+        {
+            "name": "json2",
+            "version": "1.9.1",
+            "dist": {
+                "type": "file",
+                "url": "https://github.com/douglascrockford/JSON-js/archive/master.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "type": "jquery-library",
+            "extra": {
+                "installer-name": "json2"
+            }
         },
         {
             "name": "league/container",
@@ -13461,6 +13600,55 @@
             "time": "2017-09-13T19:54:23+00:00"
         },
         {
+            "name": "drupal/views_slideshow_cycle",
+            "version": "4.6.0",
+            "require": {
+                "drupal/core": "~8.0",
+                "drupal/views_slideshow": "self.version"
+            },
+            "type": "metapackage",
+            "extra": {
+                "branch-alias": {
+                    "dev-4.x": "4.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-4.6",
+                    "datestamp": "1510987085",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "NickWilde",
+                    "homepage": "https://www.drupal.org/user/3094661"
+                },
+                {
+                    "name": "aaron",
+                    "homepage": "https://www.drupal.org/user/33420"
+                },
+                {
+                    "name": "redndahead",
+                    "homepage": "https://www.drupal.org/user/160320"
+                },
+                {
+                    "name": "vbouchet",
+                    "homepage": "https://www.drupal.org/user/1671428"
+                }
+            ],
+            "description": "Adds a Rotating slideshow mode to Views Slideshow.",
+            "homepage": "https://www.drupal.org/project/views_slideshow",
+            "support": {
+                "source": "http://cgit.drupalcode.org/views_slideshow"
+            }
+        },
+        {
             "name": "fabpot/goutte",
             "version": "v3.2.3",
             "source": {
@@ -13853,7 +14041,8 @@
         "roave/security-advisories": 20,
         "drupal/video_embed_brightcove": 20,
         "drupal/ckeditor_indentblock": 20,
-        "drupal/taxonomy_machine_name": 15
+        "drupal/taxonomy_machine_name": 15,
+        "drupal/hijri": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
