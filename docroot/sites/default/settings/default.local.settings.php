@@ -8,15 +8,21 @@
 /**
  * Database configuration.
  */
-$databases['default']['default'] = array(
-  'database' => 'drupal',
-  'username' => 'drupal',
-  'password' => 'drupal',
-  'prefix' => '',
-  'host' => 'localhost',
-  'port' => '3306',
-  'namespace' => 'Drupal\\Core\\Database\\Driver\\mysql',
-  'driver' => 'mysql',
+$databases = array(
+  'default' =>
+  array(
+    'default' =>
+    array(
+      'database' => 'drupal',
+      'username' => 'drupal',
+      'password' => 'drupal',
+      'host' => 'localhost',
+      'port' => '3306',
+      'namespace' => 'Drupal\\Core\\Database\\Driver\\mysql',
+      'driver' => 'mysql',
+      'prefix' => '',
+    ),
+  ),
 );
 
 // Configuration directories.
@@ -128,13 +134,3 @@ $settings['file_private_path'] = $dir . '/files-private';
 # $settings['trusted_host_patterns'] = array(
 #   '^example\.local$',
 # );
-
-
-$settings['trusted_host_patterns'] = [
-    '^localhost$',
-    '^127\.0\.0\.1$',
-    '^webny\.local$',
-    '^nydfs\.local$',
-    '^nydfs2\.local$',
-    '^nydfs+\.local$',
-  ];
