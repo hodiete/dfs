@@ -108,8 +108,10 @@
   }
 
   let leftSubMenu = ".ul-complaint-sidebar li.parent";
+
   $(leftSubMenu).find('a').click(function () {
     $(this).toggleClass("parent-show");
+    $(this).parent('li').toggleClass("expanded");
     $(this).next().slideToggle(100);
     if ($(this).hasClass("parent-show")) {
       $(this).find("img").attr('src', svgBase + svgUpWhite);    }
@@ -118,6 +120,7 @@
     }
   })
 
+  // let leftSubActive = ".ul-complaint-sidebar li.parent ul li";
 
 /**
  * Toggle left menu.
@@ -182,4 +185,16 @@
   $("div.faq-card-link").mouseout(function () {
     $(this).find("img.faq-card-icon").attr("src", svgBase + "arrow-teal.svg");
   });
+
+  clickableDiv(".banner-wrapper-all-texts .banner-link");
+  clickableDiv(".learn-more-link");
+  clickableDiv(".see-all-alerts-link");
+
+  function clickableDiv($divClass) {
+    $($divClass).click(function () {
+      window.location = $(this).find("a").attr("href");
+      return false;
+    });
+  }
+
 })(jQuery, Drupal, this);

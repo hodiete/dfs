@@ -55,14 +55,14 @@
     stickNavigation($sticky, $stickyrStopper, false, $fromTopHeight);
   }
   else {
-    stickNavigation($sticky2, $stickyrStopper, true);
+    stickNavigation($sticky2, $stickyrStopper, true, 0);
   }
 
   /*
   *  toggle the left menu on mobile
   */
 
-  $('.leftmenu-toggle-h2').click(() => {
+  $('.leftmenu-toggle-h2').click(function () {
     if ($(window).width() < 1024) {
       $("#sticky-leftmenu").slideToggle('fast');
     }
@@ -75,7 +75,7 @@
    * @param {boolean} $topMenu 
    * @param {number} $fromTopHeight 
    */
-  function stickNavigation($sticky, $stickyrStopper, $topMenu = true, $fromTopHeight = 0) {
+  function stickNavigation($sticky, $stickyrStopper, $topMenu, $fromTopHeight) {
 
     var myPosition, fromTop;
     if ($sticky.offset()) { // make sure ".sticky" element exists
@@ -110,7 +110,7 @@
 
       let diff = stopPoint + stickOffset;     
 
-      $(window).scroll(() => { // scroll event
+      $(window).scroll(function() { // scroll event
 
         var windowTop = $(window).scrollTop(); // returns number    
         if ($topMenu && windowTop <= 90) {

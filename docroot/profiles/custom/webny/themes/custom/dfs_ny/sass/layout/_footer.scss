@@ -7,15 +7,17 @@
 
 #block-footercomplaint,
 #after-content {
-  width: 79%;
-  margin: 0 auto 100px auto;
+  width: 66%;
+  margin: 0 auto 30px 27%;
   padding: 25px;
   background-color: #e5eeee;
-
+  @media (max-width: 1024px) {
+    margin-left: 10%;
+    width: 76%;
+  }
   @media (max-width: 480px) {
     width: 66%;
   }
-
 }
 
 .dfs-footer-inner-container {
@@ -32,13 +34,11 @@
   font-size: 40px;
   font-weight: bold;
   margin-bottom: 10px;
-
   @media (max-width: 480px) {
     font-size: 32px;
     text-align: center;
     line-height: 1em;
   }
-  
 }
 
 #after-content p,
@@ -47,7 +47,6 @@
     text-align: center;
   }
 }
-
 
 // Creates the green buttons out of links in the footer, also used in certain pages.
 #dfs-footer-link {
@@ -60,20 +59,17 @@
   color: white;
   font-family: "Proxima Nova", Arial, sans-serif;
   font-size: 12px;
-  font-weight: normal ;
-
+  font-weight: normal;
   @media (max-width: 480px) {
     width: 100%;
     margin-bottom: 10px;
   }
-
   a {
     max-width: 100%;
     max-height: 40px;
     color: white;
     font-family: "Proxima Nova", Arial, sans-serif;
     font-size: 12px;
-
     &:hover {
       background-color: #09464c;
       color: white;

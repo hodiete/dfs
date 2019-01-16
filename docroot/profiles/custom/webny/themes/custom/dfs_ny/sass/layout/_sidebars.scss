@@ -153,50 +153,6 @@ main .layout-content nav {
   z-index: 2;
   display: block; // max-width: 348px;
   width: $left-menu-width;
-  ul.ul-complaint-sidebar {
-    padding: 0;
-    li {
-      cursor: pointer;
-      .parent,
-      .expand {
-        margin-right: 30px;
-        width: 14px;
-        float: right;
-        margin-top: 3px;
-        cursor: pointer;
-      }
-      ul {
-        display: none;
-        padding-left: 0px;
-        border-bottom: solid 1px #09464c14;
-        a {
-          display: block;
-          background-color: #fff;
-          text-decoration: none;
-          font-family: Helvetica;
-          font-size: 14px;
-          font-weight: normal;
-          float: left;
-          font-style: normal;
-          font-stretch: normal;
-          border-bottom: 0px;
-          line-height: 1;
-          height: auto;
-          padding: 20px 0 20px 45px;
-          color: #09464c;
-        }
-        a {
-          border-bottom: solid 1px #09464c14;
-        }
-        a:hover {
-          background-color: #e5eeee;
-        }
-        a.is-active {
-          @include a-is-active(#e5eeee, 600, none);
-        }
-      }
-    }
-  }
   ul ul {
     display: none;
     width: auto;
@@ -243,6 +199,63 @@ main .layout-content nav {
   }
 }
 
+.layout-container ul.ul-complaint-sidebar {
+  padding: 0;
+}
+
+.ul-complaint-sidebar {
+  li.expanded,
+  li.is_expanded {
+    a.parent-show {
+      background-color: $bgcolor-light-leftmenu; // color: white;
+    }
+    ul {
+      display: block;
+    }
+  }
+  li {
+    cursor: pointer;
+    .parent,
+    .expand {
+      margin-right: 30px;
+      width: 14px;
+      float: right;
+      margin-top: 3px;
+      cursor: pointer;
+    }
+    ul {
+      display: none;
+      padding-left: 0px;
+      border-bottom: solid 1px #09464c14;
+      a {
+        display: block;
+        background-color: #fff;
+        text-decoration: none;
+        font-family: Helvetica;
+        font-size: 14px;
+        font-weight: normal;
+        float: left;
+        font-style: normal;
+        font-stretch: normal;
+        border-bottom: 0px;
+        line-height: 1;
+        height: auto;
+        padding: 20px 0 20px 45px;
+        color: #09464c;
+      }
+      a {
+        border-bottom: solid 1px #09464c14;
+      }
+      a:hover {
+        background-color: #e5eeee;
+      }
+      a.is-active {
+        @include a-is-active(#e5eeee, 600, none);
+      }
+    }
+  }
+}
+
 .first-complaints {
   a {
     background-color: #09464c;
@@ -256,11 +269,11 @@ main .layout-content nav {
 }
 
 .leaf {
-  margin: 0 ;
+  margin: 0;
 }
 
 .faq-sidebar {
-  padding-left: 0px ;
+  padding-left: 0px;
   display: block;
   ul ul {
     display: none;
@@ -296,7 +309,6 @@ main .layout-content nav {
     }
   }
 }
-
 
 main nav {
   .leftmenu-toggle-h2 {
@@ -354,18 +366,19 @@ main nav .h1-open-sub {
       color: rgb(9, 70, 76);
       letter-spacing: -0.1px;
     }
-
     a.parent-show {
       border-bottom-style: none;
-      background-color: rgb(9, 70, 76);
+      background-color: $bgcolor-dark-leftmenu;
       font-weight: bold;
       color: white;
       letter-spacing: -0.1px;
     }
-
+    li.expanded {
+      a.parent-show {
+        background-color: $bgcolor-dark-leftmenu; // color: white;
+      }
+    }
   }
-  
-
 }
 
 @media (max-width: 640px) {

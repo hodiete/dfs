@@ -1,20 +1,54 @@
 // Webforms
 //
 // Webforms frontend styling.
+.form-layout-content {
+  max-width: 1280px;
+}
 
-.webform-submission-form  {
+.webform-submission-form {
   .js-form-item {
-    label.option  {
-      display: inline;
+    label {
+      display: inline-block;
+      min-width: 110px;
+    }
+    select,
+    input {
+      display: inline-block;
+      max-width: 380px;
+      height: 2.6rem;
+      margin-bottom: 1.5%;
+    }
+    input[type=submit] {
+      margin-right: 30px;
+    }
+    textarea {
+      min-height: 150px;
     }
   }
-
-  div   {
-    margin: 2% 0 0 0;
+  .js-form-type-radio {
+    // margin-right: 30px;
+    label.option {
+      padding-left: 10px;
+    }
+    input[type=radio] {
+      height: 1rem;
+    }
   }
-
+  div {
+    margin: 1% 0 0 0;
+  }
   fieldset.form-wrapper {
     padding-bottom: 2%;
   }
-
+  .js-form-type-processed-text {
+    p {
+      border-top: 2px solid #186169;
+      padding-top: 20px;
+    }
+    ul {
+      border-bottom: 2px solid #186169;
+      padding-bottom: 20px;
+      margin-bottom: 20px;
+    }
+  }
 }

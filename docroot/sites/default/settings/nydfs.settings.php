@@ -39,26 +39,3 @@ if ($is_ah_env) {
       break;
   }
 }
-
-/*
-$settings['trusted_host_patterns'] = [
-  '^localhost$',
-  '^127\.0\.0\.1$',
-  '^webny\.local$',
-  '^nydfs\.local$',
-  '^nydfs2\.local$',
-  '^nydfs*\.local$',
-];
-
-$databases['default']['default'] = array(
-  'database' => 'drupal',
-  'username' => 'root',
-  'password' => 'root',
-  'prefix' => '',
-  'host' => 'localhost',
-  'port' => '3306',
-  'namespace' => 'Drupal\\Core\\Database\\Driver\\mysql',
-  'driver' => 'mysql',
-);
-
-*/

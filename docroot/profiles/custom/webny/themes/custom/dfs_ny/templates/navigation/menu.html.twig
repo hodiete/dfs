@@ -50,6 +50,9 @@
 
             {% if item.below %}
               {% set classes = classes | merge(["parent"]) %}
+              {% if item.is_expanded %}
+                {% set classes = classes | merge(["is_expanded"]) %} 
+              {% endif %}
               <li class="{{ classes|join(" ") }}" {{ item.attributes }}>
                 <a class="toggler">
                   {{ item.title }}

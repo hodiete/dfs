@@ -425,7 +425,7 @@ $featured-card-fallback-img-bkg: $color-secondary !default;
   width: 90%;
   margin-left: 5%;
   margin-right: 5%;
-  height: 320px;
+  height: auto;
   border-color: #e5eeee;
   border-width: 1px;
   border-style: solid;
@@ -442,7 +442,8 @@ $featured-card-fallback-img-bkg: $color-secondary !default;
 
 .faq-card-image-div {
   position: relative;
-  height: 125px;
+  height: auto;
+  max-height: 235px;
   width: 100%;
   overflow: hidden;
 }
@@ -453,9 +454,12 @@ $featured-card-fallback-img-bkg: $color-secondary !default;
 }
 
 .short-card-text {
-  padding-top: 10px;
+  padding-top: 5px;
   width: 100%;
-  height: 145px;
+  height: 115px;
+  @media (max-width: 600px) {
+    height: auto;
+  }
 }
 
 .faq-card-link {
@@ -606,8 +610,8 @@ $featured-card-fallback-img-bkg: $color-secondary !default;
       min-width: 162px;
     }
   }
-    .views-row {
-      width: 25%;
-      float: left;
-    }
+  .views-row {
+    width: 25%;
+    float: left;
   }
+}
