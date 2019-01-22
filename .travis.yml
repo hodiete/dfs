@@ -77,8 +77,8 @@ install:
   - composer install -v
   - export PATH=$TRAVIS_BUILD_DIR/vendor/bin:$PATH
   # Install proper version of node for front end tasks.
-  - nvm install 8.9.4
-  - nvm use 8.9.4
+  - nvm install 0.12.10
+  - nvm use 0.12.10
   - source ${BLT_DIR}/scripts/travis/setup_environment
   - source ${BLT_DIR}/scripts/travis/setup_project
 
