@@ -46,7 +46,7 @@ modules:
 target-hooks:
   frontend-setup:
     dir: '${docroot}/profiles/custom/webny/themes/custom/dfs_ny'
-    command: 'npm run install-node.sh && npm rebuild node-sass'
+    command: 'npm run install-node && npm rebuild node-sass'
   frontend-build:
     dir: '${docroot}/profiles/custom/webny/themes/custom/dfs_ny'
     command: 'npm run build'
