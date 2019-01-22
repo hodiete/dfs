@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+php -i | grep memcache
+
 if [ ! -d "$HOME/.nvm" ]; then
   echo "Downloading and installing nvm"
   curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.30.2/install.sh | sudo bash
