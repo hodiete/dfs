@@ -47,8 +47,8 @@ before_install:
   - mysql -e 'create database drupal;'
 
   # Set up front end dependencies.
-  - nvm use 0.12.7
   - ./install-node.sh
+  - nvm use 0.12.7
 
   # Copy cached dependencies back to travis build dir so that they are
   # not wiped out by `drush dl drupal` command.
