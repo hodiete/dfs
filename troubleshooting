@@ -1,3 +1,9 @@
 #!/usr/bin/env bash
 
-php -i
+php -i | grep memcache
+
+sudo apt-get update
+sudo apt-get install memcached
+sudo apt-get install libmemcached-tools
+
+more /etc/memcached.conf
