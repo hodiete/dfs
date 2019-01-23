@@ -4,6 +4,12 @@
  * Contains memcache configuration.
  */
 use Composer\Autoload\ClassLoader;
+
+// TEMPORARY HACK UNTIL MEMCACHE IS INSTALLED ON PIPELINES
+if(isset($_ENV['PIPELINE_ENV'])){
+  return;
+}
+
 // Check for PHP Memcached libraries.
 $memcache_exists = class_exists('Memcache', FALSE);
 $memcached_exists = class_exists('Memcached', FALSE);
