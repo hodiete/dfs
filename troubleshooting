@@ -1,15 +1,17 @@
 #!/usr/bin/env bash
 
-set -ev
+# set -ev
 
 whoami
 
 php -i | grep memcache
 
-apt-get update
-apt-get install memcached
-apt-get install libmemcached-tools
+# apt-get update
+# apt-get install memcached
+# apt-get install libmemcached-tools
 
-more /etc/memcached.conf
+# more /etc/memcached.conf
 
-set +v
+ls -ahl /etc/
+
+# set +v
