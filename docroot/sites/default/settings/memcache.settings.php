@@ -5,6 +5,8 @@
  */
 use Composer\Autoload\ClassLoader;
 
+print_r(get_declared_classes());
+
 // TEMPORARY HACK UNTIL MEMCACHE IS INSTALLED ON PIPELINES
 if(!isset($_ENV['PIPELINE_ENV'])){
 
