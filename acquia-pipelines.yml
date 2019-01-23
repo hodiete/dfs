@@ -1,6 +1,7 @@
 version: 1.1.0
 services:
   - mysql
+  - memcached
   - php:
       version: 7.1
 
@@ -13,26 +14,26 @@ variables:
 events:
   build:
     steps:
-        - setup-env:
-            type: script
-            script:
-              - composer validate --no-check-all --ansi
-              - composer install --ansi
-              - source ${BLT_DIR}/scripts/pipelines/setup_env
-        - validate:
-            type: script
-            script:
-              - source ${BLT_DIR}/scripts/pipelines/validate
-        - setup-app:
-            type: script
-            script:
-              - source ${THEME_DIR}/install-node.sh
-              - source ${BLT_DIR}/scripts/pipelines/setup_app
-        - tests:
-            type: script
-            script:
-              - source ${BLT_DIR}/scripts/pipelines/tests
-        - build-artifact:
-            type: script
-            script:
-              - source ${BLT_DIR}/scripts/pipelines/build_artifact
+      - setup-env:
+          type: script
+          script:
+            - composer validate --no-check-all --ansi
+            - composer install --ansi
+            - source ${BLT_DIR}/scripts/pipelines/setup_env
+      - validate:
+          type: script
+          script:
+            - source ${BLT_DIR}/scripts/pipelines/validate
+      - setup-app:
+          type: script
+          script:
+            - source ${THEME_DIR}/install-node.sh
+            - source ${BLT_DIR}/scripts/pipelines/setup_app
+      - tests:
+          type: script
+          script:
+            - source ${BLT_DIR}/scripts/pipelines/tests
+      - build-artifact:
+          type: script
+          script:
+            - source ${BLT_DIR}/scripts/pipelines/build_artifact
