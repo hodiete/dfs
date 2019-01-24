@@ -1,0 +1,14 @@
+uuid: 22186e82-62a4-4df9-86cc-427994cec9f3
+langcode: en
+status: true
+dependencies:
+  config:
+    - workbench_moderation.moderation_state.archived
+    - workbench_moderation.moderation_state.unpublished
+_core:
+  default_config_hash: hVmbZpfMAYnCcrbLNAwHLVZqeU74E4dn1CzFH4dCvsE
+id: archive_unpublished
+label: 'Set as Unpublished'
+stateFrom: archived
+stateTo: unpublished
+weight: 9

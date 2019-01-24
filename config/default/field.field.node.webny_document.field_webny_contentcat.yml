@@ -1,0 +1,30 @@
+uuid: 74c88bed-948b-43da-8d5a-37500118e796
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_webny_contentcat
+    - node.type.webny_document
+    - taxonomy.vocabulary.webny_tax_contentcat
+_core:
+  default_config_hash: XvCh65OPO2m2AySyLOaUILTU-pfbc7Wisbtw9KTJRBc
+id: node.webny_document.field_webny_contentcat
+field_name: field_webny_contentcat
+entity_type: node
+bundle: webny_document
+label: 'Content Categorization'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      webny_tax_contentcat: webny_tax_contentcat
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

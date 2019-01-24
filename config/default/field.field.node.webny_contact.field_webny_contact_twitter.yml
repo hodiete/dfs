@@ -1,0 +1,25 @@
+uuid: 07dbea8e-27ad-4f7f-abc4-1caf9d48a913
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_webny_contact_twitter
+    - node.type.webny_contact
+  module:
+    - link
+_core:
+  default_config_hash: XoSdaqBWN9x-_GMVvXOXAPlPUI6ntPumiXZOxgwmRm4
+id: node.webny_contact.field_webny_contact_twitter
+field_name: field_webny_contact_twitter
+entity_type: node
+bundle: webny_contact
+label: 'Twitter Link'
+description: 'Please enter the Twitter link of the point of contact.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 16
+  title: 0
+field_type: link

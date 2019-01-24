@@ -1,0 +1,24 @@
+uuid: 7269865c-08a0-4114-88b6-68df12400c92
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.webny_document
+_core:
+  default_config_hash: kzePySXm5VF8fCoJCftEmFFurHWL95bZbYDKMFh64xY
+id: node.webny_document.status
+field_name: status
+entity_type: node
+bundle: webny_document
+label: 'Publishing status'
+description: 'A boolean indicating whether the node is published.'
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

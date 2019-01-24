@@ -1,0 +1,29 @@
+uuid: 1ab791aa-65b0-4a70-b72f-e4d5ff7b934e
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.consumer-life-insurance
+  module:
+    - system
+  theme:
+    - dfs_ny
+id: consumerlifeinsurance
+theme: dfs_ny
+region: content
+weight: -15
+provider: null
+plugin: 'system_menu_block:consumer-life-insurance'
+settings:
+  id: 'system_menu_block:consumer-life-insurance'
+  label: 'Consumer Life Insurance'
+  provider: system
+  label_display: visible
+  level: 1
+  depth: 0
+visibility:
+  request_path:
+    id: request_path
+    pages: "/consumers/life_insurance\r\n/consumers/life_insurance/*"
+    negate: false
+    context_mapping: {  }

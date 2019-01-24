@@ -1,0 +1,29 @@
+uuid: 1261fa5e-2a94-4345-8d7e-afc5a84e0d06
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.apps-lic-banks-and-trusts
+  module:
+    - system
+  theme:
+    - dfs_ny
+id: appslicbanksandtrusts
+theme: dfs_ny
+region: content
+weight: -21
+provider: null
+plugin: 'system_menu_block:apps-lic-banks-and-trusts'
+settings:
+  id: 'system_menu_block:apps-lic-banks-and-trusts'
+  label: 'Banks and Trusts'
+  provider: system
+  label_display: visible
+  level: 1
+  depth: 0
+visibility:
+  request_path:
+    id: request_path
+    pages: "/apps_and_licensing/banks_and_trusts\r\n/apps_and_licensing/banks_and_trusts/*"
+    negate: false
+    context_mapping: {  }

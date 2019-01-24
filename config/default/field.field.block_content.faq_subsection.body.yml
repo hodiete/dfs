@@ -1,0 +1,22 @@
+uuid: 3cde7a03-90d7-419a-8e1e-8293941dbbb0
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.faq_subsection
+    - field.storage.block_content.body
+  module:
+    - text
+id: block_content.faq_subsection.body
+field_name: body
+entity_type: block_content
+bundle: faq_subsection
+label: Body
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: false
+field_type: text_with_summary

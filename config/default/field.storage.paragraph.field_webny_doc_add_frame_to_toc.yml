@@ -1,0 +1,26 @@
+uuid: 8722e0f7-b2f3-4c35-86a8-dab95072e894
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+_core:
+  default_config_hash: oL4IPC0SAi3esf94lm2lvfM9t2fY75cV1TsExnB1EcM
+id: paragraph.field_webny_doc_add_frame_to_toc
+field_name: field_webny_doc_add_frame_to_toc
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: '1'
+      label: Enable
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

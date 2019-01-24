@@ -1,0 +1,83 @@
+uuid: 91ed9187-7439-4ce2-ac2b-8e859b07be8b
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.webny_announcement
+    - field.field.node.webny_page.body
+    - field.field.node.webny_page.field_webny_agency_keywords
+    - field.field.node.webny_page.field_webny_contentcat
+    - field.field.node.webny_page.field_webny_filter_terms
+    - field.field.node.webny_page.field_webny_global_keywords
+    - field.field.node.webny_page.field_webny_page_agency_keywords
+    - field.field.node.webny_page.field_webny_page_attdocs_eref
+    - field.field.node.webny_page.field_webny_page_description
+    - field.field.node.webny_page.field_webny_page_docsec_subtitle
+    - field.field.node.webny_page.field_webny_page_docsec_title
+    - field.field.node.webny_page.field_webny_page_global_keywords
+    - field.field.node.webny_page.field_webny_page_hero_title
+    - field.field.node.webny_page.field_webny_page_image
+    - field.field.node.webny_page.field_webny_page_meta_tags
+    - field.field.node.webny_page.field_webny_page_short_title
+    - field.field.node.webny_page.field_webny_page_sub_title
+    - field.field.node.webny_page.field_webny_page_vis_options
+    - node.type.webny_page
+  module:
+    - linked_field
+    - smart_trim
+    - user
+_core:
+  default_config_hash: of0tnVXD2OFQ8rKgLJ8mBjJskRDFyWjKdpqeV_EcyLw
+id: node.webny_page.webny_announcement
+targetEntityType: node
+bundle: webny_page
+mode: webny_announcement
+content:
+  field_webny_page_description:
+    weight: 0
+    label: hidden
+    settings:
+      trim_length: '25'
+      trim_type: words
+      trim_suffix: ...
+      more_link: '0'
+      more_text: More
+      trim_options:
+        text: 0
+      more_class: more-link
+      summary_handler: full
+    third_party_settings:
+      linked_field:
+        type: field
+        destination:
+          field: ''
+          custom: ''
+        advanced:
+          title: ''
+          target: ''
+          class: ''
+          rel: ''
+          text: ''
+        linked: 0
+    type: smart_trim
+    region: content
+hidden:
+  body: true
+  field_webny_agency_keywords: true
+  field_webny_contentcat: true
+  field_webny_filter_terms: true
+  field_webny_global_keywords: true
+  field_webny_page_agency_keywords: true
+  field_webny_page_attdocs_eref: true
+  field_webny_page_docsec_subtitle: true
+  field_webny_page_docsec_title: true
+  field_webny_page_global_keywords: true
+  field_webny_page_hero_title: true
+  field_webny_page_image: true
+  field_webny_page_meta_tags: true
+  field_webny_page_short_title: true
+  field_webny_page_sub_title: true
+  field_webny_page_vis_options: true
+  langcode: true
+  links: true
+  workbench_moderation_control: true

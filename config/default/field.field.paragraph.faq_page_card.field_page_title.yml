@@ -1,0 +1,31 @@
+uuid: 0ceed4dc-00a3-4012-9515-2a91650f4de6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_page_title
+    - paragraphs.paragraphs_type.faq_page_card
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    basic_html: '0'
+    webny_enhanced_wysiwyg: '0'
+    webny_wysiwyg_frame_editor: '0'
+    full_html: '0'
+    restricted_html: '0'
+    rich_text: '0'
+    plain_text: '0'
+id: paragraph.faq_page_card.field_page_title
+field_name: field_page_title
+entity_type: paragraph
+bundle: faq_page_card
+label: 'Page Title'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

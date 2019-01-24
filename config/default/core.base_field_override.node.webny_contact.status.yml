@@ -1,0 +1,24 @@
+uuid: aac90b47-f90f-41c3-a623-12c4a89d1a88
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.webny_contact
+_core:
+  default_config_hash: uT0gVP1aAL0QZSgDwWezRzIfmCGydbWVvRVErouiwmw
+id: node.webny_contact.status
+field_name: status
+entity_type: node
+bundle: webny_contact
+label: 'Publishing status'
+description: 'A boolean indicating whether the node is published.'
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

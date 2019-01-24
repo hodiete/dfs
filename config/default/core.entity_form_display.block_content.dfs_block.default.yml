@@ -1,0 +1,50 @@
+uuid: d69f3564-e2df-426c-87e0-a073881aad44
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.dfs_block
+    - field.field.block_content.dfs_block.body
+    - field.field.block_content.dfs_block.field_link_button
+  module:
+    - link
+    - text
+    - workbench_moderation
+id: block_content.dfs_block.default
+targetEntityType: block_content
+bundle: dfs_block
+mode: default
+content:
+  body:
+    type: text_textarea_with_summary
+    weight: 26
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
+    third_party_settings: {  }
+    region: content
+  field_link_button:
+    weight: 27
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
+  info:
+    type: string_textfield
+    weight: -5
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  langcode:
+    type: language_select
+    weight: 2
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+hidden: {  }

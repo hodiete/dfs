@@ -1,0 +1,19 @@
+uuid: 2ce5e794-0a42-485a-b6b8-07ed2db9a723
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: 9CsCEDyiTQpQOpzkQ0K1dJkmFSCWrJn2Tj6zo6AMtvs
+name: 'Basic HTML'
+format: basic_html
+weight: -10
+filters:
+  filter_html:
+    id: filter_html
+    provider: filter
+    status: true
+    weight: -10
+    settings:
+      allowed_html: '<a href hreflang> <em> <strong> <u> <br> <p>'
+      filter_html_help: false
+      filter_html_nofollow: false

@@ -1,0 +1,84 @@
+uuid: b760c1c4-de32-41e2-b36b-67519f2e6654
+langcode: en
+status: true
+dependencies:
+  config:
+    - filter.format.webny_wysiwyg_frame_editor
+  module:
+    - ckeditor
+_core:
+  default_config_hash: DZQUNs0NqzMG_FNhlvafUhyyF3fLPoPNOmejNA-ExD0
+format: webny_wysiwyg_frame_editor
+editor: ckeditor
+settings:
+  toolbar:
+    rows:
+      -
+        -
+          name: Formatting
+          items:
+            - Bold
+            - Italic
+            - Underline
+            - Strike
+        -
+          name: Links
+          items:
+            - DrupalLink
+            - DrupalUnlink
+        -
+          name: Lists
+          items:
+            - BulletedList
+            - NumberedList
+        -
+          name: Media
+          items:
+            - Blockquote
+            - media
+        -
+          name: Tools
+          items:
+            - Cut
+            - Copy
+            - Paste
+            - PasteFromWord
+            - RemoveFormat
+            - HorizontalRule
+        -
+          name: Align
+          items:
+            - JustifyLeft
+            - JustifyCenter
+            - JustifyRight
+            - JustifyBlock
+            - Indent
+            - Outdent
+        -
+          name: 'Headings and Formatting'
+          items:
+            - Format
+            - Styles
+            - SpecialChar
+            - Superscript
+            - Subscript
+            - WebNYCallouts
+        -
+          name: Tables
+          items:
+            - Table
+  plugins:
+    language:
+      language_list: un
+    stylescombo:
+      styles: span.button|Button
+    indentblock:
+      enable: 0
+image_upload:
+  status: false
+  scheme: public
+  directory: inline-images
+  max_size: ''
+  max_dimensions:
+    width: null
+    height: null

@@ -1,0 +1,14 @@
+uuid: 4507f51a-2a8f-4e98-baf3-9315c27a38ce
+langcode: en
+status: true
+dependencies:
+  config:
+    - workbench_moderation.moderation_state.archived
+    - workbench_moderation.moderation_state.unpublished
+_core:
+  default_config_hash: DJW6WSWdjcE-CNdwGqxYsfKnahf6WxgRvNyUDw1mI8o
+id: unpublished_archive
+label: 'Archive (Abandon)'
+stateFrom: unpublished
+stateTo: archived
+weight: 6

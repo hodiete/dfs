@@ -1,0 +1,52 @@
+uuid: de134585-ed04-4f1d-bb45-e4f5dde6ea2f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.webny_whats_related_pgtype.field_webny_whats_related_card
+    - field.field.paragraph.webny_whats_related_pgtype.field_webny_whats_related_links
+    - field.field.paragraph.webny_whats_related_pgtype.field_webny_whats_related_title
+    - field.field.paragraph.webny_whats_related_pgtype.field_webny_whats_related_toc
+    - paragraphs.paragraphs_type.webny_whats_related_pgtype
+  module:
+    - link
+    - workbench_moderation
+_core:
+  default_config_hash: d7BgUwBFmxoOEpVaI21OMhfK_qxF7sLWtcjfzuf5Ujo
+id: paragraph.webny_whats_related_pgtype.default
+targetEntityType: paragraph
+bundle: webny_whats_related_pgtype
+mode: default
+content:
+  field_webny_whats_related_card:
+    weight: 1
+    settings: {  }
+    third_party_settings: {  }
+    type: options_buttons
+    region: content
+  field_webny_whats_related_links:
+    weight: 3
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
+  field_webny_whats_related_title:
+    weight: 2
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_webny_whats_related_toc:
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+    type: options_buttons
+    region: content
+hidden:
+  created: true
+  status: true
+  uid: true

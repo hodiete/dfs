@@ -1,0 +1,29 @@
+uuid: 60ee4715-3ba0-4e18-b6b6-b42757dbe8a6
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.apps-lic-insurance-companie
+  module:
+    - system
+  theme:
+    - dfs_ny
+id: appslicinsurancecompanies
+theme: dfs_ny
+region: content
+weight: -2
+provider: null
+plugin: 'system_menu_block:apps-lic-insurance-companie'
+settings:
+  id: 'system_menu_block:apps-lic-insurance-companie'
+  label: 'Insurance Companies'
+  provider: system
+  label_display: visible
+  level: 1
+  depth: 0
+visibility:
+  request_path:
+    id: request_path
+    pages: "/apps_and_licensing/insurance_companies\r\n/apps_and_licensing/insurance_companies/*"
+    negate: false
+    context_mapping: {  }

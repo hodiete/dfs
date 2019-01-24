@@ -1,0 +1,26 @@
+uuid: b25b32b2-64cc-40d0-adde-6e8fbe7fb18d
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - options
+_core:
+  default_config_hash: wsj3objfQvDct97Oe0iUyItRW83MsdHToIrmKkqZJtw
+id: node.field_webny_gencp_card_switch
+field_name: field_webny_gencp_card_switch
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: 'yes'
+      label: Enabled
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

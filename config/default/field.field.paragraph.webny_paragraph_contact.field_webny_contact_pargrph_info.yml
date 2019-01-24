@@ -1,0 +1,30 @@
+uuid: 05624460-3637-4885-9517-3ebc9cf697f4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_webny_contact_pargrph_info
+    - node.type.webny_contact
+    - paragraphs.paragraphs_type.webny_paragraph_contact
+_core:
+  default_config_hash: qt8-mTt9MBbIh2rllYSbqFi8Kg1Ab9eYyz6tmTemQXQ
+id: paragraph.webny_paragraph_contact.field_webny_contact_pargrph_info
+field_name: field_webny_contact_pargrph_info
+entity_type: paragraph
+bundle: webny_paragraph_contact
+label: 'Contact Information'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      webny_contact: webny_contact
+    sort:
+      field: _none
+    auto_create: true
+    auto_create_bundle: ''
+field_type: entity_reference

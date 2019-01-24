@@ -1,0 +1,25 @@
+uuid: 79d29c2c-9f88-409e-9df3-6e87bc4d2b4b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_webny_smframe_flickr_link
+    - paragraphs.paragraphs_type.webny_social_media_connect
+  module:
+    - link
+_core:
+  default_config_hash: 6qT_BcCt5KSw5KV0oZ3qO6pll2HSXcu72IDaLL2Ejtg
+id: paragraph.webny_social_media_connect.field_webny_smframe_flickr_link
+field_name: field_webny_smframe_flickr_link
+entity_type: paragraph
+bundle: webny_social_media_connect
+label: 'Flickr Link'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 16
+  title: 1
+field_type: link

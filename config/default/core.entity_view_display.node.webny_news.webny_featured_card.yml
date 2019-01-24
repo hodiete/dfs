@@ -1,0 +1,148 @@
+uuid: 81503508-f20b-4b21-b2c0-a553097c4056
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.webny_featured_card
+    - field.field.node.webny_news.body
+    - field.field.node.webny_news.field_webny_agency_keywords
+    - field.field.node.webny_news.field_webny_filter_terms
+    - field.field.node.webny_news.field_webny_global_keywords
+    - field.field.node.webny_news.field_webny_news_agency_keywords
+    - field.field.node.webny_news.field_webny_news_attdocs_eref
+    - field.field.node.webny_news.field_webny_news_category
+    - field.field.node.webny_news.field_webny_news_contact_info
+    - field.field.node.webny_news.field_webny_news_date
+    - field.field.node.webny_news.field_webny_news_description
+    - field.field.node.webny_news.field_webny_news_docsec_subtitle
+    - field.field.node.webny_news.field_webny_news_docsec_title
+    - field.field.node.webny_news.field_webny_news_global_keywords
+    - field.field.node.webny_news.field_webny_news_hero_title
+    - field.field.node.webny_news.field_webny_news_image
+    - field.field.node.webny_news.field_webny_news_location
+    - field.field.node.webny_news.field_webny_news_meta_tags
+    - field.field.node.webny_news.field_webny_news_short_title
+    - field.field.node.webny_news.field_webny_news_subtitles
+    - node.type.webny_news
+  module:
+    - datetime
+    - linked_field
+    - smart_trim
+    - user
+_core:
+  default_config_hash: nODNlqVfqifZ08B2EXkbUFF3otU_PjEPLdSeLJGGy84
+id: node.webny_news.webny_featured_card
+targetEntityType: node
+bundle: webny_news
+mode: webny_featured_card
+content:
+  body:
+    type: smart_trim
+    weight: 3
+    label: hidden
+    settings:
+      trim_length: '25'
+      trim_type: words
+      trim_suffix: ...
+      more_link: '0'
+      more_text: More
+      summary_handler: full
+      trim_options:
+        text: 0
+      more_class: more-link
+    third_party_settings:
+      linked_field:
+        type: field
+        destination:
+          field: ''
+          custom: ''
+        advanced:
+          title: ''
+          target: ''
+          class: ''
+          rel: ''
+          text: ''
+        linked: 0
+    region: content
+  field_webny_news_date:
+    type: datetime_custom
+    weight: 2
+    label: hidden
+    settings:
+      timezone_override: ''
+      date_format: 'F j, Y | g A T'
+    third_party_settings: {  }
+    region: content
+  field_webny_news_description:
+    type: smart_trim
+    weight: 4
+    label: hidden
+    settings:
+      trim_length: '25'
+      trim_type: words
+      trim_suffix: ...
+      more_link: '0'
+      more_text: More
+      trim_options:
+        text: 0
+      more_class: more-link
+      summary_handler: full
+    third_party_settings:
+      linked_field:
+        type: field
+        destination:
+          field: ''
+          custom: ''
+        advanced:
+          title: ''
+          target: ''
+          class: ''
+          rel: ''
+          text: ''
+        linked: 0
+    region: content
+  field_webny_news_image:
+    type: entity_reference_entity_view
+    weight: 0
+    label: hidden
+    settings:
+      view_mode: cards
+      link: false
+    third_party_settings:
+      linked_field:
+        linked: '1'
+        type: custom
+        destination: '[node:url]'
+        advanced:
+          title: ''
+          target: ''
+          class: ''
+          rel: ''
+          text: ''
+    region: content
+  field_webny_news_short_title:
+    type: string
+    weight: 1
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    region: content
+hidden:
+  field_webny_agency_keywords: true
+  field_webny_filter_terms: true
+  field_webny_global_keywords: true
+  field_webny_news_agency_keywords: true
+  field_webny_news_attdocs_eref: true
+  field_webny_news_category: true
+  field_webny_news_contact_info: true
+  field_webny_news_docsec_subtitle: true
+  field_webny_news_docsec_title: true
+  field_webny_news_global_keywords: true
+  field_webny_news_hero_title: true
+  field_webny_news_location: true
+  field_webny_news_meta_tags: true
+  field_webny_news_subtitles: true
+  langcode: true
+  links: true
+  workbench_moderation_control: true

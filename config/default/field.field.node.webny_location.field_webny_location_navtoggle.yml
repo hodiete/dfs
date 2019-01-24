@@ -1,0 +1,23 @@
+uuid: f3cac7ac-f9af-46e5-b031-295dac04def8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_webny_location_navtoggle
+    - node.type.webny_location
+  module:
+    - options
+_core:
+  default_config_hash: blkZ-TznNXlasrVcHYg9KazTvk0VHIEkjfF-5v_2QOI
+id: node.webny_location.field_webny_location_navtoggle
+field_name: field_webny_location_navtoggle
+entity_type: node
+bundle: webny_location
+label: 'Navigator / Table of Content Toggle'
+description: 'Enable or disable the Table of Contents / Navigator functionality for this entire page.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

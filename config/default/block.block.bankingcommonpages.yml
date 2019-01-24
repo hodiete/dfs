@@ -1,0 +1,29 @@
+uuid: 93a3f142-b2d5-474d-ad3a-ecec627fcdf7
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.banking---common-pages
+  module:
+    - system
+  theme:
+    - dfs_ny
+id: bankingcommonpages
+theme: dfs_ny
+region: content
+weight: -4
+provider: null
+plugin: 'system_menu_block:banking---common-pages'
+settings:
+  id: 'system_menu_block:banking---common-pages'
+  label: 'Banking - Common Pages'
+  provider: system
+  label_display: visible
+  level: 1
+  depth: 0
+visibility:
+  request_path:
+    id: request_path
+    pages: '/apps_and_licensing/banking/common/*'
+    negate: false
+    context_mapping: {  }

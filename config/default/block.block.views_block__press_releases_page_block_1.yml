@@ -1,0 +1,38 @@
+uuid: 6b1e04ab-09a3-4d81-ba10-77863def48cf
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.press_releases_page
+  module:
+    - ctools
+    - system
+    - views
+  theme:
+    - dfs_ny
+id: views_block__press_releases_page_block_1
+theme: dfs_ny
+region: content
+weight: 23
+provider: null
+plugin: 'views_block:press_releases_page-block_1'
+settings:
+  id: 'views_block:press_releases_page-block_1'
+  label: ''
+  provider: views
+  label_display: '0'
+  views_label: ''
+  items_per_page: none
+visibility:
+  request_path:
+    id: request_path
+    pages: /node/9511
+    negate: false
+    context_mapping: {  }
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    bundles:
+      webny_landing_page: webny_landing_page
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'

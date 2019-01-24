@@ -1,0 +1,29 @@
+uuid: 1bc87b2c-4d81-44b9-8308-5eff2b9bf29d
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+    - workbench_moderation
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+  workbench_moderation:
+    enabled: true
+    allowed_moderation_states:
+      - published
+      - archived
+      - draft
+      - needs_review
+      - unpublished
+    default_moderation_state: draft
+_core:
+  default_config_hash: wdr5_cdU8G-yruyO1lMbg-z058e0rfZHDSWSKxl4gTM
+name: Page
+type: webny_page
+description: 'This content type is for basic/generic pages. '
+help: 'The Page content type must be approved and published by the content publisher role.'
+new_revision: true
+preview_mode: 1
+display_submitted: false

@@ -1,0 +1,29 @@
+uuid: 2afbcfa5-895a-4c70-a29d-e7292ae032ef
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.apps-lic-budget-planners
+  module:
+    - system
+  theme:
+    - dfs_ny
+id: appslicbudgetplanners
+theme: dfs_ny
+region: content
+weight: -19
+provider: null
+plugin: 'system_menu_block:apps-lic-budget-planners'
+settings:
+  id: 'system_menu_block:apps-lic-budget-planners'
+  label: 'Budget Planners'
+  provider: system
+  label_display: visible
+  level: 1
+  depth: 0
+visibility:
+  request_path:
+    id: request_path
+    pages: "/apps_and_licensing/budget_planners\r\n/apps_and_licensing/budget_planners/*"
+    negate: false
+    context_mapping: {  }

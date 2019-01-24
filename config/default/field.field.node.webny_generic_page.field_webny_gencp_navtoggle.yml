@@ -1,0 +1,25 @@
+uuid: dc49b651-43e9-4c5a-8721-c4fb149ca306
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_webny_gencp_navtoggle
+    - node.type.webny_generic_page
+  module:
+    - options
+_core:
+  default_config_hash: rCfvSx21ZczH38Fmh3lcMJQ2kyhCNKRzVkADQCaJhqc
+id: node.webny_generic_page.field_webny_gencp_navtoggle
+field_name: field_webny_gencp_navtoggle
+entity_type: node
+bundle: webny_generic_page
+label: 'Navigator / Table of Content Toggle'
+description: 'Enable or disable the Table of Contents / Navigator functionality for this entire page.'
+required: false
+translatable: false
+default_value:
+  -
+    value: '1'
+default_value_callback: ''
+settings: {  }
+field_type: list_string

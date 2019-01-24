@@ -1,0 +1,75 @@
+uuid: 5e0e8245-585b-487e-98db-715663934260
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.dfs_document.body
+    - field.field.node.dfs_document.field_dfs_file_upload
+    - field.field.node.dfs_document.field_webny_agency_keywords
+    - field.field.node.dfs_document.field_webny_document_cateogry
+    - field.field.node.dfs_document.field_webny_document_ext_link
+    - field.field.node.dfs_document.field_webny_document_subtitle
+    - node.type.dfs_document
+  module:
+    - file
+    - text
+    - user
+id: node.dfs_document.default
+targetEntityType: node
+bundle: dfs_document
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 2
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_dfs_file_upload:
+    weight: 6
+    label: above
+    settings:
+      use_description_as_link_text: true
+    third_party_settings: {  }
+    type: file_table
+    region: content
+  field_webny_agency_keywords:
+    weight: 4
+    label: inline
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_webny_document_cateogry:
+    weight: 3
+    label: inline
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_webny_document_ext_link:
+    weight: 5
+    label: inline
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_webny_document_subtitle:
+    weight: 1
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  workbench_moderation_control:
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  langcode: true
+  links: true

@@ -1,0 +1,14 @@
+uuid: 964f1d7d-092b-48e4-a392-1df89894107d
+langcode: en
+status: true
+dependencies:
+  config:
+    - workbench_moderation.moderation_state.published
+    - workbench_moderation.moderation_state.unpublished
+_core:
+  default_config_hash: GwTJmLz7khsvq4hzrrap4sJcDLw9Y7TzlQCJvDwnBqM
+id: published_unpublished
+label: 'Set as Unpublished'
+stateFrom: published
+stateTo: unpublished
+weight: 1

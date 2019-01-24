@@ -1,0 +1,30 @@
+uuid: be6c83ab-75d3-4f4e-b5e3-3d90a156d37a
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.industry_general_questions_faq_view
+  module:
+    - system
+    - views
+  theme:
+    - dfs_ny
+id: views_block__industry_general_questions_faq_view_block_1
+theme: dfs_ny
+region: content
+weight: 20
+provider: null
+plugin: 'views_block:industry_general_questions_faq_view-block_1'
+settings:
+  id: 'views_block:industry_general_questions_faq_view-block_1'
+  label: ''
+  provider: views
+  label_display: '0'
+  views_label: ''
+  items_per_page: none
+visibility:
+  request_path:
+    id: request_path
+    pages: /faqs/industry_faqs/general
+    negate: false
+    context_mapping: {  }

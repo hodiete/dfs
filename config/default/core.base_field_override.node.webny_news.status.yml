@@ -1,0 +1,24 @@
+uuid: 3ff024a3-203f-4df5-9679-cf0ee5b323c0
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.webny_news
+_core:
+  default_config_hash: DyGIKZ_deI4LJeCY2c80mTiVtmbhWGFmYURCuUDE4eg
+id: node.webny_news.status
+field_name: status
+entity_type: node
+bundle: webny_news
+label: 'Publishing status'
+description: 'A boolean indicating whether the node is published.'
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

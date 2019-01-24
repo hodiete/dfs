@@ -1,0 +1,23 @@
+uuid: 8b71acde-fe4f-47b3-a80a-0b3d9c335150
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_link
+    - node.type.icon_link
+  module:
+    - link
+id: node.icon_link.field_link
+field_name: field_link
+entity_type: node
+bundle: icon_link
+label: Link
+description: 'The link to the relevant page.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 17
+  title: 1
+field_type: link

@@ -1,0 +1,30 @@
+uuid: 75f99a9e-346b-4f4b-bdf6-e4ea3a677146
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.webny_filter_term
+    - paragraphs.paragraphs_type.webny_filter_term_listing
+    - taxonomy.vocabulary.webny_filter_terms_tax
+_core:
+  default_config_hash: 0GvODKoehgUGwG23vRoJ8uOsDI53isTFE03R5DK0-fg
+id: paragraph.webny_filter_term_listing.webny_filter_term
+field_name: webny_filter_term
+entity_type: paragraph
+bundle: webny_filter_term_listing
+label: 'Filter term'
+description: 'Choose the parent (top-level) filter term to limit the listing results.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      webny_filter_terms_tax: webny_filter_terms_tax
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

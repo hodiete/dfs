@@ -1,0 +1,30 @@
+uuid: 635fd7ec-c5f5-4d23-89c4-5e9c22ebd378
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_webny_doc_agency_keyword
+    - node.type.webny_document
+    - taxonomy.vocabulary.webny_agency_keywords
+_core:
+  default_config_hash: _W4y-KwM4Lw8wLoz8CjoL6I30eTWw1GI2Y5-7fY8Fm8
+id: node.webny_document.field_webny_doc_agency_keyword
+field_name: field_webny_doc_agency_keyword
+entity_type: node
+bundle: webny_document
+label: 'Deprecated Agency Keyword'
+description: 'DO NOT USE'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      webny_agency_keywords: webny_agency_keywords
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

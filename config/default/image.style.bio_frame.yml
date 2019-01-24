@@ -1,0 +1,26 @@
+uuid: f660129a-0ce9-4de2-8c88-8963fcaae19c
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+_core:
+  default_config_hash: xgv1ITTfmN7wgWYE6pqlOHKUC2ayHAQ-m7NY_V0zuvk
+name: bio_frame
+label: 'Bio Frame (286×264)'
+effects:
+  d73a9b77-1786-48c5-8b8a-2c64c7bbb414:
+    uuid: d73a9b77-1786-48c5-8b8a-2c64c7bbb414
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 286
+      height: 264
+  293b99f9-c55d-4969-ab28-a4a5287765dc:
+    uuid: 293b99f9-c55d-4969-ab28-a4a5287765dc
+    id: image_crop
+    weight: 2
+    data:
+      width: 286
+      height: 264
+      anchor: center-center

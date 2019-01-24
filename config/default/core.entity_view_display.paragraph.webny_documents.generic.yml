@@ -1,0 +1,61 @@
+uuid: c0f70622-54a3-4206-965f-367ae9daf100
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.generic
+    - field.field.paragraph.webny_documents.field_webny_attached_documents
+    - field.field.paragraph.webny_documents.field_webny_doc_add_frame_to_toc
+    - field.field.paragraph.webny_documents.field_webny_doc_card_link
+    - field.field.paragraph.webny_documents.field_webny_doc_sub_title
+    - field.field.paragraph.webny_documents.field_webny_documents_title
+    - paragraphs.paragraphs_type.webny_documents
+  module:
+    - options
+_core:
+  default_config_hash: i9YMsPJgofgllz8elxvIqXCSg9z_YQm-XjEba1xfNrQ
+id: paragraph.webny_documents.generic
+targetEntityType: paragraph
+bundle: webny_documents
+mode: generic
+content:
+  field_webny_attached_documents:
+    weight: 4
+    label: hidden
+    settings:
+      view_mode: attached_documents
+      link: false
+    third_party_settings: {  }
+    type: entity_reference_entity_view
+    region: content
+  field_webny_doc_add_frame_to_toc:
+    weight: 0
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+    region: content
+  field_webny_doc_card_link:
+    type: list_default
+    weight: 1
+    region: content
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+  field_webny_doc_sub_title:
+    type: string
+    weight: 3
+    region: content
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+  field_webny_documents_title:
+    weight: 2
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden: {  }

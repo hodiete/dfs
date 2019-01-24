@@ -1,0 +1,24 @@
+uuid: f64c1f26-e260-4cd5-bc5b-26d4e6e076fe
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.webny_event
+_core:
+  default_config_hash: vqahhq68T4a0Y4gC120xg_J5-SeXOd7sq90xUJxkFW4
+id: node.webny_event.status
+field_name: status
+entity_type: node
+bundle: webny_event
+label: 'Publishing status'
+description: 'A boolean indicating the published state.'
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

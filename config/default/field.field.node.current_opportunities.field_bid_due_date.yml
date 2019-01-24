@@ -1,0 +1,21 @@
+uuid: b9a17784-9f7c-495b-bccc-4753764ee734
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_bid_due_date
+    - node.type.current_opportunities
+  module:
+    - datetime
+id: node.current_opportunities.field_bid_due_date
+field_name: field_bid_due_date
+entity_type: node
+bundle: current_opportunities
+label: 'Bid Due Date'
+description: 'The date submissions must be in by.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

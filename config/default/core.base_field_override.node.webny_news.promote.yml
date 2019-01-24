@@ -1,0 +1,24 @@
+uuid: 1bddcbf8-9a99-46e0-a081-8131afd5d9fc
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.webny_news
+_core:
+  default_config_hash: iUBKTJGHvxbbk6WdIWPFDvge-CLw11vVaS00Sz3q8nc
+id: node.webny_news.promote
+field_name: promote
+entity_type: node
+bundle: webny_news
+label: 'Promoted to front page'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

@@ -1,0 +1,23 @@
+uuid: a29d2ccb-7bcb-4e2e-be8d-dba406c30c1c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_page_link
+    - paragraphs.paragraphs_type.short_page_card
+  module:
+    - link
+id: paragraph.short_page_card.field_page_link
+field_name: field_page_link
+entity_type: paragraph
+bundle: short_page_card
+label: 'Page Link'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 17
+  title: 1
+field_type: link

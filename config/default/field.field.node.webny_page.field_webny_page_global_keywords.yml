@@ -1,0 +1,30 @@
+uuid: b8709556-278f-4bfd-bd4d-d6c293310e06
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_webny_page_global_keywords
+    - node.type.webny_page
+    - taxonomy.vocabulary.webny_global_keywords
+_core:
+  default_config_hash: hJHGHqXpzKy3vhInqAb1swVCDPhcv1oOjzal8dxCE3M
+id: node.webny_page.field_webny_page_global_keywords
+field_name: field_webny_page_global_keywords
+entity_type: node
+bundle: webny_page
+label: 'Deprecated Global Keywords'
+description: 'DO NOT USE.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      webny_global_keywords: webny_global_keywords
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

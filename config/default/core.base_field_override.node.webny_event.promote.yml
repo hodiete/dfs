@@ -1,0 +1,24 @@
+uuid: 0d77b214-880a-44ad-a000-5a3d3ac7e9dc
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.webny_event
+_core:
+  default_config_hash: aqOfJ0ubxLQWnaHHQA1qS9jlPa2AtVMH4zdHu0DVqIA
+id: node.webny_event.promote
+field_name: promote
+entity_type: node
+bundle: webny_event
+label: 'Promoted to front page'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

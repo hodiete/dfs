@@ -1,0 +1,22 @@
+uuid: e316fee9-cd85-4722-b993-d4f2e06d4659
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.complaint_content
+    - field.storage.block_content.body
+  module:
+    - text
+id: block_content.complaint_content.body
+field_name: body
+entity_type: block_content
+bundle: complaint_content
+label: Body
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: false
+field_type: text_with_summary

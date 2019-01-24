@@ -1,0 +1,33 @@
+uuid: bd05dd4f-63ff-4e15-a69b-22dea44fb2dc
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_webny_location_summary
+    - node.type.webny_location
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    basic_html: basic_html
+    webny_enhanced_wysiwyg: '0'
+    webny_wysiwyg_frame_editor: '0'
+    full_html: '0'
+    restricted_html: '0'
+    rich_text: '0'
+    plain_text: '0'
+_core:
+  default_config_hash: 9cfgYIxPxwutUxXgmkuFS7FkQAPHm972p74iV_B0NgQ
+id: node.webny_location.field_webny_location_summary
+field_name: field_webny_location_summary
+entity_type: node
+bundle: webny_location
+label: Summary/Description
+description: 'This text is used as a short description of this location to be displayed in cards and announcements on landing pages. There is a 25 character limit. This text will not display on this location.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text
