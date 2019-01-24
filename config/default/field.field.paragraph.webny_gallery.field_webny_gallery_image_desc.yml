@@ -1,0 +1,33 @@
+uuid: df3802b9-e608-414f-8298-dd62e7893d7a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_webny_gallery_image_desc
+    - paragraphs.paragraphs_type.webny_gallery
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    basic_html: basic_html
+    webny_enhanced_wysiwyg: '0'
+    webny_wysiwyg_frame_editor: '0'
+    full_html: '0'
+    restricted_html: '0'
+    rich_text: '0'
+    plain_text: '0'
+_core:
+  default_config_hash: NWs9T3vGPq2tgDUZsIPszHpbmVel2V4MSIqdkx-2iI8
+id: paragraph.webny_gallery.field_webny_gallery_image_desc
+field_name: field_webny_gallery_image_desc
+entity_type: paragraph
+bundle: webny_gallery
+label: 'Image Description'
+description: 'Use these fields to add a description for the uploaded images. These description fields correspond to the images in a one to one manner. '
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

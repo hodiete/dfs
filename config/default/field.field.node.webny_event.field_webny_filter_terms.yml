@@ -1,0 +1,30 @@
+uuid: 07d68ac9-8ddb-4063-953e-acd2f244c36c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_webny_filter_terms
+    - node.type.webny_event
+    - taxonomy.vocabulary.webny_filter_terms_tax
+_core:
+  default_config_hash: guMof9PSr2y5J3hGV7PAHT8-9CZh7jJMbu_v__bnq_k
+id: node.webny_event.field_webny_filter_terms
+field_name: field_webny_filter_terms
+entity_type: node
+bundle: webny_event
+label: 'Filter Terms'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      webny_filter_terms_tax: webny_filter_terms_tax
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

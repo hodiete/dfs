@@ -1,0 +1,34 @@
+uuid: b168a887-4711-4cab-9663-4b156c16b17d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.webny_news
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    basic_html: basic_html
+    webny_enhanced_wysiwyg: webny_enhanced_wysiwyg
+    full_html: full_html
+    webny_wysiwyg_frame_editor: '0'
+    restricted_html: '0'
+    rich_text: '0'
+    plain_text: '0'
+_core:
+  default_config_hash: PX-LLdiYguukPmZwqQkF5_6WpaB6_LJB7lOjz2cs-I0
+id: node.webny_news.body
+field_name: body
+entity_type: node
+bundle: webny_news
+label: Body
+description: 'This is the main text for the News Item. Telephone links: To add a telephone link, select the text you want to link, click on the ''link'' button, then type ''tel:+'' before the area code and number, without dashes. For example: ''tel:+15185555785'''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: true
+field_type: text_with_summary

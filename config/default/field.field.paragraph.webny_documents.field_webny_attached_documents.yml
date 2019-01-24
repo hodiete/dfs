@@ -1,0 +1,30 @@
+uuid: faa0e07c-cd96-4761-a809-df1c4a3da53c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_webny_attached_documents
+    - node.type.webny_document
+    - paragraphs.paragraphs_type.webny_documents
+_core:
+  default_config_hash: Mo2zLP8wONkNs6OwxgcYFb2jV6f4NEPiCVNKpCbwa7g
+id: paragraph.webny_documents.field_webny_attached_documents
+field_name: field_webny_attached_documents
+entity_type: paragraph
+bundle: webny_documents
+label: 'Attached Documents'
+description: 'Please limit the number of documents you add, as it can easily become overwhelming for the user.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      webny_document: webny_document
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

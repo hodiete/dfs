@@ -1,0 +1,22 @@
+uuid: 43f25de2-a5a6-4d27-89c3-bb110566d6cc
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - webnycommander
+_core:
+  default_config_hash: PqSGVgx4KC_SJnZ3BZHuVyiHmsESwHDXHZSlHRF5GIY
+id: webnycommander_mainpagecontent
+theme: webnycommander
+region: content
+weight: -2
+provider: null
+plugin: system_main_block
+settings:
+  id: system_main_block
+  label: 'Main page content'
+  provider: system
+  label_display: '0'
+visibility: {  }

@@ -1,0 +1,84 @@
+uuid: c79cc1c5-974c-4cd1-a6f1-dc54993575d4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.webny_gallery.field_webny_gallery_description
+    - field.field.paragraph.webny_gallery.field_webny_gallery_headline
+    - field.field.paragraph.webny_gallery.field_webny_gallery_image_desc
+    - field.field.paragraph.webny_gallery.field_webny_gallery_images
+    - field.field.paragraph.webny_gallery.field_webny_gallery_title
+    - paragraphs.paragraphs_type.webny_gallery
+  module:
+    - smart_trim
+_core:
+  default_config_hash: JzkOiloQzNIRQtIOR55MTJcAvAp8L4ErPDOv4ozXHeU
+id: paragraph.webny_gallery.default
+targetEntityType: paragraph
+bundle: webny_gallery
+mode: default
+content:
+  field_webny_gallery_description:
+    weight: 2
+    label: hidden
+    settings:
+      trim_length: 100
+      trim_type: words
+      trim_suffix: ''
+      wrap_class: trimmed
+      more_text: More
+      more_class: more-link
+      wrap_output: false
+      more_link: false
+      trim_options:
+        text: false
+        trim_zero: false
+      summary_handler: full
+    third_party_settings: {  }
+    type: smart_trim
+    region: content
+  field_webny_gallery_headline:
+    weight: 1
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_webny_gallery_image_desc:
+    weight: 4
+    label: hidden
+    settings:
+      trim_length: 30
+      trim_type: words
+      trim_suffix: ...
+      wrap_class: trimmed
+      more_text: More
+      more_class: more-link
+      wrap_output: false
+      more_link: false
+      trim_options:
+        text: false
+        trim_zero: false
+      summary_handler: full
+    third_party_settings: {  }
+    type: smart_trim
+    region: content
+  field_webny_gallery_images:
+    weight: 3
+    label: hidden
+    settings:
+      view_mode: gallery
+      link: false
+    third_party_settings: {  }
+    type: entity_reference_entity_view
+    region: content
+  field_webny_gallery_title:
+    weight: 0
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden: {  }

@@ -1,0 +1,66 @@
+uuid: fd5d2ffb-650f-4b08-9aa5-afea8932d9ca
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.media.video.embed_code
+    - field.field.media.video.field_caption
+    - field.field.media.video.field_description
+    - field.field.media.video.field_media_in_library
+    - field.field.media.video.field_media_keywords
+    - field.field.media.video.field_media_video_embed_field
+    - media_entity.bundle.video
+  module:
+    - path
+    - text
+    - video_embed_field
+    - workbench_moderation
+_core:
+  default_config_hash: lyjVDlqfVfFXg88ZjyIi4kbn3lyF_MNcoc3pi-U4Ylc
+id: media.video.default
+targetEntityType: media
+bundle: video
+mode: default
+content:
+  field_description:
+    type: text_textarea
+    weight: 4
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    region: content
+  field_media_video_embed_field:
+    weight: 1
+    settings: {  }
+    third_party_settings: {  }
+    type: video_embed_field_textfield
+    region: content
+  langcode:
+    type: language_select
+    weight: 2
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+    region: content
+  name:
+    type: string_textfield
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    region: content
+  path:
+    type: path
+    weight: 30
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  embed_code: true
+  field_caption: true
+  field_media_in_library: true
+  field_media_keywords: true
+  uid: true

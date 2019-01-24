@@ -1,0 +1,179 @@
+uuid: 21a043e3-77df-4768-a8e8-d59ba1d8b4a0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.webny_summary_pgtype.field_webny_summary_argument1
+    - field.field.paragraph.webny_summary_pgtype.field_webny_summary_argument2
+    - field.field.paragraph.webny_summary_pgtype.field_webny_summary_argument3
+    - field.field.paragraph.webny_summary_pgtype.field_webny_summary_color
+    - field.field.paragraph.webny_summary_pgtype.field_webny_summary_cta
+    - field.field.paragraph.webny_summary_pgtype.field_webny_summary_headline
+    - field.field.paragraph.webny_summary_pgtype.field_webny_summary_keypoint1
+    - field.field.paragraph.webny_summary_pgtype.field_webny_summary_keypoint2
+    - field.field.paragraph.webny_summary_pgtype.field_webny_summary_keypoint3
+    - field.field.paragraph.webny_summary_pgtype.field_webny_summary_title
+    - paragraphs.paragraphs_type.webny_summary_pgtype
+  module:
+    - field_group
+    - link
+    - text
+third_party_settings:
+  field_group:
+    group_webny_summary_keypoint1:
+      children:
+        - field_webny_summary_keypoint1
+        - field_webny_summary_argument1
+      parent_name: group_webny_summary_keypoints
+      weight: 3
+      label: 'Key Point 1'
+      format_type: html_element
+      format_settings:
+        label: 'Key Point 1'
+        element: div
+        show_label: false
+        label_element: h3
+        attributes: ''
+        effect: none
+        speed: fast
+        id: ''
+        classes: keypoint
+    group_webny_summary_keypoint2:
+      children:
+        - field_webny_summary_keypoint2
+        - field_webny_summary_argument2
+      parent_name: group_webny_summary_keypoints
+      weight: 4
+      label: 'Key Point 2'
+      format_type: html_element
+      format_settings:
+        label: 'Key Point 2'
+        element: div
+        show_label: false
+        label_element: h3
+        attributes: ''
+        effect: none
+        speed: fast
+        id: ''
+        classes: keypoint
+    group_webny_summary_keypoint3:
+      children:
+        - field_webny_summary_keypoint3
+        - field_webny_summary_argument3
+      parent_name: group_webny_summary_keypoints
+      weight: 5
+      label: 'Key Point 3'
+      format_type: html_element
+      format_settings:
+        label: 'Key Point 3'
+        element: div
+        show_label: false
+        label_element: h3
+        attributes: ''
+        effect: none
+        speed: fast
+        id: ''
+        classes: keypoint
+    group_webny_summary_keypoints:
+      children:
+        - group_webny_summary_keypoint1
+        - group_webny_summary_keypoint2
+        - group_webny_summary_keypoint3
+      parent_name: ''
+      weight: 2
+      label: keypoints
+      format_type: html_element
+      format_settings:
+        label: keypoints
+        id: ''
+        classes: keypoints
+        element: div
+        show_label: false
+        label_element: h3
+        attributes: ''
+        effect: none
+        speed: fast
+_core:
+  default_config_hash: VltqUlH8WVGHuG-X1WlICujjX3zG46ej3-QHWoD0B7I
+id: paragraph.webny_summary_pgtype.default
+targetEntityType: paragraph
+bundle: webny_summary_pgtype
+mode: default
+content:
+  field_webny_summary_argument1:
+    weight: 4
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_webny_summary_argument2:
+    weight: 7
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_webny_summary_argument3:
+    weight: 10
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_webny_summary_cta:
+    weight: 3
+    label: hidden
+    settings:
+      trim_length: 128
+      url_only: false
+      url_plain: false
+      rel: '0'
+      target: '0'
+    third_party_settings: {  }
+    type: link
+    region: content
+  field_webny_summary_headline:
+    weight: 1
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_webny_summary_keypoint1:
+    weight: 3
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_webny_summary_keypoint2:
+    weight: 6
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_webny_summary_keypoint3:
+    weight: 9
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_webny_summary_title:
+    weight: 0
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden:
+  created: true
+  field_webny_summary_color: true
+  uid: true

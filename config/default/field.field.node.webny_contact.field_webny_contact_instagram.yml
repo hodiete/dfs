@@ -1,0 +1,25 @@
+uuid: 1c2b0f0a-299e-4ae3-ae9e-e61c78520538
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_webny_contact_instagram
+    - node.type.webny_contact
+  module:
+    - link
+_core:
+  default_config_hash: tWYcgUzWu9zTjcxTdvVWeDpAQVh_Td9p_pl-Ziv3LI8
+id: node.webny_contact.field_webny_contact_instagram
+field_name: field_webny_contact_instagram
+entity_type: node
+bundle: webny_contact
+label: 'Instagram Link'
+description: 'Please enter the link to the Instagram account of the contact.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 16
+  title: 0
+field_type: link

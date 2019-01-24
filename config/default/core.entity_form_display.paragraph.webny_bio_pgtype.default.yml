@@ -1,0 +1,36 @@
+uuid: 9d8163c1-c69c-4698-b56f-ff24ae5ed791
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.webny_bio_pgtype.field_webny_landing_bio_color
+    - field.field.paragraph.webny_bio_pgtype.field_webny_landing_bio_eref
+    - paragraphs.paragraphs_type.webny_bio_pgtype
+  module:
+    - workbench_moderation
+_core:
+  default_config_hash: QT7fuayrYiysc6Kw3YLCBQUR6L1ptHX9NTy_4xYp6Zg
+id: paragraph.webny_bio_pgtype.default
+targetEntityType: paragraph
+bundle: webny_bio_pgtype
+mode: default
+content:
+  field_webny_landing_bio_color:
+    weight: 6
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_webny_landing_bio_eref:
+    weight: 1
+    settings:
+      match_operator: CONTAINS
+      size: 80
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+hidden:
+  created: true
+  status: true
+  uid: true

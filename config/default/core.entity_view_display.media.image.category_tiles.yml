@@ -1,0 +1,91 @@
+uuid: e023a1df-f547-46ee-83fd-9d92ecf15353
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.media.category_tiles
+    - field.field.media.image.field_description
+    - field.field.media.image.field_expires
+    - field.field.media.image.field_image
+    - field.field.media.image.field_media_in_library
+    - field.field.media.image.field_media_keywords
+    - media_entity.bundle.image
+  module:
+    - blazy
+_core:
+  default_config_hash: k05XpCQy1RXQGxsFJ5PjVE9gA5-x3g-CxjndDeAF1WE
+id: media.image.category_tiles
+targetEntityType: media
+bundle: image
+mode: category_tiles
+content:
+  field_image:
+    weight: 0
+    label: hidden
+    settings:
+      image_style: media_image
+      thumbnail_style: thumbnail
+      responsive_image_style: category_tiles
+      media_switch: ''
+      ratio: ''
+      sizes: ''
+      breakpoints:
+        xs:
+          image_style: ''
+          width: ''
+          breakpoint: ''
+        sm:
+          image_style: ''
+          width: ''
+          breakpoint: ''
+        md:
+          image_style: ''
+          width: ''
+          breakpoint: ''
+        lg:
+          image_style: ''
+          width: ''
+          breakpoint: ''
+        xl:
+          image_style: ''
+          width: ''
+          breakpoint: ''
+      current_view_mode: category_tiles
+      background: false
+      caption:
+        title: '0'
+        alt: '0'
+      iframe_lazy: true
+      icon: ''
+      layout: ''
+      view_mode: ''
+      cache: 0
+      optionset: default
+      skin: ''
+      style: ''
+      box_caption: ''
+      box_caption_custom: ''
+      box_style: ''
+      box_media_style: ''
+      grid: 0
+      grid_header: ''
+      grid_medium: 0
+      grid_small: 0
+    third_party_settings: {  }
+    type: blazy
+    region: content
+hidden:
+  created: true
+  field_brands: true
+  field_channel: true
+  field_description: true
+  field_events: true
+  field_expires: true
+  field_media_in_library: true
+  field_media_keywords: true
+  field_people: true
+  field_tags: true
+  langcode: true
+  name: true
+  thumbnail: true
+  uid: true

@@ -1,0 +1,29 @@
+uuid: 50400467-af39-46a4-9343-e2354241800a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_webny_document_file_upload
+    - node.type.webny_document
+  module:
+    - file
+_core:
+  default_config_hash: CkX9NLaqr0-exVTQ14wPsvOKJXl-3LLPbJcq_zmJ0ts
+id: node.webny_document.field_webny_document_file_upload
+field_name: field_webny_document_file_upload
+entity_type: node
+bundle: webny_document
+label: 'File Upload'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  file_directory: 'documents/[date:custom:Y]/[date:custom:m]'
+  file_extensions: 'ppt pptx xls xlsx doc docx odt pdf txt csv odg sxw ods rtf zip rar gz 7z tar'
+  max_filesize: '20 MB'
+  description_field: true
+  handler: 'default:file'
+  handler_settings: {  }
+field_type: file

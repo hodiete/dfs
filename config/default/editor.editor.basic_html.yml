@@ -1,0 +1,40 @@
+uuid: 77d38e0f-1dd3-4a71-a4ad-fa627bdbed8c
+langcode: en
+status: true
+dependencies:
+  config:
+    - filter.format.basic_html
+  module:
+    - ckeditor
+_core:
+  default_config_hash: wNVI7DBWzilFHQgQRVsOsPJmeE_mezJpQBYrjnfr-Ac
+format: basic_html
+editor: ckeditor
+settings:
+  toolbar:
+    rows:
+      -
+        -
+          name: Formatting
+          items:
+            - Bold
+            - Italic
+            - Underline
+        -
+          name: Links
+          items:
+            - DrupalLink
+            - DrupalUnlink
+  plugins:
+    language:
+      language_list: un
+    stylescombo:
+      styles: p.button|Button
+image_upload:
+  status: false
+  scheme: public
+  directory: inline-images
+  max_size: ''
+  max_dimensions:
+    width: null
+    height: null

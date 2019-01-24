@@ -1,0 +1,76 @@
+uuid: 74b5d6f6-07a6-4f3a-8871-2245c378d7db
+langcode: en
+status: true
+dependencies:
+  config:
+    - entity_browser.browser.image_browser
+    - field.field.paragraph.webny_gallery.field_webny_gallery_description
+    - field.field.paragraph.webny_gallery.field_webny_gallery_headline
+    - field.field.paragraph.webny_gallery.field_webny_gallery_image_desc
+    - field.field.paragraph.webny_gallery.field_webny_gallery_images
+    - field.field.paragraph.webny_gallery.field_webny_gallery_title
+    - paragraphs.paragraphs_type.webny_gallery
+  module:
+    - entity_browser
+    - text
+    - workbench_moderation
+_core:
+  default_config_hash: m5Ty8x9QME9uG1wGSHXvEshRmBDTIl8zzesXJcGdQHQ
+id: paragraph.webny_gallery.default
+targetEntityType: paragraph
+bundle: webny_gallery
+mode: default
+content:
+  field_webny_gallery_description:
+    weight: 2
+    settings:
+      rows: 3
+      placeholder: ''
+    third_party_settings:
+      allowed_formats:
+        hide_help: '1'
+        hide_guidelines: '1'
+    type: text_textarea
+    region: content
+  field_webny_gallery_headline:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_webny_gallery_image_desc:
+    weight: 4
+    settings:
+      rows: 2
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  field_webny_gallery_images:
+    weight: 3
+    settings:
+      entity_browser: image_browser
+      field_widget_display: rendered_entity
+      field_widget_edit: true
+      field_widget_remove: true
+      selection_mode: selection_append
+      field_widget_display_settings:
+        view_mode: gallery
+      open: false
+    third_party_settings: {  }
+    type: entity_browser_entity_reference
+    region: content
+  field_webny_gallery_title:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+hidden:
+  created: true
+  status: true
+  uid: true

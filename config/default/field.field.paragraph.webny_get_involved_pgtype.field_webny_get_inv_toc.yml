@@ -1,0 +1,25 @@
+uuid: 0f2a1e5f-cc54-4fdc-8fc4-eb2e2b852e74
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_webny_get_inv_toc
+    - paragraphs.paragraphs_type.webny_get_involved_pgtype
+  module:
+    - options
+_core:
+  default_config_hash: QCbdFi1hLrjjqd4GIhZZ-E_nMsgDw__mIGQzKQE8rjM
+id: paragraph.webny_get_involved_pgtype.field_webny_get_inv_toc
+field_name: field_webny_get_inv_toc
+entity_type: paragraph
+bundle: webny_get_involved_pgtype
+label: 'Add Frame to Table of Contents'
+description: 'For the Generic Content Page, use this checkbox to display on the table of content section'
+required: false
+translatable: false
+default_value:
+  -
+    value: '1'
+default_value_callback: ''
+settings: {  }
+field_type: list_string

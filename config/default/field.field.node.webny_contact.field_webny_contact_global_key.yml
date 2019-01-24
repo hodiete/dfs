@@ -1,0 +1,29 @@
+uuid: 3f94aedb-8b26-4cfd-92e0-1f72d2943835
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_webny_contact_global_key
+    - node.type.webny_contact
+    - taxonomy.vocabulary.webny_global_keywords
+_core:
+  default_config_hash: 1sgmFmRwiyED0G5C4j4n5E0q_sCr3biU5AAHU8BBD8U
+id: node.webny_contact.field_webny_contact_global_key
+field_name: field_webny_contact_global_key
+entity_type: node
+bundle: webny_contact
+label: 'Global Keywords'
+description: 'Select global keywords for the page. Multiple selections allowed.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      webny_global_keywords: webny_global_keywords
+    sort:
+      field: _none
+    auto_create: true
+field_type: entity_reference

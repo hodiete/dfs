@@ -1,0 +1,25 @@
+uuid: e8987f12-1db8-42e4-ac26-807cfd8daf60
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_webny_landing_bio_color
+    - paragraphs.paragraphs_type.webny_bio_pgtype
+  module:
+    - options
+_core:
+  default_config_hash: 5yUyHtNqhRUF998RFZ6K2Supy87y5_7FmjnpRKHpqnU
+id: paragraph.webny_bio_pgtype.field_webny_landing_bio_color
+field_name: field_webny_landing_bio_color
+entity_type: paragraph
+bundle: webny_bio_pgtype
+label: 'Frame Background Color'
+description: 'Choose a background color for this frame'
+required: false
+translatable: false
+default_value:
+  -
+    value: default
+default_value_callback: ''
+settings: {  }
+field_type: list_string

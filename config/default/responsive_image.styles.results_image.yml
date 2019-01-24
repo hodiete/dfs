@@ -1,0 +1,20 @@
+uuid: 63ba82e7-8033-411c-826d-2320308c8618
+langcode: en
+status: true
+dependencies:
+  config:
+    - image.style.results
+  theme:
+    - dfs_ny
+_core:
+  default_config_hash: lGDtvl6Q4LTn9W-ndkzKxhDq1YSLoHzOIEGouVnSx_A
+id: results_image
+label: 'Results Image'
+image_style_mappings:
+  -
+    breakpoint_id: dfs_ny.wide
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: results
+breakpoint_group: dfs_ny
+fallback_image_style: '_empty image_'

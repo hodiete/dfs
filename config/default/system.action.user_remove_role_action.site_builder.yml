@@ -1,0 +1,14 @@
+uuid: a7b8fecd-4164-4d51-b2c9-e8771d34a8a7
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.site_builder
+  module:
+    - user
+id: user_remove_role_action.site_builder
+label: 'Remove the Site Builder role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: site_builder

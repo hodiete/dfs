@@ -1,0 +1,54 @@
+uuid: 724f4591-b901-4e0b-923f-2e6727e4666d
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.media_browser
+  module:
+    - entity_browser_entity_form
+    - views
+_core:
+  default_config_hash: 9coJZjJxbTt-NLAmS5jPzgDBBUPammhCDUsO9xP-J1s
+name: media_browser
+label: 'Media Browser'
+display: iframe
+display_configuration:
+  width: '1024'
+  height: '500'
+  link_text: 'Select media'
+  auto_open: true
+selection_display: no_display
+selection_display_configuration: {  }
+widget_selector: tabs
+widget_selector_configuration: {  }
+widgets:
+  05782e5e-1928-4606-8b3f-f7c333701c25:
+    settings:
+      view: media_browser
+      view_display: entity_browser_1
+      submit_text: 'Select media'
+      auto_select: false
+    uuid: 05782e5e-1928-4606-8b3f-f7c333701c25
+    weight: -10
+    label: 'Select existing'
+    id: view
+  5d665b33-fbc8-435b-b560-e0e76e22f237:
+    settings:
+      entity_type: media
+      bundle: video
+      form_mode: default
+      submit_text: 'Save video'
+    uuid: 5d665b33-fbc8-435b-b560-e0e76e22f237
+    weight: -8
+    label: 'Embed video'
+    id: entity_form
+  1d9341c8-7c54-4934-82a4-f7d37d53b452:
+    settings:
+      entity_type: media
+      bundle: image
+      form_mode: default
+      submit_text: 'Save image'
+    uuid: 1d9341c8-7c54-4934-82a4-f7d37d53b452
+    weight: -9
+    label: 'Import image'
+    id: entity_form

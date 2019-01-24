@@ -1,0 +1,55 @@
+uuid: c8fb950c-a0dc-43dd-99f6-4f7f79e2e6a9
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_form_mode.paragraph.generic_form
+    - field.field.paragraph.webny_wysiwyg_pgtype.field_webny_wysiwyg_body
+    - field.field.paragraph.webny_wysiwyg_pgtype.field_webny_wysiwyg_card_link
+    - field.field.paragraph.webny_wysiwyg_pgtype.field_webny_wysiwyg_headline
+    - field.field.paragraph.webny_wysiwyg_pgtype.field_webny_wysiwyg_title
+    - field.field.paragraph.webny_wysiwyg_pgtype.field_webny_wysiwyg_toc
+    - paragraphs.paragraphs_type.webny_wysiwyg_pgtype
+  module:
+    - text
+    - workbench_moderation
+_core:
+  default_config_hash: mbeHlL53W9RFnDLgxBn6pTaEkfjiHUcBkLGeQQ6faFE
+id: paragraph.webny_wysiwyg_pgtype.generic_form
+targetEntityType: paragraph
+bundle: webny_wysiwyg_pgtype
+mode: generic_form
+content:
+  field_webny_wysiwyg_body:
+    weight: 3
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  field_webny_wysiwyg_card_link:
+    type: options_buttons
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_webny_wysiwyg_title:
+    weight: 2
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_webny_wysiwyg_toc:
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+    type: options_buttons
+    region: content
+hidden:
+  created: true
+  field_webny_wysiwyg_headline: true
+  status: true
+  uid: true

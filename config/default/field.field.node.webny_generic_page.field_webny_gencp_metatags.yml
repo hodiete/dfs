@@ -1,0 +1,25 @@
+uuid: 1c84ae32-41a5-486d-9ce8-2d841be6c131
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_webny_gencp_metatags
+    - node.type.webny_generic_page
+  module:
+    - metatag
+_core:
+  default_config_hash: 76r8Gjx1bRdXfBakKl4j7QkKY3FKKz3Oya_U9eR7OZw
+id: node.webny_generic_page.field_webny_gencp_metatags
+field_name: field_webny_gencp_metatags
+entity_type: node
+bundle: webny_generic_page
+label: 'Metatags '
+description: '<strong>This field is designated for meta information for search engines. Fill out each field as necessary. </strong>'
+required: false
+translatable: false
+default_value:
+  -
+    value: 'a:0:{}'
+default_value_callback: ''
+settings: {  }
+field_type: metatag

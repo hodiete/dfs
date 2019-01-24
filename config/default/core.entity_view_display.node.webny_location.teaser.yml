@@ -1,0 +1,111 @@
+uuid: 7ab42e5a-2c79-4f3e-872a-225db073279e
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.webny_location.field_webny_agency_keywords
+    - field.field.node.webny_location.field_webny_filter_terms
+    - field.field.node.webny_location.field_webny_location_address
+    - field.field.node.webny_location.field_webny_location_contentsec
+    - field.field.node.webny_location.field_webny_location_counties
+    - field.field.node.webny_location.field_webny_location_heroimage
+    - field.field.node.webny_location.field_webny_location_meta_tags
+    - field.field.node.webny_location.field_webny_location_navtoggle
+    - field.field.node.webny_location.field_webny_location_phone
+    - field.field.node.webny_location.field_webny_location_short_title
+    - field.field.node.webny_location.field_webny_location_summary
+    - field.field.node.webny_location.field_webny_location_type_tax
+    - node.type.webny_location
+  module:
+    - address
+    - entity_reference_revisions
+    - options
+    - text
+    - user
+_core:
+  default_config_hash: Ell_yo3OlEW0ogW175KfE1C1rUConWrnCggCRYMeBkQ
+id: node.webny_location.teaser
+targetEntityType: node
+bundle: webny_location
+mode: teaser
+content:
+  field_webny_filter_terms:
+    type: entity_reference_label
+    weight: 2
+    region: content
+    label: hidden
+    settings:
+      link: false
+    third_party_settings: {  }
+  field_webny_location_address:
+    type: address_default
+    weight: 9
+    region: content
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+  field_webny_location_counties:
+    type: list_default
+    weight: 4
+    region: content
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+  field_webny_location_heroimage:
+    type: entity_reference_entity_view
+    weight: 1
+    region: content
+    label: hidden
+    settings:
+      view_mode: results_image
+      link: false
+    third_party_settings: {  }
+  field_webny_location_phone:
+    type: entity_reference_revisions_entity_view
+    weight: 7
+    region: content
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+  field_webny_location_short_title:
+    type: string
+    weight: 3
+    region: content
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+  field_webny_location_summary:
+    type: text_default
+    weight: 6
+    region: content
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+  field_webny_location_type_tax:
+    type: entity_reference_label
+    weight: 8
+    region: content
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+  links:
+    weight: 5
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  workbench_moderation_control:
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  field_webny_agency_keywords: true
+  field_webny_location_contentsec: true
+  field_webny_location_meta_tags: true
+  field_webny_location_navtoggle: true
+  langcode: true

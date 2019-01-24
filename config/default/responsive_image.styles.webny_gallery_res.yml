@@ -1,0 +1,31 @@
+uuid: 597443ff-0eb8-4572-a5bf-85fbc1236e14
+langcode: en
+status: true
+dependencies:
+  config:
+    - image.style.webny_gallery_image
+    - image.style.webny_gallery_image_mobile
+  theme:
+    - dfs_ny
+_core:
+  default_config_hash: XbfDDu_2EfxOsX6RWdc8tAiC9OGNapKMQ2sID8BpFW0
+id: webny_gallery_res
+label: 'WebNY Gallery'
+image_style_mappings:
+  -
+    breakpoint_id: dfs_ny.wide
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: webny_gallery_image
+  -
+    breakpoint_id: dfs_ny.narrow
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: webny_gallery_image
+  -
+    breakpoint_id: dfs_ny.mobile
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: webny_gallery_image_mobile
+breakpoint_group: dfs_ny
+fallback_image_style: webny_gallery_image

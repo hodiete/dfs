@@ -1,0 +1,33 @@
+uuid: f429a6ff-3ec9-4ff3-8f7b-18718c64f90f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_webny_gallery_description
+    - paragraphs.paragraphs_type.webny_gallery
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    basic_html: basic_html
+    webny_enhanced_wysiwyg: '0'
+    webny_wysiwyg_frame_editor: '0'
+    full_html: '0'
+    restricted_html: '0'
+    rich_text: '0'
+    plain_text: '0'
+_core:
+  default_config_hash: yF1v20pL40WQ5Jixv2ihFYt9b6unizmi73ZOUjY0LK0
+id: paragraph.webny_gallery.field_webny_gallery_description
+field_name: field_webny_gallery_description
+entity_type: paragraph
+bundle: webny_gallery
+label: Description
+description: 'Use this to add a description area above the gallery images.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

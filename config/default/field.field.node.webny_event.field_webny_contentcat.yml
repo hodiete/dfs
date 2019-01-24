@@ -1,0 +1,30 @@
+uuid: ae8d20bb-82e8-494f-a483-215dd3ed6a05
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_webny_contentcat
+    - node.type.webny_event
+    - taxonomy.vocabulary.webny_tax_contentcat
+_core:
+  default_config_hash: atzSM6fdwhuLmYR3n7HiIotIge6OkR92eeROkvzYT5E
+id: node.webny_event.field_webny_contentcat
+field_name: field_webny_contentcat
+entity_type: node
+bundle: webny_event
+label: 'Content Categorization'
+description: 'This term added in this field will provide a way to organize multiple versions of this content type. '
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      webny_tax_contentcat: webny_tax_contentcat
+    sort:
+      field: _none
+    auto_create: true
+    auto_create_bundle: ''
+field_type: entity_reference

@@ -1,0 +1,26 @@
+uuid: 6b72f679-4af9-455d-9339-cf97758ec005
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+_core:
+  default_config_hash: REUFXzl4BZyBaUmDAV4G6U-_TGmztx9PWtEKETH-pgQ
+name: card_vertical
+label: 'Card vertical (400x225)'
+effects:
+  70838331-581a-4154-9208-8be6e7b7ca6e:
+    uuid: 70838331-581a-4154-9208-8be6e7b7ca6e
+    id: image_scale
+    weight: -10
+    data:
+      width: null
+      height: 300
+      upscale: false
+  725abeb9-322e-4f79-a03c-a35feed3c25e:
+    uuid: 725abeb9-322e-4f79-a03c-a35feed3c25e
+    id: focal_point_scale_and_crop
+    weight: 3
+    data:
+      width: 400
+      height: 225

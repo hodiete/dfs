@@ -1,0 +1,14 @@
+uuid: d3a2d903-2dd9-4d51-aec5-09517c2cb8ff
+langcode: en
+status: true
+dependencies:
+  config:
+    - workbench_moderation.moderation_state.archived
+    - workbench_moderation.moderation_state.draft
+_core:
+  default_config_hash: nHa9_ySXIMYsX1xSospOyClk0GvfyIFCqAZQDev1ejU
+id: archived_draft
+label: 'Restore to Draft'
+stateFrom: archived
+stateTo: draft
+weight: 7

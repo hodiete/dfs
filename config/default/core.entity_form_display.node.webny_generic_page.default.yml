@@ -1,0 +1,304 @@
+uuid: 8095bcf4-2f3e-42bb-8085-846ce8c76056
+langcode: en
+status: true
+dependencies:
+  config:
+    - entity_browser.browser.image_browser
+    - field.field.node.webny_generic_page.field_webny_agency_keywords
+    - field.field.node.webny_generic_page.field_webny_assoc_landing_page
+    - field.field.node.webny_generic_page.field_webny_contentcat
+    - field.field.node.webny_generic_page.field_webny_filter_terms
+    - field.field.node.webny_generic_page.field_webny_gencp_avgtranstime
+    - field.field.node.webny_generic_page.field_webny_gencp_card_switch
+    - field.field.node.webny_generic_page.field_webny_gencp_contentcat
+    - field.field.node.webny_generic_page.field_webny_gencp_contentsect
+    - field.field.node.webny_generic_page.field_webny_gencp_date
+    - field.field.node.webny_generic_page.field_webny_gencp_herodesc
+    - field.field.node.webny_generic_page.field_webny_gencp_heroimage
+    - field.field.node.webny_generic_page.field_webny_gencp_howtoapply
+    - field.field.node.webny_generic_page.field_webny_gencp_keywords
+    - field.field.node.webny_generic_page.field_webny_gencp_metatags
+    - field.field.node.webny_generic_page.field_webny_gencp_navtoggle
+    - field.field.node.webny_generic_page.field_webny_gencp_sumdes
+    - field.field.node.webny_generic_page.field_webny_generic_short_title
+    - field.field.node.webny_generic_page.field_webny_global_keywords
+    - node.type.webny_generic_page
+  module:
+    - datetime
+    - entity_browser
+    - field_group
+    - link
+    - metatag
+    - paragraphs
+    - path
+    - shs
+    - text
+    - workbench_moderation
+third_party_settings:
+  field_group:
+    group_webny_gencp_herofields:
+      children:
+        - field_webny_assoc_landing_page
+        - field_webny_gencp_heroimage
+        - field_webny_gencp_date
+        - field_webny_gencp_herodesc
+      parent_name: ''
+      weight: 9
+      format_type: details
+      format_settings:
+        id: webny-hero-fields
+        classes: ''
+        open: false
+        required_fields: true
+      label: 'Hero Fields'
+    group_webny_gencp_transsec:
+      children:
+        - field_webny_gencp_avgtranstime
+        - field_webny_gencp_howtoapply
+      parent_name: ''
+      weight: 10
+      format_type: details
+      format_settings:
+        id: transaction-section
+        classes: ''
+        open: false
+        required_fields: true
+      label: 'Transaction Section'
+    group_webny_gencp_sectoc:
+      children:
+        - field_webny_gencp_navtoggle
+        - field_webny_gencp_card_switch
+        - field_webny_gencp_contentsect
+      parent_name: ''
+      weight: 11
+      format_type: details
+      format_settings:
+        id: sections-toc
+        classes: ''
+        open: false
+        required_fields: true
+      label: 'Sections and Table of Contents'
+_core:
+  default_config_hash: aVLGqiVtKD8JsRxxf3TOtRlwustnhUmCwAnwUyIA-ng
+id: node.webny_generic_page.default
+targetEntityType: node
+bundle: webny_generic_page
+mode: default
+content:
+  created:
+    type: datetime_timestamp
+    weight: 16
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_webny_agency_keywords:
+    weight: 3
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  field_webny_assoc_landing_page:
+    type: entity_reference_autocomplete
+    weight: 7
+    region: content
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_webny_contentcat:
+    weight: 6
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  field_webny_filter_terms:
+    weight: 8
+    settings:
+      display_node_count: false
+      create_new_items: false
+      create_new_levels: false
+      force_deepest: false
+    third_party_settings: {  }
+    type: options_shs
+    region: content
+  field_webny_gencp_avgtranstime:
+    weight: 6
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_webny_gencp_card_switch:
+    weight: 9
+    settings: {  }
+    third_party_settings: {  }
+    type: options_buttons
+    region: content
+  field_webny_gencp_contentcat:
+    weight: 7
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  field_webny_gencp_contentsect:
+    type: entity_reference_paragraphs
+    weight: 11
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: closed
+      add_mode: button
+      form_display_mode: generic_form
+      default_paragraph_type: _none
+    third_party_settings: {  }
+    region: content
+  field_webny_gencp_date:
+    weight: 9
+    settings: {  }
+    third_party_settings: {  }
+    type: datetime_default
+    region: content
+  field_webny_gencp_herodesc:
+    weight: 10
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textfield
+    region: content
+  field_webny_gencp_heroimage:
+    weight: 8
+    settings:
+      entity_browser: image_browser
+      field_widget_display: rendered_entity
+      field_widget_edit: true
+      field_widget_remove: true
+      open: true
+      selection_mode: selection_append
+      field_widget_display_settings:
+        view_mode: media_library
+    third_party_settings: {  }
+    type: entity_browser_entity_reference
+    region: content
+  field_webny_gencp_howtoapply:
+    weight: 7
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
+  field_webny_gencp_keywords:
+    weight: 5
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  field_webny_gencp_metatags:
+    weight: 12
+    settings: {  }
+    third_party_settings: {  }
+    type: metatag_firehose
+    region: content
+  field_webny_gencp_navtoggle:
+    weight: 8
+    settings: {  }
+    third_party_settings: {  }
+    type: options_buttons
+    region: content
+  field_webny_gencp_sumdes:
+    weight: 2
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textfield
+    region: content
+  field_webny_generic_short_title:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_webny_global_keywords:
+    weight: 4
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  langcode:
+    type: language_select
+    weight: 14
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 19
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  promote:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 17
+    region: content
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 21
+    third_party_settings: {  }
+    region: content
+  sticky:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 18
+    region: content
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 15
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    region: content
+    third_party_settings: {  }
+  url_redirects:
+    weight: 20
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden: {  }

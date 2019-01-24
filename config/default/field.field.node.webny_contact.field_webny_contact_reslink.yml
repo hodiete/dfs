@@ -1,0 +1,25 @@
+uuid: 956b0c55-b9b8-4708-ac22-d9827c52eaa8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_webny_contact_reslink
+    - node.type.webny_contact
+  module:
+    - link
+_core:
+  default_config_hash: Qkx1gwbVoUXAAovmS92OvLkdVdW8T_Y6fMtO6zXxhfU
+id: node.webny_contact.field_webny_contact_reslink
+field_name: field_webny_contact_reslink
+entity_type: node
+bundle: webny_contact
+label: 'Link to Resource'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 17
+  title: 2
+field_type: link

@@ -1,0 +1,30 @@
+uuid: 4c890a7a-c048-4817-9f65-3fbcd31cb703
+langcode: en
+status: true
+dependencies:
+  config:
+    - image.style.bio_frame
+  theme:
+    - dfs_ny
+_core:
+  default_config_hash: EKRHdqQZPzNhUyAQ_B0VQAZKy7_5eGaf_BIpGd1fW28
+id: bio_frame
+label: 'Bio Frame'
+image_style_mappings:
+  -
+    breakpoint_id: dfs_ny.wide
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: bio_frame
+  -
+    breakpoint_id: dfs_ny.narrow
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: bio_frame
+  -
+    breakpoint_id: dfs_ny.mobile
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: bio_frame
+breakpoint_group: dfs_ny
+fallback_image_style: bio_frame

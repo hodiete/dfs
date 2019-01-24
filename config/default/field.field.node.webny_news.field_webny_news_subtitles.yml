@@ -1,0 +1,33 @@
+uuid: ea853ee5-7c75-496d-9cfb-9c7f977085c6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_webny_news_subtitles
+    - node.type.webny_news
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    basic_html: basic_html
+    full_html: full_html
+    webny_enhanced_wysiwyg: '0'
+    webny_wysiwyg_frame_editor: '0'
+    restricted_html: '0'
+    rich_text: '0'
+    plain_text: '0'
+_core:
+  default_config_hash: 24XLJdArtX5D51jZjOYorMZfPt3E0o_TxTAd2gzwHuA
+id: node.webny_news.field_webny_news_subtitles
+field_name: field_webny_news_subtitles
+entity_type: node
+bundle: webny_news
+label: 'Sub Titles'
+description: 'Enter up to four (4) sub titles to add to the top of a press release. '
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text

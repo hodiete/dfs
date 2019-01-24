@@ -1,0 +1,22 @@
+uuid: a02364f9-b494-4acf-b84a-6ecd8df9a95f
+langcode: en
+status: true
+dependencies:
+  module:
+    - webny_global_nav
+  theme:
+    - dfs_ny
+_core:
+  default_config_hash: pJQ73gqoR5fcVn3KDdBMKMilDKAa5_fwu3N30nDWKyo
+id: webnyglobalnavigationblock
+theme: dfs_ny
+region: header
+weight: 1
+provider: null
+plugin: webny_global_nav_block
+settings:
+  id: webny_global_nav_block
+  label: 'Global Navigation Block'
+  provider: webny_global_nav
+  label_display: '0'
+visibility: {  }

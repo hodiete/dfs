@@ -1,0 +1,29 @@
+uuid: aaab83d4-7560-477d-bccc-6d0edd357d0f
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+    - workbench_moderation
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+  workbench_moderation:
+    enabled: true
+    allowed_moderation_states:
+      - published
+      - archived
+      - draft
+      - needs_review
+      - unpublished
+    default_moderation_state: draft
+_core:
+  default_config_hash: qdUgaIdh0i7T4e8fOEpe5EWNit4tt-fnGPZH1VZcZ9s
+name: News
+type: webny_news
+description: 'This will create a new News content page. It is for News/Press releases.'
+help: 'News article must be approved and published by the content publisher role'
+new_revision: true
+preview_mode: 1
+display_submitted: false

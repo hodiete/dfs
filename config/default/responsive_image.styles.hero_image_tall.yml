@@ -1,0 +1,32 @@
+uuid: 1087a05e-b0c8-448e-8e7f-93d964d9a989
+langcode: en
+status: true
+dependencies:
+  config:
+    - image.style.mobile_lead
+    - image.style.narrow_lead
+    - image.style.wide_lead_tall
+  theme:
+    - dfs_ny
+_core:
+  default_config_hash: thMmDxHEnubgLoOEowUvWNpi-DAnV7PGsBsVB34oI58
+id: hero_image_tall
+label: 'Hero image tall'
+image_style_mappings:
+  -
+    breakpoint_id: dfs_ny.wide
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: wide_lead_tall
+  -
+    breakpoint_id: dfs_ny.narrow
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: narrow_lead
+  -
+    breakpoint_id: dfs_ny.mobile
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: mobile_lead
+breakpoint_group: dfs_ny
+fallback_image_style: mobile_lead

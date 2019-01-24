@@ -1,0 +1,29 @@
+uuid: a101a03a-d3a4-42f2-b5cf-df33bed3c25d
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+    - workbench_moderation
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+  workbench_moderation:
+    enabled: true
+    allowed_moderation_states:
+      - published
+      - archived
+      - draft
+      - needs_review
+      - unpublished
+    default_moderation_state: draft
+_core:
+  default_config_hash: cVOKsMl1_Pvd0Yu5NjtKLenQB5SIZm2qKnBjcjErJmQ
+name: 'Generic Page Content'
+type: webny_generic_page
+description: 'Generic Page Content has various components for multiple use cases.'
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: false

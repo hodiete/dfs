@@ -1,0 +1,14 @@
+uuid: a8800850-bd16-45fa-a42d-d53085e1b620
+langcode: en
+status: true
+dependencies:
+  config:
+    - workbench_moderation.moderation_state.draft
+    - workbench_moderation.moderation_state.needs_review
+_core:
+  default_config_hash: y4eb4098TPLwT5vZF8SqCwTy_b8AjtAg1_i6O4GG2AA
+id: needs_review_draft
+label: 'Request Edits'
+stateFrom: needs_review
+stateTo: draft
+weight: -6

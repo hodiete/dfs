@@ -1,0 +1,44 @@
+uuid: 6b37e3bf-7a5b-4048-9bae-177b4a7526e5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_webny_results_view_to_disp
+    - node.type.webny_landing_page
+  module:
+    - viewfield
+_core:
+  default_config_hash: nQYJ7wIVsaOc9CwWF0mxSYIHlT-Uo82-u0kJ0Sk6b60
+id: node.webny_landing_page.field_webny_results_view_to_disp
+field_name: field_webny_results_view_to_disp
+entity_type: node
+bundle: webny_landing_page
+label: 'Results View to Display'
+description: 'Select the results view you want to add to the bottom of this landing page.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  force_default: false
+  allowed_views:
+    webny_news_listing: webny_news_listing
+    block_content: '0'
+    comments_recent: '0'
+    contact_form_messages: '0'
+    contact_messages: '0'
+    content: '0'
+    content_recent: '0'
+    demo_content_admin: '0'
+    demo_content_view: '0'
+    files: '0'
+    frontpage: '0'
+    image_browser: '0'
+    media_browser: '0'
+    redirect: '0'
+    taxonomy_term: '0'
+    user_admin_people: '0'
+    webny_media: '0'
+    who_s_new: '0'
+    who_s_online: '0'
+field_type: viewfield

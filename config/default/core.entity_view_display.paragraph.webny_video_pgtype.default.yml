@@ -1,0 +1,76 @@
+uuid: 6b796b05-cab3-4795-8517-9513c26af8d2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.webny_video_pgtype.field_webny_landing_pg_vid_hdlin
+    - field.field.paragraph.webny_video_pgtype.field_webny_landing_pg_vid_img
+    - field.field.paragraph.webny_video_pgtype.field_webny_landing_pg_vid_title
+    - field.field.paragraph.webny_video_pgtype.field_webny_landing_pg_video_url
+    - field.field.paragraph.webny_video_pgtype.field_webny_lnd_pg_pstr_img_capt
+    - field.field.paragraph.webny_video_pgtype.field_webny_lndng_pg_vid_descrip
+    - paragraphs.paragraphs_type.webny_video_pgtype
+  module:
+    - text
+    - video_embed_field
+_core:
+  default_config_hash: l_9-Bg0Q6gLyjjk3JRnNLyY8j1Pnn3h4zNXuNdJrBSw
+id: paragraph.webny_video_pgtype.default
+targetEntityType: paragraph
+bundle: webny_video_pgtype
+mode: default
+content:
+  field_webny_landing_pg_vid_hdlin:
+    weight: 1
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_webny_landing_pg_vid_img:
+    weight: 4
+    label: hidden
+    settings:
+      view_mode: wysiwyg
+      link: false
+    third_party_settings: {  }
+    type: entity_reference_entity_view
+    region: content
+  field_webny_landing_pg_vid_title:
+    weight: 0
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_webny_landing_pg_video_url:
+    weight: 3
+    label: hidden
+    settings:
+      responsive: true
+      width: 854
+      height: 480
+      autoplay: true
+    third_party_settings: {  }
+    type: video_embed_field_video
+    region: content
+  field_webny_lnd_pg_pstr_img_capt:
+    weight: 6
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_webny_lndng_pg_vid_descrip:
+    weight: 5
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+hidden:
+  created: true
+  uid: true

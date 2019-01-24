@@ -1,0 +1,25 @@
+uuid: 7a52ff66-7cea-4a57-bb82-4e5f1014fd38
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_webny_doc_add_frame_to_toc
+    - paragraphs.paragraphs_type.webny_documents
+  module:
+    - options
+_core:
+  default_config_hash: lVC1fA7HeqMGPsOndOAq-jx6imhtdPSuWgfZafdftx8
+id: paragraph.webny_documents.field_webny_doc_add_frame_to_toc
+field_name: field_webny_doc_add_frame_to_toc
+entity_type: paragraph
+bundle: webny_documents
+label: 'Add Section to Table of Contents'
+description: 'For the Generic Content Page, use this checkbox to display on the table of content section'
+required: false
+translatable: false
+default_value:
+  -
+    value: '1'
+default_value_callback: ''
+settings: {  }
+field_type: list_string

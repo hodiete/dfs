@@ -1,0 +1,28 @@
+uuid: a0b17af7-67fb-438d-ad1f-3c78d9f91ae6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_webny_news_image
+    - media_entity.bundle.image
+    - node.type.webny_news
+_core:
+  default_config_hash: KEVo90mtDVqbG6-RpZ5_E9I9Chcn9Z8pVGnE3rwATog
+id: node.webny_news.field_webny_news_image
+field_name: field_webny_news_image
+entity_type: node
+bundle: webny_news
+label: Image
+description: 'This is Image that will display as the ''Hero image'' above the titles and text.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+    sort:
+      field: _none
+field_type: entity_reference

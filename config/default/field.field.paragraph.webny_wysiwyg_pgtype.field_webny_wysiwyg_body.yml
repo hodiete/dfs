@@ -1,0 +1,33 @@
+uuid: 23ffd8c3-fcd8-4269-8a9b-dd450654b11e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_webny_wysiwyg_body
+    - paragraphs.paragraphs_type.webny_wysiwyg_pgtype
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    basic_html: basic_html
+    webny_wysiwyg_frame_editor: webny_wysiwyg_frame_editor
+    webny_enhanced_wysiwyg: '0'
+    full_html: full_html
+    restricted_html: '0'
+    rich_text: '0'
+    plain_text: '0'
+_core:
+  default_config_hash: sVo02Yu3MKrHHb9JnXCRn729rRFmeze3nmNiCR9nbLI
+id: paragraph.webny_wysiwyg_pgtype.field_webny_wysiwyg_body
+field_name: field_webny_wysiwyg_body
+entity_type: paragraph
+bundle: webny_wysiwyg_pgtype
+label: 'WYSIWYG Body'
+description: 'Telephone links: To add a telephone link, select the text you want to link, click on the ''link'' button, then type ''tel:+'' before the area code and number, without dashes. For example: ''tel:+15185555785'''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

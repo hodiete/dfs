@@ -1,0 +1,52 @@
+uuid: 8ca4f56a-6f9d-4079-a379-8263560105cd
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_webny_contact_mapdir
+    - node.type.webny_contact
+  module:
+    - address
+_core:
+  default_config_hash: _ohHesugIoxYt8f43sPTNqI2_wyN4QqvcTKLmVmSZbE
+id: node.webny_contact.field_webny_contact_mapdir
+field_name: field_webny_contact_mapdir
+entity_type: node
+bundle: webny_contact
+label: 'Map Directions'
+description: 'Use this field to add map directions for this contact. This field''s values will be displayed as a link. A user will be directed to a new tab with a Google map populated from the data entered in these address fields.'
+required: false
+translatable: false
+default_value:
+  -
+    country_code: US
+    langcode: null
+    administrative_area: ''
+    locality: ''
+    dependent_locality: ''
+    postal_code: ''
+    sorting_code: ''
+    address_line1: ''
+    address_line2: ''
+    organization: ''
+    given_name: ''
+    additional_name: ''
+    family_name: ''
+default_value_callback: ''
+settings:
+  available_countries: {  }
+  fields:
+    administrativeArea: administrativeArea
+    locality: locality
+    postalCode: postalCode
+    addressLine1: addressLine1
+    addressLine2: addressLine2
+    dependentLocality: '0'
+    sortingCode: '0'
+    organization: '0'
+    givenName: '0'
+    additionalName: '0'
+    familyName: '0'
+  langcode_override: ''
+  field_overrides: {  }
+field_type: address

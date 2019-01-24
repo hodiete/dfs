@@ -1,0 +1,42 @@
+uuid: 2515328e-b518-43ea-a860-b00b38b25f69
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.webny_announcement_pgtype.field_webny_announcement_eref
+    - field.field.paragraph.webny_announcement_pgtype.field_webny_announcement_headlne
+    - field.field.paragraph.webny_announcement_pgtype.field_webny_announcement_title
+    - paragraphs.paragraphs_type.webny_announcement_pgtype
+_core:
+  default_config_hash: zqEhXJZMvOG5t_H0czHiqcjiYjDjH82Gmmux0oLQ1H4
+id: paragraph.webny_announcement_pgtype.default
+targetEntityType: paragraph
+bundle: webny_announcement_pgtype
+mode: default
+content:
+  field_webny_announcement_eref:
+    type: entity_reference_entity_view
+    weight: 2
+    label: hidden
+    settings:
+      view_mode: webny_announcement
+      link: false
+    third_party_settings: {  }
+    region: content
+  field_webny_announcement_headlne:
+    weight: 1
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
+  field_webny_announcement_title:
+    weight: 0
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
+hidden:
+  created: true
+  uid: true

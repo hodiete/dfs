@@ -1,0 +1,340 @@
+uuid: 6477604b-8795-4903-b10f-ae8b9c7c1c0d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.webny_contact.field_webny_contact_address
+    - field.field.node.webny_contact.field_webny_contact_caption
+    - field.field.node.webny_contact.field_webny_contact_details
+    - field.field.node.webny_contact.field_webny_contact_email
+    - field.field.node.webny_contact.field_webny_contact_facebook
+    - field.field.node.webny_contact.field_webny_contact_fax
+    - field.field.node.webny_contact.field_webny_contact_flickr_link
+    - field.field.node.webny_contact.field_webny_contact_global_key
+    - field.field.node.webny_contact.field_webny_contact_google
+    - field.field.node.webny_contact.field_webny_contact_image
+    - field.field.node.webny_contact.field_webny_contact_instagram
+    - field.field.node.webny_contact.field_webny_contact_linkedin
+    - field.field.node.webny_contact.field_webny_contact_mapdir
+    - field.field.node.webny_contact.field_webny_contact_name
+    - field.field.node.webny_contact.field_webny_contact_pintrest
+    - field.field.node.webny_contact.field_webny_contact_pro_subtitle
+    - field.field.node.webny_contact.field_webny_contact_protitle
+    - field.field.node.webny_contact.field_webny_contact_reslink
+    - field.field.node.webny_contact.field_webny_contact_rss_link
+    - field.field.node.webny_contact.field_webny_contact_snapchat
+    - field.field.node.webny_contact.field_webny_contact_soundcloud
+    - field.field.node.webny_contact.field_webny_contact_tumblr_link
+    - field.field.node.webny_contact.field_webny_contact_twitter
+    - field.field.node.webny_contact.field_webny_contact_vimeo_link
+    - field.field.node.webny_contact.field_webny_contact_vine_link
+    - field.field.node.webny_contact.field_webny_contact_youtube
+    - field.field.node.webny_contact.field_webny_filter_terms
+    - field.field.node.webny_contact.field_webny_phone_contact
+    - node.type.webny_contact
+  module:
+    - address
+    - entity_reference_revisions
+    - link
+    - telephone
+    - text
+    - user
+_core:
+  default_config_hash: j1NF5J6PFdE9wb8bHR6e-KY87YQVAkT4KVp--MnudYo
+id: node.webny_contact.default
+targetEntityType: node
+bundle: webny_contact
+mode: default
+content:
+  field_webny_contact_address:
+    weight: 3
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_webny_contact_caption:
+    weight: 25
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
+  field_webny_contact_details:
+    weight: 7
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_webny_contact_email:
+    weight: 2
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
+  field_webny_contact_facebook:
+    weight: 8
+    label: above
+    settings:
+      trim_length: 80
+      rel: ''
+      target: ''
+      url_only: false
+      url_plain: false
+    third_party_settings: {  }
+    type: link_separate
+    region: content
+  field_webny_contact_fax:
+    weight: 6
+    label: above
+    settings:
+      title: ''
+    third_party_settings: {  }
+    type: telephone_link
+    region: content
+  field_webny_contact_flickr_link:
+    weight: 16
+    label: above
+    settings:
+      trim_length: 80
+      rel: ''
+      target: ''
+      url_only: false
+      url_plain: false
+    third_party_settings: {  }
+    type: link_separate
+    region: content
+  field_webny_contact_global_key:
+    weight: 22
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_webny_contact_google:
+    weight: 12
+    label: above
+    settings:
+      trim_length: 80
+      rel: ''
+      target: ''
+      url_only: false
+      url_plain: false
+    third_party_settings: {  }
+    type: link_separate
+    region: content
+  field_webny_contact_image:
+    weight: 27
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_webny_contact_instagram:
+    weight: 11
+    label: above
+    settings:
+      trim_length: 80
+      rel: ''
+      target: ''
+      url_only: false
+      url_plain: false
+    third_party_settings: {  }
+    type: link_separate
+    region: content
+  field_webny_contact_linkedin:
+    weight: 20
+    label: above
+    settings:
+      trim_length: 80
+      rel: ''
+      target: ''
+      url_only: false
+      url_plain: false
+    third_party_settings: {  }
+    type: link_separate
+    region: content
+  field_webny_contact_mapdir:
+    weight: 4
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: address_default
+    region: content
+  field_webny_contact_name:
+    weight: 24
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_webny_contact_pintrest:
+    weight: 18
+    label: above
+    settings:
+      trim_length: 80
+      rel: ''
+      target: ''
+      url_only: false
+      url_plain: false
+    third_party_settings: {  }
+    type: link_separate
+    region: content
+  field_webny_contact_pro_subtitle:
+    weight: 28
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_webny_contact_protitle:
+    weight: 23
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_webny_contact_reslink:
+    weight: 26
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+    region: content
+  field_webny_contact_rss_link:
+    weight: 17
+    label: above
+    settings:
+      trim_length: 80
+      rel: ''
+      target: ''
+      url_only: false
+      url_plain: false
+    third_party_settings: {  }
+    type: link_separate
+    region: content
+  field_webny_contact_snapchat:
+    weight: 14
+    label: above
+    settings:
+      trim_length: 80
+      rel: ''
+      target: ''
+      url_only: false
+      url_plain: false
+    third_party_settings: {  }
+    type: link_separate
+    region: content
+  field_webny_contact_soundcloud:
+    weight: 13
+    label: above
+    settings:
+      trim_length: 80
+      rel: ''
+      target: ''
+      url_only: false
+      url_plain: false
+    third_party_settings: {  }
+    type: link_separate
+    region: content
+  field_webny_contact_tumblr_link:
+    weight: 19
+    label: above
+    settings:
+      trim_length: 80
+      rel: ''
+      target: ''
+      url_only: false
+      url_plain: false
+    third_party_settings: {  }
+    type: link_separate
+    region: content
+  field_webny_contact_twitter:
+    weight: 9
+    label: above
+    settings:
+      trim_length: 80
+      rel: ''
+      target: ''
+      url_only: false
+      url_plain: false
+    third_party_settings: {  }
+    type: link_separate
+    region: content
+  field_webny_contact_vimeo_link:
+    weight: 21
+    label: above
+    settings:
+      trim_length: 80
+      rel: ''
+      target: ''
+      url_only: false
+      url_plain: false
+    third_party_settings: {  }
+    type: link_separate
+    region: content
+  field_webny_contact_vine_link:
+    weight: 15
+    label: above
+    settings:
+      trim_length: 80
+      rel: ''
+      target: ''
+      url_only: false
+      url_plain: false
+    third_party_settings: {  }
+    type: link_separate
+    region: content
+  field_webny_contact_youtube:
+    weight: 10
+    label: above
+    settings:
+      trim_length: 80
+      rel: ''
+      target: ''
+      url_only: false
+      url_plain: false
+    third_party_settings: {  }
+    type: link_separate
+    region: content
+  field_webny_phone_contact:
+    type: entity_reference_revisions_entity_view
+    weight: 5
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  webny_contact_mapdir:
+    weight: 28
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: address_default
+    region: content
+  workbench_moderation_control:
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  field_webny_filter_terms: true
+  langcode: true

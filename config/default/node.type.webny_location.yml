@@ -1,0 +1,29 @@
+uuid: 26563f59-b2f8-452d-a4b2-14fa016a6026
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+    - workbench_moderation
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+  workbench_moderation:
+    enabled: true
+    allowed_moderation_states:
+      - published
+      - archived
+      - draft
+      - needs_review
+      - unpublished
+    default_moderation_state: draft
+_core:
+  default_config_hash: 2-YIlDA-rCvJAva_3YCkCVigVHTML_Us004jxkAO50I
+name: Location
+type: webny_location
+description: 'This content type is used to display location information on your site.'
+help: ''
+new_revision: false
+preview_mode: 1
+display_submitted: false

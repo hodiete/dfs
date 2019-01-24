@@ -1,0 +1,26 @@
+uuid: ac49737c-ba12-43bd-a211-11617350a66a
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+_core:
+  default_config_hash: QW3zvXKujgo77X4yXHkTWRgAMj-BqVqQ0yKKQ2gJyqo
+id: paragraph.field_webny_whats_related_card
+field_name: field_webny_whats_related_card
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: 'yes'
+      label: Enable
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,44 @@
+uuid: 425d209a-8407-4d81-9345-3083fd26ba06
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - options
+_core:
+  default_config_hash: dM30jFoSCLM9BNC8NEKXFMNoFRu61uPrUNXF701VMcA
+id: node.field_webny_document_language
+field_name: field_webny_document_language
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: chinese
+      label: 中文翻譯
+    -
+      value: french
+      label: 'Traduction française'
+    -
+      value: haitian_creole
+      label: 'Tradiksyon kreyòl ayisyen'
+    -
+      value: italian
+      label: 'Traduzione italiana'
+    -
+      value: korean
+      label: '한국어 번역'
+    -
+      value: russian
+      label: 'Перевод на русский язык'
+    -
+      value: spanish
+      label: 'Traducción al español'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

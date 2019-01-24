@@ -1,0 +1,25 @@
+uuid: 95583d54-765f-4693-9cd2-4c0b6ccaa761
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_webny_whats_related_card
+    - paragraphs.paragraphs_type.webny_whats_related_pgtype
+  module:
+    - options
+_core:
+  default_config_hash: Km4uGFKeP-smaZFPEqBQ-IcgnEAd5nxBmyJvJ5BPScU
+id: paragraph.webny_whats_related_pgtype.field_webny_whats_related_card
+field_name: field_webny_whats_related_card
+entity_type: paragraph
+bundle: webny_whats_related_pgtype
+label: 'Add as a Card Link'
+description: 'Use this content on Landing Page cards.'
+required: false
+translatable: false
+default_value:
+  -
+    value: 'yes'
+default_value_callback: ''
+settings: {  }
+field_type: list_string

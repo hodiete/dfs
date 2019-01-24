@@ -1,0 +1,25 @@
+uuid: 3f8dc35a-5acc-460b-8c88-a5b097b382a5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_webny_contact_linkedin
+    - node.type.webny_contact
+  module:
+    - link
+_core:
+  default_config_hash: _ZyYipTXryinXjDDnAYumH-eK8ieV8LnuGxynGXHgXM
+id: node.webny_contact.field_webny_contact_linkedin
+field_name: field_webny_contact_linkedin
+entity_type: node
+bundle: webny_contact
+label: 'LinkedIn Link'
+description: 'Please enter the link to the LinkedIn account of the contact.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 16
+  title: 0
+field_type: link

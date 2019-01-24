@@ -1,0 +1,22 @@
+uuid: b6f4da3a-79e4-434d-955a-c81a830e1333
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+    - taxonomy
+_core:
+  default_config_hash: U08sMSyjY6xRVmE4oO5nYprSs5d5TitkZ4pwR3q_M3k
+id: paragraph.webny_filter_term
+field_name: webny_filter_term
+entity_type: paragraph
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

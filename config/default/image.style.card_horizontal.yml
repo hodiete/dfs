@@ -1,0 +1,26 @@
+uuid: aad68383-d67f-4ee1-9448-f0e1a7e160dc
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+_core:
+  default_config_hash: xRNeZ0A-eEB8KitSJxvoJb1PxtYb09Dh7L3mwjtCqz4
+name: card_horizontal
+label: 'Card horizontal (225x225)'
+effects:
+  0d17ce40-86e9-467a-944e-784d98e96f38:
+    uuid: 0d17ce40-86e9-467a-944e-784d98e96f38
+    id: image_scale
+    weight: 1
+    data:
+      width: null
+      height: 300
+      upscale: false
+  9a0d8913-7389-4ba5-9ee1-54594d47cb79:
+    uuid: 9a0d8913-7389-4ba5-9ee1-54594d47cb79
+    id: focal_point_crop
+    weight: 3
+    data:
+      width: 225
+      height: 225

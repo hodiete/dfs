@@ -1,0 +1,21 @@
+uuid: 87f511da-da24-45e2-a184-b516a162d8cc
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_webny_event_short_title
+    - node.type.webny_event
+_core:
+  default_config_hash: l4dQBmZsCcKEWb1NOaDwmfF2hEWUQ-FLbwRshY14uBM
+id: node.webny_event.field_webny_event_short_title
+field_name: field_webny_event_short_title
+entity_type: node
+bundle: webny_event
+label: 'Short Title'
+description: 'Use this field to add a shortened title for use in featured cards and announcements. If this field isn''t used then the event title will be shortened to 65 characters or less for the featured cards and announcements.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

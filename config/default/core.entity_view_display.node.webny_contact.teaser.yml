@@ -1,0 +1,80 @@
+uuid: 19ad80a7-2d1f-4b8b-8413-110546130e2a
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.webny_contact.field_webny_contact_address
+    - field.field.node.webny_contact.field_webny_contact_caption
+    - field.field.node.webny_contact.field_webny_contact_details
+    - field.field.node.webny_contact.field_webny_contact_email
+    - field.field.node.webny_contact.field_webny_contact_facebook
+    - field.field.node.webny_contact.field_webny_contact_fax
+    - field.field.node.webny_contact.field_webny_contact_flickr_link
+    - field.field.node.webny_contact.field_webny_contact_global_key
+    - field.field.node.webny_contact.field_webny_contact_google
+    - field.field.node.webny_contact.field_webny_contact_image
+    - field.field.node.webny_contact.field_webny_contact_instagram
+    - field.field.node.webny_contact.field_webny_contact_linkedin
+    - field.field.node.webny_contact.field_webny_contact_mapdir
+    - field.field.node.webny_contact.field_webny_contact_name
+    - field.field.node.webny_contact.field_webny_contact_pintrest
+    - field.field.node.webny_contact.field_webny_contact_pro_subtitle
+    - field.field.node.webny_contact.field_webny_contact_protitle
+    - field.field.node.webny_contact.field_webny_contact_reslink
+    - field.field.node.webny_contact.field_webny_contact_rss_link
+    - field.field.node.webny_contact.field_webny_contact_snapchat
+    - field.field.node.webny_contact.field_webny_contact_soundcloud
+    - field.field.node.webny_contact.field_webny_contact_tumblr_link
+    - field.field.node.webny_contact.field_webny_contact_twitter
+    - field.field.node.webny_contact.field_webny_contact_vimeo_link
+    - field.field.node.webny_contact.field_webny_contact_vine_link
+    - field.field.node.webny_contact.field_webny_contact_youtube
+    - field.field.node.webny_contact.field_webny_filter_terms
+    - field.field.node.webny_contact.field_webny_phone_contact
+    - node.type.webny_contact
+  module:
+    - user
+_core:
+  default_config_hash: qyeWI2zb1vm9bTDM3mJUerKl1TjbJVdj7bgGuBwL-Yk
+id: node.webny_contact.teaser
+targetEntityType: node
+bundle: webny_contact
+mode: teaser
+content:
+  links:
+    weight: 100
+    region: content
+  workbench_moderation_control:
+    weight: -20
+    region: content
+hidden:
+  field_webny_contact_address: true
+  field_webny_contact_caption: true
+  field_webny_contact_details: true
+  field_webny_contact_email: true
+  field_webny_contact_facebook: true
+  field_webny_contact_fax: true
+  field_webny_contact_flickr_link: true
+  field_webny_contact_global_key: true
+  field_webny_contact_google: true
+  field_webny_contact_image: true
+  field_webny_contact_instagram: true
+  field_webny_contact_linkedin: true
+  field_webny_contact_mapdir: true
+  field_webny_contact_name: true
+  field_webny_contact_pintrest: true
+  field_webny_contact_pro_subtitle: true
+  field_webny_contact_protitle: true
+  field_webny_contact_reslink: true
+  field_webny_contact_rss_link: true
+  field_webny_contact_snapchat: true
+  field_webny_contact_soundcloud: true
+  field_webny_contact_tumblr_link: true
+  field_webny_contact_twitter: true
+  field_webny_contact_vimeo_link: true
+  field_webny_contact_vine_link: true
+  field_webny_contact_youtube: true
+  field_webny_filter_terms: true
+  field_webny_phone_contact: true
+  langcode: true

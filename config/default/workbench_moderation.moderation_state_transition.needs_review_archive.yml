@@ -1,0 +1,14 @@
+uuid: c391c4f0-dc97-4ac4-8030-5ffef26c53f0
+langcode: en
+status: true
+dependencies:
+  config:
+    - workbench_moderation.moderation_state.archived
+    - workbench_moderation.moderation_state.needs_review
+_core:
+  default_config_hash: '-5H_QvvzEHVh7y7KpZNl7f3pj5mOFpL-UxfPBlNw_-M'
+id: needs_review_archive
+label: 'Archive (abandon)'
+stateFrom: needs_review
+stateTo: archived
+weight: -2

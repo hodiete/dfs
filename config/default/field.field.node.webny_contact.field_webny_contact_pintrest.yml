@@ -1,0 +1,25 @@
+uuid: b167f9f2-0052-4d8a-8abe-31fbb6169113
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_webny_contact_pintrest
+    - node.type.webny_contact
+  module:
+    - link
+_core:
+  default_config_hash: llVSnlj4Xc8-C70UjKDaXCa9sBNP-ME1bmjAJsqJxQU
+id: node.webny_contact.field_webny_contact_pintrest
+field_name: field_webny_contact_pintrest
+entity_type: node
+bundle: webny_contact
+label: 'Pinterest Link'
+description: 'Please enter the link to the Pinterest account of the contact.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 16
+  title: 0
+field_type: link
