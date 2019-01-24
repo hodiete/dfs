@@ -1,9 +1,12 @@
+uuid: 49f54cc1-93c3-4e05-97e6-6055d9dde9a5
 langcode: en
 status: open
 dependencies:
   enforced:
     module:
       - webform
+_core:
+  default_config_hash: Db1CJM6FchEqqeVz5YJThCK0WB599y4NjQ4GkPcGF5g
 open: null
 close: null
 weight: 0
@@ -23,7 +26,7 @@ settings:
   page: true
   page_submit_path: ''
   page_confirm_path: ''
-  form_title: both
+  form_title: source_entity_webform
   form_submit_once: false
   form_exception_message: ''
   form_open_message: ''
@@ -197,12 +200,12 @@ handlers:
       html: true
       attachments: false
       twig: false
+      theme_name: ''
       debug: false
       reply_to: ''
       return_path: ''
       sender_mail: ''
       sender_name: ''
-      theme_name: ''
   email_notification:
     id: email
     label: 'Email notification'
@@ -231,12 +234,9 @@ handlers:
       html: true
       attachments: false
       twig: false
+      theme_name: ''
       debug: false
       reply_to: ''
       return_path: ''
       sender_mail: ''
       sender_name: ''
-      theme_name: ''
-uuid: 8b02068a-ded5-4381-a7b6-e18c63bd222b
-_core:
-  default_config_hash: 54q-eZLQ0xY3g9yFexLIn97Y8F_sByRhO4ima2pMmn4

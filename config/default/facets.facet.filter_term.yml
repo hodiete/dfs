@@ -1,0 +1,82 @@
+uuid: 202ab224-36f3-45ed-9610-069a4ba215e8
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: 5gMEXkxPmG-kICqi59RiEGuHJiIg5mibKvVVQZliEUA
+id: filter_term
+name: 'Filter Term'
+url_alias: filter_term
+weight: 0
+min_count: 1
+show_only_one_result: false
+field_identifier: field_webny_filter_terms
+facet_source_id: 'search_api:views_page__webny_search__webny_search_page'
+widget:
+  type: checkbox
+  config:
+    show_numbers: false
+    soft_limit: 0
+    soft_limit_settings:
+      show_less_label: 'Show less'
+      show_more_label: 'Show more'
+query_operator: and
+use_hierarchy: false
+expand_hierarchy: false
+enable_parent_when_child_gets_disabled: false
+hard_limit: 0
+exclude: false
+only_visible_when_facet_source_is_visible: false
+processor_configs:
+  count_limit:
+    processor_id: count_limit
+    weights:
+      build: -8
+    settings:
+      minimum_items: 1
+      maximum_items: null
+  exclude_specified_items:
+    processor_id: exclude_specified_items
+    weights:
+      build: -10
+    settings:
+      exclude: ''
+      regex: false
+  taxonomy_filter_arg:
+    processor_id: taxonomy_filter_arg
+    weights:
+      build: 5
+    settings:
+      views_filter_arg: '0'
+      term_vocab: webny_filter_terms_tax
+  taxonomy_levels:
+    processor_id: taxonomy_levels
+    weights:
+      build: 5
+    settings:
+      include_levels: '2'
+  term_weight_widget_order:
+    processor_id: term_weight_widget_order
+    weights:
+      sort: -10
+    settings:
+      sort: ASC
+  translate_entity:
+    processor_id: translate_entity
+    weights:
+      build: -7
+    settings: {  }
+  url_processor_handler:
+    processor_id: url_processor_handler
+    weights:
+      pre_query: -10
+      build: -9
+    settings: {  }
+  webny_taxonomy_filter_term:
+    processor_id: webny_taxonomy_filter_term
+    weights:
+      build: 5
+    settings:
+      term_vocab: webny_filter_terms_tax
+empty_behavior:
+  behavior: none
