@@ -3,20 +3,17 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.body
-    - field.storage.node.field_link_to_release
+    - field.storage.node.field_heading
     - field.storage.node.field_release_date_created
     - field.storage.node.field_title
     - node.type.press_release
   module:
-    - link
     - node
-    - text
     - user
 id: front_page_press_releases
 label: 'Front Page Press Releases'
 module: views
-description: 'BRIAN: Shows the two most recent PRESS RELEASE content nodes with links to the full versions and a link to all press releases.'
+description: 'Shows the two most recent PRESS RELEASE content nodes with links to the full versions and a link to all press releases.'
 tag: ''
 base_table: node_field_data
 base_field: nid
@@ -140,7 +137,7 @@ display:
           group_type: group
           admin_label: ''
           label: ''
-          exclude: false
+          exclude: true
           alter:
             alter_text: false
             text: ''
@@ -195,10 +192,10 @@ display:
           separator: ', '
           field_api_classes: false
           plugin_id: field
-        body:
-          id: body
-          table: node__body
-          field: body
+        field_heading:
+          id: field_heading
+          table: node__field_heading
+          field: field_heading
           relationship: none
           group_type: group
           admin_label: ''
@@ -221,32 +218,31 @@ display:
             suffix: ''
             target: ''
             nl2br: false
-            max_length: 0
+            max_length: 150
             word_boundary: true
             ellipsis: true
             more_link: false
             more_link_text: ''
             more_link_path: ''
             strip_tags: false
-            trim: false
+            trim: true
             preserve_tags: ''
             html: false
-          element_type: div
-          element_class: press-release-body
+          element_type: ''
+          element_class: ''
           element_label_type: ''
           element_label_class: ''
           element_label_colon: false
-          element_wrapper_type: ''
-          element_wrapper_class: ''
+          element_wrapper_type: div
+          element_wrapper_class: press-release-title
           element_default_classes: true
           empty: ''
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
           click_sort_column: value
-          type: text_trimmed
-          settings:
-            trim_length: 300
+          type: basic_string
+          settings: {  }
           group_column: value
           group_columns: {  }
           group_rows: true
@@ -258,10 +254,10 @@ display:
           separator: ', '
           field_api_classes: false
           plugin_id: field
-        field_link_to_release:
-          id: field_link_to_release
-          table: node__field_link_to_release
-          field: field_link_to_release
+        view_node:
+          id: view_node
+          table: node
+          field: view_node
           relationship: none
           group_type: group
           admin_label: ''
@@ -299,32 +295,18 @@ display:
           element_label_type: ''
           element_label_class: ''
           element_label_colon: false
-          element_wrapper_type: ''
+          element_wrapper_type: p
           element_wrapper_class: ''
           element_default_classes: true
           empty: ''
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
-          click_sort_column: uri
-          type: link
-          settings:
-            trim_length: 80
-            url_only: false
-            url_plain: false
-            rel: '0'
-            target: '0'
-          group_column: ''
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-          plugin_id: field
+          text: 'READ MORE'
+          output_url_as_text: false
+          absolute: false
+          entity_type: node
+          plugin_id: entity_link
       filters:
         status:
           value: '1'
@@ -347,21 +329,18 @@ display:
           entity_field: type
           plugin_id: bundle
       sorts:
-        created:
-          id: created
-          table: node_field_data
-          field: created
-          order: DESC
-          entity_type: node
-          entity_field: created
-          plugin_id: date
+        field_release_date_created_value:
+          id: field_release_date_created_value
+          table: node__field_release_date_created
+          field: field_release_date_created_value
           relationship: none
           group_type: group
           admin_label: ''
+          order: DESC
           exposed: false
           expose:
             label: ''
-          granularity: second
+          plugin_id: standard
       title: 'Press Releases'
       header: {  }
       footer:
@@ -375,7 +354,7 @@ display:
           empty: false
           tokenize: false
           content:
-            value: "<div class=\"front-page-press-centering-div\">\n<div class=\"icon-link\"><a href=\"/node/1\">VIEW ALL PRESS RELEASES</a></div>\n</div>"
+            value: "<div class=\"front-page-press-centering-div\">\n<div class=\"icon-link\"><a href=\"/reports_and_publications/press_releases\">VIEW ALL PRESS RELEASES</a></div>\n</div>"
             format: full_html
           plugin_id: text
       empty: {  }
@@ -390,8 +369,7 @@ display:
         - 'user.node_grants:view'
         - user.permissions
       tags:
-        - 'config:field.storage.node.body'
-        - 'config:field.storage.node.field_link_to_release'
+        - 'config:field.storage.node.field_heading'
         - 'config:field.storage.node.field_release_date_created'
         - 'config:field.storage.node.field_title'
   block_1:
@@ -409,7 +387,6 @@ display:
         - 'user.node_grants:view'
         - user.permissions
       tags:
-        - 'config:field.storage.node.body'
-        - 'config:field.storage.node.field_link_to_release'
+        - 'config:field.storage.node.field_heading'
         - 'config:field.storage.node.field_release_date_created'
         - 'config:field.storage.node.field_title'

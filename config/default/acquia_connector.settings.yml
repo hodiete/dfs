@@ -21,7 +21,7 @@ spi:
   module_diff_data: 1
   use_cron: 1
   dynamic_banner: 0
-  set_variables_override: 0
+  set_variables_override: 1
   set_variables_automatic:
     - acquia_spi_set_variables_automatic
     - error_level
@@ -43,10 +43,10 @@ spi:
     time: 0
   cron_interval: 28800
   site_name: nydfs
-  site_machine_name: ed090f77_3551_4a57_ab7a_2a556df41593__nydfsdev__5bbeae0c2cf61
+  site_machine_name: ed090f77_3551_4a57_ab7a_2a556df41593__nydfsdev__5c07ff4c8a67b
   env_detection_enabled: true
   site_uuid: c9aca180-89d3-4363-89db-51167f68ef48
-  site_environment: null
+  site_environment: dev
 mapping:
   acquia_spi_send_node_user:
     - acquia_connector.settings
@@ -211,4 +211,10 @@ subscription_data:
       -
         balancer: useast1-c26.acquia-search.com
         core_id: EHJU-176215
+      -
+        balancer: useast1-c26.acquia-search.com
+        core_id: EHJU-176215.dev.default
+      -
+        balancer: useast1-c26.acquia-search.com
+        core_id: EHJU-176215.test.default
     search_service_colony: useast1-c26.acquia-search.com

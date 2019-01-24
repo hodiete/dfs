@@ -11,12 +11,12 @@ dependencies:
 id: bankingsavingsendingborrowingmoney
 theme: dfs_ny
 region: content
-weight: -22
+weight: -32
 provider: null
 plugin: 'system_menu_block:banki'
 settings:
   id: 'system_menu_block:banki'
-  label: 'Banking, Saving, Sending, & Borrowing Money'
+  label: 'Banking, Sending & Borrowing Money'
   provider: system
   label_display: visible
   level: 1
@@ -24,6 +24,6 @@ settings:
 visibility:
   request_path:
     id: request_path
-    pages: "/consumers/banking_saving_sending_borrowing_money\r\n/consumers/banking_saving_sending_borrowing_money/*"
+    pages: "/consumers/banking_money*\r\n/consumers/banking_saving_sending_borrowing_money/*"
     negate: false
     context_mapping: {  }
