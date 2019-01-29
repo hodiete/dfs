@@ -1,0 +1,22 @@
+uuid: 0ab50bdc-ba60-4846-9498-eaaed4ce164c
+langcode: en
+status: true
+dependencies:
+  module:
+    - webny_secondary_nav
+  theme:
+    - dfs_ny
+_core:
+  default_config_hash: 7p4kX9l73FBzW7A9IQ-buCb_Vrb__Oqnb17J2AxT4nU
+id: webnysecondarynavigationblock
+theme: dfs_ny
+region: header
+weight: 2
+provider: null
+plugin: webny_secondary_nav_block
+settings:
+  id: webny_secondary_nav_block
+  label: 'Secondary Navigation Block'
+  provider: webny_secondary_nav
+  label_display: '0'
+visibility: {  }

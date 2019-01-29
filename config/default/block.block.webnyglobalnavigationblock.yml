@@ -1,4 +1,4 @@
-uuid: 831ff6e0-1020-4d7b-9c6a-4d0f7707666d
+uuid: 0c42ec6f-9e55-4efb-a9b7-abeef622e70d
 langcode: en
 status: true
 dependencies:
@@ -6,15 +6,17 @@ dependencies:
     - webny_global_nav
   theme:
     - dfs_ny
+_core:
+  default_config_hash: pJQ73gqoR5fcVn3KDdBMKMilDKAa5_fwu3N30nDWKyo
 id: webnyglobalnavigationblock
 theme: dfs_ny
 region: header
-weight: -11
+weight: 1
 provider: null
 plugin: webny_global_nav_block
 settings:
   id: webny_global_nav_block
-  label: 'Department of Financial Services '
+  label: 'Global Navigation Block'
   provider: webny_global_nav
-  label_display: visible
+  label_display: '0'
 visibility: {  }
