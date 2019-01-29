@@ -10,7 +10,7 @@ $config['search_api.index.acquia_search_index']['read_only'] = TRUE;
 $config['search_api.index.acquia_search_index']['status'] = FALSE;
 
 // Use local search server on local vm environment.
-if ($is_local_env && !$_ENV['PIPELINE_ENV']) {
+if ($is_local_env && !isset($_ENV['PIPELINE_ENV'])) {
   $config['search_api.server.acquia_search_server']['status'] = FALSE;
   $config['search_api.server.local_webny']['status'] = TRUE;
 
