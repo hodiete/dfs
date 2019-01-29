@@ -1,18 +1,19 @@
 project:
-  machine_name: nydfs
+  machine_name: dfs
   prefix: NDD
-  human_name: 'New York State Department of Financial Services'
+  human_name: "New York State Department of Financial Services"
   profile:
     name: webny
     contrib: false
   local:
     protocol: http
-    hostname: '${project.machine_name}.local'
-  acquia_subname: acsfdev
+    hostname: "${project.machine_name}.loc"
+cm:
+  uuid: 'c048f911-62ea-43ab-bca1-121d057c9295'
 git:
   default_branch: develop
   remotes:
-    - 'nydfs@svn-29892.prod.hosting.acquia.com:nydfs.git'
+    - "nydfs@svn-29892.prod.hosting.acquia.com:nydfs.git"
 drush:
   aliases:
     remote: 01dev.dev
@@ -22,13 +23,13 @@ drush:
     remote-uat-prod: 01live.uat
     remote-ig-prod: 01live.ig
     remote-wcb-prod: 01live.wcb
-  default_alias: '${drush.aliases.local}'
+  default_alias: "${drush.aliases.local}"
 modules:
   local:
     enable: [dblog, devel, views_ui]
     uninstall: [acsf, big_pipe, seckit, shield]
   ci:
-    enable: {  }
+    enable: {}
     uninstall: [acquia_connector, shield, big_pipe]
   dev:
     enable: [acquia_connector, seckit, shield]
@@ -45,28 +46,28 @@ modules:
     uninstall: [devel, field_ui, views_ui]
 target-hooks:
   frontend-setup:
-    dir: '${docroot}/profiles/custom/webny/themes/custom/dfs_ny'
-    command: 'npm install && npm rebuild node-sass'
+    dir: "${docroot}/profiles/custom/webny/themes/custom/dfs_ny"
+    command: "npm install && npm rebuild node-sass"
   frontend-build:
-    dir: '${docroot}/profiles/custom/webny/themes/custom/dfs_ny'
-    command: 'npm run build'
+    dir: "${docroot}/profiles/custom/webny/themes/custom/dfs_ny"
+    command: "npm run build"
   post-deploy-build:
-    dir: '${docroot}'
-    command: 'echo ''No post-deploy build configured.'''
+    dir: "${docroot}"
+    command: "echo 'No post-deploy build configured.'"
   post-setup-build:
-    dir: '${docroot}'
-    command: 'echo ''No post-setup build configured.'''
+    dir: "${docroot}"
+    command: "echo 'No post-setup build configured.'"
 cm:
-  allow-overrides: 'true'
+  allow-overrides: "true"
   features:
     bundle:
       webny: webny
     # A core feature is overridden, so set this to false.
-    no-overrides: 'false'
+    no-overrides: "false"
   strategy: features
 blt:
   update:
-    ignore-existing-file: '${repo.root}/scripts/blt/ignore-existing.txt'
+    ignore-existing-file: "${repo.root}/scripts/blt/ignore-existing.txt"
 phpunit:
   failures: false
 disable-targets:
@@ -76,7 +77,7 @@ disable-targets:
     security-updates: true
 behat:
   paths:
-    - '${repo.root}/tests/behat'
+    - "${repo.root}/tests/behat"
   tags: ~@development
   web-driver: selenium
 setup:
