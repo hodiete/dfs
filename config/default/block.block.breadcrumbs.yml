@@ -1,0 +1,25 @@
+uuid: c7c18eca-f8d8-49f7-8382-278c50b1eb05
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - dfs_ny
+id: breadcrumbs
+theme: dfs_ny
+region: content
+weight: -31
+provider: null
+plugin: system_breadcrumb_block
+settings:
+  id: system_breadcrumb_block
+  label: Breadcrumbs
+  provider: system
+  label_display: '0'
+visibility:
+  request_path:
+    id: request_path
+    pages: '/consumers/*'
+    negate: false
+    context_mapping: {  }

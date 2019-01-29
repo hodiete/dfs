@@ -1,0 +1,23 @@
+uuid: 35e15fd7-2e36-4ff0-9ced-1ffe8034e025
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_procurement_number
+    - node.type.current_opportunities
+  module:
+    - link
+id: node.current_opportunities.field_procurement_number
+field_name: field_procurement_number
+entity_type: node
+bundle: current_opportunities
+label: 'Procurement Number'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 17
+  title: 1
+field_type: link

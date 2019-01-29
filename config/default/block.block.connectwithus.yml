@@ -1,0 +1,24 @@
+uuid: b0f07270-87e5-4041-a1c5-f17b5be37a8d
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.connect-with-us
+  module:
+    - system
+  theme:
+    - dfs_ny
+id: connectwithus
+theme: dfs_ny
+region: footer
+weight: -30
+provider: null
+plugin: 'system_menu_block:connect-with-us'
+settings:
+  id: 'system_menu_block:connect-with-us'
+  label: 'Connect With Us'
+  provider: system
+  label_display: visible
+  level: 1
+  depth: 0
+visibility: {  }

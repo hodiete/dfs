@@ -1,0 +1,29 @@
+uuid: 67e5fbe6-94af-41ce-a143-da307939ad65
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.consumer-health-insurance
+  module:
+    - system
+  theme:
+    - dfs_ny
+id: consumerhealthinsurance
+theme: dfs_ny
+region: content
+weight: -18
+provider: null
+plugin: 'system_menu_block:consumer-health-insurance'
+settings:
+  id: 'system_menu_block:consumer-health-insurance'
+  label: 'Health Insurance'
+  provider: system
+  label_display: visible
+  level: 1
+  depth: 0
+visibility:
+  request_path:
+    id: request_path
+    pages: "/consumers/health_insurance\r\n/consumers/health_insurance/*\r\n/consumer/medplan/*"
+    negate: false
+    context_mapping: {  }

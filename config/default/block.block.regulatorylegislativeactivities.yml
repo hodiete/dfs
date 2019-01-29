@@ -1,0 +1,29 @@
+uuid: 83374476-753f-4909-8a8e-e22c1c18ec49
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.regulatory-legislative-acti
+  module:
+    - system
+  theme:
+    - dfs_ny
+id: regulatorylegislativeactivities
+theme: dfs_ny
+region: content
+weight: 8
+provider: null
+plugin: 'system_menu_block:regulatory-legislative-acti'
+settings:
+  id: 'system_menu_block:regulatory-legislative-acti'
+  label: 'Regulatory & Legislative Activities'
+  provider: system
+  label_display: visible
+  level: 1
+  depth: 0
+visibility:
+  request_path:
+    id: request_path
+    pages: "/industry_guidence/regulatory_and_legislative_activities\r\n/industry_guidence/regulatory_and_legislative_activities/*"
+    negate: false
+    context_mapping: {  }

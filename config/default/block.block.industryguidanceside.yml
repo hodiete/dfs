@@ -1,0 +1,29 @@
+uuid: a6173f39-5ea1-476f-941b-ff514aba2940
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.industry-guidance
+  module:
+    - system
+  theme:
+    - dfs_ny
+id: industryguidanceside
+theme: dfs_ny
+region: content
+weight: -2
+provider: null
+plugin: 'system_menu_block:industry-guidance'
+settings:
+  id: 'system_menu_block:industry-guidance'
+  label: 'Industry Guidance'
+  provider: system
+  label_display: visible
+  level: 1
+  depth: 0
+visibility:
+  request_path:
+    id: request_path
+    pages: "/industry_guidance/*\r\n/legal/industry/*\r\n/legal/regulations/emergency/*\r\n/legal/regulations/adoptions/*\r\n/legal/regulations/proposed/*\r\n/insurance/ogco*\r\n/insurance/circltr*"
+    negate: false
+    context_mapping: {  }

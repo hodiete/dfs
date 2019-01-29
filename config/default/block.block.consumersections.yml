@@ -1,0 +1,29 @@
+uuid: 4481d6ff-2544-4ada-b5de-acf9d398018a
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.consumer-sections
+  module:
+    - system
+  theme:
+    - dfs_ny
+id: consumersections
+theme: dfs_ny
+region: content
+weight: -27
+provider: null
+plugin: 'system_menu_block:consumer-sections'
+settings:
+  id: 'system_menu_block:consumer-sections'
+  label: 'Consumer Sections'
+  provider: system
+  label_display: visible
+  level: 1
+  depth: 0
+visibility:
+  request_path:
+    id: request_path
+    pages: '/faqs/consumer_faqs/*'
+    negate: false
+    context_mapping: {  }

@@ -1,0 +1,25 @@
+uuid: 9b34b5a7-e155-4424-baa5-290c3a141d73
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser_dfs_page
+    - field.field.node.dfs_page.body
+    - field.field.node.dfs_page.field_dfs_page_structure
+    - node.type.dfs_page
+  module:
+    - user
+id: node.dfs_page.teaser_dfs_page
+targetEntityType: node
+bundle: dfs_page
+mode: teaser_dfs_page
+content:
+  links:
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  body: true
+  field_dfs_page_structure: true
+  langcode: true

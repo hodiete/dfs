@@ -1,0 +1,21 @@
+uuid: 8d57fad4-b0eb-4865-b6bc-0b9be5f5eef0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_release_date_created
+    - node.type.press_release
+id: node.press_release.field_release_date_created
+field_name: field_release_date_created
+entity_type: node
+bundle: press_release
+label: 'Release Date'
+description: 'Auto generates the time created, don''t edit this.'
+required: true
+translatable: false
+default_value:
+  -
+    value: 1546898602
+default_value_callback: ''
+settings: {  }
+field_type: timestamp

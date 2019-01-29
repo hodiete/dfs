@@ -1,0 +1,31 @@
+uuid: 2df945a2-2733-4ee7-904e-9a701416d96a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_hearing_event
+    - node.type.public_hearing_event
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    basic_html: '0'
+    webny_enhanced_wysiwyg: '0'
+    webny_wysiwyg_frame_editor: '0'
+    full_html: '0'
+    restricted_html: '0'
+    rich_text: '0'
+    plain_text: '0'
+id: node.public_hearing_event.field_hearing_event
+field_name: field_hearing_event
+entity_type: node
+bundle: public_hearing_event
+label: 'Hearing Event'
+description: 'The name of the hearing event.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text

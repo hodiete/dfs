@@ -1,0 +1,30 @@
+uuid: 11bbb185-ef2b-4e4e-a1c6-235f59abf73e
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.automobile_insurance_faq_view
+  module:
+    - system
+    - views
+  theme:
+    - dfs_ny
+id: views_block__automobile_insurance_faq_view_block_1
+theme: dfs_ny
+region: content
+weight: -25
+provider: null
+plugin: 'views_block:automobile_insurance_faq_view-block_1'
+settings:
+  id: 'views_block:automobile_insurance_faq_view-block_1'
+  label: ''
+  provider: views
+  label_display: '0'
+  views_label: ''
+  items_per_page: '10'
+visibility:
+  request_path:
+    id: request_path
+    pages: /faqs/consumer_faqs/automobile
+    negate: false
+    context_mapping: {  }

@@ -1,0 +1,29 @@
+uuid: 5b251456-b28c-4f47-b127-1f0ae92a1a7e
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.consumer-holocaust-claims
+  module:
+    - system
+  theme:
+    - dfs_ny
+id: consumerholocaustclaims
+theme: dfs_ny
+region: content
+weight: -17
+provider: null
+plugin: 'system_menu_block:consumer-holocaust-claims'
+settings:
+  id: 'system_menu_block:consumer-holocaust-claims'
+  label: 'Holocaust Claims'
+  provider: system
+  label_display: visible
+  level: 1
+  depth: 0
+visibility:
+  request_path:
+    id: request_path
+    pages: "/consumers/holocaust_claims\r\n/consumers/holocaust_claims/*"
+    negate: false
+    context_mapping: {  }

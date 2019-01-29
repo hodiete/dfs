@@ -1,0 +1,29 @@
+uuid: 9ffbdc0d-7a47-4dc4-a405-c6bb0d936ec4
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.apps-lic-sales-finance-comp
+  module:
+    - system
+  theme:
+    - dfs_ny
+id: appslicsalesfinancecompanies
+theme: dfs_ny
+region: content
+weight: 9
+provider: null
+plugin: 'system_menu_block:apps-lic-sales-finance-comp'
+settings:
+  id: 'system_menu_block:apps-lic-sales-finance-comp'
+  label: 'Sales Finance Companies'
+  provider: system
+  label_display: visible
+  level: 1
+  depth: 0
+visibility:
+  request_path:
+    id: request_path
+    pages: "/apps_and_licensing/sales_finance_companies\r\n/apps_and_licensing/sales_finance_companies/*"
+    negate: false
+    context_mapping: {  }

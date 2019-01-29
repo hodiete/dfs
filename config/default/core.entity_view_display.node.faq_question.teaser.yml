@@ -1,0 +1,24 @@
+uuid: 82abd0a5-f535-44d2-9db3-d8c6e7c2d72e
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - node.type.faq_question
+  module:
+    - user
+id: node.faq_question.teaser
+targetEntityType: node
+bundle: faq_question
+mode: teaser
+content:
+  links:
+    weight: 100
+    region: content
+hidden:
+  field_answer: true
+  field_divider: true
+  field_question: true
+  field_question_subject: true
+  field_trigger: true
+  langcode: true

@@ -1,0 +1,30 @@
+uuid: 48a92a7a-96bd-47f2-86a6-7de32a44cc0f
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.icon_link_view
+  module:
+    - system
+    - views
+  theme:
+    - dfs_ny
+id: views_block__icon_link_view_block_1
+theme: dfs_ny
+region: content
+weight: -10
+provider: null
+plugin: 'views_block:icon_link_view-block_1'
+settings:
+  id: 'views_block:icon_link_view-block_1'
+  label: ''
+  provider: views
+  label_display: '0'
+  views_label: ''
+  items_per_page: none
+visibility:
+  request_path:
+    id: request_path
+    pages: /home
+    negate: false
+    context_mapping: {  }

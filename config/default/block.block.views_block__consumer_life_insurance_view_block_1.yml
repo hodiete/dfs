@@ -1,0 +1,30 @@
+uuid: 6ed8d291-4624-4f97-858a-4c094984c4fa
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.consumer_life_insurance_view
+  module:
+    - system
+    - views
+  theme:
+    - dfs_ny
+id: views_block__consumer_life_insurance_view_block_1
+theme: dfs_ny
+region: content
+weight: -26
+provider: null
+plugin: 'views_block:consumer_life_insurance_view-block_1'
+settings:
+  id: 'views_block:consumer_life_insurance_view-block_1'
+  label: ''
+  provider: views
+  label_display: '0'
+  views_label: ''
+  items_per_page: '10'
+visibility:
+  request_path:
+    id: request_path
+    pages: /node/16
+    negate: false
+    context_mapping: {  }

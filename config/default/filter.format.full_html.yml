@@ -1,4 +1,4 @@
-uuid: c4387cae-bb4d-432c-bd8e-d31b6fef45e5
+uuid: f2f919a7-a1a3-470d-9864-aab1ad725016
 langcode: en
 status: true
 dependencies:
@@ -29,12 +29,6 @@ filters:
     status: true
     weight: 0
     settings: {  }
-  filter_htmlcorrector:
-    id: filter_htmlcorrector
-    provider: filter
-    status: true
-    weight: 10
-    settings: {  }
   filter_html:
     id: filter_html
     provider: filter
@@ -49,4 +43,10 @@ filters:
     provider: entity_embed
     status: true
     weight: 0
+    settings: {  }
+  filter_htmlcorrector:
+    id: filter_htmlcorrector
+    provider: filter
+    status: true
+    weight: 10
     settings: {  }

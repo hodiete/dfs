@@ -1,0 +1,30 @@
+uuid: bfb164ee-0e5b-4001-91a0-b1e5b5881afe
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.public_hearings
+  module:
+    - system
+    - views
+  theme:
+    - dfs_ny
+id: views_block__public_hearings_block_1
+theme: dfs_ny
+region: content
+weight: 0
+provider: null
+plugin: 'views_block:public_hearings-block_1'
+settings:
+  id: 'views_block:public_hearings-block_1'
+  label: ''
+  provider: views
+  label_display: visible
+  views_label: ''
+  items_per_page: none
+visibility:
+  request_path:
+    id: request_path
+    pages: /public_hearings
+    negate: false
+    context_mapping: {  }

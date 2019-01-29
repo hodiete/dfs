@@ -1,0 +1,29 @@
+uuid: aff01cd5-80ee-4083-b4e0-ab29251c7c1f
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.consumer-small-business
+  module:
+    - system
+  theme:
+    - dfs_ny
+id: consumersmallbusiness
+theme: dfs_ny
+region: content
+weight: -14
+provider: null
+plugin: 'system_menu_block:consumer-small-business'
+settings:
+  id: 'system_menu_block:consumer-small-business'
+  label: 'Small Businesses'
+  provider: system
+  label_display: visible
+  level: 1
+  depth: 0
+visibility:
+  request_path:
+    id: request_path
+    pages: "/consumers/small_businesses\r\n/consumers/small_businesses/*\r\n/healthyny/rates/*"
+    negate: false
+    context_mapping: {  }

@@ -1,0 +1,30 @@
+uuid: d9ba62e1-a9a6-4676-bf49-4d5ca65d9e78
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.industry_property_and_casualty_faq_view
+  module:
+    - system
+    - views
+  theme:
+    - dfs_ny
+id: views_block__industry_property_and_casualty_faq_view_block_1
+theme: dfs_ny
+region: content
+weight: 17
+provider: null
+plugin: 'views_block:industry_property_and_casualty_faq_view-block_1'
+settings:
+  id: 'views_block:industry_property_and_casualty_faq_view-block_1'
+  label: ''
+  provider: views
+  label_display: '0'
+  views_label: ''
+  items_per_page: '10'
+visibility:
+  request_path:
+    id: request_path
+    pages: /faqs/industry_faqs/property_casualty
+    negate: false
+    context_mapping: {  }

@@ -1,0 +1,47 @@
+uuid: b5a8075c-62d1-4d9f-af77-80ec62552525
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.dfs_document.body
+    - field.field.node.dfs_document.field_dfs_file_upload
+    - field.field.node.dfs_document.field_webny_agency_keywords
+    - field.field.node.dfs_document.field_webny_document_cateogry
+    - field.field.node.dfs_document.field_webny_document_ext_link
+    - field.field.node.dfs_document.field_webny_document_subtitle
+    - node.type.dfs_document
+  module:
+    - smart_trim
+    - user
+id: node.dfs_document.teaser
+targetEntityType: node
+bundle: dfs_document
+mode: teaser
+content:
+  body:
+    label: hidden
+    type: smart_trim
+    weight: 0
+    settings:
+      trim_length: 600
+      trim_type: chars
+      trim_suffix: ''
+      wrap_output: false
+      wrap_class: trimmed
+      more_link: false
+      more_class: more-link
+      more_text: More
+      summary_handler: full
+      trim_options: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  field_dfs_file_upload: true
+  field_webny_agency_keywords: true
+  field_webny_document_cateogry: true
+  field_webny_document_ext_link: true
+  field_webny_document_subtitle: true
+  langcode: true
+  links: true
+  workbench_moderation_control: true

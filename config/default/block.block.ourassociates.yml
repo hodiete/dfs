@@ -1,0 +1,24 @@
+uuid: 449c1133-57b2-4794-bac7-dd9dc05d5264
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.our-associates
+  module:
+    - system
+  theme:
+    - dfs_ny
+id: ourassociates
+theme: dfs_ny
+region: footer
+weight: -33
+provider: null
+plugin: 'system_menu_block:our-associates'
+settings:
+  id: 'system_menu_block:our-associates'
+  label: 'State Laws & Regulations'
+  provider: system
+  label_display: visible
+  level: 1
+  depth: 0
+visibility: {  }

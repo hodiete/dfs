@@ -1,4 +1,4 @@
-uuid: 99453d37-1372-4119-9ed9-bb5cb7d02576
+uuid: 496399d1-a3a4-45f3-ab8b-ad78e66d265f
 langcode: en
 status: true
 dependencies:
@@ -9,24 +9,25 @@ _core:
   default_config_hash: d9CbSbvuIrzI8VmwIOxmFwFTWQsXaoAup52rn827ohU
 id: acquia_search_server
 name: 'Acquia Search API Solr server'
-description: ''
+description: 'The default Acquia Solr Search Server'
 backend: search_api_solr
 backend_config:
-  site_hash: true
-  excerpt: false
-  retrieve_data: true
-  highlight_data: true
-  skip_schema_check: false
   connector: solr_acquia_connector
   connector_config:
-    scheme: http
-    timeout: 5
-    index_timeout: 10
-    optimize_timeout: 15
+    scheme: https
+    timeout: '5'
+    index_timeout: '10'
+    optimize_timeout: '15'
+    commit_within: '1000'
     solr_version: ''
     http_method: AUTO
+  retrieve_data: false
+  highlight_data: false
+  excerpt: false
+  skip_schema_check: false
+  site_hash: true
   suggest_suffix: true
   suggest_corrections: true
   suggest_words: false
-  acquia_search_possible_cores: {  }
-  overridden_by_acquia_search: 2
+  acquia_search_possible_cores:
+    - EHJU-176215.dev.default

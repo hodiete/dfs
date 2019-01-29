@@ -1,0 +1,29 @@
+uuid: bcf9d6c7-f33a-492f-a422-e24a12ea5fe8
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.apps-lic-virtual-currency-b
+  module:
+    - system
+  theme:
+    - dfs_ny
+id: appslicvirtualcurrencybusinesses
+theme: dfs_ny
+region: content
+weight: 13
+provider: null
+plugin: 'system_menu_block:apps-lic-virtual-currency-b'
+settings:
+  id: 'system_menu_block:apps-lic-virtual-currency-b'
+  label: 'Virtual Currency Businesses'
+  provider: system
+  label_display: visible
+  level: 1
+  depth: 0
+visibility:
+  request_path:
+    id: request_path
+    pages: "/apps_and_licensing/virtual_currency_businesses\r\n/apps_and_licensing/virtual_currency_businesses/*"
+    negate: false
+    context_mapping: {  }

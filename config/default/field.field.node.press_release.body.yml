@@ -1,0 +1,32 @@
+uuid: 9d01d724-ed02-4bdd-9892-2ef5c4183953
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.press_release
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    webny_enhanced_wysiwyg: webny_enhanced_wysiwyg
+    full_html: full_html
+    plain_text: plain_text
+    basic_html: '0'
+    webny_wysiwyg_frame_editor: '0'
+    restricted_html: '0'
+    rich_text: '0'
+id: node.press_release.body
+field_name: body
+entity_type: node
+bundle: press_release
+label: Body
+description: 'The text for the press release, clipped down if it''s too long.'
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: false
+field_type: text_with_summary

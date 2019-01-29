@@ -1,0 +1,20 @@
+uuid: da9774d6-8432-487c-9fb8-2d264c620d14
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - taxonomy
+id: node.field_dfs_page_structure
+field_name: field_dfs_page_structure
+entity_type: node
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

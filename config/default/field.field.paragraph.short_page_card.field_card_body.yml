@@ -1,0 +1,31 @@
+uuid: 37f0e133-257a-438d-8943-1e43d9d7a2b6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_card_body
+    - paragraphs.paragraphs_type.short_page_card
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    basic_html: basic_html
+    full_html: full_html
+    webny_enhanced_wysiwyg: '0'
+    webny_wysiwyg_frame_editor: '0'
+    restricted_html: '0'
+    rich_text: '0'
+    plain_text: '0'
+id: paragraph.short_page_card.field_card_body
+field_name: field_card_body
+entity_type: paragraph
+bundle: short_page_card
+label: Body
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

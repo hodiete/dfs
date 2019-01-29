@@ -1,0 +1,24 @@
+uuid: b62610cf-00bf-4f6c-aaf3-b24b209c5ffd
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.language-assistance
+  module:
+    - system
+  theme:
+    - dfs_ny
+id: languageassistance
+theme: dfs_ny
+region: footer
+weight: -31
+provider: null
+plugin: 'system_menu_block:language-assistance'
+settings:
+  id: 'system_menu_block:language-assistance'
+  label: 'Translate Page'
+  provider: system
+  label_display: visible
+  level: 1
+  depth: 0
+visibility: {  }

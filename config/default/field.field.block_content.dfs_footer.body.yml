@@ -1,0 +1,32 @@
+uuid: e7a6f701-29fa-4985-88b5-acd5b30110f7
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.dfs_footer
+    - field.storage.block_content.body
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    webny_enhanced_wysiwyg: webny_enhanced_wysiwyg
+    full_html: full_html
+    basic_html: '0'
+    webny_wysiwyg_frame_editor: '0'
+    restricted_html: '0'
+    rich_text: '0'
+    plain_text: '0'
+id: block_content.dfs_footer.body
+field_name: body
+entity_type: block_content
+bundle: dfs_footer
+label: Body
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: false
+field_type: text_with_summary

@@ -1,0 +1,28 @@
+uuid: 85097b16-267d-4f43-9db3-c804620279fa
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_see_all_alerts
+    - node.type.consumer_alert
+  module:
+    - link
+id: node.consumer_alert.field_see_all_alerts
+field_name: field_see_all_alerts
+entity_type: node
+bundle: consumer_alert
+label: 'see all alerts'
+description: 'Links to all consumer alerts and created the white box for the link.  Don''t add your own text, use the default.'
+required: true
+translatable: false
+default_value:
+  -
+    attributes: {  }
+    uri: 'internal:/consumers/alerts/main'
+    title: 'SEE ALL ALERTS'
+    options: {  }
+default_value_callback: ''
+settings:
+  link_type: 17
+  title: 1
+field_type: link

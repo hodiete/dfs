@@ -1,0 +1,49 @@
+uuid: 6a0834fb-c575-4ca3-a38f-8d553efa1069
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.complaint_content
+    - field.field.block_content.complaint_content.body
+    - field.field.block_content.complaint_content.field_complaint_body
+  module:
+    - text
+    - workbench_moderation
+id: block_content.complaint_content.default
+targetEntityType: block_content
+bundle: complaint_content
+mode: default
+content:
+  body:
+    type: text_textarea_with_summary
+    weight: 26
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
+    third_party_settings: {  }
+    region: content
+  field_complaint_body:
+    weight: 27
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  info:
+    type: string_textfield
+    weight: -5
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  langcode:
+    type: language_select
+    weight: 2
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+hidden: {  }

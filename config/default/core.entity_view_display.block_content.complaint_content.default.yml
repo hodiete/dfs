@@ -1,0 +1,31 @@
+uuid: d482d789-0fa8-4242-aaa9-667051202326
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.complaint_content
+    - field.field.block_content.complaint_content.body
+    - field.field.block_content.complaint_content.field_complaint_body
+  module:
+    - text
+id: block_content.complaint_content.default
+targetEntityType: block_content
+bundle: complaint_content
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_complaint_body:
+    weight: 1
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+hidden:
+  langcode: true

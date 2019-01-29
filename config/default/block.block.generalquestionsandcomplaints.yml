@@ -1,0 +1,31 @@
+uuid: 93fef5c7-e8cd-4e42-a133-81e6d122216d
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:dfs_footer:b1e489d0-e807-4f1b-94e1-1df2f777d69d'
+  module:
+    - block_content
+    - system
+  theme:
+    - dfs_ny
+id: generalquestionsandcomplaints
+theme: dfs_ny
+region: after_content
+weight: -34
+provider: null
+plugin: 'block_content:b1e489d0-e807-4f1b-94e1-1df2f777d69d'
+settings:
+  id: 'block_content:b1e489d0-e807-4f1b-94e1-1df2f777d69d'
+  label: 'General Questions and Complaints'
+  provider: block_content
+  label_display: visible
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: /consumers
+    negate: false
+    context_mapping: {  }
