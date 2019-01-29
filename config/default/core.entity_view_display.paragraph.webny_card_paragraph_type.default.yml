@@ -1,0 +1,57 @@
+uuid: 3dcba7e1-0ad6-4228-9fe6-1143414ced75
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.webny_card_paragraph_type.field_webny_card_cta_1
+    - field.field.paragraph.webny_card_paragraph_type.field_webny_card_cta_2
+    - field.field.paragraph.webny_card_paragraph_type.field_webny_card_cta_3
+    - field.field.paragraph.webny_card_paragraph_type.field_webny_card_entity_ref
+    - field.field.paragraph.webny_card_paragraph_type.field_webny_card_list_1
+    - field.field.paragraph.webny_card_paragraph_type.field_webny_card_list_2
+    - field.field.paragraph.webny_card_paragraph_type.field_webny_card_list_3
+    - field.field.paragraph.webny_card_paragraph_type.field_webny_card_pg_headline
+    - field.field.paragraph.webny_card_paragraph_type.field_webny_card_pg_title
+    - paragraphs.paragraphs_type.webny_card_paragraph_type
+_core:
+  default_config_hash: od3oFXn_zZPBF5QsQ20TXXSpauD-NkKgzeGZcqB3eP8
+id: paragraph.webny_card_paragraph_type.default
+targetEntityType: paragraph
+bundle: webny_card_paragraph_type
+mode: default
+content:
+  field_webny_card_entity_ref:
+    weight: 2
+    label: hidden
+    settings:
+      view_mode: webny_featured_card
+      link: false
+    third_party_settings: {  }
+    type: entity_reference_entity_view
+    region: content
+  field_webny_card_pg_headline:
+    weight: 1
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_webny_card_pg_title:
+    weight: 0
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden:
+  created: true
+  field_webny_card_cta_1: true
+  field_webny_card_cta_2: true
+  field_webny_card_cta_3: true
+  field_webny_card_list_1: true
+  field_webny_card_list_2: true
+  field_webny_card_list_3: true
+  uid: true
+  workbench_moderation_control: true

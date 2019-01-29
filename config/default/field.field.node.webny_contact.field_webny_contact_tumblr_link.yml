@@ -1,0 +1,25 @@
+uuid: 8209b312-aa2b-4e60-9b57-3f66f8601363
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_webny_contact_tumblr_link
+    - node.type.webny_contact
+  module:
+    - link
+_core:
+  default_config_hash: aA2Bc76K2XvlR_H1mmNpOP6LIQDt7l9WrWCTIAeeNS4
+id: node.webny_contact.field_webny_contact_tumblr_link
+field_name: field_webny_contact_tumblr_link
+entity_type: node
+bundle: webny_contact
+label: 'Tumblr Link'
+description: 'Please enter the link to the Tumblr account of the contact.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 16
+  title: 0
+field_type: link

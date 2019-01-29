@@ -1,0 +1,31 @@
+uuid: 1121326c-0f73-4dbf-9d5c-3c4a6587f3fc
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.complaint_content
+    - field.storage.block_content.field_complaint_body
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    basic_html: '0'
+    webny_enhanced_wysiwyg: '0'
+    webny_wysiwyg_frame_editor: '0'
+    full_html: '0'
+    restricted_html: '0'
+    rich_text: '0'
+    plain_text: '0'
+id: block_content.complaint_content.field_complaint_body
+field_name: field_complaint_body
+entity_type: block_content
+bundle: complaint_content
+label: 'Complaint Body'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

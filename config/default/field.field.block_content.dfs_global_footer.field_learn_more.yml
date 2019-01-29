@@ -1,0 +1,23 @@
+uuid: e36f9002-e9bc-4e4e-b7d3-05dacc790ce7
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.dfs_global_footer
+    - field.storage.block_content.field_learn_more
+  module:
+    - link
+id: block_content.dfs_global_footer.field_learn_more
+field_name: field_learn_more
+entity_type: block_content
+bundle: dfs_global_footer
+label: 'learn more'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 17
+  title: 1
+field_type: link

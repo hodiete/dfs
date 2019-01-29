@@ -1,0 +1,23 @@
+uuid: 93ced73f-2628-440f-8008-83f262d7de83
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_webny_document_language
+    - node.type.webny_document
+  module:
+    - options
+_core:
+  default_config_hash: AneyGaFti1UNjDisy1Kz0xtosF9ylWN9NjIF4ikfztg
+id: node.webny_document.field_webny_document_language
+field_name: field_webny_document_language
+entity_type: node
+bundle: webny_document
+label: Language
+description: 'This is to indicate the file is a translation. Select the language of the file if it''s not English. This will display in the translated version of the language you select.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

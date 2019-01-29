@@ -1,0 +1,39 @@
+uuid: 700ee919-b815-491b-8e74-a9bb7ef365c5
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:dfs_footer:b1e489d0-e807-4f1b-94e1-1df2f777d69d'
+  module:
+    - block_content
+    - ctools
+    - system
+  theme:
+    - dfs_ny
+id: consumerquestionsandcomplaints
+theme: dfs_ny
+region: after_content
+weight: 0
+provider: null
+plugin: 'block_content:b1e489d0-e807-4f1b-94e1-1df2f777d69d'
+settings:
+  id: 'block_content:b1e489d0-e807-4f1b-94e1-1df2f777d69d'
+  label: 'Consumer Questions and Complaints'
+  provider: block_content
+  label_display: visible
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    bundles:
+      webny_page: webny_page
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
+  request_path:
+    id: request_path
+    pages: "/consumers/auto_insurance*\r\n/consumers/banking_sending_borrowing_money*\r\n/consumers/health_insurance*\r\n/consumers/help_for_homeowners*\r\n/consumers/life_insurance*\r\n/consumers/scams_schemes_frauds*\r\n/consumers/small_businesses*\r\n/consumers/student_protection*"
+    negate: false
+    context_mapping: {  }

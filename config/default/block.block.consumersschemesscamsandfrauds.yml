@@ -1,0 +1,29 @@
+uuid: e8111e64-441b-4d9c-b1e8-9d2e8d4beeb6
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.consumers-schemes-scams-fra
+  module:
+    - system
+  theme:
+    - dfs_ny
+id: consumersschemesscamsandfrauds
+theme: dfs_ny
+region: content
+weight: 11
+provider: null
+plugin: 'system_menu_block:consumers-schemes-scams-fra'
+settings:
+  id: 'system_menu_block:consumers-schemes-scams-fra'
+  label: 'Schemes Scams and Frauds'
+  provider: system
+  label_display: visible
+  level: 1
+  depth: 0
+visibility:
+  request_path:
+    id: request_path
+    pages: "/consumers/scams_schemes_frauds\r\n/consumers/scams_schemes_frauds/*"
+    negate: false
+    context_mapping: {  }

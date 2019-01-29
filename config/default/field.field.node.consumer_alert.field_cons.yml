@@ -1,0 +1,34 @@
+uuid: 11974b1c-0355-47a8-9124-87c2b2b0a633
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_cons
+    - node.type.consumer_alert
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    basic_html: '0'
+    webny_enhanced_wysiwyg: '0'
+    webny_wysiwyg_frame_editor: '0'
+    full_html: '0'
+    restricted_html: '0'
+    rich_text: '0'
+    plain_text: '0'
+id: node.consumer_alert.field_cons
+field_name: field_cons
+entity_type: node
+bundle: consumer_alert
+label: 'Consumer Alerts Text'
+description: 'The title "consumer alert."  Also has the bell icon. Don''t input text here, use the default.'
+required: true
+translatable: false
+default_value:
+  -
+    value: 'Consumer Alert'
+    format: basic_html
+default_value_callback: ''
+settings: {  }
+field_type: text

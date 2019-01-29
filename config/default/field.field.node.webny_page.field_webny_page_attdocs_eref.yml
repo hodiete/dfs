@@ -1,0 +1,28 @@
+uuid: 852888ef-4792-498b-a53e-c81176e85485
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_webny_page_attdocs_eref
+    - node.type.webny_document
+    - node.type.webny_page
+_core:
+  default_config_hash: mNpghK7jyd6H3wPhs9kKeiZDAbKYgFRlAaXlUgc2Xtg
+id: node.webny_page.field_webny_page_attdocs_eref
+field_name: field_webny_page_attdocs_eref
+entity_type: node
+bundle: webny_page
+label: 'Attached Documents'
+description: 'Please limit the number of documents you add, as it can easily become overwhelming for the user.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      webny_document: webny_document
+    sort:
+      field: _none
+field_type: entity_reference

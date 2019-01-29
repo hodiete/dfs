@@ -1,4 +1,4 @@
-subscription_name: ''
+subscription_name: nydfs
 debug: false
 cron_interval: 30
 cron_interval_override: 0
@@ -8,9 +8,12 @@ spi:
   server: 'https://nspi.acquia.com'
   ssl_override: false
   ssl_verify: true
-  def_vars: {  }
+  def_vars:
+    preprocess_css:
+      optional: 0
+      description: ''
   def_waived_vars: {  }
-  def_timestamp: 0
+  def_timestamp: 1374783288
   new_optional_data: 1
   admin_priv: 1
   send_node_user: 1
@@ -39,6 +42,11 @@ spi:
     variables: {  }
     time: 0
   cron_interval: 28800
+  site_name: nydfs
+  site_machine_name: ed090f77_3551_4a57_ab7a_2a556df41593__nydfsdev__5bbeae0c2cf61
+  env_detection_enabled: true
+  site_uuid: c9aca180-89d3-4363-89db-51167f68ef48
+  site_environment: null
 mapping:
   acquia_spi_send_node_user:
     - acquia_connector.settings
@@ -173,4 +181,34 @@ mapping:
 _core:
   default_config_hash: wxTqZpydlDKlPxO8i3OqgtM9BwmL6dLY_8T0x_HLxns
 subscription_data:
-  active: false
+  active: true
+  href: 'https://insight.acquia.com/node/uuid/ed090f77-3551-4a57-ab7a-2a556df41593/dashboard'
+  uuid: ed090f77-3551-4a57-ab7a-2a556df41593
+  subscription_name: nydfs
+  expiration_date:
+    value: '2019-07-28T00:00:00'
+  product:
+    view: 'Acquia Network'
+  derived_key_salt: 3d78fcb0ba8cca76636743cb9b16fd49
+  update_service: '1'
+  search_service_enabled: 1
+  rpc_version: '3.1'
+  update: {  }
+  heartbeat_data:
+    acquia_lift:
+      status: false
+      decision:
+        public_key: ''
+        private_key: ''
+      profile:
+        account_name: ''
+        hostname: ''
+        public_key: ''
+        secret_key: ''
+        js_path: ''
+    search_service_enabled: 1
+    search_cores:
+      -
+        balancer: useast1-c26.acquia-search.com
+        core_id: EHJU-176215
+    search_service_colony: useast1-c26.acquia-search.com

@@ -1,0 +1,100 @@
+uuid: b4fa80bf-5b6e-49a5-b037-0c1e30189bac
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.webny_whitelisted_content.body
+    - field.field.node.webny_whitelisted_content.field_webny_agency_keywords
+    - field.field.node.webny_whitelisted_content.field_webny_filter_terms
+    - field.field.node.webny_whitelisted_content.field_webny_global_keywords
+    - field.field.node.webny_whitelisted_content.field_webny_whitelist_agency_key
+    - field.field.node.webny_whitelisted_content.field_webny_whitelist_date
+    - field.field.node.webny_whitelisted_content.field_webny_whitelist_descript
+    - field.field.node.webny_whitelisted_content.field_webny_whitelist_global_key
+    - field.field.node.webny_whitelisted_content.field_webny_whitelist_image
+    - field.field.node.webny_whitelisted_content.field_webny_whitelist_link_url
+    - field.field.node.webny_whitelisted_content.field_webny_whitelist_meta_tags
+    - field.field.node.webny_whitelisted_content.field_webny_whitelist_stitle
+    - field.field.node.webny_whitelisted_content.field_webny_whitelist_target
+    - node.type.webny_whitelisted_content
+  module:
+    - link
+    - smart_trim
+    - user
+_core:
+  default_config_hash: DWRxS-hC6omkhD_h0salm8G0HOFQF0482EuRapkXGt4
+id: node.webny_whitelisted_content.teaser
+targetEntityType: node
+bundle: webny_whitelisted_content
+mode: teaser
+content:
+  field_webny_filter_terms:
+    type: entity_reference_label
+    weight: 5
+    region: content
+    label: hidden
+    settings:
+      link: false
+    third_party_settings: {  }
+  field_webny_whitelist_descript:
+    type: smart_trim
+    weight: 4
+    region: content
+    label: hidden
+    settings:
+      trim_length: '25'
+      trim_type: words
+      trim_suffix: ...
+      more_link: '0'
+      more_text: More
+      trim_options:
+        text: 0
+      more_class: more-link
+      summary_handler: full
+    third_party_settings: {  }
+  field_webny_whitelist_image:
+    type: entity_reference_entity_view
+    weight: 1
+    region: content
+    label: hidden
+    settings:
+      view_mode: results_image
+      link: false
+    third_party_settings: {  }
+  field_webny_whitelist_link_url:
+    type: link
+    weight: 2
+    region: content
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+  field_webny_whitelist_stitle:
+    type: string
+    weight: 3
+    region: content
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+  links:
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  body: true
+  field_webny_agency_keywords: true
+  field_webny_global_keywords: true
+  field_webny_whitelist_agency_key: true
+  field_webny_whitelist_date: true
+  field_webny_whitelist_global_key: true
+  field_webny_whitelist_meta_tags: true
+  field_webny_whitelist_target: true
+  langcode: true
+  workbench_moderation_control: true

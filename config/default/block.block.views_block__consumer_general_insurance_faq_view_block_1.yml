@@ -1,0 +1,30 @@
+uuid: b0bc982d-853a-44f4-8870-376e587b662b
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.consumer_general_insurance_faq_view
+  module:
+    - system
+    - views
+  theme:
+    - dfs_ny
+id: views_block__consumer_general_insurance_faq_view_block_1
+theme: dfs_ny
+region: content
+weight: -29
+provider: null
+plugin: 'views_block:consumer_general_insurance_faq_view-block_1'
+settings:
+  id: 'views_block:consumer_general_insurance_faq_view-block_1'
+  label: ''
+  provider: views
+  label_display: '0'
+  views_label: ''
+  items_per_page: none
+visibility:
+  request_path:
+    id: request_path
+    pages: /faqs/consumer_faqs/general
+    negate: false
+    context_mapping: {  }

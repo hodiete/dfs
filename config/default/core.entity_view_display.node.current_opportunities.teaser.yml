@@ -1,0 +1,19 @@
+uuid: 7d290003-592e-4446-ac08-a980884ab32f
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - node.type.current_opportunities
+  module:
+    - user
+id: node.current_opportunities.teaser
+targetEntityType: node
+bundle: current_opportunities
+mode: teaser
+content:
+  links:
+    weight: 100
+    region: content
+hidden:
+  langcode: true

@@ -1,0 +1,31 @@
+uuid: 62ded89f-d46f-4748-be12-7ede0f3cfa96
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:dfs_block:6d081d68-e00f-488c-af15-fce351e57a30'
+  module:
+    - block_content
+    - system
+  theme:
+    - dfs_ny
+id: maintenancealertlicensing
+theme: dfs_ny
+region: header
+weight: 0
+provider: null
+plugin: 'block_content:6d081d68-e00f-488c-af15-fce351e57a30'
+settings:
+  id: 'block_content:6d081d68-e00f-488c-af15-fce351e57a30'
+  label: 'Maintenance Alert - Licensing'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: /apps_and_licensing/agents_and_brokers/home
+    negate: false
+    context_mapping: {  }

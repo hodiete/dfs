@@ -1,0 +1,104 @@
+uuid: 38b12c9a-aa38-4507-b225-4ec4747f104c
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.webny_news.body
+    - field.field.node.webny_news.field_webny_agency_keywords
+    - field.field.node.webny_news.field_webny_filter_terms
+    - field.field.node.webny_news.field_webny_global_keywords
+    - field.field.node.webny_news.field_webny_news_agency_keywords
+    - field.field.node.webny_news.field_webny_news_attdocs_eref
+    - field.field.node.webny_news.field_webny_news_category
+    - field.field.node.webny_news.field_webny_news_contact_info
+    - field.field.node.webny_news.field_webny_news_date
+    - field.field.node.webny_news.field_webny_news_description
+    - field.field.node.webny_news.field_webny_news_docsec_subtitle
+    - field.field.node.webny_news.field_webny_news_docsec_title
+    - field.field.node.webny_news.field_webny_news_global_keywords
+    - field.field.node.webny_news.field_webny_news_hero_title
+    - field.field.node.webny_news.field_webny_news_image
+    - field.field.node.webny_news.field_webny_news_location
+    - field.field.node.webny_news.field_webny_news_meta_tags
+    - field.field.node.webny_news.field_webny_news_short_title
+    - field.field.node.webny_news.field_webny_news_subtitles
+    - node.type.webny_news
+  module:
+    - datetime
+    - text
+    - user
+_core:
+  default_config_hash: 5TClzDlq4aG__LPxcljR_8ngtd-VCC7VFwktU7YzSdo
+id: node.webny_news.teaser
+targetEntityType: node
+bundle: webny_news
+mode: teaser
+content:
+  field_webny_filter_terms:
+    type: entity_reference_label
+    weight: 2
+    region: content
+    label: hidden
+    settings:
+      link: false
+    third_party_settings: {  }
+  field_webny_news_date:
+    type: datetime_default
+    weight: 5
+    region: content
+    label: hidden
+    settings:
+      format_type: medium
+      timezone_override: ''
+    third_party_settings: {  }
+  field_webny_news_description:
+    type: text_default
+    weight: 4
+    region: content
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+  field_webny_news_image:
+    type: entity_reference_entity_view
+    weight: 1
+    region: content
+    label: hidden
+    settings:
+      view_mode: results_image
+      link: false
+    third_party_settings: {  }
+  field_webny_news_short_title:
+    type: string
+    weight: 3
+    region: content
+    label: hidden
+    settings:
+      link_to_entity: true
+    third_party_settings: {  }
+  links:
+    weight: 6
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  workbench_moderation_control:
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  body: true
+  field_webny_agency_keywords: true
+  field_webny_global_keywords: true
+  field_webny_news_agency_keywords: true
+  field_webny_news_attdocs_eref: true
+  field_webny_news_category: true
+  field_webny_news_contact_info: true
+  field_webny_news_docsec_subtitle: true
+  field_webny_news_docsec_title: true
+  field_webny_news_global_keywords: true
+  field_webny_news_hero_title: true
+  field_webny_news_location: true
+  field_webny_news_meta_tags: true
+  field_webny_news_subtitles: true
+  langcode: true

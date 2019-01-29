@@ -1,0 +1,25 @@
+uuid: 18815491-1cb1-423a-b67a-6d27a00e3e95
+langcode: en
+status: true
+dependencies:
+  config:
+    - image.style.card_vertical
+    - image.style.webny_gallery_image
+    - image.style.wide_banner_520x130
+    - image.style.wysiwyg_portrait
+id: card_medium_banner_520x130
+label: 'Card Medium Banner 520x130'
+image_style_mappings:
+  -
+    breakpoint_id: responsive_image.viewport_sizing
+    multiplier: 1x
+    image_mapping_type: sizes
+    image_mapping:
+      sizes: 100vw
+      sizes_image_styles:
+        - card_vertical
+        - webny_gallery_image
+        - wide_banner_520x130
+        - wysiwyg_portrait
+breakpoint_group: responsive_image
+fallback_image_style: wide_banner_520x130

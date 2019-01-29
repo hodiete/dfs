@@ -1,0 +1,14 @@
+uuid: 115af8ec-11cb-43a0-9311-605057796967
+langcode: en
+status: true
+dependencies:
+  config:
+    - workbench_moderation.moderation_state.archived
+    - workbench_moderation.moderation_state.published
+_core:
+  default_config_hash: WbDXE-8xplesd19Gtqa0jWX8EZ8UiUHLrDs02s9sg_o
+id: published_archived
+label: Archive
+stateFrom: published
+stateTo: archived
+weight: 2

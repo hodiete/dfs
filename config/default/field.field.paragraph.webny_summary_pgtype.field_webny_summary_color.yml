@@ -1,0 +1,25 @@
+uuid: 451dcb2d-6799-4831-ac70-622f3e901c60
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_webny_summary_color
+    - paragraphs.paragraphs_type.webny_summary_pgtype
+  module:
+    - options
+_core:
+  default_config_hash: U5Hky4_SSkvaifpExLETRY4XL3eZAt6IEycWGG7S17g
+id: paragraph.webny_summary_pgtype.field_webny_summary_color
+field_name: field_webny_summary_color
+entity_type: paragraph
+bundle: webny_summary_pgtype
+label: 'Frame Background Color'
+description: 'Choose a background color for the frame'
+required: false
+translatable: false
+default_value:
+  -
+    value: default
+default_value_callback: ''
+settings: {  }
+field_type: list_string

@@ -1,0 +1,14 @@
+uuid: 62be98de-f915-437d-8fb1-2b0c544f905b
+langcode: en
+status: true
+dependencies:
+  config:
+    - workbench_moderation.moderation_state.archived
+    - workbench_moderation.moderation_state.draft
+_core:
+  default_config_hash: W0Hl7G1Ot8PdwF1gXMAf14eH5I0SZqWLBdg62OSn6YA
+id: draft_archived
+label: 'Archive (abandon)'
+stateFrom: draft
+stateTo: archived
+weight: -7

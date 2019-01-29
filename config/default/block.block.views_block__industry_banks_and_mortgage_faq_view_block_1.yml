@@ -1,0 +1,30 @@
+uuid: 1663dbd2-7562-4bed-b84b-6c6fffdd7bd0
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.industry_banks_and_mortgage_faq_view
+  module:
+    - system
+    - views
+  theme:
+    - dfs_ny
+id: views_block__industry_banks_and_mortgage_faq_view_block_1
+theme: dfs_ny
+region: content
+weight: 19
+provider: null
+plugin: 'views_block:industry_banks_and_mortgage_faq_view-block_1'
+settings:
+  id: 'views_block:industry_banks_and_mortgage_faq_view-block_1'
+  label: ''
+  provider: views
+  label_display: '0'
+  views_label: ''
+  items_per_page: none
+visibility:
+  request_path:
+    id: request_path
+    pages: /faqs/industry_faqs/banks_mortgages
+    negate: false
+    context_mapping: {  }

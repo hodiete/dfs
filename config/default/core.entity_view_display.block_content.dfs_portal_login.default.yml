@@ -1,0 +1,23 @@
+uuid: c2fd84bf-781d-4fba-a7ab-fb7b8a311639
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.dfs_portal_login
+    - field.field.block_content.dfs_portal_login.body
+  module:
+    - text
+id: block_content.dfs_portal_login.default
+targetEntityType: block_content
+bundle: dfs_portal_login
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  langcode: true

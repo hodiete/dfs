@@ -1,0 +1,31 @@
+uuid: 255fe17c-c00a-42dc-9c64-24fe20b64c3d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.webny_filter_term_listing.webny_filter_term
+    - paragraphs.paragraphs_type.webny_filter_term_listing
+  module:
+    - shs
+    - workbench_moderation
+_core:
+  default_config_hash: W9Q2kpzEfEyX3nDr6urJMSNiCOEjlKN9MYVDxpd2CJg
+id: paragraph.webny_filter_term_listing.default
+targetEntityType: paragraph
+bundle: webny_filter_term_listing
+mode: default
+content:
+  webny_filter_term:
+    type: options_shs
+    weight: 0
+    region: content
+    settings:
+      display_node_count: false
+      create_new_items: false
+      create_new_levels: false
+      force_deepest: false
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true
+  uid: true

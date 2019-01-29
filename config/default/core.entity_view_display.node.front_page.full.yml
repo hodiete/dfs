@@ -1,0 +1,19 @@
+uuid: 8cf9045c-3b37-49e6-93b6-ecfe02890ed9
+langcode: en
+status: false
+dependencies:
+  config:
+    - core.entity_view_mode.node.full
+    - node.type.front_page
+  module:
+    - user
+id: node.front_page.full
+targetEntityType: node
+bundle: front_page
+mode: full
+content:
+  links:
+    weight: 100
+    region: content
+hidden:
+  langcode: true

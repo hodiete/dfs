@@ -1,0 +1,26 @@
+uuid: 272ad994-7c65-4483-bbcb-c7f99c927516
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+_core:
+  default_config_hash: 7XR1_NmPSvARmm3IEIX2E7R5jrLPnSjjwjvmvSMEpcA
+id: paragraph.field_webny_whats_related_toc
+field_name: field_webny_whats_related_toc
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: '1'
+      label: Enable
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

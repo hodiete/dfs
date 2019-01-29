@@ -1,0 +1,52 @@
+uuid: a2807ecb-170f-439a-8113-b0131aab4d2c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.public_hearing_event.field_additional_information
+    - field.field.node.public_hearing_event.field_hearing_date
+    - field.field.node.public_hearing_event.field_hearing_event
+    - node.type.public_hearing_event
+  module:
+    - datetime
+    - link
+    - text
+    - user
+id: node.public_hearing_event.default
+targetEntityType: node
+bundle: public_hearing_event
+mode: default
+content:
+  field_additional_information:
+    weight: 103
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+    region: content
+  field_hearing_date:
+    weight: 102
+    label: above
+    settings:
+      format_type: medium
+      timezone_override: ''
+    third_party_settings: {  }
+    type: datetime_default
+    region: content
+  field_hearing_event:
+    weight: 101
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  links:
+    weight: 100
+    region: content
+hidden:
+  langcode: true

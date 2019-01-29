@@ -1,0 +1,25 @@
+uuid: caf887e6-0930-4b62-ab0f-8cb4e434db83
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_webny_contact_vimeo_link
+    - node.type.webny_contact
+  module:
+    - link
+_core:
+  default_config_hash: Ta4eSbzIk6mhpakdge4tqsbfRIkQ7NH4GYsrkVRzVRo
+id: node.webny_contact.field_webny_contact_vimeo_link
+field_name: field_webny_contact_vimeo_link
+entity_type: node
+bundle: webny_contact
+label: 'Vimeo Link'
+description: 'Please enter the link to the Vimeo account of the contact.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 16
+  title: 0
+field_type: link

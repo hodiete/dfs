@@ -1,0 +1,29 @@
+uuid: 722074f2-db4c-4bd0-b147-8500d87bc33f
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.apps-lic-premium-finance-ag
+  module:
+    - system
+  theme:
+    - dfs_ny
+id: appslicpremiumfinanceagencies
+theme: dfs_ny
+region: content
+weight: 7
+provider: null
+plugin: 'system_menu_block:apps-lic-premium-finance-ag'
+settings:
+  id: 'system_menu_block:apps-lic-premium-finance-ag'
+  label: 'Premium Finance Agencies'
+  provider: system
+  label_display: visible
+  level: 1
+  depth: 0
+visibility:
+  request_path:
+    id: request_path
+    pages: "/apps_and_licensing/premium_finance_agencies\r\n/apps_and_licensing/premium_finance_agencies/*"
+    negate: false
+    context_mapping: {  }

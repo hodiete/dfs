@@ -1,0 +1,24 @@
+uuid: d501ac28-dad1-4179-aa51-45fff43dd311
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.webny_whitelisted_content
+_core:
+  default_config_hash: 4INbmjv7MIwPUBgtgTZNG4fk33FDKGNI1XEY5IkSG5M
+id: node.webny_whitelisted_content.promote
+field_name: promote
+entity_type: node
+bundle: webny_whitelisted_content
+label: 'Promoted to front page'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

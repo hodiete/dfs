@@ -1,0 +1,22 @@
+uuid: 971b262b-dae4-4524-a585-0dce1f105beb
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - webnycommander
+_core:
+  default_config_hash: NT4XT-YLkUyo2v1m-sJpgVKhBJLdZHdhH4nx-n1EjyQ
+id: webnycommander_status_messages
+theme: webnycommander
+region: highlighted
+weight: 0
+provider: null
+plugin: system_messages_block
+settings:
+  id: system_messages_block
+  label: 'Status Messages'
+  provider: system
+  label_display: '0'
+visibility: {  }

@@ -1,0 +1,29 @@
+uuid: 4b629712-6d77-4218-8f7a-8beb6c5fc97d
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+_core:
+  default_config_hash: EXrnabAWJKZihu_oVf7-PYISZ-hH9aCtb4TDglhSJ_A
+id: paragraph.field_webny_card_list_1
+field_name: field_webny_card_list_1
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: call_to_action
+      label: 'Call to Action'
+    -
+      value: share_bar
+      label: 'Share Bar'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,22 @@
+uuid: c773be69-9d60-495f-b9e7-a728dd7ec12d
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - webnycommander
+_core:
+  default_config_hash: slYxOvyzH0f9XOpgi40retgKlrzXRLygPhOKBXMYD5o
+id: webnycommander_breadcrumbs
+theme: webnycommander
+region: breadcrumb
+weight: 0
+provider: null
+plugin: system_breadcrumb_block
+settings:
+  id: system_breadcrumb_block
+  label: Breadcrumbs
+  provider: system
+  label_display: '0'
+visibility: {  }

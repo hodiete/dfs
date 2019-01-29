@@ -1,0 +1,29 @@
+uuid: a36b16af-28ef-4b37-b323-632dc57b9c32
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.reports-and-publications
+  module:
+    - system
+  theme:
+    - dfs_ny
+id: reportsandpublications
+theme: dfs_ny
+region: content
+weight: 1
+provider: null
+plugin: 'system_menu_block:reports-and-publications'
+settings:
+  id: 'system_menu_block:reports-and-publications'
+  label: 'Reports and Publications'
+  provider: system
+  label_display: visible
+  level: 1
+  depth: 0
+visibility:
+  request_path:
+    id: request_path
+    pages: "/reports_and_publications/*\r\n/reports_and_publications/weekly_bulletins*\r\n/reportpub/wb*\r\n/about/press/*"
+    negate: false
+    context_mapping: {  }

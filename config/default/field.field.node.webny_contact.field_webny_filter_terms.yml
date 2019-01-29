@@ -1,0 +1,30 @@
+uuid: 5e8e8b92-1c55-4ce5-b836-40e5c8a15166
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_webny_filter_terms
+    - node.type.webny_contact
+    - taxonomy.vocabulary.webny_filter_terms_tax
+_core:
+  default_config_hash: OAoN6y2uuYC2AXfFNZIrrYGsuunZvefZZu6xakjDSk8
+id: node.webny_contact.field_webny_filter_terms
+field_name: field_webny_filter_terms
+entity_type: node
+bundle: webny_contact
+label: 'Filter Terms'
+description: 'Keyword search page filters'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      webny_filter_terms_tax: webny_filter_terms_tax
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

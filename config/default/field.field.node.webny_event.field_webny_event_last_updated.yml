@@ -1,0 +1,23 @@
+uuid: 94a31829-57f0-4913-bc9d-c0dd453d1995
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_webny_event_last_updated
+    - node.type.webny_event
+  module:
+    - datetime
+_core:
+  default_config_hash: L4g4vDs47z2X7rplTq0vmTIDY9kd8XKCxBCRkRAuwZI
+id: node.webny_event.field_webny_event_last_updated
+field_name: field_webny_event_last_updated
+entity_type: node
+bundle: webny_event
+label: 'Last Updated Date/Time'
+description: 'Add a last updated date, check "Display Time" below to also indicate time.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

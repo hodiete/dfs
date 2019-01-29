@@ -1,0 +1,287 @@
+uuid: 2433cfcb-21b3-49a6-b084-2170e1d0ce2a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.webny_document.body
+    - field.field.node.webny_document.field_webny_agency_keywords
+    - field.field.node.webny_document.field_webny_contentcat
+    - field.field.node.webny_document.field_webny_doc_agency_keyword
+    - field.field.node.webny_document.field_webny_doc_global_keyword
+    - field.field.node.webny_document.field_webny_doc_last_updated
+    - field.field.node.webny_document.field_webny_document_cateogry
+    - field.field.node.webny_document.field_webny_document_date
+    - field.field.node.webny_document.field_webny_document_ext_link
+    - field.field.node.webny_document.field_webny_document_file_upload
+    - field.field.node.webny_document.field_webny_document_language
+    - field.field.node.webny_document.field_webny_document_subtitle
+    - field.field.node.webny_document.field_webny_filter_terms
+    - field.field.node.webny_document.field_webny_global_keywords
+    - node.type.webny_document
+  module:
+    - datetime
+    - field_group
+    - file
+    - path
+    - shs
+    - text
+    - workbench_moderation
+third_party_settings:
+  field_group:
+    group_webny_document_metadata:
+      children:
+        - group_webny_doc_global_keywords
+        - group_webny_document_agency_keyw
+        - field_webny_filter_terms
+        - field_webny_document_cateogry
+        - field_webny_document_date
+        - field_webny_doc_last_updated
+      parent_name: ''
+      weight: 6
+      format_type: fieldset
+      format_settings:
+        label: Metadata
+        description: ''
+        id: ''
+        classes: ''
+        required_fields: false
+      label: Metadata
+    group_webny_document_general:
+      children:
+        - title
+        - field_webny_document_subtitle
+        - body
+        - field_webny_document_language
+        - group_document
+      parent_name: ''
+      weight: 0
+      format_type: fieldset
+      format_settings:
+        label: General
+        description: ''
+        id: ''
+        classes: ''
+        required_fields: false
+      label: General
+    group_webny_document_agency_keyw:
+      children:
+        - field_webny_agency_keywords
+        - field_webny_doc_agency_keyword
+      parent_name: group_webny_document_metadata
+      weight: 22
+      format_type: tab
+      format_settings:
+        label: 'Agency Keywords'
+        formatter: closed
+        description: ''
+        required_fields: true
+        id: ''
+        classes: ''
+      label: 'Agency Keywords'
+    group_webny_doc_global_keywords:
+      children:
+        - field_webny_global_keywords
+        - field_webny_doc_global_keyword
+      parent_name: group_webny_document_metadata
+      weight: 21
+      format_type: tab
+      format_settings:
+        id: ''
+        classes: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+      label: 'Global Keywords'
+    group_document:
+      children:
+        - field_webny_document_file_upload
+        - field_webny_document_ext_link
+      parent_name: group_webny_document_general
+      weight: 5
+      format_type: tab
+      format_settings:
+        id: ''
+        classes: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+      label: Document
+_core:
+  default_config_hash: fglD6lbzXHrJhpO6NOY6MingY8wW4m93CUTYUldXGoE
+id: node.webny_document.default
+targetEntityType: node
+bundle: webny_document
+mode: default
+content:
+  body:
+    type: text_textarea_with_summary
+    weight: 3
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
+    third_party_settings: {  }
+    region: content
+  created:
+    type: datetime_timestamp
+    weight: 3
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_webny_agency_keywords:
+    weight: 24
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  field_webny_contentcat:
+    weight: 28
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  field_webny_doc_agency_keyword:
+    weight: 25
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  field_webny_doc_global_keyword:
+    weight: 24
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  field_webny_doc_last_updated:
+    weight: 28
+    settings: {  }
+    third_party_settings: {  }
+    type: datetime_default
+    region: content
+  field_webny_document_cateogry:
+    weight: 26
+    settings: {  }
+    third_party_settings: {  }
+    type: options_buttons
+    region: content
+  field_webny_document_date:
+    weight: 27
+    settings: {  }
+    third_party_settings: {  }
+    type: datetime_default
+    region: content
+  field_webny_document_ext_link:
+    weight: 7
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_webny_document_file_upload:
+    weight: 6
+    settings:
+      progress_indicator: throbber
+    third_party_settings: {  }
+    type: file_generic
+    region: content
+  field_webny_document_language:
+    weight: 4
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_webny_document_subtitle:
+    weight: 2
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textfield
+    region: content
+  field_webny_filter_terms:
+    weight: 25
+    settings:
+      display_node_count: false
+      create_new_items: false
+      create_new_levels: false
+      force_deepest: false
+    third_party_settings: {  }
+    type: options_shs
+    region: content
+  field_webny_global_keywords:
+    weight: 23
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  langcode:
+    type: language_select
+    weight: 2
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+    region: content
+  path:
+    type: path
+    weight: 7
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  promote:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 4
+    third_party_settings: {  }
+    region: content
+  status:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 121
+    third_party_settings: {  }
+    region: content
+  sticky:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 5
+    third_party_settings: {  }
+    region: content
+  title:
+    type: string_textfield
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    region: content
+  uid:
+    type: entity_reference_autocomplete
+    weight: 1
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    region: content
+  url_redirects:
+    weight: 50
+    region: content
+hidden: {  }

@@ -1,0 +1,27 @@
+uuid: 28056e0c-52b1-4da1-b5d4-03294eb52624
+langcode: en
+status: false
+dependencies:
+  module:
+    - ctools
+  theme:
+    - dfs_ny
+id: pagetitle
+theme: dfs_ny
+region: content
+weight: 0
+provider: null
+plugin: page_title_block
+settings:
+  id: page_title_block
+  label: 'Page title'
+  provider: core
+  label_display: visible
+visibility:
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    bundles:
+      consumer_alert: consumer_alert
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'

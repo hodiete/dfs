@@ -1,0 +1,31 @@
+uuid: f8636c0f-2db3-4539-b90d-290c4d433206
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_banner_title
+    - node.type.consumer_alert
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    basic_html: basic_html
+    webny_enhanced_wysiwyg: webny_enhanced_wysiwyg
+    full_html: full_html
+    rich_text: rich_text
+    plain_text: plain_text
+    webny_wysiwyg_frame_editor: '0'
+    restricted_html: '0'
+id: node.consumer_alert.field_banner_title
+field_name: field_banner_title
+entity_type: node
+bundle: consumer_alert
+label: Heading
+description: 'Used as the title to display on the page.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text

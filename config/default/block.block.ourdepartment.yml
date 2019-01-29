@@ -1,0 +1,24 @@
+uuid: 44ef2e6c-7157-4693-af7b-543145a85b00
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.our-department
+  module:
+    - system
+  theme:
+    - dfs_ny
+id: ourdepartment
+theme: dfs_ny
+region: footer
+weight: -30
+provider: null
+plugin: 'system_menu_block:our-department'
+settings:
+  id: 'system_menu_block:our-department'
+  label: 'Our Department'
+  provider: system
+  label_display: visible
+  level: 1
+  depth: 0
+visibility: {  }

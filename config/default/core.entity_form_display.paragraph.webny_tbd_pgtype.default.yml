@@ -1,0 +1,131 @@
+uuid: d5f1ab6a-d8fd-4293-91ec-5538a0d52a90
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.webny_tbd_pgtype.field_webny_tbd_color
+    - field.field.paragraph.webny_tbd_pgtype.field_webny_tbd_cta1
+    - field.field.paragraph.webny_tbd_pgtype.field_webny_tbd_cta2
+    - field.field.paragraph.webny_tbd_pgtype.field_webny_tbd_descriptor1
+    - field.field.paragraph.webny_tbd_pgtype.field_webny_tbd_descriptor2
+    - field.field.paragraph.webny_tbd_pgtype.field_webny_tbd_descriptortitle1
+    - field.field.paragraph.webny_tbd_pgtype.field_webny_tbd_descriptortitle2
+    - field.field.paragraph.webny_tbd_pgtype.field_webny_tbd_headline
+    - field.field.paragraph.webny_tbd_pgtype.field_webny_tbd_title
+    - paragraphs.paragraphs_type.webny_tbd_pgtype
+  module:
+    - field_group
+    - link
+    - text
+    - workbench_moderation
+third_party_settings:
+  field_group:
+    group_descriptor_grouping_1:
+      children:
+        - field_webny_tbd_descriptortitle1
+        - field_webny_tbd_descriptor1
+        - field_webny_tbd_cta1
+      parent_name: ''
+      weight: 4
+      format_type: fieldset
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+        required_fields: true
+      label: 'Descriptor Grouping 1'
+    group_descriptor_grouping_2:
+      children:
+        - field_webny_tbd_descriptortitle2
+        - field_webny_tbd_descriptor2
+        - field_webny_tbd_cta2
+      parent_name: ''
+      weight: 5
+      format_type: fieldset
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+        required_fields: true
+      label: 'Descriptor Grouping 2'
+_core:
+  default_config_hash: fNcq4enqNcEhrvdyDU86ysmkOBtvSVTE6XzSqfqR97g
+id: paragraph.webny_tbd_pgtype.default
+targetEntityType: paragraph
+bundle: webny_tbd_pgtype
+mode: default
+content:
+  field_webny_tbd_color:
+    weight: 2
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_webny_tbd_cta1:
+    weight: 5
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
+  field_webny_tbd_cta2:
+    weight: 9
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
+  field_webny_tbd_descriptor1:
+    weight: 4
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  field_webny_tbd_descriptor2:
+    weight: 8
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  field_webny_tbd_descriptortitle1:
+    weight: 3
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_webny_tbd_descriptortitle2:
+    weight: 7
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_webny_tbd_headline:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_webny_tbd_title:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+hidden:
+  created: true
+  status: true
+  uid: true

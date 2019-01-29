@@ -1,0 +1,29 @@
+uuid: 236a2758-3a38-44fe-bb4f-31b34fabc361
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.apps-lic-mortgage-companies
+  module:
+    - system
+  theme:
+    - dfs_ny
+id: appslicmortgagecompanies
+theme: dfs_ny
+region: content
+weight: 5
+provider: null
+plugin: 'system_menu_block:apps-lic-mortgage-companies'
+settings:
+  id: 'system_menu_block:apps-lic-mortgage-companies'
+  label: 'Mortgage Companies'
+  provider: system
+  label_display: visible
+  level: 1
+  depth: 0
+visibility:
+  request_path:
+    id: request_path
+    pages: "/apps_and_licensing/mortgage_companies\r\n/apps_and_licensing/mortgage_companies/*"
+    negate: false
+    context_mapping: {  }

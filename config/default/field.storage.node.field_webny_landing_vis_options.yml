@@ -1,0 +1,29 @@
+uuid: 8e27988a-bd16-40c3-ab07-f4328c337b46
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - options
+_core:
+  default_config_hash: kfLauQfY05uu0zDcKYA7gkH03r4tQSrSzIYFUgQiP5Q
+id: node.field_webny_landing_vis_options
+field_name: field_webny_landing_vis_options
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: title
+      label: 'Enable the Title Section'
+    -
+      value: hero
+      label: 'Enable the Hero'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 2
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

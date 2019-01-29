@@ -1,0 +1,33 @@
+uuid: 9a1a4bda-e33a-449b-8854-7b5f99673ec4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_webny_document_subtitle
+    - node.type.webny_document
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    basic_html: basic_html
+    full_html: full_html
+    webny_enhanced_wysiwyg: '0'
+    webny_wysiwyg_frame_editor: '0'
+    restricted_html: '0'
+    rich_text: '0'
+    plain_text: '0'
+_core:
+  default_config_hash: AxcYzH7laB348-FXoEutmARLOXN9Wg8J9BfTp6B9ajY
+id: node.webny_document.field_webny_document_subtitle
+field_name: field_webny_document_subtitle
+entity_type: node
+bundle: webny_document
+label: Subtitle
+description: 'Enter a subtitle if applicable.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text
