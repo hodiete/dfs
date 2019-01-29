@@ -16,6 +16,21 @@ use Drupal\shortcut\Entity\Shortcut;
  * @see system_install()
  */
 function webny_install() {
+
+$sync = \Drupal::service('config.storage.sync');
+  $langs = [
+    'language.entity.en',
+    'language.entity.und',
+    'language.entity.zxx',
+  ];
+  foreach ($langs as $lang) {
+    if ($sync_lang = $sync->read($lang)) {
+      $config = \Drupal::configFactory()->getEditable($lang);
+      $config->set('uuid', $sync_lang['uuid']);
+      $config->save();
+    }
+  }
+
   // Disable the user pictures on nodes.
   \Drupal::configFactory()
       ->getEditable('system.theme.global')
@@ -44,14 +59,14 @@ function webny_install() {
   user_role_grant_permissions(RoleInterface::AUTHENTICATED_ID, ['access shortcuts']);
 
   // Populate the default shortcut set.
-  Shortcut::create(
-      [
-          'shortcut_set' => 'default',
-          'title' => t('Content library'),
-          'weight' => 1,
-          'link' => ['uri' => 'internal:/admin/content'],
-      ]
-  )->save();
+#   Shortcut::create(
+#       [
+#           'shortcut_set' => 'default',
+#           'title' => t('Content library'),
+#           'weight' => 1,
+#           'link' => ['uri' => 'internal:/admin/content'],
+#       ]
+#   )->save();
 
   // Set the default and admin theme
   \Drupal::configFactory()

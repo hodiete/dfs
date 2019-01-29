@@ -8,8 +8,6 @@ project:
   local:
     protocol: http
     hostname: "${project.machine_name}.local"
-cm:
-  uuid: 'c048f911-62ea-43ab-bca1-121d057c9295'
 git:
   default_branch: develop
   remotes:
@@ -26,8 +24,8 @@ drush:
   default_alias: "${drush.aliases.local}"
 modules:
   local:
-    enable: [dblog, devel, views_ui]
-    uninstall: [acsf, big_pipe, seckit, shield]
+    enable: []
+    uninstall: [big_pipe, seckit, shield]
   ci:
     enable: {}
     uninstall: [acquia_connector, shield, big_pipe]
@@ -58,6 +56,7 @@ target-hooks:
     dir: "${docroot}"
     command: "echo 'No post-setup build configured.'"
 cm:
+  uuid: "24378a36-9a19-4b1c-ab17-290ecfd941ca"
   allow-overrides: "true"
   features:
     bundle:
