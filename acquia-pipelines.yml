@@ -40,12 +40,12 @@ events:
           script:
             - pipelines-deploy
 pr-merged:
-    steps:
-      - deploy:
-          script:
-            - pipelines-deploy
-  pre-closed:
-    steps:
-      - deploy:
-          script:
-            - pipelines-deploy
+  steps:
+    - deploy:
+        script:
+          - pipelines-deploy
+pre-closed:
+  steps:
+    - deploy:
+        script:
+          - pipelines-deploy
