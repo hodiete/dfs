@@ -37,11 +37,6 @@ class ConfigImportCommand extends ConfigCommand {
 
       $task = $this->taskDrush()
         ->stopOnFail()
-        ->drush('sql-query')
-        ->arg('SHOW VARIABLES');
-
-      $task = $this->taskDrush()
-        ->stopOnFail()
         // Sometimes drush forgets where to find its aliases.
         ->drush("cc")->arg('drush')
         // Rebuild caches in case service definitions have changed.

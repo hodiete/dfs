@@ -16,10 +16,10 @@ events:
       - setup-env:
           type: script
           script:
-            - source troubleshooting
             - composer validate --no-check-all --ansi
             - composer install --ansi
             - source ${BLT_DIR}/scripts/pipelines/setup_env
+            - source troubleshooting
       - validate:
           type: script
           script:
