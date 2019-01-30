@@ -1,0 +1,31 @@
+uuid: e859a846-2f82-4211-b3df-f8e28a3c9d65
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.faq_subsection
+    - field.storage.block_content.field_question_block
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    basic_html: '0'
+    webny_enhanced_wysiwyg: '0'
+    webny_wysiwyg_frame_editor: '0'
+    full_html: '0'
+    restricted_html: '0'
+    rich_text: '0'
+    plain_text: '0'
+id: block_content.faq_subsection.field_question_block
+field_name: field_question_block
+entity_type: block_content
+bundle: faq_subsection
+label: 'Question Block'
+description: 'Contains HTML code for a question'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

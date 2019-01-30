@@ -1,0 +1,60 @@
+uuid: c62efd06-bdba-4836-bb3a-d9f8a17e00fd
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.short_page_card.field_banner_image
+    - field.field.paragraph.short_page_card.field_card_body
+    - field.field.paragraph.short_page_card.field_page_link
+    - field.field.paragraph.short_page_card.field_page_title
+    - image.style.wide_lead_tall
+    - paragraphs.paragraphs_type.short_page_card
+  module:
+    - link
+    - svg_image
+    - text
+id: paragraph.short_page_card.default
+targetEntityType: paragraph
+bundle: short_page_card
+mode: default
+content:
+  field_banner_image:
+    weight: 0
+    label: hidden
+    settings:
+      image_style: wide_lead_tall
+      image_link: ''
+      svg_render_as_image: '1'
+      svg_attributes:
+        width: ''
+        height: ''
+    third_party_settings: {  }
+    type: image
+    region: content
+  field_card_body:
+    weight: 1
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_page_link:
+    weight: 2
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+    region: content
+  field_page_title:
+    weight: 3
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+hidden: {  }

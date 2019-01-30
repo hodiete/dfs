@@ -1,0 +1,31 @@
+uuid: 38dfdd24-2a9f-4a57-9c17-9bc818913dce
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_banner_title
+    - node.type.front_page_main_banner
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    basic_html: '0'
+    webny_enhanced_wysiwyg: '0'
+    webny_wysiwyg_frame_editor: '0'
+    full_html: '0'
+    restricted_html: '0'
+    rich_text: '0'
+    plain_text: '0'
+id: node.front_page_main_banner.field_banner_title
+field_name: field_banner_title
+entity_type: node
+bundle: front_page_main_banner
+label: Title
+description: 'The name of the page the banner leads to.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text

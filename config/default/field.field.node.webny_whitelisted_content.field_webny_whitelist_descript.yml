@@ -1,0 +1,23 @@
+uuid: 5089560b-67a6-47bf-96b3-cf46f506c213
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_webny_whitelist_descript
+    - node.type.webny_whitelisted_content
+  module:
+    - text
+_core:
+  default_config_hash: ZChtElygnpPj4S9sP1yK5i2Y7TfhUfLMcD5EhJ8er3U
+id: node.webny_whitelisted_content.field_webny_whitelist_descript
+field_name: field_webny_whitelist_descript
+entity_type: node
+bundle: webny_whitelisted_content
+label: Description
+description: 'Enter a description of the content.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

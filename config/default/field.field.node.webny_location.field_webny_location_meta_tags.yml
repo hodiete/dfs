@@ -1,0 +1,25 @@
+uuid: fb213966-6729-4d41-875a-4773c5a031f4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_webny_location_meta_tags
+    - node.type.webny_location
+  module:
+    - metatag
+_core:
+  default_config_hash: DbtYZrlwVRBesttrXAFulb8ONwRwdAJainxCJI_gKH0
+id: node.webny_location.field_webny_location_meta_tags
+field_name: field_webny_location_meta_tags
+entity_type: node
+bundle: webny_location
+label: Metatags
+description: '<strong>This field is designated for meta information for search engines. Fill out each field as necessary. </strong>'
+required: false
+translatable: false
+default_value:
+  -
+    value: 'a:0:{}'
+default_value_callback: ''
+settings: {  }
+field_type: metatag

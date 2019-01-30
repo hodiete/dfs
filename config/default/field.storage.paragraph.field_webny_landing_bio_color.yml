@@ -1,0 +1,35 @@
+uuid: 037543f1-1c1c-44ba-b071-5f12fb640433
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+_core:
+  default_config_hash: OtzPGQRmnhX26m4Gn-L1eTGqKmB8oHpVIziM32Ctp7Y
+id: paragraph.field_webny_landing_bio_color
+field_name: field_webny_landing_bio_color
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: default
+      label: Default
+    -
+      value: primary
+      label: 'Primary Accent'
+    -
+      value: secondary
+      label: Secondary
+    -
+      value: monochrome
+      label: 'Monochrome Light'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

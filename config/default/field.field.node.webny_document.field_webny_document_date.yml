@@ -1,0 +1,26 @@
+uuid: 6711e1f3-60a3-4f3f-8429-4c6165851026
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_webny_document_date
+    - node.type.webny_document
+  module:
+    - datetime
+_core:
+  default_config_hash: qqVA4rkVyqsnYMuBuFLwjGLPQnt2N1FVh1M2XEzg3As
+id: node.webny_document.field_webny_document_date
+field_name: field_webny_document_date
+entity_type: node
+bundle: webny_document
+label: 'Publication Date'
+description: 'This is the date the attached document was published, not necessarily the date it was uploaded to the site. By default, this field will use today''s date. If an original publication date needs to be displayed for the attached document, change this field.'
+required: false
+translatable: false
+default_value:
+  -
+    default_date_type: now
+    default_date: now
+default_value_callback: ''
+settings: {  }
+field_type: datetime

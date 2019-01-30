@@ -1,0 +1,33 @@
+uuid: 1e9a2e79-2fe9-493d-9577-188a19bc47fb
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_webny_news_location
+    - node.type.webny_news
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    basic_html: basic_html
+    full_html: full_html
+    webny_enhanced_wysiwyg: '0'
+    webny_wysiwyg_frame_editor: '0'
+    restricted_html: '0'
+    rich_text: '0'
+    plain_text: '0'
+_core:
+  default_config_hash: QR500f6AYGtuaR-O6g3CbGVbSJEJa24JwJeAJ8ZXyP0
+id: node.webny_news.field_webny_news_location
+field_name: field_webny_news_location
+entity_type: node
+bundle: webny_news
+label: Location
+description: "Type in the location of the news item.\r\n(for example: 'Albany. NY')"
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text

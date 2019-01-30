@@ -1,0 +1,14 @@
+uuid: a60545e0-bb96-4d7f-b298-246162079d92
+langcode: en
+status: true
+dependencies:
+  config:
+    - workbench_moderation.moderation_state.published
+    - workbench_moderation.moderation_state.unpublished
+_core:
+  default_config_hash: XG-4GK2g9FWa51slV2YpWiTaSk44McMrIAALL06sP_M
+id: unpublished_published
+label: 'Publish Content'
+stateFrom: unpublished
+stateTo: published
+weight: 5

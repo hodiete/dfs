@@ -1,0 +1,156 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the webny installation profile.
+ */
+
+use Drupal\user\Entity\User;
+use Drupal\user\RoleInterface;
+use Drupal\shortcut\Entity\Shortcut;
+
+/**
+ * Implements hook_install().
+ *
+ * Performs actions to set up the site for this profile.
+ *
+ * @see system_install()
+ */
+function webny_install_install() {
+
+    $endbanner = "\n\r============ END WEBNY INSTALL SCRIPT ============ \n\r\n\r";
+    $startbanner = "\n\r============ START WEBNY INSTALL SCRIPT ============ \n\r\n\r";
+
+    echo $startbanner;
+
+    $sync = \Drupal::service('config.storage.sync');
+    $langs = [
+        'language.entity.en',
+        'language.entity.und',
+        'language.entity.zxx',
+    ];
+    foreach ($langs as $lang) {
+        if ($sync_lang = $sync->read($lang)) {
+            $config = \Drupal::configFactory()->getEditable($lang);
+            $config->set('uuid', $sync_lang['uuid']);
+            $config->save();
+        }
+    }
+
+    // Disable the user pictures on nodes.
+    \Drupal::configFactory()
+        ->getEditable('system.theme.global')
+        ->set('features.node_user_picture', FALSE)
+        ->save(TRUE);
+
+    // Restrict user registration to admin role only
+    \Drupal::configFactory()
+        ->getEditable('user.settings')
+        ->set('register', USER_REGISTER_ADMINISTRATORS_ONLY)
+        ->save(TRUE);
+
+    // Set front page to "node".
+    \Drupal::configFactory()
+        ->getEditable('system.site')
+        ->set('page.front', '/node')
+        ->save(TRUE);
+
+    // Assign user 1 the "administrator" role.
+    $user = User::load(1);
+    $user->addRole('administrator');
+    $user->addRole('site_builder');
+    $user->save();
+
+    // Allow authenticated users to use shortcuts.
+    user_role_grant_permissions(RoleInterface::AUTHENTICATED_ID, ['access shortcuts']);
+
+    // Populate the default shortcut set.
+    Shortcut::create(
+        [
+            'shortcut_set' => 'default',
+            'title' => t('Content library'),
+            'weight' => 1,
+            'link' => ['uri' => 'internal:/admin/content'],
+        ]
+    )->save();
+
+    // Set the default and admin theme
+    \Drupal::configFactory()
+        ->getEditable('system.theme')
+        ->set('default', 'webny_theme')
+        ->set('admin', 'webnycommander')
+        ->save(TRUE);
+
+    // Enable the admin theme.
+    \Drupal::configFactory()
+        ->getEditable('node.settings')
+        ->set('use_admin_theme', TRUE)
+        ->save(TRUE);
+
+    // ########################################################################################################
+    // INSTALL THE WEBNY CONFIGURATION MODULE
+    \Drupal::service('module_installer')
+        ->install(['webny_configuration']);
+
+    // ########################################################################################################
+    // CHECKS
+
+    $ca = [
+        ['system.theme.global' => 'features.node_user_picture'],
+        ['user.settings' => 'register'],
+        ['system.site' => 'page.front'],
+        ['system.theme' => 'admin'],
+        ['system.theme' => 'default'],
+        ['node.settings' => 'use_admin_theme']
+    ];
+
+    $cav = [
+        'system.theme.global.features.node_user_picture' => 'FALSE | Value should be empty.',
+        'user.settings.register' => 'USER_REGISTER_ADMINISTRATORS_ONLY | admin_only',
+        'system.site.page.front' => 'node/',
+        'system.theme.admin' => 'webnycommander',
+        'system.theme.default' => 'webny_theme',
+        'node.settings.use_admin_theme' => 'TRUE | 1'
+    ];
+
+    // CHECK ASSIGNED ROLES
+    foreach($user->getRoles() as $u => $role){
+        echo "ROLE $role - assignedto user 1. \n\r\n\r";
+    }
+
+    // CHECK IF ShORTcuT CREATED WORKS
+
+
+    // VALIDATE CONFIGURATION
+    _webny_install_validater($ca, $cav);
+
+    echo $endbanner;
+
+}
+
+function _webny_install_validater($checks_arr, $checks_arr_vals){
+
+    foreach($checks_arr as $list => $items) {
+
+        $at = 0;
+
+        // THERE CAN ONLY BE ONE!
+        foreach($items as $p => $c){
+            $value = \Drupal::configFactory()->getEditable($p)->get($c);
+        }
+
+        // CHECKS
+        $checked_val = $p.'.'.$c;
+
+        if($value === FALSE) {
+            $value = 'FALSE';
+        }
+
+        echo "CONFIG $p.$c: $value -- ".$checks_arr_vals[$checked_val]." \n\r";
+
+        ++$at;
+
+    }
+
+
+}

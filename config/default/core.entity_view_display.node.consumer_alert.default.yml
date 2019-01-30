@@ -1,0 +1,43 @@
+uuid: 0336bbec-3bba-4acf-be8b-81133278b658
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.consumer_alert.body
+    - field.field.node.consumer_alert.field_banner_title
+    - field.field.node.consumer_alert.field_cons
+    - field.field.node.consumer_alert.field_see_all_alerts
+    - field.field.node.consumer_alert.field_title
+    - node.type.consumer_alert
+  module:
+    - text
+    - user
+id: node.consumer_alert.default
+targetEntityType: node
+bundle: consumer_alert
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 2
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_banner_title:
+    weight: 1
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  links:
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  field_cons: true
+  field_see_all_alerts: true
+  field_title: true
+  langcode: true

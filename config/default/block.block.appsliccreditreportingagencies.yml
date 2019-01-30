@@ -1,0 +1,29 @@
+uuid: 2df24e99-9b99-4e63-b7d3-eb0624c72a42
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.apps-lic-credit-reporting-a
+  module:
+    - system
+  theme:
+    - dfs_ny
+id: appsliccreditreportingagencies
+theme: dfs_ny
+region: content
+weight: -10
+provider: null
+plugin: 'system_menu_block:apps-lic-credit-reporting-a'
+settings:
+  id: 'system_menu_block:apps-lic-credit-reporting-a'
+  label: 'Credit Reporting Agencies'
+  provider: system
+  label_display: visible
+  level: 1
+  depth: 0
+visibility:
+  request_path:
+    id: request_path
+    pages: "/apps_and_licensing/credit_reporting_agencies\r\n/apps_and_licensing/credit_reporting_agencies/*"
+    negate: false
+    context_mapping: {  }

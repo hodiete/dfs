@@ -1,0 +1,159 @@
+uuid: 17a61a47-4d91-423b-a43f-f27eed2b1b97
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.webny_page.body
+    - field.field.node.webny_page.field_webny_agency_keywords
+    - field.field.node.webny_page.field_webny_contentcat
+    - field.field.node.webny_page.field_webny_filter_terms
+    - field.field.node.webny_page.field_webny_global_keywords
+    - field.field.node.webny_page.field_webny_page_agency_keywords
+    - field.field.node.webny_page.field_webny_page_attdocs_eref
+    - field.field.node.webny_page.field_webny_page_description
+    - field.field.node.webny_page.field_webny_page_docsec_subtitle
+    - field.field.node.webny_page.field_webny_page_docsec_title
+    - field.field.node.webny_page.field_webny_page_global_keywords
+    - field.field.node.webny_page.field_webny_page_hero_title
+    - field.field.node.webny_page.field_webny_page_image
+    - field.field.node.webny_page.field_webny_page_meta_tags
+    - field.field.node.webny_page.field_webny_page_short_title
+    - field.field.node.webny_page.field_webny_page_sub_title
+    - field.field.node.webny_page.field_webny_page_vis_options
+    - node.type.webny_page
+  module:
+    - options
+    - text
+    - user
+_core:
+  default_config_hash: iQGn-BAXQGejhVlVg1qpCRC_9qxmQiEKiBYMdKH3GrM
+id: node.webny_page.default
+targetEntityType: node
+bundle: webny_page
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 7
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_webny_agency_keywords:
+    weight: 9
+    label: hidden
+    settings:
+      link: false
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_webny_contentcat:
+    weight: 15
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_webny_global_keywords:
+    weight: 5
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_webny_page_agency_keywords:
+    weight: 10
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_webny_page_attdocs_eref:
+    type: entity_reference_entity_view
+    weight: 13
+    label: hidden
+    settings:
+      view_mode: attached_documents
+      link: false
+    third_party_settings: {  }
+    region: content
+  field_webny_page_description:
+    weight: 4
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_webny_page_docsec_subtitle:
+    type: string
+    weight: 12
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    region: content
+  field_webny_page_docsec_title:
+    type: string
+    weight: 11
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    region: content
+  field_webny_page_global_keywords:
+    weight: 6
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_webny_page_hero_title:
+    weight: 3
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_webny_page_image:
+    weight: 2
+    label: hidden
+    settings:
+      link: true
+      view_mode: hero_image
+    third_party_settings: {  }
+    type: entity_reference_entity_view
+    region: content
+  field_webny_page_sub_title:
+    weight: 8
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_webny_page_vis_options:
+    weight: 14
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+    region: content
+  links:
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  workbench_moderation_control:
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  field_webny_filter_terms: true
+  field_webny_page_meta_tags: true
+  field_webny_page_short_title: true
+  langcode: true

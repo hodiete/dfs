@@ -1,0 +1,23 @@
+uuid: 38908adc-2523-4583-8889-f9b760563517
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_webny_doc_last_updated
+    - node.type.webny_document
+  module:
+    - datetime
+_core:
+  default_config_hash: P3sY08lXluBMH05I0A_ldyTyExDvDC5DxhCR8eP9eU0
+id: node.webny_document.field_webny_doc_last_updated
+field_name: field_webny_doc_last_updated
+entity_type: node
+bundle: webny_document
+label: 'Last Updated'
+description: 'This is the date the document was last updated.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

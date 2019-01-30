@@ -1,0 +1,43 @@
+uuid: 0d03d640-6a1a-4e05-bd6d-763f7cb650ed
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.front_page_statewide_card.field_statewide_image
+    - field.field.node.front_page_statewide_card.field_statewide_link
+    - node.type.front_page_statewide_card
+  module:
+    - image
+    - link
+    - user
+id: node.front_page_statewide_card.default
+targetEntityType: node
+bundle: front_page_statewide_card
+mode: default
+content:
+  field_statewide_image:
+    weight: 101
+    label: above
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+    region: content
+  field_statewide_link:
+    weight: 102
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+    region: content
+  links:
+    weight: 100
+    region: content
+hidden:
+  langcode: true

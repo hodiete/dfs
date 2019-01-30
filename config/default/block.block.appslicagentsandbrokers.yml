@@ -1,0 +1,29 @@
+uuid: 7fa7f423-9ad8-4220-be2e-55c5366d7dcc
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.apps-lic-agents-and-brokers
+  module:
+    - system
+  theme:
+    - dfs_ny
+id: appslicagentsandbrokers
+theme: dfs_ny
+region: content
+weight: -24
+provider: null
+plugin: 'system_menu_block:apps-lic-agents-and-brokers'
+settings:
+  id: 'system_menu_block:apps-lic-agents-and-brokers'
+  label: 'Agents and Brokers'
+  provider: system
+  label_display: visible
+  level: 1
+  depth: 0
+visibility:
+  request_path:
+    id: request_path
+    pages: "/apps_and_licensing/agents_and_brokers\r\n/apps_and_licensing/agents_and_brokers/*"
+    negate: false
+    context_mapping: {  }

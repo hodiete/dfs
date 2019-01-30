@@ -1,0 +1,224 @@
+uuid: cacfd1c1-321b-4dd3-89e7-9ae5f5317924
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.webny_event.field_webny_agency_keywords
+    - field.field.node.webny_event.field_webny_contentcat
+    - field.field.node.webny_event.field_webny_event_address
+    - field.field.node.webny_event.field_webny_event_all_day
+    - field.field.node.webny_event.field_webny_event_contentsect
+    - field.field.node.webny_event.field_webny_event_date_end
+    - field.field.node.webny_event.field_webny_event_date_start
+    - field.field.node.webny_event.field_webny_event_heroimage
+    - field.field.node.webny_event.field_webny_event_last_updated
+    - field.field.node.webny_event.field_webny_event_meta_tags
+    - field.field.node.webny_event.field_webny_event_navtoggle
+    - field.field.node.webny_event.field_webny_event_redirect_url
+    - field.field.node.webny_event.field_webny_event_short_title
+    - field.field.node.webny_event.field_webny_event_summary
+    - field.field.node.webny_event.field_webny_event_upd_time
+    - field.field.node.webny_event.field_webny_event_venue_name
+    - field.field.node.webny_event.field_webny_filter_terms
+    - field.field.node.webny_event.field_webny_global_keywords
+    - node.type.webny_event
+  module:
+    - address
+    - datetime
+    - entity_reference_revisions
+    - link
+    - options
+    - text
+    - user
+_core:
+  default_config_hash: _wzVWGPnGfBLLtXoE-1nQPCdVzg_nb9fN2s_LGPyvG4
+id: node.webny_event.default
+targetEntityType: node
+bundle: webny_event
+mode: default
+content:
+  field_webny_agency_keywords:
+    type: entity_reference_label
+    weight: 14
+    region: content
+    label: hidden
+    settings:
+      link: false
+    third_party_settings:
+      linked_field:
+        linked: '1'
+        type: custom
+        destination: '/keywords/[node:field_webny_agency_keywords:entity:machine_name_hyphenated]'
+        advanced: {  }
+  field_webny_contentcat:
+    weight: 10
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_webny_event_address:
+    weight: 9
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: address_default
+    region: content
+  field_webny_event_all_day:
+    weight: 6
+    label: hidden
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    type: boolean
+    region: content
+  field_webny_event_contentsect:
+    type: entity_reference_revisions_entity_view
+    weight: 12
+    label: hidden
+    settings:
+      view_mode: generic
+      link: ''
+    third_party_settings: {  }
+    region: content
+  field_webny_event_date_end:
+    weight: 5
+    label: hidden
+    settings:
+      format_type: medium
+      timezone_override: ''
+    third_party_settings: {  }
+    type: datetime_default
+    region: content
+  field_webny_event_date_start:
+    weight: 4
+    label: hidden
+    settings:
+      format_type: medium
+      timezone_override: ''
+    third_party_settings: {  }
+    type: datetime_default
+    region: content
+  field_webny_event_heroimage:
+    weight: 7
+    label: hidden
+    settings:
+      view_mode: hero_image
+      link: false
+    third_party_settings: {  }
+    type: entity_reference_entity_view
+    region: content
+  field_webny_event_last_upd_date:
+    weight: 20
+    label: above
+    settings:
+      format_type: medium
+      timezone_override: ''
+    third_party_settings: {  }
+    type: datetime_default
+    region: content
+  field_webny_event_last_upd_time:
+    weight: 17
+    label: above
+    settings:
+      date_format: medium
+      custom_date_format: ''
+      timezone: ''
+    third_party_settings: {  }
+    type: timestamp
+    region: content
+  field_webny_event_last_updated:
+    weight: 16
+    label: above
+    settings:
+      format_type: medium
+      timezone_override: ''
+    third_party_settings: {  }
+    type: datetime_default
+    region: content
+  field_webny_event_navtoggle:
+    weight: 11
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+    region: content
+  field_webny_event_redirect_url:
+    weight: 13
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+    region: content
+  field_webny_event_short_title:
+    weight: 2
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_webny_event_summary:
+    weight: 3
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_webny_event_upd_time:
+    weight: 18
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    type: boolean
+    region: content
+  field_webny_event_venue_name:
+    weight: 8
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_webny_global_keywords:
+    type: entity_reference_label
+    weight: 15
+    region: content
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+  last_updated_date_time:
+    weight: 19
+    label: above
+    settings:
+      format_type: medium
+      timezone_override: ''
+    third_party_settings: {  }
+    type: datetime_default
+    region: content
+  links:
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  workbench_moderation_control:
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  field_webny_event_meta_tags: true
+  field_webny_filter_terms: true
+  langcode: true

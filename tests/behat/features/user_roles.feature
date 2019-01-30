@@ -12,12 +12,6 @@ I should be able to view user roles that exists
     And I should see "Administrator"
     And I should see "Anonymous user"
     And I should see "Authenticated user"
-    And I should see "Media Creator"
-    And I should see "Media Manager"
-    And I should see "Site Builder"
-    And I should see "Site Administrator"
-    And I should see "User Administrator"
-    And I should see "Content Author"
 
   # the following tests should be uncommented once the behat log in issue is resolved
 # Check that Site Admin role has appropriate access

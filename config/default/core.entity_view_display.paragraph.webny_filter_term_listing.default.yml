@@ -1,0 +1,23 @@
+uuid: c1b5890e-d03f-40d6-9c6d-f5071d410337
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.webny_filter_term_listing.webny_filter_term
+    - paragraphs.paragraphs_type.webny_filter_term_listing
+_core:
+  default_config_hash: G5sJPRcWw8bUDWVQrdtB3dFdmamtJ4cSB4kXLjtzVPU
+id: paragraph.webny_filter_term_listing.default
+targetEntityType: paragraph
+bundle: webny_filter_term_listing
+mode: default
+content:
+  webny_filter_term:
+    type: entity_reference_label
+    weight: 0
+    region: content
+    label: hidden
+    settings:
+      link: false
+    third_party_settings: {  }
+hidden: {  }

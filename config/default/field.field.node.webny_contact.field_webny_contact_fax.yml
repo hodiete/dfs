@@ -1,0 +1,23 @@
+uuid: 4f5d0297-6542-4f49-9cfa-ee720a3e28a2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_webny_contact_fax
+    - node.type.webny_contact
+  module:
+    - telephone
+_core:
+  default_config_hash: d6bJVCZLZaiGL0D_I_j4EhnfaT0Yc1_ya8JhFX3xRc4
+id: node.webny_contact.field_webny_contact_fax
+field_name: field_webny_contact_fax
+entity_type: node
+bundle: webny_contact
+label: Fax
+description: 'Please enter the fax machine number of the contact.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: telephone

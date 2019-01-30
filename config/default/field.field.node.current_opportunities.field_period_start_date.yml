@@ -1,0 +1,21 @@
+uuid: 80478218-e2a1-4a28-9766-9a66fb518a8c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_period_start_date
+    - node.type.current_opportunities
+  module:
+    - datetime
+id: node.current_opportunities.field_period_start_date
+field_name: field_period_start_date
+entity_type: node
+bundle: current_opportunities
+label: 'Period Start Date'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

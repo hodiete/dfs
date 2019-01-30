@@ -1,0 +1,32 @@
+uuid: 2d51035e-8023-47a4-b6fe-0853fb085df4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.apps_and_licensing_card.field_page
+    - node.type.apps_and_licensing_card
+  module:
+    - link
+    - user
+id: node.apps_and_licensing_card.default
+targetEntityType: node
+bundle: apps_and_licensing_card
+mode: default
+content:
+  field_page:
+    weight: 102
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+    region: content
+  links:
+    weight: 100
+    region: content
+hidden:
+  langcode: true

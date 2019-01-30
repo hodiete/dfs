@@ -1,0 +1,33 @@
+uuid: 09248f1d-432c-4bb3-94f7-fac50f84267b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_webny_event_summary
+    - node.type.webny_event
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    basic_html: basic_html
+    webny_enhanced_wysiwyg: '0'
+    webny_wysiwyg_frame_editor: '0'
+    full_html: '0'
+    restricted_html: '0'
+    rich_text: '0'
+    plain_text: '0'
+_core:
+  default_config_hash: gg9gnUxzxcRCRRR3yDBZWp2vqBuBe35JtCWQqqocGx8
+id: node.webny_event.field_webny_event_summary
+field_name: field_webny_event_summary
+entity_type: node
+bundle: webny_event
+label: Summary/Description
+description: 'This text is used as a short description of this event to be displayed in cards and announcements on landing pages. There is a 130 character limit. This text will not display on this event.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text

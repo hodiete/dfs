@@ -1,0 +1,25 @@
+uuid: 14f91fcb-e86a-4904-bcf0-b8a7cf8dd60d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_webny_tbd_cta1
+    - paragraphs.paragraphs_type.webny_tbd_pgtype
+  module:
+    - link
+_core:
+  default_config_hash: BzzeGyq3BuAfb7aCvpQqXOKqgnMc0E48RSRXu0gjzPM
+id: paragraph.webny_tbd_pgtype.field_webny_tbd_cta1
+field_name: field_webny_tbd_cta1
+entity_type: paragraph
+bundle: webny_tbd_pgtype
+label: 'Call To Action Button 1'
+description: 'If there is a web page or document to which you would like to direct visitors, please fill out the URL and text above. It will create a call-to-action button at the bottom of the first descriptor within the Two Button Descriptor frame. [ There is a 128 character limit for the text on the button.]'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 17
+  title: 1
+field_type: link

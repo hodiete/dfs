@@ -1,0 +1,34 @@
+uuid: 8f281ef5-483e-418b-a46e-279843030a5b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_divider
+    - node.type.faq_question
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    full_html: full_html
+    basic_html: '0'
+    webny_enhanced_wysiwyg: '0'
+    webny_wysiwyg_frame_editor: '0'
+    restricted_html: '0'
+    rich_text: '0'
+    plain_text: '0'
+id: node.faq_question.field_divider
+field_name: field_divider
+entity_type: node
+bundle: faq_question
+label: Divider
+description: 'Creates a line break to separate questions.  Do not adjust this, just use the default.'
+required: true
+translatable: false
+default_value:
+  -
+    value: '<div class="dropdown-break"></div>'
+    format: full_html
+default_value_callback: ''
+settings: {  }
+field_type: text

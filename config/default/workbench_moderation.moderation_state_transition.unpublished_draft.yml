@@ -1,0 +1,14 @@
+uuid: 48c3ea6c-7634-4154-9a43-5a641992df83
+langcode: en
+status: true
+dependencies:
+  config:
+    - workbench_moderation.moderation_state.draft
+    - workbench_moderation.moderation_state.unpublished
+_core:
+  default_config_hash: rv_jmLdOZ4Y2szPbmf5d7C8Gow1cZG1qDCMUN0O7qc8
+id: unpublished_draft
+label: 'Request Edits'
+stateFrom: unpublished
+stateTo: draft
+weight: 3

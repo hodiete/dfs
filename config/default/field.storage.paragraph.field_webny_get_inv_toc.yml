@@ -1,0 +1,26 @@
+uuid: 31309833-81d2-45b5-972b-48df1c92a009
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+_core:
+  default_config_hash: zaYuIASfkatBS6bnlfAIKzL2zmMrMcDd5z7kXngCtms
+id: paragraph.field_webny_get_inv_toc
+field_name: field_webny_get_inv_toc
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: '1'
+      label: Enable
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

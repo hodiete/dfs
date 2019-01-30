@@ -1,0 +1,36 @@
+uuid: 4c8c5f89-6bae-467a-bcad-3a37ad542027
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.webny_phone_contact.field_webny_para_phone_label
+    - field.field.paragraph.webny_phone_contact.field_webny_para_phone_number
+    - paragraphs.paragraphs_type.webny_phone_contact
+  module:
+    - telephone
+_core:
+  default_config_hash: y0Am7gX7SaGq7VUnyCYdeYJn8ncdm6E68CTH2TbNs7E
+id: paragraph.webny_phone_contact.default
+targetEntityType: paragraph
+bundle: webny_phone_contact
+mode: default
+content:
+  field_webny_para_phone_label:
+    weight: 0
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_webny_para_phone_number:
+    weight: 1
+    label: hidden
+    settings:
+      title: ''
+    third_party_settings: {  }
+    type: telephone_link
+    region: content
+hidden:
+  created: true
+  uid: true

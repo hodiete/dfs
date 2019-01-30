@@ -1,0 +1,31 @@
+uuid: 2659614a-e813-429f-9b16-0854d45d402e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_webny_document_subtitle
+    - node.type.dfs_document
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    basic_html: basic_html
+    plain_text: plain_text
+    webny_enhanced_wysiwyg: '0'
+    webny_wysiwyg_frame_editor: '0'
+    full_html: '0'
+    restricted_html: '0'
+    rich_text: '0'
+id: node.dfs_document.field_webny_document_subtitle
+field_name: field_webny_document_subtitle
+entity_type: node
+bundle: dfs_document
+label: Subtitle
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text

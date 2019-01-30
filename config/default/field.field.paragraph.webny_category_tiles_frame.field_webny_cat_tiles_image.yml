@@ -1,0 +1,30 @@
+uuid: a17ed3de-1201-47a4-aa19-b4c218170af8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_webny_cat_tiles_image
+    - media_entity.bundle.image
+    - paragraphs.paragraphs_type.webny_category_tiles_frame
+_core:
+  default_config_hash: 6GkH5jfajECNqHFFfBs0_YuAGmVXPLa8okyp0ufvOdo
+id: paragraph.webny_category_tiles_frame.field_webny_cat_tiles_image
+field_name: field_webny_cat_tiles_image
+entity_type: paragraph
+bundle: webny_category_tiles_frame
+label: 'Category Tiles Background Image'
+description: 'Option to select a background image for the category tiles. Minimum dimensions are: 1600x 730, and the aspect ratio should be 5:2. This image will show behind your Category Tiles. Tip: Use an image that is lighter in color so you can easily read the title, headline, and body text. If you do not use a background image, your agency''s default color will show instead'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference
