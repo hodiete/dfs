@@ -26,6 +26,20 @@
     $("#block-quicklinks").parent().css({ "background-color": "#09464c"});
     $("#block-website").parent().css({ "background-color": "#09464c"});
     $("#block-languageassistance").parent().css({ "background-color": "#09464c", "margin": "0"});
+
+    /**** Lefmenu Show submenu ul for a.is-active ***/
+    let leftSubMenuLi = ".ul-complaint-sidebar li.parent ul";
+
+    $(leftSubMenuLi).find('a').each( function () {
+      if ($(this).hasClass('is-active')) {
+        $(this).parent().parent().addClass('show-sub');
+        $(this).parent().parent().parent().addClass('expanded');
+      }
+    })
+    let leftMenuToggleA = ".ul-complaint-sidebar li.parent a.toggler";
+    $(leftMenuToggleA).click(function (e) {
+      e.preventDefault();
+    });
   });
 
   $(window).resize(function () {
@@ -79,48 +93,6 @@
     }
   })
 
-  let svgUp = 'arrowup-teal.svg';
-  let svgDown = 'arrowdown-teal.svg';
-  let svgUpWhite = 'arrowup-white.svg';
-  let svgDownWhite = 'arrowdown-white.svg';
-  let svgBase = '/profiles/custom/webny/themes/custom/dfs_ny/icons/dfs/';
-
-  if ($(window).width() <= 1023) {
-    bgcolor2 = '#e5eeee';
-
-    $('img.down-up-arrow').attr('src', svgBase + svgDown);
-
-    $('.leftmenu-toggle-h2').append('<img class="expand down-up-arrow" src="/profiles/custom/webny/themes/custom/dfs_ny/icons/dfs/arrowdown-white.svg">');
-
-    $(".leftmenu-toggle-h2").click(function () {
-
-      $(this).toggleClass("toogle-h2-show");
-      if ($(this).hasClass("toogle-h2-show")) {
-        $(this).find("img").attr('src', svgBase + svgUp);
-
-      }
-      else {
-        $(this).find("img").attr('src', svgBase + svgDownWhite);
-      }
-    })
-
-
-  }
-
-  let leftSubMenu = ".ul-complaint-sidebar li.parent";
-
-  $(leftSubMenu).find('a').click(function () {
-    $(this).toggleClass("parent-show");
-    $(this).parent('li').toggleClass("expanded");
-    $(this).next().slideToggle(100);
-    if ($(this).hasClass("parent-show")) {
-      $(this).find("img").attr('src', svgBase + svgUpWhite);    }
-    else {
-      $(this).find("img").attr('src', svgBase + svgDown);
-    }
-  })
-
-  // let leftSubActive = ".ul-complaint-sidebar li.parent ul li";
 
 /**
  * Toggle left menu.
@@ -186,6 +158,11 @@
     $(this).find("img.faq-card-icon").attr("src", svgBase + "arrow-teal.svg");
   });
 
+  // Open PDF file in a new window/tab
+  $('a[href$=".pdf"]').prop('target', '_blank');
+
+  // Make the DIV clickable if <a> in it
+
   clickableDiv(".banner-wrapper-all-texts .banner-link");
   clickableDiv(".learn-more-link");
   clickableDiv(".see-all-alerts-link");
@@ -196,5 +173,51 @@
       return false;
     });
   }
+
+
+  /*****  Lefmenu Click Events   *****/
+  let svgUp = 'arrowup-teal.svg';
+  let svgDown = 'arrowdown-teal.svg';
+  let svgUpWhite = 'arrowup-white.svg';
+  let svgDownWhite = 'arrowdown-white.svg';
+  let svgBase = '/profiles/custom/webny/themes/custom/dfs_ny/icons/dfs/';
+
+  if ($(window).width() <= 1023) {
+    bgcolor2 = '#e5eeee';
+
+    $('img.down-up-arrow').attr('src', svgBase + svgDown);
+
+    $('.leftmenu-toggle-h2').append('<img class="expand down-up-arrow" alt="arrow up-down"  src="/profiles/custom/webny/themes/custom/dfs_ny/icons/dfs/arrowdown-white.svg">');
+
+    $(".leftmenu-toggle-h2").click(function () {
+
+      $(this).toggleClass("toogle-h2-show");
+      if ($(this).hasClass("toogle-h2-show")) {
+        $(this).find("img").attr('src', svgBase + svgUp);
+
+      }
+      else {
+        $(this).find("img").attr('src', svgBase + svgDownWhite);
+      }
+    })
+
+  }
+
+  let leftSubMenu = ".ul-complaint-sidebar li.parent";
+  $(leftSubMenu).find('a').click(function () {
+    $(this).toggleClass("parent-show");
+    $(this).parent('li').toggleClass("expanded");
+    $(this).next('ul').toggleClass("show-sub");
+    // $(this).next().slideToggle(100);
+
+    if ($(this).hasClass("parent-show")) {
+      $(this).find("img").attr('src', svgBase + svgUp);
+      $(this).next().css("display", "block");
+    }
+    else {
+      $(this).find("img").attr('src', svgBase + svgDown);
+      $(this).next().css("display", "none");
+    }
+  })
 
 })(jQuery, Drupal, this);

@@ -137,4 +137,18 @@
       });
     }// End if
   }
+
+
+
+  Drupal.behaviors.leftMenuToogle = {
+    attach: function (context, settings) {
+
+
+
+    }
+  };
+
 }(jQuery, Drupal, this));
+
+
+

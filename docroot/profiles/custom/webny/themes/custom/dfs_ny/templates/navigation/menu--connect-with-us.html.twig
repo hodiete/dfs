@@ -48,11 +48,14 @@
           {% for item in items %}
             {% set classes = ["footer-connect-leaf"] %}
             <li class="{{ classes|join(" ") }}" {{ item.attributes }}>
-              {% if loop.first %}
+              {% set iconUrl = '/profiles/custom/webny/themes/custom/dfs_ny/icons/' ~ item.title|lower ~ '.png' %}
+              <img class="footer-icon" src="{{ iconUrl }}" alt="{{ item.title }}">
+              {# {% if loop.first %}
               <img class="footer-icon" src="/profiles/custom/webny/themes/custom/dfs_ny/icons/facebook_new.png">
               {% elseif loop.last %}
               <img class="footer-icon" src="/profiles/custom/webny/themes/custom/dfs_ny/icons/twitter_new.png">
-              {% endif %}
+              {% endif %} #}
+              
               {{ link(item.title, item.url) }}
               {{ menus.menu_links(item.below, attributes, menu_level + 1) }}
             </li>

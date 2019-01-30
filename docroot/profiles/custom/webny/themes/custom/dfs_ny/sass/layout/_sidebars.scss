@@ -204,13 +204,14 @@ main .layout-content nav {
 }
 
 .ul-complaint-sidebar {
-  li.expanded,
-  li.is_expanded {
+
+  li.expanded {
+
     a.parent-show {
       background-color: $bgcolor-light-leftmenu; // color: white;
     }
     ul {
-      display: block;
+      display: none;
     }
   }
   li {
@@ -223,6 +224,11 @@ main .layout-content nav {
       margin-top: 3px;
       cursor: pointer;
     }
+
+    ul.show-sub {
+      display: block;
+    }
+
     ul {
       display: none;
       padding-left: 0px;
