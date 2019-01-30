@@ -90,13 +90,15 @@
     attach: function (context, settings) {
       // The toggle button.
       $("a").on("click", function () {
-        var href = $(this).attr("href");
-        var str2 = "dfs.ny.gov";
-        // console.log(href);
-        if (href.indexOf(str2) == -1 ) {
-          if (href.indexOf("http://") == 0 || href.indexOf("https://") == 0) {
-            return confirm("You are about to leave the DFS website. Would you like to continue?");
+        if ($(this).attr("href") !== undefined) {
+          // console.log(href);
+          var href = $(this).attr("href");
+          if (~href.indexOf("dfs.ny.gov") ) {
+            if (href.indexOf("http://") == 0 || href.indexOf("https://") == 0) {
+              return confirm("You are about to leave the DFS website. Would you like to continue?");
+            }
           }
+
         }
       });
 

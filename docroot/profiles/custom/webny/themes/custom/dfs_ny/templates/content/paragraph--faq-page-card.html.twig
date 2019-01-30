@@ -58,7 +58,7 @@ view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
               <div class="top-questions-body">
                 {% for link in paragraph.field_top_question_links %}
                 <div class="question-span">
-                  <img class="top-question-card-icon" src="/profiles/custom/webny/themes/custom/dfs_ny/icons/dfs/arrow-teal.svg"/>
+                  <img class="top-question-card-icon" alt="Arrow.svg" src="/profiles/custom/webny/themes/custom/dfs_ny/icons/dfs/arrow-teal.svg"/>
                   <div class="top-question-text">
                     <a href="{{ link.url }}">
                       {{ link.title }}
@@ -72,7 +72,7 @@ view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
 
           {% else %}
             <div class="faq-card-image-div">
-                <img class="faq-card-image" src="{{ file_url(paragraph.field_banner_image.entity.fileuri) }}"/>
+                <img class="faq-card-image" alt="Arrow.svg" src="{{ file_url(paragraph.field_banner_image.entity.fileuri) }}"/>
             </div>
             <div class="faq-card-text">
               <p class="faq-card-title">
@@ -85,7 +85,7 @@ view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
             <div class="faq-card-link">
                 <a href="{{ paragraph.field_page_link.url }}">
                   {{ paragraph.field_page_link.title }}
-                  <img class="faq-card-icon" src="/profiles/custom/webny/themes/custom/dfs_ny/icons/dfs/arrow-teal.svg"/>
+                  <img class="faq-card-icon" alt="Arrow.svg" src="/profiles/custom/webny/themes/custom/dfs_ny/icons/dfs/arrow-teal.svg"/>
                 </a>
             </div>
           {% endif %}

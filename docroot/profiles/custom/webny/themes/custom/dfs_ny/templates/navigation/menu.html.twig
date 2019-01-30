@@ -54,9 +54,9 @@
                 {% set classes = classes | merge(["is_expanded"]) %} 
               {% endif %}
               <li class="{{ classes|join(" ") }}" {{ item.attributes }}>
-                <a class="toggler">
+                <a class="toggler" href="{{ item.url }}">
                   {{ item.title }}
-                  <img class="expand down-up-arrow" src="/profiles/custom/webny/themes/custom/dfs_ny/icons/dfs/arrowdown-teal.svg">
+                  <img class="expand down-up-arrow" alt="{{ item.title }}"src="/profiles/custom/webny/themes/custom/dfs_ny/icons/dfs/arrowdown-teal.svg">
                 </a>
                 {{ menus.menu_links(item.below, attributes, menu_level + 1) }}
               </li>
