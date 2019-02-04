@@ -73,7 +73,6 @@
         "guzzlehttp/guzzle": "^6.0@dev",
         "hirak/prestissimo": "^0.3.4",
         "jarnaiz/behat-junit-formatter": "^1.3.2",
-        "roave/security-advisories": "dev-master",
         "se/selenium-server-standalone": "^2.53",
         "drupal/video_embed_brightcove": "1.x-dev",
         "drupal/ckeditor_liststyle": "^1.2",
@@ -81,7 +80,6 @@
         "ckeditor/indentblock": "^4.7",
         "ckeditor/liststyle": "^4.7",
         "ckeditor/autogrow": "^4.7",
-        "ckeditor/codemirror": "^1.17.3",
         "ckeditor/fakeobjects": "^4.7",
         "ckeditor/image": "^4.7",
         "ckeditor/link": "^4.7",
@@ -191,18 +189,8 @@
                     "url": "https://download.ckeditor.com/fakeobjects/releases/fakeobjects_4.8.0.zip",
                     "type": "zip"
                 },
-        "ckeditor/codemirror": {
-            "type": "package",
-            "package": {
-                "name": "ckeditor/codemirror",
-                "version": "1.17.3",
-                "type": "ckeditor-library",
-                "dist": {
-                    "url": "https://github.com/w8tcha/CKEditor-CodeMirror-Plugin/archive/master.zip",
-                    "type": "zip"
-                },
                 "extra": {
-                    "installer-name": "codemirror"
+                    "installer-name": "fakeobjects"
                 }
             }
         },
@@ -262,9 +250,6 @@
                 "Turn Views exposed filters for dates into date fields": "https://www.drupal.org/files/issues/views_exposed_filter-2710793-8.patch",
                 "Fix 'view_path' set to /views/ajax after second ajax request": "https://www.drupal.org/files/issues/2866386-4.patch",
                 "Display mode configurations don't get updated with new fields": "https://www.drupal.org/files/issues/2018-03-23/2915036-68.patch"
-            },
-            "drupal/adminimal_theme": {
-                "Incompatible with admin toolbar": "https://www.drupal.org/files/issues/incompatible_with_admin-2635456-4_0.patch"
             },
             "drupal/dropzonejs": {
                 "Add missing EB widget schema": "https://www.drupal.org/files/issues/add_missing_eb_widget-2813143-2.patch"
