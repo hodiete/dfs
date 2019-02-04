@@ -12,19 +12,15 @@ docroot/sites/*/private
 
 # Ignore contrib modules. These should be created during build process.
 docroot/modules/contrib
-# docroot/modules/svg_formatter
-# docroot/modules/svg_image
-#docroot/modules/views_slideshow
 
 docroot/profiles/custom/webny/modules/contrib
 docroot/themes/contrib
 docroot/profiles/custom/webny/themes/contrib
 docroot/profiles/contrib
-docroot/libraries
+# docroot/libraries
 drush/contrib
 
-# docroot/libraries/liststyle
-# docroot/libraries/indentblock
+
 migration_dfs
 # Ignore custom theme node_modules folders
 docroot/themes/custom/*/node_modules
@@ -50,9 +46,9 @@ docroot/profiles/custom/webny/themes/custom/dfs_ny/css/public-safety.css
 docroot/profiles/custom/webny/themes/custom/dfs_ny/css/recreation-environment.css
 docroot/profiles/custom/webny/themes/custom/dfs_ny/css/statewide-elected-officials.css
 docroot/profiles/custom/webny/themes/custom/dfs_ny/css/transportation-utilities.css
-# docroot/sites/default/services.yml
+docroot/sites/default/services.yml
 
-# docroot/sites/default/settings.php
+docroot/sites/default/settings.php
 
 # Ignore build artifacts
 /deploy
