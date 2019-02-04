@@ -195,20 +195,6 @@ display:
             group_items: {  }
           plugin_id: string
       sorts:
-        status:
-          id: status
-          table: node_field_revision
-          field: status
-          relationship: none
-          group_type: group
-          admin_label: ''
-          order: DESC
-          exposed: true
-          expose:
-            label: 'Most Popular'
-          entity_type: node
-          entity_field: status
-          plugin_id: standard
         field_page_title:
           id: field_page_title
           table: node__field_page
@@ -219,7 +205,7 @@ display:
           order: ASC
           exposed: true
           expose:
-            label: Alphabetical
+            label: A-Z
           plugin_id: standard
       title: 'Apps and Licensing View'
       header: {  }

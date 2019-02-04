@@ -6,7 +6,17 @@ dependencies:
     - block_content.type.dfs_footer
     - field.storage.block_content.body
   module:
+    - allowed_formats
     - text
+third_party_settings:
+  allowed_formats:
+    webny_enhanced_wysiwyg: webny_enhanced_wysiwyg
+    full_html: full_html
+    basic_html: '0'
+    webny_wysiwyg_frame_editor: '0'
+    restricted_html: '0'
+    rich_text: '0'
+    plain_text: '0'
 id: block_content.dfs_footer.body
 field_name: body
 entity_type: block_content

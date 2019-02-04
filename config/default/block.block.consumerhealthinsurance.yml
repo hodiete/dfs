@@ -11,12 +11,12 @@ dependencies:
 id: consumerhealthinsurance
 theme: dfs_ny
 region: content
-weight: -17
+weight: -18
 provider: null
 plugin: 'system_menu_block:consumer-health-insurance'
 settings:
   id: 'system_menu_block:consumer-health-insurance'
-  label: 'Consumer Health Insurance'
+  label: 'Health Insurance'
   provider: system
   label_display: visible
   level: 1
@@ -24,6 +24,6 @@ settings:
 visibility:
   request_path:
     id: request_path
-    pages: "/consumers/health_insurance\r\n/consumers/health_insurance/*"
+    pages: "/consumers/health_insurance\r\n/consumers/health_insurance/*\r\n/consumer/medplan/*"
     negate: false
     context_mapping: {  }
