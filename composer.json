@@ -104,17 +104,7 @@
         "drupal/responsive_menu": "^2.6",
         "drupal/backup_migrate": "^4.0",
         "drupal/restui": "1.15",
-        "drupal/views_slideshow": "^4.6",
-        "drupal/highlightjs": "^9.7",
-        "drupal/codemirror": "^5.42",
-        "jquery/cycle": "^3.0",
-        "jquery/hoverIntent": "^1.9",
-        "json2": "^1.9",
-        "drupal/hijri": "1.x-dev",
-        "drupal/svg_formatter": "^1.8",
-        "drupal/svg_image": "^1.8",
-        "drupal/entity_clone": "^1.0@beta",
-        "drupal/menu_export": "^1.2"
+        "drupal/views_slideshow": "^4.6"
     },
     "scripts": {
         "post-drupal-scaffold-cmd": [
@@ -191,6 +181,16 @@
                 }
             }
         },
+        "ckeditor/fakeobjects": {
+            "type": "package",
+            "package": {
+                "name": "ckeditor/fakeobjects",
+                "version": "4.8.0",
+                "type": "ckeditor-library",
+                "dist": {
+                    "url": "https://download.ckeditor.com/fakeobjects/releases/fakeobjects_4.8.0.zip",
+                    "type": "zip"
+                },
         "ckeditor/codemirror": {
             "type": "package",
             "package": {
@@ -203,21 +203,6 @@
                 },
                 "extra": {
                     "installer-name": "codemirror"
-                }
-            }
-        },
-        "ckeditor/fakeobjects": {
-            "type": "package",
-            "package": {
-                "name": "ckeditor/fakeobjects",
-                "version": "4.8.0",
-                "type": "ckeditor-library",
-                "dist": {
-                    "url": "https://download.ckeditor.com/fakeobjects/releases/fakeobjects_4.8.0.zip",
-                    "type": "zip"
-                },
-                "extra": {
-                    "installer-name": "fakeobjects"
                 }
             }
         },
@@ -251,75 +236,6 @@
                 }
             }
         },
-        "drupal/highlightjs": {
-            "type": "package",
-            "package": {
-                "name": "drupal/highlightjs",
-                "version": "9.7.0",
-                "type": "drupal-library",
-                "dist": {
-                    "url": "https://github.com/components/highlightjs/archive/9.7.0.zip",
-                    "type": "zip"
-                }
-            }
-        },
-        "drupal/codemirror": {
-            "type": "package",
-            "package": {
-                "name": "drupal/codemirror",
-                "version": "5.42.2",
-                "type": "drupal-library",
-                "dist": {
-                    "url": "https://codemirror.net/codemirror.zip",
-                    "type": "zip"
-                }
-            }
-        },
-        "jquery/cycle": {
-            "type": "package",
-            "package": {
-                "name": "jquery/cycle",
-                "version": "3.0.3",
-                "type": "drupal-library",
-                "extra": {
-                    "installer-name": "jquery.cycle"
-                },
-                "dist": {
-                    "url": "https://github.com/malsup/cycle/archive/master.zip",
-                    "type": "zip"
-                }
-            }
-        },
-        "jquery/hoverIntent": {
-            "type": "package",
-            "package": {
-                "name": "jquery/hoverIntent",
-                "version": "1.9.1",
-                "type": "drupal-library",
-                "extra": {
-                    "installer-name": "jquery.hoverIntent"
-                },
-                "dist": {
-                    "url": "https://raw.githubusercontent.com/briancherne/jquery-hoverIntent/master/jquery.hoverIntent.js",
-                    "type": "file"
-                }
-            }
-        },
-        "json2": {
-            "type": "package",
-            "package": {
-                "name": "json2",
-                "version": "1.9.1",
-                "type": "drupal-library",
-                "extra": {
-                    "installer-name": "json2"
-                },
-                "dist": {
-                    "url": "https://github.com/douglascrockford/JSON-js/archive/master.zip",
-                    "type": "zip"
-                }
-            }
-        },
         "asset-packagist": {
             "type": "composer",
             "url": "https://asset-packagist.org"
@@ -347,8 +263,8 @@
                 "Fix 'view_path' set to /views/ajax after second ajax request": "https://www.drupal.org/files/issues/2866386-4.patch",
                 "Display mode configurations don't get updated with new fields": "https://www.drupal.org/files/issues/2018-03-23/2915036-68.patch"
             },
-            "drupal/memcache": {
-                "Undefined method error on Statistics page": "https://www.drupal.org/files/issues/2018-09-05/memcache_undefined-2997537-3.patch"
+            "drupal/adminimal_theme": {
+                "Incompatible with admin toolbar": "https://www.drupal.org/files/issues/incompatible_with_admin-2635456-4_0.patch"
             },
             "drupal/dropzonejs": {
                 "Add missing EB widget schema": "https://www.drupal.org/files/issues/add_missing_eb_widget-2813143-2.patch"
