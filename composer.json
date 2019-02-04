@@ -75,14 +75,6 @@
         "jarnaiz/behat-junit-formatter": "^1.3.2",
         "se/selenium-server-standalone": "^2.53",
         "drupal/video_embed_brightcove": "1.x-dev",
-        "drupal/ckeditor_liststyle": "^1.2",
-        "drupal/ckeditor_indentblock": "1.x-dev",
-        "ckeditor/indentblock": "^4.7",
-        "ckeditor/liststyle": "^4.7",
-        "ckeditor/autogrow": "^4.7",
-        "ckeditor/fakeobjects": "^4.7",
-        "ckeditor/image": "^4.7",
-        "ckeditor/link": "^4.7",
         "drupal/address": "1.4",
         "drupal/config_update": "1.5",
         "drupal/taxonomy_machine_name": "^1.0@alpha",
@@ -121,108 +113,6 @@
         "drupal": {
             "type": "composer",
             "url": "https://packages.drupal.org/8"
-        },
-        "drupal/ckeditor_indentblock": {
-            "type": "package",
-            "package": {
-                "name": "drupal/ckeditor_indentblock",
-                "version": "1.x-dev",
-                "type": "drupal-module",
-                "dist": {
-                    "url": "https://ftp.drupal.org/files/projects/ckeditor_indentblock-8.x-1.x-dev.zip",
-                    "type": "zip"
-                }
-            }
-        },
-        "ckeditor/indentblock": {
-            "type": "package",
-            "package": {
-                "name": "ckeditor/indentblock",
-                "version": "4.7.3",
-                "type": "ckeditor-library",
-                "dist": {
-                    "url": "https://download.ckeditor.com/indentblock/releases/indentblock_4.7.3.zip",
-                    "type": "zip"
-                },
-                "extra": {
-                    "installer-name": "indentblock"
-                }
-            }
-        },
-        "ckeditor/liststyle": {
-            "type": "package",
-            "package": {
-                "name": "ckeditor/liststyle",
-                "version": "4.7.3",
-                "type": "ckeditor-library",
-                "dist": {
-                    "url": "https://download.ckeditor.com/liststyle/releases/liststyle_4.7.3.zip",
-                    "type": "zip"
-                },
-                "extra": {
-                    "installer-name": "liststyle"
-                }
-            }
-        },
-        "ckeditor/autogrow": {
-            "type": "package",
-            "package": {
-                "name": "ckeditor/autogrow",
-                "version": "4.8.0",
-                "type": "ckeditor-library",
-                "dist": {
-                    "url": "https://download.ckeditor.com/autogrow/releases/autogrow_4.8.0.zip",
-                    "type": "zip"
-                },
-                "extra": {
-                    "installer-name": "autogrow"
-                }
-            }
-        },
-        "ckeditor/fakeobjects": {
-            "type": "package",
-            "package": {
-                "name": "ckeditor/fakeobjects",
-                "version": "4.8.0",
-                "type": "ckeditor-library",
-                "dist": {
-                    "url": "https://download.ckeditor.com/fakeobjects/releases/fakeobjects_4.8.0.zip",
-                    "type": "zip"
-                },
-                "extra": {
-                    "installer-name": "fakeobjects"
-                }
-            }
-        },
-        "ckeditor/image": {
-            "type": "package",
-            "package": {
-                "name": "ckeditor/image",
-                "version": "4.8.0",
-                "type": "ckeditor-library",
-                "dist": {
-                    "url": "https://download.ckeditor.com/image/releases/image_4.8.0.zip",
-                    "type": "zip"
-                },
-                "extra": {
-                    "installer-name": "image"
-                }
-            }
-        },
-        "ckeditor/link": {
-            "type": "package",
-            "package": {
-                "name": "ckeditor/link",
-                "version": "4.8.0",
-                "type": "ckeditor-library",
-                "dist": {
-                    "url": "https://download.ckeditor.com/link/releases/link_4.8.0.zip",
-                    "type": "zip"
-                },
-                "extra": {
-                    "installer-name": "link"
-                }
-            }
         },
         "asset-packagist": {
             "type": "composer",
@@ -284,12 +174,10 @@
                 "type:drupal-core"
             ],
             "docroot/libraries/{$name}": [
-                "type:drupal-library",
                 "type:bower-asset",
                 "type:npm-asset",
                 "type:bower-asset",
-                "type:npm-asset",
-                "type:ckeditor-library"
+                "type:npm-asset"
             ],
             "docroot/modules/custom/{$name}": [
                 "type:drupal-custom-module"
