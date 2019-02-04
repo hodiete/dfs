@@ -94,6 +94,8 @@
   })
 
 
+
+
 /**
  * Toggle left menu.
  */
@@ -162,7 +164,6 @@
   $('a[href$=".pdf"]').prop('target', '_blank');
 
   // Make the DIV clickable if <a> in it
-
   clickableDiv(".banner-wrapper-all-texts .banner-link");
   clickableDiv(".learn-more-link");
   clickableDiv(".see-all-alerts-link");
@@ -219,5 +220,6 @@
       $(this).next().css("display", "none");
     }
   })
+
 
 })(jQuery, Drupal, this);

@@ -1,4 +1,4 @@
-{% extends 'profiles/custom/webny/themes/custom/webny_theme/templates/content/webny--teaser-base.html.twig' %}
+{% extends 'profiles/custom/webny/themes/custom/dfs_ny/templates/content/webny--teaser-base.html.twig' %}
 
 {% block title %}
     {% if (node.field_webny_page_short_title.value is not empty and node.field_webny_page_short_title.value is not null) %}
@@ -18,7 +18,7 @@
 
 {% block hero_image %}
     {% if not content.field_webny_page_image.0 %}
-        <div class="list-fallback-img">{{ source('profiles/custom/webny/themes/custom/webny_theme/images/NYS_StateOutline.svg') }}</div>
+        <div class="list-fallback-img">{{ source('profiles/custom/webny/themes/custom/dfs_ny/images/NYS_StateOutline.svg') }}</div>
     {% else %}
         {{ content.field_webny_page_image }}
     {% endif %}

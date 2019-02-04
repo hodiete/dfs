@@ -1,4 +1,4 @@
-{% extends 'profiles/custom/webny/themes/custom/webny_theme/templates/content/webny--card-base.html.twig' %}
+{% extends 'profiles/custom/webny/themes/custom/dfs_ny/templates/content/webny--card-base.html.twig' %}
 
 {%  if(node.field_webny_whitelist_stitle.value is not empty and node.field_webny_whitelist_stitle.value is not null) %}
     {% set vtitle = node.field_webny_whitelist_stitle.value %}
@@ -23,13 +23,13 @@
         {% if (node.field_webny_whitelist_target.value == '1') %}
             <a target="_blank" href="{{ url }}">
                 <div class="card-fallback-image">
-                    {% include '@webny_theme/includes/OpenBrowserArrow.svg.twig' %}
+                    {% include '@dfs_ny/includes/OpenBrowserArrow.svg.twig' %}
                 </div>
             </a>
         {% else %}
             <a target="_self" href="{{ url }}">
                 <div class="card-fallback-image">
-                    {% include '@webny_theme/includes/OpenBrowserArrow.svg.twig' %}
+                    {% include '@dfs_ny/includes/OpenBrowserArrow.svg.twig' %}
                 </div>
             </a>
         {% endif %}

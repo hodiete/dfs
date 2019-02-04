@@ -1,4 +1,4 @@
-{% extends 'profiles/custom/webny/themes/custom/webny_theme/templates/content/webny--card-base.html.twig' %}
+{% extends 'profiles/custom/webny/themes/custom/dfs_ny/templates/content/webny--card-base.html.twig' %}
 
 {# setting title variable so it can be used 2x #}
 {% set description = content.field_webny_page_description %}
@@ -18,7 +18,7 @@
     {% else %}
         <a href="{{ url }}">
             <div class="card-fallback-image">
-                {% include '@webny_theme/includes/NYS_StateOutline.svg.twig' %}
+                {% include '@dfs_ny/includes/NYS_StateOutline.svg.twig' %}
             </div>
         </a>
     {% endif %}

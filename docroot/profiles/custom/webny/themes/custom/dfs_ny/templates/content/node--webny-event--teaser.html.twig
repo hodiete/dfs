@@ -1,4 +1,4 @@
-{% extends 'profiles/custom/webny/themes/custom/webny_theme/templates/content/webny--teaser-base.html.twig' %}
+{% extends 'profiles/custom/webny/themes/custom/dfs_ny/templates/content/webny--teaser-base.html.twig' %}
 {% set attributes = attributes.addClass('webny-teaser__events') %}
 
 {# link not working so setting url to redirect field if it is filled in #}
@@ -27,7 +27,7 @@
 
 {% block hero_image %}
     {% if not content.field_webny_event_heroimage.0 %}
-        <div class="list-fallback-img">{{ source('profiles/custom/webny/themes/custom/webny_theme/images/NYGov_Events.svg') }}</div>
+        <div class="list-fallback-img">{{ source('profiles/custom/webny/themes/custom/dfs_ny/images/NYGov_Events.svg') }}</div>
     {% else %}
         {{ content.field_webny_event_heroimage }}
     {% endif %}
@@ -51,7 +51,7 @@
 
 {% block content %}
     <div class="webny-teaser-content-wrapper__details-right">
-      {% include '@webny_theme/includes/webny--event-date.html.twig' %}
+      {% include '@dfs_ny/includes/webny--event-date.html.twig' %}
     </div>
 {% endblock content %}
 

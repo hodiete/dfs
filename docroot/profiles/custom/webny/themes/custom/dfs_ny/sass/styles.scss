@@ -1,21 +1,20 @@
 @import "../node_modules/susy/sass/susy";
 @import "../node_modules/breakpoint-sass/stylesheets/breakpoint";
-
 /**
   Normalize reset
 */
-@import "base/reset";
 
+@import "base/reset";
 /**
   Typography
 */
-@import "base/typography";
 
+@import "base/typography";
 /**
   Config file that contains centralized variables
 */
-@import "config";
 
+@import "config";
 // Base
 //
 // These are the default base styles applied to HTML elements.
@@ -28,7 +27,6 @@
 @import "base/form";
 @import "base/icons";
 @import "base/table";
-
 // Form
 //
 // These are the default form styles applied to HTML elements.
@@ -111,12 +109,10 @@
 //
 // the import below was a wildcard @import "state/*"; but it's explicit because the build fails w/wildcard
 @import "state/blocks";
-
 // Print
 //
 // Print specific styling
 //@import "print";
-
 // Fixes
 //
 // IE specific and other browser specific fixes

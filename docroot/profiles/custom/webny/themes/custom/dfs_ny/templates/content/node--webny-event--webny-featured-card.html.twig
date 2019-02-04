@@ -1,4 +1,4 @@
-{% extends 'profiles/custom/webny/themes/custom/webny_theme/templates/content/webny--card-base.html.twig' %}
+{% extends 'profiles/custom/webny/themes/custom/dfs_ny/templates/content/webny--card-base.html.twig' %}
 
 {# setting title variable so it can be used 2x #}
 {%  if(node.field_webny_event_short_title.value is not empty and node.field_webny_event_short_title.value is not null) %}
@@ -29,13 +29,13 @@
             {% set link = content.field_webny_event_redirect_url.0 %}
             <a href="{{ link }}">
                 <div class="card-fallback-image">
-                    {% include '@webny_theme/includes/NYGov_Events.svg.twig' %}
+                    {% include '@dfs_ny/includes/NYGov_Events.svg.twig' %}
                 </div>
             </a>
         {% else %}
             <a href="{{ url }}">
                 <div class="card-fallback-image">
-                    {% include '@webny_theme/includes/NYGov_Events.svg.twig' %}
+                    {% include '@dfs_ny/includes/NYGov_Events.svg.twig' %}
                 </div>
             </a>
         {% endif %}
@@ -68,7 +68,7 @@
 
     {# Event date block #}
    <div class="card-event--date-block">
-       {% include '@webny_theme/includes/webny--event-date.html.twig' %}
+       {% include '@dfs_ny/includes/webny--event-date.html.twig' %}
    </div>
 
 

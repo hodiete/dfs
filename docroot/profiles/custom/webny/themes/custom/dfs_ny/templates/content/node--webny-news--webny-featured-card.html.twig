@@ -1,4 +1,4 @@
-{% extends 'profiles/custom/webny/themes/custom/webny_theme/templates/content/webny--card-base.html.twig' %}
+{% extends 'profiles/custom/webny/themes/custom/dfs_ny/templates/content/webny--card-base.html.twig' %}
 
 {# setting title variable so it can be used 2x #}
 {%  if(node.field_webny_news_short_title.value is not empty and node.field_webny_news_short_title.value is not null) %}
@@ -17,7 +17,7 @@
     {% else %}
         <a href="{{ url }}">
             <div class="card-fallback-image">
-                {% include '@webny_theme/includes/NYGov_Newspaper.svg.twig' %}
+                {% include '@dfs_ny/includes/NYGov_Newspaper.svg.twig' %}
             </div>
         </a>
     {% endif %}

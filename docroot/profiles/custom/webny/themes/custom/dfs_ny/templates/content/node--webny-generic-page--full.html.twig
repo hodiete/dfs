@@ -20,8 +20,8 @@
 {# CONTENT SECTIONS                 -- field_webny_gencp_contentsect #}
 
 {# ATTACH JS LIBRARY #}
-{{ attach_library('webny_theme/navigator') }}
-{{ attach_library('webny_theme/callouts') }}
+{{ attach_library('dfs_ny/navigator') }}
+{{ attach_library('dfs_ny/callouts') }}
 
 {# DECLARED VARS #}
 {% set hero_image = file_url(node.field_webny_gencp_heroimage.entity.field_image.entity.uri.value) %}
@@ -110,8 +110,8 @@
                 {{ title_suffix }}
     </article>
 
-    {% include '@webny_theme/includes/webny--action-bar.html.twig' %}
-    {% include '@webny_theme/includes/webny--toc.html.twig' %}
+    {% include '@dfs_ny/includes/webny--action-bar.html.twig' %}
+    {% include '@dfs_ny/includes/webny--toc.html.twig' %}
 
 
 </div>

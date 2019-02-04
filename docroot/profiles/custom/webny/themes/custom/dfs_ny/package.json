@@ -46,14 +46,18 @@
   },
   "optionalDependencies": {},
   "engines": {
-    "node": "8.9.4"
+    "node": "6.14.4"
   },
   "private": true,
   "//": "The postinstall script is needed to work-around this Drupal core bug: https://www.drupal.org/node/2329453",
   "scripts": {
+    "install-dfs_ny": "npm install",
     "postinstall": "find node_modules/ -name '*.info' -type f -delete",
-    "uninstall-webny_theme": "rm -r node_modules;",
+    "uninstall-dfs_ny": "rm -r node_modules;",
     "build": "gulp",
     "watch": "gulp watch"
-  }
+  },
+  "main": "gulpfile.js",
+  "author": "",
+  "license": "ISC"
 }
