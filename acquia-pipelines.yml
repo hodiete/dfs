@@ -26,9 +26,8 @@ events:
       - setup-app:
           type: script
           script:
-            - nvm install v8.9.4
-            - nvm use 8.9.4
-            - cd ${THEME_DIR} && npm install
+            - source ${THEME_DIR}/install-node.sh
+            - mysql -u root -proot -e "SET GLOBAL max_allowed_packet=33554432"
             - source ${BLT_DIR}/scripts/pipelines/setup_app
       - tests:
           type: script
@@ -38,16 +37,3 @@ events:
           type: script
           script:
             - source ${BLT_DIR}/scripts/pipelines/build_artifact
-      - deploy:
-          script:
-            - pipelines-deploy
-pr-merged:
-  steps:
-    - deploy:
-        script:
-          - pipelines-deploy
-pre-closed:
-  steps:
-    - deploy:
-        script:
-          - pipelines-deploy
