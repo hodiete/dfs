@@ -12,7 +12,7 @@
     attach: function (context, settings) {
       $('table').once().dataTable({
         order: [],
-        paging: true,
+        paging: false,
         pageLength: 25,
         pagingType: 'simple_numbers',
         lengthChange: false,
