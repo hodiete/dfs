@@ -33,6 +33,7 @@
     $(leftSubMenuLi).find('a').each( function () {
       if ($(this).hasClass('is-active')) {
         $(this).parent().parent().addClass('show-sub');
+        $(this).parent().parent().prev().addClass('parent-show');
         $(this).parent().parent().parent().addClass('expanded');
       }
     })
@@ -205,11 +206,28 @@
   }
 
   let leftSubMenu = ".ul-complaint-sidebar li.parent";
+  let $pageBody = $('main .page-body');
+  let $stickeyLeftmenu = $('#sticky-leftmenu').parent('nav');
+  
+    $(document).ready(function () { 
+    // console.log("sticky height 1: " + $stickeyLeftmenu.height());
+    // console.log("pageBody height 1: " + $pageBody.height());
+    if ($pageBody.height() < $stickeyLeftmenu.height()) {
+      $pageBody.height($stickeyLeftmenu.height());
+      // console.log("pageBody height 2: " + $pageBody.height());
+    }
+  });
+
   $(leftSubMenu).find('a').click(function () {
     $(this).toggleClass("parent-show");
     $(this).parent('li').toggleClass("expanded");
     $(this).next('ul').toggleClass("show-sub");
     // $(this).next().slideToggle(100);
+    // console.log("pageBody height 3: " + $pageBody.height());
+    // console.log("sticky height 2: " + $stickeyLeftmenu.height());
+    if ($pageBody.height() < $stickeyLeftmenu.height()) {
+      $pageBody.height($stickeyLeftmenu.height());
+    }
 
     if ($(this).hasClass("parent-show")) {
       $(this).find("img").attr('src', svgBase + svgUp);

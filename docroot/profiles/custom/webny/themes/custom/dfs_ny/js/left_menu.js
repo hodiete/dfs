@@ -105,8 +105,9 @@
         stickyStopperPosition = 800;
       }
 
-      let stopPoint = stickyStopperPosition - generalSidebarHeight - stickOffset;
-       // console.log(stopPoint + " | " + stickyStopperPosition + " | " + generalSidebarHeight + " | " + stickOffset);
+      // let stopPoint = stickyStopperPosition - generalSidebarHeight - stickOffset;
+      let stopPoint = stickyStopperPosition - 150;
+      //  console.log(stopPoint + " | " + stickyStopperPosition + " | " + generalSidebarHeight + " | " + stickOffset);
 
       let diff = stopPoint + stickOffset;     
 
@@ -119,8 +120,9 @@
         } else {          
           if (windowTop <= fromTop) {
             $sticky.css({ position: 'absolute', top: fromTop });
-            // console.log('fromTop:' + fromTop);
+            // console.log(' windowTop ' + windowTop + ' : fromTop:' + fromTop);
           } else {
+            // console.log(' windowTop ' + windowTop + ' : stopPoint:' + stopPoint);
             if (stopPoint < windowTop) {
               $sticky.css({ position: 'absolute', top: diff });  
             } else if (stickyTop < windowTop + stickOffset) {
@@ -137,16 +139,6 @@
       });
     }// End if
   }
-
-
-
-  Drupal.behaviors.leftMenuToogle = {
-    attach: function (context, settings) {
-
-
-
-    }
-  };
 
 }(jQuery, Drupal, this));
 

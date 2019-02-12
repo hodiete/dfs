@@ -72,7 +72,8 @@ view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
 
           {% else %}
             <div class="faq-card-image-div">
-                <img class="faq-card-image" alt="Arrow.svg" src="{{ file_url(paragraph.field_banner_image.entity.fileuri) }}"/>
+                {# <img class="faq-card-image" alt="Arrow.svg" src="{{ file_url(paragraph.field_banner_image.entity.fileuri) }}"/> #}
+{{ content.field_banner_image }}
             </div>
             <div class="faq-card-text">
               <p class="faq-card-title">
@@ -83,7 +84,8 @@ view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
               </p>
             </div>
             <div class="faq-card-link">
-                <a href="{{ paragraph.field_page_link.url }}">
+
+                <a href="{{ paragraph.field_page_link.0.url }}">
                   {{ paragraph.field_page_link.title }}
                   <img class="faq-card-icon" alt="Arrow.svg" src="/profiles/custom/webny/themes/custom/dfs_ny/icons/dfs/arrow-teal.svg"/>
                 </a>
