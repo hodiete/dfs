@@ -353,13 +353,6 @@ option {
   }
 }
 
-#dfs-footer-link {
-  border: none;
-}
-
-#dfs-footer-link:hover {
-  background-color: $bgcolor-dark-leftmenu;
-}
 
 .faq-card-link p {
   letter-spacing: .5px;
@@ -380,5 +373,27 @@ option {
     h3 {
       text-align: center;
     }
+  }
+}
+
+// Chris 2.6.8
+@media only screen and (min-width: 1281px) {
+  #block-views-block-icon-link-view-block-1 {
+   padding-top: 36px;
+ }
+
+}
+
+@media only screen and (max-width: 1280px) and (min-width: 641px) {
+  #block-views-block-press-releases-page-block-1 {
+    padding-left: 45px;
+  }
+}
+
+@media only screen and (max-width: 640px) {
+  #block-views-block-press-releases-page-block-1 {
+    margin-top: 50px;
+    padding-left: 5px;
+    width: 98%;
   }
 }

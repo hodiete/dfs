@@ -177,6 +177,7 @@
   clickableDiv(".banner-wrapper-all-texts .banner-link");
   clickableDiv(".learn-more-link");
   clickableDiv(".see-all-alerts-link");
+  clickableDiv(".dfs-footer-link");
 
   function clickableDiv($divClass) {
     $($divClass).click(function () {
