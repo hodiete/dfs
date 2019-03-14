@@ -161,13 +161,23 @@
     $(this).find("img.faq-card-icon").attr("src", svgBase + "arrow-teal.svg");
   });
 
-  // Open PDF file in a new window/tab
+  // Open PDF, external links file in a new window/tab
+  $('a[href^="http"]').prop('target', '_blank');
   $('a[href$=".pdf"]').prop('target', '_blank');
-
+  // Handle external links except for the Portal Login. 
+  $('a[href^="http"]').each(function () {
+    var href = $(this).attr("href");
+    if (href.indexOf("dfs.ny.gov") < 0) {
+      console.log("index: " + href.indexOf("dfs.ny.gov"));
+      $(this).addClass('external');
+    }
+  });
+  
   // Make the DIV clickable if <a> in it
   clickableDiv(".banner-wrapper-all-texts .banner-link");
   clickableDiv(".learn-more-link");
   clickableDiv(".see-all-alerts-link");
+  clickableDiv(".dfs-footer-link");
 
   function clickableDiv($divClass) {
     $($divClass).click(function () {
