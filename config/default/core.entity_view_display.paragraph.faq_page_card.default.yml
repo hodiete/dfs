@@ -13,6 +13,7 @@ dependencies:
     - paragraphs.paragraphs_type.faq_page_card
   module:
     - link
+    - linked_field
     - options
     - svg_image
     - text
@@ -67,7 +68,12 @@ content:
     weight: 2
     label: hidden
     settings: {  }
-    third_party_settings: {  }
+    third_party_settings:
+      linked_field:
+        linked: '1'
+        type: field
+        destination: field_page_link
+        advanced: {  }
     type: text_default
     region: content
   field_size:

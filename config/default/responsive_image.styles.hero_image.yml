@@ -3,8 +3,6 @@ langcode: en
 status: true
 dependencies:
   config:
-    - image.style.mobile_lead
-    - image.style.narrow_lead
     - image.style.wide_lead
   theme:
     - dfs_ny
@@ -16,17 +14,18 @@ image_style_mappings:
   -
     breakpoint_id: dfs_ny.wide
     multiplier: 1x
-    image_mapping_type: image_style
-    image_mapping: wide_lead
+    image_mapping_type: sizes
+    image_mapping:
+      sizes: 100vw
+      sizes_image_styles:
+        - wide_lead
   -
     breakpoint_id: dfs_ny.narrow
     multiplier: 1x
-    image_mapping_type: image_style
-    image_mapping: narrow_lead
-  -
-    breakpoint_id: dfs_ny.mobile
-    multiplier: 1x
-    image_mapping_type: image_style
-    image_mapping: mobile_lead
+    image_mapping_type: sizes
+    image_mapping:
+      sizes: 100vw
+      sizes_image_styles:
+        - wide_lead
 breakpoint_group: dfs_ny
-fallback_image_style: mobile_lead
+fallback_image_style: wide_lead

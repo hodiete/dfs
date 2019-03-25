@@ -1,17 +1,18 @@
+uuid: 35f186af-5bb9-457b-babf-91a92f9bc361
 langcode: en
 status: open
 dependencies: {  }
 open: null
 close: null
 weight: 0
-uid: 6
+uid: 603
 template: false
 archive: false
-id: write_the_superintendent
-title: 'Write The Superintendent'
-description: '<h3>Send us your Questions and Comments: Form of&nbsp;Superintendent</h3>'
-category: ''
-elements: "processed_text:\n  '#type': processed_text\n  '#text': \"<h5>Send us your Questions and Comments</h5>\\n\\n<p>The \\\"Write The Superintendent\\\" Form is to be used for general questions or comments about regulatory related issues only.&nbsp;Do not use this form to file a complaint. Do not use this form for licensing inquiries.&nbsp;Consumer and licensing inquiries will NOT be responded to via this method.</p>\\n\\n<ul>\\n\\t<li>If you are a consumer and have a question or want to file a complaint, visit&nbsp;<a href=\\\"https://www.dfs.ny.gov/consumer/fileacomplaint.htm\\\">How To File A Complaint</a>.</li>\\n\\t<li>If you are an Agent or Broker with licensing questions, visit&nbsp;<a href=\\\"https://www.dfs.ny.gov/insurance/abindx.htm\\\">Information for Agents and Brokers</a>.</li>\\n</ul>\\n\\n<h5><strong>Please provide the following information:</strong></h5>\\n\"\n  '#format': full_html\norganization:\n  '#type': textfield\n  '#title': Organization\n  '#title_display': inline\n  '#maxlength': '200'\n  '#placeholder': (Optional)\nlicense:\n  '#type': radios\n  '#title': 'Are you a Licensee of the Department? (optional)'\n  '#title_display': before\n  '#options': yes_no\n  '#options_display': side_by_side\nfirst_name:\n  '#type': textfield\n  '#title': 'First Name'\n  '#title_display': inline\n  '#maxlength': '30'\n  '#required': true\n  '#required_error': Required\nlast_name:\n  '#type': textfield\n  '#title': 'Last Name'\n  '#title_display': inline\n  '#maxlength': '30'\n  '#required': true\ncontact_type:\n  '#type': select\n  '#title': 'You are a(n)'\n  '#title_display': inline\n  '#options':\n    Consumer: Consumer\n    Producer: Producer\n    Insurer: Insurer\n    Other: Other\n  '#empty_option': Select\n  '#empty_value': '1'\n  '#required': true\nphone:\n  '#type': tel\n  '#title': Phone\n  '#title_display': inline\n  '#maxlength': '30'\n  '#placeholder': (xxx-xxx-xxxx)\n  '#required': true\nmailing_address:\n  '#type': webform_address\n  '#title': 'Mailing Address'\n  '#required': true\n  '#address__title': 'Mailing Address 1 '\n  '#address__required': true\n  '#address_2__placeholder': (Optional)\n  '#city__title': City\n  '#city__required': true\n  '#state_province__title': State\n  '#state_province__required': true\n  '#postal_code__required': true\n  '#country__access': false\nyour_questions_or_comments:\n  '#type': textarea\n  '#title': 'Your Questions or Comments'\n  '#title_display': inline\n  '#rows': '4'\n  '#placeholder': '(Type or copy and paste to the text-box)'\n  '#required': true\n  '#required_error': Required\nemail:\n  '#type': email\n  '#title': 'Email Address'\n  '#title_display': inline\n  '#required': true\ncaptcha:\n  '#type': captcha\nactions:\n  '#type': webform_actions\n  '#title': 'Submit Form'\n  '#submit__label': 'Submit Form'\n  '#reset__label': 'Reset Form'\n"
+id: corporate_designee
+title: 'Insurer Corporate Designee'
+description: ''
+category: Insurance
+elements: "insurance_company_name:\n  '#type': textfield\n  '#title': 'Insurance Company Name'\n  '#required': true\nnaic_number:\n  '#type': textfield\n  '#title': 'NAIC Number'\n  '#required': true\ncorporate_consumer_services_officer:\n  '#type': textfield\n  '#title': 'Corporate Consumer Services Officer'\n  '#required': true\naddress:\n  '#type': webform_address\n  '#title': Address\n  '#address__required': true\n  '#city__required': true\n  '#state_province__required': true\n  '#postal_code__required': true\n  '#required': true\nphone_number:\n  '#type': tel\n  '#title': 'Direct Phone Number'\n  '#required': true\nfax_number:\n  '#type': tel\n  '#title': 'Fax Number'\n  '#required': true\nemail_address:\n  '#type': email\n  '#title': 'Email address'\n  '#title_display': before\n  '#required': true\ncompleted_by:\n  '#type': textfield\n  '#title': 'Completed By'\nhorizontal_rule:\n  '#type': webform_horizontal_rule\n  '#display_on': both\nadditional_company_name:\n  '#type': textfield\n  '#title': 'Additional Company Name'\nnaic_number_2:\n  '#type': textfield\n  '#title': 'NAIC Number'\nadditional_company_name_3:\n  '#type': textfield\n  '#title': 'Additional Company Name'\nnaic_number_3:\n  '#type': textfield\n  '#title': 'NAIC Number'\nadditional_company_name_4:\n  '#type': textfield\n  '#title': 'Additional Company Name'\nnaic_number_4:\n  '#type': textfield\n  '#title': 'NAIC Number'\ncaptcha:\n  '#type': captcha"
 css: ''
 javascript: ''
 settings:
@@ -20,7 +21,7 @@ settings:
   page: true
   page_submit_path: ''
   page_confirm_path: ''
-  form_title: both
+  form_title: source_entity_webform
   form_submit_once: true
   form_exception_message: ''
   form_open_message: ''
@@ -39,8 +40,8 @@ settings:
   form_novalidate: false
   form_disable_inline_errors: false
   form_required: false
-  form_unsaved: false
-  form_disable_back: false
+  form_unsaved: true
+  form_disable_back: true
   form_submit_back: false
   form_autofocus: false
   form_details_toggle: false
@@ -78,7 +79,7 @@ settings:
   wizard_confirmation: true
   wizard_confirmation_label: ''
   wizard_track: ''
-  preview: 0
+  preview: 1
   preview_label: ''
   preview_title: ''
   preview_message: ''
@@ -91,9 +92,9 @@ settings:
   draft_auto_save: false
   draft_saved_message: ''
   draft_loaded_message: ''
-  confirmation_type: page
+  confirmation_type: inline
   confirmation_title: ''
-  confirmation_message: ''
+  confirmation_message: 'Thank you for your submission. We should be in touch shortly.&nbsp;'
   confirmation_url: ''
   confirmation_attributes: {  }
   confirmation_back: true
@@ -168,7 +169,7 @@ access:
 handlers:
   email:
     id: email
-    label: 'Superintendent  Email'
+    label: 'Joel Obuchowski'
     handler_id: email
     status: true
     conditions: {  }
@@ -176,17 +177,51 @@ handlers:
     settings:
       states:
         - completed
-      to_mail: '[webform_submission:values:email:raw]'
+      to_mail: Joel.Obuchowski@dfs.ny.gov
+      to_options: {  }
+      cc_mail: eileen.greene@dfs.ny.gov
+      cc_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      from_mail: '[webform_submission:values:email_address:raw]'
+      from_options: {  }
+      from_name: '[webform_submission:values:corporate_consumer_services_officer:raw]'
+      subject: 'Corporate Designee'
+      body: _default
+      excluded_elements: {  }
+      ignore_access: true
+      exclude_empty: true
+      exclude_empty_checkbox: false
+      html: true
+      attachments: false
+      twig: false
+      debug: false
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
+      theme_name: ''
+  email_1:
+    id: email
+    label: 'Eileen Greene'
+    handler_id: email_1
+    status: true
+    conditions: {  }
+    weight: 0
+    settings:
+      states:
+        - completed
+      to_mail: eileen.greene@dfs.ny.gov
       to_options: {  }
       cc_mail: ''
       cc_options: {  }
-      bcc_mail: 'Superintendent@dfs.ny.gov,Joel.Obuchowski@dfs.ny.gov,Sheila.Wagner-Winfield@dfs.ny.gov,Ronald.Klug@dfs.ny.gov'
+      bcc_mail: ''
       bcc_options: {  }
-      from_mail: Superintendent@dfs.ny.gov
+      from_mail: '[webform_submission:values:email_address:raw]'
       from_options: {  }
-      from_name: 'Write The Superintendent'
-      subject: 'Write the Superintendent e-Form Submission'
-      body: "<p>Dear [webform_submission:values:first_name] [webform_submission:values:last_name]:</p>\n\n<p>Your inquiry and comment submitted via the Department &#39;Write The Superintendent&#39; webpage have been received and will be reviewed promptly.</p>\n\n<p>The information you entered is as follows:</p>\n[webform_submission:values]"
+      from_name: '[webform_submission:values:corporate_consumer_services_officer:raw]'
+      subject: 'Corporate Designee'
+      body: _default
       excluded_elements: {  }
       ignore_access: false
       exclude_empty: true
@@ -200,4 +235,3 @@ handlers:
       sender_mail: ''
       sender_name: ''
       theme_name: ''
-uuid: 1b2481bb-ce8f-4e42-ad0d-391f98949101
