@@ -72,36 +72,11 @@
     }
   };
 
-  Drupal.behaviors.portalLogin = {
-    attach: function (context, settings) {
-      // The toggle button.
-      var portal = '.webny-global-header ul.gnav-ul li.gnav-topli:nth-child(7) > a';
-      var button = '.login-button';
-      $(portal).click(function () {
-        window.open(this.href);
-        return false;
-      });
-
-    }
-  };
-  
-
   Drupal.behaviors.externalUrl = {
     attach: function (context, settings) {
-      // The toggle button.
-      $("a").on("click", function () {
-        if ($(this).attr("href") !== undefined) {
-          // console.log(href);
-          var href = $(this).attr("href");
-          if (~href.indexOf("dfs.ny.gov") ) {
-            if (href.indexOf("http://") == 0 || href.indexOf("https://") == 0) {
-              return confirm("You are about to leave the DFS website. Would you like to continue?");
-            }
-          }
-
-        }
+      $('a.external').on("click", function () {
+          return confirm("You are about to leave the DFS website. Would you A like to continue?");      
       });
-
     }
   };
 

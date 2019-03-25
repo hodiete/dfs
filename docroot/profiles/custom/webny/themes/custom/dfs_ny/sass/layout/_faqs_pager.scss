@@ -1,56 +1,43 @@
-.pager__items{
-  display: inline-flex;
-}
-
-.pager__item{
-  height: 30px;
-  width: 40px;
-  margin-left: 10px ;
-  margin-right: 10px ;
-  font-size: 14px;
-  background-color: #e5eeee;
+main .layout-content nav.pager {
+  clear: both;
   text-align: center;
-  align-items: center;
-  a{
-    color: #09464c;
+  min-width: 342px;
+  width: 93%;
+  margin-left: 26px;
+  ul {
+    background-color: $bgcolor-light-leftmenu;
+    padding: 0;
+    margin: 0;
   }
-
-  .is-active{
+  .pager__items {
+    display: inline-flex;
+  }
+  .pager__item {
+    list-style: none;
+    height: 30px; // width: auto;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 14px; // background-color: #e5eeee;
+    text-align: center;
+    align-items: center;
+    a {
+      color: $bgcolor-dark-leftmenu;
+      padding: 0 10px;
+    }
+  }
+  .is-active {
     background-color: #09464c;
-    a{
+    a {
       color: white;
     }
   }
-}
-
-// .pager__item .is-active{
-//   background-color: #09464c;
-//   a{
-//     color: white;
-//   }
-//
-// }
-
-.pager{
-  text-align: center;
-}
-
-.pager__item--last{
-  display: none;
-}
-
-.pager__item--first{
-  display: none;
-}
-
-.pager__item--next{
-  margin-left: 10px ;
-  margin-right: 10px ;
-  background-color: white;
-}
-
-.pager__item--previous{
-  margin-left: 10px ;
-  margin-right: 10px ;
-  background-color: white;
+  .pager__item--last,
+  .pager__item--first {
+    width: 75px;
+    margin: auto 0px;
+  }
+  .pager__item--next,
+  .pager__item--previous {
+    margin: auto 0px;
+  }
 }

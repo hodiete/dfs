@@ -33,6 +33,7 @@
     $(leftSubMenuLi).find('a').each( function () {
       if ($(this).hasClass('is-active')) {
         $(this).parent().parent().addClass('show-sub');
+        $(this).parent().parent().prev().addClass('parent-show');
         $(this).parent().parent().parent().addClass('expanded');
       }
     })
@@ -160,13 +161,23 @@
     $(this).find("img.faq-card-icon").attr("src", svgBase + "arrow-teal.svg");
   });
 
-  // Open PDF file in a new window/tab
+  // Open PDF, external links file in a new window/tab
+  $('a[href^="http"]').prop('target', '_blank');
   $('a[href$=".pdf"]').prop('target', '_blank');
-
+  // Handle external links except for the Portal Login. 
+  $('a[href^="http"]').each(function () {
+    var href = $(this).attr("href");
+    if (href.indexOf("dfs.ny.gov") < 0) {
+      console.log("index: " + href.indexOf("dfs.ny.gov"));
+      $(this).addClass('external');
+    }
+  });
+  
   // Make the DIV clickable if <a> in it
   clickableDiv(".banner-wrapper-all-texts .banner-link");
   clickableDiv(".learn-more-link");
   clickableDiv(".see-all-alerts-link");
+  clickableDiv(".dfs-footer-link");
 
   function clickableDiv($divClass) {
     $($divClass).click(function () {
@@ -205,11 +216,28 @@
   }
 
   let leftSubMenu = ".ul-complaint-sidebar li.parent";
+  let $pageBody = $('main .page-body');
+  let $stickeyLeftmenu = $('#sticky-leftmenu').parent('nav');
+  
+    $(document).ready(function () { 
+    // console.log("sticky height 1: " + $stickeyLeftmenu.height());
+    // console.log("pageBody height 1: " + $pageBody.height());
+    if ($pageBody.height() < $stickeyLeftmenu.height()) {
+      $pageBody.height($stickeyLeftmenu.height());
+      // console.log("pageBody height 2: " + $pageBody.height());
+    }
+  });
+
   $(leftSubMenu).find('a').click(function () {
     $(this).toggleClass("parent-show");
     $(this).parent('li').toggleClass("expanded");
     $(this).next('ul').toggleClass("show-sub");
     // $(this).next().slideToggle(100);
+    // console.log("pageBody height 3: " + $pageBody.height());
+    // console.log("sticky height 2: " + $stickeyLeftmenu.height());
+    if ($pageBody.height() < $stickeyLeftmenu.height()) {
+      $pageBody.height($stickeyLeftmenu.height());
+    }
 
     if ($(this).hasClass("parent-show")) {
       $(this).find("img").attr('src', svgBase + svgUp);

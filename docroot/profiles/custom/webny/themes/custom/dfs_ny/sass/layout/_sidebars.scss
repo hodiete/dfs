@@ -383,22 +383,32 @@ main nav .h1-open-sub {
   }
 }
 
-@media (max-width: 640px) {
-  main .layout-content nav {
-    left: 50%;
-    -webkit-transform: translateX(-50%);
-    transform: translateX(-50%);
-    margin: 0;
-  }
-  main .layout-content #nydfs-breadcrumb {
-    left: 0;
-    transform: translateX(0%);
-  }
-}
-
 .leftmenu-toggle-h2 .expand {
   margin-right: 30px;
   width: 14px;
   float: right;
   margin-top: 3px;
+}
+
+@media only screen and (max-width: 640px) {
+  main .layout-content {
+    nav {
+      left: 50%;
+      -webkit-transform: translateX(-50%);
+      transform: translateX(-50%);
+      margin: 0;
+    }
+    nav.pager {
+      -webkit-transform: translateX(0);
+      transform: translateX(0);
+      .pager__item {
+        margin-left: 0;
+        margin-right: 0;
+      }
+    }
+    #nydfs-breadcrumb {
+      left: 0;
+      transform: translateX(0%);
+    }
+  }
 }
