@@ -75,7 +75,7 @@
   Drupal.behaviors.externalUrl = {
     attach: function (context, settings) {
       $('a.external').on("click", function () {
-          return confirm("You are about to leave the DFS website. Would you A like to continue?");      
+          return confirm("You are about to leave the DFS website. Would you like to continue?");      
       });
     }
   };
