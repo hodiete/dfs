@@ -168,7 +168,7 @@
   $('a[href^="http"]').each(function () {
     var href = $(this).attr("href");
     if (href.indexOf("dfs.ny.gov") < 0) {
-      console.log("index: " + href.indexOf("dfs.ny.gov"));
+      // console.log("index: " + href.indexOf("dfs.ny.gov"));
       $(this).addClass('external');
     }
   });
@@ -178,6 +178,8 @@
   clickableDiv(".learn-more-link");
   clickableDiv(".see-all-alerts-link");
   clickableDiv(".dfs-footer-link");
+  
+  clickableDiv(".reg-institution-link");
 
   function clickableDiv($divClass) {
     $($divClass).click(function () {
