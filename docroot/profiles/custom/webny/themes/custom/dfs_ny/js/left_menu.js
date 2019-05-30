@@ -1,5 +1,6 @@
 (function ($, Drupal, window, document) {
-  'use strick';
+  'use strict';
+
 
   let adminNavHeight = 0;
   let breadcrumHeight = 0;
@@ -37,8 +38,9 @@
     }
   }
   
+  //let $sticky = $('#sticky-leftmenu').parent('nav');
   let $sticky = $('#sticky-leftmenu').parent('nav');
-  let $stickyrStopper = $('.sticky-stopper');
+  let $stickyrStopper = $('.dfs-footer-container');
   let $fromTopHeight = ($(window).width() >= 1024) 
     ? 171 + heroHeight + adminNavHeight 
     : 171 + heroHeight + adminNavHeight;
@@ -61,7 +63,6 @@
   /*
   *  toggle the left menu on mobile
   */
-
   $('.leftmenu-toggle-h2').click(function () {
     if ($(window).width() < 1024) {
       $("#sticky-leftmenu").slideToggle('fast');
@@ -106,17 +107,18 @@
       }
 
       // let stopPoint = stickyStopperPosition - generalSidebarHeight - stickOffset;
-      let stopPoint = stickyStopperPosition - 150;
+      let stopPoint = stickyStopperPosition-generalSidebarHeight;
       //  console.log(stopPoint + " | " + stickyStopperPosition + " | " + generalSidebarHeight + " | " + stickOffset);
 
       let diff = stopPoint + stickOffset;     
 
       $(window).scroll(function() { // scroll event
-
+   
         var windowTop = $(window).scrollTop(); // returns number    
+        console.log('windowTop = ' + windowTop + 'stopTop = ' +stopPoint );
         if ($topMenu && windowTop <= 90) {
           $sticky.css({ position: 'relative', top: 'initial' });
-          // console.log('windowTop = ' + windowTop);
+           // console.log('windowTop = ' + windowTop + 'stopTop = ' +stopPoint );
         } else {          
           if (windowTop <= fromTop) {
             $sticky.css({ position: 'absolute', top: fromTop });
