@@ -91,11 +91,7 @@
       }
 
       let generalSidebarHeight = $sticky.innerHeight();
-      let stickyTop = $sticky.offset().top;
-      if ($sticky.lenght) {
-        // stickyTop = $sticky.offset().top;
-      }
-   
+      let stickyTop = $sticky.offset().top; 
       let stickOffset = 0;
       let stickyStopperPosition = 0;
 
@@ -113,7 +109,9 @@
       let diff = stopPoint + stickOffset;     
 
       $(window).scroll(function() { // scroll event
-   
+      generalSidebarHeight = $sticky.innerHeight();
+      stopPoint = stickyStopperPosition-generalSidebarHeight;
+      diff = stopPoint + stickOffset; 
         var windowTop = $(window).scrollTop(); // returns number    
         console.log('windowTop = ' + windowTop + 'stopTop = ' +stopPoint );
         if ($topMenu && windowTop <= 90) {
