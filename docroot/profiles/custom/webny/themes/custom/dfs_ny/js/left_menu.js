@@ -91,11 +91,7 @@
       }
 
       let generalSidebarHeight = $sticky.innerHeight();
-      let stickyTop = $sticky.offset().top;
-      // if ($sticky.length) {
-      //   // stickyTop = $sticky.offset().top;
-      // }
-   
+      let stickyTop = $sticky.offset().top; 
       let stickOffset = 0;
       let stickyStopperPosition = 0;
 
