@@ -1,20 +1,20 @@
-uuid: a3efc1d5-2004-4057-a255-e11692f2cca8
+uuid: e65591b3-9b54-44a5-8ad4-58f59263285e
 langcode: en
 status: true
 dependencies:
   config:
-    - node.type.press_release
-id: node.press_release.status
-field_name: status
+    - node.type.dfs_document
+id: node.dfs_document.promote
+field_name: promote
 entity_type: node
-bundle: press_release
-label: Published
+bundle: dfs_document
+label: 'Promoted to front page'
 description: ''
 required: false
 translatable: true
 default_value:
   -
-    value: 1
+    value: 0
 default_value_callback: ''
 settings:
   on_label: 'On'

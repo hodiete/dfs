@@ -52,7 +52,7 @@ display:
       pager:
         type: full
         options:
-          items_per_page: 40
+          items_per_page: 5
           offset: 0
           id: 0
           total_pages: null
@@ -69,7 +69,7 @@ display:
             items_per_page_options_all_label: '- All -'
             offset: false
             offset_label: Offset
-          quantity: 5
+          quantity: 3
       style:
         type: table
         options:
@@ -326,7 +326,20 @@ display:
           plugin_id: standard
       title: 'Press Releases'
       header: {  }
-      footer: {  }
+      footer:
+        area:
+          id: area
+          table: views
+          field: area
+          relationship: none
+          group_type: group
+          admin_label: ''
+          empty: false
+          tokenize: false
+          content:
+            value: "<div style=\"margin-top:15px\">\n<p><a href=\"/reports_and_publications/press_2018\">2018 Press Releases</a> &nbsp;| &nbsp;<a href=\"/reports_and_publications/press_2017\">2017 Press Releases</a>&nbsp; | &nbsp;<a href=\"/reports_and_publications/press_2016\">2016 Press Releases</a></p>\n\n<hr />\n<p >Press inquiries can be directed to our Public Affairs &amp; Communications Office at (212) 709-1691 or emailed to <a href=\"mailto:public-affairs@dfs.ny.gov\">public-affairs@dfs.ny.gov</a></p>\n</div>\n"
+            format: full_html
+          plugin_id: text
       empty: {  }
       relationships: {  }
       arguments: {  }

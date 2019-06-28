@@ -1,24 +1,20 @@
-uuid: 26cfb2ed-e45d-4a0f-8ac9-af99021eb963
 langcode: en
 status: open
 dependencies:
-  module:
-    - honeypot
-third_party_settings:
-  honeypot:
-    honeypot: true
-    time_restriction: true
+  enforced:
+    module:
+      - webform
 open: null
 close: null
 weight: 0
-uid: 603
+uid: null
 template: false
 archive: false
-id: fcms_registration_form
-title: 'FCMS Registration Form'
-description: '<p>Companies use this form to register to use the Frauds Case Management System</p>'
-category: Insurance
-elements: "insurance_company_name:\n  '#type': textfield\n  '#title': 'Insurance Company Name'\n  '#required': true\nnaic_number_4:\n  '#type': textfield\n  '#title': 'NAIC Number'\n  '#required': true\naddress:\n  '#type': webform_address\n  '#title': 'SIU Mailing Address'\n  '#required': true\n  '#address__required': true\n  '#city__required': true\n  '#state_province__required': true\n  '#postal_code__required': true\n  '#country__access': false\n  '#flexbox': '1'\ncontact_person_title:\n  '#type': textfield\n  '#title': 'Contact Person Title'\nphone_number:\n  '#type': tel\n  '#title': 'Direct Phone Number'\n  '#required': true\nfax_number:\n  '#type': tel\n  '#title': 'Fax Number'\n  '#required': true\nemail_address:\n  '#type': email\n  '#title': 'Email address'\n  '#title_display': before\n  '#required': true\naccess_level:\n  '#type': select\n  '#title': 'Access Level'\n  '#options':\n    Submitter: Submitter\n    'Trusted Source': 'Trusted Source'\n  '#empty_option': '- Select -'\n  '#required': true\ncaptcha:\n  '#type': captcha"
+id: contact
+title: Contact
+description: 'Basic email contact webform.'
+category: ''
+elements: "name:\n  '#title': 'Your Name'\n  '#type': textfield\n  '#required': true\n  '#default_value': '[current-user:display-name]'\nemail:\n  '#title': 'Your Email'\n  '#type': email\n  '#required': true\n  '#default_value': '[current-user:mail]'\nsubject:\n  '#title': Subject\n  '#type': textfield\n  '#required': true\n  '#test': 'Testing contact webform from [site:name]'\nmessage:\n  '#title': Message\n  '#type': textarea\n  '#required': true\n  '#test': 'Please ignore this email.'\nactions:\n  '#type': webform_actions\n  '#title': 'Submit button(s)'\n  '#submit__label': 'Send message'\n"
 css: ''
 javascript: ''
 settings:
@@ -27,8 +23,8 @@ settings:
   page: true
   page_submit_path: ''
   page_confirm_path: ''
-  form_title: source_entity_webform
-  form_submit_once: true
+  form_title: both
+  form_submit_once: false
   form_exception_message: ''
   form_open_message: ''
   form_close_message: ''
@@ -41,12 +37,12 @@ settings:
   form_prepopulate_source_entity: false
   form_prepopulate_source_entity_required: false
   form_prepopulate_source_entity_type: ''
-  form_reset: true
+  form_reset: false
   form_disable_autocomplete: false
   form_novalidate: false
   form_disable_inline_errors: false
   form_required: false
-  form_unsaved: true
+  form_unsaved: false
   form_disable_back: false
   form_submit_back: false
   form_autofocus: false
@@ -85,7 +81,7 @@ settings:
   wizard_confirmation: true
   wizard_confirmation_label: ''
   wizard_track: ''
-  preview: 1
+  preview: 0
   preview_label: ''
   preview_title: ''
   preview_message: ''
@@ -98,10 +94,10 @@ settings:
   draft_auto_save: false
   draft_saved_message: ''
   draft_loaded_message: ''
-  confirmation_type: inline
+  confirmation_type: url_message
   confirmation_title: ''
-  confirmation_message: 'Thank you for your submission. We should be in touch shortly.&nbsp;'
-  confirmation_url: ''
+  confirmation_message: 'Your message has been sent.'
+  confirmation_url: '<front>'
   confirmation_attributes: {  }
   confirmation_back: true
   confirmation_back_label: ''
@@ -173,61 +169,27 @@ access:
     users: {  }
     permissions: {  }
 handlers:
-  email:
+  email_confirmation:
     id: email
-    label: 'Joel Obuchowski'
-    handler_id: email
-    status: false
+    label: 'Email confirmation'
+    handler_id: email_confirmation
+    status: true
     conditions: {  }
-    weight: 0
+    weight: 1
     settings:
       states:
         - completed
-      to_mail: Joel.Obuchowski@dfs.ny.gov
-      to_options: {  }
-      cc_mail: eileen.greene@dfs.ny.gov
-      cc_options: {  }
-      bcc_mail: ''
-      bcc_options: {  }
-      from_mail: '[webform_submission:values:email_address:raw]'
-      from_options: {  }
-      from_name: '[webform_submission:values:corporate_consumer_services_officer:raw]'
-      subject: 'Corporate Designee'
-      body: _default
-      excluded_elements: {  }
-      ignore_access: true
-      exclude_empty: true
-      exclude_empty_checkbox: false
-      html: true
-      attachments: false
-      twig: false
-      debug: false
-      reply_to: ''
-      return_path: ''
-      sender_mail: ''
-      sender_name: ''
-      theme_name: ''
-  email_1:
-    id: email
-    label: 'Eileen Greene'
-    handler_id: email_1
-    status: false
-    conditions: {  }
-    weight: 0
-    settings:
-      states:
-        - completed
-      to_mail: eileen.greene@dfs.ny.gov
+      to_mail: '[webform_submission:values:email:raw]'
       to_options: {  }
       cc_mail: ''
       cc_options: {  }
       bcc_mail: ''
       bcc_options: {  }
-      from_mail: '[webform_submission:values:email_address:raw]'
+      from_mail: _default
       from_options: {  }
-      from_name: '[webform_submission:values:corporate_consumer_services_officer:raw]'
-      subject: 'Corporate Designee'
-      body: _default
+      from_name: _default
+      subject: '[webform_submission:values:subject:raw]'
+      body: '[webform_submission:values:message:value]'
       excluded_elements: {  }
       ignore_access: false
       exclude_empty: true
@@ -241,27 +203,27 @@ handlers:
       sender_mail: ''
       sender_name: ''
       theme_name: ''
-  email_3:
+  email_notification:
     id: email
-    label: 'Kathleen Grogan'
-    handler_id: email_3
-    status: false
+    label: 'Email notification'
+    handler_id: email_notification
+    status: true
     conditions: {  }
-    weight: 0
+    weight: 1
     settings:
       states:
         - completed
-      to_mail: Kathleen.grogan@dfs.ny.gov
+      to_mail: _default
       to_options: {  }
       cc_mail: ''
       cc_options: {  }
       bcc_mail: ''
       bcc_options: {  }
-      from_mail: '[webform_submission:values:email_address:raw]'
+      from_mail: '[webform_submission:values:email:raw]'
       from_options: {  }
-      from_name: '[webform_submission:values:contact_person_title:raw]'
-      subject: _default
-      body: _default
+      from_name: '[webform_submission:values:name:raw]'
+      subject: '[webform_submission:values:subject:raw]'
+      body: '[webform_submission:values:message:value]'
       excluded_elements: {  }
       ignore_access: false
       exclude_empty: true
@@ -275,3 +237,6 @@ handlers:
       sender_mail: ''
       sender_name: ''
       theme_name: ''
+uuid: 8b02068a-ded5-4381-a7b6-e18c63bd222b
+_core:
+  default_config_hash: 54q-eZLQ0xY3g9yFexLIn97Y8F_sByRhO4ima2pMmn4

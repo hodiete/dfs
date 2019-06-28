@@ -1,0 +1,32 @@
+uuid: 772d666f-e98d-40a1-a562-f5d239067c3f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.dfs_document
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    basic_html: basic_html
+    full_html: full_html
+    webny_enhanced_wysiwyg: '0'
+    webny_wysiwyg_frame_editor: '0'
+    restricted_html: '0'
+    rich_text: '0'
+    plain_text: '0'
+id: node.dfs_document.body
+field_name: body
+entity_type: node
+bundle: dfs_document
+label: Description
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: true
+field_type: text_with_summary

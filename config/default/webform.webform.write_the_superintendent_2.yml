@@ -1,0 +1,169 @@
+uuid: 5555ec9f-0af9-44bc-8d57-e57849aae5ba
+langcode: en
+status: open
+dependencies: {  }
+open: null
+close: null
+weight: 0
+uid: 6
+template: false
+archive: false
+id: write_the_superintendent_2
+title: 'Online Insurer Corporate Officer Designee Form: Regulation 64 (11 NYCRR216.4)'
+description: '<h3>Online Insurer Corporate Officer Designee Form - Regulation 64</h3>'
+category: ''
+elements: "processed_text:\n  '#type': processed_text\n  '#text': |\n    <h1>Insurer Corporate Designee Form:</h1>\n    <h3>Regulation 64 (11 NYCRR 216.4)</h3>\n    \n    <p>The Department requires each insurer to designate one individual per insurer as corporate officer responsible for its internal consumer services department. This is the Designee Form used to confirm or update the existing information in our records including the fax number used to fax out complaint files.</p> <p>The Department must be informed immediately whenever there is a change in any of this information.</p>\n    \n    <p>Please complete the form below and Click Submit to Send.</p>\n    \n  '#format': full_html\norganization:\n  '#type': textfield\n  '#title': 'Insurance Company Name'\n  '#title_display': inline\n  '#maxlength': '200'\n  '#placeholder': (Optional)\n  '#required': true\ncompany_naic_number:\n  '#type': textfield\n  '#title': 'Company NAIC Number'\n  '#title_display': inline\n  '#maxlength': '10'\n  '#required': true\n  '#required_error': 'NAIC Number is required'\ncorporate_consumer_services_officer_name_and_title_:\n  '#type': webform_name\n  '#title': 'Corporate Consumer Services Officer, Name and Title:'\n  '#multiple': true\n  '#title__title_display': before\n  '#title__required': true\n  '#first__required': true\n  '#last__required': true\n  '#required': true\naddress:\n  '#type': webform_address\n  '#title': Address\n  '#multiple': true\n  '#prepopulate': true\n  '#address__placeholder': 'Address (con''t) '\n  '#address__title_display': after\n  '#address__required': true\n  '#address_2__title': 'Address (optional)'\n  '#address_2__placeholder': 'Address (con''t)'\n  '#city__title_display': after\n  '#city__required': true\n  '#state_province__title_display': after\n  '#state_province__required': true\n  '#required': true\nphone:\n  '#type': tel\n  '#title': Phone\n  '#title_display': inline\n  '#maxlength': '30'\n  '#placeholder': (xxx-xxx-xxxx)\n  '#required': true\nfax_number:\n  '#type': tel\n  '#title': 'Fax Number'\n  '#multiple': 9\n  '#title_display': before\n  '#required': true\nemail:\n  '#type': email\n  '#title': 'Email Address'\n  '#title_display': inline\n  '#required': true\ncompleted_by_:\n  '#type': textfield\n  '#title': 'Completed by'\n  '#multiple': true\n  '#title_display': before\n  '#autocomplete': 'off'\n  '#required': true\nhorizontal_rule:\n  '#type': webform_horizontal_rule\nprocessed_text_02:\n  '#type': processed_text\n  '#text': |\n    <p>Will this affect other companies in your group? If so, indicate company names and NAIC numbers:</p>\n    \n  '#format': full_html\ninsurance_company_name:\n  '#type': textfield\n  '#title': 'Insurance Company Name'\n  '#multiple': true\n  '#title_display': inline\n  '#maxlength': '200'\n  '#placeholder': (Optional)\ncompany_naic_number_02:\n  '#type': textfield\n  '#title': 'Company NAIC Number'\n  '#multiple': true\n  '#title_display': inline\n  '#maxlength': '10'\n  '#required_error': 'NAIC Number is required'\ninsurance_company_name_03:\n  '#type': textfield\n  '#title': 'Insurance Company Name'\n  '#multiple': true\n  '#title_display': inline\n  '#maxlength': '200'\n  '#placeholder': (Optional)\ncompany_naic_number_03:\n  '#type': textfield\n  '#title': 'Company NAIC Number'\n  '#multiple': true\n  '#title_display': inline\n  '#maxlength': '10'\n  '#required_error': 'NAIC Number is required'\ninsurance_company_name_4:\n  '#type': textfield\n  '#title': 'Insurance Company Name'\n  '#multiple': true\n  '#title_display': inline\n  '#maxlength': '200'\n  '#placeholder': (Optional)\ncompany_naic_number_04:\n  '#type': textfield\n  '#title': 'Company NAIC Number'\n  '#multiple': true\n  '#title_display': inline\n  '#maxlength': '10'\n  '#required_error': 'NAIC Number is required'\ncaptcha:\n  '#type': captcha\nactions:\n  '#type': webform_actions\n  '#title': 'Submit Form'\n  '#access_create_roles':\n    - anonymous\n  '#access_view_roles':\n    - anonymous\n  '#submit__label': 'Submit Form'\n  '#reset__label': 'Reset Form'"
+css: ''
+javascript: ''
+settings:
+  ajax: false
+  ajax_scroll_top: form
+  page: true
+  page_submit_path: /insurance_companies/regulation_64_designee_form
+  page_confirm_path: /insurance_companies/regulation_64_designee_form
+  form_title: source_entity_webform
+  form_submit_once: true
+  form_exception_message: ''
+  form_open_message: ''
+  form_close_message: ''
+  form_previous_submissions: true
+  form_confidential: false
+  form_confidential_message: ''
+  form_remote_addr: true
+  form_convert_anonymous: false
+  form_prepopulate: false
+  form_prepopulate_source_entity: false
+  form_prepopulate_source_entity_required: false
+  form_prepopulate_source_entity_type: ''
+  form_reset: true
+  form_disable_autocomplete: false
+  form_novalidate: false
+  form_disable_inline_errors: false
+  form_required: true
+  form_unsaved: true
+  form_disable_back: false
+  form_submit_back: false
+  form_autofocus: false
+  form_details_toggle: false
+  form_access_denied: default
+  form_access_denied_title: ''
+  form_access_denied_message: ''
+  form_access_denied_attributes: {  }
+  form_file_limit: ''
+  submission_label: ''
+  submission_log: false
+  submission_views: {  }
+  submission_views_replace: {  }
+  submission_user_columns: {  }
+  submission_user_duplicate: false
+  submission_access_denied: default
+  submission_access_denied_title: ''
+  submission_access_denied_message: ''
+  submission_access_denied_attributes: {  }
+  submission_exception_message: ''
+  submission_locked_message: ''
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
+  previous_submission_message: ''
+  previous_submissions_message: ''
+  autofill: false
+  autofill_message: ''
+  autofill_excluded_elements: {  }
+  wizard_progress_bar: true
+  wizard_progress_pages: false
+  wizard_progress_percentage: false
+  wizard_progress_link: false
+  wizard_start_label: ''
+  wizard_preview_link: false
+  wizard_confirmation: true
+  wizard_confirmation_label: ''
+  wizard_track: ''
+  preview: 0
+  preview_label: ''
+  preview_title: ''
+  preview_message: ''
+  preview_attributes: {  }
+  preview_excluded_elements: {  }
+  preview_exclude_empty: true
+  preview_exclude_empty_checkbox: false
+  draft: none
+  draft_multiple: false
+  draft_auto_save: false
+  draft_saved_message: ''
+  draft_loaded_message: ''
+  confirmation_type: page
+  confirmation_title: ''
+  confirmation_message: ''
+  confirmation_url: ''
+  confirmation_attributes: {  }
+  confirmation_back: true
+  confirmation_back_label: ''
+  confirmation_back_attributes: {  }
+  confirmation_exclude_query: false
+  confirmation_exclude_token: false
+  limit_total: null
+  limit_total_interval: null
+  limit_total_message: ''
+  limit_total_unique: false
+  limit_user: null
+  limit_user_interval: null
+  limit_user_message: ''
+  limit_user_unique: false
+  entity_limit_total: null
+  entity_limit_total_interval: null
+  entity_limit_user: null
+  entity_limit_user_interval: null
+  purge: none
+  purge_days: null
+  results_disabled: false
+  results_disabled_ignore: false
+  token_update: false
+access:
+  create:
+    roles:
+      - anonymous
+      - authenticated
+    users: {  }
+    permissions: {  }
+  view_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  purge_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  view_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  administer:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  test:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  configuration:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+handlers: {  }
