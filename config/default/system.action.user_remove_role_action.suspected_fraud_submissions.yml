@@ -1,0 +1,14 @@
+uuid: 08e41795-5644-4ef0-a5bf-e9ca82e32695
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.suspected_fraud_submissions
+  module:
+    - user
+id: user_remove_role_action.suspected_fraud_submissions
+label: 'Remove the Suspected Fraud Submissions role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: suspected_fraud_submissions

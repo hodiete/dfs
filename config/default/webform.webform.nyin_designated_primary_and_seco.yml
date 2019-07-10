@@ -1,0 +1,209 @@
+uuid: 4d383bc8-83e9-4062-a4b8-60f134587c4a
+langcode: en
+status: open
+dependencies:
+  module:
+    - honeypot
+third_party_settings:
+  honeypot:
+    honeypot: true
+    time_restriction: true
+open: null
+close: null
+weight: 0
+uid: 603
+template: false
+archive: false
+id: nyin_designated_primary_and_seco
+title: 'NYIN Designated Primary and Secondary Intelligence/Information Officers'
+description: 'Wherein companies can&nbsp;enter or update your company&#39;s Designated Primary and Secondary Intelligence/Information Officers data in the New York Information Network (NYIN)'
+category: Insurance
+elements: "naic_no_:\n  '#type': textfield\n  '#title': 'NAIC No.'\n  '#minlength': '5'\n  '#maxlength': '5'\n  '#placeholder': 'Enter the 5-character NAIC number'\n  '#required': true\n  '#required_error': 'Enter the 5-character NAIC number'\ncompany_insurer_name:\n  '#type': textfield\n  '#title': 'Company/Insurer Name'\n  '#required': true\ninsurer_type:\n  '#type': select\n  '#title': 'Insurer Type'\n  '#options':\n    Health: Health\n    Life: Life\n    Property/Casualty: Property/Casualty\n    Other: Other\n  '#empty_option': 'Choose one'\naddress:\n  '#type': webform_address\n  '#title': Address\n  '#address__required': true\n  '#city__required': true\n  '#state_province__required': true\n  '#postal_code__required': true\n  '#country__required': true\n  '#flexbox': '1'\nhorizontal_rule:\n  '#type': webform_horizontal_rule\n  '#display_on': both\nmarkup:\n  '#type': webform_markup\n  '#markup': '<h4>Company CEO Information</h4>'\nceo_name_and_title:\n  '#type': webform_name\n  '#title': 'CEO Name and Title'\n  '#title__required': true\n  '#first__required': true\n  '#last__required': true\n  '#degree__access': false\n  '#required': true\nceo_phone_number:\n  '#type': tel\n  '#title': 'CEO Phone Number'\n  '#required': true\nceo_email_confirm_:\n  '#type': webform_email_confirm\n  '#title': 'CEO Email'\n  '#confirm__title': 'Email (Confirm)'\n  '#required': true\nhorizontal_rule_01:\n  '#type': webform_horizontal_rule\n  '#display_on': both\nmarkup_01:\n  '#type': webform_markup\n  '#display_on': both\n  '#markup': '<h4>Primary Intelligence/Information Officer (PIO):</h4>'\nname_and_title:\n  '#type': webform_name\n  '#title': 'Name and Title'\n  '#title_display': before\n  '#title__required': true\n  '#first__required': true\n  '#last__required': true\n  '#degree__access': false\n  '#required': true\nphone:\n  '#type': tel\n  '#title': 'Primary Phone'\n  '#required': true\nfax_number:\n  '#type': tel\n  '#title': 'FAX Number'\nsecondary_phone_cell_:\n  '#type': tel\n  '#title': 'Secondary Phone (Cell)'\nemail_address_main_:\n  '#type': webform_email_confirm\n  '#title': 'Email Address (main)'\n  '#required': true\nhorizontal_rule_02:\n  '#type': webform_horizontal_rule\n  '#display_on': both\nmarkup_02:\n  '#type': webform_markup\n  '#display_on': both\n  '#markup': '<h4>Secondary Intelligence/Information Officer (SIO):</h4>'\nname_and_title_2:\n  '#type': webform_name\n  '#title': 'Name and Title'\n  '#title__required': true\n  '#first__required': true\n  '#last__required': true\n  '#degree__access': false\n  '#required': true\nprimary_phone:\n  '#type': tel\n  '#title': 'Primary Phone'\n  '#required': true\nfax_number_02:\n  '#type': tel\n  '#title': 'Fax Number'\nsecondary_phone_cell_02:\n  '#type': tel\n  '#title': 'Secondary Phone (cell)'\nemail_address:\n  '#type': webform_email_confirm\n  '#title': 'Email Address (main)'\n  '#required': true\ncaptcha:\n  '#type': captcha"
+css: ''
+javascript: ''
+settings:
+  ajax: false
+  ajax_scroll_top: form
+  page: true
+  page_submit_path: ''
+  page_confirm_path: ''
+  form_title: both
+  form_submit_once: false
+  form_exception_message: ''
+  form_open_message: ''
+  form_close_message: ''
+  form_previous_submissions: true
+  form_confidential: false
+  form_confidential_message: ''
+  form_remote_addr: true
+  form_convert_anonymous: false
+  form_prepopulate: false
+  form_prepopulate_source_entity: false
+  form_prepopulate_source_entity_required: false
+  form_prepopulate_source_entity_type: ''
+  form_reset: false
+  form_disable_autocomplete: false
+  form_novalidate: false
+  form_disable_inline_errors: false
+  form_required: false
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
+  form_autofocus: false
+  form_details_toggle: false
+  form_access_denied: default
+  form_access_denied_title: ''
+  form_access_denied_message: ''
+  form_access_denied_attributes: {  }
+  form_file_limit: ''
+  submission_label: ''
+  submission_log: false
+  submission_views: {  }
+  submission_views_replace: {  }
+  submission_user_columns: {  }
+  submission_user_duplicate: false
+  submission_access_denied: default
+  submission_access_denied_title: ''
+  submission_access_denied_message: ''
+  submission_access_denied_attributes: {  }
+  submission_exception_message: ''
+  submission_locked_message: ''
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
+  previous_submission_message: ''
+  previous_submissions_message: ''
+  autofill: false
+  autofill_message: ''
+  autofill_excluded_elements: {  }
+  wizard_progress_bar: true
+  wizard_progress_pages: false
+  wizard_progress_percentage: false
+  wizard_progress_link: false
+  wizard_start_label: ''
+  wizard_preview_link: false
+  wizard_confirmation: true
+  wizard_confirmation_label: ''
+  wizard_track: ''
+  preview: 0
+  preview_label: ''
+  preview_title: ''
+  preview_message: ''
+  preview_attributes: {  }
+  preview_excluded_elements: {  }
+  preview_exclude_empty: true
+  preview_exclude_empty_checkbox: false
+  draft: none
+  draft_multiple: false
+  draft_auto_save: false
+  draft_saved_message: ''
+  draft_loaded_message: ''
+  confirmation_type: page
+  confirmation_title: ''
+  confirmation_message: ''
+  confirmation_url: ''
+  confirmation_attributes: {  }
+  confirmation_back: true
+  confirmation_back_label: ''
+  confirmation_back_attributes: {  }
+  confirmation_exclude_query: false
+  confirmation_exclude_token: false
+  limit_total: null
+  limit_total_interval: null
+  limit_total_message: ''
+  limit_total_unique: false
+  limit_user: null
+  limit_user_interval: null
+  limit_user_message: ''
+  limit_user_unique: false
+  entity_limit_total: null
+  entity_limit_total_interval: null
+  entity_limit_user: null
+  entity_limit_user_interval: null
+  purge: none
+  purge_days: null
+  results_disabled: false
+  results_disabled_ignore: false
+  token_update: false
+access:
+  create:
+    roles:
+      - anonymous
+      - authenticated
+    users: {  }
+    permissions: {  }
+  view_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  purge_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  view_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  administer:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  test:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  configuration:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+handlers:
+  email:
+    id: email
+    label: NYIN
+    handler_id: email
+    status: true
+    conditions: {  }
+    weight: 0
+    settings:
+      states:
+        - completed
+      to_mail: ashbert.carrington@dfs.ny.gov
+      to_options: {  }
+      cc_mail: '[webform_submission:values:ceo_email_confirm_:raw]'
+      cc_options: {  }
+      bcc_mail: 'joel.obuchowski@dfs.ny.gov, eileen.greene@dfs.ny.gov'
+      bcc_options: {  }
+      from_mail: PreDis@dfs.ny.gov
+      from_options: {  }
+      from_name: _default
+      subject: 'NYIN Submission'
+      body: _default
+      excluded_elements: {  }
+      ignore_access: false
+      exclude_empty: true
+      exclude_empty_checkbox: false
+      html: true
+      attachments: false
+      twig: false
+      debug: false
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
+      theme_name: ''
