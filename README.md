@@ -44,10 +44,9 @@ $databases = array(
 );
 ```
 
-Then you can run each of these commands in order:
+Then, after deleting the vendor folder, you can run each of these commands in order:
 
 ```
-fin exec composer nuke
 fin exec composer install
 fin exec vendor/acquia/blt/bin/blt setup
 ```
