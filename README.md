@@ -61,4 +61,4 @@ fin exec drush sql-sync @prod @self
 fin exec updb
 ```
 
-Then, you should be able to navigate to the site in your browser: `[https://dfsnygov.docksal/WebNY50/](https://dfsnygov.docksal/WebNY50/)`
+Then, you should be able to navigate to the site in your browser: [https://dfsnygov.docksal/WebNY50/](https://dfsnygov.docksal/WebNY50/)
