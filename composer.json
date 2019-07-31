@@ -112,10 +112,6 @@
         ],
         "post-update-cmd": [
             "cd docroot/profiles/custom/webny/libraries && npm install && rsync -a node_modules/ ./ && rm -rf node_modules/*"
-        ],
-        "nuke": [
-            "rm -rf vendor composer.lock docroot/core docroot/modules/contrib docroot/profiles/contrib docroot/themes/contrib",
-            "@composer clearcache --ansi"
         ]
     },
     "repositories": {
