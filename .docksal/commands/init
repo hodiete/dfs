@@ -1,37 +1,36 @@
 #!/usr/bin/env bash
-
-## Initialize stack and site (full reset)
+## Run blt setup commands to prepare your local site for
+## development.
 ##
 ## Usage: fin init
+DOCROOT_PATH="${PROJECT_ROOT}/${DOCROOT}"
+# Initialize stack
+fin project start
 
-# Abort if anything fails
-set -e
+fin exec COMPOSER_PROCESS_TIMEOUT=2000
+fin exec composer clear-cache
+echo "Composer install..."
+fin exec composer install
 
-#-------------------------- Helper functions --------------------------------
-
-# Console colors
-red='\033[0;31m'
-green='\033[0;32m'
-green_bg='\033[1;97;42m'
-yellow='\033[1;33m'
-NC='\033[0m'
-
-echo-red () { echo -e "${red}$1${NC}"; }
-echo-green () { echo -e "${green}$1${NC}"; }
-echo-green-bg () { echo -e "${green_bg}$1${NC}"; }
-echo-yellow () { echo -e "${yellow}$1${NC}"; }
-
-#-------------------------- Execution --------------------------------
-
-# Stack initialization
-echo -e "${green_bg} Step 1 ${NC}${green} Initializing stack...${NC}"
-fin project reset -f
-
-# Site initialization
-echo -e "${green_bg} Step 2 ${NC}${green} Initializing site...${NC}"
-# This runs inside cli using http://docs.docksal.io/en/v1.4.0/fin/custom-commands/#executing-commands-inside-cli
-fin init-site
-
-echo -e "${green_bg} DONE! ${NC}${green} Completed all initialization steps.${NC}"
-
-#-------------------------- END: Execution --------------------------------
+cd $DOCROOT_PATH
+echo "Deleting local settings file if one exists..."
+rm -f $DOCROOT_PATH/sites/default/settings/local.settings.php
+echo "Deleting local drush file if one exists..."
+rm -f $DOCROOT_PATH/sites/default/local.drush.yml
+cd $PROJECT_ROOT
+echo "Running blt commands..."
+fin addon install blt
+echo "Creating settings files..."
+fin blt blt:init:settings
+#fin exec blt:setup:settings
+#fin exec vendor/acquia/blt/bin/blt setup:settings
+echo "Copying default local blt settings from .drush to blt folder..."
+cp $PROJECT_ROOT/.docksal/docksal.local.blt.yml $PROJECT_ROOT/blt/local.blt.yml
+echo "Copying default local.settings.php file..."
+cp $PROJECT_ROOT/.docksal/docksal.local.settings.php $DOCROOT_PATH/sites/default/settings/local.settings.php
+echo "Executing blt setup..."
+fin blt setup -D setup.strategy=install
+#fin exec vendor/acquia/blt/bin/blt setup:drupal:install
+#fin exec vendor/acquia/blt/bin/blt setup
+echo "Copying default local drush to local drush..."
+cp $DOCROOT_PATH/sites/default/local.drush.yml $PROJECT_ROOT/local.drush.yml
