@@ -1,0 +1,31 @@
+uuid: 01b88d64-ceaa-4f90-9137-8485c0f59c37
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:dfs_footer:3bc684bb-d586-4da4-890a-03af37f80b3d'
+  module:
+    - block_content
+    - system
+  theme:
+    - dfs_ny
+id: insuranceindustryquestions
+theme: dfs_ny
+region: after_content
+weight: 0
+provider: null
+plugin: 'block_content:3bc684bb-d586-4da4-890a-03af37f80b3d'
+settings:
+  id: 'block_content:3bc684bb-d586-4da4-890a-03af37f80b3d'
+  label: 'Insurance Industry Questions'
+  provider: block_content
+  label_display: visible
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: "/apps_and_licensing/insurance_companies\r\n/apps_and_licensing/insurance_companies/*\r\n/apps_and_licensing/health_insurers*\r\n/apps_and_licensing/life_insurers*\r\n/apps_and_licensing/property_insurers*\r\n"
+    negate: false
+    context_mapping: {  }

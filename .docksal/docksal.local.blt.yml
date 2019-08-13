@@ -1,0 +1,25 @@
+project:
+  local:
+    hostname: "${env.VIRTUAL_HOST}"
+drupal:
+  db:
+    database: default
+    username: user
+    password: user
+    host: db
+    port: 3306
+disable-targets:
+  validate:
+    phpcs: true
+  git:
+    commit-msg: true
+    pre-commit: true
+  tests:
+    security: {check: {updates: true}}
+git:
+  pre-commit: false
+  commit-msg:
+    pattern: "(.*?)"
+  hooks:
+    pre-commit: false
+  

@@ -1,0 +1,31 @@
+uuid: 84b6c6e7-f591-4616-bcb7-9f6e0342f00e
+langcode: en
+status: false
+dependencies:
+  content:
+    - 'block_content:dfs_block:efc009e1-890c-4108-b9e9-265c36539419'
+  module:
+    - block_content
+    - system
+  theme:
+    - dfs_ny
+id: maintenancemessagemostallapplicationsunavailable
+theme: dfs_ny
+region: content
+weight: 0
+provider: null
+plugin: 'block_content:efc009e1-890c-4108-b9e9-265c36539419'
+settings:
+  id: 'block_content:efc009e1-890c-4108-b9e9-265c36539419'
+  label: 'Maintenance message - Most/all applications unavailable'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: "/apps_and_licensing/agents_and_brokers/home\r\n/apps_and_licensing/insurance_companies\r\n/complaints/file_a_complaint\r\n/contact_us/foil_requests\r\n/contact_us/submit_a_comment\r\n/consumers/life_insurance/lost_policy_finder\r\n/industry_guidance/cyber_filings"
+    negate: false
+    context_mapping: {  }
