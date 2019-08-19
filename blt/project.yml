@@ -30,11 +30,11 @@ modules:
     enable: {}
     uninstall: [acquia_connector, shield, big_pipe]
   dev:
-    enable: [acquia_connector, seckit, shield]
-    uninstall: [big_pipe]
+    enable: [acquia_connector, seckit, shield, big_pipe]
+    uninstall: [views_ui]
   test:
-    enable: [acquia_connector, seckit, shield]
-    uninstall: [devel, views_ui, big_pipe]
+    enable: [acquia_connector, seckit, shield, big_pipe]
+    uninstall: [devel, views_ui]
   prod:
     enable: [acquia_connector, big_pipe, seckit]
     uninstall: [devel, field_ui, shield, views_ui]
