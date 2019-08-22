@@ -21,7 +21,7 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
     /**
      * public member that defines the login path
      */
-    public $path = '/user';
+    public $path = '/WebNY50';
 
     /**
      * Creates and authenticates a user with the given role(s).
