@@ -1,0 +1,14 @@
+uuid: bc9121f2-89dd-4677-84d9-b93880f12577
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.hcpo_forms
+  module:
+    - user
+id: user_add_role_action.hcpo_forms
+label: 'Add the HCPO Forms role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: hcpo_forms
