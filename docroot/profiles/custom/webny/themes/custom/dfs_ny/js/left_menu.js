@@ -31,25 +31,11 @@
             if ($('#nydfs-breadcrumb', context).height() >= 0){
               breadcrumHeight = $('#nydfs-breadcrumb', context).outerHeight();
             }
-            // console.log('article: ' + heroParent.height())
-            // console.log('.hero-header: ' + $('.hero-header').height());
-            // console.log('.hero-image: ' + $('.hero-image').height());
-            // console.log('.hero-image > div: ' + $('.hero-image > div').height());
-            // console.log('.hero-image article: ' + $('.hero-image article').height());
-            // console.log('.hero-image picture: ' + $('.hero-image picture').height());
-            // console.log('.hero-image picture img: ' + $('.hero-image picture img').height());
             if (heroParent.height() >= 0){
               heroHeight = heroParent.outerHeight();
             }
             fromTopHeight = heroHeight + adminNavHeight + navHeight + nyGovNav + toolbarTray+ breadcrumHeight + 50;
             sticky.css({ position: 'absolute', top: fromTopHeight });
-            // console.log(`adminNavHeight ` + adminNavHeight);
-            // console.log(`toolbarTray ` + toolbarTray);
-            // console.log(`nyGovNav ` + nyGovNav);
-            // console.log(`navHeight ` + navHeight);
-            // console.log(`heroHeight ` + heroHeight);
-            // console.log(`breadcrumHeight ` + breadcrumHeight);
-            // console.log(`fromTopHeight ` + fromTopHeight);
             if (sticky.offset()) {
               stickNavigation(sticky, stickyrStopper, false, fromTopHeight);
             }
