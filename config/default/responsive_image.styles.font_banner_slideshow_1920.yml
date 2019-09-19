@@ -3,9 +3,11 @@ langcode: en
 status: true
 dependencies:
   config:
+    - image.style.category_tiles_desktop
     - image.style.category_tiles_tablet
-    - image.style.hero_zoom
-    - image.style.wide_lead_tall
+    - image.style.front_banner_super_1920x600
+    - image.style.webny_gallery_image
+    - image.style.webny_gallery_image_mobile
   theme:
     - dfs_ny
 id: font_banner_slideshow_1920
@@ -14,17 +16,26 @@ image_style_mappings:
   -
     breakpoint_id: dfs_ny.wide
     multiplier: 1x
-    image_mapping_type: image_style
-    image_mapping: hero_zoom
+    image_mapping_type: sizes
+    image_mapping:
+      sizes: 100vw
+      sizes_image_styles:
+        - category_tiles_desktop
+        - front_banner_super_1920x600
   -
     breakpoint_id: dfs_ny.narrow
     multiplier: 1x
     image_mapping_type: image_style
-    image_mapping: category_tiles_tablet
+    image_mapping: category_tiles_desktop
   -
     breakpoint_id: dfs_ny.mobile
     multiplier: 1x
-    image_mapping_type: image_style
-    image_mapping: category_tiles_tablet
+    image_mapping_type: sizes
+    image_mapping:
+      sizes: 100vw
+      sizes_image_styles:
+        - category_tiles_tablet
+        - webny_gallery_image
+        - webny_gallery_image_mobile
 breakpoint_group: dfs_ny
-fallback_image_style: wide_lead_tall
+fallback_image_style: category_tiles_desktop

@@ -9,9 +9,9 @@ dependencies:
     - image.style.thumbnail
     - node.type.icon_link
   module:
-    - focal_point
     - link
     - path
+    - svg_image
     - workbench_moderation
 id: node.icon_link.default
 targetEntityType: node
@@ -35,10 +35,8 @@ content:
     settings:
       progress_indicator: throbber
       preview_image_style: thumbnail
-      preview_link: true
-      offsets: '50,50'
     third_party_settings: {  }
-    type: image_focal_point
+    type: image_image
     region: content
   field_link:
     weight: 123

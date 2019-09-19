@@ -8,7 +8,7 @@ dependencies:
     - image.style.thumbnail
     - node.type.front_page_statewide_card
   module:
-    - focal_point
+    - image
     - link
     - path
     - workbench_moderation
@@ -28,10 +28,8 @@ content:
     settings:
       progress_indicator: throbber
       preview_image_style: thumbnail
-      preview_link: true
-      offsets: '50,50'
     third_party_settings: {  }
-    type: image_focal_point
+    type: image_image
     region: content
   field_statewide_link:
     weight: 122

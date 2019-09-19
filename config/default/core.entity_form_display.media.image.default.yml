@@ -11,7 +11,7 @@ dependencies:
     - image.style.thumbnail
     - media_entity.bundle.image
   module:
-    - focal_point
+    - image
     - path
     - workbench_moderation
 _core:
@@ -26,10 +26,8 @@ content:
     settings:
       progress_indicator: throbber
       preview_image_style: thumbnail
-      preview_link: true
-      offsets: '50,50'
     third_party_settings: {  }
-    type: image_focal_point
+    type: image_image
     region: content
   field_media_keywords:
     type: entity_reference_autocomplete_tags
