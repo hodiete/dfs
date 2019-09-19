@@ -1,18 +1,17 @@
 uuid: 7afd87f4-3a26-42d1-952c-41238891c86e
 langcode: en
 status: true
-dependencies:
-  module:
-    - focal_point
+dependencies: {  }
 _core:
   default_config_hash: hV2BJYvbJg9YoS6EctfVwB-O-2or4cYF-JL05AuX0bQ
 name: wide_lead_tall
 label: 'wide lead tall (1280x512)'
 effects:
-  51ec4784-0560-4ad5-b68f-a4d01f5f04e8:
-    uuid: 51ec4784-0560-4ad5-b68f-a4d01f5f04e8
-    id: focal_point_scale_and_crop
+  ab96767f-42e3-4feb-9ebb-2dc9e73641f4:
+    uuid: ab96767f-42e3-4feb-9ebb-2dc9e73641f4
+    id: image_scale
     weight: 2
     data:
       width: 1280
-      height: 512
+      height: null
+      upscale: true
