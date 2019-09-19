@@ -1,0 +1,31 @@
+uuid: 323ecee3-1086-47c1-9740-2a70c4c3477b
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:dfs_footer:d26ff15c-eb1b-49aa-8da4-aac08edb7e1c'
+  module:
+    - block_content
+    - system
+  theme:
+    - dfs_ny
+id: hcpoconferencequestions
+theme: dfs_ny
+region: after_content
+weight: -35
+provider: null
+plugin: 'block_content:d26ff15c-eb1b-49aa-8da4-aac08edb7e1c'
+settings:
+  id: 'block_content:d26ff15c-eb1b-49aa-8da4-aac08edb7e1c'
+  label: 'Questions about Terms of Art Symposium'
+  provider: block_content
+  label_display: visible
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: '/termsofart*'
+    negate: false
+    context_mapping: {  }
