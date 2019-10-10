@@ -1,0 +1,14 @@
+uuid: 3b3b2485-8608-4787-9fd1-4bb0844a72e5
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.hcpo_forms
+  module:
+    - user
+id: user_remove_role_action.hcpo_forms
+label: 'Remove the HCPO Forms role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: hcpo_forms

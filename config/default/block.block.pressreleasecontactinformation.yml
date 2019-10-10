@@ -1,0 +1,31 @@
+uuid: aeaf0919-0620-41b5-b546-474318d9fdb6
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:dfs_block:d81539b5-13ff-42d7-95a1-4a5dc1793fe9'
+  module:
+    - block_content
+    - system
+  theme:
+    - dfs_ny
+id: pressreleasecontactinformation
+theme: dfs_ny
+region: after_content
+weight: -38
+provider: null
+plugin: 'block_content:d81539b5-13ff-42d7-95a1-4a5dc1793fe9'
+settings:
+  id: 'block_content:d81539b5-13ff-42d7-95a1-4a5dc1793fe9'
+  label: 'Contact NYDFS Press Office'
+  provider: block_content
+  label_display: visible
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: '/reports_and_publications/press_releases/pr19*'
+    negate: false
+    context_mapping: {  }

@@ -1,0 +1,29 @@
+uuid: 8b0221f9-0d2a-4190-b611-4816bbcc3cd9
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.apps-lic-student-loan-servi
+  module:
+    - system
+  theme:
+    - dfs_ny
+id: appslicstudentloanservicers
+theme: dfs_ny
+region: content
+weight: -2
+provider: null
+plugin: 'system_menu_block:apps-lic-student-loan-servi'
+settings:
+  id: 'system_menu_block:apps-lic-student-loan-servi'
+  label: 'Student Loan Servicers'
+  provider: system
+  label_display: visible
+  level: 1
+  depth: 0
+visibility:
+  request_path:
+    id: request_path
+    pages: "/apps_and_licensing/student_loan_servicer\r\n/apps_and_licensing/student_loan_servicer/*"
+    negate: false
+    context_mapping: {  }
