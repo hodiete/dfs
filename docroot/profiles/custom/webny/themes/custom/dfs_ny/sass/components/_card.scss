@@ -419,6 +419,22 @@ $featured-card-fallback-img-bkg: $color-secondary !default;
   border-style: solid;
   position: relative;
   overflow-y: hidden;
+  .faq-card-link {
+    a {
+      font-weight: bold;
+      // background-color: #e5eeee;
+      color: $color-primary;
+      padding-left: 25px;
+    }
+    a:hover {
+      @include color-hover-a-link-teal();
+    }
+    &:hover{
+      a {
+        color: white;
+      }
+    }
+  }
 }
 
 .short-card-box {
@@ -436,7 +452,7 @@ $featured-card-fallback-img-bkg: $color-secondary !default;
     color: $color-primary;
   }
   a:hover {
-    // @include color-hover-a-link-teal();
+    @include color-hover-a-link-teal();
   }
 }
 
@@ -449,8 +465,8 @@ $featured-card-fallback-img-bkg: $color-secondary !default;
 }
 
 .faq-card-text {
-  width: 100%;
-  height: 200px;
+  width: 100%; // height: 200px;
+  height: 100px;
 }
 
 .short-card-text {

@@ -1,0 +1,212 @@
+uuid: fda3bad1-094a-4046-9ade-173c80bfeb06
+langcode: en
+status: open
+dependencies:
+  module:
+    - honeypot
+third_party_settings:
+  honeypot:
+    honeypot: true
+    time_restriction: true
+open: null
+close: null
+weight: 0
+uid: 603
+template: false
+archive: false
+id: report_suspected_insurance_fraud
+title: 'Report Suspected Insurance Fraud'
+description: 'A form for the public to use to report insurance fraud'
+category: Insurance
+elements: "your_name:\n  '#type': webform_name\n  '#title': 'Your Name'\n  '#title_display': ''\n  '#middle__access': false\n  '#suffix__access': false\n  '#degree__access': false\n  '#flexbox': '1'\nyour_address:\n  '#type': webform_address\n  '#title': 'Your Address'\n  '#city__required': true\n  '#state_province__placeholder': NY\n  '#state_province__required': true\n  '#postal_code__required': true\n  '#country__access': false\n  '#flexbox': '1'\nyour_phone_number:\n  '#type': tel\n  '#title': 'Your Primary Phone Number'\n  '#international': true\n  '#international_initial_country': US\nadditional_phone_number_optional_:\n  '#type': tel\n  '#title': 'Additional Phone Number (Optional)'\ndescription:\n  '#type': textarea\n  '#title': Description\n  '#description': '<p>Give a brief statement of the suspect transaction and the amount of money involved (if known):</p>'\n  '#title_display': before\n  '#description_display': before\nhorizontal_rule:\n  '#type': webform_horizontal_rule\n  '#display_on': both\nmarkup:\n  '#type': webform_markup\n  '#display_on': both\n  '#markup': '<p>Identify the parties to the suspect transaction (name/address and relation to the transaction). Add a second party below if needed.</p>'\ncontainer_1:\n  '#type': container\n  suspect_1:\n    '#type': webform_name\n    '#title': 'Subject 1 Name'\n    '#title_display': before\n    '#title__access': false\n    '#middle__access': false\n    '#suffix__access': false\n    '#degree__access': false\n    '#flexbox': '1'\n  party_1_address:\n    '#type': webform_address\n    '#title': 'Subject 1 Address'\n    '#country__access': false\n  party_1_phone_number:\n    '#type': tel\n    '#title': 'Party 1 Phone Number'\n    '#minlength': '10'\n    '#maxlength': '10'\n    '#international': true\n    '#international_initial_country': US\n  occupation:\n    '#type': textfield\n    '#title': Occupation\n  place_of_employment:\n    '#type': textfield\n    '#title': 'Place of Employment'\n  additional_information:\n    '#type': textfield\n    '#title': 'Additional Information'\n  name_of_insurance_company_hmo_if_applicable_:\n    '#type': textfield\n    '#title': 'Name of Insurance Company/HMO (If Applicable)'\nhorizontal_rule_02:\n  '#type': webform_horizontal_rule\n  '#display_on': both\ncontainer_02:\n  '#type': container\n  suspect_2:\n    '#type': webform_name\n    '#title': 'Subject 2 Name'\n    '#title_display': before\n    '#title__access': false\n    '#middle__access': false\n    '#suffix__access': false\n    '#degree__access': false\n    '#flexbox': '1'\n  party_2_address:\n    '#type': webform_address\n    '#title': 'Party 2 Address'\n    '#country__access': false\n    '#flexbox': '1'\n  party_2_phone_number:\n    '#type': tel\n    '#title': 'Party 2 Phone Number'\n    '#minlength': '10'\n    '#maxlength': '10'\n    '#international': true\n    '#international_initial_country': US\n  party_2_occupation:\n    '#type': textfield\n    '#title': 'Party 2 Occupation'\n  party_2_place_of_employment:\n    '#type': textfield\n    '#title': 'Party 2 Place of Employment'\n  name_of_insurance_company_02_hmo_if_applicable:\n    '#type': textfield\n    '#title': 'Name of Insurance Company/HMO (If Applicable)'\nhorizontal_rule_01:\n  '#type': webform_horizontal_rule\n  '#display_on': both\nmarkup_01:\n  '#type': webform_markup\n  '#markup': '<p>Have you reported this transaction to any other law enforcement agency? If yes, please furnish the following information:</p>'\nname_of_agency:\n  '#type': textfield\n  '#title': 'Name of Agency'\naddress_of_agency:\n  '#type': webform_address\n  '#title': 'Address of Agency'\n  '#country__access': false\n  '#flexbox': '1'\nperson_contacted:\n  '#type': webform_name\n  '#title': 'Person Contacted'\n  '#middle__access': false\n  '#suffix__access': false\n  '#degree__access': false\nagency_phone_number:\n  '#type': tel\n  '#title': 'Agency Phone Number'\nattachment:\n  '#type': managed_file\n  '#title': Attachment"
+css: ''
+javascript: ''
+settings:
+  ajax: false
+  ajax_scroll_top: form
+  page: true
+  page_submit_path: ''
+  page_confirm_path: ''
+  form_title: both
+  form_submit_once: false
+  form_exception_message: ''
+  form_open_message: ''
+  form_close_message: ''
+  form_previous_submissions: true
+  form_confidential: false
+  form_confidential_message: ''
+  form_remote_addr: true
+  form_convert_anonymous: false
+  form_prepopulate: false
+  form_prepopulate_source_entity: false
+  form_prepopulate_source_entity_required: false
+  form_prepopulate_source_entity_type: ''
+  form_reset: false
+  form_disable_autocomplete: false
+  form_novalidate: false
+  form_disable_inline_errors: false
+  form_required: false
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
+  form_autofocus: false
+  form_details_toggle: false
+  form_access_denied: default
+  form_access_denied_title: ''
+  form_access_denied_message: ''
+  form_access_denied_attributes: {  }
+  form_file_limit: ''
+  submission_label: ''
+  submission_log: false
+  submission_views: {  }
+  submission_views_replace: {  }
+  submission_user_columns: {  }
+  submission_user_duplicate: false
+  submission_access_denied: default
+  submission_access_denied_title: ''
+  submission_access_denied_message: ''
+  submission_access_denied_attributes: {  }
+  submission_exception_message: ''
+  submission_locked_message: ''
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
+  previous_submission_message: ''
+  previous_submissions_message: ''
+  autofill: false
+  autofill_message: ''
+  autofill_excluded_elements: {  }
+  wizard_progress_bar: true
+  wizard_progress_pages: false
+  wizard_progress_percentage: false
+  wizard_progress_link: false
+  wizard_start_label: ''
+  wizard_preview_link: false
+  wizard_confirmation: true
+  wizard_confirmation_label: ''
+  wizard_track: ''
+  preview: 0
+  preview_label: ''
+  preview_title: ''
+  preview_message: ''
+  preview_attributes: {  }
+  preview_excluded_elements: {  }
+  preview_exclude_empty: true
+  preview_exclude_empty_checkbox: false
+  draft: none
+  draft_multiple: false
+  draft_auto_save: false
+  draft_saved_message: ''
+  draft_loaded_message: ''
+  confirmation_type: page
+  confirmation_title: ''
+  confirmation_message: ''
+  confirmation_url: ''
+  confirmation_attributes: {  }
+  confirmation_back: true
+  confirmation_back_label: ''
+  confirmation_back_attributes: {  }
+  confirmation_exclude_query: false
+  confirmation_exclude_token: false
+  limit_total: null
+  limit_total_interval: null
+  limit_total_message: ''
+  limit_total_unique: false
+  limit_user: null
+  limit_user_interval: null
+  limit_user_message: ''
+  limit_user_unique: false
+  entity_limit_total: null
+  entity_limit_total_interval: null
+  entity_limit_user: null
+  entity_limit_user_interval: null
+  purge: none
+  purge_days: null
+  results_disabled: false
+  results_disabled_ignore: false
+  token_update: false
+access:
+  create:
+    roles:
+      - anonymous
+      - authenticated
+    users: {  }
+    permissions: {  }
+  view_any:
+    roles:
+      - suspected_fraud_submissions
+    users: {  }
+    permissions: {  }
+  update_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  purge_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  view_own:
+    roles:
+      - suspected_fraud_submissions
+    users: {  }
+    permissions:
+      - 'access webform submission log'
+  update_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  administer:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  test:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  configuration:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+handlers:
+  email:
+    id: email
+    label: 'Insurance Fraud Emails'
+    handler_id: email
+    status: true
+    conditions: {  }
+    weight: 0
+    settings:
+      states:
+        - completed
+      to_mail: brunilda.riveragarcia@dfs.ny.gov
+      to_options: {  }
+      cc_mail: 'eileen.greene@dfs.ny.gov, joel.obuchowski@dfs.ny.gov, kathleen.grogan@dfs.ny.gov, anthony.bonner@dfs.ny.gov'
+      cc_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      from_mail: ComplaintantIFBNotifiaiton@dfs.ny.gov
+      from_options: {  }
+      from_name: _default
+      subject: 'Complainant Fraud Report'
+      body: "<p>Submitted on [webform_submission:created]</p>\n<p>Submitted values are:</p>\n[webform_submission:values]"
+      excluded_elements: {  }
+      ignore_access: false
+      exclude_empty: true
+      exclude_empty_checkbox: false
+      html: true
+      attachments: false
+      twig: false
+      debug: false
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
+      theme_name: ''

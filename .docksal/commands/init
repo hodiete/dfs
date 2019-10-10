@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+## Run blt setup commands to prepare your local site for
+## development.
+##
+## Usage: fin init
+DOCROOT_PATH="${PROJECT_ROOT}/${DOCROOT}"
+# Initialize stack
+fin project start
+
+fin exec COMPOSER_PROCESS_TIMEOUT=2000
+fin exec composer clear-cache
+echo "Composer install..."
+fin exec composer install
+
+cd $DOCROOT_PATH
+echo "Deleting local settings file if one exists..."
+rm -f $DOCROOT_PATH/sites/default/settings/local.settings.php
+echo "Deleting local drush file if one exists..."
+rm -f $DOCROOT_PATH/sites/default/local.drush.yml
+cd $PROJECT_ROOT
+echo "Running blt commands..."
+fin addon install blt
+echo "Creating settings files..."
+fin blt blt:init:settings
+#fin exec blt:setup:settings
+#fin exec vendor/acquia/blt/bin/blt setup:settings
+echo "Copying default local blt settings from .drush to blt folder..."
+cp $PROJECT_ROOT/.docksal/docksal.local.blt.yml $PROJECT_ROOT/blt/local.blt.yml
+echo "Copying default local.settings.php file..."
+cp $PROJECT_ROOT/.docksal/docksal.local.settings.php $DOCROOT_PATH/sites/default/settings/local.settings.php
+echo "Executing blt setup..."
+fin blt setup -D setup.strategy=install
+#fin exec vendor/acquia/blt/bin/blt setup:drupal:install
+#fin exec vendor/acquia/blt/bin/blt setup
+echo "Copying default local drush to local drush..."
+cp $DOCROOT_PATH/sites/default/local.drush.yml $PROJECT_ROOT/local.drush.yml

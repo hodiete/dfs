@@ -1,4 +1,4 @@
-uuid: 4200f480-49eb-44d5-bc62-4bc439175e99
+uuid: 3a80d684-09b2-4bcf-9580-799af1f80380
 langcode: en
 status: true
 dependencies:
@@ -6,15 +6,13 @@ dependencies:
     - 'block_content:dfs_footer:d2f0d457-637d-4436-a847-547dc00f730e'
   module:
     - block_content
-    - ctools
-    - node
     - system
   theme:
     - dfs_ny
 id: insurancelicensingquestions
 theme: dfs_ny
 region: after_content
-weight: 0
+weight: -36
 provider: null
 plugin: 'block_content:d2f0d457-637d-4436-a847-547dc00f730e'
 settings:
@@ -26,22 +24,8 @@ settings:
   info: ''
   view_mode: full
 visibility:
-  'entity_bundle:node':
-    id: 'entity_bundle:node'
-    bundles:
-      webny_page: webny_page
-    negate: false
-    context_mapping:
-      node: '@node.node_route_context:node'
   request_path:
     id: request_path
-    pages: "/apps_and_licensing/agents_and_brokers/*\r\n/apps_and_licensing/insurance_companies/*"
+    pages: '/apps_and_licensing/agents_and_brokers/*'
     negate: false
     context_mapping: {  }
-  node_type:
-    id: node_type
-    bundles:
-      webny_page: webny_page
-    negate: false
-    context_mapping:
-      node: '@node.node_route_context:node'

@@ -4,8 +4,8 @@ status: true
 dependencies:
   config:
     - image.style.mobile_lead
-    - image.style.narrow_lead
     - image.style.wide_lead
+    - image.style.wide_lead_tall
   theme:
     - dfs_ny
 _core:
@@ -22,11 +22,11 @@ image_style_mappings:
     breakpoint_id: dfs_ny.narrow
     multiplier: 1x
     image_mapping_type: image_style
-    image_mapping: narrow_lead
+    image_mapping: wide_lead_tall
   -
     breakpoint_id: dfs_ny.mobile
     multiplier: 1x
     image_mapping_type: image_style
     image_mapping: mobile_lead
 breakpoint_group: dfs_ny
-fallback_image_style: mobile_lead
+fallback_image_style: wide_lead

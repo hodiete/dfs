@@ -1,6 +1,6 @@
 uuid: 62ded89f-d46f-4748-be12-7ede0f3cfa96
 langcode: en
-status: true
+status: false
 dependencies:
   content:
     - 'block_content:dfs_block:6d081d68-e00f-488c-af15-fce351e57a30'
@@ -11,8 +11,8 @@ dependencies:
     - dfs_ny
 id: maintenancealertlicensing
 theme: dfs_ny
-region: header
-weight: 0
+region: content
+weight: 23
 provider: null
 plugin: 'block_content:6d081d68-e00f-488c-af15-fce351e57a30'
 settings:
@@ -26,6 +26,6 @@ settings:
 visibility:
   request_path:
     id: request_path
-    pages: /apps_and_licensing/agents_and_brokers/home
+    pages: "/apps_and_licensing/agents_and_brokers/home\r\n/apps_and_licensing/agents_and_brokers/print_a_license_online\r\n/apps_and_licensing/agents_and_brokers/renewal_of_license\r\n/apps_and_licensing/agents_and_brokers/addaline_application\r\n/apps_and_licensing/agents_and_brokers/relicensing_application\r\n/apps_and_licensing/agents_and_brokers/address_change_request"
     negate: false
     context_mapping: {  }

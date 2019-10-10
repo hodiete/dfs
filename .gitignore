@@ -17,10 +17,10 @@ docroot/profiles/custom/webny/modules/contrib
 docroot/themes/contrib
 docroot/profiles/custom/webny/themes/contrib
 docroot/profiles/contrib
-# docroot/libraries
+docroot/libraries
 drush/contrib
 
-
+dfs_ny
 migration_dfs
 # Ignore custom theme node_modules folders
 docroot/themes/custom/*/node_modules
@@ -28,6 +28,8 @@ docroot/profiles/custom/webny/themes/custom/dfs_ny/node_modules
 docroot/profiles/custom/webny/themes/custom/dfs_ny/package-lock.json
 docroot/profiles/custom/webny/themes/custom/dfs_ny.tar.gz
 #docroot/sites/default/settings/nydfs.settings.php
+console
+docroot/*/stage_file_proxy
 
 # igore the styles.css andnydfs-sub.css which are generated from gulp
 docroot/profiles/custom/webny/themes/custom/dfs_ny/css/*.css
@@ -153,3 +155,4 @@ files-private
 
 # box/config.yml
 
+/db

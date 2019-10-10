@@ -224,6 +224,7 @@ display:
               site_admin: '0'
               user_admin: '0'
               content_author: '0'
+              business_approver: '0'
             placeholder: ''
           is_grouped: false
           group_info:
@@ -294,6 +295,65 @@ display:
     display_options:
       display_extenders: {  }
       path: search/site
+      filters:
+        search_api_fulltext:
+          id: search_api_fulltext
+          table: search_api_index_nydfs_dev_2_acquia_search
+          field: search_api_fulltext
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: and
+          value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: search_api_fulltext_op
+            label: ''
+            description: ''
+            use_operator: false
+            operator: search_api_fulltext_op
+            identifier: search
+            required: true
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+              site_builder: '0'
+              site_admin: '0'
+              user_admin: '0'
+              content_author: '0'
+              business_approver: '0'
+            placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          parse_mode: terms
+          min_length: 3
+          fields:
+            body: body
+            title: title
+            field_body: field_body
+            name: name
+          plugin_id: search_api_fulltext
+      defaults:
+        filters: false
+        filter_groups: false
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
     cache_metadata:
       max-age: -1
       contexts:
