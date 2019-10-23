@@ -1,0 +1,29 @@
+uuid: 09c7f5ef-7c90-4dc7-bfdb-f2a8f2590a93
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.gender
+    - node.type.public_appeal
+    - taxonomy.vocabulary.gender
+id: node.public_appeal.gender
+field_name: gender
+entity_type: node
+bundle: public_appeal
+label: Gender
+description: 'Reference to Taxonomy: Public Appeal: Gender'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      gender: gender
+    sort:
+      field: name
+      direction: asc
+    auto_create: true
+    auto_create_bundle: ''
+field_type: entity_reference

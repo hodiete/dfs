@@ -1,0 +1,29 @@
+uuid: 1ba32916-7bff-4a06-811b-b48d4638cd64
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.health_plan
+    - node.type.public_appeal
+    - taxonomy.vocabulary.health_plan
+id: node.public_appeal.health_plan
+field_name: health_plan
+entity_type: node
+bundle: public_appeal
+label: 'Health Plan'
+description: 'Reference to Taxonomy: Public Appeal: Health Plan'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      health_plan: health_plan
+    sort:
+      field: name
+      direction: asc
+    auto_create: true
+    auto_create_bundle: ''
+field_type: entity_reference

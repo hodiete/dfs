@@ -1,0 +1,29 @@
+uuid: 9825cad2-7969-4fe1-a1be-4b7cba10a938
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.decision_year
+    - node.type.public_appeal
+    - taxonomy.vocabulary.decision
+id: node.public_appeal.decision_year
+field_name: decision_year
+entity_type: node
+bundle: public_appeal
+label: 'Decision Year'
+description: 'Reference to Taxonomy:  Public Appeal: Decision Year'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      decision: decision
+    sort:
+      field: name
+      direction: asc
+    auto_create: true
+    auto_create_bundle: ''
+field_type: entity_reference
