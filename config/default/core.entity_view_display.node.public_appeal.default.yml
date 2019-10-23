@@ -1,0 +1,51 @@
+uuid: 1a1939a6-b74a-470b-997a-e1bd79a24c29
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.public_appeal.age_range
+    - field.field.node.public_appeal.appeal_agent
+    - field.field.node.public_appeal.appeal_type
+    - field.field.node.public_appeal.body
+    - field.field.node.public_appeal.case_number
+    - field.field.node.public_appeal.decision
+    - field.field.node.public_appeal.decision_year
+    - field.field.node.public_appeal.diagnosis
+    - field.field.node.public_appeal.gender
+    - field.field.node.public_appeal.health_plan
+    - field.field.node.public_appeal.references
+    - field.field.node.public_appeal.summary
+    - field.field.node.public_appeal.treatment
+    - node.type.public_appeal
+  module:
+    - user
+id: node.public_appeal.default
+targetEntityType: node
+bundle: public_appeal
+mode: default
+content:
+  links:
+    weight: 100
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  workbench_moderation_control:
+    weight: -20
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  age_range: true
+  appeal_agent: true
+  appeal_type: true
+  body: true
+  case_number: true
+  decision: true
+  decision_year: true
+  diagnosis: true
+  gender: true
+  health_plan: true
+  langcode: true
+  references: true
+  summary: true
+  treatment: true
