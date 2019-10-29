@@ -10,14 +10,32 @@
 
   Drupal.behaviors.table = {
     attach: function (context, settings) {
-      $('table').once().dataTable({
-        order: [],
-        paging: false,
-        pageLength: 25,
-        pagingType: 'simple_numbers',
-        lengthChange: false,
-        info: false
-      });
+      if ($('.views-page-public-appeal-search table').length) {
+        $('.views-page-public-appeal-search table').once().dataTable({
+          order: [[9, 'asc']],
+          ordering: true,
+          paging: true,
+          pageLength: 10,
+          pagingType: 'simple_numbers',
+          lengthChange: true,
+          info: true,
+          stateSave: true,
+          columnDefs: [{
+            'searchable' : false,
+            'targets': 11
+          }]
+        });
+      }
+      else {
+        $('table').once().dataTable({
+          order: [],
+          paging: false,
+          pageLength: 25,
+          pagingType: 'simple_numbers',
+          lengthChange: false,
+          info: false
+        });
+      }
     }
   };
 })(jQuery, Drupal, this);

@@ -212,3 +212,65 @@ function dfs_ny_preprocess_page(&$variables) {
   //   $variables['agencyname'] = 'Department of Financial Services';
   // }
 }
+
+/**
+* Implements hook_theme_preprocess_views_view().
+*/
+/*function dfs_ny_preprocess_views_view(&$variables) {
+  if ($variables['id'] == 'public_appeal_search') {
+    //echo '<h1>Test title: ' . $variables['view_array']['#title'] . '</h1>';
+    echo '<h1>Test title: ' . $variables['view']->getTitle() . '</h1>';
+    //echo '<input type="checkbox" id="references-included" name="references-included" value="references-included"><label for="references-included">Include References</label>';
+    //echo $variables['view_array']['#pre_render'][0];
+    //echo $variables['view']['field'];
+    //kint($variables['view']->getDisplay('page_1'));
+    //kint($variables['view']['storage']);
+    $test = \Drupal::request()->query->get('test_item');
+    echo $test;
+    if (\Drupal::request()->query->get('test_item') && \Drupal::request()->query->get('test_item') > 0) {
+      //remove reference field
+      //$variables['view']->getHandlers('field')['references']['exclude'] = 'TRUE';
+      echo '<p>test item present</p>';
+      $variables['view']->setHandlerOption('page_1','field','references','exclude','FALSE');
+    }
+    else {
+      echo '<p>test item absent</p>';
+      $variables['view']->setHandlerOption('page_1','field','references','exclude','TRUE');
+    }
+    //$variables['view']->render('page_1');
+    //$variables['view']->save();
+    //TODO: save gives a sanitize columns error, maybe try sending a true/false var to twig template and outputing or not outputing column there?
+    //kint($variables['view']->getHandler('page_1','field','references'));
+
+  }
+}
+
+/**
+* Implements hook_theme_preprocess_views_exposed_form().
+*/
+/*function dfs_ny_preprocess_views_exposed_form(&$variables) {
+  if ($variables['form']['#view_id'] == 'public_appeal_search') {
+    //echo '<h1>Test title: ' . $variables['view_array']['#title'] . '</h1>';
+    //echo '<h1>Test title: ' . $variables['view']->getTitle() . '</h1>';
+    //echo '<input type="checkbox" id="references-included" name="references-included" value="references-included"><label for="references-included">Include References</label>';
+    echo $variables['form']['#form_id'];
+    $variables['form']['test_item'] = array(
+      '#type' => 'checkbox',
+      '#title' => 'What? ',
+      '#default_value' => '0',
+      '#input' => 'TRUE',
+      '#multiple' => 'FALSE',
+      '#name' => 'test_item'
+    );
+    if (\Drupal::request()->query->get('test_item')) {
+      $variables['form']['test_item']['#value'] = 1;
+      //make checked
+    }
+    //$variables['form']['test_item'] = $variables['form']['items_per_page'];
+    //$variables['form']['test_item']['#name'] = 'test_item';
+    //kint($variables['form']);
+    //echo $variables['view_array']['#pre_render'][0];
+    //echo $variables['view']['field'];
+    //kint($variables['view']['field']);
+  }
+}*/
