@@ -16,14 +16,33 @@
           ordering: true,
           paging: true,
           pageLength: 10,
-          pagingType: 'simple_numbers',
+          pagingType: 'full_numbers',
           lengthChange: true,
           info: true,
           stateSave: true,
-          columnDefs: [{
-            'searchable' : false,
-            'targets': 11
-          }]
+          destroy: true,
+          retrieve: true,
+          processing: true,
+          dom: 'f<"counters"><"refs-include">liB<"expand-wrapper">rtBp',
+          columnDefs: [
+            { targets: [11], searchable: false }
+          ],
+          buttons: [
+            { extend: 'csv', text: 'Export', tag: 'a' },
+            { extend: 'print', text: 'Print', tag: 'a' }
+          ],
+          language: {
+            info: 'Showing _START_ to _END_ of _TOTAL_ Results',
+            lengthMenu: 'Show _MENU_ per page', 
+            paginate: {
+              first: '« First',
+              previous: '«',
+              next: '»',
+              last: 'Last »'
+            },
+            search: '_INPUT_',
+            searchPlaceholder: 'Search'
+          }
         });
       }
       else {
