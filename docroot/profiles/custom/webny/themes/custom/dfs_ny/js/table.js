@@ -33,7 +33,7 @@
           ],
           language: {
             info: 'Showing _START_ to _END_ of _TOTAL_ Results',
-            lengthMenu: 'Show _MENU_ per page', 
+            lengthMenu: 'Show _MENU_ per page',
             paginate: {
               first: '« First',
               previous: '«',
