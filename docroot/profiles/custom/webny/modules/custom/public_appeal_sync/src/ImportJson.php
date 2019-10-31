@@ -11,6 +11,7 @@ use Drupal\Core\Mail\MailManagerInterface;
 use Drupal\Component\Utility\SafeMarkup;
 use Drupal\Component\Utility\Html;
 use Drupal\Core\Utility\Error;
+use function Drupal\blazy_ui\Form\drupal_set_message;
 
 
 /**
@@ -27,6 +28,8 @@ class ImportJson
 
   // private $countError;
   private $countError = [];
+
+  public $response = [];
 
   // private $vocabulary: taxonomy term
   private $vocabulary;
@@ -55,7 +58,7 @@ class ImportJson
     $baseurl = \Drupal::config('public_appeal_sync.baseurl')->get('baseurl');
     $user = user_load_by_name($this->user);
     // kint($this->user); 
-    print "<pre>TEST:\n"; print_r($baseurl); print "</pre>"; 
+    // print "<pre>TEST:\n"; print_r($baseurl); print "</pre>"; 
     // $uid = $user->id;
 
     try {
@@ -64,15 +67,18 @@ class ImportJson
 
       // print "<pre>TEST:\n"; print_r($data); print "</pre>";  
       if (empty($data)) {
-        drupal_set_message('Empty response.');
-        $this->countError['json'] = 'Empty response to get JSON data: ' . $baseurl;
+        drupal_set_message('Empty response: ' . $baseurl);
+        // $this->countError['json'] = 'Empty response to get JSON data: ' . $baseurl;
+        $this->response[] = ['message' => 'Empty response to get JSON data: ' . $baseurl]; 
 
       } else {
-        print "<pre>TEST:\n"; print_r($data); print "</pre>";  
-         $this->createUpdatePublicAppeal($data, $user->id());
+        // print "<pre>TEST:\n"; print_r($data); print "</pre>";  
+        $this->createUpdatePublicAppeal($data, $user->id());
+        $this->createReport();
       }
     } catch (RequestException $e) {
-      $this->countError['get'] = $e;
+      // $this->countError['get'] = $e;
+      $this->response[]= ['message' => $e];
       watchdog_exception('public_appeal_sync', $e);
     }
     // exit;
@@ -105,26 +111,30 @@ class ImportJson
   {
     $jsonout = json_decode($json, true);
     $vocabulary = "public_appeal_category";
+    $method = "POST";
+    $message = "Successeful";
+    $respson_nid;
 
     foreach ($jsonout as $item) {
 
       $title = isset($item['title']) 
         ? $item['title'] 
-        : "Case Number: " . $item['case_number'] . " - Diagnosis: " . $item['diagnosis'];
+        : "Case Number: " . $item['case_number'] . " - Diagnosis: " . $item['diagnosis'][0];
 
-      $diagnosis = $this->getToxonomyMultTerms($item['diagnosis'], 'diagnosis');      
-      $treatment = $this->getToxonomyMultTerms($item['treatment'], 'treatment');
-      $health_plan = $this->getToxonomyTerm($item['health_plan'], 'health_plan', $vocabulary);
-      $decision = $this->getToxonomyTerm($item['decision'], 'decision');
-      $appeal_type = $this->getToxonomyTerm($item['appeal_type'], 'appeal_type', $vocabulary);
-      $gender = $this->getToxonomyTerm($item['gender'], 'gender');
-      $age_range = $this->getToxonomyTerm($item['age_range'], 'age_range');
-      $decision_year = $this->getToxonomyTerm($item['decision_year'], 'decision_year', $vocabulary);
-      $appeal_agent = $this->getToxonomyTerm($item['appeal_agent'], 'appeal_agent', $vocabulary);
+      list($diagnosis, $diag_resp)= $this->getToxonomyMultTerms($item['diagnosis'], 'diagnosis');      
+      list($treatment, $treat_resp) = $this->getToxonomyMultTerms($item['treatment'], 'treatment');
+      list($health_plan, $health_resp) = $this->getToxonomyTerm($item['health_plan'], 'health_plan');
+      list($decision, $dec_resp) = $this->getToxonomyTerm($item['decision'], 'decision');
+      list($appeal_type, $type_resp) = $this->getToxonomyTerm($item['appeal_type'], 'appeal_type');
+      list($gender, $gender_resp) = $this->getToxonomyTerm($item['gender'], 'gender');
+      list($age_range, $age_resp) = $this->getToxonomyTerm($item['age_range'], 'age_range');
+      list($decision_year, $year_resp) = $this->getToxonomyTerm($item['decision_year'], 'decision_year');
+      list($appeal_agent, $agent_resp) = $this->getToxonomyTerm($item['appeal_agent'], 'appeal_agent');
+      
 
       // drupal_set_message("diagnosis:$diagnosis");
       // drupal_set_message(print_r($item), true);
-      print "<pre>$name:\n"; print_r($diagnosis); print "</pre>"; 
+      // print "<pre>$name:\n"; print_r($diagnosis); print "</pre>"; 
 
       if ($node = $this->existNode($item['case_number'])) {
         $node->diagnosis = $diagnosis;
@@ -139,9 +149,15 @@ class ImportJson
         $node->case_number = $item['case_number'];
         $node->summary = $item['summary'];
         $node->references = $item['references'];
-        
-        $node->save();
-        $this->countUpdate[$node->nid] = $item['case_number'];
+
+        $method = 'UPDATE';
+
+        if (!$node->save()) {
+          $message = "Failed";
+        } else {
+          $respson_nid = $node->id();
+        }
+
         
       } else {
         $node = Node::create(array(
@@ -162,16 +178,33 @@ class ImportJson
           'summary' => $item['summary'],
           'references' => $item['references'],
         ));
-
         $node->enforceIsNew(true);
-        $node->save();
-        $this->countNew[$node->nid] = $item['case_number'];
-
+        if (!$node->save()) {
+          $message = "Failed";
+        } else {
+          $respson_nid = $node->id();
+        }
       }
 
-    }
-    
-    // return [$countUpdate, $countNew];
+
+
+      $this->response[] = [
+        "method" => $method,
+        "message" => $message,
+        "nid" => $respson_nid,
+        'case_number' => $item['case_number'],
+        'diagnosis' => $diag_resp,
+        'treatment' => $treat_resp,
+        'health_plan' => $health_resp,
+        'decision' => $dec_resp,
+        'appeal_type' => $type_resp,
+        'gender' => $gender_resp,
+        'age_range' => $age_resp,
+        'decision_year' => $year_resp,
+        'appeal_agent' => $agent_resp,
+      ];
+
+    }//END foreach()
   }
 
   /**
@@ -192,10 +225,16 @@ class ImportJson
       $tid = $this->createNewTerm($name, [$tidParent]);
     } 
     // drupal_set_message("term:$name, id:$tid, parent:$parent($tidParent)");
-    return [
-      "target_id" => $tid,
-      "target_type" => "taxonomy_term",
-    ];
+    return array(
+      [
+        "target_id" => $tid,
+        "target_type" => "taxonomy_term",
+      ],
+      [
+        "term_id" => $tid,
+        'name' => $name,
+      ],
+    );
 
   }
 
@@ -210,7 +249,7 @@ class ImportJson
    */
   protected function getToxonomyMultTerms(array $names, string $parent)
   {
-    $tids = [];
+    $tids = []; $tids_resp = [];
     $tidParent = $this->getToxonomyTermIdByName($parent, 'machine_name');
     foreach ($names as $name) {
       $tid = $this->getToxonomyTermIdByName($name, 'name');
@@ -221,9 +260,13 @@ class ImportJson
         "target_id" => $tid,
         "target_type" => "taxonomy_term",
       ];
+      $tids_resp [] = [
+        "term_id" => $tid, 
+        "name" => $name,
+      ];
     }
     // drupal_set_message("term:$name, id:$tid, parent:$parent($tidParent)");
-    return $tids;
+    return array($tids, $tids_resp);
 
   }
 
@@ -410,15 +453,23 @@ class ImportJson
   public function createReport() {
     // You can create a file and save data at once .
     $dir = \Drupal::config('public_appeal_sync.outdir')->get('outdir');
+    $dir2 = "public://$dir";
+    
+    // print_r($dir); exit;
+    if (file_prepare_directory($dir2, FILE_CREATE_DIRECTORY | FILE_MODIFY_PERMISSIONS)) {
 
-    if (file_prepare_directory("public://$dir", FILE_CREATE_DIRECTORY)) {
-
-      $filename = "report-import-". date("Y-m-d--H-i-s") . ".txt";
-      $file = file_save_data($this->msgToString(), 
-              "public://$dir/$filename", FILE_EXISTS_RENAME);
+      $json_data = json_encode($this->response);
+      $filename = "report-import-". date("Y-m-d--H-i-s") . ".json";
+      $file = file_save_data(
+        $json_data, 
+        "public://$dir/$filename", 
+        FILE_EXISTS_RENAME);
   
       // Get the real file path :
-      $path = drupal_realpath($file->getFileUri());
+      $path = file_create_url($file->getFileUri());
+      // print_r($path); exit;
+      \Drupal::logger("public_appeal_sync")->notice($path);
+
       $this->sendEmailReport($path);
     }
     
@@ -428,7 +479,7 @@ class ImportJson
   /**
    * Send a email with the link of report
    * @param string $path
-   *   a URL of the report of result
+   *   a URL of the report
    */
   public function sendEmailReport($path) {
     $to = \Drupal::config('public_appeal_sync.email')->get('email');

@@ -74,7 +74,7 @@ class PublicAppealImportForm extends ConfigFormBase
       '#type' => 'textfield',
       '#title' => $this->t('The Output Directory'),
       '#default_value' => $this->config('public_appeal_sync.outdir')->get('outdir'),
-      '#description' => $this->t('public_appeal/output'),
+      '#description' => $this->t('E.g., public_appeal/output, which will be  "sites/default/files/public_appeal/output/"'),
       '#required' => true,
     );
     $form['email'] = array(

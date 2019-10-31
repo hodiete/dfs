@@ -1,7 +1,23 @@
-public_appeal_sync_form:
+public_appeal_sync.form:
   path: '/admin/config/public_appeal_sync/form'
   defaults:
     _form: '\Drupal\public_appeal_sync\Form\PublicAppealImportForm'
     _title: 'Config for Public Appeal JSON Importing Service'
+  requirements:
+    _role: administrator+restful_api
+
+public_appeal_sync.response:
+  path: '/admin/config/public_appeal_sync/response-listing'
+  defaults:
+    _controller: '\Drupal\public_appeal_sync\Controller\ResponseListingController::content'
+    _title: 'List of Responses: Import Public Appeal JSON data'
+  requirements:
+    _role: administrator+restful_api
+
+public_appeal_sync.admin:
+  path: '/admin/config/public_appeal_sync'
+  defaults:
+    _controller: '\Drupal\public_appeal_sync\Controller\ResponseListingController::adminPage'
+    _title: 'Admin of public_appeal_sync module'
   requirements:
     _role: administrator+restful_api
