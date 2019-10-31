@@ -55,24 +55,27 @@ class ImportJson
     $baseurl = \Drupal::config('public_appeal_sync.baseurl')->get('baseurl');
     $user = user_load_by_name($this->user);
     // kint($this->user); 
-    print "<pre>TEST:\n"; print_r($baseurl); print "</pre>";
+    print "<pre>TEST:\n"; print_r($baseurl); print "</pre>"; 
     // $uid = $user->id;
 
     try {
       $response = \Drupal::httpClient()->get($baseurl, array('headers' => array('Accept' => 'text/plain')));
       $data = $response->getBody();
 
+      // print "<pre>TEST:\n"; print_r($data); print "</pre>";  
       if (empty($data)) {
         drupal_set_message('Empty response.');
         $this->countError['json'] = 'Empty response to get JSON data: ' . $baseurl;
 
       } else {
+        print "<pre>TEST:\n"; print_r($data); print "</pre>";  
          $this->createUpdatePublicAppeal($data, $user->id());
       }
     } catch (RequestException $e) {
       $this->countError['get'] = $e;
       watchdog_exception('public_appeal_sync', $e);
     }
+    // exit;
   }
 
   /**
@@ -105,10 +108,12 @@ class ImportJson
 
     foreach ($jsonout as $item) {
 
-      $title = isset($item['title']) ? $item['title'] : $item['case_number'];
+      $title = isset($item['title']) 
+        ? $item['title'] 
+        : "Case Number: " . $item['case_number'] . " - Diagnosis: " . $item['diagnosis'];
 
-      $diagnosis = $this->getToxonomyTerm($item['diagnosis'], 'diagnosis');
-      $treatment = $this->getToxonomyTerm($item['treatment'], 'treatment');
+      $diagnosis = $this->getToxonomyMultTerms($item['diagnosis'], 'diagnosis');      
+      $treatment = $this->getToxonomyMultTerms($item['treatment'], 'treatment');
       $health_plan = $this->getToxonomyTerm($item['health_plan'], 'health_plan', $vocabulary);
       $decision = $this->getToxonomyTerm($item['decision'], 'decision');
       $appeal_type = $this->getToxonomyTerm($item['appeal_type'], 'appeal_type', $vocabulary);
@@ -117,6 +122,9 @@ class ImportJson
       $decision_year = $this->getToxonomyTerm($item['decision_year'], 'decision_year', $vocabulary);
       $appeal_agent = $this->getToxonomyTerm($item['appeal_agent'], 'appeal_agent', $vocabulary);
 
+      // drupal_set_message("diagnosis:$diagnosis");
+      // drupal_set_message(print_r($item), true);
+      print "<pre>$name:\n"; print_r($diagnosis); print "</pre>"; 
 
       if ($node = $this->existNode($item['case_number'])) {
         $node->diagnosis = $diagnosis;
@@ -155,13 +163,14 @@ class ImportJson
           'references' => $item['references'],
         ));
 
+        $node->enforceIsNew(true);
         $node->save();
         $this->countNew[$node->nid] = $item['case_number'];
 
       }
 
     }
-
+    
     // return [$countUpdate, $countNew];
   }
 
@@ -177,18 +186,44 @@ class ImportJson
   protected function getToxonomyTerm(string $name, string $parent)
   {
 
-    $tidParent = $this->getToxonomyTermIdByName($parent);
-    $tid = $this->getToxonomyTermIdByName($name);
-
-    if (empty($tid)) {
+    $tidParent = $this->getToxonomyTermIdByName($parent, 'machine_name');
+    $tid = $this->getToxonomyTermIdByName($name, 'name');
+    if (!$tid) {
       $tid = $this->createNewTerm($name, [$tidParent]);
-    }
-    drupal_set_message("term:$name, id:$tid, parent:$parent($tidParent)");
-
+    } 
+    // drupal_set_message("term:$name, id:$tid, parent:$parent($tidParent)");
     return [
       "target_id" => $tid,
       "target_type" => "taxonomy_term",
     ];
+
+  }
+
+  /**
+   * Get array of toxonomy term
+   * @param string $name
+   *   term name
+   * @param string $parent
+   *   parent term name
+   * @return array
+   *   array(tid, taget_type)
+   */
+  protected function getToxonomyMultTerms(array $names, string $parent)
+  {
+    $tids = [];
+    $tidParent = $this->getToxonomyTermIdByName($parent, 'machine_name');
+    foreach ($names as $name) {
+      $tid = $this->getToxonomyTermIdByName($name, 'name');
+      if (!$tid) {
+        $tid = $this->createNewTerm($name, [$tidParent]);
+      }
+      $tids[] = [
+        "target_id" => $tid,
+        "target_type" => "taxonomy_term",
+      ];
+    }
+    // drupal_set_message("term:$name, id:$tid, parent:$parent($tidParent)");
+    return $tids;
 
   }
 
@@ -199,13 +234,22 @@ class ImportJson
    * @return string
    *   term id
    */
-  protected function getToxonomyTermIdByName(string $name)
+  protected function getToxonomyTermIdByName(string $name, string $flag ='name')
   {
-    // $query = \Drupal::entityQuery('taxonomy_term');
-    // $query->condition('vid', $this->vocabulary);
-    // $query->condition('name', $name);
-    // $tids = $query->execute();
+    
+    $result = \Drupal::entityQuery('taxonomy_term')
+    ->condition($flag, $name)
+    ->condition('vid', $this->vocabulary)
+    ->execute();
+    
+    $terms = \Drupal::entityTypeManager()
+    ->getStorage('taxonomy_term')
+    ->loadMultiple($result);
+    
+    // The code doesn't not work for the term machine_name
+    //  $terms = taxonomy_term_load_multiple_by_name($name, $this->vocabulary);
 
+    /*  The code below is not working if there are mutiple terms with the same name
     $properties = [];
     if (!empty($name)) {
         $properties['name'] = $name;
@@ -214,11 +258,11 @@ class ImportJson
         $properties['vid'] = $this->vocabulary;
     }
     $terms = \Drupal::entityManager()->getStorage('taxonomy_term')->loadByProperties($properties);
+    */
+    
+    // print "<pre>$name:\n"; print_r($terms); print "</pre>"; 
     $term = reset($terms);
-
-    // print "<pre>tids:\n"; print_r($term->id()); print "</pre>"; exit;
-    return !empty($term) ? $term->id() : 0;
- 
+    return !empty($term) ? $term->id() : false;
   }
 
   /**
@@ -238,6 +282,7 @@ class ImportJson
       'parent' => $tidParent,
       'name' => $name,
     ]);
+    $term->enforceIsNew();
     $term->save();
     return $term->id();
   }
