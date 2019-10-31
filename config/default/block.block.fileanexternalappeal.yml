@@ -1,0 +1,31 @@
+uuid: 07e5bdb5-20cf-491e-8765-48bd038780c6
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:dfs_footer:05a8265f-7b5a-425c-aa97-5cbe9685ff64'
+  module:
+    - block_content
+    - system
+  theme:
+    - dfs_ny
+id: fileanexternalappeal
+theme: dfs_ny
+region: after_content
+weight: 0
+provider: null
+plugin: 'block_content:05a8265f-7b5a-425c-aa97-5cbe9685ff64'
+settings:
+  id: 'block_content:05a8265f-7b5a-425c-aa97-5cbe9685ff64'
+  label: 'File an External Appeal'
+  provider: block_content
+  label_display: visible
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: /public-appeal/search
+    negate: false
+    context_mapping: {  }

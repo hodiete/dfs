@@ -1,0 +1,29 @@
+uuid: 5b992ca7-bc6e-40e3-98fc-2a4c1da779a1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.age_range
+    - node.type.public_appeal
+    - taxonomy.vocabulary.age
+id: node.public_appeal.age_range
+field_name: age_range
+entity_type: node
+bundle: public_appeal
+label: 'Age Range'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      age: age
+    sort:
+      field: name
+      direction: asc
+    auto_create: true
+    auto_create_bundle: ''
+field_type: entity_reference

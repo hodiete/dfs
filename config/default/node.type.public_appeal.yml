@@ -1,0 +1,25 @@
+uuid: 82f44772-38b3-4742-b8a4-5e4ac957c4d6
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+    - workbench_moderation
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main
+    parent: 'main:'
+  workbench_moderation:
+    enabled: true
+    allowed_moderation_states:
+      - published
+      - draft
+    default_moderation_state: draft
+name: 'Public Appeal'
+type: public_appeal
+description: 'Content type for Public External Appeals containing Taxonomy References.'
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: false

@@ -1,0 +1,196 @@
+uuid: 25794662-2b69-4b90-9b94-ba2cd1fd9ffc
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.full
+    - field.field.node.public_appeal.age_range
+    - field.field.node.public_appeal.appeal_agent
+    - field.field.node.public_appeal.appeal_type
+    - field.field.node.public_appeal.body
+    - field.field.node.public_appeal.case_number
+    - field.field.node.public_appeal.decision
+    - field.field.node.public_appeal.decision_year
+    - field.field.node.public_appeal.diagnosis
+    - field.field.node.public_appeal.gender
+    - field.field.node.public_appeal.health_plan
+    - field.field.node.public_appeal.references
+    - field.field.node.public_appeal.summary
+    - field.field.node.public_appeal.treatment
+    - node.type.public_appeal
+  module:
+    - field_group
+    - smart_trim
+    - user
+third_party_settings:
+  field_group:
+    group_public_appeal_right:
+      children:
+        - diagnosis
+        - treatment
+        - health_plan
+        - decision
+        - appeal_type
+        - gender
+        - age_range
+        - decision_year
+        - appeal_agent
+        - case_number
+      parent_name: ''
+      weight: 0
+      format_type: html_element
+      format_settings:
+        id: ''
+        classes: public-appeal-right
+        element: div
+        show_label: false
+        label_element: h3
+        attributes: ''
+        effect: none
+        speed: fast
+      label: 'Public Appeal Right'
+    group_summary_references:
+      children:
+        - summary
+        - references
+      parent_name: ''
+      weight: 1
+      format_type: html_element
+      format_settings:
+        id: ''
+        classes: summary-references
+        element: div
+        show_label: false
+        label_element: h3
+        attributes: ''
+        effect: none
+        speed: fast
+      label: 'Summary & References'
+id: node.public_appeal.full
+targetEntityType: node
+bundle: public_appeal
+mode: full
+content:
+  age_range:
+    type: entity_reference_label
+    weight: 9
+    region: content
+    label: inline
+    settings:
+      link: false
+    third_party_settings: {  }
+  appeal_agent:
+    type: entity_reference_label
+    weight: 11
+    region: content
+    label: inline
+    settings:
+      link: false
+    third_party_settings: {  }
+  appeal_type:
+    type: entity_reference_label
+    weight: 6
+    region: content
+    label: inline
+    settings:
+      link: false
+    third_party_settings: {  }
+  case_number:
+    type: string
+    weight: 12
+    region: content
+    label: inline
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+  decision:
+    type: entity_reference_label
+    weight: 5
+    region: content
+    label: inline
+    settings:
+      link: false
+    third_party_settings: {  }
+  decision_year:
+    type: entity_reference_label
+    weight: 10
+    region: content
+    label: inline
+    settings:
+      link: false
+    third_party_settings: {  }
+  diagnosis:
+    type: entity_reference_label
+    weight: 2
+    region: content
+    label: inline
+    settings:
+      link: false
+    third_party_settings: {  }
+  gender:
+    type: entity_reference_label
+    weight: 8
+    region: content
+    label: inline
+    settings:
+      link: false
+    third_party_settings: {  }
+  health_plan:
+    type: entity_reference_label
+    weight: 4
+    region: content
+    label: inline
+    settings:
+      link: false
+    third_party_settings: {  }
+  references:
+    type: smart_trim
+    weight: 2
+    region: content
+    label: above
+    settings:
+      trim_length: 1000
+      trim_type: chars
+      trim_suffix: ''
+      wrap_class: trimmed
+      more_text: More
+      more_class: more-link
+      wrap_output: false
+      more_link: false
+      trim_options:
+        text: false
+        trim_zero: false
+      summary_handler: full
+    third_party_settings: {  }
+  summary:
+    type: smart_trim
+    weight: 1
+    region: content
+    label: above
+    settings:
+      trim_length: 1000
+      trim_type: chars
+      trim_suffix: ''
+      wrap_class: trimmed
+      more_text: More
+      more_class: more-link
+      wrap_output: false
+      more_link: false
+      trim_options:
+        text: false
+        trim_zero: false
+      summary_handler: full
+    third_party_settings: {  }
+  treatment:
+    type: entity_reference_label
+    weight: 3
+    region: content
+    label: inline
+    settings:
+      link: false
+    third_party_settings: {  }
+hidden:
+  body: true
+  langcode: true
+  links: true
+  workbench_moderation_control: true
