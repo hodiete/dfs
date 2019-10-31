@@ -77,7 +77,7 @@ content:
     region: content
     label: inline
     settings:
-      link: true
+      link: false
     third_party_settings: {  }
   appeal_agent:
     type: entity_reference_label
@@ -85,7 +85,7 @@ content:
     region: content
     label: inline
     settings:
-      link: true
+      link: false
     third_party_settings: {  }
   appeal_type:
     type: entity_reference_label
@@ -93,7 +93,7 @@ content:
     region: content
     label: inline
     settings:
-      link: true
+      link: false
     third_party_settings: {  }
   case_number:
     type: string
@@ -109,7 +109,7 @@ content:
     region: content
     label: inline
     settings:
-      link: true
+      link: false
     third_party_settings: {  }
   decision_year:
     type: entity_reference_label
@@ -117,7 +117,7 @@ content:
     region: content
     label: inline
     settings:
-      link: true
+      link: false
     third_party_settings: {  }
   diagnosis:
     type: entity_reference_label
@@ -125,7 +125,7 @@ content:
     region: content
     label: inline
     settings:
-      link: true
+      link: false
     third_party_settings: {  }
   gender:
     type: entity_reference_label
@@ -133,7 +133,7 @@ content:
     region: content
     label: inline
     settings:
-      link: true
+      link: false
     third_party_settings: {  }
   health_plan:
     type: entity_reference_label
@@ -141,12 +141,7 @@ content:
     region: content
     label: inline
     settings:
-      link: true
-    third_party_settings: {  }
-  links:
-    weight: 3
-    region: content
-    settings: {  }
+      link: false
     third_party_settings: {  }
   references:
     type: smart_trim
@@ -154,14 +149,14 @@ content:
     region: content
     label: above
     settings:
-      trim_length: 600
+      trim_length: 1000
       trim_type: chars
       trim_suffix: ''
       wrap_class: trimmed
-      more_link: true
       more_text: More
       more_class: more-link
       wrap_output: false
+      more_link: false
       trim_options:
         text: false
         trim_zero: false
@@ -173,14 +168,14 @@ content:
     region: content
     label: above
     settings:
-      trim_length: 600
+      trim_length: 1000
       trim_type: chars
       trim_suffix: ''
       wrap_class: trimmed
-      more_link: true
       more_text: More
       more_class: more-link
       wrap_output: false
+      more_link: false
       trim_options:
         text: false
         trim_zero: false
@@ -192,13 +187,10 @@ content:
     region: content
     label: inline
     settings:
-      link: true
-    third_party_settings: {  }
-  workbench_moderation_control:
-    weight: 2
-    region: content
-    settings: {  }
+      link: false
     third_party_settings: {  }
 hidden:
   body: true
   langcode: true
+  links: true
+  workbench_moderation_control: true

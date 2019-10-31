@@ -5,7 +5,7 @@ dependencies:
   config:
     - field.storage.node.decision
     - node.type.public_appeal
-    - taxonomy.vocabulary.public_appeal_decision
+    - taxonomy.vocabulary.public_appeal_category
 id: node.public_appeal.decision
 field_name: decision
 entity_type: node
@@ -20,7 +20,7 @@ settings:
   handler: 'default:taxonomy_term'
   handler_settings:
     target_bundles:
-      public_appeal_decision: public_appeal_decision
+      public_appeal_category: public_appeal_category
     sort:
       field: name
       direction: asc

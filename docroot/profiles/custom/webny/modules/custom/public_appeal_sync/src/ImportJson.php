@@ -29,11 +29,18 @@ class ImportJson
   // private $countError;
   private $countError = [];
 
-  public $response = [];
-
+  
   // private $vocabulary: taxonomy term
   private $vocabulary;
   private $user;
+  
+  public $response = [];
+
+  // public $baseurl: the base URL of JSON file imported
+  public $baseurl;
+
+  // public $path:  the URL of output JSON file after import
+  public $path;
 
 
   /**
@@ -43,6 +50,7 @@ class ImportJson
   {
     $this->vocabulary = 'public_appeal_category';
     $this->user = 'dfs.ny.gov';
+    $this->baseurl = \Drupal::config('public_appeal_sync.baseurl')->get('baseurl');
 
   }
 
@@ -55,8 +63,8 @@ class ImportJson
   {
 
     $client = \Drupal::httpClient();
-    $baseurl = \Drupal::config('public_appeal_sync.baseurl')->get('baseurl');
     $user = user_load_by_name($this->user);
+    $baseurl = $this->baseurl;
     // kint($this->user); 
     // print "<pre>TEST:\n"; print_r($baseurl); print "</pre>"; 
     // $uid = $user->id;
@@ -448,6 +456,14 @@ class ImportJson
   }
 
   /**
+   * Set method
+   */
+  public function setBaseurl(string $url)
+  {
+    $this->baseurl = $url;
+  }
+
+  /**
    * Create a file of report
    */
   public function createReport() {
@@ -466,11 +482,10 @@ class ImportJson
         FILE_EXISTS_RENAME);
   
       // Get the real file path :
-      $path = file_create_url($file->getFileUri());
-      // print_r($path); exit;
-      \Drupal::logger("public_appeal_sync")->notice($path);
+      $this->path = file_create_url($file->getFileUri());
+      \Drupal::logger("public_appeal_sync")->notice($this->path);
 
-      $this->sendEmailReport($path);
+      $this->sendEmailReport($this->path);
     }
     
 

@@ -49,11 +49,11 @@ class ResponseListingController extends ControllerBase
   {
     // You can create a file and save data at once .
     $link1 = Link::createFromRoute(t('Configuration of public_applea_syn module'), 'public_appeal_sync.form')->toString();
-    $link2 = Link::createFromRoute(t('List of Responses after inpormting JSON data'), 'public_appeal_sync.response')->toString();
+    $link2 = Link::createFromRoute(t('List of Responses after importing JSON data'), 'public_appeal_sync.response')->toString();
+    $link3 = Link::createFromRoute(t('Maunally import JSON data'), 'public_appeal_sync.manual_import_form')->toString();
 
-    $str = "<h1>Admin public_appeal_sync<h2>$link1</h2><h2>$link2</h2>";
     $build = [
-      '#markup' => $str,
+      '#markup' => "<h1>Admin public_appeal_sync<h2>$link1</h2><h2>$link2</h2><h2>$link3</h2>",
     ];
     return $build;
 

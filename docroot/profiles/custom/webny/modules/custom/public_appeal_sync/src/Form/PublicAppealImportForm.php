@@ -101,7 +101,7 @@ class PublicAppealImportForm extends ConfigFormBase
     // }
   }
 
-  /*
+  
   protected function validateUser()
   {
     $current_user = \Drupal::currentUser();
@@ -113,7 +113,7 @@ class PublicAppealImportForm extends ConfigFormBase
     }
     return false;
   }
-  */
+  
 
   /**
    * {@inheritdoc}

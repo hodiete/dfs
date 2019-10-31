@@ -21,3 +21,11 @@ public_appeal_sync.admin:
     _title: 'Admin of public_appeal_sync module'
   requirements:
     _role: administrator+restful_api
+
+public_appeal_sync.manual_import_form:
+  path: '/admin/config/public_appeal_sync/manual_import_form'
+  defaults:
+    _form: '\Drupal\public_appeal_sync\Form\ManualImportForm'
+    _title: 'Form to Run import server manually'
+  requirements:
+    _role: administrator+restful_api

@@ -10,20 +10,20 @@ dependencies:
     - text
 third_party_settings:
   allowed_formats:
-    basic_html: basic_html
     full_html: full_html
+    plain_text: plain_text
+    basic_html: '0'
     webny_enhanced_wysiwyg: '0'
     webny_wysiwyg_frame_editor: '0'
     restricted_html: '0'
     rich_text: '0'
-    plain_text: '0'
 id: node.public_appeal.summary
 field_name: summary
 entity_type: node
 bundle: public_appeal
 label: Summary
 description: ''
-required: true
+required: false
 translatable: false
 default_value:
   -
