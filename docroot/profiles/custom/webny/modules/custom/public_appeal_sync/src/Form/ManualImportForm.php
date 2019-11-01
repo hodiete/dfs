@@ -53,7 +53,7 @@ class ManualImportForm extends FormBase
 
     $form['submit'] = array(
       '#type' => 'submit',
-      '#value' => $this->t('Manull Import JSON'),
+      '#value' => $this->t('Manually Import JSON'),
       '#button_type' => 'primary',
     );
     return $form;

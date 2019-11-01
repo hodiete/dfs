@@ -5,7 +5,7 @@ dependencies:
   config:
     - field.storage.node.appeal_type
     - node.type.public_appeal
-    - taxonomy.vocabulary.public_appeal_category
+    - taxonomy.vocabulary.appeal_type
 id: node.public_appeal.appeal_type
 field_name: appeal_type
 entity_type: node
@@ -20,7 +20,7 @@ settings:
   handler: 'default:taxonomy_term'
   handler_settings:
     target_bundles:
-      public_appeal_category: public_appeal_category
+      appeal_type: appeal_type
     sort:
       field: name
       direction: asc

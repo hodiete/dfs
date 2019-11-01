@@ -13,7 +13,6 @@ use Drupal\Component\Utility\Html;
 use Drupal\Core\Utility\Error;
 use function Drupal\blazy_ui\Form\drupal_set_message;
 
-
 /**
  * ImportJson is a service to Import Public External Appeal JSON data into Public Appeal content type.
  */
@@ -23,24 +22,25 @@ class ImportJson
   // private $countUpdate;
   private $countUpdate = [];
 
-  // private $countNew;
+    // private $countNew;
   private $countNew = [];
 
-  // private $countError;
+    // private $countError;
   private $countError = [];
 
   
-  // private $vocabulary: taxonomy term
+    // private $vocabulary: taxonomy term
   private $vocabulary;
   private $user;
-  
+
   public $response = [];
 
-  // public $baseurl: the base URL of JSON file imported
+    // public $baseurl: the base URL of JSON file imported
   public $baseurl;
 
-  // public $path:  the URL of output JSON file after import
+    // public $path:  the URL of output JSON file after import
   public $path;
+
 
 
   /**
@@ -48,10 +48,20 @@ class ImportJson
    */
   public function __construct()
   {
-    $this->vocabulary = 'public_appeal_category';
+    $this->vocabulary = [
+      'diagnosis',
+      'treatment',
+      'health_plan',
+      'decision',
+      'appeal_type',
+      'gender',
+      'age_range',
+      'year',
+      'agent',
+    ];
+
     $this->user = 'dfs.ny.gov';
     $this->baseurl = \Drupal::config('public_appeal_sync.baseurl')->get('baseurl');
-
   }
 
   /**
@@ -61,35 +71,33 @@ class ImportJson
    */
   public function importJson()
   {
-
     $client = \Drupal::httpClient();
     $user = user_load_by_name($this->user);
     $baseurl = $this->baseurl;
-    // kint($this->user); 
-    // print "<pre>TEST:\n"; print_r($baseurl); print "</pre>"; 
-    // $uid = $user->id;
+        // kint($this->user);
+        // print "<pre>TEST:\n"; print_r($baseurl); print "</pre>";
+        // $uid = $user->id;
 
     try {
       $response = \Drupal::httpClient()->get($baseurl, array('headers' => array('Accept' => 'text/plain')));
       $data = $response->getBody();
 
-      // print "<pre>TEST:\n"; print_r($data); print "</pre>";  
+            // print "<pre>TEST:\n"; print_r($data); print "</pre>";
       if (empty($data)) {
         drupal_set_message('Empty response: ' . $baseurl);
-        // $this->countError['json'] = 'Empty response to get JSON data: ' . $baseurl;
-        $this->response[] = ['message' => 'Empty response to get JSON data: ' . $baseurl]; 
-
+                // $this->countError['json'] = 'Empty response to get JSON data: ' . $baseurl;
+        $this->response[] = ['message' => 'Empty response to get JSON data: ' . $baseurl];
       } else {
-        // print "<pre>TEST:\n"; print_r($data); print "</pre>";  
+                // print "<pre>TEST:\n"; print_r($data); print "</pre>";
         $this->createUpdatePublicAppeal($data, $user->id());
         $this->createReport();
       }
     } catch (RequestException $e) {
-      // $this->countError['get'] = $e;
-      $this->response[]= ['message' => $e];
+            // $this->countError['get'] = $e;
+      $this->response[] = ['message' => $e];
       watchdog_exception('public_appeal_sync', $e);
     }
-    // exit;
+        // exit;
   }
 
   /**
@@ -98,7 +106,7 @@ class ImportJson
    */
   protected function validateUser()
   {
-    // $current_user = \Drupal::currentUser();
+        // $current_user = \Drupal::currentUser();
     $roles = $this->currentUser->getRoles();
     foreach ($roles as $role) {
       if ($role == 'administrator' || $role == 'restful_api') {
@@ -115,7 +123,7 @@ class ImportJson
    * @param int
    *   user ID
    */
-  protected function createUpdatePublicAppeal(string $json, int $uid=8)
+  protected function createUpdatePublicAppeal(string $json, int $uid = 8)
   {
     $jsonout = json_decode($json, true);
     $vocabulary = "public_appeal_category";
@@ -124,25 +132,25 @@ class ImportJson
     $respson_nid;
 
     foreach ($jsonout as $item) {
-
-      $title = isset($item['title']) 
-        ? $item['title'] 
+      $title = isset($item['title'])
+        ? $item['title']
         : "Case Number: " . $item['case_number'] . " - Diagnosis: " . $item['diagnosis'][0];
 
-      list($diagnosis, $diag_resp)= $this->getToxonomyMultTerms($item['diagnosis'], 'diagnosis');      
+      // $item['diagnosis'] = isset($item['diagnosis'])? $item['diagnosis'] : "None";
+      list($diagnosis, $diag_resp) = $this->getToxonomyMultTerms($item['diagnosis'], 'diagnosis');
       list($treatment, $treat_resp) = $this->getToxonomyMultTerms($item['treatment'], 'treatment');
       list($health_plan, $health_resp) = $this->getToxonomyTerm($item['health_plan'], 'health_plan');
       list($decision, $dec_resp) = $this->getToxonomyTerm($item['decision'], 'decision');
       list($appeal_type, $type_resp) = $this->getToxonomyTerm($item['appeal_type'], 'appeal_type');
       list($gender, $gender_resp) = $this->getToxonomyTerm($item['gender'], 'gender');
       list($age_range, $age_resp) = $this->getToxonomyTerm($item['age_range'], 'age_range');
-      list($decision_year, $year_resp) = $this->getToxonomyTerm($item['decision_year'], 'decision_year');
-      list($appeal_agent, $agent_resp) = $this->getToxonomyTerm($item['appeal_agent'], 'appeal_agent');
+      list($year, $year_resp) = $this->getToxonomyTerm($item['year'], 'year');
+      list($agent, $agent_resp) = $this->getToxonomyTerm($item['agent'], 'agent');
       
 
-      // drupal_set_message("diagnosis:$diagnosis");
-      // drupal_set_message(print_r($item), true);
-      // print "<pre>$name:\n"; print_r($diagnosis); print "</pre>"; 
+            // drupal_set_message("diagnosis:$diagnosis");
+            // drupal_set_message(print_r($item), true);
+            // print "<pre>$name:\n"; print_r($diagnosis); print "</pre>";
 
       if ($node = $this->existNode($item['case_number'])) {
         $node->diagnosis = $diagnosis;
@@ -152,8 +160,8 @@ class ImportJson
         $node->appeal_type = $appeal_type;
         $node->gender = $gender;
         $node->age_range = $age_range;
-        $node->decision_year = $decision_year;
-        $node->appeal_agent = $appeal_agent;
+        $node->decision_year = $year;
+        $node->appeal_agent = $agent;
         $node->case_number = $item['case_number'];
         $node->summary = $item['summary'];
         $node->references = $item['references'];
@@ -165,8 +173,6 @@ class ImportJson
         } else {
           $respson_nid = $node->id();
         }
-
-        
       } else {
         $node = Node::create(array(
           'type' => 'public_appeal',
@@ -180,8 +186,8 @@ class ImportJson
           'appeal_type' => $appeal_type,
           'gender' => $gender,
           'age_range' => $age_range,
-          'decision_year' => $decision_year,
-          'appeal_agent' => $appeal_agent,
+          'decision_year' => $year,
+          'appeal_agent' => $agent,
           'case_number' => $item['case_number'],
           'summary' => $item['summary'],
           'references' => $item['references'],
@@ -208,10 +214,9 @@ class ImportJson
         'appeal_type' => $type_resp,
         'gender' => $gender_resp,
         'age_range' => $age_resp,
-        'decision_year' => $year_resp,
-        'appeal_agent' => $agent_resp,
+        'year' => $year_resp,
+        'agent' => $agent_resp,
       ];
-
     }//END foreach()
   }
 
@@ -224,15 +229,15 @@ class ImportJson
    * @return array
    *   array(tid, taget_type)
    */
-  protected function getToxonomyTerm(string $name, string $parent)
+  protected function getToxonomyTerm(string $name, string $vocabulary)
   {
-
-    $tidParent = $this->getToxonomyTermIdByName($parent, 'machine_name');
-    $tid = $this->getToxonomyTermIdByName($name, 'name');
+        // $tidParent = $this->getToxonomyTermIdByName($parent, 'machine_name');
+    $name = isset($name) ? $name : "None";
+    $tid = $this->getToxonomyTermIdByName($name, 'name', $vocabulary);
     if (!$tid) {
-      $tid = $this->createNewTerm($name, [$tidParent]);
-    } 
-    // drupal_set_message("term:$name, id:$tid, parent:$parent($tidParent)");
+      $tid = $this->createNewTerm($name, $vocabulary);
+    }
+        // drupal_set_message("term:$name, id:$tid, parent:$parent($tidParent)");
     return array(
       [
         "target_id" => $tid,
@@ -243,7 +248,6 @@ class ImportJson
         'name' => $name,
       ],
     );
-
   }
 
   /**
@@ -255,63 +259,50 @@ class ImportJson
    * @return array
    *   array(tid, taget_type)
    */
-  protected function getToxonomyMultTerms(array $names, string $parent)
+  protected function getToxonomyMultTerms(array $names, string $vocabulary)
   {
-    $tids = []; $tids_resp = [];
-    $tidParent = $this->getToxonomyTermIdByName($parent, 'machine_name');
+    $tids = [];
+    $tids_resp = [];
+        // $tidParent = $this->getToxonomyTermIdByName($parent, 'machine_name');
     foreach ($names as $name) {
-      $tid = $this->getToxonomyTermIdByName($name, 'name');
+      $tid = $this->getToxonomyTermIdByName($name, 'name', $vocabulary);
       if (!$tid) {
-        $tid = $this->createNewTerm($name, [$tidParent]);
+        $tid = $this->createNewTerm($name, $vocabulary);
       }
       $tids[] = [
         "target_id" => $tid,
         "target_type" => "taxonomy_term",
       ];
-      $tids_resp [] = [
-        "term_id" => $tid, 
+      $tids_resp[] = [
+        "term_id" => $tid,
         "name" => $name,
       ];
     }
-    // drupal_set_message("term:$name, id:$tid, parent:$parent($tidParent)");
+        // drupal_set_message("term:$name, id:$tid, parent:$parent($tidParent)");
     return array($tids, $tids_resp);
-
   }
 
   /**
    * Get term id by name
-   * @param string 
+   * @param string
    *   term name
    * @return string
    *   term id
    */
-  protected function getToxonomyTermIdByName(string $name, string $flag ='name')
+  protected function getToxonomyTermIdByName(string $name, string $flag = 'name', string $vocabulary)
   {
     
-    $result = \Drupal::entityQuery('taxonomy_term')
-    ->condition($flag, $name)
-    ->condition('vid', $this->vocabulary)
-    ->execute();
-    
-    $terms = \Drupal::entityTypeManager()
-    ->getStorage('taxonomy_term')
-    ->loadMultiple($result);
-    
-    // The code doesn't not work for the term machine_name
-    //  $terms = taxonomy_term_load_multiple_by_name($name, $this->vocabulary);
 
-    /*  The code below is not working if there are mutiple terms with the same name
-    $properties = [];
-    if (!empty($name)) {
-        $properties['name'] = $name;
-    }
-    if (!empty($vid)) {
-        $properties['vid'] = $this->vocabulary;
-    }
-    $terms = \Drupal::entityManager()->getStorage('taxonomy_term')->loadByProperties($properties);
-    */
-    
-    // print "<pre>$name:\n"; print_r($terms); print "</pre>"; 
+    $result = \Drupal::entityQuery('taxonomy_term')
+      ->condition($flag, $name)
+      ->condition('vid', $vocabulary)
+      ->execute();
+
+    $terms = \Drupal::entityTypeManager()
+      ->getStorage('taxonomy_term')
+      ->loadMultiple($result);
+
+        // print "<pre>$name:\n"; print_r($terms); print "</pre>";
     $term = reset($terms);
     return !empty($term) ? $term->id() : false;
   }
@@ -326,11 +317,12 @@ class ImportJson
    *   a new term ID
    */
 
-  protected function createNewTerm(string $name, array $tidParent = [])
+  protected function createNewTerm(string $name, string $vocabulary)
   {
+    $name = isset($name) ? $name : "None";
+
     $term = Term::create([
-      'vid' => $this->vocabulary,
-      'parent' => $tidParent,
+      'vid' => $vocabulary,
       'name' => $name,
     ]);
     $term->enforceIsNew();
@@ -356,13 +348,13 @@ class ImportJson
     } else {
       return false;
     }
-
   }
 
   /**
    * Get method
    */
-  public function getCountUpdate() {
+  public function getCountUpdate()
+  {
     return $this->countUpdate;
   }
 
@@ -385,7 +377,8 @@ class ImportJson
   /**
    * Message to string
    */
-  public function msgToString() {
+  public function msgToString()
+  {
     $msg = "";
     $msg .= $this->toStringCount($this->countError, 'error');
     $msg .= $this->toStringCount($this->countUpdate, 'update');
@@ -395,13 +388,14 @@ class ImportJson
   }
 
   /**
-   * To string 
+   * To string
    * @param array $count
    *   e.g. $this->countError
    * @param  string $type
-   *   update, new, error 
+   *   update, new, error
    */
-  public function toStringCount(array $count, string $type) {
+  public function toStringCount(array $count, string $type)
+  {
     $msg = "";
     switch ($type) {
       case 'update':
@@ -427,14 +421,15 @@ class ImportJson
   /**
    * Get method
    */
-  public function getVocabulary() {
+  public function getVocabulary()
+  {
     return $this->vocabulary;
   }
 
   /**
    * Set method
    */
-  public function setVocabulary(string $vac)
+  public function setVocabulary(array $vac)
   {
     $this->vocabulary = $vac;
   }
@@ -466,29 +461,28 @@ class ImportJson
   /**
    * Create a file of report
    */
-  public function createReport() {
-    // You can create a file and save data at once .
+  public function createReport()
+  {
+        // You can create a file and save data at once .
     $dir = \Drupal::config('public_appeal_sync.outdir')->get('outdir');
     $dir2 = "public://$dir";
     
-    // print_r($dir); exit;
+        // print_r($dir); exit;
     if (file_prepare_directory($dir2, FILE_CREATE_DIRECTORY | FILE_MODIFY_PERMISSIONS)) {
-
       $json_data = json_encode($this->response);
-      $filename = "report-import-". date("Y-m-d--H-i-s") . ".json";
+      $filename = "report-import-" . date("Y-m-d--H-i-s") . ".json";
       $file = file_save_data(
-        $json_data, 
-        "public://$dir/$filename", 
-        FILE_EXISTS_RENAME);
+        $json_data,
+        "public://$dir/$filename",
+        FILE_EXISTS_RENAME
+      );
   
-      // Get the real file path :
+            // Get the real file path :
       $this->path = file_create_url($file->getFileUri());
       \Drupal::logger("public_appeal_sync")->notice($this->path);
 
       $this->sendEmailReport($this->path);
     }
-    
-
   }
 
   /**
@@ -496,10 +490,11 @@ class ImportJson
    * @param string $path
    *   a URL of the report
    */
-  public function sendEmailReport($path) {
+  public function sendEmailReport($path)
+  {
     $to = \Drupal::config('public_appeal_sync.email')->get('email');
     $from = \Drupal::config('system.site')->get('mail');
-    // $siteName = \Drupal::config('system.site')->get('name');
+        // $siteName = \Drupal::config('system.site')->get('name');
     $day = date("Y-m-d");
 
     $mailManager = \Drupal::service('plugin.manager.mail');
@@ -522,8 +517,5 @@ class ImportJson
     } else {
       \Drupal::logger($module)->notice('Your message has been sent.');
     }
-
-
   }
-
 } //END class
