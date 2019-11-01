@@ -1,0 +1,362 @@
+// Public Appeals Search Page Content
+//
+// Public Appeals Search Page Content styling
+
+.views-page-public-appeal-search {
+
+  main {
+    display: flex;
+  }
+
+  .layout-sidebar-first {
+    float: none!important;
+    width: auto!important;
+    margin: 0!important;
+  }
+
+  .layout-content {
+    float: none!important;
+    margin: 0!important;
+    width: calc(100% - 342px)!important;
+  }
+
+  .views-element-container {
+    margin: 0;
+    padding: 0 50px 20px 40px;
+  }
+
+  th {
+    //width: auto!important;
+    white-space: nowrap;
+    text-transform: uppercase;
+  }
+
+  td {
+    font-size: 16px;
+  }
+
+  .views-field-references,
+  .views-field-summary {
+    position: absolute;
+    left: 0;
+  }
+}
+
+/* external filters */
+#block-exposedformpublic-appeal-searchpublic-appeals-search-page {
+  width: 342px;
+  margin-top: 50px;
+  padding-bottom: 350px;
+  background: #EFF0F2;
+
+  h2 {
+    padding: 15px 0;
+    background: #06464C;
+    color: #fff;
+    font-size: 24px;
+    text-align: center;
+    font-weight: 600;
+
+    .mobile-close {
+      display: none;
+    }
+  }
+
+  form {
+    padding: 50px 28px 0;
+
+    label,
+    legend {
+      margin: 0 0 5px;
+      padding: 0;
+      background: transparent;
+      color: #151515;
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    .chosen-container {
+      margin-bottom: 50px;
+      width: 100%!important;
+
+      &:after {
+        content: '';
+        background: url("../icons/dfs/arrowdown-gray.svg") no-repeat center center transparent;
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 12px;
+        height: 100%;
+      }
+    }
+
+    .chosen-choices,
+    .chosen-choices li {
+      background: transparent;
+    }
+
+    .chosen-choices {
+      padding: 0;
+      border: none;
+      border-bottom: 1px solid #151515;
+    }
+
+    .chosen-choices li.search-field input[type="text"] {
+      margin: 0;
+      padding: 5px 0;
+      width: 100%;
+      background: transparent;
+      color: #151515;
+      font-size: 14px;
+    }
+
+    li.search-choice {
+      padding: 5px 27px 5px 10px;
+      background: #06464C;
+      color: #fff;
+      border: 1px solid #09464C;
+      border-radius: 11px;
+      font-size: 14px;
+
+      .search-choice-close {
+        top: 5px;
+        right: 5px;
+        color: #fff;
+        background: none;
+
+        &:hover {
+          text-decoration: none;
+        }
+
+        &:after {
+          content: 'x';
+          font-size: 14px;
+        }
+      }
+    }
+
+    fieldset {
+      margin: 0 0 50px 0;
+    }
+
+    input[type="checkbox"] {
+      -webkit-appearance: none;
+      appearance: none;
+      display: inline-block;
+      position: relative;
+      width: 15px;
+      height: 15px;
+      border: 1px solid #09464C;
+      border-radius: 0;
+      vertical-align: middle;
+
+      &:checked {
+        &:after {
+        	content: '\2714';
+        	position: absolute;
+        	top: 0px;
+          padding-left: 3px;
+          width: 12px;
+          height: 15px;
+          background: #09464C;
+          color: #fff;
+          font-family: 'Proxima Nova';
+        	font-size: 10px;
+        }
+      }
+    }
+
+    input[type="checkbox"]~label {
+      display: inline;
+      padding-left: 10px;
+      font-weight: 400;
+    }
+
+    input[type="text"] {
+      margin-bottom: 50px;
+      padding: 10px 5px;
+      height: auto;
+      background: transparent;
+      font-size: 14px;
+    }
+
+    input[type="submit"],
+    input[type="reset"] {
+      padding: 15px;
+      font-size: 16px;
+      text-transform: capitalize;
+    }
+  }
+}
+
+
+/* table js filters */
+
+
+/* table */
+
+
+/* summary and reference fields */
+
+
+/* pager */
+
+
+
+
+/* intro */
+#block-externalappealssearch {
+  max-width: 915px;
+  padding: 50px 50px 20px 40px;
+
+  h2 {
+    margin-bottom: 15px;
+    font-size: 32px;
+  }
+
+  p {
+    color: #151515;
+    font-size: 16px;
+  }
+}
+
+.public-appeal-search-view {
+  margin: 0!important;
+
+  .search-filter {
+    float: left;
+    width: 100%;
+    margin-right: 75px;
+    max-width: 915px;
+
+    .dataTables_filter {
+      width: 100%!important;
+
+      label {
+        position: relative;
+        margin: 0;
+
+        input[type="search"] {
+          margin: 0!important;
+          padding: 30px!important;
+          width: 100%!important;
+          font-size: 14px;
+          font-weight: 400;
+          border: 1px solid #022629;
+          border-radius: 32px;
+        }
+
+        &:after {
+          content: '';
+          position: absolute;
+          top: 20px;
+          right: 20px;
+          width: 19px;
+          height: 19px;
+          background: url("../icons/dfs/search-icon.png") no-repeat center center transparent;
+
+        }
+      }
+    }
+
+    input[type="checkbox"]~label {
+      display: inline;
+      padding-left: 10px;
+      font-weight: 400;
+    }
+  }
+
+  .mobile-open {
+    display: none;
+    position: absolute;
+    top: 15px;
+    right: 0;
+    width: 34px;
+    height: 29px;
+    background: url("../icons/dfs/filter-icon.svg") no-repeat center center transparent;
+  }
+
+  .counters {
+    display: flex;
+    width: 580px;
+    color: #09464c;
+    font-size: 18px;
+    justify-content: space-between;
+
+    .overturnedCounter,
+    .overturnedPartCounter,
+    .upheldCounter {
+      //display: inline-block;
+    }
+
+    .overturnedValue,
+    .overturnedPartValue,
+    .upheldValue {
+      display: block;
+      font-size: 32px;
+    }
+  }
+  /* disclaimer */
+  .table-footer {
+    font-size: 14px;
+  }
+}
+
+
+@media screen and (max-width:768px) {
+  #block-externalappealssearch {
+    padding: 50px 25px 20px;
+  }
+
+  #block-exposedformpublic-appeal-searchpublic-appeals-search-page {
+    //display: none;
+    position: absolute;
+    top: 0;
+    margin-top: 0;
+    width: 100%;
+    z-index: 999;
+
+
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    width: 1px;
+
+    h2 {
+      .mobile-close {
+        display: inline-block;
+        position: absolute;
+        right: 28px;
+        color: #fff;
+        font-size: 20px;
+        font-weight: 100;
+
+        &:hover,
+        &:active {
+          text-decoration: none;
+        }
+      }
+    }
+  }
+  .views-page-public-appeal-search {
+    .layout-content {
+      width: 100%!important;
+    }
+  }
+
+  .public-appeal-search-view {
+    .mobile-open {
+      display: block;
+    }
+  }
+}
+
+
+@media screen and (max-width:375px) {
+  #block-externalappealssearch {
+    padding: 40px 15px 20px;
+    h2 {
+      font-size: 26px;
+    }
+  }
+}
