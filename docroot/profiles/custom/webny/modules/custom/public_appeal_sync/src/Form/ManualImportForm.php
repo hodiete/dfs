@@ -34,8 +34,6 @@ class ManualImportForm extends FormBase
   public function buildForm(array $form, FormStateInterface $form_state)
   {
 
-    // $form['#title'] = $this->t('Config for Public Appeal JSON Importing Service');
-
     $form['title'] = array(
       '#markup' => '<h1>Run Import Service Manually</h1>'
 
@@ -49,7 +47,6 @@ class ManualImportForm extends FormBase
       '#default_value' => \Drupal::config('public_appeal_sync.baseurl')->get('baseurl'),
       '#required' => true,
     );
-
 
     $form['submit'] = array(
       '#type' => 'submit',
@@ -89,6 +86,7 @@ class ManualImportForm extends FormBase
    */
   public function submitForm(array &$form, FormStateInterface $form_state)
   {
+    // Run the server to import json data
     $service = \Drupal::service('public_appeal_sync.import_json');
 
     if(!empty($form_state->getValue('json_url'))) {
@@ -98,6 +96,7 @@ class ManualImportForm extends FormBase
     }
 
     $service->importJson();
+    
     drupal_set_message('Response JSON: ' . $service->path);
   }
 

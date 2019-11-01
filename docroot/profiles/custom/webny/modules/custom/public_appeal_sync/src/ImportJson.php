@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\public_appeal_sync\ImportJson.
+ */
+
 namespace Drupal\public_appeal_sync;
 
 use Drupal\Core\Config\ConfigFactoryInterface;
@@ -14,37 +19,63 @@ use Drupal\Core\Utility\Error;
 use function Drupal\blazy_ui\Form\drupal_set_message;
 
 /**
- * ImportJson is a service to Import Public External Appeal JSON data into Public Appeal content type.
+ * Class ImportJson: 
+ *   a service to Import Public Appeal JSON data into Public Appeal type.
  */
 class ImportJson
 {
-
-  // private $countUpdate;
+  /**
+   * The count of updated nodes.
+   * @var array
+   */
   private $countUpdate = [];
 
-    // private $countNew;
+  /**
+   * The count of new nodes.
+   * @var array
+   */
   private $countNew = [];
 
-    // private $countError;
+  /**
+   * The count of errors.
+   * @var array
+   */
   private $countError = [];
 
-  
-    // private $vocabulary: taxonomy term
-  private $vocabulary;
+  /**
+   * The list of Taxonomy vocabularies.
+   * @var array
+   */
+  private $vocabulary = [];
+
+  /**
+   * The user name.
+   * @var string
+   */
   private $user;
 
+  /**
+   * List of JSON data of response.
+   * @var array
+   */
   public $response = [];
 
-    // public $baseurl: the base URL of JSON file imported
+  /**
+   * The base URL of JSON file imported.
+   * @var array
+   */
   public $baseurl;
 
-    // public $path:  the URL of output JSON file after import
+  /**
+   * The URL of response JSON file after import.
+   * @var array
+   */
   public $path;
 
 
 
   /**
-   * Part of the DependencyInjection magic happening here.
+   * Construct to initrialize varaibles.
    */
   public function __construct()
   {
@@ -65,62 +96,40 @@ class ImportJson
   }
 
   /**
-   * Import JSON data by GET method
-   * @param ConfigFactoryInterface $config
-   *   The ConfigFactoryInterface type.
+   * Import JSON data by GET method.
+   * It is the main method to be called.
    */
   public function importJson()
   {
     $client = \Drupal::httpClient();
     $user = user_load_by_name($this->user);
     $baseurl = $this->baseurl;
-        // kint($this->user);
-        // print "<pre>TEST:\n"; print_r($baseurl); print "</pre>";
-        // $uid = $user->id;
 
     try {
       $response = \Drupal::httpClient()->get($baseurl, array('headers' => array('Accept' => 'text/plain')));
       $data = $response->getBody();
 
-            // print "<pre>TEST:\n"; print_r($data); print "</pre>";
       if (empty($data)) {
         drupal_set_message('Empty response: ' . $baseurl);
-                // $this->countError['json'] = 'Empty response to get JSON data: ' . $baseurl;
+        $this->countError['json'] = 'Empty response to get JSON data: ' . $baseurl;
         $this->response[] = ['message' => 'Empty response to get JSON data: ' . $baseurl];
       } else {
-                // print "<pre>TEST:\n"; print_r($data); print "</pre>";
         $this->createUpdatePublicAppeal($data, $user->id());
         $this->createReport();
       }
     } catch (RequestException $e) {
-            // $this->countError['get'] = $e;
+      $this->countError['get'] = $e;
       $this->response[] = ['message' => $e];
       watchdog_exception('public_appeal_sync', $e);
     }
-        // exit;
-  }
-
-  /**
-   * Validate user (not used currently)
-   * @return boolean
-   */
-  protected function validateUser()
-  {
-        // $current_user = \Drupal::currentUser();
-    $roles = $this->currentUser->getRoles();
-    foreach ($roles as $role) {
-      if ($role == 'administrator' || $role == 'restful_api') {
-        return true;
-      }
-    }
-    return false;
+ 
   }
 
   /**
    * Create or update nodes from JSON feed.
    * @param string $json
    *   JSON data
-   * @param int
+   * @param int $uid
    *   user ID
    */
   protected function createUpdatePublicAppeal(string $json, int $uid = 8)
@@ -145,13 +154,9 @@ class ImportJson
       list($gender, $gender_resp) = $this->getToxonomyTerm($item['gender'], 'gender');
       list($age_range, $age_resp) = $this->getToxonomyTerm($item['age_range'], 'age_range');
       list($year, $year_resp) = $this->getToxonomyTerm($item['year'], 'year');
-      list($agent, $agent_resp) = $this->getToxonomyTerm($item['agent'], 'agent');
-      
-
-            // drupal_set_message("diagnosis:$diagnosis");
-            // drupal_set_message(print_r($item), true);
-            // print "<pre>$name:\n"; print_r($diagnosis); print "</pre>";
-
+      list($agent, $agent_resp) = $this->getToxonomyTerm($item['agent'], 'agent');      
+   
+      // Upload the node if it is exited, otherwise, create a new one
       if ($node = $this->existNode($item['case_number'])) {
         $node->diagnosis = $diagnosis;
         $node->treatment = $treatment;
@@ -200,8 +205,7 @@ class ImportJson
         }
       }
 
-
-
+      // Output data of response.
       $this->response[] = [
         "method" => $method,
         "message" => $message,
@@ -224,20 +228,19 @@ class ImportJson
    * Get array of toxonomy term
    * @param string $name
    *   term name
-   * @param string $parent
+   * @param string $vocabulary
    *   parent term name
    * @return array
-   *   array(tid, taget_type)
+   *   array([tid, taget_type], [term_id, name])
    */
   protected function getToxonomyTerm(string $name, string $vocabulary)
   {
-        // $tidParent = $this->getToxonomyTermIdByName($parent, 'machine_name');
     $name = isset($name) ? $name : "None";
     $tid = $this->getToxonomyTermIdByName($name, 'name', $vocabulary);
     if (!$tid) {
       $tid = $this->createNewTerm($name, $vocabulary);
     }
-        // drupal_set_message("term:$name, id:$tid, parent:$parent($tidParent)");
+
     return array(
       [
         "target_id" => $tid,
@@ -251,13 +254,13 @@ class ImportJson
   }
 
   /**
-   * Get array of toxonomy term
+   * Get array of multiple toxonomy terms.
    * @param string $name
    *   term name
-   * @param string $parent
-   *   parent term name
+   * @param string $vocabulary
+   *   taxonomy vocabulary vid
    * @return array
-   *   array(tid, taget_type)
+   *   multiple demention arrary
    */
   protected function getToxonomyMultTerms(array $names, string $vocabulary)
   {
@@ -283,16 +286,18 @@ class ImportJson
   }
 
   /**
-   * Get term id by name
-   * @param string
+   * Get term id by name.
+   * @param string $name
    *   term name
-   * @return string
-   *   term id
+   * @param string $flag
+   *   name or machine_name
+   * @param string $vocabulary
+   *   vocabulary vid
+   * @return int or false
+   *   term id or false
    */
   protected function getToxonomyTermIdByName(string $name, string $flag = 'name', string $vocabulary)
-  {
-    
-
+  { 
     $result = \Drupal::entityQuery('taxonomy_term')
       ->condition($flag, $name)
       ->condition('vid', $vocabulary)
@@ -308,11 +313,11 @@ class ImportJson
   }
 
   /**
-   * Create a new term
+   * Create a new term.
    * @param string $name
    *   a new term name
-   * @param array $tidParent
-   *   term id of the parent
+   * @param string $vocabulary
+   *   vocabulary vid
    * @return int
    *   a new term ID
    */
@@ -330,10 +335,10 @@ class ImportJson
     return $term->id();
   }
   /**
-   * Check if a nocde exist
+   * Check if a nocde exists.
    * @param string $caseNmuber
    *   the case_number in JSON data
-   * @return Node $node
+   * @return Node 
    *   a node object  or false
    */
 
@@ -459,15 +464,13 @@ class ImportJson
   }
 
   /**
-   * Create a file of report
+   * Create a JSON file for response
    */
   public function createReport()
   {
-        // You can create a file and save data at once .
     $dir = \Drupal::config('public_appeal_sync.outdir')->get('outdir');
     $dir2 = "public://$dir";
     
-        // print_r($dir); exit;
     if (file_prepare_directory($dir2, FILE_CREATE_DIRECTORY | FILE_MODIFY_PERMISSIONS)) {
       $json_data = json_encode($this->response);
       $filename = "report-import-" . date("Y-m-d--H-i-s") . ".json";
@@ -477,10 +480,11 @@ class ImportJson
         FILE_EXISTS_RENAME
       );
   
-            // Get the real file path :
+      // Get the real file path :
       $this->path = file_create_url($file->getFileUri());
       \Drupal::logger("public_appeal_sync")->notice($this->path);
 
+      // Call wrapper method to send email
       $this->sendEmailReport($this->path);
     }
   }
@@ -488,7 +492,7 @@ class ImportJson
   /**
    * Send a email with the link of report
    * @param string $path
-   *   a URL of the report
+   *   a URL of JSON file
    */
   public function sendEmailReport($path)
   {

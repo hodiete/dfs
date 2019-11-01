@@ -1,4 +1,9 @@
 <?php
+
+/**
+ * @file
+ * Contains \Drupal\public_appeal_sync\Controller\ResponseListingController.
+ */
 namespace Drupal\public_appeal_sync\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
@@ -6,7 +11,8 @@ use Drupal\Core\Link;
 
 
 /**
- * Controller of public_appeal_sync admin page.
+ * Class ResponseListingController
+ *  public_appeal_sync admin page.
  */
 class ResponseListingController extends ControllerBase
 {
@@ -43,7 +49,7 @@ class ResponseListingController extends ControllerBase
   }
 
   /**
-   * Returns a render-able array for a test page.
+   * Returns a render-able array for a admin page.
    */
   public function adminPage()
   {

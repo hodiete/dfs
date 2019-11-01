@@ -15,6 +15,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * Class PublicAppealImportForm.
+ * Set up configuration fields for the module.
  *
  * @package Drupal\public_appeal_sync\Form
  */
@@ -41,8 +42,6 @@ class PublicAppealImportForm extends ConfigFormBase
       'public_appeal_sync.baseurl',
       'public_appeal_sync.outdir',
       'public_appeal_sync.email'
-      // 'public_appeal_sync.year',
-      // 'public_appeal_sync.interval',
     ];
   }
 
@@ -132,24 +131,5 @@ class PublicAppealImportForm extends ConfigFormBase
       $this->config('public_appeal_sync.email')
       ->set('email', $form_state->getValue('email'))
       ->save();
-    /*
-    $client = \Drupal::httpClient();
-    $baseurl = $this->config('public_appeal_sync.baseurl')->get('baseurl');
-
-    try {
-      $response = \Drupal::httpClient()->get($baseurl, array('headers' => array('Accept' => 'text/plain')));
-      $data = $response->getBody();
-
-      if (empty($data)) {
-        drupal_set_message('Empty response.');
-      } else {
-        list($countUpdate, $countNew) = $this->createPublicAppeal($data, $uid);
-      }
-    } catch (RequestException $e) {
-      watchdog_exception('public_appeal_sync', $e);
-    }
-    */
   }
-
-
 }//END class
