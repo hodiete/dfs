@@ -25,20 +25,38 @@
     padding: 0 50px 20px 40px;
   }
 
+  tr {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  thead tr {
+    flex-wrap: nowrap;
+  }
+
   th {
+    flex: 1;
     //width: auto!important;
-    white-space: nowrap;
+    //white-space: nowrap;
     text-transform: uppercase;
   }
 
+  #view-summary-table-column,
+  #view-references-table-column {
+    display: none;
+  }
+
   td {
+    flex: 1;
     font-size: 16px;
   }
 
   .views-field-references,
   .views-field-summary {
-    position: absolute;
-    left: 0;
+    flex: auto;
+    width: 100%;
+    //position: absolute;
+    //left: 0;
   }
 }
 
