@@ -72,13 +72,29 @@
         });
 
         $('.mobile-open').on('click',function(evt) {
-        $('#block-exposedformpublic-appeal-searchpublic-appeals-search-page').css({
-          'overflow': 'visible',
-          'clip': 'auto',
-          'height': 'auto',
-          'width': '100%'
-        });
+          $('#block-exposedformpublic-appeal-searchpublic-appeals-search-page').css({
+            'overflow': 'visible',
+            'clip': 'auto',
+            'height': 'auto',
+            'width': '100%'
+          });
           //$('.mobile-close').css('display','inline-block');
+        });
+
+        $('.tooltip-toggle').append('i');
+
+        //add counter icons to decisions column
+        $('.table-decision-value').each(function() {
+
+          if ($(this).find('div').text().toLowerCase().includes('upheld')) {
+            $(this).find('div').addClass('upheld');
+          }
+          else if ($(this).find('div').text().toLowerCase().includes('overturned in part')) {
+            $(this).find('div').addClass('overturned-in-part');
+          }
+          else if ($(this).find('div').text().toLowerCase().includes('overturned')) {
+            $(this).find('div').addClass('overturned');
+          }
         });
 
         if ($('.views-field-references')) {
@@ -131,7 +147,7 @@
           destroy: true,
           retrieve: true,
           processing: true,
-          dom: '<"search-filter"f<"refs-include">><"mobile-open"><"counters">liB<"expand-wrapper">rtBp',
+          dom: '<"search-filter"f<"tooltip-toggle"><"refs-include">><"mobile-open"><"counters">liB<"expand-wrapper">rtBp',
           columnDefs: [
             { targets: [11], searchable: false }
           ],
@@ -171,8 +187,6 @@
           'width': '1px'
         });
         //$('.mobile-close').css('display','none');
-
-        //TODO: fix the fact that chosen isn't working with display: none
       });
 
       $('.views-page-public-appeal-search table', context).once('appealsSearch').each(function() {

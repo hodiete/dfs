@@ -23,7 +23,7 @@
           destroy: true,
           retrieve: true,
           processing: true,
-          dom: '<"search-filter"f<"refs-include">><"mobile-open"><"counters">liB<"expand-wrapper">rtBp',
+          dom: '<"search-filter"f<"tooltip-toggle"><"refs-include">><"mobile-open"><"counters">liB<"expand-wrapper">rtBp',
           columnDefs: [
             { targets: [11], searchable: false }
           ],

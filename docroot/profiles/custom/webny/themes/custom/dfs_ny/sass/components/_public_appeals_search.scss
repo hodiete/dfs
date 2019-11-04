@@ -25,6 +25,10 @@
     padding: 0 50px 20px 40px;
   }
 
+  table {
+    position: relative;
+  }
+
   tr {
     display: flex;
     flex-wrap: wrap;
@@ -49,6 +53,50 @@
   td {
     flex: 1;
     font-size: 16px;
+  }
+
+  .table-link-out {
+    position: absolute;
+    right: 0;
+
+    a,
+    a:hover,
+    a:active,
+    a:visited {
+      display: block;
+      width: 28px;
+      height: 28px;
+      color: #fff;
+      background: #09464C;
+      border-radius: 50%;
+      font-size: 35px;
+      line-height: 28px;
+      text-align: center;
+      text-decoration: none;
+    }
+  }
+
+  .table-decision-value div.overturned:before {
+    content: '';
+    background: url("../icons/dfs/overturned.svg") no-repeat center center transparent;
+  }
+
+  .table-decision-value div.overturned-in-part:before {
+    content: '';
+    background: url("../icons/dfs/overturned-in-part.svg") no-repeat center center transparent;
+  }
+
+  .table-decision-value div.upheld:before {
+    content: '';
+    background: url("../icons/dfs/upheld.svg") no-repeat center center transparent;
+  }
+
+  .table-decision-value div:before {
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    margin-right: 10px;
+    vertical-align: middle;
   }
 
   .views-field-references,
@@ -137,12 +185,18 @@
       font-size: 14px;
 
       .search-choice-close {
-        top: 5px;
+        top: 4px;
         right: 5px;
+        width: 14px;
+        height: 14px;
         color: #fff;
         background: none;
+        line-height: 14px;
+        text-align: center;
 
         &:hover {
+          background: #022629;
+          border-radius: 50%;
           text-decoration: none;
         }
 
@@ -294,6 +348,19 @@
     background: url("../icons/dfs/filter-icon.svg") no-repeat center center transparent;
   }
 
+  .tooltip-toggle {
+    display: inline-block;
+    width: 13px;
+    height: 13px;
+    background: #09464C;
+    color: #fff;
+    border: 1px solid #09464C;
+    border-radius: 50%;
+    font-size: 10px;
+    text-align: center;
+    line-height: 14px;
+  }
+
   .counters {
     display: flex;
     width: 580px;
@@ -301,10 +368,28 @@
     font-size: 18px;
     justify-content: space-between;
 
-    .overturnedCounter,
-    .overturnedPartCounter,
-    .upheldCounter {
-      //display: inline-block;
+    .overturnedValue:before {
+      content: '';
+      background: url("../icons/dfs/overturned.svg") no-repeat center center transparent;
+    }
+
+    .overturnedPartValue:before {
+      content: '';
+      background: url("../icons/dfs/overturned-in-part.svg") no-repeat center center transparent;
+    }
+
+    .upheldValue:before {
+      content: '';
+      background: url("../icons/dfs/upheld.svg") no-repeat center center transparent;
+    }
+
+    .overturnedValue:before,
+    .overturnedPartValue:before,
+    .upheldValue:before {
+      display: inline-block;
+      width: 24px;
+      height: 24px;
+      margin-right: 10px;
     }
 
     .overturnedValue,
@@ -312,6 +397,7 @@
     .upheldValue {
       display: block;
       font-size: 32px;
+      text-align: center;
     }
   }
   /* disclaimer */
