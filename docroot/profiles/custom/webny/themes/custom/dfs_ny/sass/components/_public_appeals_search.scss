@@ -27,84 +27,106 @@
 
   table {
     position: relative;
-  }
+    border: none;
 
-  tr {
-    display: flex;
-    flex-wrap: wrap;
-  }
-
-  thead tr {
-    flex-wrap: nowrap;
-  }
-
-  th {
-    flex: 1;
-    //width: auto!important;
-    //white-space: nowrap;
-    text-transform: uppercase;
-  }
-
-  #view-summary-table-column,
-  #view-references-table-column {
-    display: none;
-  }
-
-  td {
-    flex: 1;
-    font-size: 16px;
-  }
-
-  .table-link-out {
-    position: absolute;
-    right: 0;
-
-    a,
-    a:hover,
-    a:active,
-    a:visited {
-      display: block;
-      width: 28px;
-      height: 28px;
-      color: #fff;
-      background: #09464C;
-      border-radius: 50%;
-      font-size: 35px;
-      line-height: 28px;
-      text-align: center;
-      text-decoration: none;
+    tr {
+      display: flex;
+      flex-wrap: wrap;
     }
-  }
 
-  .table-decision-value div.overturned:before {
-    content: '';
-    background: url("../icons/dfs/overturned.svg") no-repeat center center transparent;
-  }
+    thead{
+      border: none;
 
-  .table-decision-value div.overturned-in-part:before {
-    content: '';
-    background: url("../icons/dfs/overturned-in-part.svg") no-repeat center center transparent;
-  }
+      tr {
+        flex-wrap: nowrap;
+        align-items: center;
+        border: none;
 
-  .table-decision-value div.upheld:before {
-    content: '';
-    background: url("../icons/dfs/upheld.svg") no-repeat center center transparent;
-  }
+        th.views-field {
+          flex: 1;
+          //width: auto!important;
+          //white-space: nowrap;
+          padding: 18px 30px 17px 20px;
+          border: none;
+          font-size: 18px;
+          text-transform: uppercase;
+          line-height: 1em;
+        }
+      }
+    }
 
-  .table-decision-value div:before {
-    display: inline-block;
-    width: 25px;
-    height: 25px;
-    margin-right: 10px;
-    vertical-align: middle;
-  }
+    tbody {
+      border: none;
+    }
 
-  .views-field-references,
-  .views-field-summary {
-    flex: auto;
-    width: 100%;
-    //position: absolute;
-    //left: 0;
+    #view-summary-table-column,
+    #view-references-table-column {
+      display: none;
+    }
+
+    td {
+      flex: 1;
+      padding: 25px 20px 20px;
+      background: #fff;
+      color: #022629;
+      font-size: 16px;
+    }
+
+    .table-link-out {
+      position: absolute;
+      right: 0;
+
+      a,
+      a:hover,
+      a:active,
+      a:visited {
+        display: block;
+        width: 28px;
+        height: 28px;
+        color: #fff;
+        background: #09464C;
+        border-radius: 50%;
+        font-size: 35px;
+        line-height: 28px;
+        text-align: center;
+        text-decoration: none;
+      }
+    }
+
+    .table-decision-value>div.overturned:before {
+      content: '';
+      background: url("../icons/dfs/overturned.svg") no-repeat center center transparent;
+    }
+
+    .table-decision-value>div.overturned-in-part:before {
+      content: '';
+      background: url("../icons/dfs/overturned-in-part.svg") no-repeat center center transparent;
+    }
+
+    .table-decision-value>div.upheld:before {
+      content: '';
+      background: url("../icons/dfs/upheld.svg") no-repeat center center transparent;
+    }
+
+    .table-decision-value div:before {
+      display: inline-block;
+      width: 25px;
+      height: 25px;
+      margin-right: 10px;
+      vertical-align: middle;
+    }
+
+    .views-field-references,
+    .views-field-summary {
+      flex: auto;
+      width: 100%;
+      background: #EFF0F2;
+      color: #333;
+      font-size: 16px;
+      //position: absolute;
+      //left: 0;
+    }
+
   }
 }
 
@@ -249,6 +271,8 @@
       padding: 10px 5px;
       height: auto;
       background: transparent;
+      border: 1px solid #022629;
+      border-radius: 3px;
       font-size: 14px;
     }
 
@@ -292,6 +316,34 @@
   }
 }
 
+/* tooltip */
+#block-publicappealssearchtooltip {
+  display: none;
+  position: relative;
+
+  .quickedit-field {
+    position: absolute;
+    top: 110px;
+    left: 40px;
+    padding: 10px 15px;
+    width: 324px;
+    background: #09464C;
+    color: #fff;
+    font-size: 14px;
+    z-index: 100;
+
+    &:before {
+      content: '';
+      position: absolute;
+      top: -13px;
+      left: 26px;
+      border-left: 11px solid transparent;
+      border-right: 11px solid transparent;
+      border-bottom: 13px solid #09464C;
+    }
+  }
+}
+
 .public-appeal-search-view {
   margin: 0!important;
 
@@ -303,6 +355,7 @@
 
     .dataTables_filter {
       width: 100%!important;
+      margin-bottom: 15px;
 
       label {
         position: relative;
@@ -348,17 +401,40 @@
     background: url("../icons/dfs/filter-icon.svg") no-repeat center center transparent;
   }
 
-  .tooltip-toggle {
-    display: inline-block;
-    width: 13px;
-    height: 13px;
-    background: #09464C;
-    color: #fff;
-    border: 1px solid #09464C;
-    border-radius: 50%;
-    font-size: 10px;
-    text-align: center;
-    line-height: 14px;
+  .tooltip-toggle-container {
+    display: block;
+    float: left;
+    margin-left: 30px;
+
+    .tooltip-toggle,
+    .tooltip-toggle:hover,
+    .tooltip-toggle:active,
+    .tooltip-toggle:visited {
+      display: block;
+      background: #09464C;
+      color: #fff;
+      width: 13px;
+      height: 13px;
+      border: 1px solid #09464C;
+      border-radius: 50%;
+      font-size: 10px;
+      text-align: center;
+      line-height: 14px;
+      text-decoration: none;
+    }
+  }
+
+  .refs-include {
+    display: flex;
+    align-items: center;
+    float: left;
+    margin-left: 15px;
+    line-height: 15px;
+
+    input[type="checkbox"],
+    input[type="checkbox"]~label {
+      margin: 0;
+    }
   }
 
   .counters {

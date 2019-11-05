@@ -23,13 +23,12 @@
           destroy: true,
           retrieve: true,
           processing: true,
-          dom: '<"search-filter"f<"tooltip-toggle"><"refs-include">><"mobile-open"><"counters">liB<"expand-wrapper">rtBp',
+          dom: '<"search-filter"f<"tooltip-toggle-container"><"refs-include">><"mobile-open"><"counters">liB<"expand-wrapper">rtBp',
           columnDefs: [
             { targets: [11], searchable: false }
           ],
           buttons: [
-            { extend: 'csv', text: 'Export', tag: 'a' },
-            { extend: 'print', text: 'Print', tag: 'a' }
+            { extend: 'csv', text: 'Export', tag: 'a' }
           ],
           language: {
             info: 'Showing _START_ to _END_ of _TOTAL_ Results',

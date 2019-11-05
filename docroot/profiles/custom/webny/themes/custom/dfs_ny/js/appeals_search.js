@@ -10,16 +10,6 @@
   Drupal.behaviors.appealsSearch = {
     attach: function (context, settings) {
 
-      /*function getQueryVariable(variable) {
-         var query = window.location.search.substring(1);
-         var vars = query.split("&");
-         for (var i=0;i<vars.length;i++) {
-                 var pair = vars[i].split("=");
-                 if(pair[0] == variable){return pair[1];}
-         }
-         return(false);
-      }*/
-      //let appealsTable = $('.views-page-public-appeal-search table').DataTable();
       let refsSelected = false;
 
       function setFilterPlaceholders() {
@@ -78,10 +68,36 @@
             'height': 'auto',
             'width': '100%'
           });
-          //$('.mobile-close').css('display','inline-block');
         });
 
-        $('.tooltip-toggle').append('i');
+        //add tooltip toggle and functionality
+        let tooltipToggle = $('.tooltip-toggle-container').append('<a href="#" class="tooltip-toggle">i</a>');
+        let clickedOn = true;
+
+        if ($('#block-publicappealssearchtooltip').css('display') == 'none') {
+          let clickedOn = false;
+          $(tooltipToggle).on('mouseenter mouseleave', function(evt) {
+            evt.preventDefault();
+            $('#block-publicappealssearchtooltip').toggle();
+          });
+        }
+
+        $(tooltipToggle).on('click', function(evt) {
+          evt.preventDefault();
+          if (clickedOn) {
+            $(tooltipToggle).on('mouseenter mouseleave', function(evt) {
+              evt.preventDefault();
+              $('#block-publicappealssearchtooltip').toggle();
+            });
+            clickedOn = false;
+          }
+          else {
+            $('#block-publicappealssearchtooltip').show();
+            $(tooltipToggle).off('mouseenter mouseleave');
+            clickedOn = true;
+          }
+
+        });
 
         //add counter icons to decisions column
         $('.table-decision-value').each(function() {
@@ -97,9 +113,21 @@
           }
         });
 
-        if ($('.views-field-references')) {
+        $('.views-field-summary', context).once('appealsSearch').each(function() {
+          console.log('summary?');
+          $(this).find('li').each(function() {
+            $(this).addClass('summary-container');
+            $(this).wrapInner('<div class="summary-content"></div>');
+            let sumToggle = $(this).prepend('<a href="#" class="summary-toggle">Summary</a>');
+            $(sumToggle).on('click', function(evt) {
+              evt.preventDefault();
+              $(sumToggle).next('.summary-content').toggle();
+            });
+          });
+        });
+
+        if ($('.views-field-references').length) {
           console.log('has field references');
-          //$('#view-references-table-column').detach();
           $('.views-field-references', context).once('appealsSearch').each(function() {
             console.log(this);
             console.log('ran each');
@@ -147,13 +175,12 @@
           destroy: true,
           retrieve: true,
           processing: true,
-          dom: '<"search-filter"f<"tooltip-toggle"><"refs-include">><"mobile-open"><"counters">liB<"expand-wrapper">rtBp',
+          dom: '<"search-filter"f<"tooltip-toggle-container"><"refs-include">><"mobile-open"><"counters">liB<"expand-wrapper">rtBp',
           columnDefs: [
             { targets: [11], searchable: false }
           ],
           buttons: [
-            { extend: 'csv', text: 'Export', tag: 'a' },
-            { extend: 'print', text: 'Print', tag: 'a' }
+            { extend: 'csv', text: 'Export', tag: 'a' }
           ],
           language: {
             info: 'Showing _START_ to _END_ of _TOTAL_ Results',
@@ -186,7 +213,6 @@
           'height': '1px',
           'width': '1px'
         });
-        //$('.mobile-close').css('display','none');
       });
 
       $('.views-page-public-appeal-search table', context).once('appealsSearch').each(function() {

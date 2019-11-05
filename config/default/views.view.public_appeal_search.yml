@@ -422,7 +422,7 @@ display:
           label: Diagnosis
           exclude: false
           alter:
-            alter_text: true
+            alter_text: false
             text: '<div class="table-link-out"><a href="/node/{{ nid }}">›</a></div>{{ diagnosis }}'
             make_link: false
             path: ''
@@ -611,8 +611,8 @@ display:
           label: Decision
           exclude: false
           alter:
-            alter_text: false
-            text: "<p>test: {{decision}}</p><p>test: {{decision__target_id }}</p>\n<div class=\"table-decision-value-{{ decision__target_id }}"
+            alter_text: true
+            text: '<div class="table-link-out"><a href="/node/{{ nid }}">›</a></div>{{ decision }}'
             make_link: false
             path: ''
             absolute: false
@@ -1053,7 +1053,7 @@ display:
           exclude: false
           alter:
             alter_text: false
-            text: '{{ summary__value }}'
+            text: '{{ summary__format }}{{ summary__value }}'
             make_link: false
             path: ''
             absolute: false
@@ -1779,18 +1779,7 @@ display:
             label: ''
           plugin_id: standard
       title: 'Public Appeal Search'
-      header:
-        area_text_custom:
-          id: area_text_custom
-          table: views
-          field: area_text_custom
-          relationship: none
-          group_type: group
-          admin_label: ''
-          empty: true
-          tokenize: false
-          content: '<div class="tooltip-content"><p>Tooltip header text</p></div>'
-          plugin_id: text_custom
+      header: {  }
       footer:
         area_text_custom:
           id: area_text_custom
