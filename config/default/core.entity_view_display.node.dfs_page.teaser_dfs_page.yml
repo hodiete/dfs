@@ -5,6 +5,7 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser_dfs_page
     - field.field.node.dfs_page.body
+    - field.field.node.dfs_page.field_agency_keywords_old_pages
     - field.field.node.dfs_page.field_dfs_page_structure
     - node.type.dfs_page
   module:
@@ -21,5 +22,6 @@ content:
     third_party_settings: {  }
 hidden:
   body: true
+  field_agency_keywords_old_pages: true
   field_dfs_page_structure: true
   langcode: true
