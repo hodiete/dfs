@@ -136,7 +136,7 @@ class ImportJson
   {
     $jsonout = json_decode($json, true);
     $vocabulary = "public_appeal_category";
-    $method = "POST";
+    $method = "CREATE";
     $message = "Successeful";
     $respson_nid;
 
@@ -168,10 +168,12 @@ class ImportJson
         $node->decision_year = $year;
         $node->appeal_agent = $agent;
         $node->case_number = $item['case_number'];
-        $node->summary = $item['summary'];
+        $node->summary = $item['summary'];        
         $node->references = $item['references'];
-
+        
         $method = 'UPDATE';
+        $node->setPublished(true);
+        $node->set('moderation_state', "published");
 
         if (!$node->save()) {
           $message = "Failed";
@@ -210,6 +212,7 @@ class ImportJson
         "method" => $method,
         "message" => $message,
         "nid" => $respson_nid,
+        'time' => date("Y-m-d--H-i-s"),
         'case_number' => $item['case_number'],
         'diagnosis' => $diag_resp,
         'treatment' => $treat_resp,
@@ -521,5 +524,13 @@ class ImportJson
     } else {
       \Drupal::logger($module)->notice('Your message has been sent.');
     }
+  }
+
+  public function postRespons() {
+    /**
+     *  1. get the POST aip username/password;  security token;
+     *  2. the format of the POSTed JSON date
+     *  3. the path of the JSON data
+     */
   }
 } //END class
