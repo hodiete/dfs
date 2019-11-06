@@ -41,7 +41,9 @@ class PublicAppealImportForm extends ConfigFormBase
     return [
       'public_appeal_sync.baseurl',
       'public_appeal_sync.outdir',
-      'public_appeal_sync.email'
+      'public_appeal_sync.email',
+      'public_appeal_sync.auth_user',
+      'public_appeal_sync.auth_passwd',
     ];
   }
 
@@ -81,6 +83,20 @@ class PublicAppealImportForm extends ConfigFormBase
       '#title' => $this->t('Email to receive a report'),
       '#default_value' => $this->config('public_appeal_sync.email')->get('email'),
       '#description' => $this->t('Email address to receive a report after importing JSON data into Drupal'),
+      '#required' => true,
+    );
+    $form['auth_user'] = array(
+      '#type' => 'textfield',
+      '#title' => $this->t('Basic Auth Username'),
+      '#default_value' => $this->config('public_appeal_sync.auth_user')->get('auth_user'),
+      '#description' => $this->t('Basic Auth Uername for DFS RESTful GET method.'),
+      '#required' => true,
+    );
+    $form['auth_passwd'] = array(
+      '#type' => 'textfield',
+      '#title' => $this->t('Basic Auth Password'),
+      '#default_value' => $this->config('public_appeal_sync.auth_passwd')->get('auth_passwd'),
+      '#description' => $this->t('Basic Auth Password for DFS RESTful GET method.'),
       '#required' => true,
     );
 
@@ -128,8 +144,14 @@ class PublicAppealImportForm extends ConfigFormBase
       ->set('outdir', $form_state->getValue('outdir'))
       ->save();
 
-      $this->config('public_appeal_sync.email')
+    $this->config('public_appeal_sync.email')
       ->set('email', $form_state->getValue('email'))
+      ->save();
+    $this->config('public_appeal_sync.auth_user')
+      ->set('auth_user', $form_state->getValue('auth_user'))
+      ->save();
+    $this->config('public_appeal_sync.auth_passwd')
+      ->set('auth_passwd', $form_state->getValue('auth_passwd'))
       ->save();
   }
 }//END class

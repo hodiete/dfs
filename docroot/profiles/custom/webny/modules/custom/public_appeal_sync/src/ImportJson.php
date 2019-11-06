@@ -55,6 +55,24 @@ class ImportJson
   private $user;
 
   /**
+   * Baseic Auth Username for GET method .
+   * @var string
+   */
+  private $auth_user;
+
+  /**
+   * Baseic Auth Password for GET method .
+   * @var string
+   */
+  private $auth_passwd;
+
+  /**
+   * Datetime to run the service .
+   * @var string
+   */
+  public $running_date;
+
+  /**
    * List of JSON data of response.
    * @var array
    */
@@ -93,6 +111,10 @@ class ImportJson
 
     $this->user = 'dfs.ny.gov';
     $this->baseurl = \Drupal::config('public_appeal_sync.baseurl')->get('baseurl');
+    $this->auth_user = \Drupal::config('public_appeal_sync.auth_user')->get('auth_user');
+    $this->auth_passwd = \Drupal::config('public_appeal_sync.auth_passwd')->get('auth_passwd');
+    $this->running_date = time();
+    
   }
 
   /**
@@ -103,10 +125,14 @@ class ImportJson
   {
     $client = \Drupal::httpClient();
     $user = user_load_by_name($this->user);
-    $baseurl = $this->baseurl;
+    $baseurl = $this->baseurl . "?date=" . strtoupper(date("d-M-y"));
+    $config = [
+      'headers' => ['Accept' => 'text/plain'],
+      'auth' => [$this->auth_user, $this->auth_passwd],
+    ];
 
     try {
-      $response = \Drupal::httpClient()->get($baseurl, array('headers' => array('Accept' => 'text/plain')));
+      $response = $client->get($baseurl, $config);
       $data = $response->getBody();
 
       if (empty($data)) {
@@ -170,6 +196,8 @@ class ImportJson
         $node->case_number = $item['case_number'];
         $node->summary = $item['summary'];        
         $node->references = $item['references'];
+        $node->caseid = $item['caseid'];
+
         
         $method = 'UPDATE';
         $node->setPublished(true);
@@ -198,6 +226,8 @@ class ImportJson
           'case_number' => $item['case_number'],
           'summary' => $item['summary'],
           'references' => $item['references'],
+          'caseid' => $item['caseid'],
+          'created' => $item['created'],
         ));
         $node->enforceIsNew(true);
         if (!$node->save()) {
@@ -212,17 +242,17 @@ class ImportJson
         "method" => $method,
         "message" => $message,
         "nid" => $respson_nid,
-        'time' => date("Y-m-d--H-i-s"),
         'case_number' => $item['case_number'],
-        'diagnosis' => $diag_resp,
-        'treatment' => $treat_resp,
-        'health_plan' => $health_resp,
-        'decision' => $dec_resp,
-        'appeal_type' => $type_resp,
-        'gender' => $gender_resp,
-        'age_range' => $age_resp,
-        'year' => $year_resp,
-        'agent' => $agent_resp,
+        'date' => "$this->running_date",
+        // 'diagnosis' => $diag_resp,
+        // 'treatment' => $treat_resp,
+        // 'health_plan' => $health_resp,
+        // 'decision' => $dec_resp,
+        // 'appeal_type' => $type_resp,
+        // 'gender' => $gender_resp,
+        // 'age_range' => $age_resp,
+        // 'year' => $year_resp,
+        // 'agent' => $agent_resp,
       ];
     }//END foreach()
   }
@@ -468,6 +498,7 @@ class ImportJson
 
   /**
    * Create a JSON file for response
+   * @return null
    */
   public function createReport()
   {
@@ -476,20 +507,45 @@ class ImportJson
     
     if (file_prepare_directory($dir2, FILE_CREATE_DIRECTORY | FILE_MODIFY_PERMISSIONS)) {
       $json_data = json_encode($this->response);
-      $filename = "report-import-" . date("Y-m-d--H-i-s") . ".json";
-      $file = file_save_data(
-        $json_data,
-        "public://$dir/$filename",
-        FILE_EXISTS_RENAME
-      );
-  
-      // Get the real file path :
-      $this->path = file_create_url($file->getFileUri());
-      \Drupal::logger("public_appeal_sync")->notice($this->path);
+      $filename = "report-import-" . date("Y-m-d--H-i-s") . ".json";    
+      $this->saveToJson($json_data, $dir, $filename);      
+      
+      $Json_date2 = json_encode(["Date" => "$this->running_date"]);
+      $filename2 = "running-response.json";
+      $this->saveToJson($Json_date2, $dir, $filename2, true);
+    }
+  }
 
+  /**
+   * Help function to save data to JSON
+   * @param Object JSON
+   * @param String directory
+   * @param String filename of JSON
+   * @param Boolean flag to send email or not
+   * @return null
+   */
+  public function saveToJson(&$json_data, $dir, $filename, $flag_email=false)
+  {
+    $file = file_save_data(
+      $json_data,
+      "public://$dir/$filename",
+      FILE_EXISTS_REPLACE
+    );
+    if(!$file) {
+      return false;
+    }
+    // Get the real file path :
+    $this->path = file_create_url($file->getFileUri());
+    \Drupal::logger("public_appeal_sync")->notice($this->path);
+
+    if ($flag_email) {
       // Call wrapper method to send email
       $this->sendEmailReport($this->path);
     }
+
+
+
+
   }
 
   /**
