@@ -68,6 +68,7 @@ class PublicAppealImportForm extends ConfigFormBase
       '#title' => $this->t('JSON Base URL'),
       '#description' => $this->t('The JSON data base URL for GET method'),
       '#default_value' => $this->config('public_appeal_sync.baseurl')->get('baseurl'),
+      '#size' => 100,
       // '#required' => true,
     );
 

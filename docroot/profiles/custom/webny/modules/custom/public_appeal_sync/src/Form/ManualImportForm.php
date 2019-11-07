@@ -47,6 +47,7 @@ class ManualImportForm extends FormBase
       https://myportal-t.dfs.ny.gov/peasa-dataextract-portlet/rest/dfsservices/peasaservice?date=07-NOV-19
 '),
       '#default_value' => \Drupal::config('public_appeal_sync.baseurl')->get('baseurl'),
+      '#size' => 100,
       '#required' => true,
     );
 
