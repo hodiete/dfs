@@ -68,7 +68,7 @@ class PublicAppealImportForm extends ConfigFormBase
       '#title' => $this->t('JSON Base URL'),
       '#description' => $this->t('The JSON data base URL for GET method'),
       '#default_value' => $this->config('public_appeal_sync.baseurl')->get('baseurl'),
-      '#required' => true,
+      // '#required' => true,
     );
 
     $form['outdir'] = array(
@@ -76,30 +76,30 @@ class PublicAppealImportForm extends ConfigFormBase
       '#title' => $this->t('The Output Directory'),
       '#default_value' => $this->config('public_appeal_sync.outdir')->get('outdir'),
       '#description' => $this->t('E.g., public_appeal/output, which will be  "sites/default/files/public_appeal/output/"'),
-      '#required' => true,
-    );
-    $form['email'] = array(
-      '#type' => 'textfield',
-      '#title' => $this->t('Email to receive a report'),
-      '#default_value' => $this->config('public_appeal_sync.email')->get('email'),
-      '#description' => $this->t('Email address to receive a report after importing JSON data into Drupal'),
-      '#required' => true,
+      // '#required' => true,
     );
     $form['auth_user'] = array(
       '#type' => 'textfield',
       '#title' => $this->t('Basic Auth Username'),
       '#default_value' => $this->config('public_appeal_sync.auth_user')->get('auth_user'),
       '#description' => $this->t('Basic Auth Uername for DFS RESTful GET method.'),
-      '#required' => true,
+      // '#required' => true,
     );
     $form['auth_passwd'] = array(
       '#type' => 'textfield',
       '#title' => $this->t('Basic Auth Password'),
       '#default_value' => $this->config('public_appeal_sync.auth_passwd')->get('auth_passwd'),
       '#description' => $this->t('Basic Auth Password for DFS RESTful GET method.'),
-      '#required' => true,
+      // '#required' => true,
     );
-
+    
+    $form['email'] = array(
+      '#type' => 'textfield',
+      '#title' => $this->t('Email to receive a report'),
+      '#default_value' => $this->config('public_appeal_sync.email')->get('email'),
+      '#description' => $this->t('Email address to receive a report after importing JSON data into Drupal'),
+      // '#required' => true,
+    );
 
     return parent::buildForm($form, $form_state);
   }

@@ -29,7 +29,7 @@ class ResponseListingController extends ControllerBase
     $listFiles = file_scan_directory($dir2, '/report*/');
     krsort($listFiles);
     // print_r($listFiles); exit;
-    $strList = "<h2>List of Responses: Import Public Appeal JSON data</h2>";
+    $strList = "<h2>List of Reports: Import Public Appeal JSON data</h2>";
     $i = 0;
 
     foreach ($listFiles as $key=>$file) {
@@ -55,7 +55,7 @@ class ResponseListingController extends ControllerBase
   {
     // You can create a file and save data at once .
     $link1 = Link::createFromRoute(t('Configuration of public_applea_syn module'), 'public_appeal_sync.form')->toString();
-    $link2 = Link::createFromRoute(t('List of Responses after importing JSON data'), 'public_appeal_sync.response')->toString();
+    $link2 = Link::createFromRoute(t('List of Reports after importing JSON data'), 'public_appeal_sync.response')->toString();
     $link3 = Link::createFromRoute(t('Maunally import JSON data'), 'public_appeal_sync.manual_import_form')->toString();
 
     $build = [
