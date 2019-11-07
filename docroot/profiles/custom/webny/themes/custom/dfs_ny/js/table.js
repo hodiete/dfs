@@ -10,41 +10,7 @@
 
   Drupal.behaviors.table = {
     attach: function (context, settings) {
-      if ($('.views-page-public-appeal-search table').length) {
-        $('.views-page-public-appeal-search table').once().dataTable({
-          order: [[9, 'asc']],
-          ordering: true,
-          paging: true,
-          pageLength: 10,
-          pagingType: 'full_numbers',
-          lengthChange: true,
-          info: true,
-          stateSave: true,
-          destroy: true,
-          retrieve: true,
-          processing: true,
-          dom: '<"search-filter"f<"tooltip-toggle-container"><"refs-include">><"mobile-open"><"counters">liB<"expand-wrapper">rtBp',
-          columnDefs: [
-            { targets: [11], searchable: false }
-          ],
-          buttons: [
-            { extend: 'csv', text: 'Export', tag: 'a' }
-          ],
-          language: {
-            info: 'Showing _START_ to _END_ of _TOTAL_ Results',
-            lengthMenu: 'Show _MENU_ per page',
-            paginate: {
-              first: '« First',
-              previous: '«',
-              next: '»',
-              last: 'Last »'
-            },
-            search: '_INPUT_',
-            searchPlaceholder: 'Search'
-          }
-        });
-      }
-      else {
+      if (!$('.views-page-public-appeal-search').length) {
         $('table').once().dataTable({
           order: [],
           paging: false,

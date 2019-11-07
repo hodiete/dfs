@@ -5,13 +5,13 @@ dependencies:
   config:
     - field.storage.node.decision
     - node.type.public_appeal
-    - taxonomy.vocabulary.public_appeal_decision
+    - taxonomy.vocabulary.decision
 id: node.public_appeal.decision
 field_name: decision
 entity_type: node
 bundle: public_appeal
 label: Decision
-description: 'Reference to Taxonomy: Public Appeal: Decision'
+description: 'Reference to Taxonomy: Decision'
 required: true
 translatable: false
 default_value: {  }
@@ -20,10 +20,10 @@ settings:
   handler: 'default:taxonomy_term'
   handler_settings:
     target_bundles:
-      public_appeal_decision: public_appeal_decision
+      decision: decision
     sort:
       field: name
       direction: asc
     auto_create: true
-    auto_create_bundle: ''
+    auto_create_bundle: decision
 field_type: entity_reference

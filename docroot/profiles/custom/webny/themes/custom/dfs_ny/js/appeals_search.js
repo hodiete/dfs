@@ -12,18 +12,69 @@
 
       let refsSelected = false;
 
+      //outputs child row for summary and references accordions
+      function formatAccordionsRow(data, rowIndex) {
+        // `data` is the original data object for the row
+        let outputTable = '<table><thead><th>Summary and References</th></thead><tbody><tr><td>';
+        let summary = $(data[10]);
+        let refs = $(data[11]);
+
+        //summary and references should always be the same length
+        outputTable += '<div class="accordion"><a class="accordion-toggle" aria-expanded="false" aria-controls="sumAccordion-';
+        outputTable += rowIndex
+        outputTable += '" id="sumAccordionTitle-';
+        outputTable += rowIndex;
+        outputTable += '" href="#">Summary</a><div hidden class="accordion-content" role="region" id="sumAccordion-';
+        outputTable += rowIndex;
+        outputTable += '" aria-labelledby="sumAccordionTitle-';
+        outputTable += rowIndex;
+        outputTable += '">';
+        $(summary).find('li').each(function(i) {
+          console.log($(this).text());
+          outputTable += '<h3>Summary ';
+          outputTable += (i + 1);
+          outputTable += '</h3><div class="summary-text">';
+          outputTable += $(this).text();
+          outputTable += '</div>'
+        });
+        outputTable += '</div></div>';
+
+        outputTable += '<div class="accordion refsAccordionContainer" hidden><a class="accordion-toggle" aria-expanded="false" aria-controls="refsAccordion-';
+        outputTable += rowIndex
+        outputTable += '" id="refsAccordionTitle-';
+        outputTable += rowIndex;
+        outputTable += '" href="#">References</a><div hidden class="accordion-content" role="region" id="refsAccordion-';
+        outputTable += rowIndex;
+        outputTable += '" aria-labelledby="refsAccordionTitle-';
+        outputTable += rowIndex;
+        outputTable += '">';
+        $(refs).find('li').each(function(i) {
+          outputTable += '<h3>References ';
+          outputTable += (i + 1);
+          outputTable += '</h3><div class="refs-text">';
+          outputTable += $(this).text();
+          outputTable += '</div>'
+        });
+        outputTable += '</div></div>';
+
+        outputTable += '</div></tr></tbody></table>';
+        return outputTable;
+      }
+
       function setFilterPlaceholders() {
         $('.views-exposed-form select').each(function() {
           $(this).attr('data-placeholder','Select ' + $(this).prev('label').text());
         });
       }
 
+      //output sum of decision column to counters
       function setCounterValues() {
+        console.log('setting counter values');
         let upheldValue = 0;
         let overturnedValue = 0;
         let overturnedPartValue = 0;
 
-        $('.views-page-public-appeal-search table').DataTable().column(3, {search: 'applied'}).data().filter(function( value, index ) {
+        $('.public-appeals-data').DataTable().column(3, {search: 'applied'}).data().filter(function( value, index ) {
 
           if ($(value).text().toLowerCase().includes('upheld')) {
             upheldValue++;
@@ -36,7 +87,7 @@
           }
 
           return value;
-        })
+        });
 
         $('.upheldValue').text(upheldValue);
         $('.overturnedValue').text(overturnedValue);
@@ -46,21 +97,20 @@
 
       function tableSetup() {
 
-        $('.views-page-public-appeal-search .counters').html('<div class="upheldCounter"><span class="upheldValue"></span> Upheld</div><div class="overturnedCounter"><span class="overturnedValue"></span> Overturned</div><div class="overturnedPartCounter"><span class="overturnedPartValue"></span> Overturned-in-part</div>');
-        $('.views-page-public-appeal-search .refs-include').html('<input type="checkbox" id="references-included" name="references-included" value="references-included"><label for="references-included">Include References in Search</label>');
-        $('#references-included').click(referencesClickHandler);
+        $('.views-page-public-appeal-search .counters').append('<div class="upheldCounter"><span class="upheldValue"></span> Upheld</div><div class="overturnedCounter"><span class="overturnedValue"></span> Overturned</div><div class="overturnedPartCounter"><span class="overturnedPartValue"></span> Overturned-in-part</div>');
+        $('.views-page-public-appeal-search .refs-include').append('<input type="checkbox" id="references-included" name="references-included" value="references-included"><label for="references-included">Include References in Search</label>');
+        $('#references-included').on('change', referencesClickHandler);
 
         if (refsSelected) {
-          $('#references-included').attr('checked','true');
+          //$('#references-included').attr('checked','true');
         }
 
-        $('.views-page-public-appeal-search table').DataTable().column(11).visible(refsSelected);
-
         setCounterValues();
-        $('.views-page-public-appeal-search table').DataTable().on( 'search.dt', function() {
+        $('.public-appeals-data').DataTable().on( 'search.dt', function() {
           setCounterValues();
         });
 
+        //add mobile filter toggle functionality
         $('.mobile-open').on('click',function(evt) {
           $('#block-exposedformpublic-appeal-searchpublic-appeals-search-page').css({
             'overflow': 'visible',
@@ -96,7 +146,6 @@
             $(tooltipToggle).off('mouseenter mouseleave');
             clickedOn = true;
           }
-
         });
 
         //add counter icons to decisions column
@@ -113,57 +162,27 @@
           }
         });
 
-        $('.views-field-summary', context).once('appealsSearch').each(function() {
-          console.log('summary?');
-          $(this).find('li').each(function() {
-            $(this).addClass('summary-container');
-            $(this).wrapInner('<div class="summary-content"></div>');
-            let sumToggle = $(this).prepend('<a href="#" class="summary-toggle">Summary</a>');
-            $(sumToggle).on('click', function(evt) {
-              evt.preventDefault();
-              $(sumToggle).next('.summary-content').toggle();
-            });
+        $('.public-appeals-data').DataTable().rows().every(function(rowIndex) {
+          this.child(formatAccordionsRow(this.data(),rowIndex)).show();
+
+          $(this.child()).find('.accordion-toggle').on('click', function(evt) {
+            evt.preventDefault();
+            if ($(this).next('.accordion-content')[0].hasAttribute("hidden")) {
+              $(this).attr('aria-expanded','true');
+              $(this).addClass('accordion-open');
+              $(this).next('.accordion-content').removeAttr('hidden');
+            }
+            else {
+              $(this).attr('aria-expanded','false');
+              $(this).removeClass('accordion-open');
+              $(this).next('.accordion-content').attr('hidden','hidden');
+            }
           });
         });
-
-        if ($('.views-field-references').length) {
-          console.log('has field references');
-          $('.views-field-references', context).once('appealsSearch').each(function() {
-            console.log(this);
-            console.log('ran each');
-
-            //$(this).before('<tr>');
-            //$(this).prepend('<div class="pa-table-toggle ref-toggle">References</div><div class="pa-table-toggled>"');
-            //$(this).append('</div>');
-            //$(this).after('</tr>');
-
-            //let row = document.createElement('tr');
-
-            //row.appendChild(document.createTextNode("Hi there and greetings!"));
-
-            //$(row).append(this);
-            //$('tr').after(row);
-
-
-            //referencesArray.push(this);
-            //$(this).detach();
-          });
-        }
       }
 
-      function referencesClickHandler(evt) {
-        $('.views-page-public-appeal-search table').DataTable().destroy();
-
-        let searchableRefs = false;
-
-        if (refsSelected) {
-          refsSelected = false;
-        }
-        else {
-          refsSelected = true;
-        }
-
-        $('.views-page-public-appeal-search table').dataTable({
+      function buildTable() {
+        $('.public-appeal-search-view>table').addClass('public-appeals-data').dataTable({
           order: [[9, 'asc']],
           ordering: true,
           paging: true,
@@ -172,12 +191,12 @@
           lengthChange: true,
           info: true,
           stateSave: true,
-          destroy: true,
           retrieve: true,
           processing: true,
           dom: '<"search-filter"f<"tooltip-toggle-container"><"refs-include">><"mobile-open"><"counters">liB<"expand-wrapper">rtBp',
           columnDefs: [
-            { targets: [11], searchable: false }
+            { targets: [11], visible: true, searchable: refsSelected },
+            { targets: [10], visible: true, searchable: true }
           ],
           buttons: [
             { extend: 'csv', text: 'Export', tag: 'a' }
@@ -193,12 +212,36 @@
             },
             search: '_INPUT_',
             searchPlaceholder: 'Search'
+          },
+          initComplete: function(settings, json) {
+            tableSetup();
           }
         });
-
-        tableSetup();
       }
 
+      function referencesClickHandler(evt) {
+        if (refsSelected) {
+          $('.public-appeals-data').DataTable().context[0].aoColumns[11].bSearchable = false;
+          refsSelected = false;
+
+          $('.public-appeals-data').DataTable().rows().every(function() {
+            $(this.child()).find('.refsAccordionContainer').attr('hidden','hidden');
+          });
+        }
+        else {
+          $('.public-appeals-data').DataTable().context[0].aoColumns[11].bSearchable = true;
+          refsSelected = true;
+
+          $('.public-appeals-data').DataTable().rows().every(function() {
+            $(this.child()).find('.refsAccordionContainer').removeAttr('hidden');
+          });
+        }
+        $('.public-appeals-data').DataTable().rows().invalidate().draw();
+      }
+
+      $('.public-appeal-search-view>table', context).once('appealsSearch').each(function() {
+        buildTable();
+      });
 
       $('.views-exposed-form', context).once('appealsSearch').each(function() {
         setFilterPlaceholders();
@@ -214,11 +257,6 @@
           'width': '1px'
         });
       });
-
-      $('.views-page-public-appeal-search table', context).once('appealsSearch').each(function() {
-        tableSetup();
-      });
-
     }
   };
 

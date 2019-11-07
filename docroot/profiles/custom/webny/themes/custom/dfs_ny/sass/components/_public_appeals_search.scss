@@ -29,21 +29,13 @@
     position: relative;
     border: none;
 
-    tr {
-      display: flex;
-      flex-wrap: wrap;
-    }
-
     thead{
       border: none;
 
       tr {
-        flex-wrap: nowrap;
-        align-items: center;
         border: none;
 
         th.views-field {
-          flex: 1;
           //width: auto!important;
           //white-space: nowrap;
           padding: 18px 30px 17px 20px;
@@ -57,19 +49,75 @@
 
     tbody {
       border: none;
-    }
 
-    #view-summary-table-column,
-    #view-references-table-column {
-      display: none;
+      tr:nth-child(even) {
+        background: #fff;
+        border: none;
+      }
     }
 
     td {
-      flex: 1;
-      padding: 25px 20px 20px;
-      background: #fff;
-      color: #022629;
+      padding: 0;
       font-size: 16px;
+
+      &.views-field {
+        padding: 25px 20px 20px;
+        background: #fff;
+        color: #022629;
+      }
+
+      table {
+        margin: 0;
+        background: #fff;
+
+        thead {
+          display: none;
+        }
+
+        .accordion {
+          margin-bottom: 5px;
+          background: #EFF0F2;
+          color: #333333;
+
+          &:last-child {
+            margin-bottom: 0;
+          }
+
+          .accordion-toggle {
+            display: block;
+            padding: 5px 15px 0 20px;
+            color: #06464C;
+            font-size: 18px;
+            font-weight: 700;
+            text-decoration: none;
+
+            &:after {
+              content: '+';
+              position: absolute;
+              right: 15px;
+            }
+
+            &.accordion-open:after {
+              content: '-';
+            }
+          }
+
+          .accordion-content {
+            padding: 20px 50px 15px 20px;
+
+            h3 {
+              color: #333333;
+              font-size: 18px;
+              font-weight: 700;
+            }
+
+            .summary-text,
+            .refs-text {
+              padding: 10px 0 25px;
+            }
+          }
+        }
+      }
     }
 
     .table-link-out {
@@ -114,17 +162,6 @@
       height: 25px;
       margin-right: 10px;
       vertical-align: middle;
-    }
-
-    .views-field-references,
-    .views-field-summary {
-      flex: auto;
-      width: 100%;
-      background: #EFF0F2;
-      color: #333;
-      font-size: 16px;
-      //position: absolute;
-      //left: 0;
     }
 
   }

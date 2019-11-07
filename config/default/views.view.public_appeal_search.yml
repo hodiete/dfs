@@ -16,15 +16,15 @@ dependencies:
     - field.storage.node.summary
     - field.storage.node.treatment
     - node.type.public_appeal
-    - taxonomy.vocabulary.age
+    - taxonomy.vocabulary.age_range
+    - taxonomy.vocabulary.agent
     - taxonomy.vocabulary.appeal_type
     - taxonomy.vocabulary.decision
     - taxonomy.vocabulary.diagnosis
     - taxonomy.vocabulary.gender
     - taxonomy.vocabulary.health_plan
-    - taxonomy.vocabulary.public_appeal_appeal_agent
-    - taxonomy.vocabulary.public_appeal_decision
     - taxonomy.vocabulary.treatment
+    - taxonomy.vocabulary.year
   module:
     - better_exposed_filters
     - node
@@ -152,6 +152,11 @@ display:
                 is_secondary: false
                 rewrite:
                   filter_rewrite_values: ''
+            case_number_value:
+              bef_format: default
+              more_options:
+                is_secondary: false
+                placeholder_text: ''
           text_input_required_format: basic_html
       pager:
         type: none
@@ -1053,7 +1058,7 @@ display:
           exclude: false
           alter:
             alter_text: false
-            text: '{{ summary__format }}{{ summary__value }}'
+            text: '<table><tr>{{ summary__value|length > 50 ? summary__value|slice(0, 50) ~ ''...'' : summary__value}}</tr></table>'
             make_link: false
             path: ''
             absolute: false
@@ -1075,7 +1080,7 @@ display:
             more_link_text: ''
             more_link_path: ''
             strip_tags: false
-            trim: true
+            trim: false
             preserve_tags: ''
             html: false
           element_type: ''
@@ -1137,7 +1142,7 @@ display:
             more_link_text: ''
             more_link_path: ''
             strip_tags: false
-            trim: true
+            trim: false
             preserve_tags: ''
             html: false
           element_type: ''
@@ -1386,8 +1391,8 @@ display:
             remember: true
             multiple: true
             remember_roles:
-              anonymous: anonymous
               authenticated: authenticated
+              anonymous: anonymous
               administrator: administrator
               site_builder: site_builder
               site_admin: site_admin
@@ -1416,10 +1421,10 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
-          reduce_duplicates: false
-          type: select
+          reduce_duplicates: true
+          type: shs
           limit: true
-          vid: public_appeal_decision
+          vid: decision
           hierarchy: false
           error_message: true
           plugin_id: taxonomy_index_tid
@@ -1563,8 +1568,8 @@ display:
             remember: true
             multiple: true
             remember_roles:
-              anonymous: anonymous
               authenticated: authenticated
+              anonymous: anonymous
               administrator: administrator
               site_builder: site_builder
               site_admin: site_admin
@@ -1596,7 +1601,7 @@ display:
           reduce_duplicates: false
           type: select
           limit: true
-          vid: age
+          vid: age_range
           hierarchy: false
           error_message: true
           plugin_id: taxonomy_index_tid
@@ -1622,8 +1627,8 @@ display:
             remember: true
             multiple: true
             remember_roles:
-              anonymous: anonymous
               authenticated: authenticated
+              anonymous: anonymous
               administrator: administrator
               site_builder: site_builder
               site_admin: site_admin
@@ -1655,7 +1660,7 @@ display:
           reduce_duplicates: false
           type: select
           limit: true
-          vid: decision
+          vid: year
           hierarchy: false
           error_message: true
           plugin_id: taxonomy_index_tid
@@ -1681,8 +1686,8 @@ display:
             remember: true
             multiple: true
             remember_roles:
-              anonymous: anonymous
               authenticated: authenticated
+              anonymous: anonymous
               administrator: administrator
               site_builder: site_builder
               site_admin: site_admin
@@ -1714,7 +1719,7 @@ display:
           reduce_duplicates: false
           type: select
           limit: true
-          vid: public_appeal_appeal_agent
+          vid: agent
           hierarchy: false
           error_message: true
           plugin_id: taxonomy_index_tid
@@ -1819,209 +1824,6 @@ display:
         - 'config:field.storage.node.references'
         - 'config:field.storage.node.summary'
         - 'config:field.storage.node.treatment'
-  attachment_1:
-    display_plugin: attachment
-    id: attachment_1
-    display_title: Attachment
-    position: 3
-    display_options:
-      display_extenders: {  }
-      style:
-        type: default
-        options:
-          grouping: {  }
-          row_class: ''
-          default_row_class: true
-      defaults:
-        style: false
-        row: false
-        fields: false
-        filters: false
-        filter_groups: false
-        group_by: false
-        sorts: false
-      row:
-        type: fields
-        options: {  }
-      fields:
-        decision_1:
-          id: decision_1
-          table: node__decision
-          field: decision
-          relationship: none
-          group_type: group
-          admin_label: ''
-          label: ''
-          exclude: false
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: false
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: target_id
-          type: entity_reference_label
-          settings:
-            link: false
-          group_column: target_id
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-          plugin_id: field
-        decision:
-          id: decision
-          table: node__decision
-          field: decision
-          relationship: none
-          group_type: count
-          admin_label: ''
-          label: ''
-          exclude: false
-          alter:
-            alter_text: false
-            text: '{{ decision}}'
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: false
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          set_precision: false
-          precision: 0
-          decimal: .
-          separator: ', '
-          format_plural: 0
-          format_plural_string: !!binary MQNAY291bnQ=
-          prefix: ''
-          suffix: ''
-          click_sort_column: target_id
-          type: entity_reference_label
-          settings:
-            link: false
-          group_column: null
-          group_columns: null
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          field_api_classes: false
-          plugin_id: field
-      displays:
-        page_1: page_1
-      filters:
-        status:
-          value: '1'
-          table: node_field_data
-          field: status
-          plugin_id: boolean
-          entity_type: node
-          entity_field: status
-          id: status
-          expose:
-            operator: ''
-          group: 1
-        type:
-          id: type
-          table: node_field_data
-          field: type
-          value:
-            public_appeal: public_appeal
-          entity_type: node
-          entity_field: type
-          plugin_id: bundle
-      filter_groups:
-        operator: AND
-        groups:
-          1: AND
-      group_by: true
-      pager:
-        type: some
-        options:
-          items_per_page: 0
-          offset: 0
-      sorts: {  }
-      inherit_exposed_filters: true
-      enabled: false
-    cache_metadata:
-      max-age: -1
-      contexts:
-        - 'languages:language_content'
-        - 'languages:language_interface'
-        - 'user.node_grants:view'
-        - user.permissions
-      tags:
-        - 'config:field.storage.node.decision'
   public_appeals_search_page:
     display_plugin: page
     id: public_appeals_search_page
