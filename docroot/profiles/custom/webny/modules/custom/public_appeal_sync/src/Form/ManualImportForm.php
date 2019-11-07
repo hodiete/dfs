@@ -42,8 +42,10 @@ class ManualImportForm extends FormBase
     $form['json_url'] = array(
       '#type' => 'textfield',
       '#title' => t('JSON file URL'),
-      '#description' => $this->t('E.g.,"http://nydfs2.local/sites/default/files/public_appeal/test1.json
-"'),
+      '#description' => $this->t('E.g.,<br>
+      http://nydfs2.local/sites/default/files/public_appeal/test1.json<br>
+      https://myportal-t.dfs.ny.gov/peasa-dataextract-portlet/rest/dfsservices/peasaservice?date=07-NOV-19
+'),
       '#default_value' => \Drupal::config('public_appeal_sync.baseurl')->get('baseurl'),
       '#required' => true,
     );

@@ -125,12 +125,13 @@ class ImportJson
   {
     $client = \Drupal::httpClient();
     $user = user_load_by_name($this->user);
-    // $baseurl = $this->baseurl . "?date=" . strtoupper(date("d-M-y"));
-    $baseurl = $this->baseurl;
-    // $config = [
-    //   'headers' => ['Accept' => 'text/plain'],
-    //   'auth' => ["$this->auth_user", "$this->auth_passwd"],
-    // ];
+    // Add date paramater to the baseurl.
+    if(stristr($this->baseurl, '?date=')) {
+      $baseurl = $this->baseurl;
+    }
+    else {
+      $baseurl = $this->baseurl . "?date=" . strtoupper(date("d-M-y"));
+    }
 
     $config = [
       'headers' => ['Accept' => 'application/json'],
@@ -195,7 +196,7 @@ class ImportJson
       list($agent, $agent_resp) = $this->getToxonomyTerm($item['agent'], 'agent');      
    
       // Upload the node if it is exited, otherwise, create a new one
-      if ($node = $this->existNode($case_number)) {
+      if ($node = $this->existNode($caseid)) {
         $node->diagnosis = $diagnosis;
         $node->treatment = $treatment;
         $node->health_plan = $health_plan;
@@ -386,11 +387,11 @@ class ImportJson
    *   a node object  or false
    */
 
-  protected function existNode(string $caseNumber)
+  protected function existNode(string $id)
   {
     $nodes = \Drupal::entityTypeManager()
       ->getStorage('node')
-      ->loadByProperties(['case_number' => $caseNumber]);
+      ->loadByProperties(['caseid' => $id]);
 
     if ($node = reset($nodes)) {
       return $node;
