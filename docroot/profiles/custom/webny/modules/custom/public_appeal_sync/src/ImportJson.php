@@ -417,7 +417,7 @@ class ImportJson
       
       $Json_date2 = json_encode(["date" => "$this->running_date"]);
       $filename2 = "running-response.json";
-      $this->saveToJson($Json_date2, $dir, $filename2, true);
+      $this->saveToJson($Json_date2, $dir, $filename2);
     }
   }
 
@@ -458,6 +458,9 @@ class ImportJson
   public function sendEmailReport($path)
   {
     $to = \Drupal::config('public_appeal_sync.email')->get('email');
+    if (!$to || !$path) {
+      return;
+    }
     $from = \Drupal::config('system.site')->get('mail');
         // $siteName = \Drupal::config('system.site')->get('name');
     $day = date("Y-m-d");
