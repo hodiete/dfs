@@ -122,7 +122,6 @@ settings:
 access:
   create:
     roles:
-      - anonymous
       - authenticated
     users: {  }
     permissions: {  }
@@ -132,12 +131,12 @@ access:
     users: {  }
     permissions: {  }
   update_any:
-    roles:
-      - hcpo_forms
+    roles: {  }
     users: {  }
     permissions: {  }
   delete_any:
-    roles: {  }
+    roles:
+      - hcpo_forms
     users: {  }
     permissions: {  }
   purge_any:
@@ -188,7 +187,7 @@ handlers:
       to_options: {  }
       cc_mail: ''
       cc_options: {  }
-      bcc_mail: 'joel.obuchowski@dfs.ny.gov, ehle.shachter@dfs.ny.gov, anna.rubin@dfs.ny.gov, rebecca.friedman@dfs.ny.gov, TermsofArt@dfs.ny.gov'
+      bcc_mail: 'joel.obuchowski@dfs.ny.gov, ehle.shachter@dfs.ny.gov, anna.rubin@dfs.ny.gov, rebecca.friedman@dfs.ny.gov'
       bcc_options: {  }
       from_mail: termsofart@dfs.ny.gov
       from_options: {  }
