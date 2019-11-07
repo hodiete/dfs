@@ -125,11 +125,19 @@ class ImportJson
   {
     $client = \Drupal::httpClient();
     $user = user_load_by_name($this->user);
-    $baseurl = $this->baseurl . "?date=" . strtoupper(date("d-M-y"));
+    // $baseurl = $this->baseurl . "?date=" . strtoupper(date("d-M-y"));
+    $baseurl = $this->baseurl;
+    // $config = [
+    //   'headers' => ['Accept' => 'text/plain'],
+    //   'auth' => ["$this->auth_user", "$this->auth_passwd"],
+    // ];
+
     $config = [
-      'headers' => ['Accept' => 'text/plain'],
-      'auth' => [$this->auth_user, $this->auth_passwd],
+      'headers' => ['Accept' => 'application/json'],
+      'auth' => [$this->auth_user, $this->auth_passwd, 'Basic'],
     ];
+
+    // print_r($config); exit;
 
     try {
       $response = $client->get($baseurl, $config);
@@ -168,23 +176,23 @@ class ImportJson
 
     foreach ($jsonout as $item) {
       
-      $case_number = $item['Case_number'];
-      $summary = $item['Summary'];
-      $references = $item['References'];
-      $caseid = $item['Caseid'];
-      $created = $item['Created'];
-      $title = isset($item['Title']) ? $item['Title'] : "Case Number: " . $case_number;
+      $case_number = $item['case_number'];
+      $summary = $item['summary'];
+      $references = $item['references'];
+      $caseid = $item['caseid'];
+      $created = strtotime($item['createdDate']);
+      $title = isset($item['title']) ? $item['title'] : "Case Number: " . $case_number;
         // : "Case Number: " . $item['Case_number'] . " - Diagnosis: " . $item['Diagnosis'][0];
 
-      list($diagnosis, $diag_resp) = $this->getToxonomyMultTerms($item['Diagnosis'], 'diagnosis');
-      list($treatment, $treat_resp) = $this->getToxonomyMultTerms($item['Treatment'], 'treatment');
-      list($health_plan, $health_resp) = $this->getToxonomyTerm($item['Health_plan'], 'health_plan');
-      list($decision, $dec_resp) = $this->getToxonomyTerm($item['Decision'], 'decision');
-      list($appeal_type, $type_resp) = $this->getToxonomyTerm($item['Appeal_type'], 'appeal_type');
-      list($gender, $gender_resp) = $this->getToxonomyTerm($item['Gender'], 'gender');
-      list($age_range, $age_resp) = $this->getToxonomyTerm($item['Age_range'], 'age_range');
-      list($year, $year_resp) = $this->getToxonomyTerm($item['Year'], 'year');
-      list($agent, $agent_resp) = $this->getToxonomyTerm($item['Agent'], 'agent');      
+      list($diagnosis, $diag_resp) = $this->getToxonomyMultTerms($item['diagnosis'], 'diagnosis');
+      list($treatment, $treat_resp) = $this->getToxonomyMultTerms($item['treatment'], 'treatment');
+      list($health_plan, $health_resp) = $this->getToxonomyTerm($item['health_plan'], 'health_plan');
+      list($decision, $dec_resp) = $this->getToxonomyTerm($item['decision'], 'decision');
+      list($appeal_type, $type_resp) = $this->getToxonomyTerm($item['appeal_type'], 'appeal_type');
+      list($gender, $gender_resp) = $this->getToxonomyTerm($item['gender'], 'gender');
+      list($age_range, $age_resp) = $this->getToxonomyTerm($item['age_range'], 'age_range');
+      list($year, $year_resp) = $this->getToxonomyTerm($item['year'], 'year');
+      list($agent, $agent_resp) = $this->getToxonomyTerm($item['agent'], 'agent');      
    
       // Upload the node if it is exited, otherwise, create a new one
       if ($node = $this->existNode($case_number)) {
@@ -391,6 +399,92 @@ class ImportJson
     }
   }
 
+
+  /**
+   * Create a JSON file for response
+   * @return null
+   */
+  public function createReport()
+  {
+    $dir = \Drupal::config('public_appeal_sync.outdir')->get('outdir');
+    $dir2 = "public://$dir";
+    
+    if (file_prepare_directory($dir2, FILE_CREATE_DIRECTORY | FILE_MODIFY_PERMISSIONS)) {
+      $json_data = json_encode($this->response);
+      $filename = "report-import-" . date("Y-m-d--H-i-s") . ".json";    
+      $this->saveToJson($json_data, $dir, $filename);      
+      
+      $Json_date2 = json_encode(["date" => "$this->running_date"]);
+      $filename2 = "running-response.json";
+      $this->saveToJson($Json_date2, $dir, $filename2, true);
+    }
+  }
+
+  /**
+   * Help function to save data to JSON
+   * @param Object JSON
+   * @param String directory
+   * @param String filename of JSON
+   * @param Boolean flag to send email or not
+   * @return null
+   */
+  public function saveToJson(&$json_data, $dir, $filename, $flag_email=false)
+  {
+    $file = file_save_data(
+      $json_data,
+      "public://$dir/$filename",
+      FILE_EXISTS_REPLACE
+    );
+    if(!$file) {
+      return false;
+    }
+    // Get the real file path :
+    $this->path = file_create_url($file->getFileUri());
+    \Drupal::logger("public_appeal_sync")->notice($this->path);
+
+    if ($flag_email) {
+      // Call wrapper method to send email
+      $this->sendEmailReport($this->path);
+    }
+
+  }
+
+  /**
+   * Send a email with the link of report
+   * @param string $path
+   *   a URL of JSON file
+   */
+  public function sendEmailReport($path)
+  {
+    $to = \Drupal::config('public_appeal_sync.email')->get('email');
+    $from = \Drupal::config('system.site')->get('mail');
+        // $siteName = \Drupal::config('system.site')->get('name');
+    $day = date("Y-m-d");
+
+    $mailManager = \Drupal::service('plugin.manager.mail');
+    $module = 'public_appeal_sync';
+    $key = 'import_json_data';
+
+    $message['headers'] = array(
+      'content-type' => 'text/html',
+      'MIME-Version' => '1.0',
+      'reply-to' => $from,
+      'from' => 'DFS<' . $from . '>'
+    );
+    $params['subject'] = "Report of Importing Public Appeal Data on $day";
+    $params['message'] = "<h2>The JSON date is imported into Drupal site dfs.ny.gov</h2><p>Please review the Report @ $path</p>";
+    $langcode = 'en';
+    $send = true;
+    $result = $mailManager->mail($module, $key, $to, $langcode, $params, null, $send);
+    if ($result['result'] !== true) {
+      \Drupal::logger($module)->error('There was a problem sending your message to @email and it was not sent.', array('@email' => $to));
+    } else {
+      \Drupal::logger($module)->notice('Your message has been sent.');
+    }
+  }
+
+
+
   /**
    * Get method
    */
@@ -497,99 +591,5 @@ class ImportJson
   public function setBaseurl(string $url)
   {
     $this->baseurl = $url;
-  }
-
-  /**
-   * Create a JSON file for response
-   * @return null
-   */
-  public function createReport()
-  {
-    $dir = \Drupal::config('public_appeal_sync.outdir')->get('outdir');
-    $dir2 = "public://$dir";
-    
-    if (file_prepare_directory($dir2, FILE_CREATE_DIRECTORY | FILE_MODIFY_PERMISSIONS)) {
-      $json_data = json_encode($this->response);
-      $filename = "report-import-" . date("Y-m-d--H-i-s") . ".json";    
-      $this->saveToJson($json_data, $dir, $filename);      
-      
-      $Json_date2 = json_encode(["Date" => "$this->running_date"]);
-      $filename2 = "running-response.json";
-      $this->saveToJson($Json_date2, $dir, $filename2, true);
-    }
-  }
-
-  /**
-   * Help function to save data to JSON
-   * @param Object JSON
-   * @param String directory
-   * @param String filename of JSON
-   * @param Boolean flag to send email or not
-   * @return null
-   */
-  public function saveToJson(&$json_data, $dir, $filename, $flag_email=false)
-  {
-    $file = file_save_data(
-      $json_data,
-      "public://$dir/$filename",
-      FILE_EXISTS_REPLACE
-    );
-    if(!$file) {
-      return false;
-    }
-    // Get the real file path :
-    $this->path = file_create_url($file->getFileUri());
-    \Drupal::logger("public_appeal_sync")->notice($this->path);
-
-    if ($flag_email) {
-      // Call wrapper method to send email
-      $this->sendEmailReport($this->path);
-    }
-
-
-
-
-  }
-
-  /**
-   * Send a email with the link of report
-   * @param string $path
-   *   a URL of JSON file
-   */
-  public function sendEmailReport($path)
-  {
-    $to = \Drupal::config('public_appeal_sync.email')->get('email');
-    $from = \Drupal::config('system.site')->get('mail');
-        // $siteName = \Drupal::config('system.site')->get('name');
-    $day = date("Y-m-d");
-
-    $mailManager = \Drupal::service('plugin.manager.mail');
-    $module = 'public_appeal_sync';
-    $key = 'import_json_data';
-
-    $message['headers'] = array(
-      'content-type' => 'text/html',
-      'MIME-Version' => '1.0',
-      'reply-to' => $from,
-      'from' => 'DFS<' . $from . '>'
-    );
-    $params['subject'] = "Report of Importing Public Appeal Data on $day";
-    $params['message'] = "<h2>The JSON date is imported into Drupal site dfs.ny.gov</h2><p>Please review the Report @ $path</p>";
-    $langcode = 'en';
-    $send = true;
-    $result = $mailManager->mail($module, $key, $to, $langcode, $params, null, $send);
-    if ($result['result'] !== true) {
-      \Drupal::logger($module)->error('There was a problem sending your message to @email and it was not sent.', array('@email' => $to));
-    } else {
-      \Drupal::logger($module)->notice('Your message has been sent.');
-    }
-  }
-
-  public function postRespons() {
-    /**
-     *  1. get the POST aip username/password;  security token;
-     *  2. the format of the POSTed JSON date
-     *  3. the path of the JSON data
-     */
   }
 } //END class
