@@ -9,6 +9,7 @@ dependencies:
     - field.field.node.public_appeal.appeal_type
     - field.field.node.public_appeal.body
     - field.field.node.public_appeal.case_number
+    - field.field.node.public_appeal.caseid
     - field.field.node.public_appeal.decision
     - field.field.node.public_appeal.decision_year
     - field.field.node.public_appeal.diagnosis
@@ -191,6 +192,7 @@ content:
     third_party_settings: {  }
 hidden:
   body: true
+  caseid: true
   langcode: true
   links: true
   workbench_moderation_control: true

@@ -5,6 +5,10 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.consumer_alert.body
+    - field.field.node.consumer_alert.field_banner_title
+    - field.field.node.consumer_alert.field_cons
+    - field.field.node.consumer_alert.field_see_all_alerts
+    - field.field.node.consumer_alert.field_title
     - node.type.consumer_alert
   module:
     - text
@@ -26,4 +30,8 @@ content:
     weight: 100
     region: content
 hidden:
+  field_banner_title: true
+  field_cons: true
+  field_see_all_alerts: true
+  field_title: true
   langcode: true

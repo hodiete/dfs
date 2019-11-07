@@ -167,23 +167,27 @@ class ImportJson
     $respson_nid;
 
     foreach ($jsonout as $item) {
-      $title = isset($item['title'])
-        ? $item['title']
-        : "Case Number: " . $item['case_number'] . " - Diagnosis: " . $item['diagnosis'][0];
+      
+      $case_number = $item['Case_number'];
+      $summary = $item['Summary'];
+      $references = $item['References'];
+      $caseid = $item['Caseid'];
+      $created = $item['Created'];
+      $title = isset($item['Title']) ? $item['Title'] : "Case Number: " . $case_number;
+        // : "Case Number: " . $item['Case_number'] . " - Diagnosis: " . $item['Diagnosis'][0];
 
-      // $item['diagnosis'] = isset($item['diagnosis'])? $item['diagnosis'] : "None";
-      list($diagnosis, $diag_resp) = $this->getToxonomyMultTerms($item['diagnosis'], 'diagnosis');
-      list($treatment, $treat_resp) = $this->getToxonomyMultTerms($item['treatment'], 'treatment');
-      list($health_plan, $health_resp) = $this->getToxonomyTerm($item['health_plan'], 'health_plan');
-      list($decision, $dec_resp) = $this->getToxonomyTerm($item['decision'], 'decision');
-      list($appeal_type, $type_resp) = $this->getToxonomyTerm($item['appeal_type'], 'appeal_type');
-      list($gender, $gender_resp) = $this->getToxonomyTerm($item['gender'], 'gender');
-      list($age_range, $age_resp) = $this->getToxonomyTerm($item['age_range'], 'age_range');
-      list($year, $year_resp) = $this->getToxonomyTerm($item['year'], 'year');
-      list($agent, $agent_resp) = $this->getToxonomyTerm($item['agent'], 'agent');      
+      list($diagnosis, $diag_resp) = $this->getToxonomyMultTerms($item['Diagnosis'], 'diagnosis');
+      list($treatment, $treat_resp) = $this->getToxonomyMultTerms($item['Treatment'], 'treatment');
+      list($health_plan, $health_resp) = $this->getToxonomyTerm($item['Health_plan'], 'health_plan');
+      list($decision, $dec_resp) = $this->getToxonomyTerm($item['Decision'], 'decision');
+      list($appeal_type, $type_resp) = $this->getToxonomyTerm($item['Appeal_type'], 'appeal_type');
+      list($gender, $gender_resp) = $this->getToxonomyTerm($item['Gender'], 'gender');
+      list($age_range, $age_resp) = $this->getToxonomyTerm($item['Age_range'], 'age_range');
+      list($year, $year_resp) = $this->getToxonomyTerm($item['Year'], 'year');
+      list($agent, $agent_resp) = $this->getToxonomyTerm($item['Agent'], 'agent');      
    
       // Upload the node if it is exited, otherwise, create a new one
-      if ($node = $this->existNode($item['case_number'])) {
+      if ($node = $this->existNode($case_number)) {
         $node->diagnosis = $diagnosis;
         $node->treatment = $treatment;
         $node->health_plan = $health_plan;
@@ -193,11 +197,10 @@ class ImportJson
         $node->age_range = $age_range;
         $node->decision_year = $year;
         $node->appeal_agent = $agent;
-        $node->case_number = $item['case_number'];
-        $node->summary = $item['summary'];        
-        $node->references = $item['references'];
-        $node->caseid = $item['caseid'];
-
+        $node->case_number = $case_number;
+        $node->summary = $summary;        
+        $node->references = $references;
+        $node->caseid = $caseid;
         
         $method = 'UPDATE';
         $node->setPublished(true);
@@ -223,11 +226,11 @@ class ImportJson
           'age_range' => $age_range,
           'decision_year' => $year,
           'appeal_agent' => $agent,
-          'case_number' => $item['case_number'],
-          'summary' => $item['summary'],
-          'references' => $item['references'],
-          'caseid' => $item['caseid'],
-          'created' => $item['created'],
+          'case_number' => $case_number,
+          'summary' => $summary,
+          'references' => $references,
+          'caseid' => $caseid,
+          'created' => $created,
         ));
         $node->enforceIsNew(true);
         if (!$node->save()) {
@@ -242,7 +245,7 @@ class ImportJson
         "method" => $method,
         "message" => $message,
         "nid" => $respson_nid,
-        'case_number' => $item['case_number'],
+        'case_number' => $case_number,
         'date' => "$this->running_date",
         // 'diagnosis' => $diag_resp,
         // 'treatment' => $treat_resp,
