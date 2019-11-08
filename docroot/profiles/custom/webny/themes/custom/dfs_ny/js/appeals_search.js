@@ -97,14 +97,20 @@
 
       function tableSetup() {
 
-        $('.views-page-public-appeal-search .counters').append('<div class="upheldCounter"><span class="upheldValue"></span> Upheld</div><div class="overturnedCounter"><span class="overturnedValue"></span> Overturned</div><div class="overturnedPartCounter"><span class="overturnedPartValue"></span> Overturned-in-part</div>');
+        $('.views-page-public-appeal-search .counters').append('<div class="counters-inner"><div class="upheldCounter"><span class="upheldValue"></span> Upheld</div><div class="overturnedCounter"><span class="overturnedValue"></span> Overturned</div><div class="overturnedPartCounter"><span class="overturnedPartValue"></span> Overturned-in-part</div></div>');
         $('.views-page-public-appeal-search .refs-include').append('<input type="checkbox" id="references-included" name="references-included" value="references-included"><label for="references-included">Include References in Search</label>');
-        $('#references-included').on('change', referencesClickHandler);
+        $('#references-included').on('click keypress', function(evt) {
+          if (evt.type == 'keypress') {
+            if (evt.keyCode == 13) {
+              referencesClickHandler();
+            }
+          }
+          else {
+            referencesClickHandler();
+          }
+        });
 
-        if (refsSelected) {
-          //$('#references-included').attr('checked','true');
-        }
-
+        //add values to counters above table, change values on search
         setCounterValues();
         $('.public-appeals-data').DataTable().on( 'search.dt', function() {
           setCounterValues();
@@ -146,6 +152,16 @@
             $(tooltipToggle).off('mouseenter mouseleave');
             clickedOn = true;
           }
+        });
+
+        //add expand all link and functionality
+        $('.expand-wrapper').append('<a class="expand-trigger" href="#">Expand All<span class="expand-long-text"> Summaries &amp; References</span></a>');
+        $('.expand-wrapper').on('click',function(evt) {
+          $('.public-appeals-data').DataTable().rows().every(function() {
+            evt.preventDefault();
+            $(this.child()).find('.accordion-toggle').attr('aria-expanded','true');
+            $(this.child()).find('.accordion-content').removeAttr('hidden');
+          });
         });
 
         //add counter icons to decisions column
@@ -193,10 +209,10 @@
           stateSave: true,
           retrieve: true,
           processing: true,
-          dom: '<"search-filter"f<"tooltip-toggle-container"><"refs-include">><"mobile-open"><"counters">liB<"expand-wrapper">rtBp',
+          dom: '<"search-filter"f<"tooltip-toggle-container"><"refs-include">><"mobile-open"><"counters"><"table-top"<"table-top-left"li><"table-top-right"B<"expand-wrapper">>>rtB<"pagination-holder"p>',
           columnDefs: [
-            { targets: [11], visible: true, searchable: refsSelected },
-            { targets: [10], visible: true, searchable: true }
+            { targets: [11], visible: false, searchable: refsSelected },
+            { targets: [10], visible: false, searchable: true }
           ],
           buttons: [
             { extend: 'csv', text: 'Export', tag: 'a' }
@@ -227,6 +243,8 @@
           $('.public-appeals-data').DataTable().rows().every(function() {
             $(this.child()).find('.refsAccordionContainer').attr('hidden','hidden');
           });
+
+          $('#references-included').attr('checked',false);
         }
         else {
           $('.public-appeals-data').DataTable().context[0].aoColumns[11].bSearchable = true;
@@ -235,6 +253,7 @@
           $('.public-appeals-data').DataTable().rows().every(function() {
             $(this.child()).find('.refsAccordionContainer').removeAttr('hidden');
           });
+          $('#references-included').attr('checked',true);
         }
         $('.public-appeals-data').DataTable().rows().invalidate().draw();
       }

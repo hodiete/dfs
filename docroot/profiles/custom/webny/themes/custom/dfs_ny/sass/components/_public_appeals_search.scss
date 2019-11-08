@@ -20,13 +20,18 @@
     width: calc(100% - 342px)!important;
   }
 
+  #main-layout-content-switch-div {
+    padding-right: 0;
+  }
+
   .views-element-container {
     margin: 0;
-    padding: 0 50px 20px 40px;
+    padding: 0 75px 20px 40px;
   }
 
   table {
     position: relative;
+    margin: 0;
     border: none;
 
     thead{
@@ -141,29 +146,51 @@
       }
     }
 
-    .table-decision-value>div.overturned:before {
+    .table-decision-value .overturned .decision-text:before {
       content: '';
       background: url("../icons/dfs/overturned.svg") no-repeat center center transparent;
     }
 
-    .table-decision-value>div.overturned-in-part:before {
+    .table-decision-value .overturned-in-part .decision-text:before {
       content: '';
       background: url("../icons/dfs/overturned-in-part.svg") no-repeat center center transparent;
     }
 
-    .table-decision-value>div.upheld:before {
+    .table-decision-value .upheld .decision-text:before {
       content: '';
       background: url("../icons/dfs/upheld.svg") no-repeat center center transparent;
     }
 
-    .table-decision-value div:before {
-      display: inline-block;
-      width: 25px;
-      height: 25px;
-      margin-right: 10px;
-      vertical-align: middle;
+    .table-decision-value .decision-text {
+      position: relative;
+      padding-left: 35px;
+
+      &:before {
+        position: absolute;
+        left: 0;
+        width: 25px;
+        height: 25px;
+        vertical-align: middle;
+      }
     }
 
+    td.views-field-case-number {
+      padding-right: 50px;
+    }
+  }
+
+  #after-content {
+    margin: 0 65px 40px;
+    width: auto;
+    text-align: center;
+
+    p {
+      font-size: 16px;
+    }
+
+    .dfs-footer-link a {
+      font-size: 16px;
+    }
   }
 }
 
@@ -322,21 +349,6 @@
   }
 }
 
-
-/* table js filters */
-
-
-/* table */
-
-
-/* summary and reference fields */
-
-
-/* pager */
-
-
-
-
 /* intro */
 #block-externalappealssearch {
   max-width: 915px;
@@ -412,7 +424,7 @@
           content: '';
           position: absolute;
           top: 20px;
-          right: 20px;
+          right: 30px;
           width: 19px;
           height: 19px;
           background: url("../icons/dfs/search-icon.png") no-repeat center center transparent;
@@ -442,6 +454,7 @@
     display: block;
     float: left;
     margin-left: 30px;
+    margin-right: 12px;
 
     .tooltip-toggle,
     .tooltip-toggle:hover,
@@ -464,8 +477,7 @@
   .refs-include {
     display: flex;
     align-items: center;
-    float: left;
-    margin-left: 15px;
+    margin-bottom: 20px;
     line-height: 15px;
 
     input[type="checkbox"],
@@ -476,10 +488,16 @@
 
   .counters {
     display: flex;
-    width: 580px;
+    max-width: 580px;
+    padding: 2px 0;
     color: #09464c;
     font-size: 18px;
-    justify-content: space-between;
+
+    .counters-inner {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+    }
 
     .overturnedValue:before {
       content: '';
@@ -513,14 +531,172 @@
       text-align: center;
     }
   }
+
+  .dt-buttons {
+    text-align: right;
+    a {
+      color: #022629;
+      text-decoration: none;
+    }
+  }
+
+  .table-top {
+    clear: both;
+    display: flex;
+    margin: 0 0 15px;
+    padding-top: 30px;
+    width: 100%;
+    justify-content: space-between;
+    color: #022629;
+    font-size: 16px;
+    font-weight: 400;
+
+    .table-top-left,
+    .table-top-right {
+      display: flex;
+      align-items: flex-end;
+    }
+
+    .dataTables_length {
+      position: relative;
+      margin-right: 8px;
+      padding-right: 10px;
+
+      label,
+      select {
+        margin: 0;
+        width: auto;
+        height: auto;
+        color: #022629;
+        border: none;
+        font-size: 16px;
+        font-weight: 400;
+      }
+
+      select {
+        margin: 0 5px;
+        padding: 0 20px 0 10px;
+        background: url(../icons/dfs/arrowdown-gray.svg) no-repeat right center transparent;
+        background-size: 12px;
+        border-bottom: 1px solid #151515;
+      }
+
+      &:after {
+        content: '|';
+        position: absolute;
+        top: 0;
+        right: 0;
+      }
+    }
+
+    .dt-buttons {
+      position: relative;
+      margin-right: 8px;
+      padding-right: 10px;
+
+      &:after {
+        content: '|';
+        position: absolute;
+        top: 0;
+        right: 0;
+      }
+    }
+
+    .table-top-right {
+      text-align: right;
+
+      a {
+        color: #09464C;
+        text-decoration: none;
+      }
+    }
+  }
+  /* pager */
+  .pagination-holder {
+    margin-top: 15px;
+    margin-bottom: 65px;
+    clear: both;
+    text-align: center;
+  }
+  .dataTables_wrapper .dataTables_paginate {
+    display: inline-block;
+    float: none;
+    width: auto;
+    background-color: #e5eeee;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+
+    .paginate_button {
+      height: 30px;
+      margin: 4px 10px;
+      text-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+      font-size: 18px;
+      display: inline-block;
+      color: #09464c;
+      padding: 0 10px;
+
+      &.current {
+        background-color: #09464c;
+        color: #fff!important;
+      }
+    }
+  }
   /* disclaimer */
   .table-footer {
     font-size: 14px;
   }
 }
 
+@media screen and (max-width:2100px) {
+  .views-page-public-appeal-search table .views-field-appeal-type,
+  .views-page-public-appeal-search table .views-field-gender,
+  .views-page-public-appeal-search table .views-field-age-range,
+  .views-page-public-appeal-search table .views-field-decision-year,
+  .views-page-public-appeal-search table .views-field-appeal-agent,
+  .views-page-public-appeal-search table .views-field-case-number {
+    display: none;
+  }
 
-@media screen and (max-width:768px) {
+  .views-page-public-appeal-search table td.views-field-decision {
+    padding-right: 50px;
+  }
+
+  .public-appeal-search-view {
+    .refs-include {
+      margin-bottom: 0;
+    }
+    .counters {
+      max-width: 915px;
+      padding: 20px 0 10px;
+      clear: both;
+
+      .counters-inner {
+        margin: 0 auto;
+        width: 580px;
+      }
+    }
+    .table-top .dt-buttons {
+      margin-right: 0;
+      padding-right: 0;
+
+      &:after {
+        display: none;
+      }
+    }
+    .table-top-right {
+      flex-direction: column;
+    }
+    .expand-long-text {
+      display: none;
+    }
+  }
+}
+
+
+@media screen and (max-width:1250px) {
   #block-externalappealssearch {
     padding: 50px 25px 20px;
   }
@@ -559,21 +735,155 @@
     .layout-content {
       width: 100%!important;
     }
+
+    #after-content {
+      margin: 0 25px 35px;
+    }
+  }
+
+  .views-page-public-appeal-search .views-element-container {
+    padding: 0 25px 10px;
+  }
+
+  .public-appeal-search-view .search-filter {
+    max-width: calc(100% - 65px);
+  }
+
+  .public-appeal-search-view .counters .counters-inner {
+    width: 480px;
   }
 
   .public-appeal-search-view {
     .mobile-open {
       display: block;
     }
+
+    .pagination-holder {
+      margin-top: 10px;
+      margin-bottom: 45px;
+    }
   }
 }
 
+@media screen and (max-width:875px) {
+  .views-page-public-appeal-search table .views-field-diagnosis,
+  .views-page-public-appeal-search table .views-field-health-plan {
+    display: none;
+  }
 
-@media screen and (max-width:375px) {
+  .views-page-public-appeal-search table thead {
+    display: table-row-group;
+  }
+
+  .views-page-public-appeal-search table td {
+    display: table-cell;
+
+    &:before {
+      display: none;
+    }
+  }
+
+  .views-page-public-appeal-search .views-element-container {
+    padding: 0 20px;
+  }
+
+  .public-appeal-search-view .counters {
+    width: 100%;
+
+    .counters-inner {
+      width: 100%;
+    }
+  }
+}
+
+@media screen and (max-width:600px) {
+  .public-appeal-search-view .table-top-left {
+    .dataTables_length {
+      margin-right: 0;
+      padding-right: 0;
+
+      &:after {
+        display: none;
+      }
+    }
+    .dataTables_info {
+      display: none;
+    }
+  }
+}
+
+@media screen and (max-width:450px) {
   #block-externalappealssearch {
     padding: 40px 15px 20px;
     h2 {
       font-size: 26px;
     }
+  }
+
+  .public-appeal-search-view .search-filter {
+    max-width: calc(100% - 50px);
+
+    .dataTables_filter label input[type="search"] {
+      padding: 22px!important;
+    }
+
+    .dataTables_filter label:after {
+      top: 13px;
+    }
+  }
+
+  .public-appeal-search-view {
+    .mobile-open {
+      top: 8px;
+    }
+  }
+
+  .public-appeal-search-view .counters {
+    padding-bottom: 0;
+    font-size: 14px;
+
+    .upheldValue,
+    .overturnedValue,
+    .overturnedPartValue {
+      font-size: 26px;
+
+      &:before {
+        width: 16px;
+        height: 16px;
+      }
+    }
+  }
+  .views-element-container .contextual-region {
+    display: block;
+  }
+
+  .views-page-public-appeal-search {
+    #after-content {
+      margin: 0 20px 35px;
+
+      h2 {
+        font-size: 28px;
+      }
+    }
+  }
+
+  .views-page-public-appeal-search table thead tr th.views-field {
+    padding: 18px 25px 17px 15px;
+  }
+
+  .views-page-public-appeal-search table td {
+    font-size: 14px;
+  }
+
+  .views-page-public-appeal-search table td.views-field {
+    padding: 25px 15px 20px;
+  }
+
+  .views-page-public-appeal-search table td.views-field-decision {
+    padding-right: 45px;
+  }
+
+  .public-appeal-search-view .dataTables_wrapper .dataTables_paginate .paginate_button {
+    margin: 4px 5px;
   }
 }
