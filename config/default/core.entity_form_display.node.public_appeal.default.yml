@@ -8,6 +8,7 @@ dependencies:
     - field.field.node.public_appeal.appeal_type
     - field.field.node.public_appeal.body
     - field.field.node.public_appeal.case_number
+    - field.field.node.public_appeal.caseid
     - field.field.node.public_appeal.decision
     - field.field.node.public_appeal.decision_year
     - field.field.node.public_appeal.diagnosis
@@ -51,6 +52,14 @@ content:
     weight: 18
     settings:
       size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  caseid:
+    weight: 26
+    settings:
+      size: 20
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield

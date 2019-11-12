@@ -7,16 +7,12 @@ DOCROOT_PATH="${PROJECT_ROOT}/${DOCROOT}"
 # Initialize stack
 fin project start
 
-fin exec COMPOSER_PROCESS_TIMEOUT=2000
-fin exec composer clear-cache
+COMPOSER_PROCESS_TIMEOUT=2000
+composer clear-cache
 echo "Composer install..."
-fin exec composer install
+composer nuke
+composer install
 
-cd $DOCROOT_PATH
-echo "Deleting local settings file if one exists..."
-rm -f $DOCROOT_PATH/sites/default/settings/local.settings.php
-echo "Deleting local drush file if one exists..."
-rm -f $DOCROOT_PATH/sites/default/local.drush.yml
 cd $PROJECT_ROOT
 echo "Running blt commands..."
 fin addon install blt
@@ -25,9 +21,13 @@ fin blt blt:init:settings
 #fin exec blt:setup:settings
 #fin exec vendor/acquia/blt/bin/blt setup:settings
 echo "Copying default local blt settings from .drush to blt folder..."
-cp $PROJECT_ROOT/.docksal/docksal.local.blt.yml $PROJECT_ROOT/blt/local.blt.yml
+cp $PROJECT_ROOT/.docksal/lib/docksal.local.blt.yml $PROJECT_ROOT/blt/local.blt.yml
+echo "Copying blt.yml and ignore-existing.txt from .docksal folder to blt and scripts folders respectivelu because sometimes installation replaces this file..."
+cp $PROJECT_ROOT/.docksal/lib/blt.yml $PROJECT_ROOT/blt/blt.yml
+cp $PROJECT_ROOT/.docksal/lib/local.drush.yml $DOCROOT_PATH/sites/default/settings/local.drush.yml
+cp $PROJECT_ROOT/.docksal/lib/ignore-existing.txt $PROJECT_ROOT/scripts/blt/ignore-existing.txt
 echo "Copying default local.settings.php file..."
-cp $PROJECT_ROOT/.docksal/docksal.local.settings.php $DOCROOT_PATH/sites/default/settings/local.settings.php
+cp $PROJECT_ROOT/.docksal/lib/docksal.local.settings.php $DOCROOT_PATH/sites/default/settings/local.settings.php
 echo "Executing blt setup..."
 fin blt setup -D setup.strategy=install
 #fin exec vendor/acquia/blt/bin/blt setup:drupal:install

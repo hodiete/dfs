@@ -3,11 +3,11 @@
 namespace Drupal\Tests\PHPUnit;
 
 /**
- * Class GitTasksTest.
+ * Class GitTest.
  *
  * Verifies that git related tasks work as expected.
  */
-class GitTasksTest extends TestBase {
+class GitTest extends TestBase {
 
   /**
    * Tests Phing setup:git-hooks target.
@@ -43,24 +43,24 @@ class GitTasksTest extends TestBase {
    */
   public function providerTestGitHookCommitMsg() {
     $prefix = $this->config['project']['prefix'];
-    return array(
-        array(FALSE, "This is a bad commit.",
+    return [
+        [FALSE, "This is a bad commit.",
           'Missing prefix and ticket number.',
-        ),
-        array(FALSE, "123: This is a bad commit.",
+        ],
+        [FALSE, "123: This is a bad commit.",
           'Missing project prefix.',
-        ),
-        array(FALSE, "{$prefix}: This is a bad commit.",
+        ],
+        [FALSE, "{$prefix}: This is a bad commit.",
           'Missing ticket number.',
-        ),
-        array(FALSE, "{$prefix}-123 This is a bad commit.", 'Missing colon.'),
-        array(FALSE, "{$prefix}-123: This is a bad commit", 'Missing period.'),
-        array(FALSE, "{$prefix}-123: Hello.", 'Too short.'),
-        array(FALSE, "NOT-123: This is a bad commit.", 'Wrong project prefix.'),
-        array(TRUE, "{$prefix}-123: This is a good commit.", 'Good commit.'),
-        array(TRUE, "{$prefix}-123: This is an exceptionally long--seriously, really, really, REALLY long, but still good commit.", 'Long good commit.',
-        ),
-    );
+        ],
+        [FALSE, "{$prefix}-123 This is a bad commit.", 'Missing colon.'],
+        [FALSE, "{$prefix}-123: This is a bad commit", 'Missing period.'],
+        [FALSE, "{$prefix}-123: Hello.", 'Too short.'],
+        [FALSE, "NOT-123: This is a bad commit.", 'Wrong project prefix.'],
+        [TRUE, "{$prefix}-123: This is a good commit.", 'Good commit.'],
+        [TRUE, "{$prefix}-123: This is an exceptionally long--seriously, really, really, REALLY long, but still good commit.", 'Long good commit.',
+        ],
+    ];
   }
 
   /**

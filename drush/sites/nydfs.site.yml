@@ -1,0 +1,80 @@
+# Application 'nydfs', environment 'dev'.
+dev:
+  root: /var/www/html/nydfs.dev/docroot
+  ac-site: nydfs
+  ac-env: dev
+  ac-realm: prod
+  uri: nydfsdev.prod.acquia-sites.com
+  dev.livedev:
+    parent: '@nydfs.dev'
+    root: /mnt/gfs/nydfs.dev/livedev/docroot
+  host: nydfsdev.ssh.prod.acquia-sites.com
+  user: nydfs.dev
+  paths:
+    drush-script: drush9
+
+
+# Application 'nydfs', environment 'ode7'.
+ode7:
+  root: /var/www/html/nydfs.ode7/docroot
+  ac-site: nydfs
+  ac-env: ode7
+  ac-realm: prod
+  uri: nydfsode7.prod.acquia-sites.com
+  ode7.livedev:
+    parent: '@nydfs.ode7'
+    root: /mnt/gfs/nydfs.ode7/livedev/docroot
+  host: nydfsode7.ssh.prod.acquia-sites.com
+  user: nydfs.ode7
+  paths:
+    drush-script: drush9
+
+
+# Application 'nydfs', environment 'prod'.
+prod:
+  root: /var/www/html/nydfs.prod/docroot
+  ac-site: nydfs
+  ac-env: prod
+  ac-realm: prod
+  uri: nydfs.prod.acquia-sites.com
+  prod.livedev:
+    parent: '@nydfs.prod'
+    root: /mnt/gfs/nydfs.prod/livedev/docroot
+  host: nydfs.ssh.prod.acquia-sites.com
+  user: nydfs.prod
+  paths:
+    drush-script: drush9
+
+
+# Application 'nydfs', environment 'ra'.
+ra:
+  root: /var/www/html/nydfs.ra/docroot
+  ac-site: nydfs
+  ac-env: ra
+  ac-realm: prod
+  uri: nydfsra.prod.acquia-sites.com
+  ra.livedev:
+    parent: '@nydfs.ra'
+    root: /mnt/gfs/nydfs.ra/livedev/docroot
+  host: nydfsra.ssh.prod.acquia-sites.com
+  user: nydfs.ra
+  paths:
+    drush-script: drush9
+
+
+# Application 'nydfs', environment 'test'.
+test:
+  root: /var/www/html/nydfs.test/docroot
+  ac-site: nydfs
+  ac-env: test
+  ac-realm: prod
+  uri: nydfsstg.prod.acquia-sites.com
+  test.livedev:
+    parent: '@nydfs.test'
+    root: /mnt/gfs/nydfs.test/livedev/docroot
+  host: nydfsstg.ssh.prod.acquia-sites.com
+  user: nydfs.test
+  paths:
+    drush-script: drush9
+
+

@@ -20,10 +20,10 @@ class DrushTest extends TestBase {
     $command = "$drush_bin status";
 
     // Test that drush can be run from the following directories.
-    $dirs = array(
+    $dirs = [
       $this->projectDirectory . '/docroot',
       $this->projectDirectory . '/docroot/sites/default',
-    );
+    ];
 
     foreach ($dirs as $dir) {
       chdir($dir);

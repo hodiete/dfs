@@ -12,13 +12,6 @@
  * @link themeable Theme hook suggestions. @endlink For example,
  * here are some theme hook suggestions that can be used for a field_foo field
  * on an article node type:
- * - field--node--field-foo--article.html.twig
- * - field--node--field-foo.html.twig
- * - field--node--article.html.twig
- * - field--field-foo.html.twig
- * - field--text-with-summary.html.twig
- * - field.html.twig
- *
  * Available variables:
  * - attributes: HTML attributes for the containing element.
  * - label_hidden: Whether to show the field label or not.
@@ -36,30 +29,16 @@
  * @see template_preprocess_field()
  */
 #}
-
-{% if label_hidden %}
-  {% if multiple %}
-    <div{{ attributes }}>
-      {% for item in items %}
-        <div{{ item.attributes }}>{{ item.content }}</div>
-      {% endfor %}
-    </div>
-  {% else %}
-    {% for item in items %}
-      <div{{ attributes }}>{{ item.content }}</div>
-    {% endfor %}
-  {% endif %}
-{% else %}
   <div{{ attributes.addclass('field-item') }}>
-    <div{{ title_attributes.addclass('label') }}>{{ label }}<span class="colon">:</span></div>
-    {# {% if multiple %} #}
+
+      <div{{ title_attributes.addclass('label') }}>{{ label }}
+      </div>
       <div class="multiple-values">
-    {# {% endif %} #}
+
     {% for item in items %}
       <div{{ item.attributes.addclass('value') }}>{{ item.content }}</div>
     {% endfor %}
-    {# {% if multiple %} #}
+
       </div>
-    {# {% endif %} #}
+
   </div>
-{% endif %}

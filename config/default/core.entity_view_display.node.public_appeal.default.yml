@@ -8,6 +8,7 @@ dependencies:
     - field.field.node.public_appeal.appeal_type
     - field.field.node.public_appeal.body
     - field.field.node.public_appeal.case_number
+    - field.field.node.public_appeal.caseid
     - field.field.node.public_appeal.decision
     - field.field.node.public_appeal.decision_year
     - field.field.node.public_appeal.diagnosis
@@ -25,12 +26,12 @@ bundle: public_appeal
 mode: default
 content:
   links:
-    weight: 100
+    weight: 1
     region: content
     settings: {  }
     third_party_settings: {  }
   workbench_moderation_control:
-    weight: -20
+    weight: 0
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -40,6 +41,7 @@ hidden:
   appeal_type: true
   body: true
   case_number: true
+  caseid: true
   decision: true
   decision_year: true
   diagnosis: true

@@ -1,3 +1,23 @@
+.back-to-search {
+  background-color: $bgcolor-light-leftmenu;
+  height: 55px;
+
+  .back-wrapper {
+    margin-left: 60px;
+    padding-top: 15px;
+  }
+
+  img.arrow {
+    vertical-align: -11%;
+    margin-right: 9px;
+  }
+
+  a.link {
+    font: Bold 18px/22px $base-font;
+    color: $bgcolor-dark-leftmenu;
+  }
+}
+
 .public-appeal-content {
   padding: 63px;
 }
@@ -23,23 +43,62 @@
   .label {
     font-weight: bold;
   }
+
+
+  img.decision-icon {
+    width: 19px;
+    height: 23px;
+    vertical-align: -20%;
+    margin-left: 5px;
+  }
+
 }
 
 .summary-references {
   .label {
-    font-size: 30px;
+    font-size: 22px;
+    line-height: 27px;
     color: $color-primary;
     font-weight: bold;
     /* changed from 800 */
     padding: 0 0 .3em;
     margin: 0;
     line-height: 1.25em;
+    text-transform: uppercase;
+    margin-bottom: 17px;
   }
 
   .value {
     font-size: 16px;
     padding-bottom: 25px;
     max-width: 72%;
+  }
+
+  .field-item:nth-of-type(2) .value {
+    font-size: 12px;
+    max-width: 65%;
+  }
+
+}
+
+@media (max-width: 767px) {
+  .public-appeal-right {
+    float: none;
+    max-width: 100%;
+    margin-left: 0;
+    margin-bottom: 50px;
+    min-height: 200px;
+  }
+
+  .summary-references {
+    .value {
+      max-width: 100%;
+    }
+
+    .field-item:nth-of-type(2) .value {
+      max-width: 100%;
+    }
+
   }
 
 }

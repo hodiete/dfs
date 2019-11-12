@@ -1,0 +1,22 @@
+uuid: c4d5fc81-b871-413a-b98c-d44167e44317
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.public_appeal
+id: node.public_appeal.promote
+field_name: promote
+entity_type: node
+bundle: public_appeal
+label: 'Promoted to front page'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean
