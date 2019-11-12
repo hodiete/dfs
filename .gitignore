@@ -1,58 +1,71 @@
 # Ignore configuration files that may contain sensitive information.
-local.*
+local.settings.php
+/local.drush.yml
+docroot/sites/default/local.drush.yml
+local.site.yml
+local.services.yml
+tests/behat/local.yml
+box/local.config.yml
 *.local
-project.local.yml
+local.blt.yml
 
 # Ignore drupal core.
 docroot/core
 
 # Ignore paths that contain user-generated content.
 docroot/sites/*/files
+/files-private
 docroot/sites/*/private
 
 # Ignore contrib modules. These should be created during build process.
-docroot/modules/contrib
-
-docroot/profiles/custom/webny/modules/contrib
-docroot/themes/contrib
 docroot/profiles/custom/webny/themes/contrib
+docroot/profiles/custom/webny/modules/contrib
+docroot/modules/contrib
+docroot/themes/contrib
 docroot/profiles/contrib
 docroot/libraries
+drush/Commands
 drush/contrib
 
 # dfs_ny
+
 migration_dfs
-# Ignore custom theme node_modules folders
+
+# Ignore custom theme node_modules folders	
 docroot/themes/custom/*/node_modules
 docroot/profiles/custom/webny/themes/custom/dfs_ny/node_modules
 docroot/profiles/custom/webny/themes/custom/dfs_ny/package-lock.json
 docroot/profiles/custom/webny/themes/custom/dfs_ny.tar.gz
-#docroot/sites/default/settings/nydfs.settings.php
-console
+docroot/themes/custom/*/node_modules
 docroot/*/stage_file_proxy
+console
 
-# igore the styles.css andnydfs-sub.css which are generated from gulp
-docroot/profiles/custom/webny/themes/custom/dfs_ny/css/*.css
+# igore the styles.css andnydfs-sub.css which are generated from gulp	docroot/themes/custom/*/styleguide
+docroot/profiles/custom/webny/themes/custom/dfs_ny/css/*.css	
 
-docroot/profiles/custom/webny/themes/custom/dfs_ny/css/styles.css
-docroot/profiles/custom/webny/themes/custom/dfs_ny/css/nydfs-sub.css
+docroot/profiles/custom/webny/themes/custom/dfs_ny/css/styles.css	
+docroot/profiles/custom/webny/themes/custom/dfs_ny/css/nydfs-sub.css	
 
-docroot/profiles/custom/webny/themes/custom/dfs_ny/css/administration.css
-docroot/profiles/custom/webny/themes/custom/dfs_ny/css/business.css
-docroot/profiles/custom/webny/themes/custom/dfs_ny/css/custom-ig.css
-docroot/profiles/custom/webny/themes/custom/dfs_ny/css/custom-jcope.css
-docroot/profiles/custom/webny/themes/custom/dfs_ny/css/education.css
-docroot/profiles/custom/webny/themes/custom/dfs_ny/css/health-human-services.css
-docroot/profiles/custom/webny/themes/custom/dfs_ny/css/local-regional-authorities.css
-docroot/profiles/custom/webny/themes/custom/dfs_ny/css/public-safety.css
-docroot/profiles/custom/webny/themes/custom/dfs_ny/css/recreation-environment.css
-docroot/profiles/custom/webny/themes/custom/dfs_ny/css/statewide-elected-officials.css
-docroot/profiles/custom/webny/themes/custom/dfs_ny/css/transportation-utilities.css
-docroot/sites/default/services.yml
+docroot/profiles/custom/webny/themes/custom/dfs_ny/css/administration.css	
+docroot/profiles/custom/webny/themes/custom/dfs_ny/css/business.css	
+docroot/profiles/custom/webny/themes/custom/dfs_ny/css/custom-ig.css	
+docroot/profiles/custom/webny/themes/custom/dfs_ny/css/custom-jcope.css	
+docroot/profiles/custom/webny/themes/custom/dfs_ny/css/education.css	
+docroot/profiles/custom/webny/themes/custom/dfs_ny/css/health-human-services.css	
+docroot/profiles/custom/webny/themes/custom/dfs_ny/css/local-regional-authorities.css	
+docroot/profiles/custom/webny/themes/custom/dfs_ny/css/public-safety.css	
+docroot/profiles/custom/webny/themes/custom/dfs_ny/css/recreation-environment.css	
+docroot/profiles/custom/webny/themes/custom/dfs_ny/css/statewide-elected-officials.css	
+docroot/profiles/custom/webny/themes/custom/dfs_ny/css/transportation-utilities.css	
+docroot/sites/default/services.yml	
 
-docroot/sites/default/settings.php
+# Ignore custom theme build artifacts
+docroot/themes/custom/*/node_modules
+docroot/themes/custom/*/css
+docroot/themes/custom/*/styleguide
 
 # Ignore build artifacts
+deployment_identifier
 /deploy
 bin/*
 tmp
@@ -139,9 +152,29 @@ nbproject/*
 # DrupalVM
 .vagrant/
 
+# DevDesktop
+*.dd
+
+#Exports
+*.gz
+*.sql
+*.zip
+
+# PHPStorm
+atlassian-ide-plugin.xml
+
+#NPM
+npm-debug.log
+
+# Drush 9 Checksums
+drush/sites/.checksums
+
+# Deprecation detector rules
+.rules
+
 # Frontend
 docroot/profiles/custom/webny/themes/custom/dfs_ny/dist
-docroot/profiles/custom/webny/themes/custom/dfs_ny/dist/*
+docroot/profiles/custom/webny/themes/custom/dfs_ny/dist/*	
 docroot/profiles/custom/webny/themes/custom/dfs_ny/styleguide
 docroot/profiles/custom/webny/themes/custom/dfs_ny/styleguide/*
 
@@ -150,9 +183,4 @@ docroot/profiles/custom/webny/libraries/*
 docroot/profiles/custom/webny/libraries/*/
 !docroot/profiles/custom/webny/libraries/package.json
 
-# Ignore private files
-files-private
-
-# box/config.yml
-
-/db
+docroot/sites/default/settings/local.drush.yml 

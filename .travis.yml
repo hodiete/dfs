@@ -1,9 +1,10 @@
-# Note that the example .travis.yml file for child projects lives in /install.
-sudo: required
-group: deprecated
+sudo: true
 language: php
-dist: trusty
+dist: xenial
 
+# Adjust the version of PHP to match your production environment.
+# Making this version number greater than the production environment can have unintended consequences
+# including a non-functional prod environment.
 php:
   - 7.1
 
@@ -27,77 +28,44 @@ cache:
   - "$HOME/.drush/cache"
   - "$HOME/.npm"
   - "$HOME/.nvm"
-  - "vendor"
-  # Cache front end dependecies to dramatically improve build time.
-  - "docroot/profiles/custom/webny/themes/custom/dfs_ny/node_modules"
-  - "docroot/profiles/custom/webny/themes/custom/dfs_ny/bower_components"
+  - ".rules"
+  # Cache front end dependencies to dramatically improve build time.
+  # - "docroot/themes/custom/mytheme/node_modules"
+  # - "docroot/themes/custom/mytheme/bower_components"
+
+services:
+- mysql
+- xvfb
 
 addons:
   ssh_known_hosts:
-    - nydfs.dev@staging-28720.prod.hosting.acquia.com
-    - nydfs.test@staging-28720.prod.hosting.acquia.com
+  # - svn-4786.devcloud.hosting.acquia.com
   chrome: stable
 
 # @see https://docs.travis-ci.com/user/notifications
 notifications:
+# - hipchat: [api token]@[room id or name]
 # - slack: '<account>:<token>#[channel]'
-  slack: 'webnydistro:iSJ8dsk7Ym139SMpL470llno'
 
 before_install:
-  # install MySql 5.6
-  - sudo -E apt-get -yq --no-install-suggests --no-install-recommends --force-yes install mysql-server-5.6 mysql-client-core-5.6 mysql-client-5.6
-  # Enable aliases for non-interactive shell.
-  - shopt -s expand_aliases
-  - composer selfupdate
   # Disable xdebug.
   - phpenv config-rm xdebug.ini
-  # Enable $_ENV variables in PHP.
-  - echo 'variables_order = "EGPCS"' >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
-  # Ensure that always_populate_raw_post_data PHP setting: Not set to -1 does not happen.
-  - echo "always_populate_raw_post_data = -1" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
-  # Increase PHP memory limit.
-  - echo "memory_limit=-1" >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
-  - git config --global user.name "Travis-CI"
-  - git config --global user.email "noreply@travis-ci.org"
-  # - mysql -u root -e "CREATE DATABASE drupal; CREATE USER 'drupal'@'localhost' IDENTIFIED BY 'drupal'; GRANT ALL ON drupal.* TO 'drupal'@'localhost';"
-  - echo "extension = memcached.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
-  # Tweak PHP configuration.
-  # Copied from Lightning.
-  # We were getting an error where drush si is trying to send mail even though the flag to prevent that was set.
-  - echo 'max_execution_time = 120' >> drupal.php.ini;
-  - echo 'sendmail_path = /bin/true' >> drupal.php.ini;
-  - phpenv config-add drupal.php.ini
-  - phpenv rehash
+  - composer self-update
+  - composer validate --no-check-all --ansi
+  - composer install
   # Exit build early if only documentation was changed in a Pull Request.
-  # - source ${BLT_DIR}/scripts/travis/exit_early
+  - source ${BLT_DIR}/scripts/travis/exit_early
 
 install:
-  # Load composer dependencies.
-  - composer validate --no-check-all --ansi
-  - composer install -v
-  - export PATH=$TRAVIS_BUILD_DIR/vendor/bin:$PATH
-  # Install proper version of node for front end tasks.
-  - nvm install 8.9.4
-  - nvm use 8.9.4
   - source ${BLT_DIR}/scripts/travis/setup_environment
   - source ${BLT_DIR}/scripts/travis/setup_project
 
-before_script:
-  # Clear drush release history cache, to pick up new releases.
-  - rm -f ~/.drush/cache/download/*---updates.drupal.org-release-history-*
-  # Verify that no git diffs (caused by line ending variation) exist.
-  # - git diff --exit-code
-  # The local.hostname must be set to 0.0.0.0:6081, and NOT 127.0.0.1:8888, because we are using varnish
-  # in front of the drush runserver to run the site on Travis CI.
-  - yaml-cli update:value blt/project.yml project.local.hostname '0.0.0.0:6081'
-  # Increasing SQL packet size to avoid time out errors.
-  - mysql -u root -e 'SET GLOBAL wait_timeout = 36000;'
-  - mysql -u root -e 'SET GLOBAL max_allowed_packet = 33554432;'
-  - echo -e "Host svn-43.enterprise-g1.hosting.acquia.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
-
 script:
+  # Uncomment these lines to test database updates using live content.
+  # - blt drupal:sync:default:site
   - source ${BLT_DIR}/scripts/travis/run_tests
 
+# The version below MUST match the php version indicated at the top of this file, otherwise the artifact won't build.
 deploy:
    - provider: script
      script: "${BLT_DIR}/scripts/travis/deploy_branch"
@@ -110,12 +78,6 @@ deploy:
      skip_cleanup: true
      on:
        branch: master
-       php: 7.1
-   - provider: script
-     script: "${BLT_DIR}/scripts/travis/deploy_branch"
-     skip_cleanup: true
-     on:
-       branch: master-build
        php: 7.1
    - provider: script
      script: "${BLT_DIR}/scripts/travis/deploy_tag"
