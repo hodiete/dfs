@@ -12,7 +12,7 @@
 
       let refsSelected = false;
 
-      //outputs child row for summary and references accordions
+      //output child row for summary and references accordions
       function formatAccordionsRow(data, rowIndex) {
         // `data` is the original data object for the row
         let outputTable = '<table><thead><th>Summary and References</th></thead><tbody><tr><td>';
@@ -30,7 +30,6 @@
         outputTable += rowIndex;
         outputTable += '">';
         $(summary).find('li').each(function(i) {
-          console.log($(this).text());
           outputTable += '<h3>Summary ';
           outputTable += (i + 1);
           outputTable += '</h3><div class="summary-text">';
@@ -61,6 +60,7 @@
         return outputTable;
       }
 
+      //override placeholder text on external filters
       function setFilterPlaceholders() {
         $('.views-exposed-form select').each(function() {
           $(this).attr('data-placeholder','Select ' + $(this).prev('label').text());
@@ -69,20 +69,20 @@
 
       //output sum of decision column to counters
       function setCounterValues() {
-        console.log('setting counter values');
+        console.log('run setcountervalues');
         let upheldValue = 0;
         let overturnedValue = 0;
         let overturnedPartValue = 0;
 
         $('.public-appeals-data').DataTable().column(3, {search: 'applied'}).data().filter(function( value, index ) {
 
-          if ($(value).text().toLowerCase().includes('upheld')) {
+          if ($(value).text().toLowerCase().indexOf('upheld') > -1) {
             upheldValue++;
           }
-          else if ($(value).text().toLowerCase().includes('overturned in part')) {
+          else if ($(value).text().toLowerCase().indexOf('overturned in part') > -1) {
             overturnedPartValue++;
           }
-          else if ($(value).text().toLowerCase().includes('overturned')) {
+          else if ($(value).text().toLowerCase().indexOf('overturned') > -1) {
             overturnedValue++;
           }
 
@@ -95,26 +95,9 @@
 
       }
 
+      //run setup tasks on datatable init
       function tableSetup() {
-
-        $('.views-page-public-appeal-search .counters').append('<div class="counters-inner"><div class="upheldCounter"><span class="upheldValue"></span> Upheld</div><div class="overturnedCounter"><span class="overturnedValue"></span> Overturned</div><div class="overturnedPartCounter"><span class="overturnedPartValue"></span> Overturned-in-part</div></div>');
-        $('.views-page-public-appeal-search .refs-include').append('<input type="checkbox" id="references-included" name="references-included" value="references-included"><label for="references-included">Include References in Search</label>');
-        $('#references-included').on('click keypress', function(evt) {
-          if (evt.type == 'keypress') {
-            if (evt.keyCode == 13) {
-              referencesClickHandler();
-            }
-          }
-          else {
-            referencesClickHandler();
-          }
-        });
-
-        //add values to counters above table, change values on search
-        setCounterValues();
-        $('.public-appeals-data').DataTable().on( 'search.dt', function() {
-          setCounterValues();
-        });
+        console.log('run table setup');
 
         //add mobile filter toggle functionality
         $('.mobile-open').on('click',function(evt) {
@@ -126,29 +109,62 @@
           });
         });
 
-        //add tooltip toggle and functionality
-        let tooltipToggle = $('.tooltip-toggle-container').append('<a href="#" class="tooltip-toggle">i</a>');
-        let clickedOn = true;
+        //add references checkbox and funtionality
+        $('.views-page-public-appeal-search .refs-include').append('<input type="checkbox" id="references-included" name="references-included" value="references-included"><label for="references-included">Include References in Search</label>');
 
-        if ($('#block-publicappealssearchtooltip').css('display') == 'none') {
-          let clickedOn = false;
-          $(tooltipToggle).on('mouseenter mouseleave', function(evt) {
-            evt.preventDefault();
-            $('#block-publicappealssearchtooltip').toggle();
-          });
-        }
+        $('#references-included').on('click keypress', function(evt) {
+          if (evt.type == 'keypress') {
+            if (evt.keyCode == 13) {
+              referencesClickHandler();
+            }
+          }
+          else {
+            referencesClickHandler();
+          }
+        });
+
+        //add counters above table
+        $('.views-page-public-appeal-search .counters').append('<div class="counters-inner"><div class="upheldCounter"><span class="upheldValue"></span> Upheld</div><div class="overturnedCounter"><span class="overturnedValue"></span> Overturned</div><div class="overturnedPartCounter"><span class="overturnedPartValue"></span> Overturned-in-part</div></div>');
+
+        //add values to counters above table, change values on search
+        setCounterValues();
+        $('.public-appeals-data').DataTable().on( 'search.dt', function() {
+          setCounterValues();
+        });
+
+        //move tooltip text after toggle
+        let toolText = $('#block-publicappealssearchtooltip').attr('hidden','hidden').detach();
+        $('.tooltip-container').append(toolText);
+
+        //add tooltip toggle and functionality
+        let tooltipToggle = $('.tooltip-container').prepend('<a href="#" class="tooltip-toggle">i</a>');
+
+        let clickedOn = false;
+        $(tooltipToggle).on('mouseenter', function(evt) {
+          evt.preventDefault();
+          $(toolText).removeAttr('hidden');
+        });
+        $(tooltipToggle).on('mouseleave', function(evt) {
+          evt.preventDefault();
+          $(toolText).attr('hidden','hidden');
+        });
 
         $(tooltipToggle).on('click', function(evt) {
           evt.preventDefault();
           if (clickedOn) {
-            $(tooltipToggle).on('mouseenter mouseleave', function(evt) {
+            $(toolText).attr('hidden','hidden');
+            $(tooltipToggle).on('mouseenter', function(evt) {
               evt.preventDefault();
-              $('#block-publicappealssearchtooltip').toggle();
+              $(toolText).removeAttr('hidden');
+            });
+            $(tooltipToggle).on('mouseleave', function(evt) {
+              evt.preventDefault();
+              $(toolText).attr('hidden','hidden');
             });
             clickedOn = false;
           }
           else {
-            $('#block-publicappealssearchtooltip').show();
+            $(toolText).removeAttr('hidden');
             $(tooltipToggle).off('mouseenter mouseleave');
             clickedOn = true;
           }
@@ -157,7 +173,9 @@
         //add expand all link and functionality
         $('.expand-wrapper').append('<a class="expand-trigger" href="#">Expand All<span class="expand-long-text"> Summaries &amp; References</span></a>');
         $('.expand-wrapper').on('click',function(evt) {
+          console.log('before rows.every');
           $('.public-appeals-data').DataTable().rows().every(function() {
+            console.log('in rows.every');
             evt.preventDefault();
             $(this.child()).find('.accordion-toggle').attr('aria-expanded','true');
             $(this.child()).find('.accordion-content').removeAttr('hidden');
@@ -166,19 +184,22 @@
 
         //add counter icons to decisions column
         $('.table-decision-value').each(function() {
+          console.log('decision value');
 
-          if ($(this).find('div').text().toLowerCase().includes('upheld')) {
+          if ($(this).find('div').text().toLowerCase().indexOf('upheld') > -1) {
             $(this).find('div').addClass('upheld');
           }
-          else if ($(this).find('div').text().toLowerCase().includes('overturned in part')) {
+          else if ($(this).find('div').text().toLowerCase().indexOf('overturned in part') > -1) {
             $(this).find('div').addClass('overturned-in-part');
           }
-          else if ($(this).find('div').text().toLowerCase().includes('overturned')) {
+          else if ($(this).find('div').text().toLowerCase().indexOf('overturned') > -1) {
             $(this).find('div').addClass('overturned');
           }
         });
 
+        console.log('run rows.every');
         $('.public-appeals-data').DataTable().rows().every(function(rowIndex) {
+          console.log('every row');
           this.child(formatAccordionsRow(this.data(),rowIndex)).show();
 
           $(this.child()).find('.accordion-toggle').on('click', function(evt) {
@@ -197,6 +218,7 @@
         });
       }
 
+      //initialize datatable
       function buildTable() {
         $('.public-appeal-search-view>table').addClass('public-appeals-data').dataTable({
           order: [[9, 'asc']],
@@ -209,7 +231,7 @@
           stateSave: true,
           retrieve: true,
           processing: true,
-          dom: '<"search-filter"f<"tooltip-toggle-container"><"refs-include">><"mobile-open"><"counters"><"table-top"<"table-top-left"li><"table-top-right"B<"expand-wrapper">>>rtB<"pagination-holder"p>',
+          dom: '<"search-filter"f<"tooltip-container"><"refs-include">><"mobile-open"><"counters"><"table-top"<"table-top-left"li><"table-top-right"B<"expand-wrapper">>>rtB<"pagination-holder"p>',
           columnDefs: [
             { targets: [11], visible: false, searchable: refsSelected },
             { targets: [10], visible: false, searchable: true }
@@ -235,6 +257,7 @@
         });
       }
 
+      //show or hide references section, include in search if shown
       function referencesClickHandler(evt) {
         if (refsSelected) {
           $('.public-appeals-data').DataTable().context[0].aoColumns[11].bSearchable = false;
@@ -258,16 +281,16 @@
         $('.public-appeals-data').DataTable().rows().invalidate().draw();
       }
 
-      $('.public-appeal-search-view>table', context).once('appealsSearch').each(function() {
-        buildTable();
-      });
 
       $('.views-exposed-form', context).once('appealsSearch').each(function() {
         setFilterPlaceholders();
       });
 
+      $('.public-appeal-search-view>table', context).once('appealsSearch').each(function() {
+        buildTable();
+      });
+
       $('.mobile-close').once('appealsSearch').on('click',function(evt) {
-        console.log('mobile open clicked');
         evt.preventDefault();
         $('#block-exposedformpublic-appeal-searchpublic-appeals-search-page').css({
           'overflow': 'hidden',
