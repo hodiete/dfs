@@ -389,6 +389,10 @@ class ImportJson
 
   protected function existNode(string $id)
   {
+    if(!$id) {
+      return false;
+    }
+    
     $nodes = \Drupal::entityTypeManager()
       ->getStorage('node')
       ->loadByProperties(['caseid' => $id]);
