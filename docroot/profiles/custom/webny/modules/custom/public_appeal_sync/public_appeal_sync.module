@@ -26,7 +26,8 @@ function public_appeal_sync_cron()
   date_default_timezone_set('America/New_York');
   
   // At 23'o clock on Saturday
-  if (date('N') == 6 && date('G') == 23) {
+  $hour = date('G');
+  if (date('N') == 6 && ($hour >= 1 &&  $hour < 2)) {
     $service = \Drupal::service('public_appeal_sync.import_json');
     $service->importJson(); 
   }
