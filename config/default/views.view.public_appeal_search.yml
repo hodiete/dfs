@@ -1211,7 +1211,7 @@ display:
             operator: diagnosis_target_id_op
             identifier: diagnosis_target_id
             required: false
-            remember: true
+            remember: false
             multiple: true
             remember_roles:
               anonymous: anonymous
@@ -1270,7 +1270,7 @@ display:
             operator: treatment_target_id_op
             identifier: treatment_target_id
             required: false
-            remember: true
+            remember: false
             multiple: true
             remember_roles:
               anonymous: anonymous
@@ -1329,7 +1329,7 @@ display:
             operator: health_plan_target_id_op
             identifier: health_plan_target_id
             required: false
-            remember: true
+            remember: false
             multiple: true
             remember_roles:
               anonymous: anonymous
@@ -1388,11 +1388,11 @@ display:
             operator: decision_target_id_op
             identifier: decision_target_id
             required: false
-            remember: true
+            remember: false
             multiple: true
             remember_roles:
-              authenticated: authenticated
               anonymous: anonymous
+              authenticated: authenticated
               administrator: administrator
               site_builder: site_builder
               site_admin: site_admin
@@ -1447,7 +1447,7 @@ display:
             operator: appeal_type_target_id_op
             identifier: appeal_type_target_id
             required: false
-            remember: true
+            remember: false
             multiple: true
             remember_roles:
               anonymous: anonymous
@@ -1506,7 +1506,7 @@ display:
             operator: gender_target_id_op
             identifier: gender_target_id
             required: false
-            remember: true
+            remember: false
             multiple: true
             remember_roles:
               anonymous: anonymous
@@ -1565,11 +1565,11 @@ display:
             operator: age_range_target_id_op
             identifier: age_range_target_id
             required: false
-            remember: true
+            remember: false
             multiple: true
             remember_roles:
-              authenticated: authenticated
               anonymous: anonymous
+              authenticated: authenticated
               administrator: administrator
               site_builder: site_builder
               site_admin: site_admin
@@ -1624,11 +1624,11 @@ display:
             operator: decision_year_target_id_op
             identifier: decision_year_target_id
             required: false
-            remember: true
+            remember: false
             multiple: true
             remember_roles:
-              authenticated: authenticated
               anonymous: anonymous
+              authenticated: authenticated
               administrator: administrator
               site_builder: site_builder
               site_admin: site_admin
@@ -1683,11 +1683,11 @@ display:
             operator: appeal_agent_target_id_op
             identifier: appeal_agent_target_id
             required: false
-            remember: true
+            remember: false
             multiple: true
             remember_roles:
-              authenticated: authenticated
               anonymous: anonymous
+              authenticated: authenticated
               administrator: administrator
               site_builder: site_builder
               site_admin: site_admin
