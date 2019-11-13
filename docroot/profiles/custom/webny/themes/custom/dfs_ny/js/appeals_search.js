@@ -60,16 +60,8 @@
         return outputTable;
       }
 
-      //override placeholder text on external filters
-      function setFilterPlaceholders() {
-        $('.views-exposed-form select').each(function() {
-          $(this).attr('data-placeholder','Select ' + $(this).prev('label').text());
-        });
-      }
-
       //output sum of decision column to counters
       function setCounterValues() {
-        console.log('run setcountervalues');
         let upheldValue = 0;
         let overturnedValue = 0;
         let overturnedPartValue = 0;
@@ -97,7 +89,6 @@
 
       //run setup tasks on datatable init
       function tableSetup() {
-        console.log('run table setup');
 
         //add mobile filter toggle functionality
         $('.mobile-open').on('click',function(evt) {
@@ -173,9 +164,7 @@
         //add expand all link and functionality
         $('.expand-wrapper').append('<a class="expand-trigger" href="#">Expand All<span class="expand-long-text"> Summaries &amp; References</span></a>');
         $('.expand-wrapper').on('click',function(evt) {
-          console.log('before rows.every');
           $('.public-appeals-data').DataTable().rows().every(function() {
-            console.log('in rows.every');
             evt.preventDefault();
             $(this.child()).find('.accordion-toggle').attr('aria-expanded','true');
             $(this.child()).find('.accordion-content').removeAttr('hidden');
@@ -184,7 +173,6 @@
 
         //add counter icons to decisions column
         $('.table-decision-value').each(function() {
-          console.log('decision value');
 
           if ($(this).find('div').text().toLowerCase().indexOf('upheld') > -1) {
             $(this).find('div').addClass('upheld');
@@ -197,9 +185,7 @@
           }
         });
 
-        console.log('run rows.every');
         $('.public-appeals-data').DataTable().rows().every(function(rowIndex) {
-          console.log('every row');
           this.child(formatAccordionsRow(this.data(),rowIndex)).show();
 
           $(this.child()).find('.accordion-toggle').on('click', function(evt) {
@@ -282,13 +268,13 @@
       }
 
 
-      $('.views-exposed-form', context).once('appealsSearch').each(function() {
-        setFilterPlaceholders();
-      });
-
       $('.public-appeal-search-view>table', context).once('appealsSearch').each(function() {
         buildTable();
       });
+
+      /*$('.layout-sidebar-first').each(function() {
+        setFilterPlaceholders();
+      });*/
 
       $('.mobile-close').once('appealsSearch').on('click',function(evt) {
         evt.preventDefault();
@@ -299,6 +285,16 @@
           'width': '1px'
         });
       });
+
+      //override placeholder text on external filters
+      function setFilterPlaceholders() {
+        $('.layout-sidebar-first select').each(function() {
+          $(this).attr('data-placeholder','Select ' + $(this).prev('label').text());
+        });
+      }
+
+      setFilterPlaceholders();
+
     }
   };
 
