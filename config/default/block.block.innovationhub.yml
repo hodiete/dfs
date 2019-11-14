@@ -1,0 +1,29 @@
+uuid: 3d5fd3d4-6094-4623-84cc-ac3ae319fd41
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.innovation-hub
+  module:
+    - system
+  theme:
+    - dfs_ny
+id: innovationhub
+theme: dfs_ny
+region: content
+weight: 0
+provider: null
+plugin: 'system_menu_block:innovation-hub'
+settings:
+  id: 'system_menu_block:innovation-hub'
+  label: 'Innovation HUB'
+  provider: system
+  label_display: visible
+  level: 1
+  depth: 0
+visibility:
+  request_path:
+    id: request_path
+    pages: "/apps_and_licensing/innovation_hub\r\n/apps_and_licensing/innovation_hub/*"
+    negate: false
+    context_mapping: {  }
