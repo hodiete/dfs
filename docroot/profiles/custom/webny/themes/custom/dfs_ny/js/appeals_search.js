@@ -38,7 +38,7 @@
         });
         outputTable += '</div></div>';
 
-        outputTable += '<div class="accordion refsAccordionContainer" hidden><a class="accordion-toggle" aria-expanded="false" aria-controls="refsAccordion-';
+        outputTable += '<div class="accordion refsAccordionContainer"><a class="accordion-toggle" aria-expanded="false" aria-controls="refsAccordion-';
         outputTable += rowIndex
         outputTable += '" id="refsAccordionTitle-';
         outputTable += rowIndex;
@@ -167,6 +167,7 @@
           $('.public-appeals-data').DataTable().rows().every(function() {
             evt.preventDefault();
             $(this.child()).find('.accordion-toggle').attr('aria-expanded','true');
+            $(this.child()).find('.accordion-toggle').addClass('accordion-open');
             $(this.child()).find('.accordion-content').removeAttr('hidden');
           });
         });
@@ -227,6 +228,8 @@
           ],
           language: {
             info: 'Showing _START_ to _END_ of _TOTAL_ Results',
+            infoFiltered: '',
+            emptyTable: 'No data available',
             lengthMenu: 'Show _MENU_ per page',
             paginate: {
               first: '« First',
@@ -239,6 +242,9 @@
           },
           initComplete: function(settings, json) {
             tableSetup();
+            if ($('#noResultsTable').length > 0) {
+              $('.public-appeals-data').DataTable().clear().draw();
+            }
           }
         });
       }
@@ -249,19 +255,12 @@
           $('.public-appeals-data').DataTable().context[0].aoColumns[11].bSearchable = false;
           refsSelected = false;
 
-          $('.public-appeals-data').DataTable().rows().every(function() {
-            $(this.child()).find('.refsAccordionContainer').attr('hidden','hidden');
-          });
-
           $('#references-included').attr('checked',false);
         }
         else {
           $('.public-appeals-data').DataTable().context[0].aoColumns[11].bSearchable = true;
           refsSelected = true;
 
-          $('.public-appeals-data').DataTable().rows().every(function() {
-            $(this.child()).find('.refsAccordionContainer').removeAttr('hidden');
-          });
           $('#references-included').attr('checked',true);
         }
         $('.public-appeals-data').DataTable().rows().invalidate().draw();
@@ -271,10 +270,6 @@
       $('.public-appeal-search-view>table', context).once('appealsSearch').each(function() {
         buildTable();
       });
-
-      /*$('.layout-sidebar-first').each(function() {
-        setFilterPlaceholders();
-      });*/
 
       $('.mobile-close').once('appealsSearch').on('click',function(evt) {
         evt.preventDefault();
@@ -289,8 +284,14 @@
       //override placeholder text on external filters
       function setFilterPlaceholders() {
         $('.layout-sidebar-first select').each(function() {
+          //add placeholders
           $(this).attr('data-placeholder','Select ' + $(this).prev('label').text());
         });
+
+        if ($('.chosen-container').length > 0 && $('.chosen-container label').length < 1) {
+          //add labels to Chosen module input fields
+          //$('.chosen-container input').wrapAll('<label class="testtest" />');
+        }
       }
 
       setFilterPlaceholders();
