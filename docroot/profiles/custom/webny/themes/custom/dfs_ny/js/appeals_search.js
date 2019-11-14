@@ -90,6 +90,10 @@
       //run setup tasks on datatable init
       function tableSetup() {
 
+        //add search field label
+        $('.dataTables_filter').find('label').attr('for','table_search').prepend('<span class="label-text">Filter search results</span>');
+        $('.dataTables_filter').find('input').attr('id','table_search');
+
         //add mobile filter toggle functionality
         $('.mobile-open').on('click',function(evt) {
           $('#block-exposedformpublic-appeal-searchpublic-appeals-search-page').css({
@@ -290,7 +294,11 @@
 
         if ($('.chosen-container').length > 0 && $('.chosen-container label').length < 1) {
           //add labels to Chosen module input fields
-          //$('.chosen-container input').wrapAll('<label class="testtest" />');
+          $('.chosen-container input').each(function() {
+            $(this).attr('id', $(this).closest('.js-form-type-select').find('label').attr('for') + '-input');
+            $(this).before('<label for="' + $(this).closest('.js-form-type-select').find('label').attr('for') + '-input">' + $(this).closest('.js-form-type-select').find('label').text() + '</label>');
+            $(this).prev('label').addClass('chosen-label');
+          });
         }
       }
 
