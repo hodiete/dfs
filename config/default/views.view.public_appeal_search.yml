@@ -270,8 +270,6 @@ display:
               empty_column: false
               responsive: ''
             summary:
-              sortable: false
-              default_sort_order: asc
               align: ''
               separator: ''
               empty_column: false
@@ -617,7 +615,7 @@ display:
           exclude: false
           alter:
             alter_text: true
-            text: '<div class="table-link-out"><a href="/node/{{ nid }}">›</a></div><div class="decision-text">{{ decision }}</div>'
+            text: '<div class="table-link-out"><a href="/node/{{ nid }}" aria-label="Go to {{ title }}">›</a></div><div class="decision-text">{{ decision }}</div>'
             make_link: false
             path: ''
             absolute: false
@@ -1797,7 +1795,18 @@ display:
           tokenize: false
           content: '<div class="table-footer">Is the that little their horn cache her can he a only people, the are the are, the ever requests is off thought. A up how their pleasures his to represent who than of schemes carefully why not written stash or as they caught no pass to of stands presented the some more small, sections. Or starting turn there bear not to assisted said be have from had unable to accompany for is worn every please with they consideration decision-making.</div>'
           plugin_id: text_custom
-      empty: {  }
+      empty:
+        area_text_custom:
+          id: area_text_custom
+          table: views
+          field: area_text_custom
+          relationship: none
+          group_type: group
+          admin_label: ''
+          empty: true
+          tokenize: false
+          content: "<table id=\"noResultsTable\" class=\"cols-12 responsive-enabled\">\r\n        <thead>\r\n      <tr>\r\n                                                  <th id=\"view-diagnosis-table-column\" class=\"views-field views-field-diagnosis\" scope=\"col\">Diagnosis</th>\r\n                                                  <th id=\"view-treatment-table-column\" class=\"views-field views-field-treatment\" scope=\"col\">Treatment</th>\r\n                                                  <th id=\"view-health-plan-table-column\" class=\"views-field views-field-health-plan\" scope=\"col\">Health Plan</th>\r\n                                                  <th id=\"view-decision-table-column\" class=\"views-field views-field-decision\" scope=\"col\">Decision</th>\r\n                                                  <th id=\"view-appeal-type-table-column\" class=\"views-field views-field-appeal-type\" scope=\"col\">Appeal Type</th>\r\n                                                  <th id=\"view-gender-table-column\" class=\"views-field views-field-gender\" scope=\"col\">Gender</th>\r\n                                                  <th id=\"view-age-range-table-column\" class=\"views-field views-field-age-range\" scope=\"col\">Age</th>\r\n                                                  <th id=\"view-decision-year-table-column\" class=\"views-field views-field-decision-year\" scope=\"col\">Decision Year</th>\r\n                                                  <th id=\"view-appeal-agent-table-column\" class=\"views-field views-field-appeal-agent\" scope=\"col\">Appeal Agent</th>\r\n                                                  <th id=\"view-case-number-table-column\" class=\"views-field views-field-case-number\" scope=\"col\">Case Number</th>\r\n                                                  <th id=\"view-summary-table-column\" class=\"views-field views-field-summary\" scope=\"col\">Summary</th>\r\n                                                  <th class=\"priority-low views-field views-field-references\" id=\"view-references-table-column\" scope=\"col\">References</th>\r\n              </tr>\r\n    </thead>\r\n    <tbody>\r\n      <tr>\r\n                    <td headers=\"view-diagnosis-table-column\" class=\"views-field views-field-diagnosis\" scope=\"col\">No matching records found</td>\r\n                                                  <td headers=\"view-treatment-table-column\" class=\"views-field views-field-treatment\" scope=\"col\">No matching records found</td>\r\n                                                  <td headers=\"view-health-plan-table-column\" class=\"views-field views-field-health-plan\" scope=\"col\">No matching records found</td>\r\n                                                  <td headers=\"view-decision-table-column\" class=\"views-field views-field-decision\" scope=\"col\">No matching records found</td>\r\n                                                  <td headers=\"view-appeal-type-table-column\" class=\"views-field views-field-appeal-type\" scope=\"col\">No matching records found</td>\r\n                                                  <td headers=\"view-gender-table-column\" class=\"views-field views-field-gender\" scope=\"col\">No matching records found</td>\r\n                                                  <td headers=\"view-age-range-table-column\" class=\"views-field views-field-age-range\" scope=\"col\">No matching records found</td>\r\n                                                  <td headers=\"view-decision-year-table-column\" class=\"views-field views-field-decision-year\" scope=\"col\">No matching records found</td>\r\n                                                  <td headers=\"view-appeal-agent-table-column\" class=\"views-field views-field-appeal-agent\" scope=\"col\">No matching records found</td>\r\n                                                  <td headers=\"view-case-number-table-column\" class=\"views-field views-field-case-number\" scope=\"col\">No matching records found</td>\r\n                                                  <td headers=\"view-summary-table-column\" class=\"views-field views-field-summary\" scope=\"col\">No matching records found</td>\r\n                                                  <td class=\"priority-low views-field views-field-references\" headers=\"view-references-table-column\" scope=\"col\">No matching records found</td>\r\n              </tr>\r\n      </tbody>\r\n</table>"
+          plugin_id: text_custom
       relationships: {  }
       arguments: {  }
       display_extenders: {  }
