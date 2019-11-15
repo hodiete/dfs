@@ -70,7 +70,8 @@
       {{ 'Skip to main content'|t }}
     </a>
     {#{{ page_top }} #}
-    <img src="/sites/default/files/dfs-print-logo.jpg" alt="logo" height="50>
+
+    <img src="/{{ base_path ~ directory }}/images/dfs-print-logo.jpg" alt="logo" height="50>
     {{ page }}
     {#{{ page_bottom }} #}
     <js-bottom-placeholder token="{{ placeholder_token|raw }}">
