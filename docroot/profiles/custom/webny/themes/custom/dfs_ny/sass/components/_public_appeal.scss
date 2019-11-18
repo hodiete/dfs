@@ -97,17 +97,45 @@
   }
 }
 
+.print-link {
+  text-align: right;
+  margin-right: 5.5%;
+  font-size: 16px;
+  margin-top: -37px;
+
+  a {
+    color: $bgcolor-dark-leftmenu;
+
+    &:hover {
+      color: $text-blue;
+      padding-left: 1px;
+    }
+  }
+
+  img {
+    margin-right: 10px;
+    width: 14px;
+  }
+}
+
 body.views-page-print-public-appeal {
   #webny-global-header {
     display: none;
   }
+
   .dfs-footer-container {
     display: none;
   }
+
   .back-to-search {
     display: none;
   }
-} 
+
+  .print-link {
+    display: none;
+  }
+}
+
 
 
 @media (max-width: 767px) {

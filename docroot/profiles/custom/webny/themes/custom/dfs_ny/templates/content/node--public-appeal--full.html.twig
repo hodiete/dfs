@@ -76,6 +76,9 @@
     <a class="link" href="/public-appeal/search">Back to Search Results</a>
   </div>
 </div>
+<div class="print-link">
+<a href="/public-appeal/print-page/{{ node.id }}"><img src="/{{ base_path ~ directory }}/icons/dfs/print-button.svg" alt="Print Page"/>Print</a>
+</div>
 
 <article{{ attributes.addClass('public-appeal-page') }}>
   <div class="public-appeal-content">
@@ -105,7 +108,7 @@
         <div{{ content_attributes }}>
           {{ content }}
         </div>
-        <a href=“/public-appeal/print-page/{{ node.id }}“>
+        
       </div>
     </div>
   </div>
