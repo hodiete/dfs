@@ -16,7 +16,6 @@ dependencies:
     - field.field.node.public_appeal.gender
     - field.field.node.public_appeal.health_plan
     - field.field.node.public_appeal.references
-    - field.field.node.public_appeal.summary
     - field.field.node.public_appeal.treatment
     - node.type.public_appeal
   module:
@@ -147,25 +146,6 @@ content:
   references:
     type: smart_trim
     weight: 2
-    region: content
-    label: above
-    settings:
-      trim_length: 1000
-      trim_type: chars
-      trim_suffix: ''
-      wrap_class: trimmed
-      more_text: More
-      more_class: more-link
-      wrap_output: false
-      more_link: false
-      trim_options:
-        text: false
-        trim_zero: false
-      summary_handler: full
-    third_party_settings: {  }
-  summary:
-    type: smart_trim
-    weight: 1
     region: content
     label: above
     settings:
