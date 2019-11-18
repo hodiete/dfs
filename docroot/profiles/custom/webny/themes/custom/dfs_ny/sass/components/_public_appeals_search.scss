@@ -230,15 +230,13 @@
     .chosen-container {
       width: 100%!important;
 
-      /*&:after {
-        content: '';
-        background: url("../icons/dfs/arrowdown-gray.svg") no-repeat center center transparent;
+      .chosen-label {
         position: absolute;
-        top: 0;
-        right: 0;
-        width: 12px;
-        height: 100%;
-      }*/
+        overflow: hidden;
+        clip: rect(0 0 0 0);
+        height: 1px; width: 1px;
+        margin: -1px; padding: 0; border: 0;
+      }
     }
 
     //for mobile, where chosen is disabled
@@ -295,13 +293,21 @@
       border-bottom: 1px solid #151515;
     }
 
-    .chosen-choices li.search-field input[type="text"] {
-      margin: 0;
-      padding: 5px 0;
-      width: 100%;
-      background: transparent;
-      color: #151515;
-      font-size: 14px;
+    .chosen-choices li.search-field {
+
+      input[type="text"] {
+        margin: 0;
+        padding: 5px 0;
+        width: 100%;
+        background: transparent;
+        color: #151515;
+        font-size: 14px;
+
+        &:focus {
+          border: none;
+          box-shadow: none;
+        }
+      }
     }
 
     li.search-choice {
@@ -380,6 +386,11 @@
       border: 1px solid #022629;
       border-radius: 3px;
       font-size: 14px;
+
+      &:focus {
+        border: 1px solid #5897fb;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+      }
     }
 
     input[type="submit"],
@@ -425,6 +436,14 @@
         position: relative;
         margin: 0;
 
+        .label-text {
+          position: absolute;
+          overflow: hidden;
+          clip: rect(0 0 0 0);
+          height: 1px; width: 1px;
+          margin: -1px; padding: 0; border: 0;
+        }
+
         input[type="search"] {
           margin: 0!important;
           padding-left: 30px!important;
@@ -434,6 +453,11 @@
           font-weight: 400;
           border: 1px solid #022629;
           border-radius: 32px;
+
+          &:focus {
+            border: 1px solid #5897fb;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+          }
         }
 
         &:after {
