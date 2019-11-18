@@ -25,10 +25,15 @@ dependencies:
     - taxonomy.vocabulary.health_plan
     - taxonomy.vocabulary.treatment
     - taxonomy.vocabulary.year
+  content:
+    - 'taxonomy_term:decision:301751f4-e9ac-48f2-beea-9f93e20e87f1'
+    - 'taxonomy_term:decision:6af2108c-5743-4752-bc4b-e23af1603bfa'
+    - 'taxonomy_term:decision:d694a1cf-c613-4074-acc7-c204607d6d7c'
   module:
     - better_exposed_filters
     - node
     - taxonomy
+    - text
     - user
 id: public_appeal_search
 label: 'Public Appeal Search'
@@ -1055,7 +1060,7 @@ display:
           exclude: false
           alter:
             alter_text: false
-            text: ''
+            text: '<table><tr>{{ summary__value|length > 50 ? summary__value|slice(0, 50) ~ ''...'' : summary__value}}</tr></table>'
             make_link: false
             path: ''
             absolute: false
@@ -1070,7 +1075,7 @@ display:
             suffix: ''
             target: ''
             nl2br: false
-            max_length: 0
+            max_length: 100
             word_boundary: true
             ellipsis: true
             more_link: false
@@ -1093,7 +1098,7 @@ display:
           empty_zero: false
           hide_alter_empty: true
           click_sort_column: value
-          type: basic_string
+          type: text_default
           settings: {  }
           group_column: value
           group_columns: {  }
@@ -1374,7 +1379,10 @@ display:
           group_type: group
           admin_label: ''
           operator: or
-          value: {  }
+          value:
+            734: 734
+            735: 735
+            736: 736
           group: 1
           exposed: true
           expose:

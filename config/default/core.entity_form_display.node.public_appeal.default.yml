@@ -20,6 +20,7 @@ dependencies:
     - node.type.public_appeal
   module:
     - path
+    - text
     - workbench_moderation
 id: node.public_appeal.default
 targetEntityType: node
@@ -56,7 +57,7 @@ content:
     type: string_textfield
     region: content
   caseid:
-    weight: 21
+    weight: 26
     settings:
       size: 20
       placeholder: ''
@@ -156,7 +157,7 @@ content:
       rows: 5
       placeholder: ''
     third_party_settings: {  }
-    type: string_textarea
+    type: text_textarea
     region: content
   title:
     type: string_textfield
