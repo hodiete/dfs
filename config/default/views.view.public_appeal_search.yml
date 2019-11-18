@@ -29,7 +29,6 @@ dependencies:
     - better_exposed_filters
     - node
     - taxonomy
-    - text
     - user
 id: public_appeal_search
 label: 'Public Appeal Search'
@@ -1056,7 +1055,7 @@ display:
           exclude: false
           alter:
             alter_text: false
-            text: '<table><tr>{{ summary__value|length > 50 ? summary__value|slice(0, 50) ~ ''...'' : summary__value}}</tr></table>'
+            text: ''
             make_link: false
             path: ''
             absolute: false
@@ -1071,7 +1070,7 @@ display:
             suffix: ''
             target: ''
             nl2br: false
-            max_length: 100
+            max_length: 0
             word_boundary: true
             ellipsis: true
             more_link: false
@@ -1094,7 +1093,7 @@ display:
           empty_zero: false
           hide_alter_empty: true
           click_sort_column: value
-          type: text_default
+          type: basic_string
           settings: {  }
           group_column: value
           group_columns: {  }

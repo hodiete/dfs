@@ -1,34 +1,21 @@
-uuid: b1c799f3-0aa5-40d4-b279-91ae481ca8fb
+uuid: 8e1839ad-7d1c-422a-9dd8-ad6a450b1307
 langcode: en
 status: true
 dependencies:
   config:
     - field.storage.node.summary
     - node.type.public_appeal
-  module:
-    - allowed_formats
-    - text
-third_party_settings:
-  allowed_formats:
-    full_html: full_html
-    plain_text: plain_text
-    basic_html: '0'
-    webny_enhanced_wysiwyg: '0'
-    webny_wysiwyg_frame_editor: '0'
-    restricted_html: '0'
-    rich_text: '0'
 id: node.public_appeal.summary
 field_name: summary
 entity_type: node
 bundle: public_appeal
 label: Summary
 description: ''
-required: false
+required: true
 translatable: false
 default_value:
   -
-    value: "<p>Summary</p>\r\n"
-    format: full_html
+    value: Summary
 default_value_callback: ''
 settings: {  }
-field_type: text_long
+field_type: string_long
