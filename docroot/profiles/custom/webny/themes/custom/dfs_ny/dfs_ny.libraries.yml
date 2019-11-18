@@ -114,25 +114,25 @@ datatables:
 
 datatables-select:
   js:
-    ../../../libraries/datatables/media/js/dataTables.select.min.js: {}
+    ../../../libraries/datatables.net-select/js/dataTables.select.min.js: {}
   dependencies:
     - dfs_ny/datatables
 
 jszip:
   js:
-    ../../../libraries/JSZip/jszip.min.js: {}
+    ../../../libraries/jszip/dist/jszip.min.js: {}
   dependencies:
     - core/jquery
 
 pdfmake:
   js:
-    ../../../libraries/pdfmake/pdfmake.min.js: {}
+    ../../../libraries/pdfmake/build/pdfmake.min.js: {}
   dependencies:
     - core/jquery
 
 datatables-buttons:
   js:
-    ../../../libraries/datatables/media/js/dataTables.buttons.min.js: {}
+    ../../../libraries/datatables.net-buttons/js/dataTables.buttons.min.js: {}
   dependencies:
     - dfs_ny/datatables
     - dfs_ny/pdfmake
@@ -140,37 +140,27 @@ datatables-buttons:
 
 datatables-buttons-cols:
   js:
-    ../../../libraries/datatables/media/js/buttons.colVis.min.js: {}
+    ../../../libraries/datatables.net-buttons/js/buttons.colVis.min.js: {}
   dependencies:
     - dfs_ny/datatables-buttons
 
 datatables-buttons-print:
   js:
-    ../../../libraries/datatables/media/js/buttons.print.min.js: {}
+    ../../../libraries/datatables.net-buttons/js/buttons.print.min.js: {}
   dependencies:
     - dfs_ny/datatables-buttons
 
 datatables-buttons-html5:
   js:
-    ../../../libraries/datatables/media/js/buttons.html5.min.js: {}
+    ../../../libraries/datatables.net-buttons/js/buttons.html5.min.js: {}
   dependencies:
     - dfs_ny/datatables-buttons
 
 datatables-buttons-flash:
   js:
-    ../../../libraries/datatables/media/js/buttons.flash.min.js: {}
+    ../../../libraries/datatables.net-buttons/js/buttons.flash.min.js: {}
   dependencies:
     - dfs_ny/datatables-buttons
-
-datatables-buttons-css:
-  css:
-    theme:
-      ../../../libraries/datatables/media/css/buttons.dataTables.min.css: {}
-
-datatables-select-css:
-  css:
-    theme:
-      ../../../libraries/datatables/media/css/select.dataTables.min.css: {}
 
 callouts:
   js:
@@ -185,15 +175,7 @@ table:
     - core/drupal
     - core/jquery
     - core/jquery.once
-    - dfs_ny/pdfmake
-    - dfs_ny/jszip
     - dfs_ny/datatables
-    - dfs_ny/datatables-buttons
-    - dfs_ny/datatables-buttons-cols
-    - dfs_ny/datatables-buttons-print
-    - dfs_ny/datatables-buttons-html5
-    - dfs_ny/datatables-buttons-flash
-    - dfs_ny/datatables-select
 
 webny-photo-gallery:
   version: 1.0
