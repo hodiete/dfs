@@ -70,10 +70,11 @@
       {{ 'Skip to main content'|t }}
     </a>
     {#{{ page_top }} #}
-
-    <img src="/{{ base_path ~ directory }}/images/dfs-print-logo.jpg" alt="logo" height="50>
+    <div class="print-logo">
+    <img src="/{{ base_path ~ directory }}/images/dfs-print-logo.jpg" alt="logo" height="50">
+    </div>
     {{ page }}
     {#{{ page_bottom }} #}
-    <js-bottom-placeholder token="{{ placeholder_token|raw }}">
+    {# <js-bottom-placeholder token="{{ placeholder_token|raw }}"> #}
   </body>
 </html>
