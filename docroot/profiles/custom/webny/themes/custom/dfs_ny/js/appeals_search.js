@@ -176,21 +176,21 @@
           });
         });
 
-        //add counter icons to decisions column
-        $('.table-decision-value').each(function() {
-
-          if ($(this).find('div').text().toLowerCase().indexOf('upheld') > -1) {
-            $(this).find('div').addClass('upheld');
-          }
-          else if ($(this).find('div').text().toLowerCase().indexOf('overturned in part') > -1) {
-            $(this).find('div').addClass('overturned-in-part');
-          }
-          else if ($(this).find('div').text().toLowerCase().indexOf('overturned') > -1) {
-            $(this).find('div').addClass('overturned');
-          }
-        });
-
         $('.public-appeals-data').DataTable().rows().every(function(rowIndex) {
+          //add counter icons to decisions column
+          console.log($(this.node()).find('.table-decision-value>div').text());
+          let decision = $(this.node()).find('.table-decision-value>div');
+          if ($(decision).text().toLowerCase().indexOf('upheld') > -1) {
+            $(decision).addClass('upheld');
+          }
+          else if ($(decision).text().toLowerCase().indexOf('overturned in part') > -1) {
+            $(decision).addClass('overturned-in-part');
+          }
+          else if ($(decision).text().toLowerCase().indexOf('overturned') > -1) {
+            $(decision).addClass('overturned');
+          }
+
+          //add accordions
           this.child(formatAccordionsRow(this.data(),rowIndex)).show();
 
           $(this.child()).find('.accordion-toggle').on('click', function(evt) {
