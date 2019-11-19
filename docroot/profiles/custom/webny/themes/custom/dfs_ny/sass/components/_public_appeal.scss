@@ -118,23 +118,6 @@
   }
 }
 
-body.views-page-print-public-appeal {
-  #webny-global-header {
-    display: none;
-  }
-
-  .dfs-footer-container {
-    display: none;
-  }
-
-  .back-to-search {
-    display: none;
-  }
-
-  .print-link {
-    display: none;
-  }
-}
 
 
 
@@ -158,4 +141,25 @@ body.views-page-print-public-appeal {
 
   }
 
+}
+
+/**  Print Public Appeal Page **/
+@media print {
+  body.views-page-print-public-appeal {
+    #webny-global-header {
+      display: none;
+    }
+
+    .dfs-footer-container {
+      display: none;
+    }
+
+    .back-to-search {
+      display: none;
+    }
+
+    .print-link {
+      display: none;
+    }
+  }
 }

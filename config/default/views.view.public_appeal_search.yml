@@ -25,10 +25,6 @@ dependencies:
     - taxonomy.vocabulary.health_plan
     - taxonomy.vocabulary.treatment
     - taxonomy.vocabulary.year
-  content:
-    - 'taxonomy_term:decision:301751f4-e9ac-48f2-beea-9f93e20e87f1'
-    - 'taxonomy_term:decision:6af2108c-5743-4752-bc4b-e23af1603bfa'
-    - 'taxonomy_term:decision:d694a1cf-c613-4074-acc7-c204607d6d7c'
   module:
     - better_exposed_filters
     - node
@@ -1379,10 +1375,7 @@ display:
           group_type: group
           admin_label: ''
           operator: or
-          value:
-            734: 734
-            735: 735
-            736: 736
+          value: {  }
           group: 1
           exposed: true
           expose:
@@ -1426,7 +1419,7 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
-          reduce_duplicates: true
+          reduce_duplicates: false
           type: shs
           limit: true
           vid: decision
