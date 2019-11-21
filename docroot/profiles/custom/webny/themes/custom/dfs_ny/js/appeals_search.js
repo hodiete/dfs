@@ -178,7 +178,6 @@
 
         $('.public-appeals-data').DataTable().rows().every(function(rowIndex) {
           //add counter icons to decisions column
-          console.log($(this.node()).find('.table-decision-value>div').text());
           let decision = $(this.node()).find('.table-decision-value>div');
           if ($(decision).text().toLowerCase().indexOf('upheld') > -1) {
             $(decision).addClass('upheld');

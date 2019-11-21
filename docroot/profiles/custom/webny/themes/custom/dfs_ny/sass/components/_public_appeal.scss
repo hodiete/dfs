@@ -20,6 +20,7 @@
 
 .public-appeal-content {
   padding: 63px;
+  padding-top: 30px;
 }
 
 .public-appeal-right {
@@ -101,7 +102,7 @@
   text-align: right;
   margin-right: 5.5%;
   font-size: 16px;
-  margin-top: -37px;
+  // margin-top: -37px;
 
   a {
     color: $bgcolor-dark-leftmenu;
@@ -118,22 +119,8 @@
   }
 }
 
-body.views-page-print-public-appeal {
-  #webny-global-header {
-    display: none;
-  }
-
-  .dfs-footer-container {
-    display: none;
-  }
-
-  .back-to-search {
-    display: none;
-  }
-
-  .print-link {
-    display: none;
-  }
+.page-body .print-link {
+  text-align: left;
 }
 
 
@@ -159,3 +146,115 @@ body.views-page-print-public-appeal {
   }
 
 }
+
+/**  Print Public Appeal Page **/
+
+body.views-page-print-public-appeal {
+  .views-element-container {
+    margin-left: 0;
+  }
+
+  #webny-global-header {
+    display: none;
+  }
+
+  .dfs-footer-container {
+    display: none;
+  }
+
+  .back-to-search {
+    display: none;
+  }
+
+  .print-link {
+    display: none;
+  }
+
+  .print-logo {
+    display: inline-block;
+    text-align: center;
+    width: 100%;
+
+    img {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+
+  .public-appeal-right {
+    float: none;
+    max-width: 100%;
+    margin-left: 0;
+    margin-bottom: 50px;
+    min-height: 140px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 145px;
+
+    .field-item {
+      // flex: 1 0 46%;
+      display: inline-block;
+    }
+  }
+
+
+  .public-appeal-content {
+    padding: 0;
+
+    h2 {
+      display: none;
+    }
+
+    .summary-references .label {
+      font-size: 16px;
+    }
+
+    .summary-references .value {
+      font-size: 12px;
+      line-height: 17px;
+      max-width: 100%;
+    }
+
+    .summary-references .field-item:nth-of-type(2) .value {
+      font-size: 10px;
+    }
+
+    .public-appeal-right .label,
+    .public-appeal-right .value,
+    .public-appeal-right .multiple-values {
+      display: inline;
+      font-size: 11px;
+    }
+
+
+  }
+}
+
+/*
+@media print {
+  body.views-page-print-public-appeal {
+
+    .public-appeal-content {
+      .summary-references .label {
+        font-size: 16px;
+      }
+
+      .summary-references .value {
+        font-size: 12px;
+      }
+
+      .summary-references .field-item:nth-of-type(2) .value {
+        font-size: 10px;
+      }
+
+      .public-appeal-right .label,
+      .public-appeal-right .value,
+      .public-appeal-right .multiple-values {
+        font-size: 11px;
+      }
+    }
+  }
+}
+*/

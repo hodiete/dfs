@@ -9,22 +9,22 @@
     border: 0 !important;
 }
 
-// zeroing out elements 
-body, 
+// zeroing out elements
+body,
 .layout-container,
 .news-body-in,
 .press-teaser,
 .press-body,
-.hero-inner, 
-.webny-news, 
+.hero-inner,
+.webny-news,
 .hero-no-image,
-.hero-news, 
+.hero-news,
 .pane-page-logo,
 .press-docs,
 .press-contact-info, //have contact info in news print as column
 .results,// results page
 .results-head,
-.results-list 
+.results-list
  {
     background: 0 !important;
     height: auto !important;
@@ -57,10 +57,10 @@ a:link, a:visited {
 }
 
 .layout-container {
-	a:link:after, 
-    a:visited:after { 
-	content: " (" attr(href) ") "; 
-	font-size: 90%; 
+	a:link:after,
+    a:visited:after {
+	content: " (" attr(href) ") ";
+	font-size: 90%;
 	}
  	/*a[href^="/"]:after {
 	content: " (http://www.alistapart.com" attr(href) ") ";
@@ -90,7 +90,7 @@ a:link, a:visited {
 //navigation elements
 .webny-global-header {
 	background-color: $color-mono-white;
-	height: 50px; 
+	height: 50px;
 		h1 {
 			display: inline-block !important;
 			color: $color-mono-black;
@@ -134,7 +134,7 @@ a:link, a:visited {
 			background:none !important;
 		  }
 	}
-	.hero-published-date, 
+	.hero-published-date,
 	.hero-location {
 		color: $color-mono-black;
 	}
@@ -149,9 +149,9 @@ a:link, a:visited {
 // have documents attached to news (ano other pages?) only display text information
 .document-wrapper {
 	border: none !important;
-	.icon-document { // allows the document icon to still display in print	
+	.icon-document { // allows the document icon to still display in print
 		display: inline-block;
-		padding: 0; 
+		padding: 0;
 		margin: 0;
 	}
 	.download {
@@ -161,8 +161,8 @@ a:link, a:visited {
 }
 
 // print margins for notes
-//@page, // doesn't seem to work, so using body as backup  
-body 
+//@page, // doesn't seem to work, so using body as backup
+body
  {
 	//margin: 100px !important;
 	margin: 1cm 2cm !important;
