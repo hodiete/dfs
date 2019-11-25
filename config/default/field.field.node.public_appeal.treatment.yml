@@ -1,0 +1,29 @@
+uuid: bb99d995-cc63-486a-bc07-903c4db8af60
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.treatment
+    - node.type.public_appeal
+    - taxonomy.vocabulary.treatment
+id: node.public_appeal.treatment
+field_name: treatment
+entity_type: node
+bundle: public_appeal
+label: Treatment
+description: 'Reference to Taxonomy:  Public Appeal: Treatment'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      treatment: treatment
+    sort:
+      field: name
+      direction: asc
+    auto_create: true
+    auto_create_bundle: ''
+field_type: entity_reference

@@ -212,3 +212,18 @@ function dfs_ny_preprocess_page(&$variables) {
   //   $variables['agencyname'] = 'Department of Financial Services';
   // }
 }
+
+/**
+* Implements hook_theme_preprocess_fieldset().
+*/
+function dfs_ny_preprocess_fieldset(&$variables) {
+  if ($variables['attributes']['id'] == 'edit-decision-target-id--wrapper') {
+    $variables['attributes']['id'] = 'fieldset-edit-decision-target-id--wrapper';
+  }
+  if ($variables['attributes']['id'] == 'edit-appeal-type-target-id--wrapper') {
+    $variables['attributes']['id'] = 'fieldset-edit-appeal-type-target-id--wrapper';
+  }
+  if ($variables['attributes']['id'] == 'edit-appeal-agent-target-id--wrapper') {
+    $variables['attributes']['id'] = 'fieldset-edit-appeal-agent-target-id--wrapper';
+  }
+}

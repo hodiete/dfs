@@ -1,0 +1,29 @@
+uuid: 596b8f2a-7a60-49d4-b897-220f6dc02ea3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.diagnosis
+    - node.type.public_appeal
+    - taxonomy.vocabulary.diagnosis
+id: node.public_appeal.diagnosis
+field_name: diagnosis
+entity_type: node
+bundle: public_appeal
+label: Diagnosis
+description: 'Reference to  taxonomy:  Public Appeal: Diagnosis'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      diagnosis: diagnosis
+    sort:
+      field: name
+      direction: asc
+    auto_create: true
+    auto_create_bundle: ''
+field_type: entity_reference

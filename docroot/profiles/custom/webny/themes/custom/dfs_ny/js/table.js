@@ -10,14 +10,16 @@
 
   Drupal.behaviors.table = {
     attach: function (context, settings) {
-      $('table').once().dataTable({
-        order: [],
-        paging: false,
-        pageLength: 25,
-        pagingType: 'simple_numbers',
-        lengthChange: false,
-        info: false
-      });
+      if (!$('.views-page-public-appeal-search').length) {
+        $('table').once().dataTable({
+          order: [],
+          paging: false,
+          pageLength: 25,
+          pagingType: 'simple_numbers',
+          lengthChange: false,
+          info: false
+        });
+      }
     }
   };
 })(jQuery, Drupal, this);

@@ -1,0 +1,22 @@
+uuid: 2af3336c-dffd-4834-9025-bb43937e5263
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: public_appeal_path
+label: 'Public Appeal Path'
+type: 'canonical_entities:node'
+pattern: 'public-appeals/[node:title]'
+selection_criteria:
+  491006b9-39cc-4bf5-b38b-94291b67d5cf:
+    id: node_type
+    bundles:
+      public_appeal: public_appeal
+    negate: false
+    context_mapping:
+      node: node
+    uuid: 491006b9-39cc-4bf5-b38b-94291b67d5cf
+selection_logic: and
+weight: -5
+relationships: {  }
