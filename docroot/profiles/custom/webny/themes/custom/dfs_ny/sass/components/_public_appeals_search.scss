@@ -431,9 +431,9 @@
       margin-right: 75px;
       max-width: 915px;
 
-      /* 
-      * Override the scss !important in 
-      * profiles/custom/webny/themes/custom/base/_table.scss 
+      /*
+      * Override the scss !important in
+      * profiles/custom/webny/themes/custom/base/_table.scss
       */
       .dataTables_filter {
         width: 100% !important;
@@ -467,6 +467,12 @@
             &:focus {
               border: 1px solid #5897fb;
               box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+            }
+
+            &::-ms-clear {
+              display: none;
+              width: 0;
+              height: 0;
             }
           }
 
@@ -669,7 +675,8 @@
         }
       }
 
-      .dt-buttons {
+      .dt-buttons,
+      .expand-wrapper {
         position: relative;
         margin-right: 8px;
         padding-right: 10px;
@@ -692,7 +699,7 @@
       }
     }
 
-    /* pager */ 
+    /* pager */
     .pagination-holder {
       margin-top: 15px;
       margin-bottom: 65px;
@@ -702,7 +709,7 @@
 
     .dataTables_wrapper {
       width: 100%;
-    } 
+    }
 
     .dataTables_wrapper .dataTables_paginate {
       display: inline-block;
@@ -768,7 +775,8 @@
         }
       }
 
-      .table-top .dt-buttons {
+      .table-top .dt-buttons,
+      .table-top .expand-wrapper {
         margin-right: 0;
         padding-right: 0;
 
@@ -781,7 +789,8 @@
         flex-direction: column;
       }
 
-      .expand-long-text {
+      .expand-long-text,
+      .collapse-long-text {
         display: none;
       }
     }
@@ -921,9 +930,9 @@
     .public-appeal-search-view .search-filter {
       max-width: calc(100% - 50px);
 
-      /* 
-      * Override the scss !important in 
-      * profiles/custom/webny/themes/custom/base/_table.scss 
+      /*
+      * Override the scss !important in
+      * profiles/custom/webny/themes/custom/base/_table.scss
       */
       .dataTables_filter label input[type="search"] {
         padding-left: 22px !important;

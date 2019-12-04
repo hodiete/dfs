@@ -18,6 +18,9 @@
         let outputTable = '<table><thead><th>Summary and References</th></thead><tbody><tr><td>';
         let summary = $(data[10]);
         let refs = $(data[11]);
+        //data output for CSV export
+        let sumData = '';
+        let refData = '';
 
         //summary and references should always be the same length
         outputTable += '<div class="accordion"><a class="accordion-toggle" aria-expanded="false" aria-controls="sumAccordion-';
@@ -30,6 +33,12 @@
         outputTable += rowIndex;
         outputTable += '">';
         $(summary).find('li').each(function(i) {
+          sumData += '<h3>Summary ';
+          sumData += (i + 1);
+          sumData += ': </h3><div class="summary-text">';
+          sumData += $(this).text();
+          sumData += '</div>'
+
           outputTable += '<h3>Summary ';
           outputTable += (i + 1);
           outputTable += '</h3><div class="summary-text">';
@@ -48,6 +57,12 @@
         outputTable += rowIndex;
         outputTable += '">';
         $(refs).find('li').each(function(i) {
+          refData += '<h3>References ';
+          refData += (i + 1);
+          refData += ': </h3><div class="refs-text">';
+          refData += $(this).text();
+          refData += '</div>'
+
           outputTable += '<h3>References ';
           outputTable += (i + 1);
           outputTable += '</h3><div class="refs-text">';
@@ -57,6 +72,10 @@
         outputTable += '</div></div>';
 
         outputTable += '</div></tr></tbody></table>';
+
+        data[10] = sumData;
+        data[11] = refData;
+
         return outputTable;
       }
 
@@ -176,6 +195,17 @@
           });
         });
 
+        //add collapse all link and functionality
+        $('.collapse-wrapper').append('<a class="collapse-trigger" href="#">Collapse All<span class="collapse-long-text"> Summaries &amp; References</span></a>');
+        $('.collapse-wrapper').on('click',function(evt) {
+          $('.public-appeals-data').DataTable().rows().every(function() {
+            evt.preventDefault();
+            $(this.child()).find('.accordion-toggle').attr('aria-expanded','false');
+            $(this.child()).find('.accordion-toggle').removeClass('accordion-open');
+            $(this.child()).find('.accordion-content').attr('hidden','hidden');
+          });
+        });
+
         $('.public-appeals-data').DataTable().rows().every(function(rowIndex) {
           //add counter icons to decisions column
           let decision = $(this.node()).find('.table-decision-value>div');
@@ -221,7 +251,7 @@
           stateSave: true,
           retrieve: true,
           processing: true,
-          dom: '<"search-filter"f<"tooltip-container"><"refs-include">><"mobile-open"><"counters"><"table-top"<"table-top-left"li><"table-top-right"B<"expand-wrapper">>>rtB<"pagination-holder"p>',
+          dom: '<"search-filter"f<"tooltip-container"><"refs-include">><"mobile-open"><"counters"><"table-top"<"table-top-left"li><"table-top-right"B<"expand-wrapper"><"collapse-wrapper">>>rtB<"pagination-holder"p>',
           columnDefs: [
             { targets: [11], visible: false, searchable: refsSelected },
             { targets: [10], visible: false, searchable: true }
