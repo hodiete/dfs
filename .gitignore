@@ -46,9 +46,6 @@ console
 # igore the styles.css andnydfs-sub.css which are generated from gulp	docroot/themes/custom/*/styleguide
 docroot/profiles/custom/webny/themes/custom/dfs_ny/css/*.css
 
-docroot/profiles/custom/webny/themes/custom/dfs_ny/css/styles.css
-docroot/profiles/custom/webny/themes/custom/dfs_ny/css/nydfs-sub.css
-
 docroot/profiles/custom/webny/themes/custom/dfs_ny/css/administration.css
 docroot/profiles/custom/webny/themes/custom/dfs_ny/css/business.css
 docroot/profiles/custom/webny/themes/custom/dfs_ny/css/custom-ig.css
@@ -189,9 +186,12 @@ docroot/profiles/custom/webny/libraries/*/
 docroot/sites/default/settings/local.drush.yml
 
 /db
-# Gung: these files are need on my local
+# these files are need on my local
 drush/drushrc.php
 drush/site-aliases/aliases.drushrc.php
 drush/site-aliases/example.acsf.aliases.drushrc.php
 drush/site-aliases/example.local.aliases.drushrc.php
 drush/site-aliases/nydfs.aliases.drushrc.php
+
+# ignore configuration of Public Appeal Sync module
+config/default/public_appeal_sync.*.yml
