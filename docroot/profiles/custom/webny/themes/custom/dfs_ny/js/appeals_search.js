@@ -3,84 +3,16 @@
  * card paragraph javascript file.
  */
 
-(function ($, Drupal, window, document) {
+(function ($, Drupal, window, document, debounce) {
 
   'use strict';
 
   Drupal.behaviors.appealsSearch = {
     attach: function (context, settings) {
-      console.log('running stuff');
+      console.log('stuff');
 
-      let searchTable;
       let refsSelected = false;
       let numRowsDT = 0;
-
-      //output child row for summary and references accordions
-      function formatAccordionsRow(data, rowIndex) {
-        // `data` is the original data object for the row
-        let outputTable = '<table><thead><th>Summary and References</th></thead><tbody><tr><td>';
-        let summary = $(data[10]);
-        let refs = $(data[11]);
-        //data output for CSV export
-        let sumData = '';
-        let refData = '';
-
-        //summary and references should always be the same length
-        outputTable += '<div class="accordion"><a class="accordion-toggle" aria-expanded="false" aria-controls="sumAccordion-';
-        outputTable += rowIndex
-        outputTable += '" id="sumAccordionTitle-';
-        outputTable += rowIndex;
-        outputTable += '" href="#">Summary</a><div hidden class="accordion-content" role="region" id="sumAccordion-';
-        outputTable += rowIndex;
-        outputTable += '" aria-labelledby="sumAccordionTitle-';
-        outputTable += rowIndex;
-        outputTable += '">';
-        $(summary).find('li').each(function(i) {
-          sumData += '<h3>Summary ';
-          sumData += (i + 1);
-          sumData += ': </h3><div class="summary-text">';
-          sumData += $(this).text();
-          sumData += '</div>'
-
-          outputTable += '<h3>Summary ';
-          outputTable += (i + 1);
-          outputTable += '</h3><div class="summary-text">';
-          outputTable += $(this).text();
-          outputTable += '</div>'
-        });
-        outputTable += '</div></div>';
-
-        outputTable += '<div class="accordion refsAccordionContainer"><a class="accordion-toggle" aria-expanded="false" aria-controls="refsAccordion-';
-        outputTable += rowIndex
-        outputTable += '" id="refsAccordionTitle-';
-        outputTable += rowIndex;
-        outputTable += '" href="#">References</a><div hidden class="accordion-content" role="region" id="refsAccordion-';
-        outputTable += rowIndex;
-        outputTable += '" aria-labelledby="refsAccordionTitle-';
-        outputTable += rowIndex;
-        outputTable += '">';
-        $(refs).find('li').each(function(i) {
-          refData += '<h3>References ';
-          refData += (i + 1);
-          refData += ': </h3><div class="refs-text">';
-          refData += $(this).text();
-          refData += '</div>'
-
-          outputTable += '<h3>References ';
-          outputTable += (i + 1);
-          outputTable += '</h3><div class="refs-text">';
-          outputTable += $(this).text();
-          outputTable += '</div>'
-        });
-        outputTable += '</div></div>';
-
-        outputTable += '</div></tr></tbody></table>';
-
-        data[10] = sumData;
-        data[11] = refData;
-
-        return outputTable;
-      }
 
       //output sum of decision column to counters
       function setCounterValues() {
@@ -109,45 +41,8 @@
 
       }
 
-      //run setup on each row
-      function rowSetup(row,rowIndex) {
-        //add counter icons to decisions column
-        let decision = $(row.node()).find('.table-decision-value>div');
-        if ($(decision).text().toLowerCase().indexOf('upheld') > -1) {
-          $(decision).addClass('upheld');
-        }
-        else if ($(decision).text().toLowerCase().indexOf('overturned in part') > -1) {
-          $(decision).addClass('overturned-in-part');
-        }
-        else if ($(decision).text().toLowerCase().indexOf('overturned') > -1) {
-          $(decision).addClass('overturned');
-        }
-
-        //add accordions
-        row.child(formatAccordionsRow(row.data(),rowIndex)).show();
-
-        $(row.child()).addClass('accordion-row');
-
-        $(row.child()).find('.accordion-toggle').on('click', function(evt) {
-          evt.preventDefault();
-          console.log($(row));
-          console.log($(row).next('.accordion-content'));
-          if ($(this).next('.accordion-content')[0].hasAttribute("hidden")) {
-            $(this).attr('aria-expanded','true');
-            $(this).addClass('accordion-open');
-            $(this).next('.accordion-content').removeAttr('hidden');
-          }
-          else {
-            $(this).attr('aria-expanded','false');
-            $(this).removeClass('accordion-open');
-            $(this).next('.accordion-content').attr('hidden','hidden');
-          }
-        });
-      }
-
       //run setup tasks on datatable init
       function tableSetup() {
-        console.log('table setup called');
 
         $('.public-appeals-data').DataTable().page.len(-1).draw();
 
@@ -255,13 +150,8 @@
 
       //initialize datatable
       function buildTable() {
-        console.log('build table called');
-        /*if (typeof searchTable != 'undefined' && searchTable.length) {
-          searchTable.DataTable().destroy();
-        }*/
-        //$('.public-appeal-search-view table').addClass('public-appeals-data');
 
-        searchTable = $('.public-appeal-search-view table').addClass('public-appeals-data').dataTable({
+        $('.public-appeal-search-view table').addClass('public-appeals-data').dataTable({
           order: [[9, 'asc']],
           ordering: true,
           paging: true,
@@ -301,7 +191,6 @@
             }
           }
         });
-        //searchTable.draw();
       }
 
       //show or hide references section, include in search if shown
@@ -321,93 +210,51 @@
         $('.public-appeals-data').DataTable().rows().invalidate().draw();
       }
 
-      //get newly added rows
-      function getRows(num) {
-        //console.log('num: ' + num);
-        let rowsArray = [];
-
-        rowsArray = $('.public-appeals-data>tbody>tr').slice(num);
-        //console.log(rowsArray);
-        //console.log('how many new rows: ' + rowsArray.length);
-
-        return rowsArray;
-      }
-
-      //add news rows to datatable
-      function addRows(rows,rowIndex,numRows) {
-        $('.public-appeals-data').DataTable().rows.add(rows).draw();
-
-        /*$('.public-appeals-data').DataTable().rows().every(function(rowIndex) {
-          rowSetup(this,rowIndex);
-        });*/
-        for (var i = rowIndex + 1; i < numRows + rowIndex; i++) {
-          //console.log(i);
-          rowSetup($('.public-appeals-data').DataTable().row(i),i);
-        }
-        //rowSetup(this,rowIndex);
-      }
-
-      //check if there are new rows not yet in datatable, if so call getRows
-      function checkRows() {
-        let numRowsTotal = 0;
-        let numRowsDT = 0;
-        if ($.fn.DataTable.isDataTable('.public-appeals-data')) {
-          numRowsTotal = $('.public-appeals-data>tbody').children('tr').length - $('.public-appeals-data tbody').children('.accordion-row').length;
-          //console.log('datatable set');
-          numRowsDT = $('.public-appeals-data').DataTable().rows().count();
-          //console.log('numRowsTotal: ' + numRowsTotal);
-          //console.log('numRowsDT: ' + numRowsDT);
-          if (numRowsTotal > numRowsDT) {
-            //console.log('new rows!');
-            let rows = getRows(numRowsDT - numRowsTotal);
-            addRows(rows,numRowsDT,numRowsTotal - numRowsDT);
-          }
+      $('.pager', context).find('[rel=next]').once().on('click', Drupal.debounce(function(evt) {
+        console.log('clicked');
+        if ($('.pager').length) {
+          $('.pager').find('[rel=next]').click();
         }
         else {
-          numRowsTotal = $('.public-appeal-search-view>table>tbody').children('tr').length - $('.public-appeal-search-view table tbody').children('.accordion-row').length;
-          //buildTable();
+          $('.public-appeals-data').DataTable().page.len(10).draw();
+          $('ajax-progress').hide();
+          console.log('complete');
+          //clearInterval(loadInterval);
         }
-      }
+      },2000));
 
       checkRows();
+      /*$('.pager', context).once().each(function() {
+        console.log('how often do I run?');
+        if ($('.pager').length) {
+          $('.pager').find('[rel=next]').click();
+        }
+        else {
+          $('.public-appeals-data').DataTable().page.len(10).draw();
+          $('ajax-progress').hide();
+          console.log('complete');
+          //clearInterval(loadInterval);
+        }
+      });*/
 
-      //TODO: build table once, add difference in rows on each click or rebuild table every click
-      //buildTable();
-      //$('.public-appeal-search-view table', context).once('appealsSearch').each(function() {
-        //checkRows();
+      //TODO: get load-button-clicker to fire once and only once when filters are applied and when page is first loaded
+
       if (!$.fn.DataTable.isDataTable('.public-appeals-data')) {
+        console.log('this should be called once');
         buildTable();
-        console.log('starting pager clicks');
-        let loadInterval = setInterval(function() {
+        //let loadInterval = setInterval(function() {
           checkRows();
-          console.log('click pager');
-          if ($('.pager').length) {
-            $('.pager').find('[rel=next]').click();
-            //buildTable();
+          /*if ($('.pager').length) {
+            //$('.pager').find('[rel=next]').click();
           }
           else {
-            //buildTable();
-            console.log('complete');
             $('.public-appeals-data').DataTable().page.len(10).draw();
             $('ajax-progress').hide();
-            clearInterval(loadInterval);
-          }
-        }, 5000);
+            console.log('complete');
+            //clearInterval(loadInterval);
+          }*/
+        //}, 5000);
       }
-        //console.log('trying to build table');
-        //$('.pager').find('[rel=next]').click();
-        //buildTable();
-      //});
-
-      /*if ($('.pager').length) {
-        $('.pager').find('[rel=next]').click();
-        console.log($('.public-appeal-search-view table tr').length);
-      }
-      else {
-        //$('.public-appeal-search-view table', context).once('appealsSearch').each(function() {
-          buildTable();
-        //});
-      }*/
 
       $('.mobile-close').once('appealsSearch').on('click',function(evt) {
         evt.preventDefault();
@@ -419,29 +266,200 @@
         });
       });
 
-      //override placeholder text on external filters
-      function setFilterPlaceholders() {
-        $('.layout-sidebar-first select').each(function() {
-          //add placeholders
-          $(this).attr('data-placeholder','Select ' + $(this).prev('label').text());
-        });
-
-        if ($('.chosen-container').length > 0 && $('.chosen-container label').length < 1) {
-          //add labels to Chosen module input fields
-          $('.chosen-container input').each(function() {
-            $(this).attr('id', $(this).closest('.js-form-type-select').find('label').attr('for') + '-input');
-            $(this).before('<label for="' + $(this).closest('.js-form-type-select').find('label').attr('for') + '-input">' + $(this).closest('.js-form-type-select').find('label').text() + '</label>');
-            $(this).prev('label').addClass('chosen-label');
-          });
-        }
-      }
-
-      setFilterPlaceholders();
-      /*$('#edit-submit-public-appeal-search').click(function() {
-        clearInterval(loadInterval);
-      });*/
-
     }
   };
 
-})(jQuery, Drupal, this);
+
+
+  //output child row for summary and references accordions
+  function formatAccordionsRow(data, rowIndex) {
+    // `data` is the original data object for the row
+    let outputTable = '<table><thead><th>Summary and References</th></thead><tbody><tr><td>';
+    let summary = $(data[10]);
+    let refs = $(data[11]);
+    //data output for CSV export
+    let sumData = '';
+    let refData = '';
+
+    //summary and references should always be the same length
+    outputTable += '<div class="accordion"><a class="accordion-toggle" aria-expanded="false" aria-controls="sumAccordion-';
+    outputTable += rowIndex
+    outputTable += '" id="sumAccordionTitle-';
+    outputTable += rowIndex;
+    outputTable += '" href="#">Summary</a><div hidden class="accordion-content" role="region" id="sumAccordion-';
+    outputTable += rowIndex;
+    outputTable += '" aria-labelledby="sumAccordionTitle-';
+    outputTable += rowIndex;
+    outputTable += '">';
+    $(summary).find('li').each(function(i) {
+      sumData += '<h3>Summary ';
+      sumData += (i + 1);
+      sumData += ': </h3><div class="summary-text">';
+      sumData += $(this).text();
+      sumData += '</div>'
+
+      outputTable += '<h3>Summary ';
+      outputTable += (i + 1);
+      outputTable += '</h3><div class="summary-text">';
+      outputTable += $(this).text();
+      outputTable += '</div>'
+    });
+    outputTable += '</div></div>';
+
+    outputTable += '<div class="accordion refsAccordionContainer"><a class="accordion-toggle" aria-expanded="false" aria-controls="refsAccordion-';
+    outputTable += rowIndex
+    outputTable += '" id="refsAccordionTitle-';
+    outputTable += rowIndex;
+    outputTable += '" href="#">References</a><div hidden class="accordion-content" role="region" id="refsAccordion-';
+    outputTable += rowIndex;
+    outputTable += '" aria-labelledby="refsAccordionTitle-';
+    outputTable += rowIndex;
+    outputTable += '">';
+    $(refs).find('li').each(function(i) {
+      refData += '<h3>References ';
+      refData += (i + 1);
+      refData += ': </h3><div class="refs-text">';
+      refData += $(this).text();
+      refData += '</div>'
+
+      outputTable += '<h3>References ';
+      outputTable += (i + 1);
+      outputTable += '</h3><div class="refs-text">';
+      outputTable += $(this).text();
+      outputTable += '</div>'
+    });
+    outputTable += '</div></div>';
+
+    outputTable += '</div></tr></tbody></table>';
+
+    data[10] = sumData;
+    data[11] = refData;
+
+    return outputTable;
+  }
+
+  //run setup on each row
+  function rowSetup(row,rowIndex) {
+    //add counter icons to decisions column
+    let decision = $(row.node()).find('.table-decision-value>div');
+    if ($(decision).text().toLowerCase().indexOf('upheld') > -1) {
+      $(decision).addClass('upheld');
+    }
+    else if ($(decision).text().toLowerCase().indexOf('overturned in part') > -1) {
+      $(decision).addClass('overturned-in-part');
+    }
+    else if ($(decision).text().toLowerCase().indexOf('overturned') > -1) {
+      $(decision).addClass('overturned');
+    }
+
+    //add accordions
+    row.child(formatAccordionsRow(row.data(),rowIndex)).show();
+
+    $(row.child()).addClass('accordion-row');
+
+    $(row.child()).find('.accordion-toggle').on('click', function(evt) {
+      evt.preventDefault();
+      if ($(this).next('.accordion-content')[0].hasAttribute("hidden")) {
+        $(this).attr('aria-expanded','true');
+        $(this).addClass('accordion-open');
+        $(this).next('.accordion-content').removeAttr('hidden');
+      }
+      else {
+        $(this).attr('aria-expanded','false');
+        $(this).removeClass('accordion-open');
+        $(this).next('.accordion-content').attr('hidden','hidden');
+      }
+    });
+  }
+
+  //get newly added rows
+  function getRows(num) {
+    let rowsArray = [];
+
+    rowsArray = $('.public-appeals-data>tbody>tr').slice(num);
+
+    return rowsArray;
+  }
+
+  //add news rows to datatable
+  function addRows(rows,rowIndex,numRows) {
+    $('.public-appeals-data').DataTable().rows.add(rows).draw();
+    for (var i = rowIndex + 1; i < numRows + rowIndex; i++) {
+      rowSetup($('.public-appeals-data').DataTable().row(i),i);
+    }
+  }
+
+  //check if there are new rows not yet in datatable, if so call getRows
+  function checkRows() {
+    console.log('running checkrows');
+    let numRowsTotal = 0;
+    let numRowsDT = 0;
+    if ($.fn.DataTable.isDataTable('.public-appeals-data')) {
+      numRowsTotal = $('.public-appeals-data>tbody').children('tr').length - $('.public-appeals-data tbody').children('.accordion-row').length;
+      numRowsDT = $('.public-appeals-data').DataTable().rows().count();
+      if (numRowsTotal > numRowsDT) {
+        let rows = getRows(numRowsDT - numRowsTotal);
+        addRows(rows,numRowsDT,numRowsTotal - numRowsDT);
+      }
+    }
+    else {
+      numRowsTotal = $('.public-appeal-search-view>table>tbody').children('tr').length - $('.public-appeal-search-view table tbody').children('.accordion-row').length;
+    }
+  }
+
+  /*let loadInterval;
+
+  function startLoader() {
+    console.log('starting loader');
+    if (typeof loadInterval != 'undefined' && loadInterval != null) {
+      console.log('clearing interval');
+      clearInterval(loadInterval);
+    }
+    loadInterval = setInterval(function() {
+      console.log('starting interval');
+      checkRows();
+      if ($('.pager').length) {
+        //$('.pager').find('[rel=next]').click();
+      }
+      else {
+        $('.public-appeals-data').DataTable().page.len(10).draw();
+        $('ajax-progress').hide();
+        console.log('complete');
+        clearInterval(loadInterval);
+      }
+    },3000);
+  }*/
+
+  /*$('.pager').ready(function() {
+    startLoader();
+  });*/
+
+  /*$('#edit-submit-public-appeal-search').click(function() {
+    console.log('clicked apply');
+    startLoader();
+  });*/
+
+
+  //override placeholder text on external filters
+  function setFilterPlaceholders() {
+    console.log('setting filters');
+    $('#block-exposedformpublic-appeal-searchpublic-appeals-search-page select').each(function() {
+      //add placeholders
+      $(this).attr('data-placeholder','Select ' + $(this).prev('label').text());
+    });
+
+    if ($('.chosen-container').length > 0 && $('.chosen-container label').length < 1) {
+      //add labels to Chosen module input fields
+      $('.chosen-container input').each(function() {
+        $(this).attr('id', $(this).closest('.js-form-type-select').find('label').attr('for') + '-input');
+        $(this).before('<label for="' + $(this).closest('.js-form-type-select').find('label').attr('for') + '-input">' + $(this).closest('.js-form-type-select').find('label').text() + '</label>');
+        $(this).prev('label').addClass('chosen-label');
+      });
+    }
+  }
+
+  $('#block-exposedformpublic-appeal-searchpublic-appeals-search-page').ready(function() {
+    setFilterPlaceholders();
+  });
+
+})(jQuery, Drupal, this, Drupal.debounce);

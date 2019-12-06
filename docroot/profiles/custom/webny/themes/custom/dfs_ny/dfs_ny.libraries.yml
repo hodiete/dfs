@@ -217,8 +217,10 @@ appeals-search:
   js:
     js/appeals_search.js: {}
   dependencies:
-    - core/drupal
     - core/jquery
+    - core/drupal
+    - core/drupal.debounce
+    - core/jquery.once
     - dfs_ny/pdfmake
     - dfs_ny/jszip
     - dfs_ny/datatables
