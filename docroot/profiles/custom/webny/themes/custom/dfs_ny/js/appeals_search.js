@@ -10,6 +10,7 @@
   Drupal.behaviors.appealsSearch = {
     attach: function (context, settings) {
       console.log('stuff');
+      console.log(settings);
 
       let refsSelected = false;
       let numRowsDT = 0;
@@ -221,10 +222,18 @@
           console.log('complete');
           //clearInterval(loadInterval);
         }
-      },2000));
+      },200));
+
+      $('.pager', context).find('[rel=next]').once().each(function() {
+        console.log('pager loaded');
+        //TODO: place first load-button click here to get load-button-clicker to fire once and only once
+        // when filters are applied and when page is first loaded
+        //the cascade works when the button is clicked, it's just the initial click that we're missing
+        //multiple clicks result in too many results from filters
+      });
 
       checkRows();
-      /*$('.pager', context).once().each(function() {
+      $('.pager', context).once().each(function() {
         console.log('how often do I run?');
         if ($('.pager').length) {
           $('.pager').find('[rel=next]').click();
@@ -235,9 +244,11 @@
           console.log('complete');
           //clearInterval(loadInterval);
         }
-      });*/
+      });
 
-      //TODO: get load-button-clicker to fire once and only once when filters are applied and when page is first loaded
+      //TODO: fix filter replacements not firing
+
+      //TODO: fix missing complete condition without button click (when there are fewer than 400 results)
 
       if (!$.fn.DataTable.isDataTable('.public-appeals-data')) {
         console.log('this should be called once');
