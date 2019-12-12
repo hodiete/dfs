@@ -354,10 +354,11 @@
       });
 
       checkRows();
+      console.log(loaderGreen);
       if (loaderGreen) {
         console.log('loader green');
-        if ($('.ajax-progress').length <= 0) {
-          loaderGreen = false;
+        console.log(!$('.ajax-progress').length);
+        if (!$('.ajax-progress').length) {
           loader();
 
           if (!$.fn.DataTable.isDataTable('.public-appeals-data')) {
@@ -378,6 +379,12 @@
           console.log('disabling form inputs');
           $('#block-exposedformpublic-appeal-searchpublic-appeals-search-page form :input').prop('disabled', true);
         }
+
+        //add categories filter placeholders
+        $('[id^="views-exposed-form"]',context).once('filterPlaceholders').each(function() {
+          console.log('setting filter placeholders');
+          setFilterPlaceholders();
+        });
       }
 
       //TODO: disable filters during load
@@ -416,19 +423,15 @@
         }
       }
 
-      $('[id^="views-exposed-form"]',context).once('filterPlaceholders').each(function() {
-        console.log('setting filter placeholders');
-        setFilterPlaceholders();
-      });
-
     }
   };
 
-  let loaderGreen = false;
+  let loaderGreen = true;
 
 
   //if pager exists, click pager, if not, complete load
   function loader() {
+    loaderGreen = false;
     if ($('.pager').length) {
       console.log('has pager');
       $('.pager').find('[rel=next]').click();
@@ -443,7 +446,7 @@
 
   $('.pager').ready(function() {
     //run loader on first page load
-    loaderGreen = true;
+    //loaderGreen = true;
     console.log('first page load');
 
     //run loader when apply filter is clicked
