@@ -11,7 +11,6 @@
     attach: function (context, settings) {
 
       let refsSelected = false;
-      let numRowsDT = 0;
 
       //output child row for summary and references accordions
       function formatAccordionsRow(data, rowIndex) {
@@ -82,6 +81,7 @@
 
       //run setup on each row
       function rowSetup(row,rowIndex) {
+        console.log('running setup on row: ' + rowIndex);
         //add counter icons to decisions column
         let decision = $(row.node()).find('.table-decision-value>div');
         if ($(decision).text().toLowerCase().indexOf('upheld') > -1) {
@@ -126,7 +126,7 @@
       //add news rows to datatable
       function addRows(rows,rowIndex,numRows) {
         $('.public-appeals-data').DataTable().rows.add(rows).draw();
-        for (var i = rowIndex + 1; i < numRows + rowIndex; i++) {
+        for (var i = rowIndex; i < numRows + rowIndex; i++) {
           rowSetup($('.public-appeals-data').DataTable().row(i),i);
         }
       }
@@ -134,8 +134,6 @@
       //check if there are new rows not yet in datatable, if so call getRows
       function checkRows() {
         console.log('running checkrows');
-        let numRowsTotal = 0;
-        let numRowsDT = 0;
         if ($.fn.DataTable.isDataTable('.public-appeals-data')) {
           numRowsTotal = $('.public-appeals-data>tbody').children('tr').length - $('.public-appeals-data tbody').children('.accordion-row').length;
           numRowsDT = $('.public-appeals-data').DataTable().rows().count();
@@ -350,11 +348,12 @@
 
       //run on page load and categories filter application
       $('.pager', context).find('[rel=next]').once('test').each(function() {
-        $(this).on('click',Drupal.debounce(loader, 500));
+        $(this).on('click',Drupal.debounce(loader, 200));
       });
 
       checkRows();
       console.log(loaderGreen);
+      //run on page load and after apply filters
       if (loaderGreen) {
         console.log('loader green');
         console.log(!$('.ajax-progress').length);
@@ -373,21 +372,23 @@
           console.log('no pager');
           $('.public-appeals-data').DataTable().page.len(10).draw();
           $('ajax-progress').hide();
+          $('#block-exposedformpublic-appeal-searchpublic-appeals-search-page form').addClass('active-filters');
           $('#block-exposedformpublic-appeal-searchpublic-appeals-search-page form :input').prop('disabled', false);
+          //setFilterPlaceholders();
+          console.log('complete');
         }
         else {
           console.log('disabling form inputs');
+          $('#block-exposedformpublic-appeal-searchpublic-appeals-search-page form').removeClass('active-filters');
           $('#block-exposedformpublic-appeal-searchpublic-appeals-search-page form :input').prop('disabled', true);
         }
-
-        //add categories filter placeholders
-        $('[id^="views-exposed-form"]',context).once('filterPlaceholders').each(function() {
-          console.log('setting filter placeholders');
-          setFilterPlaceholders();
-        });
       }
 
-      //TODO: disable filters during load
+      //add categories filter placeholders
+      $('[id^="views-exposed-form"]',context).once('filterPlaceholders').each(function() {
+        console.log('setting filter placeholders');
+        setFilterPlaceholders();
+      });
 
       //TODO: add "please be patient while we load all cases"
 
@@ -396,6 +397,7 @@
       //TODO: add reset button
 
       $('.mobile-close').once('appealsSearch').on('click',function(evt) {
+        console.log('mobile close set');
         evt.preventDefault();
         $('#block-exposedformpublic-appeal-searchpublic-appeals-search-page').css({
           'overflow': 'hidden',
@@ -405,29 +407,30 @@
         });
       });
 
-      //override placeholder text on external filters
-      function setFilterPlaceholders() {
-        console.log('setting filters');
-        $('#block-exposedformpublic-appeal-searchpublic-appeals-search-page select').each(function() {
-          //add placeholders
-          $(this).attr('data-placeholder','Select ' + $(this).prev('label').text());
-        });
-
-        if ($('.chosen-container').length > 0 && $('.chosen-container label').length < 1) {
-          //add labels to Chosen module input fields
-          $('.chosen-container input').each(function() {
-            $(this).attr('id', $(this).closest('.js-form-type-select').find('label').attr('for') + '-input');
-            $(this).before('<label for="' + $(this).closest('.js-form-type-select').find('label').attr('for') + '-input">' + $(this).closest('.js-form-type-select').find('label').text() + '</label>');
-            $(this).prev('label').addClass('chosen-label');
-          });
-        }
-      }
-
     }
   };
 
   let loaderGreen = true;
+  let numRowsTotal = $('.public-appeal-search-view>table>tbody').children('tr').length - $('.public-appeal-search-view>table>tbody').children('.accordion-row').length;
+  let numRowsDT = numRowsTotal;
 
+  //override placeholder text on external filters
+  function setFilterPlaceholders() {
+    console.log('setting filters');
+    $('#block-exposedformpublic-appeal-searchpublic-appeals-search-page select').each(function() {
+      //add placeholders
+      $(this).attr('data-placeholder','Select ' + $(this).prev('label').text());
+    });
+
+    if ($('.chosen-container').length > 0 && $('.chosen-container label').length < 1) {
+      //add labels to Chosen module input fields
+      $('.chosen-container input').each(function() {
+        $(this).attr('id', $(this).closest('.js-form-type-select').find('label').attr('for') + '-input');
+        $(this).before('<label for="' + $(this).closest('.js-form-type-select').find('label').attr('for') + '-input">' + $(this).closest('.js-form-type-select').find('label').text() + '</label>');
+        $(this).prev('label').addClass('chosen-label');
+      });
+    }
+  }
 
   //if pager exists, click pager, if not, complete load
   function loader() {
@@ -439,7 +442,9 @@
     else {
       $('.public-appeals-data').DataTable().page.len(10).draw();
       $('ajax-progress').hide();
+      $('#block-exposedformpublic-appeal-searchpublic-appeals-search-page form').addClass('active-filters');
       $('#block-exposedformpublic-appeal-searchpublic-appeals-search-page form :input').prop('disabled', false);
+      //setFilterPlaceholders();
       console.log('complete');
     }
   }
