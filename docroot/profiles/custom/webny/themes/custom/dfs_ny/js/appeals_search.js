@@ -12,73 +12,6 @@
 
       let refsSelected = false;
 
-      //output child row for summary and references accordions
-      function formatAccordionsRow(data, rowIndex) {
-        // `data` is the original data object for the row
-        let outputTable = '<table><thead><th>Summary and References</th></thead><tbody><tr><td>';
-        let summary = $(data[10]);
-        let refs = $(data[11]);
-        //data output for CSV export
-        let sumData = '';
-        let refData = '';
-
-        //summary and references should always be the same length
-        outputTable += '<div class="accordion"><a class="accordion-toggle" aria-expanded="false" aria-controls="sumAccordion-';
-        outputTable += rowIndex
-        outputTable += '" id="sumAccordionTitle-';
-        outputTable += rowIndex;
-        outputTable += '" href="#">Summary</a><div hidden class="accordion-content" role="region" id="sumAccordion-';
-        outputTable += rowIndex;
-        outputTable += '" aria-labelledby="sumAccordionTitle-';
-        outputTable += rowIndex;
-        outputTable += '">';
-        $(summary).find('li').each(function(i) {
-          sumData += '<h3>Summary ';
-          sumData += (i + 1);
-          sumData += ': </h3><div class="summary-text">';
-          sumData += $(this).text();
-          sumData += '</div>'
-
-          outputTable += '<h3>Summary ';
-          outputTable += (i + 1);
-          outputTable += '</h3><div class="summary-text">';
-          outputTable += $(this).text();
-          outputTable += '</div>'
-        });
-        outputTable += '</div></div>';
-
-        outputTable += '<div class="accordion refsAccordionContainer"><a class="accordion-toggle" aria-expanded="false" aria-controls="refsAccordion-';
-        outputTable += rowIndex
-        outputTable += '" id="refsAccordionTitle-';
-        outputTable += rowIndex;
-        outputTable += '" href="#">References</a><div hidden class="accordion-content" role="region" id="refsAccordion-';
-        outputTable += rowIndex;
-        outputTable += '" aria-labelledby="refsAccordionTitle-';
-        outputTable += rowIndex;
-        outputTable += '">';
-        $(refs).find('li').each(function(i) {
-          refData += '<h3>References ';
-          refData += (i + 1);
-          refData += ': </h3><div class="refs-text">';
-          refData += $(this).text();
-          refData += '</div>'
-
-          outputTable += '<h3>References ';
-          outputTable += (i + 1);
-          outputTable += '</h3><div class="refs-text">';
-          outputTable += $(this).text();
-          outputTable += '</div>'
-        });
-        outputTable += '</div></div>';
-
-        outputTable += '</div></tr></tbody></table>';
-
-        data[10] = sumData;
-        data[11] = refData;
-
-        return outputTable;
-      }
-
       //run setup on each row
       function rowSetup(row,rowIndex) {
         console.log('running setup on row: ' + rowIndex);
@@ -95,7 +28,7 @@
         }
 
         //add accordions
-        row.child(formatAccordionsRow(row.data(),rowIndex)).show();
+        /*row.child(formatAccordionsRow(row.data(),rowIndex)).show();
 
         $(row.child()).addClass('accordion-row');
 
@@ -111,7 +44,7 @@
             $(this).removeClass('accordion-open');
             $(this).next('.accordion-content').attr('hidden','hidden');
           }
-        });
+        });*/
       }
 
       //get newly added rows
@@ -376,6 +309,29 @@
           $('#block-exposedformpublic-appeal-searchpublic-appeals-search-page form :input').prop('disabled', false);
           //setFilterPlaceholders();
           console.log('complete');
+
+          $('.public-appeals-data').DataTable().rows().every(function(rowIndex) {
+            let row = this;
+
+            //add accordions
+            row.child(formatAccordionsRow(row.data(),rowIndex)).show();
+
+            $(row.child()).addClass('accordion-row');
+
+            $(row.child()).find('.accordion-toggle').on('click', function(evt) {
+              evt.preventDefault();
+              if ($(this).next('.accordion-content')[0].hasAttribute("hidden")) {
+                $(this).attr('aria-expanded','true');
+                $(this).addClass('accordion-open');
+                $(this).next('.accordion-content').removeAttr('hidden');
+              }
+              else {
+                $(this).attr('aria-expanded','false');
+                $(this).removeClass('accordion-open');
+                $(this).next('.accordion-content').attr('hidden','hidden');
+              }
+            });
+          });
         }
         else {
           console.log('disabling form inputs');
@@ -414,6 +370,75 @@
   let numRowsTotal = $('.public-appeal-search-view>table>tbody').children('tr').length - $('.public-appeal-search-view>table>tbody').children('.accordion-row').length;
   let numRowsDT = numRowsTotal;
 
+
+
+  //output child row for summary and references accordions
+  function formatAccordionsRow(data, rowIndex) {
+    // `data` is the original data object for the row
+    let outputTable = '<table><thead><th>Summary and References</th></thead><tbody><tr><td>';
+    let summary = $(data[10]);
+    let refs = $(data[11]);
+    //data output for CSV export
+    let sumData = '';
+    let refData = '';
+
+    //summary and references should always be the same length
+    outputTable += '<div class="accordion"><a class="accordion-toggle" aria-expanded="false" aria-controls="sumAccordion-';
+    outputTable += rowIndex
+    outputTable += '" id="sumAccordionTitle-';
+    outputTable += rowIndex;
+    outputTable += '" href="#">Summary</a><div hidden class="accordion-content" role="region" id="sumAccordion-';
+    outputTable += rowIndex;
+    outputTable += '" aria-labelledby="sumAccordionTitle-';
+    outputTable += rowIndex;
+    outputTable += '">';
+    $(summary).find('li').each(function(i) {
+      sumData += '<h3>Summary ';
+      sumData += (i + 1);
+      sumData += ': </h3><div class="summary-text">';
+      sumData += $(this).text();
+      sumData += '</div>'
+
+      outputTable += '<h3>Summary ';
+      outputTable += (i + 1);
+      outputTable += '</h3><div class="summary-text">';
+      outputTable += $(this).text();
+      outputTable += '</div>'
+    });
+    outputTable += '</div></div>';
+
+    outputTable += '<div class="accordion refsAccordionContainer"><a class="accordion-toggle" aria-expanded="false" aria-controls="refsAccordion-';
+    outputTable += rowIndex
+    outputTable += '" id="refsAccordionTitle-';
+    outputTable += rowIndex;
+    outputTable += '" href="#">References</a><div hidden class="accordion-content" role="region" id="refsAccordion-';
+    outputTable += rowIndex;
+    outputTable += '" aria-labelledby="refsAccordionTitle-';
+    outputTable += rowIndex;
+    outputTable += '">';
+    $(refs).find('li').each(function(i) {
+      refData += '<h3>References ';
+      refData += (i + 1);
+      refData += ': </h3><div class="refs-text">';
+      refData += $(this).text();
+      refData += '</div>'
+
+      outputTable += '<h3>References ';
+      outputTable += (i + 1);
+      outputTable += '</h3><div class="refs-text">';
+      outputTable += $(this).text();
+      outputTable += '</div>'
+    });
+    outputTable += '</div></div>';
+
+    outputTable += '</div></tr></tbody></table>';
+
+    data[10] = sumData;
+    data[11] = refData;
+
+    return outputTable;
+  }
+
   //override placeholder text on external filters
   function setFilterPlaceholders() {
     console.log('setting filters');
@@ -446,6 +471,29 @@
       $('#block-exposedformpublic-appeal-searchpublic-appeals-search-page form :input').prop('disabled', false);
       //setFilterPlaceholders();
       console.log('complete');
+
+      $('.public-appeals-data').DataTable().rows().every(function(rowIndex) {
+        let row = this;
+
+          //add accordions
+          row.child(formatAccordionsRow(row.data(),rowIndex)).show();
+
+          $(row.child()).addClass('accordion-row');
+
+          $(row.child()).find('.accordion-toggle').on('click', function(evt) {
+            evt.preventDefault();
+            if ($(this).next('.accordion-content')[0].hasAttribute("hidden")) {
+              $(this).attr('aria-expanded','true');
+              $(this).addClass('accordion-open');
+              $(this).next('.accordion-content').removeAttr('hidden');
+            }
+            else {
+              $(this).attr('aria-expanded','false');
+              $(this).removeClass('accordion-open');
+              $(this).next('.accordion-content').attr('hidden','hidden');
+            }
+          });
+      });
     }
   }
 
