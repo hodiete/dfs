@@ -13,10 +13,10 @@
       let refsSelected = false;
 
       //run setup on each row
-      function rowSetup(row,rowIndex) {
+      /*function rowSetup(row,rowIndex) {
         console.log('running setup on row: ' + rowIndex);
         //add counter icons to decisions column
-        let decision = $(row.node()).find('.table-decision-value>div');
+        /*let decision = $(row.node()).find('.table-decision-value>div');
         if ($(decision).text().toLowerCase().indexOf('upheld') > -1) {
           $(decision).addClass('upheld');
         }
@@ -25,7 +25,7 @@
         }
         else if ($(decision).text().toLowerCase().indexOf('overturned') > -1) {
           $(decision).addClass('overturned');
-        }
+        }*/
 
         //add accordions
         /*row.child(formatAccordionsRow(row.data(),rowIndex)).show();
@@ -44,8 +44,8 @@
             $(this).removeClass('accordion-open');
             $(this).next('.accordion-content').attr('hidden','hidden');
           }
-        });*/
-      }
+        });
+      }*/
 
       //get newly added rows
       function getRows(num) {
@@ -59,9 +59,10 @@
       //add news rows to datatable
       function addRows(rows,rowIndex,numRows) {
         $('.public-appeals-data').DataTable().rows.add(rows).draw();
-        for (var i = rowIndex; i < numRows + rowIndex; i++) {
+        /*for (var i = rowIndex; i < numRows + rowIndex; i++) {
           rowSetup($('.public-appeals-data').DataTable().row(i),i);
-        }
+        }*/
+        numRowsDT += numRows;
       }
 
       //check if there are new rows not yet in datatable, if so call getRows
@@ -69,14 +70,17 @@
         console.log('running checkrows');
         if ($.fn.DataTable.isDataTable('.public-appeals-data')) {
           numRowsTotal = $('.public-appeals-data>tbody').children('tr').length - $('.public-appeals-data tbody').children('.accordion-row').length;
-          numRowsDT = $('.public-appeals-data').DataTable().rows().count();
+          console.log(numRowsTotal);
+          //numRowsDT = $('.public-appeals-data').DataTable().rows().count();
+          console.log(numRowsDT);
+          //if there are new rows to add, add them to the datatable
           if (numRowsTotal > numRowsDT) {
             let rows = getRows(numRowsDT - numRowsTotal);
             addRows(rows,numRowsDT,numRowsTotal - numRowsDT);
           }
         }
         else {
-          numRowsTotal = $('.public-appeal-search-view>table>tbody').children('tr').length - $('.public-appeal-search-view table tbody').children('.accordion-row').length;
+          numRowsTotal = $('.public-appeal-search-view>.views-infinite-scroll-content-wrapper>table>tbody').children('tr').length - $('.public-appeal-search-view>.views-infinite-scroll-content-wrapper>table>tbody').children('.accordion-row').length;
         }
       }
 
@@ -150,8 +154,9 @@
           setCounterValues();
         });
 
+        console.log('tooltip found: ' + $('#block-publicappealssearchtooltip'));
+
         //move tooltip text after toggle
-        let toolText = $('#block-publicappealssearchtooltip').attr('hidden','hidden').detach();
         $('.tooltip-container').append(toolText);
 
         //add tooltip toggle and functionality
@@ -210,16 +215,16 @@
           });
         });
 
-        $('.public-appeals-data').DataTable().rows().every(function(rowIndex) {
+        /*$('.public-appeals-data').DataTable().rows().every(function(rowIndex) {
           rowSetup(this,rowIndex);
-        });
+        });*/
       }
 
       //initialize datatable
       function buildTable() {
         console.log('building datatable');
 
-        $('.public-appeal-search-view table').addClass('public-appeals-data').dataTable({
+        $('.public-appeal-search-view>.views-infinite-scroll-content-wrapper>table').addClass('public-appeals-data').dataTable({
           order: [[9, 'asc']],
           ordering: true,
           paging: true,
@@ -254,6 +259,8 @@
           },
           initComplete: function(settings, json) {
             console.log('successfully built table');
+            numRowsTotal = $('.public-appeals-data>tbody').children('tr').length - $('.public-appeals-data tbody').children('.accordion-row').length;
+            numRowsDT = $('.public-appeals-data').DataTable().rows().count();
             tableSetup();
             if ($('#noResultsTable').length > 0) {
               $('.public-appeals-data').DataTable().clear().draw();
@@ -281,7 +288,7 @@
 
       //run on page load and categories filter application
       $('.pager', context).find('[rel=next]').once('test').each(function() {
-        $(this).on('click',Drupal.debounce(loader, 200));
+        $(this).on('click',Drupal.debounce(loader, 1000));
       });
 
       checkRows();
@@ -290,6 +297,8 @@
       if (loaderGreen) {
         console.log('loader green');
         console.log(!$('.ajax-progress').length);
+
+        $('#block-publicappealsloadblock').removeAttr('hidden');
         if (!$('.ajax-progress').length) {
           loader();
 
@@ -298,45 +307,16 @@
             buildTable();
             checkRows();
           }
-        }
 
-        //paginate table and remove spinner if all rows load at once
-        if (!$('.pager').length) {
-          console.log('no pager');
-          $('.public-appeals-data').DataTable().page.len(10).draw();
-          $('ajax-progress').hide();
-          $('#block-exposedformpublic-appeal-searchpublic-appeals-search-page form').addClass('active-filters');
-          $('#block-exposedformpublic-appeal-searchpublic-appeals-search-page form :input').prop('disabled', false);
-          //setFilterPlaceholders();
-          console.log('complete');
-
-          $('.public-appeals-data').DataTable().rows().every(function(rowIndex) {
-            let row = this;
-
-            //add accordions
-            row.child(formatAccordionsRow(row.data(),rowIndex)).show();
-
-            $(row.child()).addClass('accordion-row');
-
-            $(row.child()).find('.accordion-toggle').on('click', function(evt) {
-              evt.preventDefault();
-              if ($(this).next('.accordion-content')[0].hasAttribute("hidden")) {
-                $(this).attr('aria-expanded','true');
-                $(this).addClass('accordion-open');
-                $(this).next('.accordion-content').removeAttr('hidden');
-              }
-              else {
-                $(this).attr('aria-expanded','false');
-                $(this).removeClass('accordion-open');
-                $(this).next('.accordion-content').attr('hidden','hidden');
-              }
-            });
-          });
-        }
-        else {
-          console.log('disabling form inputs');
-          $('#block-exposedformpublic-appeal-searchpublic-appeals-search-page form').removeClass('active-filters');
-          $('#block-exposedformpublic-appeal-searchpublic-appeals-search-page form :input').prop('disabled', true);
+          //paginate table and remove spinner if all rows load at once
+          if (!$('.pager').length) {
+            loadComplete();
+          }
+          else {
+            console.log('disabling form inputs');
+            $('#block-exposedformpublic-appeal-searchpublic-appeals-search-page form').removeClass('active-filters');
+            $('#block-exposedformpublic-appeal-searchpublic-appeals-search-page form :input').prop('disabled', true).trigger("chosen:updated");
+          }
         }
       }
 
@@ -346,11 +326,7 @@
         setFilterPlaceholders();
       });
 
-      //TODO: add "please be patient while we load all cases"
-
-      //TODO: close mobile filter when apply clicked
-
-      //TODO: add reset button
+      //TODO: test with more data
 
       $('.mobile-close').once('appealsSearch').on('click',function(evt) {
         console.log('mobile close set');
@@ -367,13 +343,13 @@
   };
 
   let loaderGreen = true;
-  let numRowsTotal = $('.public-appeal-search-view>table>tbody').children('tr').length - $('.public-appeal-search-view>table>tbody').children('.accordion-row').length;
-  let numRowsDT = numRowsTotal;
-
-
+  let numRowsTotal = 0;
+  let numRowsDT = 0;
+  let toolText = $('#block-publicappealssearchtooltip').attr('hidden','hidden').detach();
 
   //output child row for summary and references accordions
   function formatAccordionsRow(data, rowIndex) {
+    console.log('formatting accordions row');
     // `data` is the original data object for the row
     let outputTable = '<table><thead><th>Summary and References</th></thead><tbody><tr><td>';
     let summary = $(data[10]);
@@ -457,6 +433,57 @@
     }
   }
 
+  //run when reset button clicked
+  function reset() {
+    $(this.form).clearForm();
+    $(this.form).find('.form-select').val('').trigger('chosen:updated');
+    $(this.form).find('.form-submit').trigger('click');
+    return false;
+  }
+
+  //run when all table rows are loaded
+  function loadComplete() {
+    $('.public-appeals-data').DataTable().page.len(10).draw();
+    $('ajax-progress').hide();
+    $('#block-exposedformpublic-appeal-searchpublic-appeals-search-page form').addClass('active-filters');
+    $('#block-exposedformpublic-appeal-searchpublic-appeals-search-page form :input').prop('disabled', false).trigger("chosen:updated");
+    //$('.chosen-disabled').removeClass('chosen-disabled');
+    //setFilterPlaceholders();
+    console.log('complete');
+
+    $('.public-appeals-data').DataTable().rows().every(function(rowIndex) {
+      console.log('running rows every');
+      let row = this;
+
+      //add accordions
+      row.child(formatAccordionsRow(row.data(),rowIndex)).show();
+
+      $(row.child()).addClass('accordion-row');
+
+      $(row.child()).find('.accordion-toggle').on('click', function(evt) {
+        evt.preventDefault();
+        if ($(this).next('.accordion-content')[0].hasAttribute("hidden")) {
+          $(this).attr('aria-expanded','true');
+          $(this).addClass('accordion-open');
+          $(this).next('.accordion-content').removeAttr('hidden');
+        }
+        else {
+          $(this).attr('aria-expanded','false');
+          $(this).removeClass('accordion-open');
+          $(this).next('.accordion-content').attr('hidden','hidden');
+        }
+      });
+    });
+    console.log('reset length: ' + $(".exposed_form_reset").length);
+    if (!$(".exposed_form_reset").length && !$("#edit-reset").length) {
+      console.log('appending');
+      console.log($("[id^='views-exposed-form']"));
+      console.log($("[id^='views-exposed-form']").find('#edit-actions'));
+      $("[id^='views-exposed-form']").find('#edit-actions').append('<button onclick="reset();" class="exposed_form_reset button">' + Drupal.t('Reset') + '</button>');
+    }
+    $('#block-publicappealsloadblock').attr('hidden','hidden');
+  }
+
   //if pager exists, click pager, if not, complete load
   function loader() {
     loaderGreen = false;
@@ -465,35 +492,7 @@
       $('.pager').find('[rel=next]').click();
     }
     else {
-      $('.public-appeals-data').DataTable().page.len(10).draw();
-      $('ajax-progress').hide();
-      $('#block-exposedformpublic-appeal-searchpublic-appeals-search-page form').addClass('active-filters');
-      $('#block-exposedformpublic-appeal-searchpublic-appeals-search-page form :input').prop('disabled', false);
-      //setFilterPlaceholders();
-      console.log('complete');
-
-      $('.public-appeals-data').DataTable().rows().every(function(rowIndex) {
-        let row = this;
-
-          //add accordions
-          row.child(formatAccordionsRow(row.data(),rowIndex)).show();
-
-          $(row.child()).addClass('accordion-row');
-
-          $(row.child()).find('.accordion-toggle').on('click', function(evt) {
-            evt.preventDefault();
-            if ($(this).next('.accordion-content')[0].hasAttribute("hidden")) {
-              $(this).attr('aria-expanded','true');
-              $(this).addClass('accordion-open');
-              $(this).next('.accordion-content').removeAttr('hidden');
-            }
-            else {
-              $(this).attr('aria-expanded','false');
-              $(this).removeClass('accordion-open');
-              $(this).next('.accordion-content').attr('hidden','hidden');
-            }
-          });
-      });
+      loadComplete();
     }
   }
 
@@ -506,7 +505,9 @@
     $('#edit-submit-public-appeal-search').on('click',function(evt) {
       console.log('apply filter clicked');
       loaderGreen = true;
-      //$('.mobile-close').click();
+      if ($('.mobile-open').css('display') == 'block') {
+        $('.mobile-close').click();
+      }
     });
   });
 

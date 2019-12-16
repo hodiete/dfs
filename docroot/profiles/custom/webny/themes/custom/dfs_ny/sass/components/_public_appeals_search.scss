@@ -31,6 +31,11 @@
     padding: 0 75px 20px 40px;
   }
 
+  .public-appeal-search-view table {
+    //hidden until datatables loads
+    display: none;
+  }
+
   table {
     position: relative;
     margin: 0;
@@ -179,6 +184,12 @@
     }
   }
 
+  .public-appeal-search-view table.public-appeals-data,
+  .public-appeal-search-view table.public-appeals-data table {
+    //hidden until datatables loads
+    display: table;
+  }
+
   #after-content {
     margin: 0 65px 40px;
     width: auto;
@@ -247,7 +258,8 @@
       }
 
       .chosen-container {
-        width: 100%;
+        //overrides chosen module's js
+        width: 100%!important;
 
         .chosen-label {
           position: absolute;
@@ -416,10 +428,12 @@
       }
 
       input[type="submit"],
-      input[type="reset"] {
+      input[type="reset"],
+      #edit-actions .button {
         padding: 15px;
         font-size: 16px;
         text-transform: capitalize;
+        line-height: normal;
       }
     }
   }
@@ -438,6 +452,24 @@
       color: #151515;
       font-size: 16px;
     }
+  }
+
+  #block-publicappealsloadblock {
+    max-width: 915px;
+    margin-bottom: 30px;
+    padding: 30px 50px 20px 40px;
+    color: #09464c;
+    background: #e5eeee;
+    font-size: 24px;
+    font-weight: 500;
+  }
+
+  #block-publicappealssearchtooltip {
+    //visually hide tooltip until it has been moved by js
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    width: 1px;
   }
 
   .public-appeal-search-view {
@@ -552,6 +584,10 @@
 
       /* tooltip */
       #block-publicappealssearchtooltip {
+        //display tooltip it has been moved by js
+        overflow: visible;
+        clip: auto;
+        height: auto;
         position: absolute;
         top: 33px;
         left: -30px;

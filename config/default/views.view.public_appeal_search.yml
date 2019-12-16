@@ -52,12 +52,8 @@ display:
         options:
           perm: 'access content'
       cache:
-        type: time
-        options:
-          results_lifespan: 3600
-          results_lifespan_custom: 0
-          output_lifespan: 3600
-          output_lifespan_custom: 0
+        type: tag
+        options: {  }
       query:
         type: views_query
         options:
@@ -166,7 +162,7 @@ display:
       pager:
         type: infinite_scroll
         options:
-          items_per_page: 200
+          items_per_page: 400
           offset: 0
           id: 0
           total_pages: null
@@ -637,7 +633,7 @@ display:
           exclude: false
           alter:
             alter_text: true
-            text: '<div class="table-link-out"><a href="/node/{{ nid }}" aria-label="Go to {{ title }}">›</a></div><div class="decision-text">{{ decision }}</div>'
+            text: '<div class="{{ decision|lower |replace('' '', ''-'') }}"><div class="table-link-out"><a href="/node/{{ nid }}" aria-label="Go to {{ title }}">›</a></div><div class="decision-text">{{ decision }}</div></div>'
             make_link: false
             path: ''
             absolute: false

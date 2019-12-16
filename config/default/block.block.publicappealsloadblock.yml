@@ -1,0 +1,31 @@
+uuid: b8261634-79ff-4928-b762-4fe454cff3f7
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:dfs_block:51ca5344-c2ed-48ca-bee8-c6f497d6e1b3'
+  module:
+    - block_content
+    - system
+  theme:
+    - dfs_ny
+id: publicappealsloadblock
+theme: dfs_ny
+region: content
+weight: 0
+provider: null
+plugin: 'block_content:51ca5344-c2ed-48ca-bee8-c6f497d6e1b3'
+settings:
+  id: 'block_content:51ca5344-c2ed-48ca-bee8-c6f497d6e1b3'
+  label: 'Public Appeals Load Block'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: /public-appeal/search
+    negate: false
+    context_mapping: {  }
