@@ -1,0 +1,29 @@
+uuid: 174d6cdd-0905-4c31-9544-7e9291939cfc
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.public_appeal_search
+  module:
+    - system
+    - views
+  theme:
+    - dfs_ny
+id: exposedformpublic_appeal_searchpublic_appeals_search_page_old
+theme: dfs_ny
+region: sidebar_first
+weight: 0
+provider: null
+plugin: 'views_exposed_filter_block:public_appeal_search-public_appeals_search_page_old'
+settings:
+  id: 'views_exposed_filter_block:public_appeal_search-public_appeals_search_page_old'
+  label: ''
+  provider: views
+  label_display: visible
+  views_label: Categories
+visibility:
+  request_path:
+    id: request_path
+    pages: /public-appeal/search-old
+    negate: false
+    context_mapping: {  }

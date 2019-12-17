@@ -31,10 +31,10 @@
     padding: 0 75px 20px 40px;
   }
 
-  .public-appeal-search-view table {
+  /*.public-appeal-search-view table {
     //hidden until datatables loads
     display: none;
-  }
+  }*/
 
   table {
     position: relative;
@@ -184,11 +184,11 @@
     }
   }
 
-  .public-appeal-search-view table.public-appeals-data,
+  /*.public-appeal-search-view table.public-appeals-data,
   .public-appeal-search-view table.public-appeals-data table {
     //hidden until datatables loads
     display: table;
-  }
+  }*/
 
   #after-content {
     margin: 0 65px 40px;
@@ -206,7 +206,8 @@
 
 
   /* external filters */
-  #block-exposedformpublic-appeal-searchpublic-appeals-search-page {
+  #block-exposedformpublic-appeal-searchpublic-appeals-search-page,
+  #block-exposedformpublic-appeal-searchpublic-appeals-search-page-old {
     width: 342px;
     margin-top: 50px;
     padding-bottom: 350px;
@@ -229,7 +230,8 @@
       position: relative;
       padding: 50px 28px 0;
 
-      &:before {
+      //hide filters during load
+      /*&:before {
         content: '';
         position: absolute;
         display: block;
@@ -245,7 +247,7 @@
       &.active-filters:before {
         content: '';
         display: none;
-      }
+      }*/
 
       label,
       legend {
@@ -472,7 +474,8 @@
     width: 1px;
   }
 
-  .public-appeal-search-view {
+  .public-appeal-search-view,
+  .public-appeal-search-view-old {
     position: relative;
     margin: 0;
 
@@ -822,7 +825,8 @@
       padding-right: 50px;
     }
 
-    .public-appeal-search-view {
+    .public-appeal-search-view,
+    .public-appeal-search-view-old {
       .refs-include {
         margin-bottom: 0;
       }
@@ -867,7 +871,8 @@
       padding: 50px 25px 20px;
     }
 
-    #block-exposedformpublic-appeal-searchpublic-appeals-search-page {
+    #block-exposedformpublic-appeal-searchpublic-appeals-search-page,
+    #block-exposedformpublic-appeal-searchpublic-appeals-search-page-old {
       //display: none;
       position: absolute;
       top: 0;
@@ -912,15 +917,18 @@
       padding: 0 25px 10px;
     }
 
-    .public-appeal-search-view .search-filter {
+    .public-appeal-search-view .search-filter,
+    .public-appeal-search-view-old .search-filter {
       max-width: calc(100% - 65px);
     }
 
-    .public-appeal-search-view .counters .counters-inner {
+    .public-appeal-search-view .counters .counters-inner,
+    .public-appeal-search-view-old .counters .counters-inner {
       width: 480px;
     }
 
-    .public-appeal-search-view {
+    .public-appeal-search-view,
+    .public-appeal-search-view-old {
       .mobile-open {
         display: block;
       }
@@ -955,7 +963,8 @@
       padding: 0 20px;
     }
 
-    .public-appeal-search-view .counters {
+    .public-appeal-search-view .counters,
+    .public-appeal-search-view-old .counters {
       width: 100%;
 
       .counters-inner {
@@ -965,7 +974,8 @@
   }
 
   @media screen and (max-width: 600px) {
-    .public-appeal-search-view .table-top-left {
+    .public-appeal-search-view .table-top-left,
+    .public-appeal-search-view-old .table-top-left {
       .dataTables_length {
         margin-right: 0;
         padding-right: 0;
@@ -990,7 +1000,8 @@
       }
     }
 
-    .public-appeal-search-view .search-filter {
+    .public-appeal-search-view .search-filter,
+    .public-appeal-search-view-old .search-filter {
       max-width: calc(100% - 50px);
 
       /*
@@ -1007,13 +1018,15 @@
       }
     }
 
-    .public-appeal-search-view {
+    .public-appeal-search-view,
+    .public-appeal-search-view-old {
       .mobile-open {
         top: 8px;
       }
     }
 
-    .public-appeal-search-view .counters {
+    .public-appeal-search-view .counters,
+    .public-appeal-search-view-old .counters {
       padding-bottom: 0;
       font-size: 14px;
 
@@ -1029,7 +1042,8 @@
       }
     }
 
-    .public-appeal-search-view .tooltip-container #block-publicappealssearchtooltip {
+    .public-appeal-search-view .tooltip-container #block-publicappealssearchtooltip,
+    .public-appeal-search-view-old .tooltip-container #block-publicappealssearchtooltip {
       width: 300px;
     }
 
@@ -1063,7 +1077,8 @@
       padding-right: 45px;
     }
 
-    .public-appeal-search-view .dataTables_wrapper .dataTables_paginate .paginate_button {
+    .public-appeal-search-view .dataTables_wrapper .dataTables_paginate .paginate_button,
+    .public-appeal-search-view-old .dataTables_wrapper .dataTables_paginate .paginate_button {
       margin: 4px 5px;
     }
   }

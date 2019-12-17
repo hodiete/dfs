@@ -35,7 +35,7 @@
           }
         }
         else {
-          numRowsTotal = $('.public-appeal-search-view>.views-infinite-scroll-content-wrapper>table>tbody').children('tr').length - $('.public-appeal-search-view>.views-infinite-scroll-content-wrapper>table>tbody').children('.accordion-row').length;
+          numRowsTotal = $('.public-appeal-search-view-old>.views-infinite-scroll-content-wrapper>table>tbody').children('tr').length - $('.public-appeal-search-view-old>.views-infinite-scroll-content-wrapper>table>tbody').children('.accordion-row').length;
         }
       }
 
@@ -169,7 +169,7 @@
 
       //initialize datatable
       function buildTable() {
-        $('.public-appeal-search-view>.views-infinite-scroll-content-wrapper>table').addClass('public-appeals-data').dataTable({
+        $('.public-appeal-search-view-old>.views-infinite-scroll-content-wrapper>table').addClass('public-appeals-data').dataTable({
           order: [[9, 'asc']],
           ordering: true,
           paging: true,
