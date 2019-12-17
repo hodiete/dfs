@@ -25,6 +25,8 @@ dependencies:
     - taxonomy.vocabulary.health_plan
     - taxonomy.vocabulary.treatment
     - taxonomy.vocabulary.year
+    - user.role.administrator
+    - user.role.restful_api
   module:
     - better_exposed_filters
     - node
@@ -48,9 +50,11 @@ display:
     position: 0
     display_options:
       access:
-        type: perm
+        type: role
         options:
-          perm: 'access content'
+          role:
+            administrator: administrator
+            restful_api: restful_api
       cache:
         type: tag
         options: {  }
@@ -296,7 +300,7 @@ display:
               align: ''
               separator: ''
               empty_column: true
-              responsive: ''
+              responsive: priority-low
           default: nid
           empty_table: false
       row:
@@ -633,7 +637,7 @@ display:
           exclude: false
           alter:
             alter_text: true
-            text: '<div class="{{ decision|lower |replace('' '', ''-'') }}"><div class="table-link-out"><a href="/node/{{ nid }}" aria-label="Go to {{ title }}">›</a></div><div class="decision-text">{{ decision }}</div></div>'
+            text: '<div class="{{ decision|lower|replace('' '',''-'') }}"><div class="table-link-out"><a href="/node/{{ nid }}" aria-label="Go to {{ title }}">›</a></div><div class="decision-text">{{ decision }}</div></div>'
             make_link: false
             path: ''
             absolute: false
@@ -1839,7 +1843,7 @@ display:
         - url.query_args
         - user
         - 'user.node_grants:view'
-        - user.permissions
+        - user.roles
       tags:
         - 'config:field.storage.node.age_range'
         - 'config:field.storage.node.appeal_agent'
@@ -1876,7 +1880,7 @@ display:
         - url.query_args
         - user
         - 'user.node_grants:view'
-        - user.permissions
+        - user.roles
       tags:
         - 'config:field.storage.node.age_range'
         - 'config:field.storage.node.appeal_agent'
