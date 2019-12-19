@@ -113,7 +113,13 @@ class SearchForm extends FormBase
 
   protected function searchFields($input) {
 
-    if($this->searchFieldHelp('summary', $input)) {
+    if ($this->searchFieldHelp('summary', $input) && $this->searchFieldHelp('references', $input)) {
+      $params[] = [
+        'summary_value' => $input,
+        'references_value' => $input,
+      ];
+    }
+    elseif($this->searchFieldHelp('summary', $input)) {
       $params[] = [
         'summary_value' => $input,
       ];
@@ -122,7 +128,6 @@ class SearchForm extends FormBase
       $params[] = [
         'references_value' => $input,
       ];
-
     }
     else {
       $params[] = [
