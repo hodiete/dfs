@@ -4,12 +4,112 @@
  */
 
 (function ($, Drupal, window, document, debounce) {
-/*
+
   'use strict';
 
   Drupal.behaviors.appealsSearch = {
     attach: function (context, settings) {
 
+
+      //override placeholder text on external filters
+      function setFilterPlaceholders() {
+        $('#block-exposedformpublic-appeal-searchpublic-appeals-search-page select').each(function() {
+          //add placeholders
+          $(this).attr('data-placeholder','Select ' + $(this).prev('label').text());
+        });
+
+        if ($('.chosen-container').length > 0 && $('.chosen-container label').length < 1) {
+          //add labels to Chosen module input fields
+          $('.chosen-container input').each(function() {
+            $(this).attr('id', $(this).closest('.js-form-type-select').find('label').attr('for') + '-input');
+            $(this).before('<label for="' + $(this).closest('.js-form-type-select').find('label').attr('for') + '-input">' + $(this).closest('.js-form-type-select').find('label').text() + '</label>');
+            $(this).prev('label').addClass('chosen-label');
+          });
+        }
+      }
+
+      setFilterPlaceholders();
+
+      //add mobile open functionality
+      $('.mobile-open').once('mobile-open').on('click',function(evt) {
+        $('#block-exposedformpublic-appeal-searchpublic-appeals-search-page').css({
+          'overflow': 'visible',
+          'clip': 'auto',
+          'height': 'auto',
+          'width': '100%'
+        });
+      });
+
+      //add mobile close funcitonality
+      $('.mobile-close').once('mobile-close').on('click',function(evt) {
+        evt.preventDefault();
+        $('#block-exposedformpublic-appeal-searchpublic-appeals-search-page').css({
+          'overflow': 'hidden',
+          'clip': 'rect(0 0 0 0)',
+          'height': '1px',
+          'width': '1px'
+        });
+      });
+
+      //reorder counters
+      $('.upheld-counter').parents('li').addClass('upheld-li');
+      $('.overturned-counter').parents('li').addClass('overturned-li');
+      $('.overturned-in-part-counter').parents('li').addClass('overturned-in-part-li');
+
+      //move tooltip text after toggle
+      $('.tooltip-container').once().append(toolText);
+
+      //add tooltip functionality
+      let tooltipToggle = $('.tooltip-toggle');
+      $(tooltipToggle).once('tooltip-mouseover').on('mouseenter', function(evt) {
+        console.log('mouseenter');
+        evt.preventDefault();
+        $(toolText).removeAttr('hidden');
+      });
+      $(tooltipToggle).once('tooltip-mouseout').on('mouseleave', function(evt) {
+        console.log('mouseleave');
+        evt.preventDefault();
+        $(toolText).attr('hidden','hidden');
+      });
+
+      $(tooltipToggle).once('tooltip-click').on('click', function(evt) {
+        evt.preventDefault();
+        if (clickedOn) {
+          $(toolText).attr('hidden','hidden');
+          $(tooltipToggle).on('mouseenter', function(evt) {
+            evt.preventDefault();
+            $(toolText).removeAttr('hidden');
+          });
+          $(tooltipToggle).on('mouseleave', function(evt) {
+            evt.preventDefault();
+            $(toolText).attr('hidden','hidden');
+          });
+          clickedOn = false;
+        }
+        else {
+          $(toolText).removeAttr('hidden');
+          $(tooltipToggle).off('mouseenter mouseleave');
+          clickedOn = true;
+        }
+      });
+
+      //add references checkbox and funtionality
+      $('.views-page-public-appeal-search .refs-include').once('add-refs-checkbox').append('<input type="checkbox" id="references-included" name="references-included" value="references-included"><label for="references-included">Include References in Search</label>');
+
+      $('#references-included').once('add-refs-function').on('click keypress', function(evt) {
+        if (evt.type == 'keypress') {
+          if (evt.keyCode == 13) {
+            //referencesClickHandler();
+          }
+        }
+        else {
+          //referencesClickHandler();
+        }
+      });
+
+      //$('.views-field-summary').prepend('<p>Test!</p>'); //TODO: js does not affect exported output
+
+/*
       let refsSelected = false;
 
       //get newly added rows
@@ -272,10 +372,15 @@
           'width': '1px'
         });
       });
-
+*/
     }
   };
 
+  //tooltips
+  let toolText = $('#block-publicappealssearchtooltip').attr('hidden','hidden').detach();
+  let clickedOn = false;
+
+/*
   let loaderGreen = true;
   let numRowsTotal = 0;
   let numRowsDT = 0;

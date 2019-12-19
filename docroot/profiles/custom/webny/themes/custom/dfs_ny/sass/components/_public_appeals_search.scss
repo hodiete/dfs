@@ -479,6 +479,10 @@
     position: relative;
     margin: 0;
 
+    header {
+      width: 100%;
+    }
+
     .search-filter {
       float: left;
       width: 100%;
@@ -541,12 +545,6 @@
 
           }
         }
-      }
-
-      input[type="checkbox"]~label {
-        display: inline;
-        padding-left: 10px;
-        font-weight: 400;
       }
     }
 
@@ -627,6 +625,12 @@
       input[type="checkbox"]~label {
         margin: 0;
       }
+
+      input[type="checkbox"]~label {
+        display: inline;
+        padding-left: 10px;
+        font-weight: 400;
+      }
     }
 
     .counters {
@@ -639,27 +643,52 @@
       .counters-inner {
         display: flex;
         justify-content: space-between;
+        padding: 0;
         width: 100%;
+
+        li {
+          margin: 0;
+          padding: 0;
+          list-style: none;
+
+          &.upheld-li {
+            order: 1;
+          }
+
+          &.overturned-in-part-li {
+            order: 2;
+          }
+
+          &.overturned-li {
+            order: 3;
+          }
+        }
       }
 
-      .overturnedValue:before {
+      .overturnedValue:before,
+      .overturned-value:before {
         content: '';
         background: url("../icons/dfs/overturned.svg") no-repeat center center transparent;
       }
 
-      .overturnedPartValue:before {
+      .overturnedPartValue:before,
+      .overturned-in-part-value:before {
         content: '';
         background: url("../icons/dfs/overturned-in-part.svg") no-repeat center center transparent;
       }
 
-      .upheldValue:before {
+      .upheldValue:before,
+      .upheld-value:before {
         content: '';
         background: url("../icons/dfs/upheld.svg") no-repeat center center transparent;
       }
 
       .overturnedValue:before,
       .overturnedPartValue:before,
-      .upheldValue:before {
+      .upheldValue:before,
+      .overturned-value:before,
+      .overturned-in-part-value:before,
+      .upheld-value:before {
         display: inline-block;
         width: 24px;
         height: 24px;
@@ -668,7 +697,10 @@
 
       .overturnedValue,
       .overturnedPartValue,
-      .upheldValue {
+      .upheldValue,
+      .overturned-value,
+      .overturned-in-part-value,
+      .upheld-value {
         display: block;
         font-size: 32px;
         text-align: center;
@@ -1032,7 +1064,10 @@
 
       .upheldValue,
       .overturnedValue,
-      .overturnedPartValue {
+      .overturnedPartValue,
+      .upheld-value,
+      .overturned-value,
+      .overturned-in-part-value {
         font-size: 26px;
 
         &:before {
