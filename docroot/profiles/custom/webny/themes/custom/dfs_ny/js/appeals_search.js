@@ -4,7 +4,7 @@
  */
 
 (function ($, Drupal, window, document, debounce) {
-
+/*
   'use strict';
 
   Drupal.behaviors.appealsSearch = {
@@ -429,5 +429,5 @@
       }
     });
   });
-
+*/
 })(jQuery, Drupal, this, Drupal.debounce);
