@@ -1,0 +1,26 @@
+uuid: 9b553d67-65f7-44ba-9b9c-fa3658a21692
+langcode: en
+status: true
+dependencies:
+  module:
+    - public_appeal_search
+    - system
+  theme:
+    - dfs_ny
+id: publicappealsearchblock
+theme: dfs_ny
+region: content
+weight: 0
+provider: null
+plugin: public_appeal_search_block
+settings:
+  id: public_appeal_search_block
+  label: 'Public Appeal Search Block'
+  provider: public_appeal_search
+  label_display: '0'
+visibility:
+  request_path:
+    id: request_path
+    pages: /public-appeal/search
+    negate: false
+    context_mapping: {  }

@@ -377,6 +377,10 @@
         }
       }
 
+      .js-form-item-summary-value {
+        display: none;
+      }
+
       fieldset {
         margin: 0 0 50px 0;
       }
@@ -474,6 +478,74 @@
     width: 1px;
   }
 
+  .search-filter,
+  #public-appeal-search-form {
+    float: left;
+    width: 100%;
+    margin-right: 75px;
+    max-width: 915px;
+
+    /*
+    * Override the scss !important in
+    * profiles/custom/webny/themes/custom/base/_table.scss
+    */
+    .dataTables_filter,
+    .js-form-item-search {
+      width: 100% !important;
+      margin-bottom: 15px;
+
+      label {
+        position: relative;
+        margin: 0;
+
+        .label-text {
+          position: absolute;
+          overflow: hidden;
+          clip: rect(0 0 0 0);
+          height: 1px;
+          width: 1px;
+          margin: -1px;
+          padding: 0;
+          border: 0;
+        }
+
+        &:after {
+          content: '';
+          position: absolute;
+          top: 20px;
+          right: 30px;
+          width: 19px;
+          height: 19px;
+          background: url("../icons/dfs/search-icon.png") no-repeat center center transparent;
+
+        }
+      }
+
+      input[type="search"],
+      input[type="text"] {
+        margin: 0 !important;
+        padding-left: 30px !important;
+        width: 100% !important;
+        height: 62px !important;
+        font-size: 14px;
+        font-weight: 400;
+        border: 1px solid #022629;
+        border-radius: 32px;
+
+        &:focus {
+          border: 1px solid #5897fb;
+          box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+        }
+
+        &::-ms-clear {
+          display: none;
+          width: 0;
+          height: 0;
+        }
+      }
+    }
+  }
+
   .public-appeal-search-view,
   .public-appeal-search-view-old {
     position: relative;
@@ -481,71 +553,6 @@
 
     header {
       width: 100%;
-    }
-
-    .search-filter {
-      float: left;
-      width: 100%;
-      margin-right: 75px;
-      max-width: 915px;
-
-      /*
-      * Override the scss !important in
-      * profiles/custom/webny/themes/custom/base/_table.scss
-      */
-      .dataTables_filter {
-        width: 100% !important;
-        margin-bottom: 15px;
-
-        label {
-          position: relative;
-          margin: 0;
-
-          .label-text {
-            position: absolute;
-            overflow: hidden;
-            clip: rect(0 0 0 0);
-            height: 1px;
-            width: 1px;
-            margin: -1px;
-            padding: 0;
-            border: 0;
-          }
-
-          input[type="search"] {
-            margin: 0 !important;
-            padding-left: 30px !important;
-            width: 100% !important;
-            height: 62px !important;
-            font-size: 14px;
-            font-weight: 400;
-            border: 1px solid #022629;
-            border-radius: 32px;
-
-            &:focus {
-              border: 1px solid #5897fb;
-              box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-            }
-
-            &::-ms-clear {
-              display: none;
-              width: 0;
-              height: 0;
-            }
-          }
-
-          &:after {
-            content: '';
-            position: absolute;
-            top: 20px;
-            right: 30px;
-            width: 19px;
-            height: 19px;
-            background: url("../icons/dfs/search-icon.png") no-repeat center center transparent;
-
-          }
-        }
-      }
     }
 
     .mobile-open {
@@ -950,7 +957,8 @@
     }
 
     .public-appeal-search-view .search-filter,
-    .public-appeal-search-view-old .search-filter {
+    .public-appeal-search-view-old .search-filter,
+    #public-appeal-search-form {
       max-width: calc(100% - 65px);
     }
 
@@ -1033,19 +1041,22 @@
     }
 
     .public-appeal-search-view .search-filter,
-    .public-appeal-search-view-old .search-filter {
+    .public-appeal-search-view-old .search-filter,
+    #public-appeal-search-form {
       max-width: calc(100% - 50px);
 
       /*
       * Override the scss !important in
       * profiles/custom/webny/themes/custom/base/_table.scss
       */
-      .dataTables_filter label input[type="search"] {
+      .dataTables_filter label input[type="search"],
+      .js-form-item-search input[type="text"] {
         padding-left: 22px !important;
         height: 46px !important;
       }
 
-      .dataTables_filter label:after {
+      .dataTables_filter label:after,
+      .js-form-item-search label:after {
         top: 13px;
       }
     }

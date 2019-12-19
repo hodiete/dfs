@@ -2684,6 +2684,53 @@ display:
             default_group_multiple: {  }
             group_items: {  }
           plugin_id: numeric
+        summary_value:
+          id: summary_value
+          table: node__summary
+          field: summary_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: word
+          value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: summary_value_op
+            label: 'Summary (summary)'
+            description: ''
+            use_operator: false
+            operator: summary_value_op
+            identifier: summary_value
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+              site_builder: '0'
+              site_admin: '0'
+              user_admin: '0'
+              content_author: '0'
+              business_approver: '0'
+              suspected_fraud_submissions: '0'
+              hcpo_forms: '0'
+              restful_api: '0'
+            placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          plugin_id: string
       filter_groups:
         operator: AND
         groups:
@@ -3688,6 +3735,53 @@ display:
             default_group_multiple: {  }
             group_items: {  }
           plugin_id: numeric
+        summary_value:
+          id: summary_value
+          table: node__summary
+          field: summary_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: word
+          value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: summary_value_op
+            label: 'Summary (summary)'
+            description: ''
+            use_operator: false
+            operator: summary_value_op
+            identifier: summary_value
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+              site_builder: '0'
+              site_admin: '0'
+              user_admin: '0'
+              content_author: '0'
+              business_approver: '0'
+              suspected_fraud_submissions: '0'
+              hcpo_forms: '0'
+              restful_api: '0'
+            placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          plugin_id: string
       filter_groups:
         operator: AND
         groups:
