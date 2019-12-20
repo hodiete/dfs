@@ -377,6 +377,10 @@
         }
       }
 
+      .js-form-item-summary-value {
+        display: none;
+      }
+
       fieldset {
         margin: 0 0 50px 0;
       }
@@ -474,80 +478,81 @@
     width: 1px;
   }
 
+  .search-filter,
+  #public-appeal-search-form {
+    float: left;
+    width: 100%;
+    margin-right: 75px;
+    max-width: 915px;
+
+    /*
+    * Override the scss !important in
+    * profiles/custom/webny/themes/custom/base/_table.scss
+    */
+    .dataTables_filter,
+    .js-form-item-search {
+      width: 100% !important;
+      margin-bottom: 15px;
+
+      label {
+        position: relative;
+        margin: 0;
+
+        .label-text {
+          position: absolute;
+          overflow: hidden;
+          clip: rect(0 0 0 0);
+          height: 1px;
+          width: 1px;
+          margin: -1px;
+          padding: 0;
+          border: 0;
+        }
+
+        &:after {
+          content: '';
+          position: absolute;
+          top: 20px;
+          right: 30px;
+          width: 19px;
+          height: 19px;
+          background: url("../icons/dfs/search-icon.png") no-repeat center center transparent;
+
+        }
+      }
+
+      input[type="search"],
+      input[type="text"] {
+        margin: 0 !important;
+        padding-left: 30px !important;
+        width: 100% !important;
+        height: 62px !important;
+        font-size: 14px;
+        font-weight: 400;
+        border: 1px solid #022629;
+        border-radius: 32px;
+
+        &:focus {
+          border: 1px solid #5897fb;
+          box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+        }
+
+        &::-ms-clear {
+          display: none;
+          width: 0;
+          height: 0;
+        }
+      }
+    }
+  }
+
   .public-appeal-search-view,
   .public-appeal-search-view-old {
     position: relative;
     margin: 0;
 
-    .search-filter {
-      float: left;
+    header {
       width: 100%;
-      margin-right: 75px;
-      max-width: 915px;
-
-      /*
-      * Override the scss !important in
-      * profiles/custom/webny/themes/custom/base/_table.scss
-      */
-      .dataTables_filter {
-        width: 100% !important;
-        margin-bottom: 15px;
-
-        label {
-          position: relative;
-          margin: 0;
-
-          .label-text {
-            position: absolute;
-            overflow: hidden;
-            clip: rect(0 0 0 0);
-            height: 1px;
-            width: 1px;
-            margin: -1px;
-            padding: 0;
-            border: 0;
-          }
-
-          input[type="search"] {
-            margin: 0 !important;
-            padding-left: 30px !important;
-            width: 100% !important;
-            height: 62px !important;
-            font-size: 14px;
-            font-weight: 400;
-            border: 1px solid #022629;
-            border-radius: 32px;
-
-            &:focus {
-              border: 1px solid #5897fb;
-              box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-            }
-
-            &::-ms-clear {
-              display: none;
-              width: 0;
-              height: 0;
-            }
-          }
-
-          &:after {
-            content: '';
-            position: absolute;
-            top: 20px;
-            right: 30px;
-            width: 19px;
-            height: 19px;
-            background: url("../icons/dfs/search-icon.png") no-repeat center center transparent;
-
-          }
-        }
-      }
-
-      input[type="checkbox"]~label {
-        display: inline;
-        padding-left: 10px;
-        font-weight: 400;
-      }
     }
 
     .mobile-open {
@@ -627,6 +632,12 @@
       input[type="checkbox"]~label {
         margin: 0;
       }
+
+      input[type="checkbox"]~label {
+        display: inline;
+        padding-left: 10px;
+        font-weight: 400;
+      }
     }
 
     .counters {
@@ -639,27 +650,52 @@
       .counters-inner {
         display: flex;
         justify-content: space-between;
+        padding: 0;
         width: 100%;
+
+        li {
+          margin: 0;
+          padding: 0;
+          list-style: none;
+
+          &.upheld-li {
+            order: 1;
+          }
+
+          &.overturned-in-part-li {
+            order: 2;
+          }
+
+          &.overturned-li {
+            order: 3;
+          }
+        }
       }
 
-      .overturnedValue:before {
+      .overturnedValue:before,
+      .overturned-value:before {
         content: '';
         background: url("../icons/dfs/overturned.svg") no-repeat center center transparent;
       }
 
-      .overturnedPartValue:before {
+      .overturnedPartValue:before,
+      .overturned-in-part-value:before {
         content: '';
         background: url("../icons/dfs/overturned-in-part.svg") no-repeat center center transparent;
       }
 
-      .upheldValue:before {
+      .upheldValue:before,
+      .upheld-value:before {
         content: '';
         background: url("../icons/dfs/upheld.svg") no-repeat center center transparent;
       }
 
       .overturnedValue:before,
       .overturnedPartValue:before,
-      .upheldValue:before {
+      .upheldValue:before,
+      .overturned-value:before,
+      .overturned-in-part-value:before,
+      .upheld-value:before {
         display: inline-block;
         width: 24px;
         height: 24px;
@@ -668,7 +704,10 @@
 
       .overturnedValue,
       .overturnedPartValue,
-      .upheldValue {
+      .upheldValue,
+      .overturned-value,
+      .overturned-in-part-value,
+      .upheld-value {
         display: block;
         font-size: 32px;
         text-align: center;
@@ -918,7 +957,8 @@
     }
 
     .public-appeal-search-view .search-filter,
-    .public-appeal-search-view-old .search-filter {
+    .public-appeal-search-view-old .search-filter,
+    #public-appeal-search-form {
       max-width: calc(100% - 65px);
     }
 
@@ -1001,19 +1041,22 @@
     }
 
     .public-appeal-search-view .search-filter,
-    .public-appeal-search-view-old .search-filter {
+    .public-appeal-search-view-old .search-filter,
+    #public-appeal-search-form {
       max-width: calc(100% - 50px);
 
       /*
       * Override the scss !important in
       * profiles/custom/webny/themes/custom/base/_table.scss
       */
-      .dataTables_filter label input[type="search"] {
+      .dataTables_filter label input[type="search"],
+      .js-form-item-search input[type="text"] {
         padding-left: 22px !important;
         height: 46px !important;
       }
 
-      .dataTables_filter label:after {
+      .dataTables_filter label:after,
+      .js-form-item-search label:after {
         top: 13px;
       }
     }
@@ -1032,7 +1075,10 @@
 
       .upheldValue,
       .overturnedValue,
-      .overturnedPartValue {
+      .overturnedPartValue,
+      .upheld-value,
+      .overturned-value,
+      .overturned-in-part-value {
         font-size: 26px;
 
         &:before {
