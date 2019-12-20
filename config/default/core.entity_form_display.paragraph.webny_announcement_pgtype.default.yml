@@ -7,8 +7,6 @@ dependencies:
     - field.field.paragraph.webny_announcement_pgtype.field_webny_announcement_headlne
     - field.field.paragraph.webny_announcement_pgtype.field_webny_announcement_title
     - paragraphs.paragraphs_type.webny_announcement_pgtype
-  module:
-    - workbench_moderation
 _core:
   default_config_hash: JxfjyB9ied-Nwzj29RBhqZpgA3exGAPceEwAt5QCKYk
 id: paragraph.webny_announcement_pgtype.default
@@ -22,6 +20,7 @@ content:
       match_operator: CONTAINS
       size: 60
       placeholder: 'Type the name of the content you wish to enter'
+      match_limit: 10
     third_party_settings: {  }
     type: entity_reference_autocomplete
     region: content
