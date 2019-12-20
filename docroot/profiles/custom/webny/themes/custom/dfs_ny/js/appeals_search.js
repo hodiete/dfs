@@ -10,7 +10,6 @@
   Drupal.behaviors.appealsSearch = {
     attach: function (context, settings) {
 
-
       //override placeholder text on external filters
       function setFilterPlaceholders() {
         $('#block-exposedformpublic-appeal-searchpublic-appeals-search-page select').each(function() {
@@ -534,5 +533,22 @@
       }
     });
   });
+*/
+
+/*
+  Drupal.behaviors.moveItemsPerPage = {
+    attach: function (context, settings) {
+      'use strict';
+      if ( $(".public-appeal-search-view .views-form .vbo-view-form .form-item--id-items-per-page").length <= 0) {
+
+        $(".views-exposed-form form .form-item--id-items-per-page").prependTo($(".public-appeal-search-view .views-form .vbo-view-form"));
+        console.log("Move items per page: ");
+      }
+        
+      console.log($(".views-exposed-form form .form-item--id-items-per-page"));
+            
+      
+    }
+  }
 */
 })(jQuery, Drupal, this, Drupal.debounce);

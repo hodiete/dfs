@@ -55,7 +55,7 @@ class SearchForm extends FormBase
       '#size' => 60,
       '#required' => false,
     );
-    $form['search']['#attributes']['placeholder'] = t('Search Summary or Reference');
+    $form['search']['#attributes']['placeholder'] = t('Search Summary and Reference');
 
     $form['submit'] = array(
       '#type' => 'submit',
