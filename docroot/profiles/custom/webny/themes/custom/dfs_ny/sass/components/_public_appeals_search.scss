@@ -1161,3 +1161,46 @@
     background: url("../icons/dfs/search-icon.png") no-repeat center center transparent;
   }
 }
+
+.public-appeal-search-view table {
+
+  .views-field-references,
+  .views-field-summary {
+    ul>li {
+      display: none;
+    }
+  }
+
+  th {
+    a {
+      color: #fff;
+
+      &:after {
+        background: url("/profiles/custom/webny/libraries/datatables/media/images/sort_both.png") no-repeat right;
+        cursor: pointer;
+      }
+    }
+
+    .tablesort {
+      background-size: 22px;
+      background-position: 0px 2px;
+      background-repeat: no-repeat;
+      // cursor: pointer;
+      // /* display: inline-block; */ 
+      position: absolute;
+      // svg {
+      //   fill: blue; 
+      // }
+    } 
+
+    .tablesort--asc {
+      background-image: url("/profiles/custom/webny/libraries/datatables/media/images/sort_asc.png");
+
+    }
+
+    .tablesort--desc {
+      background-image: url("/profiles/custom/webny/libraries/datatables/media/images/sort_desc.png");
+      background-position: 0px -4px;
+    }
+  }
+}
