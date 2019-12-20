@@ -55,6 +55,8 @@ target-hooks:
     dir: '${docroot}'
     command: 'echo ''No post-setup build configured.'''
 cm:
+  uuid: dfd4aa22-a39f-437f-9a3f-74306cc91274
+  allow-overrides: true
   # Possible values: core-only, config-split, features, none.
   strategy: config-split
   core:
@@ -70,8 +72,6 @@ cm:
     # Install site directly from existing config.
     # This cannot be used if your install profile implements hook_install.
     install_from_config: true
-  features:
-    no-overrides: true
 blt:
   update:
     ignore-existing-file: '${repo.root}/scripts/blt/ignore-existing.txt'
