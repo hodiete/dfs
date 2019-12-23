@@ -14,6 +14,7 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 
 
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use function Drupal\Core\Form\drupal_set_message;
 // use Symfony\Component\Validator\Constraints\Url;
 
 
@@ -57,6 +58,14 @@ class SearchForm extends FormBase
     );
     $form['search']['#attributes']['placeholder'] = t('Search Summary and Reference');
 
+    $form['references_included'] = array(
+      '#type' => 'checkbox',
+      '#title' => $this->t('Include References in Search'),
+      '#return_value' => 1,
+      // '#options' => array('checked' => true, 'unchecked' => false),
+      // '#default_value' => false,
+    );
+
     $form['submit'] = array(
       '#type' => 'submit',
       '#value' => $this->t('Search'),
@@ -95,7 +104,28 @@ class SearchForm extends FormBase
    */
   public function submitForm(array &$form, FormStateInterface $form_state)
   {
-    $params = $this->searchFields($form_state->getValue('search'));
+    $search_words = $form_state->getValue('search');
+    $checked = $form_state->getValue('references_included');
+
+    // print "<Pre>checkout:: "; 
+    // print_r($form_state->getValue('references_included'));
+    //  exit(0);
+    // \Drupal::messenger()->addStatus(t('formstate @print.', array('@print' => print_r($form_state->references_included))));
+
+    // if ($form_state->hasValue('references_included')) {
+    //   if($checked == 'checked') {
+    //     $ref = true;
+    //   }
+    //   // print_r($ref);
+      
+    // } 
+    // else {
+    //   $ref = false;
+    //   // \Drupal::messenger()->addStatus(t('references NOT included.'));
+
+    // }
+
+    $params = $this->searchFields($form_state->getValue('search'), $checked);
 
     // Change the Action of Submission to the View of Public Appeal Search  
     $response = new RedirectResponse(Url::fromRoute('view.public_appeal_search.public_appeals_search_page', $params)->toString());
@@ -111,23 +141,28 @@ class SearchForm extends FormBase
    *   Params array used in View search URL
    */
 
-  protected function searchFields($input) {
+  protected function searchFields($input, $ref) {
+    $params = [];
+    if($ref) {
+      // \Drupal::messenger()->addStatus(t('references_included @print.', array('@print' => print($ref))));
 
-    if ($this->searchFieldHelp('summary', $input) && $this->searchFieldHelp('references', $input)) {
-      $params[] = [
-        'summary_value' => $input,
-        'references_value' => $input,
-      ];
-    }
-    elseif($this->searchFieldHelp('summary', $input)) {
-      $params[] = [
-        'summary_value' => $input,
-      ];
-    }
-    elseif($this->searchFieldHelp('references', $input)) {
-      $params[] = [
-        'references_value' => $input,
-      ];
+      if ($this->searchFieldHelp('summary', $input) && $this->searchFieldHelp('references', $input)) {
+        $params[] = [
+          'summary_value' => $input,
+          'references_value' => $input,
+        ];
+      }
+      elseif($this->searchFieldHelp('summary', $input)) {
+        $params[] = [
+          'summary_value' => $input,
+        ];
+      }
+      else {
+        $params[] = [
+          'references_value' => $input,
+        ];
+      }
+
     }
     else {
       $params[] = [
