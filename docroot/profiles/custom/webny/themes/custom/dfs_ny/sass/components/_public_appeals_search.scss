@@ -53,6 +53,12 @@
           font-size: 18px;
           text-transform: uppercase;
           line-height: 1em;
+
+          &.views-field-summary,
+          &.views-field-references,
+          &.views-field-views-bulk-operations-bulk-form {
+            display: none;
+          }
         }
       }
     }
@@ -74,6 +80,12 @@
         padding: 25px 20px 20px;
         background: #fff;
         color: #022629;
+
+        &.views-field-summary,
+        &.views-field-references,
+        &.views-field-views-bulk-operations-bulk-form {
+          display: none;
+        }
       }
 
       table {
@@ -377,7 +389,8 @@
         }
       }
 
-      .js-form-item-summary-value {
+      .js-form-item-summary-value,
+      .js-form-item-references-value {
         display: none;
       }
 
@@ -1186,12 +1199,12 @@
       background-position: 0px 2px;
       background-repeat: no-repeat;
       // cursor: pointer;
-      // /* display: inline-block; */ 
+      // /* display: inline-block; */
       position: absolute;
       // svg {
-      //   fill: blue; 
+      //   fill: blue;
       // }
-    } 
+    }
 
     .tablesort--asc {
       background-image: url("/profiles/custom/webny/libraries/datatables/media/images/sort_asc.png");

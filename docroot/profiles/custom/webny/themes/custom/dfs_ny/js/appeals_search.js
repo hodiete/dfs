@@ -27,10 +27,104 @@
         }
       }
 
+      //output child row for summary and references accordions
+      function formatAccordionsRow(tableRow, rowIndex) {
+        let outputTable = '<table><thead><th>Summary and References</th></thead><tbody><tr><td>';
+        let summary = $(tableRow).find('.views-field-summary');
+        let refs = $(tableRow).find('.views-field-references');
+
+        //summary and references should always be the same length
+        outputTable += '<div class="accordion"><a class="accordion-toggle" aria-expanded="false" aria-controls="sumAccordion-';
+        outputTable += rowIndex
+        outputTable += '" id="sumAccordionTitle-';
+        outputTable += rowIndex;
+        outputTable += '" href="#">Summary</a><div hidden class="accordion-content" role="region" id="sumAccordion-';
+        outputTable += rowIndex;
+        outputTable += '" aria-labelledby="sumAccordionTitle-';
+        outputTable += rowIndex;
+        outputTable += '">';
+        $(summary).find('li').each(function(i) {
+          outputTable += '<h3>Summary ';
+          outputTable += (i + 1);
+          outputTable += '</h3><div class="summary-text">';
+          outputTable += $(this).text();
+          outputTable += '</div>'
+        });
+        outputTable += '</div></div>';
+
+        outputTable += '<div class="accordion refsAccordionContainer"><a class="accordion-toggle" aria-expanded="false" aria-controls="refsAccordion-';
+        outputTable += rowIndex
+        outputTable += '" id="refsAccordionTitle-';
+        outputTable += rowIndex;
+        outputTable += '" href="#">References</a><div hidden class="accordion-content" role="region" id="refsAccordion-';
+        outputTable += rowIndex;
+        outputTable += '" aria-labelledby="refsAccordionTitle-';
+        outputTable += rowIndex;
+        outputTable += '">';
+        $(refs).find('li').each(function(i) {
+          outputTable += '<h3>References ';
+          outputTable += (i + 1);
+          outputTable += '</h3><div class="refs-text">';
+          outputTable += $(this).text();
+          outputTable += '</div>'
+        });
+        outputTable += '</div></div>';
+
+        outputTable += '</div></tr></tbody></table>';
+
+        return outputTable;
+      }
+
       setFilterPlaceholders();
 
+      //build summary and references accordion
+      $('.vbo-table>tbody>tr', context).once('accordion-build').each(function(index) {
+        let newRow = $('<tr />').addClass('accordion-row');
+        let newCell = $('<td colspan="11" />');
+        $(newCell).html(formatAccordionsRow(this, index));
+        $(newRow).html(newCell);
+
+        $(newCell).find('.accordion-toggle').on('click', function(evt) {
+          evt.preventDefault();
+          if ($(this).next('.accordion-content')[0].hasAttribute("hidden")) {
+            $(this).attr('aria-expanded','true');
+            $(this).addClass('accordion-open');
+            $(this).next('.accordion-content').removeAttr('hidden');
+          }
+          else {
+            $(this).attr('aria-expanded','false');
+            $(this).removeClass('accordion-open');
+            $(this).next('.accordion-content').attr('hidden','hidden');
+          }
+        });
+
+        $(this).after(newRow);
+      });
+
+      //add expand all link and functionality
+      $('.expand-wrapper', context).once('expander-build').append('<a class="expand-trigger" href="#">Expand All<span class="expand-long-text"> Summaries &amp; References</span></a>');
+      $('.expand-wrapper', context).once('expander-click').on('click',function(evt) {
+        $('.accordion-row').each(function() {
+          evt.preventDefault();
+          $(this).find('.accordion-toggle').attr('aria-expanded','true');
+          $(this).find('.accordion-toggle').addClass('accordion-open');
+          $(this).find('.accordion-content').removeAttr('hidden');
+        });
+      });
+
+      //add collapse all link and functionality
+      $('.collapse-wrapper', context).once('collapser-build').append('<a class="collapse-trigger" href="#">Collapse All<span class="collapse-long-text"> Summaries &amp; References</span></a>');
+      $('.collapse-wrapper', context).once('collapser-click').on('click',function(evt) {
+        $('.accordion-row').each(function() {
+          evt.preventDefault();
+          $(this).find('.accordion-toggle').attr('aria-expanded','false');
+          $(this).find('.accordion-toggle').removeClass('accordion-open');
+          $(this).find('.accordion-content').attr('hidden','hidden');
+        });
+      });
+
       //add mobile open functionality
-      $('.mobile-open').once('mobile-open').on('click',function(evt) {
+      $('.mobile-open', context).once('mobile-open').on('click',function(evt) {
         $('#block-exposedformpublic-appeal-searchpublic-appeals-search-page').css({
           'overflow': 'visible',
           'clip': 'auto',
@@ -40,7 +134,7 @@
       });
 
       //add mobile close funcitonality
-      $('.mobile-close').once('mobile-close').on('click',function(evt) {
+      $('.mobile-close', context).once('mobile-close').on('click',function(evt) {
         evt.preventDefault();
         $('#block-exposedformpublic-appeal-searchpublic-appeals-search-page').css({
           'overflow': 'hidden',
@@ -56,22 +150,22 @@
       $('.overturned-in-part-counter').parents('li').addClass('overturned-in-part-li');
 
       //move tooltip text after toggle
-      $('.tooltip-container').once().append(toolText);
+      $('.tooltip-container', context).once().append(toolText);
 
       //add tooltip functionality
       let tooltipToggle = $('.tooltip-toggle');
-      $(tooltipToggle).once('tooltip-mouseover').on('mouseenter', function(evt) {
+      $(tooltipToggle, context).once('tooltip-mouseover').on('mouseenter', function(evt) {
         console.log('mouseenter');
         evt.preventDefault();
         $(toolText).removeAttr('hidden');
       });
-      $(tooltipToggle).once('tooltip-mouseout').on('mouseleave', function(evt) {
+      $(tooltipToggle, context).once('tooltip-mouseout').on('mouseleave', function(evt) {
         console.log('mouseleave');
         evt.preventDefault();
         $(toolText).attr('hidden','hidden');
       });
 
-      $(tooltipToggle).once('tooltip-click').on('click', function(evt) {
+      $(tooltipToggle, context).once('tooltip-click').on('click', function(evt) {
         evt.preventDefault();
         if (clickedOn) {
           $(toolText).attr('hidden','hidden');
@@ -93,9 +187,9 @@
       });
 
       //add references checkbox and funtionality
-      $('.views-page-public-appeal-search .refs-include').once('add-refs-checkbox').append('<input type="checkbox" id="references-included" name="references-included" value="references-included"><label for="references-included">Include References in Search</label>');
+      $('.views-page-public-appeal-search .refs-include', context).once('add-refs-checkbox').append('<input type="checkbox" id="references-included" name="references-included" value="references-included"><label for="references-included">Include References in Search</label>');
 
-      $('#references-included').once('add-refs-function').on('click keypress', function(evt) {
+      $('#references-included', context).once('add-refs-function').on('click keypress', function(evt) {
         if (evt.type == 'keypress') {
           if (evt.keyCode == 13) {
             //referencesClickHandler();
@@ -107,6 +201,36 @@
       });
 
       //$('.views-field-summary').prepend('<p>Test!</p>'); //TODO: js does not affect exported output
+
+      //reduce CSV export process to one click
+      $('#views-form-public-appeal-search-public-appeals-search-page .vbo-select-all').prop('checked',false);
+      //$('#views-form-public-appeal-search-public-appeals-search-page .vbo-select-all', context).once('selected').prop('checked',true);
+      $('#views-form-public-appeal-search-public-appeals-search-page .vbo-select-all', context).once('testtest').on('click',Drupal.debounce(function() {
+        $('#edit-vbo-export-generate-csv-action')[0].click();
+      },500));
+
+
+      //hide divs that mimic status messages
+      $('#main-layout-content-switch-div [aria-label="Error message"]').addClass('visually-hidden');
+      $('#main-layout-content-switch-div [aria-label="Status message"]').addClass('visually-hidden');
+
+      //automatically download CSV file
+      if ($('#main-layout-content-switch-div [aria-label="Status message"] li:first-child:contains("Export file created")').find('a').length > 0 && !$('#main-layout-content-switch-div [aria-label="Status message"] li:first-child:contains("Export file created")').find('a').hasClass('downloaded')) {
+        console.log('has export file');
+        console.log($('#main-layout-content-switch-div [aria-label="Status message"] li:first-child:contains("Export file created")').find('a')[0]);
+        $('#main-layout-content-switch-div [aria-label="Status message"] li:first-child:contains("Export file created")').find('a')[0].click();
+        $('#main-layout-content-switch-div [aria-label="Status message"] li:first-child:contains("Export file created")').find('a').addClass('downloaded');
+      }
+
+      //trigger page load on pager drop-down select
+      $('.pager-drop select', context).once('pager-change').on('change', function() {
+        console.log('changed');
+        //$('#edit-submit-public-appeal-search')[0].click();
+        //TODO: add to url
+      });
+
+      //move pager drop-down
+      $('.js-form-item-items-per-page', context).once('pager-move').prependTo('.page-drop');
 
 /*
       let refsSelected = false;
@@ -544,10 +668,10 @@
         $(".views-exposed-form form .form-item--id-items-per-page").prependTo($(".public-appeal-search-view .views-form .vbo-view-form"));
         console.log("Move items per page: ");
       }
-        
+
       console.log($(".views-exposed-form form .form-item--id-items-per-page"));
-            
-      
+
+
     }
   }
 */
