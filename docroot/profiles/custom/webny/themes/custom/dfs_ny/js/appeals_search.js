@@ -44,6 +44,7 @@
         outputTable += rowIndex;
         outputTable += '">';
         $(summary).find('li').each(function(i) {
+          $('.CSV-text').remove();
           outputTable += '<h3>Summary ';
           outputTable += (i + 1);
           outputTable += '</h3><div class="summary-text">';
@@ -62,6 +63,7 @@
         outputTable += rowIndex;
         outputTable += '">';
         $(refs).find('li').each(function(i) {
+          $('.CSV-text').remove();
           outputTable += '<h3>References ';
           outputTable += (i + 1);
           outputTable += '</h3><div class="refs-text">';
@@ -123,6 +125,10 @@
         });
       });
 
+      //move counters and mobile filter
+      $('.counters').insertAfter('.public-appeal-search-form form');
+      $('.mobile-open').insertAfter('.public-appeal-search-form form');
+
       //add mobile open functionality
       $('.mobile-open', context).once('mobile-open').on('click',function(evt) {
         $('#block-exposedformpublic-appeal-searchpublic-appeals-search-page').css({
@@ -133,7 +139,7 @@
         });
       });
 
-      //add mobile close funcitonality
+      //add mobile close functionality
       $('.mobile-close', context).once('mobile-close').on('click',function(evt) {
         evt.preventDefault();
         $('#block-exposedformpublic-appeal-searchpublic-appeals-search-page').css({
@@ -149,8 +155,9 @@
       $('.overturned-counter').parents('li').addClass('overturned-li');
       $('.overturned-in-part-counter').parents('li').addClass('overturned-in-part-li');
 
-      //move tooltip text after toggle
-      $('.tooltip-container', context).once().append(toolText);
+      //add tooltip container, move tooltip text after toggle
+      $('.js-form-item-references-included', context).once('add-tooltip-container').before(toolTipContainer);
+      $(toolTipContainer, context).once('tooltip-setup').append(toolText);
 
       //add tooltip functionality
       let tooltipToggle = $('.tooltip-toggle');
@@ -187,20 +194,7 @@
       });
 
       //add references checkbox and funtionality
-      $('.views-page-public-appeal-search .refs-include', context).once('add-refs-checkbox').append('<input type="checkbox" id="references-included" name="references-included" value="references-included"><label for="references-included">Include References in Search</label>');
-
-      $('#references-included', context).once('add-refs-function').on('click keypress', function(evt) {
-        if (evt.type == 'keypress') {
-          if (evt.keyCode == 13) {
-            //referencesClickHandler();
-          }
-        }
-        else {
-          //referencesClickHandler();
-        }
-      });
-
-      //$('.views-field-summary').prepend('<p>Test!</p>'); //TODO: js does not affect exported output
+      //$('.views-page-public-appeal-search .refs-include', context).once('add-refs-checkbox').append('<input type="checkbox" id="references-included" name="references-included" value="references-included"><label for="references-included">Include References in Search</label>');
 
       //reduce CSV export process to one click
       $('#views-form-public-appeal-search-public-appeals-search-page .vbo-select-all').prop('checked',false);
@@ -222,16 +216,20 @@
         $('#main-layout-content-switch-div [aria-label="Status message"] li:first-child:contains("Export file created")').find('a').addClass('downloaded');
       }
 
-      //trigger page load on pager drop-down select
-      $('.pager-drop select', context).once('pager-change').on('change', function() {
-        console.log('changed');
-        //$('#edit-submit-public-appeal-search')[0].click();
-        //TODO: add to url
-      });
-
       //move pager drop-down
-      $('.js-form-item-items-per-page', context).once('pager-move').prependTo('.page-drop');
+      $('.js-form-item-items-per-page select', context).once('pager-move').clone().attr('id','page-drop-select').appendTo('.page-drop-select-container').on('change', function() {
+        console.log('changed');
+        $('#edit-items-per-page').val($('#page-drop-select').val());
+        $('#edit-submit-public-appeal-search')[0].click();
+      });
+      $('.page-drop-select-container', context).once('pager-label').prepend($('<label>Show</label>').attr('for','page-drop-select'));
 
+      //change export link text
+      $('.vbo-select-all~.option', context).once('export-link-text').html('Export');
+
+      //add export link to bottom of table
+      $('.js-form-item-select-all', context).once('second-export-link').clone().appendTo('.vbo-table~#edit-actions');
+      $('.vbo-table~#edit-actions #edit-select-all').attr('id','edit-select-all-2');
 /*
       let refsSelected = false;
 
@@ -500,6 +498,7 @@
   };
 
   //tooltips
+  let toolTipContainer = $('<div />').addClass('tooltip-container').html('<a href="#" class="tooltip-toggle">i</a>')
   let toolText = $('#block-publicappealssearchtooltip').attr('hidden','hidden').detach();
   let clickedOn = false;
 

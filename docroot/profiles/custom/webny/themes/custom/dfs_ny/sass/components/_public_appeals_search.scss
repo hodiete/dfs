@@ -26,15 +26,12 @@
     padding-right: 0;
   }
 
-  .views-element-container {
+  .views-element-container,
+  .public-appeal-search-form {
     margin: 0;
     padding: 0 75px 20px 40px;
+    width: 100%;
   }
-
-  /*.public-appeal-search-view table {
-    //hidden until datatables loads
-    display: none;
-  }*/
 
   table {
     position: relative;
@@ -196,12 +193,6 @@
     }
   }
 
-  /*.public-appeal-search-view table.public-appeals-data,
-  .public-appeal-search-view table.public-appeals-data table {
-    //hidden until datatables loads
-    display: table;
-  }*/
-
   #after-content {
     margin: 0 65px 40px;
     width: auto;
@@ -218,8 +209,7 @@
 
 
   /* external filters */
-  #block-exposedformpublic-appeal-searchpublic-appeals-search-page,
-  #block-exposedformpublic-appeal-searchpublic-appeals-search-page-old {
+  #block-exposedformpublic-appeal-searchpublic-appeals-search-page {
     width: 342px;
     margin-top: 50px;
     padding-bottom: 350px;
@@ -241,25 +231,6 @@
     form {
       position: relative;
       padding: 50px 28px 0;
-
-      //hide filters during load
-      /*&:before {
-        content: '';
-        position: absolute;
-        display: block;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: #EFF0F2;
-        z-index: 10;
-        opacity: 0.7;
-      }
-
-      &.active-filters:before {
-        content: '';
-        display: none;
-      }*/
 
       label,
       legend {
@@ -390,7 +361,8 @@
       }
 
       .js-form-item-summary-value,
-      .js-form-item-references-value {
+      .js-form-item-references-value,
+      .js-form-item-items-per-page {
         display: none;
       }
 
@@ -473,16 +445,6 @@
     }
   }
 
-  #block-publicappealsloadblock {
-    max-width: 915px;
-    margin-bottom: 30px;
-    padding: 30px 50px 20px 40px;
-    color: #09464c;
-    background: #e5eeee;
-    font-size: 24px;
-    font-weight: 500;
-  }
-
   #block-publicappealssearchtooltip {
     //visually hide tooltip until it has been moved by js
     overflow: hidden;
@@ -491,20 +453,39 @@
     width: 1px;
   }
 
-  .search-filter,
   #public-appeal-search-form {
+    position: relative;
     float: left;
     width: 100%;
     margin-right: 75px;
+    //margin-left: 41px;
     max-width: 915px;
 
-    /*
-    * Override the scss !important in
-    * profiles/custom/webny/themes/custom/base/_table.scss
-    */
-    .dataTables_filter,
+    input[type=submit] {
+      position: absolute;
+      top: 5px;
+      right: 6px;
+      background: none;
+      font-size: 1px;
+      width: 65px;
+      padding: 16px;
+      border-radius: 24px;
+      z-index: 1;
+      opacity: 0;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      width: 19px;
+      height: 19px;
+      background: url("../icons/dfs/search-icon.png") no-repeat center center transparent;
+    }
+
     .js-form-item-search {
-      width: 100% !important;
+      width: 100%;
       margin-bottom: 15px;
 
       label {
@@ -537,10 +518,10 @@
 
       input[type="search"],
       input[type="text"] {
-        margin: 0 !important;
-        padding-left: 30px !important;
-        width: 100% !important;
-        height: 62px !important;
+        margin: 0;
+        padding-left: 30px;
+        width: 100%;
+        height: 62px;
         font-size: 14px;
         font-weight: 400;
         border: 1px solid #022629;
@@ -560,172 +541,172 @@
     }
   }
 
-  .public-appeal-search-view,
-  .public-appeal-search-view-old {
+  .tooltip-container {
+    position: relative;
+    display: block;
+    float: left;
+    margin-left: 30px;
+    margin-right: 12px;
+
+    .tooltip-toggle,
+    .tooltip-toggle:hover,
+    .tooltip-toggle:active,
+    .tooltip-toggle:visited {
+      display: block;
+      background: #09464C;
+      color: #fff;
+      width: 13px;
+      height: 13px;
+      border: 1px solid #09464C;
+      border-radius: 50%;
+      font-size: 10px;
+      text-align: center;
+      line-height: 14px;
+      text-decoration: none;
+    }
+
+
+    /* tooltip */
+    #block-publicappealssearchtooltip {
+      //display tooltip it has been moved by js
+      overflow: visible;
+      clip: auto;
+      height: auto;
+      position: absolute;
+      top: 33px;
+      left: -30px;
+      padding: 10px 15px;
+      width: 324px;
+      background: #09464C;
+      color: #fff;
+      font-size: 14px;
+      z-index: 100;
+
+      &:before {
+        content: '';
+        position: absolute;
+        top: -13px;
+        left: 26px;
+        border-left: 11px solid transparent;
+        border-right: 11px solid transparent;
+        border-bottom: 13px solid #09464C;
+      }
+
+      &[hidden] {
+        display: none;
+      }
+    }
+  }
+
+  #public-appeal-search-form .js-form-item-references-included {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    line-height: 15px;
+
+    input[type="checkbox"],
+    input[type="checkbox"]~label {
+      margin: 0;
+    }
+
+    input[type="checkbox"]~label {
+      display: inline;
+      padding-left: 10px;
+      font-weight: 400;
+    }
+  }
+
+  .counters {
+    display: flex;
+    max-width: 580px;
+    padding: 2px 0;
+    color: #09464c;
+    font-size: 18px;
+
+    .counters-inner {
+      display: flex;
+      justify-content: space-between;
+      padding: 0;
+      width: 100%;
+
+      li {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        text-align: center;
+
+        &.upheld-li {
+          order: 1;
+        }
+
+        &.overturned-in-part-li {
+          order: 2;
+        }
+
+        &.overturned-li {
+          order: 3;
+        }
+      }
+    }
+
+    .overturnedValue:before,
+    .overturned-value:before {
+      content: '';
+      background: url("../icons/dfs/overturned.svg") no-repeat center center transparent;
+    }
+
+    .overturnedPartValue:before,
+    .overturned-in-part-value:before {
+      content: '';
+      background: url("../icons/dfs/overturned-in-part.svg") no-repeat center center transparent;
+    }
+
+    .upheldValue:before,
+    .upheld-value:before {
+      content: '';
+      background: url("../icons/dfs/upheld.svg") no-repeat center center transparent;
+    }
+
+    .overturnedValue:before,
+    .overturnedPartValue:before,
+    .upheldValue:before,
+    .overturned-value:before,
+    .overturned-in-part-value:before,
+    .upheld-value:before {
+      display: inline-block;
+      width: 24px;
+      height: 24px;
+      margin-right: 10px;
+    }
+
+    .overturnedValue,
+    .overturnedPartValue,
+    .upheldValue,
+    .overturned-value,
+    .overturned-in-part-value,
+    .upheld-value {
+      display: block;
+      font-size: 32px;
+      text-align: center;
+    }
+  }
+
+  .mobile-open {
+    display: none;
+    position: absolute;
+    top: 15px;
+    right: 0;
+    width: 34px;
+    height: 29px;
+    background: url("../icons/dfs/filter-icon.svg") no-repeat center center transparent;
+  }
+
+  .public-appeal-search-view {
     position: relative;
     margin: 0;
 
     header {
       width: 100%;
-    }
-
-    .mobile-open {
-      display: none;
-      position: absolute;
-      top: 15px;
-      right: 0;
-      width: 34px;
-      height: 29px;
-      background: url("../icons/dfs/filter-icon.svg") no-repeat center center transparent;
-    }
-
-    .tooltip-container {
-      position: relative;
-      display: block;
-      float: left;
-      margin-left: 30px;
-      margin-right: 12px;
-
-      .tooltip-toggle,
-      .tooltip-toggle:hover,
-      .tooltip-toggle:active,
-      .tooltip-toggle:visited {
-        display: block;
-        background: #09464C;
-        color: #fff;
-        width: 13px;
-        height: 13px;
-        border: 1px solid #09464C;
-        border-radius: 50%;
-        font-size: 10px;
-        text-align: center;
-        line-height: 14px;
-        text-decoration: none;
-      }
-
-
-      /* tooltip */
-      #block-publicappealssearchtooltip {
-        //display tooltip it has been moved by js
-        overflow: visible;
-        clip: auto;
-        height: auto;
-        position: absolute;
-        top: 33px;
-        left: -30px;
-        padding: 10px 15px;
-        width: 324px;
-        background: #09464C;
-        color: #fff;
-        font-size: 14px;
-        z-index: 100;
-
-        &:before {
-          content: '';
-          position: absolute;
-          top: -13px;
-          left: 26px;
-          border-left: 11px solid transparent;
-          border-right: 11px solid transparent;
-          border-bottom: 13px solid #09464C;
-        }
-
-        &[hidden] {
-          display: none;
-        }
-      }
-    }
-
-    .refs-include {
-      display: flex;
-      align-items: center;
-      margin-bottom: 20px;
-      line-height: 15px;
-
-      input[type="checkbox"],
-      input[type="checkbox"]~label {
-        margin: 0;
-      }
-
-      input[type="checkbox"]~label {
-        display: inline;
-        padding-left: 10px;
-        font-weight: 400;
-      }
-    }
-
-    .counters {
-      display: flex;
-      max-width: 580px;
-      padding: 2px 0;
-      color: #09464c;
-      font-size: 18px;
-
-      .counters-inner {
-        display: flex;
-        justify-content: space-between;
-        padding: 0;
-        width: 100%;
-
-        li {
-          margin: 0;
-          padding: 0;
-          list-style: none;
-
-          &.upheld-li {
-            order: 1;
-          }
-
-          &.overturned-in-part-li {
-            order: 2;
-          }
-
-          &.overturned-li {
-            order: 3;
-          }
-        }
-      }
-
-      .overturnedValue:before,
-      .overturned-value:before {
-        content: '';
-        background: url("../icons/dfs/overturned.svg") no-repeat center center transparent;
-      }
-
-      .overturnedPartValue:before,
-      .overturned-in-part-value:before {
-        content: '';
-        background: url("../icons/dfs/overturned-in-part.svg") no-repeat center center transparent;
-      }
-
-      .upheldValue:before,
-      .upheld-value:before {
-        content: '';
-        background: url("../icons/dfs/upheld.svg") no-repeat center center transparent;
-      }
-
-      .overturnedValue:before,
-      .overturnedPartValue:before,
-      .upheldValue:before,
-      .overturned-value:before,
-      .overturned-in-part-value:before,
-      .upheld-value:before {
-        display: inline-block;
-        width: 24px;
-        height: 24px;
-        margin-right: 10px;
-      }
-
-      .overturnedValue,
-      .overturnedPartValue,
-      .upheldValue,
-      .overturned-value,
-      .overturned-in-part-value,
-      .upheld-value {
-        display: block;
-        font-size: 32px;
-        text-align: center;
-      }
     }
 
     .dt-buttons {
@@ -754,13 +735,14 @@
         align-items: flex-end;
       }
 
-      .dataTables_length {
+      .page-drop {
         position: relative;
         margin-right: 8px;
         padding-right: 10px;
 
         label,
         select {
+          display: inline;
           margin: 0;
           width: auto;
           height: auto;
@@ -878,22 +860,22 @@
       padding-right: 50px;
     }
 
-    .public-appeal-search-view,
-    .public-appeal-search-view-old {
-      .refs-include {
-        margin-bottom: 0;
-      }
+    #public-appeal-search-form .js-form-item-references-included {
+      margin-bottom: 0;
+    }
 
-      .counters {
-        max-width: 915px;
-        padding: 20px 0 10px;
-        clear: both;
+    .counters {
+      max-width: 915px;
+      padding: 20px 0 10px;
+      clear: both;
 
-        .counters-inner {
-          margin: 0 auto;
-          width: 580px;
-        }
+      .counters-inner {
+        margin: 0 auto;
+        width: 580px;
       }
+    }
+
+    .public-appeal-search-view {
 
       .table-top .dt-buttons,
       .table-top .expand-wrapper {
@@ -966,7 +948,8 @@
 
 
 
-    .views-element-container {
+    .views-element-container,
+    .public-appeal-search-form {
       padding: 0 25px 10px;
     }
 
@@ -976,16 +959,16 @@
       max-width: calc(100% - 65px);
     }
 
-    .public-appeal-search-view .counters .counters-inner,
-    .public-appeal-search-view-old .counters .counters-inner {
+    .counters .counters-inner {
       width: 480px;
+    }
+
+    .mobile-open {
+      display: block;
     }
 
     .public-appeal-search-view,
     .public-appeal-search-view-old {
-      .mobile-open {
-        display: block;
-      }
 
       .pagination-holder {
         margin-top: 10px;
@@ -1013,12 +996,12 @@
       }
     }
 
-    .views-element-container {
+    .views-element-container,
+    .public-appeal-search-form {
       padding: 0 20px;
     }
 
-    .public-appeal-search-view .counters,
-    .public-appeal-search-view-old .counters {
+    .counters {
       width: 100%;
 
       .counters-inner {
@@ -1031,7 +1014,7 @@
 
     .public-appeal-search-view .table-top-left,
     .public-appeal-search-view-old .table-top-left {
-      .dataTables_length {
+      .page-drop {
         margin-right: 0;
         padding-right: 0;
 
@@ -1076,15 +1059,11 @@
       }
     }
 
-    .public-appeal-search-view,
-    .public-appeal-search-view-old {
-      .mobile-open {
-        top: 8px;
-      }
+    .mobile-open {
+      top: 8px;
     }
 
-    .public-appeal-search-view .counters,
-    .public-appeal-search-view-old .counters {
+    .counters {
       padding-bottom: 0;
       font-size: 14px;
 
@@ -1103,8 +1082,7 @@
       }
     }
 
-    .public-appeal-search-view .tooltip-container #block-publicappealssearchtooltip,
-    .public-appeal-search-view-old .tooltip-container #block-publicappealssearchtooltip {
+    .tooltip-container #block-publicappealssearchtooltip {
       width: 300px;
     }
 
@@ -1146,49 +1124,14 @@
 
 }
 
-
-#public-appeal-search-form {
-  position: relative;
-  margin-left: 41px;
-
-  input[type=submit] {
-    position: absolute;
-    top: 5px;
-    right: 6px;
-    background: none;
-    font-size: 1px;
-    width: 65px;
-    padding: 16px;
-    border-radius: 24px;
-    z-index: 1;
-    opacity: 0;
-  }
-
-  &::after {
-    content: '';
-    position: absolute;
-    top: 20px;
-    right: 30px;
-    width: 19px;
-    height: 19px;
-    background: url("../icons/dfs/search-icon.png") no-repeat center center transparent;
-  }
-}
-
 .public-appeal-search-view table {
-
-  .views-field-references,
-  .views-field-summary {
-    ul>li {
-      // display: none;
-    }
-  }
 
   th {
     a {
       color: #fff;
 
       &:after {
+        content: '';
         background: url("/profiles/custom/webny/libraries/datatables/media/images/sort_both.png") no-repeat right;
         cursor: pointer;
       }

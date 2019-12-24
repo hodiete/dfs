@@ -4737,8 +4737,8 @@ display:
           label: Summary
           exclude: false
           alter:
-            alter_text: false
-            text: '<h2>Summary</h2>{{ summary.content }}'
+            alter_text: true
+            text: '<h3 class="CSV-text">Summary: </h3>{{ summary }}'
             make_link: false
             path: ''
             absolute: false
@@ -4761,7 +4761,7 @@ display:
             more_link_path: ''
             strip_tags: true
             trim: false
-            preserve_tags: '<ul> <li> <div> <span>'
+            preserve_tags: '<ul> <li> <div> <span> <h3>'
             html: false
           element_type: span
           element_class: summary-td
@@ -4799,8 +4799,8 @@ display:
           label: References
           exclude: false
           alter:
-            alter_text: false
-            text: ''
+            alter_text: true
+            text: '<h3 class="CSV-text">Reference: </h3>{{ references }}'
             make_link: false
             path: ''
             absolute: false
@@ -4823,7 +4823,7 @@ display:
             more_link_path: ''
             strip_tags: true
             trim: false
-            preserve_tags: '<ul> <li> <span>'
+            preserve_tags: '<ul> <li> <span> <h3>'
             html: false
           element_type: ''
           element_class: ''
@@ -4956,28 +4956,6 @@ display:
           view_to_insert: 'public_appeal_search:public_appeals_search_block'
           inherit_arguments: true
           plugin_id: view
-        area_text_custom:
-          id: area_text_custom
-          table: views
-          field: area_text_custom
-          relationship: none
-          group_type: group
-          admin_label: ''
-          empty: true
-          tokenize: false
-          content: '<div class="tooltip-container"><a href="#" class="tooltip-toggle">i</a></div>'
-          plugin_id: text_custom
-        area_text_custom_1:
-          id: area_text_custom_1
-          table: views
-          field: area_text_custom
-          relationship: none
-          group_type: group
-          admin_label: ''
-          empty: true
-          tokenize: false
-          content: '<div class="refs-include"></div>'
-          plugin_id: text_custom
         result:
           id: result
           table: views
@@ -4986,7 +4964,7 @@ display:
           group_type: group
           admin_label: ''
           empty: true
-          content: '<div class="table-top"><div class="table-top-left"><div class="page-drop">per page</div><div class="search-results">Showing @start to @end of @total</div></div><div class="table-top-right"><div class="expand-wrapper"></div><div class="collapse-wrapper"></div></div></div>'
+          content: '<div class="table-top"><div class="table-top-left"><div class="page-drop"><span class="page-drop-select-container"></span>per page</div><div class="search-results">Showing @start to @end of @total</div></div><div class="table-top-right"><div class="expand-wrapper"></div><div class="collapse-wrapper"></div></div></div>'
           plugin_id: result
       relationships:
         diagnosis:
