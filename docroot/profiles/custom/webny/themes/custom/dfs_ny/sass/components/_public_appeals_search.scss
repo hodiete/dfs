@@ -65,6 +65,44 @@
           &.views-field-case-number {
             width: 12%;
           }
+
+          a {
+            position: relative;
+            color: #fff;
+
+            &:after {
+              content: '';
+              position: absolute;
+              display: inline-block;
+              padding-left: 10px;
+              width: 10px;
+              height: 15px;
+              background: url("../icons/dfs/sort_both.png") no-repeat right;
+              cursor: pointer;
+            }
+          }
+
+          .tablesort {
+            //background-size: 22px;
+            //background-position: 0px 2px;
+            //background-repeat: no-repeat;
+            position: absolute;
+            padding-left: 10px;
+            width: 10px;
+            height: 15px;
+            background-color: #62666A;
+            z-index: 10;
+          }
+
+          .tablesort--asc {
+            background-image: url("../icons/dfs/sort_asc.png");
+
+          }
+
+          .tablesort--desc {
+            background-image: url("../icons/dfs/sort_desc.png");
+            background-position: 0px -4px;
+          }
         }
       }
     }
@@ -837,11 +875,6 @@
       text-align: center;
     }
 
-    .dataTables_wrapper {
-      width: 100%;
-    }
-
-    .dataTables_wrapper .dataTables_paginate,
     .pager__items {
       display: inline-block;
       margin: 0;
@@ -1160,13 +1193,11 @@
       * Override the scss !important in
       * profiles/custom/webny/themes/custom/base/_table.scss
       */
-      .dataTables_filter label input[type="search"],
       .js-form-item-search input[type="text"] {
         padding-left: 22px !important;
         height: 46px !important;
       }
 
-      .dataTables_filter label:after,
       .js-form-item-search label:after {
         top: 13px;
       }
@@ -1233,41 +1264,4 @@
     }
   }
 
-}
-
-.public-appeal-search-view table {
-
-  th {
-    a {
-      color: #fff;
-
-      &:after {
-        content: '';
-        background: url("/profiles/custom/webny/libraries/datatables/media/images/sort_both.png") no-repeat right;
-        cursor: pointer;
-      }
-    }
-
-    .tablesort {
-      background-size: 22px;
-      background-position: 0px 2px;
-      background-repeat: no-repeat;
-      // cursor: pointer;
-      // /* display: inline-block; */
-      position: absolute;
-      // svg {
-      //   fill: blue;
-      // }
-    }
-
-    .tablesort--asc {
-      background-image: url("/profiles/custom/webny/libraries/datatables/media/images/sort_asc.png");
-
-    }
-
-    .tablesort--desc {
-      background-image: url("/profiles/custom/webny/libraries/datatables/media/images/sort_desc.png");
-      background-position: 0px -4px;
-    }
-  }
 }
