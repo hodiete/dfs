@@ -34,7 +34,6 @@ dependencies:
     - text
     - user
     - views_bulk_operations
-    - views_infinite_scroll
 id: public_appeal_search
 label: 'Public Appeal Search'
 module: views
@@ -165,26 +164,26 @@ display:
                 placeholder_text: ''
           text_input_required_format: basic_html
       pager:
-        type: infinite_scroll
+        type: full
         options:
-          items_per_page: 400
+          items_per_page: 10
           offset: 0
           id: 0
           total_pages: null
           tags:
             previous: '‹ Previous'
             next: 'Next ›'
+            first: '« First'
+            last: 'Last »'
           expose:
-            items_per_page: false
+            items_per_page: true
             items_per_page_label: 'Items per page'
             items_per_page_options: '5, 10, 25, 50'
             items_per_page_options_all: false
             items_per_page_options_all_label: '- All -'
             offset: false
             offset_label: Offset
-          views_infinite_scroll:
-            button_text: 'Load More'
-            automatically_load_content: false
+          quantity: 9
       style:
         type: table
         options:
@@ -5025,45 +5024,6 @@ display:
         - user
         - 'user.node_grants:view'
         - user.permissions
-      tags:
-        - 'config:field.storage.node.age_range'
-        - 'config:field.storage.node.appeal_agent'
-        - 'config:field.storage.node.appeal_type'
-        - 'config:field.storage.node.case_number'
-        - 'config:field.storage.node.decision'
-        - 'config:field.storage.node.decision_year'
-        - 'config:field.storage.node.diagnosis'
-        - 'config:field.storage.node.gender'
-        - 'config:field.storage.node.health_plan'
-        - 'config:field.storage.node.references'
-        - 'config:field.storage.node.summary'
-        - 'config:field.storage.node.treatment'
-  public_appeals_search_page_old:
-    display_plugin: page
-    id: public_appeals_search_page_old
-    display_title: Page
-    position: 1
-    display_options:
-      display_extenders: {  }
-      path: public-appeal/search-old
-      exposed_block: true
-      defaults:
-        pager: true
-        header: true
-        filters: true
-        filter_groups: true
-        css_class: false
-      css_class: public-appeal-search-view-old
-    cache_metadata:
-      max-age: -1
-      contexts:
-        - 'languages:language_content'
-        - 'languages:language_interface'
-        - url
-        - url.query_args
-        - user
-        - 'user.node_grants:view'
-        - user.roles
       tags:
         - 'config:field.storage.node.age_range'
         - 'config:field.storage.node.appeal_agent'
