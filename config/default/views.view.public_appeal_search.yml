@@ -1957,6 +1957,7 @@ display:
         footer: false
         empty: false
         css_class: false
+        access: false
       exposed_block: true
       filters:
         status:
@@ -2956,6 +2957,10 @@ display:
       footer: {  }
       empty: {  }
       css_class: ''
+      access:
+        type: perm
+        options:
+          perm: 'access content'
     cache_metadata:
       max-age: -1
       contexts:
@@ -2964,7 +2969,7 @@ display:
         - url
         - user
         - 'user.node_grants:view'
-        - user.roles
+        - user.permissions
       tags:
         - 'config:field.storage.node.decision'
   public_appeals_search_page:
@@ -4036,7 +4041,7 @@ display:
           group_type: group
           admin_label: ''
           label: Diagnosis
-          exclude: true
+          exclude: false
           alter:
             alter_text: false
             text: ''
@@ -4165,7 +4170,7 @@ display:
           group_type: group
           admin_label: ''
           label: Treatment
-          exclude: true
+          exclude: false
           alter:
             alter_text: false
             text: ''
@@ -4964,7 +4969,7 @@ display:
           group_type: group
           admin_label: ''
           empty: true
-          content: '<div class="table-top"><div class="table-top-left"><div class="page-drop"><span class="page-drop-select-container"></span>per page</div><div class="search-results">Showing @start to @end of @total</div></div><div class="table-top-right"><div class="expand-wrapper"></div><div class="collapse-wrapper"></div></div></div>'
+          content: '<div class="table-top"><div class="table-top-left"><div class="page-drop"><span class="page-drop-select-container"></span>per page</div><div class="search-results">Showing @start to @end of @total</div></div><div class="table-top-right"><div class="export-wrapper"></div><div class="expand-wrapper"></div><div class="collapse-wrapper"></div></div></div>'
           plugin_id: result
       relationships:
         diagnosis:

@@ -103,6 +103,17 @@
         $(this).after(newRow);
       });
 
+      //add export link to bottom of table
+      $('.export-wrapper', context).once('second-export-link').clone().addClass('below-table').appendTo('.vbo-table~#edit-actions');
+      //$('.vbo-table~#edit-actions #edit-select-all').attr('id','edit-select-all-2');
+
+      //add export link and functionality
+      $('.export-wrapper', context).once('export-build').append('<a class="export-trigger" href="#">Export</a>');
+      $('.export-wrapper', context).once('export-click').on('click',function(evt) {
+        evt.preventDefault();
+        $('#edit-select-all')[0].click();
+      });
+
       //add expand all link and functionality
       $('.expand-wrapper', context).once('expander-build').append('<a class="expand-trigger" href="#">Expand All<span class="expand-long-text"> Summaries &amp; References</span></a>');
       $('.expand-wrapper', context).once('expander-click').on('click',function(evt) {
@@ -193,16 +204,11 @@
         }
       });
 
-      //add references checkbox and funtionality
-      //$('.views-page-public-appeal-search .refs-include', context).once('add-refs-checkbox').append('<input type="checkbox" id="references-included" name="references-included" value="references-included"><label for="references-included">Include References in Search</label>');
-
       //reduce CSV export process to one click
       $('#views-form-public-appeal-search-public-appeals-search-page .vbo-select-all').prop('checked',false);
-      //$('#views-form-public-appeal-search-public-appeals-search-page .vbo-select-all', context).once('selected').prop('checked',true);
-      $('#views-form-public-appeal-search-public-appeals-search-page .vbo-select-all', context).once('testtest').on('click',Drupal.debounce(function() {
+      $('#views-form-public-appeal-search-public-appeals-search-page .vbo-select-all', context).once('export-selected').on('click',Drupal.debounce(function() {
         $('#edit-vbo-export-generate-csv-action')[0].click();
-      },500));
-
+      }, 500));
 
       //hide divs that mimic status messages
       $('#main-layout-content-switch-div [aria-label="Error message"]').addClass('visually-hidden');
@@ -223,13 +229,6 @@
         $('#edit-submit-public-appeal-search')[0].click();
       });
       $('.page-drop-select-container', context).once('pager-label').prepend($('<label>Show</label>').attr('for','page-drop-select'));
-
-      //change export link text
-      $('.vbo-select-all~.option', context).once('export-link-text').html('Export');
-
-      //add export link to bottom of table
-      $('.js-form-item-select-all', context).once('second-export-link').clone().appendTo('.vbo-table~#edit-actions');
-      $('.vbo-table~#edit-actions #edit-select-all').attr('id','edit-select-all-2');
 /*
       let refsSelected = false;
 
