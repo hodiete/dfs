@@ -14,7 +14,6 @@ description: 'NYDFS site search on Acquia Solr Search & Search API'
 tag: ''
 base_table: search_api_index_nydfs_dev_2_acquia_search
 base_field: search_api_id
-core: 8.x
 display:
   default:
     display_plugin: default
@@ -226,6 +225,8 @@ display:
               content_author: '0'
               business_approver: '0'
             placeholder: ''
+            operator_limit_selection: false
+            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -327,6 +328,8 @@ display:
               content_author: '0'
               business_approver: '0'
             placeholder: ''
+            operator_limit_selection: false
+            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
