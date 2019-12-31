@@ -143,31 +143,27 @@ class SearchForm extends FormBase
 
   protected function searchFields($input, $ref) {
     $params = [];
+    $params = \Drupal::request()->query->all();
+    // print "<pre>"; print_r($params); exit();
+
     if($ref) {
       // \Drupal::messenger()->addStatus(t('references_included @print.', array('@print' => print($ref))));
 
       if ($this->searchFieldHelp('summary', $input) && $this->searchFieldHelp('references', $input)) {
-        $params[] = [
-          'summary_value' => $input,
-          'references_value' => $input,
-        ];
+        $params['summary_value'] = $input;
+        $params['references_value'] = $input;
+
       }
       elseif($this->searchFieldHelp('summary', $input)) {
-        $params[] = [
-          'summary_value' => $input,
-        ];
+        $params['summary_value'] = $input;
       }
       else {
-        $params[] = [
-          'references_value' => $input,
-        ];
+        $params['references_value'] =$input;
       }
 
     }
     else {
-      $params[] = [
-        'summary_value' => $input,
-      ];
+      $params['summary_value'] = $input;
 
     }
 
