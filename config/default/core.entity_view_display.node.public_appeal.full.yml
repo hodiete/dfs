@@ -21,7 +21,7 @@ dependencies:
     - node.type.public_appeal
   module:
     - field_group
-    - text
+    - smart_trim
     - user
 third_party_settings:
   field_group:
@@ -145,18 +145,42 @@ content:
       link: false
     third_party_settings: {  }
   references:
-    type: basic_string
+    type: smart_trim
     weight: 2
     region: content
     label: above
-    settings: {  }
+    settings:
+      trim_length: 60000
+      trim_type: chars
+      trim_suffix: ''
+      wrap_class: trimmed
+      more_text: More
+      more_class: more-link
+      trim_options:
+        text: true
+        trim_zero: false
+      wrap_output: false
+      more_link: false
+      summary_handler: full
     third_party_settings: {  }
   summary:
-    type: text_default
+    type: smart_trim
     weight: 1
     region: content
     label: above
-    settings: {  }
+    settings:
+      trim_length: 60000
+      trim_type: chars
+      trim_suffix: ''
+      wrap_class: trimmed
+      more_text: More
+      more_class: more-link
+      trim_options:
+        text: true
+        trim_zero: false
+      wrap_output: false
+      more_link: false
+      summary_handler: full
     third_party_settings: {  }
   treatment:
     type: entity_reference_label
