@@ -815,6 +815,10 @@
           background: url(../icons/dfs/arrowdown-gray.svg) no-repeat right center transparent;
           background-size: 12px;
           border-bottom: 1px solid #151515;
+
+          &::-ms-expand {
+            display: none;
+          }
         }
 
         &:after {
