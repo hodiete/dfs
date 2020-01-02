@@ -200,7 +200,7 @@
         width: 28px;
         height: 28px;
         color: #fff;
-        background: #09464C;
+        background: url("../icons/dfs/arrow-icon-dfs.svg") no-repeat center center transparent;
         border-radius: 50%;
         font-size: 35px;
         line-height: 28px;
@@ -237,7 +237,8 @@
       }
     }
 
-    td.views-field-case-number {
+    td.views-field-case-number,
+    tr:first-child td.views-field-case-number {
       padding-right: 50px;
     }
   }
@@ -904,10 +905,12 @@
     table thead tr th.views-field {
       padding: 18px 20px 17px 10px;
       word-break: break-word;
+      word-wrap: break-word;
     }
     table td.views-field {
       padding: 45px 10px 10px;
       word-break: break-word;
+      word-wrap: break-word;
     }
     table tr:first-child td.views-field {
       padding: 25px 20px 10px;
@@ -919,7 +922,8 @@
       padding: 20px 50px 15px 10px;
     }
 
-    table td.views-field-case-number {
+    table td.views-field-case-number,
+    table tr:first-child td.views-field-case-number {
       padding-right: 50px;
     }
   }
@@ -1120,10 +1124,12 @@
     table thead tr th.views-field {
       font-size: 18px;
       word-break: normal;
+      word-wrap: normal;
     }
     table td.views-field {
       font-size: 16px;
       word-break: normal;
+      word-wrap: normal;
     }
 
     .mobile-open {
