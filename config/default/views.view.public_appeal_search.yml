@@ -1956,7 +1956,7 @@ display:
         footer: false
         empty: false
         css_class: false
-        access: false
+        access: true
       exposed_block: true
       filters:
         status:
@@ -2956,10 +2956,6 @@ display:
       footer: {  }
       empty: {  }
       css_class: ''
-      access:
-        type: perm
-        options:
-          perm: 'access content'
     cache_metadata:
       max-age: -1
       contexts:
@@ -2968,7 +2964,7 @@ display:
         - url
         - user
         - 'user.node_grants:view'
-        - user.permissions
+        - user.roles
       tags:
         - 'config:field.storage.node.decision'
   public_appeals_search_page:
@@ -3010,7 +3006,7 @@ display:
         relationships: false
         group_by: false
         query: false
-        access: false
+        access: true
         empty: false
       exposed_block: true
       filters:
@@ -4998,10 +4994,6 @@ display:
           replica: false
           query_comment: ''
           query_tags: {  }
-      access:
-        type: perm
-        options:
-          perm: 'access content'
       empty:
         area_text_custom:
           id: area_text_custom
@@ -5023,7 +5015,7 @@ display:
         - url.query_args
         - user
         - 'user.node_grants:view'
-        - user.permissions
+        - user.roles
       tags:
         - 'config:field.storage.node.age_range'
         - 'config:field.storage.node.appeal_agent'
