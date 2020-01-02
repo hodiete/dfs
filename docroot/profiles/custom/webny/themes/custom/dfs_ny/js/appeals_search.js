@@ -111,7 +111,12 @@
       $('.export-wrapper', context).once('export-build').append('<a class="export-trigger" href="#">Export</a>');
       $('.export-wrapper', context).once('export-click').on('click',function(evt) {
         evt.preventDefault();
-        $('#edit-select-all')[0].click();
+        if ($('#edit-select-all').length) {
+          $('#edit-select-all')[0].click();
+        }
+        else {
+          $('#edit-vbo-export-generate-csv-action')[0].click();
+        }
       });
 
       //add expand all link and functionality
@@ -204,7 +209,8 @@
 
       //reduce CSV export process to one click
       $('#views-form-public-appeal-search-public-appeals-search-page .vbo-select-all').prop('checked',false);
-      $('#views-form-public-appeal-search-public-appeals-search-page .vbo-select-all', context).once('export-selected').on('click',Drupal.debounce(function() {
+      $('#views-form-public-appeal-search-public-appeals-search-page .vbo-select-all', context).once('export-selected').on('click',Drupal.debounce(function(evt) {
+        evt.preventDefault();
         $('#edit-vbo-export-generate-csv-action')[0].click();
       }, 500));
 
