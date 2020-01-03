@@ -118,50 +118,6 @@ datatables-select:
   dependencies:
     - dfs_ny/datatables
 
-jszip:
-  js:
-    ../../../libraries/jszip/dist/jszip.min.js: {}
-  dependencies:
-    - core/jquery
-
-pdfmake:
-  js:
-    ../../../libraries/pdfmake/build/pdfmake.min.js: {}
-  dependencies:
-    - core/jquery
-
-datatables-buttons:
-  js:
-    ../../../libraries/datatables.net-buttons/js/dataTables.buttons.min.js: {}
-  dependencies:
-    - dfs_ny/datatables
-    - dfs_ny/pdfmake
-    - dfs_ny/jszip
-
-datatables-buttons-cols:
-  js:
-    ../../../libraries/datatables.net-buttons/js/buttons.colVis.min.js: {}
-  dependencies:
-    - dfs_ny/datatables-buttons
-
-datatables-buttons-print:
-  js:
-    ../../../libraries/datatables.net-buttons/js/buttons.print.min.js: {}
-  dependencies:
-    - dfs_ny/datatables-buttons
-
-datatables-buttons-html5:
-  js:
-    ../../../libraries/datatables.net-buttons/js/buttons.html5.min.js: {}
-  dependencies:
-    - dfs_ny/datatables-buttons
-
-datatables-buttons-flash:
-  js:
-    ../../../libraries/datatables.net-buttons/js/buttons.flash.min.js: {}
-  dependencies:
-    - dfs_ny/datatables-buttons
-
 callouts:
   js:
     js/callouts.js: {}
@@ -217,14 +173,7 @@ appeals-search:
   js:
     js/appeals_search.js: {}
   dependencies:
-    - core/drupal
     - core/jquery
-    - dfs_ny/pdfmake
-    - dfs_ny/jszip
-    - dfs_ny/datatables
-    - dfs_ny/datatables-buttons
-    - dfs_ny/datatables-buttons-cols
-    - dfs_ny/datatables-buttons-print
-    - dfs_ny/datatables-buttons-html5
-    - dfs_ny/datatables-buttons-flash
-    - dfs_ny/datatables-select
+    - core/drupal
+    - core/drupal.debounce
+    - core/jquery.once

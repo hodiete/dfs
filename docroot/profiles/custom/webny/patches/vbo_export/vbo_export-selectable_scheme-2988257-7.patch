@@ -1,0 +1,110 @@
+diff --git a/src/Plugin/Action/VboExportBase.php b/src/Plugin/Action/VboExportBase.php
+index d7a13a3..a340f70 100644
+--- a/src/Plugin/Action/VboExportBase.php
++++ b/src/Plugin/Action/VboExportBase.php
+@@ -7,6 +7,7 @@ use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
+ use Symfony\Component\DependencyInjection\ContainerInterface;
+ use Drupal\Core\Render\RendererInterface;
+ use Drupal\Core\StreamWrapper\StreamWrapperManagerInterface;
++use Drupal\Core\Config\ConfigFactoryInterface;
+ use Drupal\Core\Form\FormStateInterface;
+ use Drupal\Core\Url;
+ use Drupal\Core\Link;
+@@ -21,14 +22,36 @@ abstract class VboExportBase extends ViewsBulkOperationsActionBase implements Co
+ 
+   const EXTENSION = '';
+ 
++  /**
++   * The renderer service.
++   *
++   * @var \Drupal\Core\Render\RendererInterface
++   */
++  protected $renderer;
++
++  /**
++   * The stream wrapper manager service.
++   *
++   * @var \Drupal\Core\StreamWrapper\StreamWrapperManagerInterface
++   */
++  protected $streamWrapperManager;
++
++  /**
++   * Default file scheme.
++   *
++   * @var string
++   */
++  protected $defaultScheme;
++
+   /**
+    * {@inheritdoc}
+    */
+-  public function __construct(array $configuration, $plugin_id, $plugin_definition, RendererInterface $renderer, StreamWrapperManagerInterface $streamWrapperManager) {
++  public function __construct(array $configuration, $plugin_id, $plugin_definition, RendererInterface $renderer, StreamWrapperManagerInterface $streamWrapperManager, ConfigFactoryInterface $configFactory) {
+     parent::__construct($configuration, $plugin_id, $plugin_definition);
+ 
+     $this->renderer = $renderer;
+     $this->streamWrapperManager = $streamWrapperManager;
++    $this->defaultScheme = $configFactory->get('system.file')->get('default_scheme');
+   }
+ 
+   /**
+@@ -40,7 +63,8 @@ abstract class VboExportBase extends ViewsBulkOperationsActionBase implements Co
+       $plugin_id,
+       $plugin_definition,
+       $container->get('renderer'),
+-      $container->get('stream_wrapper_manager')
++      $container->get('stream_wrapper_manager'),
++      $container->get('config.factory')
+     );
+   }
+ 
+@@ -48,11 +72,22 @@ abstract class VboExportBase extends ViewsBulkOperationsActionBase implements Co
+    * {@inheritdoc}
+    */
+   public function buildPreConfigurationForm(array $form, array $values, FormStateInterface $form_state) {
++    $file_schemes = $this->streamWrapperManager->getNames();
++
++    $form['file_scheme'] = [
++      '#type' => 'radios',
++      '#title' => $this->t('File Scheme'),
++      '#description' => $this->t('The file scheme which the generated export file will be saved to.'),
++      '#default_value' => isset($values['file_scheme']) ? $values['file_scheme'] : $this->defaultScheme,
++      '#options' => $file_schemes,
++    ];
++
+     $form['strip_tags'] = [
+       '#title' => $this->t('Strip HTML tags'),
+       '#type' => 'checkbox',
+       '#default_value' => isset($values['strip_tags']) ? $values['strip_tags'] : FALSE,
+     ];
++
+     return $form;
+   }
+ 
+@@ -77,14 +112,14 @@ abstract class VboExportBase extends ViewsBulkOperationsActionBase implements Co
+    *   The string that will be saved to a file.
+    */
+   protected function sendToFile($output) {
+-
+     if (!empty($output)) {
+       $rand = substr(hash('ripemd160', uniqid()), 0, 8);
+       $filename = $this->context['view_id'] . '_' . date('Y_m_d_H_i', REQUEST_TIME) . '-' . $rand . '.' . static::EXTENSION;
+ 
+       $wrappers = $this->streamWrapperManager->getWrappers();
+-      if (isset($wrappers['private'])) {
+-        $wrapper = 'private';
++      $configuration = $this->getConfiguration();
++      if (isset($configuration['file_scheme']) && isset($wrappers[$configuration['file_scheme']])) {
++        $wrapper = $configuration['file_scheme'];
+       }
+       else {
+         $wrapper = 'public';
+@@ -96,7 +131,7 @@ abstract class VboExportBase extends ViewsBulkOperationsActionBase implements Co
+       $file->save();
+       $file_url = Url::fromUri(file_create_url($file->getFileUri()));
+       $link = Link::fromTextAndUrl($this->t('Click here'), $file_url);
+-      drupal_set_message($this->t('Export file created, @link to download.', array('@link' => $link->toString())));
++      drupal_set_message($this->t('Export file created, @link to download.', ['@link' => $link->toString()]));
+     }
+ 
+   }
