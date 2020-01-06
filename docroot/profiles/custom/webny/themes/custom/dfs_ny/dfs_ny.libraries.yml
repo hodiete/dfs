@@ -169,9 +169,17 @@ left-menu-js:
     - core/drupal
     - core/jquery
 
+
+public-appeal-misc:
+  js:
+    js/public_appeal_misc.js: {}
+  dependencies:
+    - core/jquery
+
 appeals-search:
   js:
     js/appeals_search.js: {}
+    js/public_appeal_misc.js: {}    
   dependencies:
     - core/jquery
     - core/drupal
