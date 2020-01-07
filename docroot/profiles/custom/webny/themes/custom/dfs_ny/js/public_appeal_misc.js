@@ -20,7 +20,8 @@
       $('table tr td .table-link-out a').each(function() {
         $(this).click(function(e){
           e.preventDefault();
-          window.open($(this).attr("href"), "CaseDetail", "scrollbars=yes");
+          // window.open($(this).attr("href"), "CaseDetail", "scrollbars=yes");
+          window.open($(this).attr("href"), '_blank');
         });
 
       });
