@@ -51,6 +51,8 @@
           font-size: 18px;
           text-transform: uppercase;
           line-height: 1em;
+          word-break: break-word;
+          word-wrap: break-word;
 
           &.views-field-summary,
           &.views-field-references,
@@ -126,6 +128,8 @@
         padding: 25px 20px 20px;
         background: #fff;
         color: #022629;
+        word-break: break-word;
+        word-wrap: break-word;
 
         &.views-field-summary,
         &.views-field-references,
@@ -908,13 +912,9 @@
   @media screen and (max-width:2100px) {
     table thead tr th.views-field {
       padding: 18px 20px 17px 10px;
-      word-break: break-word;
-      word-wrap: break-word;
     }
     table td.views-field {
       padding: 45px 10px 10px;
-      word-break: break-word;
-      word-wrap: break-word;
     }
     table tr:first-child td.views-field {
       padding: 25px 20px 10px;
