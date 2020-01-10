@@ -98,6 +98,14 @@
             $(this).removeClass('accordion-open');
             $(this).next('.accordion-content').attr('hidden','hidden');
           }
+          if ($('.accordion-toggle[aria-expanded="true"]').length == $('.accordion-content').length) {
+            $('.expand-wrapper').css('display','none');
+            $('.collapse-wrapper').css('display','block');
+          }
+          else {
+            $('.collapse-wrapper').css('display','none');
+            $('.expand-wrapper').css('display','block');
+          }
         });
 
         $(this).after(newRow);
@@ -128,6 +136,8 @@
           $(this).find('.accordion-toggle').addClass('accordion-open');
           $(this).find('.accordion-content').removeAttr('hidden');
         });
+        $('.expand-wrapper').css('display','none');
+        $('.collapse-wrapper').css('display','block');
       });
 
       //add collapse all link and functionality
@@ -139,6 +149,8 @@
           $(this).find('.accordion-toggle').removeClass('accordion-open');
           $(this).find('.accordion-content').attr('hidden','hidden');
         });
+        $('.collapse-wrapper').css('display','none');
+        $('.expand-wrapper').css('display','block');
       });
 
       //move counters and mobile filter

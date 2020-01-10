@@ -834,8 +834,7 @@
       }
 
       .dt-buttons,
-      .export-wrapper,
-      .expand-wrapper {
+      .export-wrapper {
         position: relative;
         margin-right: 8px;
         padding-right: 10px;
@@ -846,6 +845,10 @@
           top: 0;
           right: 0;
         }
+      }
+
+      .collapse-wrapper {
+        display: none;
       }
 
       .table-top-right {
@@ -917,7 +920,7 @@
       padding: 45px 10px 10px;
     }
     table tr:first-child td.views-field {
-      padding: 25px 20px 10px;
+      padding: 25px 10px 10px;
     }
     table td table .accordion .accordion-toggle {
       padding: 5px 5px 0 10px;
@@ -970,8 +973,7 @@
 
     .public-appeal-search-view {
 
-      .table-top .export-wrapper,
-      .table-top .expand-wrapper {
+      .table-top .export-wrapper {
         margin-right: 0;
         padding-right: 0;
 
