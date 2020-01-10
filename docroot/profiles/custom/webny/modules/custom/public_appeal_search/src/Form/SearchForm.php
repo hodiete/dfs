@@ -39,6 +39,8 @@ class SearchForm extends FormBase
    */
   public function buildForm(array $form, FormStateInterface $form_state)
   {
+    $params = [];
+    $params = \Drupal::request()->query->all();
 
     if (isset($_GET['summary_value'])) {
       $name = $_GET['summary_value'] ;
@@ -63,8 +65,12 @@ class SearchForm extends FormBase
       '#title' => $this->t('Include References in Search'),
       '#return_value' => 1,
       // '#options' => array('checked' => true, 'unchecked' => false),
-      // '#default_value' => false,
+      '#default_value' => false,
     );
+
+    if ($params['references_value']) {
+      $form['references_included']['#default_value'] = true;
+    }
 
     $form['submit'] = array(
       '#type' => 'submit',
@@ -158,12 +164,13 @@ class SearchForm extends FormBase
         $params['summary_value'] = $input;
       }
       else {
-        $params['references_value'] =$input;
+        $params['references_value'] = $input;
       }
 
     }
     else {
       $params['summary_value'] = $input;
+      unset($params['references_value']);
 
     }
 
