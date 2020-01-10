@@ -2,8 +2,10 @@ uuid: d3d7df0b-ce24-4e2c-9932-69b29346ba0a
 langcode: en
 status: true
 dependencies:
-  content:
-    - 'file:file:22659c59-3f88-4bf3-bf40-9ee6bfe74bc2'
+  config:
+    - core.entity_view_mode.media.wysiwyg
+    - core.entity_view_mode.media.wysiwyg_portrait
+    - entity_browser.browser.media_browser
   module:
     - entity_embed
     - media_entity
@@ -21,4 +23,7 @@ type_settings:
   entity_browser: media_browser
   entity_browser_settings:
     display_review: false
-icon_uuid: 22659c59-3f88-4bf3-bf40-9ee6bfe74bc2
+icon:
+  data: iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAQAAAD9CzEMAAAA90lEQVR4Ae3WP0oDQRiG8aeQFFoLeoEwaC/kNtEiJ7IxVTxBkj2BheQGewOxlGX/gFuNi7jDsM3M5+fAgvO81STFDyYphtysMxyoscK1FBgiMlTYX66KIQ5YxY4Eq1VAQzCrmxzIgPvi/wEZyEAGntimBF5ZDDv9FbAb5p/fuALgmnf0ACXnw0p3/uSOsRW9Fui4AeCW7ueTe/w2WmDN2MP3+ZFpWw2ww++ZF86YtuAkBfzb97vgkmnuxxYD7vZjWtHLgTWSNvFAq354BYBCBezDgObx+8EyDIDhSIP8cvYsIQToy4C8NvVrukgNGKp0gOJ/75abbV+Z71+lKiSBNwAAAABJRU5ErkJggg==
+  uri: 'public://media_browser_icon.png'
+icon_uuid: null

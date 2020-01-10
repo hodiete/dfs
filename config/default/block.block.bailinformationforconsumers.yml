@@ -1,0 +1,30 @@
+uuid: c50400a1-1d01-4d47-bfc5-890f0308440e
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.bail-information-for-consum
+  module:
+    - system
+  theme:
+    - dfs_ny
+id: bailinformationforconsumers
+theme: dfs_ny
+region: content
+weight: 0
+provider: null
+plugin: 'system_menu_block:bail-information-for-consum'
+settings:
+  id: 'system_menu_block:bail-information-for-consum'
+  label: 'Bail Information for Consumers'
+  provider: system
+  label_display: visible
+  level: 1
+  depth: 0
+  expand_all_items: false
+visibility:
+  request_path:
+    id: request_path
+    pages: "/consumers/bail\r\n/consumers/bail_premium\r\n/consumers/bail_glossary\r\n/consumers/bail_agents"
+    negate: false
+    context_mapping: {  }
