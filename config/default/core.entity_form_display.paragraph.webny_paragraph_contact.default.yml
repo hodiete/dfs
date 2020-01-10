@@ -8,8 +8,6 @@ dependencies:
     - field.field.paragraph.webny_paragraph_contact.field_webny_contact_pargrph_info
     - field.field.paragraph.webny_paragraph_contact.field_webny_contact_title
     - paragraphs.paragraphs_type.webny_paragraph_contact
-  module:
-    - workbench_moderation
 _core:
   default_config_hash: g-DEhZ3GAE_hWY_HpvramVIdg5BtGXway8FjRhgsK_c
 id: paragraph.webny_paragraph_contact.default
@@ -35,6 +33,7 @@ content:
       match_operator: CONTAINS
       size: 60
       placeholder: ''
+      match_limit: 10
     third_party_settings: {  }
     type: entity_reference_autocomplete
     region: content
