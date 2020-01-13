@@ -7,12 +7,13 @@
 
 namespace Drupal\public_appeal_sync;
 
+use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\node\Entity\Node;
 use Drupal\taxonomy\Entity\Term;
 
 /**
  * Class PurgeData: 
- *   a service to Import Public Appeal JSON data into Public Appeal type.
+ *   a service to purge 6-year Data.
  */
 class PurgeData
 {
@@ -28,43 +29,34 @@ class PurgeData
    */
   private $vocabulary = [];
 
-
-
-  /**
-   * The URL of response JSON file after import.
-   * @var array
-   */
-  public $path;
-
-
-
   /**
    * Construct to initrialize varaibles.
    */
   public function __construct()
   {
-    $this->vocabulary = 'year';
-    // $this->user = 'dfs.ny.gov';    
+    $this->vocabulary = 'year';  
   }
 
   /**
    * Purge 6 years old data to unpublished.
    * It is the main method to be called.
+   * @return string $msg or false
    */
   public function purgeData()
   {
     // $user = user_load_by_name($this->user);
-    // print_r($config); exit;
-    $this->purgeOldData();    
+    $this->purgeOldData();       
 
     if (empty($this->countUpdate)) {
       $msg = 'No node to be purgeed.';
-      // \Drupal::logger("public_appeal_sync")->notice($msg);
+      \Drupal::logger("public_appeal_sync")->notice($msg);
+      return false;
     } else {      
-      // $this->createReport();
-      $msg = '6 years old cases(Public Appeal) are unpublished: ' . count($this->countUpdate) . " nodes";      
+      $msg = '6 years old nodes (Public Appeal) are set to unpublished: ' . count($this->countUpdate) . " nodes";  
+      \Drupal::logger("public_appeal_sync")->notice($msg);
+      return $msg;    
     }    
-    \Drupal::logger("public_appeal_sync")->notice($msg);
+    // \Drupal::logger('public_appeal_sync')->warning(print_r($this->countUpdate, true));
   }
 
   /**
@@ -74,23 +66,30 @@ class PurgeData
    */
   protected function purgeOldData() 
   {
+    $nids = [];
     $oldYear = date('Y') - 6;
-    $tid = $this->getToxonomyTermIdByName("$oldYear", "name" );
-    
-    $nids = \Drupal::entityQuery("node")
+    $tids = $this->getToxonomyTermIdByName($oldYear, "name" );
+
+    $results = \Drupal::entityQuery("node")
       ->condition('type', 'public_appeal')
-      ->condition('decision_year', $oldYear, '>=')
+      ->condition('decision_year', $tids, 'in')
       ->condition('status', 1)
       ->execute();
+    
+    foreach ($results as $key => $value) {
+      $nids[] = $value;
+    }
+
     $storage_handler = \Drupal::entityTypeManager()->getStorage("node");
     $nodes = $storage_handler->loadMultiple($nids);
-    
+
     foreach ($nodes as $node)
     {
       // Unpublish nodes
+      $nid = $node->id();
       $node->setPublished(false);
-      // Publish nodes
-      // $node->setPublished(true);
+      $node->set('moderation_state', "unpublished");
+
       if ($node->save()) {
         $this->countUpdate[] = $node->id();
       }
@@ -105,13 +104,18 @@ class PurgeData
    *   name or machine_name
    * @param string $vocabulary
    *   vocabulary vid
-   * @return int or false
-   *   term id or false
+   * @return array $tids
+   *   term ids
    */
-  protected function getToxonomyTermIdByName(string $name, string $flag = 'name')
+  protected function getToxonomyTermIdByName(int $name, string $flag = 'name')
   { 
+    $names = []; $tids = [];
+    for ($i=0; $i<=5; $i++) {
+      $names[] = $name - $i;
+    }
+
     $result = \Drupal::entityQuery('taxonomy_term')
-      ->condition($flag, $name)
+      ->condition($flag, $names, 'in')
       ->condition('vid', $this->vocabulary)
       ->execute();
 
@@ -119,9 +123,10 @@ class PurgeData
       ->getStorage('taxonomy_term')
       ->loadMultiple($result);
 
-        // print "<pre>$name:\n"; print_r($terms); print "</pre>";
-    $term = reset($terms);
-    return !empty($term) ? $term->id() : false;
+    foreach ($terms as $term) {
+      $tids[] = $term->id();
+    }
+    return $tids;
   }
 
   /**
