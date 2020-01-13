@@ -41,7 +41,6 @@ description: ''
 tag: ''
 base_table: node_field_data
 base_field: nid
-core: 8.x
 display:
   default:
     display_plugin: default
@@ -1280,6 +1279,8 @@ display:
           id: status
           expose:
             operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
           group: 1
         type:
           id: type
@@ -1290,6 +1291,9 @@ display:
           entity_type: node
           entity_field: type
           plugin_id: bundle
+          expose:
+            operator_limit_selection: false
+            operator_list: {  }
         diagnosis_target_id:
           id: diagnosis_target_id
           table: node__diagnosis
@@ -1330,6 +1334,8 @@ display:
             placeholder_text_multiple: 'Select Diagnosis'
             placeholder_text_single: ''
             no_results_text: ''
+            operator_limit_selection: false
+            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -1389,6 +1395,8 @@ display:
             placeholder_text_multiple: 'Select Treatment'
             placeholder_text_single: ''
             no_results_text: ''
+            operator_limit_selection: false
+            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -1448,6 +1456,8 @@ display:
             placeholder_text_multiple: 'Select Health Plan'
             placeholder_text_single: ''
             no_results_text: ''
+            operator_limit_selection: false
+            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -1507,6 +1517,8 @@ display:
             placeholder_text_multiple: 'Choose some options'
             placeholder_text_single: 'Choose an option'
             no_results_text: 'No results match'
+            operator_limit_selection: false
+            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -1566,6 +1578,8 @@ display:
             placeholder_text_multiple: 'Choose some options'
             placeholder_text_single: 'Choose an option'
             no_results_text: 'No results match'
+            operator_limit_selection: false
+            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -1625,6 +1639,8 @@ display:
             placeholder_text_multiple: 'Select Gender'
             placeholder_text_single: 'Choose an option'
             no_results_text: 'No results match'
+            operator_limit_selection: false
+            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -1684,6 +1700,8 @@ display:
             placeholder_text_multiple: 'Select Age Range'
             placeholder_text_single: 'Choose an option'
             no_results_text: 'No results match'
+            operator_limit_selection: false
+            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -1743,6 +1761,8 @@ display:
             placeholder_text_multiple: 'Select Decision Year'
             placeholder_text_single: 'Choose an option'
             no_results_text: 'No results match'
+            operator_limit_selection: false
+            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -1802,6 +1822,8 @@ display:
             placeholder_text_multiple: 'Choose some options'
             placeholder_text_single: 'Choose an option'
             no_results_text: 'No results match'
+            operator_limit_selection: false
+            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -1855,6 +1877,8 @@ display:
               hcpo_forms: hcpo_forms
               restful_api: restful_api
             placeholder: 'Enter Case Number'
+            operator_limit_selection: false
+            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -1892,6 +1916,8 @@ display:
             remember_roles:
               authenticated: authenticated
             placeholder: null
+            operator_limit_selection: false
+            operator_list: {  }
           is_grouped: false
           group_info:
             label: 'Combine fields filter'
@@ -2015,6 +2041,8 @@ display:
           id: status
           expose:
             operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
           group: 1
         type:
           id: type
@@ -2026,6 +2054,9 @@ display:
           entity_field: type
           plugin_id: bundle
           group: 1
+          expose:
+            operator_limit_selection: false
+            operator_list: {  }
         diagnosis_target_id:
           id: diagnosis_target_id
           table: node__diagnosis
@@ -2066,6 +2097,8 @@ display:
             placeholder_text_multiple: 'Select Diagnosis'
             placeholder_text_single: ''
             no_results_text: ''
+            operator_limit_selection: false
+            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -2125,6 +2158,8 @@ display:
             placeholder_text_multiple: 'Select Treatment'
             placeholder_text_single: ''
             no_results_text: ''
+            operator_limit_selection: false
+            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -2184,6 +2219,8 @@ display:
             placeholder_text_multiple: 'Select Health Plan'
             placeholder_text_single: ''
             no_results_text: ''
+            operator_limit_selection: false
+            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -2243,6 +2280,8 @@ display:
             placeholder_text_multiple: 'Choose some options'
             placeholder_text_single: 'Choose an option'
             no_results_text: 'No results match'
+            operator_limit_selection: false
+            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -2302,6 +2341,8 @@ display:
             placeholder_text_multiple: 'Choose some options'
             placeholder_text_single: 'Choose an option'
             no_results_text: 'No results match'
+            operator_limit_selection: false
+            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -2361,6 +2402,8 @@ display:
             placeholder_text_multiple: 'Select Gender'
             placeholder_text_single: 'Choose an option'
             no_results_text: 'No results match'
+            operator_limit_selection: false
+            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -2420,6 +2463,8 @@ display:
             placeholder_text_multiple: 'Select Age Range'
             placeholder_text_single: 'Choose an option'
             no_results_text: 'No results match'
+            operator_limit_selection: false
+            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -2479,6 +2524,8 @@ display:
             placeholder_text_multiple: 'Select Decision Year'
             placeholder_text_single: 'Choose an option'
             no_results_text: 'No results match'
+            operator_limit_selection: false
+            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -2538,6 +2585,8 @@ display:
             placeholder_text_multiple: 'Choose some options'
             placeholder_text_single: 'Choose an option'
             no_results_text: 'No results match'
+            operator_limit_selection: false
+            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -2591,6 +2640,8 @@ display:
               hcpo_forms: hcpo_forms
               restful_api: restful_api
             placeholder: 'Enter Case Number'
+            operator_limit_selection: false
+            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -2633,6 +2684,8 @@ display:
             placeholder: ''
             min_placeholder: ''
             max_placeholder: ''
+            operator_limit_selection: false
+            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -2675,6 +2728,8 @@ display:
             placeholder: ''
             min_placeholder: ''
             max_placeholder: ''
+            operator_limit_selection: false
+            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -2717,6 +2772,8 @@ display:
             placeholder: ''
             min_placeholder: ''
             max_placeholder: ''
+            operator_limit_selection: false
+            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -2730,53 +2787,6 @@ display:
             default_group_multiple: {  }
             group_items: {  }
           plugin_id: numeric
-        summary_value:
-          id: summary_value
-          table: node__summary
-          field: summary_value
-          relationship: none
-          group_type: group
-          admin_label: ''
-          operator: word
-          value: ''
-          group: 1
-          exposed: true
-          expose:
-            operator_id: summary_value_op
-            label: 'Summary (summary)'
-            description: ''
-            use_operator: false
-            operator: summary_value_op
-            identifier: summary_value
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-              anonymous: '0'
-              administrator: '0'
-              site_builder: '0'
-              site_admin: '0'
-              user_admin: '0'
-              content_author: '0'
-              business_approver: '0'
-              suspected_fraud_submissions: '0'
-              hcpo_forms: '0'
-              restful_api: '0'
-            placeholder: ''
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-          plugin_id: string
         references_value:
           id: references_value
           table: node__references
@@ -2786,7 +2796,7 @@ display:
           admin_label: ''
           operator: word
           value: ''
-          group: 1
+          group: 2
           exposed: true
           expose:
             operator_id: references_value_op
@@ -2811,6 +2821,57 @@ display:
               hcpo_forms: '0'
               restful_api: '0'
             placeholder: ''
+            operator_limit_selection: false
+            operator_list: {  }
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          plugin_id: string
+        summary_value:
+          id: summary_value
+          table: node__summary
+          field: summary_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: word
+          value: ''
+          group: 2
+          exposed: true
+          expose:
+            operator_id: summary_value_op
+            label: 'Summary (summary)'
+            description: ''
+            use_operator: false
+            operator: summary_value_op
+            identifier: summary_value
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+              site_builder: '0'
+              site_admin: '0'
+              user_admin: '0'
+              content_author: '0'
+              business_approver: '0'
+              suspected_fraud_submissions: '0'
+              hcpo_forms: '0'
+              restful_api: '0'
+            placeholder: ''
+            operator_limit_selection: false
+            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -2828,6 +2889,7 @@ display:
         operator: AND
         groups:
           1: AND
+          2: OR
       fields:
         decision:
           id: decision
@@ -3113,6 +3175,8 @@ display:
           id: status
           expose:
             operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
           group: 1
         type:
           id: type
@@ -3124,6 +3188,9 @@ display:
           entity_field: type
           plugin_id: bundle
           group: 1
+          expose:
+            operator_limit_selection: false
+            operator_list: {  }
         diagnosis_target_id:
           id: diagnosis_target_id
           table: node__diagnosis
@@ -3164,6 +3231,8 @@ display:
             placeholder_text_multiple: 'Select Diagnosis'
             placeholder_text_single: ''
             no_results_text: ''
+            operator_limit_selection: false
+            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -3223,6 +3292,8 @@ display:
             placeholder_text_multiple: 'Select Treatment'
             placeholder_text_single: ''
             no_results_text: ''
+            operator_limit_selection: false
+            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -3282,6 +3353,8 @@ display:
             placeholder_text_multiple: 'Select Health Plan'
             placeholder_text_single: ''
             no_results_text: ''
+            operator_limit_selection: false
+            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -3341,6 +3414,8 @@ display:
             placeholder_text_multiple: 'Choose some options'
             placeholder_text_single: 'Choose an option'
             no_results_text: 'No results match'
+            operator_limit_selection: false
+            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -3400,6 +3475,8 @@ display:
             placeholder_text_multiple: 'Choose some options'
             placeholder_text_single: 'Choose an option'
             no_results_text: 'No results match'
+            operator_limit_selection: false
+            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -3459,6 +3536,8 @@ display:
             placeholder_text_multiple: 'Select Gender'
             placeholder_text_single: 'Choose an option'
             no_results_text: 'No results match'
+            operator_limit_selection: false
+            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -3518,6 +3597,8 @@ display:
             placeholder_text_multiple: 'Select Age Range'
             placeholder_text_single: 'Choose an option'
             no_results_text: 'No results match'
+            operator_limit_selection: false
+            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -3577,6 +3658,8 @@ display:
             placeholder_text_multiple: 'Select Decision Year'
             placeholder_text_single: 'Choose an option'
             no_results_text: 'No results match'
+            operator_limit_selection: false
+            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -3636,6 +3719,8 @@ display:
             placeholder_text_multiple: 'Choose some options'
             placeholder_text_single: 'Choose an option'
             no_results_text: 'No results match'
+            operator_limit_selection: false
+            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -3689,6 +3774,8 @@ display:
               hcpo_forms: hcpo_forms
               restful_api: restful_api
             placeholder: 'Enter Case Number'
+            operator_limit_selection: false
+            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -3731,6 +3818,8 @@ display:
             placeholder: ''
             min_placeholder: ''
             max_placeholder: ''
+            operator_limit_selection: false
+            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -3773,6 +3862,8 @@ display:
             placeholder: ''
             min_placeholder: ''
             max_placeholder: ''
+            operator_limit_selection: false
+            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -3815,6 +3906,8 @@ display:
             placeholder: ''
             min_placeholder: ''
             max_placeholder: ''
+            operator_limit_selection: false
+            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -3828,53 +3921,6 @@ display:
             default_group_multiple: {  }
             group_items: {  }
           plugin_id: numeric
-        summary_value:
-          id: summary_value
-          table: node__summary
-          field: summary_value
-          relationship: none
-          group_type: group
-          admin_label: ''
-          operator: word
-          value: ''
-          group: 1
-          exposed: true
-          expose:
-            operator_id: summary_value_op
-            label: 'Summary (summary)'
-            description: ''
-            use_operator: false
-            operator: summary_value_op
-            identifier: summary_value
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-              anonymous: '0'
-              administrator: '0'
-              site_builder: '0'
-              site_admin: '0'
-              user_admin: '0'
-              content_author: '0'
-              business_approver: '0'
-              suspected_fraud_submissions: '0'
-              hcpo_forms: '0'
-              restful_api: '0'
-            placeholder: ''
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-          plugin_id: string
         references_value:
           id: references_value
           table: node__references
@@ -3884,7 +3930,7 @@ display:
           admin_label: ''
           operator: word
           value: ''
-          group: 1
+          group: 2
           exposed: true
           expose:
             operator_id: references_value_op
@@ -3909,6 +3955,57 @@ display:
               hcpo_forms: '0'
               restful_api: '0'
             placeholder: ''
+            operator_limit_selection: false
+            operator_list: {  }
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          plugin_id: string
+        summary_value:
+          id: summary_value
+          table: node__summary
+          field: summary_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: word
+          value: ''
+          group: 2
+          exposed: true
+          expose:
+            operator_id: summary_value_op
+            label: 'Summary (summary)'
+            description: ''
+            use_operator: false
+            operator: summary_value_op
+            identifier: summary_value
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+              site_builder: '0'
+              site_admin: '0'
+              user_admin: '0'
+              content_author: '0'
+              business_approver: '0'
+              suspected_fraud_submissions: '0'
+              hcpo_forms: '0'
+              restful_api: '0'
+            placeholder: ''
+            operator_limit_selection: false
+            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -3926,6 +4023,7 @@ display:
         operator: AND
         groups:
           1: AND
+          2: OR
       fields:
         title:
           id: title
