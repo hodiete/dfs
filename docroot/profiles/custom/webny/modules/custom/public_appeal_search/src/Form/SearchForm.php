@@ -23,7 +23,7 @@ use function Drupal\Core\Form\drupal_set_message;
  *
  * @package Drupal\public_appeal_search\Form
  */
-class SearchForm extends FormBase 
+class SearchForm extends FormBase
 {
 
   /**
@@ -51,12 +51,12 @@ class SearchForm extends FormBase
     }
 
     $form['search'] = array(
-      '#type' => 'textfield',      
+      '#type' => 'textfield',
       '#default_value' => $name,
       '#size' => 60,
       '#required' => false,
     );
-    $form['search']['#attributes']['placeholder'] = t('Search Summary and Reference');
+    $form['search']['#attributes']['placeholder'] = t('Search');
 
     $form['references_included'] = array(
       '#type' => 'checkbox',
@@ -107,7 +107,7 @@ class SearchForm extends FormBase
     $search_words = $form_state->getValue('search');
     $checked = $form_state->getValue('references_included');
 
-    // print "<Pre>checkout:: "; 
+    // print "<Pre>checkout:: ";
     // print_r($form_state->getValue('references_included'));
     //  exit(0);
     // \Drupal::messenger()->addStatus(t('formstate @print.', array('@print' => print_r($form_state->references_included))));
@@ -117,8 +117,8 @@ class SearchForm extends FormBase
     //     $ref = true;
     //   }
     //   // print_r($ref);
-      
-    // } 
+
+    // }
     // else {
     //   $ref = false;
     //   // \Drupal::messenger()->addStatus(t('references NOT included.'));
@@ -127,7 +127,7 @@ class SearchForm extends FormBase
 
     $params = $this->searchFields($form_state->getValue('search'), $checked);
 
-    // Change the Action of Submission to the View of Public Appeal Search  
+    // Change the Action of Submission to the View of Public Appeal Search
     $response = new RedirectResponse(Url::fromRoute('view.public_appeal_search.public_appeals_search_page', $params)->toString());
 
     $response->send();
@@ -179,7 +179,7 @@ class SearchForm extends FormBase
    *   Input Text to be searched
    * @param string $op
    *   Operation (default: CONTAINS)
-   * @return bolean 
+   * @return bolean
    *   True for exit; False for not exit
    */
 

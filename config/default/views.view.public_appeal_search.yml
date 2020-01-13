@@ -2777,6 +2777,53 @@ display:
             default_group_multiple: {  }
             group_items: {  }
           plugin_id: string
+        references_value:
+          id: references_value
+          table: node__references
+          field: references_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: word
+          value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: references_value_op
+            label: 'References (references)'
+            description: ''
+            use_operator: false
+            operator: references_value_op
+            identifier: references_value
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+              site_builder: '0'
+              site_admin: '0'
+              user_admin: '0'
+              content_author: '0'
+              business_approver: '0'
+              suspected_fraud_submissions: '0'
+              hcpo_forms: '0'
+              restful_api: '0'
+            placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          plugin_id: string
       filter_groups:
         operator: AND
         groups:
@@ -3385,7 +3432,7 @@ display:
           exposed: true
           expose:
             operator_id: gender_target_id_op
-            label: Genders
+            label: Gender(s)
             description: ''
             use_operator: false
             operator: gender_target_id_op
@@ -3444,7 +3491,7 @@ display:
           exposed: true
           expose:
             operator_id: age_range_target_id_op
-            label: 'Age Ranges'
+            label: 'Age Range(s)'
             description: ''
             use_operator: false
             operator: age_range_target_id_op
@@ -3503,7 +3550,7 @@ display:
           exposed: true
           expose:
             operator_id: decision_year_target_id_op
-            label: 'Decision Years'
+            label: 'Decision Year(s)'
             description: ''
             use_operator: false
             operator: decision_year_target_id_op
