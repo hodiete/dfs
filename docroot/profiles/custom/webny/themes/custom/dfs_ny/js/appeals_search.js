@@ -29,6 +29,7 @@
 
       //output child row for summary and references accordions
       function formatAccordionsRow(tableRow, rowIndex) {
+        console.log('formatting');
         let outputTable = '<table><thead><th>Summary and References</th></thead><tbody><tr><td>';
         let summary = $(tableRow).find('.views-field-summary');
         let refs = $(tableRow).find('.views-field-references');
@@ -80,7 +81,7 @@
       setFilterPlaceholders();
 
       //build summary and references accordion
-      $('.vbo-table>tbody>tr', context).once('accordion-build').each(function(index) {
+      $('.public-appeal-search-view>table>tbody>tr', context).once('accordion-build').each(function(index) {
         let newRow = $('<tr />').addClass('accordion-row');
         let newCell = $('<td colspan="11" />');
         $(newCell).html(formatAccordionsRow(this, index));
@@ -112,7 +113,7 @@
       });
 
       //add export link to bottom of table
-      $('.export-wrapper', context).once('second-export-link').clone().addClass('below-table').appendTo('.vbo-table~#edit-actions');
+      $('.export-wrapper', context).once('second-export-link').clone().addClass('below-table').insertAfter('.public-appeal-search-view>table');
 
       //add export link and functionality
       let params = '';
