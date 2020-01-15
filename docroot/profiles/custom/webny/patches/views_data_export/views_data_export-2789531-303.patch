@@ -1,0 +1,2269 @@
+diff --git a/composer.json b/composer.json
+index 195832c..fd5e9bf 100644
+--- a/composer.json
++++ b/composer.json
+@@ -2,5 +2,12 @@
+   "name": "drupal/views_data_export",
+   "description": "Plugin to export views data into various file formats.",
+   "type": "drupal-module",
+-  "license": "GPL-2.0+"
++  "license": "GPL-2.0+",
++  "require": {
++    "drupal/csv_serialization": "~1.4"
++  },
++  "require-dev": {
++    "drupal/search_api": "~1.12",
++    "drupal/xls_serialization": "~1.0"
++  }
+ }
+diff --git a/config/schema/views_data_export.views.schema.yml b/config/schema/views_data_export.views.schema.yml
+index 368fc6f..bc2765b 100644
+--- a/config/schema/views_data_export.views.schema.yml
++++ b/config/schema/views_data_export.views.schema.yml
+@@ -13,6 +13,36 @@ views.display.data_export:
+     filename:
+       type: string
+       label: 'Downloaded filename'
++    automatic_download:
++      type: boolean
++      label: 'Download immediately'
++    redirect_path:
++      type: string
++      label: 'Redirect path'
++    export_method:
++      type: string
++      label: 'Export method'
++    export_batch_size:
++      type: integer
++      label: 'Batch size'
++    export_limit:
++      type: integer
++      label: 'Limit'
++    facet_settings:
++      type: string
++      label: 'Facet sources'
++    store_in_public_file_directory:
++      type: boolean
++      label: 'Allow anonymous users to download this file'
++    custom_redirect_path:
++      type: boolean
++      label: 'Custom redirect path'
++    redirect_to_display:
++      type: string
++      label: 'Redirect to this display'
++    include_query_params:
++      type: boolean
++      label: 'Include query string parameters on redirect'
+ 
+ views.style.data_export:
+   type: views_style
+@@ -49,6 +79,9 @@ views.style.data_export:
+         utf8_bom:
+           type: string
+           label: 'Include unicode signature (BOM)'
++        use_serializer_encode_only:
++          type: boolean
++          label: 'Only use serializer->encode method'
+     xls_settings:
+       type: mapping
+       label: 'XLS settings'
+diff --git a/js/views_data_export_auto_download.js b/js/views_data_export_auto_download.js
+new file mode 100644
+index 0000000..dc4e076
+--- /dev/null
++++ b/js/views_data_export_auto_download.js
+@@ -0,0 +1,19 @@
++/**
++ * Views data export auto download.
++ *
++ * Automatically downloads file if downloadEnabled is true.
++ */
++(function ($, Drupal) {
++  Drupal.behaviors.views_data_export_auto_download = {
++    attach: function () {
++      $('#vde-automatic-download').once().each(
++        function () {
++          this.focus();
++          if (this.dataset.downloadEnabled === 'true') {
++            location.href = this.href;
++          }
++        }
++      )
++    }
++  };
++})(jQuery, Drupal);
+diff --git a/src/Plugin/views/display/DataExport.php b/src/Plugin/views/display/DataExport.php
+index 02fe599..4fe9dc6 100644
+--- a/src/Plugin/views/display/DataExport.php
++++ b/src/Plugin/views/display/DataExport.php
+@@ -4,11 +4,18 @@ namespace Drupal\views_data_export\Plugin\views\display;
+ 
+ use Drupal\Core\Cache\CacheableMetadata;
+ use Drupal\Core\Cache\CacheableResponse;
++use Drupal\Core\Config\StorageException;
+ use Drupal\Core\Form\FormStateInterface;
+ use Drupal\Core\Render\BubbleableMetadata;
+ use Drupal\rest\Plugin\views\display\RestExport;
+-use Drupal\views\ViewExecutable;
+ use Drupal\views\Views;
++use Drupal\views\ViewExecutable;
++use Drupal\Core\Url;
++use Symfony\Component\HttpFoundation\RedirectResponse;
++use Symfony\Component\HttpKernel\Exception\ServiceUnavailableHttpException;
++use Drupal\search_api\Plugin\views\query\SearchApiQuery;
++use PhpOffice\PhpSpreadsheet\IOFactory;
++use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+ 
+ /**
+  * Provides a data export display plugin.
+@@ -32,19 +39,141 @@ class DataExport extends RestExport {
+   /**
+    * {@inheritdoc}
+    */
+-  public static function buildResponse($view_id, $display_id, array $args = []) {
+-    // Do not call the parent method, as it makes the response harder to alter.
+-    // @see https://www.drupal.org/node/2779807
+-    $build = static::buildBasicRenderable($view_id, $display_id, $args);
++  public static function buildResponse($view_id, $display_id, array $args = [], &$view = []) {
++    // Load the View we're working with and set its display ID so we can get
++    // the exposed input.
++    $view = Views::getView($view_id);
++    $view->setDisplay($display_id);
++    $view->setArguments($args);
++
++    // Build different responses whether batch or standard method is used.
++    if ($view->display_handler->getOption('export_method') == 'batch') {
++      return static::buildBatch($view, $args);
++    }
++
++    return static::buildStandard($view);
++  }
++
++  /**
++   * Builds batch export response.
++   *
++   * @param \Drupal\views\ViewExecutable $view
++   *   The view to export.
++   * @param array $args
++   *   Arguments for the $view.
++   *
++   * @return null|\Symfony\Component\HttpFoundation\RedirectResponse
++   *   Redirect to the batching page.
++   */
++  protected static function buildBatch(ViewExecutable &$view, array $args) {
++    // Get total number of items.
++    $view->get_total_rows = TRUE;
++    $export_limit = $view->getDisplay()->getOption('export_limit');
++    $view->preExecute($args);
++    $view->build();
++
++    if ($view->getQuery() instanceof SearchApiQuery) {
++      $total_rows = $view->query->getSearchApiQuery()->range(NULL, 1)->execute()->getResultCount();
++    }
++    else {
++      $count_query_results = $view->query->query()->countQuery()->execute();
++      $total_rows = (int) $count_query_results->fetchField();
++    }
++
++    // If export limit is set and the number of rows is greater than the
++    // limit, then set the total to limit.
++    if ($export_limit && $export_limit < $total_rows) {
++      $total_rows = $export_limit;
++    }
++
++    // Get view exposed input which is the query string parameters from url.
++    $query_parameters = $view->getExposedInput();
++    // Remove the file format parameter from the query string.
++    if (array_key_exists('_format', $query_parameters)) {
++      unset($query_parameters['_format']);
++    }
++
++    // Check where to redirect the user after the batch finishes.
++    // Defaults to the <front> route.
++    $redirect_url = Url::fromRoute('<front>');
++
++    // Get options set in views display configuration.
++    $custom_redirect = $view->getDisplay()->getOption('custom_redirect_path');
++    $redirect_to_display = $view->getDisplay()->getOption('redirect_to_display');
++
++    // Check if the url query string should be added to the redirect URL.
++    $include_query_params = $view->display_handler->getOption('include_query_params');
++
++    if ($custom_redirect) {
++      $redirect_path = $view->display_handler->getOption('redirect_path');
++      if (isset($redirect_path)) {
++        // Replace tokens in the redirect_path.
++        $token_service = \Drupal::token();
++        $redirect_path = $token_service->replace($redirect_path, ['view' => $view]);
+ 
+-    // Setup an empty response, so for example, the Content-Disposition header
+-    // can be set.
++        if ($include_query_params) {
++          $redirect_url = Url::fromUserInput(trim($redirect_path), ['query' => $query_parameters]);
++        }
++        else {
++          $redirect_url = Url::fromUserInput(trim($redirect_path));
++        }
++      }
++    }
++    elseif (isset($redirect_to_display) && $redirect_to_display !== 'none') {
++      // Get views display URL.
++      $display_route = $view->getUrl([], $redirect_to_display)->getRouteName();
++      if ($include_query_params) {
++        $redirect_url = Url::fromRoute($display_route, [], ['query' => $query_parameters]);
++      }
++      else {
++        $redirect_url = Url::fromRoute($display_route);
++      }
++    }
++
++    $batch_definition = [
++      'operations' => [
++        [
++          [static::class, 'processBatch'],
++          [
++            $view->id(),
++            $view->current_display,
++            $view->args,
++            $view->getExposedInput(),
++            $total_rows,
++            $query_parameters,
++            $redirect_url->toString(),
++          ],
++        ],
++      ],
++      'title' => t('Exporting data...'),
++      'progressive' => TRUE,
++      'progress_message' => t('@percentage% complete. Time elapsed: @elapsed'),
++      'finished' => [static::class, 'finishBatch'],
++    ];
++    batch_set($batch_definition);
++
++    return batch_process();
++  }
++
++  /**
++   * Builds standard export response.
++   *
++   * @param \Drupal\views\ViewExecutable $view
++   *   The view to export.
++   *
++   * @return \Drupal\Core\Cache\CacheableResponse
++   *   Redirect to the batching page.
++   */
++  protected static function buildStandard(ViewExecutable $view) {
++    $build = $view->buildRenderable();
++
++    // Setup an empty response so headers can be added as needed during views
++    // rendering and processing.
+     $response = new CacheableResponse('', 200);
+     $build['#response'] = $response;
+ 
+     /** @var \Drupal\Core\Render\RendererInterface $renderer */
+     $renderer = \Drupal::service('renderer');
+-
+     $output = (string) $renderer->renderRoot($build);
+ 
+     $response->setContent($output);
+@@ -52,8 +181,6 @@ class DataExport extends RestExport {
+     $response->addCacheableDependency($cache_metadata);
+ 
+     // Set filename if such exists.
+-    $view = Views::getView($view_id);
+-    $view->setDisplay($display_id);
+     if ($filename = $view->getDisplay()->getOption('filename')) {
+       $bubbleable_metadata = BubbleableMetadata::createFromObject($cache_metadata);
+       $response->headers->set('Content-Disposition', 'attachment; filename="' . \Drupal::token()->replace($filename, ['view' => $view], [], $bubbleable_metadata) . '"');
+@@ -75,6 +202,31 @@ class DataExport extends RestExport {
+     $options['style']['contains']['type']['default'] = 'data_export';
+     $options['row']['contains']['type']['default'] = 'data_field';
+ 
++    // We don't want to use pager as it doesn't make any sense. But it cannot
++    // just be removed from a view as it is core functionality. These values
++    // will be controlled by custom configuration.
++    $options['pager']['contains'] = [
++      'type' => ['default' => 'none'],
++      'options' => ['default' => ['offset' => 0]],
++    ];
++
++    $options['export_method']['default'] = 'standard';
++    $options['export_batch_size']['default'] = '1000';
++    $options['export_limit']['default'] = '0';
++
++    // Set facet source default.
++    if (\Drupal::service('module_handler')->moduleExists('facets')) {
++      $options['facet_settings']['default'] = 'none';
++    }
++
++    // Set download, file storage and redirect defaults.
++    $options['automatic_download']['default'] = FALSE;
++    $options['store_in_public_file_directory']['default'] = FALSE;
++    $options['custom_redirect_path']['default'] = FALSE;
++
++    // Redirect to views display option.
++    $options['redirect_to_display']['default'] = 'none';
++
+     return $options;
+   }
+ 
+@@ -84,6 +236,50 @@ class DataExport extends RestExport {
+   public function optionsSummary(&$categories, &$options) {
+     parent::optionsSummary($categories, $options);
+ 
++    // Doesn't make sense to have a pager for data export so remove it.
++    unset($categories["pager"]);
++
++    // Add a view configuration category for data export settings in the
++    // second column.
++    $categories['export_settings'] = [
++      'title' => $this->t('Export settings'),
++      'column' => 'second',
++      'build' => [
++        '#weight' => 50,
++      ],
++    ];
++
++    $options['export_method'] = [
++      'category' => 'export_settings',
++      'title' => $this->t('Method'),
++      'desc' => $this->t('Change the way rows are processed.'),
++    ];
++
++    switch ($this->getOption('export_method')) {
++      case 'standard':
++        $options['export_method']['value'] = $this->t('Standard');
++        break;
++
++      case 'batch':
++        $options['export_method']['value'] =
++          $this->t('Batch (size: @size)', ['@size' => $this->getOption('export_batch_size')]);
++        break;
++    }
++
++    $options['export_limit'] = [
++      'category' => 'export_settings',
++      'title' => $this->t('Limit'),
++      'desc' => $this->t('The maximum amount of rows to export.'),
++    ];
++
++    $limit = $this->getOption('export_limit');
++    if ($limit) {
++      $options['export_limit']['value'] = $this->t('@nr rows', ['@nr' => $limit]);
++    }
++    else {
++      $options['export_limit']['value'] = $this->t('no limit');
++    }
++
+     $displays = array_filter($this->getOption('displays'));
+     if (count($displays) > 1) {
+       $attach_to = $this->t('Multiple displays');
+@@ -100,21 +296,40 @@ class DataExport extends RestExport {
+       $attach_to = $this->t('None');
+     }
+ 
+-    $options['displays'] = array(
++    $options['displays'] = [
+       'category' => 'path',
+       'title' => $this->t('Attach to'),
+       'value' => $attach_to,
+-    );
++    ];
++
++    if (\Drupal::service('module_handler')->moduleExists('facets')) {
++      // Add a view configuration category for data facet settings in the
++      // second column.
++      $categories['facet_settings'] = [
++        'title' => $this->t('Facet settings'),
++        'column' => 'second',
++        'build' => [
++          '#weight' => 40,
++        ],
++      ];
++
++      $facet_source = $this->getOption('facet_settings');
++      $options['facet_settings'] = [
++        'category' => 'facet_settings',
++        'title' => $this->t('Facet source'),
++        'value' => $facet_source,
++      ];
++    }
+ 
+     // Add filename to the summary if set.
+     if ($this->getOption('filename')) {
+-      $options['path']['value'] .= $this->t(' (@filename)', ['@filename' => $this->getOption('filename')]);
++      $options['path']['value'] .= $this->t('(@filename)', ['@filename' => $this->getOption('filename')]);
+     }
+ 
+     // Display the selected format from the style plugin if available.
+     $style_options = $this->getOption('style')['options'];
+     if (!empty($style_options['formats'])) {
+-      $options['style']['value'] .= $this->t(' (@export_format)', ['@export_format' => reset($style_options['formats'])]);
++      $options['style']['value'] .= $this->t('(@export_format)', ['@export_format' => reset($style_options['formats'])]);
+     }
+   }
+ 
+@@ -130,13 +345,140 @@ class DataExport extends RestExport {
+         unset($form['style']['type']['#options']['serializer']);
+         break;
+ 
++      case 'export_method':
++        $form['export_method'] = [
++          '#type' => 'radios',
++          '#title' => $this->t('Export method'),
++          '#default_value' => $this->options['export_method'],
++          '#options' => [
++            'standard' => $this->t('Standard'),
++            'batch' => $this->t('Batch'),
++          ],
++          '#required' => TRUE,
++        ];
++
++        $form['export_method']['standard']['#description'] = $this->t('Exports under one request. Best fit for small exports.');
++        $form['export_method']['batch']['#description'] = $this->t('Exports data in sequences. Should be used when large amount of data is exported (> 2000 rows).');
++
++        $form['export_batch_size'] = [
++          '#type' => 'number',
++          '#title' => $this->t('Batch size'),
++          '#description' => $this->t("The number of rows to process under a request."),
++          '#default_value' => $this->options['export_batch_size'],
++          '#required' => TRUE,
++          '#states' => [
++            'visible' => [':input[name=export_method]' => ['value' => 'batch']],
++          ],
++        ];
++        break;
++
++      case 'export_limit':
++        $form['export_limit'] = [
++          '#type' => 'number',
++          '#title' => $this->t('Limit'),
++          '#description' => $this->t("The maximum amount of rows to export. 0 means unlimited."),
++          '#default_value' => $this->options['export_limit'],
++          '#min' => 0,
++          '#required' => TRUE,
++        ];
++        break;
++
+       case 'path':
++        $form['file_fieldset'] = [
++          '#type' => 'fieldset',
++          '#title' => $this->t('File Storage/Download Settings'),
++        ];
+         $form['filename'] = [
+           '#type' => 'textfield',
+           '#title' => $this->t('Filename'),
+           '#default_value' => $this->getOption('filename'),
+           '#description' => $this->t('The filename that will be suggested to the browser for downloading purposes. You may include replacement patterns from the list below.'),
++          '#fieldset' => 'file_fieldset',
++        ];
++
++        $fileSystem = \Drupal::service('file_system');
++        // Check if the private file system is ready to use.
++        if ($fileSystem->validScheme('private')) {
++          $form['store_in_public_file_directory'] = [
++            '#type' => 'checkbox',
++            '#title' => $this->t("Store file in public files directory"),
++            '#description' => $this->t("Check this if you want to store the export files in the public:// files directory instead of the private:// files directory."),
++            '#default_value' => $this->options['store_in_public_file_directory'],
++            '#fieldset' => 'file_fieldset',
++          ];
++        }
++        else {
++          $form['store_in_public_file_directory'] = [
++            '#type' => 'markup',
++            '#markup' => $this->t('<strong>The private:// file system is not configured so the exported files will be stored in the public:// files directory. Click <a href="@link" target="_blank">here</a> for instructions on configuring the private files in the settings.php file.</strong>', ['@link' => 'https://www.drupal.org/docs/8/modules/skilling/installation/set-up-a-private-file-path']),
++            '#fieldset' => 'file_fieldset',
++          ];
++        }
++
++        $form['automatic_download'] = [
++          '#type' => 'checkbox',
++          '#title' => $this->t("Download immediately"),
++          '#description' => $this->t("Check this if you want to download the file immediately after it is created. Does <strong>NOT</strong> work for JSON data exports."),
++          '#default_value' => $this->options['automatic_download'],
++          '#fieldset' => 'file_fieldset',
++        ];
++
++        $form['redirect_fieldset'] = [
++          '#type' => 'fieldset',
++          '#title' => 'Redirect Settings',
++        ];
++
++        $form['custom_redirect_path'] = [
++          '#type' => 'checkbox',
++          '#title' => $this->t("Custom redirect path"),
++          '#description' => $this->t("Check this if you want to configure a custom redirect path."),
++          '#default_value' => $this->options['custom_redirect_path'],
++          '#fieldset' => 'redirect_fieldset',
++        ];
++
++        $displays = ['none' => 'None'];
++        foreach ($this->view->storage->get('display') as $display_id => $display) {
++          // Get displays that accept attachments and have a path.
++          if ($this->view->displayHandlers->has($display_id) && $this->view->displayHandlers->get($display_id)->acceptAttachments() && isset($display['display_options']['path'])) {
++            $displays[$display_id] = $display['display_title'];
++          }
++        }
++
++        $form['redirect_to_display'] = [
++          '#type' => 'select',
++          '#title' => $this->t("Redirect to this display"),
++          '#description' => $this->t("Select the display to redirect to after batch finishes. If None is selected the user will be redirected to the front page."),
++          '#options' => array_map('\Drupal\Component\Utility\Html::escape', $displays),
++          '#default_value' => $this->getOption('redirect_to_display'),
++          '#fieldset' => 'redirect_fieldset',
++          '#states' => [
++            'invisible' => [
++              ':input[name="custom_redirect_path"]' => ['checked' => TRUE],
++            ],
++          ],
++        ];
++
++        $form['redirect_path'] = [
++          '#type' => 'textfield',
++          '#title' => $this->t('Custom redirect path'),
++          '#default_value' => $this->getOption('redirect_path'),
++          '#description' => $this->t('Enter custom path to redirect user after batch finishes.'),
++          '#fieldset' => 'redirect_fieldset',
++          '#states' => [
++            'visible' => [
++              ':input[name="custom_redirect_path"]' => ['checked' => TRUE],
++            ],
++          ],
++        ];
++
++        $form['include_query_params'] = [
++          '#type' => 'checkbox',
++          '#title' => $this->t("Include query string parameters on redirect"),
++          '#description' => $this->t("Check this if you want to include query string parameters on redirect."),
++          '#default_value' => $this->getOption('include_query_params'),
++          '#fieldset' => 'redirect_fieldset',
+         ];
++
+         // Support tokens.
+         $this->globalTokenForm($form, $form_state);
+         break;
+@@ -157,6 +499,36 @@ class DataExport extends RestExport {
+           '#default_value' => $this->getOption('displays'),
+         ];
+         break;
++
++      case 'facet_settings':
++        // Determine if the view is a Search API data source view and load facet
++        // sources if facets module exists.
++        $view = $form_state->getStorage()['view'];
++        $dependencies = $view->get('storage')->getDependencies();
++        if (isset($dependencies['module'])) {
++          $view_module_dependencies = $dependencies['module'];
++          if (in_array('search_api', $view_module_dependencies)) {
++            // Check if the facets module is enabled.
++            if (\Drupal::service('module_handler')->moduleExists('facets')) {
++              $facet_source_plugin_manager = \Drupal::service('plugin.manager.facets.facet_source');
++              $facet_sources = $facet_source_plugin_manager->getDefinitions();
++              $facet_source_list = ['none' => 'None'];
++              foreach ($facet_sources as $source_id => $source) {
++                $facet_source_list[$source_id] = $source['label'];
++              }
++
++              $form['#title'] .= $this->t('Facet source');
++              $form['facet_settings'] = [
++                '#title' => $this->t('Facet source'),
++                '#type' => 'select',
++                '#description' => $this->t('Choose the facet source used to alter data export. This should be the display that this data export is attached to.'),
++                '#options' => $facet_source_list,
++                '#default_value' => $this->options['facet_settings'],
++              ];
++            }
++          }
++        }
++        break;
+     }
+   }
+ 
+@@ -204,8 +576,50 @@ class DataExport extends RestExport {
+         $this->setOption($section, $form_state->getValue($section));
+         break;
+ 
++      case 'export_method':
++        $this->setOption('export_method', $form_state->getValue('export_method'));
++        $batch_size = $form_state->getValue('export_batch_size');
++        $this->setOption('export_batch_size', $batch_size > 1 ? $batch_size : 1);
++        break;
++
++      case 'export_limit':
++        $limit = $form_state->getValue('export_limit');
++        $this->setOption('export_limit', $limit > 0 ? $limit : 0);
++
++        // Set the limit option on the pager as-well. This is used for the
++        // standard rendering.
++        $this->setOption(
++          'pager', [
++            'type' => 'some',
++            'options' => [
++              'items_per_page' => $limit,
++              'offset' => 0,
++            ],
++          ]
++        );
++        break;
++
+       case 'path':
+         $this->setOption('filename', $form_state->getValue('filename'));
++        $this->setOption('automatic_download', $form_state->getValue('automatic_download'));
++        $this->setOption('store_in_public_file_directory', $form_state->getValue('store_in_public_file_directory'));
++
++        // Adds slash if not in the redirect path if custom path is chosen.
++        if ($form_state->getValue('custom_redirect_path')) {
++          $redirect_path = $form_state->getValue('redirect_path');
++          if ($redirect_path !== '' && $redirect_path[0] !== '/') {
++            $redirect_path = '/' . $form_state->getValue('redirect_path');
++          }
++          $this->setOption('redirect_path', $redirect_path);
++        }
++
++        $this->setOption('redirect_to_display', $form_state->getValue('redirect_to_display'));
++        $this->setOption('custom_redirect_path', $form_state->getValue('custom_redirect_path'));
++        $this->setOption('include_query_params', $form_state->getValue('include_query_params'));
++        break;
++
++      case 'facet_settings':
++        $this->setOption('facet_settings', $form_state->getValue('facet_settings'));
+         break;
+     }
+   }
+@@ -218,4 +632,301 @@ class DataExport extends RestExport {
+     return parent::getAvailableGlobalTokens($prepared, $types);
+   }
+ 
++  /**
++   * Implements callback_batch_operation() - perform processing on each batch.
++   *
++   * Writes rendered data export View rows to an output file that will be
++   * returned by callback_batch_finished() (i.e. finishBatch) when we're done.
++   *
++   * @param string $view_id
++   *   ID of the view.
++   * @param string $display_id
++   *   ID of the view display.
++   * @param array $args
++   *   Views arguments.
++   * @param array $exposed_input
++   *   Exposed input.
++   * @param int $total_rows
++   *   Total rows.
++   * @param array $query_parameters
++   *   Query string parameters.
++   * @param string $redirect_url
++   *   Redirect URL.
++   * @param mixed $context
++   *   Batch context information.
++   *
++   * @throws \Drupal\Core\Entity\EntityStorageException
++   * @throws \PhpOffice\PhpSpreadsheet\Exception
++   * @throws \PhpOffice\PhpSpreadsheet\Reader\Exception
++   * @throws \PhpOffice\PhpSpreadsheet\Writer\Exception
++   */
++  public static function processBatch($view_id, $display_id, array $args, array $exposed_input, $total_rows, array $query_parameters, $redirect_url, &$context) {
++    // Add query string back to the URL for processing.
++    if ($query_parameters) {
++      \Drupal::request()->query->add($query_parameters);
++    }
++
++    // Load the View we're working with and set its display ID so we get the
++    // content we expect.
++    $view = Views::getView($view_id);
++    $view->setDisplay($display_id);
++    $view->setArguments($args);
++    $view->setExposedInput($exposed_input);
++
++    if (isset($context['sandbox']['progress'])) {
++      $view->setOffset($context['sandbox']['progress']);
++    }
++
++    $export_limit = $view->display_handler->getOption('export_limit');
++
++    $view->preExecute($args);
++    // Build the View so the query parameters and offset get applied. so our
++    // This is necessary for the total to be calculated accurately and the call
++    // to $view->render() to return the items we expect to process in the
++    // current batch (i.e. not the same set of N, where N is the number of
++    // items per page, over and over).
++    $view->build();
++
++    // First time through - create an output file to write to, set our
++    // current item to zero and our total number of items we'll be processing.
++    if (empty($context['sandbox'])) {
++      // Set the redirect URL and the automatic download configuration in the
++      // results array so they can be accessed when the batch is finished.
++      $context['results'] = [
++        'automatic_download' => $view->display_handler->options['automatic_download'],
++        'redirect_url' => $redirect_url,
++      ];
++
++      // Initialize progress counter, which will keep track of how many items
++      // we've processed.
++      $context['sandbox']['progress'] = 0;
++
++      // Initialize file we'll write our output results to.
++      // This file will be written to with each batch iteration until all
++      // batches have been processed.
++      // This is a private file because some use cases will want to restrict
++      // access to the file. The View display's permissions will govern access
++      // to the file.
++      $current_user = \Drupal::currentUser();
++      $user_ID = $current_user->isAuthenticated() ? $current_user->id() : NULL;
++      $timestamp = \Drupal::time()->getRequestTime();
++      $filename = \Drupal::token()->replace($view->getDisplay()->options['filename'], ['view' => $view]);
++      $extension = reset($view->getDisplay()->options['style']['options']['formats']);
++
++      // Checks if extension is already included in the filename.
++      if (!preg_match("/^.*\.($extension)$/i", $filename)) {
++        $filename = $filename . "." . $extension;
++      }
++
++      $user_dir = $user_ID ? "$user_ID-$timestamp" : $timestamp;
++      $view_dir = $view_id . '_' . $display_id;
++
++      // Determine if the export file should be stored in the public or private
++      // file system.
++      $store_in_public_file_directory = TRUE;
++      $fileSystem = \Drupal::service('file_system');
++      // Check if the private file system is ready to use.
++      if ($fileSystem->validScheme('private')) {
++        $store_in_public_file_directory = $view->getDisplay()->getOption('store_in_public_file_directory');
++      }
++
++      if ($store_in_public_file_directory === TRUE) {
++        $directory = "public://views_data_export/$view_dir/$user_dir/";
++      }
++      else {
++        $directory = "private://views_data_export/$view_dir/$user_dir/";
++      }
++
++      try {
++        file_prepare_directory($directory, FILE_CREATE_DIRECTORY);
++        $destination = $directory . $filename;
++        $file = file_save_data('', $destination, FILE_EXISTS_REPLACE);
++        if (!$file) {
++          // Failed to create the file, abort the batch.
++          unset($context['sandbox']);
++          $context['success'] = FALSE;
++          throw new StorageException('Could not create a temporary file.');
++        }
++
++        $file->setTemporary();
++        $file->save();
++        // Create sandbox variable from filename that can be referenced
++        // throughout the batch processing.
++        $context['sandbox']['vde_file'] = $file->getFileUri();
++
++        // Store URI of export file in results array because it can be accessed
++        // in our callback_batch_finished (finishBatch) callback. Better to do
++        // this than use a SESSION variable. Also, we're not returning any
++        // results so the $context['results'] array is unused.
++        $context['results']['vde_file'] = $context['sandbox']['vde_file'];
++      }
++      catch (StorageException $e) {
++        $message = t('Could not write to temporary output file for result export (@file). Check permissions.', ['@file' => $context['sandbox']['vde_file']]);
++        \Drupal::logger('views_data_export')->error($message);
++      }
++    }
++
++    // Render the current batch of rows - these will then be appended to the
++    // output file we write to each batch iteration.
++    // Make sure that if limit is set the last batch will output the remaining
++    // amount of rows and not more.
++    $items_this_batch = $view->display_handler->getOption('export_batch_size');
++    if ($export_limit && $context['sandbox']['progress'] + $items_this_batch > $export_limit) {
++      $items_this_batch = $export_limit - $context['sandbox']['progress'];
++    }
++
++    // Set the limit directly on the query.
++    $view->query->setLimit((int) $items_this_batch);
++    $view->execute($display_id);
++
++    // Check to see if the build failed.
++    if (!empty($view->build_info['fail'])) {
++      return;
++    }
++    if (!empty($view->build_info['denied'])) {
++      return;
++    }
++
++    // We have to render the whole view to get all hooks executes.
++    // Only rendering the display handler would result in many empty fields.
++    $rendered_rows = $view->render();
++    $string = (string) $rendered_rows['#markup'];
++
++    // Workaround for CSV headers, remove the first line.
++    if ($context['sandbox']['progress'] != 0 && reset($view->getStyle()->options['formats']) == 'csv') {
++      $string = preg_replace('/^[^\n]+/', '', $string);
++    }
++
++    // Workaround for XML.
++    $output_format = reset($view->getStyle()->options['formats']);
++    if ($output_format == 'xml') {
++      $maximum = $export_limit ? $export_limit : $total_rows;
++      // Remove xml declaration and response opening tag.
++      if ($context['sandbox']['progress'] != 0) {
++        $string = str_replace('<?xml version="1.0"?>', '', $string);
++        $string = str_replace('<response>', '', $string);
++      }
++      // Remove response closing tag.
++      if ($context['sandbox']['progress'] + $items_this_batch < $maximum) {
++        $string = str_replace('</response>', '', $string);
++      }
++    }
++
++    // Workaround for XLS/XLSX.
++    if ($context['sandbox']['progress'] != 0 && ($output_format == 'xls' || $output_format == 'xlsx')) {
++      $vdeFileRealPath = \Drupal::service('file_system')->realpath($context['sandbox']['vde_file']);
++      $previousExcel = IOFactory::load($vdeFileRealPath);
++      file_put_contents($vdeFileRealPath, $string);
++      $currentExcel = IOFactory::load($vdeFileRealPath);
++
++      // Append all rows to previous created excel.
++      $rowIndex = $previousExcel->getActiveSheet()->getHighestRow();
++      foreach ($currentExcel->getActiveSheet()->getRowIterator() as $row) {
++        if ($row->getRowIndex() == 1) {
++          // Skip header.
++          continue;
++        }
++        $rowIndex++;
++        $colIndex = 0;
++        foreach ($row->getCellIterator() as $cell) {
++          $previousExcel->getActiveSheet()->setCellValueByColumnAndRow(++$colIndex, $rowIndex, $cell->getValue());
++        }
++      }
++
++      $objWriter = new Xlsx($previousExcel);
++      $objWriter->save($vdeFileRealPath);
++    }
++    // Write rendered rows to output file.
++    elseif (file_put_contents($context['sandbox']['vde_file'], $string, FILE_APPEND) === FALSE) {
++      // Write to output file failed - log in logger and in ResponseText on
++      // batch execution page user will end up on if write to file fails.
++      $message = t('Could not write to temporary output file for result export (@file). Check permissions.', ['@file' => $context['sandbox']['vde_file']]);
++      \Drupal::logger('views_data_export')->error($message);
++      throw new ServiceUnavailableHttpException(NULL, $message);
++    }
++
++    // Update the progress of our batch export operation (i.e. number of
++    // items we've processed). Note can exceed the number of total rows we're
++    // processing, but that's considered in the if/else to determine when we're
++    // finished below.
++    $context['sandbox']['progress'] += $items_this_batch;
++
++    // If our progress is less than the total number of items we expect to
++    // process, we updated the "finished" variable to show the user how much
++    // progress we've made via the progress bar.
++    if ($context['sandbox']['progress'] < $total_rows) {
++      $context['finished'] = $context['sandbox']['progress'] / $total_rows;
++    }
++    else {
++      // We're finished processing, set progress bar to 100%.
++      $context['finished'] = 1;
++    }
++  }
++
++  /**
++   * Implements callback for batch finish.
++   *
++   * @param bool $success
++   *   Indicates whether we hit a fatal PHP error.
++   * @param array $results
++   *   Contains batch results.
++   * @param array $operations
++   *   If $success is FALSE, contains the operations that remained unprocessed.
++   *
++   * @return \Symfony\Component\HttpFoundation\RedirectResponse
++   *   Where to redirect when batching ended.
++   */
++  public static function finishBatch($success, array $results, array $operations) {
++    // Set Drupal status message to let the user know the results of the export.
++    // The 'success' parameter means no fatal PHP errors were detected.
++    // All other error management should be handled using 'results'.
++    $response = new RedirectResponse($results['redirect_url']);
++    if ($success && isset($results['vde_file']) && file_exists($results['vde_file'])) {
++      // Check the permissions of the file to grant access and allow
++      // modules to hook into permissions via hook_file_download().
++      $headers = \Drupal::moduleHandler()->invokeAll('file_download', [$results['vde_file']]);
++
++      // Require at least one module granting access and none denying access.
++      if (!empty($headers) && !in_array(-1, $headers)) {
++        // Create a web server accessible URL for the private file.
++        // Permissions for accessing this URL will be inherited from the View
++        // display's configuration.
++        $url = file_create_url($results['vde_file']);
++        $message = t('Export complete. Download the file <a download href=":download_url"  data-download-enabled="false" id="vde-automatic-download">here</a>.', [':download_url' => $url]);
++        // If the user specified instant download than redirect to the file.
++        if ($results['automatic_download']) {
++          // Prevents browser from displaying JSON data if automatic download
++          // is selected.
++          if (!preg_match("/^.*\.(json)$/i", $results['vde_file'])) {
++            $message = t('Export complete. Download the file <a download href=":download_url" data-download-enabled="true" id="vde-automatic-download">here</a> if file is not automatically downloaded.', [':download_url' => $url]);
++          }
++        }
++
++        \Drupal::messenger()->addMessage($message);
++      }
++      return $response;
++    }
++    else {
++      $message = t('Export failed. Make sure the private file system is configured and check the error log.');
++      \Drupal::messenger()->addError($message);
++      return $response;
++    }
++  }
++
++  /**
++   * {@inheritdoc}
++   */
++  protected function getRoute($view_id, $display_id) {
++    $route = parent::getRoute($view_id, $display_id);
++    $view = Views::getView($view_id);
++    $view->setDisplay($display_id);
++
++    // If this display is going to perform a redirect to the batch url
++    // make sure thr redirect response is never cached.
++    if ($view->display_handler->getOption('export_method') == 'batch') {
++      $route->setOption('no_cache', TRUE);
++    }
++    return $route;
++  }
++
+ }
+diff --git a/src/Plugin/views/style/DataExport.php b/src/Plugin/views/style/DataExport.php
+index 2225877..884a1c1 100644
+--- a/src/Plugin/views/style/DataExport.php
++++ b/src/Plugin/views/style/DataExport.php
+@@ -4,6 +4,7 @@ namespace Drupal\views_data_export\Plugin\views\style;
+ 
+ use Drupal\Component\Utility\Html;
+ use Drupal\Core\Form\FormStateInterface;
++use Drupal\Core\Routing\RedirectDestinationTrait;
+ use Drupal\Core\Url;
+ use Drupal\rest\Plugin\views\style\Serializer;
+ 
+@@ -21,6 +22,8 @@ use Drupal\rest\Plugin\views\style\Serializer;
+  */
+ class DataExport extends Serializer {
+ 
++  use RedirectDestinationTrait;
++
+   /**
+    * Field labels should be enabled by default for this Style.
+    *
+@@ -44,6 +47,7 @@ class DataExport extends Serializer {
+       'trim' => ['default' => TRUE],
+       'encoding' => ['default' => 'utf8'],
+       'utf8_bom' => ['default' => FALSE],
++      'use_serializer_encode_only' => ['default' => FALSE],
+     ];
+ 
+     // XLS options.
+@@ -51,9 +55,9 @@ class DataExport extends Serializer {
+       'xls_format' => ['default' => 'Excel2007'],
+     ];
+     $options['xls_settings']['metadata']['contains'] = [
+-      // The 'created' and 'modified' elements are not exposed here, as they
+-      // default to the current time (that the spreadsheet is created), and
+-      // would probably just confuse the UI.
++        // The 'created' and 'modified' elements are not exposed here, as they
++        // default to the current time (that the spreadsheet is created), and
++        // would probably just confuse the UI.
+       'creator' => ['default' => ''],
+       'last_modified_by' => ['default' => ''],
+       'title' => ['default' => ''],
+@@ -63,7 +67,7 @@ class DataExport extends Serializer {
+       'category' => ['default' => ''],
+       'manager' => ['default' => ''],
+       'company' => ['default' => ''],
+-      // @todo Expose a UI for custom properties.
++        // @todo Expose a UI for custom properties.
+     ];
+ 
+     return $options;
+@@ -138,11 +142,19 @@ class DataExport extends Serializer {
+             ],
+             'utf8_bom' => [
+               '#type' => 'checkbox',
+-              '#title' => $this->t('Include unicode signature (<a href="@bom" target="_blank">BOM</a>).', [
+-                '@bom' => 'https://www.w3.org/International/questions/qa-byte-order-mark'
+-              ]),
++              '#title' => $this->t(
++                  'Include unicode signature (<a href="@bom" target="_blank">BOM</a>).', [
++                    '@bom' => 'https://www.w3.org/International/questions/qa-byte-order-mark',
++                  ]
++              ),
+               '#default_value' => $csv_options['utf8_bom'],
+             ],
++            'use_serializer_encode_only' => [
++              '#type' => 'checkbox',
++              '#title' => $this->t('Only use Symfony serializer->encode method'),
++              '#description' => $this->t('Skips the symfony data normalize method when rendering data export to increase performance on large datasets. <strong>(Only use when not exporting nested data)</strong>'),
++              '#default_value' => $csv_options['use_serializer_encode_only'],
++            ],
+           ];
+         }
+ 
+@@ -167,7 +179,7 @@ class DataExport extends Serializer {
+               '#type' => 'select',
+               '#title' => $this->t('Format'),
+               '#options' => [
+-                // @todo Add all PHPExcel supported formats.
++                  // @todo Add all PHPExcel supported formats.
+                 'Excel2007' => $this->t('Excel 2007'),
+                 'Excel5' => $this->t('Excel 5'),
+               ],
+@@ -175,8 +187,6 @@ class DataExport extends Serializer {
+             ],
+           ];
+ 
+-          $metadata = !empty($xls_options['metadata']) ? array_filter($xls_options['metadata']) : [];
+-
+           // XLS metadata.
+           $form['xls_settings']['metadata'] = [
+             '#type' => 'details',
+@@ -230,7 +240,6 @@ class DataExport extends Serializer {
+    */
+   public function attachTo(array &$build, $display_id, Url $url, $title) {
+     // @todo This mostly hard-codes CSV handling. Figure out how to abstract.
+-
+     $url_options = [];
+     $input = $this->view->getExposedInput();
+     if ($input) {
+@@ -299,4 +308,40 @@ class DataExport extends Serializer {
+     $this->view->field[$sort_field]->clickSort($sort_order);
+   }
+ 
++  /**
++   * {@inheritdoc}
++   */
++  public function render() {
++    // This is pretty close to the parent implementation.
++    // Difference (noted below) stems from not being able to get anything other
++    // than json rendered even when the display was set to export csv or xml.
++    $rows = [];
++    foreach ($this->view->result as $row_index => $row) {
++      $this->view->row_index = $row_index;
++      $rows[] = $this->view->rowPlugin->render($row);
++    }
++
++    unset($this->view->row_index);
++
++    // Get the format configured in the display or fallback to json.
++    // We intentionally implement this different from the parent method because
++    // $this->displayHandler->getContentType() will always return json due to
++    // the request's header (i.e. "accept:application/json") and
++    // we want to be able to render csv or xml data as well in accordance with
++    // the data export format configured in the display.
++    $format = !empty($this->options['formats']) ? reset($this->options['formats']) : 'json';
++
++    // If data is being exported as a CSV we give the option to not use the
++    // Symfony normalize method which increases performance on large data sets.
++    // This option can be configured in the CSV Settings section of the data
++    // export.
++    if ($format === 'csv' && $this->options['csv_settings']['use_serializer_encode_only'] == 1) {
++      return $this->serializer->encode($rows, $format, ['views_style_plugin' => $this]);
++    }
++    else {
++      return $this->serializer->serialize($rows, $format, ['views_style_plugin' => $this]);
++    }
++
++  }
++
+ }
+diff --git a/tests/modules/views_data_export_test/test_views/views.view.search_api_tests.yml b/tests/modules/views_data_export_test/test_views/views.view.search_api_tests.yml
+new file mode 100644
+index 0000000..931b44b
+--- /dev/null
++++ b/tests/modules/views_data_export_test/test_views/views.view.search_api_tests.yml
+@@ -0,0 +1,225 @@
++langcode: en
++status: true
++dependencies:
++  config:
++    - search_api.index.database_search_index
++  module:
++    - csv_serialization
++    - rest
++    - search_api
++    - serialization
++    - user
++    - views_data_export
++id: search_api_tests
++label: 'Search API tests'
++module: views
++description: ''
++tag: ''
++base_table: search_api_index_database_search_index
++base_field: search_api_id
++core: 8.x
++display:
++  default:
++    display_plugin: default
++    id: default
++    display_title: Master
++    position: 0
++    display_options:
++      access:
++        type: perm
++        options:
++          perm: 'access content'
++      cache:
++        type: tag
++        options: {  }
++      query:
++        type: views_query
++        options:
++          disable_sql_rewrite: false
++          distinct: false
++          replica: false
++          query_comment: ''
++          query_tags: {  }
++      exposed_form:
++        type: basic
++        options:
++          submit_button: Apply
++          reset_button: false
++          reset_button_label: Reset
++          exposed_sorts_label: 'Sort by'
++          expose_sort_order: true
++          sort_asc_label: Asc
++          sort_desc_label: Desc
++      pager:
++        type: mini
++        options:
++          items_per_page: 10
++          offset: 0
++          id: 0
++          total_pages: null
++          expose:
++            items_per_page: false
++            items_per_page_label: 'Items per page'
++            items_per_page_options: '5, 10, 25, 50'
++            items_per_page_options_all: false
++            items_per_page_options_all_label: '- All -'
++            offset: false
++            offset_label: Offset
++          tags:
++            previous: ‹‹
++            next: ››
++      style:
++        type: default
++        options:
++          grouping: {  }
++          row_class: ''
++          default_row_class: true
++          uses_fields: false
++      row:
++        type: fields
++        options:
++          inline: {  }
++          separator: ''
++          hide_empty: false
++          default_field_elements: true
++      fields:
++        id:
++          table: search_api_index_database_search_index
++          field: id
++          id: id
++          entity_type: null
++          entity_field: null
++          plugin_id: search_api_field
++          relationship: none
++          group_type: group
++          admin_label: ''
++          label: ''
++          exclude: false
++          alter:
++            alter_text: false
++            text: ''
++            make_link: false
++            path: ''
++            absolute: false
++            external: false
++            replace_spaces: false
++            path_case: none
++            trim_whitespace: false
++            alt: ''
++            rel: ''
++            link_class: ''
++            prefix: ''
++            suffix: ''
++            target: ''
++            nl2br: false
++            max_length: 0
++            word_boundary: true
++            ellipsis: true
++            more_link: false
++            more_link_text: ''
++            more_link_path: ''
++            strip_tags: false
++            trim: false
++            preserve_tags: ''
++            html: false
++          element_type: ''
++          element_class: ''
++          element_label_type: ''
++          element_label_class: ''
++          element_label_colon: true
++          element_wrapper_type: ''
++          element_wrapper_class: ''
++          element_default_classes: true
++          empty: ''
++          hide_empty: false
++          empty_zero: false
++          hide_alter_empty: true
++          click_sort_column: value
++          type: number_integer
++          settings: {  }
++          group_column: value
++          group_columns: {  }
++          group_rows: true
++          delta_limit: 0
++          delta_offset: 0
++          delta_reversed: false
++          delta_first_last: false
++          multi_type: separator
++          separator: ', '
++          field_api_classes: false
++          field_rendering: true
++          fallback_handler: search_api_numeric
++          fallback_options:
++            set_precision: false
++            precision: 0
++            decimal: .
++            separator: ','
++            format_plural: false
++            format_plural_string: !!binary MQNAY291bnQ=
++            prefix: ''
++            suffix: ''
++            link_to_item: false
++            use_highlighting: false
++            multi_type: separator
++            multi_separator: ', '
++            format_plural_values: {  }
++      filters: {  }
++      sorts: {  }
++      header: {  }
++      footer: {  }
++      empty: {  }
++      relationships: {  }
++      arguments: {  }
++      display_extenders: {  }
++    cache_metadata:
++      max-age: -1
++      contexts:
++        - 'languages:language_content'
++        - 'languages:language_interface'
++        - url.query_args
++        - user.permissions
++      tags: {  }
++  data_export_1:
++    display_plugin: data_export
++    id: data_export_1
++    display_title: 'Data export'
++    position: 1
++    display_options:
++      display_extenders: {  }
++      path: views_data_export/test_search_api
++      filename: test_sapi
++      automatic_download: true
++      redirect_path: ''
++      export_method: batch
++      export_batch_size: 2
++      style:
++        type: data_export
++        options:
++          formats:
++            csv: csv
++          csv_settings:
++            delimiter: ','
++            enclosure: '"'
++            escape_char: \
++            strip_tags: true
++            trim: true
++            encoding: utf8
++            utf8_bom: '0'
++      export_limit: 8
++      store_in_public_file_directory: false
++      redirect_to_display: none
++      custom_redirect_path: false
++      include_query_params: false
++      pager:
++        type: some
++        options:
++          items_per_page: 8
++          offset: 0
++    cache_metadata:
++      max-age: -1
++      contexts:
++        - 'languages:language_content'
++        - 'languages:language_interface'
++        - request_format
++        - user.permissions
++      tags: {  }
+diff --git a/tests/modules/views_data_export_test/test_views/views.view.views_data_test_1.yml b/tests/modules/views_data_export_test/test_views/views.view.views_data_test_1.yml
+new file mode 100644
+index 0000000..07d3437
+--- /dev/null
++++ b/tests/modules/views_data_export_test/test_views/views.view.views_data_test_1.yml
+@@ -0,0 +1,223 @@
++langcode: en
++status: true
++dependencies:
++  module:
++    - csv_serialization
++    - node
++    - rest
++    - serialization
++    - user
++    - views_data_export
++id: views_data_test_1
++label: 'Views data test 1'
++module: views
++description: ''
++tag: ''
++base_table: node_field_data
++base_field: nid
++core: 8.x
++display:
++  default:
++    display_plugin: default
++    id: default
++    display_title: Master
++    position: 0
++    display_options:
++      access:
++        type: perm
++        options:
++          perm: 'access content'
++      cache:
++        type: tag
++        options: {  }
++      query:
++        type: views_query
++        options:
++          disable_sql_rewrite: false
++          distinct: false
++          replica: false
++          query_comment: ''
++          query_tags: {  }
++      exposed_form:
++        type: basic
++        options:
++          submit_button: Apply
++          reset_button: false
++          reset_button_label: Reset
++          exposed_sorts_label: 'Sort by'
++          expose_sort_order: true
++          sort_asc_label: Asc
++          sort_desc_label: Desc
++      pager:
++        type: mini
++        options:
++          items_per_page: 10
++          offset: 0
++          id: 0
++          total_pages: null
++          expose:
++            items_per_page: false
++            items_per_page_label: 'Items per page'
++            items_per_page_options: '5, 10, 25, 50'
++            items_per_page_options_all: false
++            items_per_page_options_all_label: '- All -'
++            offset: false
++            offset_label: Offset
++          tags:
++            previous: â€¹â€¹
++            next: â€ºâ€º
++      style:
++        type: default
++        options:
++          grouping: {  }
++          row_class: ''
++          default_row_class: true
++          uses_fields: false
++      row:
++        type: fields
++        options:
++          inline: {  }
++          separator: ''
++          hide_empty: false
++          default_field_elements: true
++      fields:
++        title:
++          id: title
++          table: node_field_data
++          field: title
++          entity_type: node
++          entity_field: title
++          label: ''
++          alter:
++            alter_text: false
++            make_link: false
++            absolute: false
++            trim: false
++            word_boundary: false
++            ellipsis: false
++            strip_tags: false
++            html: false
++          hide_empty: false
++          empty_zero: false
++          settings:
++            link_to_entity: true
++          plugin_id: field
++          relationship: none
++          group_type: group
++          admin_label: ''
++          exclude: false
++          element_type: ''
++          element_class: ''
++          element_label_type: ''
++          element_label_class: ''
++          element_label_colon: true
++          element_wrapper_type: ''
++          element_wrapper_class: ''
++          element_default_classes: true
++          empty: ''
++          hide_alter_empty: true
++          click_sort_column: value
++          type: string
++          group_column: value
++          group_columns: {  }
++          group_rows: true
++          delta_limit: 0
++          delta_offset: 0
++          delta_reversed: false
++          delta_first_last: false
++          multi_type: separator
++          separator: ', '
++          field_api_classes: false
++      filters:
++        status:
++          value: '1'
++          table: node_field_data
++          field: status
++          plugin_id: boolean
++          entity_type: node
++          entity_field: status
++          id: status
++          expose:
++            operator: ''
++          group: 1
++      sorts:
++        created:
++          id: created
++          table: node_field_data
++          field: created
++          order: DESC
++          entity_type: node
++          entity_field: created
++          plugin_id: date
++          relationship: none
++          group_type: group
++          admin_label: ''
++          exposed: false
++          expose:
++            label: ''
++          granularity: second
++      header: {  }
++      footer: {  }
++      empty: {  }
++      relationships: {  }
++      arguments: {  }
++      display_extenders: {  }
++    cache_metadata:
++      max-age: -1
++      contexts:
++        - 'languages:language_content'
++        - 'languages:language_interface'
++        - url.query_args
++        - 'user.node_grants:view'
++        - user.permissions
++      tags: {  }
++  data_export_1:
++    display_plugin: data_export
++    id: data_export_1
++    display_title: 'Data export'
++    position: 1
++    display_options:
++      display_extenders: {  }
++      path: views_data_export/test_1
++      filename: test_1
++      automatic_download: false
++      redirect_path: ''
++      style:
++        type: data_export
++        options:
++          formats:
++            csv: csv
++          csv_settings:
++            delimiter: ','
++            enclosure: '"'
++            escape_char: \
++            strip_tags: true
++            trim: true
++            encoding: utf8
++          xls_settings:
++            xls_format: Excel2007
++            metadata:
++              creator: ''
++              last_modified_by: ''
++              title: ''
++              description: ''
++              subject: ''
++              keywords: ''
++              category: ''
++              manager: ''
++              company: ''
++      export_method: batch
++      export_batch_size: 4
++      store_in_public_file_directory: true
++      redirect_to_display: none
++      custom_redirect_path: false
++      include_query_params: false
++    cache_metadata:
++      max-age: -1
++      contexts:
++        - 'languages:language_content'
++        - 'languages:language_interface'
++        - request_format
++        - 'user.node_grants:view'
++        - user.permissions
++      tags: {  }
+diff --git a/tests/modules/views_data_export_test/test_views/views.view.views_data_test_2.yml b/tests/modules/views_data_export_test/test_views/views.view.views_data_test_2.yml
+new file mode 100644
+index 0000000..1e1500a
+--- /dev/null
++++ b/tests/modules/views_data_export_test/test_views/views.view.views_data_test_2.yml
+@@ -0,0 +1,223 @@
++langcode: en
++status: true
++dependencies:
++  module:
++    - csv_serialization
++    - node
++    - rest
++    - serialization
++    - user
++    - views_data_export
++id: views_data_test_2
++label: 'Views data test 2'
++module: views
++description: ''
++tag: ''
++base_table: node_field_data
++base_field: nid
++core: 8.x
++display:
++  default:
++    display_plugin: default
++    id: default
++    display_title: Master
++    position: 0
++    display_options:
++      access:
++        type: perm
++        options:
++          perm: 'access content'
++      cache:
++        type: tag
++        options: {  }
++      query:
++        type: views_query
++        options:
++          disable_sql_rewrite: false
++          distinct: false
++          replica: false
++          query_comment: ''
++          query_tags: {  }
++      exposed_form:
++        type: basic
++        options:
++          submit_button: Apply
++          reset_button: false
++          reset_button_label: Reset
++          exposed_sorts_label: 'Sort by'
++          expose_sort_order: true
++          sort_asc_label: Asc
++          sort_desc_label: Desc
++      pager:
++        type: mini
++        options:
++          items_per_page: 10
++          offset: 0
++          id: 0
++          total_pages: null
++          expose:
++            items_per_page: false
++            items_per_page_label: 'Items per page'
++            items_per_page_options: '5, 10, 25, 50'
++            items_per_page_options_all: false
++            items_per_page_options_all_label: '- All -'
++            offset: false
++            offset_label: Offset
++          tags:
++            previous: â€¹â€¹
++            next: â€ºâ€º
++      style:
++        type: default
++        options:
++          grouping: {  }
++          row_class: ''
++          default_row_class: true
++          uses_fields: false
++      row:
++        type: fields
++        options:
++          inline: {  }
++          separator: ''
++          hide_empty: false
++          default_field_elements: true
++      fields:
++        title:
++          id: title
++          table: node_field_data
++          field: title
++          entity_type: node
++          entity_field: title
++          label: ''
++          alter:
++            alter_text: false
++            make_link: false
++            absolute: false
++            trim: false
++            word_boundary: false
++            ellipsis: false
++            strip_tags: false
++            html: false
++          hide_empty: false
++          empty_zero: false
++          settings:
++            link_to_entity: true
++          plugin_id: field
++          relationship: none
++          group_type: group
++          admin_label: ''
++          exclude: false
++          element_type: ''
++          element_class: ''
++          element_label_type: ''
++          element_label_class: ''
++          element_label_colon: true
++          element_wrapper_type: ''
++          element_wrapper_class: ''
++          element_default_classes: true
++          empty: ''
++          hide_alter_empty: true
++          click_sort_column: value
++          type: string
++          group_column: value
++          group_columns: {  }
++          group_rows: true
++          delta_limit: 0
++          delta_offset: 0
++          delta_reversed: false
++          delta_first_last: false
++          multi_type: separator
++          separator: ', '
++          field_api_classes: false
++      filters:
++        status:
++          value: '1'
++          table: node_field_data
++          field: status
++          plugin_id: boolean
++          entity_type: node
++          entity_field: status
++          id: status
++          expose:
++            operator: ''
++          group: 1
++      sorts:
++        created:
++          id: created
++          table: node_field_data
++          field: created
++          order: DESC
++          entity_type: node
++          entity_field: created
++          plugin_id: date
++          relationship: none
++          group_type: group
++          admin_label: ''
++          exposed: false
++          expose:
++            label: ''
++          granularity: second
++      header: {  }
++      footer: {  }
++      empty: {  }
++      relationships: {  }
++      arguments: {  }
++      display_extenders: {  }
++    cache_metadata:
++      max-age: -1
++      contexts:
++        - 'languages:language_content'
++        - 'languages:language_interface'
++        - url.query_args
++        - 'user.node_grants:view'
++        - user.permissions
++      tags: {  }
++  data_export_1:
++    display_plugin: data_export
++    id: data_export_1
++    display_title: 'Data export'
++    position: 1
++    display_options:
++      display_extenders: {  }
++      path: views_data_export/test_2
++      filename: test_2
++      automatic_download: true
++      redirect_path: ''
++      style:
++        type: data_export
++        options:
++          formats:
++            csv: csv
++          csv_settings:
++            delimiter: ','
++            enclosure: '"'
++            escape_char: \
++            strip_tags: true
++            trim: true
++            encoding: utf8
++          xls_settings:
++            xls_format: Excel2007
++            metadata:
++              creator: ''
++              last_modified_by: ''
++              title: ''
++              description: ''
++              subject: ''
++              keywords: ''
++              category: ''
++              manager: ''
++              company: ''
++      export_method: batch
++      export_batch_size: 4
++      store_in_public_file_directory: true
++      redirect_to_display: none
++      custom_redirect_path: false
++      include_query_params: false
++    cache_metadata:
++      max-age: -1
++      contexts:
++        - 'languages:language_content'
++        - 'languages:language_interface'
++        - request_format
++        - 'user.node_grants:view'
++        - user.permissions
++      tags: {  }
+diff --git a/tests/modules/views_data_export_test/test_views/views.view.views_data_test_3.yml b/tests/modules/views_data_export_test/test_views/views.view.views_data_test_3.yml
+new file mode 100644
+index 0000000..204d11a
+--- /dev/null
++++ b/tests/modules/views_data_export_test/test_views/views.view.views_data_test_3.yml
+@@ -0,0 +1,232 @@
++langcode: en
++status: true
++dependencies:
++  module:
++    - csv_serialization
++    - node
++    - rest
++    - serialization
++    - user
++    - views_data_export
++id: views_data_test_3
++label: 'Views data test 3'
++module: views
++description: ''
++tag: ''
++base_table: node_field_data
++base_field: nid
++core: 8.x
++display:
++  default:
++    display_plugin: default
++    id: default
++    display_title: Master
++    position: 0
++    display_options:
++      access:
++        type: perm
++        options:
++          perm: 'access content'
++      cache:
++        type: tag
++        options: {  }
++      query:
++        type: views_query
++        options:
++          disable_sql_rewrite: false
++          distinct: false
++          replica: false
++          query_comment: ''
++          query_tags: {  }
++      exposed_form:
++        type: basic
++        options:
++          submit_button: Apply
++          reset_button: false
++          reset_button_label: Reset
++          exposed_sorts_label: 'Sort by'
++          expose_sort_order: true
++          sort_asc_label: Asc
++          sort_desc_label: Desc
++      pager:
++        type: mini
++        options:
++          items_per_page: 10
++          offset: 0
++          id: 0
++          total_pages: null
++          expose:
++            items_per_page: false
++            items_per_page_label: 'Items per page'
++            items_per_page_options: '5, 10, 25, 50'
++            items_per_page_options_all: false
++            items_per_page_options_all_label: '- All -'
++            offset: false
++            offset_label: Offset
++          tags:
++            previous: â€¹â€¹
++            next: â€ºâ€º
++      style:
++        type: default
++        options:
++          grouping: {  }
++          row_class: ''
++          default_row_class: true
++          uses_fields: false
++      row:
++        type: fields
++        options:
++          inline: {  }
++          separator: ''
++          hide_empty: false
++          default_field_elements: true
++      fields:
++        title:
++          id: title
++          table: node_field_data
++          field: title
++          entity_type: node
++          entity_field: title
++          label: ''
++          alter:
++            alter_text: false
++            make_link: false
++            absolute: false
++            trim: false
++            word_boundary: false
++            ellipsis: false
++            strip_tags: false
++            html: false
++          hide_empty: false
++          empty_zero: false
++          settings:
++            link_to_entity: true
++          plugin_id: field
++          relationship: none
++          group_type: group
++          admin_label: ''
++          exclude: false
++          element_type: ''
++          element_class: ''
++          element_label_type: ''
++          element_label_class: ''
++          element_label_colon: true
++          element_wrapper_type: ''
++          element_wrapper_class: ''
++          element_default_classes: true
++          empty: ''
++          hide_alter_empty: true
++          click_sort_column: value
++          type: string
++          group_column: value
++          group_columns: {  }
++          group_rows: true
++          delta_limit: 0
++          delta_offset: 0
++          delta_reversed: false
++          delta_first_last: false
++          multi_type: separator
++          separator: ', '
++          field_api_classes: false
++      filters:
++        status:
++          value: '1'
++          table: node_field_data
++          field: status
++          plugin_id: boolean
++          entity_type: node
++          entity_field: status
++          id: status
++          expose:
++            operator: ''
++          group: 1
++      sorts:
++        created:
++          id: created
++          table: node_field_data
++          field: created
++          order: DESC
++          entity_type: node
++          entity_field: created
++          plugin_id: date
++          relationship: none
++          group_type: group
++          admin_label: ''
++          exposed: false
++          expose:
++            label: ''
++          granularity: second
++      header: {  }
++      footer: {  }
++      empty: {  }
++      relationships: {  }
++      arguments: {  }
++      display_extenders: {  }
++    cache_metadata:
++      max-age: -1
++      contexts:
++        - 'languages:language_content'
++        - 'languages:language_interface'
++        - url.query_args
++        - 'user.node_grants:view'
++        - user.permissions
++      tags: {  }
++  data_export_1:
++    display_plugin: data_export
++    id: data_export_1
++    display_title: 'Data export'
++    position: 1
++    display_options:
++      display_extenders: {  }
++      path: views_data_export/test_3
++      filename: test_3
++      automatic_download: false
++      style:
++        type: data_export
++        options:
++          formats:
++            csv: csv
++          csv_settings:
++            delimiter: ','
++            enclosure: '"'
++            escape_char: \
++            strip_tags: true
++            trim: true
++            encoding: utf8
++          xls_settings:
++            xls_format: Excel2007
++            metadata:
++              creator: ''
++              last_modified_by: ''
++              title: ''
++              description: ''
++              subject: ''
++              keywords: ''
++              category: ''
++              manager: ''
++              company: ''
++      export_method: batch
++      export_batch_size: 4
++      export_limit: 3
++
++      redirect_path: /admin
++      store_in_public_file_directory: false
++      custom_redirect_path: true
++
++      redirect_to_display: none
++      include_query_params: false
++
++      pager:
++        type: some
++        options:
++          items_per_page: 3
++          offset: 0
++    cache_metadata:
++      max-age: -1
++      contexts:
++        - 'languages:language_content'
++        - 'languages:language_interface'
++        - request_format
++        - 'user.node_grants:view'
++        - user.permissions
++      tags: {  }
+diff --git a/tests/src/Functional/ViewsDataExportBatchTest.php b/tests/src/Functional/ViewsDataExportBatchTest.php
+new file mode 100644
+index 0000000..6a6a4c4
+--- /dev/null
++++ b/tests/src/Functional/ViewsDataExportBatchTest.php
+@@ -0,0 +1,133 @@
++<?php
++
++namespace Drupal\Tests\views_data_export\Functional;
++
++use Drupal\csv_serialization\Encoder\CsvEncoder;
++use Drupal\Tests\node\Traits\ContentTypeCreationTrait;
++use Drupal\Tests\node\Traits\NodeCreationTrait;
++use Drupal\Tests\search_api\Functional\ExampleContentTrait;
++use Drupal\Tests\views\Functional\ViewTestBase;
++use Drupal\views\Tests\ViewTestData;
++
++/**
++ * Tests views data export with batch.
++ *
++ * @group views_data_export
++ */
++class ViewsDataExportBatchTest extends ViewTestBase {
++
++  use NodeCreationTrait;
++  use ContentTypeCreationTrait;
++  use ExampleContentTrait;
++
++  /**
++   * {@inheritdoc}
++   */
++  public static $modules = [
++    'csv_serialization',
++    'node',
++    'file',
++    'rest',
++    'serialization',
++    'user',
++    'views',
++    'views_data_export',
++    'views_data_export_test',
++    'search_api_test',
++    'search_api_test_db',
++    'search_api_test_example_content',
++  ];
++
++  /**
++   * {@inheritdoc}
++   */
++  public static $testViews = [
++    'search_api_tests',
++    'views_data_test_1',
++    'views_data_test_2',
++    'views_data_test_3',
++  ];
++
++  /**
++   * {@inheritdoc}
++   */
++  protected function setUp($import_test_views = TRUE) {
++    parent::setUp($import_test_views);
++    $this->createContentType([
++      'type' => 'page',
++    ]);
++    foreach (range(0, 9) as $i) {
++      $this->createNode([
++        'status' => TRUE,
++        'type' => 'page',
++      ]);
++      $this->addTestEntity($i + 1, [
++        'name' => '',
++        'body' => 'test test',
++        'type' => 'entity_test_mulrev_changed',
++        'keywords' => ['Orange', 'orange', 'örange', 'Orange'],
++        'category' => 'item_category',
++      ]);
++    }
++    ViewTestData::createTestViews(static::class, ['views_data_export_test']);
++    $account = $this->drupalCreateUser(['access content', 'view test entity']);
++    $this->drupalLogin($account);
++  }
++
++  /**
++   * Test VDE SQL views with batch.
++   */
++  public function testBatchCreation() {
++
++    // By this view we fetch page with link present.
++    $this->drupalGet('views_data_export/test_1');
++    $link = $this->getSession()->getPage()->findLink('here');
++    $path_to_file = $link->getAttribute('href');
++    $this->drupalGet($path_to_file);
++    $this->assertEquals(200, $this->getSession()->getStatusCode(), 'File was not created');
++
++    // By this view we obtain file right after batch process finished.
++    // @todo - make separate FunctionalJavascript test to check automatic fetching.
++    $this->drupalGet('views_data_export/test_2');
++    $this->assertSession()->pageTextContainsOnce('automatically downloaded');
++
++    // By this view's batch finished we must be redirected to /admin and fetch
++    // csv with 3 rows only.
++    $this->drupalGet('views_data_export/test_3');
++    $this->assertEquals(parse_url($this->getSession()->getCurrentUrl(), PHP_URL_PATH), $_SERVER['REQUEST_URI'] . 'admin',
++    'User is not redirected to /admin page as expected');
++    $link = $this->getSession()->getPage()->findLink('here');
++    $path_to_file = $link->getAttribute('href');
++
++    $path_to_file = parse_url($path_to_file, PHP_URL_PATH);
++    $path_to_file = str_replace($_SERVER['REQUEST_URI'] . 'system/files', 'private:/', $path_to_file);
++    $res3 = $this->readCsv(file_get_contents($path_to_file));
++    $this->assertEquals(3, count($res3), 'Count of exported nodes is wrong.');
++
++    // Testing search api index's view.
++    $this->indexItems('database_search_index');
++    $this->drupalGet('views_data_export/test_search_api');
++
++    $link = $this->getSession()->getPage()->findLink('here');
++    $path_to_file = $link->getAttribute('href');
++    $path_to_file = parse_url($path_to_file, PHP_URL_PATH);
++    $path_to_file = str_replace($_SERVER['REQUEST_URI'] . 'system/files', 'private:/', $path_to_file);
++    $res4 = $this->readCsv(file_get_contents($path_to_file));
++    $this->assertEquals(8, count($res4), 'Count of exported test entities is wrong.');
++  }
++
++  /**
++   * Reading CSV content.
++   *
++   * @param string $content
++   *   Content from file.
++   *
++   * @return array|mixed
++   *   Array of CSV rows.
++   */
++  private function readCsv($content) {
++    $csvEncoder = new CsvEncoder();
++    return $csvEncoder->decode($content, '');
++  }
++
++}
+diff --git a/tests/src/Functional/ViewsDataExportTest.php b/tests/src/Functional/ViewsDataExportTest.php
+index 961c869..20ca790 100644
+--- a/tests/src/Functional/ViewsDataExportTest.php
++++ b/tests/src/Functional/ViewsDataExportTest.php
+@@ -20,6 +20,8 @@ class ViewsDataExportTest extends ViewTestBase {
+     'rest',
+     'views_data_export',
+     'views_data_export_test',
++    'csv_serialization',
++    'xls_serialization',
+   ];
+ 
+   /**
+diff --git a/tests/src/Kernel/Plugin/views/style/DataExportTest.php b/tests/src/Kernel/Plugin/views/style/DataExportTest.php
+index 6c3dc9c..f583aa3 100644
+--- a/tests/src/Kernel/Plugin/views/style/DataExportTest.php
++++ b/tests/src/Kernel/Plugin/views/style/DataExportTest.php
+@@ -30,6 +30,7 @@ class DataExportTest extends ViewsKernelTestBase {
+     'serialization',
+     'rest',
+     'views_data_export_test',
++    'xls_serialization',
+   ];
+ 
+   /**
+@@ -74,7 +75,16 @@ class DataExportTest extends ViewsKernelTestBase {
+     $view->save();
+ 
+     $view->calculateDependencies();
+-    $this->assertEquals(['module' => ['csv_serialization', 'entity_test', 'rest', 'serialization', 'user', 'views_data_export']], $view->getDependencies());
++    $this->assertEquals([
++      'module' => [
++        'csv_serialization',
++        'entity_test',
++        'rest',
++        'serialization',
++        'user',
++        'views_data_export',
++      ],
++    ], $view->getDependencies());
+   }
+ 
+ }
+diff --git a/views_data_export.info.yml b/views_data_export.info.yml
+index 3235ee1..7a33061 100644
+--- a/views_data_export.info.yml
++++ b/views_data_export.info.yml
+@@ -5,4 +5,8 @@ package: 'Views'
+ core: 8.x
+ dependencies:
+   - drupal:rest
++  - drupal:views
+   - csv_serialization:csv_serialization
++test_dependencies:
++  - xls_serialization:xls_serialization
++  - search_api:search_api
+diff --git a/views_data_export.libraries.yml b/views_data_export.libraries.yml
+index ea1b47c..2cf5d19 100644
+--- a/views_data_export.libraries.yml
++++ b/views_data_export.libraries.yml
+@@ -3,3 +3,5 @@ views_data_export:
+   css:
+     theme:
+       css/views_data_export.css: {}
++  js:
++    js/views_data_export_auto_download.js: {}
+diff --git a/views_data_export.module b/views_data_export.module
+index e99bca9..382efca 100644
+--- a/views_data_export.module
++++ b/views_data_export.module
+@@ -2,10 +2,17 @@
+ 
+ /**
+  * @file
+- * Primary module hooks for Views Data Export module.
++ * The views data export allowing exporting data from views displays.
++ *
++ * The views data export module allows data to be exported from views displays.
+  */
+ 
+ use Drupal\Core\Routing\RouteMatchInterface;
++use Drupal\Core\Access\AccessResult;
++use Drupal\Core\Entity\EntityInterface;
++use Drupal\Core\Session\AccountInterface;
++use Drupal\views\ViewExecutable;
++use Drupal\views\Plugin\views\query\QueryPluginBase;
+ 
+ /**
+  * Implements hook_theme().
+@@ -45,3 +52,37 @@ function views_data_export_help($route_name, RouteMatchInterface $route_match) {
+   }
+   return NULL;
+ }
++
++/**
++ * Implements hook_ENTITY_TYPE_access().
++ */
++function views_data_export_file_access(EntityInterface $entity, $operation, AccountInterface $account) {
++  /* @var $entity EntityInterface */
++  if ($operation == 'download') {
++    // Grant access to download the generate export if it was generated by the
++    // current user.
++    $pattern = '/\/\/views_data_export\/(?<uid>\d+)-\d+-.+\.csv$/';
++    preg_match($pattern, $entity->getFileUri(), $matches);
++    if (isset($matches['uid']) && $matches['uid'] == $account->id()) {
++      return AccessResult::allowed();
++    }
++  }
++}
++
++/**
++ * Implements hook_views_query_alter().
++ */
++function views_data_export_views_query_alter(ViewExecutable $view, QueryPluginBase $query) {
++  if ($view->getDisplay()->getPluginId() != 'data_export') {
++    return;
++  }
++
++  // Get facet source id from view display and alter search query because facet
++  // module doesn't alter data_export displays.
++  $facet_source = $view->getDisplay()->getOption('facet_settings');
++  if (isset($facet_source) && $facet_source !== 'none') {
++    $search_query = $query->getSearchApiQuery();
++    $facet_manager = \Drupal::service('facets.manager');
++    $facet_manager->alterQuery($search_query, $facet_source);
++  }
++}

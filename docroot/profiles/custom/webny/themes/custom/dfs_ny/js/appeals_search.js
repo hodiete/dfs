@@ -113,19 +113,13 @@
 
       //add export link to bottom of table
       $('.export-wrapper', context).once('second-export-link').clone().addClass('below-table').appendTo('.vbo-table~#edit-actions');
-      //$('.vbo-table~#edit-actions #edit-select-all').attr('id','edit-select-all-2');
 
       //add export link and functionality
-      $('.export-wrapper', context).once('export-build').append('<a class="export-trigger" href="#">Export</a>');
-      $('.export-wrapper', context).once('export-click').on('click',function(evt) {
-        evt.preventDefault();
-        if ($('#edit-select-all').length) {
-          $('#edit-select-all')[0].click();
-        }
-        else {
-          $('#edit-vbo-export-generate-csv-action')[0].click();
-        }
-      });
+      let params = '';
+      if (window.location.search.length > 0) {
+        params = window.location.search;
+      }
+      $('.export-wrapper', context).once('export-build').append('<a class="export-trigger" href="/public-appeal/search/export' + params + '">Export</a>');
 
       //add expand all link and functionality
       $('.expand-wrapper', context).once('expander-build').append('<a class="expand-trigger" href="#">Expand All<span class="expand-long-text"> Summaries &amp; References</span></a>');
@@ -219,21 +213,16 @@
         }
       });
 
-      //reduce CSV export process to one click
-      $('#views-form-public-appeal-search-public-appeals-search-page .vbo-select-all').prop('checked',false);
-      $('#views-form-public-appeal-search-public-appeals-search-page .vbo-select-all', context).once('export-selected').on('click',Drupal.debounce(function(evt) {
-        evt.preventDefault();
-        $('#edit-vbo-export-generate-csv-action')[0].click();
-      }, 500));
-
       //hide divs that mimic status messages
       $('#main-layout-content-switch-div [aria-label="Error message"]').addClass('visually-hidden');
       $('#main-layout-content-switch-div [aria-label="Status message"]').addClass('visually-hidden');
 
       //automatically download CSV file
-      if ($('#main-layout-content-switch-div [aria-label="Status message"] li:first-child:contains("Export file created")').find('a').length > 0 && !$('#main-layout-content-switch-div [aria-label="Status message"] li:first-child:contains("Export file created")').find('a').hasClass('downloaded')) {
-        $('#main-layout-content-switch-div [aria-label="Status message"] li:first-child:contains("Export file created")').find('a')[0].click();
-        $('#main-layout-content-switch-div [aria-label="Status message"] li:first-child:contains("Export file created")').find('a').addClass('downloaded');
+      if ($('#vde-automatic-download').length && !$('#vde-automatic-download').hasClass('downloaded')) {
+        $('#vde-automatic-download').attr('download','public_appeals.csv');
+        $('#vde-automatic-download').attr('target','_blank');
+        $('#vde-automatic-download')[0].click();
+        $('#vde-automatic-download').addClass('downloaded');
       }
 
       //move pager drop-down
