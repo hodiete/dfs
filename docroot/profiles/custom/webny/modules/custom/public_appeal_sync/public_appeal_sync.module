@@ -19,7 +19,9 @@ function public_appeal_sync_cron()
 {
   // exit(0);
   // At 23'o clock on Saturday
-  if (date('N') == 6 && date('G') == 23) {
+  // if (date('N') == 6 && date('G') == 23)
+  if (date('G') == 23) 
+  {
     // date_default_timezone_set('America/New_York');
     $service = \Drupal::service('public_appeal_sync.import_json');
     $service->importJson(); 
