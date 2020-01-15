@@ -57,9 +57,11 @@ class ResponseListingController extends ControllerBase
     $link1 = Link::createFromRoute(t('Configuration of public_applea_syn module'), 'public_appeal_sync.form')->toString();
     $link2 = Link::createFromRoute(t('List of Reports after importing JSON data'), 'public_appeal_sync.response')->toString();
     $link3 = Link::createFromRoute(t('Manually import JSON data'), 'public_appeal_sync.manual_import_form')->toString();
+    $link4 = Link::createFromRoute(t('Manually purge 6-year Data'), 'public_appeal_sync.manual_purge_data_form')->toString();
+
 
     $build = [
-      '#markup' => "<h1>Admin public_appeal_sync<h2>$link1</h2><h2>$link2</h2><h2>$link3</h2>",
+      '#markup' => "<h1>Admin the module public_appeal_sync</h1><hr><h2>$link1</h2><h2>$link2</h2><h2>$link3</h2><hr><h2>$link4</h2>",
     ];
     return $build;
 
