@@ -17,14 +17,18 @@
 
 
       // Open window  to show public_appeal case detail page
+      /*
       $('table tr td .table-link-out a').each(function() {
-        $(this).click(function(e){
+        $(this).one('click', function(e){
           e.preventDefault();
           // window.open($(this).attr("href"), "CaseDetail", "scrollbars=yes");
           window.open($(this).attr("href"), '_blank');
         });
 
       });
+      */
+      $('table tr td .table-link-out a').attr("target", "_blank");
+
     }
   };
 })(jQuery, Drupal, this, Drupal.debounce);
