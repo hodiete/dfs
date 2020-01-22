@@ -2013,7 +2013,7 @@ display:
           exclude: false
           alter:
             alter_text: true
-            text: "<h3 class=\"CSV-text\">Summary: </h3>\r\n\r\n{{ summary }}\r\n"
+            text: "<h3 class=\"CSV-text\">SUMMARY: </h3>\r\n{{ summary }}\r\n"
             make_link: false
             path: ''
             absolute: false
@@ -2036,7 +2036,7 @@ display:
             more_link_path: ''
             strip_tags: true
             trim: false
-            preserve_tags: '<ul> <li> <div> <span> <h3>'
+            preserve_tags: '<ul> <li> <div> <span> <h3> <b>'
             html: false
           element_type: span
           element_class: summary-td
@@ -2075,7 +2075,7 @@ display:
           exclude: false
           alter:
             alter_text: true
-            text: "<h3 class=\"CSV-text\">Reference: </h3>\r\n\r\n{{ references }}\r\n"
+            text: "<h3 class=\"CSV-text\">REFERENCE: </h3>\r\n{{ references }}\r\n"
             make_link: false
             path: ''
             absolute: false
