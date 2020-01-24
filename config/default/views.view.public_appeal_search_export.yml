@@ -2013,7 +2013,7 @@ display:
           exclude: false
           alter:
             alter_text: true
-            text: "<h3 class=\"CSV-text\">SUMMARY: </h3>{{ summary }}\r\n"
+            text: "<h3 class=\"CSV-text\">SUMMARY: </h3>{{ summary|replace({\"\\n\":' ', \"\\r\":' '}) }}\r\n"
             make_link: false
             path: ''
             absolute: false
@@ -2075,7 +2075,7 @@ display:
           exclude: false
           alter:
             alter_text: true
-            text: "<h3 class=\"CSV-text\">REFERENCE: </h3>{{ references }}\r\n"
+            text: "<h3 class=\"CSV-text\">REFERENCE: </h3>{{ references|replace({\"\\n\":' ', \"\\r\":' '}) }}\r\n"
             make_link: false
             path: ''
             absolute: false
