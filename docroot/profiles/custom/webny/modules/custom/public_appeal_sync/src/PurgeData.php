@@ -35,6 +35,8 @@ class PurgeData
   public function __construct()
   {
     $this->vocabulary = 'year';  
+    date_default_timezone_set('America/New_York');
+
   }
 
   /**
@@ -68,6 +70,7 @@ class PurgeData
   {
     $nids = [];
     $oldYear = date('Y') - 6;
+    // var_dump($oldYear);
     $tids = $this->getToxonomyTermIdByName($oldYear, "name" );
 
     if(empty($tids)) {
@@ -116,7 +119,7 @@ class PurgeData
   protected function getToxonomyTermIdByName(int $name, string $flag = 'name')
   { 
     $names = []; $tids = [];
-    for ($i=0; $i<=5; $i++) {
+    for ($i=0; $i<=20; $i++) {
       $names[] = $name - $i;
     }
 
