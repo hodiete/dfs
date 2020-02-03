@@ -45,9 +45,9 @@ class PurgeData
   public function purgeData()
   {
     // $user = user_load_by_name($this->user);
-    $this->purgeOldData();       
-
-    if (empty($this->countUpdate)) {
+    $result = $this->purgeOldData();       
+    
+    if (!$result || empty($this->countUpdate)) {
       $msg = 'No node to be purgeed.';
       \Drupal::logger("public_appeal_sync")->notice($msg);
       return false;
@@ -69,6 +69,10 @@ class PurgeData
     $nids = [];
     $oldYear = date('Y') - 6;
     $tids = $this->getToxonomyTermIdByName($oldYear, "name" );
+
+    if(empty($tids)) {
+      return false;
+    }
 
     $results = \Drupal::entityQuery("node")
       ->condition('type', 'public_appeal')
@@ -94,6 +98,8 @@ class PurgeData
         $this->countUpdate[] = $node->id();
       }
     }
+
+    return count($this->countUpdate);
   }
   
   /**
