@@ -1,0 +1,173 @@
+uuid: 08d60699-3705-43cd-9eba-1c155eb9e940
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.case_number
+    - field.storage.node.references
+    - field.storage.node.summary
+    - field.storage.node.treatment
+    - field.storage.node.diagnosis
+    - field.storage.node.health_plan
+    - field.storage.node.decision
+    - field.storage.node.appeal_type
+    - field.storage.node.gender
+    - field.storage.node.age_range
+    - field.storage.node.decision_year
+    - field.storage.node.appeal_agent
+    - search_api.server.gung_acquia_search_api_solr_server
+  module:
+    - taxonomy
+    - search_api
+    - node
+id: public_appeal_search
+name: 'Public Appeal Search'
+description: ''
+read_only: false
+field_settings:
+  case_number:
+    label: 'Case Number'
+    datasource_id: 'entity:node'
+    property_path: case_number
+    type: text
+    boost: !!float 2
+    dependencies:
+      config:
+        - field.storage.node.case_number
+  nid:
+    label: ID
+    datasource_id: 'entity:node'
+    property_path: nid
+    type: integer
+  references:
+    label: References
+    datasource_id: 'entity:node'
+    property_path: references
+    type: text
+    boost: 0.5
+    dependencies:
+      config:
+        - field.storage.node.references
+  summary:
+    label: Summary
+    datasource_id: 'entity:node'
+    property_path: summary
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.summary
+  title:
+    label: Title
+    datasource_id: 'entity:node'
+    property_path: title
+    type: text
+  name:
+    label: 'Treatment » Taxonomy term » Name'
+    datasource_id: 'entity:node'
+    property_path: 'treatment:entity:name'
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.treatment
+      module:
+        - taxonomy
+  name_1:
+    label: 'Diagnosis » Taxonomy term » Name'
+    datasource_id: 'entity:node'
+    property_path: 'diagnosis:entity:name'
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.diagnosis
+      module:
+        - taxonomy
+  name_2:
+    label: 'Health Plan » Taxonomy term » Name'
+    datasource_id: 'entity:node'
+    property_path: 'health_plan:entity:name'
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.health_plan
+      module:
+        - taxonomy
+  name_3:
+    label: 'Decision » Taxonomy term » Name'
+    datasource_id: 'entity:node'
+    property_path: 'decision:entity:name'
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.decision
+      module:
+        - taxonomy
+  name_4:
+    label: 'Appeal Type » Taxonomy term » Name'
+    datasource_id: 'entity:node'
+    property_path: 'appeal_type:entity:name'
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.appeal_type
+      module:
+        - taxonomy
+  name_5:
+    label: 'Gender » Taxonomy term » Name'
+    datasource_id: 'entity:node'
+    property_path: 'gender:entity:name'
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.gender
+      module:
+        - taxonomy
+  name_6:
+    label: 'Age Range » Taxonomy term » Name'
+    datasource_id: 'entity:node'
+    property_path: 'age_range:entity:name'
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.age_range
+      module:
+        - taxonomy
+  name_7:
+    label: 'Decision Year » Taxonomy term » Name'
+    datasource_id: 'entity:node'
+    property_path: 'decision_year:entity:name'
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.decision_year
+      module:
+        - taxonomy
+  name_8:
+    label: 'Appeal Agent » Taxonomy term » Name'
+    datasource_id: 'entity:node'
+    property_path: 'appeal_agent:entity:name'
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.appeal_agent
+      module:
+        - taxonomy
+datasource_settings:
+  'entity:node':
+    bundles:
+      default: false
+      selected:
+        - public_appeal
+    languages:
+      default: true
+      selected: {  }
+processor_settings:
+  add_url: {  }
+  aggregated_field: {  }
+  rendered_item: {  }
+tracker_settings:
+  default:
+    indexing_order: fifo
+options:
+  index_directly: true
+  cron_limit: 500
+server: gung_acquia_search_api_solr_server
