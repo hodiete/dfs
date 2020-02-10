@@ -1,9 +1,14 @@
 <?php
-
 /**
  * @file
- * 
+ *
  */
+
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Ajax\AjaxResponse;
+use Drupal\Core\Ajax\CloseModalDialogCommand;
+use Drupal\Core\Ajax\RedirectCommand;
+
 
 /**
  * Implements hook_views_exposed_form_alter().
@@ -14,3 +19,98 @@
 //     }
 
 // }
+
+/**
+ * Implements hook_form_alter().
+ */
+function public_appeal_search_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  
+  if ($form_id == 'views_exposed_form' && $form['#id'] == 'views-exposed-form-public-appeal-search-all-page-1') {  
+
+    // print "<pre> 1 ";
+    // print_r($form);
+
+
+    $form['container'] = [
+      '#type' => 'container',
+      '#attributes' => ['id' => 'box-container'],
+    ];
+    // The box contains some markup that we can change on a submit request.
+    $form['container']['box'] = [
+      '#type' => 'markup',
+      '#markup' => '<h4>Search Results</h4>',
+    ];
+
+
+    $form['#attached']['library'][] = 'public_appeal_search/ajax-solr-search';
+    
+    $form['actions']['submit']['#ajax'] =  array(
+        'wrapper' => 'box-container',
+        'callback' => '::_public_appeal_search_all_ajax_submit',
+    );
+
+    // $form['#action'] = array(
+    //     'wrapper' => 'box-container',
+    //     'callback' => '_public_appeal_search_all_ajax_submit',
+    // );
+    // $form['#action']="#";
+
+
+
+    // $form['actions']['submit']['#attributes']['class'][] = 'use-ajax-submit';
+
+    // print "</pre>" ;// exit();
+
+  }
+
+
+}
+
+/**
+ * Close the Modal and redirect the user to the homepage.
+ *
+ * @param array $form
+ *   The form that will be altered.
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ *   FormState Object.
+ *
+function _public_appeal_search_all_ajax_submit(array $form, FormStateInterface &$form_state) 
+{
+
+  // print " <pre> 2 "; print_r($form_state);  print "</pre>";
+  
+  // $commands = array();
+  // $commands[] = array(
+  //     // We register a custom command
+  //     'command' => 'formPopupTriggerPopup',
+  //     // We pass the submitted value to our command
+  //     'name' => $form_state['values']['search_api_fulltext'],
+  // );
+
+  // // We replace our entire form with a new version of the form
+  // // Since we've ajaxified the whole form
+  // $commands[] = ajax_command_replace(null, render($form));
+
+  // // Now we return our commands to be executed
+  // return array('#type' => 'ajax', '#commands' => $commands);
+  $format = $form_state['values']['search_api_fulltext'];
+  $format ="<h1>Gung Wang</h1>";
+
+  // print_r($form_state['values']); exit();
+
+  $response = new AjaxResponse();
+  // $response
+      // ->addCommand(new HtmlCommand('#edit-date-format-suffix', '<small id="edit-date-format-suffix">' . $format . '</small>'));
+
+  $title = 'Dialog Title'; 
+  $content = 'Some Content'; 
+  $dialog_options = ['minHeight' => 600, 'resizable' => true]; 
+  $settings = []; 
+  $response->addContent(new OpenModalDialogCommand($title, $content, $dialog_options, $settings));
+
+
+
+  return $response;
+
+}
+*/

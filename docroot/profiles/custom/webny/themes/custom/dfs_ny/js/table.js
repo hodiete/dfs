@@ -11,6 +11,7 @@
   Drupal.behaviors.table = {
     attach: function (context, settings) {
       if ( !$('.views-page-public-appeal-search').length && !$('.views-page-public-appeal-search-all').length ) 
+      // if (!$('.views-page-public-appeal-search').length) 
       {
         $('table').once().dataTable({
           order: [],
