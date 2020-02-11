@@ -7,15 +7,22 @@
 
 namespace Drupal\public_appeal_search\Form;
 
+use Drupal\Component\Render\FormattableMarkup;
+use Drupal\Core\Ajax\AjaxResponse;
+use Drupal\Core\Ajax\OpenModalDialogCommand;
+
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Url;
+use Symfony\Component\DependencyInjection\ContainerInterface;
+
 use Symfony\Component\HttpFoundation\RedirectResponse;
 
-
-use Symfony\Component\DependencyInjection\ContainerInterface;
-use function Drupal\Core\Form\drupal_set_message;
+use Drupal\views\ViewExecutable;
+use Drupal\views\Views;
+// use Drupal\Core\Form\drupal_set_message;
 // use Symfony\Component\Validator\Constraints\Url;
+
 
 
 /**
@@ -35,10 +42,62 @@ class SearchForm extends FormBase
   }
 
   /**
+   * Helper method so we can have consistent dialog options.
+   *
+   * @return string[]
+   *   An array of jQuery UI elements to pass on to our dialog form.
+   */
+  protected static function getDataDialogOptions() {
+    return [
+      'width' => '95%',
+    ];
+  }
+
+  /**
    * {@inheritdoc}
    */
-  public function buildForm(array $form, FormStateInterface $form_state)
+  public function buildForm(array $form, FormStateInterface $form_state, $nojs = null)
   {
+
+    $form['#attached']['library'][] = 'public_appeal_search/ajax-solr-search';
+
+    // Add a link to show this form in a modal dialog if we're not already in
+    // one.
+    if ($nojs == 'nojs') {
+      $form['use_ajax_container'] = [
+        '#type' => 'details',
+        '#open' => true,
+      ];
+      $form['use_ajax_container']['description'] = [
+        '#type' => 'item',
+        '#markup' => $this->t('In order to show a modal dialog by clicking on a link, that link has to have class <code>use-ajax</code> and <code>data-dialog-type="modal"</code>. This link has those attributes.'),
+      ];
+      $form['use_ajax_container']['use_ajax'] = [
+        '#type' => 'link',
+        '#title' => $this->t('See this form as a modal.'),
+        '#url' => Url::fromRoute('public_appeal_search.public_appeal_search_form', ['nojs' => 'ajax']),
+        '#attributes' => [
+            'class' => ['use-ajax'],
+            'data-dialog-type' => 'modal',
+            'data-dialog-options' => json_encode(static::getDataDialogOptions()),
+            // Add this id so that we can test this form.
+            'id' => 'ajax-example-modal-link',
+        ],
+      ];
+    }
+
+    // This element is responsible for displaying form errors in the AJAX
+    // dialog.
+    if ($nojs == 'ajax') {
+      $form['status_messages'] = [
+        '#type' => 'status_messages',
+        '#weight' => -999,
+      ];
+    }
+
+
+
+    /*
     $params = [];
     $params = \Drupal::request()->query->all();
 
@@ -51,6 +110,13 @@ class SearchForm extends FormBase
     else {
       $name = "";
     }
+    */
+
+    $form['title'] = [
+      '#type' => 'hidden',
+      '#title' => $this->t('Pulbic Appeal Solr Search'),
+      '#required' => false,
+    ];
 
     $form['search'] = array(
       '#type' => 'textfield',
@@ -60,6 +126,7 @@ class SearchForm extends FormBase
     );
     $form['search']['#attributes']['placeholder'] = t('Search');
 
+    /*
     $form['references_included'] = array(
       '#type' => 'checkbox',
       '#title' => $this->t('Include References in Search'),
@@ -68,15 +135,41 @@ class SearchForm extends FormBase
       '#default_value' => false,
     );
 
-    if ($params['references_value']) {
+    if (isset($params['references_value'])) {
       $form['references_included']['#default_value'] = true;
     }
 
-    $form['submit'] = array(
+    */
+    // $form['submit'] = array(
+    //   '#type' => 'submit',
+    //   '#value' => $this->t('Search'),
+    //   '#button_type' => 'primary',
+    // );
+
+    // Group submit handlers in an actions element with a key of "actions" so
+    // that it gets styled correctly, and so that other modules may add actions
+    // to the form.
+    $form['actions'] = [
+      '#type' => 'actions',
+    ];
+
+    // Add a submit button that handles the submission of the form.
+    $form['actions']['submit'] = [
       '#type' => 'submit',
-      '#value' => $this->t('Search'),
-      '#button_type' => 'primary',
-    );
+      '#value' => $this->t('Submit'),
+      '#ajax' => [
+        'callback' => '::ajaxSubmitForm',
+        'event' => 'click',
+      ],
+    ];
+
+    // Set the form to not use AJAX if we're on a nojs path. When this form is
+    // within the modal dialog, Drupal will make sure we're using an AJAX path
+    // instead of a nojs one.
+    if ($nojs == 'nojs') {
+      unset($form['actions']['submit']['#ajax']);
+    }
+
     return $form;
   }
 
@@ -131,12 +224,18 @@ class SearchForm extends FormBase
 
     // }
 
-    $params = $this->searchFields($form_state->getValue('search'), $checked);
+    // $params = $this->searchFields($form_state->getValue('search'), $checked);
 
+    $title = $form_state->getValue('title');
+    $this->messenger()->addMessage(
+      $this->t('Submit handler: You specified a title of @title.', ['@title' => $title])
+    );
+    /*
     // Change the Action of Submission to the View of Public Appeal Search
     $response = new RedirectResponse(Url::fromRoute('view.public_appeal_search.public_appeals_search_page', $params)->toString());
 
     $response->send();
+    */
   }
 
   /**
@@ -200,5 +299,97 @@ class SearchForm extends FormBase
     return count($nids) > 0;
   }
 
+
+
+  
+  /**
+   * Implements the submit handler for the modal dialog AJAX call.
+   *
+   * @param array $form
+   *   Render array representing from.
+   * @param \Drupal\Core\Form\FormStateInterface $form_state
+   *   Current form state.
+   *
+   * @return \Drupal\Core\Ajax\AjaxResponse
+   *   Array of AJAX commands to execute on submit of the modal form.
+   */
+  public function ajaxSubmitForm(array &$form, FormStateInterface $form_state) {
+    // We begin building a new ajax reponse.
+    $response = new AjaxResponse();
+
+    // If the user submitted the form and there are errors, show them the
+    // input dialog again with error messages. Since the title element is
+    // required, the empty string wont't validate and there will be an error.
+    if ($form_state->getErrors()) {
+      // If there are errors, we can show the form again with the errors in
+      // the status_messages section.
+      $form['status_messages'] = [
+        '#type' => 'status_messages',
+        '#weight' => -10,
+      ];
+      $response->addCommand(new OpenModalDialogCommand($this->t('Errors'), $form, static::getDataDialogOptions()));
+    }
+    // If there are no errors, show the output dialog.
+    else {
+      // We don't want any messages that were added by submitForm().
+      $this->messenger()->deleteAll();
+      // We use FormattableMarkup to handle sanitizing the input.
+      // @todo: There's probably a better way to do this.
+      $title = new FormattableMarkup(':title', [':title' => $form_state->getValue('title')]);
+
+
+      $search_words = $form_state->getValue('search');
+      // $checked = $form_state->getValue('references_included');
+      // $params = $this->searchFields($form_state->getValue('search'), $checked);
+
+
+      // This will be the contents for the modal dialog.
+      // $host ="https://nydfsdev.prod.acquia-sites.com";
+      // $host = "http://dfs.test";
+      // $search_result = "<iframe src=\"$host/public-appeal/search-all?search_api_fulltext=$search_words\">
+      //   <p>Your browser does not support iframes.</p>
+      // </iframe>";
+
+      // $search_result = file_get_contents("$host/public-appeal/search-all?search_api_fulltext=$search_words");
+
+      $search_result = $this->getResultsSolrSearchView($search_words);
+
+      $content = [
+        '#type' => 'item',
+        '#markup' => $search_result,
+      ];
+      // Add the OpenModalDialogCommand to the response. This will cause Drupal
+      // AJAX to show the modal dialog. The user can click the little X to close
+      // the dialog.
+      $response->addCommand(new OpenModalDialogCommand($title, $content, static::getDataDialogOptions()));
+    }
+
+    // Finally return our response.
+    return $response;
+  }
+
+
+  public function getResultsSolrSearchView($key) {
+
+    $result = false;
+    $args['search_api_fulltext'] = $key;
+ 
+    // Clound Dev: view michine name public_appeal_search_all
+    // $view = Views::getView('public_appeal_search_all');
+    // Local Site: view michine name local_public_appeal_search
+    $view = Views::getView('local_public_appeal_search');
+
+    if (is_object($view)) {
+      $view->setDisplay('page_1');
+      $filters['search_api_fulltext'] = $key;
+
+      $view->setExposedInput($filters);
+      $view->execute();
+
+      // Render the view
+      $result = \Drupal::service('renderer')->render($view->render());
+    }
+    return ($result)? $result: "No result found!";
+  }
 
 }//END class

@@ -8,7 +8,6 @@
     display: flex;
   }
 
-
   aside.layout-sidebar-first {
     float: none;
     width: 342px;
@@ -1276,6 +1275,74 @@
     .pager .pager__items .pager__item {
       margin: 4px 5px;
     }
+  }
+
+
+  /*  Ajax search all (Solr Search of fulltext in dialog popup window) */
+  .ui-dialog {
+    z-index: 1000;
+
+    .views-exposed-form,
+    .ui-dialog-buttonpane,
+    .js-pager__items {
+      display: none;
+    }
+
+    .ui-dialog-titlebar-close {
+
+      position: absolute;
+      right: 1em;
+      top: 45%;
+      margin: -13px 0 0 0;
+      padding: 1px;
+      width: 100px;
+      height: 30px;
+    }
+
+
+    table thead tr {
+      th.views-field {
+        font-size: 13px;
+        font-weight: normal;
+        padding: 15px 0px;
+        text-align: center;
+        width: fit-content;
+        max-width: 12%;
+      }
+    }
+
+    table {
+      tr:first-child td.views-field-case-number {
+        padding-right: 10px;
+
+      }
+      tr:first-child td.views-field {
+        padding: 0px;
+      }
+
+      td.views-field {
+        font-size: 13px;
+        padding: 10px 0px;
+        line-height: 16px;
+        width: fit-content;
+        max-width: 12%;
+
+
+      }
+
+      thead tr th.views-field.views-field-summary,
+      thead tr th.views-field.views-field-references,
+      td.views-field.views-field-references,
+      td.views-field.views-field-summary {
+        display: table-cell;
+        overflow: hidden;
+        max-height: 100px;
+      }
+    }
+  }
+
+  .ui-widget-content a { 
+    color: #2f3b9b;
   }
 
 }
