@@ -374,10 +374,13 @@ class SearchForm extends FormBase
     $result = false;
     $args['search_api_fulltext'] = $key;
  
-    // Clound Dev: view michine name public_appeal_search_all
-    // $view = Views::getView('public_appeal_search_all');
     // Local Site: view michine name local_public_appeal_search
     $view = Views::getView('local_public_appeal_search');
+    
+    if(!is_object($view)) {      
+      // Clound Dev: view michine name public_appeal_search_all
+      $view = Views::getView('public_appeal_search_all');
+    }
 
     if (is_object($view)) {
       $view->setDisplay('page_1');
