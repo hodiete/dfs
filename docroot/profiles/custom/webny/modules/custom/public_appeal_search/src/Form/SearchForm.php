@@ -377,7 +377,7 @@ class SearchForm extends FormBase
     // Local Site: view michine name local_public_appeal_search
     $view = Views::getView('local_public_appeal_search');
     
-    if(!is_object($view)) {      
+    if(!$view) {      
       // Clound Dev: view michine name public_appeal_search_all
       $view = Views::getView('public_appeal_search_all');
     }
