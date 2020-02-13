@@ -7,7 +7,7 @@ use Drupal\Core\Form\FormInterface;
 use Drupal\public_appeal_search\Form\SolrSearchForm;
 
 /**
- * Provides a 'Hello' Block.
+ * Provides a 'Public Appeal Search Solr' Block.
  *
  * @Block(
  *   id = "public_appeal_search_solr_block",

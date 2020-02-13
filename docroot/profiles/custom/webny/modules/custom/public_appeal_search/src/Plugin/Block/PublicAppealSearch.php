@@ -7,7 +7,7 @@ use Drupal\Core\Form\FormInterface;
 use Drupal\public_appeal_search\Form\SearchForm;
 
 /**
- * Provides a 'Hello' Block.
+ * Provides a 'Public Appeal Search' Block.
  *
  * @Block(
  *   id = "public_appeal_search_block",

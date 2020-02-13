@@ -20,7 +20,6 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 
 use Drupal\views\ViewExecutable;
 use Drupal\views\Views;
-// use Drupal\Core\Form\drupal_set_message;
 // use Symfony\Component\Validator\Constraints\Url;
 
 
