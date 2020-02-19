@@ -16,9 +16,17 @@ dependencies:
     - field.storage.node.summary
     - field.storage.node.treatment
     - search_api.index.public_appeal_search
+    - user.role.administrator
+    - user.role.business_approver
+    - user.role.content_author
+    - user.role.restful_api
+    - user.role.site_admin
+    - user.role.site_builder
   module:
     - search_api
     - smart_trim
+    - taxonomy
+    - user
 id: public_appeal_search_all
 label: 'Public Appeal Search All'
 module: views
@@ -34,8 +42,15 @@ display:
     position: 0
     display_options:
       access:
-        type: none
-        options: {  }
+        type: role
+        options:
+          role:
+            administrator: administrator
+            site_builder: site_builder
+            site_admin: site_admin
+            content_author: content_author
+            business_approver: business_approver
+            restful_api: restful_api
       cache:
         type: tag
         options: {  }
@@ -1514,7 +1529,7 @@ display:
               suspected_fraud_submissions: '0'
               hcpo_forms: '0'
               restful_api: '0'
-            placeholder: ''
+            placeholder: 'Search All Fields'
           is_grouped: false
           group_info:
             label: ''
@@ -1546,7 +1561,106 @@ display:
           plugin_id: result
       footer: {  }
       empty: {  }
-      relationships: {  }
+      relationships:
+        age_range:
+          id: age_range
+          table: search_api_datasource_public_appeal_search_entity_node
+          field: age_range
+          relationship: none
+          group_type: group
+          admin_label: 'Age Range: Taxonomy term'
+          required: false
+          skip_access: false
+          entity_type: node
+          plugin_id: search_api
+        appeal_agent:
+          id: appeal_agent
+          table: search_api_datasource_public_appeal_search_entity_node
+          field: appeal_agent
+          relationship: none
+          group_type: group
+          admin_label: 'Appeal Agent: Taxonomy term'
+          required: false
+          skip_access: false
+          entity_type: node
+          plugin_id: search_api
+        appeal_type:
+          id: appeal_type
+          table: search_api_datasource_public_appeal_search_entity_node
+          field: appeal_type
+          relationship: none
+          group_type: group
+          admin_label: 'Appeal Type: Taxonomy term'
+          required: false
+          skip_access: false
+          entity_type: node
+          plugin_id: search_api
+        decision:
+          id: decision
+          table: search_api_datasource_public_appeal_search_entity_node
+          field: decision
+          relationship: none
+          group_type: group
+          admin_label: 'Decision: Taxonomy term'
+          required: false
+          skip_access: false
+          entity_type: node
+          plugin_id: search_api
+        decision_year:
+          id: decision_year
+          table: search_api_datasource_public_appeal_search_entity_node
+          field: decision_year
+          relationship: none
+          group_type: group
+          admin_label: 'Decision Year: Taxonomy term'
+          required: false
+          skip_access: false
+          entity_type: node
+          plugin_id: search_api
+        diagnosis:
+          id: diagnosis
+          table: search_api_datasource_public_appeal_search_entity_node
+          field: diagnosis
+          relationship: none
+          group_type: group
+          admin_label: 'Diagnosis: Taxonomy term'
+          required: false
+          skip_access: false
+          entity_type: node
+          plugin_id: search_api
+        gender:
+          id: gender
+          table: search_api_datasource_public_appeal_search_entity_node
+          field: gender
+          relationship: none
+          group_type: group
+          admin_label: 'Gender: Taxonomy term'
+          required: false
+          skip_access: false
+          entity_type: node
+          plugin_id: search_api
+        health_plan:
+          id: health_plan
+          table: search_api_datasource_public_appeal_search_entity_node
+          field: health_plan
+          relationship: none
+          group_type: group
+          admin_label: 'Health Plan: Taxonomy term'
+          required: false
+          skip_access: false
+          entity_type: node
+          plugin_id: search_api
+        treatment:
+          id: treatment
+          table: search_api_datasource_public_appeal_search_entity_node
+          field: treatment
+          relationship: none
+          group_type: group
+          admin_label: 'Treatment: Taxonomy term'
+          required: false
+          skip_access: false
+          entity_type: node
+          plugin_id: search_api
       arguments: {  }
       display_extenders: {  }
     cache_metadata:
@@ -1556,6 +1670,7 @@ display:
         - 'languages:language_interface'
         - url
         - url.query_args
+        - user.roles
       tags:
         - 'config:field.storage.node.age_range'
         - 'config:field.storage.node.appeal_agent'
@@ -1572,23 +1687,42 @@ display:
   block_1:
     display_plugin: block
     id: block_1
-    display_title: Block
+    display_title: 'Search All Block'
     position: 2
     display_options:
       display_extenders: {  }
       pager:
-        type: some
+        type: full
         options:
-          items_per_page: 5
+          items_per_page: 20
           offset: 0
+          id: 0
+          total_pages: null
+          tags:
+            previous: '‹ Previous'
+            next: 'Next ›'
+            first: '« First'
+            last: 'Last »'
+          expose:
+            items_per_page: false
+            items_per_page_label: 'Items per page'
+            items_per_page_options: '5, 10, 25, 50'
+            items_per_page_options_all: false
+            items_per_page_options_all_label: '- All -'
+            offset: false
+            offset_label: Offset
+          quantity: 9
       defaults:
         pager: false
+      display_description: ''
     cache_metadata:
       max-age: -1
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
         - url
+        - url.query_args
+        - user.roles
       tags:
         - 'config:field.storage.node.age_range'
         - 'config:field.storage.node.appeal_agent'
@@ -1610,6 +1744,7 @@ display:
     display_options:
       display_extenders: {  }
       path: public-appeal/search-all
+      exposed_block: true
     cache_metadata:
       max-age: -1
       contexts:
@@ -1617,6 +1752,7 @@ display:
         - 'languages:language_interface'
         - url
         - url.query_args
+        - user.roles
       tags:
         - 'config:field.storage.node.age_range'
         - 'config:field.storage.node.appeal_agent'
