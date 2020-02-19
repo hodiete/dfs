@@ -23,6 +23,8 @@ class PublicAppealSearchSolr extends BlockBase
    */
   public function build()
   {
+    return "Solr Search Block is under development";
+    // Not use
     $form = \Drupal::formBuilder()->getForm('\Drupal\public_appeal_search\Form\SearchSolrForm');
     return $form;
   }
