@@ -188,7 +188,10 @@ docroot/profiles/custom/webny/themes/custom/dfs_ny/styleguide/*
 # Libraries - External : Included in composer.json
 docroot/profiles/custom/webny/libraries/*
 docroot/profiles/custom/webny/libraries/*/
+
+#re-include the custom libraries
 !docroot/profiles/custom/webny/libraries/package.json
+!docroot/profiles/custom/webny/libraries/custom
 
 docroot/sites/default/settings/local.drush.yml
 
