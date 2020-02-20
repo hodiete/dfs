@@ -41,3 +41,27 @@ Then, you should be able to navigate to the site in your browser: [https://dfsny
 
  - The twig/twig version has been pegged at 1.31.1 in order to avoid breaking the classy module because the site is currently stuck on an older version of drupal
 
+
+## About the custom modules "public_appeal_sync"
+- name : Public Appeal Synchronize Data
+- How to set up cron job in code to change the time?
+  - in public_appeal_sync_cron() function 
+  - line 22 : run cron at 23:00 on Saturday every week
+  - line 23 : (current run cron at 23:00 every day)
+- Manually import JSON date on Admin UI page
+  - http://dfs.test/admin/config/public_appeal_sync/manual_import_form
+
+
+## About the custom modules "public_appeal_sync"
+- name : Public Appeal Synchronize Data
+- How to set up cron job in code to change the time?
+  - in public_appeal_sync_cron() function 
+  - line 22 : run cron at 23:00 on Saturday every week
+  - line 23 : (current setting to run cron at 23:00 every day)
+- Manually import JSON date on Admin UI page
+  - /admin/config/public_appeal_sync/manual_import_form
+
+- Purge date more than 6 years old
+  - line 31 : run cron at 23:00 On Janary 1st every year
+  - Manually purge data on Admin UI page
+  - /admin/config/public_appeal_sync/manual_purge_date_form
