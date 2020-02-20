@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "02472ed87b782fb6380d56aa8f10b954",
+    "content-hash": "63fcb367588aaad5caf16e01eca0b7fc",
     "packages": [
         {
             "name": "acquia/acsf-tools",
@@ -6563,6 +6563,9 @@
                         "status": "not-covered",
                         "message": "Alpha releases are not covered by Drupal security advisories."
                     }
+                },
+                "patches_applied": {
+                    "\"Field field_last_password_reset is unknown\" while importing configuration on site without password_policy activated": "https://www.drupal.org/files/issues/2020-01-17/password_policy-n2771129-109.patch"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
