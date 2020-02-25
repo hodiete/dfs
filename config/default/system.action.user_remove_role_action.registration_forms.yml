@@ -1,0 +1,14 @@
+uuid: f11c86d4-65a2-42d1-befa-97011f99e5fb
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.registration_forms
+  module:
+    - user
+id: user_remove_role_action.registration_forms
+label: 'Remove the Registration Forms role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: registration_forms

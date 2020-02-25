@@ -1,13 +1,13 @@
 uuid: 5ed5a350-bc94-4ae1-ab2d-3e46a456fa29
 langcode: en
-status: true
+status: false
 dependencies:
   module:
     - acquia_search
     - search_api_solr
 id: gung_acquia_search_api_solr_server
-name: 'Public Appeal: Acquia Search API Solr server'
-description: 'Public Appeal Acquia Solr server'
+name: 'Gung: Acquia Search API Solr server'
+description: 'Test acqua solr server'
 backend: search_api_solr
 backend_config:
   connector: solr_acquia_connector
@@ -27,5 +27,5 @@ backend_config:
   suggest_suffix: true
   suggest_corrections: true
   suggest_words: false
-  acquia_search_possible_cores: {  }
-  overridden_by_acquia_search: 2
+  acquia_search_possible_cores:
+    - EHJU-176215.dev.default

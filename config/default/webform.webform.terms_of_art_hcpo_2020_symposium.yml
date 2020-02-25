@@ -1,0 +1,253 @@
+uuid: 2bb9a792-8d41-4b9a-a5ca-1d257d51a676
+langcode: en
+status: open
+dependencies:
+  module:
+    - honeypot
+third_party_settings:
+  honeypot:
+    honeypot: true
+open: null
+close: null
+weight: 0
+uid: 604
+template: false
+archive: false
+id: terms_of_art_hcpo_2020_symposium
+title: 'Terms of Art: Understanding the Mechanics of Dispossession During the Nazi Period'
+description: 'HCPO 2020 Symposium Registration form.'
+category: HCPO
+elements: "markup:\n  '#type': webform_markup\n  '#markup': \"<strong>Thursday, May 7, 2020 &ndash; Friday, May 8, 2020<br />\\r\\nCUNY Graduate Center<br />\\r\\n365 Fifth Avenue&nbsp;<br />\\r\\nNew York, NY 10016</strong><br />\\r\\n<br />\\r\\nThe registration process for the symposium has now begun. Kindly complete the form below. An automated response confirming receipt of your request will be emailed within 24 hours. Notification of registration will be sent by March 15, 2020. Please note that space is limited, and the symposium centers on a highly specialized subject. In order to ensure the substance remains focused, participation is intended for practitioners in this field including claimant representatives, attorneys, members of the art trade, cultural institution professionals, provenance researchers, historians and art historians.<br />\\r\\n<br />\\r\\nNOTE: All form fields are required.\"\nhorizontal_rule:\n  '#type': webform_horizontal_rule\n  '#display_on': both\nfull_name_header:\n  '#type': webform_markup\n  '#display_on': both\n  '#markup': '<h3><strong>Full Name</strong></h3>'\nflexbox:\n  '#type': webform_flexbox\n  prefix_name:\n    '#type': webform_select_other\n    '#title': Prefix\n    '#title_display': before\n    '#options':\n      Miss: Miss\n      Ms.: Ms.\n      Mr.: Mr.\n      Mrs.: Mrs.\n      Dr.: Dr.\n    '#empty_value': Other...\n    '#other__placeholder': 'Enter other prefix…'\n    '#required': true\n    '#required_error': 'Please enter your prefix.'\n  first_name:\n    '#type': textfield\n    '#title': 'First Name'\n    '#title_display': before\n    '#size': '20'\n    '#required': true\n    '#required_error': 'Please enter your First Name.'\n  last_name:\n    '#type': textfield\n    '#title': 'Last Name'\n    '#title_display': before\n    '#size': '40'\n    '#required': true\n    '#required_error': 'Please enter your Last Name.'\nhorizontal_rule_02:\n  '#type': webform_horizontal_rule\n  '#display_on': both\ncontact_info_header:\n  '#type': webform_markup\n  '#display_on': both\n  '#markup': '<h3><strong>Contact Information</strong></h3>'\nflexbox_comp_email:\n  '#type': webform_flexbox\n  company_organization_affiliation:\n    '#type': textfield\n    '#title': Company\n    '#title_display': inline\n    '#placeholder': 'Enter your Company/Organization/Affiliation'\n    '#autocomplete': 'off'\n    '#required': true\n    '#required_error': 'Please enter your company, organization or affiliation.'\n  e_mail:\n    '#type': email\n    '#title': E-mail\n    '#title_display': inline\n    '#placeholder': 'E-mail address'\n    '#required': true\n    '#required_error': 'Please enter your e-mail address.'\nflexbox_address:\n  '#type': webform_flexbox\n  '#align_items': center\n  address:\n    '#type': address\n    '#title': 'ADDRESS INFORMATION'\n    '#required': true\n    '#field_overrides':\n      givenName: hidden\n      additionalName: hidden\n      familyName: hidden\n      organization: hidden\n      addressLine1: required\n      addressLine2: required\n      postalCode: required\n      sortingCode: hidden\n      dependentLocality: hidden\n      locality: required\n      administrativeArea: required\nhorizontal_rule_03:\n  '#type': webform_horizontal_rule\n  '#display_on': both\nflexbox_questions:\n  '#type': webform_flexbox\n  practitioner_group:\n    '#type': webform_select_other\n    '#title': 'Practitioner Group'\n    '#options':\n      'Government Official': 'Government Official'\n      Claimant: Claimant\n      Attorney: Attorney\n      'Dealer/Auction House': 'Dealer/Auction House'\n      'Cultural Institution Professional': 'Cultural Institution Professional'\n      Historian: Historian\n      'Art Historian': 'Art Historian'\n      'Provenance Researcher': 'Provenance Researcher'\n      Academic: Academic\n    '#other__type': textarea\n    '#other__option_label': Student/Other\n    '#other__title': Student/Other\n    '#other__placeholder': 'If Student, please specify.  If Other, please describe.'\n    '#other__counter_type': character\n    '#other__counter_maximum': '200'\n    '#required': true\n  how_did_you_learn_about_the_symposium_:\n    '#type': webform_select_other\n    '#title': 'How did you learn about the symposium?'\n    '#options':\n      Referral: Referral\n      'Social Media': 'Social Media'\n      Email: Email\n      Press: Press\n    '#other__type': textarea\n    '#other__option_label': 'Other (Please describe)'\n    '#other__title': 'Other (Please describe)'\n    '#other__placeholder': 'Other (Please describe)'\n    '#other__counter_type': character\n    '#other__counter_maximum': '200'\n    '#required': true\n    '#required_error': 'Please select one of the options.'\nwhy_are_you_interested_in_attending_:\n  '#type': textfield\n  '#title': 'Why are you interested in attending?'\n  '#title_display': before\n  '#maxlength': '100'\n  '#placeholder': 'You may enter up to 100 characters.'\n  '#required': true\n  '#required_error': 'Please enter your interest for attending.  '"
+css: ''
+javascript: ''
+settings:
+  ajax: false
+  ajax_scroll_top: form
+  page: true
+  page_submit_path: ''
+  page_confirm_path: ''
+  form_title: both
+  form_submit_once: false
+  form_exception_message: ''
+  form_open_message: ''
+  form_close_message: ''
+  form_previous_submissions: true
+  form_confidential: false
+  form_confidential_message: ''
+  form_remote_addr: true
+  form_convert_anonymous: false
+  form_prepopulate: false
+  form_prepopulate_source_entity: false
+  form_prepopulate_source_entity_required: false
+  form_prepopulate_source_entity_type: ''
+  form_reset: false
+  form_disable_autocomplete: false
+  form_novalidate: false
+  form_disable_inline_errors: false
+  form_required: false
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
+  form_autofocus: false
+  form_details_toggle: false
+  form_access_denied: default
+  form_access_denied_title: ''
+  form_access_denied_message: ''
+  form_access_denied_attributes: {  }
+  form_file_limit: ''
+  submission_label: ''
+  submission_log: false
+  submission_views: {  }
+  submission_views_replace: {  }
+  submission_user_columns: {  }
+  submission_user_duplicate: false
+  submission_access_denied: default
+  submission_access_denied_title: ''
+  submission_access_denied_message: ''
+  submission_access_denied_attributes: {  }
+  submission_exception_message: ''
+  submission_locked_message: ''
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
+  previous_submission_message: ''
+  previous_submissions_message: ''
+  autofill: false
+  autofill_message: ''
+  autofill_excluded_elements: {  }
+  wizard_progress_bar: true
+  wizard_progress_pages: false
+  wizard_progress_percentage: false
+  wizard_progress_link: false
+  wizard_start_label: ''
+  wizard_preview_link: false
+  wizard_confirmation: true
+  wizard_confirmation_label: ''
+  wizard_track: ''
+  preview: 0
+  preview_label: ''
+  preview_title: ''
+  preview_message: ''
+  preview_attributes: {  }
+  preview_excluded_elements: {  }
+  preview_exclude_empty: true
+  preview_exclude_empty_checkbox: false
+  draft: none
+  draft_multiple: false
+  draft_auto_save: false
+  draft_saved_message: ''
+  draft_loaded_message: ''
+  confirmation_type: page
+  confirmation_title: 'Terms of Art: Understanding the Mechanics of Dispossession During the Nazi Period'
+  confirmation_message: '<span style="font-size:11pt"><span style="font-family:Calibri,sans-serif">Thank you for your submission. You will receive an email within 24 hours confirming receipt of your request.</span></span>'
+  confirmation_url: ''
+  confirmation_attributes: {  }
+  confirmation_back: false
+  confirmation_back_label: ''
+  confirmation_back_attributes: {  }
+  confirmation_exclude_query: false
+  confirmation_exclude_token: false
+  limit_total: null
+  limit_total_interval: null
+  limit_total_message: ''
+  limit_total_unique: false
+  limit_user: null
+  limit_user_interval: null
+  limit_user_message: ''
+  limit_user_unique: false
+  entity_limit_total: null
+  entity_limit_total_interval: null
+  entity_limit_user: null
+  entity_limit_user_interval: null
+  purge: none
+  purge_days: null
+  results_disabled: false
+  results_disabled_ignore: false
+  token_update: false
+access:
+  create:
+    roles:
+      - anonymous
+      - authenticated
+    users: {  }
+    permissions: {  }
+  view_any:
+    roles:
+      - hcpo_forms
+    users: {  }
+    permissions: {  }
+  update_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  purge_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  view_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  administer:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  test:
+    roles:
+      - hcpo_forms
+    users: {  }
+    permissions: {  }
+  configuration:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+handlers:
+  email:
+    id: email
+    label: Email
+    handler_id: email
+    status: true
+    conditions: {  }
+    weight: 0
+    settings:
+      states:
+        - completed
+      to_mail: termsofart@dfs.ny.gov
+      to_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      bcc_mail: 'anna.rubin@dfs.ny.gov, rebecca.friedman@dfs.ny.gov, ehle.shachter@dfs.ny.gov, joel.obuchowski@dfs.ny.gov'
+      bcc_options: {  }
+      from_mail: _default
+      from_options: {  }
+      from_name: _default
+      subject: 'HCPO 2020 Symposium Registration Submission'
+      body: _default
+      excluded_elements: {  }
+      ignore_access: false
+      exclude_empty: true
+      exclude_empty_checkbox: false
+      html: true
+      attachments: false
+      twig: false
+      debug: false
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
+      theme_name: ''
+  email_1:
+    id: email
+    label: Email
+    handler_id: email_1
+    status: true
+    conditions: {  }
+    weight: 0
+    settings:
+      states:
+        - completed
+      to_mail: '[webform_submission:values:e_mail:raw]'
+      to_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      from_mail: termsofart@dfs.ny.gov
+      from_options: {  }
+      from_name: _default
+      subject: 'HCPO 2020 Symposium Registration'
+      body: 'Thank you for your interest in our upcoming symposium. Notification of registration will be sent by March 15, 2020.'
+      excluded_elements:
+        prefix_name: prefix_name
+        first_name: first_name
+        last_name: last_name
+        company_organization_affiliation: company_organization_affiliation
+        e_mail: e_mail
+        address: address
+        practitioner_group: practitioner_group
+        how_did_you_learn_about_the_symposium_: how_did_you_learn_about_the_symposium_
+        why_are_you_interested_in_attending_: why_are_you_interested_in_attending_
+      ignore_access: false
+      exclude_empty: true
+      exclude_empty_checkbox: false
+      html: true
+      attachments: false
+      twig: false
+      debug: false
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
+      theme_name: ''
