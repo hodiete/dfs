@@ -1,0 +1,14 @@
+uuid: 863fbf92-b86e-4016-bea1-e76b7d64358a
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.registration_forms
+  module:
+    - user
+id: user_add_role_action.registration_forms
+label: 'Add the Registration Forms role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: registration_forms

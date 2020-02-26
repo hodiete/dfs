@@ -1,9 +1,9 @@
-uuid: e1275297-b3d9-48fd-8dea-afeabd5c2b68
+uuid: 7f5badaf-6c4e-474e-a90a-aeabc716bcc0
 langcode: en
 status: true
 dependencies:
   content:
-    - 'block_content:dfs_block:35e3bf65-6823-4555-9942-ea6329b7f43e'
+    - 'block_content:dfs_block:a6cd7216-37d0-4a44-9482-9e8348032dd7'
   module:
     - block_content
     - system
@@ -12,12 +12,12 @@ dependencies:
 id: externalappealssearch
 theme: dfs_ny
 region: content
-weight: -2
+weight: 0
 provider: null
-plugin: 'block_content:35e3bf65-6823-4555-9942-ea6329b7f43e'
+plugin: 'block_content:a6cd7216-37d0-4a44-9482-9e8348032dd7'
 settings:
-  id: 'block_content:35e3bf65-6823-4555-9942-ea6329b7f43e'
-  label: 'External Appeals Search'
+  id: 'block_content:a6cd7216-37d0-4a44-9482-9e8348032dd7'
+  label: 'External Appeals Searchable Database'
   provider: block_content
   label_display: visible
   status: true
@@ -26,6 +26,6 @@ settings:
 visibility:
   request_path:
     id: request_path
-    pages: "/public-appeal/search\r\n/public-appeal/search-old"
+    pages: /public-appeal/search
     negate: false
     context_mapping: {  }

@@ -1,9 +1,9 @@
-uuid: aaf7527f-b82b-4df2-96f6-8545caf2fed9
+uuid: 2a1678ce-0c23-461b-9678-cb58cc6c03fb
 langcode: en
 status: true
 dependencies:
   content:
-    - 'block_content:dfs_block:1a9cdeba-060b-46a2-9dec-ffe7510404a3'
+    - 'block_content:dfs_block:99d495f1-0437-4f30-84fc-e26742819573'
   module:
     - block_content
     - system
@@ -12,11 +12,11 @@ dependencies:
 id: publicappealssearchtooltip
 theme: dfs_ny
 region: content
-weight: 2
+weight: 0
 provider: null
-plugin: 'block_content:1a9cdeba-060b-46a2-9dec-ffe7510404a3'
+plugin: 'block_content:99d495f1-0437-4f30-84fc-e26742819573'
 settings:
-  id: 'block_content:1a9cdeba-060b-46a2-9dec-ffe7510404a3'
+  id: 'block_content:99d495f1-0437-4f30-84fc-e26742819573'
   label: 'Public Appeals Search Tooltip'
   provider: block_content
   label_display: '0'
@@ -26,6 +26,6 @@ settings:
 visibility:
   request_path:
     id: request_path
-    pages: "/public-appeal/search\r\n/public-appeal/search-old"
+    pages: /public-appeal/search
     negate: false
     context_mapping: {  }
