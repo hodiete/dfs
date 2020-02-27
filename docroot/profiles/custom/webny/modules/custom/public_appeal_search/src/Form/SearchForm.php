@@ -11,12 +11,8 @@ use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Url;
 use Symfony\Component\HttpFoundation\RedirectResponse;
-
-
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use function Drupal\Core\Form\drupal_set_message;
-// use Symfony\Component\Validator\Constraints\Url;
-
 
 /**
  * Class ManualImportForm.
@@ -64,7 +60,6 @@ class SearchForm extends FormBase
       '#type' => 'checkbox',
       '#title' => $this->t('Include References in Search'),
       '#return_value' => 1,
-      // '#options' => array('checked' => true, 'unchecked' => false),
       '#default_value' => false,
     );
 
@@ -113,24 +108,6 @@ class SearchForm extends FormBase
     $search_words = $form_state->getValue('search');
     $checked = $form_state->getValue('references_included');
 
-    // print "<Pre>checkout:: ";
-    // print_r($form_state->getValue('references_included'));
-    //  exit(0);
-    // \Drupal::messenger()->addStatus(t('formstate @print.', array('@print' => print_r($form_state->references_included))));
-
-    // if ($form_state->hasValue('references_included')) {
-    //   if($checked == 'checked') {
-    //     $ref = true;
-    //   }
-    //   // print_r($ref);
-
-    // }
-    // else {
-    //   $ref = false;
-    //   // \Drupal::messenger()->addStatus(t('references NOT included.'));
-
-    // }
-
     $params = $this->searchFields($form_state->getValue('search'), $checked);
 
     // Change the Action of Submission to the View of Public Appeal Search
@@ -153,7 +130,6 @@ class SearchForm extends FormBase
     // print "<pre>"; print_r($params); exit();
 
     if($ref) {
-      // \Drupal::messenger()->addStatus(t('references_included @print.', array('@print' => print($ref))));
 
       if ($this->searchFieldHelp('summary', $input) && $this->searchFieldHelp('references', $input)) {
         $params['summary_value'] = $input;

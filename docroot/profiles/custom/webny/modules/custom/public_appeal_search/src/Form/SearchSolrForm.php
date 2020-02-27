@@ -338,18 +338,6 @@ class SearchSolrForm extends FormBase
 
 
       $search_words = $form_state->getValue('search');
-      // $checked = $form_state->getValue('references_included');
-      // $params = $this->searchFields($form_state->getValue('search'), $checked);
-
-
-      // This will be the contents for the modal dialog.
-      // $host ="https://nydfsdev.prod.acquia-sites.com";
-      // $host = "http://dfs.test";
-      // $search_result = "<iframe src=\"$host/public-appeal/search-all?search_api_fulltext=$search_words\">
-      //   <p>Your browser does not support iframes.</p>
-      // </iframe>";
-
-      // $search_result = file_get_contents("$host/public-appeal/search-all?search_api_fulltext=$search_words");
 
       $search_result = $this->getResultsSolrSearchView($search_words);
 
