@@ -1,0 +1,20 @@
+uuid: 1ec6f5d5-853a-42de-a65b-e3f74f58f09a
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - taxonomy
+id: node.age_range
+field_name: age_range
+entity_type: node
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

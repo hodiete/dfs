@@ -6,15 +6,16 @@
 # Drupal Solr module's configurations. This shell script presumes you have
 # `solr` in the `installed_extras`, and is currently set up for the D7 versions
 # of Apache Solr Search or Search API Solr.
-
+SOLR_CORE_NAME="d8"
 SOLR_SETUP_COMPLETE_FILE=/etc/drupal_vm_solr_config_complete
 
 # Search API Solr module.
-SOLR_DOWNLOAD="http://ftp.drupal.org/files/projects/search_api_solr-8.x-1.x-dev.tar.gz"
+#SOLR_DOWNLOAD="http://ftp.drupal.org/files/projects/search_api_solr-8.x-1.x-dev.tar.gz"
+SOLR_DOWNLOAD="https://ftp.drupal.org/files/projects/search_api_solr-8.x-3.7.tar.gz"
 SOLR_DOWNLOAD_DIR="/tmp"
 SOLR_MODULE_NAME="search_api_solr"
-SOLR_VERSION="4.x"
-SOLR_CORE_PATH="/var/solr/collection1"
+SOLR_VERSION="7.x"
+SOLR_CORE_PATH="/var/solr/$SOLR_CORE_NAME"
 
 # Check to see if we've already performed this setup.
 if [ ! -e "$SOLR_SETUP_COMPLETE_FILE" ]; then

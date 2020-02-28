@@ -112,6 +112,12 @@ datatables:
   dependencies:
     - core/jquery
 
+datatables-select:
+  js:
+    ../../../libraries/datatables.net-select/js/dataTables.select.min.js: {}
+  dependencies:
+    - dfs_ny/datatables
+
 callouts:
   js:
     js/callouts.js: {}
@@ -162,3 +168,20 @@ left-menu-js:
   dependencies:
     - core/drupal
     - core/jquery
+
+
+public-appeal-misc:
+  js:
+    js/public_appeal_misc.js: {}
+  dependencies:
+    - core/jquery
+
+appeals-search:
+  js:
+    js/appeals_search.js: {}
+    js/public_appeal_misc.js: {}    
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/drupal.debounce
+    - core/jquery.once

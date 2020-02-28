@@ -1,0 +1,31 @@
+uuid: 7f5badaf-6c4e-474e-a90a-aeabc716bcc0
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:dfs_block:a6cd7216-37d0-4a44-9482-9e8348032dd7'
+  module:
+    - block_content
+    - system
+  theme:
+    - dfs_ny
+id: externalappealssearch
+theme: dfs_ny
+region: content
+weight: 0
+provider: null
+plugin: 'block_content:a6cd7216-37d0-4a44-9482-9e8348032dd7'
+settings:
+  id: 'block_content:a6cd7216-37d0-4a44-9482-9e8348032dd7'
+  label: 'External Appeals Searchable Database'
+  provider: block_content
+  label_display: visible
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: /public-appeal/search
+    negate: false
+    context_mapping: {  }

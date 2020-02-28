@@ -1,0 +1,147 @@
+// Public Appeals Search All (Solr Search) Content styling
+
+.views-page-public-appeal-search-all{
+
+  aside.layout-sidebar-first {
+    width: 0 !important;
+    margin: 0;
+  }
+
+  main .layout-content {
+    float: none;
+    margin: 0;
+    width: 100% !important;
+
+  }
+
+  .views-element-container {
+      padding-left: 0px;  
+  }
+
+  .views-element-container>div {
+
+    margin: 30px 5px 0px 5px;
+
+  }
+
+    .views-exposed-form {
+      padding-top: 30px;
+    }
+
+}
+
+.public-appeal-search-all {
+
+  .dataTables_filter {
+    display: none;
+  }
+
+
+
+
+
+  table {
+
+    position: relative;
+    margin: 0;
+    border: none;
+    table-layout: fixed;
+    
+    tr {
+      border: none;
+    }
+
+    th.views-field {
+
+      padding: 18px 10px 17px;
+      font-size: 16px;
+
+      a {
+        position: relative;
+        display: block;
+        color: #fff;
+      }
+
+    }
+
+    tbody{
+
+      tr:first-child td.views-field {
+        padding: 25px 10px 10px;      
+      }
+  
+       tr:nth-child(2n) {
+  
+        background:  #fff;
+        border: none;
+      }
+    } 
+
+  }
+
+}
+
+.public-appeal-search-all .views-exposed-form ,
+#views-exposed-form-public-appeal-search-all-page-1 {
+  position: relative;
+  float: left;
+  width: 100%;
+  margin-right: 75px;
+  max-width: 915px;
+  padding-left: 20px;
+
+  .js-form-item-search-api-fulltext {
+
+    width: 100%;
+    margin-bottom: 15px;
+
+  }
+
+  input[type="text"] {
+
+    margin: 0;
+    padding-left: 30px;
+    width: 100%;
+    height: 62px;
+    font-size: 14px;
+    font-weight: 400;
+    border: 1px solid #022629;
+    border-radius: 32px;
+
+
+    box-sizing: border-box;
+    background-color: #fff;
+    transition: box-shadow 0.45s,
+      border-color 0.45s ease-in-out;
+
+    overflow: hidden;
+
+  }
+
+  input[type="submit"] {
+
+    position: absolute;
+    top: 5px;
+    right: 6px;
+    background: none;
+    font-size: 1px;
+    width: 65px;
+    padding: 16px;
+    border-radius: 24px;
+    z-index: 1;
+    opacity: 0;
+
+  }
+
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    width: 19px;
+    height: 19px;
+    background: url("../icons/dfs/search-icon.png") no-repeat center center transparent;
+
+  }
+}

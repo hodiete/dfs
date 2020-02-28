@@ -9,6 +9,8 @@ box/local.config.yml
 *.local
 local.blt.yml
 
+# Ignore dev desktop setup file
+config/nydfs.dev.dd
 # Ignore configuration that changes based on environment
 config/default/acquia_connector.settings.yml
 config/default/search_api.server.acquia_search_server.yml
@@ -34,10 +36,12 @@ docroot/profiles/contrib
 docroot/libraries
 drush/Commands
 drush/contrib
-dfs_ny	
+
+# dfs_ny
+
 migration_dfs
 
-# Ignore custom theme node_modules folders	
+# Ignore custom theme node_modules folders
 docroot/themes/custom/*/node_modules
 docroot/profiles/custom/webny/themes/custom/dfs_ny/node_modules
 docroot/profiles/custom/webny/themes/custom/dfs_ny/package-lock.json
@@ -47,23 +51,20 @@ docroot/*/stage_file_proxy
 console
 
 # igore the styles.css andnydfs-sub.css which are generated from gulp	docroot/themes/custom/*/styleguide
-docroot/profiles/custom/webny/themes/custom/dfs_ny/css/*.css	
+docroot/profiles/custom/webny/themes/custom/dfs_ny/css/*.css
 
-docroot/profiles/custom/webny/themes/custom/dfs_ny/css/styles.css	
-docroot/profiles/custom/webny/themes/custom/dfs_ny/css/nydfs-sub.css	
-
-docroot/profiles/custom/webny/themes/custom/dfs_ny/css/administration.css	
-docroot/profiles/custom/webny/themes/custom/dfs_ny/css/business.css	
-docroot/profiles/custom/webny/themes/custom/dfs_ny/css/custom-ig.css	
-docroot/profiles/custom/webny/themes/custom/dfs_ny/css/custom-jcope.css	
-docroot/profiles/custom/webny/themes/custom/dfs_ny/css/education.css	
-docroot/profiles/custom/webny/themes/custom/dfs_ny/css/health-human-services.css	
-docroot/profiles/custom/webny/themes/custom/dfs_ny/css/local-regional-authorities.css	
-docroot/profiles/custom/webny/themes/custom/dfs_ny/css/public-safety.css	
-docroot/profiles/custom/webny/themes/custom/dfs_ny/css/recreation-environment.css	
-docroot/profiles/custom/webny/themes/custom/dfs_ny/css/statewide-elected-officials.css	
-docroot/profiles/custom/webny/themes/custom/dfs_ny/css/transportation-utilities.css	
-docroot/sites/default/services.yml	
+docroot/profiles/custom/webny/themes/custom/dfs_ny/css/administration.css
+docroot/profiles/custom/webny/themes/custom/dfs_ny/css/business.css
+docroot/profiles/custom/webny/themes/custom/dfs_ny/css/custom-ig.css
+docroot/profiles/custom/webny/themes/custom/dfs_ny/css/custom-jcope.css
+docroot/profiles/custom/webny/themes/custom/dfs_ny/css/education.css
+docroot/profiles/custom/webny/themes/custom/dfs_ny/css/health-human-services.css
+docroot/profiles/custom/webny/themes/custom/dfs_ny/css/local-regional-authorities.css
+docroot/profiles/custom/webny/themes/custom/dfs_ny/css/public-safety.css
+docroot/profiles/custom/webny/themes/custom/dfs_ny/css/recreation-environment.css
+docroot/profiles/custom/webny/themes/custom/dfs_ny/css/statewide-elected-officials.css
+docroot/profiles/custom/webny/themes/custom/dfs_ny/css/transportation-utilities.css
+docroot/sites/default/services.yml
 
 # Ignore custom theme build artifacts
 docroot/themes/custom/*/node_modules
@@ -180,10 +181,9 @@ drush/sites/.checksums
 
 # Frontend
 docroot/profiles/custom/webny/themes/custom/dfs_ny/dist
-docroot/profiles/custom/webny/themes/custom/dfs_ny/dist/*	
+docroot/profiles/custom/webny/themes/custom/dfs_ny/dist/*
 docroot/profiles/custom/webny/themes/custom/dfs_ny/styleguide
 docroot/profiles/custom/webny/themes/custom/dfs_ny/styleguide/*
-
 # Libraries - External : Included in composer.json
 docroot/profiles/custom/webny/libraries/*
 docroot/profiles/custom/webny/libraries/*/
@@ -192,4 +192,15 @@ docroot/profiles/custom/webny/libraries/*/
 !docroot/profiles/custom/webny/libraries/package.json
 !docroot/profiles/custom/webny/libraries/custom
 
-docroot/sites/default/settings/local.drush.yml 
+docroot/sites/default/settings/local.drush.yml
+
+/db
+# these files are need on my local
+drush/drushrc.php
+drush/site-aliases/aliases.drushrc.php
+drush/site-aliases/example.acsf.aliases.drushrc.php
+drush/site-aliases/example.local.aliases.drushrc.php
+drush/site-aliases/nydfs.aliases.drushrc.php
+
+# ignore configuration of Public Appeal Sync module
+config/default/public_appeal_sync.*.yml

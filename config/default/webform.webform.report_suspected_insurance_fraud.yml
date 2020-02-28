@@ -188,7 +188,7 @@ handlers:
         - completed
       to_mail: brunilda.riveragarcia@dfs.ny.gov
       to_options: {  }
-      cc_mail: 'eileen.greene@dfs.ny.gov, joel.obuchowski@dfs.ny.gov, kathleen.grogan@dfs.ny.gov, anthony.bonner@dfs.ny.gov'
+      cc_mail: 'kathleen.grogan@dfs.ny.gov, anthony.bonner@dfs.ny.gov'
       cc_options: {  }
       bcc_mail: ''
       bcc_options: {  }
@@ -196,7 +196,7 @@ handlers:
       from_options: {  }
       from_name: _default
       subject: 'Complainant Fraud Report'
-      body: "<p>Submitted on [webform_submission:created]</p>\n<p>Submitted values are:</p>\n[webform_submission:values]"
+      body: "<p>Submitted on [webform_submission:created]</p>\r\n<p>Submitted values are:</p>\r\n[webform_submission:values]"
       excluded_elements: {  }
       ignore_access: false
       exclude_empty: true
