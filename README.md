@@ -9,7 +9,7 @@ Please see the [BLT documentation](http://blt.readthedocs.io/en/latest/) for inf
 
 This site was originally constructed using Drupal VM and the vendor is still using this kind of local environment. We don't want to harm their ability to develop seamlessly, so we have a special case for building this site locally in docksal.
 
-The repo contains the .docksal folder you should use on mac as well as the Acquia aliases you need for this purpose. 
+The repo contains the .docksal folder you should use on mac as well as the Acquia aliases you need for this purpose.
 
 Then, after **deleting the vendor folder**, you can run `fin init`
 
@@ -45,7 +45,7 @@ Then, you should be able to navigate to the site in your browser: [https://dfsny
 ## About the custom modules "public_appeal_sync"
 - name : Public Appeal Synchronize Data
 - How to set up cron job in code to change the time?
-  - in public_appeal_sync_cron() function 
+  - in public_appeal_sync_cron() function
   - line 22 : run cron at 23:00 on Saturday every week
   - line 23 : (current run cron at 23:00 every day)
 - Manually import JSON date on Admin UI page
@@ -55,7 +55,7 @@ Then, you should be able to navigate to the site in your browser: [https://dfsny
 ## About the custom modules "public_appeal_sync"
 - name : Public Appeal Synchronize Data
 - How to set up cron job in code to change the time?
-  - in public_appeal_sync_cron() function 
+  - in public_appeal_sync_cron() function
   - line 22 : run cron at 23:00 on Saturday every week
   - line 23 : (current setting to run cron at 23:00 every day)
 - Manually import JSON date on Admin UI page
@@ -65,3 +65,10 @@ Then, you should be able to navigate to the site in your browser: [https://dfsny
   - line 31 : run cron at 23:00 On Janary 1st every year
   - Manually purge data on Admin UI page
   - /admin/config/public_appeal_sync/manual_purge_date_form
+
+Universal Navigation height restriction issue Task#418
+  - `fin exec nvm install v10.18.1`
+  - `cd ${THEME_DIR}`
+  - `fin exec npm install`
+  - `fin exec npm install -g gulp`
+  - `fin exec gulp` (edited)
