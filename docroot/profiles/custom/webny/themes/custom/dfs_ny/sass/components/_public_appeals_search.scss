@@ -484,7 +484,6 @@
 
   /* intro */
   #block-externalappealssearch {
-    max-width: 915px;
     padding: 50px 50px 20px 40px;
 
     h2 {
@@ -498,8 +497,9 @@
     }
   }
 
-  #block-publicappealssearchtooltip {
-    //visually hide tooltip until it has been moved by js
+  #block-publicappealssearchtooltip,
+  #block-datasetexport {
+    //visually hide tooltip and export popup until they have been moved by js
     overflow: hidden;
     clip: rect(0 0 0 0);
     height: 1px;
@@ -644,6 +644,73 @@
         border-left: 11px solid transparent;
         border-right: 11px solid transparent;
         border-bottom: 13px solid #09464C;
+      }
+
+      &[hidden] {
+        display: none;
+      }
+    }
+  }
+
+  .export-container {
+    position: relative;
+
+    /* export block */
+    #block-datasetexport {
+      //display export block once it has been moved by js
+      box-sizing: border-box;
+      overflow: visible;
+      clip: auto;
+      width: 300px;
+      height: auto;
+      display: block;
+      position: absolute;
+      top: 0;
+      right: 0;
+      padding: 0 0 20px;
+      background: #fff;
+      border: 1px solid #022629;
+      font-family: "Proxima Nova", Arial, sans-serif;
+      text-align: left;
+      z-index: 100;
+
+      h2 {
+        padding: 10px 25px 10px 10px;
+        width: 100%;
+        background: #06464C;
+        color: #fff;
+        font-size: 24px;
+        font-weight: 600;
+        text-align: center;
+        box-sizing: border-box;
+
+        button {
+          //content: 'x';
+          //content: '×';
+          position: absolute;
+          top: 0;
+          right: 5px;
+          background: transparent;
+          border: none;
+          font-size: 20px;
+          font-weight: 100;
+        }
+      }
+
+      p {
+        margin: 0;
+        padding: 10px 20px 0;
+        font-size: 16px;
+
+        a {
+          display: block;
+          color: #09464c;
+
+          &:hover,
+          &:active {
+            text-decoration: underline;
+          }
+        }
       }
 
       &[hidden] {
@@ -1341,7 +1408,7 @@
     }
   }
 
-  .ui-widget-content a { 
+  .ui-widget-content a {
     color: #2f3b9b;
   }
 
