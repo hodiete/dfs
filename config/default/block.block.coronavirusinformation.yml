@@ -1,0 +1,30 @@
+uuid: 9a9d7cc8-f395-456c-a73a-3dd60ac61dad
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.coronavirus-information
+  module:
+    - system
+  theme:
+    - dfs_ny
+id: coronavirusinformation
+theme: dfs_ny
+region: content
+weight: 0
+provider: null
+plugin: 'system_menu_block:coronavirus-information'
+settings:
+  id: 'system_menu_block:coronavirus-information'
+  label: 'Coronavirus Information'
+  provider: system
+  label_display: visible
+  level: 1
+  depth: 0
+  expand_all_items: false
+visibility:
+  request_path:
+    id: request_path
+    pages: "/consumers/coronavirus\r\n/industry/coronavirus"
+    negate: false
+    context_mapping: {  }
