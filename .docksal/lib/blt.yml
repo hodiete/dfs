@@ -1,0 +1,92 @@
+project:
+  machine_name: dfs
+  prefix: NDD
+  human_name: 'New York State Department of Financial Services'
+  profile:
+    name: webny
+    contrib: false
+  local:
+    protocol: http
+    hostname: '${project.machine_name}.local'
+git:
+  default_branch: master
+  remotes:
+    - 'nydfs@svn-29892.prod.hosting.acquia.com:nydfs.git'
+drush:
+  aliases:
+    remote: 01dev.dev
+    local: self
+    ci: self
+    remote-dev-dev: 01dev.dev
+    remote-uat-prod: 01live.uat
+    remote-ig-prod: 01live.ig
+    remote-wcb-prod: 01live.wcb
+  default_alias: '${drush.aliases.local}'
+modules:
+  local:
+    enable: [dblog, devel, views_ui]
+    uninstall: [big_pipe, seckit, shield]
+  ci:
+    enable: {  }
+    uninstall: [acquia_connector, shield, big_pipe]
+  dev:
+    enable: [acquia_connector, seckit, shield, big_pipe]
+    uninstall: [views_ui]
+  test:
+    enable: [acquia_connector, seckit, shield, big_pipe]
+    uninstall: [devel, views_ui]
+  prod:
+    enable: [acquia_connector, big_pipe, seckit]
+    uninstall: [devel, field_ui, shield, views_ui]
+  deploy:
+    enable: [acquia_connector, shield]
+    uninstall: [devel, field_ui, views_ui]
+target-hooks:
+  frontend-setup:
+    dir: '${docroot}/profiles/custom/webny/themes/custom/dfs_ny'
+    command: 'npm install && npm rebuild node-sass'
+  frontend-build:
+    dir: '${docroot}/profiles/custom/webny/themes/custom/dfs_ny'
+    command: 'npm run build'
+  post-deploy-build:
+    dir: '${docroot}'
+    command: 'echo ''No post-deploy build configured.'''
+  post-setup-build:
+    dir: '${docroot}'
+    command: 'echo ''No post-setup build configured.'''
+cm:
+  # Possible values: core-only, config-split, features, none.
+  strategy: config-split
+  core:
+    # The parent directory for configuration directories, relative to the docroot.
+    path: ../config
+    # The default config key to use for imports. This is the key used in Drupal's global $config_directories variable.
+    # E.g., $config_directories['sync']. It must have a corresponding key in cm.core.dirs. E.g., `cm.core.dirs.sync`.
+    key: sync
+    dirs:
+      # Corresponding value is defined in config.settings.php.
+      sync:
+        path: ${cm.core.path}/default
+    # Install site directly from existing config.
+    # This cannot be used if your install profile implements hook_install.
+    install_from_config: true
+  features:
+    no-overrides: true
+blt:
+  update:
+    ignore-existing-file: '${repo.root}/scripts/blt/ignore-existing.txt'
+phpunit:
+  failures: false
+disable-targets:
+  validate:
+    composer: true
+  tests:
+    security-updates: true
+#behat:
+  # paths:
+  #   - '${repo.root}/tests/behat'
+  # tags: ~@development
+  # web-driver: selenium
+setup:
+  drupal:
+    install: { import-config: true }

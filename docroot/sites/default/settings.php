@@ -597,6 +597,8 @@ if ($settings['hash_salt']) {
 # ini_set('pcre.backtrack_limit', 200000);
 # ini_set('pcre.recursion_limit', 200000);
 
+ini_set('max_execution_time',0);
+
 /**
  * Active configuration settings.
  *
@@ -771,3 +773,11 @@ if (isset($_SERVER['DEVDESKTOP_DRUPAL_SETTINGS_DIR']) && file_exists($_SERVER['D
   require $_SERVER['DEVDESKTOP_DRUPAL_SETTINGS_DIR'] . '/loc_docroot_dd.inc';
 }
 // </DDSETTINGS>
+/**
+ * IMPORTANT.
+ *
+ * Do not include additional settings here. Instead, add them to settings
+ * included by `blt.settings.php`. See BLT's documentation for more detail.
+ *
+ * @link http://blt.readthedocs.io
+ */

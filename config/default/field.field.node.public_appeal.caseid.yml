@@ -1,0 +1,19 @@
+uuid: 78d362fb-5ca5-463f-a5d2-2c160426434e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.caseid
+    - node.type.public_appeal
+id: node.public_appeal.caseid
+field_name: caseid
+entity_type: node
+bundle: public_appeal
+label: CaseID
+description: 'Case ID of Public External Appeal from the JSON data.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

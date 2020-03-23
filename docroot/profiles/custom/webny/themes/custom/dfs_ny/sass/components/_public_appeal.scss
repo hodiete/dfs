@@ -1,0 +1,273 @@
+.back-to-search {
+  background-color: $bgcolor-light-leftmenu;
+  height: 55px;
+
+  .back-wrapper {
+    margin-left: 60px;
+    padding-top: 15px;
+  }
+
+  img.arrow {
+    vertical-align: -11%;
+    margin-right: 9px;
+  }
+
+  a.link {
+    font: Bold 18px/22px $base-font;
+    color: $bgcolor-dark-leftmenu;
+  }
+}
+
+.public-appeal-content {
+  padding: 63px;
+  padding-top: 30px;
+}
+
+.public-appeal-right {
+  float: right;
+  max-width: 350px;
+  margin-left: 50px;
+  margin-bottom: 50px;
+  min-height: 380px;
+
+  // .field-item {
+  //   padding-bottom: 5px;
+  // }
+
+  .label,
+  .value,
+  .multiple-values {
+    display: inline;
+    font-size: 14px;
+  }
+
+  .label {
+    font-weight: bold;
+  }
+
+
+  img.decision-icon {
+    width: 19px;
+    height: 23px;
+    vertical-align: -20%;
+    margin-left: 5px;
+  }
+
+}
+
+.summary-references {
+  .label {
+    font-size: 22px;
+    line-height: 27px;
+    color: $color-primary;
+    font-weight: bold;
+    /* changed from 800 */
+    padding: 0 0 .3em;
+    margin: 0;
+    line-height: 1.25em;
+    text-transform: uppercase;
+    margin-bottom: 17px;
+  }
+
+  .value {
+    font-size: 16px;
+    padding-bottom: 25px;
+    max-width: 72%;
+  }
+
+  .field-item:nth-of-type(2) .value {
+    font-size: 13px;
+    max-width: 65%;
+  }
+
+}
+
+
+
+.public-appeal #after-content {
+  margin: 0 65px 40px;
+  width: auto;
+  text-align: center;
+
+  p {
+    font-size: 16px;
+  }
+
+  .dfs-footer-link a {
+    font-size: 16px;
+  }
+}
+
+.print-link {
+  text-align: right;
+  margin-right: 5.5%;
+  font-size: 16px;
+  // margin-top: -37px;
+
+  a {
+    color: $bgcolor-dark-leftmenu;
+
+    &:hover {
+      color: $text-blue;
+      padding-left: 1px;
+    }
+  }
+
+  img {
+    margin-right: 10px;
+    width: 14px;
+  }
+}
+
+.page-body .print-link {
+  text-align: left;
+}
+
+
+
+@media (max-width: 767px) {
+  .public-appeal-right {
+    float: none;
+    max-width: 100%;
+    margin-left: 0;
+    margin-bottom: 50px;
+    min-height: 200px;
+  }
+
+  .summary-references {
+    .value {
+      max-width: 100%;
+    }
+
+    .field-item:nth-of-type(2) .value {
+      max-width: 100%;
+    }
+
+  }
+
+}
+
+/**  Print Public Appeal Page **/
+
+body.views-page-print-public-appeal {
+  max-width: 1080px;
+
+  .views-element-container {
+    margin-left: 0;
+
+    .contextual-region {
+      display: block;
+    }
+  }
+
+  #webny-global-header {
+    display: none;
+  }
+
+  .dfs-footer-container {
+    display: none;
+  }
+
+  .back-to-search {
+    display: none;
+  }
+
+  .print-link {
+    display: none;
+  }
+
+  .print-logo {
+    display: inline-block;
+    text-align: center;
+    width: 100%;
+
+    img {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+
+  .print-title {
+    margin: 20px;
+    font-size: 24px;
+    text-align: center;
+    text-decoration: underline;
+  }
+
+  .public-appeal-right {
+    float: none;
+    max-width: 100%;
+    margin-left: 0;
+    margin-bottom: 50px;
+    min-height: 140px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 145px;
+
+    .field-item {
+      // flex: 1 0 46%;
+      display: inline-block;
+    }
+  }
+
+
+  .public-appeal-content {
+    padding: 0;
+
+    h2 {
+      display: none;
+    }
+
+    .summary-references .label {
+      font-size: 16px;
+    }
+
+    .summary-references .value {
+      font-size: 12px;
+      line-height: 17px;
+      max-width: 100%;
+    }
+
+    .summary-references .field-item:nth-of-type(2) .value {
+      font-size: 11px;
+    }
+
+    .public-appeal-right .label,
+    .public-appeal-right .value,
+    .public-appeal-right .multiple-values {
+      display: inline;
+      font-size: 11px;
+    }
+
+
+  }
+}
+
+/*
+@media print {
+  body.views-page-print-public-appeal {
+
+    .public-appeal-content {
+      .summary-references .label {
+        font-size: 16px;
+      }
+
+      .summary-references .value {
+        font-size: 12px;
+      }
+
+      .summary-references .field-item:nth-of-type(2) .value {
+        font-size: 10px;
+      }
+
+      .public-appeal-right .label,
+      .public-appeal-right .value,
+      .public-appeal-right .multiple-values {
+        font-size: 11px;
+      }
+    }
+  }
+}
+*/

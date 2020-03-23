@@ -1,0 +1,31 @@
+uuid: bb6ab977-4ce5-40cd-82d8-85986c2a4538
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:dfs_footer:43fc7536-b50e-4e5e-b631-00fb0d1f112d'
+  module:
+    - block_content
+    - system
+  theme:
+    - dfs_ny
+id: fileanexternalappeal
+theme: dfs_ny
+region: after_content
+weight: 0
+provider: null
+plugin: 'block_content:43fc7536-b50e-4e5e-b631-00fb0d1f112d'
+settings:
+  id: 'block_content:43fc7536-b50e-4e5e-b631-00fb0d1f112d'
+  label: Disclaimer
+  provider: block_content
+  label_display: visible
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: "/public-appeal/search\r\n/public-appeals/*"
+    negate: false
+    context_mapping: {  }

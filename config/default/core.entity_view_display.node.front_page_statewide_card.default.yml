@@ -7,8 +7,8 @@ dependencies:
     - field.field.node.front_page_statewide_card.field_statewide_link
     - node.type.front_page_statewide_card
   module:
-    - image
     - link
+    - svg_image
     - user
 id: node.front_page_statewide_card.default
 targetEntityType: node
@@ -39,5 +39,7 @@ content:
   links:
     weight: 100
     region: content
+    settings: {  }
+    third_party_settings: {  }
 hidden:
   langcode: true

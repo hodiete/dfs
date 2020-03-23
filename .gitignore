@@ -1,41 +1,57 @@
 # Ignore configuration files that may contain sensitive information.
-local.*
+local.settings.php
+/local.drush.yml
+docroot/sites/default/local.drush.yml
+local.site.yml
+local.services.yml
+tests/behat/local.yml
+box/local.config.yml
 *.local
-project.local.yml
+local.blt.yml
+
+# Ignore dev desktop setup file
+config/nydfs.dev.dd
+# Ignore configuration that changes based on environment
+config/default/acquia_connector.settings.yml
+config/default/search_api.server.acquia_search_server.yml
+config/default/search_api.index.acquia_search_index.yml
+config/default/shortcut.set.default.yml
+config/default/system.site.yml
+config/default/field.storage.node.body.yml
 
 # Ignore drupal core.
 docroot/core
 
 # Ignore paths that contain user-generated content.
 docroot/sites/*/files
+/files-private
 docroot/sites/*/private
 
 # Ignore contrib modules. These should be created during build process.
-docroot/modules/contrib
-
-docroot/profiles/custom/webny/modules/contrib
-docroot/themes/contrib
 docroot/profiles/custom/webny/themes/contrib
+docroot/profiles/custom/webny/modules/contrib
+docroot/modules/contrib
+docroot/themes/contrib
 docroot/profiles/contrib
 docroot/libraries
+drush/Commands
 drush/contrib
 
-dfs_ny
+# dfs_ny
+
 migration_dfs
+
 # Ignore custom theme node_modules folders
 docroot/themes/custom/*/node_modules
 docroot/profiles/custom/webny/themes/custom/dfs_ny/node_modules
 docroot/profiles/custom/webny/themes/custom/dfs_ny/package-lock.json
 docroot/profiles/custom/webny/themes/custom/dfs_ny.tar.gz
-#docroot/sites/default/settings/nydfs.settings.php
-console
+docroot/themes/custom/*/node_modules
 docroot/*/stage_file_proxy
+console
 
-# igore the styles.css andnydfs-sub.css which are generated from gulp
+# igore the styles.css andnydfs-sub.css which are generated from gulp	docroot/themes/custom/*/styleguide
 docroot/profiles/custom/webny/themes/custom/dfs_ny/css/*.css
-
-docroot/profiles/custom/webny/themes/custom/dfs_ny/css/styles.css
-docroot/profiles/custom/webny/themes/custom/dfs_ny/css/nydfs-sub.css
 
 docroot/profiles/custom/webny/themes/custom/dfs_ny/css/administration.css
 docroot/profiles/custom/webny/themes/custom/dfs_ny/css/business.css
@@ -50,9 +66,13 @@ docroot/profiles/custom/webny/themes/custom/dfs_ny/css/statewide-elected-officia
 docroot/profiles/custom/webny/themes/custom/dfs_ny/css/transportation-utilities.css
 docroot/sites/default/services.yml
 
-docroot/sites/default/settings.php
+# Ignore custom theme build artifacts
+docroot/themes/custom/*/node_modules
+docroot/themes/custom/*/css
+docroot/themes/custom/*/styleguide
 
 # Ignore build artifacts
+deployment_identifier
 /deploy
 bin/*
 tmp
@@ -139,19 +159,48 @@ nbproject/*
 # DrupalVM
 .vagrant/
 
+# DevDesktop
+*.dd
+
+#Exports
+*.gz
+*.sql
+*.zip
+
+# PHPStorm
+atlassian-ide-plugin.xml
+
+#NPM
+npm-debug.log
+
+# Drush 9 Checksums
+drush/sites/.checksums
+
+# Deprecation detector rules
+.rules
+
 # Frontend
 docroot/profiles/custom/webny/themes/custom/dfs_ny/dist
 docroot/profiles/custom/webny/themes/custom/dfs_ny/dist/*
 docroot/profiles/custom/webny/themes/custom/dfs_ny/styleguide
 docroot/profiles/custom/webny/themes/custom/dfs_ny/styleguide/*
-
 # Libraries - External : Included in composer.json
 docroot/profiles/custom/webny/libraries/*
 docroot/profiles/custom/webny/libraries/*/
+
+#re-include the custom libraries
 !docroot/profiles/custom/webny/libraries/package.json
+!docroot/profiles/custom/webny/libraries/custom
 
-# Ignore private files
-files-private
+docroot/sites/default/settings/local.drush.yml
 
-# box/config.yml
+/db
+# these files are need on my local
+drush/drushrc.php
+drush/site-aliases/aliases.drushrc.php
+drush/site-aliases/example.acsf.aliases.drushrc.php
+drush/site-aliases/example.local.aliases.drushrc.php
+drush/site-aliases/nydfs.aliases.drushrc.php
 
+# ignore configuration of Public Appeal Sync module
+config/default/public_appeal_sync.*.yml

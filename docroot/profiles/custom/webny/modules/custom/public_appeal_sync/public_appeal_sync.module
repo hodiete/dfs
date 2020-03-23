@@ -1,0 +1,38 @@
+<?php
+
+/**
+ * @file
+ * Demonstrates use of the Cron API in Drupal - hook_cron().
+ */
+
+/**
+ * @defgroup public_appeal_sync: Cron
+ */
+
+/**
+ * Implements hook_cron().
+ *
+ * We implement hook_cron() to do "background" processing. It gets called every
+ * time the Drupal cron runs. We then decide what has to happen in response.
+ */
+function public_appeal_sync_cron()
+{
+  // exit(0);
+  // At 23'o clock on Saturday
+  // if (date('N') == 6 && date('G') == 23)
+  if (date('G') == 23) 
+  {
+    // date_default_timezone_set('America/New_York');
+    $service = \Drupal::service('public_appeal_sync.import_json');
+    $service->importJson(); 
+  }
+
+    // At 23PM, On Janary 1, every year
+  if (date('n-j-G') == "1-1-23" &&  date('G') == 23) {
+    $service2 = \Drupal::service('public_appeal_sync.purge_data');
+    $service2->purgeData();
+  }
+  // $msg = "Run cron of public_appeal.";
+  // \Drupal::logger("public_appeal_sync")->notice($msg);
+
+}

@@ -29,10 +29,10 @@ events:
             - source ${THEME_DIR}/install-node.sh
             - mysql -u root -proot -e "SET GLOBAL max_allowed_packet=33554432"
             - source ${BLT_DIR}/scripts/pipelines/setup_app
-      - tests:
-          type: script
-          script:
-            - source ${BLT_DIR}/scripts/pipelines/tests
+      # - tests:
+      #     type: script
+      #     script:
+      #       - source ${BLT_DIR}/scripts/pipelines/tests
       - build-artifact:
           type: script
           script:

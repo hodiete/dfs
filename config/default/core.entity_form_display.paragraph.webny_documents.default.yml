@@ -9,8 +9,6 @@ dependencies:
     - field.field.paragraph.webny_documents.field_webny_doc_sub_title
     - field.field.paragraph.webny_documents.field_webny_documents_title
     - paragraphs.paragraphs_type.webny_documents
-  module:
-    - workbench_moderation
 _core:
   default_config_hash: 1EIbkZSILe4Amq0ZKdPiB3YTfdaUnvCjzE2-I4YDv7E
 id: paragraph.webny_documents.default
@@ -24,6 +22,7 @@ content:
       match_operator: CONTAINS
       size: 60
       placeholder: ''
+      match_limit: 10
     third_party_settings: {  }
     type: entity_reference_autocomplete
     region: content

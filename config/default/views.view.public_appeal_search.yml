@@ -1,0 +1,5665 @@
+uuid: 76d651c8-b098-4872-a74c-f37765285df8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.age_range
+    - field.storage.node.appeal_agent
+    - field.storage.node.appeal_type
+    - field.storage.node.case_number
+    - field.storage.node.decision
+    - field.storage.node.decision_year
+    - field.storage.node.diagnosis
+    - field.storage.node.gender
+    - field.storage.node.health_plan
+    - field.storage.node.references
+    - field.storage.node.summary
+    - field.storage.node.treatment
+    - node.type.public_appeal
+    - taxonomy.vocabulary.age_range
+    - taxonomy.vocabulary.agent
+    - taxonomy.vocabulary.appeal_type
+    - taxonomy.vocabulary.decision
+    - taxonomy.vocabulary.diagnosis
+    - taxonomy.vocabulary.gender
+    - taxonomy.vocabulary.health_plan
+    - taxonomy.vocabulary.treatment
+    - taxonomy.vocabulary.year
+    - user.role.administrator
+    - user.role.restful_api
+  module:
+    - better_exposed_filters
+    - node
+    - taxonomy
+    - text
+    - user
+id: public_appeal_search
+label: 'Public Appeal Search'
+module: views
+description: ''
+tag: ''
+base_table: node_field_data
+base_field: nid
+display:
+  default:
+    display_plugin: default
+    id: default
+    display_title: Master
+    position: 0
+    display_options:
+      access:
+        type: role
+        options:
+          role:
+            administrator: administrator
+            restful_api: restful_api
+      cache:
+        type: tag
+        options: {  }
+      query:
+        type: views_query
+        options:
+          disable_sql_rewrite: false
+          distinct: false
+          replica: false
+          query_comment: ''
+          query_tags: {  }
+      exposed_form:
+        type: bef
+        options:
+          submit_button: Apply
+          reset_button: true
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sort by'
+          expose_sort_order: false
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+          input_required: false
+          text_input_required: 'Select any filter and click on Apply to see results'
+          bef:
+            general:
+              allow_secondary: false
+              secondary_label: 'Advanced options'
+              autosubmit: false
+              autosubmit_exclude_textfield: false
+              autosubmit_hide: false
+            diagnosis_target_id:
+              bef_format: default
+              more_options:
+                bef_select_all_none: false
+                bef_collapsible: false
+                is_secondary: false
+                rewrite:
+                  filter_rewrite_values: ''
+            treatment_target_id:
+              bef_format: default
+              more_options:
+                bef_select_all_none: false
+                bef_collapsible: false
+                is_secondary: false
+                rewrite:
+                  filter_rewrite_values: ''
+            health_plan_target_id:
+              bef_format: default
+              more_options:
+                bef_select_all_none: false
+                bef_collapsible: false
+                is_secondary: false
+                rewrite:
+                  filter_rewrite_values: ''
+            decision_target_id:
+              bef_format: bef
+              more_options:
+                bef_select_all_none: false
+                bef_collapsible: false
+                is_secondary: false
+                rewrite:
+                  filter_rewrite_values: ''
+            appeal_type_target_id:
+              bef_format: bef
+              more_options:
+                bef_select_all_none: false
+                bef_collapsible: false
+                is_secondary: false
+                rewrite:
+                  filter_rewrite_values: ''
+            gender_target_id:
+              bef_format: default
+              more_options:
+                bef_select_all_none: false
+                bef_collapsible: false
+                is_secondary: false
+                rewrite:
+                  filter_rewrite_values: ''
+            age_range_target_id:
+              bef_format: default
+              more_options:
+                bef_select_all_none: false
+                bef_collapsible: false
+                is_secondary: false
+                rewrite:
+                  filter_rewrite_values: ''
+            decision_year_target_id:
+              bef_format: default
+              more_options:
+                bef_select_all_none: false
+                bef_collapsible: false
+                is_secondary: false
+                rewrite:
+                  filter_rewrite_values: ''
+            appeal_agent_target_id:
+              bef_format: bef
+              more_options:
+                bef_select_all_none: false
+                bef_collapsible: false
+                is_secondary: false
+                rewrite:
+                  filter_rewrite_values: ''
+            case_number_value:
+              bef_format: default
+              more_options:
+                is_secondary: false
+                placeholder_text: ''
+          text_input_required_format: basic_html
+      pager:
+        type: full
+        options:
+          items_per_page: 10
+          offset: 0
+          id: 0
+          total_pages: null
+          tags:
+            previous: '‹ Previous'
+            next: 'Next ›'
+            first: '« First'
+            last: 'Last »'
+          expose:
+            items_per_page: true
+            items_per_page_label: 'Items per page'
+            items_per_page_options: '5, 10, 25, 50'
+            items_per_page_options_all: false
+            items_per_page_options_all_label: '- All -'
+            offset: false
+            offset_label: Offset
+          quantity: 9
+      style:
+        type: table
+        options:
+          grouping: {  }
+          row_class: ''
+          default_row_class: true
+          override: true
+          sticky: false
+          caption: ''
+          summary: ''
+          description: ''
+          columns:
+            title: title
+            nid: nid
+            diagnosis_1: diagnosis_1
+            name: name
+            treatment: treatment
+            name_1: name_1
+            health_plan: health_plan
+            name_2: name_2
+            decision: decision
+            name_3: name_3
+            appeal_type: appeal_type
+            name_4: name_4
+            gender: gender
+            name_5: name_5
+            age_range: age_range
+            name_6: name_6
+            decision_year: decision_year
+            name_7: name_7
+            appeal_agent: appeal_agent
+            name_8: name_8
+            case_number: case_number
+            summary: summary
+            references: references
+            views_bulk_operations_bulk_form: views_bulk_operations_bulk_form
+          info:
+            title:
+              sortable: true
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            nid:
+              sortable: true
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            diagnosis_1:
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            name:
+              sortable: true
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            treatment:
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            name_1:
+              sortable: true
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            health_plan:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            name_2:
+              sortable: true
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            decision:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            name_3:
+              sortable: true
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            appeal_type:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            name_4:
+              sortable: true
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            gender:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            name_5:
+              sortable: true
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            age_range:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            name_6:
+              sortable: true
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            decision_year:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            name_7:
+              sortable: true
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            appeal_agent:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            name_8:
+              sortable: true
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            case_number:
+              sortable: true
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            summary:
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            references:
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            views_bulk_operations_bulk_form:
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+          default: nid
+          empty_table: false
+      row:
+        type: fields
+      fields:
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: Title
+          exclude: true
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: false
+            ellipsis: false
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: string
+          settings:
+            link_to_entity: false
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          entity_type: node
+          entity_field: title
+          plugin_id: field
+        nid:
+          id: nid
+          table: node_field_data
+          field: nid
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: ID
+          exclude: true
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: number_integer
+          settings:
+            thousand_separator: ''
+            prefix_suffix: true
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          entity_type: node
+          entity_field: nid
+          plugin_id: field
+        diagnosis:
+          id: diagnosis
+          table: node__diagnosis
+          field: diagnosis
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: Diagnosis
+          exclude: false
+          alter:
+            alter_text: false
+            text: '<div class="table-link-out"><a href="/node/{{ nid }}">›</a></div>{{ diagnosis }}'
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: target_id
+          type: entity_reference_label
+          settings:
+            link: false
+          group_column: target_id
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          plugin_id: field
+        treatment:
+          id: treatment
+          table: node__treatment
+          field: treatment
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: Treatment
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: target_id
+          type: entity_reference_label
+          settings:
+            link: false
+          group_column: target_id
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          plugin_id: field
+        health_plan:
+          id: health_plan
+          table: node__health_plan
+          field: health_plan
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: 'Health Plan'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: target_id
+          type: entity_reference_label
+          settings:
+            link: false
+          group_column: target_id
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          plugin_id: field
+        decision:
+          id: decision
+          table: node__decision
+          field: decision
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: Decision
+          exclude: false
+          alter:
+            alter_text: true
+            text: '<div class="{{ decision|lower|replace('' '',''-'') }}"><div class="table-link-out"><a href="/node/{{ nid }}" aria-label="Go to {{ title }}"></a></div><div class="decision-text">{{ decision }}</div></div>'
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: div
+          element_class: table-decision-value
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: target_id
+          type: entity_reference_label
+          settings:
+            link: false
+          group_column: target_id
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          plugin_id: field
+        appeal_type:
+          id: appeal_type
+          table: node__appeal_type
+          field: appeal_type
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: 'Appeal Type'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: target_id
+          type: entity_reference_label
+          settings:
+            link: false
+          group_column: target_id
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          plugin_id: field
+        gender:
+          id: gender
+          table: node__gender
+          field: gender
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: Gender
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: target_id
+          type: entity_reference_label
+          settings:
+            link: false
+          group_column: target_id
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          plugin_id: field
+        age_range:
+          id: age_range
+          table: node__age_range
+          field: age_range
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: Age
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: target_id
+          type: entity_reference_label
+          settings:
+            link: false
+          group_column: target_id
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          plugin_id: field
+        decision_year:
+          id: decision_year
+          table: node__decision_year
+          field: decision_year
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: 'Decision Year'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: target_id
+          type: entity_reference_label
+          settings:
+            link: false
+          group_column: target_id
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          plugin_id: field
+        appeal_agent:
+          id: appeal_agent
+          table: node__appeal_agent
+          field: appeal_agent
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: 'Appeal Agent'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: target_id
+          type: entity_reference_label
+          settings:
+            link: false
+          group_column: target_id
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          plugin_id: field
+        case_number:
+          id: case_number
+          table: node__case_number
+          field: case_number
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: 'Case Number'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: string
+          settings:
+            link_to_entity: false
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          plugin_id: field
+        summary:
+          id: summary
+          table: node__summary
+          field: summary
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: Summary
+          exclude: false
+          alter:
+            alter_text: false
+            text: '<table><tr>{{ summary__value|length > 50 ? summary__value|slice(0, 50) ~ ''...'' : summary__value}}</tr></table>'
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 100
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: text_default
+          settings: {  }
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: ul
+          separator: ', '
+          field_api_classes: false
+          plugin_id: field
+        references:
+          id: references
+          table: node__references
+          field: references
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: References
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 100
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: basic_string
+          settings: {  }
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: ul
+          separator: ', '
+          field_api_classes: false
+          plugin_id: field
+      filters:
+        status:
+          value: '1'
+          table: node_field_data
+          field: status
+          plugin_id: boolean
+          entity_type: node
+          entity_field: status
+          id: status
+          expose:
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+          group: 1
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          value:
+            public_appeal: public_appeal
+          entity_type: node
+          entity_field: type
+          plugin_id: bundle
+          expose:
+            operator_limit_selection: false
+            operator_list: {  }
+        diagnosis_target_id:
+          id: diagnosis_target_id
+          table: node__diagnosis
+          field: diagnosis_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: diagnosis_target_id_op
+            label: Diagnoses
+            description: ''
+            use_operator: false
+            operator: diagnosis_target_id_op
+            identifier: diagnosis_target_id
+            required: false
+            remember: false
+            multiple: true
+            remember_roles:
+              anonymous: anonymous
+              authenticated: authenticated
+              administrator: administrator
+              site_builder: site_builder
+              site_admin: site_admin
+              user_admin: user_admin
+              content_author: content_author
+              business_approver: business_approver
+              suspected_fraud_submissions: suspected_fraud_submissions
+              hcpo_forms: hcpo_forms
+              restful_api: restful_api
+            reduce: false
+            chosen_override: 1
+            disable_search: 0
+            search_contains: 0
+            placeholder_text_multiple: 'Select Diagnosis'
+            placeholder_text_single: ''
+            no_results_text: ''
+            operator_limit_selection: false
+            operator_list: {  }
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          type: select
+          limit: true
+          vid: diagnosis
+          hierarchy: false
+          error_message: true
+          plugin_id: taxonomy_index_tid
+        treatment_target_id:
+          id: treatment_target_id
+          table: node__treatment
+          field: treatment_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: treatment_target_id_op
+            label: Treatment(s)
+            description: ''
+            use_operator: false
+            operator: treatment_target_id_op
+            identifier: treatment_target_id
+            required: false
+            remember: false
+            multiple: true
+            remember_roles:
+              anonymous: anonymous
+              authenticated: authenticated
+              administrator: administrator
+              site_builder: site_builder
+              site_admin: site_admin
+              user_admin: user_admin
+              content_author: content_author
+              business_approver: business_approver
+              suspected_fraud_submissions: suspected_fraud_submissions
+              hcpo_forms: hcpo_forms
+              restful_api: restful_api
+            reduce: false
+            chosen_override: 1
+            disable_search: 0
+            search_contains: 0
+            placeholder_text_multiple: 'Select Treatment'
+            placeholder_text_single: ''
+            no_results_text: ''
+            operator_limit_selection: false
+            operator_list: {  }
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          type: select
+          limit: true
+          vid: treatment
+          hierarchy: false
+          error_message: true
+          plugin_id: taxonomy_index_tid
+        health_plan_target_id:
+          id: health_plan_target_id
+          table: node__health_plan
+          field: health_plan_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: health_plan_target_id_op
+            label: 'Health Plan(s)'
+            description: ''
+            use_operator: false
+            operator: health_plan_target_id_op
+            identifier: health_plan_target_id
+            required: false
+            remember: false
+            multiple: true
+            remember_roles:
+              anonymous: anonymous
+              authenticated: authenticated
+              administrator: administrator
+              site_builder: site_builder
+              site_admin: site_admin
+              user_admin: user_admin
+              content_author: content_author
+              business_approver: business_approver
+              suspected_fraud_submissions: suspected_fraud_submissions
+              hcpo_forms: hcpo_forms
+              restful_api: restful_api
+            reduce: false
+            chosen_override: 1
+            disable_search: 0
+            search_contains: 0
+            placeholder_text_multiple: 'Select Health Plan'
+            placeholder_text_single: ''
+            no_results_text: ''
+            operator_limit_selection: false
+            operator_list: {  }
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          type: select
+          limit: true
+          vid: health_plan
+          hierarchy: false
+          error_message: true
+          plugin_id: taxonomy_index_tid
+        decision_target_id:
+          id: decision_target_id
+          table: node__decision
+          field: decision_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: decision_target_id_op
+            label: 'Appeal Decision'
+            description: ''
+            use_operator: false
+            operator: decision_target_id_op
+            identifier: decision_target_id
+            required: false
+            remember: false
+            multiple: true
+            remember_roles:
+              anonymous: anonymous
+              authenticated: authenticated
+              administrator: administrator
+              site_builder: site_builder
+              site_admin: site_admin
+              user_admin: user_admin
+              content_author: content_author
+              business_approver: business_approver
+              suspected_fraud_submissions: suspected_fraud_submissions
+              hcpo_forms: hcpo_forms
+              restful_api: restful_api
+            reduce: false
+            chosen_override: 0
+            disable_search: 0
+            search_contains: 0
+            placeholder_text_multiple: 'Choose some options'
+            placeholder_text_single: 'Choose an option'
+            no_results_text: 'No results match'
+            operator_limit_selection: false
+            operator_list: {  }
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          type: shs
+          limit: true
+          vid: decision
+          hierarchy: false
+          error_message: true
+          plugin_id: taxonomy_index_tid
+        appeal_type_target_id:
+          id: appeal_type_target_id
+          table: node__appeal_type
+          field: appeal_type_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: appeal_type_target_id_op
+            label: 'Appeal Type'
+            description: ''
+            use_operator: false
+            operator: appeal_type_target_id_op
+            identifier: appeal_type_target_id
+            required: false
+            remember: false
+            multiple: true
+            remember_roles:
+              anonymous: anonymous
+              authenticated: authenticated
+              administrator: administrator
+              site_builder: site_builder
+              site_admin: site_admin
+              user_admin: user_admin
+              content_author: content_author
+              business_approver: business_approver
+              suspected_fraud_submissions: suspected_fraud_submissions
+              hcpo_forms: hcpo_forms
+              restful_api: restful_api
+            reduce: false
+            chosen_override: 0
+            disable_search: 0
+            search_contains: 0
+            placeholder_text_multiple: 'Choose some options'
+            placeholder_text_single: 'Choose an option'
+            no_results_text: 'No results match'
+            operator_limit_selection: false
+            operator_list: {  }
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          type: select
+          limit: true
+          vid: appeal_type
+          hierarchy: false
+          error_message: true
+          plugin_id: taxonomy_index_tid
+        gender_target_id:
+          id: gender_target_id
+          table: node__gender
+          field: gender_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: gender_target_id_op
+            label: Gender
+            description: ''
+            use_operator: false
+            operator: gender_target_id_op
+            identifier: gender_target_id
+            required: false
+            remember: false
+            multiple: true
+            remember_roles:
+              anonymous: anonymous
+              authenticated: authenticated
+              administrator: administrator
+              site_builder: site_builder
+              site_admin: site_admin
+              user_admin: user_admin
+              content_author: content_author
+              business_approver: business_approver
+              suspected_fraud_submissions: suspected_fraud_submissions
+              hcpo_forms: hcpo_forms
+              restful_api: restful_api
+            reduce: false
+            chosen_override: 1
+            disable_search: 0
+            search_contains: 0
+            placeholder_text_multiple: 'Select Gender'
+            placeholder_text_single: 'Choose an option'
+            no_results_text: 'No results match'
+            operator_limit_selection: false
+            operator_list: {  }
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          type: select
+          limit: true
+          vid: gender
+          hierarchy: false
+          error_message: true
+          plugin_id: taxonomy_index_tid
+        age_range_target_id:
+          id: age_range_target_id
+          table: node__age_range
+          field: age_range_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: age_range_target_id_op
+            label: 'Age Range'
+            description: ''
+            use_operator: false
+            operator: age_range_target_id_op
+            identifier: age_range_target_id
+            required: false
+            remember: false
+            multiple: true
+            remember_roles:
+              anonymous: anonymous
+              authenticated: authenticated
+              administrator: administrator
+              site_builder: site_builder
+              site_admin: site_admin
+              user_admin: user_admin
+              content_author: content_author
+              business_approver: business_approver
+              suspected_fraud_submissions: suspected_fraud_submissions
+              hcpo_forms: hcpo_forms
+              restful_api: restful_api
+            reduce: false
+            chosen_override: 1
+            disable_search: 0
+            search_contains: 0
+            placeholder_text_multiple: 'Select Age Range'
+            placeholder_text_single: 'Choose an option'
+            no_results_text: 'No results match'
+            operator_limit_selection: false
+            operator_list: {  }
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          type: select
+          limit: true
+          vid: age_range
+          hierarchy: false
+          error_message: true
+          plugin_id: taxonomy_index_tid
+        decision_year_target_id:
+          id: decision_year_target_id
+          table: node__decision_year
+          field: decision_year_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: decision_year_target_id_op
+            label: 'Decision Year'
+            description: ''
+            use_operator: false
+            operator: decision_year_target_id_op
+            identifier: decision_year_target_id
+            required: false
+            remember: false
+            multiple: true
+            remember_roles:
+              anonymous: anonymous
+              authenticated: authenticated
+              administrator: administrator
+              site_builder: site_builder
+              site_admin: site_admin
+              user_admin: user_admin
+              content_author: content_author
+              business_approver: business_approver
+              suspected_fraud_submissions: suspected_fraud_submissions
+              hcpo_forms: hcpo_forms
+              restful_api: restful_api
+            reduce: false
+            chosen_override: 1
+            disable_search: 0
+            search_contains: 0
+            placeholder_text_multiple: 'Select Decision Year'
+            placeholder_text_single: 'Choose an option'
+            no_results_text: 'No results match'
+            operator_limit_selection: false
+            operator_list: {  }
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          type: select
+          limit: true
+          vid: year
+          hierarchy: false
+          error_message: true
+          plugin_id: taxonomy_index_tid
+        appeal_agent_target_id:
+          id: appeal_agent_target_id
+          table: node__appeal_agent
+          field: appeal_agent_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: appeal_agent_target_id_op
+            label: 'Appeal Agent'
+            description: ''
+            use_operator: false
+            operator: appeal_agent_target_id_op
+            identifier: appeal_agent_target_id
+            required: false
+            remember: false
+            multiple: true
+            remember_roles:
+              anonymous: anonymous
+              authenticated: authenticated
+              administrator: administrator
+              site_builder: site_builder
+              site_admin: site_admin
+              user_admin: user_admin
+              content_author: content_author
+              business_approver: business_approver
+              suspected_fraud_submissions: suspected_fraud_submissions
+              hcpo_forms: hcpo_forms
+              restful_api: restful_api
+            reduce: false
+            chosen_override: 0
+            disable_search: 0
+            search_contains: 0
+            placeholder_text_multiple: 'Choose some options'
+            placeholder_text_single: 'Choose an option'
+            no_results_text: 'No results match'
+            operator_limit_selection: false
+            operator_list: {  }
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          type: select
+          limit: true
+          vid: agent
+          hierarchy: false
+          error_message: true
+          plugin_id: taxonomy_index_tid
+        case_number_value:
+          id: case_number_value
+          table: node__case_number
+          field: case_number_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: contains
+          value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: case_number_value_op
+            label: 'Case Number'
+            description: ''
+            use_operator: false
+            operator: case_number_value_op
+            identifier: case_number_value
+            required: false
+            remember: true
+            multiple: false
+            remember_roles:
+              anonymous: anonymous
+              authenticated: authenticated
+              administrator: administrator
+              site_builder: site_builder
+              site_admin: site_admin
+              user_admin: user_admin
+              content_author: content_author
+              business_approver: business_approver
+              suspected_fraud_submissions: suspected_fraud_submissions
+              hcpo_forms: hcpo_forms
+              restful_api: restful_api
+            placeholder: 'Enter Case Number'
+            operator_limit_selection: false
+            operator_list: {  }
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          plugin_id: string
+        combine:
+          id: combine
+          table: views
+          field: combine
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: '='
+          value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: combine_op
+            label: 'Combine fields filter'
+            description: null
+            use_operator: false
+            operator: combine_op
+            identifier: combine
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            placeholder: null
+            operator_limit_selection: false
+            operator_list: {  }
+          is_grouped: false
+          group_info:
+            label: 'Combine fields filter'
+            description: null
+            identifier: combine
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items:
+              1: {  }
+              2: {  }
+              3: {  }
+          fields: {  }
+          plugin_id: combine
+      sorts:
+        case_number_value:
+          id: case_number_value
+          table: node__case_number
+          field: case_number_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          order: ASC
+          exposed: false
+          expose:
+            label: ''
+          plugin_id: standard
+      title: 'Public Appeal Search'
+      header: {  }
+      footer:
+        area_text_custom:
+          id: area_text_custom
+          table: views
+          field: area_text_custom
+          relationship: none
+          group_type: group
+          admin_label: ''
+          empty: true
+          tokenize: false
+          content: ''
+          plugin_id: text_custom
+      empty:
+        area_text_custom:
+          id: area_text_custom
+          table: views
+          field: area_text_custom
+          relationship: none
+          group_type: group
+          admin_label: ''
+          empty: true
+          tokenize: false
+          content: "<table id=\"noResultsTable\" class=\"cols-12 responsive-enabled\">\r\n        <thead>\r\n      <tr>\r\n                                                  <th id=\"view-diagnosis-table-column\" class=\"views-field views-field-diagnosis\" scope=\"col\">Diagnosis</th>\r\n                                                  <th id=\"view-treatment-table-column\" class=\"views-field views-field-treatment\" scope=\"col\">Treatment</th>\r\n                                                  <th id=\"view-health-plan-table-column\" class=\"views-field views-field-health-plan\" scope=\"col\">Health Plan</th>\r\n                                                  <th id=\"view-decision-table-column\" class=\"views-field views-field-decision\" scope=\"col\">Decision</th>\r\n                                                  <th id=\"view-appeal-type-table-column\" class=\"views-field views-field-appeal-type\" scope=\"col\">Appeal Type</th>\r\n                                                  <th id=\"view-gender-table-column\" class=\"views-field views-field-gender\" scope=\"col\">Gender</th>\r\n                                                  <th id=\"view-age-range-table-column\" class=\"views-field views-field-age-range\" scope=\"col\">Age</th>\r\n                                                  <th id=\"view-decision-year-table-column\" class=\"views-field views-field-decision-year\" scope=\"col\">Decision Year</th>\r\n                                                  <th id=\"view-appeal-agent-table-column\" class=\"views-field views-field-appeal-agent\" scope=\"col\">Appeal Agent</th>\r\n                                                  <th id=\"view-case-number-table-column\" class=\"views-field views-field-case-number\" scope=\"col\">Case Number</th>\r\n                                                  <th id=\"view-summary-table-column\" class=\"views-field views-field-summary\" scope=\"col\">Summary</th>\r\n                                                  <th class=\"priority-low views-field views-field-references\" id=\"view-references-table-column\" scope=\"col\">References</th>\r\n              </tr>\r\n    </thead>\r\n    <tbody>\r\n      <tr>\r\n                    <td headers=\"view-diagnosis-table-column\" class=\"views-field views-field-diagnosis\" scope=\"col\">No matching records found</td>\r\n                                                  <td headers=\"view-treatment-table-column\" class=\"views-field views-field-treatment\" scope=\"col\">No matching records found</td>\r\n                                                  <td headers=\"view-health-plan-table-column\" class=\"views-field views-field-health-plan\" scope=\"col\">No matching records found</td>\r\n                                                  <td headers=\"view-decision-table-column\" class=\"views-field views-field-decision\" scope=\"col\">No matching records found</td>\r\n                                                  <td headers=\"view-appeal-type-table-column\" class=\"views-field views-field-appeal-type\" scope=\"col\">No matching records found</td>\r\n                                                  <td headers=\"view-gender-table-column\" class=\"views-field views-field-gender\" scope=\"col\">No matching records found</td>\r\n                                                  <td headers=\"view-age-range-table-column\" class=\"views-field views-field-age-range\" scope=\"col\">No matching records found</td>\r\n                                                  <td headers=\"view-decision-year-table-column\" class=\"views-field views-field-decision-year\" scope=\"col\">No matching records found</td>\r\n                                                  <td headers=\"view-appeal-agent-table-column\" class=\"views-field views-field-appeal-agent\" scope=\"col\">No matching records found</td>\r\n                                                  <td headers=\"view-case-number-table-column\" class=\"views-field views-field-case-number\" scope=\"col\">No matching records found</td>\r\n                                                  <td headers=\"view-summary-table-column\" class=\"views-field views-field-summary\" scope=\"col\">No matching records found</td>\r\n                                                  <td class=\"priority-low views-field views-field-references\" headers=\"view-references-table-column\" scope=\"col\">No matching records found</td>\r\n              </tr>\r\n      </tbody>\r\n</table>"
+          plugin_id: text_custom
+      relationships: {  }
+      arguments: {  }
+      display_extenders: {  }
+      css_class: public-appeal-search-view
+      use_ajax: true
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - url.query_args
+        - user
+        - 'user.node_grants:view'
+        - user.roles
+      tags:
+        - 'config:field.storage.node.age_range'
+        - 'config:field.storage.node.appeal_agent'
+        - 'config:field.storage.node.appeal_type'
+        - 'config:field.storage.node.case_number'
+        - 'config:field.storage.node.decision'
+        - 'config:field.storage.node.decision_year'
+        - 'config:field.storage.node.diagnosis'
+        - 'config:field.storage.node.gender'
+        - 'config:field.storage.node.health_plan'
+        - 'config:field.storage.node.references'
+        - 'config:field.storage.node.summary'
+        - 'config:field.storage.node.treatment'
+  public_appeals_search_block:
+    display_plugin: block
+    id: public_appeals_search_block
+    display_title: Block
+    position: 2
+    display_options:
+      display_extenders: {  }
+      pager:
+        type: none
+        options:
+          offset: 0
+      defaults:
+        pager: false
+        filters: false
+        filter_groups: false
+        fields: false
+        use_ajax: false
+        header: false
+        relationships: false
+        style: false
+        row: false
+        group_by: false
+        sorts: false
+        footer: false
+        empty: false
+        css_class: false
+        access: true
+      exposed_block: true
+      filters:
+        status:
+          value: '1'
+          table: node_field_data
+          field: status
+          plugin_id: boolean
+          entity_type: node
+          entity_field: status
+          id: status
+          expose:
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+          group: 1
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          value:
+            public_appeal: public_appeal
+          entity_type: node
+          entity_field: type
+          plugin_id: bundle
+          group: 1
+          expose:
+            operator_limit_selection: false
+            operator_list: {  }
+        diagnosis_target_id:
+          id: diagnosis_target_id
+          table: node__diagnosis
+          field: diagnosis_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: diagnosis_target_id_op
+            label: Diagnoses
+            description: ''
+            use_operator: false
+            operator: diagnosis_target_id_op
+            identifier: diagnosis_target_id
+            required: false
+            remember: false
+            multiple: true
+            remember_roles:
+              anonymous: anonymous
+              authenticated: authenticated
+              administrator: administrator
+              site_builder: site_builder
+              site_admin: site_admin
+              user_admin: user_admin
+              content_author: content_author
+              business_approver: business_approver
+              suspected_fraud_submissions: suspected_fraud_submissions
+              hcpo_forms: hcpo_forms
+              restful_api: restful_api
+            reduce: false
+            chosen_override: 1
+            disable_search: 0
+            search_contains: 0
+            placeholder_text_multiple: 'Select Diagnosis'
+            placeholder_text_single: ''
+            no_results_text: ''
+            operator_limit_selection: false
+            operator_list: {  }
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          type: select
+          limit: true
+          vid: diagnosis
+          hierarchy: false
+          error_message: true
+          plugin_id: taxonomy_index_tid
+        treatment_target_id:
+          id: treatment_target_id
+          table: node__treatment
+          field: treatment_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: treatment_target_id_op
+            label: Treatment(s)
+            description: ''
+            use_operator: false
+            operator: treatment_target_id_op
+            identifier: treatment_target_id
+            required: false
+            remember: false
+            multiple: true
+            remember_roles:
+              anonymous: anonymous
+              authenticated: authenticated
+              administrator: administrator
+              site_builder: site_builder
+              site_admin: site_admin
+              user_admin: user_admin
+              content_author: content_author
+              business_approver: business_approver
+              suspected_fraud_submissions: suspected_fraud_submissions
+              hcpo_forms: hcpo_forms
+              restful_api: restful_api
+            reduce: false
+            chosen_override: 1
+            disable_search: 0
+            search_contains: 0
+            placeholder_text_multiple: 'Select Treatment'
+            placeholder_text_single: ''
+            no_results_text: ''
+            operator_limit_selection: false
+            operator_list: {  }
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          type: select
+          limit: true
+          vid: treatment
+          hierarchy: false
+          error_message: true
+          plugin_id: taxonomy_index_tid
+        health_plan_target_id:
+          id: health_plan_target_id
+          table: node__health_plan
+          field: health_plan_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: health_plan_target_id_op
+            label: 'Health Plan(s)'
+            description: ''
+            use_operator: false
+            operator: health_plan_target_id_op
+            identifier: health_plan_target_id
+            required: false
+            remember: false
+            multiple: true
+            remember_roles:
+              anonymous: anonymous
+              authenticated: authenticated
+              administrator: administrator
+              site_builder: site_builder
+              site_admin: site_admin
+              user_admin: user_admin
+              content_author: content_author
+              business_approver: business_approver
+              suspected_fraud_submissions: suspected_fraud_submissions
+              hcpo_forms: hcpo_forms
+              restful_api: restful_api
+            reduce: false
+            chosen_override: 1
+            disable_search: 0
+            search_contains: 0
+            placeholder_text_multiple: 'Select Health Plan'
+            placeholder_text_single: ''
+            no_results_text: ''
+            operator_limit_selection: false
+            operator_list: {  }
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          type: select
+          limit: true
+          vid: health_plan
+          hierarchy: false
+          error_message: true
+          plugin_id: taxonomy_index_tid
+        decision_target_id:
+          id: decision_target_id
+          table: node__decision
+          field: decision_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: decision_target_id_op
+            label: 'Appeal Decision'
+            description: ''
+            use_operator: false
+            operator: decision_target_id_op
+            identifier: decision_target_id
+            required: false
+            remember: false
+            multiple: true
+            remember_roles:
+              anonymous: anonymous
+              authenticated: authenticated
+              administrator: administrator
+              site_builder: site_builder
+              site_admin: site_admin
+              user_admin: user_admin
+              content_author: content_author
+              business_approver: business_approver
+              suspected_fraud_submissions: suspected_fraud_submissions
+              hcpo_forms: hcpo_forms
+              restful_api: restful_api
+            reduce: false
+            chosen_override: 0
+            disable_search: 0
+            search_contains: 0
+            placeholder_text_multiple: 'Choose some options'
+            placeholder_text_single: 'Choose an option'
+            no_results_text: 'No results match'
+            operator_limit_selection: false
+            operator_list: {  }
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          type: shs
+          limit: true
+          vid: decision
+          hierarchy: false
+          error_message: true
+          plugin_id: taxonomy_index_tid
+        appeal_type_target_id:
+          id: appeal_type_target_id
+          table: node__appeal_type
+          field: appeal_type_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: appeal_type_target_id_op
+            label: 'Appeal Type'
+            description: ''
+            use_operator: false
+            operator: appeal_type_target_id_op
+            identifier: appeal_type_target_id
+            required: false
+            remember: false
+            multiple: true
+            remember_roles:
+              anonymous: anonymous
+              authenticated: authenticated
+              administrator: administrator
+              site_builder: site_builder
+              site_admin: site_admin
+              user_admin: user_admin
+              content_author: content_author
+              business_approver: business_approver
+              suspected_fraud_submissions: suspected_fraud_submissions
+              hcpo_forms: hcpo_forms
+              restful_api: restful_api
+            reduce: false
+            chosen_override: 0
+            disable_search: 0
+            search_contains: 0
+            placeholder_text_multiple: 'Choose some options'
+            placeholder_text_single: 'Choose an option'
+            no_results_text: 'No results match'
+            operator_limit_selection: false
+            operator_list: {  }
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          type: select
+          limit: true
+          vid: appeal_type
+          hierarchy: false
+          error_message: true
+          plugin_id: taxonomy_index_tid
+        gender_target_id:
+          id: gender_target_id
+          table: node__gender
+          field: gender_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: gender_target_id_op
+            label: Gender
+            description: ''
+            use_operator: false
+            operator: gender_target_id_op
+            identifier: gender_target_id
+            required: false
+            remember: false
+            multiple: true
+            remember_roles:
+              anonymous: anonymous
+              authenticated: authenticated
+              administrator: administrator
+              site_builder: site_builder
+              site_admin: site_admin
+              user_admin: user_admin
+              content_author: content_author
+              business_approver: business_approver
+              suspected_fraud_submissions: suspected_fraud_submissions
+              hcpo_forms: hcpo_forms
+              restful_api: restful_api
+            reduce: false
+            chosen_override: 1
+            disable_search: 0
+            search_contains: 0
+            placeholder_text_multiple: 'Select Gender'
+            placeholder_text_single: 'Choose an option'
+            no_results_text: 'No results match'
+            operator_limit_selection: false
+            operator_list: {  }
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          type: select
+          limit: true
+          vid: gender
+          hierarchy: false
+          error_message: true
+          plugin_id: taxonomy_index_tid
+        age_range_target_id:
+          id: age_range_target_id
+          table: node__age_range
+          field: age_range_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: age_range_target_id_op
+            label: 'Age Range'
+            description: ''
+            use_operator: false
+            operator: age_range_target_id_op
+            identifier: age_range_target_id
+            required: false
+            remember: false
+            multiple: true
+            remember_roles:
+              anonymous: anonymous
+              authenticated: authenticated
+              administrator: administrator
+              site_builder: site_builder
+              site_admin: site_admin
+              user_admin: user_admin
+              content_author: content_author
+              business_approver: business_approver
+              suspected_fraud_submissions: suspected_fraud_submissions
+              hcpo_forms: hcpo_forms
+              restful_api: restful_api
+            reduce: false
+            chosen_override: 1
+            disable_search: 0
+            search_contains: 0
+            placeholder_text_multiple: 'Select Age Range'
+            placeholder_text_single: 'Choose an option'
+            no_results_text: 'No results match'
+            operator_limit_selection: false
+            operator_list: {  }
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          type: select
+          limit: true
+          vid: age_range
+          hierarchy: false
+          error_message: true
+          plugin_id: taxonomy_index_tid
+        decision_year_target_id:
+          id: decision_year_target_id
+          table: node__decision_year
+          field: decision_year_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: decision_year_target_id_op
+            label: 'Decision Year'
+            description: ''
+            use_operator: false
+            operator: decision_year_target_id_op
+            identifier: decision_year_target_id
+            required: false
+            remember: false
+            multiple: true
+            remember_roles:
+              anonymous: anonymous
+              authenticated: authenticated
+              administrator: administrator
+              site_builder: site_builder
+              site_admin: site_admin
+              user_admin: user_admin
+              content_author: content_author
+              business_approver: business_approver
+              suspected_fraud_submissions: suspected_fraud_submissions
+              hcpo_forms: hcpo_forms
+              restful_api: restful_api
+            reduce: false
+            chosen_override: 1
+            disable_search: 0
+            search_contains: 0
+            placeholder_text_multiple: 'Select Decision Year'
+            placeholder_text_single: 'Choose an option'
+            no_results_text: 'No results match'
+            operator_limit_selection: false
+            operator_list: {  }
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          type: select
+          limit: true
+          vid: year
+          hierarchy: false
+          error_message: true
+          plugin_id: taxonomy_index_tid
+        appeal_agent_target_id:
+          id: appeal_agent_target_id
+          table: node__appeal_agent
+          field: appeal_agent_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: appeal_agent_target_id_op
+            label: 'Appeal Agent'
+            description: ''
+            use_operator: false
+            operator: appeal_agent_target_id_op
+            identifier: appeal_agent_target_id
+            required: false
+            remember: false
+            multiple: true
+            remember_roles:
+              anonymous: anonymous
+              authenticated: authenticated
+              administrator: administrator
+              site_builder: site_builder
+              site_admin: site_admin
+              user_admin: user_admin
+              content_author: content_author
+              business_approver: business_approver
+              suspected_fraud_submissions: suspected_fraud_submissions
+              hcpo_forms: hcpo_forms
+              restful_api: restful_api
+            reduce: false
+            chosen_override: 0
+            disable_search: 0
+            search_contains: 0
+            placeholder_text_multiple: 'Choose some options'
+            placeholder_text_single: 'Choose an option'
+            no_results_text: 'No results match'
+            operator_limit_selection: false
+            operator_list: {  }
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          type: select
+          limit: true
+          vid: agent
+          hierarchy: false
+          error_message: true
+          plugin_id: taxonomy_index_tid
+        case_number_value:
+          id: case_number_value
+          table: node__case_number
+          field: case_number_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: contains
+          value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: case_number_value_op
+            label: 'Case Number'
+            description: ''
+            use_operator: false
+            operator: case_number_value_op
+            identifier: case_number_value
+            required: false
+            remember: true
+            multiple: false
+            remember_roles:
+              anonymous: anonymous
+              authenticated: authenticated
+              administrator: administrator
+              site_builder: site_builder
+              site_admin: site_admin
+              user_admin: user_admin
+              content_author: content_author
+              business_approver: business_approver
+              suspected_fraud_submissions: suspected_fraud_submissions
+              hcpo_forms: hcpo_forms
+              restful_api: restful_api
+            placeholder: 'Enter Case Number'
+            operator_limit_selection: false
+            operator_list: {  }
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          plugin_id: string
+        delta:
+          id: delta
+          table: node__references
+          field: delta
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: '='
+          value:
+            min: ''
+            max: ''
+            value: '0'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            placeholder: ''
+            min_placeholder: ''
+            max_placeholder: ''
+            operator_limit_selection: false
+            operator_list: {  }
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          plugin_id: numeric
+        delta_1:
+          id: delta_1
+          table: node__diagnosis
+          field: delta
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: '='
+          value:
+            min: ''
+            max: ''
+            value: '0'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            placeholder: ''
+            min_placeholder: ''
+            max_placeholder: ''
+            operator_limit_selection: false
+            operator_list: {  }
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          plugin_id: numeric
+        delta_2:
+          id: delta_2
+          table: node__treatment
+          field: delta
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: '='
+          value:
+            min: ''
+            max: ''
+            value: '0'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            placeholder: ''
+            min_placeholder: ''
+            max_placeholder: ''
+            operator_limit_selection: false
+            operator_list: {  }
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          plugin_id: numeric
+        references_value:
+          id: references_value
+          table: node__references
+          field: references_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: word
+          value: ''
+          group: 2
+          exposed: true
+          expose:
+            operator_id: references_value_op
+            label: 'References (references)'
+            description: ''
+            use_operator: false
+            operator: references_value_op
+            identifier: references_value
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+              site_builder: '0'
+              site_admin: '0'
+              user_admin: '0'
+              content_author: '0'
+              business_approver: '0'
+              suspected_fraud_submissions: '0'
+              hcpo_forms: '0'
+              restful_api: '0'
+            placeholder: ''
+            operator_limit_selection: false
+            operator_list: {  }
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          plugin_id: string
+        summary_value:
+          id: summary_value
+          table: node__summary
+          field: summary_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: word
+          value: ''
+          group: 2
+          exposed: true
+          expose:
+            operator_id: summary_value_op
+            label: 'Summary (summary)'
+            description: ''
+            use_operator: false
+            operator: summary_value_op
+            identifier: summary_value
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+              site_builder: '0'
+              site_admin: '0'
+              user_admin: '0'
+              content_author: '0'
+              business_approver: '0'
+              suspected_fraud_submissions: '0'
+              hcpo_forms: '0'
+              restful_api: '0'
+            placeholder: ''
+            operator_limit_selection: false
+            operator_list: {  }
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          plugin_id: string
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+          2: OR
+      fields:
+        decision:
+          id: decision
+          table: node__decision
+          field: decision
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: ''
+          exclude: true
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: target_id
+          type: entity_reference_label
+          settings:
+            link: false
+          group_column: target_id
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          plugin_id: field
+        decision_1:
+          id: decision_1
+          table: node__decision
+          field: decision
+          relationship: none
+          group_type: count
+          admin_label: ''
+          label: ''
+          exclude: true
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: '0'
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: false
+          set_precision: false
+          precision: 0
+          decimal: .
+          separator: ','
+          format_plural: 0
+          format_plural_string: !!binary MQNAY291bnQ=
+          prefix: ''
+          suffix: ''
+          click_sort_column: target_id
+          type: entity_reference_label
+          settings:
+            link: false
+          group_column: null
+          group_columns: null
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          field_api_classes: false
+          plugin_id: field
+        nothing:
+          id: nothing
+          table: views
+          field: nothing
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: ''
+          exclude: false
+          alter:
+            alter_text: true
+            text: '<div class="{{ decision|lower|replace('' '',''-'') }}-counter"><span class="{{ decision|lower|replace('' '',''-'') }}-value">{{ decision_1 }}</span>{{ decision }}</div>'
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: '<div class="{{ decision|lower|replace('' '',''-'') }}-counter"><span class="{{ decision|lower|replace('' '',''-'') }}-value">0</span>{{ decision }}</div>'
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: false
+          plugin_id: custom
+      use_ajax: true
+      header: {  }
+      relationships:
+        diagnosis:
+          id: diagnosis
+          table: node__diagnosis
+          field: diagnosis
+          relationship: none
+          group_type: group
+          admin_label: 'diagnosis: Taxonomy term'
+          required: true
+          plugin_id: standard
+        treatment:
+          id: treatment
+          table: node__treatment
+          field: treatment
+          relationship: none
+          group_type: group
+          admin_label: 'treatment: Taxonomy term'
+          required: true
+          plugin_id: standard
+      style:
+        type: html_list
+        options:
+          grouping: {  }
+          row_class: ''
+          default_row_class: true
+          type: ul
+          wrapper_class: counters
+          class: counters-inner
+      row:
+        type: fields
+        options: {  }
+      group_by: true
+      sorts: {  }
+      footer: {  }
+      empty: {  }
+      css_class: ''
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - user
+        - 'user.node_grants:view'
+        - user.roles
+      tags:
+        - 'config:field.storage.node.decision'
+  public_appeals_search_page:
+    display_plugin: page
+    id: public_appeals_search_page
+    display_title: Page
+    position: 2
+    display_options:
+      display_extenders: {  }
+      path: public-appeal/search
+      pager:
+        type: full
+        options:
+          items_per_page: 10
+          offset: 0
+          id: 0
+          total_pages: null
+          tags:
+            previous: '<<'
+            next: '>>'
+            first: '« First'
+            last: 'Last »'
+          expose:
+            items_per_page: true
+            items_per_page_label: 'Show '
+            items_per_page_options: '10, 25, 50, 100'
+            items_per_page_options_all: false
+            items_per_page_options_all_label: '- All -'
+            offset: false
+            offset_label: Offset
+          quantity: 9
+      defaults:
+        pager: false
+        filters: false
+        filter_groups: false
+        fields: false
+        use_ajax: false
+        header: false
+        relationships: false
+        group_by: false
+        query: false
+        access: true
+        empty: false
+      exposed_block: true
+      filters:
+        status:
+          value: '1'
+          table: node_field_data
+          field: status
+          plugin_id: boolean
+          entity_type: node
+          entity_field: status
+          id: status
+          expose:
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+          group: 1
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          value:
+            public_appeal: public_appeal
+          entity_type: node
+          entity_field: type
+          plugin_id: bundle
+          group: 1
+          expose:
+            operator_limit_selection: false
+            operator_list: {  }
+        diagnosis_target_id:
+          id: diagnosis_target_id
+          table: node__diagnosis
+          field: diagnosis_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: diagnosis_target_id_op
+            label: Diagnoses
+            description: ''
+            use_operator: false
+            operator: diagnosis_target_id_op
+            identifier: diagnosis_target_id
+            required: false
+            remember: false
+            multiple: true
+            remember_roles:
+              anonymous: anonymous
+              authenticated: authenticated
+              administrator: administrator
+              site_builder: site_builder
+              site_admin: site_admin
+              user_admin: user_admin
+              content_author: content_author
+              business_approver: business_approver
+              suspected_fraud_submissions: suspected_fraud_submissions
+              hcpo_forms: hcpo_forms
+              restful_api: restful_api
+            reduce: false
+            chosen_override: 1
+            disable_search: 0
+            search_contains: 0
+            placeholder_text_multiple: 'Select Diagnosis'
+            placeholder_text_single: ''
+            no_results_text: ''
+            operator_limit_selection: false
+            operator_list: {  }
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          type: select
+          limit: true
+          vid: diagnosis
+          hierarchy: false
+          error_message: true
+          plugin_id: taxonomy_index_tid
+        treatment_target_id:
+          id: treatment_target_id
+          table: node__treatment
+          field: treatment_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: treatment_target_id_op
+            label: Treatment(s)
+            description: ''
+            use_operator: false
+            operator: treatment_target_id_op
+            identifier: treatment_target_id
+            required: false
+            remember: false
+            multiple: true
+            remember_roles:
+              anonymous: anonymous
+              authenticated: authenticated
+              administrator: administrator
+              site_builder: site_builder
+              site_admin: site_admin
+              user_admin: user_admin
+              content_author: content_author
+              business_approver: business_approver
+              suspected_fraud_submissions: suspected_fraud_submissions
+              hcpo_forms: hcpo_forms
+              restful_api: restful_api
+            reduce: false
+            chosen_override: 1
+            disable_search: 0
+            search_contains: 0
+            placeholder_text_multiple: 'Select Treatment'
+            placeholder_text_single: ''
+            no_results_text: ''
+            operator_limit_selection: false
+            operator_list: {  }
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          type: select
+          limit: true
+          vid: treatment
+          hierarchy: false
+          error_message: true
+          plugin_id: taxonomy_index_tid
+        health_plan_target_id:
+          id: health_plan_target_id
+          table: node__health_plan
+          field: health_plan_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: health_plan_target_id_op
+            label: 'Health Plan(s)'
+            description: ''
+            use_operator: false
+            operator: health_plan_target_id_op
+            identifier: health_plan_target_id
+            required: false
+            remember: false
+            multiple: true
+            remember_roles:
+              anonymous: anonymous
+              authenticated: authenticated
+              administrator: administrator
+              site_builder: site_builder
+              site_admin: site_admin
+              user_admin: user_admin
+              content_author: content_author
+              business_approver: business_approver
+              suspected_fraud_submissions: suspected_fraud_submissions
+              hcpo_forms: hcpo_forms
+              restful_api: restful_api
+            reduce: false
+            chosen_override: 1
+            disable_search: 0
+            search_contains: 0
+            placeholder_text_multiple: 'Select Health Plan'
+            placeholder_text_single: ''
+            no_results_text: ''
+            operator_limit_selection: false
+            operator_list: {  }
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          type: select
+          limit: true
+          vid: health_plan
+          hierarchy: false
+          error_message: true
+          plugin_id: taxonomy_index_tid
+        decision_target_id:
+          id: decision_target_id
+          table: node__decision
+          field: decision_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: decision_target_id_op
+            label: 'Appeal Decision'
+            description: ''
+            use_operator: false
+            operator: decision_target_id_op
+            identifier: decision_target_id
+            required: false
+            remember: false
+            multiple: true
+            remember_roles:
+              anonymous: anonymous
+              authenticated: authenticated
+              administrator: administrator
+              site_builder: site_builder
+              site_admin: site_admin
+              user_admin: user_admin
+              content_author: content_author
+              business_approver: business_approver
+              suspected_fraud_submissions: suspected_fraud_submissions
+              hcpo_forms: hcpo_forms
+              restful_api: restful_api
+            reduce: false
+            chosen_override: 0
+            disable_search: 0
+            search_contains: 0
+            placeholder_text_multiple: 'Choose some options'
+            placeholder_text_single: 'Choose an option'
+            no_results_text: 'No results match'
+            operator_limit_selection: false
+            operator_list: {  }
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          type: shs
+          limit: true
+          vid: decision
+          hierarchy: false
+          error_message: true
+          plugin_id: taxonomy_index_tid
+        appeal_type_target_id:
+          id: appeal_type_target_id
+          table: node__appeal_type
+          field: appeal_type_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: appeal_type_target_id_op
+            label: 'Appeal Type'
+            description: ''
+            use_operator: false
+            operator: appeal_type_target_id_op
+            identifier: appeal_type_target_id
+            required: false
+            remember: false
+            multiple: true
+            remember_roles:
+              anonymous: anonymous
+              authenticated: authenticated
+              administrator: administrator
+              site_builder: site_builder
+              site_admin: site_admin
+              user_admin: user_admin
+              content_author: content_author
+              business_approver: business_approver
+              suspected_fraud_submissions: suspected_fraud_submissions
+              hcpo_forms: hcpo_forms
+              restful_api: restful_api
+            reduce: false
+            chosen_override: 0
+            disable_search: 0
+            search_contains: 0
+            placeholder_text_multiple: 'Choose some options'
+            placeholder_text_single: 'Choose an option'
+            no_results_text: 'No results match'
+            operator_limit_selection: false
+            operator_list: {  }
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          type: select
+          limit: true
+          vid: appeal_type
+          hierarchy: false
+          error_message: true
+          plugin_id: taxonomy_index_tid
+        gender_target_id:
+          id: gender_target_id
+          table: node__gender
+          field: gender_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: gender_target_id_op
+            label: Gender(s)
+            description: ''
+            use_operator: false
+            operator: gender_target_id_op
+            identifier: gender_target_id
+            required: false
+            remember: false
+            multiple: true
+            remember_roles:
+              anonymous: anonymous
+              authenticated: authenticated
+              administrator: administrator
+              site_builder: site_builder
+              site_admin: site_admin
+              user_admin: user_admin
+              content_author: content_author
+              business_approver: business_approver
+              suspected_fraud_submissions: suspected_fraud_submissions
+              hcpo_forms: hcpo_forms
+              restful_api: restful_api
+            reduce: false
+            chosen_override: 1
+            disable_search: 0
+            search_contains: 0
+            placeholder_text_multiple: 'Select Gender'
+            placeholder_text_single: 'Choose an option'
+            no_results_text: 'No results match'
+            operator_limit_selection: false
+            operator_list: {  }
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          type: select
+          limit: true
+          vid: gender
+          hierarchy: false
+          error_message: true
+          plugin_id: taxonomy_index_tid
+        age_range_target_id:
+          id: age_range_target_id
+          table: node__age_range
+          field: age_range_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: age_range_target_id_op
+            label: 'Age Range(s)'
+            description: ''
+            use_operator: false
+            operator: age_range_target_id_op
+            identifier: age_range_target_id
+            required: false
+            remember: false
+            multiple: true
+            remember_roles:
+              anonymous: anonymous
+              authenticated: authenticated
+              administrator: administrator
+              site_builder: site_builder
+              site_admin: site_admin
+              user_admin: user_admin
+              content_author: content_author
+              business_approver: business_approver
+              suspected_fraud_submissions: suspected_fraud_submissions
+              hcpo_forms: hcpo_forms
+              restful_api: restful_api
+            reduce: false
+            chosen_override: 1
+            disable_search: 0
+            search_contains: 0
+            placeholder_text_multiple: 'Select Age Range'
+            placeholder_text_single: 'Choose an option'
+            no_results_text: 'No results match'
+            operator_limit_selection: false
+            operator_list: {  }
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          type: select
+          limit: true
+          vid: age_range
+          hierarchy: false
+          error_message: true
+          plugin_id: taxonomy_index_tid
+        decision_year_target_id:
+          id: decision_year_target_id
+          table: node__decision_year
+          field: decision_year_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: decision_year_target_id_op
+            label: 'Decision Year(s)'
+            description: ''
+            use_operator: false
+            operator: decision_year_target_id_op
+            identifier: decision_year_target_id
+            required: false
+            remember: false
+            multiple: true
+            remember_roles:
+              anonymous: anonymous
+              authenticated: authenticated
+              administrator: administrator
+              site_builder: site_builder
+              site_admin: site_admin
+              user_admin: user_admin
+              content_author: content_author
+              business_approver: business_approver
+              suspected_fraud_submissions: suspected_fraud_submissions
+              hcpo_forms: hcpo_forms
+              restful_api: restful_api
+            reduce: false
+            chosen_override: 1
+            disable_search: 0
+            search_contains: 0
+            placeholder_text_multiple: 'Select Decision Year'
+            placeholder_text_single: 'Choose an option'
+            no_results_text: 'No results match'
+            operator_limit_selection: false
+            operator_list: {  }
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          type: select
+          limit: true
+          vid: year
+          hierarchy: false
+          error_message: true
+          plugin_id: taxonomy_index_tid
+        appeal_agent_target_id:
+          id: appeal_agent_target_id
+          table: node__appeal_agent
+          field: appeal_agent_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: appeal_agent_target_id_op
+            label: 'Appeal Agent'
+            description: ''
+            use_operator: false
+            operator: appeal_agent_target_id_op
+            identifier: appeal_agent_target_id
+            required: false
+            remember: false
+            multiple: true
+            remember_roles:
+              anonymous: anonymous
+              authenticated: authenticated
+              administrator: administrator
+              site_builder: site_builder
+              site_admin: site_admin
+              user_admin: user_admin
+              content_author: content_author
+              business_approver: business_approver
+              suspected_fraud_submissions: suspected_fraud_submissions
+              hcpo_forms: hcpo_forms
+              restful_api: restful_api
+            reduce: false
+            chosen_override: 0
+            disable_search: 0
+            search_contains: 0
+            placeholder_text_multiple: 'Choose some options'
+            placeholder_text_single: 'Choose an option'
+            no_results_text: 'No results match'
+            operator_limit_selection: false
+            operator_list: {  }
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          type: select
+          limit: true
+          vid: agent
+          hierarchy: false
+          error_message: true
+          plugin_id: taxonomy_index_tid
+        case_number_value:
+          id: case_number_value
+          table: node__case_number
+          field: case_number_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: contains
+          value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: case_number_value_op
+            label: 'Case Number'
+            description: ''
+            use_operator: false
+            operator: case_number_value_op
+            identifier: case_number_value
+            required: false
+            remember: true
+            multiple: false
+            remember_roles:
+              anonymous: anonymous
+              authenticated: authenticated
+              administrator: administrator
+              site_builder: site_builder
+              site_admin: site_admin
+              user_admin: user_admin
+              content_author: content_author
+              business_approver: business_approver
+              suspected_fraud_submissions: suspected_fraud_submissions
+              hcpo_forms: hcpo_forms
+              restful_api: restful_api
+            placeholder: 'Enter Case Number'
+            operator_limit_selection: false
+            operator_list: {  }
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          plugin_id: string
+        delta_3:
+          id: delta_3
+          table: node__references
+          field: delta
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: '='
+          value:
+            min: ''
+            max: ''
+            value: '0'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            placeholder: ''
+            min_placeholder: ''
+            max_placeholder: ''
+            operator_limit_selection: false
+            operator_list: {  }
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          plugin_id: numeric
+        delta:
+          id: delta
+          table: node__diagnosis
+          field: delta
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: '='
+          value:
+            min: ''
+            max: ''
+            value: '0'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            placeholder: ''
+            min_placeholder: ''
+            max_placeholder: ''
+            operator_limit_selection: false
+            operator_list: {  }
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          plugin_id: numeric
+        delta_1:
+          id: delta_1
+          table: node__treatment
+          field: delta
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: '='
+          value:
+            min: ''
+            max: ''
+            value: '0'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            placeholder: ''
+            min_placeholder: ''
+            max_placeholder: ''
+            operator_limit_selection: false
+            operator_list: {  }
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          plugin_id: numeric
+        references_value:
+          id: references_value
+          table: node__references
+          field: references_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: word
+          value: ''
+          group: 2
+          exposed: true
+          expose:
+            operator_id: references_value_op
+            label: 'References (references)'
+            description: ''
+            use_operator: false
+            operator: references_value_op
+            identifier: references_value
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+              site_builder: '0'
+              site_admin: '0'
+              user_admin: '0'
+              content_author: '0'
+              business_approver: '0'
+              suspected_fraud_submissions: '0'
+              hcpo_forms: '0'
+              restful_api: '0'
+            placeholder: ''
+            operator_limit_selection: false
+            operator_list: {  }
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          plugin_id: string
+        summary_value:
+          id: summary_value
+          table: node__summary
+          field: summary_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: word
+          value: ''
+          group: 2
+          exposed: true
+          expose:
+            operator_id: summary_value_op
+            label: 'Summary (summary)'
+            description: ''
+            use_operator: false
+            operator: summary_value_op
+            identifier: summary_value
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+              site_builder: '0'
+              site_admin: '0'
+              user_admin: '0'
+              content_author: '0'
+              business_approver: '0'
+              suspected_fraud_submissions: '0'
+              hcpo_forms: '0'
+              restful_api: '0'
+            placeholder: ''
+            operator_limit_selection: false
+            operator_list: {  }
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          plugin_id: string
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+          2: OR
+      fields:
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: Title
+          exclude: true
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: false
+            ellipsis: false
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: string
+          settings:
+            link_to_entity: false
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          entity_type: node
+          entity_field: title
+          plugin_id: field
+        nid:
+          id: nid
+          table: node_field_data
+          field: nid
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: ID
+          exclude: true
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: number_integer
+          settings:
+            thousand_separator: ''
+            prefix_suffix: true
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          entity_type: node
+          entity_field: nid
+          plugin_id: field
+        diagnosis_1:
+          id: diagnosis_1
+          table: node__diagnosis
+          field: diagnosis
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: Diagnosis
+          exclude: true
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: target_id
+          type: entity_reference_label
+          settings:
+            link: false
+          group_column: target_id
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          plugin_id: field
+        name:
+          id: name
+          table: taxonomy_term_field_data
+          field: name
+          relationship: diagnosis
+          group_type: group
+          admin_label: ''
+          label: Diagnosis
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: string
+          settings:
+            link_to_entity: false
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          convert_spaces: false
+          entity_type: taxonomy_term
+          entity_field: name
+          plugin_id: term_name
+        treatment:
+          id: treatment
+          table: node__treatment
+          field: treatment
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: Treatment
+          exclude: true
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: target_id
+          type: entity_reference_label
+          settings:
+            link: false
+          group_column: target_id
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          plugin_id: field
+        name_1:
+          id: name_1
+          table: taxonomy_term_field_data
+          field: name
+          relationship: treatment
+          group_type: group
+          admin_label: ''
+          label: Treatment
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: string
+          settings:
+            link_to_entity: false
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          convert_spaces: false
+          entity_type: taxonomy_term
+          entity_field: name
+          plugin_id: term_name
+        health_plan:
+          id: health_plan
+          table: node__health_plan
+          field: health_plan
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: 'Health Plan'
+          exclude: true
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: target_id
+          type: entity_reference_label
+          settings:
+            link: false
+          group_column: target_id
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          plugin_id: field
+        name_2:
+          id: name_2
+          table: taxonomy_term_field_data
+          field: name
+          relationship: health_plan
+          group_type: group
+          admin_label: ''
+          label: 'Health Plan'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: string
+          settings:
+            link_to_entity: false
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          convert_spaces: false
+          entity_type: taxonomy_term
+          entity_field: name
+          plugin_id: term_name
+        decision:
+          id: decision
+          table: node__decision
+          field: decision
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: Decision
+          exclude: true
+          alter:
+            alter_text: true
+            text: '<div class="{{ decision|lower|replace('' '',''-'') }}"><div class="table-link-out"><a href="/node/{{ nid }}" aria-label="Go to {{ title }}"></a></div><div class="decision-text">{{ decision }}</div></div>'
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: div
+          element_class: table-decision-value
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: target_id
+          type: entity_reference_label
+          settings:
+            link: false
+          group_column: target_id
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          plugin_id: field
+        name_3:
+          id: name_3
+          table: taxonomy_term_field_data
+          field: name
+          relationship: decision
+          group_type: group
+          admin_label: ''
+          label: Decision
+          exclude: false
+          alter:
+            alter_text: true
+            text: '{{ decision }}'
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: div
+          element_class: table-decision-value
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: string
+          settings:
+            link_to_entity: false
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          convert_spaces: false
+          entity_type: taxonomy_term
+          entity_field: name
+          plugin_id: term_name
+        appeal_type:
+          id: appeal_type
+          table: node__appeal_type
+          field: appeal_type
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: 'Appeal Type'
+          exclude: true
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: target_id
+          type: entity_reference_label
+          settings:
+            link: false
+          group_column: target_id
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          plugin_id: field
+        name_4:
+          id: name_4
+          table: taxonomy_term_field_data
+          field: name
+          relationship: appeal_type
+          group_type: group
+          admin_label: ''
+          label: 'Appeal Type'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: string
+          settings:
+            link_to_entity: false
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          convert_spaces: false
+          entity_type: taxonomy_term
+          entity_field: name
+          plugin_id: term_name
+        gender:
+          id: gender
+          table: node__gender
+          field: gender
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: Gender
+          exclude: true
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: target_id
+          type: entity_reference_label
+          settings:
+            link: false
+          group_column: target_id
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          plugin_id: field
+        name_5:
+          id: name_5
+          table: taxonomy_term_field_data
+          field: name
+          relationship: gender
+          group_type: group
+          admin_label: ''
+          label: Gender
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: string
+          settings:
+            link_to_entity: false
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          convert_spaces: false
+          entity_type: taxonomy_term
+          entity_field: name
+          plugin_id: term_name
+        age_range:
+          id: age_range
+          table: node__age_range
+          field: age_range
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: Age
+          exclude: true
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: target_id
+          type: entity_reference_label
+          settings:
+            link: false
+          group_column: target_id
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          plugin_id: field
+        name_6:
+          id: name_6
+          table: taxonomy_term_field_data
+          field: name
+          relationship: age_range
+          group_type: group
+          admin_label: ''
+          label: Age
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: string
+          settings:
+            link_to_entity: false
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          convert_spaces: false
+          entity_type: taxonomy_term
+          entity_field: name
+          plugin_id: term_name
+        decision_year:
+          id: decision_year
+          table: node__decision_year
+          field: decision_year
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: 'Decision Year'
+          exclude: true
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: target_id
+          type: entity_reference_label
+          settings:
+            link: false
+          group_column: target_id
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          plugin_id: field
+        name_7:
+          id: name_7
+          table: taxonomy_term_field_data
+          field: name
+          relationship: decision_year
+          group_type: group
+          admin_label: ''
+          label: 'Decision Year'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: string
+          settings:
+            link_to_entity: false
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          convert_spaces: false
+          entity_type: taxonomy_term
+          entity_field: name
+          plugin_id: term_name
+        appeal_agent:
+          id: appeal_agent
+          table: node__appeal_agent
+          field: appeal_agent
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: 'Appeal Agent'
+          exclude: true
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: target_id
+          type: entity_reference_label
+          settings:
+            link: false
+          group_column: target_id
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          plugin_id: field
+        name_8:
+          id: name_8
+          table: taxonomy_term_field_data
+          field: name
+          relationship: appeal_agent
+          group_type: group
+          admin_label: ''
+          label: 'Appeal Agent'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: string
+          settings:
+            link_to_entity: false
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          convert_spaces: false
+          entity_type: taxonomy_term
+          entity_field: name
+          plugin_id: term_name
+        case_number:
+          id: case_number
+          table: node__case_number
+          field: case_number
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: 'Case Number'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: string
+          settings:
+            link_to_entity: false
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          plugin_id: field
+        summary:
+          id: summary
+          table: node__summary
+          field: summary
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: Summary
+          exclude: false
+          alter:
+            alter_text: true
+            text: '<h3 class="CSV-text">Summary: </h3>{{ summary }}'
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 100
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: true
+            trim: false
+            preserve_tags: '<ul> <li> <div> <span> <h3>'
+            html: false
+          element_type: span
+          element_class: summary-td
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: text_default
+          settings: {  }
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: ul
+          separator: '<h2>Summary</h2>'
+          field_api_classes: false
+          plugin_id: field
+        references:
+          id: references
+          table: node__references
+          field: references
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: References
+          exclude: false
+          alter:
+            alter_text: true
+            text: '<h3 class="CSV-text">Reference: </h3>{{ references }}'
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 100
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: true
+            trim: false
+            preserve_tags: '<ul> <li> <span> <h3>'
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: basic_string
+          settings: {  }
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: ul
+          separator: ', '
+          field_api_classes: false
+          plugin_id: field
+      use_ajax: false
+      header:
+        area_text_custom_2:
+          id: area_text_custom_2
+          table: views
+          field: area_text_custom
+          relationship: none
+          group_type: group
+          admin_label: ''
+          empty: true
+          tokenize: false
+          content: '<div class="mobile-open"></div>'
+          plugin_id: text_custom
+        view:
+          id: view
+          table: views
+          field: view
+          relationship: none
+          group_type: group
+          admin_label: ''
+          empty: false
+          view_to_insert: 'public_appeal_search:public_appeals_search_block'
+          inherit_arguments: true
+          plugin_id: view
+        result:
+          id: result
+          table: views
+          field: result
+          relationship: none
+          group_type: group
+          admin_label: ''
+          empty: true
+          content: '<div class="table-top"><div class="table-top-left"><div class="page-drop"><span class="page-drop-select-container"></span>per page</div><div class="search-results">Showing @start to @end of @total</div></div><div class="table-top-right"><div class="export-wrapper"></div><div class="expand-wrapper"></div><div class="collapse-wrapper"></div></div></div>'
+          plugin_id: result
+      relationships:
+        diagnosis:
+          id: diagnosis
+          table: node__diagnosis
+          field: diagnosis
+          relationship: none
+          group_type: group
+          admin_label: 'diagnosis: Taxonomy term'
+          required: true
+          plugin_id: standard
+        treatment:
+          id: treatment
+          table: node__treatment
+          field: treatment
+          relationship: none
+          group_type: group
+          admin_label: 'treatment: Taxonomy term'
+          required: true
+          plugin_id: standard
+        health_plan:
+          id: health_plan
+          table: node__health_plan
+          field: health_plan
+          relationship: none
+          group_type: group
+          admin_label: 'health_plan: Taxonomy term'
+          required: true
+          plugin_id: standard
+        decision:
+          id: decision
+          table: node__decision
+          field: decision
+          relationship: none
+          group_type: group
+          admin_label: 'decision: Taxonomy term'
+          required: true
+          plugin_id: standard
+        appeal_type:
+          id: appeal_type
+          table: node__appeal_type
+          field: appeal_type
+          relationship: none
+          group_type: group
+          admin_label: 'appeal_type: Taxonomy term'
+          required: true
+          plugin_id: standard
+        gender:
+          id: gender
+          table: node__gender
+          field: gender
+          relationship: none
+          group_type: group
+          admin_label: 'gender: Taxonomy term'
+          required: true
+          plugin_id: standard
+        age_range:
+          id: age_range
+          table: node__age_range
+          field: age_range
+          relationship: none
+          group_type: group
+          admin_label: 'age_range: Taxonomy term'
+          required: true
+          plugin_id: standard
+        decision_year:
+          id: decision_year
+          table: node__decision_year
+          field: decision_year
+          relationship: none
+          group_type: group
+          admin_label: 'decision_year: Taxonomy term'
+          required: true
+          plugin_id: standard
+        appeal_agent:
+          id: appeal_agent
+          table: node__appeal_agent
+          field: appeal_agent
+          relationship: none
+          group_type: group
+          admin_label: 'appeal_agent: Taxonomy term'
+          required: true
+          plugin_id: standard
+      group_by: false
+      query:
+        type: views_query
+        options:
+          disable_sql_rewrite: false
+          distinct: false
+          replica: false
+          query_comment: ''
+          query_tags: {  }
+      empty:
+        area_text_custom:
+          id: area_text_custom
+          table: views
+          field: area_text_custom
+          relationship: none
+          group_type: group
+          admin_label: ''
+          empty: true
+          tokenize: false
+          content: '<table><tr><td>No results found.</td></tr></table>'
+          plugin_id: text_custom
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - url.query_args
+        - user
+        - 'user.node_grants:view'
+        - user.roles
+      tags:
+        - 'config:field.storage.node.age_range'
+        - 'config:field.storage.node.appeal_agent'
+        - 'config:field.storage.node.appeal_type'
+        - 'config:field.storage.node.case_number'
+        - 'config:field.storage.node.decision'
+        - 'config:field.storage.node.decision_year'
+        - 'config:field.storage.node.diagnosis'
+        - 'config:field.storage.node.gender'
+        - 'config:field.storage.node.health_plan'
+        - 'config:field.storage.node.references'
+        - 'config:field.storage.node.summary'
+        - 'config:field.storage.node.treatment'
