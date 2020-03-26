@@ -1959,7 +1959,7 @@ display:
           admin_label: ''
           empty: true
           tokenize: false
-          content: '<div class="table-footer"></div>'
+          content: ''
           plugin_id: text_custom
       empty:
         area_text_custom:
@@ -2622,11 +2622,9 @@ display:
             description: ''
             use_operator: false
             operator: case_number_value_op
-            operator_limit_selection: false
-            operator_list: {  }
             identifier: case_number_value
             required: false
-            remember: false
+            remember: true
             multiple: false
             remember_roles:
               anonymous: anonymous
@@ -2640,8 +2638,9 @@ display:
               suspected_fraud_submissions: suspected_fraud_submissions
               hcpo_forms: hcpo_forms
               restful_api: restful_api
-              registration_forms: '0'
             placeholder: 'Enter Case Number'
+            operator_limit_selection: false
+            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -2655,6 +2654,50 @@ display:
             default_group_multiple: {  }
             group_items: {  }
           plugin_id: string
+        delta:
+          id: delta
+          table: node__references
+          field: delta
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: '='
+          value:
+            min: ''
+            max: ''
+            value: '0'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            placeholder: ''
+            min_placeholder: ''
+            max_placeholder: ''
+            operator_limit_selection: false
+            operator_list: {  }
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          plugin_id: numeric
         delta_1:
           id: delta_1
           table: node__diagnosis
@@ -3031,7 +3074,25 @@ display:
           plugin_id: custom
       use_ajax: true
       header: {  }
-      relationships: {  }
+      relationships:
+        diagnosis:
+          id: diagnosis
+          table: node__diagnosis
+          field: diagnosis
+          relationship: none
+          group_type: group
+          admin_label: 'diagnosis: Taxonomy term'
+          required: true
+          plugin_id: standard
+        treatment:
+          id: treatment
+          table: node__treatment
+          field: treatment
+          relationship: none
+          group_type: group
+          admin_label: 'treatment: Taxonomy term'
+          required: true
+          plugin_id: standard
       style:
         type: html_list
         options:
@@ -3695,11 +3756,9 @@ display:
             description: ''
             use_operator: false
             operator: case_number_value_op
-            operator_limit_selection: false
-            operator_list: {  }
             identifier: case_number_value
             required: false
-            remember: false
+            remember: true
             multiple: false
             remember_roles:
               anonymous: anonymous
@@ -3713,8 +3772,9 @@ display:
               suspected_fraud_submissions: suspected_fraud_submissions
               hcpo_forms: hcpo_forms
               restful_api: restful_api
-              registration_forms: '0'
             placeholder: 'Enter Case Number'
+            operator_limit_selection: false
+            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -3728,6 +3788,50 @@ display:
             default_group_multiple: {  }
             group_items: {  }
           plugin_id: string
+        delta_3:
+          id: delta_3
+          table: node__references
+          field: delta
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: '='
+          value:
+            min: ''
+            max: ''
+            value: '0'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            placeholder: ''
+            min_placeholder: ''
+            max_placeholder: ''
+            operator_limit_selection: false
+            operator_list: {  }
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          plugin_id: numeric
         delta:
           id: delta
           table: node__diagnosis
@@ -5441,7 +5545,7 @@ display:
           relationship: none
           group_type: group
           admin_label: 'diagnosis: Taxonomy term'
-          required: false
+          required: true
           plugin_id: standard
         treatment:
           id: treatment
@@ -5450,7 +5554,7 @@ display:
           relationship: none
           group_type: group
           admin_label: 'treatment: Taxonomy term'
-          required: false
+          required: true
           plugin_id: standard
         health_plan:
           id: health_plan
@@ -5459,7 +5563,7 @@ display:
           relationship: none
           group_type: group
           admin_label: 'health_plan: Taxonomy term'
-          required: false
+          required: true
           plugin_id: standard
         decision:
           id: decision
@@ -5468,7 +5572,7 @@ display:
           relationship: none
           group_type: group
           admin_label: 'decision: Taxonomy term'
-          required: false
+          required: true
           plugin_id: standard
         appeal_type:
           id: appeal_type
@@ -5477,7 +5581,7 @@ display:
           relationship: none
           group_type: group
           admin_label: 'appeal_type: Taxonomy term'
-          required: false
+          required: true
           plugin_id: standard
         gender:
           id: gender
@@ -5486,7 +5590,7 @@ display:
           relationship: none
           group_type: group
           admin_label: 'gender: Taxonomy term'
-          required: false
+          required: true
           plugin_id: standard
         age_range:
           id: age_range
@@ -5495,7 +5599,7 @@ display:
           relationship: none
           group_type: group
           admin_label: 'age_range: Taxonomy term'
-          required: false
+          required: true
           plugin_id: standard
         decision_year:
           id: decision_year
@@ -5504,7 +5608,7 @@ display:
           relationship: none
           group_type: group
           admin_label: 'decision_year: Taxonomy term'
-          required: false
+          required: true
           plugin_id: standard
         appeal_agent:
           id: appeal_agent
@@ -5513,14 +5617,14 @@ display:
           relationship: none
           group_type: group
           admin_label: 'appeal_agent: Taxonomy term'
-          required: false
+          required: true
           plugin_id: standard
       group_by: false
       query:
         type: views_query
         options:
           disable_sql_rewrite: false
-          distinct: true
+          distinct: false
           replica: false
           query_comment: ''
           query_tags: {  }
