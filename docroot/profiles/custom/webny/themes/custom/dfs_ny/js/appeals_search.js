@@ -113,14 +113,28 @@
       });
 
       //add export link to bottom of table
-      $('.export-wrapper', context).once('second-export-link').clone().addClass('below-table').insertAfter('.public-appeal-search-view>table');
+      //$('.export-wrapper', context).once('second-export-link').clone().addClass('below-table').insertAfter('.public-appeal-search-view>table');
+
+      //add export container, move export text after link
+      $('.export-wrapper', context).once('add-export-container').wrap(exportContainer);
+      $('.export-container', context).once('export-setup').append(exportText);
 
       //add export link and functionality
-      let params = '';
-      if (window.location.search.length > 0) {
-        params = window.location.search;
-      }
-      $('.export-wrapper', context).once('export-build').append('<a class="export-trigger" href="/public-appeal/search/export' + params + '">Export</a>');
+      $('.export-wrapper', context).once('export-build').append('<a class="export-trigger" href="#">Export</a>');
+
+      $('.export-trigger', context).once('export-click').on('click', function(evt) {
+        evt.preventDefault();
+        $(exportText).removeAttr('hidden');
+      });
+
+      //add export close functionality
+      $('.export-close-button', context).once('export-close').on('click', function(evt) {
+        evt.preventDefault();
+        $(exportText).attr('hidden','hidden');
+      });
+
+      //remove external class on export link
+      $(exportText).find('a').removeClass('external');
 
       //add expand all link and functionality
       $('.expand-wrapper', context).once('expander-build').append('<a class="expand-trigger" href="#">Expand All<span class="expand-long-text"> Summaries &amp; References</span></a>');
@@ -237,8 +251,14 @@
   };
 
   //tooltips
-  let toolTipContainer = $('<div />').addClass('tooltip-container').html('<a href="#" class="tooltip-toggle">i</a>')
+  let toolTipContainer = $('<div />').addClass('tooltip-container').html('<a href="#" class="tooltip-toggle">i</a>');
   let toolText = $('#block-publicappealssearchtooltip').attr('hidden','hidden').detach();
   let clickedOn = false;
+
+  //export box
+  let exportContainer = $('<div />').addClass('export-container');
+  let exportText = $('#block-datasetexport').attr('hidden','hidden').detach();
+  let exportCloseButton = $('<button />').html('x').addClass('export-close-button');
+  let exportClose = exportText.find('h2').append(exportCloseButton);
 
 })(jQuery, Drupal, this, Drupal.debounce);

@@ -280,7 +280,10 @@ class ImportJson
    */
   protected function getToxonomyTerm(string $name, string $vocabulary)
   {
-    $name = isset($name) ? $name : "None";
+    // $name = isset($name) ? $name : "Over 90";
+    $name = ( !isset($name) || strstr($name, '90-') || strstr($name, '100-') 
+            || strstr($name, '110-') || strstr($name, '120-') ) ? "Over 90" : $name;
+
     $tid = $this->getToxonomyTermIdByName($name, 'name', $vocabulary);
     if (!$tid) {
       $tid = $this->createNewTerm($name, $vocabulary);
@@ -313,6 +316,9 @@ class ImportJson
     $tids_resp = [];
         // $tidParent = $this->getToxonomyTermIdByName($parent, 'machine_name');
     foreach ($names as $name) {
+      if(!isset($name) || trim($name) == "") {
+        continue;
+      }      
       $tid = $this->getToxonomyTermIdByName($name, 'name', $vocabulary);
       if (!$tid) {
         $tid = $this->createNewTerm($name, $vocabulary);
