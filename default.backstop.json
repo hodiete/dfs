@@ -1,0 +1,87 @@
+{
+  "id": "backstop_default",
+  "viewports": [
+    {
+      "label": "mobile",
+      "width": 320,
+      "height": 3000
+    },
+    {
+      "label": "tablet",
+      "width": 568,
+      "height": 3000
+    },
+    {
+      "label": "desktop",
+      "width": 1024,
+      "height": 3000
+    },
+    {
+      "label": "wide",
+      "width": 1400,
+      "height": 3000
+    }
+  ],
+  "onBeforeScript": "puppet/onBefore.js",
+  "onReadyScript": "puppet/onReady.js",
+  "readyEvent": "",
+  "readySelector": "",
+  "delay": 400,
+  "hideSelectors": [],
+  "removeSelectors": ["#ny-universal-navigation","#ny-universal-footer"],
+  "hoverSelector": "",
+  "clickSelector": "",
+  "postInteractionWait": 400,
+  "selectors": [],
+  "selectorExpansion": true,
+  "expect": 0,
+  "misMatchThreshold" : 0.5,
+  "requireSameDimensions": true,
+  "cookiePath": "backstop_data/engine_scripts/cookies.json",
+  "scenarios": [
+    {
+      "label": "home",
+      "url": "https://arts.ny.gov",
+      "referenceUrl": "https://arts.ny.gov/"
+    },
+    {
+      "label": "contact",
+      "url": "https://dfs.ny.gov/contact_us/main",
+      "referenceUrl": "https://dfs.ny.gov/contact_us/main",
+      "delay": 1200,
+      "postInteractionWait": 1200
+    },
+    {
+      "label": "consumers",
+      "url": "https://dfs.ny.gov/consumers",
+      "referenceUrl": "https://dfs.ny.gov/consumers"
+    },
+    {
+      "label": "press",
+      "url": "https://dfs.ny.gov/reports_and_publications/press_releases",
+      "referenceUrl": "https://dfs.ny.gov/reports_and_publications/press_releases"
+    },
+    {
+      "label": "annual reports",
+      "url": "https://dfs.ny.gov/reports_and_publications/dfs_annual_reports",
+      "referenceUrl": "https://dfs.ny.gov/reports_and_publications/dfs_annual_reports"
+    }
+  ],
+  "paths": {
+    "bitmaps_reference": "backstop_data/bitmaps_reference",
+    "bitmaps_test": "backstop_data/bitmaps_test",
+    "engine_scripts": "backstop_data/engine_scripts",
+    "html_report": "backstop_data/html_report",
+    "ci_report": "backstop_data/ci_report"
+  },
+  "report": ["browser"],
+  "engine": "puppeteer",
+  "engineOptions": {
+    "args": ["--no-sandbox"]
+  },
+  "asyncCaptureLimit": 1,
+  "asyncCompareLimit": 1,
+  "debug": false,
+  "debugWindow": false
+}
+
