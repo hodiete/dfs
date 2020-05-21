@@ -7,7 +7,7 @@
 // Style guide: layout.sidebars
 //
 $left-menu-width: 342px;
-@mixin leftmenu-h2 ($width) {
+@mixin leftmenu-h2($width) {
   background-color: #09464c;
   color: white;
   display: block;
@@ -27,7 +27,7 @@ $left-menu-width: 342px;
   width: $width;
 }
 
-@mixin a-is-active ($bgcolor, $font-weight, $decoration) {
+@mixin a-is-active($bgcolor, $font-weight, $decoration) {
   text-decoration: $decoration;
   font-weight: $font-weight;
   background-color: $bgcolor;
@@ -59,13 +59,13 @@ aside.layout-sidebar-first {
   @include breakpoint($min-tablet) {
     aside.layout-sidebar-first {
       @include span(3 of 12);
-      >* {
+      > * {
         // padding-left: 15px;
       }
     }
     main .layout-content {
       @include span(9 of 12 last);
-      >* {
+      > * {
         padding-right: 25px;
       }
     }
@@ -79,13 +79,13 @@ aside.layout-sidebar-first {
   @include breakpoint($min-tablet) {
     aside.layout-sidebar-second {
       @include span(3 of 12 last);
-      >* {
+      > * {
         padding-right: 15px;
       }
     }
     main .layout-content {
       @include span(9 of 12);
-      >* {
+      > * {
         padding-left: 25px;
       }
     }
@@ -99,19 +99,19 @@ aside.layout-sidebar-first {
   @include breakpoint($min-tablet) {
     aside.layout-sidebar-first {
       @include span(2 of 12);
-      >* {
+      > * {
         padding-left: 15px;
       }
     }
     main .layout-content {
       @include span(8 of 12);
-      >* {
+      > * {
         padding-right: 25px;
       }
     }
     aside.layout-sidebar-second {
       @include span(2 of 12 last);
-      >* {
+      > * {
         padding-right: 15px;
       }
     }
@@ -156,7 +156,7 @@ main .layout-content nav {
   ul ul {
     display: none;
     width: auto;
-    background: #FFF;
+    background: #fff;
     list-style-type: none;
     padding-left: 5px;
     a {
@@ -280,7 +280,7 @@ main .layout-content nav {
   ul ul {
     display: none;
     width: 200px;
-    background: #FFF;
+    background: #fff;
     list-style-type: none;
     li {
       display: block;
@@ -323,6 +323,10 @@ main nav .h1-open-sub {
   background-color: white;
 }
 
+.complaint-sidebar .ul-complaint-sidebar {
+  margin-top: -5px;
+}
+
 @media (max-width: 1023px) {
   #sticky-leftmenu {
     display: none;
@@ -332,7 +336,7 @@ main nav .h1-open-sub {
   }
   .complaint-sidebar {
     a {
-      background-color: #E5EEEE; // color: #fff;
+      background-color: #e5eeee; // color: #fff;
       color: #09464c;
       border-bottom: solid 1px #09464c38;
       font-weight: normal;
