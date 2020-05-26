@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0bcc2eba6962635341b42e5b64a00040",
+    "content-hash": "34ecf4ae2fe299f20c8a9fcf76cd1797",
     "packages": [
         {
             "name": "acquia/acsf-tools",
@@ -5437,26 +5437,26 @@
         },
         {
             "name": "drupal/field_group",
-            "version": "1.0.0",
+            "version": "3.0.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/field_group.git",
-                "reference": "8.x-1.0"
+                "reference": "8.x-3.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/field_group-8.x-1.0.zip",
-                "reference": "8.x-1.0",
-                "shasum": "e8aa3fae5c3c5dec84644bb577996938d638a611"
+                "url": "https://ftp.drupal.org/files/projects/field_group-8.x-3.0.zip",
+                "reference": "8.x-3.0",
+                "shasum": "8d87cdc4abc417aa4d411bffcaeb0a3ef1afa497"
             },
             "require": {
-                "drupal/core": "*"
+                "drupal/core": "^8 || ^9"
             },
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-1.0",
-                    "datestamp": "1510352885",
+                    "version": "8.x-3.0",
+                    "datestamp": "1580250787",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -6913,29 +6913,30 @@
         },
         {
             "name": "drupal/rename_admin_paths",
-            "version": "1.1.0",
+            "version": "2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/rename_admin_paths.git",
-                "reference": "8.x-1.1"
+                "reference": "8.x-2.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/rename_admin_paths-8.x-1.1.zip",
-                "reference": "8.x-1.1",
-                "shasum": "baeb57bb0fef03e87f69be7dacee540d3e72cf0f"
+                "url": "https://ftp.drupal.org/files/projects/rename_admin_paths-8.x-2.0.zip",
+                "reference": "8.x-2.0",
+                "shasum": "9c7eaddb0af467635cd1d9e824a00ab50de4fec5"
             },
             "require": {
-                "drupal/core": "~8.0"
+                "drupal/core": "^8.7|^9.0",
+                "php": "^7.1"
             },
             "type": "drupal-module",
             "extra": {
                 "branch-alias": {
-                    "dev-1.x": "1.x-dev"
+                    "dev-2.x": "2.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-1.1",
-                    "datestamp": "1476916439",
+                    "version": "8.x-2.0",
+                    "datestamp": "1574153584",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -6944,7 +6945,7 @@
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
             "license": [
-                "GPL-2.0-or-later"
+                "GPL-2.0"
             ],
             "authors": [
                 {
@@ -6956,8 +6957,15 @@
                     "homepage": "https://www.drupal.org/user/3516667"
                 }
             ],
-            "description": "Rename admin path /admin/.. and /user/.. to /something/..",
+            "description": "The purpose of this module is to secure drupal backend by renaming the admin paths.",
             "homepage": "https://www.drupal.org/project/rename_admin_paths",
+            "keywords": [
+                "admin",
+                "guess",
+                "override",
+                "protect",
+                "security"
+            ],
             "support": {
                 "source": "https://git.drupalcode.org/project/rename_admin_paths"
             }
@@ -7514,26 +7522,27 @@
         },
         {
             "name": "drupal/simple_sitemap",
-            "version": "2.12.0",
+            "version": "3.6.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/simple_sitemap.git",
-                "reference": "8.x-2.12"
+                "reference": "8.x-3.6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/simple_sitemap-8.x-2.12.zip",
-                "reference": "8.x-2.12",
-                "shasum": "fe1c1a636adfba8358399a5a1ccdf20685066573"
+                "url": "https://ftp.drupal.org/files/projects/simple_sitemap-8.x-3.6.zip",
+                "reference": "8.x-3.6",
+                "shasum": "37fc0ae98a4ccb23316cb089ae4839913e80cbf6"
             },
             "require": {
-                "drupal/core": "~8.0"
+                "drupal/core": "^8 || ^9",
+                "ext-xmlwriter": "*"
             },
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-2.12",
-                    "datestamp": "1542505221",
+                    "version": "8.x-3.6",
+                    "datestamp": "1586469908",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -7541,7 +7550,7 @@
                 },
                 "drush": {
                     "services": {
-                        "drush.services.yml": "^9"
+                        "drush.services.yml": "^9 || ^10"
                     }
                 }
             },
@@ -7555,14 +7564,9 @@
                     "homepage": "https://www.drupal.org/u/gbyte.co",
                     "email": "contact@gbyte.co",
                     "role": "Maintainer"
-                },
-                {
-                    "name": "Sam Becker (Sam152)",
-                    "homepage": "https://www.drupal.org/u/sam152",
-                    "role": "Co-maintainer"
                 }
             ],
-            "description": "Simple XML sitemap creates a standard conform XML sitemap of your content.",
+            "description": "Creates a standard conform hreflang XML sitemap of the site content and provides a framework for developing other sitemap types.",
             "homepage": "https://drupal.org/project/simple_sitemap",
             "support": {
                 "source": "https://cgit.drupalcode.org/simple_sitemap",
