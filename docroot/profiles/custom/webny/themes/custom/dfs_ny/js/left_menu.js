@@ -16,7 +16,6 @@
             let breadcrumHeight = 0;
             let fromTopHeight = 0;
             let navHeight = 0;
-            // let covidBanner = 0;
             let nyGovNav = 90;
             let sticky = $("#sticky-leftmenu", context).parent("nav");
             let sticky2 = $("#webny-global-header", context);
@@ -45,19 +44,11 @@
             if ($("#nydfs-breadcrumb", context).height() >= 0) {
               breadcrumHeight = $("#nydfs-breadcrumb", context).outerHeight();
             }
-            // if ($("#nygov-global-notification", context).height() >= 0) {
-            //   covidBanner = $(
-            //     "#nygov-global-notification",
-            //     context
-            //   ).outerHeight();
-            // }
             if (heroParent.height() >= 0) {
               heroHeight = heroParent.outerHeight();
             }
-            // fromTopHeight = heroHeight + adminNavHeight + navHeight + nyGovNav + toolbarTray+ breadcrumHeight + 50;
-            // sticky.css({ position: 'absolute', top: fromTopHeight });
             if (sticky.offset()) {
-              stickNavigation(sticky, stickyrStopper, false, 20);
+              stickNavigation(sticky, stickyrStopper, false, 0);
             }
           } else {
             // The left menu is superfluous and, worse, broken at smaller sizes. Just use the main menu which does follow the active trail anyways/.
@@ -109,9 +100,7 @@
           } else {
             stickyStopperPosition = 800;
           }
-          // let stopPoint = stickyStopperPosition - generalSidebarHeight - stickOffset;
           let stopPoint = stickyStopperPosition - generalSidebarHeight;
-          //  console.log(stopPoint + " | " + stickyStopperPosition + " | " + generalSidebarHeight + " | " + stickOffset);
 
           let diff = stopPoint + stickOffset;
 
@@ -150,25 +139,6 @@
                 top: "initial",
               });
             }
-            // if ($topMenu && windowTop <= 90) {
-            //   $sticky.css({ position: 'relative', top: 'initial' });
-            //   // console.log('windowTop = ' + windowTop + 'stopTop = ' +stopPoint );
-            // } else {
-            //   if (windowTop <= fromTop) {
-            //     $sticky.css({ position: 'absolute', top: fromTop });
-            //     // console.log(' windowTop ' + windowTop + ' : fromTop:' + fromTop);
-            //   } else {
-            //     // console.log(' windowTop ' + windowTop + ' : stopPoint:' + stopPoint);
-            //     if (stopPoint < windowTop) {
-            //       $sticky.css({ position: 'absolute', top: diff });
-            //     } else if (stickyTop < windowTop + stickOffset) {
-            //       // console.log('stickyTop ' + stickyTop);
-            //       $sticky.css({ position: 'fixed', top: stickOffset });
-            //     } else {
-            //       $sticky.css({ position: myPosition, top: 'initial'});
-            //     }
-            //   }
-            // }
           });
         }
       }
