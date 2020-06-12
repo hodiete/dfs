@@ -18,7 +18,6 @@ dependencies:
     - field_group
     - link
     - text
-    - workbench_moderation
 third_party_settings:
   field_group:
     group_webny_key_point_grp1:
@@ -35,6 +34,7 @@ third_party_settings:
         classes: ''
         required_fields: true
         description: ''
+      region: content
     group_webny_summary_keypoint2:
       children:
         - field_webny_summary_keypoint2
@@ -49,6 +49,7 @@ third_party_settings:
         classes: ''
         required_fields: true
         description: ''
+      region: content
     group_webny_summary_keypoint3:
       children:
         - field_webny_summary_keypoint3
@@ -63,6 +64,7 @@ third_party_settings:
         classes: ''
         required_fields: false
         description: ''
+      region: content
 _core:
   default_config_hash: RFdKUnVhIzZDQIFQNUbYhzS4vIe8_KDfWkeAirms9vc
 id: paragraph.webny_summary_pgtype.default
