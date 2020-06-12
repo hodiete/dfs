@@ -781,3 +781,13 @@ if (isset($_SERVER['DEVDESKTOP_DRUPAL_SETTINGS_DIR']) && file_exists($_SERVER['D
  *
  * @link http://blt.readthedocs.io
  */
+
+
+/**
+* Set configuration directories
+*/
+$config_directories = array();
+$config_directories['sync'] = $app_root . '/../config/sync';
+$config_directories['blt'] = $app_root . '/../config/default';
+
+

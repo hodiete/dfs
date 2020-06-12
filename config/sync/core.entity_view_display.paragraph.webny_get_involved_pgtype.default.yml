@@ -1,0 +1,84 @@
+uuid: 0b471535-7ec4-4f88-949c-40d89ae3e01f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.webny_get_involved_pgtype.field_webny_get_inv_color
+    - field.field.paragraph.webny_get_involved_pgtype.field_webny_get_inv_cta
+    - field.field.paragraph.webny_get_involved_pgtype.field_webny_get_inv_description
+    - field.field.paragraph.webny_get_involved_pgtype.field_webny_get_inv_headline
+    - field.field.paragraph.webny_get_involved_pgtype.field_webny_get_inv_share_title
+    - field.field.paragraph.webny_get_involved_pgtype.field_webny_get_inv_toc
+    - field.field.paragraph.webny_get_involved_pgtype.field_webny_get_involved_title
+    - paragraphs.paragraphs_type.webny_get_involved_pgtype
+  module:
+    - field_group
+    - link
+third_party_settings:
+  field_group:
+    group_webny_get_inv_cta_buttons:
+      children:
+        - field_webny_get_inv_cta
+      parent_name: ''
+      weight: 3
+      label: 'Call To Action Buttons'
+      format_type: html_element
+      format_settings:
+        label: 'Call To Action Buttons'
+        element: div
+        show_label: false
+        label_element: h3
+        attributes: ''
+        effect: none
+        speed: fast
+        id: ''
+        classes: get-involved--cta-wrapper
+      region: content
+_core:
+  default_config_hash: W7qPPTjvA_X211Lz0g2F-7-lM8-pwr156Ctk-WUp3sE
+id: paragraph.webny_get_involved_pgtype.default
+targetEntityType: paragraph
+bundle: webny_get_involved_pgtype
+mode: default
+content:
+  field_webny_get_inv_cta:
+    weight: 4
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+    region: content
+  field_webny_get_inv_description:
+    weight: 2
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
+  field_webny_get_inv_headline:
+    weight: 1
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_webny_get_involved_title:
+    weight: 0
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden:
+  created: true
+  field_webny_get_inv_color: true
+  field_webny_get_inv_share_title: true
+  field_webny_get_inv_toc: true
+  uid: true
