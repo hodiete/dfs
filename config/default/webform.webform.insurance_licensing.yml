@@ -1,0 +1,284 @@
+uuid: 437ff4e2-f18e-4260-96d4-f209ca6e363f
+langcode: en
+status: open
+dependencies:
+  module:
+    - honeypot
+third_party_settings:
+  honeypot:
+    honeypot: true
+    time_restriction: true
+open: null
+close: null
+weight: 0
+uid: 6
+template: false
+archive: false
+id: insurance_licensing
+title: 'Email the Insurance Licensing Bureau'
+description: 'A form for industry (primarily insurance agents and brokers) with questions about&nbsp; licencing.'
+category: Insurance
+elements: "markup:\n  '#type': webform_markup\n  '#markup': |\n    <p>This Form is for questions related to insurance licensing.&nbsp;If you are an Agent or Broker with licensing questions, visit <a href=\"/apps_and_licensing/agents_and_brokers/home\">our Agents and Brokers home page</a>, or check our FAQs before using this form.</p>\n    \n    <ul>\n    \t<li><strong>Do not use this form to file a complaint. </strong>If you are a consumer or provider and want to file a complaint, visit <a href=\"/complaints/file_a_complaint\">File A Complaint</a>.</li>\n    </ul>\n    \nname:\n  '#type': webform_name\n  '#title': Name\n  '#title_display': ''\n  '#middle__access': false\n  '#suffix__access': false\n  '#degree__access': false\n  '#flexbox': '1'\nemail_address:\n  '#type': email\n  '#title': 'Email Address'\n  '#title_display': inline\n  '#required': true\n  '#required_error': 'Email is required'\ncontact_type:\n  '#type': select\n  '#title': 'You are a(n):'\n  '#title_display': inline\n  '#options':\n    Agent: Agent\n    Broker: Broker\n    Adjuster: Adjuster\n    Consultant: Consultant\n    'Bail Bond': 'Bail Bond'\n    'Excess Line': 'Excess Line'\n    Other: Other\n  '#empty_option': 'Select One'\n  '#empty_value': '1'\n  '#required': true\ncompany_name:\n  '#type': textfield\n  '#title': 'Company Name'\nlicense_number_if_ny_licensed_:\n  '#type': number\n  '#title': 'License Number (If NY Licensed)'\nphone_number:\n  '#type': tel\n  '#title': 'Phone Number'\nyour_mailing_address:\n  '#type': webform_address\n  '#title': 'Your Mailing Address'\n  '#country__access': false\nenter_your_question_or_request_below_:\n  '#type': textarea\n  '#title': 'Enter your question or request below:'\ncaptcha:\n  '#type': captcha"
+css: ''
+javascript: ''
+settings:
+  ajax: false
+  ajax_scroll_top: form
+  page: true
+  page_submit_path: test/form/test/test1
+  page_confirm_path: ''
+  form_title: both
+  form_submit_once: false
+  form_exception_message: ''
+  form_open_message: ''
+  form_close_message: ''
+  form_previous_submissions: true
+  form_confidential: false
+  form_confidential_message: ''
+  form_remote_addr: true
+  form_convert_anonymous: false
+  form_prepopulate: false
+  form_prepopulate_source_entity: false
+  form_prepopulate_source_entity_required: false
+  form_prepopulate_source_entity_type: ''
+  form_reset: false
+  form_disable_autocomplete: false
+  form_novalidate: false
+  form_disable_inline_errors: false
+  form_required: false
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
+  form_autofocus: false
+  form_details_toggle: false
+  form_access_denied: default
+  form_access_denied_title: ''
+  form_access_denied_message: ''
+  form_access_denied_attributes: {  }
+  form_file_limit: ''
+  submission_label: ''
+  submission_log: false
+  submission_views: {  }
+  submission_views_replace: {  }
+  submission_user_columns: {  }
+  submission_user_duplicate: false
+  submission_access_denied: default
+  submission_access_denied_title: ''
+  submission_access_denied_message: ''
+  submission_access_denied_attributes: {  }
+  submission_exception_message: ''
+  submission_locked_message: ''
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
+  previous_submission_message: ''
+  previous_submissions_message: ''
+  autofill: false
+  autofill_message: ''
+  autofill_excluded_elements: {  }
+  wizard_progress_bar: true
+  wizard_progress_pages: false
+  wizard_progress_percentage: false
+  wizard_progress_link: false
+  wizard_start_label: ''
+  wizard_preview_link: false
+  wizard_confirmation: true
+  wizard_confirmation_label: ''
+  wizard_track: ''
+  preview: 0
+  preview_label: ''
+  preview_title: ''
+  preview_message: ''
+  preview_attributes: {  }
+  preview_excluded_elements: {  }
+  preview_exclude_empty: true
+  preview_exclude_empty_checkbox: false
+  draft: none
+  draft_multiple: false
+  draft_auto_save: false
+  draft_saved_message: ''
+  draft_loaded_message: ''
+  confirmation_type: page
+  confirmation_title: ''
+  confirmation_message: ''
+  confirmation_url: ''
+  confirmation_attributes: {  }
+  confirmation_back: true
+  confirmation_back_label: ''
+  confirmation_back_attributes: {  }
+  confirmation_exclude_query: false
+  confirmation_exclude_token: false
+  limit_total: null
+  limit_total_interval: null
+  limit_total_message: ''
+  limit_total_unique: false
+  limit_user: null
+  limit_user_interval: null
+  limit_user_message: ''
+  limit_user_unique: false
+  entity_limit_total: null
+  entity_limit_total_interval: null
+  entity_limit_user: null
+  entity_limit_user_interval: null
+  purge: none
+  purge_days: null
+  results_disabled: false
+  results_disabled_ignore: false
+  token_update: false
+access:
+  create:
+    roles:
+      - anonymous
+      - authenticated
+    users: {  }
+    permissions: {  }
+  view_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  purge_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  view_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  administer:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  test:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  configuration:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+handlers:
+  email:
+    id: email
+    label: 'Insurance Licensing Questions'
+    handler_id: email
+    status: true
+    conditions: {  }
+    weight: 0
+    settings:
+      states:
+        - completed
+      to_mail: licensing@dfs.ny.gov
+      to_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      from_mail: '[webform_submission:values:email_address:raw]'
+      from_options: {  }
+      from_name: '[webform_submission:values:name:value]'
+      subject: 'Insurance Licensing Question'
+      body: _default
+      excluded_elements: {  }
+      ignore_access: false
+      exclude_empty: true
+      exclude_empty_checkbox: false
+      html: true
+      attachments: false
+      twig: false
+      debug: false
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
+      theme_name: ''
+      exclude_attachments: false
+      parameters: {  }
+  email_1:
+    id: email
+    label: 'IT Form Manager'
+    handler_id: email_1
+    status: true
+    conditions: {  }
+    weight: 0
+    settings:
+      states:
+        - completed
+      to_mail: joel.obuchowski@dfs.ny.gov
+      to_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      bcc_mail: _default
+      bcc_options: {  }
+      from_mail: _default
+      from_options: {  }
+      from_name: _default
+      subject: _default
+      body: _default
+      excluded_elements: {  }
+      ignore_access: false
+      exclude_empty: true
+      exclude_empty_checkbox: false
+      html: true
+      attachments: false
+      twig: false
+      debug: false
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
+      theme_name: ''
+      exclude_attachments: false
+      parameters: {  }
+  email_2:
+    id: email
+    label: 'Public Affairs'
+    handler_id: email_2
+    status: true
+    conditions: {  }
+    weight: 0
+    settings:
+      states:
+        - completed
+      to_mail: eileen.greene@dfs.ny.gov
+      to_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      from_mail: '[webform_submission:values:email_address:raw]'
+      from_options: {  }
+      from_name: _default
+      subject: 'Ask an Insurance Question'
+      body: _default
+      excluded_elements: {  }
+      ignore_access: false
+      exclude_empty: true
+      exclude_empty_checkbox: false
+      html: true
+      attachments: false
+      twig: false
+      debug: false
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
+      theme_name: ''
+      exclude_attachments: false
+      parameters: {  }
+variants: {  }
