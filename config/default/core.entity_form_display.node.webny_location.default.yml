@@ -1,0 +1,238 @@
+uuid: e3edc2c8-9744-4b8f-905a-fa9239b5b835
+langcode: en
+status: true
+dependencies:
+  config:
+    - entity_browser.browser.image_browser
+    - field.field.node.webny_location.field_webny_agency_keywords
+    - field.field.node.webny_location.field_webny_filter_terms
+    - field.field.node.webny_location.field_webny_location_address
+    - field.field.node.webny_location.field_webny_location_contentsec
+    - field.field.node.webny_location.field_webny_location_counties
+    - field.field.node.webny_location.field_webny_location_heroimage
+    - field.field.node.webny_location.field_webny_location_meta_tags
+    - field.field.node.webny_location.field_webny_location_navtoggle
+    - field.field.node.webny_location.field_webny_location_phone
+    - field.field.node.webny_location.field_webny_location_short_title
+    - field.field.node.webny_location.field_webny_location_summary
+    - field.field.node.webny_location.field_webny_location_type_tax
+    - node.type.webny_location
+  module:
+    - address
+    - entity_browser
+    - field_group
+    - metatag
+    - paragraphs
+    - path
+    - shs
+    - text
+    - workbench_moderation
+third_party_settings:
+  field_group:
+    group_webny_location_toc:
+      children:
+        - field_webny_location_navtoggle
+        - field_webny_location_contentsec
+      parent_name: ''
+      weight: 6
+      format_type: details
+      format_settings:
+        id: section-location-toc
+        classes: ''
+        open: false
+        required_fields: true
+      label: 'Sections and Table of Contents'
+    group_location_hero_fields:
+      children:
+        - field_webny_location_address
+        - field_webny_location_phone
+        - field_webny_location_heroimage
+      parent_name: ''
+      weight: 5
+      format_type: details
+      format_settings:
+        id: webny-hero-fields
+        classes: ''
+        open: true
+        required_fields: true
+      label: 'Location Hero Fields'
+_core:
+  default_config_hash: ADm99H1f8AZwBGsJVzDbc3CyqObVJ5SxZGNjPbdXAYA
+id: node.webny_location.default
+targetEntityType: node
+bundle: webny_location
+mode: default
+content:
+  created:
+    type: datetime_timestamp
+    weight: 11
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_webny_agency_keywords:
+    weight: 7
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+      match_limit: 10
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  field_webny_filter_terms:
+    weight: 8
+    settings:
+      display_node_count: false
+      create_new_items: false
+      create_new_levels: false
+      force_deepest: false
+    third_party_settings: {  }
+    type: options_shs
+    region: content
+  field_webny_location_address:
+    weight: 11
+    settings:
+      default_country: US
+    third_party_settings: {  }
+    type: address_default
+    region: content
+  field_webny_location_contentsec:
+    type: entity_reference_paragraphs
+    weight: 11
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: closed
+      add_mode: button
+      form_display_mode: generic_form
+      default_paragraph_type: _none
+    third_party_settings: {  }
+    region: content
+  field_webny_location_counties:
+    weight: 4
+    settings: {  }
+    third_party_settings: {  }
+    type: options_buttons
+    region: content
+  field_webny_location_heroimage:
+    weight: 13
+    settings:
+      entity_browser: image_browser
+      field_widget_display: rendered_entity
+      field_widget_edit: true
+      field_widget_remove: true
+      open: true
+      selection_mode: selection_append
+      field_widget_display_settings:
+        view_mode: media_library
+    third_party_settings: {  }
+    type: entity_browser_entity_reference
+    region: content
+  field_webny_location_meta_tags:
+    type: metatag_firehose
+    weight: 15
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_webny_location_navtoggle:
+    weight: 10
+    settings: {  }
+    third_party_settings: {  }
+    type: options_buttons
+    region: content
+  field_webny_location_phone:
+    type: entity_reference_paragraphs
+    weight: 12
+    settings:
+      title: 'Phone Number'
+      title_plural: 'Phone Numbers'
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: webny_phone_contact
+    third_party_settings: {  }
+    region: content
+  field_webny_location_short_title:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_webny_location_summary:
+    weight: 2
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textfield
+    region: content
+  field_webny_location_type_tax:
+    weight: 3
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+      match_limit: 10
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  langcode:
+    type: language_select
+    weight: 13
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 14
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  promote:
+    type: boolean_checkbox
+    weight: 10
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 121
+    third_party_settings: {  }
+    region: content
+  sticky:
+    type: boolean_checkbox
+    weight: 9
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 12
+    region: content
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+      match_limit: 10
+    third_party_settings: {  }
+  url_redirects:
+    weight: 50
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden: {  }

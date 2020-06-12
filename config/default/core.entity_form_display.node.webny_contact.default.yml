@@ -1,0 +1,380 @@
+uuid: f5eb096a-86a5-485d-9232-6653bdff2dae
+langcode: en
+status: true
+dependencies:
+  config:
+    - entity_browser.browser.image_browser
+    - field.field.node.webny_contact.field_webny_contact_address
+    - field.field.node.webny_contact.field_webny_contact_caption
+    - field.field.node.webny_contact.field_webny_contact_details
+    - field.field.node.webny_contact.field_webny_contact_email
+    - field.field.node.webny_contact.field_webny_contact_facebook
+    - field.field.node.webny_contact.field_webny_contact_fax
+    - field.field.node.webny_contact.field_webny_contact_flickr_link
+    - field.field.node.webny_contact.field_webny_contact_global_key
+    - field.field.node.webny_contact.field_webny_contact_google
+    - field.field.node.webny_contact.field_webny_contact_image
+    - field.field.node.webny_contact.field_webny_contact_instagram
+    - field.field.node.webny_contact.field_webny_contact_linkedin
+    - field.field.node.webny_contact.field_webny_contact_mapdir
+    - field.field.node.webny_contact.field_webny_contact_name
+    - field.field.node.webny_contact.field_webny_contact_pintrest
+    - field.field.node.webny_contact.field_webny_contact_pro_subtitle
+    - field.field.node.webny_contact.field_webny_contact_protitle
+    - field.field.node.webny_contact.field_webny_contact_reslink
+    - field.field.node.webny_contact.field_webny_contact_rss_link
+    - field.field.node.webny_contact.field_webny_contact_snapchat
+    - field.field.node.webny_contact.field_webny_contact_soundcloud
+    - field.field.node.webny_contact.field_webny_contact_tumblr_link
+    - field.field.node.webny_contact.field_webny_contact_twitter
+    - field.field.node.webny_contact.field_webny_contact_vimeo_link
+    - field.field.node.webny_contact.field_webny_contact_vine_link
+    - field.field.node.webny_contact.field_webny_contact_youtube
+    - field.field.node.webny_contact.field_webny_filter_terms
+    - field.field.node.webny_contact.field_webny_phone_contact
+    - node.type.webny_contact
+  module:
+    - address
+    - entity_browser
+    - field_group
+    - link
+    - paragraphs
+    - path
+    - shs
+    - telephone
+    - text
+    - workbench_moderation
+third_party_settings:
+  field_group:
+    group_webny_contact_bio_frame:
+      children:
+        - field_webny_contact_protitle
+        - field_webny_contact_name
+        - field_webny_contact_pro_subtitle
+        - field_webny_contact_caption
+        - field_webny_contact_reslink
+        - field_webny_contact_image
+      parent_name: ''
+      weight: 24
+      label: 'Bio Frame'
+      format_type: fieldset
+      format_settings:
+        label: 'Bio Frame'
+        id: ''
+        classes: bioframe
+        required_fields: true
+        description: ''
+_core:
+  default_config_hash: sGe8It_KeSc_k98zkVuUvpkPkBPzzEHRzRwOiXEe6ek
+id: node.webny_contact.default
+targetEntityType: node
+bundle: webny_contact
+mode: default
+content:
+  created:
+    type: datetime_timestamp
+    weight: 25
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_webny_contact_address:
+    weight: 5
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  field_webny_contact_caption:
+    weight: 31
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textarea
+    region: content
+  field_webny_contact_details:
+    weight: 7
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  field_webny_contact_email:
+    weight: 4
+    settings:
+      placeholder: ''
+      size: 60
+    third_party_settings: {  }
+    type: email_default
+    region: content
+  field_webny_contact_facebook:
+    weight: 8
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
+  field_webny_contact_fax:
+    weight: 2
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: telephone_default
+    region: content
+  field_webny_contact_flickr_link:
+    weight: 11
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
+  field_webny_contact_global_key:
+    weight: 23
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+      match_limit: 10
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  field_webny_contact_google:
+    weight: 19
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
+  field_webny_contact_image:
+    weight: 33
+    settings:
+      entity_browser: image_browser
+      field_widget_display: rendered_entity
+      field_widget_edit: true
+      field_widget_remove: true
+      open: true
+      selection_mode: selection_append
+      field_widget_display_settings:
+        view_mode: media_library
+    third_party_settings: {  }
+    type: entity_browser_entity_reference
+    region: content
+  field_webny_contact_instagram:
+    weight: 12
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
+  field_webny_contact_linkedin:
+    weight: 18
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
+  field_webny_contact_mapdir:
+    weight: 6
+    settings:
+      default_country: ''
+    third_party_settings: {  }
+    type: address_default
+    region: content
+  field_webny_contact_name:
+    weight: 28
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_webny_contact_pintrest:
+    weight: 16
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
+  field_webny_contact_pro_subtitle:
+    weight: 29
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_webny_contact_protitle:
+    weight: 27
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_webny_contact_reslink:
+    weight: 32
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
+  field_webny_contact_rss_link:
+    weight: 14
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
+  field_webny_contact_snapchat:
+    weight: 21
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
+  field_webny_contact_soundcloud:
+    weight: 15
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
+  field_webny_contact_tumblr_link:
+    weight: 17
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
+  field_webny_contact_twitter:
+    weight: 9
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
+  field_webny_contact_vimeo_link:
+    weight: 20
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
+  field_webny_contact_vine_link:
+    weight: 13
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
+  field_webny_contact_youtube:
+    weight: 10
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
+  field_webny_filter_terms:
+    weight: 29
+    settings:
+      force_deepest: false
+      display_node_count: false
+      create_new_items: false
+      create_new_levels: false
+    third_party_settings: {  }
+    type: options_shs
+    region: content
+  field_webny_phone_contact:
+    type: entity_reference_paragraphs
+    weight: 1
+    settings:
+      title: 'Phone Number'
+      title_plural: 'Phone Numbers'
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: ''
+    third_party_settings: {  }
+    region: content
+  langcode:
+    type: language_select
+    weight: 3
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+    region: content
+  path:
+    type: path
+    weight: 28
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  promote:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 26
+    third_party_settings: {  }
+    region: content
+  status:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 121
+    third_party_settings: {  }
+    region: content
+  sticky:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 27
+    third_party_settings: {  }
+    region: content
+  title:
+    type: string_textfield
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    region: content
+  uid:
+    type: entity_reference_autocomplete
+    weight: 22
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+      match_limit: 10
+    third_party_settings: {  }
+    region: content
+  url_redirects:
+    weight: 50
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  webny_contact_mapdir:
+    weight: 6
+    settings:
+      default_country: ''
+    third_party_settings: {  }
+    type: address_default
+    region: content
+hidden: {  }

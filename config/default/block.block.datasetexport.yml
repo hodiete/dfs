@@ -1,0 +1,31 @@
+uuid: 5b1b45a8-94c3-49c8-829c-0313db62180c
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:dfs_block:70c1b6eb-56a6-4089-82f4-f4ae4dec3dfa'
+  module:
+    - block_content
+    - system
+  theme:
+    - dfs_ny
+id: datasetexport
+theme: dfs_ny
+region: content
+weight: 2
+provider: null
+plugin: 'block_content:70c1b6eb-56a6-4089-82f4-f4ae4dec3dfa'
+settings:
+  id: 'block_content:70c1b6eb-56a6-4089-82f4-f4ae4dec3dfa'
+  label: 'Dataset Export'
+  provider: block_content
+  label_display: visible
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: /public-appeal/search
+    negate: false
+    context_mapping: {  }
