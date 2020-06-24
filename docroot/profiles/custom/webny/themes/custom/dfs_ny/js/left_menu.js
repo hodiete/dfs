@@ -5,6 +5,7 @@
       // calculate the height of everything above the content area
       $(window).on("load", function () {
         if ($("#sticky-leftmenu", context)) {
+          window.scrollTo(0, 1);
           if ($(window).width() >= 1024) {
             // we have to force this to load after the page does even though we are in a drupal behavior
 
@@ -14,7 +15,7 @@
             let adminNavHeight = 0;
             let toolbarTray = 0;
             let breadcrumHeight = 0;
-            let fromTopHeight = 0;
+            let fromTopHeight = 1;
             let navHeight = 0;
             let nyGovNav = 90;
             let sticky = $("#sticky-leftmenu", context).parent("nav");
