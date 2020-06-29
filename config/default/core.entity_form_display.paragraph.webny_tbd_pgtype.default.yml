@@ -17,7 +17,6 @@ dependencies:
     - field_group
     - link
     - text
-    - workbench_moderation
 third_party_settings:
   field_group:
     group_descriptor_grouping_1:
@@ -34,6 +33,7 @@ third_party_settings:
         description: ''
         required_fields: true
       label: 'Descriptor Grouping 1'
+      region: content
     group_descriptor_grouping_2:
       children:
         - field_webny_tbd_descriptortitle2
@@ -48,6 +48,7 @@ third_party_settings:
         description: ''
         required_fields: true
       label: 'Descriptor Grouping 2'
+      region: content
 _core:
   default_config_hash: fNcq4enqNcEhrvdyDU86ysmkOBtvSVTE6XzSqfqR97g
 id: paragraph.webny_tbd_pgtype.default

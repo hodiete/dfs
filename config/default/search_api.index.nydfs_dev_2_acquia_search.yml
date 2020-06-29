@@ -1,7 +1,17 @@
 uuid: bed76f60-81ab-47d2-bc34-6982f64b6ea3
 langcode: en
-status: true
+status: false
 dependencies:
+  module:
+    - comment
+    - node
+    - menu_link_content
+    - file
+    - media_entity
+    - paragraphs
+    - taxonomy
+    - taxonomy_machine_name
+    - search_api
   config:
     - field.storage.node.body
     - field.storage.node.field_webny_page_description
@@ -22,19 +32,10 @@ dependencies:
     - field.storage.paragraph.field_card_body
     - field.storage.paragraph.field_page_title
     - search_api.server.acquia_search_server
-  module:
-    - search_api
-    - comment
-    - node
-    - menu_link_content
-    - file
-    - media_entity
-    - paragraphs
-    - taxonomy
 id: nydfs_dev_2_acquia_search
 name: 'NYDFS DEV 2: Acquia Search'
 description: 'DFS DEV2: Acquia Search Index'
-read_only: false
+read_only: true
 field_settings:
   node_grants:
     label: 'Node access information'
@@ -48,6 +49,9 @@ field_settings:
     datasource_id: 'entity:comment'
     property_path: subject
     type: text
+    dependencies:
+      module:
+        - comment
   status_2:
     label: status_2
     datasource_id: 'entity:comment'
@@ -55,6 +59,9 @@ field_settings:
     type: boolean
     indexed_locked: true
     type_locked: true
+    dependencies:
+      module:
+        - comment
   body:
     label: Body
     datasource_id: 'entity:node'
@@ -102,11 +109,17 @@ field_settings:
     property_path: title
     type: text
     boost: !!float 5
+    dependencies:
+      module:
+        - node
   changed:
     label: Changed
     datasource_id: 'entity:node'
     property_path: changed
     type: date
+    dependencies:
+      module:
+        - node
   field_answer:
     label: Answer
     datasource_id: 'entity:node'
@@ -138,6 +151,9 @@ field_settings:
     datasource_id: 'entity:node'
     property_path: nid
     type: integer
+    dependencies:
+      module:
+        - node
   field_webny_news_subtitles:
     label: 'Sub Titles'
     datasource_id: 'entity:node'
@@ -180,6 +196,9 @@ field_settings:
     type: boolean
     indexed_locked: true
     type_locked: true
+    dependencies:
+      module:
+        - node
   uid:
     label: uid
     datasource_id: 'entity:node'
@@ -187,35 +206,53 @@ field_settings:
     type: integer
     indexed_locked: true
     type_locked: true
+    dependencies:
+      module:
+        - node
   menu_name:
     label: 'Menu name'
     datasource_id: 'entity:menu_link_content'
     property_path: menu_name
     type: text
     boost: !!float 2
+    dependencies:
+      module:
+        - menu_link_content
   title_1:
     label: 'Menu link title'
     datasource_id: 'entity:menu_link_content'
     property_path: title
     type: text
+    dependencies:
+      module:
+        - menu_link_content
   filename:
     label: Filename
     datasource_id: 'entity:file'
     property_path: filename
     type: text
     boost: 0.8
+    dependencies:
+      module:
+        - file
   uri:
     label: URI
     datasource_id: 'entity:file'
     property_path: uri
     type: text
     boost: 0.8
+    dependencies:
+      module:
+        - file
   name_1:
     label: 'Media name'
     datasource_id: 'entity:media'
     property_path: name
     type: text
     boost: 0.8
+    dependencies:
+      module:
+        - media_entity
   field_webny_announcement_title:
     label: 'Announcement Title'
     datasource_id: 'entity:paragraph'
@@ -279,16 +316,25 @@ field_settings:
     datasource_id: 'entity:paragraph'
     property_path: status
     type: boolean
+    dependencies:
+      module:
+        - paragraphs
   name:
     label: Name
     datasource_id: 'entity:taxonomy_term'
     property_path: name
     type: text
+    dependencies:
+      module:
+        - taxonomy
   machine_name:
     label: 'Machine name'
     datasource_id: 'entity:taxonomy_term'
     property_path: machine_name
     type: text
+    dependencies:
+      module:
+        - taxonomy_machine_name
 datasource_settings:
   'entity:comment':
     bundles:
@@ -336,17 +382,31 @@ datasource_settings:
       default: true
       selected: {  }
 processor_settings:
+  stemmer:
+    all_fields: false
+    fields:
+      - subject
+      - body
+      - field_webny_page_description
+      - field_question
+      - field_answer
+      - field_question_1
+      - field_body
+      - field_card_body
+    exceptions:
+      texan: texa
+      mexican: mexic
+    weights:
+      preprocess_index: 0
+      preprocess_query: 0
+  rendered_item: {  }
+  add_url: {  }
+  aggregated_field: {  }
   hierarchy:
     fields:
       field_dfs_page_structure: taxonomy_term-parent
     weights:
       preprocess_index: -45
-  add_url: {  }
-  aggregated_field: {  }
-  content_access:
-    weights:
-      preprocess_query: -30
-  entity_status: {  }
   highlight:
     highlight: server
     highlight_partial: true
@@ -357,33 +417,7 @@ processor_settings:
     suffix: '</span>'
     weights:
       postprocess_query: 0
-  html_filter:
-    all_fields: false
-    fields:
-      - body
-      - field_webny_page_description
-      - field_question
-      - field_answer
-      - field_question_1
-      - field_webny_announcement_headlne
-      - field_webny_card_pg_headline
-      - field_body
-      - field_card_body
-    title: true
-    alt: true
-    tags:
-      h1: 5
-      h2: 4
-      h3: 3
-      h4: 2
-      h5: 2
-      strong: 2
-      b: 2
-      em: 1
-      u: 1
-    weights:
-      preprocess_index: -15
-      preprocess_query: -15
+  entity_status: {  }
   ignorecase:
     all_fields: true
     fields:
@@ -448,49 +482,48 @@ processor_settings:
       - name
       - machine_name
     ignorable: '[''¿¡!?,.:;]'
-    strip:
-      character_sets:
-        Pc: Pc
-        Pd: Pd
-        Pe: Pe
-        Pf: Pf
-        Pi: Pi
-        Po: Po
-        Ps: Ps
-        Cc: 0
-        Cf: 0
-        Co: 0
-        Mc: 0
-        Me: 0
-        Mn: 0
-        Sc: 0
-        Sk: 0
-        Sm: 0
-        So: 0
-        Zl: 0
-        Zp: 0
-        Zs: 0
     weights:
       preprocess_index: -10
       preprocess_query: -10
-  rendered_item: {  }
-  stemmer:
+    ignorable_classes:
+      - Pc
+      - Pd
+      - Pe
+      - Pf
+      - Pi
+      - Po
+      - Ps
+  language_with_fallback: {  }
+  content_access:
+    weights:
+      preprocess_query: -30
+  html_filter:
     all_fields: false
     fields:
-      - subject
       - body
       - field_webny_page_description
       - field_question
       - field_answer
       - field_question_1
+      - field_webny_announcement_headlne
+      - field_webny_card_pg_headline
       - field_body
       - field_card_body
-    exceptions:
-      texan: texa
-      mexican: mexic
+    title: true
+    alt: true
+    tags:
+      h1: 5
+      h2: 4
+      h3: 3
+      h4: 2
+      h5: 2
+      strong: 2
+      b: 2
+      em: 1
+      u: 1
     weights:
-      preprocess_index: 0
-      preprocess_query: 0
+      preprocess_index: -15
+      preprocess_query: -15
 tracker_settings:
   default:
     indexing_order: fifo
