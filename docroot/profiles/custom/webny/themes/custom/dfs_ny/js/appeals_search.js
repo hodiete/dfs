@@ -8,7 +8,7 @@
   'use strict';
 
   Drupal.behaviors.appealsSearch = {
-    attach: function (context, settings) {
+      attach: function (context, settings) {
 
       //override placeholder text on external filters
       function setFilterPlaceholders() {
@@ -247,6 +247,30 @@
       });
       $('.page-drop-select-container', context).once('pager-label').prepend($('<label>Show</label>').attr('for','page-drop-select'));
 
+      // results titles for the table header
+      // location of the results
+      var targetElement = '.public-appeal-search-view header';
+      // if the container for the results doesn't exist, create it.
+      if(!($(targetElement + ' div.selection').length)){
+        $(targetElement).prepend('<div class="selection"></div>');
+      }
+      // start building the text for the container. 
+      // This search is fired multiple times, so this needs to be cleared each time
+      var selectionText = '';
+      // loop through checkboxes
+      $('.facets-widget-checkbox .facet-item').each(function(){
+        if ($(this).find('input[type="checkbox"]').prop("checked") == true){
+          selectionText += '<span class="filter-result">' + $(this).find('.facet-item__value').html() + ' ' + $(this).find('.facet-item__count').html() + '</span>';
+        };
+      });
+      // loop through select boxes
+      $('.select2-container .select2-selection__rendered li.select2-selection__choice').each(function(){
+        selectionText += '<span class="filter-result">' + ($(this).attr('title') + '</span>');
+      });
+      // if we had any results from the filters, add them above the results
+      if (selectionText != ''){
+        $(targetElement + ' div.selection').html('<h3>Search Results:</h3> <div class="selection-results">' + selectionText + '</div>');
+      }
     }
   };
 
@@ -260,5 +284,6 @@
   let exportText = $('#block-datasetexport').attr('hidden','hidden').detach();
   let exportCloseButton = $('<button />').html('x').addClass('export-close-button');
   let exportClose = exportText.find('h2').append(exportCloseButton);
+
 
 })(jQuery, Drupal, this, Drupal.debounce);
