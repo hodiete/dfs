@@ -1,8 +1,13 @@
+uuid: 26cfb2ed-e45d-4a0f-8ac9-af99021eb963
 langcode: en
 status: open
 dependencies:
   module:
     - honeypot
+third_party_settings:
+  honeypot:
+    honeypot: true
+    time_restriction: true
 open: null
 close: null
 weight: 0
@@ -298,8 +303,3 @@ handlers:
       exclude_attachments: false
       parameters: {  }
 variants: {  }
-uuid: 26cfb2ed-e45d-4a0f-8ac9-af99021eb963
-third_party_settings:
-  honeypot:
-    honeypot: true
-    time_restriction: true

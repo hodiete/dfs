@@ -34,39 +34,6 @@ field_settings:
     dependencies:
       config:
         - field.storage.node.case_number
-  nid:
-    label: ID
-    datasource_id: 'entity:node'
-    property_path: nid
-    type: integer
-    dependencies:
-      module:
-        - node
-  references:
-    label: References
-    datasource_id: 'entity:node'
-    property_path: references
-    type: text
-    boost: 0.5
-    dependencies:
-      config:
-        - field.storage.node.references
-  summary:
-    label: Summary
-    datasource_id: 'entity:node'
-    property_path: summary
-    type: text
-    dependencies:
-      config:
-        - field.storage.node.summary
-  title:
-    label: Title
-    datasource_id: 'entity:node'
-    property_path: title
-    type: text
-    dependencies:
-      module:
-        - node
   name:
     label: 'Treatment » Taxonomy term » Name'
     datasource_id: 'entity:node'
@@ -157,6 +124,39 @@ field_settings:
         - field.storage.node.appeal_agent
       module:
         - taxonomy
+  nid:
+    label: ID
+    datasource_id: 'entity:node'
+    property_path: nid
+    type: integer
+    dependencies:
+      module:
+        - node
+  references:
+    label: References
+    datasource_id: 'entity:node'
+    property_path: references
+    type: text
+    boost: 0.5
+    dependencies:
+      config:
+        - field.storage.node.references
+  summary:
+    label: Summary
+    datasource_id: 'entity:node'
+    property_path: summary
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.summary
+  title:
+    label: Title
+    datasource_id: 'entity:node'
+    property_path: title
+    type: text
+    dependencies:
+      module:
+        - node
 datasource_settings:
   'entity:node':
     bundles:
@@ -167,10 +167,10 @@ datasource_settings:
       default: true
       selected: {  }
 processor_settings:
-  rendered_item: {  }
   add_url: {  }
   aggregated_field: {  }
   language_with_fallback: {  }
+  rendered_item: {  }
 tracker_settings:
   default:
     indexing_order: fifo
