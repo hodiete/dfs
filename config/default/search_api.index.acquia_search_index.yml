@@ -1,6 +1,6 @@
 uuid: a1bfe6cb-7cdc-48b0-9c4d-8b3eea655641
 langcode: en
-status: false
+status: true
 dependencies:
   config:
     - field.storage.node.body
@@ -26,14 +26,13 @@ field_settings:
     dependencies:
       config:
         - field.storage.node.body
-  title:
-    label: Title
-    datasource_id: 'entity:node'
-    property_path: title
-    type: text
-    dependencies:
-      module:
-        - node
+  node_grants:
+    label: 'Node access information'
+    property_path: search_api_node_grants
+    type: string
+    indexed_locked: true
+    type_locked: true
+    hidden: true
   status:
     label: null
     datasource_id: 'entity:node'
@@ -41,6 +40,14 @@ field_settings:
     type: boolean
     indexed_locked: true
     type_locked: true
+    dependencies:
+      module:
+        - node
+  title:
+    label: Title
+    datasource_id: 'entity:node'
+    property_path: title
+    type: text
     dependencies:
       module:
         - node
@@ -54,23 +61,16 @@ field_settings:
     dependencies:
       module:
         - node
-  node_grants:
-    label: 'Node access information'
-    property_path: search_api_node_grants
-    type: string
-    indexed_locked: true
-    type_locked: true
-    hidden: true
 datasource_settings:
-  'entity:node':
+  'entity:file': {  }
+  'entity:media':
     bundles:
       default: true
       selected: {  }
     languages:
       default: true
       selected: {  }
-  'entity:file': {  }
-  'entity:media':
+  'entity:node':
     bundles:
       default: true
       selected: {  }
@@ -95,32 +95,14 @@ datasource_settings:
       default: true
       selected: {  }
 processor_settings:
-  rendered_item: {  }
   add_url:
     plugin_id: add_url
     settings: {  }
   aggregated_field: {  }
-  entity_status: {  }
-  ignorecase:
-    all_fields: false
-    fields:
-      - body
-      - title
-    weights:
-      preprocess_index: -20
-      preprocess_query: -20
-  transliteration:
-    all_fields: false
-    fields:
-      - body
-      - title
-    weights:
-      preprocess_index: -20
-      preprocess_query: -20
-  language_with_fallback: {  }
   content_access:
     weights:
       preprocess_query: -30
+  entity_status: {  }
   html_filter:
     all_fields: false
     fields:
@@ -129,16 +111,34 @@ processor_settings:
     title: true
     alt: true
     tags:
+      b: 2
+      em: 1
       h1: 5
       h2: 3
       h3: 2
       strong: 2
-      b: 2
-      em: 1
       u: 1
     weights:
       preprocess_index: -15
       preprocess_query: -15
+  ignorecase:
+    all_fields: false
+    fields:
+      - body
+      - title
+    weights:
+      preprocess_index: -20
+      preprocess_query: -20
+  language_with_fallback: {  }
+  rendered_item: {  }
+  transliteration:
+    all_fields: false
+    fields:
+      - body
+      - title
+    weights:
+      preprocess_index: -20
+      preprocess_query: -20
 tracker_settings:
   default:
     indexing_order: fifo

@@ -247,6 +247,7 @@
       });
       $('.page-drop-select-container', context).once('pager-label').prepend($('<label>Show</label>').attr('for','page-drop-select'));
 
+<<<<<<< HEAD
       // // results titles for the table header
       // // location of the results
       // var targetElement = '.public-appeal-search-view header';
@@ -271,6 +272,12 @@
       // if (selectionText != ''){
       //   $(targetElement + ' div.selection').html('<h3>Search Results:</h3> <div class="selection-results">' + selectionText + '</div>');
       // }
+=======
+      $('.counters .upheld-value').text($("label[for='appeal_decision-Upheld'] .facet-item__count").html().replace(/[()]/g, ''));
+      $('.counters .overturned-value').text($("label[for='appeal_decision-Overturned'] .facet-item__count").html().replace(/[()]/g, ''));
+      $('.counters .overturned-in-part-value').text($("label[for='appeal_decision-Overturned-in-Part'] .facet-item__count").html().replace(/[()]/g, ''));
+      
+>>>>>>> dbc06a11b555dbdfaa9347eae25c274b2844947d
     }
   };
 

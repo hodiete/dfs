@@ -1,8 +1,13 @@
+uuid: 437ff4e2-f18e-4260-96d4-f209ca6e363f
 langcode: en
 status: open
 dependencies:
   module:
     - honeypot
+third_party_settings:
+  honeypot:
+    honeypot: true
+    time_restriction: true
 open: null
 close: null
 weight: 0
@@ -298,8 +303,3 @@ handlers:
       exclude_attachments: false
       parameters: {  }
 variants: {  }
-uuid: 437ff4e2-f18e-4260-96d4-f209ca6e363f
-third_party_settings:
-  honeypot:
-    honeypot: true
-    time_restriction: true
