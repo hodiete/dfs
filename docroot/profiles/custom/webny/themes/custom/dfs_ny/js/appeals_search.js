@@ -271,6 +271,11 @@
       if (selectionText != ''){
         $(targetElement + ' div.selection').html('<h3>Search Results:</h3> <div class="selection-results">' + selectionText + '</div>');
       }
+
+      $('.counters .upheld-value').text($("label[for='appeal_decision-Upheld'] .facet-item__count").html());
+      $('.counters .overturned-value').text($("label[for='appeal_decision-Overturned'] .facet-item__count").html());
+      $('.counters .overturned-in-part-value').text($("label[for='appeal_decision-Overturned-in-Part'] .facet-item__count").html());
+      console.log($("label[for='appeal_decision-Upheld'] .facet-item__count").text());
     }
   };
 
