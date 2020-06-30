@@ -44,7 +44,7 @@
         border: none;
 
         th.views-field {
-          width: 10%;
+          width: 11%;
           padding: 18px 30px 17px 20px;
           border: none;
           font-size: 18px;
@@ -212,31 +212,29 @@
       }
     }
 
-    .table-decision-value .overturned .decision-text:before {
-      content: '';
-      background: url("../icons/dfs/overturned.svg") no-repeat center center transparent;
-    }
-
-    .table-decision-value .overturned-in-part .decision-text:before {
-      content: '';
-      background: url("../icons/dfs/overturned-in-part.svg") no-repeat center center transparent;
-    }
-
-    .table-decision-value .upheld .decision-text:before {
-      content: '';
-      background: url("../icons/dfs/upheld.svg") no-repeat center center transparent;
-    }
-
-    .table-decision-value .decision-text {
-      position: relative;
-      padding-left: 35px;
-
-      &:before {
-        position: absolute;
-        left: 0;
-        width: 25px;
-        height: 25px;
-        vertical-align: middle;
+    .table-decision-value {
+      .decision-text {
+        position: relative;
+        padding-left: 35px;
+        &:before {
+          position: absolute;
+          left: 0;
+          width: 25px;
+          height: 25px;
+          vertical-align: middle;
+        }
+        .overturned:before {
+          content: '';
+          background: url("../icons/dfs/overturned.svg") no-repeat center center transparent;
+        }
+        .overturned-in-part:before {
+          content: '';
+          background: url("../icons/dfs/overturned-in-part.svg") no-repeat center center transparent;
+        }
+        .upheld:before {
+          content: '';
+          background: url("../icons/dfs/upheld.svg") no-repeat center center transparent;
+        }
       }
     }
 
@@ -262,7 +260,9 @@
 
 
   /* external filters */
-  #block-exposedformpublic-appeal-searchpublic-appeals-search-page {
+
+  #block-exposedformpublic-appeal-searchpublic-appeals-search-page,
+  #block-facetsblock {
     width: 342px;
     margin-top: 50px;
     padding-bottom: 350px;
@@ -281,7 +281,132 @@
       }
     }
 
-    form {
+    .facets-widget-checkbox {
+      position: relative;
+      padding: 50px 28px 0;
+
+      h3 {
+        margin: 0 0 10px;
+        padding: 0;
+        background: transparent;
+        color: #151515;
+        font-size: 16px;
+        font-weight: 600;
+        display: block;
+      }
+
+      label {
+        display: inline;
+        padding-left: 10px;
+        margin: 0 0 5px;
+        padding: 0;
+        background: transparent;
+        color: #151515;
+        font-size: 16px;
+        font-weight: 400;
+      }
+
+      ul.js-facets-checkbox-links {
+        list-style: unset;
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      input[type="checkbox"] {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        display: inline-block;
+        position: relative;
+        width: 15px;
+        height: 15px;
+        border: 1px solid #09464C;
+        border-radius: 0;
+        vertical-align: middle;
+        &:checked {
+          &:after {
+          content: '\2714';
+          position: absolute;
+          top: 0px;
+          padding-left: 3px;
+          width: 12px;
+          height: 15px;
+          background: #09464C;
+          color: #fff;
+          font-family: 'Proxima Nova';
+          font-size: 10px;
+        }
+      }
+    }
+  }
+
+    .select2-container--default .select2-selection--multiple {
+      border: 0!important;
+      border-radius: 0;
+      background-color: transparent;
+      border-bottom: 1px solid #000!important;
+      input[type="search"] {
+        height: inherit;
+        margin: 0;
+        padding: 5px 0;
+        width: 100%;
+        background: transparent;
+        color: #151515;
+        font-size: 14px;
+      }
+      .select2-selection__rendered {
+        margin: 0;
+        padding: 0 20px 0 10px;
+        background: url("../icons/dfs/arrowdown-gray.svg") no-repeat right center transparent;
+        background-size: 12px;
+        word-wrap: break-word !important;
+        text-overflow: inherit !important;
+        white-space: normal !important;
+      }
+      .select2-results__option {
+        padding: 3px!important;
+        font-size: 13px!important;
+      }
+      .select2-selection__choice {
+        padding: 6px;
+        background: #06464C;
+        color: #fff;
+        border: 1px solid #09464C;
+        border-radius: 11px;
+        font-size: 14px;
+        line-height: normal;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        max-width: 216px;
+         &:after {
+           content: '';
+          }
+        }
+      .select2-selection__choice__remove {
+        color: #FFF;
+        margin-right: 7px;
+        &:hover {
+          background: #022629;
+          border-radius: 11px;
+          text-decoration: none;
+        }
+      }
+      li.select2-search.select2-search--inline {
+        padding-top: 4px;
+      }
+
+      .select2-dropdown.select2-dropdown--below {
+        margin-top: -10px !important;
+        padding: 3px !important;
+        font-size: 13px !important;
+      }
+    }
+
+    form,
+    .js-form-item {
       position: relative;
       padding: 50px 28px 0;
 
@@ -295,9 +420,19 @@
         font-weight: 600;
       }
 
-      .chosen-container {
+      .chosen-container,
+      .select2-container {
         //overrides chosen module's js
+        font-family: "Proxima Nova", Arial, sans-serif;
         width: 100% !important;
+
+        li.select2-results__option {
+          margin: 0;
+          padding: 5px 6px;
+          list-style: none;
+          line-height: 15px;
+          font-size: 13px;
+        }
 
         .chosen-label {
           position: absolute;
@@ -383,14 +518,15 @@
       }
 
       li.search-choice {
-        padding: 5px 27px 5px 10px;
+        padding: 5px 10px;
         background: #06464C;
         color: #fff;
         border: 1px solid #09464C;
         border-radius: 11px;
         font-size: 14px;
 
-        .search-choice-close {
+        .search-choice-close,
+        .select2-selection__choice__remove {
           top: 4px;
           right: 5px;
           width: 14px;
@@ -399,6 +535,7 @@
           background: none;
           line-height: 14px;
           text-align: center;
+          margin-right: 7px;
 
           &:hover {
             background: #022629;
