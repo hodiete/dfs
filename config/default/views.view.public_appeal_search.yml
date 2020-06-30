@@ -17,7 +17,6 @@ dependencies:
     - field.storage.node.treatment
     - search_api.index.public_appeal_search_local
   module:
-    - better_exposed_filters
     - search_api
     - text
 id: public_appeal_search
@@ -47,7 +46,7 @@ display:
           skip_access: false
           preserve_facet_query_args: false
       exposed_form:
-        type: bef
+        type: basic
         options:
           submit_button: Apply
           reset_button: false
@@ -56,22 +55,7 @@ display:
           expose_sort_order: false
           sort_asc_label: Asc
           sort_desc_label: Desc
-          input_required: false
-          text_input_required: 'Select any filter and click on Apply to see results'
-          bef:
-            general:
-              allow_secondary: false
-              secondary_label: 'Advanced options'
-              autosubmit: false
-              autosubmit_exclude_textfield: false
-              autosubmit_hide: false
-            search_api_fulltext:
-              bef_format: default
-              more_options:
-                is_secondary: false
-                rewrite:
-                  filter_rewrite_values: ''
-          text_input_required_format: basic_html
+          preserve_url_query_parameters: {  }
       pager:
         type: full
         options:
@@ -707,6 +691,7 @@ display:
       arguments: {  }
       display_extenders: {  }
       css_class: public-appeal-search-view
+      use_ajax: true
     cache_metadata:
       max-age: -1
       contexts:
@@ -786,117 +771,6 @@ display:
           empty_zero: false
           hide_alter_empty: true
           plugin_id: standard
-        diagnosis:
-          id: diagnosis
-          table: search_api_datasource_public_appeal_search_local_entity_node
-          field: diagnosis
-          relationship: none
-          group_type: group
-          admin_label: ''
-          label: Diagnosis
-          exclude: true
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: true
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: target_id
-          type: entity_reference_label
-          settings:
-            link: true
-          group_column: target_id
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-          field_rendering: true
-          fallback_handler: search_api_entity
-          fallback_options:
-            link_to_item: false
-            use_highlighting: false
-            multi_type: separator
-            multi_separator: ', '
-            display_methods:
-              age_range:
-                display_method: label
-              agent:
-                display_method: label
-              appeal_type:
-                display_method: label
-              decision:
-                display_method: label
-              diagnosis:
-                display_method: label
-              faq_categories:
-                display_method: label
-              gender:
-                display_method: label
-              health_plan:
-                display_method: label
-              media_keywords:
-                display_method: label
-              treatment:
-                display_method: label
-              webny_agency_keywords:
-                display_method: label
-              webny_category_tax:
-                display_method: label
-              webny_document_category:
-                display_method: label
-              webny_filter_terms_tax:
-                display_method: label
-              webny_global_keywords:
-                display_method: label
-              webny_location_type_tax:
-                display_method: label
-              webny_tax_contentcat:
-                display_method: label
-              webpage_category:
-                display_method: label
-                view_mode: default
-              year:
-                display_method: label
-          entity_type: node
-          plugin_id: search_api_field
         name_5:
           id: name_5
           table: search_api_index_public_appeal_search_local
@@ -966,117 +840,6 @@ display:
             use_highlighting: false
             multi_type: separator
             multi_separator: ', '
-          plugin_id: search_api_field
-        treatment:
-          id: treatment
-          table: search_api_datasource_public_appeal_search_local_entity_node
-          field: treatment
-          relationship: none
-          group_type: group
-          admin_label: ''
-          label: Treatment
-          exclude: true
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: true
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: target_id
-          type: entity_reference_label
-          settings:
-            link: true
-          group_column: target_id
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-          field_rendering: true
-          fallback_handler: search_api_entity
-          fallback_options:
-            link_to_item: false
-            use_highlighting: false
-            multi_type: separator
-            multi_separator: ', '
-            display_methods:
-              age_range:
-                display_method: label
-              agent:
-                display_method: label
-              appeal_type:
-                display_method: label
-              decision:
-                display_method: label
-              diagnosis:
-                display_method: label
-              faq_categories:
-                display_method: label
-              gender:
-                display_method: label
-              health_plan:
-                display_method: label
-              media_keywords:
-                display_method: label
-              treatment:
-                display_method: label
-              webny_agency_keywords:
-                display_method: label
-              webny_category_tax:
-                display_method: label
-              webny_document_category:
-                display_method: label
-              webny_filter_terms_tax:
-                display_method: label
-              webny_global_keywords:
-                display_method: label
-              webny_location_type_tax:
-                display_method: label
-              webny_tax_contentcat:
-                display_method: label
-              webpage_category:
-                display_method: label
-                view_mode: default
-              year:
-                display_method: label
-          entity_type: node
           plugin_id: search_api_field
         name_8:
           id: name_8
@@ -1148,117 +911,6 @@ display:
             multi_type: separator
             multi_separator: ', '
           plugin_id: search_api_field
-        health_plan:
-          id: health_plan
-          table: search_api_datasource_public_appeal_search_local_entity_node
-          field: health_plan
-          relationship: none
-          group_type: group
-          admin_label: ''
-          label: 'Health Plan'
-          exclude: true
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: true
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: target_id
-          type: entity_reference_label
-          settings:
-            link: true
-          group_column: target_id
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-          field_rendering: true
-          fallback_handler: search_api_entity
-          fallback_options:
-            link_to_item: false
-            use_highlighting: false
-            multi_type: separator
-            multi_separator: ', '
-            display_methods:
-              age_range:
-                display_method: label
-              agent:
-                display_method: label
-              appeal_type:
-                display_method: label
-              decision:
-                display_method: label
-              diagnosis:
-                display_method: label
-              faq_categories:
-                display_method: label
-              gender:
-                display_method: label
-              health_plan:
-                display_method: label
-              media_keywords:
-                display_method: label
-              treatment:
-                display_method: label
-              webny_agency_keywords:
-                display_method: label
-              webny_category_tax:
-                display_method: label
-              webny_document_category:
-                display_method: label
-              webny_filter_terms_tax:
-                display_method: label
-              webny_global_keywords:
-                display_method: label
-              webny_location_type_tax:
-                display_method: label
-              webny_tax_contentcat:
-                display_method: label
-              webpage_category:
-                display_method: label
-                view_mode: default
-              year:
-                display_method: label
-          entity_type: node
-          plugin_id: search_api_field
         name_7:
           id: name_7
           table: search_api_index_public_appeal_search_local
@@ -1329,117 +981,6 @@ display:
             multi_type: separator
             multi_separator: ', '
           plugin_id: search_api_field
-        decision:
-          id: decision
-          table: search_api_datasource_public_appeal_search_local_entity_node
-          field: decision
-          relationship: none
-          group_type: group
-          admin_label: ''
-          label: Decision
-          exclude: true
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: true
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: target_id
-          type: entity_reference_label
-          settings:
-            link: true
-          group_column: target_id
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-          field_rendering: true
-          fallback_handler: search_api_entity
-          fallback_options:
-            link_to_item: false
-            use_highlighting: false
-            multi_type: separator
-            multi_separator: ', '
-            display_methods:
-              age_range:
-                display_method: label
-              agent:
-                display_method: label
-              appeal_type:
-                display_method: label
-              decision:
-                display_method: label
-              diagnosis:
-                display_method: label
-              faq_categories:
-                display_method: label
-              gender:
-                display_method: label
-              health_plan:
-                display_method: label
-              media_keywords:
-                display_method: label
-              treatment:
-                display_method: label
-              webny_agency_keywords:
-                display_method: label
-              webny_category_tax:
-                display_method: label
-              webny_document_category:
-                display_method: label
-              webny_filter_terms_tax:
-                display_method: label
-              webny_global_keywords:
-                display_method: label
-              webny_location_type_tax:
-                display_method: label
-              webny_tax_contentcat:
-                display_method: label
-              webpage_category:
-                display_method: label
-                view_mode: default
-              year:
-                display_method: label
-          entity_type: node
-          plugin_id: search_api_field
         name_3:
           id: name_3
           table: search_api_index_public_appeal_search_local
@@ -1450,8 +991,8 @@ display:
           label: Decision
           exclude: false
           alter:
-            alter_text: false
-            text: ''
+            alter_text: true
+            text: "<div class=\"table-decision-value\">\r\n  <div class=\"decision-text\">\r\n    <div class=\"{{ name_3|lower|replace({' ': \"-\"}) }}\">{{ name_3 }}</div>\r\n  </div>\r\n</div>"
             make_link: false
             path: ''
             absolute: false
@@ -1502,124 +1043,13 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-          field_rendering: true
+          field_rendering: false
           fallback_handler: search_api
           fallback_options:
             link_to_item: false
             use_highlighting: false
             multi_type: separator
             multi_separator: ', '
-          plugin_id: search_api_field
-        appeal_type:
-          id: appeal_type
-          table: search_api_datasource_public_appeal_search_local_entity_node
-          field: appeal_type
-          relationship: none
-          group_type: group
-          admin_label: ''
-          label: 'Appeal Type'
-          exclude: true
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: true
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: target_id
-          type: entity_reference_label
-          settings:
-            link: true
-          group_column: target_id
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-          field_rendering: true
-          fallback_handler: search_api_entity
-          fallback_options:
-            link_to_item: false
-            use_highlighting: false
-            multi_type: separator
-            multi_separator: ', '
-            display_methods:
-              age_range:
-                display_method: label
-              agent:
-                display_method: label
-              appeal_type:
-                display_method: label
-              decision:
-                display_method: label
-              diagnosis:
-                display_method: label
-              faq_categories:
-                display_method: label
-              gender:
-                display_method: label
-              health_plan:
-                display_method: label
-              media_keywords:
-                display_method: label
-              treatment:
-                display_method: label
-              webny_agency_keywords:
-                display_method: label
-              webny_category_tax:
-                display_method: label
-              webny_document_category:
-                display_method: label
-              webny_filter_terms_tax:
-                display_method: label
-              webny_global_keywords:
-                display_method: label
-              webny_location_type_tax:
-                display_method: label
-              webny_tax_contentcat:
-                display_method: label
-              webpage_category:
-                display_method: label
-                view_mode: default
-              year:
-                display_method: label
-          entity_type: node
           plugin_id: search_api_field
         name_2:
           id: name_2
@@ -1691,117 +1121,6 @@ display:
             multi_type: separator
             multi_separator: ', '
           plugin_id: search_api_field
-        gender:
-          id: gender
-          table: search_api_datasource_public_appeal_search_local_entity_node
-          field: gender
-          relationship: none
-          group_type: group
-          admin_label: ''
-          label: Gender
-          exclude: true
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: true
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: target_id
-          type: entity_reference_label
-          settings:
-            link: true
-          group_column: target_id
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-          field_rendering: true
-          fallback_handler: search_api_entity
-          fallback_options:
-            link_to_item: false
-            use_highlighting: false
-            multi_type: separator
-            multi_separator: ', '
-            display_methods:
-              age_range:
-                display_method: label
-              agent:
-                display_method: label
-              appeal_type:
-                display_method: label
-              decision:
-                display_method: label
-              diagnosis:
-                display_method: label
-              faq_categories:
-                display_method: label
-              gender:
-                display_method: label
-              health_plan:
-                display_method: label
-              media_keywords:
-                display_method: label
-              treatment:
-                display_method: label
-              webny_agency_keywords:
-                display_method: label
-              webny_category_tax:
-                display_method: label
-              webny_document_category:
-                display_method: label
-              webny_filter_terms_tax:
-                display_method: label
-              webny_global_keywords:
-                display_method: label
-              webny_location_type_tax:
-                display_method: label
-              webny_tax_contentcat:
-                display_method: label
-              webpage_category:
-                display_method: label
-                view_mode: default
-              year:
-                display_method: label
-          entity_type: node
-          plugin_id: search_api_field
         name_6:
           id: name_6
           table: search_api_index_public_appeal_search_local
@@ -1871,117 +1190,6 @@ display:
             use_highlighting: false
             multi_type: separator
             multi_separator: ', '
-          plugin_id: search_api_field
-        age_range:
-          id: age_range
-          table: search_api_datasource_public_appeal_search_local_entity_node
-          field: age_range
-          relationship: none
-          group_type: group
-          admin_label: ''
-          label: 'Age Range'
-          exclude: true
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: false
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: target_id
-          type: entity_reference_label
-          settings:
-            link: true
-          group_column: target_id
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-          field_rendering: true
-          fallback_handler: search_api_entity
-          fallback_options:
-            link_to_item: false
-            use_highlighting: false
-            multi_type: separator
-            multi_separator: ', '
-            display_methods:
-              age_range:
-                display_method: label
-              agent:
-                display_method: label
-              appeal_type:
-                display_method: label
-              decision:
-                display_method: label
-              diagnosis:
-                display_method: label
-              faq_categories:
-                display_method: label
-              gender:
-                display_method: label
-              health_plan:
-                display_method: label
-              media_keywords:
-                display_method: label
-              treatment:
-                display_method: label
-              webny_agency_keywords:
-                display_method: label
-              webny_category_tax:
-                display_method: label
-              webny_document_category:
-                display_method: label
-              webny_filter_terms_tax:
-                display_method: label
-              webny_global_keywords:
-                display_method: label
-              webny_location_type_tax:
-                display_method: label
-              webny_tax_contentcat:
-                display_method: label
-              webpage_category:
-                display_method: label
-                view_mode: default
-              year:
-                display_method: label
-          entity_type: node
           plugin_id: search_api_field
         name:
           id: name
@@ -2053,117 +1261,6 @@ display:
             multi_type: separator
             multi_separator: ', '
           plugin_id: search_api_field
-        decision_year:
-          id: decision_year
-          table: search_api_datasource_public_appeal_search_local_entity_node
-          field: decision_year
-          relationship: none
-          group_type: group
-          admin_label: ''
-          label: 'Decision Year'
-          exclude: true
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: true
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: target_id
-          type: entity_reference_label
-          settings:
-            link: true
-          group_column: target_id
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-          field_rendering: true
-          fallback_handler: search_api_entity
-          fallback_options:
-            link_to_item: false
-            use_highlighting: false
-            multi_type: separator
-            multi_separator: ', '
-            display_methods:
-              age_range:
-                display_method: label
-              agent:
-                display_method: label
-              appeal_type:
-                display_method: label
-              decision:
-                display_method: label
-              diagnosis:
-                display_method: label
-              faq_categories:
-                display_method: label
-              gender:
-                display_method: label
-              health_plan:
-                display_method: label
-              media_keywords:
-                display_method: label
-              treatment:
-                display_method: label
-              webny_agency_keywords:
-                display_method: label
-              webny_category_tax:
-                display_method: label
-              webny_document_category:
-                display_method: label
-              webny_filter_terms_tax:
-                display_method: label
-              webny_global_keywords:
-                display_method: label
-              webny_location_type_tax:
-                display_method: label
-              webny_tax_contentcat:
-                display_method: label
-              webpage_category:
-                display_method: label
-                view_mode: default
-              year:
-                display_method: label
-          entity_type: node
-          plugin_id: search_api_field
         name_4:
           id: name_4
           table: search_api_index_public_appeal_search_local
@@ -2234,117 +1331,6 @@ display:
             multi_type: separator
             multi_separator: ', '
           plugin_id: search_api_field
-        appeal_agent:
-          id: appeal_agent
-          table: search_api_datasource_public_appeal_search_local_entity_node
-          field: appeal_agent
-          relationship: none
-          group_type: group
-          admin_label: ''
-          label: 'Appeal Agent'
-          exclude: true
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: true
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: target_id
-          type: entity_reference_label
-          settings:
-            link: true
-          group_column: target_id
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-          field_rendering: true
-          fallback_handler: search_api_entity
-          fallback_options:
-            link_to_item: false
-            use_highlighting: false
-            multi_type: separator
-            multi_separator: ', '
-            display_methods:
-              age_range:
-                display_method: label
-              agent:
-                display_method: label
-              appeal_type:
-                display_method: label
-              decision:
-                display_method: label
-              diagnosis:
-                display_method: label
-              faq_categories:
-                display_method: label
-              gender:
-                display_method: label
-              health_plan:
-                display_method: label
-              media_keywords:
-                display_method: label
-              treatment:
-                display_method: label
-              webny_agency_keywords:
-                display_method: label
-              webny_category_tax:
-                display_method: label
-              webny_document_category:
-                display_method: label
-              webny_filter_terms_tax:
-                display_method: label
-              webny_global_keywords:
-                display_method: label
-              webny_location_type_tax:
-                display_method: label
-              webny_tax_contentcat:
-                display_method: label
-              webpage_category:
-                display_method: label
-                view_mode: default
-              year:
-                display_method: label
-          entity_type: node
-          plugin_id: search_api_field
         name_1:
           id: name_1
           table: search_api_index_public_appeal_search_local
@@ -2414,77 +1400,6 @@ display:
             use_highlighting: false
             multi_type: separator
             multi_separator: ', '
-          plugin_id: search_api_field
-        case_number:
-          id: case_number
-          table: search_api_datasource_public_appeal_search_local_entity_node
-          field: case_number
-          relationship: none
-          group_type: group
-          admin_label: ''
-          label: 'Case Number'
-          exclude: true
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: true
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: value
-          type: string
-          settings:
-            link_to_entity: false
-          group_column: value
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-          field_rendering: true
-          fallback_handler: search_api
-          fallback_options:
-            link_to_item: false
-            use_highlighting: false
-            multi_type: separator
-            multi_separator: ', '
-          entity_type: node
           plugin_id: search_api_field
         case_number_1:
           id: case_number_1
@@ -2698,12 +1613,8 @@ display:
         fields: false
         cache: false
       cache:
-        type: search_api_time
-        options:
-          results_lifespan: 21600
-          results_lifespan_custom: 0
-          output_lifespan: 21600
-          output_lifespan_custom: 0
+        type: none
+        options: {  }
       exposed_block: true
     cache_metadata:
       max-age: -1
@@ -2714,16 +1625,7 @@ display:
         - url.query_args
         - 'user.node_grants:view'
       tags:
-        - 'config:field.storage.node.age_range'
-        - 'config:field.storage.node.appeal_agent'
-        - 'config:field.storage.node.appeal_type'
         - 'config:field.storage.node.case_number'
-        - 'config:field.storage.node.decision'
-        - 'config:field.storage.node.decision_year'
-        - 'config:field.storage.node.diagnosis'
-        - 'config:field.storage.node.gender'
-        - 'config:field.storage.node.health_plan'
         - 'config:field.storage.node.references'
         - 'config:field.storage.node.summary'
-        - 'config:field.storage.node.treatment'
         - 'config:search_api.index.public_appeal_search_local'
