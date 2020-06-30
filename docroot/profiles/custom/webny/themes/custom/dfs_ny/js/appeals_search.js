@@ -247,30 +247,10 @@
       });
       $('.page-drop-select-container', context).once('pager-label').prepend($('<label>Show</label>').attr('for','page-drop-select'));
 
-      // results titles for the table header
-      // location of the results
-      var targetElement = '.public-appeal-search-view header';
-      // if the container for the results doesn't exist, create it.
-      if(!($(targetElement + ' div.selection').length)){
-        $(targetElement).prepend('<div class="selection"></div>');
-      }
-      // start building the text for the container. 
-      // This search is fired multiple times, so this needs to be cleared each time
-      var selectionText = '';
-      // loop through checkboxes
-      $('.facets-widget-checkbox .facet-item').each(function(){
-        if ($(this).find('input[type="checkbox"]').prop("checked") == true){
-          selectionText += '<span class="filter-result">' + $(this).find('.facet-item__value').html() + ' ' + $(this).find('.facet-item__count').html() + '</span>';
-        };
-      });
-      // loop through select boxes
-      $('.select2-container .select2-selection__rendered li.select2-selection__choice').each(function(){
-        selectionText += '<span class="filter-result">' + ($(this).attr('title') + '</span>');
-      });
-      // if we had any results from the filters, add them above the results
-      if (selectionText != ''){
-        $(targetElement + ' div.selection').html('<h3>Search Results:</h3> <div class="selection-results">' + selectionText + '</div>');
-      }
+      $('.counters .upheld-value').text($("label[for='appeal_decision-Upheld'] .facet-item__count").html().replace(/[()]/g, ''));
+      $('.counters .overturned-value').text($("label[for='appeal_decision-Overturned'] .facet-item__count").html().replace(/[()]/g, ''));
+      $('.counters .overturned-in-part-value').text($("label[for='appeal_decision-Overturned-in-Part'] .facet-item__count").html().replace(/[()]/g, ''));
+      
     }
   };
 
