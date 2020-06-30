@@ -38,7 +38,7 @@ display:
         type: none
         options: {  }
       cache:
-        type: none
+        type: tag
         options: {  }
       query:
         type: views_query
@@ -645,7 +645,20 @@ display:
           empty: true
           content: '<div class="table-top"><div class="table-top-left"><div class="page-drop"><span class="page-drop-select-container"></span>per page</div><div class="search-results">Showing @start to @end of @total</div></div><div class="table-top-right"><div class="export-wrapper"></div><div class="expand-wrapper"></div><div class="collapse-wrapper"></div></div></div>'
           plugin_id: result
-      footer: {  }
+      footer:
+        area:
+          id: area
+          table: views
+          field: area
+          relationship: none
+          group_type: group
+          admin_label: ''
+          empty: false
+          tokenize: false
+          content:
+            value: "<style type=\"text/css\">\r\n  /* Adam's temporary CSS because gulp is super busted on dfs */\r\n    .public-appeal-search-view .views-exposed-form .js-form-item-items-per-page {\r\n      display: none;\r\n    }\r\n    .views-page-public-appeal-search.body-sidebars-first #public-appeal-search-form::after {\r\n      background: none!important;\r\n    }\r\n</style>"
+            format: full_html
+          plugin_id: text
       empty: {  }
       relationships: {  }
       arguments: {  }
@@ -2715,7 +2728,7 @@ display:
         filters: false
         filter_groups: false
       cache:
-        type: none
+        type: tag
         options: {  }
       exposed_block: false
       header:
