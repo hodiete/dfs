@@ -12,6 +12,9 @@
     float: none;
     width: 342px;
     margin: 0;
+    margin-top: 50px;
+    padding-bottom: 50px;
+    background: #EFF0F2;
   }
 
   main .layout-content {
@@ -29,6 +32,12 @@
   .public-appeal-search-form {
     margin: 0;
     padding: 0 75px 20px 40px;
+  }
+
+  .js-form-item-summary {
+    label{
+      display: none;
+    }
   }
 
   table {
@@ -261,71 +270,65 @@
 
   /* external filters */
 
-  #block-exposedformpublic-appeal-searchpublic-appeals-search-page,
-  #block-facetsblock {
-    width: 342px;
-    margin-top: 50px;
-    padding-bottom: 350px;
-    background: #EFF0F2;
+#block-categoriestitle h2 {
+  padding: 15px 0;
+  background: #06464C;
+  color: #fff;
+  font-size: 24px;
+  text-align: center;
+  font-weight: 600;
+}
 
-    h2 {
-      padding: 15px 0;
-      background: #06464C;
-      color: #fff;
-      font-size: 24px;
-      text-align: center;
+.block-facets-ajax {
+  position: relative;
+  padding: 50px 28px 0;
+  //background: #EFF0F2;
+  &.block-facet--checkbox {
+    h3 {
+      margin: 0 0 10px;
+      padding: 0;
+      background: transparent;
+      color: #151515;
+      font-size: 16px;
       font-weight: 600;
-
+      display: block;
       .mobile-close {
         display: none;
       }
     }
 
-    .facets-widget-checkbox {
+    label {
+      display: inline;
+      padding-left: 10px;
+      margin: 0 0 5px;
+      padding: 0;
+      background: transparent;
+      color: #151515;
+      font-size: 16px;
+      font-weight: 400;
+    }
+
+    ul.js-facets-checkbox-links {
+      list-style: unset;
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    input[type="checkbox"] {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      display: inline-block;
       position: relative;
-      padding: 50px 28px 0;
+      width: 15px;
+      height: 15px;
+      border: 1px solid #09464C;
+      border-radius: 0;
+      vertical-align: middle;
 
-      h3 {
-        margin: 0 0 10px;
-        padding: 0;
-        background: transparent;
-        color: #151515;
-        font-size: 16px;
-        font-weight: 600;
-        display: block;
-      }
-
-      label {
-        display: inline;
-        padding-left: 10px;
-        margin: 0 0 5px;
-        padding: 0;
-        background: transparent;
-        color: #151515;
-        font-size: 16px;
-        font-weight: 400;
-      }
-
-      ul.js-facets-checkbox-links {
-        list-style: unset;
-        list-style-type: none;
-        padding: 0;
-        margin: 0;
-      }
-
-      input[type="checkbox"] {
-        -webkit-appearance: none;
-        -moz-appearance: none;
-        appearance: none;
-        display: inline-block;
-        position: relative;
-        width: 15px;
-        height: 15px;
-        border: 1px solid #09464C;
-        border-radius: 0;
-        vertical-align: middle;
-        &:checked {
-          &:after {
+      &:checked {
+        &:after {
           content: '\2714';
           position: absolute;
           top: 0px;
@@ -336,15 +339,28 @@
           color: #fff;
           font-family: 'Proxima Nova';
           font-size: 10px;
+          }
         }
       }
-    }
   }
-
-    .select2-container--default .select2-selection--multiple {
+    &.block-facet--select2 {
+      label {
+        margin: 0 0 10px;
+        padding: 0;
+        background: transparent;
+        color: #151515;
+        font-size: 16px;
+        font-weight: 600;
+        display: block;
+      }
+    .select2-selection--multiple {
+      background: transparent;
+      border: 0!important;
+    }
+    .select2-container--default {
       border: 0!important;
       border-radius: 0;
-      background-color: transparent;
+      background-color: transparent!important;
       border-bottom: 1px solid #000!important;
       input[type="search"] {
         height: inherit;
@@ -404,11 +420,18 @@
         font-size: 13px !important;
       }
     }
+    &.select2-container--focus {
+      .select2-selection--multiple {
+        border: 0!important;
+      }
+    }
+  }
+}
 
-    form,
-    .js-form-item {
+
+    form {
       position: relative;
-      padding: 50px 28px 0;
+      // padding: 50px 28px 0;
 
       label,
       legend {
@@ -617,7 +640,7 @@
         line-height: normal;
       }
     }
-  }
+
 
   /* intro */
   #block-externalappealssearch {
@@ -643,7 +666,8 @@
     width: 1px;
   }
 
-  #public-appeal-search-form {
+  #public-appeal-search-form,
+  #views-exposed-form-public-appeal-search-public-appeals-search-page {
     position: relative;
     float: left;
     width: 100%;
@@ -674,7 +698,8 @@
       background: url("../icons/dfs/search-icon.png") no-repeat center center transparent;
     }
 
-    .js-form-item-search {
+    .js-form-item-search,
+    .js-form-type-textfield {
       width: 100%;
       margin-bottom: 15px;
 
@@ -1548,5 +1573,4 @@
   .ui-widget-content a {
     color: #2f3b9b;
   }
-
 }
