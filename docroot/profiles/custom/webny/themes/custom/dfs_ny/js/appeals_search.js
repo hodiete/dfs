@@ -55,15 +55,13 @@
         var tablecolclass = tablecol.toLowerCase();
         thisRowString += '<tr class="'+tablecolclass+' accordion-row ' + thistablerow + '">';
         thisRowString += '<td colspan="10"><table><thead><tr><th>' + tablecol + '</th></tr></thead>';
-        thisRowString += '<tbody><tr><td><div class="accordion"><a class="accordion-toggle ' + thistablerow + '-' + tablecolclass + '">'+tablecol+'</a>';
-        thisRowString += '<div class="accordion-content ' + thistablerow + '-' + tablecolclass + '">' + colcontent + '</div></div></td></tr></tbody></table></tr>';
+        thisRowString += '<tbody><tr><td><div class="accordion"><a class="accordion-toggle ' + thistablerow + '-' + tablecolclass + '" aria-expanded="false">'+tablecol+'</a>';
+        thisRowString += '<div class="accordion-content ' + thistablerow + '-' + tablecolclass + '" aria-expanded="false">' + colcontent + '</div></div></td></tr></tbody></table></tr>';
         return thisRowString;
       }
       var tablerow = 0;
-      console.log('hello from script');
       $('.public-appeal-search-view tr.data-row').once('accordion-build').each(function() {
         tablerow = tablerow + 1;
-        console.log(tablerow);
         var thisrow = 'row-' + tablerow;
         $(this).addClass(thisrow);
         if ($('.reference .accordion-row .' + thisrow).length == 0){
@@ -171,8 +169,15 @@
         var anchorArray = $(this).attr('class').split(/\s+/);
         var thisRow = '.accordion-content.' + anchorArray[1];
         if ($(thisRow).is(":hidden")){
+          $(this).addClass("accordion-open");
+          $(thisRow).attr("aria-expanded", "true");
+          $(thisRow).addClass("accordion-open");
           $(thisRow).show();
         } else {
+          $(this).addClass("accordion-open");
+          $(this).removeClass("accordion-open");
+          $(thisRow).attr("aria-expanded", "false");
+          $(thisRow).removeClass("accordion-open");
           $(thisRow).hide();
         }
       });
