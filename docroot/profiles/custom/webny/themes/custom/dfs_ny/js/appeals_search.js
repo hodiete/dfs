@@ -81,39 +81,59 @@
       setFilterPlaceholders();
 
       //build summary and references accordion
-      $('.public-appeal-search-view>table>tbody>tr', context).once('accordion-build').each(function(index) {
-        let newRow = $('<tr />').addClass('accordion-row');
-        let newCell = $('<td colspan="11" />');
-        $(newCell).html(formatAccordionsRow(this, index));
-        $(newRow).html(newCell);
+      // $('.public-appeal-search-view>table>tbody>tr.data-row').each(function() {
+      //   console.log('building accordion');
 
-        $(newCell).find('.accordion-toggle').on('click', function(evt) {
-          evt.preventDefault();
-          if ($(this).next('.accordion-content')[0].hasAttribute("hidden")) {
-            $(this).attr('aria-expanded','true');
-            $(this).addClass('accordion-open');
-            $(this).next('.accordion-content').removeAttr('hidden');
-          }
-          else {
-            $(this).attr('aria-expanded','false');
-            $(this).removeClass('accordion-open');
-            $(this).next('.accordion-content').attr('hidden','hidden');
-          }
-          if ($('.accordion-toggle[aria-expanded="true"]').length == $('.accordion-content').length) {
-            $('.expand-wrapper').css('display','none');
-            $('.collapse-wrapper').css('display','block');
-          }
-          else {
-            $('.collapse-wrapper').css('display','none');
-            $('.expand-wrapper').css('display','block');
-          }
-        });
+      //   let newRow = $('<tr />').addClass('accordion-row');
+      //   let newCell = $('<td colspan="11" />');
+      //   $(newCell).html(formatAccordionsRow(this));
+      //   $(newRow).html(newCell);
 
-        $(this).after(newRow);
+      //   $(newCell).find('.accordion-toggle').on('click', function() {
+      //     if ($(this).next('.accordion-content')[0].hasAttribute("hidden")) {
+      //       $(this).attr('aria-expanded','true');
+      //       $(this).addClass('accordion-open');
+      //       $(this).next('.accordion-content').removeAttr('hidden');
+      //     }
+      //     else {
+      //       $(this).attr('aria-expanded','false');
+      //       $(this).removeClass('accordion-open');
+      //       $(this).next('.accordion-content').attr('hidden','hidden');
+      //     }
+      //     if ($('.accordion-toggle[aria-expanded="true"]').length == $('.accordion-content').length) {
+      //       $('.expand-wrapper').css('display','none');
+      //       $('.collapse-wrapper').css('display','block');
+      //     }
+      //     else {
+      //       $('.collapse-wrapper').css('display','none');
+      //       $('.expand-wrapper').css('display','block');
+      //     }
+      //   });
+
+      //   $(this).after(newRow);
+      // });
+
+      //build summary and references accordion
+      var tablerow = 0;
+      $('.public-appeal-search-view>table>tbody>tr.data-row').once('accordion-build').each(function() {
+        tablerow = tablerow + 1;
+        var thisrow = 'row-' + tablerow;
+        console.log('building accordion');
+        $(this).addClass(thisrow);
+        if ($('.references .accordion-row .' + thisrow).length == 0){
+          var thisReferences = $(this).find('.views-field-references').html();
+          $(this).after('<tr class="references accordion-row ' + thisrow + '"><td colspan="11"><table><thead><tr><th>References</th></tr></thead><tbody><tr><td><div class="accordion"><div class="accordion-content">' + thisReferences + '</div></div></td></tr></table></table></tr>');
+        }
+        if ($('.summary .accordion-row .' + thisrow).length == 0){
+          var thisSummary = $(this).find('.views-field-summary').html();
+          $(this).after('<tr class="summary accordion-row ' + thisrow + '"><td colspan="11"><table><thead><tr><th>Summary</th></tr></thead><tbody><tr><td><div class="accordion"><div class="accordion-content">' + thisSummary + '</div></div></td></tr></tbody></table></tr>');
+        }
       });
 
+
+
       //add export link to bottom of table
-      //$('.export-wrapper', context).once('second-export-link').clone().addClass('below-table').insertAfter('.public-appeal-search-view>table');
+      $('.export-wrapper', context).once('second-export-link').clone().addClass('below-table').insertAfter('.public-appeal-search-view>table');
 
       //add export container, move export text after link
       $('.export-wrapper', context).once('add-export-container').wrap(exportContainer);
@@ -246,10 +266,16 @@
         $('#edit-submit-public-appeal-search')[0].click();
       });
       $('.page-drop-select-container', context).once('pager-label').prepend($('<label>Show</label>').attr('for','page-drop-select'));
-
-      $('.counters .upheld-value').text($("label[for='appeal_decision-Upheld'] .facet-item__count").html().replace(/[()]/g, ''));
-      $('.counters .overturned-value').text($("label[for='appeal_decision-Overturned'] .facet-item__count").html().replace(/[()]/g, ''));
-      $('.counters .overturned-in-part-value').text($("label[for='appeal_decision-Overturned-in-Part'] .facet-item__count").html().replace(/[()]/g, ''));
+      
+      if ($("label[for='appeal_decision-Upheld'] .facet-item__count").length){
+        $('.counters .upheld-value').text($("label[for='appeal_decision-Upheld'] .facet-item__count").html().replace(/[()]/g, ''));
+      }
+      if ($("label[for='appeal_decision-Overturned'] .facet-item__count").length){
+        $('.counters .overturned-value').text($("label[for='appeal_decision-Overturned'] .facet-item__count").html().replace(/[()]/g, ''));
+      }
+      if ($("label[for='appeal_decision-Overturned-in-Part'] .facet-item__count").length){
+        $('.counters .overturned-in-part-value').text($("label[for='appeal_decision-Overturned-in-Part'] .facet-item__count").html().replace(/[()]/g, ''));
+      }
       
     }
   };

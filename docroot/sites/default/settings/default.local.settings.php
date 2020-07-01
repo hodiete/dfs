@@ -134,3 +134,5 @@ $settings['file_private_path'] = $dir . '/files-private';
 # $settings['trusted_host_patterns'] = array(
 #   '^example\.local$',
 # );
+
+$conf['css_js_query_string'] = '';
