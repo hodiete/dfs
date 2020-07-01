@@ -1,0 +1,29 @@
+uuid: 28792dd0-af1f-4129-ac96-d380a00adfa3
+langcode: en
+status: true
+dependencies:
+  config:
+    - facets.facet.appeal_type
+  module:
+    - facets
+    - system
+  theme:
+    - dfs_ny
+id: appealtype
+theme: dfs_ny
+region: sidebar_first
+weight: -45
+provider: null
+plugin: 'facet_block:appeal_type'
+settings:
+  id: 'facet_block:appeal_type'
+  label: 'Appeal Type'
+  provider: facets
+  label_display: '0'
+  block_id: appealtype
+visibility:
+  request_path:
+    id: request_path
+    pages: /public-appeal/search
+    negate: false
+    context_mapping: {  }

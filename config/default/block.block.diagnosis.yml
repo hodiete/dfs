@@ -1,0 +1,29 @@
+uuid: ddd4e23f-0057-4a08-8d82-12e98a472870
+langcode: en
+status: true
+dependencies:
+  config:
+    - facets.facet.diagnosis
+  module:
+    - facets
+    - system
+  theme:
+    - dfs_ny
+id: diagnosis
+theme: dfs_ny
+region: sidebar_first
+weight: -49
+provider: null
+plugin: 'facet_block:diagnosis'
+settings:
+  id: 'facet_block:diagnosis'
+  label: Diagnosis
+  provider: facets
+  label_display: '0'
+  block_id: diagnosis
+visibility:
+  request_path:
+    id: request_path
+    pages: /public-appeal/search
+    negate: false
+    context_mapping: {  }

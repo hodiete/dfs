@@ -1,6 +1,6 @@
-uuid: 26fa7881-4729-4a51-9bdd-ce460111e661
+uuid: c46334c4-a86e-4478-bcef-a5ad7c7690f9
 langcode: en
-status: true
+status: false
 dependencies:
   module:
     - facets_block
@@ -10,7 +10,7 @@ dependencies:
 id: facetsblock
 theme: dfs_ny
 region: sidebar_first
-weight: -45
+weight: -40
 provider: null
 plugin: facets_block
 settings:
@@ -19,7 +19,7 @@ settings:
   provider: facets_block
   label_display: visible
   show_title: false
-  exclude_empty_facets: true
+  exclude_empty_facets: false
   facets_to_include:
     'facet_block:diagnosis': 'facet_block:diagnosis'
     'facet_block:treatment': 'facet_block:treatment'

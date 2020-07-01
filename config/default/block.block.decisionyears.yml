@@ -1,0 +1,29 @@
+uuid: 4a955289-1355-4abe-a6e1-ffb2eda35036
+langcode: en
+status: true
+dependencies:
+  config:
+    - facets.facet.decision_year
+  module:
+    - facets
+    - system
+  theme:
+    - dfs_ny
+id: decisionyears
+theme: dfs_ny
+region: sidebar_first
+weight: -42
+provider: null
+plugin: 'facet_block:decision_year'
+settings:
+  id: 'facet_block:decision_year'
+  label: 'Decision Year(s)'
+  provider: facets
+  label_display: '0'
+  block_id: decisionyears
+visibility:
+  request_path:
+    id: request_path
+    pages: /public-appeal/search
+    negate: false
+    context_mapping: {  }

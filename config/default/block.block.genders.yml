@@ -1,0 +1,29 @@
+uuid: fe7f0e79-32cc-4930-892d-6815a547c71e
+langcode: en
+status: true
+dependencies:
+  config:
+    - facets.facet.gender
+  module:
+    - facets
+    - system
+  theme:
+    - dfs_ny
+id: genders
+theme: dfs_ny
+region: sidebar_first
+weight: -44
+provider: null
+plugin: 'facet_block:gender'
+settings:
+  id: 'facet_block:gender'
+  label: Gender(s)
+  provider: facets
+  label_display: '0'
+  block_id: genders
+visibility:
+  request_path:
+    id: request_path
+    pages: /public-appeal/search
+    negate: false
+    context_mapping: {  }

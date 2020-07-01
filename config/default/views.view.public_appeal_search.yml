@@ -17,6 +17,7 @@ dependencies:
     - field.storage.node.treatment
     - search_api.index.public_appeal_search_local
   module:
+    - datatables
     - search_api
     - text
 id: public_appeal_search
@@ -78,184 +79,156 @@ display:
             offset_label: Offset
           quantity: 9
       style:
-        type: table
+        type: datatables
         options:
           grouping: {  }
           row_class: ''
           default_row_class: true
-          override: true
-          sticky: false
           caption: ''
           summary: ''
           description: ''
           columns:
             search_api_id: search_api_id
-            diagnosis: diagnosis
             name_5: name_5
-            treatment: treatment
             name_8: name_8
-            health_plan: health_plan
             name_7: name_7
-            decision: decision
             name_3: name_3
-            appeal_type: appeal_type
             name_2: name_2
-            gender: gender
             name_6: name_6
-            age_range: age_range
             name: name
-            decision_year: decision_year
             name_4: name_4
-            appeal_agent: appeal_agent
             name_1: name_1
-            case_number: case_number
             case_number_1: case_number_1
             summary: summary
             references: references
+            summary_1: summary_1
           info:
             search_api_id:
-              sortable: false
+              sortable: 0
               default_sort_order: asc
               align: ''
               separator: ''
-              empty_column: false
-              responsive: ''
-            diagnosis:
-              align: ''
-              separator: ''
-              empty_column: false
+              empty_column: 0
               responsive: ''
             name_5:
-              sortable: true
+              sortable: 1
               default_sort_order: asc
               align: ''
               separator: ''
-              empty_column: false
-              responsive: ''
-            treatment:
-              align: ''
-              separator: ''
-              empty_column: false
+              empty_column: 0
               responsive: ''
             name_8:
-              sortable: true
+              sortable: 1
               default_sort_order: asc
               align: ''
               separator: ''
-              empty_column: false
-              responsive: ''
-            health_plan:
-              align: ''
-              separator: ''
-              empty_column: false
+              empty_column: 0
               responsive: ''
             name_7:
-              sortable: true
+              sortable: 1
               default_sort_order: asc
               align: ''
               separator: ''
-              empty_column: false
-              responsive: ''
-            decision:
-              align: ''
-              separator: ''
-              empty_column: false
+              empty_column: 0
               responsive: ''
             name_3:
-              sortable: true
+              sortable: 1
               default_sort_order: asc
               align: ''
               separator: ''
-              empty_column: false
-              responsive: ''
-            appeal_type:
-              align: ''
-              separator: ''
-              empty_column: false
+              empty_column: 0
               responsive: ''
             name_2:
-              sortable: true
+              sortable: 1
               default_sort_order: asc
               align: ''
               separator: ''
-              empty_column: false
-              responsive: ''
-            gender:
-              align: ''
-              separator: ''
-              empty_column: false
+              empty_column: 0
               responsive: ''
             name_6:
-              sortable: true
+              sortable: 1
               default_sort_order: asc
               align: ''
               separator: ''
-              empty_column: false
-              responsive: ''
-            age_range:
-              align: ''
-              separator: ''
-              empty_column: false
+              empty_column: 0
               responsive: ''
             name:
-              sortable: true
+              sortable: 1
               default_sort_order: asc
               align: ''
               separator: ''
-              empty_column: false
-              responsive: ''
-            decision_year:
-              align: ''
-              separator: ''
-              empty_column: false
+              empty_column: 0
               responsive: ''
             name_4:
-              sortable: true
+              sortable: 1
               default_sort_order: asc
               align: ''
               separator: ''
-              empty_column: false
-              responsive: ''
-            appeal_agent:
-              align: ''
-              separator: ''
-              empty_column: false
+              empty_column: 0
               responsive: ''
             name_1:
-              sortable: true
+              sortable: 1
               default_sort_order: asc
               align: ''
               separator: ''
-              empty_column: false
-              responsive: ''
-            case_number:
-              align: ''
-              separator: ''
-              empty_column: false
+              empty_column: 0
               responsive: ''
             case_number_1:
-              sortable: true
+              sortable: 1
               default_sort_order: asc
               align: ''
               separator: ''
-              empty_column: false
+              empty_column: 0
               responsive: ''
             summary:
-              sortable: false
+              sortable: 0
               default_sort_order: asc
               align: ''
               separator: ''
-              empty_column: false
+              empty_column: 0
               responsive: ''
             references:
-              sortable: false
+              sortable: 0
               default_sort_order: asc
               align: ''
               separator: ''
-              empty_column: false
+              empty_column: 0
+              responsive: ''
+            summary_1:
+              align: ''
+              separator: ''
+              empty_column: 0
               responsive: ''
           default: search_api_id
-          empty_table: false
+          empty_table: 0
+          elements:
+            search_box: 1
+            table_info: 1
+            save_state: 0
+            table_tools: 0
+          layout:
+            autowidth: 0
+            themeroller: 0
+            sdom: ''
+          pages:
+            pagination_style: '0'
+            length_change: 0
+            display_length: '10'
+          hidden_columns:
+            search_api_id: '0'
+            name_5: '0'
+            name_8: '0'
+            name_7: '0'
+            name_3: '0'
+            name_2: '0'
+            name_6: '0'
+            name: '0'
+            name_4: '0'
+            name_1: '0'
+            case_number_1: '0'
+            summary: '0'
+            references: '0'
+            summary_1: '0'
       row:
         type: fields
       fields:
@@ -1643,8 +1616,12 @@ display:
         filters: false
         filter_groups: false
       cache:
-        type: tag
-        options: {  }
+        type: search_api_time
+        options:
+          results_lifespan: 518400
+          results_lifespan_custom: 0
+          output_lifespan: 518400
+          output_lifespan_custom: 0
       exposed_block: false
       header:
         area_text_custom:
