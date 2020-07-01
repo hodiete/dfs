@@ -78,7 +78,7 @@
 
 
       //add export link to bottom of table
-      $('.export-wrapper', context).once('second-export-link').clone().addClass('below-table').insertAfter('.public-appeal-search-view>table');
+      // $('.export-wrapper', context).once('second-export-link').clone().addClass('below-table').insertAfter('.public-appeal-search-view>table');
 
       //add export container, move export text after link
       $(".export-wrapper", context)
@@ -181,7 +181,7 @@
           $(thisRow).hide();
         }
       });
-      
+
       //add mobile close functionality
       $(".mobile-close", context)
         .once("mobile-close")
@@ -285,7 +285,7 @@
 
     }
   };
-  
+
 
 
   //tooltips
