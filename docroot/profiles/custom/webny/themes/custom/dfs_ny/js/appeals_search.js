@@ -47,117 +47,35 @@
         }
       }
 
-      //output child row for summary and references accordions
-      function formatAccordionsRow(tableRow, rowIndex) {
-        console.log("formatting");
-        let outputTable =
-          "<table><thead><th>Summary and References</th></thead><tbody><tr><td>";
-        let summary = $(tableRow).find(".views-field-summary");
-        let refs = $(tableRow).find(".views-field-references");
-
-        //summary and references should always be the same length
-        outputTable +=
-          '<div class="accordion"><a class="accordion-toggle" aria-expanded="false" aria-controls="sumAccordion-';
-        outputTable += rowIndex;
-        outputTable += '" id="sumAccordionTitle-';
-        outputTable += rowIndex;
-        outputTable +=
-          '" href="#">Summary</a><div hidden class="accordion-content" role="region" id="sumAccordion-';
-        outputTable += rowIndex;
-        outputTable += '" aria-labelledby="sumAccordionTitle-';
-        outputTable += rowIndex;
-        outputTable += '">';
-        $(summary)
-          .find("li")
-          .each(function (i) {
-            $(".CSV-text").remove();
-            outputTable += "<h3>Summary ";
-            outputTable += i + 1;
-            outputTable += '</h3><div class="summary-text">';
-            outputTable += $(this).text();
-            outputTable += "</div>";
-          });
-        outputTable += "</div></div>";
-
-        outputTable +=
-          '<div class="accordion refsAccordionContainer"><a class="accordion-toggle" aria-expanded="false" aria-controls="refsAccordion-';
-        outputTable += rowIndex;
-        outputTable += '" id="refsAccordionTitle-';
-        outputTable += rowIndex;
-        outputTable +=
-          '" href="#">References</a><div hidden class="accordion-content" role="region" id="refsAccordion-';
-        outputTable += rowIndex;
-        outputTable += '" aria-labelledby="refsAccordionTitle-';
-        outputTable += rowIndex;
-        outputTable += '">';
-        $(refs)
-          .find("li")
-          .each(function (i) {
-            $(".CSV-text").remove();
-            outputTable += "<h3>References ";
-            outputTable += i + 1;
-            outputTable += '</h3><div class="refs-text">';
-            outputTable += $(this).text();
-            outputTable += "</div>";
-          });
-        outputTable += "</div></div>";
-
-        outputTable += "</div></tr></tbody></table>";
-
-        return outputTable;
-      }
-
       setFilterPlaceholders();
 
       //build summary and references accordion
-      // $('.public-appeal-search-view>table>tbody>tr.data-row').each(function() {
-      //   console.log('building accordion');
-
-      //   let newRow = $('<tr />').addClass('accordion-row');
-      //   let newCell = $('<td colspan="11" />');
-      //   $(newCell).html(formatAccordionsRow(this));
-      //   $(newRow).html(newCell);
-
-      //   $(newCell).find('.accordion-toggle').on('click', function() {
-      //     if ($(this).next('.accordion-content')[0].hasAttribute("hidden")) {
-      //       $(this).attr('aria-expanded','true');
-      //       $(this).addClass('accordion-open');
-      //       $(this).next('.accordion-content').removeAttr('hidden');
-      //     }
-      //     else {
-      //       $(this).attr('aria-expanded','false');
-      //       $(this).removeClass('accordion-open');
-      //       $(this).next('.accordion-content').attr('hidden','hidden');
-      //     }
-      //     if ($('.accordion-toggle[aria-expanded="true"]').length == $('.accordion-content').length) {
-      //       $('.expand-wrapper').css('display','none');
-      //       $('.collapse-wrapper').css('display','block');
-      //     }
-      //     else {
-      //       $('.collapse-wrapper').css('display','none');
-      //       $('.expand-wrapper').css('display','block');
-      //     }
-      //   });
-
-      //   $(this).after(newRow);
-      // });
-
-      //build summary and references accordion
+      function formatAccordionsRow(tablecol,colcontent,thistablerow){
+        var thisRowString = '';
+        var tablecolclass = tablecol.toLowerCase();
+        thisRowString += '<tr class="'+tablecolclass+' accordion-row ' + thistablerow + '">';
+        thisRowString += '<td colspan="10"><table><thead><tr><th>' + tablecol + '</th></tr></thead>';
+        thisRowString += '<tbody><tr><td><div class="accordion"><a class="accordion-toggle ' + thistablerow + '-' + tablecolclass + '">'+tablecol+'</a>';
+        thisRowString += '<div class="accordion-content ' + thistablerow + '-' + tablecolclass + '">' + colcontent + '</div></div></td></tr></tbody></table></tr>';
+        return thisRowString;
+      }
       var tablerow = 0;
-      $('.public-appeal-search-view>table>tbody>tr.data-row').once('accordion-build').each(function() {
+      console.log('hello from script');
+      $('.public-appeal-search-view tr.data-row').once('accordion-build').each(function() {
         tablerow = tablerow + 1;
+        console.log(tablerow);
         var thisrow = 'row-' + tablerow;
-        console.log('building accordion');
         $(this).addClass(thisrow);
-        if ($('.references .accordion-row .' + thisrow).length == 0){
+        if ($('.reference .accordion-row .' + thisrow).length == 0){
           var thisReferences = $(this).find('.views-field-references').html();
-          $(this).after('<tr class="references accordion-row ' + thisrow + '"><td colspan="11"><table><thead><tr><th>References</th></tr></thead><tbody><tr><td><div class="accordion"><div class="accordion-content">' + thisReferences + '</div></div></td></tr></table></table></tr>');
+          $(this).after(formatAccordionsRow('Reference',thisReferences,thisrow));
         }
         if ($('.summary .accordion-row .' + thisrow).length == 0){
           var thisSummary = $(this).find('.views-field-summary').html();
-          $(this).after('<tr class="summary accordion-row ' + thisrow + '"><td colspan="11"><table><thead><tr><th>Summary</th></tr></thead><tbody><tr><td><div class="accordion"><div class="accordion-content">' + thisSummary + '</div></div></td></tr></tbody></table></tr>');
+          $(this).after(formatAccordionsRow('Summary',thisSummary,thisrow));
         }
       });
+      $('.accordion-content').hide();
 
 
 
@@ -249,6 +167,16 @@
           });
         });
 
+      $('.accordion-toggle', context).once('showhidesummaryreference').on("click", function(evt){
+        var anchorArray = $(this).attr('class').split(/\s+/);
+        var thisRow = '.accordion-content.' + anchorArray[1];
+        if ($(thisRow).is(":hidden")){
+          $(thisRow).show();
+        } else {
+          $(thisRow).hide();
+        }
+      });
+      
       //add mobile close functionality
       $(".mobile-close", context)
         .once("mobile-close")
@@ -352,6 +280,8 @@
 
     }
   };
+  
+
 
   //tooltips
   let toolTipContainer = $("<div />")
