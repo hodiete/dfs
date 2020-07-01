@@ -2,6 +2,11 @@
 //
 // Public Appeals Search Page Content styling
 
+
+.page-drop {
+  display: none;
+}
+
 .views-page-public-appeal-search.body-sidebars-first {
 
   main {
@@ -224,7 +229,6 @@
     .table-decision-value {
       .decision-text {
         position: relative;
-        padding-left: 35px;
         &:before {
           position: absolute;
           left: 0;
@@ -234,14 +238,17 @@
         }
         .overturned:before {
           content: '';
+          padding-left: 35px;
           background: url("../icons/dfs/overturned.svg") no-repeat center center transparent;
         }
         .overturned-in-part:before {
           content: '';
+          padding-left: 35px;
           background: url("../icons/dfs/overturned-in-part.svg") no-repeat center center transparent;
         }
         .upheld:before {
           content: '';
+          padding-left: 35px;
           background: url("../icons/dfs/upheld.svg") no-repeat center center transparent;
         }
       }
@@ -657,6 +664,19 @@
     }
   }
 
+  .facets-summary-block {
+    width: 83%;
+    margin: 0 auto;
+    ul {
+      padding: 10px 0;
+      list-style: unset;
+      list-style-type: none;
+      li {
+        font-size: 16px;
+      }
+    }
+  }
+
   #block-publicappealssearchtooltip,
   #block-datasetexport {
     //visually hide tooltip and export popup until they have been moved by js
@@ -665,6 +685,8 @@
     height: 1px;
     width: 1px;
   }
+
+
 
   #public-appeal-search-form,
   #views-exposed-form-public-appeal-search-public-appeals-search-page {
