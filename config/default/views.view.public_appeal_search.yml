@@ -17,7 +17,6 @@ dependencies:
     - field.storage.node.treatment
     - search_api.index.public_appeal_search_local
   module:
-    - datatables
     - search_api
     - text
 id: public_appeal_search
@@ -79,11 +78,13 @@ display:
             offset_label: Offset
           quantity: 9
       style:
-        type: datatables
+        type: table
         options:
           grouping: {  }
           row_class: ''
           default_row_class: true
+          override: true
+          sticky: false
           caption: ''
           summary: ''
           description: ''
@@ -104,131 +105,103 @@ display:
             summary_1: summary_1
           info:
             search_api_id:
-              sortable: 0
+              sortable: false
               default_sort_order: asc
               align: ''
               separator: ''
-              empty_column: 0
+              empty_column: false
               responsive: ''
             name_5:
-              sortable: 1
+              sortable: true
               default_sort_order: asc
               align: ''
               separator: ''
-              empty_column: 0
+              empty_column: false
               responsive: ''
             name_8:
-              sortable: 1
+              sortable: true
               default_sort_order: asc
               align: ''
               separator: ''
-              empty_column: 0
+              empty_column: false
               responsive: ''
             name_7:
-              sortable: 1
+              sortable: true
               default_sort_order: asc
               align: ''
               separator: ''
-              empty_column: 0
+              empty_column: false
               responsive: ''
             name_3:
-              sortable: 1
+              sortable: true
               default_sort_order: asc
               align: ''
               separator: ''
-              empty_column: 0
+              empty_column: false
               responsive: ''
             name_2:
-              sortable: 1
+              sortable: true
               default_sort_order: asc
               align: ''
               separator: ''
-              empty_column: 0
+              empty_column: false
               responsive: ''
             name_6:
-              sortable: 1
+              sortable: true
               default_sort_order: asc
               align: ''
               separator: ''
-              empty_column: 0
+              empty_column: false
               responsive: ''
             name:
-              sortable: 1
+              sortable: true
               default_sort_order: asc
               align: ''
               separator: ''
-              empty_column: 0
+              empty_column: false
               responsive: ''
             name_4:
-              sortable: 1
+              sortable: true
               default_sort_order: asc
               align: ''
               separator: ''
-              empty_column: 0
+              empty_column: false
               responsive: ''
             name_1:
-              sortable: 1
+              sortable: true
               default_sort_order: asc
               align: ''
               separator: ''
-              empty_column: 0
+              empty_column: false
               responsive: ''
             case_number_1:
-              sortable: 1
+              sortable: true
               default_sort_order: asc
               align: ''
               separator: ''
-              empty_column: 0
+              empty_column: false
               responsive: ''
             summary:
-              sortable: 0
+              sortable: false
               default_sort_order: asc
               align: ''
               separator: ''
-              empty_column: 0
+              empty_column: false
               responsive: ''
             references:
-              sortable: 0
+              sortable: false
               default_sort_order: asc
               align: ''
               separator: ''
-              empty_column: 0
+              empty_column: false
               responsive: ''
             summary_1:
               align: ''
               separator: ''
-              empty_column: 0
+              empty_column: false
               responsive: ''
           default: search_api_id
-          empty_table: 0
-          elements:
-            search_box: 1
-            table_info: 1
-            save_state: 0
-            table_tools: 0
-          layout:
-            autowidth: 0
-            themeroller: 0
-            sdom: ''
-          pages:
-            pagination_style: '0'
-            length_change: 0
-            display_length: '10'
-          hidden_columns:
-            search_api_id: '0'
-            name_5: '0'
-            name_8: '0'
-            name_7: '0'
-            name_3: '0'
-            name_2: '0'
-            name_6: '0'
-            name: '0'
-            name_4: '0'
-            name_1: '0'
-            case_number_1: '0'
-            summary: '0'
-            references: '0'
-            summary_1: '0'
+          empty_table: false
       row:
         type: fields
       fields:
@@ -1330,6 +1303,76 @@ display:
             multi_type: separator
             multi_separator: ', '
           plugin_id: search_api_field
+        case_number:
+          id: case_number
+          table: search_api_index_public_appeal_search_local
+          field: case_number
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: 'Case Number node link'
+          exclude: true
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: string
+          settings:
+            link_to_entity: true
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          field_rendering: true
+          fallback_handler: search_api
+          fallback_options:
+            link_to_item: false
+            use_highlighting: false
+            multi_type: separator
+            multi_separator: ', '
+          plugin_id: search_api_field
         case_number_1:
           id: case_number_1
           table: search_api_index_public_appeal_search_local
@@ -1340,8 +1383,8 @@ display:
           label: 'Case Number'
           exclude: false
           alter:
-            alter_text: false
-            text: ''
+            alter_text: true
+            text: "{{ case_number_1 }}\r\n<div class=\"table-link-out\">{{ case_number }}</div> "
             make_link: false
             path: ''
             absolute: false
