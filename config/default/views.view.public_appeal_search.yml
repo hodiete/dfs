@@ -37,8 +37,12 @@ display:
         type: none
         options: {  }
       cache:
-        type: tag
-        options: {  }
+        type: search_api_time
+        options:
+          results_lifespan: 21600
+          results_lifespan_custom: 0
+          output_lifespan: 21600
+          output_lifespan_custom: 0
       query:
         type: views_query
         options:
@@ -1690,29 +1694,26 @@ display:
           plugin_id: result
       use_ajax: true
       filters:
-        summary:
-          id: summary
+        search_api_fulltext_1:
+          id: search_api_fulltext_1
           table: search_api_index_public_appeal_search_local
-          field: summary
+          field: search_api_fulltext
           relationship: none
           group_type: group
           admin_label: ''
-          operator: '='
-          value:
-            min: ''
-            max: ''
-            value: ''
+          operator: and
+          value: ''
           group: 1
           exposed: true
           expose:
-            operator_id: summary_op
-            label: 'Summary Search'
+            operator_id: search_api_fulltext_1_op
+            label: ''
             description: ''
             use_operator: false
-            operator: summary_op
+            operator: search_api_fulltext_1_op
             operator_limit_selection: false
             operator_list: {  }
-            identifier: summary
+            identifier: fulltext_no_ref
             required: false
             remember: false
             multiple: false
@@ -1730,8 +1731,6 @@ display:
               restful_api: '0'
               registration_forms: '0'
             placeholder: ''
-            min_placeholder: ''
-            max_placeholder: ''
           is_grouped: false
           group_info:
             label: ''
@@ -1744,7 +1743,68 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
-          plugin_id: search_api_text
+          parse_mode: terms
+          min_length: null
+          fields:
+            - case_number
+            - summary
+          plugin_id: search_api_fulltext
+        search_api_fulltext:
+          id: search_api_fulltext
+          table: search_api_index_public_appeal_search_local
+          field: search_api_fulltext
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: and
+          value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: search_api_fulltext_op
+            label: ''
+            description: ''
+            use_operator: false
+            operator: search_api_fulltext_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: fulltext
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+              site_builder: '0'
+              site_admin: '0'
+              user_admin: '0'
+              content_author: '0'
+              business_approver: '0'
+              suspected_fraud_submissions: '0'
+              hcpo_forms: '0'
+              restful_api: '0'
+              registration_forms: '0'
+            placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          parse_mode: terms
+          min_length: null
+          fields:
+            - case_number
+            - references
+            - summary
+          plugin_id: search_api_fulltext
       filter_groups:
         operator: AND
         groups:
