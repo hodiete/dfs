@@ -122,7 +122,7 @@
             evt.preventDefault();
             $(this).find(".accordion-toggle").attr("aria-expanded", "true");
             $(this).find(".accordion-toggle").addClass("accordion-open");
-            $(this).find(".accordion-content").removeAttr("hidden");
+            $(this).find(".accordion-content").show();
           });
           $(".expand-wrapper").css("display", "none");
           $(".collapse-wrapper").css("display", "block");
@@ -141,7 +141,7 @@
             evt.preventDefault();
             $(this).find(".accordion-toggle").attr("aria-expanded", "false");
             $(this).find(".accordion-toggle").removeClass("accordion-open");
-            $(this).find(".accordion-content").attr("hidden", "hidden");
+            $(this).find(".accordion-content").hide();
           });
           $(".collapse-wrapper").css("display", "none");
           $(".expand-wrapper").css("display", "block");
