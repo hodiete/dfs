@@ -249,17 +249,17 @@
         }
         .overturned:before {
           content: '';
-          padding-left: 35px;
+          padding-left: 25px;
           background: url("../icons/dfs/overturned.svg") no-repeat center center transparent;
         }
         .overturned-in-part:before {
           content: '';
-          padding-left: 35px;
+          padding-left: 25px;
           background: url("../icons/dfs/overturned-in-part.svg") no-repeat center center transparent;
         }
         .upheld:before {
           content: '';
-          padding-left: 35px;
+          padding-left: 25px;
           background: url("../icons/dfs/upheld.svg") no-repeat center center transparent;
         }
       }
@@ -317,7 +317,7 @@
 
     label {
       display: inline;
-      padding-left: 10px;
+      padding-left: 10px!important;
       margin: 0 0 5px;
       padding: 0;
       background: transparent;
@@ -699,7 +699,6 @@
 
 
 
-  #public-appeal-search-form,
   #views-exposed-form-public-appeal-search-public-appeals-search-page {
     position: relative;
     float: left;
@@ -724,11 +723,13 @@
     &::after {
       content: '';
       position: absolute;
-      top: 20px;
+      top: 50.5px;
       right: 30px;
       width: 19px;
       height: 19px;
       background: url("../icons/dfs/search-icon.png") no-repeat center center transparent;
+      display: none!important;
+      z-index: -9999!important;
     }
 
     .js-form-item-search,
@@ -755,7 +756,7 @@
         &:after {
           content: '';
           position: absolute;
-          top: 20px;
+          top: 50.5px;
           right: 30px;
           width: 19px;
           height: 19px;
@@ -1606,4 +1607,11 @@
   .ui-widget-content a {
     color: #2f3b9b;
   }
+}
+
+
+.views-page-public-appeal-search.body-sidebars-first table td.views-field.views-field-case-number-1 .table-link-out {
+  margin-top: -42px!important;
+  overflow: hidden!important;
+  right: 10px!important;
 }
