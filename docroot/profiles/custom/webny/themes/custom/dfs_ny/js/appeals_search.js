@@ -165,6 +165,7 @@
           });
         });
 
+      // toggle a single accordion
       $('.accordion-toggle', context).once('showhidesummaryreference').on("click", function(evt){
         var anchorArray = $(this).attr('class').split(/\s+/);
         var thisRow = '.accordion-content.' + anchorArray[1];
@@ -182,6 +183,25 @@
         }
       });
       
+      // toggle the text search
+      $('.js-form-item-fulltext-no-ref').show();
+      $('.js-form-item-fulltext').hide();
+      $('.appeal-search-reference-toggle-checkbox').change(function() {
+        if ($(this).is(':checked')){
+          console.log('checked')
+          $('.js-form-item-fulltext-no-ref').hide();
+          $('.js-form-item-fulltext').show();
+        } else {
+          console.log('unchecked');
+          $('.js-form-item-fulltext-no-ref').show();
+          $('.js-form-item-fulltext').hide();
+        }
+      });
+      // .js-form-item-fulltext-no-ref
+      // .js-form-item-fulltext
+      // #edit-fulltext-no-ref
+      // #edit-fulltext
+
       //add mobile close functionality
       $(".mobile-close", context)
         .once("mobile-close")
@@ -286,8 +306,6 @@
     }
   };
   
-
-
   //tooltips
   let toolTipContainer = $("<div />")
     .addClass("tooltip-container")
