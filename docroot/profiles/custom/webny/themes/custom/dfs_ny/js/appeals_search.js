@@ -122,7 +122,7 @@
             evt.preventDefault();
             $(this).find(".accordion-toggle").attr("aria-expanded", "true");
             $(this).find(".accordion-toggle").addClass("accordion-open");
-            $(this).find(".accordion-content").removeAttr("hidden");
+            $(this).find(".accordion-content").show();
           });
           $(".expand-wrapper").css("display", "none");
           $(".collapse-wrapper").css("display", "block");
@@ -141,7 +141,7 @@
             evt.preventDefault();
             $(this).find(".accordion-toggle").attr("aria-expanded", "false");
             $(this).find(".accordion-toggle").removeClass("accordion-open");
-            $(this).find(".accordion-content").attr("hidden", "hidden");
+            $(this).find(".accordion-content").hide();
           });
           $(".collapse-wrapper").css("display", "none");
           $(".expand-wrapper").css("display", "block");
@@ -165,6 +165,7 @@
           });
         });
 
+      // toggle a single accordion
       $('.accordion-toggle', context).once('showhidesummaryreference').on("click", function(evt){
         var anchorArray = $(this).attr('class').split(/\s+/);
         var thisRow = '.accordion-content.' + anchorArray[1];
@@ -181,6 +182,28 @@
           $(thisRow).hide();
         }
       });
+<<<<<<< HEAD
+=======
+      
+      // toggle the text search
+      $('.js-form-item-fulltext-no-ref').show();
+      $('.js-form-item-fulltext').hide();
+      $('.appeal-search-reference-toggle-checkbox').change(function() {
+        if ($(this).is(':checked')){
+          console.log('checked')
+          $('.js-form-item-fulltext-no-ref').hide();
+          $('.js-form-item-fulltext').show();
+        } else {
+          console.log('unchecked');
+          $('.js-form-item-fulltext-no-ref').show();
+          $('.js-form-item-fulltext').hide();
+        }
+      });
+      // .js-form-item-fulltext-no-ref
+      // .js-form-item-fulltext
+      // #edit-fulltext-no-ref
+      // #edit-fulltext
+>>>>>>> 0f2dd342edbcc633d9a9fde1a6d856b44ced3ab2
 
       //add mobile close functionality
       $(".mobile-close", context)
@@ -285,9 +308,13 @@
 
     }
   };
+<<<<<<< HEAD
 
 
 
+=======
+  
+>>>>>>> 0f2dd342edbcc633d9a9fde1a6d856b44ced3ab2
   //tooltips
   let toolTipContainer = $("<div />")
     .addClass("tooltip-container")

@@ -1,0 +1,25 @@
+{#
+/**
+ * @file
+ * Theme override of a views exposed form.
+ *
+ * Available variables:
+ * - form: A render element representing the form.
+ *
+ * @see template_preprocess_views_exposed_form()
+ */
+#}
+{% if q is not empty %}
+  {#
+    This ensures that, if clean URLs are off, the 'q' is added first,
+    as a hidden form element, so that it shows up first in the POST URL.
+  #}
+{{ q }}
+{% endif %}
+{{ form }}
+<div class="include-references-toggle">
+  <input type="checkbox" class="appeal-search-reference-toggle-checkbox js-form-item-references-included" id="appeal-search-reference-toggle-checkbox">
+  <label for="appeal-search-reference-toggle-checkbox">
+    {% trans %}Include References in Search{% endtrans %}
+  </label>
+</div>
