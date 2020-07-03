@@ -217,7 +217,7 @@
       }
       // if there is text in the fulltext search box being filled from the querystring, show it
       const urlParams = new URLSearchParams(window.location.search);
-      var fulltextvalue = urlParams.get('fulltext').trim();
+      var fulltextvalue = urlParams.get('fulltext');
       if (fulltextvalue) {
         $('.js-form-item-fulltext-no-ref').hide();
         $('.js-form-item-fulltext').show();
