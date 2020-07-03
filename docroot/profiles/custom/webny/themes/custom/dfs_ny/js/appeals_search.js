@@ -3,6 +3,7 @@
  * card paragraph javascript file.
  */
 
+
 (function ($, Drupal, window, document, debounce) {
 
   Drupal.behaviors.appealsSearch = {
@@ -183,24 +184,58 @@
         }
       });
       
-      // toggle the text search
-      $('.js-form-item-fulltext-no-ref').show();
-      $('.js-form-item-fulltext').hide();
+      // Submit event not firing
+      // $('#edit-submit-public-appeal-search', context).once('submitappealssearch').on("click", function(evt){
+      //   evt.preventDefault();
+      //   $( '#views-exposed-form-public-appeal-search-public-appeals-search-page' ).trigger( 'submit' );
+      // });
+      // commented out because it's still not firing
+    
+      
+      // this function toggles the text search
+      function togglesearchbox (visiblesearch, invisiblesearch){ 
+        // For some reason these behaviors fire a number of times
+        // ensure this function only fires when the form element 
+        // we want to reveal is hidden
+        if ($(visiblesearch).is(":hidden")){
+          var textboxclass = ' .form-text';
+          // get the vaue of the textbox we're about to turn off
+          var textvalue = $(invisiblesearch + textboxclass).val();
+          // remove the value from that text box
+          $(invisiblesearch + textboxclass).val('');
+          // now hide it
+          $(invisiblesearch).hide();
+          // show the new search box before working with it because some browsers don't like it when you manipulate invisible elements
+          $(visiblesearch).show();
+          // swap in the text value from the other textbox
+          $(visiblesearch + textboxclass).val(textvalue);
+          // provide focus for the new textbox
+          $(visiblesearch + textboxclass).focus();
+          // initiate the search
+          $( '#views-exposed-form-public-appeal-search-public-appeals-search-page' ).trigger( 'submit' );
+        }
+      }
+      // if there is text in the fulltext search box being filled from the querystring, show it
+      const urlParams = new URLSearchParams(window.location.search);
+      var fulltextvalue = urlParams.get('fulltext').trim();
+      if (fulltextvalue) {
+        $('.js-form-item-fulltext-no-ref').hide();
+        $('.js-form-item-fulltext').show();
+        $('.appeal-search-reference-toggle-checkbox').prop('checked', true);
+      } else {
+        $('.js-form-item-fulltext-no-ref').show();
+        $('.js-form-item-fulltext').hide();
+        $('.appeal-search-reference-toggle-checkbox').prop('checked', false);
+      }
       $('.appeal-search-reference-toggle-checkbox').change(function() {
         if ($(this).is(':checked')){
-          console.log('checked')
-          $('.js-form-item-fulltext-no-ref').hide();
-          $('.js-form-item-fulltext').show();
+          // include references in the fulltext search
+          togglesearchbox('.js-form-item-fulltext','.js-form-item-fulltext-no-ref');
         } else {
-          console.log('unchecked');
-          $('.js-form-item-fulltext-no-ref').show();
-          $('.js-form-item-fulltext').hide();
+          // do not include references in the fulltext search
+          togglesearchbox('.js-form-item-fulltext-no-ref','.js-form-item-fulltext');
         }
       });
-      // .js-form-item-fulltext-no-ref
-      // .js-form-item-fulltext
-      // #edit-fulltext-no-ref
-      // #edit-fulltext
 
       //add mobile close functionality
       $(".mobile-close", context)
@@ -305,7 +340,7 @@
 
     }
   };
-  
+
   //tooltips
   let toolTipContainer = $("<div />")
     .addClass("tooltip-container")
