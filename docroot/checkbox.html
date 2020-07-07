@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>jQuery Show Hide Elements Using Checkboxes</title>
+		<style>
+  </style>
+<script>
+	x = false;
+function Check() {
+if (x) {
+document.getElementById("div1").style.display = 'inline';
+document.getElementById("div2").style.display = 'none';
+x = false;
+} else {
+document.getElementById("div1").style.display = 'none';
+document.getElementById("div2").style.display = 'inline';
+x = true;
+}
+
+}
+</script>
+<body>
+Select Div<input type="checkbox" id="check" onclick="Check()">
+<br>
+<div id="div1">
+	<form>
+		<h2>First Div</h2>
+		<input type="text" placeholder="Enter text">
+		<input type="submit" value="Submit Div1">
+		<form></div>
+		<div id="div2" style="display:none">
+			<form>
+				<h2>Second Div</h2>
+				<input type="text" placeholder="Enter text">
+				<input type="submit" value="Submit Div2">
+				<form></div>
+</body>
+</html>

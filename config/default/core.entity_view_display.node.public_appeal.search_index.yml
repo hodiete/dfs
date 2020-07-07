@@ -1,8 +1,9 @@
-uuid: 1a1939a6-b74a-470b-997a-e1bd79a24c29
+uuid: ea86e1c8-07e1-4a5b-a756-3ce1664548b8
 langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_view_mode.node.search_index
     - field.field.node.public_appeal.age_range
     - field.field.node.public_appeal.appeal_agent
     - field.field.node.public_appeal.appeal_type
@@ -20,10 +21,10 @@ dependencies:
     - node.type.public_appeal
   module:
     - user
-id: node.public_appeal.default
+id: node.public_appeal.search_index
 targetEntityType: node
 bundle: public_appeal
-mode: default
+mode: search_index
 content:
   links:
     weight: 1

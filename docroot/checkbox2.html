@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>jQuery Show Hide Elements Using Checkboxes</title>
+<style>
+    .box{
+        color: #fff;
+        padding: 20px;
+        display: none;
+        margin-top: 20px;
+    }
+    .red{ background: #ff0000; }
+    .green{ background: #228B22; }
+    .blue{ background: #0000ff; }
+    label{ margin-right: 15px; }
+</style>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script>
+$(document).ready(function(){
+    $('input[type="checkbox"]').click(function(){
+        var inputValue = $(this).attr("value");
+        $("." + inputValue).toggle();
+    });
+});
+</script>
+</head>
+<body>
+    <div>
+        <label><input type="checkbox" name="colorCheckbox" value="red"> red</label>
+        <label><input type="checkbox" name="colorCheckbox" value="green"> green</label>
+        <label><input type="checkbox" name="colorCheckbox" value="blue"> blue</label>
+    </div>
+    <div class="red box">You have selected <strong>red checkbox</strong> so i am here</div>
+    <div class="green box">You have selected <strong>green checkbox</strong> so i am here</div>
+    <div class="blue box">You have selected <strong>blue checkbox</strong> so i am here</div>
+</body>
+</html>

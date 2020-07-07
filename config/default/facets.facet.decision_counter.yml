@@ -1,4 +1,4 @@
-uuid: 596a2ea9-f6e8-43df-b3b7-04f849b5fe4e
+uuid: 750bdac8-7171-4b9e-a4be-a9bbac1c97af
 langcode: en
 status: true
 dependencies:
@@ -7,26 +7,26 @@ dependencies:
     - views.view.public_appeal_search
   module:
     - search_api
-id: appeal_decision
-name: 'Appeal Decision'
-url_alias: appeal_decision
-weight: -2
+id: decision_counter
+name: 'Decision Counter'
+url_alias: decision_counter
+weight: 0
 min_count: 1
 show_only_one_result: false
 field_identifier: name_3
 facet_source_id: 'search_api:views_page__public_appeal_search__public_appeals_search_page'
 widget:
-  type: checkbox
+  type: links
   config:
     show_numbers: true
     soft_limit: 0
     soft_limit_settings:
       show_less_label: 'Show less'
       show_more_label: 'Show more'
-    show_reset_link: true
+    show_reset_link: false
     reset_text: 'Show all'
-    hide_reset_when_no_selection: true
-query_operator: or
+    hide_reset_when_no_selection: false
+query_operator: and
 use_hierarchy: false
 expand_hierarchy: false
 enable_parent_when_child_gets_disabled: true
@@ -34,17 +34,12 @@ hard_limit: 0
 exclude: false
 only_visible_when_facet_source_is_visible: false
 processor_configs:
-  display_value_widget_order:
-    processor_id: display_value_widget_order
+  raw_value_widget_order:
+    processor_id: raw_value_widget_order
     weights:
-      sort: 40
+      sort: 50
     settings:
       sort: ASC
-  list_item:
-    processor_id: list_item
-    weights:
-      build: 5
-    settings: {  }
   url_processor_handler:
     processor_id: url_processor_handler
     weights:
@@ -53,4 +48,4 @@ processor_configs:
     settings: {  }
 empty_behavior:
   behavior: none
-show_title: true
+show_title: false
