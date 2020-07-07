@@ -32,7 +32,7 @@
 
       //output child row for summary and references accordions
       function formatAccordionsRow(tableRow, rowIndex) {
-        console.log('formatting');
+        //console.log('formatting');
         let outputTable = '<table><thead><th>Summary and References</th></thead><tbody><tr><td>';
         let summary = $(tableRow).find('.views-field-summary');
         let refs = $(tableRow).find('.views-field-references');
