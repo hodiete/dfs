@@ -189,8 +189,6 @@
       //   evt.preventDefault();
       //   $( '#views-exposed-form-public-appeal-search-public-appeals-search-page' ).trigger( 'submit' );
       // });
-      // commented out because it's still not firing
-    
       
       // this function toggles the text search
       function togglesearchbox (visiblesearch, invisiblesearch){ 

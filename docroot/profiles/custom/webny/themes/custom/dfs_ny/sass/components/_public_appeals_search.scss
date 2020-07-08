@@ -709,17 +709,45 @@
     //margin-left: 41px;
     max-width: 915px;
 
-    input[type=submit] {
+    input[id*=edit-reset] {
       position: absolute;
-      top: 5px;
+      top: 93px;
       right: 6px;
       background: none;
-      font-size: 1px;
+      color: #fff;
+      padding: 8px 8px 5px 8px;
+      background: #09464C;
+      border: 2px solid #09464C;
+      border-radius: 55px;
+      line-height: 14px;
+      text-decoration: none;
+      cursor: pointer;
       width: 65px;
-      height:100px;
+      z-index: 1;
+      opacity: 1;
+    }    
+    
+    input[id*=edit-reset]:hover {
+      background: #fff;
+      color: #09464C;
+    }
+
+
+    input[id*=edit-submit-public-appeal-search] {
+      position: absolute;
+      top: 35px;
+      right: 13px;
+      background: #fff;
+      font-size: 1px;
+      width: 50px;
+      height: 50px;
       padding: 16px;
       border-radius: 24px;
       z-index: 1;
+      opacity: .5;
+      cursor: pointer;
+    }
+    input[id*=edit-submit-public-appeal-search]:hover {
       opacity: 0;
     }
 
