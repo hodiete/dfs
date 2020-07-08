@@ -184,12 +184,6 @@
         }
       });
       
-      // Submit event not firing
-      // $('#edit-submit-public-appeal-search', context).once('submitappealssearch').on("click", function(evt){
-      //   evt.preventDefault();
-      //   $( '#views-exposed-form-public-appeal-search-public-appeals-search-page' ).trigger( 'submit' );
-      // });
-      
       // this function toggles the text search
       function togglesearchbox (visiblesearch, invisiblesearch){ 
         // For some reason these behaviors fire a number of times
