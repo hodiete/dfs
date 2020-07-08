@@ -211,8 +211,10 @@
           $(visiblesearch + textboxclass).val(textvalue);
           // provide focus for the new textbox
           $(visiblesearch + textboxclass).focus();
-          // initiate the search
-          $( '#views-exposed-form-public-appeal-search-public-appeals-search-page' ).trigger( 'submit' );
+          // initiate the search as long as the textbox isn't empty
+          if (textvalue.trim() != ''){
+            $( '#views-exposed-form-public-appeal-search-public-appeals-search-page' ).trigger( 'submit' );
+          }
         }
       }
       // if there is text in the fulltext search box being filled from the querystring, show it
