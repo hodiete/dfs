@@ -50,6 +50,20 @@
 
       setFilterPlaceholders();
 
+      function countersToggle(){
+        // hide appeal decision totals with zero results
+        $('.public-appeal-search-view .counters .counters-inner li').each(function(){
+          $(this).show();
+          var thiscountervalue = $(this).find($('span.field-content div span')).text();
+          console.log(thiscountervalue);
+          if (thiscountervalue == 0){
+            $(this).hide();
+          }
+        });
+      }
+
+      countersToggle();
+
       //build summary and references accordion
       function formatAccordionsRow(tablecol,colcontent,thistablerow){
         var thisRowString = '';
@@ -75,8 +89,6 @@
         }
       });
       $('.accordion-content').hide();
-
-
 
       //add export link to bottom of table
       // $('.export-wrapper', context).once('second-export-link').clone().addClass('below-table').insertAfter('.public-appeal-search-view>table');
@@ -148,6 +160,7 @@
           $(".expand-wrapper").css("display", "block");
         });
 
+
       //move counters and mobile filter
       $(".counters").insertAfter(".public-appeal-search-form form");
       $(".mobile-open").insertAfter(".public-appeal-search-form form");
@@ -183,14 +196,6 @@
           $(thisRow).hide();
         }
       });
-      
-      // Submit event not firing
-      // $('#edit-submit-public-appeal-search', context).once('submitappealssearch').on("click", function(evt){
-      //   evt.preventDefault();
-      //   $( '#views-exposed-form-public-appeal-search-public-appeals-search-page' ).trigger( 'submit' );
-      // });
-      // commented out because it's still not firing
-    
       
       // this function toggles the text search
       function togglesearchbox (visiblesearch, invisiblesearch){ 
@@ -339,6 +344,7 @@
       if ($("label[for='appeal_decision-Overturned-in-Part'] .facet-item__count").length){
         $('.counters .overturned-in-part-value').text($("label[for='appeal_decision-Overturned-in-Part'] .facet-item__count").html().replace(/[()]/g, ''));
       }
+      countersToggle();
 
     }
   };
