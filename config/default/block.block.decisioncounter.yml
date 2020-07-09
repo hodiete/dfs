@@ -1,0 +1,29 @@
+uuid: 6a076197-2ca0-459f-9e47-f132af76a16d
+langcode: en
+status: false
+dependencies:
+  config:
+    - facets.facet.decision_counter
+  module:
+    - facets
+    - system
+  theme:
+    - dfs_ny
+id: decisioncounter
+theme: dfs_ny
+region: content
+weight: 0
+provider: null
+plugin: 'facet_block:decision_counter'
+settings:
+  id: 'facet_block:decision_counter'
+  label: 'Decision Counter'
+  provider: facets
+  label_display: '0'
+  block_id: decisioncounter
+visibility:
+  request_path:
+    id: request_path
+    pages: /public-appeal/search
+    negate: false
+    context_mapping: {  }

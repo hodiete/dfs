@@ -1,0 +1,58 @@
+uuid: 596a2ea9-f6e8-43df-b3b7-04f849b5fe4e
+langcode: en
+status: true
+dependencies:
+  config:
+    - search_api.index.public_appeal_search_local
+    - views.view.public_appeal_search
+  module:
+    - search_api
+id: appeal_decision
+name: 'Appeal Decision'
+url_alias: appeal_decision
+weight: -2
+min_count: 1
+show_only_one_result: false
+field_identifier: name_3
+facet_source_id: 'search_api:views_page__public_appeal_search__public_appeals_search_page'
+widget:
+  type: checkbox
+  config:
+    show_numbers: true
+    soft_limit: 0
+    soft_limit_settings:
+      show_less_label: 'Show less'
+      show_more_label: 'Show more'
+    show_reset_link: true
+    reset_text: 'Show all'
+    hide_reset_when_no_selection: true
+query_operator: or
+use_hierarchy: false
+expand_hierarchy: false
+enable_parent_when_child_gets_disabled: true
+hard_limit: 0
+exclude: false
+only_visible_when_facet_source_is_visible: false
+processor_configs:
+  display_value_widget_order:
+    processor_id: display_value_widget_order
+    weights:
+      sort: 40
+    settings:
+      sort: ASC
+  list_item:
+    processor_id: list_item
+    weights:
+      build: 5
+    settings: {  }
+  url_processor_handler:
+    processor_id: url_processor_handler
+    weights:
+      pre_query: 50
+      build: 15
+    settings: {  }
+empty_behavior:
+  behavior: text
+  text_format: plain_text
+  text: ''
+show_title: true

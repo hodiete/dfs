@@ -1,0 +1,31 @@
+uuid: 530fb860-224a-4222-890f-a8bfe185501c
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:plain_text:2a9fd14c-0be1-4b90-b7d8-975906ad66b4'
+  module:
+    - block_content
+    - system
+  theme:
+    - dfs_ny
+id: categoriestitle
+theme: dfs_ny
+region: sidebar_first
+weight: -50
+provider: null
+plugin: 'block_content:2a9fd14c-0be1-4b90-b7d8-975906ad66b4'
+settings:
+  id: 'block_content:2a9fd14c-0be1-4b90-b7d8-975906ad66b4'
+  label: 'Categories Title'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: /public-appeal/search
+    negate: false
+    context_mapping: {  }

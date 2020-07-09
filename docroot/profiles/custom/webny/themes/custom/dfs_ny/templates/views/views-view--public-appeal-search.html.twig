@@ -1,0 +1,86 @@
+{#
+/**
+ * @file
+ * Theme override for main view template.
+ *
+ * Available variables:
+ * - attributes: Remaining HTML attributes for the element.
+ * - css_name: A css-safe version of the view name.
+ * - css_class: The user-specified classes names, if any.
+ * - header: The optional header.
+ * - footer: The optional footer.
+ * - rows: The results of the view query, if any.
+ * - empty: The content to display if there are no rows.
+ * - pager: The optional pager next/prev links to display.
+ * - exposed: Exposed widget form/info to display.
+ * - feed_icons: Optional feed icons to display.
+ * - more: An optional link to the next page of results.
+ * - title: Title of the view, only used when displaying in the admin preview.
+ * - title_prefix: Additional output populated by modules, intended to be
+ *   displayed in front of the view title.
+ * - title_suffix: Additional output populated by modules, intended to be
+ *   displayed after the view title.
+ * - attachment_before: An optional attachment view to be displayed before the
+ *   view content.
+ * - attachment_after: An optional attachment view to be displayed after the
+ *   view content.
+ * - dom_id: Unique id for every view being printed to give unique class for
+ *   Javascript.
+ *
+ * @see template_preprocess_views_view()
+ */
+#}
+{%
+  set classes = [
+    dom_id ? 'js-view-dom-id-' ~ dom_id,
+    'public-appeal-search-all',
+  ]
+%}
+<div{{ attributes.addClass(classes) }}>
+  {{ title_prefix }}
+  {{ title }}
+  {{ title_suffix }}
+  <div class="public-appeals-search-form-head">
+    <div id="public-appeal-search-form">
+      {{ exposed }}
+      <div class="include-references-toggle">
+        <input type="checkbox" class="appeal-search-reference-toggle-checkbox js-form-item-references-included" id="appeal-search-reference-toggle-checkbox">
+        <label for="appeal-search-reference-toggle-checkbox">
+          {% trans %}Include References in Search{% endtrans %}
+        </label>
+      </div>
+    </div>
+    <div class="counters">
+      <ul class="counters-inner">
+        <li class="overturned-li"><div class="views-field views-field-nothing"><span class="field-content"><div class="overturned-counter"><span class="overturned-value">0</span>Overturned</div></span></div></li>
+        <li class="upheld-li"><div class="views-field views-field-nothing"><span class="field-content"><div class="upheld-counter"><span class="upheld-value">0</span>Upheld</div></span></div></li>
+        <li class="overturned-in-part-li"><div class="views-field views-field-nothing"><span class="field-content"><div class="overturned-in-part-counter"><span class="overturned-in-part-value">0</span>Overturned in Part</div></span></div></li>
+      </ul>
+    </div>
+  </div>
+  {% if header %}
+    <header>
+      {{ header }}
+    </header>
+  {% endif %}
+  
+  {{ attachment_before }}
+
+  {% if rows -%}
+    {{ rows }}
+  {% elseif empty -%}
+    {{ empty }}
+  {% endif %}
+  {{ pager }}
+
+  {{ attachment_after }}
+  {{ more }}
+
+  {% if footer %}
+    <footer>
+      {{ footer }}
+    </footer>
+  {% endif %}
+
+  {{ feed_icons }}
+</div>

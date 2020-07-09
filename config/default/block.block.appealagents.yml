@@ -1,0 +1,29 @@
+uuid: c49c10ea-00f8-4f36-82cb-8859db67a8c7
+langcode: en
+status: true
+dependencies:
+  config:
+    - facets.facet.appeal_agent
+  module:
+    - facets
+    - system
+  theme:
+    - dfs_ny
+id: appealagents
+theme: dfs_ny
+region: sidebar_first
+weight: -41
+provider: null
+plugin: 'facet_block:appeal_agent'
+settings:
+  id: 'facet_block:appeal_agent'
+  label: 'Appeal Agent(s)'
+  provider: facets
+  label_display: '0'
+  block_id: appealagents
+visibility:
+  request_path:
+    id: request_path
+    pages: /public-appeal/search
+    negate: false
+    context_mapping: {  }

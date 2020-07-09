@@ -1,6 +1,6 @@
 uuid: 08d60699-3705-43cd-9eba-1c155eb9e940
 langcode: en
-status: true
+status: false
 dependencies:
   config:
     - field.storage.node.case_number
@@ -17,13 +17,13 @@ dependencies:
     - field.storage.node.appeal_agent
     - search_api.server.gung_acquia_search_api_solr_server
   module:
+    - node
     - taxonomy
     - search_api
-    - node
 id: public_appeal_search
 name: 'Public Appeal Search'
 description: ''
-read_only: false
+read_only: true
 field_settings:
   case_number:
     label: 'Case Number'
@@ -34,33 +34,6 @@ field_settings:
     dependencies:
       config:
         - field.storage.node.case_number
-  nid:
-    label: ID
-    datasource_id: 'entity:node'
-    property_path: nid
-    type: integer
-  references:
-    label: References
-    datasource_id: 'entity:node'
-    property_path: references
-    type: text
-    boost: 0.5
-    dependencies:
-      config:
-        - field.storage.node.references
-  summary:
-    label: Summary
-    datasource_id: 'entity:node'
-    property_path: summary
-    type: text
-    dependencies:
-      config:
-        - field.storage.node.summary
-  title:
-    label: Title
-    datasource_id: 'entity:node'
-    property_path: title
-    type: text
   name:
     label: 'Treatment » Taxonomy term » Name'
     datasource_id: 'entity:node'
@@ -151,6 +124,39 @@ field_settings:
         - field.storage.node.appeal_agent
       module:
         - taxonomy
+  nid:
+    label: ID
+    datasource_id: 'entity:node'
+    property_path: nid
+    type: integer
+    dependencies:
+      module:
+        - node
+  references:
+    label: References
+    datasource_id: 'entity:node'
+    property_path: references
+    type: text
+    boost: 0.5
+    dependencies:
+      config:
+        - field.storage.node.references
+  summary:
+    label: Summary
+    datasource_id: 'entity:node'
+    property_path: summary
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.summary
+  title:
+    label: Title
+    datasource_id: 'entity:node'
+    property_path: title
+    type: text
+    dependencies:
+      module:
+        - node
 datasource_settings:
   'entity:node':
     bundles:
@@ -163,6 +169,7 @@ datasource_settings:
 processor_settings:
   add_url: {  }
   aggregated_field: {  }
+  language_with_fallback: {  }
   rendered_item: {  }
 tracker_settings:
   default:

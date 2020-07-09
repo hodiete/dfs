@@ -45,3 +45,14 @@ function dfs_ny_form_system_theme_settings_alter(&$form, &$form_state) {
     '#description'  => t('Select a color palettes. None, the default, uses ny.gov colors.  Note that if you change this value you need to clear the theme cache'),
   );
 }
+
+// function hook_page_attachments_alter(array &$attachments) {
+//   $current_path = \Drupal::service('path.current')->getPath();
+//   $result = \Drupal::service('path.alias_manager')->getAliasByPath($current_path);
+//   if ($result == "/public-appeal/search" ){
+//     if (in_array('dfs_ny/table', $attachments['#attached']['library'])) {
+//       $index = array_search('dfs_ny/table', $attachments['#attached']['library']);
+//       unset($attachments['#attached']['library'][$index]);
+//     }
+//   }
+// }

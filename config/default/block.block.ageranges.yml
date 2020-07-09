@@ -1,0 +1,29 @@
+uuid: 813dff99-22a1-4dcd-b78e-55c9db359d1e
+langcode: en
+status: true
+dependencies:
+  config:
+    - facets.facet.age_range
+  module:
+    - facets
+    - system
+  theme:
+    - dfs_ny
+id: ageranges
+theme: dfs_ny
+region: sidebar_first
+weight: -43
+provider: null
+plugin: 'facet_block:age_range'
+settings:
+  id: 'facet_block:age_range'
+  label: 'Age Range(s)'
+  provider: facets
+  label_display: '0'
+  block_id: ageranges
+visibility:
+  request_path:
+    id: request_path
+    pages: /public-appeal/search
+    negate: false
+    context_mapping: {  }

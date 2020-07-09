@@ -112,16 +112,16 @@
               stickyStopperPosition - generalSidebarHeight - stickyTop;
             diff = stopPoint + stickOffset;
             var windowTop = $(window).scrollTop(); // returns number
-            console.log(
-              " windowTop = " +
-                windowTop +
-                " stopTop = " +
-                stickyStopperPosition +
-                " topMenu = " +
-                $topMenu +
-                " general height" +
-                generalSidebarHeight
-            );
+            // console.log(
+            //   " windowTop = " +
+            //     windowTop +
+            //     " stopTop = " +
+            //     stickyStopperPosition +
+            //     " topMenu = " +
+            //     $topMenu +
+            //     " general height" +
+            //     generalSidebarHeight
+            // );
 
             if (windowTop >= stickyTop) {
               $sticky.css({ position: "fixed", top: stickOffset });

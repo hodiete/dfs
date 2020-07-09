@@ -1,0 +1,92 @@
+uuid: 077a8f35-6d97-4d34-ae18-533960329421
+langcode: en
+status: true
+dependencies:
+  config:
+    - search_api.index.public_appeal_search_local
+    - views.view.public_appeal_search
+  module:
+    - search_api
+id: public_appeal_search_summary
+name: 'Public Appeal Search Summary'
+facets:
+  age_range:
+    checked: true
+    label: 'Age Range(s)'
+    separator: ', '
+    show_count: true
+    weight: 0
+  appeal_agent:
+    checked: true
+    label: 'Appeal Agent(s)'
+    separator: ', '
+    show_count: true
+    weight: 0
+  appeal_decision:
+    checked: true
+    label: 'Appeal Decision'
+    separator: ', '
+    show_count: true
+    weight: 0
+  appeal_type:
+    checked: true
+    label: 'Appeal Type'
+    separator: ', '
+    show_count: true
+    weight: 0
+  decision_year:
+    checked: true
+    label: 'Decision Year(s)'
+    separator: ', '
+    show_count: true
+    weight: 0
+  diagnosis:
+    checked: true
+    label: Diagnosis
+    separator: ', '
+    show_count: true
+    weight: 0
+  gender:
+    checked: true
+    label: Gender(s)
+    separator: ', '
+    show_count: true
+    weight: 0
+  health_plan:
+    checked: true
+    label: 'Health Plan(s)'
+    separator: ', '
+    show_count: true
+    weight: 0
+  treatment:
+    checked: true
+    label: Treatment(s)
+    separator: ', '
+    show_count: true
+    weight: 0
+facet_source_id: 'search_api:views_page__public_appeal_search__public_appeals_search_page'
+processor_configs:
+  hide_when_not_rendered:
+    processor_id: hide_when_not_rendered
+    weights:
+      build: '45'
+    settings: {  }
+  reset_facets:
+    processor_id: reset_facets
+    weights:
+      build: '30'
+    settings:
+      link_text: Reset
+  show_summary:
+    processor_id: show_summary
+    weights:
+      build: '20'
+    settings: {  }
+  show_text_when_empty:
+    processor_id: show_text_when_empty
+    weights:
+      build: '10'
+    settings:
+      text:
+        value: 'No results found.'
+        format: plain_text
