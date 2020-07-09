@@ -164,6 +164,7 @@
       $(".counters").insertAfter(".public-appeal-search-form form");
       $(".mobile-open").insertAfter(".public-appeal-search-form form");
       $('.table-top .table-top-left .search-results').insertBefore($('.views-exposed-form-public-appeal-search-public-appeals-search-page .js-form-item-items-per-page'));
+      $('.js-form-item-items-per-page').before($('.include-references-toggle'));
 
       //add mobile open functionality
       $(".mobile-open", context)
@@ -330,8 +331,8 @@
 
       //move pager drop-down
       $('.js-form-item-items-per-page select', context).once('pager-move').clone().attr('id','page-drop-select').appendTo('.page-drop-select-container').on('change', function() {
-        $('#edit-items-per-page').val($('#page-drop-select').val());
-        $('#edit-submit-public-appeal-search')[0].click();
+        $("[id^='edit-items-per-page']").val($('#page-drop-select').val());
+        $( '#views-exposed-form-public-appeal-search-public-appeals-search-page' ).trigger( 'submit' );
       });
       $('.page-drop-select-container', context).once('pager-label').prepend($('<label>Show</label>').attr('for','page-drop-select'));
 

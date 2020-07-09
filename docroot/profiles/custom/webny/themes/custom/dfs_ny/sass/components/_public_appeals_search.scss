@@ -2,11 +2,6 @@
 //
 // Public Appeals Search Page Content styling
 
-
-.page-drop {
-  display: none;
-}
-
 .accordion-content {
   ul {
     list-style-type: none;
@@ -755,13 +750,25 @@
         input[id*=edit-submit-public-appeal-search]:hover {
           opacity: 0;
         }
-    
+        // moved to a different location and hidden
         .js-form-item-items-per-page {
-          font-size: 16px;
-          line-height: 18px;
+          font-size: 1px;
+          line-height: 1px;
           display: block;
-          opacity: 1;
+          opacity: 0;
           padding: 0px;
+          margin: 0px;
+          width: auto;
+          label, select {
+            display: inline-block;
+            padding: 0px;
+            margin: 0px;
+            font-size: 1px;
+            line-height: 1px;
+          }
+          &::after {
+            background: none;
+          }
         }
     
         &::after {
@@ -779,7 +786,6 @@
         .js-form-item-search,
         .js-form-type-textfield {
           width: 100%;
-          margin-bottom: 15px;
     
           label {
             position: relative;
@@ -838,12 +844,14 @@
         display: block;
         width: 100%;
         position: relative;
+        margin-left: 15px;
         
         .tooltip-container {
           position: absolute;
           display: block;
           width: auto;
-          top: 4px;
+          bottom: -1px;
+          line-height: 14px;
 
           .tooltip-toggle,
           .tooltip-toggle:hover,
@@ -895,12 +903,15 @@
           }
         }
         .appeal-search-reference-toggle-checkbox {
-          margin: 0px 10px 0px 28px;
+          margin: 0px 6px 0px 28px;
+          vertical-align: bottom;
         }
         label {
           display: inline-block;
           margin: 0px;
           font-weight: 300;
+          vertical-align: bottom;
+          line-height: 14px;
         }
       }
     }
@@ -1088,7 +1099,7 @@
       clear: both;
       display: flex;
       margin: 0 0 15px;
-      padding-top: 30px;
+      padding-top: 8px;
       width: 100%;
       justify-content: space-between;
       color: #022629;
