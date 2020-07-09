@@ -40,21 +40,29 @@
   {{ title_prefix }}
   {{ title }}
   {{ title_suffix }}
+  <div class="public-appeals-search-form-head">
+    <div id="public-appeal-search-form">
+      {{ exposed }}
+      <div class="include-references-toggle">
+        <input type="checkbox" class="appeal-search-reference-toggle-checkbox js-form-item-references-included" id="appeal-search-reference-toggle-checkbox">
+        <label for="appeal-search-reference-toggle-checkbox">
+          {% trans %}Include References in Search{% endtrans %}
+        </label>
+      </div>
+    </div>
+    <div class="counters">
+      <ul class="counters-inner">
+        <li class="overturned-li"><div class="views-field views-field-nothing"><span class="field-content"><div class="overturned-counter"><span class="overturned-value">0</span>Overturned</div></span></div></li>
+        <li class="upheld-li"><div class="views-field views-field-nothing"><span class="field-content"><div class="upheld-counter"><span class="upheld-value">0</span>Upheld</div></span></div></li>
+        <li class="overturned-in-part-li"><div class="views-field views-field-nothing"><span class="field-content"><div class="overturned-in-part-counter"><span class="overturned-in-part-value">0</span>Overturned in Part</div></span></div></li>
+      </ul>
+    </div>
+  </div>
   {% if header %}
     <header>
       {{ header }}
     </header>
   {% endif %}
-  <div id="public-appeal-search-form">
-    {{ exposed }}
-  </div>
-  <div class="counters">
-    <ul class="counters-inner">
-      <li class="overturned-li"><div class="views-field views-field-nothing"><span class="field-content"><div class="overturned-counter"><span class="overturned-value">0</span>Overturned</div></span></div></li>
-      <li class="upheld-li"><div class="views-field views-field-nothing"><span class="field-content"><div class="upheld-counter"><span class="upheld-value">0</span>Upheld</div></span></div></li>
-      <li class="overturned-in-part-li"><div class="views-field views-field-nothing"><span class="field-content"><div class="overturned-in-part-counter"><span class="overturned-in-part-value">0</span>Overturned in Part</div></span></div></li>
-    </ul>
-  </div>
   
   {{ attachment_before }}
 

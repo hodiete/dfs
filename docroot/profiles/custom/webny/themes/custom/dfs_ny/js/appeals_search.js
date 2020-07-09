@@ -55,7 +55,6 @@
         $('.public-appeal-search-view .counters .counters-inner li').each(function(){
           $(this).show();
           var thiscountervalue = $(this).find($('span.field-content div span')).text();
-          console.log(thiscountervalue);
           if (thiscountervalue == 0){
             $(this).hide();
           }
@@ -164,6 +163,7 @@
       //move counters and mobile filter
       $(".counters").insertAfter(".public-appeal-search-form form");
       $(".mobile-open").insertAfter(".public-appeal-search-form form");
+      $('.table-top .table-top-left .search-results').insertBefore($('.views-exposed-form-public-appeal-search-public-appeals-search-page .js-form-item-items-per-page'));
 
       //add mobile open functionality
       $(".mobile-open", context)
