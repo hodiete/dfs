@@ -8,6 +8,7 @@
 
   Drupal.behaviors.appealsSearch = {
     attach: function (context, settings) {
+
       //override placeholder text on external filters
       function setFilterPlaceholders() {
         $(
@@ -197,11 +198,11 @@
           $(thisRow).hide();
         }
       });
-      
+
       // this function toggles the text search
-      function togglesearchbox (visiblesearch, invisiblesearch){ 
+      function togglesearchbox (visiblesearch, invisiblesearch){
         // For some reason these behaviors fire a number of times
-        // ensure this function only fires when the form element 
+        // ensure this function only fires when the form element
         // we want to reveal is hidden
         if ($(visiblesearch).is(":hidden")){
           var textboxclass = ' .form-text';

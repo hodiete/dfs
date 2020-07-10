@@ -355,7 +355,7 @@
           }
         }
       }
-  }
+    }
     &.block-facet--select2 {
       label {
         margin: 0 0 10px;
@@ -366,10 +366,10 @@
         font-weight: 600;
         display: block;
       }
-    .select2-selection--multiple {
-      background: transparent;
-      border: 0!important;
-    }
+      .select2-selection--multiple {
+        background: transparent;
+        border: 0!important;
+      }
     .select2-container--default {
       border: 0!important;
       border-radius: 0;
@@ -432,16 +432,35 @@
         padding: 3px !important;
         font-size: 13px !important;
       }
+      &.select2-container--focus {
+        .select2-selection--multiple {
+          border: 0!important;
+        }
+      }
     }
-    &.select2-container--focus {
-      .select2-selection--multiple {
-        border: 0!important;
+    &.js-facet-block-id-casenumber {
+      .select2-container--default {
+        border-bottom: 0!important;
+        .select2-selection__rendered {
+          margin: 0;
+          padding: 0 20px 0 10px;
+          background: transparent;
+          border: 1px solid #000;
+          word-wrap: break-word !important;
+          -o-text-overflow: inherit !important;
+          text-overflow: inherit !important;
+          white-space: normal !important;
+        }
       }
     }
   }
 }
 
-
+// .block-facets-ajax.js-facet-block-id-casenumber {
+//   .js-form-item-case-number {
+//     display: none;
+//   }
+// }
     form {
       position: relative;
       // padding: 50px 28px 0;
@@ -1670,4 +1689,3 @@
   overflow: hidden!important;
   right: 10px!important;
 }
-

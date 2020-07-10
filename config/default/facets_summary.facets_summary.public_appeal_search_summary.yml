@@ -64,6 +64,12 @@ facets:
     separator: ', '
     show_count: true
     weight: 0
+  case_number:
+    checked: true
+    label: 'Case Number'
+    separator: ', '
+    weight: 0
+    show_count: false
 facet_source_id: 'search_api:views_page__public_appeal_search__public_appeals_search_page'
 processor_configs:
   hide_when_not_rendered:
@@ -77,16 +83,3 @@ processor_configs:
       build: '30'
     settings:
       link_text: Reset
-  show_summary:
-    processor_id: show_summary
-    weights:
-      build: '20'
-    settings: {  }
-  show_text_when_empty:
-    processor_id: show_text_when_empty
-    weights:
-      build: '10'
-    settings:
-      text:
-        value: 'No results found.'
-        format: plain_text
