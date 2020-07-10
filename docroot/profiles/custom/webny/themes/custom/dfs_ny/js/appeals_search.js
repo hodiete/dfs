@@ -347,8 +347,8 @@
         $('.counters .overturned-in-part-value').text($("label[for='appeal_decision-Overturned-in-Part'] .facet-item__count").html().replace(/[()]/g, ''));
       }
       //countersToggle();
-      $('.select2-selection').click(function(){
-        $('.select2-dropdown').hide();
+      $(".js-form-item-case-number .select2-selection").click(function () {
+        $(".select2-dropdown").hide();
       });
     }
   };
