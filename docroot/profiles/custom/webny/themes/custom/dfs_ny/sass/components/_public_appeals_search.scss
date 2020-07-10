@@ -701,6 +701,30 @@
       list-style-type: none;
       li {
         font-size: 16px;
+        .facet-summary-item--clear {
+          text-align: center;
+        }
+        &a:link {
+          top: 93px;
+          right: 6px;
+          background: none;
+          color: #fff;
+          padding: 8px 8px 5px 8px;
+          background: #09464C;
+          border: 2px solid #09464C;
+          border-radius: 55px;
+          line-height: 14px;
+          text-decoration: none;
+          cursor: pointer;
+          width: 65px;
+          z-index: 1;
+          opacity: 1;
+        }
+        &a:link:hover {
+          color: #09464C;
+          background: #FFF;
+          text-decoration: none;
+        }
       }
     }
   }
