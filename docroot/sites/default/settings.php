@@ -643,6 +643,11 @@ ini_set('max_execution_time',0);
 # $config['system.site']['name'] = 'My Drupal site';
 # $config['system.theme']['default'] = 'stark';
 # $config['user.settings']['anonymous'] = 'Visitor';
+$config['public_appeal_sync.settings']['baseurl'] = "https://myportal.dfs.ny.gov/peasa-dataextract-portlet/rest/dfsservices/peasaservice";
+$config['public_appeal_sync.settings']['outdir'] = "public_appeal/output/test";
+$config['public_appeal_sync.settings']['auth_user'] = "peasaapi@opin.ca";
+$config['public_appeal_sync.settings']['auth_passwd'] = "opinservice123";
+$config['public_appeal_sync.settings']['email'] = "Adam.Gilman@its.ny.gov";
 
 /**
  * Fast 404 pages:
