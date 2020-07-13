@@ -647,7 +647,7 @@ $config['public_appeal_sync.settings']['baseurl'] = "https://myportal.dfs.ny.gov
 $config['public_appeal_sync.settings']['outdir'] = "public_appeal/output/test";
 $config['public_appeal_sync.settings']['auth_user'] = "peasaapi@opin.ca";
 $config['public_appeal_sync.settings']['auth_passwd'] = "opinservice123";
-$config['public_appeal_sync.settings']['email'] = "Adam.Gilman@its.ny.gov";
+$config['public_appeal_sync.settings']['email'] = "Neil.Francese@dfs.ny.gov";
 
 /**
  * Fast 404 pages:
