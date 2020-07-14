@@ -224,10 +224,15 @@
           }
         }
       }
-      // if there is text in the fulltext search box being filled from the querystring, show it
-      const urlParams = new URLSearchParams(window.location.search);
-      var fulltextvalue = urlParams.get('fulltext');
-      if (fulltextvalue) {
+      // if there is text in the fulltext search box filled by the user or 
+        // being filled from the querystring, show it
+      // had to switch from using URLSearchParams because it doesn't work in IE11.
+      $.urlParam = function (name) {
+        var results = new RegExp('[\?&]' + name + '=([^&#]*)')
+          .exec(window.location.search);
+        return (results !== null) ? results[1] || 0 : false;
+      }
+      if ($.urlParam('fulltext') || $('.js-form-item-fulltext .form-text').val() != '') {
         $('.js-form-item-fulltext-no-ref').hide();
         $('.js-form-item-fulltext').show();
         $('.appeal-search-reference-toggle-checkbox').prop('checked', true);
@@ -347,8 +352,8 @@
         $('.counters .overturned-in-part-value').text($("label[for='appeal_decision-Overturned-in-Part'] .facet-item__count").html().replace(/[()]/g, ''));
       }
       //countersToggle();
-      $(".js-form-item-case-number .select2-selection").click(function () {
-        $(".select2-dropdown").hide();
+      $('.js-form-item-case-number .select2-selection').click(function () {
+        $('.select2-dropdown').hide();
       });
     }
   };
