@@ -355,6 +355,19 @@
       $('.js-form-item-case-number .select2-selection').click(function () {
         $('.select2-dropdown').hide();
       });
+      // manually changing the placeholder because the select2 function doesn't like how we are using jquery
+      $('.select2-search__field').each(function(){
+        if ($(this).attr('placeholder')){
+          var thisplaceholder = $(this).attr('placeholder');
+          if (thisplaceholder == '- None -') {
+            thisplaceholder = "Select option(s)"
+          }
+          $(this).attr({
+            "placeholder" : thisplaceholder
+          });
+        }
+      });
+
     }
   };
 
