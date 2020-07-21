@@ -360,7 +360,7 @@
         if ($(this).attr('placeholder')){
           var thisplaceholder = $(this).attr('placeholder');
           if (thisplaceholder == '- None -') {
-            thisplaceholder = 'Select';
+            thisplaceholder = "Select option(s)"
           }
           $(this).attr({
             "placeholder" : thisplaceholder
