@@ -2,12 +2,14 @@ uuid: b2c1273d-a1a3-4820-8ebe-a0e15d37250b
 langcode: en
 status: true
 dependencies:
-  config:
-    - search_api.server.default_solr_server
-    - core.entity_view_mode.node.search_index
   module:
-    - search_api
     - node
+    - user
+    - search_api
+  config:
+    - field.storage.node.field_tags
+    - search_api.server.acquia_search_server
+    - core.entity_view_mode.node.search_index
 _core:
   default_config_hash: 5gcfQOCjXVt6We4_q02H8VjnECSON5NgKOchFAsncxU
 id: default_solr_index
@@ -17,35 +19,48 @@ read_only: false
 field_settings:
   author:
     label: 'Author name'
-    type: string
     datasource_id: 'entity:node'
     property_path: 'uid:entity:name'
+    type: string
+    dependencies:
+      module:
+        - node
+        - user
   changed:
     label: Changed
-    type: date
     datasource_id: 'entity:node'
     property_path: changed
+    type: date
+    dependencies:
+      module:
+        - node
   created:
     label: 'Authored on'
-    type: date
     datasource_id: 'entity:node'
     property_path: created
+    type: date
+    dependencies:
+      module:
+        - node
   field_tags:
     label: Tags
-    type: integer
     datasource_id: 'entity:node'
     property_path: field_tags
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.field_tags
   node_grants:
     label: 'Node access information'
-    type: string
     property_path: search_api_node_grants
-    index_locked: true
+    type: string
+    indexed_locked: true
     type_locked: true
     hidden: true
   rendered_item:
     label: 'Rendered item'
-    type: text
     property_path: rendered_item
+    type: text
     configuration:
       roles:
         anonymous: anonymous
@@ -55,36 +70,57 @@ field_settings:
           page: search_index
   status:
     label: 'Publishing status'
-    type: boolean
     datasource_id: 'entity:node'
     property_path: status
-    index_locked: true
+    type: boolean
+    indexed_locked: true
     type_locked: true
+    dependencies:
+      module:
+        - node
   sticky:
     label: 'Sticky at top of lists'
-    type: boolean
     datasource_id: 'entity:node'
     property_path: sticky
+    type: boolean
+    dependencies:
+      module:
+        - node
   title:
     label: Title
-    type: text
     datasource_id: 'entity:node'
     property_path: title
+    type: text
     boost: !!float 8
+    dependencies:
+      module:
+        - node
   type:
     label: 'Content type'
-    type: string
     datasource_id: 'entity:node'
     property_path: type
+    type: string
+    dependencies:
+      module:
+        - node
   uid:
     label: 'Author ID'
-    type: integer
     datasource_id: 'entity:node'
     property_path: uid
-    index_locked: true
+    type: integer
+    indexed_locked: true
     type_locked: true
+    dependencies:
+      module:
+        - node
 datasource_settings:
-  'entity:node': {  }
+  'entity:node':
+    bundles:
+      default: true
+      selected: {  }
+    languages:
+      default: true
+      selected: {  }
 processor_settings:
   add_url:
     weights:
@@ -113,13 +149,16 @@ processor_settings:
       h2: 3
       h3: 2
       string: 2
+    all_fields: false
+  language_with_fallback: {  }
   rendered_item:
     weights:
       add_properties: 0
       pre_index_save: -10
 tracker_settings:
-  default: {  }
+  default:
+    indexing_order: fifo
 options:
   index_directly: true
   cron_limit: 50
-server: default_solr_server
+server: acquia_search_server

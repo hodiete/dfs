@@ -1,8 +1,11 @@
-uuid: 8b43d91f-e58e-4a30-ac30-3eba62504686
+uuid: ce98804b-f976-43a3-ac4e-f6b5e6100146
 langcode: en
 status: true
 dependencies:
+  content:
+    - 'block_content:dfs_block:4916e2ca-8aaf-4cc9-a228-a24fd03403c4'
   module:
+    - block_content
     - system
   theme:
     - dfs_ny
@@ -11,9 +14,9 @@ theme: dfs_ny
 region: content
 weight: 0
 provider: null
-plugin: 'block_content:02e00582-e8da-4e69-9690-6e1afe33344c'
+plugin: 'block_content:4916e2ca-8aaf-4cc9-a228-a24fd03403c4'
 settings:
-  id: 'block_content:02e00582-e8da-4e69-9690-6e1afe33344c'
+  id: 'block_content:4916e2ca-8aaf-4cc9-a228-a24fd03403c4'
   label: 'Dataset Export'
   provider: block_content
   label_display: visible

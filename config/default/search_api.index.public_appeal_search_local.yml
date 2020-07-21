@@ -3,19 +3,19 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.storage.node.case_number
     - field.storage.node.age_range
     - field.storage.node.appeal_agent
     - field.storage.node.appeal_type
-    - field.storage.node.case_number
-    - field.storage.node.decision_year
     - field.storage.node.decision
+    - field.storage.node.decision_year
     - field.storage.node.diagnosis
     - field.storage.node.gender
     - field.storage.node.health_plan
+    - field.storage.node.treatment
     - field.storage.node.references
     - field.storage.node.summary
-    - field.storage.node.treatment
-    - search_api.server.docksal_solr
+    - search_api.server.default_solr_server
   module:
     - taxonomy
     - node
@@ -181,4 +181,4 @@ tracker_settings:
 options:
   index_directly: true
   cron_limit: 200
-server: docksal_solr
+server: default_solr_server
