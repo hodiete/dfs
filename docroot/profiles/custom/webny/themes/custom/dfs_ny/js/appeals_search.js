@@ -224,7 +224,7 @@
           }
         }
       }
-      // if there is text in the fulltext search box filled by the user or 
+      // if there is text in the fulltext search box filled by the user or
         // being filled from the querystring, show it
       // had to switch from using URLSearchParams because it doesn't work in IE11.
       $.urlParam = function (name) {
@@ -360,7 +360,7 @@
         if ($(this).attr('placeholder')){
           var thisplaceholder = $(this).attr('placeholder');
           if (thisplaceholder == '- None -') {
-            thisplaceholder = "Select option(s)"
+            thisplaceholder = "Select"
           }
           $(this).attr({
             "placeholder" : thisplaceholder
