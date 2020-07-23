@@ -43,6 +43,7 @@
   <div class="public-appeals-search-form-head">
     <div id="public-appeal-search-form">
       {{ exposed }}
+      {# <div class="global-reset-button"><a href="/public-appeal/search" class="button" title="Reset search">Reset Search</a></div> #}
       <div class="include-references-toggle">
         <input type="checkbox" class="appeal-search-reference-toggle-checkbox js-form-item-references-included" id="appeal-search-reference-toggle-checkbox">
         <label for="appeal-search-reference-toggle-checkbox">
@@ -63,7 +64,7 @@
       {{ header }}
     </header>
   {% endif %}
-  
+
   {{ attachment_before }}
 
   {% if rows -%}

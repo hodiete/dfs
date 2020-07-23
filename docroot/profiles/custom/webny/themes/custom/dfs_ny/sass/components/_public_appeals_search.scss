@@ -19,6 +19,38 @@
     display: flex;
   }
 
+// .global-reset-button a {
+//     color: #fff !important;
+//     padding: 0 20px;
+//     background: #09464C;
+//     border: 2px solid #09464C;
+//     cursor: pointer;
+//     z-index: 1;
+//     opacity: 1;
+//     height: 62px;
+//     font-size: 14px;
+//     font-weight: 400;
+//     border: 1px solid #022629;
+//     border-radius: 32px;
+//     display: -webkit-box;
+//     display: -ms-flexbox;
+//     display: flex;
+//     max-width: 110px;
+//     -webkit-box-align: center;
+//     -ms-flex-align: center;
+//     align-items: center;
+//     -webkit-box-pack: center;
+//     -ms-flex-pack: center;
+//     justify-content: center;
+//     width: 110px;
+// }
+
+// .global-reset-button a:hover {
+//     color: #09464C !important;
+//     background: #FFF;
+//     text-decoration: none;
+// }
+
   aside.layout-sidebar-first {
     float: none;
     width: 342px;
@@ -779,7 +811,8 @@
       width: calc(64% - 20px);
       margin-right: 20px;
       //max-width: 915px;
-      display: inline-block;
+      display: flex;
+      align-items: center;
 
       #views-exposed-form-public-appeal-search-public-appeals-search-page {
         display: block;
