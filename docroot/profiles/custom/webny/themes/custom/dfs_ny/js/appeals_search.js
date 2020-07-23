@@ -171,14 +171,13 @@
       $(".mobile-open", context)
         .once("mobile-open")
         .on("click", function (evt) {
-          $(
-            "#block-exposedformpublic-appeal-searchpublic-appeals-search-page"
-          ).css({
-            overflow: "visible",
-            clip: "auto",
-            height: "auto",
-            width: "100%",
-          });
+          $(".layout-sidebar-first").addClass('expanded');
+          $(window).scrollTop(0);
+        });
+      $(".sidebar-close-button", context)
+        .once("mobile-close")
+        .on("click", function (evt) {
+          $(".layout-sidebar-first").removeClass('expanded');
         });
 
       // toggle a single accordion
