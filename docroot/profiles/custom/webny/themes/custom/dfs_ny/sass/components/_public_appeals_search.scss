@@ -1,6 +1,9 @@
 // Public Appeals Search Page Content
 //
 // Public Appeals Search Page Content styling
+html {
+  scroll-behavior: smooth;
+}
 
 .accordion-content {
   ul {
@@ -215,7 +218,6 @@
             text-decoration: none;
 
             &:after {
-              content: '+';
               position: absolute;
               left: 130px;
             }
@@ -1429,6 +1431,37 @@
 
     aside.layout-sidebar-first {
       width: 0;
+      overflow: hidden;
+      position: absolute;
+      z-index: 1000;
+      top: 0px;
+      left: 0px;
+      background-color: #EFF0F2;
+      border-bottom: 1px solid #333333;
+      box-shadow: 0px 10px 20px 3px #333;
+      .sidebar-close-button {
+        display: block;
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        border: 1px solid #fff;
+        background: #022629;
+        color: #fff;
+        padding: 0px 8px;
+        cursor: pointer;
+        font-weight: 700;
+        z-index: 1;
+        font-size: 20px;
+        &:after {
+          content: 'x';
+        }
+      }
+      &.expanded {
+        overflow: visible;
+        clip: auto;
+        height: auto;
+        width: 100%;
+      }
     }
 
     table {
