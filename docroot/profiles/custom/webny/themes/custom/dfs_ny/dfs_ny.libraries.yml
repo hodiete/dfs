@@ -7,7 +7,7 @@ global-styling:
 print-styles:
   css:
     theme:
-      css/print.css: { media: print}
+      css/print.css: { media: print }
 
 video-js-css:
   css:
@@ -55,7 +55,6 @@ videoframe:
     - dfs_ny/videojs-vimeo
     - core/jquery
 
-
 videojs:
   js:
     ../../../libraries/video.js/dist/video.min.js: {}
@@ -94,7 +93,7 @@ waypoints:
   js:
     ../../../libraries/waypoints/lib/jquery.waypoints.js: {}
   dependencies:
-    -  core/jquery
+    - core/jquery
 
 navigator:
   js:
@@ -169,7 +168,6 @@ left-menu-js:
     - core/drupal
     - core/jquery
 
-
 public-appeal-misc:
   js:
     js/public_appeal_misc.js: {}
@@ -179,7 +177,7 @@ public-appeal-misc:
 appeals-search:
   js:
     js/appeals_search.js: {}
-    js/public_appeal_misc.js: {}    
+    js/public_appeal_misc.js: {}
   dependencies:
     - core/jquery
     - core/drupal

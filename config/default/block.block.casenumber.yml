@@ -1,0 +1,29 @@
+uuid: 2a6270c2-658c-4b9b-8f6f-e2babfba15f1
+langcode: en
+status: true
+dependencies:
+  config:
+    - facets.facet.case_number
+  module:
+    - facets
+    - system
+  theme:
+    - dfs_ny
+id: casenumber
+theme: dfs_ny
+region: sidebar_first
+weight: -40
+provider: null
+plugin: 'facet_block:case_number'
+settings:
+  id: 'facet_block:case_number'
+  label: 'Case Number'
+  provider: facets
+  label_display: '0'
+  block_id: casenumber
+visibility:
+  request_path:
+    id: request_path
+    pages: /public-appeal/search
+    negate: false
+    context_mapping: {  }

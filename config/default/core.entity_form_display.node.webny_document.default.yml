@@ -46,6 +46,7 @@ third_party_settings:
         classes: ''
         required_fields: false
       label: Metadata
+      region: content
     group_webny_document_general:
       children:
         - title
@@ -63,6 +64,7 @@ third_party_settings:
         classes: ''
         required_fields: false
       label: General
+      region: content
     group_webny_document_agency_keyw:
       children:
         - field_webny_agency_keywords
@@ -78,6 +80,7 @@ third_party_settings:
         id: ''
         classes: ''
       label: 'Agency Keywords'
+      region: content
     group_webny_doc_global_keywords:
       children:
         - field_webny_global_keywords
@@ -92,6 +95,7 @@ third_party_settings:
         description: ''
         required_fields: true
       label: 'Global Keywords'
+      region: content
     group_document:
       children:
         - field_webny_document_file_upload
@@ -106,6 +110,7 @@ third_party_settings:
         description: ''
         required_fields: true
       label: Document
+      region: content
 _core:
   default_config_hash: fglD6lbzXHrJhpO6NOY6MingY8wW4m93CUTYUldXGoE
 id: node.webny_document.default

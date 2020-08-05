@@ -1,0 +1,29 @@
+uuid: 3468250a-9026-463f-b058-9454f5487148
+langcode: en
+status: true
+dependencies:
+  config:
+    - facets.facet.health_plan
+  module:
+    - facets
+    - system
+  theme:
+    - dfs_ny
+id: healthplans
+theme: dfs_ny
+region: sidebar_first
+weight: -47
+provider: null
+plugin: 'facet_block:health_plan'
+settings:
+  id: 'facet_block:health_plan'
+  label: 'Health Plan(s)'
+  provider: facets
+  label_display: '0'
+  block_id: healthplans
+visibility:
+  request_path:
+    id: request_path
+    pages: /public-appeal/search
+    negate: false
+    context_mapping: {  }

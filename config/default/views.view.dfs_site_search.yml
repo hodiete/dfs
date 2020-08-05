@@ -76,6 +76,13 @@ display:
           view_modes:
             'entity:comment':
               comment: ''
+            'entity:file':
+              file: token
+            'entity:media':
+              image: thumbnail
+              video: thumbnail
+            'entity:menu_link_content':
+              menu_link_content: ''
             'entity:node':
               apps_and_licensing_card: teaser
               article: default
@@ -100,13 +107,6 @@ display:
               webny_news: teaser
               webny_page: search_result
               webny_whitelisted_content: teaser
-            'entity:menu_link_content':
-              menu_link_content: ''
-            'entity:file':
-              file: token
-            'entity:media':
-              image: thumbnail
-              video: thumbnail
             'entity:paragraph':
               faq_page_card: default
               short_page_card: default
@@ -242,10 +242,10 @@ display:
           parse_mode: terms
           min_length: 3
           fields:
-            body: body
-            title: title
-            field_body: field_body
-            name: name
+            - body
+            - field_body
+            - name
+            - title
           plugin_id: search_api_fulltext
       sorts:
         search_api_relevance:
@@ -345,18 +345,21 @@ display:
           parse_mode: terms
           min_length: 3
           fields:
-            body: body
-            title: title
-            field_body: field_body
-            name: name
+            - body
+            - field_body
+            - name
+            - title
           plugin_id: search_api_fulltext
       defaults:
         filters: false
         filter_groups: false
+        cache: false
       filter_groups:
         operator: AND
         groups:
           1: AND
+      cache:
+        type: none
     cache_metadata:
       max-age: -1
       contexts:

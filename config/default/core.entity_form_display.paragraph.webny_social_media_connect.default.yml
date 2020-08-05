@@ -25,7 +25,6 @@ dependencies:
   module:
     - field_group
     - link
-    - workbench_moderation
 third_party_settings:
   field_group:
     group_webny_social_mediafr_links:
@@ -55,6 +54,7 @@ third_party_settings:
         open: false
         required_fields: true
       label: 'Social Media Links'
+      region: content
     group_webny_use_smcfr_lnks:
       children:
         - group_webny_social_mediafr_links
@@ -68,6 +68,7 @@ third_party_settings:
         classes: ''
         required_fields: false
       label: 'Use Social Media Connect Links'
+      region: content
 _core:
   default_config_hash: Us8hwEehUsHLIG35S75KN3q8DJ3wneCPIu9laLSynoY
 id: paragraph.webny_social_media_connect.default

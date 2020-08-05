@@ -52,6 +52,7 @@ third_party_settings:
         id: date-section
         classes: ''
       label: 'Event Date'
+      region: content
     group_webny_event_sectoc:
       children:
         - field_webny_event_navtoggle
@@ -65,6 +66,7 @@ third_party_settings:
         open: false
         required_fields: true
       label: 'Sections and Table of Contents'
+      region: content
     group_webny_event_location:
       children:
         - field_webny_event_venue_name
@@ -79,6 +81,7 @@ third_party_settings:
         id: section-location
         classes: ''
       label: Location
+      region: content
     group_last_updated:
       children:
         - field_webny_event_last_updated
@@ -93,6 +96,7 @@ third_party_settings:
         classes: ''
         open: false
       label: 'Last Updated'
+      region: content
 _core:
   default_config_hash: nLvYjEbtUbkOXghySxG3L9j4EB9f4EEA2kz4sn4lUf0
 id: node.webny_event.default

@@ -15,10 +15,10 @@ backend_config:
   connector: solr_acquia_connector
   connector_config:
     scheme: https
-    timeout: '5'
-    index_timeout: '10'
-    optimize_timeout: '15'
-    commit_within: '1000'
+    timeout: 5
+    index_timeout: 10
+    optimize_timeout: 15
+    commit_within: 1000
     solr_version: ''
     http_method: AUTO
   retrieve_data: false
@@ -30,6 +30,5 @@ backend_config:
   suggest_corrections: true
   suggest_words: false
   acquia_search_possible_cores:
-    - EHJU-176215.prod.nydfs
-    - EHJU-176215.prod.default
-    - EHJU-176215
+    - EHJU-176215.test.nydfsstg
+    - EHJU-176215.test.default
