@@ -1559,7 +1559,9 @@ html {
     }
 
     #public-appeal-search-form {
-      max-width: calc(100% - 65px);
+      // max-width: calc(100% - 65px)!important;
+      max-width: 90% !important;
+      width: 90% !important;
     }
 
     .counters .counters-inner {
@@ -1567,6 +1569,11 @@ html {
     }
 
     .mobile-open {
+      width: 55px;
+      background-size: 55px;
+      height: 55px;
+      top: 28px;
+      right: 0;
       display: block;
     }
 
@@ -1609,7 +1616,11 @@ html {
     }
 
     .mobile-open {
-      right: 15px;
+      width: 55px;
+      background-size: 55px;
+      height: 55px;
+      top: 28px;
+      right: 0;
     }
 
     .search-results {
@@ -1662,6 +1673,7 @@ html {
     }
   }
 
+
   @media screen and (max-width:480px) {
     #public-appeal-search-form:after {
       top: 15px;
@@ -1676,7 +1688,21 @@ html {
     }
 
     #public-appeal-search-form {
-      max-width: calc(100% - 50px);
+      // max-width: calc(100% - 50px);
+      width: 80% !important;
+      max-width: 80%!important;
+      #views-exposed-form-public-appeal-search-public-appeals-search-page {
+        width: 100%;
+      }
+    }
+
+    .mobile-open {
+      width: 55px;
+      background-size: 55px;
+      height: 55px;
+      top: 28px;
+      right: 0;
+    }
 
       /*
       * Override the scss !important in
@@ -1692,9 +1718,9 @@ html {
       }
     }
 
-    .mobile-open {
-      top: 8px;
-    }
+    // .mobile-open {
+    //   top: 8px;
+    // }
 
     .counters {
       padding-bottom: 0;
@@ -1757,6 +1783,24 @@ html {
     }
   }
 
+  // @media screen and (max-width:479.99px) and (min-width:300px) {
+  //   .views-page-public-appeal-search.body-sidebars-first #public-appeal-search-form {
+  //     /* width: 83% !important; */
+  //     max-width: 100% !important;
+  //   }
+
+  //   .views-page-public-appeal-search.body-sidebars-first .mobile-open {
+  //     width: 45px;
+  //     background-size: 45px;
+  //     height: 45px;
+  //     top: 32px;
+  //     right: -15px;
+  //   }
+
+  //   .views-page-public-appeal-search.body-sidebars-first .views-element-container {
+  //     width: 100%;
+  //   }
+  // }
 
   /*  Ajax search all (Solr Search of fulltext in dialog popup window) */
   .ui-dialog {
@@ -1825,7 +1869,6 @@ html {
   .ui-widget-content a {
     color: #2f3b9b;
   }
-}
 
 
 .views-page-public-appeal-search.body-sidebars-first table td.views-field.views-field-case-number-1 .table-link-out {
