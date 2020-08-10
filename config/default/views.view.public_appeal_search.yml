@@ -16,10 +16,13 @@ dependencies:
     - field.storage.node.summary
     - field.storage.node.treatment
     - search_api.index.public_appeal_search_local
+    - user.role.administrator
+    - user.role.restful_api
   module:
     - better_exposed_filters
     - search_api
     - text
+    - user
 id: public_appeal_search
 label: 'Public Appeal Search'
 module: views
@@ -35,8 +38,11 @@ display:
     position: 0
     display_options:
       access:
-        type: none
-        options: {  }
+        type: role
+        options:
+          role:
+            administrator: administrator
+            restful_api: restful_api
       cache:
         type: search_api_time
         options:
@@ -47,9 +53,9 @@ display:
       query:
         type: views_query
         options:
-          bypass_access: false
-          skip_access: false
-          preserve_facet_query_args: false
+          skip_access: 0
+          bypass_access: 0
+          preserve_facet_query_args: 1
       exposed_form:
         type: bef
         options:
@@ -631,6 +637,7 @@ display:
         - 'languages:language_interface'
         - url.query_args
         - 'user.node_grants:view'
+        - user.roles
       tags:
         - 'config:field.storage.node.age_range'
         - 'config:field.storage.node.appeal_agent'
@@ -1768,6 +1775,7 @@ display:
         - url
         - url.query_args
         - 'user.node_grants:view'
+        - user.roles
       tags:
         - 'config:field.storage.node.case_number'
         - 'config:field.storage.node.references'

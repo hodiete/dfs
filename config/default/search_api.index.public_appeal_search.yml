@@ -4,8 +4,6 @@ status: false
 dependencies:
   config:
     - field.storage.node.case_number
-    - field.storage.node.references
-    - field.storage.node.summary
     - field.storage.node.treatment
     - field.storage.node.diagnosis
     - field.storage.node.health_plan
@@ -15,10 +13,12 @@ dependencies:
     - field.storage.node.age_range
     - field.storage.node.decision_year
     - field.storage.node.appeal_agent
+    - field.storage.node.references
+    - field.storage.node.summary
     - search_api.server.gung_acquia_search_api_solr_server
   module:
-    - node
     - taxonomy
+    - node
     - search_api
 id: public_appeal_search
 name: 'Public Appeal Search'
@@ -169,8 +169,8 @@ datasource_settings:
 processor_settings:
   add_url: {  }
   aggregated_field: {  }
-  language_with_fallback: {  }
   rendered_item: {  }
+  language_with_fallback: {  }
 tracker_settings:
   default:
     indexing_order: fifo
