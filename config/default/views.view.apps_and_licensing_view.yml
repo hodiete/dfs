@@ -52,19 +52,23 @@ display:
           text_input_required: 'Select any filter and click on Apply to see results'
           bef:
             general:
+              autosubmit: true
+              autosubmit_exclude_textfield: false
+              autosubmit_hide: true
+              input_required: false
+              text_input_required: 'Select any filter and click on Apply to see results'
+              text_input_required_format: basic_html
               allow_secondary: false
               secondary_label: 'Advanced options'
-              autosubmit: true
-              autosubmit_hide: true
             sort:
-              bef_format: default
+              plugin_id: default
               advanced:
-                collapsible: false
-                collapsible_label: 'Sort options'
                 combine: true
                 combine_rewrite: ''
                 reset: false
                 reset_label: ''
+                collapsible: false
+                collapsible_label: 'Sort options'
                 is_secondary: false
           text_input_required_format: basic_html
       pager:
