@@ -1,41 +1,41 @@
 uuid: bed76f60-81ab-47d2-bc34-6982f64b6ea3
 langcode: en
-status: false
+status: true
 dependencies:
-  module:
-    - comment
-    - node
-    - menu_link_content
-    - file
-    - media_entity
-    - paragraphs
-    - taxonomy
-    - taxonomy_machine_name
-    - search_api
   config:
     - field.storage.node.body
-    - field.storage.node.field_webny_page_description
-    - field.storage.node.field_question
-    - field.storage.node.field_question_subject
-    - field.storage.node.field_webny_page_sub_title
     - field.storage.node.field_answer
-    - field.storage.node.field_webny_landing_hero_title
-    - field.storage.node.field_webny_page_hero_title
-    - field.storage.node.field_webny_news_subtitles
-    - field.storage.node.field_webny_document_subtitle
-    - field.storage.node.field_webny_landing_subtitle2
-    - field.storage.paragraph.field_webny_announcement_title
-    - field.storage.paragraph.field_webny_announcement_headlne
-    - field.storage.paragraph.field_webny_card_pg_title
-    - field.storage.paragraph.field_webny_card_pg_headline
     - field.storage.paragraph.field_body
     - field.storage.paragraph.field_card_body
     - field.storage.paragraph.field_page_title
+    - field.storage.node.field_question
+    - field.storage.node.field_question_subject
+    - field.storage.paragraph.field_webny_announcement_headlne
+    - field.storage.paragraph.field_webny_announcement_title
+    - field.storage.paragraph.field_webny_card_pg_headline
+    - field.storage.paragraph.field_webny_card_pg_title
+    - field.storage.node.field_webny_document_subtitle
+    - field.storage.node.field_webny_landing_hero_title
+    - field.storage.node.field_webny_landing_subtitle2
+    - field.storage.node.field_webny_news_subtitles
+    - field.storage.node.field_webny_page_description
+    - field.storage.node.field_webny_page_hero_title
+    - field.storage.node.field_webny_page_sub_title
     - search_api.server.acquia_search_server
+  module:
+    - node
+    - file
+    - taxonomy_machine_name
+    - menu_link_content
+    - taxonomy
+    - media_entity
+    - paragraphs
+    - comment
+    - search_api
 id: nydfs_dev_2_acquia_search
 name: 'NYDFS DEV 2: Acquia Search'
 description: 'DFS DEV2: Acquia Search Index'
-read_only: true
+read_only: false
 field_settings:
   body:
     label: Body
@@ -464,14 +464,7 @@ processor_settings:
     weights:
       preprocess_index: -10
       preprocess_query: -10
-    ignorable_classes:
-      - Pc
-      - Pd
-      - Pe
-      - Pf
-      - Pi
-      - Po
-      - Ps
+    ignorable_classes: null
   ignorecase:
     all_fields: true
     fields:

@@ -6,6 +6,7 @@ dependencies:
     - facets.facet.treatment
   module:
     - facets
+    - system
   theme:
     - dfs_ny
 id: treatments
@@ -20,4 +21,9 @@ settings:
   provider: facets
   label_display: '0'
   block_id: treatments
-visibility: {  }
+visibility:
+  request_path:
+    id: request_path
+    pages: /public-appeal/search
+    negate: false
+    context_mapping: {  }
