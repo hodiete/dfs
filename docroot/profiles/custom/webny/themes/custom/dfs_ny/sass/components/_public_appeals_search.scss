@@ -1673,6 +1673,9 @@ html {
     }
   }
 
+@media screen and (max-width:479.99px) and (min-width: 0px) {
+
+}
 
   @media screen and (max-width:480px) {
     #public-appeal-search-form:after {
@@ -1693,6 +1696,10 @@ html {
       max-width: 80%!important;
       #views-exposed-form-public-appeal-search-public-appeals-search-page {
         width: 100%;
+        input[id*=edit-reset] {
+          top: 140px!important;
+          left: 0px;
+        }
       }
     }
 
@@ -1702,6 +1709,10 @@ html {
       height: 55px;
       top: 28px;
       right: 0;
+    }
+
+    .public-appeal-search-view .table-top {
+      margin-top: 50px;
     }
 
       /*
@@ -1782,26 +1793,6 @@ html {
       margin: 4px 5px;
     }
   }
-
-  // @media screen and (max-width:479.99px) and (min-width:300px) {
-  //   .views-page-public-appeal-search.body-sidebars-first #public-appeal-search-form {
-  //     /* width: 83% !important; */
-  //     max-width: 100% !important;
-  //   }
-
-  //   .views-page-public-appeal-search.body-sidebars-first .mobile-open {
-  //     width: 45px;
-  //     background-size: 45px;
-  //     height: 45px;
-  //     top: 32px;
-  //     right: -15px;
-  //   }
-
-  //   .views-page-public-appeal-search.body-sidebars-first .views-element-container {
-  //     width: 100%;
-  //   }
-  // }
-
   /*  Ajax search all (Solr Search of fulltext in dialog popup window) */
   .ui-dialog {
     z-index: 1000;
@@ -1895,14 +1886,3 @@ html {
   background-size: 24px 24px;
   background-position: 12px 10px;
 }
-
-  @media screen and (max-width:479.99px) and (min-width: 0px) {
-    .views-page-public-appeal-search.body-sidebars-first .public-appeals-search-form-head #public-appeal-search-form #views-exposed-form-public-appeal-search-public-appeals-search-page input[id*=edit-reset] {
-      top: 140px;
-      left: 0px;
-    }
-    .views-page-public-appeal-search.body-sidebars-first .public-appeal-search-view .table-top {
-      margin-top: 50px;
-    }
-  }
-
