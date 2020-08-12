@@ -697,7 +697,7 @@ html {
 
     input[type="checkbox"]~label {
       display: block;
-      padding-left: 10px;
+      padding-left: 0px;
       font-weight: 400;
       line-height: 1;
       font-size: 14px;
@@ -825,7 +825,7 @@ html {
         input[id*=edit-reset] {
           position: absolute;
           top: 93px;
-          right: 6px;
+          right: 0;
           background: none;
           color: #fff;
           padding: 8px 8px 5px 8px;
@@ -1895,3 +1895,14 @@ html {
   background-size: 24px 24px;
   background-position: 12px 10px;
 }
+
+  @media screen and (max-width:479.99px) and (min-width: 0px) {
+    .views-page-public-appeal-search.body-sidebars-first .public-appeals-search-form-head #public-appeal-search-form #views-exposed-form-public-appeal-search-public-appeals-search-page input[id*=edit-reset] {
+      top: 140px;
+      left: 0px;
+    }
+    .views-page-public-appeal-search.body-sidebars-first .public-appeal-search-view .table-top {
+      margin-top: 50px;
+    }
+  }
+
