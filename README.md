@@ -36,6 +36,8 @@ This site has a lot of very old node dependencies and it must be run using nvm. 
 6. Code
 7. Run `gulp` from this folder to build the css whenever you like
 
+Please also note that **the css files should be committed to the repo** on this site after you build them locally.
+
 ## Scrubbing of user info
 
 The users' login information is destroyed when the database is copied thanks to rules on the server. In order to fix this

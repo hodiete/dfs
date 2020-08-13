@@ -99,7 +99,6 @@ html {
         border: none;
 
         th.views-field {
-          width: 11%;
           padding: 18px 30px 17px 20px;
           border: none;
           font-size: 18px;
@@ -112,10 +111,6 @@ html {
           &.views-field-references,
           &.views-field-views-bulk-operations-bulk-form {
             display: none;
-          }
-
-          &.views-field-name-6 {
-            width: 8%;
           }
 
           &.views-field-case-number {
@@ -244,7 +239,6 @@ html {
         }
       }
     }
-
     .table-link-out {
       position: absolute;
       right: 0;
@@ -302,7 +296,37 @@ html {
     tr:first-child td.views-field-case-number {
       padding-right: 50px;
     }
+
+    //---------- Prioritize columns ----------//
+    @mixin disappear-column {
+      width: 0px;
+      padding: 0px; 
+      overflow: hidden;
+      div {
+        display: none;
+      }
+    }
+    tbody tr td.views-field, 
+    thead tr th.views-field{
+      width: auto!important;
+      @media screen and (max-width:1200px) {
+        &.priority-4 {
+          @include disappear-column;
+        }
+      }
+      @media screen and (max-width:768px) {
+        &.priority-3 {
+          @include disappear-column;
+        }
+      }
+      @media screen and (max-width:480px) {
+        &.priority-2 {
+          @include disappear-column;
+        }
+      }
+    }
   }
+
 
   #after-content {
     margin: 0 65px 40px;
@@ -1472,19 +1496,6 @@ html {
       }
     }
 
-    table .views-field-name-4,
-    table .views-field-name-5,
-    table .views-field-name-6,
-    table .views-field-name-3,
-    table .views-field-name-8,
-    table .views-field-case-number {
-      display: none;
-    }
-
-    table td.views-field-name-3 {
-      padding-right: 50px;
-    }
-
     table thead tr th.views-field {
       padding: 18px 30px 17px 20px;
       font-size: 18px;
@@ -1638,11 +1649,6 @@ html {
       }
     }
 
-    table .views-field-name,
-    table .views-field-name-2 {
-      display: none;
-    }
-
     table thead {
       display: table-row-group;
     }
@@ -1657,7 +1663,7 @@ html {
 
     .views-element-container,
     .public-appeal-search-form {
-      padding: 0 20px;
+      padding: 0px 20px;
     }
 
     .counters {
@@ -1728,6 +1734,10 @@ html {
       .js-form-item-search label:after {
         top: 13px;
       }
+      .views-element-container,
+      .public-appeal-search-form {
+        padding: 0px;
+      }
     }
 
     // .mobile-open {
@@ -1771,7 +1781,7 @@ html {
     }
 
     table thead tr th.views-field {
-      padding: 18px 25px 17px 15px;
+      padding: 12px;
     }
 
     table td {
@@ -1784,10 +1794,6 @@ html {
 
     table tr:first-child td.views-field {
       padding: 25px 15px 10px;
-    }
-
-    table td.views-field-name-3 {
-      padding-right: 45px;
     }
 
     .pager .pager__items .pager__item {
