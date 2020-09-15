@@ -106,7 +106,7 @@
         }
 
         // check if the next section has an id attribute indicating there is a next section
-        // previously we were checking for text in the title which doesn't translate to all paragraph types 
+        // previously we were checking for text in the title which doesn't translate to all paragraph types
         if (nextSection.attr('id')) {
           if ($(nextSection).hasClass('webny_wysiwyg_pgtype')) {
             $(this).children('.next-section').children('.next-section-title').html(nextSection.children(':first').text());
@@ -311,11 +311,11 @@
           if($('#toc-sidebar li').length >= 7 && window.innerHeight < 900) {
 
             if ($('#toc-sidebar li:nth-child(7)').hasClass('active')) {
-              $('#toc-sidebar').css('position', 'fixed').css('top', fixedtocOffset + 'px').css('transition-duration', '1s');
+              $('#toc-sidebar').css('position', 'fixed').css('top', fixedtocOffset + 'px').css('transition-duration', '.5s');
             }
 
             else if ($('#toc-sidebar li:nth-child(6)').hasClass('active')) {
-              $('#toc-sidebar').css('top', '50px').css('transition-duration', '1s');
+              $('#toc-sidebar').css('top', '50px').css('transition-duration', '.5s');
             }
           }
         }
