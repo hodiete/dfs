@@ -54,6 +54,10 @@
         "drupal/google_analytics": "^2.1.0",
         "drupal/honeypot": "1.27",
         "drupal/inline_entity_form": "1.0-rc1",
+        "drupal/jquery_ui": "*",
+        "drupal/jquery_ui_datepicker": "*",
+        "drupal/jquery_ui_slider": "*",
+        "drupal/jquery_ui_touch_punch": "*",
         "drupal/key": "^1.14",
         "drupal/libraries": "dev-3.x",
         "drupal/linked_field": "*",
@@ -101,6 +105,7 @@
         "drupal/webform": "^5.13",
         "drupal/workbench_moderation": "^1.5",
         "drupal/xls_serialization": "^1.2",
+        "furf/jquery-ui-touch-punch": "*",
         "geerlingguy/drupal-vm": "~4.3",
         "grasmash/yaml-cli": "^1.0",
         "guzzlehttp/guzzle": "^6.0@dev",
@@ -138,6 +143,21 @@
         "asset-packagist": {
             "type": "composer",
             "url": "https://asset-packagist.org"
+        },
+        "jquery-ui-touch-punch": {
+            "type": "package",
+            "package": {
+                "name": "furf/jquery-ui-touch-punch",
+                "type": "drupal-library",
+                "version": "dev-master",
+                "dist": {
+                    "url": "https://github.com/furf/jquery-ui-touch-punch/archive/master.zip",
+                    "type": "zip"
+                },
+                "require": {
+                    "composer/installers": "^1.2.0"
+                }
+            }
         }
     },
     "extra": {
