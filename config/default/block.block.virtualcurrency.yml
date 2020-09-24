@@ -1,0 +1,31 @@
+uuid: 311eac90-c1dc-4467-bd8a-28ac6f4b0aee
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:dfs_footer:f62f38db-8fd1-4fbb-adef-4bbfc28320da'
+  module:
+    - block_content
+    - system
+  theme:
+    - dfs_ny
+id: virtualcurrency
+theme: dfs_ny
+region: after_content
+weight: 0
+provider: null
+plugin: 'block_content:f62f38db-8fd1-4fbb-adef-4bbfc28320da'
+settings:
+  id: 'block_content:f62f38db-8fd1-4fbb-adef-4bbfc28320da'
+  label: 'Virtual Currency'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: "/apps_and_licensing/virtual_currency_businesses\r\n/apps_and_licensing/virtual_currency_businesses/*"
+    negate: false
+    context_mapping: {  }

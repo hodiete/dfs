@@ -1,0 +1,39 @@
+uuid: c46334c4-a86e-4478-bcef-a5ad7c7690f9
+langcode: en
+status: false
+dependencies:
+  module:
+    - facets_block
+    - system
+  theme:
+    - dfs_ny
+id: facetsblock
+theme: dfs_ny
+region: sidebar_first
+weight: -39
+provider: null
+plugin: facets_block
+settings:
+  id: facets_block
+  label: Categories
+  provider: facets_block
+  label_display: visible
+  show_title: false
+  exclude_empty_facets: false
+  facets_to_include:
+    'facet_block:diagnosis': 'facet_block:diagnosis'
+    'facet_block:treatment': 'facet_block:treatment'
+    'facet_block:health_plan': 'facet_block:health_plan'
+    'facet_block:appeal_decision': 'facet_block:appeal_decision'
+    'facet_block:appeal_type': 'facet_block:appeal_type'
+    'facet_block:gender': 'facet_block:gender'
+    'facet_block:age_range': 'facet_block:age_range'
+    'facet_block:decision_year': 'facet_block:decision_year'
+    'facet_block:appeal_agent': 'facet_block:appeal_agent'
+    'facets_summary_block:summary': '0'
+visibility:
+  request_path:
+    id: request_path
+    pages: /public-appeal/search
+    negate: false
+    context_mapping: {  }

@@ -52,7 +52,7 @@
       $(start_time_value).focusout(function () {
         var start_time = new Date(rand_date_prefix + $(start_time_value).val());
         var end_time = new Date(rand_date_prefix + $(end_time_value).val());
-        console.log($(start_time_value).val());
+        //console.log($(start_time_value).val());
         if (start_time > end_time) {
           $(end_time_value).val($(start_time_value).val());
         }

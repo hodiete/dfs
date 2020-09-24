@@ -1,23 +1,26 @@
-uuid: 1adad700-3783-40d6-9a8b-8e1ad6291ed5
+uuid: fe7f0e79-32cc-4930-892d-6815a547c71e
 langcode: en
 status: true
 dependencies:
+  config:
+    - facets.facet.gender
   module:
-    - public_appeal_search
+    - facets
     - system
   theme:
     - dfs_ny
-id: publicappealsearchblock
+id: genders
 theme: dfs_ny
-region: content
-weight: 0
+region: sidebar_first
+weight: -44
 provider: null
-plugin: public_appeal_search_block
+plugin: 'facet_block:gender'
 settings:
-  id: public_appeal_search_block
-  label: 'Public Appeal Search Block'
-  provider: public_appeal_search
+  id: 'facet_block:gender'
+  label: Gender(s)
+  provider: facets
   label_display: '0'
+  block_id: genders
 visibility:
   request_path:
     id: request_path

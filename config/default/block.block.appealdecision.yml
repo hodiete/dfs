@@ -1,0 +1,29 @@
+uuid: 033436e1-65c6-4197-b95b-2893b207ae23
+langcode: en
+status: true
+dependencies:
+  config:
+    - facets.facet.appeal_decision
+  module:
+    - facets
+    - system
+  theme:
+    - dfs_ny
+id: appealdecision
+theme: dfs_ny
+region: sidebar_first
+weight: -46
+provider: null
+plugin: 'facet_block:appeal_decision'
+settings:
+  id: 'facet_block:appeal_decision'
+  label: 'Appeal Decision'
+  provider: facets
+  label_display: '0'
+  block_id: appealdecision
+visibility:
+  request_path:
+    id: request_path
+    pages: /public-appeal/search
+    negate: false
+    context_mapping: {  }

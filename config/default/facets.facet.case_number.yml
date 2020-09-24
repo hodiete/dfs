@@ -1,0 +1,41 @@
+uuid: a60dddd6-86ef-459f-92c8-8c1003fc5a22
+langcode: en
+status: true
+dependencies:
+  config:
+    - search_api.index.public_appeal_search_local
+    - views.view.public_appeal_search
+  module:
+    - search_api
+id: case_number
+name: 'Case Number'
+url_alias: case_number
+weight: 3
+min_count: 1
+show_only_one_result: false
+field_identifier: case_number
+facet_source_id: 'search_api:views_page__public_appeal_search__public_appeals_search_page'
+widget:
+  type: select2
+  config:
+    show_numbers: false
+    width: 100%
+    autocomplete: true
+    match_operator: STARTS_WITH
+query_operator: or
+use_hierarchy: false
+expand_hierarchy: false
+enable_parent_when_child_gets_disabled: true
+hard_limit: 0
+exclude: false
+only_visible_when_facet_source_is_visible: true
+processor_configs:
+  url_processor_handler:
+    processor_id: url_processor_handler
+    weights:
+      pre_query: 50
+      build: 15
+    settings: {  }
+empty_behavior:
+  behavior: none
+show_title: true

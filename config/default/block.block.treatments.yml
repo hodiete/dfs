@@ -1,0 +1,29 @@
+uuid: ed2802f0-6ae4-4a56-8428-963c3195b488
+langcode: en
+status: true
+dependencies:
+  config:
+    - facets.facet.treatment
+  module:
+    - facets
+    - system
+  theme:
+    - dfs_ny
+id: treatments
+theme: dfs_ny
+region: sidebar_first
+weight: -48
+provider: null
+plugin: 'facet_block:treatment'
+settings:
+  id: 'facet_block:treatment'
+  label: Treatment(s)
+  provider: facets
+  label_display: '0'
+  block_id: treatments
+visibility:
+  request_path:
+    id: request_path
+    pages: /public-appeal/search
+    negate: false
+    context_mapping: {  }

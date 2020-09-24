@@ -1,4 +1,3 @@
-uuid: 9aef0ae2-b12d-4ed3-a107-fcee404e2297
 langcode: en
 status: open
 dependencies: {  }
@@ -9,7 +8,7 @@ uid: 603
 template: false
 archive: false
 id: innovation_hub_request_for_suppo
-title: 'Innovation Hub Support Form'
+title: 'Innovation Hub Request for Support'
 description: ''
 category: FinTech/Cyber
 elements: "markup_03:\n  '#type': webform_markup\n  '#markup': \"<p>The DFS Innovation Hub offers support to eligible innovators seeking guidance on regulatory questions. We work with innovators in FinTech, InsurTech, cryptocurrency, cyber, etc. We are particularly interested in:</p>\\r\\n\\r\\n<ul>\\r\\n\\t<li>New solutions with an impact for consumers, including marginalized consumers</li>\\r\\n\\t<li>New solutions that can help our licensed entities</li>\\r\\n\\t<li>Market gaps / regulatory uncertainty</li>\\r\\n</ul>\\r\\n\\r\\n<p><strong>Please note: </strong>We are piloting this support portal for innovators in the field of Property Insurance, but we plan to expand to more fields at a future date.</p>\"\nhorizontal_rule_03:\n  '#type': webform_horizontal_rule\nmarkup_04:\n  '#type': webform_markup\n  '#markup': '<p><strong>For innovators:</strong> please complete this form to tell us more about your business and the type of support you hope to gain from the Hub. <strong>For others:</strong> please <a href=\"mailto:innovation@dfs.ny.gov\">email</a> us with your questions and comments about DFS innovation activities.</p>'\nyour_contact_information:\n  '#type': webform_contact\n  '#title': 'Your contact information'\n  '#name__required': true\n  '#company__required': true\n  '#email__required': true\n  '#address__access': false\n  '#address_2__access': false\n  '#city__access': false\n  '#state_province__access': false\n  '#postal_code__access': false\n  '#country__access': false\nplease_describe_your_business_:\n  '#type': textarea\n  '#title': 'Please describe your business:'\nfinancial_services_sector:\n  '#type': webform_select_other\n  '#title': 'Financial Services Sector'\n  '#options':\n    FinTech: FinTech\n    RegTech: RegTech\n    InsurTech: InsurTech\n    'Virtual Currency': 'Virtual Currency'\n  '#empty_option': 'Please select one...'\n  '#other__placeholder': 'Please describe the sector.'\nat_what_stage_is_your_innovation_:\n  '#type': webform_select_other\n  '#title': 'At what stage is your innovation?'\n  '#options':\n    Idea: Idea\n    'In development': 'In development'\n    'Alpha/beta testing': 'Alpha/beta testing'\n  '#empty_option': 'Please select one...'\n  '#other__option_label': 'Established and operational'\n  '#other__placeholder': 'Number of customers'\n  '#required': true\nwhat_is_your_funding_status_:\n  '#type': select\n  '#title': 'What is your funding status?'\n  '#options':\n    'Friends and family': 'Friends and family'\n    'Seed funding': 'Seed funding'\n    'Series A': 'Series A'\n    'Series B': 'Series B'\n    'Series C or beyond': 'Series C or beyond'\n  '#required': true\nhow_will_your_business_benefit_consumers_in_new_york_state_:\n  '#type': textarea\n  '#title': 'How will your business benefit consumers in New York State?'\n  '#placeholder': 'Please be as detailed as possible.'\n  '#autocomplete': 'off'\nwhen_do_you_expects_to_launch_:\n  '#type': datelist\n  '#title': 'When do you expect to launch?'\n  '#date_part_order':\n    - year\n    - month\n  '#date_text_parts': {  }\n  '#date_year_range': '2019:2050'\nwhat_risks_does_your_business_present_and_how_do_you_plan_to_mit:\n  '#type': textarea\n  '#title': 'What risks does your business present, and how do you plan to mitigate them?'\n  '#placeholder': 'Please be as detailed as possible.'\n  '#autocomplete': 'off'\nhow_do_you_think_dfs_regulations_might_apply_to_your_business_:\n  '#type': textarea\n  '#title': 'How do you think DFS regulations might apply to your business?'\n  '#placeholder': 'Please be as detailed as possible.'\n  '#autocomplete': 'off'\nwhat_specific_questions_do_you_have_for_the_innovation_hub_:\n  '#type': textarea\n  '#title': 'What specific questions do you have for the Innovation Hub?'\n  '#placeholder': 'Describe the support you hope to receive from our team.'\n  '#autocomplete': 'off'\nhorizontal_rule:\n  '#type': webform_horizontal_rule\nfile_upload:\n  '#type': webform_document_file\n  '#title': 'Upload a File'\n  '#description': '[Confidentiality Statement goes here]'\nhorizontal_rule_01:\n  '#type': webform_horizontal_rule\nmarkup_02:\n  '#type': webform_markup\n  '#markup': '<p>We strongly encourage innovators with questions to complete and submit this Innovator Support form so that our team has the information we need to assist you.</p>'\nhorizontal_rule_04:\n  '#type': webform_horizontal_rule\nmarkup_05:\n  '#type': webform_markup\n  '#markup': \"<p><a name=\\\"Eligibility\\\">*Eligibility criteria</a></p>\\r\\n\\r\\n<p>The Innovation Hub&rsquo;s mission is to democratize the financial regulatory process, enabling innovative financial services firms to enter the market, benefiting consumers through the provision of innovative products and services and increased competition in the financial services sector in New York State. We will prioritize support to firms aligning with our mission who have begun the process of understanding the regulations, specifically businesses that:</p>\\r\\n\\r\\n<ul>\\r\\n\\t<li>Present a genuine innovation</li>\\r\\n\\t<li>Seek to benefit consumers</li>\\r\\n\\t<li>Have already researched the regulatory requirements</li>\\r\\n\\t<li>Have specific questions for DFS</li>\\r\\n\\t<li>In the pilot phase, our priority will be innovators in the field of Property Insurance.</li>\\r\\n</ul>\""
@@ -18,9 +17,13 @@ javascript: ''
 settings:
   ajax: false
   ajax_scroll_top: form
+  ajax_progress_type: ''
+  ajax_effect: ''
+  ajax_speed: null
   page: true
-  page_submit_path: ''
+  page_submit_path: /dfs_fastforward_inquiry_form
   page_confirm_path: ''
+  page_theme_name: ''
   form_title: both
   form_submit_once: false
   form_exception_message: ''
@@ -50,6 +53,11 @@ settings:
   form_access_denied_message: ''
   form_access_denied_attributes: {  }
   form_file_limit: ''
+  share: false
+  share_node: false
+  share_theme_name: ''
+  share_title: true
+  share_page_body_attributes: {  }
   submission_label: ''
   submission_log: false
   submission_views: {  }
@@ -74,11 +82,18 @@ settings:
   wizard_progress_pages: false
   wizard_progress_percentage: false
   wizard_progress_link: false
+  wizard_progress_states: false
+  wizard_auto_forward: true
   wizard_start_label: ''
   wizard_preview_link: false
   wizard_confirmation: true
   wizard_confirmation_label: ''
   wizard_track: ''
+  wizard_prev_button_label: ''
+  wizard_next_button_label: ''
+  wizard_toggle: false
+  wizard_toggle_show_label: ''
+  wizard_toggle_hide_label: ''
   preview: 0
   preview_label: ''
   preview_title: ''
@@ -92,6 +107,8 @@ settings:
   draft_auto_save: false
   draft_saved_message: ''
   draft_loaded_message: ''
+  draft_pending_single_message: ''
+  draft_pending_multiple_message: ''
   confirmation_type: page
   confirmation_title: ''
   confirmation_message: ''
@@ -102,6 +119,7 @@ settings:
   confirmation_back_attributes: {  }
   confirmation_exclude_query: false
   confirmation_exclude_token: false
+  confirmation_update: false
   limit_total: null
   limit_total_interval: null
   limit_total_message: ''
@@ -118,6 +136,8 @@ settings:
   purge_days: null
   results_disabled: false
   results_disabled_ignore: false
+  results_customize: false
+  token_view: false
   token_update: false
 access:
   create:
@@ -167,3 +187,4 @@ access:
     permissions: {  }
 handlers: {  }
 variants: {  }
+uuid: 9aef0ae2-b12d-4ed3-a107-fcee404e2297

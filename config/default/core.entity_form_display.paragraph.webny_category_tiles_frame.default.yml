@@ -15,7 +15,6 @@ dependencies:
     - field_group
     - link
     - text
-    - workbench_moderation
 third_party_settings:
   field_group:
     group_use_category_tiles:
@@ -31,6 +30,7 @@ third_party_settings:
         id: ctfdescription
         classes: ''
       label: 'Use Category Tiles'
+      region: content
     group_category_tiles:
       children:
         - field_webny_cat_button_link
@@ -43,6 +43,7 @@ third_party_settings:
         open: false
         required_fields: true
       label: 'Category Tiles'
+      region: content
 _core:
   default_config_hash: OK0H31yb9-e9Ync9pTUE8d64r8y3bYnPh1TlVAX_V04
 id: paragraph.webny_category_tiles_frame.default

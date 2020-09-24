@@ -58,41 +58,60 @@ display:
           sort_desc_label: Desc
           bef:
             general:
+              autosubmit: false
+              autosubmit_exclude_textfield: false
+              autosubmit_hide: false
+              input_required: false
               allow_secondary: false
               secondary_label: 'Advanced options'
-            field_webny_news_category_target_id:
-              bef_format: bef
-              more_options:
-                bef_select_all_none: false
-                bef_select_all_none_nested: false
-                bef_collapsible: false
-                is_secondary: false
-                rewrite:
-                  filter_rewrite_values: ''
-            field_webny_global_keywords_target_id:
-              bef_format: default
-              more_options:
-                is_secondary: false
-                rewrite:
-                  filter_rewrite_values: ''
-            field_webny_agency_keywords_target_id:
-              bef_format: default
-              more_options:
-                is_secondary: false
-                rewrite:
-                  filter_rewrite_values: ''
-            field_webny_news_date_value:
-              bef_format: default
-              more_options:
-                is_secondary: false
-                rewrite:
-                  filter_rewrite_values: ''
-            field_webny_news_date_value_1:
-              bef_format: default
-              more_options:
-                is_secondary: false
-                rewrite:
-                  filter_rewrite_values: ''
+            filter:
+              field_webny_news_category_target_id:
+                plugin_id: bef
+                select_all_none: false
+                select_all_none_nested: false
+                advanced:
+                  collapsible: false
+                  is_secondary: false
+                  placeholder_text: ''
+                  rewrite:
+                    filter_rewrite_values: ''
+                  sort_options: false
+              field_webny_global_keywords_target_id:
+                plugin_id: default
+                advanced:
+                  collapsible: false
+                  is_secondary: false
+                  placeholder_text: ''
+                  rewrite:
+                    filter_rewrite_values: ''
+                  sort_options: false
+              field_webny_agency_keywords_target_id:
+                plugin_id: default
+                advanced:
+                  collapsible: false
+                  is_secondary: false
+                  placeholder_text: ''
+                  rewrite:
+                    filter_rewrite_values: ''
+                  sort_options: false
+              field_webny_news_date_value:
+                plugin_id: default
+                advanced:
+                  collapsible: false
+                  is_secondary: false
+                  placeholder_text: ''
+                  rewrite:
+                    filter_rewrite_values: ''
+                  sort_options: false
+              field_webny_news_date_value_1:
+                plugin_id: default
+                advanced:
+                  collapsible: false
+                  is_secondary: false
+                  placeholder_text: ''
+                  rewrite:
+                    filter_rewrite_values: ''
+                  sort_options: false
       pager:
         type: full
         options:

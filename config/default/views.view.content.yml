@@ -39,11 +39,23 @@ display:
         type: full
         options:
           items_per_page: 50
+          offset: 0
+          id: 0
+          total_pages: null
           tags:
             previous: '‹ Previous'
             next: 'Next ›'
             first: '« First'
             last: 'Last »'
+          expose:
+            items_per_page: true
+            items_per_page_label: 'Items per page'
+            items_per_page_options: '50, 100, 200, 500'
+            items_per_page_options_all: true
+            items_per_page_options_all_label: '- All -'
+            offset: false
+            offset_label: Offset
+          quantity: 9
       style:
         type: table
         options:
@@ -568,6 +580,17 @@ display:
         groups:
           1: AND
       display_extenders: {  }
+      header:
+        result:
+          id: result
+          table: views
+          field: result
+          relationship: none
+          group_type: group
+          admin_label: ''
+          empty: true
+          content: 'Displaying @start - @end of @total'
+          plugin_id: result
     display_plugin: default
     display_title: Master
     id: default

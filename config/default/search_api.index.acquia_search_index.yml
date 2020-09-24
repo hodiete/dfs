@@ -5,8 +5,8 @@ dependencies:
   config:
     - field.storage.node.body
   module:
-    - search_api
     - node
+    - search_api
     - file
     - media_entity
     - paragraphs
@@ -26,25 +26,6 @@ field_settings:
     dependencies:
       config:
         - field.storage.node.body
-  title:
-    label: Title
-    datasource_id: 'entity:node'
-    property_path: title
-    type: text
-  status:
-    label: null
-    datasource_id: 'entity:node'
-    property_path: status
-    type: boolean
-    indexed_locked: true
-    type_locked: true
-  uid:
-    label: null
-    datasource_id: 'entity:node'
-    property_path: uid
-    type: integer
-    indexed_locked: true
-    type_locked: true
   node_grants:
     label: 'Node access information'
     property_path: search_api_node_grants
@@ -52,16 +33,44 @@ field_settings:
     indexed_locked: true
     type_locked: true
     hidden: true
+  status:
+    label: null
+    datasource_id: 'entity:node'
+    property_path: status
+    type: boolean
+    indexed_locked: true
+    type_locked: true
+    dependencies:
+      module:
+        - node
+  title:
+    label: Title
+    datasource_id: 'entity:node'
+    property_path: title
+    type: text
+    dependencies:
+      module:
+        - node
+  uid:
+    label: null
+    datasource_id: 'entity:node'
+    property_path: uid
+    type: integer
+    indexed_locked: true
+    type_locked: true
+    dependencies:
+      module:
+        - node
 datasource_settings:
-  'entity:node':
+  'entity:file': {  }
+  'entity:media':
     bundles:
       default: true
       selected: {  }
     languages:
       default: true
       selected: {  }
-  'entity:file': {  }
-  'entity:media':
+  'entity:node':
     bundles:
       default: true
       selected: {  }
@@ -102,12 +111,12 @@ processor_settings:
     title: true
     alt: true
     tags:
+      b: 2
+      em: 1
       h1: 5
       h2: 3
       h3: 2
       strong: 2
-      b: 2
-      em: 1
       u: 1
     weights:
       preprocess_index: -15
@@ -120,6 +129,7 @@ processor_settings:
     weights:
       preprocess_index: -20
       preprocess_query: -20
+  language_with_fallback: {  }
   rendered_item: {  }
   transliteration:
     all_fields: false

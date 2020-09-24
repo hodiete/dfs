@@ -1,0 +1,28 @@
+uuid: 2036ec15-9a2c-4799-b276-cd18e5383864
+langcode: en
+status: true
+dependencies:
+  config:
+    - facets_summary.facets_summary.public_appeal_search_summary
+  module:
+    - facets_summary
+    - system
+  theme:
+    - dfs_ny
+id: publicappealsearchsummary
+theme: dfs_ny
+region: sidebar_first
+weight: -51
+provider: null
+plugin: 'facets_summary_block:public_appeal_search_summary'
+settings:
+  id: 'facets_summary_block:public_appeal_search_summary'
+  label: 'Public Appeal Search Summary'
+  provider: facets_summary
+  label_display: '0'
+visibility:
+  request_path:
+    id: request_path
+    pages: /public-appeal/search
+    negate: false
+    context_mapping: {  }

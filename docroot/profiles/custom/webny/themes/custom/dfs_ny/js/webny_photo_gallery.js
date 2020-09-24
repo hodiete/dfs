@@ -1,3 +1,4 @@
+
 /**
  * @file
  * webny_photo_gallery javascript file for backend
@@ -23,22 +24,30 @@
     transition: '',
     browserWidth: '',
     masterWidthVar: this.widthShiftVarWide,
+    $target_gallery: '',
+    gallery_objname: '#webny-gallery-container-',
+    gallery_container: '',
 
     // METHODS ===================================================================================================
 
+    // GET THE FULL NAME OF THE CURRENT GALLERY CONTAINER
+    getGalleryContainer: function() {
+      nygallery.gallery_container = nygallery.gallery_objname + nygallery.$target_gallery;
+    },
+
     // GET STACK COUNT - TOTAL NUMBER OF IMAGES
     getImagesCount: function() {
-      return $('.webny-gallery-entry').length;
+      return $(nygallery.gallery_container + ' .webny-gallery-entry').length;
     },
 
     // GET CURRENT POSITION IMG PATH
-    getCurrentImg: function() {
-      return $('.gallery-current-img > div > img').attr('src');
+    getCurrentImg: function(g) {
+      return $(g + '.gallery-current-img > div > img').attr('src');
     },
 
     // GET CURRENT POSITION
     getCurrentPosition: function () {
-      return $('.gallery-current-img').attr('data-webny-cell');
+      return $(nygallery.gallery_container + ' .gallery-current-img').attr('data-webny-cell');
     },
 
     // GET NEXT POSITION - NUMERIC
@@ -65,17 +74,22 @@
     // GO TO NEXT IMAGE
     nextImage: function() {
 
+      nygallery.getGalleryContainer();
+      var galid = nygallery.gallery_container;
+
       // GET CURRENT POSITION - GET ITS CLASS
       nygallery.curr = nygallery.getCurrentPosition();
-      var cp = '.gallery-entry-'+nygallery.curr;
+      var cp = galid + ' .gallery-entry-'+nygallery.curr;
 
       // GET NEXT IMG POSITION - GET CLASS
       nygallery.next = nygallery.getNextImgNumber();
-      var np = '.gallery-entry-'+nygallery.next;
+      var np = galid + ' .gallery-entry-'+nygallery.next;
 
-      // REMOVE / ASSIGN ACTIVE CLASS
-      $('.galpage').removeClass('galactive');
-      $('.galpage:nth-child('+nygallery.next+')').addClass('galactive');
+      // REMOVE / ASSIGN ACTIVE CLASS BUTTONS
+      var mobicon_cont = 'mobpic-' + nygallery.$target_gallery;
+
+      $(mobicon_cont + ' .galpage').removeClass('galactive');
+      $(mobicon_cont + ' .galpage:nth-child('+nygallery.next+')').addClass('galactive');
 
       // REMOVE / ASSIGN CURRENT IMG CLASS
       $(cp).removeClass('gallery-current-img');
@@ -83,8 +97,8 @@
 
       // DESCRIPTION SECTION
       // REMOVE / ASSIGN ACTIVE CLASS
-      $('.gallery-desc-entry').removeClass('galdescactive');
-      $('.gallery-desc-entry:nth-child('+nygallery.next+')').addClass('galdescactive');
+      $(galid + ' .gallery-desc-entry').removeClass('galdescactive');
+      $(galid + ' .gallery-desc-entry:nth-child('+nygallery.next+')').addClass('galdescactive');
 
       if(parseInt(nygallery.next) === 1){
         nygallery.transition = 0;
@@ -94,25 +108,30 @@
 
       // CREATE TRANSITION
       var transform = "translate3d(-"+nygallery.transition+"px, 0px, 0px)";
-      $('.webny-gallery-container-in').css("transform", transform).css('transition','all 200ms ease');
+      $(galid + ' .webny-gallery-container-in').css("transform", transform).css('transition','all 200ms ease');
 
     },
 
     // GO TO PREVIOUS IMAGE
     prevImage: function() {
 
-      // IMAGE SECTION
+      // GALLERY CONTAINER OBJ NAME
+      nygallery.getGalleryContainer();
+      var galid = nygallery.gallery_container;
+
       // GET CURRENT POSITION - GET ITS CLASS
       nygallery.curr = nygallery.getCurrentPosition();
-      var cp = '.gallery-entry-'+nygallery.curr;
+      var cp = galid + ' .gallery-entry-'+nygallery.curr;
 
       // GET NEXT IMG POSITION - GET CLASS
       nygallery.prev = nygallery.getPreviousImgNumber();
-      var pp = '.gallery-entry-'+nygallery.prev;
+      var pp = galid + ' .gallery-entry-'+nygallery.prev;
 
-      // REMOVE / ASSIGN ACTIVE CLASS
-      $('.galpage').removeClass('galactive');
-      $('.galpage:nth-child('+nygallery.prev+')').addClass('galactive');
+      // REMOVE / ASSIGN ACTIVE CLASS BUTTONS
+      var mobicon_cont = 'mobpic-' + nygallery.$target_gallery;
+
+      $(mobicon_cont + ' .galpage').removeClass('galactive');
+      $(mobicon_cont + ' .galpage:nth-child('+nygallery.next+')').addClass('galactive');
 
       // REMOVE / ASSIGN CURRENT IMG CLASS
       $(cp).removeClass('gallery-current-img');
@@ -120,8 +139,8 @@
 
       // DESCRIPTION SECTION
       // REMOVE / ASSIGN ACTIVE CLASS
-      $('.gallery-desc-entry').removeClass('galdescactive');
-      $('.gallery-desc-entry:nth-child('+nygallery.prev+')').addClass('galdescactive');
+      $(galid +' .gallery-desc-entry').removeClass('galdescactive');
+      $(galid +' .gallery-desc-entry:nth-child('+nygallery.prev+')').addClass('galdescactive');
 
       // MOVE THE IMAGE BACKWARDS
       if(parseInt(nygallery.curr) === 1){
@@ -131,7 +150,7 @@
       }
 
       var transform = "translate3d(-"+nygallery.transition+"px, 0px, 0px)";
-      $('.webny-gallery-container-in').css("transform", transform).css('transition','all 200ms ease');
+      $(galid +' .webny-gallery-container-in').css("transform", transform).css('transition','all 200ms ease');
 
     },
 
@@ -141,6 +160,10 @@
     },
 
     resizeDynamics: function(bw) {
+
+      // GALLERY CONTAINER OBJ NAME
+      nygallery.getGalleryContainer();
+      var galid = nygallery.gallery_container;
 
       if(bw >= 768){
         nygallery.masterWidthVar = nygallery.widthShiftVarWide;
@@ -161,15 +184,19 @@
 
       // CREATE TRANSITION
       var transform = "translate3d(-"+nygallery.transition+"px, 0px, 0px)";
-      $('.webny-gallery-container-in').css("transform", transform).css('transition','all 200ms ease');
+      $(galid + ' .webny-gallery-container-in').css("transform", transform).css('transition','all 200ms ease');
 
     },
 
     mobileSelectImg: function(clickedNum, currentNum) {
 
-      var cp = '.gallery-entry-'+currentNum;
-      var pp = '.gallery-entry-'+clickedNum;
-      var np = '.gallery-entry-'+clickedNum;
+      // GALLERY CONTAINER OBJ NAME
+      nygallery.getGalleryContainer();
+      var galid = nygallery.gallery_container;
+
+      var cp = galid + ' .gallery-entry-'+currentNum;
+      var pp = galid + ' .gallery-entry-'+clickedNum;
+      var np = galid + ' .gallery-entry-'+clickedNum;
       var transform = '';
 
       // CLICK ON SAME IMAGE
@@ -192,7 +219,7 @@
         }
 
         transform = "translate3d(-"+nygallery.transition+"px, 0px, 0px)";
-        $('.webny-gallery-container-in').css("transform", transform).css('transition','all 200ms ease');
+        $(galid + ' .webny-gallery-container-in').css("transform", transform).css('transition','all 200ms ease');
 
         return;
 
@@ -209,7 +236,7 @@
 
         // CREATE TRANSITION
         transform = "translate3d(-"+nygallery.transition+"px, 0px, 0px)";
-        $('.webny-gallery-container-in').css("transform", transform).css('transition','all 200ms ease');
+        $(galid + ' .webny-gallery-container-in').css("transform", transform).css('transition','all 200ms ease');
 
         return;
 
@@ -223,13 +250,45 @@
   // TOUCH OR CLICK
   var clickVals = 'click touchend';
 
+  // ONLOAD
+  $(function(){
+
+    // ASSIGN DYANMIC CLASSES TO FRAME
+    var c1 = 0;
+    var c2 = 0;
+    var c3 = 0;
+
+    $('.webny-gallery-container-in').each(function(){
+      c1++;
+      $(this).addClass('webny-gallery-frame-'+c1);
+      $(this).attr('id', 'galleyinmob-'+c1);
+    });
+
+    // GALLERY NUMBER ASSIGNMENT
+    $('.webny-gallery-container').each(function(){
+      c2++;
+      $(this).attr('id','webny-gallery-container-'+c2);
+      $(this).attr('data-gallery-num', c2);
+    });
+
+    // MOBILE BUTTONS
+    $('.webny-gallery-mobile-pages').each(function(){
+      c3++;
+      $(this).attr('data-mobpic', c2);
+      $(this).attr('id', 'mobpic-'+c2);
+    });
+
+  });
+
   // SCROLL LEFT (PREVIOUS)
   $('.webny-gallery-back').on(clickVals, function(){
+    nygallery.$target_gallery = $(this).parent().parent().attr('data-gallery-num');
     nygallery.prevImage();
   });
 
   // SCROLL RIGHT (NEXT)
   $('.webny-gallery-fwd').on(clickVals, function(){
+    nygallery.$target_gallery = $(this).parent().parent().attr('data-gallery-num');
     nygallery.nextImage();
   });
 
@@ -272,18 +331,22 @@
   var touchendX     = 0;
   var touchendY     = 0;
 
-  var swipeArea = document.getElementById('galleyinmob');
+  // webny-gallery-container-1
+  //var swipeArea = document.getElementById('galleyinmob');
 
-  swipeArea.addEventListener('touchstart', function(event) {
+  $('.webny-gallery-container-in').on('touchstart', function(e){
     touchstartX = event.changedTouches[0].screenX;
     touchstartY = event.changedTouches[0].screenY;
-  }, false);
+  });
 
-  swipeArea.addEventListener('touchend', function(event) {
+  $('.webny-gallery-container-in').on('touchend', function(e){
     touchendX = event.changedTouches[0].screenX;
     touchendY = event.changedTouches[0].screenY;
+
+    // GET TARGET GALLERY
+    nygallery.$target_gallery = $(this).parent().attr('data-gallery-num');
     swipe.swipeAreaHandler();
-  }, false);
+  });
 
   var swipe = {
 
@@ -305,17 +368,23 @@
   // TOUCH/CLICK BUTTON
   $('.galpage').on(clickVals, function(){
 
-      var clickedNum = $(this).attr('data-galpage');
-      var currentNum = $('.gallery-current-img').attr('data-webny-cell');
+    nygallery.$target_gallery = $(this).parent().siblings('.webny-gallery').find('.webny-gallery-container').attr('data-gallery-num');
+
+    // GALLERY CONTAINER OBJ NAME
+    nygallery.getGalleryContainer();
+    var galid = nygallery.gallery_container;
+
+    var clickedNum = $(this).attr('data-galpage');
+    var currentNum = $(galid + ' .gallery-current-img').attr('data-webny-cell');
 
     // REMOVE / ASSIGN ACTIVE CLASS - PHOTO
-    $('.galpage').removeClass('galactive');
-    $('.galpage:nth-child('+clickedNum+')').addClass('galactive');
+    $(this).parent().find('.galactive').removeClass('galactive');
+    $(this).addClass('galactive');
 
     // REMOVE / ASSIGN ACTIVE CLASS - DESCRIPTION
-    $('.gallery-desc-entry').removeClass('galdescactive');
-    $('.gallery-desc-entry:nth-child('+clickedNum+')').addClass('galdescactive');
+    $(galid + ' .gallery-desc-entry').removeClass('galdescactive');
+    $(galid + ' .gallery-desc-entry:nth-child('+clickedNum+')').addClass('galdescactive');
 
-      nygallery.mobileSelectImg(parseInt(clickedNum),parseInt(currentNum));
+    nygallery.mobileSelectImg(parseInt(clickedNum),parseInt(currentNum));
 
   });

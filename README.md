@@ -24,18 +24,59 @@ fin exec updb
 
 Then, you should be able to navigate to the site in your browser: [https://dfsnygov.docksal/WebNY50/](https://dfsnygov.docksal/WebNY50/)
 
+## Editing the Theme
+
+This site has a lot of very old node dependencies and it must be run using nvm. You need to install this before doing anything. Use Google to figure that part out. If you've got that sorted, then use the following steps to update the theme:
+
+1. Ensure your site is up to date with all the necessary composer packages
+2. Navigate to the theme folder at docroot/profiles/custom/webny/themes/custom/dfs_ny
+3. Run `npm install`
+4. You will likely receive an error stating that your node version needs to be lower in order to build. 
+5. Run `nvm use 8.9.4 && npm install` or whatever version of node it wants. 
+6. Code
+7. Run `gulp` from this folder to build the css whenever you like
+
+Please also note that **the css files should be committed to the repo** on this site after you build them locally.
+
+## Scrubbing of user info
+
+The users' login information is destroyed when the database is copied thanks to rules on the server. In order to fix this
+
+1. Check the user's curren info: `drush uinf bob` to ensure this is the problem. Look at the email and see if it's funky.
+2. If so, run `drush sqlq "update users_field_data set init='bob@email.com',mail='bob@email.com' where uid = bobsuserid;"` where bobsuserid is the uid number from when you did drush uinf in the previous step.
+3. `drush cr`
+4. Change the password: `drush upwd bob bobspassword123!`
+5. Check it again: `drush uinf bob` 
+
+If user status is 0, you'll have to unblock Bob with the `drush ublk` command.
+
+**Note:** Obviously, for the Drush commands, you'll need to use `fin` if you're running the command locally and add the appropriate drush alias if you're running it remotely.
+
+## Setting up SOLR for local development
+
+1. Go to `http://dfsnygov.docksal/admin/config/search/search-api`
+2. Enable the Docksal SOLR Server
+3. Go into the Public Appeal Search Local Index which is under Solr Server
+4. Scroll down to "Server" and Select "Docksal SOLR
+5. Scroll down to and expand "Index Options" and un-check "Read only"
+6. Save. The Public Appeal Search Index should now be under Docksal.
+7. Execute `fin restart`
+8. When that's done, click the Public Appeal Search Local index (you should be on the "View" tab) and click the "Index now" button. The Public Appleal search should now have results.
+
+**Important Note:** Do not commit to the repo any search configuration Drupal might export when you run cex.
+
 ## Other Gotchas
- - In order for the configurations to match after development, you need to do the following (https://github.com/acquia/blt/issues/2955):
-   - Sync database from produciton
-   - Export configuration
-   - blt setup, which will fail on config import
-   - Export configuration again
-   - blt setup again
-   - Commit new exported config
-   - Push to your working branch
- - The shortcut.set.default.yml file should have the uuid removed from the top of the file or else the site won't build locally or on the server
-   - [Github Issue](https://github.com/acquia/blt/issues/1948)
-   - [Blog Post](https://danepowell.com/blog/installing-sites-existing-config-drupal-8)
+  - In order for the configurations to match after development, you need to do the following (https://github.com/acquia/blt/issues/2955):
+    - Sync database from produciton
+    - Export configuration
+    - blt setup, which will fail on config import
+    - Export configuration again
+    - blt setup again
+    - Commit new exported config
+    - Push to your working branch
+  - The shortcut.set.default.yml file should have the uuid removed from the top of the file or else the site won't build locally or on the server
+    - [Github Issue](https://github.com/acquia/blt/issues/1948)
+    - [Blog Post](https://danepowell.com/blog/installing-sites-existing-config-drupal-8)
 
 ## Deprecated, but Documented
 

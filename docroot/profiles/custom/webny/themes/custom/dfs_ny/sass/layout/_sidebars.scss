@@ -7,6 +7,7 @@
 // Style guide: layout.sidebars
 //
 $left-menu-width: 342px;
+
 @mixin leftmenu-h2($width) {
   background-color: #09464c;
   color: white;
@@ -36,6 +37,7 @@ $left-menu-width: 342px;
 .sidebar {
   ul {
     list-style: none;
+
     li {
       a {
         .toggler {
@@ -59,13 +61,16 @@ aside.layout-sidebar-first {
   @include breakpoint($min-tablet) {
     aside.layout-sidebar-first {
       @include span(3 of 12);
-      > * {
+
+      >* {
         // padding-left: 15px;
       }
     }
+
     main .layout-content {
       @include span(9 of 12 last);
-      > * {
+
+      >* {
         padding-right: 25px;
       }
     }
@@ -79,13 +84,16 @@ aside.layout-sidebar-first {
   @include breakpoint($min-tablet) {
     aside.layout-sidebar-second {
       @include span(3 of 12 last);
-      > * {
+
+      >* {
         padding-right: 15px;
       }
     }
+
     main .layout-content {
       @include span(9 of 12);
-      > * {
+
+      >* {
         padding-left: 25px;
       }
     }
@@ -99,19 +107,24 @@ aside.layout-sidebar-first {
   @include breakpoint($min-tablet) {
     aside.layout-sidebar-first {
       @include span(2 of 12);
-      > * {
+
+      >* {
         padding-left: 15px;
       }
     }
+
     main .layout-content {
       @include span(8 of 12);
-      > * {
+
+      >* {
         padding-right: 25px;
       }
     }
+
     aside.layout-sidebar-second {
       @include span(2 of 12 last);
-      > * {
+
+      >* {
         padding-right: 15px;
       }
     }
@@ -153,23 +166,27 @@ main .layout-content nav {
   z-index: 2;
   display: block; // max-width: 348px;
   width: $left-menu-width;
+
   ul ul {
     display: none;
     width: auto;
     background: #fff;
     list-style-type: none;
     padding-left: 5px;
+
     a {
       padding-left: 25px;
       padding-right: 10px;
       border-bottom: none;
     }
+
     li {
       display: block;
       float: none;
       cursor: pointer;
     }
   }
+
   a {
     display: block;
     background-color: #fff;
@@ -189,11 +206,13 @@ main .layout-content nav {
     float: left;
     text-align: left;
     color: #09464c;
+
     &:hover {
       background-color: #e5eeee; // font-weight: bold;
       text-decoration: none;
     }
   }
+
   a.is-active {
     @include a-is-active(#e5eeee, 600, none);
   }
@@ -208,12 +227,15 @@ main .layout-content nav {
     a.parent-show {
       background-color: $bgcolor-light-leftmenu; // color: white;
     }
+
     ul {
       display: none;
     }
   }
+
   li {
     cursor: pointer;
+
     .parent,
     .expand {
       margin-right: 30px;
@@ -222,13 +244,16 @@ main .layout-content nav {
       margin-top: 3px;
       cursor: pointer;
     }
+
     ul.show-sub {
       display: block;
     }
+
     ul {
       display: none;
       padding-left: 0px;
       border-bottom: solid 1px #09464c14;
+
       a {
         display: block;
         background-color: #fff;
@@ -245,12 +270,15 @@ main .layout-content nav {
         padding: 20px 0 20px 45px;
         color: #09464c;
       }
+
       a {
         border-bottom: solid 1px #09464c14;
       }
+
       a:hover {
         background-color: #e5eeee;
       }
+
       a.is-active {
         @include a-is-active(#e5eeee, 600, none);
       }
@@ -262,6 +290,7 @@ main .layout-content nav {
   a {
     background-color: #09464c;
     color: white;
+
     &:hover {
       background-color: #09464c;
       color: white;
@@ -277,16 +306,19 @@ main .layout-content nav {
 .faq-sidebar {
   padding-left: 0px;
   display: block;
+
   ul ul {
     display: none;
     width: 200px;
     background: #fff;
     list-style-type: none;
+
     li {
       display: block;
       float: none;
     }
   }
+
   a {
     display: block;
     background-color: #fff;
@@ -294,18 +326,22 @@ main .layout-content nav {
     height: 36px;
     padding-top: 20px;
     font-family: Helvetica;
+
     @media only screen and (max-width: 767px) {
       font-size: 12px;
     }
+
     @media only screen and (min-width: 768px) {
       font-size: 16px;
     }
+
     font-weight: normal;
     font-style: normal;
     font-stretch: normal;
     line-height: 0.94;
     letter-spacing: 0.5px; // text-align: center;
     color: #09464c;
+
     &:hover {
       text-decoration: none;
     }
@@ -330,10 +366,12 @@ main nav .h1-open-sub {
 @media (max-width: 1023px) {
   #sticky-leftmenu {
     display: none;
+
     ul li.first-complaints {
       display: none;
     }
   }
+
   .complaint-sidebar {
     a {
       background-color: #e5eeee; // color: #fff;
@@ -341,29 +379,34 @@ main nav .h1-open-sub {
       border-bottom: solid 1px #09464c38;
       font-weight: normal;
       text-decoration: none;
+
       &:hover {
         background-color: black;
         color: #fff;
         font-weight: bold;
       }
     }
+
     a.is-active {
       color: #fff;
       background-color: $color-primary;
     }
   }
+
   main nav {
     .leftmenu-toggle-h2 {
       border-bottom-style: solid;
       color: white;
       background-color: rgb(9, 70, 76);
     }
+
     .toogle-h2-show {
       border-bottom-style: none;
       color: #09464c;
       background-color: white;
     }
   }
+
   .ul-complaint-sidebar {
     a.toggler {
       border-bottom-style: solid;
@@ -372,6 +415,7 @@ main nav .h1-open-sub {
       color: rgb(9, 70, 76);
       letter-spacing: -0.1px;
     }
+
     a.parent-show {
       border-bottom-style: none;
       background-color: $bgcolor-dark-leftmenu;
@@ -379,6 +423,7 @@ main nav .h1-open-sub {
       color: white;
       letter-spacing: -0.1px;
     }
+
     li.expanded {
       a.parent-show {
         background-color: $bgcolor-dark-leftmenu; // color: white;
@@ -402,14 +447,17 @@ main nav .h1-open-sub {
       transform: translateX(-50%);
       margin: 0;
     }
+
     nav.pager {
       -webkit-transform: translateX(0);
       transform: translateX(0);
+
       .pager__item {
         margin-left: 0;
         margin-right: 0;
       }
     }
+
     #nydfs-breadcrumb {
       left: 0;
       transform: translateX(0%);
