@@ -1,0 +1,31 @@
+uuid: a645c018-25b9-42b8-84ea-4118f9ce68a7
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:dfs_block:17283c30-1600-4699-a4c3-a2856fdf15d5'
+  module:
+    - block_content
+    - system
+  theme:
+    - dfs_ny
+id: checkourfaqsbreadcrumb
+theme: dfs_ny
+region: highlighted
+weight: -51
+provider: null
+plugin: 'block_content:17283c30-1600-4699-a4c3-a2856fdf15d5'
+settings:
+  id: 'block_content:17283c30-1600-4699-a4c3-a2856fdf15d5'
+  label: 'Check our FAQs breadcrumb'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: '/consumers/faqs*'
+    negate: false
+    context_mapping: {  }
