@@ -247,7 +247,7 @@
           // animate to section of page; subtract 100 from the offset to handle scroll location with title above
           $('html,body').animate({
             scrollTop: dest
-          }, 500, 'swing', function () {
+          }, 50, 'swing', function () {
             $(this).addClass('active');
           });
 
