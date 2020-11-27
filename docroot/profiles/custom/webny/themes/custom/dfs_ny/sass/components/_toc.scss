@@ -605,6 +605,18 @@ aside#toc-sidebar {
       padding: 0;
     }
   }
+  /* Frame out the menu from the footer - starts here */
+  body {
+    height: auto;
+  }
+  footer {
+    position: relative;
+    z-index: 11!important;
+  }
+  #nygov-universal-footer {
+    position: relative;
+  }
+  /* footer frameout - ends here */
 }
 
 // ######################################################################### //
@@ -668,4 +680,5 @@ aside#toc-sidebar {
     }
   }
   /* Contact Frame styling - ends here */
+
 }
