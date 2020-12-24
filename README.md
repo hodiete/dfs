@@ -107,9 +107,20 @@ If user status is 0, you'll have to unblock Bob with the `drush ublk` command.
   - Manually purge data on Admin UI page
   - /admin/config/public_appeal_sync/manual_purge_date_form
 
-Universal Navigation height restriction issue Task#418
-  - `fin exec nvm install v10.18.1`
-  - `cd ${THEME_DIR}`
-  - `fin exec npm install`
-  - `fin exec npm install -g gulp`
-  - `fin exec gulp` (edited)
+# Developing the Theme
+## Once
+  - `nvm install 10.18.1`
+  - `cd docroot/profiles/custom/webny/themes/custom/dfs_ny/`
+  - `npm install`
+  - `npm install -g gulp`
+  - make changes
+  - `gulp`
+  - commit changes
+## Subsequent Edits
+  - `cd docroot/profiles/custom/webny/themes/custom/dfs_ny/`
+  - `nvm use 10.18.1`
+  - `npm install`
+  - make changes
+  - `gulp`
+  - commit changes
+

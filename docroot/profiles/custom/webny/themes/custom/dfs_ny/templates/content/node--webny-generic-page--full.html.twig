@@ -53,12 +53,11 @@
 
             {# HERO INNER DEFINITION #}
             {% if hero_image == '/' %}
-            <div class="hero-inner hero-generic-inner">
+            <div class="hero-inner hero-landing-inner">
                 {% else %}
-                <div class="hero-inner hero-generic-inner hero-has-image-content">
+                <div class="hero-inner hero-landing-inner hero-has-image-content">
                     {% endif %}
 
-                    <div class="hero-generic-wrapper">
 
                     {% if content.field_webny_assoc-landing-page is not empty %}
                         <div class="assoc-landing">
@@ -73,7 +72,7 @@
                     {% endif %}
 
                     {# HERO HEADLINE / TITLE #}
-                    <h1>{{ label }}</h1>
+                    <h2>{{ label }}</h2>
 
                     {# HERO DESCRIPTION #}
                     <div class="hero-generic-summary">
@@ -87,7 +86,6 @@
                         {% endfor %}
                     </div>
 
-                    </div><!--end hero-generic-wrapper-->
 
                     {# TRANSACTION TIME #}
                     {# if there is no transaction time saved, don't show div #}

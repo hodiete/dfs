@@ -1,5 +1,9 @@
 // Table of contents page content
 // ACTIONS BAR BETWEEN HERO AND CONTENT
+.back-to-top {
+  padding-top: 20px;
+  padding-bottom: 30px;
+}
 .webny-toc-page .actions {
   background-color: $color-secondary;
   font-size: 0.8em;
@@ -16,9 +20,12 @@
     max-width: 20%;
   }
   &.stuck {
-    position: fixed;
+    // override stuck so it's not fixed on mobile
+    @media (min-width: $min-mobile) {
+      position: fixed;  
+      top: 0px;
+    }
     width: 100%;
-    top: 0px;
     z-index: 100;
     .webny-action-label {
       visibility: visible;
@@ -89,8 +96,11 @@
 aside#toc-sidebar {
   position: relative;
   &.stuck {
-    position: fixed;
-    top: 50px;
+    // override stuck so it's not fixed on mobile
+    @media (min-width: $min-mobile) {
+      position: fixed;  
+      top: 50px;
+    }
     z-index: 10;
     width: 100%;
   }
@@ -445,6 +455,15 @@ aside#toc-sidebar {
 
 /* Contact Frame styling - ends here */
 
+
+// ######################################################################### //
+/* NON-MOBILE VIEW */
+
+@media (min-width: $min-mobile) {
+  .back-to-top {
+    display: none;
+  }
+}
 // ######################################################################### //
 /* MIN TABLET VIEW */
 

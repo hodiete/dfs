@@ -490,7 +490,9 @@ $hero-height: 280px;
     }
   }
   .hero-generic-summary {
-    padding: 0 22px 0 60px;
+    width: 92%;
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 18px;
     font-size: 18px;
     /*1em; */
     color: $hero-text-color;
@@ -707,6 +709,10 @@ $hero-height: 280px;
     .hero-no-image.hero-generic {
       background-color: $hero-bkgd-color;
       //height: $hero-height;
+    }
+
+    .hero-generic-summary {
+      background-color: transparent;
     }
     .hero-generic-inner {
       top: 0;
